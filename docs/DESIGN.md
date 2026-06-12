@@ -1,6 +1,14 @@
 # predictor-stocks — Documento de Design e Handoff para Implementação
-**Data:** 12/06/2026 · **Status:** design aprovado, implementação autorizada por marcos
+**Data:** 12/06/2026 · **Versão:** 1.1 · **Status:** design aprovado, implementação autorizada por marcos
 **Leia este documento INTEIRO antes de escrever qualquer linha de código.**
+
+> **Changelog v1.1 (12/06/2026, durante o M0):** revisão editorial, sem mudança de
+> decisão de mérito. (1) §3: comentário de `portfolio.py` dizia "decil superior",
+> contradizendo a decisão de quintil do §6 e da H1 — corrigido; (2) §6: a decisão
+> decil→quintil, antes embutida num parêntese, virou texto limpo. Decisões tomadas
+> durante a implementação (parser YAML stdlib, moving-block antes de stationary)
+> são registradas no HANDOFF.md, não aqui — este documento fixa o design; o HANDOFF
+> registra a execução.
 
 ---
 
@@ -73,7 +81,7 @@ predictor-stocks/
     universe.py              # universo point-in-time por liquidez
     returns.py               # matriz de retornos a partir do adjusted
     factor.py                # motor interpretável: momentum 12-1 (único fator no início)
-    portfolio.py             # construção: decil superior, equiponderado, long-only
+    portfolio.py             # construção: quintil superior, equiponderado, long-only
     execution.py             # modelo de execução e custos
     backtest.py              # walk-forward + ledger + métricas
     paper.py                 # ledger forward (paper trading) — o anti-tautologia
@@ -149,9 +157,10 @@ UM fator. Zoológico de fatores é proibido até a Hipótese #1 ser julgada.
 - Sinal em `asof` (último pregão do mês): retorno acumulado ajustado de
   [asof−252, asof−21] (12 meses excluindo o último — o clássico, que evita a reversão
   de curtíssimo prazo).
-- Carteira: decil superior do universo (N=60 → 6 papéis... **decisão**: com N=60 usar
-  quintil (12 papéis) para diversificação mínima — registrado como parâmetro
-  pré-fixado: **quintil superior, equiponderado, long-only**).
+- Carteira: **quintil superior do universo, equiponderado, long-only** (parâmetro
+  pré-fixado). Racional da escolha de quintil: o decil clássico com N=60 daria só
+  6 papéis — concentração excessiva; o quintil (12 papéis) garante diversificação
+  mínima sem diluir o sinal.
   Long-only porque short na B3 envolve aluguel (custo/disponibilidade) — complexidade
   adiada deliberadamente, registrada como evolução futura.
 - Rebalanceamento mensal: sinal no fechamento do último pregão; execução na ABERTURA
