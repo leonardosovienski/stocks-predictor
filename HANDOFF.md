@@ -34,6 +34,24 @@ Atualizar ao fim de cada marco. Toda decisão registrada aqui é permanente.
 | `quote_factor` em `prices_raw` | Obrigatório para divisão de preços (÷100 × fator) no parser COTAHIST |
 | Esqueletos com `NotImplementedError` | Cada arquivo deixa claro o marco responsável; importar antes da hora quebra explicitamente |
 
+### Revisão pós-M0 (2026-06-12, mesma sessão)
+
+Auditoria do M0 contra o design doc encontrou e corrigiu 4 itens:
+
+1. **`runs.params_frozen_until` ausente** (nomeada no design §4) — adicionada via migração
+   `0002` (de quebra, validou o caminho de upgrade append-only com teste próprio);
+2. **`net.download_file` declarava `timeout` sem usá-lo** (`urlretrieve` ignora) — trocado
+   por `urlopen` com timeout real + User-Agent (B3 rejeita requests sem UA);
+3. **Leituras de texto sem `encoding="utf-8"`** — no Windows o default é cp1252; explicitado
+   em todos os `read_text`. Convenção daqui em diante: TODO I/O de texto declara encoding;
+4. **`.gitignore` engolia `data/` e `reports/ai/`** — estrutura não sobreviveria a clone;
+   corrigido com `.gitkeep` + negação.
+
+**Pendência aberta para M1 (decisão de design):** não existe parser YAML na stdlib.
+Opções: (a) mini-parser stdlib para o subconjunto plano que usamos (chave: valor, 2 níveis);
+(b) justificar `pyyaml` como dependência de runtime no portão do M1. Nenhum código parseia
+o config ainda — decidir quando o primeiro consumidor aparecer (provavelmente `ingest_cotahist`).
+
 ---
 
 ## HIPÓTESE #1 (pré-registrada — cópia do design §9)

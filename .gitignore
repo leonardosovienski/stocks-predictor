@@ -1,5 +1,7 @@
-data/
-reports/ai/
+data/*
+!data/.gitkeep
+reports/ai/*
+!reports/ai/.gitkeep
 __pycache__/
 *.pyc
 *.db

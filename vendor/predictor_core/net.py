@@ -4,9 +4,12 @@ import urllib.error
 import pathlib
 import logging
 import hashlib
+import shutil
 import time
 
 logger = logging.getLogger(__name__)
+
+_USER_AGENT = "predictor-stocks/0.1 (research)"
 
 
 def download_file(url: str, dest: pathlib.Path, timeout: int = 120,
@@ -18,11 +21,13 @@ def download_file(url: str, dest: pathlib.Path, timeout: int = 120,
     for attempt in range(1, retries + 1):
         try:
             logger.info("download attempt %d/%d: %s", attempt, retries, url)
-            urllib.request.urlretrieve(url, tmp)
+            req = urllib.request.Request(url, headers={"User-Agent": _USER_AGENT})
+            with urllib.request.urlopen(req, timeout=timeout) as resp, open(tmp, "wb") as out:
+                shutil.copyfileobj(resp, out)
             tmp.replace(dest)
             logger.info("saved to %s", dest)
             return dest
-        except urllib.error.URLError as exc:
+        except (urllib.error.URLError, TimeoutError) as exc:
             logger.warning("attempt %d failed: %s", attempt, exc)
             if attempt < retries:
                 time.sleep(backoff * attempt)

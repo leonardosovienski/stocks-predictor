@@ -103,6 +103,10 @@ MIGRATIONS: list[tuple[str, str]] = [
             notes           TEXT
         );
     """),
+    # params_frozen_until: walk-forward congela parâmetros até esta data (design §4/§8)
+    ("0002_runs_params_frozen_until", """
+        ALTER TABLE runs ADD COLUMN params_frozen_until TEXT;
+    """),
 ]
 
 

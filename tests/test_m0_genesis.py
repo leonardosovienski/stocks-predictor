@@ -95,6 +95,31 @@ def test_db_schema_idempotent(tmp_path):
     db.get_connection(path).close()  # segunda abertura não deve falhar
 
 
+def test_db_runs_has_params_frozen_until(tmp_path):
+    """Coluna nomeada explicitamente no design §4 — congelamento de params do walk-forward."""
+    import db
+    conn = db.get_connection(tmp_path / "stocks.db")
+    cols = {r["name"] for r in conn.execute("PRAGMA table_info(runs)")}
+    assert "params_frozen_until" in cols, f"colunas de runs: {cols}"
+    conn.close()
+
+
+def test_db_migration_upgrade_path(tmp_path):
+    """Banco criado só com a migração 0001 deve receber a 0002 ao reconectar (append-only)."""
+    import db
+    from predictor_core import infra
+    path = tmp_path / "stocks.db"
+    conn = infra.connect(path)
+    infra.run_migrations(conn, db.MIGRATIONS[:1])  # estado antigo: só 0001
+    cols = {r["name"] for r in conn.execute("PRAGMA table_info(runs)")}
+    assert "params_frozen_until" not in cols
+    conn.close()
+    conn = db.get_connection(path)  # reconectar aplica o restante
+    cols = {r["name"] for r in conn.execute("PRAGMA table_info(runs)")}
+    assert "params_frozen_until" in cols, "migração 0002 não foi aplicada no upgrade"
+    conn.close()
+
+
 def test_db_prices_raw_unique_constraint(tmp_path):
     import db
     conn = db.get_connection(tmp_path / "stocks.db")
@@ -200,11 +225,9 @@ def test_stats_sharpe_sign():
 # ---------------------------------------------------------------------------
 
 def test_config_yaml_parseable():
-    import importlib.util
-    # tentar yaml stdlib-first; fallback: verificar apenas que o arquivo existe
     config_path = ROOT / "config.yaml"
     assert config_path.exists(), "config.yaml não encontrado"
-    content = config_path.read_text()
+    content = config_path.read_text(encoding="utf-8")
     assert "H1-FROZEN" in content, "parâmetros H1-FROZEN não encontrados no config"
     assert "top_n: 60" in content
     assert "test_start" in content
