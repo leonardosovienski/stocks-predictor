@@ -125,6 +125,29 @@ def test_sha256_file_known_value(tmp_path):
 # docs/DESIGN.md presente no repo (o HANDOFF referencia §§ dele)
 # ---------------------------------------------------------------------------
 
+def test_main_status_runs():
+    """python main.py deve rodar limpo (exit 0) e mostrar o config_hash."""
+    import subprocess
+    import sys as _sys
+    out = subprocess.run(
+        [_sys.executable, str(ROOT / "main.py")],
+        capture_output=True, text=True, timeout=60, encoding="utf-8",
+    )
+    assert out.returncode == 0, f"main.py falhou:\n{out.stderr}"
+    assert "config_hash" in out.stdout
+
+
+def test_main_blocked_command_exits_nonzero():
+    import subprocess
+    import sys as _sys
+    out = subprocess.run(
+        [_sys.executable, str(ROOT / "main.py"), "backtest"],
+        capture_output=True, text=True, timeout=60, encoding="utf-8",
+    )
+    assert out.returncode != 0
+    assert "M5" in out.stdout
+
+
 def test_design_doc_in_repo():
     design = ROOT / "docs" / "DESIGN.md"
     assert design.exists(), "docs/DESIGN.md ausente — o HANDOFF referencia seções dele"
