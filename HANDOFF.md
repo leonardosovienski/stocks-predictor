@@ -8,7 +8,7 @@ Atualizar ao fim de cada marco. Toda decisão registrada aqui é permanente.
 ## Estado atual: M0 — COMPLETO ✓
 
 **Data:** 2026-06-12
-**Suíte:** verde (ver testes abaixo)
+**Suíte:** 30/30 verde (`python -m pytest tests/ -v`)
 **Implementador:** Claude Code
 
 ### O que foi feito no M0
@@ -65,8 +65,13 @@ aninhamento profundo); se o config um dia precisar disso, a decisão de pyyaml v
   do git (exigência de reprodutibilidade do §11);
 - **`scripts/sync_core.py`** — sync do vendor com carimbo de VERSION; aborta se o vendor
   tiver diff não commitado (proteção contra perder evolução por demanda não levada a upstream);
-- **`tests/conftest.py`** — paths centralizados; **`tests/test_config.py`** — 10 testes novos;
-- **`.gitattributes`** — normalização de EOL (LF nos fontes).
+- **`tests/conftest.py`** — paths centralizados; **`tests/test_config.py`** — testes de
+  config, runs e smoke do main.py;
+- **`.gitattributes`** — normalização de EOL (LF nos fontes);
+- **`main.py`** — ponto de entrada: `python main.py` mostra status read-only (versões,
+  config_hash, contagem das tabelas, marcos). Comandos de pipeline (`ingest`, `adjust`,
+  `backtest`, `paper`) estão reservados e respondem qual marco os libera — viram
+  implementação real conforme cada marco fechar.
 
 ---
 

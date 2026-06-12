@@ -18,17 +18,23 @@ posicional oficial da B3; o parser não pode ser escrito de memória).
 Python 3.13 global, sem venv (restrição de ambiente — ver DESIGN §1):
 
 ```powershell
-python -m pytest tests/ -v
+python main.py              # status do projeto (somente leitura)
+python -m pytest tests/ -v  # suíte de testes — deve estar sempre verde
 ```
+
+Os comandos de pipeline (`ingest`, `adjust`, `backtest`, `paper`) nascem com os
+respectivos marcos; antes disso, `main.py` responde qual marco os libera.
 
 ## Estrutura
 
 ```
+main.py                  ponto de entrada (status; comandos nascem por marco)
 docs/DESIGN.md           constituição — ler inteiro antes de mexer
 HANDOFF.md               estado vivo do projeto
 config.yaml              parâmetros (H1-FROZEN = imutáveis pós-rodada)
 vendor/predictor_core/   biblioteca core vendorizada (sync via scripts/sync_core.py)
-src/                     pipeline (db, ingest, adjust, universe, factor, backtest, ...)
+src/                     pipeline (db, config, ingest, adjust, universe, factor, ...)
+scripts/                 utilitários dev (sync_core.py)
 tests/                   pytest — sempre verde no main
 data/                    SQLite + arquivos COTAHIST (fora do git)
 reports/ai/              artefatos consultivos do analista IA (fora do git)
