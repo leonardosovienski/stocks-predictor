@@ -1,0 +1,45 @@
+# predictor-stocks — configuração. Parâmetros da H1 fixados a priori.
+# NÃO alterar valores marcados [H1-FROZEN] após qualquer rodada de resultado.
+
+universe:
+  top_n: 60                        # [H1-FROZEN] top N por liquidez
+  lookback_trading_days: 126       # [H1-FROZEN] janela de liquidez (~6 meses)
+  min_history_days: 252            # [H1-FROZEN] mínimo de pregões para momentum
+  rebalance_frequency: monthly     # [H1-FROZEN]
+
+factor:
+  name: momentum_12_1              # [H1-FROZEN]
+  lookback_days: 252               # [H1-FROZEN] 12 meses
+  skip_days: 21                    # [H1-FROZEN] excluir último mês (reversão curto prazo)
+
+portfolio:
+  quantile: top_quintile           # [H1-FROZEN] quintil superior = 12 papéis com N=60
+  weighting: equal                 # [H1-FROZEN]
+  direction: long_only             # [H1-FROZEN]
+
+execution:
+  price: next_open                 # [H1-FROZEN] abertura D+1
+  b3_fee_pct: 0.0003               # [H1-FROZEN] emolumentos + liquidação
+  brokerage_pct: 0.0000            # [H1-FROZEN]
+  spread_slippage_pct: 0.0015      # [H1-FROZEN] por lado (conservador)
+  # total roundtrip ≈ 0.36%
+
+backtest:
+  warmup_end: "2017-12-31"         # [H1-FROZEN]
+  test_start: "2018-01-01"         # [H1-FROZEN]
+  purge_embargo_months: 1          # [H1-FROZEN]
+
+bootstrap:
+  n_boot: 10000                    # [H1-FROZEN]
+  block_length: 21                 # [H1-FROZEN] pregões (~1 mês)
+  method: moving                   # moving primeiro; stationary como refinamento M5
+  confidence: 0.95                 # [H1-FROZEN]
+  seed: 42
+
+jump_detector:
+  threshold_abs: 0.30              # |retorno overnight| > 30% → quarentena
+
+data:
+  db_path: "data/stocks.db"
+  cotahist_dir: "data/cotahist"
+  reports_dir: "reports"
