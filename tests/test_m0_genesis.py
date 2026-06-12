@@ -4,11 +4,8 @@ Critérios: estrutura criada, migração roda, suíte verde.
 """
 import pathlib
 import sqlite3
-import sys
 
-ROOT = pathlib.Path(__file__).parent.parent
-sys.path.insert(0, str(ROOT / "vendor"))
-sys.path.insert(0, str(ROOT / "src"))
+ROOT = pathlib.Path(__file__).parent.parent  # paths em conftest.py
 
 
 # ---------------------------------------------------------------------------

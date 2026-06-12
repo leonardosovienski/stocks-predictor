@@ -1,6 +1,9 @@
 """Schema e migração idempotente do predictor-stocks."""
+import datetime
+import json
 import pathlib
 import sqlite3
+import subprocess
 import sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).parent.parent / "vendor"))
@@ -117,3 +120,39 @@ def get_connection(db_path: pathlib.Path | str | None = None,
     conn = infra.connect(path, busy_timeout_ms=busy_timeout_ms)
     infra.run_migrations(conn, MIGRATIONS)
     return conn
+
+
+def get_code_version() -> str:
+    """Hash curto do git HEAD; 'unknown' fora de um checkout (ex.: cópia em rede limpa)."""
+    try:
+        out = subprocess.run(
+            ["git", "rev-parse", "--short", "HEAD"],
+            cwd=pathlib.Path(__file__).parent, capture_output=True, text=True, timeout=10,
+        )
+        if out.returncode == 0:
+            return out.stdout.strip()
+    except (OSError, subprocess.TimeoutExpired):
+        pass
+    return "unknown"
+
+
+def new_run(conn: sqlite3.Connection, params: dict, notes: str | None = None,
+            params_frozen_until: str | None = None) -> str:
+    """Registra uma execução em `runs` e retorna o run_id.
+
+    run_id = timestamp UTC + prefixo do config_hash — único, ordenável, rastreável.
+    """
+    cfg_hash = infra.config_hash(params)
+    now = datetime.datetime.now(datetime.timezone.utc)
+    # microsegundos no run_id: duas runs no mesmo segundo não podem colidir
+    run_id = now.strftime("%Y%m%dT%H%M%S%f") + "-" + cfg_hash[:6]
+    conn.execute(
+        """INSERT INTO runs(run_id, config_hash, code_version, params_json,
+                            notes, params_frozen_until)
+           VALUES(?,?,?,?,?,?)""",
+        (run_id, cfg_hash, get_code_version(),
+         json.dumps(params, sort_keys=True, ensure_ascii=True),
+         notes, params_frozen_until),
+    )
+    conn.commit()
+    return run_id

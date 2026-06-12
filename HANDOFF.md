@@ -47,10 +47,26 @@ Auditoria do M0 contra o design doc encontrou e corrigiu 4 itens:
 4. **`.gitignore` engolia `data/` e `reports/ai/`** — estrutura não sobreviveria a clone;
    corrigido com `.gitkeep` + negação.
 
-**Pendência aberta para M1 (decisão de design):** não existe parser YAML na stdlib.
-Opções: (a) mini-parser stdlib para o subconjunto plano que usamos (chave: valor, 2 níveis);
-(b) justificar `pyyaml` como dependência de runtime no portão do M1. Nenhum código parseia
-o config ainda — decidir quando o primeiro consumidor aparecer (provavelmente `ingest_cotahist`).
+**Pendência do parser YAML — FECHADA (rota a, mesma sessão):** `src/config.py` implementa
+mini-parser stdlib do subconjunto plano (seções de 1 nível + chave: valor). Não é decisão
+de portão porque NÃO adiciona dependência — é o caminho default da política stdlib-first.
+O parser falha alto (ValueError) em qualquer construção fora do subconjunto (listas,
+aninhamento profundo); se o config um dia precisar disso, a decisão de pyyaml volta ao portão.
+
+### Complementos pós-revisão (2026-06-12, mesma sessão)
+
+- **`docs/DESIGN.md`** — o documento de design agora vive NO repositório (o HANDOFF
+  referencia §§ dele; antes só existia em Downloads — risco de perder a constituição);
+- **`CLAUDE.md`** — guardrails e convenções para sessões futuras do implementador;
+- **`README.md`** — visão geral + fronteira (§12);
+- **`src/config.py`** — carregador do config + `config_hash` (ver pendência fechada acima);
+- **`db.new_run()` / `db.get_code_version()`** — registro de execuções com run_id único
+  ordenável (timestamp UTC + prefixo do config_hash), params_json canônico e code_version
+  do git (exigência de reprodutibilidade do §11);
+- **`scripts/sync_core.py`** — sync do vendor com carimbo de VERSION; aborta se o vendor
+  tiver diff não commitado (proteção contra perder evolução por demanda não levada a upstream);
+- **`tests/conftest.py`** — paths centralizados; **`tests/test_config.py`** — 10 testes novos;
+- **`.gitattributes`** — normalização de EOL (LF nos fontes).
 
 ---
 
