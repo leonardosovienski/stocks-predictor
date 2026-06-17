@@ -8,7 +8,7 @@ Atualizar ao fim de cada marco. Toda decisão registrada aqui é permanente.
 ## Estado atual: M0 — COMPLETO ✓
 
 **Data:** 2026-06-12
-**Suíte:** 73/73 verde (`py -3.12 -m pytest tests/ -q`) — M0 + pedágio + telemetria + net unificado + lacre frozen + COTAHIST M1 + ajustes/quarentena M2
+**Suíte:** 80/80 verde (`py -3.12 -m pytest tests/ -q`) — M0 + pedágio + telemetria + net + lacre frozen + COTAHIST M1 + ajustes M2 + universo/retornos M3
 **Implementador:** Claude Code
 
 ### O que foi feito no M0
@@ -118,7 +118,7 @@ Ajustes de parâmetros após ver resultados = nova hipótese, novo pré-registro
 | M0 — Gênese | ✓ COMPLETO | 2026-06-12 | Estrutura, vendor, schema, suíte verde |
 | M1 — Ingestão crua | PARCIAL | 2026-06-16 | Parser posicional (layout B3 oficial VERIFICADO via doc) + gerador sintético determinístico (`cotahist.py`) + carga idempotente em prices_raw + caminho ZIP. Golden contra posições oficiais. **Falta:** carregar um ANO real da B3 e golden sobre registros reais (o sintético destrava M2-M6 hoje; troca-se a fonte quando o arquivo chegar). |
 | M2 — Ajustes (PORTÃO CRÍTICO) | PARCIAL | 2026-06-16 | `adjust.py`: detector de saltos, inferência de split (proporção redonda), série ajustada por `adjustments`, quarentena de salto inexplicado. Rota de dividendos = (b) só-preço (decidida, abaixo). **Falta:** validar 5+ splits REAIS quando o COTAHIST real chegar. |
-| M3 — Universo + retornos | pendente | — | Point-in-time, benchmarks, carteiras aleatórias |
+| M3 — Universo + retornos | PARCIAL | 2026-06-16 | `universe.py` (top-N por mediana de volume, POINT-IN-TIME só dados < asof, dedup ON/PN, exclui quarentena/histórico curto; snapshot materializado) + `returns.py` (retornos mensais). Teste-âncora prova anti-lookahead. **Falta:** benchmark equiponderado + gerador de carteiras aleatórias (construo no M5, onde são consumidos como nulo). |
 | M4 — Fator + carteira + execução | pendente | — | Momentum 12-1, anti-lookahead |
 | M5 — Medição | pendente | — | Walk-forward, block bootstrap, relatório |
 | M6 — Julgamento H1 + paper forward | pendente | — | Uma rodada, veredito escrito, paper ligado |
