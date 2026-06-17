@@ -8,7 +8,7 @@ Atualizar ao fim de cada marco. Toda decisão registrada aqui é permanente.
 ## Estado atual: M0 — COMPLETO ✓
 
 **Data:** 2026-06-12
-**Suíte:** 30/30 verde (`python -m pytest tests/ -v`)
+**Suíte:** 39/39 verde (`py -3.12 -m pytest tests/ -q`) — 30 do M0 + 9 do pedágio (PSR + bootstrap pareado)
 **Implementador:** Claude Code
 
 ### O que foi feito no M0
@@ -72,6 +72,20 @@ aninhamento profundo); se o config um dia precisar disso, a decisão de pyyaml v
   config_hash, contagem das tabelas, marcos). Comandos de pipeline (`ingest`, `adjust`,
   `backtest`, `paper`) estão reservados e respondem qual marco os libera — viram
   implementação real conforme cada marco fechar.
+
+### Evolução por demanda do vendor (2026-06-16)
+
+`predictor_core/stats.py` ganhou a **Lente 1 do pedágio**: `probabilistic_sharpe_ratio`
+(PSR, Bailey & López de Prado 2012) — fórmula fechada que pune não-normalidade
+(skew/curtose); barreira barata ANTES do block bootstrap pesado. E a **Lente 2** foi
+generalizada: `block_bootstrap_ci` agora aceita unidades PAREADAS (tuplas) para
+reamostragem conjunta — preserva a cross-correlação exigida pela diferença de Sharpe
+da H1 (M5). Invariante "reamostre linhas, não colunas" coberta por teste novo
+(`test_paired_resampling_preserves_cross_correlation`). PSR verificado contra a
+implementação do QuantConnect/LEAN. VERSION → `0.2.0-vendored-20260616`; marcar para
+upstream no próximo `sync_core`. **Suíte 39/39 verde. Nenhum parâmetro H1-FROZEN
+tocado; nada do pipeline de sinal alterado** — é só ferramenta de medição (M5) entrando
+cedo no vendor, como o block bootstrap já entrou no M0.
 
 ---
 
