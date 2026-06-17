@@ -88,3 +88,33 @@ def load_config(path: pathlib.Path | str | None = None) -> dict:
 def config_hash(config: dict) -> str:
     """Hash determinístico do config carregado — gravado em runs.config_hash."""
     return infra.config_hash(config)
+
+
+# Subconjunto H1-FROZEN (design §5–§9), explícito e legível por máquina — o
+# mini-parser apaga os comentários '[H1-FROZEN]' do YAML, então a lista vive AQUI.
+H1_FROZEN_KEYS = [
+    ("universe", "top_n"), ("universe", "lookback_trading_days"),
+    ("universe", "min_history_days"), ("universe", "rebalance_frequency"),
+    ("factor", "name"), ("factor", "lookback_days"), ("factor", "skip_days"),
+    ("portfolio", "quantile"), ("portfolio", "weighting"), ("portfolio", "direction"),
+    ("execution", "price"), ("execution", "b3_fee_pct"),
+    ("execution", "brokerage_pct"), ("execution", "spread_slippage_pct"),
+    ("backtest", "warmup_end"), ("backtest", "test_start"),
+    ("backtest", "purge_embargo_months"),
+    ("bootstrap", "n_boot"), ("bootstrap", "block_length"), ("bootstrap", "confidence"),
+]
+
+
+def frozen_config_hash(config: dict) -> str:
+    """Hash determinístico SÓ do subconjunto H1-FROZEN — o LACRE da hipótese.
+
+    Responde 'este run usou a H1 exata?' sem ser perturbado por params operacionais
+    (db_path, seed, bootstrap.method). Um golden test fixa este hash: mexer num param
+    frozen quebra alto; mexer no db_path/seed NÃO. É a versão por-máquina do lacre
+    que hoje depende da disciplina de não tocar nos comentários [H1-FROZEN].
+    """
+    frozen = {f"{s}.{k}": config.get(s, {}).get(k) for s, k in H1_FROZEN_KEYS}
+    missing = [k for k, v in frozen.items() if v is None]
+    if missing:
+        raise ValueError(f"params H1-FROZEN ausentes no config: {missing}")
+    return infra.config_hash(frozen)

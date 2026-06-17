@@ -153,3 +153,35 @@ def test_design_doc_in_repo():
     assert design.exists(), "docs/DESIGN.md ausente — o HANDOFF referencia seções dele"
     content = design.read_text(encoding="utf-8")
     assert "H1" in content and "COTAHIST" in content
+
+
+# ---------------------------------------------------------------------------
+# frozen_config_hash — o lacre da H1 por MÁQUINA (não por comentário [H1-FROZEN])
+# ---------------------------------------------------------------------------
+
+def test_frozen_config_hash_golden():
+    """Golden: qualquer mudança em param H1-FROZEN quebra este lacre."""
+    from config import load_config, frozen_config_hash
+    assert frozen_config_hash(load_config()) == "4a4e8d57e1224191"
+
+
+def test_frozen_hash_ignores_operational_params():
+    import copy
+    from config import load_config, frozen_config_hash
+    cfg = load_config()
+    base = frozen_config_hash(cfg)
+    op = copy.deepcopy(cfg)
+    op["data"]["db_path"] = "outro.db"
+    op["bootstrap"]["seed"] = 999
+    op["bootstrap"]["method"] = "stationary"
+    assert frozen_config_hash(op) == base, "param operacional não pode mover o lacre"
+
+
+def test_frozen_hash_breaks_on_frozen_param():
+    import copy
+    from config import load_config, frozen_config_hash
+    cfg = load_config()
+    base = frozen_config_hash(cfg)
+    fr = copy.deepcopy(cfg)
+    fr["universe"]["top_n"] = 61
+    assert frozen_config_hash(fr) != base, "mexer num param frozen DEVE mover o lacre"
