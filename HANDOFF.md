@@ -8,7 +8,7 @@ Atualizar ao fim de cada marco. Toda decisão registrada aqui é permanente.
 ## Estado atual: M0 — COMPLETO ✓
 
 **Data:** 2026-06-12
-**Suíte:** 68/68 verde (`py -3.12 -m pytest tests/ -q`) — M0 + pedágio (PSR + bootstrap pareado) + telemetria + net unificado + lacre frozen + COTAHIST M1
+**Suíte:** 73/73 verde (`py -3.12 -m pytest tests/ -q`) — M0 + pedágio + telemetria + net unificado + lacre frozen + COTAHIST M1 + ajustes/quarentena M2
 **Implementador:** Claude Code
 
 ### O que foi feito no M0
@@ -117,7 +117,7 @@ Ajustes de parâmetros após ver resultados = nova hipótese, novo pré-registro
 |-------|--------|------|-------|
 | M0 — Gênese | ✓ COMPLETO | 2026-06-12 | Estrutura, vendor, schema, suíte verde |
 | M1 — Ingestão crua | PARCIAL | 2026-06-16 | Parser posicional (layout B3 oficial VERIFICADO via doc) + gerador sintético determinístico (`cotahist.py`) + carga idempotente em prices_raw + caminho ZIP. Golden contra posições oficiais. **Falta:** carregar um ANO real da B3 e golden sobre registros reais (o sintético destrava M2-M6 hoje; troca-se a fonte quando o arquivo chegar). |
-| M2 — Ajustes (PORTÃO CRÍTICO) | pendente | — | Detector saltos, quarentena, proventos |
+| M2 — Ajustes (PORTÃO CRÍTICO) | PARCIAL | 2026-06-16 | `adjust.py`: detector de saltos, inferência de split (proporção redonda), série ajustada por `adjustments`, quarentena de salto inexplicado. Rota de dividendos = (b) só-preço (decidida, abaixo). **Falta:** validar 5+ splits REAIS quando o COTAHIST real chegar. |
 | M3 — Universo + retornos | pendente | — | Point-in-time, benchmarks, carteiras aleatórias |
 | M4 — Fator + carteira + execução | pendente | — | Momentum 12-1, anti-lookahead |
 | M5 — Medição | pendente | — | Walk-forward, block bootstrap, relatório |
@@ -138,7 +138,12 @@ Rota de dividendos/JCP (§4, armadilha 2):
 - **(a) [recomendada]** ingerir proventos de fonte nomeada (fundamentus/statusinvest; yfinance como cross-check)
 - **(b)** rodar H1 em retorno só-preço com limitação e direção do viés escritas no pré-registro
 
-**Decisão pendente — registrar aqui antes de iniciar M4.**
+**DECISÃO (2026-06-16): rota (b) — retorno SÓ-PREÇO.** Não há fonte de proventos
+disponível nesta passada. Viés DECLARADO e direcional: omitir dividendos/JCP subestima o
+retorno total; como papéis de momentum tendem a yield menor, a omissão FAVORECE a
+estratégia contra o benchmark (viés a nosso favor — "positivo marginal é suspeito por
+construção"). Quando uma fonte nomeada de proventos existir, migrar para rota (a) =
+nova hipótese / novo pré-registro. Aplica-se igualmente à estratégia E ao benchmark.
 
 ---
 
