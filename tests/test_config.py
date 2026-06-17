@@ -137,15 +137,26 @@ def test_main_status_runs():
     assert "config_hash" in out.stdout
 
 
-def test_main_blocked_command_exits_nonzero():
+def test_main_backtest_command_runs():
+    """backtest agora roda (M5 implementado) — sai 0 mesmo com banco vazio (inconclusivo)."""
     import subprocess
     import sys as _sys
     out = subprocess.run(
         [_sys.executable, str(ROOT / "main.py"), "backtest"],
+        capture_output=True, text=True, timeout=120, encoding="utf-8",
+    )
+    assert out.returncode == 0, f"main.py backtest falhou:\n{out.stderr}"
+    assert "M5" not in out.stdout                       # não é mais 'bloqueado'
+
+
+def test_main_unknown_command_exits_nonzero():
+    import subprocess
+    import sys as _sys
+    out = subprocess.run(
+        [_sys.executable, str(ROOT / "main.py"), "naoexiste"],
         capture_output=True, text=True, timeout=60, encoding="utf-8",
     )
     assert out.returncode != 0
-    assert "M5" in out.stdout
 
 
 def test_design_doc_in_repo():
