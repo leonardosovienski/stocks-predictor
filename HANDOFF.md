@@ -8,7 +8,7 @@ Atualizar ao fim de cada marco. Toda decisão registrada aqui é permanente.
 ## Estado atual: M0 — COMPLETO ✓
 
 **Data:** 2026-06-12
-**Suíte:** 87/87 verde (`py -3.12 -m pytest tests/ -q`) — M0..M4 + plataforma (pedágio/telemetria/net/lacre frozen)
+**Suíte:** 90/90 verde (`py -3.12 -m pytest tests/ -q`) — M0..M5 + plataforma (pedágio/telemetria/net/lacre frozen)
 **Implementador:** Claude Code
 
 ### O que foi feito no M0
@@ -120,7 +120,7 @@ Ajustes de parâmetros após ver resultados = nova hipótese, novo pré-registro
 | M2 — Ajustes (PORTÃO CRÍTICO) | PARCIAL | 2026-06-16 | `adjust.py`: detector de saltos, inferência de split (proporção redonda), série ajustada por `adjustments`, quarentena de salto inexplicado. Rota de dividendos = (b) só-preço (decidida, abaixo). **Falta:** validar 5+ splits REAIS quando o COTAHIST real chegar. |
 | M3 — Universo + retornos | PARCIAL | 2026-06-16 | `universe.py` (top-N por mediana de volume, POINT-IN-TIME só dados < asof, dedup ON/PN, exclui quarentena/histórico curto; snapshot materializado) + `returns.py` (retornos mensais). Teste-âncora prova anti-lookahead. **Falta:** benchmark equiponderado + gerador de carteiras aleatórias (construo no M5, onde são consumidos como nulo). |
 | M4 — Fator + carteira + execução | FEITO (componentes) | 2026-06-16 | `factor.py` momentum 12-1 (point-in-time) + `portfolio.py` quintil superior equiponderado long-only + `execution.py` D+1/custos. Teste anti-lookahead `exec_ts > signal_ts`. O walk-forward que os ENCADEIA é o M5. |
-| M5 — Medição | pendente | — | Walk-forward, block bootstrap, relatório |
+| M5 — Medição | FEITO (núcleo) | 2026-06-16 | `backtest.py`: walk-forward mensal (universo→momentum→quintil→hold), curva DIÁRIA estratégia vs benchmark pareada, e o PEDÁGIO de 2 lentes (PSR + block bootstrap PAREADO da diferença de Sharpe). End-to-end testado em dados sintéticos. **Falta (evolução):** robustez de execução a 3 preços (abertura/fechamento D+1/pior) + 2× custo; purge/embargo formal. |
 | M6 — Julgamento H1 + paper forward | pendente | — | Uma rodada, veredito escrito, paper ligado |
 
 ---
