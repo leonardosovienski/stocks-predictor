@@ -8,7 +8,7 @@ Atualizar ao fim de cada marco. Toda decisão registrada aqui é permanente.
 ## Estado atual: M0 — COMPLETO ✓
 
 **Data:** 2026-06-12
-**Suíte:** 39/39 verde (`py -3.12 -m pytest tests/ -q`) — 30 do M0 + 9 do pedágio (PSR + bootstrap pareado)
+**Suíte:** 68/68 verde (`py -3.12 -m pytest tests/ -q`) — M0 + pedágio (PSR + bootstrap pareado) + telemetria + net unificado + lacre frozen + COTAHIST M1
 **Implementador:** Claude Code
 
 ### O que foi feito no M0
@@ -116,7 +116,7 @@ Ajustes de parâmetros após ver resultados = nova hipótese, novo pré-registro
 | Marco | Status | Data | Notas |
 |-------|--------|------|-------|
 | M0 — Gênese | ✓ COMPLETO | 2026-06-12 | Estrutura, vendor, schema, suíte verde |
-| M1 — Ingestão crua | pendente | — | Parser COTAHIST posicional + testes golden |
+| M1 — Ingestão crua | PARCIAL | 2026-06-16 | Parser posicional (layout B3 oficial VERIFICADO via doc) + gerador sintético determinístico (`cotahist.py`) + carga idempotente em prices_raw + caminho ZIP. Golden contra posições oficiais. **Falta:** carregar um ANO real da B3 e golden sobre registros reais (o sintético destrava M2-M6 hoje; troca-se a fonte quando o arquivo chegar). |
 | M2 — Ajustes (PORTÃO CRÍTICO) | pendente | — | Detector saltos, quarentena, proventos |
 | M3 — Universo + retornos | pendente | — | Point-in-time, benchmarks, carteiras aleatórias |
 | M4 — Fator + carteira + execução | pendente | — | Momentum 12-1, anti-lookahead |
