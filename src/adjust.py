@@ -55,15 +55,19 @@ def adjusted_closes(dates, closes, adjustments):
 
 # --- integração com o banco (prices_raw -> quarantine / série ajustada) -----
 
-def scan_and_quarantine(conn, threshold) -> int:
-    """Por ticker, detecta saltos; salto SEM ajuste registrado em `adjustments` =>
-    quarentena. Retorna nº de saltos quarentenados. Não 'conserta' nada na mão — só
-    registra a trilha (regra inviolável: nada de fix silencioso)."""
-    tickers = [r[0] for r in conn.execute("SELECT DISTINCT ticker FROM prices_raw")]
+def scan_and_quarantine(conn, threshold, market_type="010", bdi_code="02") -> int:
+    """Por ticker À-VISTA LOTE-PADRÃO (TPMERC=010, CODBDI=02), detecta saltos; salto SEM
+    ajuste registrado em `adjustments` => quarentena. Filtrar é essencial: o COTAHIST traz
+    opções/fracionário com swings de >30% naturais que não são saltos de ação à vista.
+    Retorna nº de saltos quarentenados. Não 'conserta' nada na mão — só registra a trilha."""
+    tickers = [r[0] for r in conn.execute(
+        "SELECT DISTINCT ticker FROM prices_raw WHERE market_type=? AND bdi_code=?",
+        (market_type, bdi_code))]
     n = 0
     for t in tickers:
         rows = conn.execute(
-            "SELECT date, close FROM prices_raw WHERE ticker=? ORDER BY date", (t,)).fetchall()
+            "SELECT date, close FROM prices_raw WHERE ticker=? AND market_type=? "
+            "AND bdi_code=? ORDER BY date", (t, market_type, bdi_code)).fetchall()
         dates = [r[0] for r in rows]
         closes = [r[1] for r in rows]
         explained = {r[0] for r in conn.execute(
