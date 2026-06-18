@@ -8,7 +8,7 @@ Atualizar ao fim de cada marco. Toda decisão registrada aqui é permanente.
 ## Estado atual: M1–M6 — núcleo implementado sobre dados sintéticos ✓ (veredito real da H1 aguarda COTAHIST real)
 
 **Data:** 2026-06-12
-**Suíte:** 92/92 verde (`py -3.12 -m pytest tests/ -q`) — M0..M6 + plataforma (pedágio/telemetria/net/lacre frozen)
+**Suíte:** 92/92 verde (`python -m pytest tests/ -q`) — M0..M6 + plataforma (pedágio/telemetria/net/lacre frozen)
 **Implementador:** Claude Code
 
 ### O que foi feito no M0

@@ -12,15 +12,15 @@ ML por último e só se pagar líquido.
 
 Marcos **M1–M6 implementados** (núcleo, validados em dados sintéticos); o veredito real
 da H1 exige o COTAHIST físico da B3. Consome o `predictor_core` via `vendor/` (não
-editar — `predictor-core` é a fonte). Suíte: `py -3.12 -m pytest tests/ -q` (93 verdes).
+editar — `predictor-core` é a fonte). Suíte: `python -m pytest tests/ -q` (93 verdes).
 
 ```powershell
-py -3.12 main.py                              # status (versões, hashes, contagens)
-py -3.12 main.py ingest <COTAHIST_AXXXX.ZIP>  # M1: parse posicional -> prices_raw
-py -3.12 main.py adjust                        # M2: detector de saltos -> quarentena
-py -3.12 main.py universe <YYYY-MM-DD>         # M3: universo point-in-time
-py -3.12 main.py backtest                      # M5: walk-forward + pedágio -> veredito H1
-py -3.12 main.py paper <YYYY-MM-DD>            # M6: carteira forward + liquida execução
+python main.py                              # status (versões, hashes, contagens)
+python main.py ingest <COTAHIST_AXXXX.ZIP>  # M1: parse posicional -> prices_raw
+python main.py adjust                        # M2: detector de saltos -> quarentena
+python main.py universe <YYYY-MM-DD>         # M3: universo point-in-time
+python main.py backtest                      # M5: walk-forward + pedágio -> veredito H1
+python main.py paper <YYYY-MM-DD>            # M6: carteira forward + liquida execução
 ```
 Sem COTAHIST real, o `backtest` responde "inconclusivo"; o gerador sintético
 (`src/cotahist.py`) destrava o pipeline para teste.

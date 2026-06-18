@@ -59,7 +59,7 @@ def status() -> int:
     conn.close()
 
     print("\nmarcos           : M1–M6 implementados (núcleo). Veredito real da H1 exige COTAHIST real.")
-    print("testes           : py -3.12 -m pytest tests/ -q")
+    print("testes           : python -m pytest tests/ -q")
     return 0
 
 
