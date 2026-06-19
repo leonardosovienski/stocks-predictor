@@ -26,6 +26,7 @@ import portfolio
 from config import load_config
 from returns import month_end_dates
 import universe
+from predictor_core.obs import emit_event
 from predictor_core.stats import block_bootstrap_ci, probabilistic_sharpe_ratio, sharpe
 
 
@@ -108,6 +109,17 @@ def run(cfg=None, conn=None):
     verdict = judge(strat, bench, cfg)
     print(f"walk-forward: {verdict['n']} pregões | PSR={verdict['psr']} | "
           f"IC95% ΔSharpe={verdict['sharpe_diff_ci']} | H1: {verdict['veredito']}")
+    lo, hi = verdict["sharpe_diff_ci"]
+    metrics = {"n": verdict["n"]}
+    if verdict["psr"] is not None:
+        metrics["psr"] = round(float(verdict["psr"]), 4)
+    if lo is not None:
+        metrics["ic_lower"] = round(float(lo), 4)
+    if hi is not None:
+        metrics["ic_upper"] = round(float(hi), 4)
+    emit_event("stocks", "backtest_completed",
+               metrics=metrics,
+               metadata={"veredito": verdict["veredito"]})
     return verdict
 
 
