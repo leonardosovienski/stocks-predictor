@@ -1,3 +1,21 @@
+<!-- ════════════════════════════════════════════════════════════════════
+RECONCILIAÇÃO DE EVIDÊNCIA — 2026-06-19 (corrige drift; fonte: ECOSYSTEM_STATUS.md na raiz)
+Marcas: [V] verificada por execução · [I] inferida · [NV] não verificada.
+
+- [V] Ambiente: a máquina tem APENAS Python 3.14.6 (não 3.13). Rode tudo com a venv
+  raiz C:\Claude\.venv\Scripts\python.exe. O texto "Python 3.13 global" abaixo é DRIFT.
+- [V] Marcos: M1–M6 estão implementados E rodados sobre DADO REAL — COTAHIST 2024+2025
+  ingerido (5,76M linhas). As frases "M0 completo / próximo M1 bloqueado" e "validados
+  em dados sintéticos" abaixo são DRIFT (contradição interna do README antigo).
+- [V] Instrumento validado: parser reconcilia 5/5 blue-chips com jan/2024; split do
+  BBAS3 (2024-04-16) detectado e quarentenado. Cadeia de medição calibrada.
+- [V] Veredito H1 sobre dado real: NÃO COMPROVADA (n=228, IC ΔSharpe ≈ [-2,4, +0,7],
+  cruza zero). Interpretar como SUBPOTENTE (mudo), não como "momentum não funciona".
+- [V] Override operacional: $STOCKS_DB_PATH aponta a CLI para um DB alternativo.
+- [I] Próximo experimento decisivo: rodar a H1 congelada sobre 2010–2025 (mais anos).
+- Status de produção: PESQUISA (instrumento pronto, amostra curta).
+═════════════════════════════════════════════════════════════════════ -->
+
 # predictor-stocks
 
 Domínio 2 de um framework de previsão multi-domínio (TCC): previsão **cross-sectional**

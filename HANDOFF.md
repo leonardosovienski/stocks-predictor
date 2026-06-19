@@ -182,3 +182,25 @@ nova hipótese / novo pré-registro. Aplica-se igualmente à estratégia E ao be
   - Backtest final: `walk-forward: 228 pregões | PSR=0.1881 | IC95% ΔSharpe=(-2.45,0.66)` — H1 não comprovada.
 
 Reprodução rápida: veja `AUDIT_README.md` na raiz para comandos e contexto.
+
+---
+
+**Reconciliação de evidência (2026-06-19)** — fonte de verdade: `ECOSYSTEM_STATUS.md` na raiz.
+Marcas: [V] verificada por execução nesta sessão.
+
+- [V] **Dado cresceu desde o audit log acima:** `prices_raw` agora cobre **2024-01-02 →
+  2025-12-30 (5.765.783 linhas)** — o "2024 (2,607,848)" da entrada de 2026-06-18 está
+  superado (2025 foi ingerido).
+- [V] **Instrumento (parser) VALIDADO:** 5/5 blue-chips batem com jan/2024 (PETR4 37,78,
+  VALE3 77,05, ITUB4 33,52, BBDC4 16,75, BBAS3 54,76); split 1:2 do BBAS3 (2024-04-16)
+  quarentenado e excluído. Sem retorno realizado |r|>30% na carteira (sem contaminação).
+- [V] **Veredito H1 (n=228): não comprovada, IC ΔSharpe cruza zero.** Ler como
+  **SUBPOTENTE** (amostra de ~2 anos ≈ 11 blocos efetivos), NÃO como "momentum falhou".
+- [V] **Viés de dividendo (rota-b) não muda o veredito** em Δ∈[−4%,+4%] a.a.
+  (`dividend_sensitivity.py`).
+- [V] **Ambiente:** só Python 3.14.6; rodar com a venv raiz `C:\Claude\.venv`.
+- REMOVER como falsa precisão: qualquer estimativa de "N anos exatos de dado necessários"
+  citada em relatórios — depende do efeito real, desconhecido. O defensável é "subpotente;
+  rodar a H1 congelada sobre mais anos (2010–2025)".
+- Ressalva [V]: `adjust.adjusted_series` não filtra `market_type` — bug latente para
+  CODNEG multi-mercado; inócuo para os blue-chips do universo (aparecem só em 010/02).
