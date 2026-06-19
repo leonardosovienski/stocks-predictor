@@ -52,8 +52,13 @@ def test_judge_runs_the_two_lens_toll(tmp_path):
     assert v["veredito"] in ("COMPROVADA", "não comprovada (IC cruza 0 / negativo)")
 
 
-def test_run_smoke(tmp_path, capsys):
+def test_run_smoke(tmp_path, capsys, monkeypatch):
+    # Isola a telemetria: run() emite 'backtest_completed' via emit_event, cujo destino
+    # default é events.jsonl na cwd. Sem este redirecionamento o teste sujaria a árvore
+    # de trabalho (predictor-stocks/events.jsonl) a cada execução.
+    monkeypatch.setenv("PREDICTOR_EVENTS_PATH", str(tmp_path / "events.jsonl"))
     conn = _load(tmp_path)
     v = backtest.run(_CFG, conn)
     assert "H1:" in capsys.readouterr().out and "veredito" in v
     conn.close()
+    assert (tmp_path / "events.jsonl").exists()   # o evento foi emitido (no destino isolado)
