@@ -166,3 +166,19 @@ nova hipótese / novo pré-registro. Aplica-se igualmente à estratégia E ao be
 - IA (analista) NUNCA escreve no banco, NUNCA resolve quarentena.
 - Nenhum lookahead: exec_ts > signal_ts em toda linha do ledger (teste automatizado obrigatório no M4).
 - Parâmetros H1-FROZEN não se tocam após qualquer rodada de resultado.
+
+---
+
+**Audit log (2026-06-18)**
+
+- Commit: `1b0a6a6` adicionou os artefatos de auditoria no repo raiz.
+- Scripts gerados/alterados:
+  - `scripts/test-audit-loop.ps1` — orquestrador PowerShell (interpretares explícitos).
+  - `predictor-stocks/check_db.py` — utilitário sqlite3 nativo para inspeção rápida do DB.
+- Principais resultados da auditoria:
+  - `prices_raw` (2024) cobertura: 2024-01-02 → 2024-12-30 (2,607,848 registros).
+  - `universe_snapshots` em 2025-12-19: 60 tickers (elite de liquidez).
+  - `decisions` (2025-12-19) top sinais: COGN3, CURY3, CYRE3, BPAC11, CSMG3, CEAB3, RDOR3, ASAI3, ENEV3, TOTS3, TIMS3, MRVE3, BBDC4, EMBR3, MRFG3.
+  - Backtest final: `walk-forward: 228 pregões | PSR=0.1881 | IC95% ΔSharpe=(-2.45,0.66)` — H1 não comprovada.
+
+Reprodução rápida: veja `AUDIT_README.md` na raiz para comandos e contexto.
