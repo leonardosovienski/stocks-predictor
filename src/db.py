@@ -1,6 +1,7 @@
 """Schema e migração idempotente do predictor-stocks."""
 import datetime
 import json
+import os
 import pathlib
 import sqlite3
 import subprocess
@@ -10,6 +11,21 @@ sys.path.insert(0, str(pathlib.Path(__file__).parent.parent / "vendor"))
 from predictor_core import infra
 
 DB_DEFAULT = pathlib.Path(__file__).parent.parent / "data" / "stocks.db"
+
+# Override operacional: aponta TODA a CLI para um banco alternativo (snapshot, CI,
+# dry-run) sem editar config.yaml. É só PATH — não toca em nenhum parâmetro H1-FROZEN
+# nem na reprodutibilidade (db_path é operacional, ver test_frozen_hash_ignores_*).
+DB_PATH_ENV = "STOCKS_DB_PATH"
+
+
+def resolve_db_path(configured: pathlib.Path | str | None = None) -> pathlib.Path:
+    """Precedência: $STOCKS_DB_PATH (override operacional) > caminho configurado > DB_DEFAULT."""
+    env = os.getenv(DB_PATH_ENV)
+    if env:
+        return pathlib.Path(env)
+    if configured:
+        return pathlib.Path(configured)
+    return DB_DEFAULT
 
 # ---------------------------------------------------------------------------
 # Migrações — append-only; nunca alterar uma existente, sempre adicionar nova
@@ -115,7 +131,7 @@ MIGRATIONS: list[tuple[str, str]] = [
 
 def get_connection(db_path: pathlib.Path | str | None = None,
                    busy_timeout_ms: int = 5000) -> sqlite3.Connection:
-    path = pathlib.Path(db_path) if db_path else DB_DEFAULT
+    path = resolve_db_path(db_path)
     path.parent.mkdir(parents=True, exist_ok=True)
     conn = infra.connect(path, busy_timeout_ms=busy_timeout_ms)
     infra.run_migrations(conn, MIGRATIONS)

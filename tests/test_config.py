@@ -137,13 +137,26 @@ def test_main_status_runs():
     assert "config_hash" in out.stdout
 
 
-def test_main_backtest_command_runs():
-    """backtest agora roda (M5 implementado) — sai 0 mesmo com banco vazio (inconclusivo)."""
+def test_main_backtest_command_runs(tmp_path):
+    """backtest roda (M5 implementado) e sai 0 mesmo com banco vazio (inconclusivo).
+
+    ISOLADO: aponta para um banco temporário vazio via $STOCKS_DB_PATH em vez do
+    banco de produção. Antes, este teste lia data/stocks.db (estado mutável) e
+    estourava o timeout assim que dados reais (COTAHIST 2024+) eram ingeridos —
+    acoplamento a estado externo que dava falsa confiança. Eventos de telemetria
+    vão para um JSONL temporário para não sujar a árvore de trabalho.
+    """
+    import os
     import subprocess
     import sys as _sys
+    env = {
+        **os.environ,
+        "STOCKS_DB_PATH": str(tmp_path / "empty.db"),
+        "PREDICTOR_EVENTS_PATH": str(tmp_path / "events.jsonl"),
+    }
     out = subprocess.run(
         [_sys.executable, str(ROOT / "main.py"), "backtest"],
-        capture_output=True, text=True, timeout=120, encoding="utf-8",
+        capture_output=True, text=True, timeout=60, encoding="utf-8", env=env,
     )
     assert out.returncode == 0, f"main.py backtest falhou:\n{out.stderr}"
     assert "M5" not in out.stdout                       # não é mais 'bloqueado'
