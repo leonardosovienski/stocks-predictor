@@ -42,7 +42,7 @@ domínio a exigir de fato. Não generalize especulativamente. O que ações exig
 
 ## 1. Ambiente real (restrições, não sugestões)
 
-- **Windows**, Python 3.13 **global** (EDR corporativo quarentenou venvs — não criar
+- **Windows**, Python 3.14.6 **global** (EDR corporativo quarentenou venvs — não criar
   venv; não depender de venv).
 - Política de dependências: **stdlib-first**. `numpy` está PRÉ-APROVADO desde o M0
   (matriz de retornos cruzada e stationary bootstrap justificam; implementá-los em
