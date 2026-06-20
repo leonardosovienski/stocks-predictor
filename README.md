@@ -43,6 +43,28 @@ python main.py paper <YYYY-MM-DD>            # M6: carteira forward + liquida ex
 Sem COTAHIST real, o `backtest` responde "inconclusivo"; o gerador sintético
 (`src/cotahist.py`) destrava o pipeline para teste.
 
+## Diagnósticos e validação — como rodar cada arquivo
+
+Runner canônico desta máquina (Python 3.14.6): `C:\Claude\.venv\Scripts\python.exe`.
+Rode tudo a partir de `C:\Claude\predictor-stocks`. Atalho: `$py = "C:\Claude\.venv\Scripts\python.exe"`.
+
+| Arquivo | O que faz | Como rodar |
+|---------|-----------|------------|
+| `tests/` (suíte) | 96 testes — sempre verde no main | `& $py -m pytest tests/ -q` |
+| `tests/test_lens2_coverage.py` | **Portão de aceite da LENTE 2** (cobertura ~95%) | `& $py -m pytest tests/test_lens2_coverage.py -v` |
+| `lens2_calibration_study.py` | Estudo: percentil vs t-blocos × L × método → tabela de cobertura/largura/custo | `& $py lens2_calibration_study.py` |
+| `lens2_coverage_test.py` | Mede a cobertura da régua ATUAL (percentil) — mostra a liberalidade | `& $py lens2_coverage_test.py` |
+| `dividend_sensitivity.py` | Sensibilidade do veredito da H1 ao viés de dividendo (rota-b) | `& $py dividend_sensitivity.py` |
+| `check_db.py` | Inspeção rápida do SQLite (cobertura, contagens) | `& $py check_db.py` |
+
+> A régua calibrada vive em `predictor_core.stats.calibrated_ci` (intervalo-t por blocos,
+> cobertura validada ~95%). O default da plataforma continua o percentil; migrar um
+> experimento para a calibrada é decisão de **novo pré-registro** (não automática).
+
+**Utilitários de plataforma** (em `C:\Claude\scripts`, rodar de qualquer lugar):
+`test-audit-loop.ps1` (roda as 3 suítes + sync-check) · `sync_all.ps1` (propaga o
+`predictor_core` aos vendors) · `events_tail.py` (painel unificado do `events.jsonl`).
+
 ## Status
 
 M0 (Gênese) completo. Próximo: M1 — ingestão COTAHIST (bloqueado em obter o layout
