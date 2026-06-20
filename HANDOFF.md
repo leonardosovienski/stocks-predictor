@@ -5,11 +5,28 @@ Atualizar ao fim de cada marco. Toda decisão registrada aqui é permanente.
 
 ---
 
-## Estado atual: M1–M6 — núcleo implementado sobre dados sintéticos ✓ (veredito real da H1 aguarda COTAHIST real)
+## Estado atual (topo sempre corrente — atualizado 2026-06-19)
 
-**Data:** 2026-06-12
-**Suíte:** 92/92 verde (`python -m pytest tests/ -q`) — M0..M6 + plataforma (pedágio/telemetria/net/lacre frozen)
-**Implementador:** Claude Code
+**Marcos:** M1–M6 implementados e **rodados sobre DADO REAL** (COTAHIST 2024+2025;
+`prices_raw` 2024-01-02 → 2025-12-30, 5,76M linhas). Parser validado 5/5 vs realidade
+(jan/2024); split BBAS3 quarentenado.
+**Suíte:** **96/96 verde** — runner canônico `C:\Claude\.venv\Scripts\python.exe -m pytest tests/ -q`
+(só Python 3.14.6 nesta máquina; o "Python 3.13" do DESIGN §1 está desatualizado).
+**Veredito H1 (proxy 2024-2025, n=228):** "não comprovada", IC ΔSharpe ≈ [−2,4, +0,7] (cruza zero)
+— SUBPOTENTE. **A H1 pré-registrada (DESIGN §9 = janela 2018→) ainda NÃO foi executada.**
+**Pendências reais:** janela 2018→ (COTAHIST histórico); robustez de execução a 3 preços (M5);
+aceite de splits reproduzidos (M2 — `adjustments` vazia, rota-b); migrar (sob novo pré-registro)
+do percentil liberal para `predictor_core.calibrated_ci`.
+
+> O bloco abaixo é o **log datado append-only** (cada entrada foi verdade na sua data —
+> não reescrever). Para o estado consolidado da plataforma ver `../ECOSYSTEM_STATUS.md`,
+> `../FINAL_CERTIFICATION.md` e `../SESSION_CLOSEOUT_2026-06-19.md`.
+
+---
+
+### Log histórico — M0 (2026-06-12)
+
+**Suíte na época:** 92/92 verde · **Implementador:** Claude Code
 
 ### O que foi feito no M0
 

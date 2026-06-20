@@ -1,21 +1,3 @@
-<!-- ════════════════════════════════════════════════════════════════════
-RECONCILIAÇÃO DE EVIDÊNCIA — 2026-06-19 (corrige drift; fonte: ECOSYSTEM_STATUS.md na raiz)
-Marcas: [V] verificada por execução · [I] inferida · [NV] não verificada.
-
-- [V] Ambiente: a máquina tem APENAS Python 3.14.6 (não 3.13). Rode tudo com a venv
-  raiz C:\Claude\.venv\Scripts\python.exe. O texto "Python 3.13 global" abaixo é DRIFT.
-- [V] Marcos: M1–M6 estão implementados E rodados sobre DADO REAL — COTAHIST 2024+2025
-  ingerido (5,76M linhas). As frases "M0 completo / próximo M1 bloqueado" e "validados
-  em dados sintéticos" abaixo são DRIFT (contradição interna do README antigo).
-- [V] Instrumento validado: parser reconcilia 5/5 blue-chips com jan/2024; split do
-  BBAS3 (2024-04-16) detectado e quarentenado. Cadeia de medição calibrada.
-- [V] Veredito H1 sobre dado real: NÃO COMPROVADA (n=228, IC ΔSharpe ≈ [-2,4, +0,7],
-  cruza zero). Interpretar como SUBPOTENTE (mudo), não como "momentum não funciona".
-- [V] Override operacional: $STOCKS_DB_PATH aponta a CLI para um DB alternativo.
-- [I] Próximo experimento decisivo: rodar a H1 congelada sobre 2010–2025 (mais anos).
-- Status de produção: PESQUISA (instrumento pronto, amostra curta).
-═════════════════════════════════════════════════════════════════════ -->
-
 # predictor-stocks
 
 Domínio 2 de um framework de previsão multi-domínio (TCC): previsão **cross-sectional**
@@ -23,30 +5,47 @@ de ações da B3 — quais ações performam melhor *relativo às outras*. Motor
 (momentum 12-1) primeiro, instrumento de medição (walk-forward + block bootstrap) segundo,
 ML por último e só se pagar líquido.
 
-**Documentos canônicos:** [docs/DESIGN.md](docs/DESIGN.md) (a constituição do projeto) e
-[HANDOFF.md](HANDOFF.md) (estado atual, decisões, hipótese pré-registrada).
+**Documentos canônicos:** [docs/DESIGN.md](docs/DESIGN.md) (a constituição do projeto),
+[HANDOFF.md](HANDOFF.md) (estado vivo, decisões, hipótese pré-registrada) e
+[ECOSYSTEM_STATUS.md](../ECOSYSTEM_STATUS.md) na raiz (estado consolidado da plataforma).
 
-## Estado atual / Como rodar
+## Estado atual
 
-Marcos **M1–M6 implementados** (núcleo, validados em dados sintéticos); o veredito real
-da H1 exige o COTAHIST físico da B3. Consome o `predictor_core` via `vendor/` (não
-editar — `predictor-core` é a fonte). Suíte: `python -m pytest tests/ -q` (93 verdes).
+Marcos **M1–M6 implementados** e **rodados sobre dado real** — COTAHIST 2024+2025
+ingerido (`prices_raw` cobre 2024-01-02 → 2025-12-30, 5,76M linhas). Suíte: **96 testes
+verdes**. Consome o `predictor_core` via `vendor/` (não editar — `../predictor_core` é a
+fonte; sync por `scripts/sync_core.py`).
+
+**Veredito da H1 hoje:** com os 2 anos disponíveis (n=228 pregões), o IC95% da diferença de
+Sharpe ≈ [−2,4, +0,7] **cruza zero → "não comprovada"**. Ler como **subpotente** (amostra
+curta), não como "momentum não funciona". E note (DESIGN §9): a janela pré-registrada da H1
+é **2018→** — os 2 anos atuais são um *proxy*, não o experimento pré-registrado. Veredito
+defensável exige o COTAHIST histórico (ver "Pendências").
+
+Classificação de produção: **pesquisa** — instrumento de coleta validado, amostra/experimento
+ainda incompletos.
+
+## Ambiente e como rodar
+
+Esta máquina tem **apenas Python 3.14.6**. Runner canônico: `C:\Claude\.venv\Scripts\python.exe`
+(carrega o stack completo: numpy, scipy, pandas, pytest). Rode de `C:\Claude\predictor-stocks`.
+Atalho usado abaixo: `$py = "C:\Claude\.venv\Scripts\python.exe"`.
 
 ```powershell
-python main.py                              # status (versões, hashes, contagens)
-python main.py ingest <COTAHIST_AXXXX.ZIP>  # M1: parse posicional -> prices_raw
-python main.py adjust                        # M2: detector de saltos -> quarentena
-python main.py universe <YYYY-MM-DD>         # M3: universo point-in-time
-python main.py backtest                      # M5: walk-forward + pedágio -> veredito H1
-python main.py paper <YYYY-MM-DD>            # M6: carteira forward + liquida execução
+& $py main.py                               # status (versões, hashes, contagens)
+& $py main.py ingest <COTAHIST_AXXXX.ZIP>   # M1: parse posicional -> prices_raw
+& $py main.py adjust                         # M2: detector de saltos -> quarentena
+& $py main.py universe <YYYY-MM-DD>          # M3: universo point-in-time
+& $py main.py backtest                       # M5: walk-forward + pedágio -> veredito H1
+& $py main.py paper <YYYY-MM-DD>             # M6: carteira forward + liquida execução
+& $py -m pytest tests/ -q                    # suíte (96 verdes — sempre verde no main)
 ```
-Sem COTAHIST real, o `backtest` responde "inconclusivo"; o gerador sintético
-(`src/cotahist.py`) destrava o pipeline para teste.
+
+**Override operacional:** a env var `STOCKS_DB_PATH` aponta toda a CLI para um banco
+alternativo (snapshot/CI/dry-run) sem editar `config.yaml`. O gerador sintético
+(`src/cotahist.py`) destrava o pipeline para teste sem o arquivo real da B3.
 
 ## Diagnósticos e validação — como rodar cada arquivo
-
-Runner canônico desta máquina (Python 3.14.6): `C:\Claude\.venv\Scripts\python.exe`.
-Rode tudo a partir de `C:\Claude\predictor-stocks`. Atalho: `$py = "C:\Claude\.venv\Scripts\python.exe"`.
 
 | Arquivo | O que faz | Como rodar |
 |---------|-----------|------------|
@@ -58,34 +57,17 @@ Rode tudo a partir de `C:\Claude\predictor-stocks`. Atalho: `$py = "C:\Claude\.v
 | `check_db.py` | Inspeção rápida do SQLite (cobertura, contagens) | `& $py check_db.py` |
 
 > A régua calibrada vive em `predictor_core.stats.calibrated_ci` (intervalo-t por blocos,
-> cobertura validada ~95%). O default da plataforma continua o percentil; migrar um
-> experimento para a calibrada é decisão de **novo pré-registro** (não automática).
+> cobertura validada ~95%). O default da plataforma continua o percentil (liberal, medido
+> em 85–93%); migrar um experimento para a calibrada é decisão de **novo pré-registro**.
 
 **Utilitários de plataforma** (em `C:\Claude\scripts`, rodar de qualquer lugar):
 `test-audit-loop.ps1` (roda as 3 suítes + sync-check) · `sync_all.ps1` (propaga o
 `predictor_core` aos vendors) · `events_tail.py` (painel unificado do `events.jsonl`).
 
-## Status
-
-M0 (Gênese) completo. Próximo: M1 — ingestão COTAHIST (bloqueado em obter o layout
-posicional oficial da B3; o parser não pode ser escrito de memória).
-
-## Rodar
-
-Python 3.13 global, sem venv (restrição de ambiente — ver DESIGN §1):
-
-```powershell
-python main.py              # status do projeto (somente leitura)
-python -m pytest tests/ -v  # suíte de testes — deve estar sempre verde
-```
-
-Os comandos de pipeline (`ingest`, `adjust`, `backtest`, `paper`) nascem com os
-respectivos marcos; antes disso, `main.py` responde qual marco os libera.
-
 ## Estrutura
 
 ```
-main.py                  ponto de entrada (status; comandos nascem por marco)
+main.py                  ponto de entrada (status + comandos M1–M6)
 docs/DESIGN.md           constituição — ler inteiro antes de mexer
 HANDOFF.md               estado vivo do projeto
 config.yaml              parâmetros (H1-FROZEN = imutáveis pós-rodada)
@@ -96,6 +78,16 @@ tests/                   pytest — sempre verde no main
 data/                    SQLite + arquivos COTAHIST (fora do git)
 reports/ai/              artefatos consultivos do analista IA (fora do git)
 ```
+
+## Pendências (o que falta para um veredito defensável)
+
+- **Janela da H1:** obter COTAHIST 2010–2025 e rodar a H1 **exatamente como pré-registrada**
+  (janela 2018→). Os 2 anos atuais são proxy subpotente.
+- **Robustez de execução (M5):** liquidar a 3 preços (abertura/fechamento D+1/pior) + 2× custo
+  — o DESIGN §M5 chama isso de obrigatório (e fragilidade aí é refutação); hoje só 1 preço.
+- **Ajustes (M2):** `adjustments` está vazia (rota-b, só-preço); splits são **quarentenados**,
+  não reproduzidos na série ajustada — o aceite "5+ splits reproduzidos" do M2 segue aberto.
+- **Régua:** migrar (sob novo pré-registro) do percentil liberal para `calibrated_ci`.
 
 ## Fronteira
 
