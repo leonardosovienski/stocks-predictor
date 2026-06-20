@@ -1,0 +1,9 @@
+# predictor-stocks — dependências
+#
+# RUNTIME: STDLIB PURO (Python 3.12+). O pipeline (ingest/adjust/universe/
+# backtest/paper) e o predictor_core vendorizado (vendor/) usam só a biblioteca
+# padrão — NÃO há numpy/scipy/pandas para instalar. Verificado: os únicos imports
+# externos no projeto são de `pytest`, nos testes.
+#
+# DEV/TESTES: apenas pytest.
+pytest==9.0.3
