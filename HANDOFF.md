@@ -5,11 +5,44 @@ Atualizar ao fim de cada marco. Toda decisão registrada aqui é permanente.
 
 ---
 
-## Estado atual: M1–M6 — núcleo implementado sobre dados sintéticos ✓ (veredito real da H1 aguarda COTAHIST real)
+## Estado atual: M1–M6 núcleo (dados sintéticos) + Onda 0 de governança ✓ (veredito real da H1 aguarda COTAHIST real)
 
-**Data:** 2026-06-12
-**Suíte:** 92/92 verde (`py -3.12 -m pytest tests/ -q`) — M0..M6 + plataforma (pedágio/telemetria/net/lacre frozen)
+**Data:** 2026-07-02
+**Suíte:** 104/104 verde (`python -m pytest tests/ -q`; 2 são `slow` — cobertura Monte
+Carlo do bootstrap, ~70s — deselecionáveis com `-m "not slow"`)
+**Python:** o global da máquina hoje é **3.14.6** (o design diz 3.13; o HANDOFF antigo
+dizia `py -3.12` — registrado para não mentir: a suíte roda no global, seja qual for)
 **Implementador:** Claude Code
+
+### Onda 0 — Governança e fundação (2026-07-02, pré-dado)
+
+Auditoria da mesma data encontrou deriva entre design e código; correções por ondas.
+Onda 0 (esta): governança. Onda 1: pipeline de julgamento. Onda 2: replay/obs.
+
+1. **`scripts/sync_core.py` RECRIADO** (tinha sumido do repo — a verificação de
+   integridade era ferramenta morta). Modos: `--check` (hashes vs manifesto),
+   `--stamp` (re-carimbo após evolução por demanda; RECUSA sem bump de VERSION),
+   `--sync SOURCE` (importa do upstream; recusa com diff local não commitado).
+2. **Integridade do vendor virou TESTE** (`tests/test_core_manifest.py`): 1 byte
+   alterado no vendor sem `--stamp` = suíte vermelha. Inclui simulação de corrupção.
+3. **Aceite (a)–(e) do bootstrap (design §10/M5) implementado**
+   (`tests/test_bootstrap_coverage.py`, marcado `slow`, seeds fixas). O aceite formal
+   do M5 estava incompleto (só existia o teste fraco "block mais largo que iid").
+4. **ACHADO ESTATÍSTICO (medido, 500–1000 séries AR(1) por ponto, n≈1755):** o IC
+   percentile do block bootstrap cobre **~92%** quando o nominal é 95% — em qualquer
+   combinação de método (moving/stationary), bloco (10–84), n_boot (200–1000) e
+   construção (percentile/basic/simétrica). Anticonservador na direção que INFLA
+   falso "COMPROVADA". Correção: **intervalo `studentized`** (bootstrap-t simétrico,
+   se por batch means) no vendor — cobertura medida 93,5–93,8%, dentro do aceite.
+   O percentile permanece como default retrocompatível e diagnóstico de geometria.
+
+**Trilha do vendor (recompondo o buraco 0.3→0.7 e registrando hoje):**
+
+| Versão | O quê |
+|--------|-------|
+| 0.3.x–0.7.0 | Sincronizadas do upstream em 2026-06-17 SEM changelog neste domínio (falha de governança, daqui em diante sync exige entrada aqui). Diferença observável vs 0.2.0: chegaram `replay.py` (anti-lookahead estrutural), `settings.py` (não usado por este domínio), `spearman`/`spearman_block_ci`, manifesto `CORE_MANIFEST.json`. |
+| 0.7.1-vendored-20260702 | `_quantile` com interpolação linear no `block_bootstrap_ci`/`ci_mean` (indexação truncada enviesava os extremos do IC). Pendente upstream. |
+| 0.7.2-vendored-20260702 | `interval="studentized"` no `block_bootstrap_ci` (ver achado acima) + `_batch_se`. Pendente upstream. |
 
 ### O que foi feito no M0
 

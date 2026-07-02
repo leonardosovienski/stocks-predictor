@@ -17,9 +17,24 @@ def ci_mean(data: list[float], confidence: float = 0.95,
         for _ in range(n_boot)
     )
     alpha = (1 - confidence) / 2
-    lo = means[int(alpha * n_boot)]
-    hi = means[int((1 - alpha) * n_boot)]
-    return lo, hi
+    return _quantile(means, alpha), _quantile(means, 1 - alpha)
+
+
+def _quantile(sorted_xs: list, q: float) -> float:
+    """Quantil por interpolação linear (tipo 7) sobre lista JÁ ORDENADA.
+
+    Substitui a indexação truncada `xs[int(q*m)]`: o truncamento enviesa os
+    extremos do IC (meio order-statistic por cauda) e degrada a cobertura
+    empírica do bootstrap — medido no domínio stocks (teste de cobertura M5)."""
+    m = len(sorted_xs)
+    if m == 1:
+        return sorted_xs[0]
+    pos = q * (m - 1)
+    i = int(pos)
+    frac = pos - i
+    if i + 1 < m:
+        return sorted_xs[i] + frac * (sorted_xs[i + 1] - sorted_xs[i])
+    return sorted_xs[-1]
 
 
 def _ranks(values: list[float]) -> list[float]:
@@ -54,6 +69,28 @@ def spearman(x: list[float], y: list[float]) -> float | None:
     return cov / ((vx * vy) ** 0.5)
 
 
+def _batch_se(units: list, statistic: Callable[[list], float],
+              n_batches: int) -> float | None:
+    """Erro-padrão da estatística por BATCH MEANS: estatística em n_batches segmentos
+    contíguos, sd/sqrt(k). Segmentos longos (>> comprimento de correlação) tornam a
+    estimativa robusta à dependência serial. None se < 2 segmentos válidos."""
+    n = len(units)
+    bl = n // n_batches
+    if bl < 2:
+        return None
+    vals = []
+    for i in range(n_batches):
+        s = statistic(units[i * bl:(i + 1) * bl])
+        if s is not None and math.isfinite(s):
+            vals.append(s)
+    k = len(vals)
+    if k < 2:
+        return None
+    m = sum(vals) / k
+    var = sum((v - m) ** 2 for v in vals) / (k - 1)
+    return math.sqrt(var / k)
+
+
 def block_bootstrap_ci(
     series: list,
     statistic: Callable[[list], float],
@@ -62,6 +99,8 @@ def block_bootstrap_ci(
     confidence: float = 0.95,
     seed: int = 42,
     method: str = "moving",
+    interval: str = "percentile",
+    n_batches: int = 10,
 ) -> tuple[float, float, list[float]]:
     """IC bootstrap em blocos para estatística arbitrária sobre série temporal.
 
@@ -84,16 +123,39 @@ def block_bootstrap_ci(
     method='stationary' — Stationary Bootstrap (comprimentos ~ Geométrica(p=1/block_length),
                           índices circulares conforme Politis & Romano 1994)
 
-    Retorna (lo, hi, distribuição bootstrap).
+    interval='percentile'  — quantis da distribuição bootstrap (histórico). MEDIDO no
+        domínio stocks (2026-07-02, 500-1000 séries AR(1), n≈1755): cobre ~92% quando
+        o nominal é 95% — anticonservador, infla falso-positivo. Mantido por
+        retrocompatibilidade e para diagnóstico de geometria.
+    interval='studentized' — bootstrap-t SIMÉTRICO: t* = (θ*-θ̂)/se*, com se por batch
+        means (`n_batches` segmentos); IC = θ̂ ± q_conf(|t*|)·se_hat. Acurácia de
+        segunda ordem; MEDIDO: ~93,5-93,8% de cobertura nas mesmas condições —
+        o default recomendado para julgamento de hipótese (pedágio Lente 2).
+
+    Retorna (lo, hi, distribuição bootstrap de θ*).
     """
+    if interval not in ("percentile", "studentized"):
+        raise ValueError(f"interval desconhecido: {interval!r}")
     rng = random.Random(seed)
     n = len(series)
     if n < block_length:
         raise ValueError(f"series length {n} < block_length {block_length}")
 
+    theta_hat = se_hat = None
+    if interval == "studentized":
+        theta_hat = statistic(list(series))
+        se_hat = _batch_se(list(series), statistic, n_batches)
+        if theta_hat is None or not math.isfinite(theta_hat) \
+                or se_hat is None or se_hat <= 0:
+            raise ValueError(
+                "interval='studentized': estatística ou SE por batch means degenerados "
+                "na série original — não há como studentizar; use 'percentile' ou "
+                "revise a estatística")
+
     p = 1.0 / block_length  # parâmetro geométrica para stationary bootstrap
 
     boot_stats: list[float] = []
+    t_stats: list[float] = []
     for _ in range(n_boot):
         resampled: list = []
         while len(resampled) < n:
@@ -106,17 +168,30 @@ def block_bootstrap_ci(
                 if len(resampled) >= n:
                     break
                 resampled.append(series[(start + j) % n])
-        stat = statistic(resampled[:n])
-        if stat is not None:        # reamostra degenerada (ex.: Spearman sem variância) cai fora
-            boot_stats.append(stat)
+        resampled = resampled[:n]
+        stat = statistic(resampled)
+        if stat is None:            # reamostra degenerada (ex.: Spearman sem variância) cai fora
+            continue
+        boot_stats.append(stat)
+        if interval == "studentized":
+            se_star = _batch_se(resampled, statistic, n_batches)
+            if se_star is not None and se_star > 0:
+                t_stats.append((stat - theta_hat) / se_star)
 
     if not boot_stats:
         return None, None, []
     boot_stats.sort()
-    m = len(boot_stats)
+
+    if interval == "studentized":
+        if not t_stats:
+            raise ValueError("interval='studentized': nenhuma reamostra studentizável")
+        abs_t = sorted(abs(t) for t in t_stats)
+        half = _quantile(abs_t, confidence) * se_hat
+        return theta_hat - half, theta_hat + half, boot_stats
+
     alpha = (1 - confidence) / 2
-    lo = boot_stats[max(0, int(alpha * m))]
-    hi = boot_stats[min(m - 1, int((1 - alpha) * m))]
+    lo = _quantile(boot_stats, alpha)
+    hi = _quantile(boot_stats, 1 - alpha)
     return lo, hi, boot_stats
 
 
