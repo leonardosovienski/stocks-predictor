@@ -32,9 +32,18 @@ backtest:
 bootstrap:
   n_boot: 10000                    # [H1-FROZEN]
   block_length: 21                 # [H1-FROZEN] pregões (~1 mês)
-  method: moving                   # moving primeiro; stationary como refinamento M5
+  method: stationary               # [H1-FROZEN] a H1 pré-registra stationary (Politis & Romano);
+                                   # moving foi andaime do M0, aposentado pré-dado (HANDOFF 2026-07-02)
+  interval: studentized            # [H1-FROZEN] bootstrap-t simétrico; percentile MEDIU ~92% de
+                                   # cobertura p/ nominal 95% (anticonservador) — HANDOFF 2026-07-02
   confidence: 0.95                 # [H1-FROZEN]
+  psr_min: 0.95                    # [H1-FROZEN] Lente 1 do pedágio: PSR mínimo p/ COMPROVADA;
+                                   # formalizado pré-dado (antes só a Lente 2 travava o veredito)
   seed: 42
+
+benchmark:
+  n_random: 200                    # carteiras aleatórias (design §2b): mesmo nº de posições,
+  random_seed: 271828              # mesma execução/custo; posição do modelo na distribuição delas
 
 jump_detector:
   threshold_abs: 0.30              # |retorno overnight| > 30% → quarentena

@@ -88,3 +88,20 @@ def adjusted_series(conn, ticker):
     adjustments = [(r[0], r[1]) for r in conn.execute(
         "SELECT ex_date, factor FROM adjustments WHERE ticker=? ORDER BY ex_date", (ticker,))]
     return dates, adjusted_closes(dates, closes, adjustments)
+
+
+def adjusted_series_oc(conn, ticker):
+    """(dates, adjusted_opens, adjusted_closes) — os MESMOS fatores multiplicativos
+    valem para qualquer preço do papel (split reescala o livro inteiro). Necessário
+    para a execução na abertura de D+1 (execution.price = next_open [H1-FROZEN])."""
+    rows = conn.execute(
+        "SELECT date, open, close FROM prices_raw WHERE ticker=? ORDER BY date",
+        (ticker,)).fetchall()
+    dates = [r[0] for r in rows]
+    opens = [r[1] for r in rows]
+    closes = [r[2] for r in rows]
+    adjustments = [(r[0], r[1]) for r in conn.execute(
+        "SELECT ex_date, factor FROM adjustments WHERE ticker=? ORDER BY ex_date", (ticker,))]
+    return (dates,
+            adjusted_closes(dates, opens, adjustments),
+            adjusted_closes(dates, closes, adjustments))

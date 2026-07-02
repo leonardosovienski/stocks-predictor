@@ -8,7 +8,7 @@ Atualizar ao fim de cada marco. Toda decisão registrada aqui é permanente.
 ## Estado atual: M1–M6 núcleo (dados sintéticos) + Onda 0 de governança ✓ (veredito real da H1 aguarda COTAHIST real)
 
 **Data:** 2026-07-02
-**Suíte:** 104/104 verde (`python -m pytest tests/ -q`; 2 são `slow` — cobertura Monte
+**Suíte:** 111/111 verde (`python -m pytest tests/ -q`; 2 são `slow` — cobertura Monte
 Carlo do bootstrap, ~70s — deselecionáveis com `-m "not slow"`)
 **Python:** o global da máquina hoje é **3.14.6** (o design diz 3.13; o HANDOFF antigo
 dizia `py -3.12` — registrado para não mentir: a suíte roda no global, seja qual for)
@@ -43,6 +43,48 @@ Onda 0 (esta): governança. Onda 1: pipeline de julgamento. Onda 2: replay/obs.
 | 0.3.x–0.7.0 | Sincronizadas do upstream em 2026-06-17 SEM changelog neste domínio (falha de governança, daqui em diante sync exige entrada aqui). Diferença observável vs 0.2.0: chegaram `replay.py` (anti-lookahead estrutural), `settings.py` (não usado por este domínio), `spearman`/`spearman_block_ci`, manifesto `CORE_MANIFEST.json`. |
 | 0.7.1-vendored-20260702 | `_quantile` com interpolação linear no `block_bootstrap_ci`/`ci_mean` (indexação truncada enviesava os extremos do IC). Pendente upstream. |
 | 0.7.2-vendored-20260702 | `interval="studentized"` no `block_bootstrap_ci` (ver achado acima) + `_batch_se`. Pendente upstream. |
+
+### Onda 1 — Pipeline de julgamento (2026-07-02, TODAS as mudanças PRÉ-DADO)
+
+Nenhuma rodada com COTAHIST real aconteceu; portanto estas emendas são legítimas sob a
+disciplina de pré-registro — e depois da primeira rodada real nada disto pode mais mudar.
+
+1. **PSR virou Lente 1 OBRIGATÓRIA** (`bootstrap.psr_min: 0.95` [H1-FROZEN]). Antes o
+   `judge()` calculava o PSR e o ignorava no veredito — "pedágio de 2 lentes" com uma
+   lente decorativa. Agora `COMPROVADA` exige `IC>0` E `PSR ≥ 0.95`.
+2. **`bootstrap.method: stationary`** — a H1 pré-registra stationary (Politis & Romano);
+   o `moving` era andaime do M0 e o `judge()` nem passava `method` (rodava moving por
+   default contra o pré-registro). Aposentado pré-dado.
+3. **`bootstrap.interval: studentized`** [H1-FROZEN] — consequência do achado da Onda 0
+   (percentile cobre ~92% p/ nominal 95%). O IC da Lente 2 continua sendo "IC 95% do
+   stationary bootstrap da diferença de Sharpe" como pré-registrado; muda a construção
+   do intervalo para a calibrada.
+4. **Execução na ABERTURA de D+1 no walk-forward** (era o defeito mais grave: o motor
+   media fechamento-a-fechamento a partir do pregão do sinal = executar no próprio
+   fechamento usado pelo sinal, preço inatingível, violando `execution.price: next_open`
+   [H1-FROZEN]). Dia de transição compõe (1+gap overnight da carteira antiga) ×
+   (1+intraday da nova). `adjust.adjusted_series_oc` fornece aberturas ajustadas.
+5. **Custo = roundtrip × TURNOVER REAL** (`execution.turnover`), debitado
+   incondicionalmente no primeiro dia utilizável do período (o bug do `j==0` que
+   engolia o custo do mês se o 1º dia não tivesse dado foi eliminado junto).
+6. **Benchmark FORMALIZADO:** o "buy-and-hold equiponderado do mesmo universo" da H1 é
+   implementado como carteira equiponderada do universo point-in-time, re-selecionada
+   a cada rebalance, com as MESMAS regras de execução (D+1 open) e MESMO modelo de
+   custo × turnover — tratamento simétrico (antes era gross com rebalanceamento
+   implícito de graça). Direção: benchmark ficou marginalmente mais fácil; simetria >
+   conservadorismo assimétrico não documentado.
+7. **Carteiras aleatórias (design §2b) implementadas:** mesmo nº de posições, turnover
+   CASADO com o do modelo (mantém fração (1−turnover)·k da própria carteira anterior),
+   mesmas regras de execução/custo. Percentil do modelo na distribuição delas sai no
+   veredito como CONSULTIVO (`benchmark.n_random: 200`) — a H1 é julgada pelas 2 lentes.
+8. **Embargo aplicado:** `purge_embargo_months: 1` [H1-FROZEN] agora é lido (o config
+   congelava um parâmetro que nenhum código usava): pulam-se os primeiros N rebalances
+   após `test_start`.
+
+**Nota de calibração para o veredito:** mesmo com o studentized, a cobertura medida é
+~93,5–94% para nominal 95% — o IC da Lente 2 é levemente anticonservador. Como a
+direção favorece falso "COMPROVADA", um resultado que passar RASPANDO nas duas lentes
+merece a desconfiança que o design já institui ("positivo marginal é suspeito").
 
 ### O que foi feito no M0
 

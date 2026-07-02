@@ -49,7 +49,7 @@ def test_judge_runs_the_two_lens_toll(tmp_path):
     assert v["psr"] is None or 0.0 <= v["psr"] <= 1.0
     lo, hi = v["sharpe_diff_ci"]
     assert lo is not None and hi is not None and lo <= hi   # o pedágio devolveu um IC
-    assert v["veredito"] in ("COMPROVADA", "não comprovada (IC cruza 0 / negativo)")
+    assert v["veredito"] == "COMPROVADA" or v["veredito"].startswith("não comprovada")
 
 
 def test_run_smoke(tmp_path, capsys):
