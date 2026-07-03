@@ -8,7 +8,7 @@ Atualizar ao fim de cada marco. Toda decisão registrada aqui é permanente.
 ## Estado atual: M1–M6 núcleo (dados sintéticos) + Onda 0 de governança ✓ (veredito real da H1 aguarda COTAHIST real)
 
 **Data:** 2026-07-02
-**Suíte:** 111/111 verde (`python -m pytest tests/ -q`; 2 são `slow` — cobertura Monte
+**Suíte:** 116/116 verde (`python -m pytest tests/ -q`; 2 são `slow` — cobertura Monte
 Carlo do bootstrap, ~70s — deselecionáveis com `-m "not slow"`)
 **Python:** o global da máquina hoje é **3.14.6** (o design diz 3.13; o HANDOFF antigo
 dizia `py -3.12` — registrado para não mentir: a suíte roda no global, seja qual for)
@@ -85,6 +85,28 @@ disciplina de pré-registro — e depois da primeira rodada real nada disto pode
 ~93,5–94% para nominal 95% — o IC da Lente 2 é levemente anticonservador. Como a
 direção favorece falso "COMPROVADA", um resultado que passar RASPANDO nas duas lentes
 merece a desconfiança que o design já institui ("positivo marginal é suspeito").
+
+### Onda 2 — Anti-lookahead estrutural + telemetria (2026-07-02)
+
+1. **Walk-forward reescrito sobre `replay.replay` do core** ("feed, don't query",
+   como o próprio replay.py pedia desde que chegou no vendor): o motor empurra um
+   pregão por vez; o histórico que alimenta `factor.signals` é ACUMULADO evento a
+   evento — o futuro não existe na memória do passo. A virada de mês dispara o
+   rebalance com sinal no fechamento do último pregão do mês anterior e execução na
+   abertura corrente (semântica idêntica à da Onda 1; equivalência provada por
+   regressão com números conferidos na mão). Fronteira documentada: a seleção de
+   universo continua consultando o SQLite com predicado point-in-time (teste-âncora
+   do M3 cobre).
+2. **Teste-espião de lookahead** (`test_signals_receive_only_accumulated_past`):
+   TODA série entregue ao sinal termina em ≤ asof, verificado por máquina.
+3. **Telemetria ligada** (`src/telemetry.py` sobre `core.obs`, envelope rígido de 7
+   chaves): eventos `ingest`, `quarantine_scan`, `walk_forward` (rebalances/meses
+   pulados/dias) e `judge` (PSR, IC, percentil, veredito) em
+   `$PREDICTOR_EVENTS_PATH` ou `data/events.jsonl`. Os testes redirecionam para tmp
+   via fixture autouse (conftest) — suíte não polui data/.
+4. **Lacre da H1 estendido:** `bootstrap.method/interval/psr_min` entraram em
+   `H1_FROZEN_KEYS`; golden do `frozen_config_hash` movido 1x PRÉ-DADO
+   (4a4e8d57e1224191 → a2626990c337cc3b) com a justificativa gravada no teste.
 
 ### O que foi feito no M0
 
@@ -195,7 +217,7 @@ Ajustes de parâmetros após ver resultados = nova hipótese, novo pré-registro
 | M2 — Ajustes (PORTÃO CRÍTICO) | PARCIAL | 2026-06-16 | `adjust.py`: detector de saltos, inferência de split (proporção redonda), série ajustada por `adjustments`, quarentena de salto inexplicado. Rota de dividendos = (b) só-preço (decidida, abaixo). **Falta:** validar 5+ splits REAIS quando o COTAHIST real chegar. |
 | M3 — Universo + retornos | PARCIAL | 2026-06-16 | `universe.py` (top-N por mediana de volume, POINT-IN-TIME só dados < asof, dedup ON/PN, exclui quarentena/histórico curto; snapshot materializado) + `returns.py` (retornos mensais). Teste-âncora prova anti-lookahead. **Falta:** benchmark equiponderado + gerador de carteiras aleatórias (construo no M5, onde são consumidos como nulo). |
 | M4 — Fator + carteira + execução | FEITO (componentes) | 2026-06-16 | `factor.py` momentum 12-1 (point-in-time) + `portfolio.py` quintil superior equiponderado long-only + `execution.py` D+1/custos. Teste anti-lookahead `exec_ts > signal_ts`. O walk-forward que os ENCADEIA é o M5. |
-| M5 — Medição | FEITO (núcleo) | 2026-06-16 | `backtest.py`: walk-forward mensal (universo→momentum→quintil→hold), curva DIÁRIA estratégia vs benchmark pareada, e o PEDÁGIO de 2 lentes (PSR + block bootstrap PAREADO da diferença de Sharpe). End-to-end testado em dados sintéticos. **Falta (evolução):** robustez de execução a 3 preços (abertura/fechamento D+1/pior) + 2× custo; purge/embargo formal. |
+| M5 — Medição | FEITO (núcleo) | 2026-06-16 (rev. Ondas 0–2 em 2026-07-02) | `backtest.py`: walk-forward mensal sobre replay, execução D+1 open, custo × turnover, pedágio de 2 lentes REAL (PSR ≥ psr_min E IC studentized > 0), benchmarks (a) equiponderado simétrico e (b) carteiras aleatórias, embargo aplicado, aceite (a)–(e) do bootstrap verde. **Falta (evolução):** robustez de execução a 3 preços (abertura/fechamento D+1/pior) + rodada com 2× custo. |
 | M6 — Julgamento H1 + paper forward | FEITO (núcleo) | 2026-06-16 | `paper.py`: `record_forward` (EVAL antes do futuro, anti-tautologia) + `settle_executions` (RISK write-once via COALESCE); `backtest.run()` é o mecanismo do veredito. **Falta:** rodar o veredito da H1 UMA vez sobre o COTAHIST REAL (dado físico da B3) e ligar o cron diário do paper. |
 
 ---

@@ -76,6 +76,10 @@ def scan_and_quarantine(conn, threshold) -> int:
                 "VALUES(?,?,?,?)", (t, d, "salto overnight sem ajuste registrado", round(ret, 4)))
             n += 1
     conn.commit()
+    import telemetry
+    telemetry.emit("quarantine_scan",
+                   metrics={"quarantined": n, "threshold": threshold,
+                            "tickers_scanned": len(tickers)})
     return n
 
 

@@ -1,27 +1,31 @@
 """M5 — Walk-forward + pedágio de 2 lentes (PSR + bootstrap pareado) + veredito.
 
-Encadeia M2-M4 numa passada forward mensal: a cada rebalance, universo point-in-time →
-sinal momentum 12-1 → carteira quintil → segura até o próximo mês. Produz a curva DIÁRIA
-de retornos da estratégia E do benchmark (equiponderado do universo), pareadas no tempo.
+Encadeia M2-M4 numa passada forward mensal sobre o `replay` do core (Onda 2,
+2026-07-02): o motor EMPURRA um pregão por vez ao handler; o histórico que alimenta
+o sinal é ACUMULADO só do passado — o futuro não existe na memória do passo
+("feed, don't query"). Fronteira documentada: a seleção de universo consulta o
+SQLite com predicado point-in-time (`date < asof`), coberta por teste-âncora no M3.
+Nota sobre ajustes: fatores de split reescalam uniformemente o segmento anterior ao
+ex-date, então RAZÕES de preço dentro de janelas que não cruzam o ex-date (momentum,
+retornos diários) são idênticas às conhecíveis no asof — sem lookahead por ajuste.
 
-EXECUÇÃO (Onda 1, 2026-07-02 — pré-dado): a transição de carteira acontece na ABERTURA
-do primeiro pregão utilizável após o sinal (execution.price = next_open [H1-FROZEN]).
-No dia de transição o retorno compõe (1 + gap overnight da carteira ANTIGA) ×
-(1 + retorno intraday da carteira NOVA) − custo. Custo = roundtrip × TURNOVER REAL
-(fração da carteira trocada), debitado incondicionalmente no primeiro dia utilizável
-do período. Benchmark e carteiras aleatórias seguem as MESMAS regras de execução e
-custo (tratamento simétrico — formalização registrada no HANDOFF).
+EXECUÇÃO (Onda 1, pré-dado): a virada de mês dispara o rebalance com sinal no
+fechamento do ÚLTIMO pregão do mês anterior (tudo passado) e transição na ABERTURA
+do pregão corrente (execution.price = next_open [H1-FROZEN]). No dia de transição o
+retorno compõe (1 + gap overnight da carteira ANTIGA) × (1 + intraday da NOVA) −
+custo, onde custo = roundtrip × TURNOVER REAL, debitado incondicionalmente no
+primeiro dia utilizável do período. Benchmark equiponderado e carteiras aleatórias
+seguem as MESMAS regras de execução e custo (simetria — HANDOFF).
 
 BENCHMARKS (design §2, fixados a priori):
-(a) carteira equiponderada do universo point-in-time, mesmas regras de execução/custo;
-(b) carteiras aleatórias com MESMO nº de posições e turnover casado com o do modelo —
-    a posição do modelo na distribuição delas sai no veredito (consultivo).
+(a) carteira equiponderada do universo point-in-time, mesmas regras;
+(b) carteiras aleatórias com MESMO nº de posições e turnover casado com o modelo —
+    posição do modelo na distribuição delas sai no veredito (consultivo).
 
-Veredito pelo PEDÁGIO de 2 lentes — AMBAS obrigatórias (Onda 1; antes o PSR era
-decorativo, defeito da auditoria 2026-07-02):
+Veredito pelo PEDÁGIO de 2 lentes — AMBAS obrigatórias:
 - Lente 1 (PSR ≥ psr_min [H1-FROZEN]): corrige não-normalidade.
-- Lente 2 (block bootstrap PAREADO, stationary + intervalo studentized): IC 95% da
-  diferença de Sharpe excluindo zero.
+- Lente 2 (block bootstrap PAREADO, stationary + intervalo studentized [H1-FROZEN]):
+  IC 95% da diferença de Sharpe excluindo zero.
 """
 import math
 import random
@@ -33,30 +37,16 @@ import db
 import execution
 import factor
 import portfolio
+import telemetry
 from config import load_config
 from returns import month_end_dates
 import universe
+from predictor_core.replay import replay
 from predictor_core.stats import block_bootstrap_ci, probabilistic_sharpe_ratio, sharpe
 
 
-def _daily_maps(dates, opens, closes):
-    """{data: retorno} para close-a-close, intraday (open→close) e overnight
-    (close anterior→open) — os blocos da execução na abertura de D+1."""
-    c2c, intra, over = {}, {}, {}
-    for i, d in enumerate(dates):
-        if opens[i] > 0:
-            intra[d] = closes[i] / opens[i] - 1.0
-        if i > 0 and closes[i - 1] > 0:
-            c2c[d] = closes[i] / closes[i - 1] - 1.0
-            if opens[i] > 0:
-                over[d] = opens[i] / closes[i - 1] - 1.0
-    return c2c, intra, over
-
-
-def _mean_over(kind_map, tickers, d):
-    """Média equiponderada do retorno `kind` dos tickers COM dado em d. None se nenhum."""
-    vals = [kind_map[tk][d] for tk in tickers if d in kind_map[tk]]
-    return sum(vals) / len(vals) if vals else None
+def _mean(vals):
+    return sum(vals) / len(vals)
 
 
 class _Book:
@@ -73,17 +63,17 @@ class _Book:
         self.target = target
         self.cost_pending = roundtrip * execution.turnover(self.weights, target)
 
-    def day_return(self, maps, d, transition: bool):
-        c2c, intra, over = maps
+    def day_return(self, c2c, intra, over, transition: bool):
+        """Retorno do dia dado os retornos por ticker DO DIA (dicts). None = sem dado."""
         if transition:
-            it = _mean_over(intra, self.target, d)
-            if it is None:
+            vals = [intra[t] for t in self.target if t in intra]
+            if not vals:
                 return None
-            ov = _mean_over(over, self.weights, d) or 0.0   # 1ª carteira: sem gap
-            return (1.0 + ov) * (1.0 + it) - 1.0 - self.cost_pending
-
-        r = _mean_over(c2c, self.weights, d)
-        return r
+            ov_vals = [over[t] for t in self.weights if t in over]
+            ov = _mean(ov_vals) if ov_vals else 0.0     # 1ª carteira: sem gap
+            return (1.0 + ov) * (1.0 + _mean(vals)) - 1.0 - self.cost_pending
+        vals = [c2c[t] for t in self.weights if t in c2c]
+        return _mean(vals) if vals else None
 
     def commit_transition(self):
         self.weights = self.target
@@ -107,8 +97,8 @@ def _matched_random_target(rng, uni, k, prev: dict, model_turnover: float) -> di
 
 
 def _walk(conn, cfg, n_random=0):
-    """Motor único: estratégia + benchmark + n_random aleatórias na mesma passada.
-    Retorna (strat, bench, rand_rets) — listas diárias pareadas no tempo."""
+    """Motor único sobre replay: estratégia + benchmark + n_random aleatórias na
+    mesma passada. Retorna (strat, bench, rand_rets) — diárias, pareadas no tempo."""
     f, u = cfg["factor"], cfg["universe"]
     e, bt = cfg["execution"], cfg["backtest"]
     lookback_mom, skip = f.get("lookback_days", 252), f.get("skip_days", 21)
@@ -120,31 +110,41 @@ def _walk(conn, cfg, n_random=0):
     test_start = bt.get("test_start", "0000-00-00")
     embargo = bt.get("purge_embargo_months", 0)
 
-    series, maps_c2c, maps_intra, maps_over = {}, {}, {}, {}
+    # Eventos: um por pregão, com as barras ajustadas (open, close) de cada ticker.
+    bars_by_date: dict[str, dict] = {}
     for tk in [r[0] for r in conn.execute("SELECT DISTINCT ticker FROM prices_raw")]:
         dates, opens, closes = adjust.adjusted_series_oc(conn, tk)
-        series[tk] = (dates, closes)
-        maps_c2c[tk], maps_intra[tk], maps_over[tk] = _daily_maps(dates, opens, closes)
-    maps = (maps_c2c, maps_intra, maps_over)
+        for i, d in enumerate(dates):
+            bars_by_date.setdefault(d, {})[tk] = (opens[i], closes[i])
+    all_dates = sorted(bars_by_date)
+    events = [{"date": d, "bars": bars_by_date[d]} for d in all_dates]
 
-    all_dates = sorted({d for dates, _ in series.values() for d in dates})
-    rebal = [d for d in month_end_dates(all_dates) if d >= test_start]
-    rebal = rebal[embargo:]          # purge/embargo entre aquecimento e teste (§8)
+    # Datas de sinal autorizadas: month-ends >= test_start, pulando o embargo;
+    # o último month-end fica de fora como sinal (não há período seguinte a medir
+    # além do fim dos dados — semântica idêntica ao zip(rebal, rebal[1:]) antigo).
+    rebal = [d for d in month_end_dates(all_dates) if d >= test_start][embargo:]
+    signal_dates = set(rebal[:-1])
 
     strat_book, bench_book = _Book(), _Book()
     rng = random.Random(cfg.get("benchmark", {}).get("random_seed", 271828))
     rand_books = [_Book() for _ in range(n_random)]
 
-    for t, t1 in zip(rebal, rebal[1:]):
-        uni = universe.select_universe(conn, t, top_n=top_n, lookback=liq_lb,
-                                       min_history=min_hist)
-        if not uni:
-            continue
-        sub = {tk: series[tk] for tk in uni if tk in series}
-        port = portfolio.select_portfolio(factor.signals(sub, t, lookback_mom, skip), quant)
-        if not port:
-            continue
+    # Estado do handler — só PASSADO entra aqui (alimentado evento a evento).
+    hist: dict[str, tuple[list, list]] = {}     # ticker -> (dates, closes) ACUMULADO
+    prev_close: dict[str, float] = {}
+    state = {"prev_date": None, "measuring": False, "transitioned": True,
+             "rebalances": 0, "skipped_months": 0}
 
+    def rebalance(asof: str):
+        uni = universe.select_universe(conn, asof, top_n=top_n, lookback=liq_lb,
+                                       min_history=min_hist)
+        sub = {tk: hist[tk] for tk in uni if tk in hist}     # SÓ histórico acumulado
+        port = portfolio.select_portfolio(
+            factor.signals(sub, asof, lookback_mom, skip), quant) if uni else {}
+        if not uni or not port:
+            state["measuring"] = False
+            state["skipped_months"] += 1
+            return
         strat_book.set_target(port, roundtrip)
         model_to = execution.turnover(strat_book.weights, port)
         w_uni = 1.0 / len(uni)
@@ -153,23 +153,59 @@ def _walk(conn, cfg, n_random=0):
             rb.set_target(
                 _matched_random_target(rng, uni, len(port), rb.weights, model_to),
                 roundtrip)
+        state["measuring"] = True
+        state["transitioned"] = False
+        state["rebalances"] += 1
 
-        transitioned = False
-        for d in [d for d in all_dates if t < d <= t1]:
-            s = strat_book.day_return(maps, d, not transitioned)
-            b = bench_book.day_return(maps, d, not transitioned)
-            if s is None or b is None:
-                continue                       # dia sem dado: pareamento preservado
-            rr = [rb.day_return(maps, d, not transitioned) for rb in rand_books]
-            strat_book.rets.append(s)
-            bench_book.rets.append(b)
-            for rb, r in zip(rand_books, rr):
-                rb.rets.append(r if r is not None else 0.0)
-            if not transitioned:
-                for bk in (strat_book, bench_book, *rand_books):
-                    bk.commit_transition()
-                transitioned = True
+    def handler(past):
+        d = past.latest["date"]
+        bars = past.latest["bars"]
+        prev = state["prev_date"]
 
+        # Virada de mês: sinal no fechamento do último pregão do mês anterior
+        # (inteiramente no passado), execução na abertura de HOJE (D+1).
+        if prev is not None and prev in signal_dates and d[:7] != prev[:7]:
+            rebalance(asof=prev)
+
+        if state["measuring"]:
+            c2c, intra, over = {}, {}, {}
+            for tk, (o, c) in bars.items():
+                pc = prev_close.get(tk)
+                if o > 0:
+                    intra[tk] = c / o - 1.0
+                if pc and pc > 0:
+                    c2c[tk] = c / pc - 1.0
+                    if o > 0:
+                        over[tk] = o / pc - 1.0
+            transition = not state["transitioned"]
+            s = strat_book.day_return(c2c, intra, over, transition)
+            b = bench_book.day_return(c2c, intra, over, transition)
+            if s is not None and b is not None:      # dia sem dado: pareamento preservado
+                rr = [rb.day_return(c2c, intra, over, transition) for rb in rand_books]
+                strat_book.rets.append(s)
+                bench_book.rets.append(b)
+                for rb, r in zip(rand_books, rr):
+                    rb.rets.append(r if r is not None else 0.0)
+                if transition:
+                    for bk in (strat_book, bench_book, *rand_books):
+                        bk.commit_transition()
+                    state["transitioned"] = True
+
+        # Só DEPOIS de decidir/medir o dia o histórico avança até hoje.
+        for tk, (o, c) in bars.items():
+            if tk in hist:
+                hist[tk][0].append(d)
+                hist[tk][1].append(c)
+            else:
+                hist[tk] = ([d], [c])
+            prev_close[tk] = c
+        state["prev_date"] = d
+        return None
+
+    replay(events, handler)
+    telemetry.emit("walk_forward", metrics={
+        "rebalances": state["rebalances"], "skipped_months": state["skipped_months"],
+        "days": len(strat_book.rets), "n_random": n_random})
     return strat_book.rets, bench_book.rets, [rb.rets for rb in rand_books]
 
 
@@ -224,9 +260,14 @@ def judge(strat, bench, cfg, rand_returns=None):
         veredito = "não comprovada (Lente 2: IC cruza 0 / negativo)"
     else:
         veredito = f"não comprovada (Lente 1: PSR {psr:.3f} < {psr_min})"
-    return {"n": len(strat), "psr": psr, "psr_min": psr_min,
-            "sharpe_diff_ci": (lo, hi), "rand_percentile": rand_pct,
-            "veredito": veredito}
+    result = {"n": len(strat), "psr": psr, "psr_min": psr_min,
+              "sharpe_diff_ci": (lo, hi), "rand_percentile": rand_pct,
+              "veredito": veredito}
+    telemetry.emit("judge",
+                   metrics={"n": result["n"], "psr": psr, "ci_lo": lo, "ci_hi": hi,
+                            "rand_percentile": rand_pct},
+                   metadata={"veredito": veredito})
+    return result
 
 
 def run(cfg=None, conn=None):

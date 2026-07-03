@@ -19,12 +19,16 @@ def download_cotahist(year: int, dest_dir: str):
 
 def parse_cotahist(zip_path: str, db_path: str | None = None) -> int:
     """Parse posicional do TXT dentro do ZIP → prices_raw. Encoding CP1252/latin-1."""
+    import telemetry
     conn = db.get_connection(db_path)
     try:
         with zipfile.ZipFile(zip_path) as z:
             name = next(n for n in z.namelist() if n.upper().endswith(".TXT"))
             with z.open(name) as f:
                 lines = (b.decode("latin-1") for b in f)
-                return cotahist.load_prices(conn, lines, source_file=Path(zip_path).name)
+                n = cotahist.load_prices(conn, lines, source_file=Path(zip_path).name)
+        telemetry.emit("ingest", metrics={"rows": n},
+                       metadata={"source_file": Path(zip_path).name})
+        return n
     finally:
         conn.close()

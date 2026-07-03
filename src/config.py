@@ -102,6 +102,9 @@ H1_FROZEN_KEYS = [
     ("backtest", "warmup_end"), ("backtest", "test_start"),
     ("backtest", "purge_embargo_months"),
     ("bootstrap", "n_boot"), ("bootstrap", "block_length"), ("bootstrap", "confidence"),
+    # Onda 1 (2026-07-02, PRÉ-DADO): o pedágio inteiro entra no lacre — a H1
+    # pré-registra stationary; interval/psr_min fixados antes de qualquer rodada real.
+    ("bootstrap", "method"), ("bootstrap", "interval"), ("bootstrap", "psr_min"),
 ]
 
 
@@ -109,7 +112,7 @@ def frozen_config_hash(config: dict) -> str:
     """Hash determinístico SÓ do subconjunto H1-FROZEN — o LACRE da hipótese.
 
     Responde 'este run usou a H1 exata?' sem ser perturbado por params operacionais
-    (db_path, seed, bootstrap.method). Um golden test fixa este hash: mexer num param
+    (db_path, seed, benchmark.n_random). Um golden test fixa este hash: mexer num param
     frozen quebra alto; mexer no db_path/seed NÃO. É a versão por-máquina do lacre
     que hoje depende da disciplina de não tocar nos comentários [H1-FROZEN].
     """

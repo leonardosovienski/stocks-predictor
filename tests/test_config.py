@@ -67,6 +67,10 @@ def test_load_real_config_h1_frozen_params():
     assert cfg["backtest"]["test_start"] == "2018-01-01"
     assert cfg["bootstrap"]["block_length"] == 21
     assert cfg["jump_detector"]["threshold_abs"] == 0.30
+    # Onda 1 (pré-dado): pedágio congelado por inteiro
+    assert cfg["bootstrap"]["method"] == "stationary"
+    assert cfg["bootstrap"]["interval"] == "studentized"
+    assert cfg["bootstrap"]["psr_min"] == 0.95
 
 
 def test_config_hash_stable_across_loads():
@@ -171,9 +175,13 @@ def test_design_doc_in_repo():
 # ---------------------------------------------------------------------------
 
 def test_frozen_config_hash_golden():
-    """Golden: qualquer mudança em param H1-FROZEN quebra este lacre."""
+    """Golden: qualquer mudança em param H1-FROZEN quebra este lacre.
+
+    Lacre movido 1x, PRÉ-DADO (2026-07-02, Onda 1): 4a4e8d57e1224191 →
+    a2626990c337cc3b, ao entrar bootstrap.method/interval/psr_min no conjunto
+    congelado (trilha no HANDOFF). Depois da 1ª rodada real, mover = violação."""
     from config import load_config, frozen_config_hash
-    assert frozen_config_hash(load_config()) == "4a4e8d57e1224191"
+    assert frozen_config_hash(load_config()) == "a2626990c337cc3b"
 
 
 def test_frozen_hash_ignores_operational_params():
@@ -184,7 +192,7 @@ def test_frozen_hash_ignores_operational_params():
     op = copy.deepcopy(cfg)
     op["data"]["db_path"] = "outro.db"
     op["bootstrap"]["seed"] = 999
-    op["bootstrap"]["method"] = "stationary"
+    op["benchmark"]["n_random"] = 500      # consultivo, não move o lacre
     assert frozen_config_hash(op) == base, "param operacional não pode mover o lacre"
 
 
