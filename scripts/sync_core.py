@@ -104,11 +104,7 @@ def stamp() -> int:
     if not changed:
         print("nada a carimbar — vendor já bate com o manifesto")
         return 0
-    version_path = VENDOR / "VERSION"
-    new_version = version_path.read_text(encoding="utf-8").strip()
-    old_stamped = (old.get("local_evolution") or {}).get("version")
-    if new_version in (old.get("source_version"), old_stamped) and "VERSION" in changed:
-        pass  # VERSION mudou de conteúdo — ok
+    new_version = (VENDOR / "VERSION").read_text(encoding="utf-8").strip()
     if "VERSION" not in changed:
         print(f"RECUSADO: o vendor mudou ({', '.join(changed)}) mas o VERSION não foi "
               f"carimbado ({new_version}). Evolução por demanda exige bump de VERSION "

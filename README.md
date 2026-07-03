@@ -10,25 +10,29 @@ ML por último e só se pagar líquido.
 
 ## Estado atual / Como rodar
 
-Marcos **M1–M6 implementados** (núcleo, validados em dados sintéticos); o veredito real
-da H1 exige o COTAHIST físico da B3. Consome o `predictor_core` via `vendor/` (não
-editar — `predictor-core` é a fonte). Suíte: `py -3.12 -m pytest tests/ -q` (93 verdes).
+Marcos **M1–M6 implementados** (núcleo, validados em dados sintéticos) + Ondas 0–2 de
+governança/julgamento (2026-07-02); o veredito real da H1 exige o COTAHIST físico da
+B3. Consome o `predictor_core` via `vendor/` (não editar à toa — mudança exige bump de
+VERSION + `python scripts/sync_core.py --stamp`; a suíte verifica os hashes). Suíte:
+`python -m pytest tests/ -q` (116 verdes; 2 `slow` de ~70s, deseleção `-m "not slow"`).
 
 ```powershell
-py -3.12 main.py                              # status (versões, hashes, contagens)
-py -3.12 main.py ingest <COTAHIST_AXXXX.ZIP>  # M1: parse posicional -> prices_raw
-py -3.12 main.py adjust                        # M2: detector de saltos -> quarentena
-py -3.12 main.py universe <YYYY-MM-DD>         # M3: universo point-in-time
-py -3.12 main.py backtest                      # M5: walk-forward + pedágio -> veredito H1
-py -3.12 main.py paper <YYYY-MM-DD>            # M6: carteira forward + liquida execução
+python main.py                              # status (versões, hashes, contagens)
+python main.py ingest <COTAHIST_AXXXX.ZIP>  # M1: parse posicional -> prices_raw
+python main.py adjust                       # M2: detector de saltos -> quarentena
+python main.py universe <YYYY-MM-DD>        # M3: universo point-in-time
+python main.py backtest                     # M5: walk-forward + pedágio -> veredito H1
+python main.py paper <YYYY-MM-DD>           # M6: carteira forward + liquida execução
 ```
 Sem COTAHIST real, o `backtest` responde "inconclusivo"; o gerador sintético
 (`src/cotahist.py`) destrava o pipeline para teste.
 
 ## Status
 
-M0 (Gênese) completo. Próximo: M1 — ingestão COTAHIST (bloqueado em obter o layout
-posicional oficial da B3; o parser não pode ser escrito de memória).
+M0–M6 núcleo completo sobre dados sintéticos; Ondas 0–2 (governança, pedágio de 2
+lentes real, execução D+1 open, replay estrutural, telemetria) fechadas em 2026-07-02.
+Próximo: carregar o COTAHIST real (golden tests sobre registros de verdade) e rodar o
+veredito da H1 uma única vez, como pré-registrado. Estado detalhado: `HANDOFF.md`.
 
 ## Rodar
 
