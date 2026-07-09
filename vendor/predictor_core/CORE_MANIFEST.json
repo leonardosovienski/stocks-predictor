@@ -7,9 +7,11 @@
     "replay.py": "3574cc26edc2a91e720d69d0d0e6ed781f17b1045b0ba5e687478b1c67951fdd",
     "settings.py": "bf3cf0b7abbfd21b8dfa7f80a15d5264511624013a6802885cc0bc655cad580d",
     "stats.py": "2cc488867ef17f460d65b3323c6c5d9d36b500d71433b4aac294ec6a35040b3c",
-    "VERSION": "a82122eeee47db44b3d0459782e419193580a8d30d45dadd8a0744b72170e1e6"
+    "testing/__init__.py": "d33360f01ac2563fd815fbf92829259fc28504d7c247947495dbf81c4577c7c7",
+    "testing/secrets.py": "183198839e966d79ac2efc0069c2d3b3b13dc0466c3106acbaf6e5b054b39161",
+    "VERSION": "e240e4f3097a9aae7914f299d9964156e6bbf41880fed650308dce8838030ae4"
   },
-  "aggregate": "bca2496702d80e81",
-  "synced_at": "2026-06-17T04:54:54+00:00",
-  "source_version": "0.7.0-vendored-20260616"
+  "aggregate": "620df0b58e05a6af",
+  "synced_at": "2026-07-04T00:00:00+00:00",
+  "source_version": "0.8.0-vendored-20260704"
 }
