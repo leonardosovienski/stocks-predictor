@@ -1,8 +1,11 @@
 """M3 — Universo point-in-time por liquidez (mediana de volume financeiro).
 
 Regra inviolável: em cada `asof`, usa SOMENTE dados < asof — nada do futuro toca a
-seleção (anti-lookahead estrutural). Exclui quarentenados e papéis com histórico curto.
-Dedup ON/PN pelo prefixo de 4 letras (fica o de maior liquidez na janela).
+seleção (anti-lookahead estrutural). Exclui quarentenados, papéis com histórico curto
+E papéis DESLISTADOS (sem pregão dentro da janela de liquidez recente — um papel cujo
+último negócio foi anos antes do asof não pode ser tratado como ativo hoje só porque
+tem `min_history` linhas em algum ponto do passado). Dedup ON/PN pelo prefixo de 4
+letras (fica o de maior liquidez na janela).
 """
 
 
@@ -17,19 +20,44 @@ def _median(xs):
 
 def rank_universe(conn, asof, lookback=126, min_history=252):
     """[(ticker, median_vol)] ranqueado por liquidez, POINT-IN-TIME (só dados < asof)."""
+    # só quarentena NÃO resolvida exclui — um split adjudicado (adjustments +
+    # resolved_at) já corrige a série, então o papel volta a ser elegível.
     quarantined = {r[0] for r in conn.execute(
-        "SELECT DISTINCT ticker FROM quarantine WHERE date < ?", (asof,))}
-    tickers = [r[0] for r in conn.execute("SELECT DISTINCT ticker FROM prices_raw")]
+        "SELECT DISTINCT ticker FROM quarantine WHERE date < ? AND resolved_at IS NULL",
+        (asof,))}
+    # janela de liquidez é do CALENDÁRIO real (pregões que existem no banco antes de
+    # asof), não "os últimos N registros de cada ticker" — senão um papel deslistado
+    # há anos passa a janela usando pregões antigos como se fossem recentes.
+    window_dates = [r[0] for r in conn.execute(
+        "SELECT DISTINCT date FROM prices_raw WHERE date < ? ORDER BY date DESC LIMIT ?",
+        (asof, lookback))]
+    if len(window_dates) < lookback:
+        return []
+    window_start = window_dates[-1]
+
+    # agregados de uma passada (não N+1 por ticker): contagem de pregões p/
+    # min_history, último pregão p/ deslistagem. GROUP BY date dedupa re-ingest.
+    hist = {r[0]: (r[1], r[2]) for r in conn.execute(
+        "SELECT ticker, COUNT(DISTINCT date), MAX(date) FROM prices_raw "
+        "WHERE date < ? GROUP BY ticker", (asof,))}
+    vols: dict[str, list[float]] = {}
+    for tk, _d, v in conn.execute(
+            "SELECT ticker, date, MAX(volume_fin) FROM prices_raw "
+            "WHERE date >= ? AND date < ? GROUP BY ticker, date",
+            (window_start, asof)):
+        vols.setdefault(tk, []).append(v)
+
     meds = {}
-    for tk in tickers:
-        if tk in quarantined:
+    for tk, (n_hist, last_date) in hist.items():
+        if tk in quarantined or n_hist < min_history:
             continue
-        vols = [r[0] for r in conn.execute(
-            "SELECT volume_fin FROM prices_raw WHERE ticker=? AND date < ? ORDER BY date",
-            (tk, asof))]
-        if len(vols) < min_history:
-            continue
-        meds[tk] = _median(vols[-lookback:])
+        if last_date < window_start:
+            continue    # deslistado/parou de negociar antes da janela de liquidez
+        # sessão do calendário SEM negócio deste papel = volume 0 naquele dia —
+        # senão um papel que negociou 1x na janela ganharia "mediana" de um único
+        # print gigante e furaria o ranking de liquidez.
+        v = vols.get(tk, [])
+        meds[tk] = _median(v + [0.0] * (lookback - len(v)))
     # dedup ON/PN: por prefixo de 4 letras, fica o de maior liquidez
     best = {}
     for tk, med in meds.items():

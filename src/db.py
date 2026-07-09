@@ -1,6 +1,7 @@
 """Schema e migração idempotente do predictor-stocks."""
 import datetime
 import json
+import os
 import pathlib
 import sqlite3
 import subprocess
@@ -10,6 +11,10 @@ sys.path.insert(0, str(pathlib.Path(__file__).parent.parent / "vendor"))
 from predictor_core import infra
 
 DB_DEFAULT = pathlib.Path(__file__).parent.parent / "data" / "stocks.db"
+# override p/ isolar testes/experimentos do banco de produção (mesmo padrão do
+# obs.EVENTS_ENV) — honrado AQUI, no ponto de resolução do default, para que TODO
+# entry point (main.py, backtest.run(), paper.main, analyst.main, ingest) respeite.
+DB_PATH_ENV = "PREDICTOR_DB_PATH"
 
 # ---------------------------------------------------------------------------
 # Migrações — append-only; nunca alterar uma existente, sempre adicionar nova
@@ -115,7 +120,7 @@ MIGRATIONS: list[tuple[str, str]] = [
 
 def get_connection(db_path: pathlib.Path | str | None = None,
                    busy_timeout_ms: int = 5000) -> sqlite3.Connection:
-    path = pathlib.Path(db_path) if db_path else DB_DEFAULT
+    path = pathlib.Path(db_path or os.getenv(DB_PATH_ENV) or DB_DEFAULT)
     path.parent.mkdir(parents=True, exist_ok=True)
     conn = infra.connect(path, busy_timeout_ms=busy_timeout_ms)
     infra.run_migrations(conn, MIGRATIONS)

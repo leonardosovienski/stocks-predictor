@@ -45,13 +45,19 @@ def walk_forward(conn, cfg):
     cost = 2.0 * (e.get("b3_fee_pct", 0.0003) + e.get("spread_slippage_pct", 0.0015))
     test_start = bt.get("test_start", "0000-00-00")
 
+    # carga PREGUIÇOSA e memoizada: só tickers que entram em algum universo mensal —
+    # o banco tem centenas de papéis (deslistados, curtos, quarentenados) que nunca
+    # ranqueiam no top-N e cuja série nunca seria lida.
     series, dret = {}, {}
-    for tk in [r[0] for r in conn.execute("SELECT DISTINCT ticker FROM prices_raw")]:
-        dates, closes = adjust.adjusted_series(conn, tk)
-        series[tk] = (dates, closes)
-        dret[tk] = _daily_returns(dates, closes)
 
-    all_dates = sorted({d for dates, _ in series.values() for d in dates})
+    def _load(tk):
+        if tk not in series:
+            dates, closes = adjust.adjusted_series(conn, tk)
+            series[tk] = (dates, closes)
+            dret[tk] = _daily_returns(dates, closes)
+
+    all_dates = [r[0] for r in conn.execute(
+        "SELECT DISTINCT date FROM prices_raw ORDER BY date")]
     rebal = [d for d in month_end_dates(all_dates) if d >= test_start]
 
     strat, bench = [], []
@@ -59,7 +65,9 @@ def walk_forward(conn, cfg):
         uni = universe.select_universe(conn, t, top_n=top_n, lookback=liq_lb, min_history=min_hist)
         if not uni:
             continue
-        sub = {tk: series[tk] for tk in uni if tk in series}
+        for tk in uni:
+            _load(tk)
+        sub = {tk: series[tk] for tk in uni}
         port = list(portfolio.select_portfolio(factor.signals(sub, t, lookback_mom, skip), quant))
         if not port:
             continue
@@ -101,13 +109,17 @@ def judge(strat, bench, cfg):
             "veredito": "COMPROVADA" if comprovada else "não comprovada (IC cruza 0 / negativo)"}
 
 
-def run(cfg=None, conn=None):
+def run(cfg=None, conn=None, write_report=False, run_id=None):
     cfg = cfg or load_config()
     conn = conn or db.get_connection()
     strat, bench = walk_forward(conn, cfg)
     verdict = judge(strat, bench, cfg)
     print(f"walk-forward: {verdict['n']} pregões | PSR={verdict['psr']} | "
-          f"IC95% ΔSharpe={verdict['sharpe_diff_ci']} | H1: {verdict['veredito']}")
+          f"IC95% diff-Sharpe={verdict['sharpe_diff_ci']} | H1: {verdict['veredito']}")
+    if write_report:
+        import report
+        path = report.write_report(verdict, strat, bench, cfg, run_id=run_id)
+        print(f"relatório: {path}")
     return verdict
 
 

@@ -95,13 +95,29 @@ def synthetic_cotahist(tickers, dates, seed=42, start=20.0, vol=0.02):
     return out
 
 
-def load_prices(conn, lines, source_file: str) -> int:
+# À-vista lote-padrão: mercado à vista (TPMERC 010) + BDI lote-padrão (02). O COTAHIST
+# traz TUDO (opções 070/080 são ~98% do arquivo, termo, fracionário, leilão); a H1
+# negocia SÓ ação à-vista lote-padrão — filtrar aqui mantém prices_raw enxuto e o
+# "top-N por liquidez" livre de contratos de opção. Append-only-seguro: derivativos
+# podem ser acrescentados depois sem reescrever nada.
+AVISTA_MARKET = "010"
+AVISTA_BDI = "02"
+
+
+def is_avista(rec) -> bool:
+    return rec["market_type"] == AVISTA_MARKET and rec["bdi_code"] == AVISTA_BDI
+
+
+def load_prices(conn, lines, source_file: str, avista_only: bool = True) -> int:
     """Parseia linhas (de arquivo ou sintéticas) e carrega em prices_raw. Idempotente
-    via UNIQUE(date,ticker,source_file). Retorna nº de registros de cotação carregados."""
+    via UNIQUE(date,ticker,source_file). Por padrão filtra à-vista lote-padrão (a H1 só
+    negocia ação à-vista). Retorna nº de registros carregados."""
     rows = []
     for line in lines:
         rec = parse_line(line)
         if rec is None:
+            continue
+        if avista_only and not is_avista(rec):
             continue
         rows.append((rec["date"], rec["ticker"], rec["bdi_code"], rec["market_type"],
                      rec["open"], rec["high"], rec["low"], rec["close"],

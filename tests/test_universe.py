@@ -56,6 +56,37 @@ def test_dedup_on_pn_keeps_more_liquid(tmp_path):
     conn.close()
 
 
+def test_excludes_delisted_ticker_stale_before_window(tmp_path):
+    """DDDD3 tem histórico LONGO mas seu último pregão foi ANTES da janela de liquidez
+    (deslistado/incorporado) — não pode ser tratado como ativo só por ter linhas
+    suficientes em algum ponto do passado (regressão do bug: vols[-lookback:] pegava
+    os últimos N registros DO PRÓPRIO ticker, não os últimos N pregões do calendário)."""
+    conn = db.get_connection(tmp_path / "s.db")
+    d = _dates(40)
+    _ins(conn, "AAAA3", d, [1000.0] * 40)           # ativa até o fim
+    _ins(conn, "DDDD3", d[:20], [5000.0] * 20)      # deslistada em d[19] — nunca mais negociou
+    asof = d[30]
+    ranked = dict(universe.rank_universe(conn, asof, lookback=5, min_history=8))
+    assert "DDDD3" not in ranked, "papel deslistado não pode ser elegível no universo"
+    assert "AAAA3" in ranked
+    conn.close()
+
+
+def test_sporadic_trader_median_counts_no_trade_days_as_zero(tmp_path):
+    """EEEE3 tem histórico longo mas negociou UMA vez dentro da janela de liquidez,
+    com um bloco gigante. Sessão sem negócio conta como volume 0 — senão a 'mediana'
+    de um único print (R$80M) colocaria um papel intragável acima dos líquidos."""
+    conn = db.get_connection(tmp_path / "s.db")
+    d = _dates(30)
+    _ins(conn, "AAAA3", d, [1000.0] * 30)                 # negocia todo dia
+    _ins(conn, "EEEE3", d[:20] + [d[27]], [50.0] * 20 + [80_000_000.0])
+    asof = d[29]                                           # janela = últimos 5 pregões
+    ranked = dict(universe.rank_universe(conn, asof, lookback=5, min_history=8))
+    assert ranked["AAAA3"] == 1000.0
+    assert ranked["EEEE3"] == 0.0, "mediana de 1 print não pode ranquear liquidez"
+    conn.close()
+
+
 def test_min_history_excludes_short(tmp_path):
     conn = db.get_connection(tmp_path / "s.db")
     d = _dates(20)

@@ -1,7 +1,13 @@
 data/*
 !data/.gitkeep
+# relatórios gerados (reproduzíveis por run_id) — versionar é opt-in via `git add -f`
+reports/*
+!reports/.gitkeep
+!reports/ai
 reports/ai/*
 !reports/ai/.gitkeep
+# telemetria JSONL local (runtime). Redirecionável por $PREDICTOR_EVENTS_PATH.
+events.jsonl
 __pycache__/
 *.pyc
 *.db
