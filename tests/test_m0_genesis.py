@@ -22,11 +22,18 @@ def test_vendor_version_file_exists():
 def test_vendor_version_readable():
     from predictor_core import __version__
     assert __version__, "predictor_core.__version__ está vazio"
-    assert "vendored" in __version__, "__version__ deve ter carimbo 'vendored'"
+    # v1.x: o sync canônico (sync_core.py) distribui o VERSION do upstream verbatim
+    # (ex.: '1.1.0-ga-20260709') — a integridade agora é atestada pelo CORE_MANIFEST,
+    # não por um carimbo 'vendored' no VERSION.
+    import re
+    assert re.match(r"\d+\.\d+\.\d+", __version__), \
+        f"__version__ fora do esquema semver do core: {__version__!r}"
 
 
 def test_vendor_modules_importable():
     from predictor_core import net, obs, infra, stats  # noqa: F401
+    from predictor_core.measurement import bootstrap, stats as mstats  # noqa: F401
+    from predictor_core.testing import secrets  # noqa: F401
 
 
 # ---------------------------------------------------------------------------
@@ -173,16 +180,17 @@ def test_db_decisions_write_once_semantics(tmp_path):
 # ---------------------------------------------------------------------------
 
 def test_stats_ci_mean_coverage():
-    from predictor_core.stats import ci_mean
+    from predictor_core.measurement.bootstrap import bootstrap_ci
     import random
     rng = random.Random(0)
     data = [rng.gauss(5.0, 1.0) for _ in range(200)]
-    lo, hi = ci_mean(data, confidence=0.95)
+    lo, hi, _ = bootstrap_ci(data, lambda u: sum(u) / len(u), scheme="iid", confidence=0.95)
     assert lo < 5.0 < hi, f"IC 95% não cobre a verdade 5.0: [{lo:.3f}, {hi:.3f}]"
 
 
 def test_stats_block_bootstrap_moving_reproducible():
-    from predictor_core.stats import block_bootstrap_ci, sharpe
+    from predictor_core.measurement.bootstrap import bootstrap_ci as block_bootstrap_ci
+    from predictor_core.measurement.stats import sharpe
     returns = [0.001 * (i % 7 - 3) for i in range(200)]
     lo1, hi1, _ = block_bootstrap_ci(returns, sharpe, seed=42)
     lo2, hi2, _ = block_bootstrap_ci(returns, sharpe, seed=42)
@@ -191,7 +199,7 @@ def test_stats_block_bootstrap_moving_reproducible():
 
 def test_stats_block_bootstrap_wider_than_iid_for_autocorrelated():
     """Para série AR(1) com autocorrelação alta, block bootstrap deve ter IC mais largo que iid."""
-    from predictor_core.stats import block_bootstrap_ci, ci_mean
+    from predictor_core.measurement.bootstrap import bootstrap_ci
     import random
     rng = random.Random(99)
     # AR(1) com phi=0.7
@@ -199,8 +207,8 @@ def test_stats_block_bootstrap_wider_than_iid_for_autocorrelated():
     for _ in range(499):
         series.append(0.7 * series[-1] + rng.gauss(0, 0.01))
     mean_stat = lambda s: sum(s) / len(s)
-    lo_iid, hi_iid = ci_mean(series, confidence=0.95, seed=42)
-    lo_blk, hi_blk, _ = block_bootstrap_ci(series, mean_stat, block_length=21, seed=42)
+    lo_iid, hi_iid, _ = bootstrap_ci(series, mean_stat, scheme="iid", confidence=0.95, seed=42)
+    lo_blk, hi_blk, _ = bootstrap_ci(series, mean_stat, scheme="moving", block_length=21, seed=42)
     width_iid = hi_iid - lo_iid
     width_blk = hi_blk - lo_blk
     assert width_blk > width_iid, (
@@ -210,7 +218,7 @@ def test_stats_block_bootstrap_wider_than_iid_for_autocorrelated():
 
 
 def test_stats_sharpe_sign():
-    from predictor_core.stats import sharpe
+    from predictor_core.measurement.stats import sharpe
     pos = [0.001] * 100
     neg = [-0.001] * 100
     assert sharpe(pos) > 0

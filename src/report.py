@@ -16,7 +16,7 @@ import pathlib
 
 from db import get_code_version
 from predictor_core import obs
-from predictor_core.stats import max_drawdown, sharpe, sortino
+from predictor_core.measurement.stats import max_drawdown, sharpe, sortino
 
 ROOT = pathlib.Path(__file__).parent.parent
 DOMAIN = "predictor-stocks"

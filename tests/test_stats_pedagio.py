@@ -7,10 +7,8 @@ detectável.
 """
 import random
 
-from predictor_core.stats import (
-    block_bootstrap_ci,
-    probabilistic_sharpe_ratio as psr,
-)
+from predictor_core.measurement.bootstrap import bootstrap_ci as block_bootstrap_ci
+from predictor_core.measurement.stats import probabilistic_sharpe_ratio as psr
 
 
 # --- LENTE 1: PSR -----------------------------------------------------------

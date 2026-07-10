@@ -1,77 +1,54 @@
-"""Guard de vazamento de segredos na telemetria (predictor_core.testing.secrets).
+"""secrets — guard contra vazamento de credenciais na telemetria.
 
-A telemetria (`obs.emit_event`) é append-only e commitada como trilha de auditoria. Um
-segredo que caia no `metadata` de um evento vira credencial pública para sempre. Este
-módulo varre texto/eventos por padrões de segredo conhecidos e transforma um vazamento
-acidental em falha de pytest ANTES do commit.
+A telemetria (`obs.emit_event`) grava `metadata` livre em JSONL. Um descuido — colocar
+uma resposta de API, um header ou um token no metadata — vazaria um segredo num arquivo
+que pode ser inspecionado ou commitado por engano. Este guard varre o JSONL (ou um texto)
+procurando o que PARECE credencial e falha explícito, para barrar o vazamento antes do commit.
 
-stdlib-only (regex). Conservador por construção: cada padrão exige um marcador literal
-forte (`sk-`, `AKIA`, `xox…`, cabeçalho de chave privada, ou uma atribuição explícita
-`token=…`) — números, tickers e scores da telemetria normal NÃO disparam.
+Duas frentes:
+  - padrões de PREFIXO conhecido (sk-, AIza, ghp_, ...) — alta confiança, baixo falso-positivo;
+  - `known_values`: os VALORES reais dos segredos (do ambiente) — match verbatim, zero
+    falso-positivo (a defesa mais forte: "algum segredo real aparece no texto?").
 """
-import json
+from __future__ import annotations
+
 import re
 from pathlib import Path
 
-# (nome, regex). Cada padrão exige um marcador forte para não gerar falso-positivo
-# na telemetria numérica normal ({"psr": 0.96, "asset": "PETR4"}).
-_PATTERNS = [
-    ("openai_key", re.compile(r"sk-[A-Za-z0-9]{20,}")),
-    ("aws_access_key", re.compile(r"AKIA[0-9A-Z]{16}")),
-    ("slack_token", re.compile(r"xox[baprs]-[A-Za-z0-9-]{10,}")),
-    ("github_token", re.compile(r"gh[pousr]_[A-Za-z0-9]{20,}")),
-    ("google_api_key", re.compile(r"AIza[0-9A-Za-z\-_]{20,}")),
-    ("private_key_header", re.compile(r"-----BEGIN [A-Z ]*PRIVATE KEY-----")),
-    # atribuição explícita: senha/segredo/token/apikey = "<>=16 chars não-triviais"
-    ("secret_assignment", re.compile(
-        r"(?i)\b(?:api[_-]?key|secret|token|password|passwd|passphrase|"
-        r"authorization|auth[_-]?token|access[_-]?token|client[_-]?secret)"
-        r"['\"]?\s*[:=]\s*['\"]?([A-Za-z0-9/+=_\-]{16,})")),
+# Prefixos de credenciais conhecidas (âncoras de alta confiança).
+_SECRET_PATTERNS = [
+    re.compile(r"sk-[A-Za-z0-9]{20,}"),            # OpenAI
+    re.compile(r"AIza[0-9A-Za-z_\-]{35}"),         # Google / Gemini
+    re.compile(r"ghp_[A-Za-z0-9]{36}"),            # GitHub PAT
+    re.compile(r"gho_[A-Za-z0-9]{36}"),            # GitHub OAuth
+    re.compile(r"xox[baprs]-[A-Za-z0-9-]{10,}"),   # Slack
+    re.compile(r"AKIA[0-9A-Z]{16}"),               # AWS access key id
+    re.compile(r"(?i)bearer\s+[A-Za-z0-9._\-]{20,}"),  # Authorization: Bearer
 ]
 
+_MIN_KNOWN_LEN = 8   # valores curtos demais dariam falso-positivo (não são segredos reais)
 
-def find_secrets(text) -> list:
-    """Retorna [(nome_padrão, trecho)] para cada segredo detectado em `text`.
 
-    Lista vazia = limpo. Entrada não-str é serializada (JSON) antes da varredura, para
-    aceitar um dict de metadata direto.
-    """
-    if text is None:
-        return []
-    if not isinstance(text, str):
-        try:
-            text = json.dumps(text, ensure_ascii=False, sort_keys=True, default=str)
-        except (TypeError, ValueError):
-            text = str(text)
-    hits = []
-    for name, pat in _PATTERNS:
-        for m in pat.finditer(text):
-            hits.append((name, m.group(0)))
+def find_secrets(text: str, *, known_values=()) -> list[str]:
+    """Trechos suspeitos de credencial em `text`. `known_values` = valores reais do
+    ambiente (match verbatim). Retorna lista de achados (vazia = limpo)."""
+    hits: list[str] = []
+    for pat in _SECRET_PATTERNS:
+        hits += pat.findall(text)
+    for v in known_values:
+        if v and len(v) >= _MIN_KNOWN_LEN and v in text:
+            hits.append(f"<known-secret:{v[:4]}...>")
     return hits
 
 
-def assert_no_secrets_in_events(path) -> int:
-    """Varre um JSONL de eventos (obs.emit_event) por segredos. No-op se o arquivo não
-    existe (telemetria ainda não gerada). Levanta AssertionError com a trilha se achar.
-    Retorna o nº de eventos varridos."""
+def assert_no_secrets_in_events(path, *, known_values=()) -> None:
+    """Levanta AssertionError se o JSONL de telemetria em `path` contiver algo que
+    pareça credencial. Ausência do arquivo = nada a vazar (no-op). Use nas suítes dos
+    domínios para transformar um vazamento acidental em falha de `pytest`."""
     p = Path(path)
     if not p.exists():
-        return 0
-    n = 0
-    leaks = []
-    for lineno, ln in enumerate(p.read_text(encoding="utf-8").splitlines(), 1):
-        if not ln.strip():
-            continue
-        n += 1
-        try:
-            record = json.loads(ln)
-        except json.JSONDecodeError:
-            record = ln  # varre a linha crua mesmo se não for JSON válido
-        hits = find_secrets(record)
-        if hits:
-            names = ", ".join(sorted({name for name, _ in hits}))
-            leaks.append(f"  linha {lineno}: {names}")
-    if leaks:
-        raise AssertionError(
-            f"segredo(s) vazado(s) na telemetria {p}:\n" + "\n".join(leaks))
-    return n
+        return
+    hits = find_secrets(p.read_text(encoding="utf-8"), known_values=known_values)
+    assert not hits, (
+        f"POSSÍVEL VAZAMENTO de credencial na telemetria {p}: {sorted(set(hits))} — "
+        "remova o segredo do metadata do emit_event (nunca logue tokens/respostas de API).")

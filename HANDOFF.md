@@ -57,6 +57,37 @@ Code review multi-ângulo sobre o diff completo da sessão. Correções aplicada
 `testing/__init__.py` (novo subpacote, v0.8.0) — sync manual, `scripts/sync_core.py`
 não existe mais neste repo; NÃO sincronizar por cima sem levar o subpacote junto.
 
+### Sync ao core canônico v1.1.0 + stationary pré-registrado (2026-07-09)
+
+O upstream `predictor_core/` (repo irmão) estava na **v1.1.0-ga-20260709** — o commit
+quebrado `2c188e0` referia-se ao v1.0.1 dele (o humano sincronizou o teste do guard de
+segredos mas não o vendor; a reconstrução manual desta sessão foi SUBSTITUÍDA pela
+canônica no sync). Sincronizado via a lógica do `sync_core.py` canônico (que voltou a
+existir — vive no upstream, não mais em `scripts/` deste repo): 33 arquivos, agregado
+`026f1f7b761440d9`.
+
+- **Reorganização**: `stats`/`replay`/`net`/`obs` da raiz agora são compat shims;
+  consumidores migrados para `measurement.stats` / `measurement.bootstrap` (bye
+  DeprecationWarning). Teste de versão migrado do carimbo 'vendored' para semver
+  (integridade agora é o CORE_MANIFEST, como nos outros 2 domínios).
+- **`bootstrap_ci(scheme=...)` suporta STATIONARY** (Politis-Romano) — que é o que a
+  H1 PRÉ-REGISTRA ("stationary bootstrap, bloco 21"). `config.yaml bootstrap.method:
+  moving→stationary` (linha NÃO é H1-FROZEN; o moving era placeholder declarado
+  "stationary como refinamento M5" — isto é alinhar À pré-especificação, não
+  repescagem). Veredito re-rodado sob o esquema pré-registrado: 2092 pregões, PSR
+  0,429, IC95% ΔSharpe **(−0,400, 0,257)** → **não comprovada** (consistente com o
+  moving; backtest agora em ~46s).
+- **Disponível no core p/ a PRÓXIMA hipótese** (não ligado ainda — por demanda):
+  `measurement.trials` (Experiment Registry + **Deflated Sharpe Ratio** — desconta
+  E[max SR | N tentativas]; obrigatório se iterarmos H2, H3...) com **trava de poder**
+  (criar trial exige atestado do `testing.harness` — controle positivo: o pipeline
+  prova que detectaria edge plantado antes de qualquer NO-GO ser interpretável) e
+  `testing.synth`/`coverage` (séries com verdade conhecida p/ validar a régua).
+- **Aprendizado do previsao-cripto AVALIADO e n/a aqui**: o C2 deles (PSR inflado por
+  janelas de trade SOBREPOSTAS) não se aplica — nossos retornos são diários
+  não-sobrepostos; a autocorrelação residual é papel da Lente 2 (blocos), como o
+  design já previa.
+
 **Conhecidos, NÃO corrigidos (decisão de design pendente, não silenciosa):**
 - `factor.momentum_12_1` não checa recência do último preço ≤ asof (guardado hoje pelo
   filtro de deslistagem do universo — defesa em camada única; guard próprio exigiria

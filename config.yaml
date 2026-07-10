@@ -32,7 +32,7 @@ backtest:
 bootstrap:
   n_boot: 10000                    # [H1-FROZEN]
   block_length: 21                 # [H1-FROZEN] pregões (~1 mês)
-  method: moving                   # moving primeiro; stationary como refinamento M5
+  method: stationary               # H1 pré-registra stationary (Politis-Romano); core v1.1.0 suporta
   confidence: 0.95                 # [H1-FROZEN]
   seed: 42
 

@@ -26,7 +26,8 @@ import portfolio
 from config import load_config
 from returns import month_end_dates
 import universe
-from predictor_core.stats import block_bootstrap_ci, probabilistic_sharpe_ratio, sharpe
+from predictor_core.measurement.bootstrap import bootstrap_ci
+from predictor_core.measurement.stats import probabilistic_sharpe_ratio, sharpe
 
 
 def _daily_returns(dates, closes):
@@ -88,6 +89,7 @@ def judge(strat, bench, cfg):
     b = cfg.get("bootstrap", {})
     n_boot, block = b.get("n_boot", 10_000), b.get("block_length", 21)
     conf, seed = b.get("confidence", 0.95), b.get("seed", 42)
+    scheme = b.get("method", "stationary")   # H1 pré-registra STATIONARY (bloco 21)
     if len(strat) < 2 * block:
         return {"n": len(strat), "psr": None, "sharpe_diff_ci": (None, None),
                 "veredito": "INCONCLUSIVO (amostra curta)"}
@@ -102,8 +104,8 @@ def judge(strat, bench, cfg):
         d = sharpe([x[0] for x in window], 252) - sharpe([x[1] for x in window], 252)
         return d if math.isfinite(d) else None
 
-    lo, hi, _ = block_bootstrap_ci(list(zip(strat, bench)), diff_sharpe,
-                                   block_length=block, n_boot=n_boot, confidence=conf, seed=seed)
+    lo, hi, _ = bootstrap_ci(list(zip(strat, bench)), diff_sharpe, scheme=scheme,
+                             block_length=block, n_boot=n_boot, confidence=conf, seed=seed)
     comprovada = lo is not None and lo > 0
     return {"n": len(strat), "psr": psr, "sharpe_diff_ci": (lo, hi),
             "veredito": "COMPROVADA" if comprovada else "não comprovada (IC cruza 0 / negativo)"}
