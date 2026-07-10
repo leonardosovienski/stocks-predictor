@@ -46,6 +46,36 @@ def test_excludes_quarantined(tmp_path):
     conn.close()
 
 
+def test_future_quarantine_does_not_exclude(tmp_path):
+    """ANTI-LOOKAHEAD: um salto quarentenado DEPOIS do asof não pode tocar a seleção de
+    hoje — senão informação do futuro entra no universo passado."""
+    conn = db.get_connection(tmp_path / "s.db")
+    d = _dates(20)
+    asof = d[10]
+    _ins(conn, "AAAA3", d, [1000.0] * 20)
+    _ins(conn, "DDDD3", d, [5000.0] * 20)        # mais líquida
+    conn.execute("INSERT INTO quarantine(ticker,date,reason) VALUES('DDDD3',?,'salto futuro')",
+                 (d[15],))
+    conn.commit()
+    uni = universe.select_universe(conn, asof, top_n=5, lookback=5, min_history=8)
+    assert "DDDD3" in uni, "quarentena futura vazou para a seleção passada (lookahead!)"
+    conn.close()
+
+
+def test_resolved_quarantine_does_not_exclude(tmp_path):
+    """Quarentena RESOLVIDA pelo humano (ajuste registrado) não exclui mais o papel."""
+    conn = db.get_connection(tmp_path / "s.db")
+    d = _dates(20)
+    _ins(conn, "AAAA3", d, [1000.0] * 20)
+    _ins(conn, "FFFF3", d, [5000.0] * 20)
+    conn.execute("INSERT INTO quarantine(ticker,date,reason,resolved_at) "
+                 "VALUES('FFFF3','2023-01-05','split','2023-02-01')")
+    conn.commit()
+    uni = universe.select_universe(conn, d[10], top_n=5, lookback=5, min_history=8)
+    assert "FFFF3" in uni, "quarentena já resolvida não deveria excluir"
+    conn.close()
+
+
 def test_dedup_on_pn_keeps_more_liquid(tmp_path):
     conn = db.get_connection(tmp_path / "s.db")
     d = _dates(20)

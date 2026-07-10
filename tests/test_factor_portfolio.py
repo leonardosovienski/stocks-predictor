@@ -54,3 +54,19 @@ def test_execution_no_future_is_none():
 def test_net_return_applies_roundtrip_cost():
     r = execution.net_return(10.0, 11.0, 0.0003, 0.0015)
     assert abs(r - (0.10 - 0.0036)) < 1e-9          # 0.36% ida-e-volta
+
+
+def test_turnover_cost_accuracy():
+    """BLINDAGEM: o custo cobra SÓ o que entrou e saiu — não o portfólio inteiro.
+    Se alguém 'otimizar' cobrando sobre toda a carteira, este teste quebra."""
+    cps = 0.0018                                     # custo por lado (0.03% + 0.15%)
+    # carteira idêntica: zero turnover => custo zero (papéis mantidos não operam)
+    assert execution.calculate_turnover_cost({"A", "B", "C"}, {"A", "B", "C"}, cps) == 0.0
+    # turnover total: 3 saem, 3 entram => 6 lados
+    assert abs(execution.calculate_turnover_cost({"A", "B", "C"}, {"X", "Y", "Z"}, cps)
+               - 6 * cps) < 1e-12
+    # turnover parcial: 1 sai (C), 1 entra (D) => 2 lados, NÃO o portfólio inteiro
+    assert abs(execution.calculate_turnover_cost({"A", "B", "C"}, {"A", "B", "D"}, cps)
+               - 2 * cps) < 1e-12
+    # carteira inicial (prev vazio): tudo entrando => 1 lado por posição
+    assert abs(execution.calculate_turnover_cost(set(), {"A", "B"}, cps) - 2 * cps) < 1e-12

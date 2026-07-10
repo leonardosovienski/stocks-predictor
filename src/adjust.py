@@ -17,8 +17,12 @@ candidatos plausíveis para revisão; `import_approved_adjustments` só grava as
 o humano preencheu com `source` E `approved_by` — o resto fica em quarentena.
 """
 import csv
+import logging
+
+logger = logging.getLogger(__name__)
 
 _SPLIT_RATIOS = (2, 3, 4, 5, 6, 8, 10)
+_FACTOR_MIN, _FACTOR_MAX = 0.05, 20.0  # faixa de sanidade p/ fator de ajuste
 _CSV_FIELDS = ("ticker", "ex_date", "close_before", "close_after", "ratio",
                "tipo_inferido", "factor_sugerido", "source", "approved_by", "notes")
 
@@ -54,9 +58,17 @@ def infer_split_factor(close_before, close_after, tol=0.08):
 
 def adjusted_closes(dates, closes, adjustments):
     """adjustments: [(ex_date, factor)]. Multiplica os closes ANTES de cada ex_date pelo
-    fator (cumulativo via aplicação sequencial) — torna a série contínua."""
+    fator (cumulativo via aplicação sequencial) — torna a série contínua.
+
+    Fator <= 0 é dado inválido e levanta ValueError (não entra em silêncio); fator fora
+    da faixa de sanidade [_FACTOR_MIN, _FACTOR_MAX] é aplicado mas logado como suspeito."""
     out = list(closes)
     for ex_date, factor in adjustments:
+        if not factor > 0:
+            raise ValueError(f"fator de ajuste inválido em {ex_date}: {factor!r} (deve ser > 0)")
+        if not (_FACTOR_MIN <= factor <= _FACTOR_MAX):
+            logger.warning("fator de ajuste suspeito em %s: %.4f (fora de [%.2f, %.0f])",
+                           ex_date, factor, _FACTOR_MIN, _FACTOR_MAX)
         out = [c * factor if d < ex_date else c for d, c in zip(dates, out)]
     return out
 
@@ -92,14 +104,22 @@ def scan_and_quarantine(conn, threshold) -> int:
 
 def adjusted_series(conn, ticker):
     """(dates, adjusted_closes) de um ticker, aplicando a tabela `adjustments`.
-    GROUP BY date dedupa re-ingest sob outro source_file."""
+    GROUP BY date dedupa re-ingest sob outro source_file. Ajuste com ex_date fora do
+    range de preços é IGNORADO com warning (provável erro de fonte/dados incompletos)."""
     rows = conn.execute(
         "SELECT date, MAX(close) FROM prices_raw WHERE ticker=? "
         "GROUP BY date ORDER BY date", (ticker,)).fetchall()
     dates = [r[0] for r in rows]
     closes = [r[1] for r in rows]
-    adjustments = [(r[0], r[1]) for r in conn.execute(
-        "SELECT ex_date, factor FROM adjustments WHERE ticker=? ORDER BY ex_date", (ticker,))]
+    adjustments = []
+    for ex_date, factor in conn.execute(
+            "SELECT ex_date, factor FROM adjustments WHERE ticker=? ORDER BY ex_date",
+            (ticker,)):
+        if dates and (ex_date < dates[0] or ex_date > dates[-1]):
+            logger.warning("ajuste de %s em %s fora do range de preços [%s, %s] — ignorado",
+                           ticker, ex_date, dates[0], dates[-1])
+            continue
+        adjustments.append((ex_date, factor))
     return dates, adjusted_closes(dates, closes, adjustments)
 
 

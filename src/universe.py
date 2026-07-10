@@ -8,6 +8,11 @@ tem `min_history` linhas em algum ponto do passado). Dedup ON/PN pelo prefixo de
 letras (fica o de maior liquidez na janela).
 """
 
+# COTAHIST TPMERC '010' = mercado À VISTA. Defesa em camada de LEITURA: o ingest já
+# filtra (cotahist.avista_only), mas um banco carregado com avista_only=False traria
+# opções/termo (~98% do arquivo) direto para o ranking de liquidez sem este predicado.
+SPOT_MARKET = "010"
+
 
 def _median(xs):
     s = sorted(xs)
@@ -29,8 +34,8 @@ def rank_universe(conn, asof, lookback=126, min_history=252):
     # asof), não "os últimos N registros de cada ticker" — senão um papel deslistado
     # há anos passa a janela usando pregões antigos como se fossem recentes.
     window_dates = [r[0] for r in conn.execute(
-        "SELECT DISTINCT date FROM prices_raw WHERE date < ? ORDER BY date DESC LIMIT ?",
-        (asof, lookback))]
+        "SELECT DISTINCT date FROM prices_raw WHERE date < ? AND market_type = ? "
+        "ORDER BY date DESC LIMIT ?", (asof, SPOT_MARKET, lookback))]
     if len(window_dates) < lookback:
         return []
     window_start = window_dates[-1]
@@ -39,12 +44,12 @@ def rank_universe(conn, asof, lookback=126, min_history=252):
     # min_history, último pregão p/ deslistagem. GROUP BY date dedupa re-ingest.
     hist = {r[0]: (r[1], r[2]) for r in conn.execute(
         "SELECT ticker, COUNT(DISTINCT date), MAX(date) FROM prices_raw "
-        "WHERE date < ? GROUP BY ticker", (asof,))}
+        "WHERE date < ? AND market_type = ? GROUP BY ticker", (asof, SPOT_MARKET))}
     vols: dict[str, list[float]] = {}
     for tk, _d, v in conn.execute(
             "SELECT ticker, date, MAX(volume_fin) FROM prices_raw "
-            "WHERE date >= ? AND date < ? GROUP BY ticker, date",
-            (window_start, asof)):
+            "WHERE date >= ? AND date < ? AND market_type = ? GROUP BY ticker, date",
+            (window_start, asof, SPOT_MARKET)):
         vols.setdefault(tk, []).append(v)
 
     meds = {}
@@ -72,11 +77,14 @@ def select_universe(conn, asof, top_n=60, lookback=126, min_history=252):
 
 
 def materialize_snapshot(conn, asof, top_n=60, lookback=126, min_history=252):
-    """Grava o universo point-in-time em universe_snapshots (auditável para sempre)."""
+    """Grava o universo point-in-time em universe_snapshots (auditável para sempre).
+
+    INSERT OR IGNORE: snapshot é IMUTÁVEL — re-executar com código novo não
+    reescreve o passado registrado; um recálculo deliberado é um novo run."""
     ranked = rank_universe(conn, asof, lookback, min_history)[:top_n]
     for rank, (tk, med) in enumerate(ranked, 1):
         conn.execute(
-            "INSERT OR REPLACE INTO universe_snapshots(asof_date,ticker,median_vol,rank) "
+            "INSERT OR IGNORE INTO universe_snapshots(asof_date,ticker,median_vol,rank) "
             "VALUES(?,?,?,?)", (asof, tk, med, rank))
     conn.commit()
     return [t for t, _ in ranked]

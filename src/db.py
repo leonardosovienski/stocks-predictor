@@ -115,6 +115,12 @@ MIGRATIONS: list[tuple[str, str]] = [
     ("0002_runs_params_frozen_until", """
         ALTER TABLE runs ADD COLUMN params_frozen_until TEXT;
     """),
+    # filtro à-vista na camada de leitura (universe/backtest) usa market_type como
+    # predicado — sem índice, cada consulta de calendário viraria full scan da tabela
+    ("0003_idx_prices_raw_market_type_date", """
+        CREATE INDEX IF NOT EXISTS idx_prices_raw_mkt_date
+            ON prices_raw(market_type, date);
+    """),
 ]
 
 

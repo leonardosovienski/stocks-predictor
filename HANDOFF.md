@@ -8,7 +8,7 @@ Atualizar ao fim de cada marco. Toda decisão registrada aqui é permanente.
 ## Estado atual: M1–M6 — núcleo implementado sobre dados sintéticos ✓ (veredito real da H1 aguarda COTAHIST real)
 
 **Data:** 2026-07-04
-**Suíte:** 106/106 verde (`py -3.13 -m pytest tests/ -q`) — M0..M6 + plataforma (pedágio/telemetria/net/lacre frozen/guard de segredos)
+**Suíte:** 109/109 verde (`py -3.13 -m pytest tests/ -q`) — M0..M6 + plataforma (pedágio/telemetria/net/lacre frozen/guard de segredos)
 **Implementador:** Claude Code
 
 ### Revisão de código da sessão (2026-07-04) — 8 ângulos, fixes aplicados
@@ -87,6 +87,43 @@ existir — vive no upstream, não mais em `scripts/` deste repo): 33 arquivos, 
   janelas de trade SOBREPOSTAS) não se aplica — nossos retornos são diários
   não-sobrepostos; a autocorrelação residual é papel da Lente 2 (blocos), como o
   design já previa.
+
+### Porte do trabalho Red Team (main, não commitado) + custo por TURNOVER (2026-07-10)
+
+Health-check dos 3 projetos irmãos (todos verdes: core 145, cripto 256, wc 234; vendors
+em sincronia via `sync_core.py --check`) revelou **trabalho paralelo NÃO COMMITADO no
+checkout principal deste repo** (auditoria "Red Team", jun/2026): 306 linhas em src/,
+com uma correção material que esta linha não tinha. Portado para cá (a working tree da
+main permanece intacta — reconciliação de branches é decisão do operador):
+
+1. **Custo proporcional ao TURNOVER REAL** (`execution.calculate_turnover_cost` +
+   `one_way_cost`; walk_forward rastreia prev_port): o modelo anterior cobrava o
+   roundtrip de 0,36% sobre a carteira INTEIRA todo rebalance — assumia turnover de
+   100%/mês e superestimava o arrasto ~3-5× para carteiras persistentes, viés CONTRA a
+   estratégia. Agora só entra/sai paga (1 lado cada). É a leitura honesta do
+   pré-registro ("custo 0,36% ida-e-volta" por operação, não por carteira-mês).
+   Blindado por `test_turnover_cost_accuracy`.
+2. **Veredito "SEM DADOS" ≠ "amostra curta"** no judge (pipeline vazio não se disfarça
+   de veredito estatístico).
+3. **Filtro à-vista na LEITURA** (`universe.SPOT_MARKET='010'` nas queries de
+   universo/calendário) — defesa em camada p/ banco carregado com `avista_only=False`;
+   fecha a pendência declarada na revisão. Migração append-only `0003` cria índice
+   `(market_type, date)` (sem ele o predicado forçava full scan — backtest 46s→3m16s;
+   com ele, 1m21s).
+4. **Sanidade nos ajustes**: fator <= 0 => ValueError; fora de [0.05, 20] => warning;
+   ex_date fora do range de preços => ignorado com warning.
+5. **Snapshots imutáveis**: `materialize_snapshot` INSERT OR REPLACE → OR IGNORE.
+6. + testes de regressão deles: quarentena futura não exclui (anti-lookahead),
+   quarentena resolvida não exclui, turnover cost. **Suíte 109/109 verde.**
+
+NÃO portado (avaliado): `next_open_after` retornando gap (muda shape da API por
+logging marginal); asserts de pré-condição no factor; logs de debug.
+
+**VEREDITO H1 re-rodado com custo justo (stationary, 2092 pregões):**
+PSR 0,43→**0,57**; IC95% ΔSharpe (−0,400, 0,257)→**(−0,263, 0,387)** — o custo
+superestimado estava de fato penalizando a estratégia; ainda assim o IC cruza zero:
+**H1 segue "não comprovada"** nesta janela. Ressalva de sempre: ~426 candidatos a
+split não adjudicados seguem fora (quarentena conservadora).
 
 **Conhecidos, NÃO corrigidos (decisão de design pendente, não silenciosa):**
 - `factor.momentum_12_1` não checa recência do último preço ≤ asof (guardado hoje pelo

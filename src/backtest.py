@@ -21,6 +21,7 @@ import sys
 
 import adjust
 import db
+import execution
 import factor
 import portfolio
 from config import load_config
@@ -36,14 +37,22 @@ def _daily_returns(dates, closes):
 
 
 def walk_forward(conn, cfg):
-    """Retorna (strat_diaria, bench_diaria) — listas pareadas de retornos diários."""
+    """Retorna (strat_diaria, bench_diaria) — listas pareadas de retornos diários.
+
+    Custo de transação: proporcional ao turnover REAL entre rebalanceamentos
+    consecutivos — papel que permanece na carteira não opera, logo não paga.
+    cost_period = (n_saindo + n_entrando) × one_way / n_portfolio. Cobrar o
+    roundtrip da carteira INTEIRA todo mês (modelo anterior) assumia turnover de
+    100% e superestimava o arrasto contra a estratégia (auditoria Red Team 06/2026).
+    """
     f, u = cfg["factor"], cfg["universe"]
     e, bt = cfg["execution"], cfg["backtest"]
     lookback_mom, skip = f.get("lookback_days", 252), f.get("skip_days", 21)
     top_n = u.get("top_n", 60)
     liq_lb, min_hist = u.get("lookback_trading_days", 126), u.get("min_history_days", 252)
     quant = 0.2  # top_quintile
-    cost = 2.0 * (e.get("b3_fee_pct", 0.0003) + e.get("spread_slippage_pct", 0.0015))
+    one_way = execution.one_way_cost(
+        e.get("b3_fee_pct", 0.0003), e.get("spread_slippage_pct", 0.0015))
     test_start = bt.get("test_start", "0000-00-00")
 
     # carga PREGUIÇOSA e memoizada: só tickers que entram em algum universo mensal —
@@ -58,10 +67,12 @@ def walk_forward(conn, cfg):
             dret[tk] = _daily_returns(dates, closes)
 
     all_dates = [r[0] for r in conn.execute(
-        "SELECT DISTINCT date FROM prices_raw ORDER BY date")]
+        "SELECT DISTINCT date FROM prices_raw WHERE market_type = ? ORDER BY date",
+        (universe.SPOT_MARKET,))]
     rebal = [d for d in month_end_dates(all_dates) if d >= test_start]
 
     strat, bench = [], []
+    prev_port: set = set()
     for t, t1 in zip(rebal, rebal[1:]):
         uni = universe.select_universe(conn, t, top_n=top_n, lookback=liq_lb, min_history=min_hist)
         if not uni:
@@ -71,14 +82,22 @@ def walk_forward(conn, cfg):
         sub = {tk: series[tk] for tk in uni}
         port = list(portfolio.select_portfolio(factor.signals(sub, t, lookback_mom, skip), quant))
         if not port:
+            prev_port = set()
             continue
+
+        port_set = set(port)
+        # custo do turnover real, normalizado pelo peso 1/n da posição equiponderada.
+        # 1ª carteira (prev vazio) = tudo entrando => custo de entrada por posição.
+        period_cost = execution.calculate_turnover_cost(prev_port, port_set, one_way) / len(port_set)
+        prev_port = port_set
+
         period = [d for d in all_dates if t < d <= t1]
         for j, d in enumerate(period):
             srets = [dret[tk][d] for tk in port if d in dret[tk]]
             brets = [dret[tk][d] for tk in uni if d in dret[tk]]
             if not srets or not brets:
                 continue
-            s = sum(srets) / len(srets) - (cost if j == 0 else 0.0)   # custo no rebalance
+            s = sum(srets) / len(srets) - (period_cost if j == 0 else 0.0)
             strat.append(s)
             bench.append(sum(brets) / len(brets))
     return strat, bench
@@ -90,6 +109,11 @@ def judge(strat, bench, cfg):
     n_boot, block = b.get("n_boot", 10_000), b.get("block_length", 21)
     conf, seed = b.get("confidence", 0.95), b.get("seed", 42)
     scheme = b.get("method", "stationary")   # H1 pré-registra STATIONARY (bloco 21)
+    if not strat:
+        # série VAZIA não é "amostra curta" — é ausência de dados (o pipeline não
+        # produziu nenhum par). Não pode se disfarçar de veredito estatístico.
+        return {"n": 0, "psr": None, "sharpe_diff_ci": (None, None),
+                "veredito": "SEM DADOS (pipeline vazio — histórico insuficiente)"}
     if len(strat) < 2 * block:
         return {"n": len(strat), "psr": None, "sharpe_diff_ci": (None, None),
                 "veredito": "INCONCLUSIVO (amostra curta)"}
