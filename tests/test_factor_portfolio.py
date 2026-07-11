@@ -42,9 +42,10 @@ def test_portfolio_is_long_only_top():
 def test_execution_strictly_after_signal_antilookahead():
     dates = ["2024-01-31", "2024-02-01", "2024-02-02"]
     opens = [10.0, 10.5, 10.7]
-    exec_date, exec_price = execution.next_open_after(dates, opens, "2024-01-31")
+    exec_date, exec_price, gap = execution.next_open_after(dates, opens, "2024-01-31")
     assert (exec_date, exec_price) == ("2024-02-01", 10.5)
     assert exec_date > "2024-01-31"                # exec_ts > signal_ts: anti-lookahead
+    assert gap == 1                                # D+1 normal — sem gap de liquidez
 
 
 def test_execution_no_future_is_none():
@@ -54,3 +55,19 @@ def test_execution_no_future_is_none():
 def test_net_return_applies_roundtrip_cost():
     r = execution.net_return(10.0, 11.0, 0.0003, 0.0015)
     assert abs(r - (0.10 - 0.0036)) < 1e-9          # 0.36% ida-e-volta
+
+
+def test_turnover_cost_accuracy():
+    """BLINDAGEM: o custo cobra SÓ o que entrou e saiu — não o portfólio inteiro.
+    Se alguém 'otimizar' cobrando sobre toda a carteira, este teste quebra."""
+    cps = 0.0018                                     # custo por lado (0.03% + 0.15%)
+    # carteira idêntica: zero turnover => custo zero (papéis mantidos não operam)
+    assert execution.calculate_turnover_cost({"A", "B", "C"}, {"A", "B", "C"}, cps) == 0.0
+    # turnover total: 3 saem, 3 entram => 6 lados
+    assert abs(execution.calculate_turnover_cost({"A", "B", "C"}, {"X", "Y", "Z"}, cps)
+               - 6 * cps) < 1e-12
+    # turnover parcial: 1 sai (C), 1 entra (D) => 2 lados, NÃO o portfólio inteiro
+    assert abs(execution.calculate_turnover_cost({"A", "B", "C"}, {"A", "B", "D"}, cps)
+               - 2 * cps) < 1e-12
+    # carteira inicial (prev vazio): tudo entrando => 1 lado por posição
+    assert abs(execution.calculate_turnover_cost(set(), {"A", "B"}, cps) - 2 * cps) < 1e-12

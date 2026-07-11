@@ -20,9 +20,16 @@ def test_vendor_version_file_exists():
 
 
 def test_vendor_version_readable():
+    import re
+
     from predictor_core import __version__
     assert __version__, "predictor_core.__version__ está vazio"
-    assert "vendored" in __version__, "__version__ deve ter carimbo 'vendored'"
+    # O carimbo do vendor é <semver>-<procedência>-<YYYYMMDD> (ex.: 0.7.0-vendored-20260616,
+    # 0.8.0-redteam-20260625). O teste valida o FORMATO da provenância, não uma palavra fixa:
+    # acoplar ao keyword 'vendored' quebrava quando o sync carimbou '-redteam-'. O que importa
+    # é existir procedência datada, não qual a palavra.
+    assert re.match(r"^\d+\.\d+\.\d+-[a-z0-9]+-\d{8}$", __version__), (
+        f"__version__ deve ter carimbo de procedência <semver>-<tag>-<YYYYMMDD>: {__version__!r}")
 
 
 def test_vendor_modules_importable():

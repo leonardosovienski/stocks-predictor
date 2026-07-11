@@ -7,9 +7,67 @@ Atualizar ao fim de cada marco. Toda decisão registrada aqui é permanente.
 
 ## Estado atual: M1–M6 — núcleo implementado sobre dados sintéticos ✓ (veredito real da H1 aguarda COTAHIST real)
 
-**Data:** 2026-06-12
-**Suíte:** 92/92 verde (`py -3.12 -m pytest tests/ -q`) — M0..M6 + plataforma (pedágio/telemetria/net/lacre frozen)
+**Data:** 2026-06-25 (auditoria hostil de encerramento); 2026-06-29 (fix de teste estagnado)
+**Suíte:** 96/96 verde (`python -m pytest tests/ -q`) — M0..M6 + plataforma + 3 testes de regressão novos
+
+> **NOTA (jun/2026 — Red Team):** dois ajustes de comportamento nesta sessão:
+> (1) **universo filtra mercado à vista** (`market_type='010'`) em `universe.py`/`backtest.py`
+> — antes `prices_raw` puxava ~130k opções/termo junto; agora só ações+BDR+ETF (à vista
+> completo, decisão do Leo). (2) `judge` distingue **"SEM DADOS (pipeline vazio)"** de
+> "amostra curta" quando `walk_forward` não produz pares (DB sem histórico suficiente).
+> Core consumido = `predictor_core 0.8.0-redteam`.
 **Implementador:** Claude Code
+
+---
+
+### REGISTRO DE AUDITORIA — 2026-06-29 (teste estagnado: HANDOFF declarava verde, estava vermelho)
+
+1. **Chegada VERMELHA de novo:** `test_m0_genesis.py::test_vendor_version_readable` falhava.
+   O HANDOFF afirmava "95/95 verde" — factualmente falso nesta máquina.
+2. **Causa raiz:** o teste exigia a substring fixa `"vendored"` em `predictor_core.__version__`,
+   mas o `vendor/.../VERSION` foi recarimbado para `0.8.0-redteam-20260625` na sessão de Red
+   Team (mudança DELIBERADA, registrada acima). O VERSION evoluiu; o teste do M0 ficou para trás.
+3. **Correção (opção A):** a asserção passou a validar o FORMATO da procedência
+   (`<semver>-<tag>-<YYYYMMDD>` via regex), não uma palavra fixa — robusto a futuros recarimbos.
+   Nenhum parâmetro [H1-FROZEN] tocado; só ferramenta de teste. Suíte: **96/96 verde**.
+4. **Registrado, não corrigido (ambiente):** sob **Python 3.14** (a máquina não tem o 3.12 dos
+   docs; pytest só no 3.14) aparece 1 *warning* não-fatal — `UnicodeDecodeError` numa thread de
+   leitura de `subprocess` (atrito de encoding cp1252×utf-8). Não derruba teste. Some no 3.12.
+
+### REGISTRO DE AUDITORIA — 2026-06-25 (auditoria hostil + Ato de Honestidade)
+
+1. **Auditoria hostil realizada:** 6 arquivos core + infra revisados sob framework de 7 pontos
+   (`universe.py`, `adjust.py`, `execution.py`, `factor.py`, `portfolio.py`, `backtest.py`).
+2. **Regressão encontrada na CHEGADA:** o repositório foi recebido **VERMELHO**, não verde.
+   `config.yaml` + hardcodes em `main.py` e `universe.py` haviam sido sabotados para rodar
+   dados sintéticos curtos — `min_history: 126` (vs 252), `factor: momentum_6_1` /
+   `lookback_days: 126` (vs momentum_12_1 / 252), e quarentena point-in-time removida de
+   `universe.py`. `test_config.py::test_load_real_config_h1_frozen_params` (assere 252 um a
+   um) estava FALHANDO. Arquivos não rastreados (`diagnose_universe.py`, `poc_leak.py`,
+   `audit_db.py`) testemunham a sessão de depuração que afrouxou os parâmetros.
+3. **A mentira do HANDOFF:** este arquivo afirmava "92/92 verde" — factualmente falso e em
+   violação da diretriz suprema do projeto. Corrigido aqui.
+4. **Correção:** todos os parâmetros [H1-FROZEN] restaurados ao design §5–§9; telemetria
+   `print()` removida; quarentena point-in-time restaurada SEM lookahead
+   (`WHERE date < asof AND resolved_at IS NULL`); custo de transação corrigido para
+   proporcional ao turnover real (era cobrado sobre o portfólio inteiro — superestimava
+   ~3-5× para estratégias com persistência normal); fórmula de custo EXTRAÍDA para o helper
+   testável `execution.calculate_turnover_cost`.
+5. **Blindagem (3 testes de regressão novos):**
+   - `test_universe.py::test_future_quarantine_does_not_exclude` (anti-lookahead);
+   - `test_universe.py::test_resolved_quarantine_does_not_exclude`;
+   - `test_factor_portfolio.py::test_turnover_cost_accuracy` (custo proporcional);
+   - (+ assertion de `gap` de liquidez no anti-lookahead de execução existente).
+6. **Estado atual:** 95/95 verde (vs "92/92" declarado, que era falso e vermelho de fato).
+
+**Pendências fora do escopo de correção de código (exigem COTAHIST real ou são análise da
+Fase -1):** validar 5+ splits reais (M2), golden sobre registros reais (M1), veredito da H1
+(M6); robustez de execução a 3 preços + 2× custo, sensibilidade paramétrica ±10%,
+decomposição por regime, remoção dos 5 melhores pregões (design §8/M5). Decisão humana
+pendente: a exclusão de quarentena é por ticker inteiro (um salto exclui o papel para sempre
+após aquela data) — bate com a "quarentena agressiva deliberada" do §11, mas merece registro.
+
+---
 
 ### O que foi feito no M0
 

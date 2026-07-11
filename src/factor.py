@@ -7,7 +7,14 @@ a H1 ser julgada. Usa apenas preços <= asof.
 
 
 def _idx_le(dates, asof):
-    """Índice do último pregão <= asof (dates asc), ou None."""
+    """Índice do último pregão <= asof (dates asc), ou None.
+
+    PRÉ-CONDIÇÃO: dates deve estar em ordem crescente (garantido pela query
+    ORDER BY date em adjusted_series). A asserção abaixo detecta violações em
+    desenvolvimento; em produção com -O é removida automaticamente.
+    """
+    assert all(dates[i] <= dates[i + 1] for i in range(len(dates) - 1)), \
+        "dates fora de ordem — violação de pré-condição de _idx_le"
     res = None
     for i, d in enumerate(dates):
         if d <= asof:

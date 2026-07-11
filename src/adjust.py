@@ -11,8 +11,12 @@ retorno total e o viés NÃO é neutro — papéis de momentum tendem a yield me
 omitir FAVORECE a estratégia contra o benchmark (viés a nosso favor = o pior tipo).
 Registrado no HANDOFF. Rota (a) [proventos de fonte nomeada] fica para quando houver fonte.
 """
+import logging
+
+logger = logging.getLogger(__name__)
 
 _SPLIT_RATIOS = (2, 3, 4, 5, 6, 8, 10)
+_FACTOR_MIN, _FACTOR_MAX = 0.05, 20.0  # limites sanidade para fator de ajuste
 
 
 def overnight_returns(dates, closes):
@@ -46,9 +50,18 @@ def infer_split_factor(close_before, close_after, tol=0.08):
 
 def adjusted_closes(dates, closes, adjustments):
     """adjustments: [(ex_date, factor)]. Multiplica os closes ANTES de cada ex_date pelo
-    fator (cumulativo via aplicação sequencial) — torna a série contínua."""
+    fator (cumulativo via aplicação sequencial) — torna a série contínua.
+
+    Fator zero ou fora do range sanidade (_FACTOR_MIN.._FACTOR_MAX) é rejeitado com
+    ValueError — dado inválido não entra na série silenciosamente.
+    """
     out = list(closes)
     for ex_date, factor in adjustments:
+        if not (factor > 0):
+            raise ValueError(f"fator de ajuste inválido em {ex_date}: {factor!r} (deve ser > 0)")
+        if not (_FACTOR_MIN <= factor <= _FACTOR_MAX):
+            logger.warning("fator de ajuste suspeito em %s: %.4f (fora de [%.2f, %.0f])",
+                           ex_date, factor, _FACTOR_MIN, _FACTOR_MAX)
         out = [c * factor if d < ex_date else c for d, c in zip(dates, out)]
     return out
 
@@ -80,11 +93,24 @@ def scan_and_quarantine(conn, threshold) -> int:
 
 
 def adjusted_series(conn, ticker):
-    """(dates, adjusted_closes) de um ticker, aplicando a tabela `adjustments`."""
+    """(dates, adjusted_closes) de um ticker, aplicando a tabela `adjustments`.
+
+    Eventos de ajuste com ex_date fora do range de prices_raw são logados como warning
+    (não silenciosos — indicam provável erro de fonte ou dados incompletos).
+    """
     rows = conn.execute(
         "SELECT date, close FROM prices_raw WHERE ticker=? ORDER BY date", (ticker,)).fetchall()
     dates = [r[0] for r in rows]
     closes = [r[1] for r in rows]
-    adjustments = [(r[0], r[1]) for r in conn.execute(
-        "SELECT ex_date, factor FROM adjustments WHERE ticker=? ORDER BY ex_date", (ticker,))]
+    raw_adj = conn.execute(
+        "SELECT ex_date, factor FROM adjustments WHERE ticker=? ORDER BY ex_date",
+        (ticker,)).fetchall()
+    date_set = set(dates)
+    adjustments = []
+    for ex_date, factor in raw_adj:
+        if dates and (ex_date < dates[0] or ex_date > dates[-1]):
+            logger.warning("ajuste de %s em %s está fora do range de preços [%s, %s] — ignorado",
+                           ticker, ex_date, dates[0], dates[-1])
+            continue
+        adjustments.append((ex_date, factor))
     return dates, adjusted_closes(dates, closes, adjustments)
