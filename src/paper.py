@@ -51,7 +51,7 @@ def settle_executions(conn, cfg) -> int:
         nxt = next_open_after([r[0] for r in prices], [r[1] for r in prices], asof)
         if nxt is None:
             continue
-        exec_date, exec_price, _gap = nxt
+        exec_date, exec_price = nxt
         conn.execute(
             "UPDATE decisions SET exec_date=COALESCE(exec_date,?), "
             "exec_price=COALESCE(exec_price,?) WHERE run_id=? AND asof=? AND ticker=?",

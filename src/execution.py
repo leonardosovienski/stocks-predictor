@@ -3,25 +3,14 @@
 Sinal no fechamento de `asof`; execução na ABERTURA do primeiro pregão SEGUINTE (D+1).
 Garante exec_ts > signal_ts — o invariante anti-lookahead capital.
 """
-import logging
-
-logger = logging.getLogger(__name__)
-
-_MAX_GAP_WARN = 3  # pregões — gap maior que isso é logado como anomalia de liquidez
 
 
 def next_open_after(dates, opens, signal_date):
-    """(exec_date, exec_price, gap_days) = abertura do PRIMEIRO pregão estritamente após
-    signal_date. None se não houver D+1. exec_date > signal_date por construção.
-
-    gap_days = posição do pregão encontrado na lista (1 = D+1 normal). Valores > 3
-    indicam suspensão ou baixa liquidez — logados como warning para auditoria.
-    """
-    for gap, (d, o) in enumerate(zip(dates, opens), start=0):
+    """(exec_date, exec_price) = abertura do PRIMEIRO pregão estritamente após
+    signal_date. None se não houver D+1. exec_date > signal_date por construção."""
+    for d, o in zip(dates, opens):
         if d > signal_date:
-            if gap > _MAX_GAP_WARN:
-                logger.warning("gap de liquidez: %d pregões até exec após %s", gap, signal_date)
-            return d, o, gap
+            return d, o
     return None
 
 
@@ -40,7 +29,8 @@ def calculate_turnover_cost(prev_port, curr_port, cost_per_side):
 
     SÓ posições que de fato entraram ou saíram pagam — papéis que permanecem na carteira
     não geram operação, logo custo zero. Blinda contra a fraude clássica de cobrar custo
-    sobre o portfólio inteiro (que subestima high-turnover e superestima buy-and-hold).
+    sobre o portfólio inteiro (que superestima o arrasto para carteiras com persistência
+    normal e distorce o veredito CONTRA a estratégia).
 
     prev_port / curr_port: conjuntos de tickers. cost_per_side = fee + slippage por lado.
     Retorna o custo SOMADO em unidades de "lado por posição" — o chamador normaliza pelo

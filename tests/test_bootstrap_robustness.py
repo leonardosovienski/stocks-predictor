@@ -3,7 +3,7 @@
 A LENTE 2 do pedágio precisa sobreviver a estatísticas que retornam None em reamostras
 degeneradas (ex.: Spearman sobre um bloco de variância nula) — senão o sort() quebraria
 silenciosamente. Teste DEDICADO da garantia (a primitiva mais importante da plataforma)."""
-from predictor_core.stats import block_bootstrap_ci
+from predictor_core.measurement.bootstrap import bootstrap_ci as block_bootstrap_ci
 
 
 def test_drops_none_resamples_keeps_the_rest():

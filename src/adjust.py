@@ -10,13 +10,21 @@ passada em retorno SÓ-PREÇO. Viés conhecido e DECLARADO: omitir proventos sub
 retorno total e o viés NÃO é neutro — papéis de momentum tendem a yield menor, então
 omitir FAVORECE a estratégia contra o benchmark (viés a nosso favor = o pior tipo).
 Registrado no HANDOFF. Rota (a) [proventos de fonte nomeada] fica para quando houver fonte.
+
+Adjudicação humana (export/import CSV): a IA infere a PROPORÇÃO redonda mas NUNCA grava
+em `adjustments` sozinha (§9b/§11 — sem fix silencioso). `export_candidates_csv` lista os
+candidatos plausíveis para revisão; `import_approved_adjustments` só grava as linhas que
+o humano preencheu com `source` E `approved_by` — o resto fica em quarentena.
 """
+import csv
 import logging
 
 logger = logging.getLogger(__name__)
 
 _SPLIT_RATIOS = (2, 3, 4, 5, 6, 8, 10)
-_FACTOR_MIN, _FACTOR_MAX = 0.05, 20.0  # limites sanidade para fator de ajuste
+_FACTOR_MIN, _FACTOR_MAX = 0.05, 20.0  # faixa de sanidade p/ fator de ajuste
+_CSV_FIELDS = ("ticker", "ex_date", "close_before", "close_after", "ratio",
+               "tipo_inferido", "factor_sugerido", "source", "approved_by", "notes")
 
 
 def overnight_returns(dates, closes):
@@ -52,12 +60,11 @@ def adjusted_closes(dates, closes, adjustments):
     """adjustments: [(ex_date, factor)]. Multiplica os closes ANTES de cada ex_date pelo
     fator (cumulativo via aplicação sequencial) — torna a série contínua.
 
-    Fator zero ou fora do range sanidade (_FACTOR_MIN.._FACTOR_MAX) é rejeitado com
-    ValueError — dado inválido não entra na série silenciosamente.
-    """
+    Fator <= 0 é dado inválido e levanta ValueError (não entra em silêncio); fator fora
+    da faixa de sanidade [_FACTOR_MIN, _FACTOR_MAX] é aplicado mas logado como suspeito."""
     out = list(closes)
     for ex_date, factor in adjustments:
-        if not (factor > 0):
+        if not factor > 0:
             raise ValueError(f"fator de ajuste inválido em {ex_date}: {factor!r} (deve ser > 0)")
         if not (_FACTOR_MIN <= factor <= _FACTOR_MAX):
             logger.warning("fator de ajuste suspeito em %s: %.4f (fora de [%.2f, %.0f])",
@@ -75,8 +82,11 @@ def scan_and_quarantine(conn, threshold) -> int:
     tickers = [r[0] for r in conn.execute("SELECT DISTINCT ticker FROM prices_raw")]
     n = 0
     for t in tickers:
+        # GROUP BY date: re-ingest sob outro source_file duplica (date,ticker) —
+        # sem o dedup, o par duplicado viraria um "retorno" espúrio de ~0%.
         rows = conn.execute(
-            "SELECT date, close FROM prices_raw WHERE ticker=? ORDER BY date", (t,)).fetchall()
+            "SELECT date, MAX(close) FROM prices_raw WHERE ticker=? "
+            "GROUP BY date ORDER BY date", (t,)).fetchall()
         dates = [r[0] for r in rows]
         closes = [r[1] for r in rows]
         explained = {r[0] for r in conn.execute(
@@ -94,23 +104,117 @@ def scan_and_quarantine(conn, threshold) -> int:
 
 def adjusted_series(conn, ticker):
     """(dates, adjusted_closes) de um ticker, aplicando a tabela `adjustments`.
-
-    Eventos de ajuste com ex_date fora do range de prices_raw são logados como warning
-    (não silenciosos — indicam provável erro de fonte ou dados incompletos).
-    """
+    GROUP BY date dedupa re-ingest sob outro source_file. Ajuste com ex_date fora do
+    range de preços é IGNORADO com warning (provável erro de fonte/dados incompletos)."""
     rows = conn.execute(
-        "SELECT date, close FROM prices_raw WHERE ticker=? ORDER BY date", (ticker,)).fetchall()
+        "SELECT date, MAX(close) FROM prices_raw WHERE ticker=? "
+        "GROUP BY date ORDER BY date", (ticker,)).fetchall()
     dates = [r[0] for r in rows]
     closes = [r[1] for r in rows]
-    raw_adj = conn.execute(
-        "SELECT ex_date, factor FROM adjustments WHERE ticker=? ORDER BY ex_date",
-        (ticker,)).fetchall()
-    date_set = set(dates)
     adjustments = []
-    for ex_date, factor in raw_adj:
+    for ex_date, factor in conn.execute(
+            "SELECT ex_date, factor FROM adjustments WHERE ticker=? ORDER BY ex_date",
+            (ticker,)):
         if dates and (ex_date < dates[0] or ex_date > dates[-1]):
-            logger.warning("ajuste de %s em %s está fora do range de preços [%s, %s] — ignorado",
+            logger.warning("ajuste de %s em %s fora do range de preços [%s, %s] — ignorado",
                            ticker, ex_date, dates[0], dates[-1])
             continue
         adjustments.append((ex_date, factor))
     return dates, adjusted_closes(dates, closes, adjustments)
+
+
+# --- adjudicação humana: quarentena -> candidatos com proporção redonda -----
+
+def list_split_candidates(conn, tol=0.08):
+    """Quarentena ABERTA cuja proporção de preço bate um split/grupamento redondo.
+    Não resolve nada — só ordena o que É plausível de ser um evento corporativo real
+    (para o humano confirmar com fonte) do que é ruído de ilíquida/erro."""
+    by_ticker: dict[str, list[str]] = {}
+    for tk, d in conn.execute(
+            "SELECT ticker, date FROM quarantine "
+            "WHERE resolved_at IS NULL ORDER BY ticker, date"):
+        by_ticker.setdefault(tk, []).append(d)
+    out = []
+    for tk, qdates in by_ticker.items():
+        # série do ticker UMA vez (não por linha de quarentena); GROUP BY date protege
+        # contra duplicatas de re-ingest (UNIQUE inclui source_file).
+        prices = conn.execute(
+            "SELECT date, MAX(close) FROM prices_raw WHERE ticker=? "
+            "GROUP BY date ORDER BY date", (tk,)).fetchall()
+        idx = {r[0]: i for i, r in enumerate(prices)}
+        for d in qdates:
+            i = idx.get(d)
+            if not i:                                     # ausente ou primeiro pregão
+                continue
+            cb, ca = prices[i - 1][1], prices[i][1]
+            factor = infer_split_factor(cb, ca, tol)
+            if factor is None:
+                continue
+            out.append({
+                "ticker": tk, "ex_date": d,
+                "close_before": round(cb, 4), "close_after": round(ca, 4),
+                "ratio": round(cb / ca, 4) if ca else None,
+                "tipo_inferido": "desdobramento" if factor < 1 else "grupamento",
+                "factor_sugerido": factor,
+                "source": "", "approved_by": "", "notes": "",
+            })
+    return out
+
+
+def export_candidates_csv(conn, path, tol=0.08) -> int:
+    """Grava os candidatos a split/grupamento em CSV para revisão humana. Colunas
+    `source`/`approved_by` ficam em branco — preencha e rode `import_approved_adjustments`
+    para gravar em `adjustments` só as linhas explicitamente aprovadas."""
+    candidates = list_split_candidates(conn, tol)
+    with open(path, "w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=_CSV_FIELDS)
+        w.writeheader()
+        w.writerows(candidates)
+    return len(candidates)
+
+
+def import_approved_adjustments(conn, path) -> int:
+    """Lê o CSV de revisão de volta; grava em `adjustments` SÓ as linhas com `source` E
+    `approved_by` preenchidos (write-once via UNIQUE(ticker,ex_date,type) — não
+    reescreve linha existente). A quarentena correspondente é RESOLVIDA junto — é a
+    aprovação humana explícita (via CSV) que fecha o ciclo, nunca a IA sozinha (§9b/§11).
+    Linhas sem aprovação ficam ignoradas (permanecem quarentenadas). Retorna nº de
+    ajustes gravados."""
+    n = 0
+    with open(path, newline="", encoding="utf-8") as f:
+        for row in csv.DictReader(f):
+            source = (row.get("source") or "").strip()
+            approved_by = (row.get("approved_by") or "").strip()
+            if not source or not approved_by:
+                continue
+            tipo = "split" if row["tipo_inferido"] == "desdobramento" else "grupamento"
+            factor = float(row["factor_sugerido"])
+            cur = conn.execute(
+                "INSERT OR IGNORE INTO adjustments"
+                "(ticker, ex_date, factor, type, source, notes, approved_by) "
+                "VALUES (?,?,?,?,?,?,?)",
+                (row["ticker"], row["ex_date"], factor, tipo,
+                 source, row.get("notes") or None, approved_by))
+            if cur.rowcount == 0:
+                # write-once: já existe ajuste p/ (ticker, ex_date, type). Se o fator
+                # DIVERGE do CSV, a correção NÃO entrou — não podemos resolver a
+                # quarentena como se tivesse entrado (série continuaria descontínua
+                # com o papel readmitido no universo). Avisar e pular.
+                existing = conn.execute(
+                    "SELECT factor FROM adjustments WHERE ticker=? AND ex_date=? AND type=?",
+                    (row["ticker"], row["ex_date"], tipo)).fetchone()
+                if existing is None or abs(existing[0] - factor) > 1e-9:
+                    print(f"AVISO: {row['ticker']} {row['ex_date']}: ajuste já existe "
+                          f"com fator {existing[0] if existing else '?'} != {factor} do CSV "
+                          f"(write-once — linha IGNORADA, quarentena mantida)")
+                    continue
+                # fator idêntico => re-import idempotente; ok resolver.
+            else:
+                n += 1
+            conn.execute(
+                "UPDATE quarantine SET resolved_at=datetime('now'), "
+                "resolution=COALESCE(resolution, ?) "
+                "WHERE ticker=? AND date=? AND resolved_at IS NULL",
+                (f"aprovado por {approved_by} ({source})", row["ticker"], row["ex_date"]))
+    conn.commit()
+    return n

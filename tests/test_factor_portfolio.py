@@ -42,10 +42,9 @@ def test_portfolio_is_long_only_top():
 def test_execution_strictly_after_signal_antilookahead():
     dates = ["2024-01-31", "2024-02-01", "2024-02-02"]
     opens = [10.0, 10.5, 10.7]
-    exec_date, exec_price, gap = execution.next_open_after(dates, opens, "2024-01-31")
+    exec_date, exec_price = execution.next_open_after(dates, opens, "2024-01-31")
     assert (exec_date, exec_price) == ("2024-02-01", 10.5)
     assert exec_date > "2024-01-31"                # exec_ts > signal_ts: anti-lookahead
-    assert gap == 1                                # D+1 normal — sem gap de liquidez
 
 
 def test_execution_no_future_is_none():

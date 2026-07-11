@@ -25,8 +25,10 @@
 ## Convenções do projeto
 
 - TODO I/O de texto declara `encoding="utf-8"` (default do Windows é cp1252 — já mordeu).
-- `vendor/predictor_core/` NÃO se edita à toa — é vendorizado; mudanças são "evolução por
-  demanda", carimbadas no VERSION e marcadas para upstream (`scripts/sync_core.py`).
+- `vendor/predictor_core/` NÃO se edita à toa — a fonte da verdade é o repo irmão
+  `C:\Claude-projetos\Claude\predictor_core\` e o sync é UNIDIRECIONAL via o
+  `sync_core.py` de lá (`--check`/`--write`). Evolução por demanda vai PRO upstream
+  primeiro e desce pelo sync; código customizado no vendor é DELETADO pelo prune.
 - Migrações em `src/db.py` são append-only: nunca alterar uma existente, sempre adicionar.
 - Config: `src/config.py` (mini-parser stdlib do subconjunto plano de YAML). Parâmetros
   `[H1-FROZEN]` no config.yaml não se tocam após qualquer rodada de resultado.

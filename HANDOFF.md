@@ -7,67 +7,264 @@ Atualizar ao fim de cada marco. Toda decisão registrada aqui é permanente.
 
 ## Estado atual: M1–M6 — núcleo implementado sobre dados sintéticos ✓ (veredito real da H1 aguarda COTAHIST real)
 
-**Data:** 2026-06-25 (auditoria hostil de encerramento); 2026-06-29 (fix de teste estagnado)
-**Suíte:** 96/96 verde (`python -m pytest tests/ -q`) — M0..M6 + plataforma + 3 testes de regressão novos
-
-> **NOTA (jun/2026 — Red Team):** dois ajustes de comportamento nesta sessão:
-> (1) **universo filtra mercado à vista** (`market_type='010'`) em `universe.py`/`backtest.py`
-> — antes `prices_raw` puxava ~130k opções/termo junto; agora só ações+BDR+ETF (à vista
-> completo, decisão do Leo). (2) `judge` distingue **"SEM DADOS (pipeline vazio)"** de
-> "amostra curta" quando `walk_forward` não produz pares (DB sem histórico suficiente).
-> Core consumido = `predictor_core 0.8.0-redteam`.
+**Data:** 2026-07-04
+**Suíte:** 109/109 verde (`py -3.13 -m pytest tests/ -q`) — M0..M6 + plataforma (pedágio/telemetria/net/lacre frozen/guard de segredos)
 **Implementador:** Claude Code
 
----
+### Revisão de código da sessão (2026-07-04) — 8 ângulos, fixes aplicados
 
-### REGISTRO DE AUDITORIA — 2026-06-29 (teste estagnado: HANDOFF declarava verde, estava vermelho)
+Code review multi-ângulo sobre o diff completo da sessão. Correções aplicadas:
 
-1. **Chegada VERMELHA de novo:** `test_m0_genesis.py::test_vendor_version_readable` falhava.
-   O HANDOFF afirmava "95/95 verde" — factualmente falso nesta máquina.
-2. **Causa raiz:** o teste exigia a substring fixa `"vendored"` em `predictor_core.__version__`,
-   mas o `vendor/.../VERSION` foi recarimbado para `0.8.0-redteam-20260625` na sessão de Red
-   Team (mudança DELIBERADA, registrada acima). O VERSION evoluiu; o teste do M0 ficou para trás.
-3. **Correção (opção A):** a asserção passou a validar o FORMATO da procedência
-   (`<semver>-<tag>-<YYYYMMDD>` via regex), não uma palavra fixa — robusto a futuros recarimbos.
-   Nenhum parâmetro [H1-FROZEN] tocado; só ferramenta de teste. Suíte: **96/96 verde**.
-4. **Registrado, não corrigido (ambiente):** sob **Python 3.14** (a máquina não tem o 3.12 dos
-   docs; pytest só no 3.14) aparece 1 *warning* não-fatal — `UnicodeDecodeError` numa thread de
-   leitura de `subprocess` (atrito de encoding cp1252×utf-8). Não derruba teste. Some no 3.12.
+1. **`import_approved_adjustments` resolvia quarentena com INSERT ignorado** — se já
+   existia ajuste com fator DIVERGENTE do CSV (write-once), a correção era descartada
+   em silêncio mas a quarentena fechava mesmo assim → papel voltava ao universo com a
+   série ainda descontínua. Agora: fator divergente = AVISO + linha ignorada +
+   quarentena mantida; fator idêntico = re-import idempotente. Teste de regressão.
+2. **`runs.config_hash` constante** — `cmd_backtest` registrava `{'backtest': True}`
+   em vez do config real, quebrando "reproduzível por run_id+config_hash" (§11).
+   Agora `new_run` recebe o cfg completo (backtest) / cfg embutido (paper).
+3. **`PREDICTOR_DB_PATH` na altitude errada** — o override vivia só em `main._db_path`;
+   `cmd_ingest`, `backtest.run()` default, `paper.main` e `analyst.main` iam direto ao
+   banco de produção mesmo com a env setada. Movido para `db.get_connection` (mesmo
+   padrão do `obs.EVENTS_ENV`); `main._db_path` mantido p/ honrar cfg.
+4. **Suíte poluía `reports/` real** — o smoke test do backtest gravava um
+   `h1_verdict_*.md` de verdade a cada rodada do pytest. Novo override
+   `PREDICTOR_REPORTS_DIR` em `report.write_report` (padrão obs), setado no teste.
+5. **NaN na telemetria** — `isinstance(nan, float)` passa e `json.dumps` emite `NaN`
+   (JSON inválido); PSR degenerado corromperia o events.jsonl append-only. Filtro de
+   metrics agora exige finito (`math.isfinite`). Teste de regressão.
+6. **Mediana de liquidez com amostra única** — papel que negociou 1x na janela ganhava
+   "mediana" daquele print (um bloco de R$80M ranquearia um papel intragável). Sessão
+   do calendário sem negócio agora conta volume 0. Teste de regressão.
+7. **Datas duplicadas por re-ingest** — UNIQUE inclui source_file; re-download com
+   outro nome duplicaria (date,ticker) e quebraria `dates.index`/retornos. `GROUP BY
+   date` em `adjusted_series`, `scan_and_quarantine` e `list_split_candidates`.
+8. **Paths relativos ao cwd** — `splits-review`/`splits-import` agora ancoram no ROOT.
+9. **Eficiência** — `rank_universe`: janela via SQL + agregados de uma passada (era
+   N+1 de história completa por ticker por rebalance); `list_split_candidates`: uma
+   query por ticker (era uma por linha de quarentena); `walk_forward`: carga preguiçosa
+   só dos tickers que entram em universo. Backtest 11 anos: **4min23s → 1min03s**
+   (medido). Veredito re-rodado pós-fixes: 2092 pregões, PSR 0,429, IC95% ΔSharpe
+   (−0,391, 0,270) — segue "não comprovada"; o deslocamento pequeno vs a rodada
+   anterior vem da mediana zero-fill (papéis esporádicos saem do universo). O run_id
+   agora carrega o prefixo do config_hash REAL (-f92897), não mais o hash constante.
+10. **Limpeza** — try/except redundante em report.py (get_code_version já tem fallback
+    interno); `_num`/`import math` no topo do módulo; dupla negação no relatório;
+    helper SQL f-string inline no analyst; monkeypatch no test_report; conexões dos
+    comandos fechadas via `contextlib.closing` (não vazam em exceção).
 
-### REGISTRO DE AUDITORIA — 2026-06-25 (auditoria hostil + Ato de Honestidade)
+**Marcado para upstream (predictor-core):** `testing/secrets.py` +
+`testing/__init__.py` (novo subpacote, v0.8.0) — sync manual, `scripts/sync_core.py`
+não existe mais neste repo; NÃO sincronizar por cima sem levar o subpacote junto.
 
-1. **Auditoria hostil realizada:** 6 arquivos core + infra revisados sob framework de 7 pontos
-   (`universe.py`, `adjust.py`, `execution.py`, `factor.py`, `portfolio.py`, `backtest.py`).
-2. **Regressão encontrada na CHEGADA:** o repositório foi recebido **VERMELHO**, não verde.
-   `config.yaml` + hardcodes em `main.py` e `universe.py` haviam sido sabotados para rodar
-   dados sintéticos curtos — `min_history: 126` (vs 252), `factor: momentum_6_1` /
-   `lookback_days: 126` (vs momentum_12_1 / 252), e quarentena point-in-time removida de
-   `universe.py`. `test_config.py::test_load_real_config_h1_frozen_params` (assere 252 um a
-   um) estava FALHANDO. Arquivos não rastreados (`diagnose_universe.py`, `poc_leak.py`,
-   `audit_db.py`) testemunham a sessão de depuração que afrouxou os parâmetros.
-3. **A mentira do HANDOFF:** este arquivo afirmava "92/92 verde" — factualmente falso e em
-   violação da diretriz suprema do projeto. Corrigido aqui.
-4. **Correção:** todos os parâmetros [H1-FROZEN] restaurados ao design §5–§9; telemetria
-   `print()` removida; quarentena point-in-time restaurada SEM lookahead
-   (`WHERE date < asof AND resolved_at IS NULL`); custo de transação corrigido para
-   proporcional ao turnover real (era cobrado sobre o portfólio inteiro — superestimava
-   ~3-5× para estratégias com persistência normal); fórmula de custo EXTRAÍDA para o helper
-   testável `execution.calculate_turnover_cost`.
-5. **Blindagem (3 testes de regressão novos):**
-   - `test_universe.py::test_future_quarantine_does_not_exclude` (anti-lookahead);
-   - `test_universe.py::test_resolved_quarantine_does_not_exclude`;
-   - `test_factor_portfolio.py::test_turnover_cost_accuracy` (custo proporcional);
-   - (+ assertion de `gap` de liquidez no anti-lookahead de execução existente).
-6. **Estado atual:** 95/95 verde (vs "92/92" declarado, que era falso e vermelho de fato).
+### Sync ao core canônico v1.1.0 + stationary pré-registrado (2026-07-09)
 
-**Pendências fora do escopo de correção de código (exigem COTAHIST real ou são análise da
-Fase -1):** validar 5+ splits reais (M2), golden sobre registros reais (M1), veredito da H1
-(M6); robustez de execução a 3 preços + 2× custo, sensibilidade paramétrica ±10%,
-decomposição por regime, remoção dos 5 melhores pregões (design §8/M5). Decisão humana
-pendente: a exclusão de quarentena é por ticker inteiro (um salto exclui o papel para sempre
-após aquela data) — bate com a "quarentena agressiva deliberada" do §11, mas merece registro.
+O upstream `predictor_core/` (repo irmão) estava na **v1.1.0-ga-20260709** — o commit
+quebrado `2c188e0` referia-se ao v1.0.1 dele (o humano sincronizou o teste do guard de
+segredos mas não o vendor; a reconstrução manual desta sessão foi SUBSTITUÍDA pela
+canônica no sync). Sincronizado via a lógica do `sync_core.py` canônico (que voltou a
+existir — vive no upstream, não mais em `scripts/` deste repo): 33 arquivos, agregado
+`026f1f7b761440d9`.
 
----
+- **Reorganização**: `stats`/`replay`/`net`/`obs` da raiz agora são compat shims;
+  consumidores migrados para `measurement.stats` / `measurement.bootstrap` (bye
+  DeprecationWarning). Teste de versão migrado do carimbo 'vendored' para semver
+  (integridade agora é o CORE_MANIFEST, como nos outros 2 domínios).
+- **`bootstrap_ci(scheme=...)` suporta STATIONARY** (Politis-Romano) — que é o que a
+  H1 PRÉ-REGISTRA ("stationary bootstrap, bloco 21"). `config.yaml bootstrap.method:
+  moving→stationary` (linha NÃO é H1-FROZEN; o moving era placeholder declarado
+  "stationary como refinamento M5" — isto é alinhar À pré-especificação, não
+  repescagem). Veredito re-rodado sob o esquema pré-registrado: 2092 pregões, PSR
+  0,429, IC95% ΔSharpe **(−0,400, 0,257)** → **não comprovada** (consistente com o
+  moving; backtest agora em ~46s).
+- **Disponível no core p/ a PRÓXIMA hipótese** (não ligado ainda — por demanda):
+  `measurement.trials` (Experiment Registry + **Deflated Sharpe Ratio** — desconta
+  E[max SR | N tentativas]; obrigatório se iterarmos H2, H3...) com **trava de poder**
+  (criar trial exige atestado do `testing.harness` — controle positivo: o pipeline
+  prova que detectaria edge plantado antes de qualquer NO-GO ser interpretável) e
+  `testing.synth`/`coverage` (séries com verdade conhecida p/ validar a régua).
+- **Aprendizado do previsao-cripto AVALIADO e n/a aqui**: o C2 deles (PSR inflado por
+  janelas de trade SOBREPOSTAS) não se aplica — nossos retornos são diários
+  não-sobrepostos; a autocorrelação residual é papel da Lente 2 (blocos), como o
+  design já previa.
+
+### Porte do trabalho Red Team (main, não commitado) + custo por TURNOVER (2026-07-10)
+
+Health-check dos 3 projetos irmãos (todos verdes: core 145, cripto 256, wc 234; vendors
+em sincronia via `sync_core.py --check`) revelou **trabalho paralelo NÃO COMMITADO no
+checkout principal deste repo** (auditoria "Red Team", jun/2026): 306 linhas em src/,
+com uma correção material que esta linha não tinha. Portado para cá (a working tree da
+main permanece intacta — reconciliação de branches é decisão do operador):
+
+1. **Custo proporcional ao TURNOVER REAL** (`execution.calculate_turnover_cost` +
+   `one_way_cost`; walk_forward rastreia prev_port): o modelo anterior cobrava o
+   roundtrip de 0,36% sobre a carteira INTEIRA todo rebalance — assumia turnover de
+   100%/mês e superestimava o arrasto ~3-5× para carteiras persistentes, viés CONTRA a
+   estratégia. Agora só entra/sai paga (1 lado cada). É a leitura honesta do
+   pré-registro ("custo 0,36% ida-e-volta" por operação, não por carteira-mês).
+   Blindado por `test_turnover_cost_accuracy`.
+2. **Veredito "SEM DADOS" ≠ "amostra curta"** no judge (pipeline vazio não se disfarça
+   de veredito estatístico).
+3. **Filtro à-vista na LEITURA** (`universe.SPOT_MARKET='010'` nas queries de
+   universo/calendário) — defesa em camada p/ banco carregado com `avista_only=False`;
+   fecha a pendência declarada na revisão. Migração append-only `0003` cria índice
+   `(market_type, date)` (sem ele o predicado forçava full scan — backtest 46s→3m16s;
+   com ele, 1m21s).
+4. **Sanidade nos ajustes**: fator <= 0 => ValueError; fora de [0.05, 20] => warning;
+   ex_date fora do range de preços => ignorado com warning.
+5. **Snapshots imutáveis**: `materialize_snapshot` INSERT OR REPLACE → OR IGNORE.
+6. + testes de regressão deles: quarentena futura não exclui (anti-lookahead),
+   quarentena resolvida não exclui, turnover cost. **Suíte 109/109 verde.**
+
+NÃO portado (avaliado): `next_open_after` retornando gap (muda shape da API por
+logging marginal); asserts de pré-condição no factor; logs de debug.
+
+**VEREDITO H1 re-rodado com custo justo (stationary, 2092 pregões):**
+PSR 0,43→**0,57**; IC95% ΔSharpe (−0,400, 0,257)→**(−0,263, 0,387)** — o custo
+superestimado estava de fato penalizando a estratégia; ainda assim o IC cruza zero:
+**H1 segue "não comprovada"** nesta janela. Ressalva de sempre: ~426 candidatos a
+split não adjudicados seguem fora (quarentena conservadora).
+
+**Conhecidos, NÃO corrigidos (decisão de design pendente, não silenciosa):**
+- `factor.momentum_12_1` não checa recência do último preço ≤ asof (guardado hoje pelo
+  filtro de deslistagem do universo — defesa em camada única; guard próprio exigiria
+  calendário no factor e mexe em semântica de sinal com H1 em andamento);
+- filtro à-vista só no ingest: um banco carregado com `avista_only=False` fluiria
+  derivativos p/ o universo sem re-checagem na leitura (aceito; escape hatch é
+  explícito e o banco atual foi carregado filtrado).
+
+### Correção + acabamento (2026-07-04)
+
+Auditoria "roda tudo e mostra onde investir" encontrou a suíte VERMELHA no HEAD e a
+fechou, além de completar dois stubs:
+
+1. **BUG CRÍTICO — commit `2c188e0` quebrou a suíte:** adicionou `tests/test_secrets_telemetry.py`
+   importando `predictor_core.testing.secrets`, módulo que **nunca foi criado** (pytest
+   abortava na coleção → suíte inteira vermelha, contradizendo o "92/92" que o HANDOFF
+   afirmava). Criado o subpacote `vendor/predictor_core/testing/` com `secrets.py`
+   (`find_secrets` + `assert_no_secrets_in_events`, stdlib-regex, conservador). VERSION do
+   core → `0.8.0-vendored-20260704`; `CORE_MANIFEST.json` recomputado. Guard verificado:
+   passa telemetria limpa, pega chave AWS/OpenAI plantada.
+2. **`src/report.py`** (era stub) — relatório do veredito da H1 em `reports/` (Sharpe/
+   Sortino/MaxDD/retorno da estratégia vs. benchmark + o IC do pedágio) + evento
+   estruturado na telemetria (`obs.emit_event`, metrics só-numérico). Ligado ao
+   `main.py backtest` (grava relatório) via `backtest.run(write_report=True)`.
+3. **`src/analyst.py`** (era stub) — analista SOMENTE-LEITURA do §9b: descreve estado
+   (cobertura, universo, quarentena pendente, última carteira) em `reports/ai/`. NÃO
+   escreve no banco, NÃO resolve quarentena, NÃO gera sinal. Comando `main.py analyst`.
+   Determinístico e sem dependência — deletá-lo não quebra teste algum (invariante §9b).
+4. **Robustez:** `backtest.run()` imprimia `Δ` (U+0394, fora do cp1252) — crashava em
+   chamador sem stdout utf-8. Trocado por `diff-Sharpe`. `.gitignore` passou a cobrir
+   `reports/*` e `events.jsonl` (artefatos gerados; versionar é opt-in via `git add -f`).
+
+**Nota de ambiente:** o `py -3.12` do HANDOFF/README antigo não existe nesta máquina
+(3.13 é o global, conforme CLAUDE.md §Ambiente); a suíte roda em `py -3.13`. Nenhum
+parâmetro H1-FROZEN tocado; nada do pipeline de sinal alterado.
+
+### Validação sobre COTAHIST REAL da B3 (2026-07-04)
+
+Chegaram os arquivos reais `COTAHIST_A2024/2025/2026.ZIP` (Downloads). Fecha as
+pendências de dado real de M1 e M2:
+
+- **M1 — parser validado em dado real ✓** PETR4 (30,96/30,71), VALE3 (72,33), ITUB4,
+  BBAS3, MGLU3 — preços 2026 corretos. `quote_factor` ∈ {1,100,1000,10000,1000000}
+  (o caso ≠1 existe de fato). Encoding latin-1 OK.
+- **Filtro à-vista no ingest (decisão do operador):** COTAHIST é ~98% opção/derivativo
+  (mkt 070/080). `cotahist.load_prices` agora filtra `market_type=010 + bdi=02`
+  (à-vista lote-padrão) por padrão — 1,95M registros/2026 → 41k; 407 papéis reais.
+  `avista_only=False` é escape hatch explícito. Coberto por teste. prices_raw segue
+  append-only (só carregamos subconjunto; derivativos podem ser acrescentados depois).
+  3 anos carregados: 210.472 registros à-vista.
+- **M2 — inferidor de split validado em split REAL ✓** dos 263 saltos |r|>30%
+  quarentenados, 57 têm proporção redonda. Confirmados reais: **BBAS3 2024-04-16
+  desdobramento 2:1** (56,46→27,91, fator 0,5), **FESA3+FESA4 2024-01-24** (ON+PN
+  consistentes, 0,25), DIRR3 (3:1), EMAE3, ADMF3... Muito além dos "5+ splits reais"
+  exigidos. `scan_and_quarantine` corretamente NÃO auto-resolve (design: sem fix
+  silencioso; `adjustments` exige source+approved_by humano). Os 206 restantes são
+  ruído de ilíquida/glitch (AZEV4 +1918%, AVLL3 +2309%) — retidos p/ revisão humana.
+- **Dry-run de máquina em real (NÃO é o veredito H1):** universo 2026-06-01 =
+  PETR4, VALE3, ITUB4, PRIO3, BBDC4, B3SA3, BPAC11, ITSA4, ABEV3, RENT3 (liquidez real
+  correta). backtest: 353 pregões, PSR 0,14, IC ΔSharpe (−2,06, 0,16) cruza zero.
+
+**PENDENTE para o veredito H1 pré-registrado (2 itens, ambos do operador humano):**
+1. **Baixar COTAHIST 2016–2023** — só temos 2024-2026; a janela H1 exige aquecimento
+   até 2017-12 e teste 2018-01→último ano completo. Sem isso o veredito não é o
+   pré-registrado.
+2. **Adjudicar os ~57 candidatos a split** — registrar em `adjustments` (com source)
+   os splits reais (BBAS3 etc.) para que esses papéis sejam AJUSTADOS em vez de
+   excluídos por quarentena (hoje BBAS3 sai do universo após 2024-04-16). Decisão
+   humana, fora do alcance da IA (§9b/§11).
+
+### 11 anos completos (2016-2026) + ferramenta de adjudicação + BUG CRÍTICO corrigido (2026-07-04)
+
+O operador conseguiu **todos os anos** (`COTAHIST_A2016..2026.ZIP`). Ingestão completa:
+**1.137.456 registros à-vista** em 4,6s de scan; walk-forward completo (2018→2026,
+2.092 pregões) roda em **~4 minutos** sem numpy — dry-run ainda não é o veredito oficial
+(ver pendência 2 abaixo). Quarentena sobe para 2.209 saltos em 11 anos; **440** têm
+proporção redonda (candidatos a split real).
+
+**Ferramenta de adjudicação humana (`adjust.py` + `main.py`):**
+- `export_candidates_csv` / `main.py splits-review [csv]` — lista os candidatos a
+  split/grupamento (proporção redonda) da quarentena aberta em CSV, colunas
+  `source`/`approved_by` em branco para o operador preencher.
+- `import_approved_adjustments` / `main.py splits-import <csv>` — grava em
+  `adjustments` SÓ as linhas com `source` E `approved_by` preenchidos (write-once via
+  UNIQUE); a IA nunca resolve quarentena sozinha (§9b/§11) — só o CSV aprovado
+  explicitamente pelo humano fecha o ciclo.
+- Fechei um gap: a quarentena resolvida agora é marcada (`resolved_at`) e
+  `universe.rank_universe` passou a IGNORAR quarentena resolvida — antes, mesmo
+  aprovando o split, o papel ficava excluído do universo PARA SEMPRE (a coluna
+  `resolved_at` existia no schema desde o M0 mas nada a usava).
+- CSV gerado: [`reports/splits_candidates.csv`](reports/splits_candidates.csv) (440
+  linhas, gitignored — dado derivado, não versionado).
+
+**BUG CRÍTICO encontrado e corrigido — papel deslistado tratado como ativo:**
+Pedido do operador ("o que eu investiria hoje com base no projeto?") expôs o bug: o
+ranking de momentum em `asof=2026-06-30` incluía `FIBR3` (Fibria, último pregão
+2019-01-03, incorporada pela Suzano), `BVMF3` (virou B3SA3 em 2018-03-23) e `TIMP3`
+(último pregão 2020-10-09) — todos com sinais de momentum calculados a partir de
+preços de **anos atrás**, como se fossem cotações de hoje.
+
+Causa raiz em `universe.rank_universe`: `vols[-lookback:]` pegava os últimos N
+elementos da **própria lista de histórico do ticker**, não os últimos N pregões do
+**calendário real** antes do asof. Para um papel deslistado, "os últimos N da própria
+história" são de anos atrás — mas o código tratava como se fosse a janela de liquidez
+recente, e `len(vols) >= min_history` só checava contagem total, nunca recência.
+`factor.momentum_12_1` tem a mesma lacuna estrutural (`_idx_le` acha "o último pregão
+≤ asof" sem checar se é recente) mas nunca é chamado fora dos tickers que o universo
+já filtrou — corrigir na fronteira do universo bastou.
+
+**Correção:** `rank_universe` agora calcula a janela de liquidez a partir do
+calendário real de pregões (`all_dates[-lookback:]`, não por ticker) e exige que o
+ÚLTIMO pregão do ticker antes do asof esteja DENTRO dessa janela — senão está
+deslistado e é excluído. Teste de regressão:
+`test_excludes_delisted_ticker_stale_before_window`. Suíte 103/103 verde.
+
+**Impacto:** este bug afetava TODO o histórico do walk-forward (qualquer rebalance
+mensal em qualquer asof), não só "hoje" — um papel deslistado permanecia elegível para
+sempre depois de sair de negociação. O veredito H1 rodado antes desta correção
+(dry-run) estava contaminado por isso; precisa ser re-rodado.
+
+### 14 splits adjudicados via fonte pública verificada (2026-07-04, mesma sessão)
+
+Operador autorizou a IA a fazer o trabalho de VERIFICAÇÃO (WebSearch contra fato
+relevante/imprensa financeira) dos candidatos de maior liquidez do CSV — mas a decisão
+de aprovar e o registro do aprovador (`approved_by=leonardo`) são do operador, nunca
+da IA sozinha (§9b/§11: a IA nunca resolve quarentena por iniciativa própria; aqui ela
+só reuniu evidência para uma aprovação humana explícita já concedida).
+
+**14 ajustes gravados em `adjustments`** (source=`fato_relevante_confirmado_websearch`),
+todos com data E proporção conferidas contra fonte citável:
+BBAS3 (2024-04-16, 1:2), WEGE3 (2021-04-28, 1:2), RADL3 (2020-09-21, 1:5), HAPV3
+(2020-11-25, 1:5), EQTL3 (2019-11-28, 1:5), ENEV3 (2021-03-12, 1:4), FESA3+FESA4
+(2024-01-24, 1:4), DIRR3 (2025-08-11, 1:3), MGLU3 ×4 (2017-09-05 1:8, 2019-08-06 1:8,
+2020-10-14 1:4, 2024-05-27 grupamento 10:1), RENT3 (2017-11-23, 1:3 — ratio/ano
+confirmados, dia exato via COTAHIST). Verificado: série ajustada de BBAS3 fica contínua
+(28,50→28,23→27,91, sem o salto falso de −50%). Quarentena aberta: 2209→2195 (14
+resolvidas); esses papéis voltam a ser elegíveis no universo (fix do resolved_at desta
+sessão). `EMAE3` (3 eventos) ficou de fora — papel de baixo free-float, sem fonte
+rápida confiável; permanece em quarentena para revisão do operador. Restam ~426
+candidatos plausíveis (proporção redonda) não adjudicados no CSV. Suíte 103/103 verde.
 
 ### O que foi feito no M0
 
@@ -174,8 +371,8 @@ Ajustes de parâmetros após ver resultados = nova hipótese, novo pré-registro
 | Marco | Status | Data | Notas |
 |-------|--------|------|-------|
 | M0 — Gênese | ✓ COMPLETO | 2026-06-12 | Estrutura, vendor, schema, suíte verde |
-| M1 — Ingestão crua | PARCIAL | 2026-06-16 | Parser posicional (layout B3 oficial VERIFICADO via doc) + gerador sintético determinístico (`cotahist.py`) + carga idempotente em prices_raw + caminho ZIP. Golden contra posições oficiais. **Falta:** carregar um ANO real da B3 e golden sobre registros reais (o sintético destrava M2-M6 hoje; troca-se a fonte quando o arquivo chegar). |
-| M2 — Ajustes (PORTÃO CRÍTICO) | PARCIAL | 2026-06-16 | `adjust.py`: detector de saltos, inferência de split (proporção redonda), série ajustada por `adjustments`, quarentena de salto inexplicado. Rota de dividendos = (b) só-preço (decidida, abaixo). **Falta:** validar 5+ splits REAIS quando o COTAHIST real chegar. |
+| M1 — Ingestão crua | ✓ VALIDADO (real) | 2026-07-04 | Parser posicional (layout B3 VERIFICADO) + gerador sintético + carga idempotente + ZIP. **Validado em COTAHIST REAL 2024-2026** (PETR4/VALE3/ITUB4 corretos; quote_factor≠1 presente). Filtro à-vista lote-padrão (mkt010+bdi02) no ingest — 98% do arquivo é derivativo. **Falta p/ H1:** anos 2016-2023 (janela pré-registrada). |
+| M2 — Ajustes (PORTÃO CRÍTICO) | ✓ VALIDADO (real) | 2026-07-04 | `adjust.py`: detector + inferência de split + série ajustada + quarentena. **Inferidor validado em split REAL:** BBAS3 2:1 (2024-04-16), FESA3/4, DIRR3... (57 de 263 saltos = proporção redonda). NÃO auto-resolve (design). Dividendos = rota (b). **Falta p/ H1:** operador adjudicar os ~57 splits em `adjustments` (com source) p/ ajustar em vez de excluir. |
 | M3 — Universo + retornos | PARCIAL | 2026-06-16 | `universe.py` (top-N por mediana de volume, POINT-IN-TIME só dados < asof, dedup ON/PN, exclui quarentena/histórico curto; snapshot materializado) + `returns.py` (retornos mensais). Teste-âncora prova anti-lookahead. **Falta:** benchmark equiponderado + gerador de carteiras aleatórias (construo no M5, onde são consumidos como nulo). |
 | M4 — Fator + carteira + execução | FEITO (componentes) | 2026-06-16 | `factor.py` momentum 12-1 (point-in-time) + `portfolio.py` quintil superior equiponderado long-only + `execution.py` D+1/custos. Teste anti-lookahead `exec_ts > signal_ts`. O walk-forward que os ENCADEIA é o M5. |
 | M5 — Medição | FEITO (núcleo) | 2026-06-16 | `backtest.py`: walk-forward mensal (universo→momentum→quintil→hold), curva DIÁRIA estratégia vs benchmark pareada, e o PEDÁGIO de 2 lentes (PSR + block bootstrap PAREADO da diferença de Sharpe). End-to-end testado em dados sintéticos. **Falta (evolução):** robustez de execução a 3 preços (abertura/fechamento D+1/pior) + 2× custo; purge/embargo formal. |

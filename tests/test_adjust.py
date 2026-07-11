@@ -49,6 +49,91 @@ def test_explained_jump_is_not_quarantined(tmp_path):
     conn.close()
 
 
+def test_list_split_candidates_separates_round_ratio_from_noise(tmp_path):
+    conn = db.get_connection(tmp_path / "s.db")
+    _insert(conn, "PETR4", [("2024-01-01", 20.0), ("2024-01-02", 10.0)])   # split 1:2 plausível
+    _insert(conn, "XYZW3", [("2024-01-01", 20.0), ("2024-01-02", 8.6)])    # sem proporção redonda
+    adjust.scan_and_quarantine(conn, threshold=0.30)
+    cands = adjust.list_split_candidates(conn)
+    tickers = {c["ticker"] for c in cands}
+    assert tickers == {"PETR4"}                    # XYZW3 fica de fora (é ruído, não split)
+    assert cands[0]["factor_sugerido"] == 0.5
+    assert cands[0]["tipo_inferido"] == "desdobramento"
+    assert cands[0]["source"] == "" and cands[0]["approved_by"] == ""   # em branco p/ humano
+    conn.close()
+
+
+def test_export_then_import_only_grava_linhas_aprovadas(tmp_path):
+    conn = db.get_connection(tmp_path / "s.db")
+    _insert(conn, "PETR4", [("2024-01-01", 20.0), ("2024-01-02", 10.0)])
+    _insert(conn, "VALE3", [("2024-01-01", 20.0), ("2024-01-02", 10.0)])
+    adjust.scan_and_quarantine(conn, threshold=0.30)
+
+    csv_path = tmp_path / "candidates.csv"
+    n = adjust.export_candidates_csv(conn, csv_path)
+    assert n == 2
+
+    # simula revisão humana: aprova só PETR4 (source+approved_by preenchidos)
+    import csv as _csv
+    rows = list(_csv.DictReader(open(csv_path, encoding="utf-8")))
+    for r in rows:
+        if r["ticker"] == "PETR4":
+            r["source"], r["approved_by"] = "b3_fato_relevante", "leonardo"
+    with open(csv_path, "w", newline="", encoding="utf-8") as f:
+        w = _csv.DictWriter(f, fieldnames=adjust._CSV_FIELDS)
+        w.writeheader()
+        w.writerows(rows)
+
+    imported = adjust.import_approved_adjustments(conn, csv_path)
+    assert imported == 1
+    row = conn.execute(
+        "SELECT ticker, factor, source, approved_by FROM adjustments").fetchone()
+    assert (row["ticker"], row["factor"], row["source"], row["approved_by"]) == (
+        "PETR4", 0.5, "b3_fato_relevante", "leonardo")
+    # VALE3 NÃO aprovado -> permanece só em quarentena, nada gravado por ele
+    assert conn.execute(
+        "SELECT COUNT(*) FROM adjustments WHERE ticker='VALE3'").fetchone()[0] == 0
+
+    # re-scan: PETR4 agora está explicado (some da quarentena aberta); VALE3 continua
+    adjust.scan_and_quarantine(conn, threshold=0.30)
+    open_tickers = {r[0] for r in conn.execute(
+        "SELECT DISTINCT ticker FROM quarantine WHERE resolved_at IS NULL")}
+    assert open_tickers == {"VALE3"}
+    conn.close()
+
+
+def test_import_fator_conflitante_nao_resolve_quarentena(tmp_path):
+    """Write-once: se já existe ajuste com fator DIFERENTE do CSV, o INSERT é ignorado
+    e a quarentena NÃO pode ser resolvida como se a correção tivesse entrado — senão o
+    papel volta ao universo com a série ainda descontínua."""
+    import csv as _csv
+    conn = db.get_connection(tmp_path / "s.db")
+    _insert(conn, "PETR4", [("2024-01-01", 20.0), ("2024-01-02", 10.0)])
+    adjust.scan_and_quarantine(conn, threshold=0.30)
+    # ajuste pré-existente com fator ERRADO (0.25 em vez de 0.5)
+    conn.execute("INSERT INTO adjustments(ticker,ex_date,factor,type,source) "
+                 "VALUES('PETR4','2024-01-02',0.25,'split','manual')")
+    conn.commit()
+
+    csv_path = tmp_path / "c.csv"
+    adjust.export_candidates_csv(conn, csv_path)   # quarentena segue aberta → exporta
+    rows = list(_csv.DictReader(open(csv_path, encoding="utf-8")))
+    for r in rows:
+        r["source"], r["approved_by"] = "fonte", "leonardo"
+    with open(csv_path, "w", newline="", encoding="utf-8") as f:
+        w = _csv.DictWriter(f, fieldnames=adjust._CSV_FIELDS)
+        w.writeheader()
+        w.writerows(rows)
+
+    imported = adjust.import_approved_adjustments(conn, csv_path)
+    assert imported == 0                                        # nada novo entrou
+    assert conn.execute("SELECT factor FROM adjustments").fetchone()[0] == 0.25
+    # quarentena PERMANECE aberta — a divergência precisa de decisão humana
+    assert conn.execute("SELECT COUNT(*) FROM quarantine "
+                        "WHERE resolved_at IS NULL").fetchone()[0] == 1
+    conn.close()
+
+
 def _insert(conn, ticker, points):
     for d, c in points:
         conn.execute(

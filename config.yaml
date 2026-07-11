@@ -1,16 +1,15 @@
-# predictor-stocks — configuração. Parâmetros da H1 pré-registrada (design §9).
-# NÃO alterar valores marcados [H1-FROZEN] após qualquer rodada de resultado oficial.
-# Para testes com dados sintéticos curtos, use _CFG próprio no teste — não altere aqui.
+# predictor-stocks — configuração. Parâmetros da H1 fixados a priori.
+# NÃO alterar valores marcados [H1-FROZEN] após qualquer rodada de resultado.
 
 universe:
   top_n: 60                        # [H1-FROZEN] top N por liquidez
   lookback_trading_days: 126       # [H1-FROZEN] janela de liquidez (~6 meses)
-  min_history_days: 252            # [H1-FROZEN] mínimo para momentum 12-1 (lookback+skip)
+  min_history_days: 252            # [H1-FROZEN] mínimo de pregões para momentum
   rebalance_frequency: monthly     # [H1-FROZEN]
 
 factor:
-  name: momentum_12_1              # [H1-FROZEN] fator pré-registrado na H1
-  lookback_days: 252               # [H1-FROZEN] 12 meses em pregões
+  name: momentum_12_1              # [H1-FROZEN]
+  lookback_days: 252               # [H1-FROZEN] 12 meses
   skip_days: 21                    # [H1-FROZEN] excluir último mês (reversão curto prazo)
 
 portfolio:
@@ -33,7 +32,7 @@ backtest:
 bootstrap:
   n_boot: 10000                    # [H1-FROZEN]
   block_length: 21                 # [H1-FROZEN] pregões (~1 mês)
-  method: moving                   # moving primeiro; stationary como refinamento M5
+  method: stationary               # H1 pré-registra stationary (Politis-Romano); core v1.1.0 suporta
   confidence: 0.95                 # [H1-FROZEN]
   seed: 42
 

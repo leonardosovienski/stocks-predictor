@@ -69,6 +69,21 @@ def test_load_into_prices_raw_idempotent(tmp_path):
     conn.close()
 
 
+def test_load_filtra_avista_lote_padrao(tmp_path):
+    """Real: o COTAHIST traz opções/termo/fracionário; só ação à-vista lote-padrão
+    (mkt=010,bdi=02) entra em prices_raw. O resto é descartado no ingest."""
+    conn = db.get_connection(tmp_path / "s.db")
+    avista = cotahist._pack("2024-01-02", "PETR4", "02", "010", 28.5, 29, 28, 28.8, 1000, 28800, 1)
+    opcao = cotahist._pack("2024-01-02", "PETRA123", "78", "070", 1.2, 1.3, 1.1, 1.25, 500, 625, 1)
+    fracionario = cotahist._pack("2024-01-02", "PETR4F", "96", "010", 28.5, 29, 28, 28.8, 3, 86, 1)
+    assert cotahist.load_prices(conn, [avista, opcao, fracionario], "COTAHIST_A2024.TXT") == 1
+    tickers = [r[0] for r in conn.execute("SELECT ticker FROM prices_raw")]
+    assert tickers == ["PETR4"]
+    # avista_only=False carrega tudo (escape hatch explícito)
+    assert cotahist.load_prices(conn, [opcao], "OUTRO.TXT", avista_only=False) == 1
+    conn.close()
+
+
 def test_parse_cotahist_from_zip(tmp_path):
     """Caminho do arquivo real: TXT dentro de ZIP (latin-1) → prices_raw."""
     lines = cotahist.synthetic_cotahist(["PETR4"], ["20240102", "20240103"], seed=2)

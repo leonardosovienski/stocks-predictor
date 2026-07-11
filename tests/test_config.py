@@ -137,13 +137,23 @@ def test_main_status_runs():
     assert "config_hash" in out.stdout
 
 
-def test_main_backtest_command_runs():
-    """backtest agora roda (M5 implementado) — sai 0 mesmo com banco vazio (inconclusivo)."""
+def test_main_backtest_command_runs(tmp_path):
+    """backtest agora roda (M5 implementado) — sai 0 mesmo com banco vazio (inconclusivo).
+
+    Isolado via PREDICTOR_DB_PATH/PREDICTOR_EVENTS_PATH: o banco default
+    (data/stocks.db) pode conter anos reais de COTAHIST (walk-forward de minutos) —
+    o smoke test não pode depender do que está ali, só da MAQUINARIA rodar limpo.
+    """
+    import os
     import subprocess
     import sys as _sys
+    env = dict(os.environ)
+    env["PREDICTOR_DB_PATH"] = str(tmp_path / "s.db")
+    env["PREDICTOR_EVENTS_PATH"] = str(tmp_path / "events.jsonl")
+    env["PREDICTOR_REPORTS_DIR"] = str(tmp_path / "reports")   # não poluir reports/ real
     out = subprocess.run(
         [_sys.executable, str(ROOT / "main.py"), "backtest"],
-        capture_output=True, text=True, timeout=120, encoding="utf-8",
+        capture_output=True, text=True, timeout=60, encoding="utf-8", env=env,
     )
     assert out.returncode == 0, f"main.py backtest falhou:\n{out.stderr}"
     assert "M5" not in out.stdout                       # não é mais 'bloqueado'
