@@ -57,8 +57,8 @@ próxima sessão de trabalho agendada até decisão em contrário do operador.
 
 ## Estado atual: M1–M6 — núcleo implementado sobre dados sintéticos ✓ (veredito real da H1 aguarda COTAHIST real)
 
-**Data:** 2026-07-04
-**Suíte:** 109/109 verde (`py -3.13 -m pytest tests/ -q`) — M0..M6 + plataforma (pedágio/telemetria/net/lacre frozen/guard de segredos)
+**Data:** 2026-07-12
+**Suíte:** 113/113 verde (`py -3.13 -m pytest tests/ -q`) — M0..M6 + plataforma (pedágio/telemetria/net/lacre frozen/guard de segredos); +4 testes vindos do sync do core v1.3.0-ga-20260711
 **Implementador:** Claude Code
 
 ### Revisão de código da sessão (2026-07-04) — 8 ângulos, fixes aplicados
