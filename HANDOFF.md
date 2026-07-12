@@ -5,6 +5,56 @@ Atualizar ao fim de cada marco. Toda decisão registrada aqui é permanente.
 
 ---
 
+## VEREDITO FINAL DA H1 — ENCERRADA: NÃO COMPROVADA (2026-07-12)
+
+Adjudicados os 15 candidatos a split de maior liquidez da quarentena (via WebSearch
+contra fonte financeira nomeada, aprovação humana explícita `approved_by=Superleo13`
+por linha, §9b/§11): B3SA3, PRIO3, SBSP3, BPAC11, BIDI11, CSAN3, IRBR3, CASH3, TOTS3,
+BIDI4, ASAI3, UGPA3, VIVT3, LWSA3, NATU3 (este último tecnicamente uma bonificação de
+ações 1:1, não desdobramento formal — efeito econômico idêntico, registrado com nota).
+`main.py splits-import` gravou os 15 ajustes em `adjustments`; quarentena
+correspondente resolvida. Os ~410 candidatos restantes (sem liquidez relevante para o
+universo top-60) permanecem em quarentena conservadora — decisão formalizada do
+operador, não silenciosa.
+
+**Backtest final rodado sobre a base atualizada (COTAHIST real, 11 anos, 2018→2026):**
+
+- **run_id:** `20260712T091903477689-41cc24`
+- **2.092 pregões pareados**
+- **PSR:** 0,4966
+- **IC 95% da diferença de Sharpe (stationary bootstrap, bloco 21):** (−0,3192, 0,2933)
+  — **cruza zero**
+- Sharpe anualizado: estratégia 0,1592 vs. benchmark 0,1621 (benchmark levemente
+  superior); Sortino 0,2128 vs. 0,2201; retorno total 5,72% vs. 8,03%; max drawdown
+  49,77% vs. 48,03%.
+- Relatório completo: [`reports/h1_verdict_20260712T091903477689-41cc24.md`](reports/h1_verdict_20260712T091903477689-41cc24.md)
+
+**CONCLUSÃO FORMAL:** conforme os critérios fixados no pré-registro (§9), o IC 95% da
+diferença de Sharpe contém zero → **H1 é "não comprovada nesta janela"**. A carteira de
+momentum 12-1 não superou o buy-and-hold equiponderado do mesmo universo com
+significância estatística. **Resultado válido e definitivo — sem repescagem de
+parâmetros.** A H1 está oficialmente ENCERRADA.
+
+**TrialRegistry (`measurement.trials`, DSR):** avaliado e decidido NÃO ligar para este
+veredito — obrigatório apenas a partir de H2 em diante (desconta múltiplas tentativas
+via Deflated Sharpe Ratio); para uma única hipótese pré-registrada isolada, o veredito
+acima é válido sem ele. Fica disponível no core para quando H2/H3... forem abertas.
+
+**Próximos passos / diretriz para H2:** A H1 foi encerrada sem comprovação de edge. O
+próximo ciclo (H2) deve focar exclusivamente em uma Mudança Estrutural de Sinal
+(Caminho 2 — ex: fundamentos, anomalias de momentum, volatilidade) para evitar
+overfitting. O refinamento de parâmetros da H1 está estritamente vetado. Antes de
+qualquer H2, ligar o `measurement.trials` (Experiment Registry + DSR + trava de poder)
+é obrigatório (desconta múltiplas tentativas a partir da 2ª hipótese).
+
+**Pausa estratégica (2026-07-12):** a ideação da H2 está PAUSADA por tempo
+indeterminado. A prioridade atual do ecossistema é alocar recursos onde já existe
+sinal comprovado e em validação operacional — Cripto/H5 e Brasileirão/Modo Sombra.
+O laboratório de ações (predictor-stocks) entra em modo de ideação passiva: sem
+próxima sessão de trabalho agendada até decisão em contrário do operador.
+
+---
+
 ## Estado atual: M1–M6 — núcleo implementado sobre dados sintéticos ✓ (veredito real da H1 aguarda COTAHIST real)
 
 **Data:** 2026-07-04
@@ -360,7 +410,10 @@ cedo no vendor, como o block bootstrap já entrou no M0.
 > zero) é válido e encerra a hipótese como "não comprovada nesta janela" —
 > sem repescagem de parâmetros.
 
-**Veredito H1:** PENDENTE — aguardando M6
+**Veredito H1:** **ENCERRADA — NÃO COMPROVADA** (2026-07-12, run_id
+`20260712T091903477689-41cc24`). IC 95% diff-Sharpe (−0,3192, 0,2933) cruza zero. Ver
+seção "VEREDITO FINAL DA H1" no topo deste arquivo para números completos e trilha de
+adjudicação dos splits.
 
 Ajustes de parâmetros após ver resultados = nova hipótese, novo pré-registro, nova janela. Sem exceções.
 
@@ -376,7 +429,7 @@ Ajustes de parâmetros após ver resultados = nova hipótese, novo pré-registro
 | M3 — Universo + retornos | PARCIAL | 2026-06-16 | `universe.py` (top-N por mediana de volume, POINT-IN-TIME só dados < asof, dedup ON/PN, exclui quarentena/histórico curto; snapshot materializado) + `returns.py` (retornos mensais). Teste-âncora prova anti-lookahead. **Falta:** benchmark equiponderado + gerador de carteiras aleatórias (construo no M5, onde são consumidos como nulo). |
 | M4 — Fator + carteira + execução | FEITO (componentes) | 2026-06-16 | `factor.py` momentum 12-1 (point-in-time) + `portfolio.py` quintil superior equiponderado long-only + `execution.py` D+1/custos. Teste anti-lookahead `exec_ts > signal_ts`. O walk-forward que os ENCADEIA é o M5. |
 | M5 — Medição | FEITO (núcleo) | 2026-06-16 | `backtest.py`: walk-forward mensal (universo→momentum→quintil→hold), curva DIÁRIA estratégia vs benchmark pareada, e o PEDÁGIO de 2 lentes (PSR + block bootstrap PAREADO da diferença de Sharpe). End-to-end testado em dados sintéticos. **Falta (evolução):** robustez de execução a 3 preços (abertura/fechamento D+1/pior) + 2× custo; purge/embargo formal. |
-| M6 — Julgamento H1 + paper forward | FEITO (núcleo) | 2026-06-16 | `paper.py`: `record_forward` (EVAL antes do futuro, anti-tautologia) + `settle_executions` (RISK write-once via COALESCE); `backtest.run()` é o mecanismo do veredito. **Falta:** rodar o veredito da H1 UMA vez sobre o COTAHIST REAL (dado físico da B3) e ligar o cron diário do paper. |
+| M6 — Julgamento H1 + paper forward | ✓ **H1 ENCERRADA** | 2026-07-12 | `paper.py`: `record_forward` (EVAL antes do futuro, anti-tautologia) + `settle_executions` (RISK write-once via COALESCE); `backtest.run()` é o mecanismo do veredito. **Veredito H1 rodado sobre COTAHIST REAL (11 anos, 15 splits de maior liquidez adjudicados): não comprovada.** Ver seção "VEREDITO FINAL DA H1". **Falta:** ligar o cron diário do paper (não bloqueia H1; é infra p/ forward contínuo). |
 
 ---
 
