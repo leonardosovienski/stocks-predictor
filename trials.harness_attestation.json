@@ -1,0 +1,7 @@
+{
+  "passed_at": "2026-07-16T22:15:30+00:00",
+  "evaluate": "<lambda>",
+  "edge_verdict": "COMPROVADA",
+  "note": "controle positivo do pedágio (judge real, séries sintéticas pareadas)",
+  "metric": "sharpe_diff_ci95"
+}

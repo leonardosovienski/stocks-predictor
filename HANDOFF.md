@@ -52,7 +52,37 @@ sintéticas pareadas; atestado gravado como irmão do `trials.json`
 `trials.json` é VERSIONADO (o denominador do DSR não pode sofrer esquecimento
 seletivo).
 
-**Veredito H2:** _pendente — nenhuma rodada executada até este pré-registro._
+### VEREDITO H2 — ENCERRADA: NÃO COMPROVADA (2026-07-16, rodada única)
+
+Trilha na ordem pré-registrada: pré-registro commitado (`3b5e8b1`) → controle
+positivo PASSOU (atestado 2026-07-16T22:15:30Z, metric `sharpe_diff_ci95`) →
+trials registradas → UMA rodada.
+
+- **run_id:** `20260716T221541856778-ac106e` — 2.092 pregões pareados (mesma
+  janela da H1)
+- **Lente 2 — IC 95% diff-Sharpe (stationary, bloco 21):** **(−0,2850, +0,3958)
+  — cruza zero** → critério (i) reprovado
+- **Critério (ii) — DSR:** **0,7092 < 0,95** (N=2 tentativas; E[max SR|N=2] =
+  0,0012 por-período) → reprovado também
+- PSR 0,5568. Descritivamente a estratégia venceu o benchmark (Sharpe anual.
+  0,2121 vs 0,1621; retorno total 20,04% vs 8,03%; max DD 35,64% vs 48,03%) —
+  e o viés só-preço ainda a penaliza —, mas a diferença NÃO é estatisticamente
+  distinguível de sorte nesta janela. O melhor resultado descritivo do domínio
+  até aqui, e mesmo assim: **não comprovada. Sem repescagem de parâmetros.**
+- Relatório: [`reports/h2_verdict_20260716T221541856778-ac106e.md`](reports/h2_verdict_20260716T221541856778-ac106e.md)
+  (versionado via `git add -f`); `trials.json` atualizado com o sharpe realizado
+  (0,013363 por-período).
+
+**Suíte pós-marco: 126/126 verde** (113 + 13 da H2: fator point-in-time,
+bottom-quintile, trava de poder, registry N+1, smoke end-to-end, lacre golden).
+
+**Diretriz para H3+ (se/quando o operador abrir):** o registro de tentativas
+está LIGADO e é obrigatório — cada nova hipótese entra no `trials.json` (N+1) e
+paga o DSR. Candidatas já nomeadas: reversão de curto prazo (mapa do design
+§10), fundamentos/qualidade (exige fonte nova de dados — decisão de dependência
+do operador). O sinal descritivo da baixa-vol (Sharpe maior com drawdown MUITO
+menor) sugere que **H4-sizing (volatility targeting)** do mapa também é caminho
+digno. Nada disso está autorizado sem novo pré-registro.
 
 ---
 
