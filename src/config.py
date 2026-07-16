@@ -118,3 +118,32 @@ def frozen_config_hash(config: dict) -> str:
     if missing:
         raise ValueError(f"params H1-FROZEN ausentes no config: {missing}")
     return infra.config_hash(frozen)
+
+
+# Subconjunto H2-FROZEN (pré-registro 2026-07-16, HANDOFF). Inclui os params
+# COMPARTILHADOS com a H1 (universo/execução/janela/bootstrap — mesmos valores,
+# reuso declarado) + os próprios da H2. bootstrap.method entra aqui porque a H2
+# pré-registra stationary explicitamente (na H1 era operacional).
+H2_FROZEN_KEYS = [
+    ("universe", "top_n"), ("universe", "lookback_trading_days"),
+    ("universe", "min_history_days"), ("universe", "rebalance_frequency"),
+    ("h2_factor", "name"), ("h2_factor", "lookback_days"),
+    ("h2_portfolio", "quantile"), ("h2_portfolio", "weighting"),
+    ("h2_portfolio", "direction"),
+    ("execution", "price"), ("execution", "b3_fee_pct"),
+    ("execution", "brokerage_pct"), ("execution", "spread_slippage_pct"),
+    ("backtest", "warmup_end"), ("backtest", "test_start"),
+    ("backtest", "purge_embargo_months"),
+    ("bootstrap", "n_boot"), ("bootstrap", "block_length"),
+    ("bootstrap", "confidence"), ("bootstrap", "method"),
+    ("h2_criteria", "dsr_min"),
+]
+
+
+def h2_frozen_config_hash(config: dict) -> str:
+    """O LACRE da H2 — mesmo mecanismo do frozen_config_hash da H1."""
+    frozen = {f"{s}.{k}": config.get(s, {}).get(k) for s, k in H2_FROZEN_KEYS}
+    missing = [k for k, v in frozen.items() if v is None]
+    if missing:
+        raise ValueError(f"params H2-FROZEN ausentes no config: {missing}")
+    return infra.config_hash(frozen)

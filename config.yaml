@@ -39,6 +39,24 @@ bootstrap:
 jump_detector:
   threshold_abs: 0.30              # |retorno overnight| > 30% → quarentena
 
+# ── H2 (pré-registrada 2026-07-16; ver HANDOFF) ─────────────────────────────
+# NÃO alterar valores [H2-FROZEN] após qualquer rodada de resultado da H2.
+# Universo/execução/backtest/bootstrap são COMPARTILHADOS com a H1 (mesmos
+# valores acima) — reuso declarado, não repescagem.
+
+h2_factor:
+  name: realized_vol_252           # [H2-FROZEN] anomalia de baixa volatilidade
+  lookback_days: 252               # [H2-FROZEN] desvio-padrão dos retornos diários, 12 meses
+
+h2_portfolio:
+  quantile: bottom_quintile        # [H2-FROZEN] quintil INFERIOR de vol = 12 papéis com N=60
+  weighting: equal                 # [H2-FROZEN]
+  direction: long_only             # [H2-FROZEN]
+
+h2_criteria:
+  dsr_min: 0.95                    # [H2-FROZEN] DSR mínimo (desconto por tentativas)
+  trials_path: "trials.json"       # Experiment Registry (versionado de propósito)
+
 data:
   db_path: "data/stocks.db"
   cotahist_dir: "data/cotahist"

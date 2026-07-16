@@ -36,7 +36,7 @@ def _daily_returns(dates, closes):
             for i in range(1, len(closes)) if closes[i - 1] > 0}
 
 
-def walk_forward(conn, cfg):
+def walk_forward(conn, cfg, signal_fn=None, take="top"):
     """Retorna (strat_diaria, bench_diaria) — listas pareadas de retornos diários.
 
     Custo de transação: proporcional ao turnover REAL entre rebalanceamentos
@@ -44,10 +44,16 @@ def walk_forward(conn, cfg):
     cost_period = (n_saindo + n_entrando) × one_way / n_portfolio. Cobrar o
     roundtrip da carteira INTEIRA todo mês (modelo anterior) assumia turnover de
     100% e superestimava o arrasto contra a estratégia (auditoria Red Team 06/2026).
+
+    `signal_fn(sub, asof) -> {ticker: sinal}` e `take` ("top"/"bottom") permitem
+    plugar outra hipótese (H2: vol realizada, quintil inferior) na MESMA
+    maquinaria de universo/custos/pareamento. Defaults = H1 exata.
     """
     f, u = cfg["factor"], cfg["universe"]
     e, bt = cfg["execution"], cfg["backtest"]
     lookback_mom, skip = f.get("lookback_days", 252), f.get("skip_days", 21)
+    if signal_fn is None:
+        signal_fn = lambda sub, asof: factor.signals(sub, asof, lookback_mom, skip)
     top_n = u.get("top_n", 60)
     liq_lb, min_hist = u.get("lookback_trading_days", 126), u.get("min_history_days", 252)
     quant = 0.2  # top_quintile
@@ -80,7 +86,7 @@ def walk_forward(conn, cfg):
         for tk in uni:
             _load(tk)
         sub = {tk: series[tk] for tk in uni}
-        port = list(portfolio.select_portfolio(factor.signals(sub, t, lookback_mom, skip), quant))
+        port = list(portfolio.select_portfolio(signal_fn(sub, t), quant, take=take))
         if not port:
             prev_port = set()
             continue
@@ -145,6 +151,32 @@ def run(cfg=None, conn=None, write_report=False, run_id=None):
     if write_report:
         import report
         path = report.write_report(verdict, strat, bench, cfg, run_id=run_id)
+        print(f"relatório: {path}")
+    return verdict
+
+
+def run_h2(cfg=None, conn=None, write_report=False, run_id=None, trials_path=None):
+    """H2 — baixa volatilidade (pré-registro 2026-07-16). MESMA maquinaria da H1
+    (universo/custos/pareamento/pedágio); o que muda é o sinal (vol realizada,
+    quintil INFERIOR) e o critério extra da 2ª hipótese: DSR >= dsr_min,
+    descontado por todas as tentativas do trials.json (trials_gate)."""
+    import trials_gate
+    cfg = cfg or load_config()
+    conn = conn or db.get_connection()
+    lb = cfg.get("h2_factor", {}).get("lookback_days", 252)
+    strat, bench = walk_forward(
+        conn, cfg, signal_fn=lambda sub, asof: factor.vol_signals(sub, asof, lb),
+        take="bottom")
+    verdict = trials_gate.apply_dsr(judge(strat, bench, cfg), strat, cfg,
+                                    trials_path=trials_path)
+    print(f"walk-forward H2: {verdict['n']} pregões | PSR={verdict['psr']} | "
+          f"IC95% diff-Sharpe={verdict['sharpe_diff_ci']} | "
+          f"DSR={verdict.get('dsr')} (N={verdict.get('n_trials')}) | "
+          f"H2: {verdict['veredito']}")
+    if write_report:
+        import report
+        path = report.write_report(verdict, strat, bench, cfg, run_id=run_id,
+                                   hypothesis="H2")
         print(f"relatório: {path}")
     return verdict
 

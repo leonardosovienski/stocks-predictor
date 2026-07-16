@@ -6,6 +6,8 @@ Uso:
     python main.py adjust                    # M2: detector de saltos -> quarentena
     python main.py universe <YYYY-MM-DD>     # M3: materializa o universo point-in-time
     python main.py backtest                  # M5: walk-forward + pedágio -> veredito H1
+    python main.py attest-power              # H2+: controle positivo + atestado + trials
+    python main.py backtest-h2               # H2: walk-forward baixa-vol + pedágio + DSR
     python main.py paper <YYYY-MM-DD>        # M6: registra carteira forward + liquida exec
     python main.py analyst [rótulo]          # §9b: briefing consultivo read-only (reports/ai/)
     python main.py splits-review [saída.csv] # M2: exporta candidatos a split p/ revisão humana
@@ -128,6 +130,38 @@ def cmd_backtest(args) -> int:
     return 0
 
 
+def cmd_attest_power(args) -> int:
+    """H2+ — controle positivo do pedágio (harness) + atestado + trials baseline.
+
+    Prova que o judge REAL detecta edge plantado e rejeita ruído; grava o
+    atestado irmão do trials.json e registra as tentativas (H1 retroativa +
+    H2 pendente). Sem isso, nenhum veredito da H2 é interpretável."""
+    import config as cfg_mod
+    import trials_gate
+    cfg = cfg_mod.load_config()
+    rec = trials_gate.attest(cfg)
+    print(f"controle positivo OK (sensibilidade + especificidade) — "
+          f"atestado emitido em {rec['passed_at']} (metric={rec['metric']})")
+    reg = trials_gate.register_baseline_trials(cfg)
+    names = [t["name"] for t in reg.load()]
+    print(f"trials registradas em {reg.path}: {', '.join(names)}")
+    return 0
+
+
+def cmd_backtest_h2(args) -> int:
+    """H2 — walk-forward baixa-vol + pedágio + DSR -> veredito da H2 + relatório."""
+    import backtest
+    import db
+    import trials_gate
+    cfg, conn = _conn()
+    with closing(conn):
+        # trava de poder: a criação das trials exige o atestado do harness
+        trials_gate.register_baseline_trials(cfg)
+        run_id = db.new_run(conn, cfg, notes="veredito H2 (baixa volatilidade)")
+        backtest.run_h2(cfg=cfg, conn=conn, write_report=True, run_id=run_id)
+    return 0
+
+
 def cmd_paper(args) -> int:
     """M6 — registra a carteira forward (anti-tautologia) e liquida execuções."""
     import db
@@ -195,6 +229,8 @@ _COMMANDS = {
     "adjust": cmd_adjust,
     "universe": cmd_universe,
     "backtest": cmd_backtest,
+    "attest-power": cmd_attest_power,
+    "backtest-h2": cmd_backtest_h2,
     "paper": cmd_paper,
     "analyst": cmd_analyst,
     "splits-review": cmd_splits_review,

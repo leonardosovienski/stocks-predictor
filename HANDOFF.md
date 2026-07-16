@@ -5,6 +5,57 @@ Atualizar ao fim de cada marco. Toda decisão registrada aqui é permanente.
 
 ---
 
+## H2 ABERTA — PRÉ-REGISTRO (2026-07-16, ANTES de qualquer rodada)
+
+**Decisão do operador (2026-07-16):** a pausa estratégica de 2026-07-12 está
+levantada por ordem explícita ("abre a H2 com baixa volatilidade"). A escolha da
+baixa volatilidade segue a diretriz pós-H1 deste HANDOFF ("Mudança Estrutural de
+Sinal — ex: fundamentos, anomalias de momentum, **volatilidade**"). Nota de
+divergência registrada: o mapa M7+ do design §10 nomeava "H2" como reversão de
+curto prazo; a diretriz mais recente (encerramento da H1, aprovada pelo operador)
+substitui aquele ordenamento — reversão de curto prazo permanece no mapa como
+hipótese futura própria.
+
+### HIPÓTESE #2 (pré-registrada — critérios fixados ANTES de ver o dado)
+
+> **H2:** Carteira long-only do **quintil INFERIOR de volatilidade realizada**
+> (desvio-padrão dos retornos diários da série ajustada nos últimos 252 pregões
+> ≤ asof), universo B3 point-in-time (top 60 por liquidez, janela 126 pregões —
+> idêntico à H1), equiponderada, rebalanceamento mensal com execução na abertura
+> de D+1 e custo proporcional ao turnover real (0,18% por lado), obtém **Sharpe
+> líquido superior ao buy-and-hold equiponderado do mesmo universo**, com:
+> (i) IC 95% (stationary bootstrap, bloco 21) da diferença de Sharpe excluindo
+> zero, E (ii) **DSR ≥ 0,95** (Deflated Sharpe Ratio descontado por TODAS as
+> tentativas do `trials.json` — obrigatório a partir da 2ª hipótese).
+>
+> **Janela:** a MESMA da H1 (teste 2018-01 → último dado COTAHIST). A
+> reutilização deliberada da janela é exatamente o motivo de o DSR ser critério:
+> a 2ª hipótese sobre o mesmo dado paga o pedágio de múltiplas tentativas.
+>
+> **Critérios fixados antes de qualquer rodada.** IC contendo zero OU DSR < 0,95
+> = "não comprovada nesta janela" — resultado válido, encerra a H2 sem
+> repescagem de parâmetros. Lookback de vol (252), quintil, pesos e custos são
+> [H2-FROZEN] no config; lacre por máquina em `config.h2_frozen_config_hash`.
+
+**Viés declarado (rota (b), só-preço):** papéis de baixa volatilidade tendem a
+MAIOR dividend yield que a média do universo; omitir proventos portanto
+**PENALIZA a H2 contra o benchmark** (viés conservador — o oposto da H1, onde o
+viés favorecia). Um veredito positivo é robusto a esse viés; um negativo carrega
+a ressalva.
+
+**Trava de poder (obrigatória antes de registrar trials):**
+`testing.harness.attest_pipeline_power` sobre o `backtest.judge` real — detectar
+edge plantado (sensibilidade) E rejeitar ruído (especificidade) em séries
+sintéticas pareadas; atestado gravado como irmão do `trials.json`
+(`main.py attest-power`). Registro de tentativas: `h1-momentum-12-1`
+(retroativa, Sharpe por-período do veredito final) + `h2-lowvol-252`.
+`trials.json` é VERSIONADO (o denominador do DSR não pode sofrer esquecimento
+seletivo).
+
+**Veredito H2:** _pendente — nenhuma rodada executada até este pré-registro._
+
+---
+
 ## VEREDITO FINAL DA H1 — ENCERRADA: NÃO COMPROVADA (2026-07-12)
 
 Adjudicados os 15 candidatos a split de maior liquidez da quarentena (via WebSearch
