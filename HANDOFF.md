@@ -111,6 +111,25 @@ registradas:
    anotados de memória (0,011478 / −0,011225); os valores REAIS do arquivo são
    **0,011372 / −0,011367** — corrigidos acima.
 
+### Revisão profunda do src/ (2026-07-18, 2ª passada — módulos M1–M6 inteiros)
+
+Leitura linha a linha de adjust/universe/paper/db/cotahist/analyst/ingest:
+
+1. **`paper.settle_executions` blindado** (era a ÚNICA query de leitura sem as
+   defesas do Red Team): agora filtra mercado à vista (`universe.SPOT_MARKET`)
+   e dedupa re-ingest (`GROUP BY date`) — um banco com `avista_only=False` não
+   pode mais liquidar paper a preço de opção; + cache de série por ticker (era
+   uma query por decisão pendente). Teste de regressão determinístico
+   (`test_settle_ignores_non_spot_rows`). Seguro: paper nunca rodou em produção
+   (`decisions`=0) e não alimenta veredito nenhum.
+2. **`quote_factor` nunca aplicado ao preço** — registrado acima na lista de
+   "Conhecidos, NÃO corrigidos" com análise de impacto (zero nos vereditos;
+   decisão de correção é do operador).
+3. Sem outros defeitos materiais: adjust/universe já carregam as defesas das
+   revisões anteriores (GROUP BY, resolved_at, janela por calendário); analyst
+   segue §9b (só SELECT); cotahist falha alto em linha corrompida (estilo do
+   projeto).
+
 **Leitura acumulada (4 tentativas, 0 comprovadas, 1 anti-sinal):** H1 momentum
 ~empate; H2/H4 (tilts de baixa vol) melhores no descritivo sem significância;
 H5 reversão significativamente PIOR. O anti-sinal da H5 é informação real: se
@@ -468,7 +487,18 @@ split não adjudicados seguem fora (quarentena conservadora).
   calendário no factor e mexe em semântica de sinal com H1 em andamento);
 - filtro à-vista só no ingest: um banco carregado com `avista_only=False` fluiria
   derivativos p/ o universo sem re-checagem na leitura (aceito; escape hatch é
-  explícito e o banco atual foi carregado filtrado).
+  explícito e o banco atual foi carregado filtrado);
+- **`quote_factor` parseado e armazenado mas NUNCA aplicado ao preço** (achado da
+  revisão profunda 2026-07-18): a decisão do M0 dizia "÷100 × fator" e a divisão
+  por FATCOT não existe em lugar nenhum — `close` fica na escala do lote de
+  cotação. Impacto medido: **nenhum nos vereditos H1–H5** (momentum/vol/retornos
+  são razões DENTRO do ticker, invariantes a escala; mudança de fator no meio da
+  série vira salto falso que o detector de 30% quarentena — defesa funciona);
+  liquidez usa volume_fin (não afetado). Ficaria errado: preço de EXECUÇÃO do
+  paper p/ papel com fator ≠1 (raros, fora do top-60 histórico). Corrigir muda a
+  semântica de dado de pipelines já julgados → decisão do operador (se corrigir:
+  dividir na LEITURA, nunca reescrever prices_raw; nova hipótese/rodada se for
+  re-julgar algo).
 
 ### Correção + acabamento (2026-07-04)
 

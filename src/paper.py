@@ -40,15 +40,26 @@ def record_forward(conn, cfg, asof, run_id) -> int:
 
 def settle_executions(conn, cfg) -> int:
     """Preenche exec_date/exec_price das decisões forward sem execução, na ABERTURA de
-    D+1 após o asof — WRITE-ONCE via COALESCE (preço futuro não reescreve registro feito)."""
+    D+1 após o asof — WRITE-ONCE via COALESCE (preço futuro não reescreve registro feito).
+
+    Leitura blindada como o resto da camada (Red Team 06/2026): só mercado à
+    vista (um banco carregado com avista_only=False não pode liquidar a preço
+    de opção/termo) e GROUP BY date (re-ingest sob outro source_file duplicaria
+    a linha e o preço de execução dependeria da ordem do scan)."""
     pending = conn.execute(
         "SELECT DISTINCT run_id, asof, ticker FROM decisions "
         "WHERE frozen_mode=1 AND exec_price IS NULL").fetchall()
     filled = 0
+    series_cache: dict[str, tuple[list, list]] = {}
     for run_id, asof, tk in [(r[0], r[1], r[2]) for r in pending]:
-        prices = conn.execute(
-            "SELECT date, open FROM prices_raw WHERE ticker=? ORDER BY date", (tk,)).fetchall()
-        nxt = next_open_after([r[0] for r in prices], [r[1] for r in prices], asof)
+        if tk not in series_cache:
+            prices = conn.execute(
+                "SELECT date, MAX(open) FROM prices_raw "
+                "WHERE ticker=? AND market_type=? GROUP BY date ORDER BY date",
+                (tk, universe.SPOT_MARKET)).fetchall()
+            series_cache[tk] = ([r[0] for r in prices], [r[1] for r in prices])
+        dates, opens = series_cache[tk]
+        nxt = next_open_after(dates, opens, asof)
         if nxt is None:
             continue
         exec_date, exec_price = nxt
