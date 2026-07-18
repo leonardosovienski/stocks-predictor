@@ -97,5 +97,40 @@
       "2026-07-03"
     ],
     "metric": "sharpe_diff_ci95"
+  },
+  {
+    "name": "h5-strev-21",
+    "registered_at": "2026-07-18T20:26:28Z",
+    "params": {
+      "universe.top_n": 60,
+      "universe.lookback_trading_days": 126,
+      "universe.min_history_days": 252,
+      "universe.rebalance_frequency": "monthly",
+      "h5_factor.name": "reversal_21",
+      "h5_factor.lookback_days": 21,
+      "h5_factor.skip_days": 0,
+      "h5_portfolio.quantile": "bottom_quintile",
+      "h5_portfolio.weighting": "equal",
+      "h5_portfolio.direction": "long_only",
+      "execution.price": "next_open",
+      "execution.b3_fee_pct": 0.0003,
+      "execution.brokerage_pct": 0.0,
+      "execution.spread_slippage_pct": 0.0015,
+      "backtest.warmup_end": "2017-12-31",
+      "backtest.test_start": "2018-01-01",
+      "backtest.purge_embargo_months": 1,
+      "bootstrap.n_boot": 10000,
+      "bootstrap.block_length": 21,
+      "bootstrap.confidence": 0.95,
+      "bootstrap.method": "stationary",
+      "h5_criteria.dsr_min": 0.95
+    },
+    "sharpe": -0.011367,
+    "notes": "rodada única da H5 (reversão 21d; sharpe por-período realizado)",
+    "test_period": [
+      "2018-01-01",
+      "2026-07-03"
+    ],
+    "metric": "sharpe_diff_ci95"
   }
 ]

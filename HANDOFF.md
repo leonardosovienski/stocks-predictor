@@ -66,7 +66,39 @@ negativo sem perda econômica → papéis de maior yield caem no quintil
 realizado da carteira → o viés tende a PENALIZAR a H5 (conservador; direção
 declarada).
 
-**Veredito H5:** _pendente — nenhuma rodada executada até este pré-registro._
+### VEREDITO H5 — ENCERRADA: NÃO COMPROVADA, com IC INTEIRAMENTE NEGATIVO (2026-07-18, rodada única)
+
+Trilha na ordem pré-registrada: pré-registro commitado (`384ffda`) → controle
+positivo re-atestado (2026-07-18T20:26:27Z) → trial `h5-strev-21` (N=4) → UMA
+rodada.
+
+- **run_id:** `20260718T202628182793-427444` — 2.092 pregões pareados
+- **(i) IC 95% diff-Sharpe (stationary, bloco 21): (−0,6406, −0,1009)** — não
+  contém zero, mas do lado ERRADO: a estratégia é significativamente PIOR que
+  o benchmark. Primeiro resultado do domínio em que a régua fecha uma direção
+  — e é contra.
+- **(ii) DSR: 0,1274 < 0,95** (N=4; E[max SR|N=4] = 0,0134 por-período).
+- PSR 0,1607. Descritivo brutal: Sharpe anual. **−0,18** vs 0,16; retorno
+  total **−59,03%** vs +8,03%; maxDD 68,20% vs 48,03%. Comprar os perdedores
+  do mês no top-60 da B3, líquido de custo por turnover real, DESTRÓI capital
+  — o turnover intrínseco (declarado como adversário no pré-registro) e a
+  continuação de momentum no curto prazo enterram a reversão implementável.
+- **Não comprovada (e na prática refutada na direção oposta). Sem repescagem.**
+- Relatório: [`reports/h5_verdict_20260718T202628182793-427444.md`](reports/h5_verdict_20260718T202628182793-427444.md)
+  (versionado); `trials.json` com sharpe realizado −0,011225 por-período.
+
+**Suíte pós-marco: 140/140 verde** (135 + 5 da H5).
+
+**Leitura acumulada (4 tentativas, 0 comprovadas, 1 anti-sinal):** H1 momentum
+~empate; H2/H4 (tilts de baixa vol) melhores no descritivo sem significância;
+H5 reversão significativamente PIOR. O anti-sinal da H5 é informação real: se
+perdedores de 21d underperformam com significância, isso é evidência de
+CONTINUAÇÃO de curto prazo neste universo — nota consultiva para ideação
+futura (qualquer uso disso = nova hipótese, novo pré-registro, N+1; o lado
+comprado dela já foi ~testado na H1 e não passou; o lado vendável esbarra no
+custo de aluguel do mapa §10-H5). Com dados só-preço, o baralho local está
+jogado; a próxima fronteira honesta é FONTE NOVA (fundamentos/proventos) —
+decisão de dependência do operador.
 
 ---
 
