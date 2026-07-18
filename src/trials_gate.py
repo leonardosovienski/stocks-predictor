@@ -104,28 +104,40 @@ def per_period_sharpe(xs):
     return statistics.mean(xs) / sd if sd else 0.0
 
 
-def apply_dsr(verdict, strat, cfg, trials_path=None):
-    """Critério (ii) da H2: DSR >= dsr_min, descontado por TODAS as tentativas.
+def register_hypothesis(cfg, name, frozen_keys, notes, sharpe=None, trials_path=None):
+    """Registra (ou atualiza) uma tentativa de hipótese deste domínio no
+    registry. Criação exige o atestado do harness (trava de poder)."""
+    reg = trials.TrialRegistry(trials_path_from(cfg, trials_path))
+    reg.register(name, params=_params_from(cfg, frozen_keys), sharpe=sharpe,
+                 metric=METRIC, notes=notes, test_period=H2_TEST_PERIOD)
+    return reg
 
-    Atualiza o sharpe realizado da trial h2 no registro (update de trial
-    existente — não exige atestado) e COMBINA os dois critérios pré-registrados:
-    COMPROVADA sse IC95% da diferença de Sharpe > 0 E DSR >= dsr_min."""
+
+def apply_dsr(verdict, strat, cfg, trials_path=None, trial_name="h2-lowvol-252",
+              frozen_keys=None, criteria_section="h2_criteria",
+              extra_failures=(), notes=None):
+    """Critério DSR das hipóteses N>=2: DSR >= dsr_min, descontado por TODAS as
+    tentativas do registro.
+
+    Atualiza o sharpe realizado da trial no registro (update de trial existente
+    — não exige atestado) e COMBINA os critérios pré-registrados: COMPROVADA
+    sse IC95% da diferença de Sharpe > 0, DSR >= dsr_min E `extra_failures`
+    vazio (critérios adicionais da hipótese — ex. drawdown na H4 — avaliados
+    pelo chamador, que passa as razões das falhas)."""
     if not strat or verdict.get("psr") is None:
         return verdict  # SEM DADOS / amostra curta: não há o que descontar
     from config import H2_FROZEN_KEYS
-    reg = trials.TrialRegistry(trials_path_from(cfg, trials_path))
-    reg.register(
-        "h2-lowvol-252", params=_params_from(cfg, H2_FROZEN_KEYS),
-        sharpe=round(per_period_sharpe(strat), 6), metric=METRIC,
-        notes="rodada única da H2 (sharpe por-período realizado)",
-        test_period=H2_TEST_PERIOD)
+    reg = register_hypothesis(
+        cfg, trial_name, frozen_keys or H2_FROZEN_KEYS,
+        notes or "rodada única (sharpe por-período realizado)",
+        sharpe=round(per_period_sharpe(strat), 6), trials_path=trials_path)
     d = reg.deflated_sharpe(strat)
-    dsr_min = cfg.get("h2_criteria", {}).get("dsr_min", 0.95)
+    dsr_min = cfg.get(criteria_section, {}).get("dsr_min", 0.95)
     lo = verdict.get("sharpe_diff_ci", (None, None))[0]
     ic_ok = lo is not None and lo > 0
     dsr_ok = d["dsr"] is not None and d["dsr"] >= dsr_min
     out = dict(verdict, dsr=d["dsr"], sr0=d["sr0"], n_trials=d["n_trials"])
-    if ic_ok and dsr_ok:
+    if ic_ok and dsr_ok and not extra_failures:
         out["veredito"] = "COMPROVADA"
     else:
         reasons = []
@@ -133,5 +145,6 @@ def apply_dsr(verdict, strat, cfg, trials_path=None):
             reasons.append("IC cruza 0 / negativo")
         if not dsr_ok:
             reasons.append(f"DSR {d['dsr']:.4f} < {dsr_min}")
+        reasons.extend(extra_failures)
         out["veredito"] = "não comprovada (" + "; ".join(reasons) + ")"
     return out

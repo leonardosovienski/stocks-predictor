@@ -147,3 +147,29 @@ def h2_frozen_config_hash(config: dict) -> str:
     if missing:
         raise ValueError(f"params H2-FROZEN ausentes no config: {missing}")
     return infra.config_hash(frozen)
+
+
+# Subconjunto H4-FROZEN (pré-registro 2026-07-18, HANDOFF). Sizing sobre o
+# universo inteiro — não há chaves de quantil/seleção; o resto é o mesmo
+# reuso declarado de universo/execução/janela/bootstrap de H1/H2.
+H4_FROZEN_KEYS = [
+    ("universe", "top_n"), ("universe", "lookback_trading_days"),
+    ("universe", "min_history_days"), ("universe", "rebalance_frequency"),
+    ("h4_weighting", "name"), ("h4_weighting", "vol_lookback_days"),
+    ("execution", "price"), ("execution", "b3_fee_pct"),
+    ("execution", "brokerage_pct"), ("execution", "spread_slippage_pct"),
+    ("backtest", "warmup_end"), ("backtest", "test_start"),
+    ("backtest", "purge_embargo_months"),
+    ("bootstrap", "n_boot"), ("bootstrap", "block_length"),
+    ("bootstrap", "confidence"), ("bootstrap", "method"),
+    ("h4_criteria", "dsr_min"), ("h4_criteria", "require_maxdd_not_worse"),
+]
+
+
+def h4_frozen_config_hash(config: dict) -> str:
+    """O LACRE da H4 — mesmo mecanismo dos lacres de H1/H2."""
+    frozen = {f"{s}.{k}": config.get(s, {}).get(k) for s, k in H4_FROZEN_KEYS}
+    missing = [k for k, v in frozen.items() if v is None]
+    if missing:
+        raise ValueError(f"params H4-FROZEN ausentes no config: {missing}")
+    return infra.config_hash(frozen)

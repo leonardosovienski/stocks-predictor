@@ -65,6 +65,10 @@ _BIAS_NOTE = {
     "H2": "- Retorno **só-preço** (rota (b)): dividendos/JCP omitidos; papéis de baixa "
           "volatilidade tendem a MAIOR yield, logo o viés PENALIZA a estratégia contra "
           "o benchmark — conservador (declarado no pré-registro da H2).",
+    "H4": "- Retorno **só-preço** (rota (b)): dividendos/JCP omitidos; a ponderação "
+          "1/vol sobrepesa papéis de baixa volatilidade (maior yield), logo o viés "
+          "PENALIZA a estratégia contra o benchmark — conservador (declarado no "
+          "pré-registro da H4).",
 }
 
 
@@ -92,11 +96,19 @@ def build_markdown(verdict, strat, bench, cfg, run_id=None, hypothesis="H1"):
         f"{'ACIMA de zero' if lo is not None and lo > 0 else 'CRUZA zero / negativo'}",
     ]
     if "dsr" in verdict:
+        crit = cfg.get("h4_criteria" if hypothesis == "H4" else "h2_criteria", {})
         lines += [
-            f"- **Critério (ii) da H2 — DSR (Deflated Sharpe Ratio):** "
+            f"- **Critério (ii) — DSR (Deflated Sharpe Ratio):** "
             f"{_fmt(_num(verdict.get('dsr')))} contra E[max SR | N="
             f"{verdict.get('n_trials')}] = {_fmt(_num(verdict.get('sr0')))} por-período "
-            f"(mínimo pré-registrado: {cfg.get('h2_criteria', {}).get('dsr_min', 0.95)})",
+            f"(mínimo pré-registrado: {crit.get('dsr_min', 0.95)})",
+        ]
+    if verdict.get("maxdd_strat") is not None:
+        dd_s, dd_b = verdict["maxdd_strat"], verdict["maxdd_bench"]
+        lines += [
+            f"- **Critério (iii) — drawdown (\"Sharpe E drawdown\", design §10):** "
+            f"maxDD estratégia {_fmt(dd_s, pct=True)} vs benchmark {_fmt(dd_b, pct=True)} "
+            f"→ {'OK (não pior)' if dd_s <= dd_b else 'REPROVADO (pior que o benchmark)'}",
         ]
     lines += [
         "",

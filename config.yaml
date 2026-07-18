@@ -57,6 +57,18 @@ h2_criteria:
   dsr_min: 0.95                    # [H2-FROZEN] DSR mínimo (desconto por tentativas)
   trials_path: "trials.json"       # Experiment Registry (versionado de propósito)
 
+# ── H4 (pré-registrada 2026-07-18; ver HANDOFF) ─────────────────────────────
+# NÃO alterar valores [H4-FROZEN] após qualquer rodada de resultado da H4.
+# Sizing, não seleção: universo INTEIRO com peso ∝ 1/vol realizada.
+
+h4_weighting:
+  name: inverse_vol                # [H4-FROZEN] volatility targeting (design §10, mapa M7+)
+  vol_lookback_days: 252           # [H4-FROZEN] mesma régua da H2 (reuso declarado)
+
+h4_criteria:
+  dsr_min: 0.95                    # [H4-FROZEN] DSR mínimo (N=3 tentativas)
+  require_maxdd_not_worse: true    # [H4-FROZEN] "julgado por Sharpe E drawdown" (§10)
+
 data:
   db_path: "data/stocks.db"
   cotahist_dir: "data/cotahist"

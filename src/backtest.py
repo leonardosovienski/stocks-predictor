@@ -28,7 +28,8 @@ from config import load_config
 from returns import month_end_dates
 import universe
 from predictor_core.measurement.bootstrap import bootstrap_ci
-from predictor_core.measurement.stats import probabilistic_sharpe_ratio, sharpe
+from predictor_core.measurement.stats import (max_drawdown,
+                                              probabilistic_sharpe_ratio, sharpe)
 
 
 def _daily_returns(dates, closes):
@@ -36,7 +37,7 @@ def _daily_returns(dates, closes):
             for i in range(1, len(closes)) if closes[i - 1] > 0}
 
 
-def walk_forward(conn, cfg, signal_fn=None, take="top"):
+def walk_forward(conn, cfg, signal_fn=None, take="top", portfolio_fn=None):
     """Retorna (strat_diaria, bench_diaria) — listas pareadas de retornos diários.
 
     Custo de transação: proporcional ao turnover REAL entre rebalanceamentos
@@ -48,6 +49,12 @@ def walk_forward(conn, cfg, signal_fn=None, take="top"):
     `signal_fn(sub, asof) -> {ticker: sinal}` e `take` ("top"/"bottom") permitem
     plugar outra hipótese (H2: vol realizada, quintil inferior) na MESMA
     maquinaria de universo/custos/pareamento. Defaults = H1 exata.
+
+    `portfolio_fn(sub, asof) -> {ticker: peso}` (H4+) troca a CONSTRUÇÃO por
+    uma carteira PONDERADA (Σw=1): retorno diário = média ponderada
+    (re-normalizada pelos presentes no dia) e custo = turnover de pesos
+    (Σ|Δw| × lado). Quando presente, ignora signal_fn/take. O caminho
+    equiponderado de H1/H2 permanece intocado.
     """
     f, u = cfg["factor"], cfg["universe"]
     e, bt = cfg["execution"], cfg["backtest"]
@@ -79,6 +86,7 @@ def walk_forward(conn, cfg, signal_fn=None, take="top"):
 
     strat, bench = [], []
     prev_port: set = set()
+    prev_w: dict = {}
     for t, t1 in zip(rebal, rebal[1:]):
         uni = universe.select_universe(conn, t, top_n=top_n, lookback=liq_lb, min_history=min_hist)
         if not uni:
@@ -86,24 +94,39 @@ def walk_forward(conn, cfg, signal_fn=None, take="top"):
         for tk in uni:
             _load(tk)
         sub = {tk: series[tk] for tk in uni}
-        port = list(portfolio.select_portfolio(signal_fn(sub, t), quant, take=take))
-        if not port:
-            prev_port = set()
-            continue
-
-        port_set = set(port)
-        # custo do turnover real, normalizado pelo peso 1/n da posição equiponderada.
-        # 1ª carteira (prev vazio) = tudo entrando => custo de entrada por posição.
-        period_cost = execution.calculate_turnover_cost(prev_port, port_set, one_way) / len(port_set)
-        prev_port = port_set
+        if portfolio_fn is None:
+            port = list(portfolio.select_portfolio(signal_fn(sub, t), quant, take=take))
+            if not port:
+                prev_port = set()
+                continue
+            port_set = set(port)
+            # custo do turnover real, normalizado pelo peso 1/n da posição equiponderada.
+            # 1ª carteira (prev vazio) = tudo entrando => custo de entrada por posição.
+            period_cost = execution.calculate_turnover_cost(prev_port, port_set, one_way) / len(port_set)
+            prev_port = port_set
+            weights = None
+        else:
+            weights = portfolio_fn(sub, t)
+            if not weights:
+                prev_w = {}
+                continue
+            period_cost = execution.weighted_turnover_cost(prev_w, weights, one_way)
+            prev_w = weights
 
         period = [d for d in all_dates if t < d <= t1]
         for j, d in enumerate(period):
-            srets = [dret[tk][d] for tk in port if d in dret[tk]]
             brets = [dret[tk][d] for tk in uni if d in dret[tk]]
-            if not srets or not brets:
-                continue
-            s = sum(srets) / len(srets) - (period_cost if j == 0 else 0.0)
+            if weights is None:
+                srets = [dret[tk][d] for tk in port if d in dret[tk]]
+                if not srets or not brets:
+                    continue
+                s = sum(srets) / len(srets) - (period_cost if j == 0 else 0.0)
+            else:
+                sw = [(w, dret[tk][d]) for tk, w in weights.items() if d in dret[tk]]
+                den = sum(w for w, _ in sw)
+                if not sw or not brets or den <= 0:
+                    continue
+                s = sum(w * r for w, r in sw) / den - (period_cost if j == 0 else 0.0)
             strat.append(s)
             bench.append(sum(brets) / len(brets))
     return strat, bench
@@ -177,6 +200,54 @@ def run_h2(cfg=None, conn=None, write_report=False, run_id=None, trials_path=Non
         import report
         path = report.write_report(verdict, strat, bench, cfg, run_id=run_id,
                                    hypothesis="H2")
+        print(f"relatório: {path}")
+    return verdict
+
+
+def _max_dd(returns):
+    """Max drawdown da curva de capital (base 1.0) de uma série de retornos."""
+    eq, v = [], 1.0
+    for r in returns:
+        v *= 1.0 + r
+        eq.append(v)
+    return max_drawdown(eq)
+
+
+def run_h4(cfg=None, conn=None, write_report=False, run_id=None, trials_path=None):
+    """H4 — sizing por volatility targeting (pré-registro 2026-07-18): universo
+    INTEIRO com peso ∝ 1/vol realizada 252d vs. o MESMO universo equiponderado.
+    Critérios (todos, fixados a priori): (i) IC95% diff-Sharpe > 0;
+    (ii) DSR >= dsr_min (N=3 tentativas); (iii) maxDD da estratégia <= maxDD do
+    benchmark ("julgado por Sharpe líquido E drawdown", design §10)."""
+    import trials_gate
+    from config import H4_FROZEN_KEYS
+    cfg = cfg or load_config()
+    conn = conn or db.get_connection()
+    lb = cfg.get("h4_weighting", {}).get("vol_lookback_days", 252)
+    strat, bench = walk_forward(
+        conn, cfg,
+        portfolio_fn=lambda sub, asof: portfolio.inverse_vol_weights(
+            factor.vol_signals(sub, asof, lb)))
+    base = judge(strat, bench, cfg)
+    extra, dd_s, dd_b = [], None, None
+    if strat and cfg.get("h4_criteria", {}).get("require_maxdd_not_worse", True):
+        dd_s, dd_b = _max_dd(strat), _max_dd(bench)
+        if dd_s > dd_b:
+            extra.append(f"maxDD estratégia {dd_s:.2%} > benchmark {dd_b:.2%}")
+    verdict = trials_gate.apply_dsr(
+        base, strat, cfg, trials_path=trials_path,
+        trial_name="h4-invvol-sizing-252", frozen_keys=H4_FROZEN_KEYS,
+        criteria_section="h4_criteria", extra_failures=extra,
+        notes="rodada única da H4 (sizing 1/vol; sharpe por-período realizado)")
+    verdict["maxdd_strat"], verdict["maxdd_bench"] = dd_s, dd_b
+    print(f"walk-forward H4: {verdict['n']} pregões | PSR={verdict['psr']} | "
+          f"IC95% diff-Sharpe={verdict['sharpe_diff_ci']} | "
+          f"DSR={verdict.get('dsr')} (N={verdict.get('n_trials')}) | "
+          f"maxDD strat/bench={dd_s}/{dd_b} | H4: {verdict['veredito']}")
+    if write_report:
+        import report
+        path = report.write_report(verdict, strat, bench, cfg, run_id=run_id,
+                                   hypothesis="H4")
         print(f"relatório: {path}")
     return verdict
 

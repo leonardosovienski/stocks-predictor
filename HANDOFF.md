@@ -1,19 +1,71 @@
 # HANDOFF — predictor-stocks
 
-> ## STATUS: PARKED (verificado 2026-07-18)
+> ## STATUS: REABERTO PARA H4 (2026-07-18) — vendor segue congelado
 >
-> Congelado. Vendor de `predictor_core` intencionalmente desatualizado
-> (agregado `3445e37f43c458cc`, drift esperado e correto). **Proibido**:
-> sync de vendor, atualização automática, migração, adaptação, evolução
-> funcional. Consulta histórica é permitida. H1 encerrada; H2 (mudança
-> estrutural de sinal) mencionada em documentos históricos como direção
-> futura possível, sem premissa fechada, sem features definidas, sem
-> protocolo de validação — não deve ser retomada até existir hipótese
-> falsificável formal. Sync indevido de 2026-07-17 (`PARKED` vazio por
-> período) revertido via `git revert` em ambas as branches afetadas
-> (commits `e8adae1`, `bce5043`) — nunca publicado. Condição formal para
-> reabrir: decisão humana explícita + hipótese H2 formalizada antes de
-> qualquer código. Ver `ECOSYSTEM_HANDOFF.md`.
+> O bloco PARKED de 2026-07-18 fixava a condição formal de reabertura:
+> "decisão humana explícita + hipótese formalizada antes de qualquer
+> código". **Ambas satisfeitas em 2026-07-18**: ordem explícita do operador
+> ("abre a H4 com volatility targeting") + pré-registro formal da H4 abaixo,
+> escrito ANTES de qualquer código/rodada. Nota: o texto do bloco dizia "H2
+> sem hipótese formalizada" — estava desatualizado em relação a ESTE arquivo
+> (a H2 foi pré-registrada, rodada e encerrada em 2026-07-16, ver seções
+> abaixo); a inconsistência veio de um carimbo de ecossistema, não de
+> decisão nova.
+>
+> **Permanece PROIBIDO** (inalterado): sync/atualização do vendor
+> `predictor_core` (fica em 1.3.0-ga-20260711, agregado `3445e37f43c458cc`,
+> drift esperado e correto — o sync indevido de 2026-07-17 foi revertido em
+> `e8adae1`). A H4 usa somente APIs já vendorizadas. Ver `ECOSYSTEM_HANDOFF.md`.
+
+---
+
+## H4 ABERTA — PRÉ-REGISTRO (2026-07-18, ANTES de qualquer código/rodada)
+
+**Decisão do operador (2026-07-18):** "abre a H4 com volatility targeting" —
+a H4 do mapa M7+ do design §10 ("sizing: volatility targeting (peso inverso à
+vol realizada) vs. equiponderado; julgado por Sharpe líquido E drawdown").
+É SIZING, não seleção: a carteira segura o universo INTEIRO e muda só os
+pesos — estruturalmente distinta da H2 (que selecionava o quintil de menor
+vol com pesos iguais). O design condiciona só a H3 (combinação) à
+sobrevivência de H1/H2; a H4 não tem essa trava. Entra como tentativa N=3 no
+Experiment Registry e paga o DSR correspondente.
+
+### HIPÓTESE #4 (pré-registrada — critérios fixados ANTES de ver o dado)
+
+> **H4:** Carteira long-only de **TODO o universo point-in-time** (top 60 por
+> liquidez, janela 126 pregões — idêntico a H1/H2), **ponderada inversamente à
+> volatilidade realizada** (w_i ∝ 1/vol_i, vol = desvio-padrão dos retornos
+> diários dos últimos 252 pregões ≤ asof, normalizado para Σw=1),
+> rebalanceamento mensal com execução na abertura de D+1 e custo proporcional
+> ao turnover real de PESOS (0,18% por lado × Σ|Δw_i|), obtém **Sharpe líquido
+> superior ao buy-and-hold equiponderado do mesmo universo**, com TODOS os
+> critérios: (i) IC 95% (stationary bootstrap, bloco 21) da diferença de
+> Sharpe excluindo zero; (ii) **DSR ≥ 0,95** (descontado por TODAS as
+> tentativas do `trials.json`, N=3); (iii) **max drawdown da estratégia ≤ max
+> drawdown do benchmark** (o "E drawdown" do design §10, fixado a priori).
+>
+> Papel do universo sem vol definida no asof (janela de 252 retornos
+> incompleta) fica com peso 0 NAQUELE mês — declarado; o benchmark
+> equiponderado o mantém (assimetria pequena e conservadora).
+>
+> **Janela:** a MESMA de H1/H2 (teste 2018-01 → último dado COTAHIST); é por
+> isso que o DSR com N=3 é critério, não enfeite.
+>
+> **Critérios fixados antes de qualquer rodada.** Falha em QUALQUER um dos
+> três = "não comprovada nesta janela" — resultado válido, encerra a H4 sem
+> repescagem. Lookback de vol (252 — mesma régua da H2, reuso declarado, não
+> ajuste), custos e janela são [H4-FROZEN]; lacre por máquina em
+> `config.h4_frozen_config_hash`.
+
+**Viés declarado (rota (b), só-preço):** a ponderação 1/vol sobrepesa papéis
+de baixa volatilidade, que tendem a MAIOR dividend yield → omitir proventos
+**PENALIZA a H4 contra o benchmark** (conservador, mesma direção da H2).
+
+**Simplificação declarada (herdada da maquinaria M5):** pesos re-normalizados
+diariamente dentro do mês (sem drift intramês), igual ao tratamento do
+benchmark equiponderado — simétrico, não favorece a estratégia.
+
+**Veredito H4:** _pendente — nenhuma rodada executada até este pré-registro._
 
 **O HANDOFF nunca pode mentir sobre o estado da suíte.**
 Atualizar ao fim de cada marco. Toda decisão registrada aqui é permanente.
