@@ -85,9 +85,31 @@ rodada.
   continuação de momentum no curto prazo enterram a reversão implementável.
 - **Não comprovada (e na prática refutada na direção oposta). Sem repescagem.**
 - Relatório: [`reports/h5_verdict_20260718T202628182793-427444.md`](reports/h5_verdict_20260718T202628182793-427444.md)
-  (versionado); `trials.json` com sharpe realizado −0,011225 por-período.
+  (versionado); `trials.json` com sharpe realizado −0,011367 por-período.
 
 **Suíte pós-marco: 140/140 verde** (135 + 5 da H5).
+
+### Correção pós-revisão (2026-07-18, mesma noite) — bug de clobber no registry
+
+Revisão de código da sessão achou um bug REAL de governança:
+`register_baseline_trials` re-registrava a H2 com `sharpe=None`, e o update
+sobrescrevia o sharpe REALIZADO da rodada única — os comandos `backtest-h4` e
+`backtest-h5` zeraram o valor da H2 no `trials.json`. Consequências, medidas e
+registradas:
+
+1. **DSRs de H4/H5 foram computados com a variância entre tentativas SEM o
+   sharpe da H2** — sr0 da H4 saiu ~0,0009 (correto ~0,0014) e o da H5 0,0134
+   (correto ~0,0122). **Nenhum veredito muda**: ambos reprovaram o DSR por
+   margem enorme (0,68 e 0,13 vs 0,95) e o critério (i) do IC já reprovava os
+   dois independentemente. Os números impressos nos relatórios de H4/H5 ficam
+   como estão (artefatos da rodada, com esta errata apontando o desvio).
+2. **Fix**: guarda anti-clobber em `trials_gate.register_hypothesis`
+   (re-registro com sharpe=None preserva sharpe/notes realizados) + teste de
+   regressão. `trials.json` reparado via API: sharpe da H2 restaurado a
+   0,013363 com nota de correção na própria trial.
+3. **Errata deste HANDOFF**: os sharpes registrados de H4/H5 haviam sido
+   anotados de memória (0,011478 / −0,011225); os valores REAIS do arquivo são
+   **0,011372 / −0,011367** — corrigidos acima.
 
 **Leitura acumulada (4 tentativas, 0 comprovadas, 1 anti-sinal):** H1 momentum
 ~empate; H2/H4 (tilts de baixa vol) melhores no descritivo sem significância;
@@ -168,7 +190,7 @@ positivo RE-ATESTADO sobre o código atual (2026-07-18T20:12:07Z) → trial
   vs 8,03%. De novo melhor que o benchmark no descritivo, de novo
   indistinguível de sorte. **Não comprovada. Sem repescagem.**
 - Relatório: [`reports/h4_verdict_20260718T201214322046-5e3833.md`](reports/h4_verdict_20260718T201214322046-5e3833.md)
-  (versionado via `git add -f`); `trials.json` com sharpe realizado 0,011478
+  (versionado via `git add -f`); `trials.json` com sharpe realizado 0,011372
   por-período.
 
 **Suíte pós-marco: 135/135 verde** (126 + 9 da H4: pesos 1/vol, custo por

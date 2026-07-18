@@ -58,8 +58,8 @@
       "bootstrap.method": "stationary",
       "h2_criteria.dsr_min": 0.95
     },
-    "sharpe": null,
-    "notes": "pré-registro 2026-07-16 (HANDOFF); sharpe preenchido pela rodada única",
+    "sharpe": 0.013363,
+    "notes": "rodada única da H2 (sharpe por-período realizado); valor restaurado em 2026-07-18 apos bug de clobber no register_baseline_trials (re-registro de baseline zerava o sharpe realizado — corrigido com guarda anti-clobber)",
     "test_period": [
       "2018-01-01",
       "2026-07-03"

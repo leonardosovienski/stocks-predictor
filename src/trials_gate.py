@@ -80,21 +80,19 @@ def _params_from(cfg, keys):
 
 def register_baseline_trials(cfg, trials_path=None):
     """Registra as tentativas do denominador do DSR: H1 (retroativa, Sharpe
-    por-período do veredito final) e H2 (sharpe=None até a rodada única).
-    Idempotente; a CRIAÇÃO exige o atestado do harness (trava de poder)."""
+    por-período do veredito final) e H2 (sharpe=None até a rodada única;
+    preservado pela guarda anti-clobber depois dela). Idempotente; a CRIAÇÃO
+    exige o atestado do harness (trava de poder)."""
     from config import H1_FROZEN_KEYS, H2_FROZEN_KEYS
-    reg = trials.TrialRegistry(trials_path_from(cfg, trials_path))
-    reg.register(
-        "h1-momentum-12-1", params=_params_from(cfg, H1_FROZEN_KEYS),
-        sharpe=round(H1_SHARPE_PER_PERIOD, 6), metric=METRIC,
-        notes="retroativa: veredito final da H1 (run 20260712T091903477689-41cc24), "
-              "Sharpe anualizado 0.1592 -> por-período /sqrt(252); não comprovada",
-        test_period=H2_TEST_PERIOD)
-    reg.register(
-        "h2-lowvol-252", params=_params_from(cfg, H2_FROZEN_KEYS),
-        sharpe=None, metric=METRIC,
-        notes="pré-registro 2026-07-16 (HANDOFF); sharpe preenchido pela rodada única",
-        test_period=H2_TEST_PERIOD)
+    reg = register_hypothesis(
+        cfg, "h1-momentum-12-1", H1_FROZEN_KEYS,
+        "retroativa: veredito final da H1 (run 20260712T091903477689-41cc24), "
+        "Sharpe anualizado 0.1592 -> por-período /sqrt(252); não comprovada",
+        sharpe=round(H1_SHARPE_PER_PERIOD, 6), trials_path=trials_path)
+    register_hypothesis(
+        cfg, "h2-lowvol-252", H2_FROZEN_KEYS,
+        "pré-registro 2026-07-16 (HANDOFF); sharpe preenchido pela rodada única",
+        trials_path=trials_path)
     return reg
 
 
@@ -106,8 +104,18 @@ def per_period_sharpe(xs):
 
 def register_hypothesis(cfg, name, frozen_keys, notes, sharpe=None, trials_path=None):
     """Registra (ou atualiza) uma tentativa de hipótese deste domínio no
-    registry. Criação exige o atestado do harness (trava de poder)."""
+    registry. Criação exige o atestado do harness (trava de poder).
+
+    Guarda anti-clobber: re-registrar com sharpe=None uma trial que JÁ TEM
+    sharpe realizado preserva o valor (e as notes) existentes — o resultado de
+    uma rodada única não pode ser apagado por um re-registro de baseline
+    (bug corrigido 2026-07-18: os comandos H4/H5 zeravam o sharpe da H2)."""
     reg = trials.TrialRegistry(trials_path_from(cfg, trials_path))
+    if sharpe is None:
+        existing = next((t for t in reg.load() if t.get("name") == name), None)
+        if existing and existing.get("sharpe") is not None:
+            sharpe = existing["sharpe"]
+            notes = existing.get("notes", notes)
     reg.register(name, params=_params_from(cfg, frozen_keys), sharpe=sharpe,
                  metric=METRIC, notes=notes, test_period=H2_TEST_PERIOD)
     return reg

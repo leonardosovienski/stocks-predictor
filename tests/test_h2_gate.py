@@ -110,6 +110,24 @@ def test_new_trial_requires_attestation(tmp_path):
         reg.register("h2-lowvol-252", params={"x": 1}, metric=trials_gate.METRIC)
 
 
+def test_register_hypothesis_preserves_realized_sharpe(tmp_path):
+    """Regressão do bug de clobber (2026-07-18): re-registrar baseline com
+    sharpe=None NÃO pode apagar o sharpe realizado de uma rodada única."""
+    from config import load_config, H2_FROZEN_KEYS
+    cfg = load_config()
+    tp = tmp_path / "trials.json"
+    trials_gate.attest(_fast_cfg(), trials_path=tp)
+    trials_gate.register_hypothesis(cfg, "h2-lowvol-252", H2_FROZEN_KEYS,
+                                    "pré-registro", trials_path=tp)
+    trials_gate.register_hypothesis(cfg, "h2-lowvol-252", H2_FROZEN_KEYS,
+                                    "rodada única", sharpe=0.0123, trials_path=tp)
+    # o re-registro de baseline (sharpe=None) tem que PRESERVAR valor e notes
+    reg = trials_gate.register_hypothesis(cfg, "h2-lowvol-252", H2_FROZEN_KEYS,
+                                          "pré-registro de novo", trials_path=tp)
+    h2 = [t for t in reg.load() if t["name"] == "h2-lowvol-252"][0]
+    assert h2["sharpe"] == 0.0123 and h2["notes"] == "rodada única"
+
+
 def test_attest_then_register_and_identity_lock(tmp_path):
     cfg = _fast_cfg()
     tp = tmp_path / "trials.json"

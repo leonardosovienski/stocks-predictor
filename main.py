@@ -56,6 +56,9 @@ def status() -> int:
     cfg = cfg_mod.load_config()
     print(f"config_hash      : {cfg_mod.config_hash(cfg)}")
     print(f"frozen_hash (H1) : {cfg_mod.frozen_config_hash(cfg)}")
+    print(f"frozen_hash (H2) : {cfg_mod.h2_frozen_config_hash(cfg)}")
+    print(f"frozen_hash (H4) : {cfg_mod.h4_frozen_config_hash(cfg)}")
+    print(f"frozen_hash (H5) : {cfg_mod.h5_frozen_config_hash(cfg)}")
     print(f"  universo       : top {cfg['universe']['top_n']} por liquidez, "
           f"janela {cfg['universe']['lookback_trading_days']} pregões")
     print(f"  fator          : {cfg['factor']['name']} "
@@ -75,8 +78,19 @@ def status() -> int:
         print(f"{table:<17}| {n}")
     conn.close()
 
-    print("\nmarcos           : M1–M6 implementados (núcleo). Veredito real da H1 exige COTAHIST real.")
-    print("testes           : py -3.12 -m pytest tests/ -q")
+    import trials_gate
+    reg_trials = trials_gate.trials_path_from(cfg)
+    if reg_trials.exists():
+        import json
+        ts = json.loads(reg_trials.read_text(encoding="utf-8"))
+        print(f"\ntrials (DSR)     : {len(ts)} tentativa(s) registrada(s) — "
+              + ", ".join(t["name"] for t in ts))
+    else:
+        print("\ntrials (DSR)     : registro ainda não criado (rode attest-power)")
+
+    print("\nmarcos           : M1–M6 completos. H1/H2/H4/H5 julgadas — nenhuma "
+          "comprovada (ver HANDOFF).")
+    print("testes           : py -3.13 -m pytest tests/ -q")
     return 0
 
 

@@ -178,6 +178,21 @@ def run(cfg=None, conn=None, write_report=False, run_id=None):
     return verdict
 
 
+def _conclude(verdict, strat, bench, cfg, hypothesis, write_report, run_id, extra=""):
+    """Fecho comum das hipóteses H2+: imprime a linha do veredito (com DSR) e,
+    se pedido, grava o relatório rotulado. Retorna o verdict inalterado."""
+    print(f"walk-forward {hypothesis}: {verdict['n']} pregões | PSR={verdict['psr']} | "
+          f"IC95% diff-Sharpe={verdict['sharpe_diff_ci']} | "
+          f"DSR={verdict.get('dsr')} (N={verdict.get('n_trials')}) | "
+          f"{extra}{hypothesis}: {verdict['veredito']}")
+    if write_report:
+        import report
+        path = report.write_report(verdict, strat, bench, cfg, run_id=run_id,
+                                   hypothesis=hypothesis)
+        print(f"relatório: {path}")
+    return verdict
+
+
 def run_h2(cfg=None, conn=None, write_report=False, run_id=None, trials_path=None):
     """H2 — baixa volatilidade (pré-registro 2026-07-16). MESMA maquinaria da H1
     (universo/custos/pareamento/pedágio); o que muda é o sinal (vol realizada,
@@ -192,16 +207,7 @@ def run_h2(cfg=None, conn=None, write_report=False, run_id=None, trials_path=Non
         take="bottom")
     verdict = trials_gate.apply_dsr(judge(strat, bench, cfg), strat, cfg,
                                     trials_path=trials_path)
-    print(f"walk-forward H2: {verdict['n']} pregões | PSR={verdict['psr']} | "
-          f"IC95% diff-Sharpe={verdict['sharpe_diff_ci']} | "
-          f"DSR={verdict.get('dsr')} (N={verdict.get('n_trials')}) | "
-          f"H2: {verdict['veredito']}")
-    if write_report:
-        import report
-        path = report.write_report(verdict, strat, bench, cfg, run_id=run_id,
-                                   hypothesis="H2")
-        print(f"relatório: {path}")
-    return verdict
+    return _conclude(verdict, strat, bench, cfg, "H2", write_report, run_id)
 
 
 def _max_dd(returns):
@@ -240,16 +246,8 @@ def run_h4(cfg=None, conn=None, write_report=False, run_id=None, trials_path=Non
         criteria_section="h4_criteria", extra_failures=extra,
         notes="rodada única da H4 (sizing 1/vol; sharpe por-período realizado)")
     verdict["maxdd_strat"], verdict["maxdd_bench"] = dd_s, dd_b
-    print(f"walk-forward H4: {verdict['n']} pregões | PSR={verdict['psr']} | "
-          f"IC95% diff-Sharpe={verdict['sharpe_diff_ci']} | "
-          f"DSR={verdict.get('dsr')} (N={verdict.get('n_trials')}) | "
-          f"maxDD strat/bench={dd_s}/{dd_b} | H4: {verdict['veredito']}")
-    if write_report:
-        import report
-        path = report.write_report(verdict, strat, bench, cfg, run_id=run_id,
-                                   hypothesis="H4")
-        print(f"relatório: {path}")
-    return verdict
+    return _conclude(verdict, strat, bench, cfg, "H4", write_report, run_id,
+                     extra=f"maxDD strat/bench={dd_s}/{dd_b} | ")
 
 
 def run_h5(cfg=None, conn=None, write_report=False, run_id=None, trials_path=None):
@@ -272,16 +270,7 @@ def run_h5(cfg=None, conn=None, write_report=False, run_id=None, trials_path=Non
         trial_name="h5-strev-21", frozen_keys=H5_FROZEN_KEYS,
         criteria_section="h5_criteria",
         notes="rodada única da H5 (reversão 21d; sharpe por-período realizado)")
-    print(f"walk-forward H5: {verdict['n']} pregões | PSR={verdict['psr']} | "
-          f"IC95% diff-Sharpe={verdict['sharpe_diff_ci']} | "
-          f"DSR={verdict.get('dsr')} (N={verdict.get('n_trials')}) | "
-          f"H5: {verdict['veredito']}")
-    if write_report:
-        import report
-        path = report.write_report(verdict, strat, bench, cfg, run_id=run_id,
-                                   hypothesis="H5")
-        print(f"relatório: {path}")
-    return verdict
+    return _conclude(verdict, strat, bench, cfg, "H5", write_report, run_id)
 
 
 if __name__ == "__main__":

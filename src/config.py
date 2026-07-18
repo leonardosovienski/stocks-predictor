@@ -105,19 +105,24 @@ H1_FROZEN_KEYS = [
 ]
 
 
+def _frozen_hash(config: dict, keys: list, label: str) -> str:
+    """Mecanismo comum dos LACRES: hash determinístico só do subconjunto
+    congelado de uma hipótese. Golden tests fixam cada hash — mexer num param
+    frozen quebra alto; mexer em param operacional (db_path, seed) NÃO."""
+    frozen = {f"{s}.{k}": config.get(s, {}).get(k) for s, k in keys}
+    missing = [k for k, v in frozen.items() if v is None]
+    if missing:
+        raise ValueError(f"params {label} ausentes no config: {missing}")
+    return infra.config_hash(frozen)
+
+
 def frozen_config_hash(config: dict) -> str:
     """Hash determinístico SÓ do subconjunto H1-FROZEN — o LACRE da hipótese.
 
     Responde 'este run usou a H1 exata?' sem ser perturbado por params operacionais
-    (db_path, seed, bootstrap.method). Um golden test fixa este hash: mexer num param
-    frozen quebra alto; mexer no db_path/seed NÃO. É a versão por-máquina do lacre
-    que hoje depende da disciplina de não tocar nos comentários [H1-FROZEN].
-    """
-    frozen = {f"{s}.{k}": config.get(s, {}).get(k) for s, k in H1_FROZEN_KEYS}
-    missing = [k for k, v in frozen.items() if v is None]
-    if missing:
-        raise ValueError(f"params H1-FROZEN ausentes no config: {missing}")
-    return infra.config_hash(frozen)
+    (db_path, seed, bootstrap.method). É a versão por-máquina do lacre que
+    depende da disciplina de não tocar nos comentários [H1-FROZEN]."""
+    return _frozen_hash(config, H1_FROZEN_KEYS, "H1-FROZEN")
 
 
 # Subconjunto H2-FROZEN (pré-registro 2026-07-16, HANDOFF). Inclui os params
@@ -142,11 +147,7 @@ H2_FROZEN_KEYS = [
 
 def h2_frozen_config_hash(config: dict) -> str:
     """O LACRE da H2 — mesmo mecanismo do frozen_config_hash da H1."""
-    frozen = {f"{s}.{k}": config.get(s, {}).get(k) for s, k in H2_FROZEN_KEYS}
-    missing = [k for k, v in frozen.items() if v is None]
-    if missing:
-        raise ValueError(f"params H2-FROZEN ausentes no config: {missing}")
-    return infra.config_hash(frozen)
+    return _frozen_hash(config, H2_FROZEN_KEYS, "H2-FROZEN")
 
 
 # Subconjunto H4-FROZEN (pré-registro 2026-07-18, HANDOFF). Sizing sobre o
@@ -168,11 +169,7 @@ H4_FROZEN_KEYS = [
 
 def h4_frozen_config_hash(config: dict) -> str:
     """O LACRE da H4 — mesmo mecanismo dos lacres de H1/H2."""
-    frozen = {f"{s}.{k}": config.get(s, {}).get(k) for s, k in H4_FROZEN_KEYS}
-    missing = [k for k, v in frozen.items() if v is None]
-    if missing:
-        raise ValueError(f"params H4-FROZEN ausentes no config: {missing}")
-    return infra.config_hash(frozen)
+    return _frozen_hash(config, H4_FROZEN_KEYS, "H4-FROZEN")
 
 
 # Subconjunto H5-FROZEN (pré-registro 2026-07-18, HANDOFF). Reversão de curto
@@ -196,8 +193,4 @@ H5_FROZEN_KEYS = [
 
 def h5_frozen_config_hash(config: dict) -> str:
     """O LACRE da H5 — mesmo mecanismo dos lacres anteriores."""
-    frozen = {f"{s}.{k}": config.get(s, {}).get(k) for s, k in H5_FROZEN_KEYS}
-    missing = [k for k, v in frozen.items() if v is None]
-    if missing:
-        raise ValueError(f"params H5-FROZEN ausentes no config: {missing}")
-    return infra.config_hash(frozen)
+    return _frozen_hash(config, H5_FROZEN_KEYS, "H5-FROZEN")
