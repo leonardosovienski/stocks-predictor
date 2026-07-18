@@ -1,0 +1,136 @@
+[
+  {
+    "name": "h1-momentum-12-1",
+    "registered_at": "2026-07-16T22:15:30Z",
+    "params": {
+      "universe.top_n": 60,
+      "universe.lookback_trading_days": 126,
+      "universe.min_history_days": 252,
+      "universe.rebalance_frequency": "monthly",
+      "factor.name": "momentum_12_1",
+      "factor.lookback_days": 252,
+      "factor.skip_days": 21,
+      "portfolio.quantile": "top_quintile",
+      "portfolio.weighting": "equal",
+      "portfolio.direction": "long_only",
+      "execution.price": "next_open",
+      "execution.b3_fee_pct": 0.0003,
+      "execution.brokerage_pct": 0.0,
+      "execution.spread_slippage_pct": 0.0015,
+      "backtest.warmup_end": "2017-12-31",
+      "backtest.test_start": "2018-01-01",
+      "backtest.purge_embargo_months": 1,
+      "bootstrap.n_boot": 10000,
+      "bootstrap.block_length": 21,
+      "bootstrap.confidence": 0.95
+    },
+    "sharpe": 0.010029,
+    "notes": "retroativa: veredito final da H1 (run 20260712T091903477689-41cc24), Sharpe anualizado 0.1592 -> por-período /sqrt(252); não comprovada",
+    "test_period": [
+      "2018-01-01",
+      "2026-07-03"
+    ],
+    "metric": "sharpe_diff_ci95"
+  },
+  {
+    "name": "h2-lowvol-252",
+    "registered_at": "2026-07-16T22:15:30Z",
+    "params": {
+      "universe.top_n": 60,
+      "universe.lookback_trading_days": 126,
+      "universe.min_history_days": 252,
+      "universe.rebalance_frequency": "monthly",
+      "h2_factor.name": "realized_vol_252",
+      "h2_factor.lookback_days": 252,
+      "h2_portfolio.quantile": "bottom_quintile",
+      "h2_portfolio.weighting": "equal",
+      "h2_portfolio.direction": "long_only",
+      "execution.price": "next_open",
+      "execution.b3_fee_pct": 0.0003,
+      "execution.brokerage_pct": 0.0,
+      "execution.spread_slippage_pct": 0.0015,
+      "backtest.warmup_end": "2017-12-31",
+      "backtest.test_start": "2018-01-01",
+      "backtest.purge_embargo_months": 1,
+      "bootstrap.n_boot": 10000,
+      "bootstrap.block_length": 21,
+      "bootstrap.confidence": 0.95,
+      "bootstrap.method": "stationary",
+      "h2_criteria.dsr_min": 0.95
+    },
+    "sharpe": 0.013363,
+    "notes": "rodada única da H2 (sharpe por-período realizado); valor restaurado em 2026-07-18 apos bug de clobber no register_baseline_trials (re-registro de baseline zerava o sharpe realizado — corrigido com guarda anti-clobber)",
+    "test_period": [
+      "2018-01-01",
+      "2026-07-03"
+    ],
+    "metric": "sharpe_diff_ci95"
+  },
+  {
+    "name": "h4-invvol-sizing-252",
+    "registered_at": "2026-07-18T20:12:14Z",
+    "params": {
+      "universe.top_n": 60,
+      "universe.lookback_trading_days": 126,
+      "universe.min_history_days": 252,
+      "universe.rebalance_frequency": "monthly",
+      "h4_weighting.name": "inverse_vol",
+      "h4_weighting.vol_lookback_days": 252,
+      "execution.price": "next_open",
+      "execution.b3_fee_pct": 0.0003,
+      "execution.brokerage_pct": 0.0,
+      "execution.spread_slippage_pct": 0.0015,
+      "backtest.warmup_end": "2017-12-31",
+      "backtest.test_start": "2018-01-01",
+      "backtest.purge_embargo_months": 1,
+      "bootstrap.n_boot": 10000,
+      "bootstrap.block_length": 21,
+      "bootstrap.confidence": 0.95,
+      "bootstrap.method": "stationary",
+      "h4_criteria.dsr_min": 0.95,
+      "h4_criteria.require_maxdd_not_worse": true
+    },
+    "sharpe": 0.011372,
+    "notes": "rodada única da H4 (sizing 1/vol; sharpe por-período realizado)",
+    "test_period": [
+      "2018-01-01",
+      "2026-07-03"
+    ],
+    "metric": "sharpe_diff_ci95"
+  },
+  {
+    "name": "h5-strev-21",
+    "registered_at": "2026-07-18T20:26:28Z",
+    "params": {
+      "universe.top_n": 60,
+      "universe.lookback_trading_days": 126,
+      "universe.min_history_days": 252,
+      "universe.rebalance_frequency": "monthly",
+      "h5_factor.name": "reversal_21",
+      "h5_factor.lookback_days": 21,
+      "h5_factor.skip_days": 0,
+      "h5_portfolio.quantile": "bottom_quintile",
+      "h5_portfolio.weighting": "equal",
+      "h5_portfolio.direction": "long_only",
+      "execution.price": "next_open",
+      "execution.b3_fee_pct": 0.0003,
+      "execution.brokerage_pct": 0.0,
+      "execution.spread_slippage_pct": 0.0015,
+      "backtest.warmup_end": "2017-12-31",
+      "backtest.test_start": "2018-01-01",
+      "backtest.purge_embargo_months": 1,
+      "bootstrap.n_boot": 10000,
+      "bootstrap.block_length": 21,
+      "bootstrap.confidence": 0.95,
+      "bootstrap.method": "stationary",
+      "h5_criteria.dsr_min": 0.95
+    },
+    "sharpe": -0.011367,
+    "notes": "rodada única da H5 (reversão 21d; sharpe por-período realizado)",
+    "test_period": [
+      "2018-01-01",
+      "2026-07-03"
+    ],
+    "metric": "sharpe_diff_ci95"
+  }
+]

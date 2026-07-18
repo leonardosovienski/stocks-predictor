@@ -34,6 +34,32 @@ def test_record_forward_writes_eval_part(tmp_path):
     conn.close()
 
 
+def test_settle_ignores_non_spot_rows(tmp_path):
+    """Regressão (revisão 2026-07-18): linha de derivativo (mkt 070) carregada num
+    banco com avista_only=False NÃO pode virar preço de execução do paper.
+
+    Cenário determinístico: asof = ÚLTIMO pregão à vista do banco; a única linha
+    posterior é uma opção a 0,01. Sem o filtro de leitura, o settle liquidaria a
+    0,01; com ele, corretamente NÃO liquida (não há D+1 à vista ainda)."""
+    conn = _load(tmp_path)
+    last_spot = conn.execute("SELECT MAX(date) FROM prices_raw").fetchone()[0]
+    paper.record_forward(conn, _CFG, asof=last_spot, run_id="run_paper")
+    tk = conn.execute(
+        "SELECT ticker FROM decisions WHERE run_id='run_paper' LIMIT 1").fetchone()[0]
+    conn.execute(
+        "INSERT INTO prices_raw(date,ticker,bdi_code,market_type,open,high,low,close,"
+        "volume_fin,qty,quote_factor,source_file) "
+        "VALUES(date(?, '+1 day'),?, '78','070',0.01,0.01,0.01,0.01,1,1,1,'OPCOES.TXT')",
+        (last_spot, tk))
+    conn.commit()
+    paper.settle_executions(conn, _CFG)
+    row = conn.execute(
+        "SELECT exec_price FROM decisions WHERE run_id='run_paper' AND ticker=?",
+        (tk,)).fetchone()
+    assert row["exec_price"] is None
+    conn.close()
+
+
 def test_settle_fills_exec_write_once(tmp_path):
     conn = _load(tmp_path)
     paper.record_forward(conn, _CFG, asof="2018-01-31", run_id="run_paper")

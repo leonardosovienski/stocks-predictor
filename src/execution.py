@@ -44,6 +44,20 @@ def calculate_turnover_cost(prev_port, curr_port, cost_per_side):
     return (exiting + entering) * cost_per_side
 
 
+def weighted_turnover_cost(prev_weights, curr_weights, cost_per_side):
+    """Custo de transação para carteiras PONDERADAS (H4): cada unidade de peso
+    negociada paga um lado. turnover = Σ|w_novo − w_antigo| sobre a união dos
+    tickers; carteira inicial (prev vazio, Σw=1) paga exatamente 1 × lado.
+
+    É a generalização contínua de `calculate_turnover_cost` (que conta posições
+    equiponderadas inteiras); retorna o ARRASTO direto sobre o retorno do
+    período (já normalizado, pois os pesos somam 1)."""
+    tickers = set(prev_weights) | set(curr_weights)
+    turnover = sum(abs(curr_weights.get(t, 0.0) - prev_weights.get(t, 0.0))
+                   for t in tickers)
+    return turnover * cost_per_side
+
+
 def net_return(entry_price, exit_price, fee_pct, slippage_pct):
     """Retorno LÍQUIDO de custos de uma posição comprada (backtest bruto é teatro)."""
     if entry_price <= 0:

@@ -1,7 +1,313 @@
 # HANDOFF — predictor-stocks
 
+> ## STATUS: REABERTO PARA H4 (2026-07-18) — vendor segue congelado
+>
+> O bloco PARKED de 2026-07-18 fixava a condição formal de reabertura:
+> "decisão humana explícita + hipótese formalizada antes de qualquer
+> código". **Ambas satisfeitas em 2026-07-18**: ordem explícita do operador
+> ("abre a H4 com volatility targeting") + pré-registro formal da H4 abaixo,
+> escrito ANTES de qualquer código/rodada. Nota: o texto do bloco dizia "H2
+> sem hipótese formalizada" — estava desatualizado em relação a ESTE arquivo
+> (a H2 foi pré-registrada, rodada e encerrada em 2026-07-16, ver seções
+> abaixo); a inconsistência veio de um carimbo de ecossistema, não de
+> decisão nova.
+>
+> **Permanece PROIBIDO** (inalterado): sync/atualização do vendor
+> `predictor_core` (fica em 1.3.0-ga-20260711, agregado `3445e37f43c458cc`,
+> drift esperado e correto — o sync indevido de 2026-07-17 foi revertido em
+> `e8adae1`). A H4 usa somente APIs já vendorizadas. Ver `ECOSYSTEM_HANDOFF.md`.
+
+---
+
+## H5 ABERTA — PRÉ-REGISTRO (2026-07-18, ANTES de qualquer rodada)
+
+**Decisão do operador (2026-07-18):** "abre a próxima com reversão de curto
+prazo" — o fator que o mapa M7+ do design §10 sempre nomeou como o segundo da
+fila. Nota de numeração: o slot "H2" do mapa foi ocupado pela baixa-vol
+(decisão de 2026-07-16) e "H3" segue reservada para combinação (condicionada a
+sobreviventes individuais, que não existem); esta hipótese entra como **H5**.
+O "H5-short" do mapa permanece hipótese futura própria (gated na perna comprada
+validada). A identidade real de cada tentativa é o `trials.json`, não o número.
+Entra como **tentativa N=4** no Experiment Registry.
+
+### HIPÓTESE #5 (pré-registrada — critérios fixados ANTES de ver o dado)
+
+> **H5:** Carteira long-only do **quintil INFERIOR de retorno recente**
+> (retorno acumulado dos últimos 21 pregões ≤ asof — os "perdedores" do mês,
+> aposta clássica de reversão de curto prazo, Jegadeesh 1990), universo B3
+> point-in-time (top 60 por liquidez, janela 126 pregões — idêntico a
+> H1/H2/H4), equiponderada, rebalanceamento mensal com execução na abertura de
+> D+1 e custo proporcional ao turnover real (0,18% por lado), obtém **Sharpe
+> líquido superior ao buy-and-hold equiponderado do mesmo universo**, com:
+> (i) IC 95% (stationary bootstrap, bloco 21) da diferença de Sharpe excluindo
+> zero, E (ii) **DSR ≥ 0,95** (descontado por TODAS as tentativas do
+> `trials.json`, N=4).
+>
+> **Sinal:** `momentum_12_1(lookback=21, skip=0)` — retorno de [asof−21, asof]
+> na série ajustada; point-in-time como sempre. Sem skip de microestrutura
+> (variante clássica, fixada a priori).
+>
+> **Janela:** a MESMA de H1/H2/H4 (teste 2018-01 → último dado COTAHIST) —
+> DSR com N=4 é o pedágio dessa reutilização.
+>
+> **Critérios fixados antes de qualquer rodada.** IC contendo zero OU
+> DSR < 0,95 = "não comprovada nesta janela" — encerra a H5 sem repescagem.
+> Lookback (21), quintil, pesos e custos são [H5-FROZEN]; lacre por máquina em
+> `config.h5_frozen_config_hash`.
+
+**Adversário natural declarado:** reversão de curto prazo gira a carteira
+quase inteira todo mês — o turnover alto é intrínseco à hipótese e o custo por
+turnover real vai cobrá-lo integralmente. Se a H5 morrer no custo, isso é
+REFUTAÇÃO honesta da versão implementável, não defeito da régua.
+
+**Viés declarado (rota (b), só-preço):** queda ex-dividendo entra como retorno
+negativo sem perda econômica → papéis de maior yield caem no quintil
+"perdedor" com mais frequência, e o provento omitido então SUBESTIMA o retorno
+realizado da carteira → o viés tende a PENALIZAR a H5 (conservador; direção
+declarada).
+
+### VEREDITO H5 — ENCERRADA: NÃO COMPROVADA, com IC INTEIRAMENTE NEGATIVO (2026-07-18, rodada única)
+
+Trilha na ordem pré-registrada: pré-registro commitado (`384ffda`) → controle
+positivo re-atestado (2026-07-18T20:26:27Z) → trial `h5-strev-21` (N=4) → UMA
+rodada.
+
+- **run_id:** `20260718T202628182793-427444` — 2.092 pregões pareados
+- **(i) IC 95% diff-Sharpe (stationary, bloco 21): (−0,6406, −0,1009)** — não
+  contém zero, mas do lado ERRADO: a estratégia é significativamente PIOR que
+  o benchmark. Primeiro resultado do domínio em que a régua fecha uma direção
+  — e é contra.
+- **(ii) DSR: 0,1274 < 0,95** (N=4; E[max SR|N=4] = 0,0134 por-período).
+- PSR 0,1607. Descritivo brutal: Sharpe anual. **−0,18** vs 0,16; retorno
+  total **−59,03%** vs +8,03%; maxDD 68,20% vs 48,03%. Comprar os perdedores
+  do mês no top-60 da B3, líquido de custo por turnover real, DESTRÓI capital
+  — o turnover intrínseco (declarado como adversário no pré-registro) e a
+  continuação de momentum no curto prazo enterram a reversão implementável.
+- **Não comprovada (e na prática refutada na direção oposta). Sem repescagem.**
+- Relatório: [`reports/h5_verdict_20260718T202628182793-427444.md`](reports/h5_verdict_20260718T202628182793-427444.md)
+  (versionado); `trials.json` com sharpe realizado −0,011367 por-período.
+
+**Suíte pós-marco: 140/140 verde** (135 + 5 da H5).
+
+### Correção pós-revisão (2026-07-18, mesma noite) — bug de clobber no registry
+
+Revisão de código da sessão achou um bug REAL de governança:
+`register_baseline_trials` re-registrava a H2 com `sharpe=None`, e o update
+sobrescrevia o sharpe REALIZADO da rodada única — os comandos `backtest-h4` e
+`backtest-h5` zeraram o valor da H2 no `trials.json`. Consequências, medidas e
+registradas:
+
+1. **DSRs de H4/H5 foram computados com a variância entre tentativas SEM o
+   sharpe da H2** — sr0 da H4 saiu ~0,0009 (correto ~0,0014) e o da H5 0,0134
+   (correto ~0,0122). **Nenhum veredito muda**: ambos reprovaram o DSR por
+   margem enorme (0,68 e 0,13 vs 0,95) e o critério (i) do IC já reprovava os
+   dois independentemente. Os números impressos nos relatórios de H4/H5 ficam
+   como estão (artefatos da rodada, com esta errata apontando o desvio).
+2. **Fix**: guarda anti-clobber em `trials_gate.register_hypothesis`
+   (re-registro com sharpe=None preserva sharpe/notes realizados) + teste de
+   regressão. `trials.json` reparado via API: sharpe da H2 restaurado a
+   0,013363 com nota de correção na própria trial.
+3. **Errata deste HANDOFF**: os sharpes registrados de H4/H5 haviam sido
+   anotados de memória (0,011478 / −0,011225); os valores REAIS do arquivo são
+   **0,011372 / −0,011367** — corrigidos acima.
+
+### Revisão profunda do src/ (2026-07-18, 2ª passada — módulos M1–M6 inteiros)
+
+Leitura linha a linha de adjust/universe/paper/db/cotahist/analyst/ingest:
+
+1. **`paper.settle_executions` blindado** (era a ÚNICA query de leitura sem as
+   defesas do Red Team): agora filtra mercado à vista (`universe.SPOT_MARKET`)
+   e dedupa re-ingest (`GROUP BY date`) — um banco com `avista_only=False` não
+   pode mais liquidar paper a preço de opção; + cache de série por ticker (era
+   uma query por decisão pendente). Teste de regressão determinístico
+   (`test_settle_ignores_non_spot_rows`). Seguro: paper nunca rodou em produção
+   (`decisions`=0) e não alimenta veredito nenhum.
+2. **`quote_factor` nunca aplicado ao preço** — registrado acima na lista de
+   "Conhecidos, NÃO corrigidos" com análise de impacto (zero nos vereditos;
+   decisão de correção é do operador).
+3. Sem outros defeitos materiais: adjust/universe já carregam as defesas das
+   revisões anteriores (GROUP BY, resolved_at, janela por calendário); analyst
+   segue §9b (só SELECT); cotahist falha alto em linha corrompida (estilo do
+   projeto).
+
+**Leitura acumulada (4 tentativas, 0 comprovadas, 1 anti-sinal):** H1 momentum
+~empate; H2/H4 (tilts de baixa vol) melhores no descritivo sem significância;
+H5 reversão significativamente PIOR. O anti-sinal da H5 é informação real: se
+perdedores de 21d underperformam com significância, isso é evidência de
+CONTINUAÇÃO de curto prazo neste universo — nota consultiva para ideação
+futura (qualquer uso disso = nova hipótese, novo pré-registro, N+1; o lado
+comprado dela já foi ~testado na H1 e não passou; o lado vendável esbarra no
+custo de aluguel do mapa §10-H5). Com dados só-preço, o baralho local está
+jogado; a próxima fronteira honesta é FONTE NOVA (fundamentos/proventos) —
+decisão de dependência do operador.
+
+---
+
+## H4 ABERTA — PRÉ-REGISTRO (2026-07-18, ANTES de qualquer código/rodada)
+
+**Decisão do operador (2026-07-18):** "abre a H4 com volatility targeting" —
+a H4 do mapa M7+ do design §10 ("sizing: volatility targeting (peso inverso à
+vol realizada) vs. equiponderado; julgado por Sharpe líquido E drawdown").
+É SIZING, não seleção: a carteira segura o universo INTEIRO e muda só os
+pesos — estruturalmente distinta da H2 (que selecionava o quintil de menor
+vol com pesos iguais). O design condiciona só a H3 (combinação) à
+sobrevivência de H1/H2; a H4 não tem essa trava. Entra como tentativa N=3 no
+Experiment Registry e paga o DSR correspondente.
+
+### HIPÓTESE #4 (pré-registrada — critérios fixados ANTES de ver o dado)
+
+> **H4:** Carteira long-only de **TODO o universo point-in-time** (top 60 por
+> liquidez, janela 126 pregões — idêntico a H1/H2), **ponderada inversamente à
+> volatilidade realizada** (w_i ∝ 1/vol_i, vol = desvio-padrão dos retornos
+> diários dos últimos 252 pregões ≤ asof, normalizado para Σw=1),
+> rebalanceamento mensal com execução na abertura de D+1 e custo proporcional
+> ao turnover real de PESOS (0,18% por lado × Σ|Δw_i|), obtém **Sharpe líquido
+> superior ao buy-and-hold equiponderado do mesmo universo**, com TODOS os
+> critérios: (i) IC 95% (stationary bootstrap, bloco 21) da diferença de
+> Sharpe excluindo zero; (ii) **DSR ≥ 0,95** (descontado por TODAS as
+> tentativas do `trials.json`, N=3); (iii) **max drawdown da estratégia ≤ max
+> drawdown do benchmark** (o "E drawdown" do design §10, fixado a priori).
+>
+> Papel do universo sem vol definida no asof (janela de 252 retornos
+> incompleta) fica com peso 0 NAQUELE mês — declarado; o benchmark
+> equiponderado o mantém (assimetria pequena e conservadora).
+>
+> **Janela:** a MESMA de H1/H2 (teste 2018-01 → último dado COTAHIST); é por
+> isso que o DSR com N=3 é critério, não enfeite.
+>
+> **Critérios fixados antes de qualquer rodada.** Falha em QUALQUER um dos
+> três = "não comprovada nesta janela" — resultado válido, encerra a H4 sem
+> repescagem. Lookback de vol (252 — mesma régua da H2, reuso declarado, não
+> ajuste), custos e janela são [H4-FROZEN]; lacre por máquina em
+> `config.h4_frozen_config_hash`.
+
+**Viés declarado (rota (b), só-preço):** a ponderação 1/vol sobrepesa papéis
+de baixa volatilidade, que tendem a MAIOR dividend yield → omitir proventos
+**PENALIZA a H4 contra o benchmark** (conservador, mesma direção da H2).
+
+**Simplificação declarada (herdada da maquinaria M5):** pesos re-normalizados
+diariamente dentro do mês (sem drift intramês), igual ao tratamento do
+benchmark equiponderado — simétrico, não favorece a estratégia.
+
+### VEREDITO H4 — ENCERRADA: NÃO COMPROVADA (2026-07-18, rodada única)
+
+Trilha na ordem pré-registrada: pré-registro commitado (`85aeee9`) → controle
+positivo RE-ATESTADO sobre o código atual (2026-07-18T20:12:07Z) → trial
+`h4-invvol-sizing-252` registrada (N=3) → UMA rodada.
+
+- **run_id:** `20260718T201214322046-5e3833` — 2.092 pregões pareados (mesma
+  janela de H1/H2)
+- **(i) IC 95% diff-Sharpe (stationary, bloco 21):** **(−0,0297, +0,0742) —
+  cruza zero** → reprovado. IC muito mais ESTREITO que o da H2: sizing sobre o
+  universo inteiro é altamente correlacionado com o benchmark, então a régua
+  mede a diferença com precisão — e a diferença é pequena.
+- **(ii) DSR:** **0,6843 < 0,95** (N=3; E[max SR|N=3] = 0,0008 por-período)
+  → reprovado.
+- **(iii) drawdown:** maxDD 46,02% vs 48,03% → **OK (não pior)** — único
+  critério aprovado.
+- PSR 0,5209. Descritivo: Sharpe anual. 0,1805 vs 0,1621; retorno total 13,00%
+  vs 8,03%. De novo melhor que o benchmark no descritivo, de novo
+  indistinguível de sorte. **Não comprovada. Sem repescagem.**
+- Relatório: [`reports/h4_verdict_20260718T201214322046-5e3833.md`](reports/h4_verdict_20260718T201214322046-5e3833.md)
+  (versionado via `git add -f`); `trials.json` com sharpe realizado 0,011372
+  por-período.
+
+**Suíte pós-marco: 135/135 verde** (126 + 9 da H4: pesos 1/vol, custo por
+turnover de pesos, walk-forward ponderado, smoke 3 critérios, lacre golden).
+
+**Leitura acumulada do domínio (3 tentativas, 0 comprovadas):** H1 (momentum,
+seleção), H2 (baixa-vol, seleção) e H4 (baixa-vol, sizing) — todas venceram ou
+empataram no descritivo e NENHUMA sobreviveu à régua. O padrão consistente:
+tilts de baixa volatilidade melhoram drawdown e Sharpe descritivo no top-60 da
+B3, mas 8,5 anos de dado diário não dão poder para promovê-los a edge. Próximas
+candidatas (cada uma = novo pré-registro, N+1 no DSR): reversão de curto prazo
+(mapa §10), fundamentos (exige fonte nova — decisão do operador). O vendor
+segue congelado (1.3.0); condição do bloco de status permanece válida para
+qualquer H futura.
+
 **O HANDOFF nunca pode mentir sobre o estado da suíte.**
 Atualizar ao fim de cada marco. Toda decisão registrada aqui é permanente.
+
+---
+
+## H2 ABERTA — PRÉ-REGISTRO (2026-07-16, ANTES de qualquer rodada)
+
+**Decisão do operador (2026-07-16):** a pausa estratégica de 2026-07-12 está
+levantada por ordem explícita ("abre a H2 com baixa volatilidade"). A escolha da
+baixa volatilidade segue a diretriz pós-H1 deste HANDOFF ("Mudança Estrutural de
+Sinal — ex: fundamentos, anomalias de momentum, **volatilidade**"). Nota de
+divergência registrada: o mapa M7+ do design §10 nomeava "H2" como reversão de
+curto prazo; a diretriz mais recente (encerramento da H1, aprovada pelo operador)
+substitui aquele ordenamento — reversão de curto prazo permanece no mapa como
+hipótese futura própria.
+
+### HIPÓTESE #2 (pré-registrada — critérios fixados ANTES de ver o dado)
+
+> **H2:** Carteira long-only do **quintil INFERIOR de volatilidade realizada**
+> (desvio-padrão dos retornos diários da série ajustada nos últimos 252 pregões
+> ≤ asof), universo B3 point-in-time (top 60 por liquidez, janela 126 pregões —
+> idêntico à H1), equiponderada, rebalanceamento mensal com execução na abertura
+> de D+1 e custo proporcional ao turnover real (0,18% por lado), obtém **Sharpe
+> líquido superior ao buy-and-hold equiponderado do mesmo universo**, com:
+> (i) IC 95% (stationary bootstrap, bloco 21) da diferença de Sharpe excluindo
+> zero, E (ii) **DSR ≥ 0,95** (Deflated Sharpe Ratio descontado por TODAS as
+> tentativas do `trials.json` — obrigatório a partir da 2ª hipótese).
+>
+> **Janela:** a MESMA da H1 (teste 2018-01 → último dado COTAHIST). A
+> reutilização deliberada da janela é exatamente o motivo de o DSR ser critério:
+> a 2ª hipótese sobre o mesmo dado paga o pedágio de múltiplas tentativas.
+>
+> **Critérios fixados antes de qualquer rodada.** IC contendo zero OU DSR < 0,95
+> = "não comprovada nesta janela" — resultado válido, encerra a H2 sem
+> repescagem de parâmetros. Lookback de vol (252), quintil, pesos e custos são
+> [H2-FROZEN] no config; lacre por máquina em `config.h2_frozen_config_hash`.
+
+**Viés declarado (rota (b), só-preço):** papéis de baixa volatilidade tendem a
+MAIOR dividend yield que a média do universo; omitir proventos portanto
+**PENALIZA a H2 contra o benchmark** (viés conservador — o oposto da H1, onde o
+viés favorecia). Um veredito positivo é robusto a esse viés; um negativo carrega
+a ressalva.
+
+**Trava de poder (obrigatória antes de registrar trials):**
+`testing.harness.attest_pipeline_power` sobre o `backtest.judge` real — detectar
+edge plantado (sensibilidade) E rejeitar ruído (especificidade) em séries
+sintéticas pareadas; atestado gravado como irmão do `trials.json`
+(`main.py attest-power`). Registro de tentativas: `h1-momentum-12-1`
+(retroativa, Sharpe por-período do veredito final) + `h2-lowvol-252`.
+`trials.json` é VERSIONADO (o denominador do DSR não pode sofrer esquecimento
+seletivo).
+
+### VEREDITO H2 — ENCERRADA: NÃO COMPROVADA (2026-07-16, rodada única)
+
+Trilha na ordem pré-registrada: pré-registro commitado (`3b5e8b1`) → controle
+positivo PASSOU (atestado 2026-07-16T22:15:30Z, metric `sharpe_diff_ci95`) →
+trials registradas → UMA rodada.
+
+- **run_id:** `20260716T221541856778-ac106e` — 2.092 pregões pareados (mesma
+  janela da H1)
+- **Lente 2 — IC 95% diff-Sharpe (stationary, bloco 21):** **(−0,2850, +0,3958)
+  — cruza zero** → critério (i) reprovado
+- **Critério (ii) — DSR:** **0,7092 < 0,95** (N=2 tentativas; E[max SR|N=2] =
+  0,0012 por-período) → reprovado também
+- PSR 0,5568. Descritivamente a estratégia venceu o benchmark (Sharpe anual.
+  0,2121 vs 0,1621; retorno total 20,04% vs 8,03%; max DD 35,64% vs 48,03%) —
+  e o viés só-preço ainda a penaliza —, mas a diferença NÃO é estatisticamente
+  distinguível de sorte nesta janela. O melhor resultado descritivo do domínio
+  até aqui, e mesmo assim: **não comprovada. Sem repescagem de parâmetros.**
+- Relatório: [`reports/h2_verdict_20260716T221541856778-ac106e.md`](reports/h2_verdict_20260716T221541856778-ac106e.md)
+  (versionado via `git add -f`); `trials.json` atualizado com o sharpe realizado
+  (0,013363 por-período).
+
+**Suíte pós-marco: 126/126 verde** (113 + 13 da H2: fator point-in-time,
+bottom-quintile, trava de poder, registry N+1, smoke end-to-end, lacre golden).
+
+**Diretriz para H3+ (se/quando o operador abrir):** o registro de tentativas
+está LIGADO e é obrigatório — cada nova hipótese entra no `trials.json` (N+1) e
+paga o DSR. Candidatas já nomeadas: reversão de curto prazo (mapa do design
+§10), fundamentos/qualidade (exige fonte nova de dados — decisão de dependência
+do operador). O sinal descritivo da baixa-vol (Sharpe maior com drawdown MUITO
+menor) sugere que **H4-sizing (volatility targeting)** do mapa também é caminho
+digno. Nada disso está autorizado sem novo pré-registro.
 
 ---
 
@@ -181,7 +487,19 @@ split não adjudicados seguem fora (quarentena conservadora).
   calendário no factor e mexe em semântica de sinal com H1 em andamento);
 - filtro à-vista só no ingest: um banco carregado com `avista_only=False` fluiria
   derivativos p/ o universo sem re-checagem na leitura (aceito; escape hatch é
-  explícito e o banco atual foi carregado filtrado).
+  explícito e o banco atual foi carregado filtrado);
+- ~~`quote_factor` parseado mas nunca aplicado ao preço~~ — **RESOLVIDO
+  2026-07-18 por decisão do operador ("corrige o quote_factor na leitura")**:
+  divisão por FATCOT aplicada na CAMADA DE LEITURA (`db.price_expr`; consumido
+  por `adjust.scan_and_quarantine`/`adjusted_series`/`list_split_candidates` e
+  `paper.settle_executions`); `prices_raw` permanece o espelho intocável do
+  arquivo. Impacto quantificado no banco real ANTES da correção: 626 linhas / 9
+  tickers com fator ≠1 (de 1,14M/1783), 4 tickers com MUDANÇA de fator na
+  série, **zero deles em qualquer universe_snapshot** → vereditos H1–H5
+  inalterados (produzidos pré-correção, code_version por run; a invariância de
+  razão intra-ticker já os protegia). Efeito prático daqui em diante: troca de
+  lote de cotação deixa de virar salto falso na quarentena, e o paper liquida
+  por AÇÃO. Testes: `test_quote_factor.py`.
 
 ### Correção + acabamento (2026-07-04)
 

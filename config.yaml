@@ -39,6 +39,53 @@ bootstrap:
 jump_detector:
   threshold_abs: 0.30              # |retorno overnight| > 30% → quarentena
 
+# ── H2 (pré-registrada 2026-07-16; ver HANDOFF) ─────────────────────────────
+# NÃO alterar valores [H2-FROZEN] após qualquer rodada de resultado da H2.
+# Universo/execução/backtest/bootstrap são COMPARTILHADOS com a H1 (mesmos
+# valores acima) — reuso declarado, não repescagem.
+
+h2_factor:
+  name: realized_vol_252           # [H2-FROZEN] anomalia de baixa volatilidade
+  lookback_days: 252               # [H2-FROZEN] desvio-padrão dos retornos diários, 12 meses
+
+h2_portfolio:
+  quantile: bottom_quintile        # [H2-FROZEN] quintil INFERIOR de vol = 12 papéis com N=60
+  weighting: equal                 # [H2-FROZEN]
+  direction: long_only             # [H2-FROZEN]
+
+h2_criteria:
+  dsr_min: 0.95                    # [H2-FROZEN] DSR mínimo (desconto por tentativas)
+  trials_path: "trials.json"       # Experiment Registry (versionado de propósito)
+
+# ── H4 (pré-registrada 2026-07-18; ver HANDOFF) ─────────────────────────────
+# NÃO alterar valores [H4-FROZEN] após qualquer rodada de resultado da H4.
+# Sizing, não seleção: universo INTEIRO com peso ∝ 1/vol realizada.
+
+h4_weighting:
+  name: inverse_vol                # [H4-FROZEN] volatility targeting (design §10, mapa M7+)
+  vol_lookback_days: 252           # [H4-FROZEN] mesma régua da H2 (reuso declarado)
+
+h4_criteria:
+  dsr_min: 0.95                    # [H4-FROZEN] DSR mínimo (N=3 tentativas)
+  require_maxdd_not_worse: true    # [H4-FROZEN] "julgado por Sharpe E drawdown" (§10)
+
+# ── H5 (pré-registrada 2026-07-18; ver HANDOFF) ─────────────────────────────
+# NÃO alterar valores [H5-FROZEN] após qualquer rodada de resultado da H5.
+# Reversão de curto prazo: quintil INFERIOR do retorno de 21 pregões.
+
+h5_factor:
+  name: reversal_21                # [H5-FROZEN] perdedores do mês (Jegadeesh 1990)
+  lookback_days: 21                # [H5-FROZEN] retorno de [asof-21, asof]
+  skip_days: 0                     # [H5-FROZEN] variante clássica, sem skip
+
+h5_portfolio:
+  quantile: bottom_quintile        # [H5-FROZEN] 12 papéis com N=60
+  weighting: equal                 # [H5-FROZEN]
+  direction: long_only             # [H5-FROZEN]
+
+h5_criteria:
+  dsr_min: 0.95                    # [H5-FROZEN] DSR mínimo (N=4 tentativas)
+
 data:
   db_path: "data/stocks.db"
   cotahist_dir: "data/cotahist"

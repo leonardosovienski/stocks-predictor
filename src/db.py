@@ -124,6 +124,16 @@ MIGRATIONS: list[tuple[str, str]] = [
 ]
 
 
+def price_expr(col: str) -> str:
+    """Expressão SQL do preço POR AÇÃO: coluna ÷ quote_factor (FATCOT da B3).
+
+    COTAHIST cota papéis em lote (fator 10/100/1000/1000000) — o preço cru fica
+    na escala do lote. A correção é na LEITURA (decisão do operador 2026-07-18):
+    `prices_raw` permanece o espelho intocável do arquivo. CASE defende contra
+    fator <= 0 hipotético (divisão por zero em SQLite viraria NULL silencioso)."""
+    return f"{col} * 1.0 / (CASE WHEN quote_factor > 0 THEN quote_factor ELSE 1 END)"
+
+
 def get_connection(db_path: pathlib.Path | str | None = None,
                    busy_timeout_ms: int = 5000) -> sqlite3.Connection:
     path = pathlib.Path(db_path or os.getenv(DB_PATH_ENV) or DB_DEFAULT)

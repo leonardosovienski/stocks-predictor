@@ -6,6 +6,10 @@ Uso:
     python main.py adjust                    # M2: detector de saltos -> quarentena
     python main.py universe <YYYY-MM-DD>     # M3: materializa o universo point-in-time
     python main.py backtest                  # M5: walk-forward + pedágio -> veredito H1
+    python main.py attest-power              # H2+: controle positivo + atestado + trials
+    python main.py backtest-h2               # H2: walk-forward baixa-vol + pedágio + DSR
+    python main.py backtest-h4               # H4: sizing 1/vol + pedágio + DSR + drawdown
+    python main.py backtest-h5               # H5: reversão 21d + pedágio + DSR
     python main.py paper <YYYY-MM-DD>        # M6: registra carteira forward + liquida exec
     python main.py analyst [rótulo]          # §9b: briefing consultivo read-only (reports/ai/)
     python main.py splits-review [saída.csv] # M2: exporta candidatos a split p/ revisão humana
@@ -52,6 +56,9 @@ def status() -> int:
     cfg = cfg_mod.load_config()
     print(f"config_hash      : {cfg_mod.config_hash(cfg)}")
     print(f"frozen_hash (H1) : {cfg_mod.frozen_config_hash(cfg)}")
+    print(f"frozen_hash (H2) : {cfg_mod.h2_frozen_config_hash(cfg)}")
+    print(f"frozen_hash (H4) : {cfg_mod.h4_frozen_config_hash(cfg)}")
+    print(f"frozen_hash (H5) : {cfg_mod.h5_frozen_config_hash(cfg)}")
     print(f"  universo       : top {cfg['universe']['top_n']} por liquidez, "
           f"janela {cfg['universe']['lookback_trading_days']} pregões")
     print(f"  fator          : {cfg['factor']['name']} "
@@ -71,8 +78,19 @@ def status() -> int:
         print(f"{table:<17}| {n}")
     conn.close()
 
-    print("\nmarcos           : M1–M6 implementados (núcleo). Veredito real da H1 exige COTAHIST real.")
-    print("testes           : py -3.12 -m pytest tests/ -q")
+    import trials_gate
+    reg_trials = trials_gate.trials_path_from(cfg)
+    if reg_trials.exists():
+        import json
+        ts = json.loads(reg_trials.read_text(encoding="utf-8"))
+        print(f"\ntrials (DSR)     : {len(ts)} tentativa(s) registrada(s) — "
+              + ", ".join(t["name"] for t in ts))
+    else:
+        print("\ntrials (DSR)     : registro ainda não criado (rode attest-power)")
+
+    print("\nmarcos           : M1–M6 completos. H1/H2/H4/H5 julgadas — nenhuma "
+          "comprovada (ver HANDOFF).")
+    print("testes           : py -3.13 -m pytest tests/ -q")
     return 0
 
 
@@ -125,6 +143,74 @@ def cmd_backtest(args) -> int:
         # marcador constante.
         run_id = db.new_run(conn, cfg, notes="veredito H1 (backtest)")
         backtest.run(cfg=cfg, conn=conn, write_report=True, run_id=run_id)
+    return 0
+
+
+def cmd_attest_power(args) -> int:
+    """H2+ — controle positivo do pedágio (harness) + atestado + trials baseline.
+
+    Prova que o judge REAL detecta edge plantado e rejeita ruído; grava o
+    atestado irmão do trials.json e registra as tentativas (H1 retroativa +
+    H2 pendente). Sem isso, nenhum veredito da H2 é interpretável."""
+    import config as cfg_mod
+    import trials_gate
+    cfg = cfg_mod.load_config()
+    rec = trials_gate.attest(cfg)
+    print(f"controle positivo OK (sensibilidade + especificidade) — "
+          f"atestado emitido em {rec['passed_at']} (metric={rec['metric']})")
+    reg = trials_gate.register_baseline_trials(cfg)
+    names = [t["name"] for t in reg.load()]
+    print(f"trials registradas em {reg.path}: {', '.join(names)}")
+    return 0
+
+
+def cmd_backtest_h2(args) -> int:
+    """H2 — walk-forward baixa-vol + pedágio + DSR -> veredito da H2 + relatório."""
+    import backtest
+    import db
+    import trials_gate
+    cfg, conn = _conn()
+    with closing(conn):
+        # trava de poder: a criação das trials exige o atestado do harness
+        trials_gate.register_baseline_trials(cfg)
+        run_id = db.new_run(conn, cfg, notes="veredito H2 (baixa volatilidade)")
+        backtest.run_h2(cfg=cfg, conn=conn, write_report=True, run_id=run_id)
+    return 0
+
+
+def cmd_backtest_h4(args) -> int:
+    """H4 — sizing 1/vol + pedágio + DSR (N=3) + drawdown -> veredito da H4."""
+    import backtest
+    import db
+    import trials_gate
+    from config import H4_FROZEN_KEYS
+    cfg, conn = _conn()
+    with closing(conn):
+        # trava de poder: criação de trial exige o atestado do harness
+        trials_gate.register_baseline_trials(cfg)
+        trials_gate.register_hypothesis(
+            cfg, "h4-invvol-sizing-252", H4_FROZEN_KEYS,
+            "pré-registro 2026-07-18 (HANDOFF); sharpe preenchido pela rodada única")
+        run_id = db.new_run(conn, cfg, notes="veredito H4 (sizing volatility targeting)")
+        backtest.run_h4(cfg=cfg, conn=conn, write_report=True, run_id=run_id)
+    return 0
+
+
+def cmd_backtest_h5(args) -> int:
+    """H5 — reversão 21d + pedágio + DSR (N=4) -> veredito da H5."""
+    import backtest
+    import db
+    import trials_gate
+    from config import H5_FROZEN_KEYS
+    cfg, conn = _conn()
+    with closing(conn):
+        # trava de poder: criação de trial exige o atestado do harness
+        trials_gate.register_baseline_trials(cfg)
+        trials_gate.register_hypothesis(
+            cfg, "h5-strev-21", H5_FROZEN_KEYS,
+            "pré-registro 2026-07-18 (HANDOFF); sharpe preenchido pela rodada única")
+        run_id = db.new_run(conn, cfg, notes="veredito H5 (reversão de curto prazo)")
+        backtest.run_h5(cfg=cfg, conn=conn, write_report=True, run_id=run_id)
     return 0
 
 
@@ -195,6 +281,10 @@ _COMMANDS = {
     "adjust": cmd_adjust,
     "universe": cmd_universe,
     "backtest": cmd_backtest,
+    "attest-power": cmd_attest_power,
+    "backtest-h2": cmd_backtest_h2,
+    "backtest-h4": cmd_backtest_h4,
+    "backtest-h5": cmd_backtest_h5,
     "paper": cmd_paper,
     "analyst": cmd_analyst,
     "splits-review": cmd_splits_review,
