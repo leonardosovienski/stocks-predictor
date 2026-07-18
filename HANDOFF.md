@@ -1,5 +1,20 @@
 # HANDOFF — predictor-stocks
 
+> ## STATUS: PARKED (verificado 2026-07-18)
+>
+> Congelado. Vendor de `predictor_core` intencionalmente desatualizado
+> (agregado `3445e37f43c458cc`, drift esperado e correto). **Proibido**:
+> sync de vendor, atualização automática, migração, adaptação, evolução
+> funcional. Consulta histórica é permitida. H1 encerrada; H2 (mudança
+> estrutural de sinal) mencionada em documentos históricos como direção
+> futura possível, sem premissa fechada, sem features definidas, sem
+> protocolo de validação — não deve ser retomada até existir hipótese
+> falsificável formal. Sync indevido de 2026-07-17 (`PARKED` vazio por
+> período) revertido via `git revert` em ambas as branches afetadas
+> (commits `e8adae1`, `bce5043`) — nunca publicado. Condição formal para
+> reabrir: decisão humana explícita + hipótese H2 formalizada antes de
+> qualquer código. Ver `ECOSYSTEM_HANDOFF.md`.
+
 **O HANDOFF nunca pode mentir sobre o estado da suíte.**
 Atualizar ao fim de cada marco. Toda decisão registrada aqui é permanente.
 
