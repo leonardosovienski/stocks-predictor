@@ -19,7 +19,12 @@ o humano preencheu com `source` E `approved_by` — o resto fica em quarentena.
 import csv
 import logging
 
+from db import price_expr
+
 logger = logging.getLogger(__name__)
+
+# preço POR AÇÃO (close ÷ quote_factor) — correção na leitura, 2026-07-18
+_CLOSE = price_expr("close")
 
 _SPLIT_RATIOS = (2, 3, 4, 5, 6, 8, 10)
 _FACTOR_MIN, _FACTOR_MAX = 0.05, 20.0  # faixa de sanidade p/ fator de ajuste
@@ -85,7 +90,7 @@ def scan_and_quarantine(conn, threshold) -> int:
         # GROUP BY date: re-ingest sob outro source_file duplica (date,ticker) —
         # sem o dedup, o par duplicado viraria um "retorno" espúrio de ~0%.
         rows = conn.execute(
-            "SELECT date, MAX(close) FROM prices_raw WHERE ticker=? "
+            f"SELECT date, MAX({_CLOSE}) FROM prices_raw WHERE ticker=? "
             "GROUP BY date ORDER BY date", (t,)).fetchall()
         dates = [r[0] for r in rows]
         closes = [r[1] for r in rows]
@@ -107,7 +112,7 @@ def adjusted_series(conn, ticker):
     GROUP BY date dedupa re-ingest sob outro source_file. Ajuste com ex_date fora do
     range de preços é IGNORADO com warning (provável erro de fonte/dados incompletos)."""
     rows = conn.execute(
-        "SELECT date, MAX(close) FROM prices_raw WHERE ticker=? "
+        f"SELECT date, MAX({_CLOSE}) FROM prices_raw WHERE ticker=? "
         "GROUP BY date ORDER BY date", (ticker,)).fetchall()
     dates = [r[0] for r in rows]
     closes = [r[1] for r in rows]
@@ -139,7 +144,7 @@ def list_split_candidates(conn, tol=0.08):
         # série do ticker UMA vez (não por linha de quarentena); GROUP BY date protege
         # contra duplicatas de re-ingest (UNIQUE inclui source_file).
         prices = conn.execute(
-            "SELECT date, MAX(close) FROM prices_raw WHERE ticker=? "
+            f"SELECT date, MAX({_CLOSE}) FROM prices_raw WHERE ticker=? "
             "GROUP BY date ORDER BY date", (tk,)).fetchall()
         idx = {r[0]: i for i, r in enumerate(prices)}
         for d in qdates:

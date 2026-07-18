@@ -488,17 +488,18 @@ split não adjudicados seguem fora (quarentena conservadora).
 - filtro à-vista só no ingest: um banco carregado com `avista_only=False` fluiria
   derivativos p/ o universo sem re-checagem na leitura (aceito; escape hatch é
   explícito e o banco atual foi carregado filtrado);
-- **`quote_factor` parseado e armazenado mas NUNCA aplicado ao preço** (achado da
-  revisão profunda 2026-07-18): a decisão do M0 dizia "÷100 × fator" e a divisão
-  por FATCOT não existe em lugar nenhum — `close` fica na escala do lote de
-  cotação. Impacto medido: **nenhum nos vereditos H1–H5** (momentum/vol/retornos
-  são razões DENTRO do ticker, invariantes a escala; mudança de fator no meio da
-  série vira salto falso que o detector de 30% quarentena — defesa funciona);
-  liquidez usa volume_fin (não afetado). Ficaria errado: preço de EXECUÇÃO do
-  paper p/ papel com fator ≠1 (raros, fora do top-60 histórico). Corrigir muda a
-  semântica de dado de pipelines já julgados → decisão do operador (se corrigir:
-  dividir na LEITURA, nunca reescrever prices_raw; nova hipótese/rodada se for
-  re-julgar algo).
+- ~~`quote_factor` parseado mas nunca aplicado ao preço~~ — **RESOLVIDO
+  2026-07-18 por decisão do operador ("corrige o quote_factor na leitura")**:
+  divisão por FATCOT aplicada na CAMADA DE LEITURA (`db.price_expr`; consumido
+  por `adjust.scan_and_quarantine`/`adjusted_series`/`list_split_candidates` e
+  `paper.settle_executions`); `prices_raw` permanece o espelho intocável do
+  arquivo. Impacto quantificado no banco real ANTES da correção: 626 linhas / 9
+  tickers com fator ≠1 (de 1,14M/1783), 4 tickers com MUDANÇA de fator na
+  série, **zero deles em qualquer universe_snapshot** → vereditos H1–H5
+  inalterados (produzidos pré-correção, code_version por run; a invariância de
+  razão intra-ticker já os protegia). Efeito prático daqui em diante: troca de
+  lote de cotação deixa de virar salto falso na quarentena, e o paper liquida
+  por AÇÃO. Testes: `test_quote_factor.py`.
 
 ### Correção + acabamento (2026-07-04)
 

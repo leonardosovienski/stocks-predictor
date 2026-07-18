@@ -53,8 +53,9 @@ def settle_executions(conn, cfg) -> int:
     series_cache: dict[str, tuple[list, list]] = {}
     for run_id, asof, tk in [(r[0], r[1], r[2]) for r in pending]:
         if tk not in series_cache:
+            # abertura POR AÇÃO (÷ quote_factor) — correção na leitura, 2026-07-18
             prices = conn.execute(
-                "SELECT date, MAX(open) FROM prices_raw "
+                f"SELECT date, MAX({db.price_expr('open')}) FROM prices_raw "
                 "WHERE ticker=? AND market_type=? GROUP BY date ORDER BY date",
                 (tk, universe.SPOT_MARKET)).fetchall()
             series_cache[tk] = ([r[0] for r in prices], [r[1] for r in prices])
