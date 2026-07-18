@@ -58,8 +58,40 @@
       "bootstrap.method": "stationary",
       "h2_criteria.dsr_min": 0.95
     },
-    "sharpe": 0.013363,
-    "notes": "rodada única da H2 (sharpe por-período realizado)",
+    "sharpe": null,
+    "notes": "pré-registro 2026-07-16 (HANDOFF); sharpe preenchido pela rodada única",
+    "test_period": [
+      "2018-01-01",
+      "2026-07-03"
+    ],
+    "metric": "sharpe_diff_ci95"
+  },
+  {
+    "name": "h4-invvol-sizing-252",
+    "registered_at": "2026-07-18T20:12:14Z",
+    "params": {
+      "universe.top_n": 60,
+      "universe.lookback_trading_days": 126,
+      "universe.min_history_days": 252,
+      "universe.rebalance_frequency": "monthly",
+      "h4_weighting.name": "inverse_vol",
+      "h4_weighting.vol_lookback_days": 252,
+      "execution.price": "next_open",
+      "execution.b3_fee_pct": 0.0003,
+      "execution.brokerage_pct": 0.0,
+      "execution.spread_slippage_pct": 0.0015,
+      "backtest.warmup_end": "2017-12-31",
+      "backtest.test_start": "2018-01-01",
+      "backtest.purge_embargo_months": 1,
+      "bootstrap.n_boot": 10000,
+      "bootstrap.block_length": 21,
+      "bootstrap.confidence": 0.95,
+      "bootstrap.method": "stationary",
+      "h4_criteria.dsr_min": 0.95,
+      "h4_criteria.require_maxdd_not_worse": true
+    },
+    "sharpe": 0.011372,
+    "notes": "rodada única da H4 (sizing 1/vol; sharpe por-período realizado)",
     "test_period": [
       "2018-01-01",
       "2026-07-03"

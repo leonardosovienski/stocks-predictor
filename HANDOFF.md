@@ -65,7 +65,41 @@ de baixa volatilidade, que tendem a MAIOR dividend yield → omitir proventos
 diariamente dentro do mês (sem drift intramês), igual ao tratamento do
 benchmark equiponderado — simétrico, não favorece a estratégia.
 
-**Veredito H4:** _pendente — nenhuma rodada executada até este pré-registro._
+### VEREDITO H4 — ENCERRADA: NÃO COMPROVADA (2026-07-18, rodada única)
+
+Trilha na ordem pré-registrada: pré-registro commitado (`85aeee9`) → controle
+positivo RE-ATESTADO sobre o código atual (2026-07-18T20:12:07Z) → trial
+`h4-invvol-sizing-252` registrada (N=3) → UMA rodada.
+
+- **run_id:** `20260718T201214322046-5e3833` — 2.092 pregões pareados (mesma
+  janela de H1/H2)
+- **(i) IC 95% diff-Sharpe (stationary, bloco 21):** **(−0,0297, +0,0742) —
+  cruza zero** → reprovado. IC muito mais ESTREITO que o da H2: sizing sobre o
+  universo inteiro é altamente correlacionado com o benchmark, então a régua
+  mede a diferença com precisão — e a diferença é pequena.
+- **(ii) DSR:** **0,6843 < 0,95** (N=3; E[max SR|N=3] = 0,0008 por-período)
+  → reprovado.
+- **(iii) drawdown:** maxDD 46,02% vs 48,03% → **OK (não pior)** — único
+  critério aprovado.
+- PSR 0,5209. Descritivo: Sharpe anual. 0,1805 vs 0,1621; retorno total 13,00%
+  vs 8,03%. De novo melhor que o benchmark no descritivo, de novo
+  indistinguível de sorte. **Não comprovada. Sem repescagem.**
+- Relatório: [`reports/h4_verdict_20260718T201214322046-5e3833.md`](reports/h4_verdict_20260718T201214322046-5e3833.md)
+  (versionado via `git add -f`); `trials.json` com sharpe realizado 0,011478
+  por-período.
+
+**Suíte pós-marco: 135/135 verde** (126 + 9 da H4: pesos 1/vol, custo por
+turnover de pesos, walk-forward ponderado, smoke 3 critérios, lacre golden).
+
+**Leitura acumulada do domínio (3 tentativas, 0 comprovadas):** H1 (momentum,
+seleção), H2 (baixa-vol, seleção) e H4 (baixa-vol, sizing) — todas venceram ou
+empataram no descritivo e NENHUMA sobreviveu à régua. O padrão consistente:
+tilts de baixa volatilidade melhoram drawdown e Sharpe descritivo no top-60 da
+B3, mas 8,5 anos de dado diário não dão poder para promovê-los a edge. Próximas
+candidatas (cada uma = novo pré-registro, N+1 no DSR): reversão de curto prazo
+(mapa §10), fundamentos (exige fonte nova — decisão do operador). O vendor
+segue congelado (1.3.0); condição do bloco de status permanece válida para
+qualquer H futura.
 
 **O HANDOFF nunca pode mentir sobre o estado da suíte.**
 Atualizar ao fim de cada marco. Toda decisão registrada aqui é permanente.
