@@ -9,6 +9,7 @@ Uso:
     python main.py attest-power              # H2+: controle positivo + atestado + trials
     python main.py backtest-h2               # H2: walk-forward baixa-vol + pedágio + DSR
     python main.py backtest-h4               # H4: sizing 1/vol + pedágio + DSR + drawdown
+    python main.py backtest-h5               # H5: reversão 21d + pedágio + DSR
     python main.py paper <YYYY-MM-DD>        # M6: registra carteira forward + liquida exec
     python main.py analyst [rótulo]          # §9b: briefing consultivo read-only (reports/ai/)
     python main.py splits-review [saída.csv] # M2: exporta candidatos a split p/ revisão humana
@@ -181,6 +182,24 @@ def cmd_backtest_h4(args) -> int:
     return 0
 
 
+def cmd_backtest_h5(args) -> int:
+    """H5 — reversão 21d + pedágio + DSR (N=4) -> veredito da H5."""
+    import backtest
+    import db
+    import trials_gate
+    from config import H5_FROZEN_KEYS
+    cfg, conn = _conn()
+    with closing(conn):
+        # trava de poder: criação de trial exige o atestado do harness
+        trials_gate.register_baseline_trials(cfg)
+        trials_gate.register_hypothesis(
+            cfg, "h5-strev-21", H5_FROZEN_KEYS,
+            "pré-registro 2026-07-18 (HANDOFF); sharpe preenchido pela rodada única")
+        run_id = db.new_run(conn, cfg, notes="veredito H5 (reversão de curto prazo)")
+        backtest.run_h5(cfg=cfg, conn=conn, write_report=True, run_id=run_id)
+    return 0
+
+
 def cmd_paper(args) -> int:
     """M6 — registra a carteira forward (anti-tautologia) e liquida execuções."""
     import db
@@ -251,6 +270,7 @@ _COMMANDS = {
     "attest-power": cmd_attest_power,
     "backtest-h2": cmd_backtest_h2,
     "backtest-h4": cmd_backtest_h4,
+    "backtest-h5": cmd_backtest_h5,
     "paper": cmd_paper,
     "analyst": cmd_analyst,
     "splits-review": cmd_splits_review,

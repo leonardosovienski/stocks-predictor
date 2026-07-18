@@ -252,6 +252,38 @@ def run_h4(cfg=None, conn=None, write_report=False, run_id=None, trials_path=Non
     return verdict
 
 
+def run_h5(cfg=None, conn=None, write_report=False, run_id=None, trials_path=None):
+    """H5 — reversão de curto prazo (pré-registro 2026-07-18): quintil INFERIOR
+    do retorno de 21 pregões (perdedores do mês), mesma maquinaria de
+    universo/custos/pedágio. Critérios: (i) IC95% diff-Sharpe > 0;
+    (ii) DSR >= dsr_min (N=4 tentativas). O sinal é momentum_12_1 com
+    lookback=21, skip=0 — retorno de [asof-21, asof] na série ajustada."""
+    import trials_gate
+    from config import H5_FROZEN_KEYS
+    cfg = cfg or load_config()
+    conn = conn or db.get_connection()
+    h5f = cfg.get("h5_factor", {})
+    lb, skip = h5f.get("lookback_days", 21), h5f.get("skip_days", 0)
+    strat, bench = walk_forward(
+        conn, cfg, signal_fn=lambda sub, asof: factor.signals(sub, asof, lb, skip),
+        take="bottom")
+    verdict = trials_gate.apply_dsr(
+        judge(strat, bench, cfg), strat, cfg, trials_path=trials_path,
+        trial_name="h5-strev-21", frozen_keys=H5_FROZEN_KEYS,
+        criteria_section="h5_criteria",
+        notes="rodada única da H5 (reversão 21d; sharpe por-período realizado)")
+    print(f"walk-forward H5: {verdict['n']} pregões | PSR={verdict['psr']} | "
+          f"IC95% diff-Sharpe={verdict['sharpe_diff_ci']} | "
+          f"DSR={verdict.get('dsr')} (N={verdict.get('n_trials')}) | "
+          f"H5: {verdict['veredito']}")
+    if write_report:
+        import report
+        path = report.write_report(verdict, strat, bench, cfg, run_id=run_id,
+                                   hypothesis="H5")
+        print(f"relatório: {path}")
+    return verdict
+
+
 if __name__ == "__main__":
     if run() is None:
         sys.exit(1)

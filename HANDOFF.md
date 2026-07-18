@@ -19,6 +19,57 @@
 
 ---
 
+## H5 ABERTA — PRÉ-REGISTRO (2026-07-18, ANTES de qualquer rodada)
+
+**Decisão do operador (2026-07-18):** "abre a próxima com reversão de curto
+prazo" — o fator que o mapa M7+ do design §10 sempre nomeou como o segundo da
+fila. Nota de numeração: o slot "H2" do mapa foi ocupado pela baixa-vol
+(decisão de 2026-07-16) e "H3" segue reservada para combinação (condicionada a
+sobreviventes individuais, que não existem); esta hipótese entra como **H5**.
+O "H5-short" do mapa permanece hipótese futura própria (gated na perna comprada
+validada). A identidade real de cada tentativa é o `trials.json`, não o número.
+Entra como **tentativa N=4** no Experiment Registry.
+
+### HIPÓTESE #5 (pré-registrada — critérios fixados ANTES de ver o dado)
+
+> **H5:** Carteira long-only do **quintil INFERIOR de retorno recente**
+> (retorno acumulado dos últimos 21 pregões ≤ asof — os "perdedores" do mês,
+> aposta clássica de reversão de curto prazo, Jegadeesh 1990), universo B3
+> point-in-time (top 60 por liquidez, janela 126 pregões — idêntico a
+> H1/H2/H4), equiponderada, rebalanceamento mensal com execução na abertura de
+> D+1 e custo proporcional ao turnover real (0,18% por lado), obtém **Sharpe
+> líquido superior ao buy-and-hold equiponderado do mesmo universo**, com:
+> (i) IC 95% (stationary bootstrap, bloco 21) da diferença de Sharpe excluindo
+> zero, E (ii) **DSR ≥ 0,95** (descontado por TODAS as tentativas do
+> `trials.json`, N=4).
+>
+> **Sinal:** `momentum_12_1(lookback=21, skip=0)` — retorno de [asof−21, asof]
+> na série ajustada; point-in-time como sempre. Sem skip de microestrutura
+> (variante clássica, fixada a priori).
+>
+> **Janela:** a MESMA de H1/H2/H4 (teste 2018-01 → último dado COTAHIST) —
+> DSR com N=4 é o pedágio dessa reutilização.
+>
+> **Critérios fixados antes de qualquer rodada.** IC contendo zero OU
+> DSR < 0,95 = "não comprovada nesta janela" — encerra a H5 sem repescagem.
+> Lookback (21), quintil, pesos e custos são [H5-FROZEN]; lacre por máquina em
+> `config.h5_frozen_config_hash`.
+
+**Adversário natural declarado:** reversão de curto prazo gira a carteira
+quase inteira todo mês — o turnover alto é intrínseco à hipótese e o custo por
+turnover real vai cobrá-lo integralmente. Se a H5 morrer no custo, isso é
+REFUTAÇÃO honesta da versão implementável, não defeito da régua.
+
+**Viés declarado (rota (b), só-preço):** queda ex-dividendo entra como retorno
+negativo sem perda econômica → papéis de maior yield caem no quintil
+"perdedor" com mais frequência, e o provento omitido então SUBESTIMA o retorno
+realizado da carteira → o viés tende a PENALIZAR a H5 (conservador; direção
+declarada).
+
+**Veredito H5:** _pendente — nenhuma rodada executada até este pré-registro._
+
+---
+
 ## H4 ABERTA — PRÉ-REGISTRO (2026-07-18, ANTES de qualquer código/rodada)
 
 **Decisão do operador (2026-07-18):** "abre a H4 com volatility targeting" —

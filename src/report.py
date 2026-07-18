@@ -69,6 +69,10 @@ _BIAS_NOTE = {
           "1/vol sobrepesa papéis de baixa volatilidade (maior yield), logo o viés "
           "PENALIZA a estratégia contra o benchmark — conservador (declarado no "
           "pré-registro da H4).",
+    "H5": "- Retorno **só-preço** (rota (b)): quedas ex-dividendo classificam papéis "
+          "de maior yield como 'perdedores' e o provento omitido subestima o retorno "
+          "da carteira → o viés tende a PENALIZAR a estratégia — conservador "
+          "(declarado no pré-registro da H5).",
 }
 
 
@@ -96,7 +100,7 @@ def build_markdown(verdict, strat, bench, cfg, run_id=None, hypothesis="H1"):
         f"{'ACIMA de zero' if lo is not None and lo > 0 else 'CRUZA zero / negativo'}",
     ]
     if "dsr" in verdict:
-        crit = cfg.get("h4_criteria" if hypothesis == "H4" else "h2_criteria", {})
+        crit = cfg.get(f"{hypothesis.lower()}_criteria", cfg.get("h2_criteria", {}))
         lines += [
             f"- **Critério (ii) — DSR (Deflated Sharpe Ratio):** "
             f"{_fmt(_num(verdict.get('dsr')))} contra E[max SR | N="
