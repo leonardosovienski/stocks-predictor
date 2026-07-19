@@ -13,7 +13,7 @@ ML por último e só se pagar líquido.
 Marcos **M1–M6 implementados** (núcleo, validados em dados sintéticos); o veredito real
 da H1 exige o COTAHIST físico da B3. Consome o `predictor_core` via `vendor/` (não
 editar — `predictor-core` é a fonte). Python 3.13 global, sem venv (DESIGN §1).
-Suíte: `py -3.13 -m pytest tests/ -q` (109 verdes).
+Suíte: `py -3.13 -m pytest tests/ -q` (144 verdes).
 
 ```powershell
 py -3.13 main.py                              # status (versões, hashes, contagens)
