@@ -16,6 +16,8 @@
 > `predictor_core` (fica em 1.3.0-ga-20260711, agregado `3445e37f43c458cc`,
 > drift esperado e correto — o sync indevido de 2026-07-17 foi revertido em
 > `e8adae1`). A H4 usa somente APIs já vendorizadas. Ver `ECOSYSTEM_HANDOFF.md`.
+> Suíte completa revalidada em 2026-07-20: **144 verdes**. O vendor
+> permanece congelado; nenhum arquivo do vendor foi tocado.
 
 ---
 
