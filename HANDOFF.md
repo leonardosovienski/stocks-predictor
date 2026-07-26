@@ -1,6 +1,40 @@
 # HANDOFF — predictor-stocks
 
-> ## STATUS: REABERTO PARA H4 (2026-07-18) — vendor segue congelado
+> ## STATUS: FECHADO (2026-07-26) — 4 hipóteses, 4 ruído, nenhuma pendente
+>
+> Fechamento formal. O bloco de reabertura abaixo continua válido como
+> histórico, mas **a reabertura de 2026-07-18 cumpriu seu propósito e
+> terminou**: H4 e H5 foram pré-registradas antes de qualquer código, rodadas
+> em rodada única e ambas voltaram **não comprovadas**. Não resta hipótese
+> pendente de execução.
+>
+> | Hipótese | Veredito | Sharpe por-período |
+> |---|---|---|
+> | `h1-momentum-12-1` | **RUÍDO** | +0,010029 |
+> | `h2-lowvol-252` | **RUÍDO** | +0,013363 |
+> | `h4-invvol-sizing-252` | **RUÍDO** | +0,011372 |
+> | `h5-strev-21` | **RUÍDO / anti-sinal** | **−0,011367** |
+>
+> Quatro fatores clássicos de equities — momentum 12-1, baixa volatilidade,
+> sizing por 1/vol e reversão de 21 dias — todos com efeito na terceira casa
+> decimal, e o mais promissor da literatura (reversão de curto prazo) saindo
+> **negativo** no universo B3 testado. Quatro tentativas, quatro nadas.
+>
+> **Condição para reabrir, inalterada:** decisão humana explícita + hipótese
+> formalizada ANTES de qualquer código. O vendor segue congelado em
+> `1.3.0-ga-20260711` por regra deste projeto, e o projeto segue no set
+> `PARKED` do `sync_core.py` — onde, para ele, `PARKED` significa "vendor
+> congelado por decisão do projeto", não "projeto inativo".
+>
+> Armadilha registrada para quem inventariar este projeto: **`trials.json`
+> fica na RAIZ**, não em `data/`. O inventário de 2026-07-26 que olhava só
+> `data/` perdeu estas 4 hipóteses e reportou 38 em vez de 42.
+>
+> Suíte revalidada em 2026-07-26: **144 verdes**, vendor intocado.
+
+---
+
+> ## Histórico: REABERTO PARA H4 (2026-07-18) — vendor segue congelado
 >
 > O bloco PARKED de 2026-07-18 fixava a condição formal de reabertura:
 > "decisão humana explícita + hipótese formalizada antes de qualquer
