@@ -55,6 +55,65 @@
 
 ---
 
+## Errata de auditoria (2026-07-28) — encerramento factual, somente-leitura
+
+Auditoria de encerramento sobre o estado congelado, posterior ao fechamento
+formal de 2026-07-26. **Nenhum número, veredito, parâmetro congelado ou
+artefato de rodada foi alterado.** Achados registrados:
+
+1. **Relatório da H1 não estava versionado** (corrigido nesta sessão). O link
+   para `reports/h1_verdict_20260712T091903477689-41cc24.md` era um link
+   QUEBRADO no repositório: `.gitignore` ignora `reports/*`, e apenas H2/H4/H5
+   haviam sido versionados via `git add -f`. O arquivo existia só como untracked
+   no checkout principal e **não é regenerável** (o `stocks.db` de 250 MB e os
+   ZIPs COTAHIST de origem não estão no git). Versionado agora: cópia fiel do
+   artefato gerado pela rodada, conteúdo inalterado (EOL normalizado para LF pelo
+   `.gitattributes`, como nos relatórios de H2/H4/H5). A ciência nunca esteve em
+   risco — os números completos já viviam neste HANDOFF e no `trials.json`, ambos
+   versionados e mutuamente coerentes — mas o artefato agora tem paridade de
+   auditoria com as outras três hipóteses.
+
+2. **`backtest.purge_embargo_months: 1` está registrado mas NÃO implementado.**
+   O parâmetro consta como `[H1-FROZEN]` no `config.yaml` e nos `params` das 4
+   trials do `trials.json`; `src/backtest.py` (docstring, "Simplificações desta
+   passada") declara que o purge/embargo formal ficou para a evolução do M5. O
+   registry portanto descreve um controle que o código não aplicou. **Não inverte
+   veredito nenhum**: a ausência de purge/embargo só pode vazar informação A FAVOR
+   da estratégia, e as quatro reprovaram assim mesmo. Corrigir isso = novo
+   pré-registro, nova rodada, N+1 — não é errata de texto.
+
+3. **Ressalva obsoleta dentro do relatório da H1.** O `.md` diz "Custo roundtrip
+   aplicado no rebalance"; a rodada `20260712T091903477689-41cc24` (code_version
+   `e6f1334`) **já usava custo por turnover real** — `execution.calculate_turnover_cost`
+   está presente naquele commit (verificado por `git show`). A frase era template
+   antigo do `report.py`, corrigido só depois em `3b5e8b1`. **O artefato da rodada
+   NÃO foi editado** (é registro histórico); esta errata é o apontamento.
+
+4. **Tabela de Marcos: linhas M1/M2 são histórico, não pendência.** "Falta p/ H1:
+   anos 2016-2023" e "Falta p/ H1: operador adjudicar os ~57 splits" foram
+   ATENDIDAS e o próprio arquivo registra isso acima: banco cobre 2016-01-04 →
+   2026-07-03 (1.137.456 linhas, 1.783 tickers) e 15 splits de maior liquidez
+   foram adjudicados com aprovação humana nominal. Não reabrir.
+
+5. **Não são critérios do pré-registro** — e portanto NÃO bloqueiam o
+   encerramento: robustez de execução a 3 preços e purge/embargo formal constam
+   como "evolução do M5". O pré-registro §9 da H1 fixa **um único** critério: IC
+   95% da diferença de Sharpe excluindo zero. Ele foi aplicado e reprovou.
+
+6. **`ECOSYSTEM_HANDOFF.md`, referenciado acima, nunca existiu neste
+   repositório** (`git log --all -- ECOSYSTEM_HANDOFF.md` → vazio). Vive fora
+   deste workspace; não verificável aqui.
+
+**Provenance da H1 confirmada contra o banco** (leitura read-only da tabela
+`runs`): `run_id 20260712T091903477689-41cc24`, `config_hash 41cc2495292cdfd3`,
+`code_version e6f1334`, `started_at 2026-07-12 09:19:03`, com os `params_json`
+congelados batendo com o `config.yaml`. Registry, relatório e HANDOFF são
+numericamente idênticos. Classificação de encerramento: **H1 = NO-GO confirmado
+(IC cruza zero — falha em rejeitar a nula, não refutação); H2/H4/H5 registradas
+no `trials.json` e encerradas.** Suíte 144/144 verde, working tree limpa.
+
+---
+
 ## H5 ABERTA — PRÉ-REGISTRO (2026-07-18, ANTES de qualquer rodada)
 
 **Decisão do operador (2026-07-18):** "abre a próxima com reversão de curto
