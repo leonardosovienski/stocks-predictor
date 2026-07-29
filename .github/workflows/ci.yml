@@ -1,0 +1,12 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  python-tests:
+    name: Validação Base (Python)
+    uses: leonardosovienski/tools-predictor/.github/workflows/reusable-ci.yml@main
