@@ -10,3 +10,5 @@ jobs:
   python-tests:
     name: Validação Base (Python)
     uses: leonardosovienski/tools-predictor/.github/workflows/reusable-ci.yml@main
+
+    
