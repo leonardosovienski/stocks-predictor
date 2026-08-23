@@ -1,0 +1,108 @@
+# config.yaml — predictor-rj
+# Parâmetros [RJ-FROZEN] não se tocam após qualquer rodada de resultado.
+# Mudar um valor congelado após ver dado = nova hipótese, novo pré-registro.
+
+universe:
+  # Universo PRIMEIRO, rally depois (protocolo §1). Fonte: processos de RJ de
+  # companhias com ações negociadas na B3, período de entrada no universo.
+  period_start: "2015-01-01"
+  period_end: "2026-06-30"
+  # horizonte de observação por empresa antes de virar CENSURA (não "sem rally"
+  # permanente) — protocolo, risco de censura. 36 meses = 3 anos de calendário
+  # de pregões, não meses corridos (evita ambiguidade de feriados/pregões).
+  censoring_horizon_trading_days: 756   # ~36 meses úteis
+
+rally:
+  # Definição CANÔNICA única (protocolo §4). fechamento ajustado -> fechamento
+  # ajustado. Intraday é variável SECUNDÁRIA, nunca o outcome principal.
+  threshold_pct: 0.50
+  basis: "adjusted_close_to_adjusted_close"
+  # DUAS janelas pré-registradas (revisão externa, ponto 3): 252 pregões
+  # mistura rally explosivo (AMER3 +194% em poucos pregões) com deriva lenta
+  # de 11 meses — fenômenos diferentes. PRIMÁRIA é a janela curta; SECUNDÁRIA
+  # (a antiga única) vira outcome auxiliar, nunca fundida com a primária.
+  primary_window_trading_days: 60
+  secondary_window_trading_days: 252
+  trough_definition: "local_minimum_adjusted_close"
+  # janela retroativa (backward-only) para candidatos point-in-time
+  # (episodes.point_in_time_candidates) — separa dataset descritivo
+  # (find_local_trough, ex-post) de dataset preditivo (revisão externa,
+  # ponto 1: o fundo ex-post não pode alimentar decisão simulada em D).
+  point_in_time_backward_lookback_days: 40
+
+episodes:
+  # unidade estatística primária = PRIMEIRO episódio de cada empresa (protocolo
+  # "empresa -> episódios"). Episódios subsequentes da mesma empresa entram
+  # como dataset SECUNDÁRIO — nunca somados ao primário sem ajuste de cluster.
+  primary_only_in_main_analysis: true
+  secondary_episodes_as_separate_check: true
+
+families:
+  # 8 famílias PREDITIVAS (revisão externa, 2ª rodada, ponto 1): o antigo
+  # volume_dynamics foi desdobrado em contemporânea + antecedente, o que
+  # criou 9 entradas no registry mas o pré-registro continuava dizendo "8".
+  # Correção: volume_dynamics_contemporaneous é DESCRITIVA por design (não
+  # executável em tempo real — ver families.py) e fica FORA do FDR primário
+  # de 8 testes preditivos. Ela continua computável e reportável, só não
+  # entra no conjunto que o FDR desconta como "tentativa".
+  #
+  # As 8 PREDITIVAS (entram no FDR primário):
+  drawdown:
+    metric: "1 - preco_fundo / max_fechamento_pre_rj"
+    direction_expected: "positive"   # drawdown maior -> maior chance de rally
+  liquidity:
+    metric: "giro_diario_mediano_60p / free_float_estimado"
+    direction_expected: "negative"   # menor giro relativo -> maior chance
+  volume_dynamics_antecedent:
+    metric: "mediana_volume(D-5:D-1) / mediana_volume(D-25:D-6)"
+    direction_expected: "positive"
+  rj_stage:
+    metric: "categoria(pedido | plano_apresentado | homologado | encerrada)"
+    direction_expected: "categorical"
+    note: "tratado como CATEGÓRICO, não ordinal linear — estágio 3 não implica maior chance de rally que estágio 2 por construção"
+  ownership:
+    metric: "indicador_binario(entrada_investidor_5pct_ate_90d_pre_fundo, filtrado por known_at)"
+    direction_expected: "positive"
+  momentum_volatility:
+    metric: "vol_realizada_60p / vol_realizada_252p"
+    direction_expected: "negative"   # compressão de vol antes -> maior chance
+  time_since_rj:
+    metric: "dias_uteis_desde_pedido_rj_ate_fundo"
+    direction_expected: "ambiguous"  # H89-H92 do banco original divergem; sem direção fixada
+  info_trigger:
+    metric: "indicador_binario(fato_relevante_ate_10p_antes_do_fundo, filtrado por known_at)"
+    direction_expected: "positive"
+
+  # DESCRITIVA — fora do FDR primário (ver judge.py DESCRIPTIVE_ONLY_FAMILIES)
+  volume_dynamics_contemporaneous:
+    metric: "volume_dia_fundo / mediana_volume_20p_anteriores"
+    direction_expected: "positive"
+    note: "descritivo apenas — medido NO candidato, não executável em tempo real. NÃO entra no conjunto de 8 testes preditivos do FDR."
+
+judge:
+  # bootstrap de CLUSTER por empresa (não iid) — preserva a dependência
+  # empresa->episódios sem inflar N artificialmente (protocolo, ponto 1 da
+  # crítica: cluster-robust em vez de tratar episódios como independentes).
+  bootstrap_scheme: "cluster"
+  n_boot: 10000
+  confidence: 0.95
+  seed: 42
+  # correção de múltiplas comparações entre as 8 famílias — Benjamini-Hochberg
+  # FDR, não Bonferroni (mais poder com N pequeno; ainda controla achado falso
+  # sistemático). DSR do vendor é Sharpe-específico (retorno por período); aqui
+  # a unidade é diferença de médias entre grupo-rally e grupo-controle, não
+  # série de retornos — por isso FDR, não DSR. Ver docs/DESIGN.md §5.
+  fdr_alpha: 0.10
+
+influence_analysis:
+  # RENOMEADO de "validation" (revisão externa, 2ª rodada, ponto 4) — LOCO
+  # mede influência/estabilidade do sinal, não validação preditiva de
+  # verdade (que exigiria modelo treinado em N-1 e testado na empresa
+  # excluída). Chamar de "validation" no config contradizia a correção já
+  # feita em judge.py/HANDOFF.
+  method: "leave_one_company_out"
+  temporal_split_secondary: true
+  temporal_split_min_universe_size: 40
+
+paths:
+  trials_path: "trials.json"

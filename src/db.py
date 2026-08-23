@@ -121,7 +121,72 @@ MIGRATIONS: list[tuple[str, str]] = [
         CREATE INDEX IF NOT EXISTS idx_prices_raw_mkt_date
             ON prices_raw(market_type, date);
     """),
+    # domínio RJ (predictor-rj): reaproveita prices_raw/adjustments/quarantine
+    # deste banco (mesmo COTAHIST, mesmo quote_factor, mesma disciplina de
+    # aprovação humana) — tabelas novas, nenhuma existente é tocada.
+    ("0004_rj_domain_schema", """
+        -- universo PRIMEIRO, rally depois: uma linha por empresa que entrou
+        -- em RJ com ação negociada na B3 — nunca filtrado por ter tido rally.
+        CREATE TABLE IF NOT EXISTS rj_universe (
+            ticker              TEXT    PRIMARY KEY,
+            company_name        TEXT    NOT NULL,
+            rj_request_date     TEXT    NOT NULL,
+            rj_process_number   TEXT,
+            plan_presented_date TEXT,
+            plan_approved_date  TEXT,
+            rj_end_date         TEXT,
+            delisted_date       TEXT,
+            source              TEXT    NOT NULL,
+            approved_by         TEXT,
+            notes               TEXT,
+            inserted_at         TEXT    NOT NULL DEFAULT (datetime('now'))
+        );
+
+        -- episódios: fundo -> outcome. is_primary=1 é a unidade estatística
+        -- principal (empresa->episódios); demais entram como secundário.
+        CREATE TABLE IF NOT EXISTS rj_episodes (
+            id                  INTEGER PRIMARY KEY,
+            ticker              TEXT    NOT NULL REFERENCES rj_universe(ticker),
+            trough_date         TEXT    NOT NULL,
+            trough_price        REAL    NOT NULL,
+            is_primary          INTEGER NOT NULL DEFAULT 1,
+            outcome             TEXT,
+            rally_pct           REAL,
+            rally_date          TEXT,
+            trading_days_to_rally INTEGER,
+            censored            INTEGER NOT NULL DEFAULT 0,
+            inserted_at         TEXT    NOT NULL DEFAULT (datetime('now')),
+            UNIQUE(ticker, trough_date)
+        );
+
+        -- eventos discretos (fato relevante, entrada de investidor >=5%).
+        -- known_at != event_date: um evento só existe para decisão simulada
+        -- em D se known_at <= D (anti-lookahead informacional).
+        CREATE TABLE IF NOT EXISTS rj_events (
+            id          INTEGER PRIMARY KEY,
+            ticker      TEXT    NOT NULL REFERENCES rj_universe(ticker),
+            event_date  TEXT    NOT NULL,
+            published_at TEXT,
+            known_at    TEXT    NOT NULL,
+            event_type  TEXT    NOT NULL,
+            source      TEXT    NOT NULL,
+            approved_by TEXT,
+            notes       TEXT,
+            inserted_at TEXT    NOT NULL DEFAULT (datetime('now'))
+        );
+        CREATE INDEX IF NOT EXISTS idx_rj_events_ticker_known ON rj_events(ticker, known_at);
+
+        -- scores por família, um valor por episódio
+        CREATE TABLE IF NOT EXISTS rj_family_scores (
+            episode_id  INTEGER NOT NULL REFERENCES rj_episodes(id),
+            family      TEXT    NOT NULL,
+            value       REAL,
+            computed_at TEXT    NOT NULL DEFAULT (datetime('now')),
+            PRIMARY KEY (episode_id, family)
+        );
+    """),
 ]
+
 
 
 def price_expr(col: str) -> str:

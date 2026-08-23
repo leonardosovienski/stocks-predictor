@@ -47,3 +47,16 @@ reports/                 relatórios do veredito (fora do git); reports/ai/ = an
 ## Fronteira
 
 Instrumento de medição metodológica para um TCC. **Não é recomendação de investimento.**
+
+## Domínio novo: predictor-rj (event study, RJ na B3)
+
+Módulo independente adicionado em 2026-08-23: rallies ≥50% em ações de
+empresas em recuperação judicial. Reaproveita `prices_raw`/`vendor/`, schema
+próprio (`0004_rj_domain_schema`), config separado (`config_rj.yaml`).
+Documento canônico: [docs/RJ_DESIGN.md](docs/RJ_DESIGN.md). Ver HANDOFF.md
+para estado atual — M0, dados sintéticos, `rj_universe` ainda vazia.
+
+```powershell
+py -3.13 -m pytest tests/test_rj_smoke_synthetic.py tests/test_rj_power_gate.py -q
+```
+
