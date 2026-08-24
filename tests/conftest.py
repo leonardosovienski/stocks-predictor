@@ -17,4 +17,5 @@ if str(SRC) not in sys.path:
 import os
 if os.environ.get("STOCKS_ALLOW_VENDOR_SHIM") != "1":
     assert "vendor" not in pathlib.Path(predictor_core.__file__).parts
+    assert "vendor" not in pathlib.Path(predictor_ops.__file__).parts
 
