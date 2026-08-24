@@ -229,7 +229,7 @@ def test_permutation_pvalue_never_zero():
             [(f"C{i}3", 0.0 + i * 0.01, 0) for i in range(4)]
     p = judge.permutation_pvalue(units, n_perm=100, seed=1)
     assert p > 0
-    assert p >= pytest.approx(1 / 101)   # piso (0+1)/(100+1), nunca 0
+    assert p >= 1 / 101 - 1e-12   # piso (0+1)/(100+1), nunca 0
 
 
 def test_categorical_pvalue_never_zero():
@@ -248,4 +248,4 @@ def test_romano_wolf_pvalue_never_zero():
     rw = robust.romano_wolf_stepdown(units_by_family, n_perm=100, seed=1)
     for res in rw.values():
         assert res["p_romanowolf"] > 0
-        assert res["p_romanowolf"] >= pytest.approx(1 / 101)
+        assert res["p_romanowolf"] >= 1 / 101 - 1e-12
