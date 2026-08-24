@@ -907,6 +907,7 @@ nova hipótese / novo pré-registro. Aplica-se igualmente à estratégia E ao be
 | `numpy` | PRÉ-APROVADO (M0) | Matriz de retornos cruzada + stationary bootstrap |
 | `pandas` | NÃO aprovado | Parse COTAHIST é trivial em stdlib; revisar na dor do M1 |
 | `pytest` | dev — precedente domínio 1 | |
+| `pyyaml` | APROVADO (portão, 2026-08-24) | `config_rj.yaml` usa 3 níveis de aninhamento (`families: → <familia>: → metric/direction_expected`), fora do subconjunto plano do mini-parser de `src/config.py`. As alternativas foram achatar o config do RJ ou estender o mini-parser — esta última exigiria alterar `tests/test_config.py`, que asserta a rejeição de 3 níveis como fronteira de design. Operador escolheu a dependência. Declarada em `requirements.txt`; o CI já a instala. O domínio de ações continua no mini-parser stdlib — `src/config.py` NÃO passa a usar pyyaml. |
 
 ---
 
