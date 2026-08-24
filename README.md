@@ -8,9 +8,10 @@ recuperação judicial.
 O domínio cross-sectional/fatores anterior permanece preservado no repositório como
 histórico científico. Seus vereditos não são apagados nem promovidos pela linha RJ.
 
-**Documentos científicos:** [docs/RJ_DESIGN.md](docs/RJ_DESIGN.md) para o protocolo RJ,
-[docs/DESIGN.md](docs/DESIGN.md) para o domínio histórico e [HANDOFF.md](HANDOFF.md) para
-continuidade e evidências.
+**Leitura corrente:** [STOCKS_CURRENT_STATE.md](STOCKS_CURRENT_STATE.md) para estado
+técnico atual e [docs/RJ_DESIGN.md](docs/RJ_DESIGN.md) para o protocolo RJ.
+[docs/DESIGN.md](docs/DESIGN.md) e [HANDOFF.md](HANDOFF.md) preservam o domínio e a
+continuidade histórica e devem ser interpretados pela data.
 
 ## Estado técnico
 
@@ -33,8 +34,8 @@ rallies em ações de empresas em RJ, de forma conhecível no momento da decisã
 
 O protocolo separa análise ex-post de análise point-in-time, trata censura,
 pré-registra famílias e aplica correção por múltiplos testes. O estado científico
-corrente continua sendo o documentado no HANDOFF/RJ_DESIGN; modernizar packaging,
-Core/Ops ou CI não constitui evidência de hipótese.
+corrente continua sendo o documentado em `STOCKS_CURRENT_STATE.md`/`RJ_DESIGN`; modernizar
+packaging, Core/Ops ou CI não constitui evidência de hipótese.
 
 ```powershell
 uv sync --all-extras --python 3.13
@@ -55,6 +56,7 @@ uv run pytest tests/test_rj_smoke_synthetic.py tests/test_rj_power_gate.py -q
 ```text
 main.py                  entry point legado/CLI do domínio histórico
 pyproject.toml           runtime, package e dependências compartilhadas
+STOCKS_CURRENT_STATE.md  estado corrente desta geração
 config.yaml              parâmetros do domínio cross-sectional histórico
 config_rj.yaml           parâmetros congelados da linha RJ
 docs/DESIGN.md           protocolo histórico de fatores
