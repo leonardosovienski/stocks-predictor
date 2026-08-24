@@ -18,9 +18,15 @@ cross-sectional/fatores anterior permanece histórico.
 - package `stocks-predictor 0.1.0` via `pyproject.toml`;
 - `predictor-core>=2.3,<3` por wheel oficial;
 - `predictor-ops>=3.1,<4` por wheel oficial;
+- adapter canônico publicado em `[project.entry-points."predictor.plugins"]` como
+  `stocks = "src.ecosystem_plugin:PLUGIN"`;
 - CI em Python 3.13 com Ruff, Pyright RJ, pytest/coverage, build/wheel smoke e gitleaks;
 - `vendor/predictor_core` preservado como snapshot histórico/integrity artifact durante
   a transição; não é a dependência arquitetural alvo.
+
+O adapter do Ecosystem publica somente estado/capacidades fail-closed; ele não promove
+hipótese, não transforma associação RJ em recomendação econômica e mantém
+`capital_permission = FORBIDDEN`.
 
 A suíte deve fixar Core/Ops das wheels antes de módulos legados que ainda carreguem
 hooks históricos de `sys.path`. Remover esses hooks remanescentes é housekeeping de
@@ -41,13 +47,13 @@ Não existe evidência suficiente neste estado técnico para alegar edge econôm
 lucro prospectivo. Detectar um padrão que anteceda rally é etapa anterior à definição
 de entrada/saída, preço executável, custos, liquidez e P&L.
 
-`capital_permission = FORBIDDEN` nesta migração.
+`capital_permission = FORBIDDEN` neste estado.
 
 ## Fontes
 
 1. `docs/RJ_DESIGN.md` — protocolo científico RJ;
 2. `config_rj.yaml` — parâmetros congelados;
-3. `pyproject.toml` — runtime/dependências atuais;
+3. `pyproject.toml` — runtime/dependências/entry-point atuais;
 4. `.github/workflows/ci.yml` — gates técnicos atuais;
 5. Git/CI — evidência mecânica;
 6. `HANDOFF.md` — histórico detalhado, válido para suas datas.
