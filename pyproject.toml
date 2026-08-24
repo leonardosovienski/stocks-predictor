@@ -23,6 +23,9 @@ dev = [
   "ruff>=0.12,<1",
 ]
 
+[project.entry-points."predictor.plugins"]
+stocks = "src.ecosystem_plugin:PLUGIN"
+
 [tool.hatch.build.targets.wheel]
 packages = ["src"]
 
