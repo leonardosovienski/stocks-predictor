@@ -183,6 +183,22 @@ MIGRATIONS: list[tuple[str, str]] = [
             PRIMARY KEY (episode_id, family)
         );
     """),
+    # retratos datados da lista pública de emissores em RJ (ingest_rj_universe)
+    # — anti-viés de sobrevivência DO UNIVERSO: a lista da B3 é um retrato de
+    # hoje; sem snapshots, quem saiu (falência/encerramento/deslistagem)
+    # desaparece do universo histórico — o viés proibido pelo protocolo §3.
+    ("0005_rj_universe_snapshots", """
+        CREATE TABLE IF NOT EXISTS rj_universe_snapshots (
+            snapshot_date TEXT    NOT NULL,
+            source        TEXT    NOT NULL,
+            ticker        TEXT    NOT NULL,
+            company_name  TEXT    NOT NULL,
+            payload_hash  TEXT    NOT NULL,
+            raw_payload   TEXT,
+            inserted_at   TEXT    NOT NULL DEFAULT (datetime('now')),
+            PRIMARY KEY (snapshot_date, source, ticker)
+        );
+    """),
 ]
 
 
