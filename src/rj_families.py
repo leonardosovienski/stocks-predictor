@@ -105,24 +105,31 @@ def rj_stage(trough_date: str, plan_presented_date: str | None,
     return stage
 
 
-def ownership(events: list[dict], trough_date: str, window_days: int = 90) -> int:
+def ownership(events: list[dict], trough_date: str, window_days: int = 90) -> int | None:
     """H51-H60 condensadas: indicador binário — entrada de investidor >=5%
     CONHECIDA (rj_events.known_at, não event_date — revisão externa, ponto 7:
     um evento datado de 10/05 mas publicado em 11/05 não existia em 10/05)
     nos `window_days` corridos ANTES do fundo. `events` = lista de dicts já
-    filtrada por ticker (evita acoplar este módulo a SQL)."""
+    filtrada por ticker (evita acoplar este módulo a SQL).
+
+    Fail-closed informacional (protocolo §8/§10): evento sem known_at VÁLIDO
+    não é elegível — NUNCA se usa event_date como substituto (seria tratar o
+    futuro como conhecido). trough_date inválida retorna None (indisponível),
+    nunca 0 — 0 afirmaria "sabemos que não houve evento"."""
     from datetime import date
     try:
         td = date.fromisoformat(trough_date)
-    except ValueError:
-        return 0
+    except (TypeError, ValueError):
+        return None
     for e in events:
         if e.get("event_type") != "investidor_5pct":
             continue
-        known = e.get("known_at") or e.get("event_date")
+        known = e.get("known_at")
+        if not known:
+            continue    # sem known_at válido o evento não é elegível (§10)
         try:
             ed = date.fromisoformat(known)
-        except (KeyError, TypeError, ValueError):
+        except (TypeError, ValueError):
             continue
         if 0 <= (td - ed).days <= window_days:
             return 1
@@ -160,19 +167,23 @@ def time_since_rj(rj_request_date: str, trough_date: str, all_dates: list[str]) 
 def info_trigger(events: list[dict], trough_date: str, window_days: int = 10) -> int:
     """H31 (nova versão do plano) e o "gatilho informacional" da seção 11 do
     relatório original: indicador binário — fato relevante CONHECIDO
-    (known_at, não event_date) nos `window_days` corridos ANTES do fundo."""
+    (known_at, não event_date) nos `window_days` corridos ANTES do fundo.
+    Mesma disciplina fail-closed de `ownership`: sem known_at válido o evento
+    não é elegível; trough_date inválida -> None (indisponível), nunca 0."""
     from datetime import date
     try:
         td = date.fromisoformat(trough_date)
-    except ValueError:
-        return 0
+    except (TypeError, ValueError):
+        return None
     for e in events:
         if e.get("event_type") != "fato_relevante":
             continue
-        known = e.get("known_at") or e.get("event_date")
+        known = e.get("known_at")
+        if not known:
+            continue    # sem known_at válido o evento não é elegível (§10)
         try:
             ed = date.fromisoformat(known)
-        except (KeyError, TypeError, ValueError):
+        except (TypeError, ValueError):
             continue
         if 0 <= (td - ed).days <= window_days:
             return 1

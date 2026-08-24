@@ -51,22 +51,28 @@ def max_lottery(dates: list[str], closes: list[float], asof: str,
 
 
 def equity_issuance(events: list[dict], trough_date: str,
-                    window_days: int = 180) -> int:
+                    window_days: int = 180) -> int | None:
     """Binário: emissão de ações / aumento de capital CONHECIDO (known_at)
     nos `window_days` corridos antes do fundo. "MAX on Steroids" (2026)
     mostrou que retornos extremos concentrados carregam emissão junto —
     separar isso de fato_relevante genérico é o refinamento que a família
-    info_trigger original não faz."""
+    info_trigger original não faz.
+
+    Fail-closed informacional (mesma regra do pré-registro §8/§10): evento
+    sem known_at válido não é elegível — event_date nunca substitui known_at.
+    trough_date inválida -> None (indisponível), nunca 0."""
     from datetime import date
     try:
         td = date.fromisoformat(trough_date)
-    except ValueError:
-        return 0
+    except (TypeError, ValueError):
+        return None
     kinds = {"emissao_acoes", "aumento_capital", "oferta_acoes"}
     for e in events:
         if e.get("event_type") not in kinds:
             continue
-        known = e.get("known_at") or e.get("event_date")
+        known = e.get("known_at")
+        if not known:
+            continue    # sem known_at válido o evento não é elegível
         try:
             ed = date.fromisoformat(known)
         except (TypeError, ValueError):
