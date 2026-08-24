@@ -66,8 +66,22 @@ def walk_forward_evaluate(units, fit_fn, score_fn, min_train: int = 10,
     """Avaliação walk-forward genérica: `fit_fn(train_units) -> model`,
     `score_fn(model, test_units) -> float` (métrica escolhida pelo chamador,
     ex.: AUC ou correlação ranqueada). `units` DEVE estar ordenado no tempo —
-    o módulo confia nessa ordenação como contrato (e a recusa de embaralhar
-    é a proteção anti-lookahead estrutural)."""
+    a recusa de embaralhar é a proteção anti-lookahead estrutural. Se as
+    units carregam campo de data (dicts com chave "date", ou tuplas cujo
+    1º elemento é uma data ISO), a monotonicidade é VERIFICADA (fail-closed:
+    ValueError); sem campo de data, o contrato de ordenação é do chamador
+    (documentado aqui, não verificável)."""
+    dates = None
+    if units and isinstance(units[0], dict) and "date" in units[0]:
+        dates = [u["date"] for u in units]
+    elif (units and isinstance(units[0], (tuple, list)) and units[0]
+            and isinstance(units[0][0], str) and len(units[0][0]) == 10
+            and units[0][0][4] == "-"):
+        dates = [u[0] for u in units]
+    if dates is not None and any(b < a for a, b in zip(dates, dates[1:])):
+        raise ValueError(
+            "units fora de ordenação temporal — walk-forward exige sequência "
+            "monotônica não-decrescente de datas (anti-lookahead)")
     results = []
     for train, test in walk_forward_splits(len(units), min_train, step):
         model = fit_fn([units[i] for i in train])

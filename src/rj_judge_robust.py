@@ -82,8 +82,13 @@ def romano_wolf_stepdown(units_by_family: dict, n_perm: int = 5000,
         for n, t in t_obs.items():
             if max_t >= abs(t):
                 ge_count[n] += 1
-    return {n: {"t_obs": t_obs[n], "p_romanowolf": ge_count[n] / n_perm,
-                "significant_romanowolf": (ge_count[n] / n_perm) <= alpha}
+    # (n_ge + 1)/(n_perm + 1): p de permutação nunca é exatamente 0 (a
+    # estatística observada é uma permutação possível). Convenção idêntica à
+    # do judge — não altera alpha nem o BH oficial.
+    return {n: {"t_obs": t_obs[n],
+                "p_romanowolf": (ge_count[n] + 1) / (n_perm + 1),
+                "significant_romanowolf":
+                    ((ge_count[n] + 1) / (n_perm + 1)) <= alpha}
             for n in t_obs}
 
 
@@ -98,8 +103,12 @@ def robustness_report(units_by_family: dict, verdicts_bh: dict,
     report = {}
     for name, rw_res in rw.items():
         bh_sig = (verdicts_bh.get(name) or {}).get("significant_after_fdr")
+        # bh_sig=None = FDR não se aplica a esta família (descritiva/sem
+        # p-valor) — "concorda?" não faz sentido: None, não False.
+        concordant = (None if bh_sig is None
+                      else rw_res["significant_romanowolf"] == bool(bh_sig))
         report[name] = {**rw_res, "significant_bh_fdr": bh_sig,
-                        "concordant": rw_res["significant_romanowolf"] == bool(bh_sig)}
+                        "concordant": concordant}
     return report
 
 

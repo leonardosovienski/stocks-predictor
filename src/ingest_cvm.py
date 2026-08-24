@@ -79,6 +79,12 @@ def _open_zip_csv(zbytes: bytes, name_contains: str):
     names = [n for n in zf.namelist() if name_contains in _norm(n) and n.endswith(".csv")]
     if not names:
         raise ValueError(f"nenhum CSV contendo '{name_contains}' em {zf.namelist()}")
+    if len(names) > 1:
+        # ambíguo = layout mudou; escolher names[0] na sorte poderia misturar
+        # anos/versões sem aviso — fail-loud.
+        raise ValueError(
+            f"{len(names)} CSVs contendo '{name_contains}' em {zf.namelist()} "
+            "— padrão ambíguo, revisar o layout do zip")
     with zf.open(names[0]) as f:
         text = io.TextIOWrapper(f, encoding="latin-1")
         reader = csv.reader(text, delimiter=";")
@@ -92,10 +98,21 @@ def parse_ipe_rows(rows, companies: set[str] | None = None) -> list[dict]:
     Linhas sem data de entrega são DESCARTADAS com contagem logada — um
     evento sem known_at confiável não pode alimentar família nenhuma
     (fail-closed informacional). `companies` (nomes normalizados) filtra o
-    universo de interesse; None = tudo."""
+    universo de interesse; None = tudo.
+
+    Fail-loud (regra 4): parse que produz ZERO linhas válidas (antes do
+    filtro de companhias) levanta exceção — CSV vazio/truncado ou layout
+    quebrado não é "sem fatos no ano". Se o FILTRO de companhias esvaziar
+    tudo, também é exceção: provável erro no mapeamento de nomes CVM->B3,
+    que deve ser revisado, não engolido. Datas são validadas com
+    date.fromisoformat — lote com data malformada levanta exceção com a
+    contagem (nunca `[:10]` cego, que aceitaria "11/01/2023" -> "11/01/2023"
+    como se fosse ISO)."""
+    from datetime import date
     header = None
     idx = {}
-    out, dropped = [], 0
+    out, dropped, malformed = [], 0, 0
+    n_lines = n_valid = 0
     for row in rows:
         if header is None:
             header = row
@@ -106,14 +123,23 @@ def parse_ipe_rows(rows, companies: set[str] | None = None) -> list[dict]:
             continue
         if len(row) < len(header):
             continue
+        n_lines += 1
         company = row[idx["company"]].strip() if idx["company"] is not None else ""
-        if companies and _norm(company) not in companies:
-            continue
         known_at = row[idx["delivered_at"]].strip()[:10]
         if not known_at:
             dropped += 1
             continue
         ref = row[idx["event_ref_date"]].strip()[:10] if idx["event_ref_date"] is not None else ""
+        try:
+            date.fromisoformat(known_at)
+            if ref:
+                date.fromisoformat(ref)
+        except ValueError:
+            malformed += 1
+            continue
+        n_valid += 1
+        if companies and _norm(company) not in companies:
+            continue
         out.append({
             "company": company,
             "cnpj": row[idx["cnpj"]].strip() if idx["cnpj"] is not None else "",
@@ -124,6 +150,19 @@ def parse_ipe_rows(rows, companies: set[str] | None = None) -> list[dict]:
         })
     if dropped:
         logger.warning("IPE: %d linhas descartadas por falta de data de entrega", dropped)
+    if malformed:
+        raise ValueError(
+            f"IPE: {malformed} linha(s) com data malformada (fora de ISO "
+            "YYYY-MM-DD) — lote rejeitado, revisar a fonte antes de ingerir")
+    if n_lines == 0 or n_valid == 0:
+        raise ValueError(
+            "IPE: 0 linhas válidas no parse (antes do filtro de companhias) "
+            "— CSV vazio ou layout quebrado; NADA foi ingerido")
+    if companies and not out:
+        raise ValueError(
+            "IPE: filtro de companhias esvaziou TODAS as linhas válidas — "
+            "provável erro no mapeamento de nomes CVM->B3; revisar antes "
+            "de aceitar 'zero eventos'")
     return out
 
 
@@ -172,6 +211,16 @@ def ingest_ipe_year(conn, year: int, companies: set[str] | None = None,
             continue    # companhia sem ticker mapeado: revisão humana antes
         etype = ("fato_relevante" if "fato" in _norm(e["category"])
                  else "ipe_outro")
+        # idempotência por SELECT-before-INSERT (sem UNIQUE novo no schema —
+        # migrações já aplicadas não são tocadas): re-executar o ingest do
+        # mesmo ano não duplica eventos.
+        dup = conn.execute(
+            "SELECT 1 FROM rj_events WHERE ticker=? AND event_date=?"
+            " AND known_at=? AND event_type=? AND source=?",
+            (ticker, e["event_date"], e["known_at"], etype,
+             f"CVM IPE {year}")).fetchone()
+        if dup:
+            continue
         conn.execute(
             "INSERT INTO rj_events(ticker, event_date, known_at, event_type,"
             " source, notes) VALUES(?,?,?,?,?,?)",
@@ -202,16 +251,22 @@ def build_ticker_map(cvm_names: list[str],
 
 def load_free_float(year: int, companies: set[str] | None = None) -> dict:
     """FRE -> {nome_companhia_normalizado: free_float} do ano (insumo da
-    família liquidity via --free-float-csv no rj_pipeline)."""
+    família liquidity via --free-float-csv no rj_pipeline).
+
+    Múltiplas linhas por companhia no mesmo FRE: vale a de MAIOR ref_date
+    (determinístico — nunca "a última lida", que dependeria da ordem do
+    arquivo)."""
     rows = parse_fre_float_rows(
         _open_zip_csv(download_zip(FRE_URL.format(year=year)),
                       "distribuicao_capital"))
-    out = {}
+    best: dict[str, tuple[str, float]] = {}
     for r in rows:
         if r["free_float"] is None:
             continue
         key = _norm(r["company"])
         if companies and key not in companies:
             continue
-        out[key] = r["free_float"]
-    return out
+        ref = r["ref_date"] or ""
+        if key not in best or ref >= best[key][0]:
+            best[key] = (ref, r["free_float"])
+    return {k: v for k, (_, v) in best.items()}

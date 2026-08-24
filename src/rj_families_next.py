@@ -51,22 +51,28 @@ def max_lottery(dates: list[str], closes: list[float], asof: str,
 
 
 def equity_issuance(events: list[dict], trough_date: str,
-                    window_days: int = 180) -> int:
+                    window_days: int = 180) -> int | None:
     """Binário: emissão de ações / aumento de capital CONHECIDO (known_at)
     nos `window_days` corridos antes do fundo. "MAX on Steroids" (2026)
     mostrou que retornos extremos concentrados carregam emissão junto —
     separar isso de fato_relevante genérico é o refinamento que a família
-    info_trigger original não faz."""
+    info_trigger original não faz.
+
+    Fail-closed informacional (mesma regra do pré-registro §8/§10): evento
+    sem known_at válido não é elegível — event_date nunca substitui known_at.
+    trough_date inválida -> None (indisponível), nunca 0."""
     from datetime import date
     try:
         td = date.fromisoformat(trough_date)
-    except ValueError:
-        return 0
+    except (TypeError, ValueError):
+        return None
     kinds = {"emissao_acoes", "aumento_capital", "oferta_acoes"}
     for e in events:
         if e.get("event_type") not in kinds:
             continue
-        known = e.get("known_at") or e.get("event_date")
+        known = e.get("known_at")
+        if not known:
+            continue    # sem known_at válido o evento não é elegível
         try:
             ed = date.fromisoformat(known)
         except (TypeError, ValueError):
@@ -104,8 +110,9 @@ def altman_z(financials: dict) -> float | None:
     demonstrativo publicado (o chamador garante known_at: passar só números
     de DFP/ITR já entregues à CVM antes de asof).
 
-    financials: working_capital, retained_earnings, ebit, market_cap_equity
-    (ou book_value_equity com flag), total_liabilities, sales, total_assets.
+    financials: working_capital, retained_earnings, ebit, equity_value
+    (valor de mercado do equity; o valor contábil é fallback declarado pelo
+    chamador), total_liabilities, sales, total_assets.
     Falta qualquer componente: None — nunca imputa zero (zero fabricaria
     distress artificial; ver rj_coda para tratamento explícito de zeros)."""
     keys = ("working_capital", "retained_earnings", "ebit",
@@ -133,7 +140,12 @@ def chs_nimta(financials: dict) -> float | None:
     if ni is None or tl is None or eq is None:
         return None
     mta = tl + eq
-    return ni / mta if mta else None
+    if mta is None or mta <= 0:
+        # MTA <= 0 (equity de mercado negativo o suficiente) inverte o sinal
+        # da razão — distress maior pareceria "melhor". Indisponível, não
+        # número distorcido.
+        return None
+    return ni / mta
 
 
 NEXT_GEN_REGISTRY = {

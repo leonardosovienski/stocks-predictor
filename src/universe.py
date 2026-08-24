@@ -44,7 +44,11 @@ def rank_universe(conn, asof, lookback=126, min_history=252):
     # min_history, último pregão p/ deslistagem. GROUP BY date dedupa re-ingest.
     hist = {r[0]: (r[1], r[2]) for r in conn.execute(
         "SELECT ticker, COUNT(DISTINCT date), MAX(date) FROM prices_raw "
-        "WHERE date < ? AND market_type = ? GROUP BY ticker", (asof, SPOT_MARKET))}
+        "WHERE date < ? AND market_type = ? GROUP BY ticker ORDER BY ticker",
+        (asof, SPOT_MARKET))}
+    # ORDER BY ticker: dedup ON/PN abaixo mantém o PRIMEIRO em empate de
+    # liquidez — sem ordenação determinística o vencedor do empate dependia
+    # da ordem física de leitura do SQLite (irreproduzível entre máquinas).
     vols: dict[str, list[float]] = {}
     for tk, _d, v in conn.execute(
             "SELECT ticker, date, MAX(volume_fin) FROM prices_raw "

@@ -21,7 +21,11 @@ Disciplina de escopo (fail-closed, sem exceção silenciosa):
   "dado indisponível" (reportada como tal), NÃO estimada de mentirinha;
 - famílias cujo score é None para um episódio simplesmente não entram nas
   units daquela família — o judge já lida com N pequeno por família;
-- nenhum parâmetro [RJ-FROZEN] é redefinido aqui: tudo vem do config.
+- nenhum parâmetro [RJ-FROZEN] é redefinido aqui: tudo vem do config;
+- fila de revisão humana (regra 5, fail-closed): TODA leitura de
+  `rj_universe` e `rj_events` filtra `approved_by IS NOT NULL` — linhas
+  pendentes de revisão não existem para a análise (o ingest CVM grava
+  deliberadamente com approved_by NULL; aprovar é ato humano explícito).
 
 Uso (CLI):
     python src/rj_pipeline.py --db data/stocks.db --config config_rj.yaml \
@@ -65,9 +69,12 @@ def _load_volumes(conn: sqlite3.Connection, ticker: str,
 def _load_events(conn: sqlite3.Connection, ticker: str) -> list[dict]:
     """Eventos discretos da empresa; o FILTRO por known_at é das famílias
     (anti-lookahead informacional vive lá, não aqui)."""
+    # fila de revisão humana (regra 5): evento sem approved_by NÃO entra —
+    # fail-closed. Evento pendente de revisão não existe para a análise.
     cols = ["event_date", "published_at", "known_at", "event_type"]
     rows = conn.execute(
-        f"SELECT {', '.join(cols)} FROM rj_events WHERE ticker=?", (ticker,))
+        f"SELECT {', '.join(cols)} FROM rj_events "
+        "WHERE ticker=? AND approved_by IS NOT NULL", (ticker,))
     return [dict(zip(cols, r)) for r in rows]
 
 
@@ -91,9 +98,13 @@ def build_episodes(conn: sqlite3.Connection, cfg: dict, asof: str) -> dict:
     lookback = rcfg["point_in_time_backward_lookback_days"]
     min_sep = rcfg["primary_window_trading_days"]
     out, excluded = [], {}
+    # fila de revisão humana (regra 5): só empresas APROVADAS entram no
+    # universo analisado — uma linha pendente (approved_by NULL) é candidata
+    # a universo, não universo. Fail-closed: na dúvida, fica de fora.
     universe = conn.execute(
         "SELECT ticker, rj_request_date, plan_presented_date, "
-        "plan_approved_date, rj_end_date FROM rj_universe ORDER BY ticker"
+        "plan_approved_date, rj_end_date FROM rj_universe "
+        "WHERE approved_by IS NOT NULL ORDER BY ticker"
     ).fetchall()
     for ticker, rj_date, plan_pres, plan_appr, rj_end in universe:
         dates, closes = _load_price_series(conn, ticker, asof)
@@ -160,17 +171,33 @@ def compute_family_scores(conn: sqlite3.Connection, ep: dict, cfg: dict,
 
 
 def persist_run(conn: sqlite3.Connection, built: dict, asof: str) -> None:
-    """Grava episódios + scores (INSERT OR IGNORE — re-rodar no mesmo asof é
-    idempotente; recálculo deliberado é outro asof/run, não reescrita)."""
+    """Grava episódios + scores. Re-rodar no MESMO asof é idempotente
+    (INSERT OR IGNORE + nada diverge). Re-rodar com asof POSTERIOR atualiza
+    a linha existente quando o outcome diverge (ex.: censored -> rally) —
+    manter o outcome velho gravado deixaria o banco contradizer a trilha
+    mais recente da observação. Scores de família (PK episode_id+family)
+    divergentes também são atualizados."""
     for ep in built["episodes"]:
+        cols = (ep["ticker"], ep["trough_date"], ep["trough_price"], ep["is_primary"],
+                ep["primary"]["outcome"], ep["primary"]["rally_pct"],
+                ep["primary"]["rally_date"], ep["primary"]["trading_days_to_rally"],
+                ep["primary"]["censored"])
         conn.execute(
             "INSERT OR IGNORE INTO rj_episodes(ticker, trough_date, trough_price,"
             " is_primary, outcome, rally_pct, rally_date, trading_days_to_rally,"
-            " censored) VALUES(?,?,?,?,?,?,?,?,?)",
-            (ep["ticker"], ep["trough_date"], ep["trough_price"], ep["is_primary"],
-             ep["primary"]["outcome"], ep["primary"]["rally_pct"],
-             ep["primary"]["rally_date"], ep["primary"]["trading_days_to_rally"],
-             ep["primary"]["censored"]))
+            " censored) VALUES(?,?,?,?,?,?,?,?,?)", cols)
+        old = conn.execute(
+            "SELECT trough_price, is_primary, outcome, rally_pct, rally_date,"
+            " trading_days_to_rally, censored FROM rj_episodes"
+            " WHERE ticker=? AND trough_date=?",
+            (ep["ticker"], ep["trough_date"])).fetchone()
+        new = cols[2:]
+        if tuple(old) != tuple(new):
+            conn.execute(
+                "UPDATE rj_episodes SET trough_price=?, is_primary=?, outcome=?,"
+                " rally_pct=?, rally_date=?, trading_days_to_rally=?, censored=?"
+                " WHERE ticker=? AND trough_date=?",
+                (*new, ep["ticker"], ep["trough_date"]))
         episode_id = conn.execute(
             "SELECT id FROM rj_episodes WHERE ticker=? AND trough_date=?",
             (ep["ticker"], ep["trough_date"])).fetchone()[0]
@@ -180,6 +207,10 @@ def persist_run(conn: sqlite3.Connection, built: dict, asof: str) -> None:
             conn.execute(
                 "INSERT OR IGNORE INTO rj_family_scores(episode_id, family, value)"
                 " VALUES(?,?,?)", (episode_id, fam, val))
+            conn.execute(
+                "UPDATE rj_family_scores SET value=?"
+                " WHERE episode_id=? AND family=? AND value IS NOT ?",
+                (val, episode_id, fam, val))
     conn.commit()
 
 
@@ -193,8 +224,11 @@ def run_pipeline(conn: sqlite3.Connection, cfg: dict, asof: str,
         ep["scores"] = compute_family_scores(conn, ep, cfg, free_float, asof)
 
     # análise primária: episódios PRIMÁRIOS, janela PRIMÁRIA, sem censurados
+    # e sem dado inválido (preço de fundo <= 0 = dado quebrado: conta como
+    # excluído/missing, NUNCA como controle — viraria denominador falso).
     primary = [ep for ep in built["episodes"]
-               if ep["is_primary"] == 1 and ep["primary"]["censored"] == 0]
+               if ep["is_primary"] == 1 and ep["primary"]["censored"] == 0
+               and ep["primary"]["outcome"] != "invalid_data"]
     units_by_family = {name: [] for name in families.REGISTRY}
     for ep in primary:
         group = 1 if ep["primary"]["outcome"] == "rally" else 0
@@ -213,7 +247,8 @@ def run_pipeline(conn: sqlite3.Connection, cfg: dict, asof: str,
     # pregões), julgados como verificação separada — nunca somados ao
     # veredito primário nem ao FDR oficial; robustez, não hipótese.
     secondary_eps = [ep for ep in built["episodes"]
-                     if ep["secondary"]["censored"] == 0]
+                     if ep["secondary"]["censored"] == 0
+                     and ep["secondary"]["outcome"] != "invalid_data"]
     units_secondary = {name: [] for name in families.REGISTRY}
     for ep in secondary_eps:
         group = 1 if ep["secondary"]["outcome"] == "rally" else 0
@@ -227,7 +262,9 @@ def run_pipeline(conn: sqlite3.Connection, cfg: dict, asof: str,
     verdicts_secondary = (judge.run_all_families(units_secondary, cfg)
                           if secondary_eps else None)
 
-    n_universe = conn.execute("SELECT COUNT(*) FROM rj_universe").fetchone()[0]
+    n_universe = conn.execute(
+        "SELECT COUNT(*) FROM rj_universe WHERE approved_by IS NOT NULL"
+    ).fetchone()[0]
     n_rally = sum(1 for ep in primary if ep["primary"]["outcome"] == "rally")
     missing = {name: sum(1 for ep in primary if ep["scores"][name] is None)
                for name in families.REGISTRY}
@@ -243,6 +280,11 @@ def run_pipeline(conn: sqlite3.Connection, cfg: dict, asof: str,
         "n_censored_excluded": sum(
             1 for ep in built["episodes"]
             if ep["is_primary"] == 1 and ep["primary"]["censored"] == 1),
+        # preço de fundo <= 0 = dado quebrado: excluído/missing, não controle
+        "n_invalid_data_excluded": sum(
+            1 for ep in built["episodes"]
+            if ep["primary"]["outcome"] == "invalid_data"
+            or ep["secondary"]["outcome"] == "invalid_data"),
         "missing_scores_by_family": missing,
         "verdicts": verdicts,
         "verdicts_secondary_check": verdicts_secondary,

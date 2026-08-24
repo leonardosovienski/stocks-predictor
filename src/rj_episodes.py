@@ -144,10 +144,24 @@ def classify_episode(dates: list[str], closes: list[float], trough_date: str,
     Só então "sem rally dentro da janela" vira outcome definitivo
     (`no_rally_observed`); caso contrário é `censored` — não sabemos ainda,
     não é "nunca". `dates` deve, por contrato do chamador, não se estender
-    além de `asof_today` (a série de preço já é truncada em hoje)."""
+    além de `asof_today` (a série de preço já é truncada em hoje) — o assert
+    abaixo torna esse contrato fail-closed: uma série que se estende além do
+    corte é lookahead estrutural, não detalhe de implementação.
+
+    Preço de fundo <= 0 é dado QUEBRADO (pregão corrompido), não "empresa
+    que não teve rally": o outcome é `invalid_data` e o episódio deve ser
+    contabilizado como excluído/missing pelo chamador — NUNCA como controle
+    (`no_rally_observed` fabricaria denominador falso no judge)."""
+    assert not dates or dates[-1] <= asof_today, (
+        f"série estende além do asof ({dates[-1]} > {asof_today}) — "
+        "lookahead estrutural; truncar a série no chamador")
     rcfg = cfg["rally"]
     max_window = rcfg[window_key]
     trough_idx = dates.index(trough_date)
+    if closes[trough_idx] <= 0:
+        return {"outcome": "invalid_data", "rally_pct": None,
+                "rally_date": None, "trading_days_to_rally": None,
+                "censored": 0}
     hit = first_rally_after_trough(
         dates, closes, trough_idx, rcfg["threshold_pct"], max_window)
     if hit is not None:

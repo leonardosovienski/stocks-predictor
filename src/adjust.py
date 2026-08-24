@@ -99,10 +99,10 @@ def scan_and_quarantine(conn, threshold) -> int:
         for d, ret in detect_jumps(dates, closes, threshold):
             if d in explained:
                 continue
-            conn.execute(
+            cur = conn.execute(
                 "INSERT OR IGNORE INTO quarantine(ticker,date,reason,raw_return) "
                 "VALUES(?,?,?,?)", (t, d, "salto overnight sem ajuste registrado", round(ret, 4)))
-            n += 1
+            n += cur.rowcount   # conta só quarentenas NOVAS (re-execução = 0)
     conn.commit()
     return n
 
