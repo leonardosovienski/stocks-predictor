@@ -198,3 +198,17 @@ def test_classify_episode_asserts_series_not_beyond_asof():
     with pytest.raises(AssertionError):
         episodes.classify_episode(dates, [10.0, 9.0], "2020-01-03",
                                   _minimal_cfg(), "2020-01-02")
+
+
+# --- Bug E: chs_nimta com MTA <= 0 inverte o sinal -----------------------------
+
+def test_chs_nimta_nonpositive_mta_is_unavailable():
+    """MTA (passivo + valor de mercado do equity) <= 0 torna NI/MTA sem
+    sentido econômico (sinal invertido por denominador negativo) — None,
+    nunca número."""
+    fin = {"net_income": 30, "total_liabilities": 400, "equity_value": -500}
+    assert nextgen.chs_nimta(fin) is None
+    fin0 = {"net_income": 30, "total_liabilities": 0, "equity_value": 0}
+    assert nextgen.chs_nimta(fin0) is None
+    ok = {"net_income": 30, "total_liabilities": 400, "equity_value": 500}
+    assert nextgen.chs_nimta(ok) == pytest.approx(30 / 900)

@@ -139,7 +139,12 @@ def chs_nimta(financials: dict) -> float | None:
     if ni is None or tl is None or eq is None:
         return None
     mta = tl + eq
-    return ni / mta if mta else None
+    if mta is None or mta <= 0:
+        # MTA <= 0 (equity de mercado negativo o suficiente) inverte o sinal
+        # da razão — distress maior pareceria "melhor". Indisponível, não
+        # número distorcido.
+        return None
+    return ni / mta
 
 
 NEXT_GEN_REGISTRY = {
