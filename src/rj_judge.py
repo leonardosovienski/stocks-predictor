@@ -4,7 +4,7 @@ Por que NÃO reaproveita `trials_gate.py`/DSR do stocks-predictor tal como
 está: o DSR ali é Sharpe-específico — desconta múltiplas tentativas sobre uma
 SÉRIE DE RETORNOS por período. Aqui a unidade é diferença de médias entre
 grupo-rally e grupo-controle num corte transversal (sem série temporal de
-retorno por família). Reaproveita-se o QUE IMPORTA do vendor: o motor de
+retorno por família). Reaproveita-se do Core compartilhado o motor de
 bootstrap não-paramétrico (`measurement.bootstrap.bootstrap_ci`, scheme=
 'cluster') para o IC do effect size, e o PRINCÍPIO do trials_gate (nunca
 reportar 1 achado sem descontar quantas foram testadas) via FDR de
@@ -17,10 +17,7 @@ empresa entrarem no mesmo teste (protocolo "empresa -> episódios").
 """
 import random
 import statistics
-import sys
-import pathlib
 
-sys.path.insert(0, str(pathlib.Path(__file__).parent.parent / "vendor"))
 from predictor_core.measurement.bootstrap import bootstrap_ci
 
 
