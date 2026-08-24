@@ -1,4 +1,4 @@
-"""predictor-stocks — ponto de entrada.
+"""stocks-predictor — ponto de entrada legado do domínio cross-sectional.
 
 Uso:
     python main.py                          # status do projeto (somente leitura)
@@ -21,7 +21,9 @@ import sys
 from contextlib import closing
 
 ROOT = pathlib.Path(__file__).parent
-sys.path[:0] = [str(ROOT / "src"), str(ROOT / "vendor")]
+# O código de domínio continua com imports planos por compatibilidade histórica,
+# mas Core/Ops vêm do ambiente/package manager. vendor/ não participa do runtime.
+sys.path.insert(0, str(ROOT / "src"))
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
@@ -48,17 +50,17 @@ def status() -> int:
     import db
 
     print("=" * 60)
-    print("predictor-stocks — status")
+    print("stocks-predictor — status")
     print("=" * 60)
-    print(f"\ncore vendorizado : {core_version}")
-    print(f"code_version     : {db.get_code_version()}")
+    print(f"\ncore compartilhado: {core_version}")
+    print(f"code_version      : {db.get_code_version()}")
 
     cfg = cfg_mod.load_config()
-    print(f"config_hash      : {cfg_mod.config_hash(cfg)}")
-    print(f"frozen_hash (H1) : {cfg_mod.frozen_config_hash(cfg)}")
-    print(f"frozen_hash (H2) : {cfg_mod.h2_frozen_config_hash(cfg)}")
-    print(f"frozen_hash (H4) : {cfg_mod.h4_frozen_config_hash(cfg)}")
-    print(f"frozen_hash (H5) : {cfg_mod.h5_frozen_config_hash(cfg)}")
+    print(f"config_hash       : {cfg_mod.config_hash(cfg)}")
+    print(f"frozen_hash (H1)  : {cfg_mod.frozen_config_hash(cfg)}")
+    print(f"frozen_hash (H2)  : {cfg_mod.h2_frozen_config_hash(cfg)}")
+    print(f"frozen_hash (H4)  : {cfg_mod.h4_frozen_config_hash(cfg)}")
+    print(f"frozen_hash (H5)  : {cfg_mod.h5_frozen_config_hash(cfg)}")
     print(f"  universo       : top {cfg['universe']['top_n']} por liquidez, "
           f"janela {cfg['universe']['lookback_trading_days']} pregões")
     print(f"  fator          : {cfg['factor']['name']} "
@@ -90,7 +92,7 @@ def status() -> int:
 
     print("\nmarcos           : M1–M6 completos. H1/H2/H4/H5 julgadas — nenhuma "
           "comprovada (ver HANDOFF).")
-    print("testes           : py -3.13 -m pytest tests/ -q")
+    print("testes           : uv run pytest -q")
     return 0
 
 
