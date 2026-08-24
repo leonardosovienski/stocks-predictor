@@ -24,7 +24,6 @@ import random
 import sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).parent.parent / "src"))
-sys.path.insert(0, str(pathlib.Path(__file__).parent.parent / "vendor"))
 
 import rj_judge as judge
 import rj_families as families

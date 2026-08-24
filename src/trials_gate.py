@@ -14,6 +14,7 @@ Um NO-GO só é interpretável se o pipeline provou que detectaria edge plantado
 Escreve APENAS `trials.json` + o atestado irmão (arquivos de governança,
 VERSIONADOS de propósito) — nunca no banco (§9b/§11 intactos).
 """
+import json
 import math
 import pathlib
 import statistics
@@ -78,6 +79,21 @@ def _params_from(cfg, keys):
     return {f"{s}.{k}": cfg.get(s, {}).get(k) for s, k in keys}
 
 
+def _attested_fingerprint(registry_path: pathlib.Path) -> str | None:
+    """Lê o fingerprint emitido pelo harness do Core 2.3.
+
+    Trial nova continua fail-closed: se o arquivo estiver ausente/inválido, devolvemos
+    None e o próprio Core rejeita o registro. Não fabricamos fingerprint no consumer.
+    """
+    path = trials.attestation_path_for(registry_path)
+    try:
+        record = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return None
+    value = record.get("pipeline_fingerprint")
+    return value if isinstance(value, str) and value else None
+
+
 def register_baseline_trials(cfg, trials_path=None):
     """Registra as tentativas do denominador do DSR: H1 (retroativa, Sharpe
     por-período do veredito final) e H2 (sharpe=None até a rodada única;
@@ -116,8 +132,15 @@ def register_hypothesis(cfg, name, frozen_keys, notes, sharpe=None, trials_path=
         if existing and existing.get("sharpe") is not None:
             sharpe = existing["sharpe"]
             notes = existing.get("notes", notes)
-    reg.register(name, params=_params_from(cfg, frozen_keys), sharpe=sharpe,
-                 metric=METRIC, notes=notes, test_period=H2_TEST_PERIOD)
+    reg.register(
+        name,
+        params=_params_from(cfg, frozen_keys),
+        sharpe=sharpe,
+        metric=METRIC,
+        notes=notes,
+        test_period=H2_TEST_PERIOD,
+        pipeline_fingerprint=_attested_fingerprint(reg.path),
+    )
     return reg
 
 

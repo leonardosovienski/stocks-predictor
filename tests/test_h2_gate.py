@@ -48,7 +48,7 @@ def test_realized_vol_is_point_in_time():
     closes = [100.0, 101.0, 99.5, 100.5, 102.0, 101.0, 103.0, 102.5, 104.0, 103.0]
     asof = "2024-01-06"
     before = factor.realized_vol(dates, closes, asof, lookback=5)
-    mutated = closes[:6] + [1000.0, 0.5, 9999.0, 0.01]   # futuro absurdo
+    mutated = closes[:6] + [1000.0, 0.5, 9999.0, 0.01]
     after = factor.realized_vol(dates, mutated, asof, lookback=5)
     assert before == after is not None
 
@@ -113,7 +113,7 @@ def test_new_trial_requires_attestation(tmp_path):
 def test_register_hypothesis_preserves_realized_sharpe(tmp_path):
     """Regressão do bug de clobber (2026-07-18): re-registrar baseline com
     sharpe=None NÃO pode apagar o sharpe realizado de uma rodada única."""
-    from config import load_config, H2_FROZEN_KEYS
+    from config import H2_FROZEN_KEYS, load_config
     cfg = load_config()
     tp = tmp_path / "trials.json"
     trials_gate.attest(_fast_cfg(), trials_path=tp)
@@ -121,7 +121,6 @@ def test_register_hypothesis_preserves_realized_sharpe(tmp_path):
                                     "pré-registro", trials_path=tp)
     trials_gate.register_hypothesis(cfg, "h2-lowvol-252", H2_FROZEN_KEYS,
                                     "rodada única", sharpe=0.0123, trials_path=tp)
-    # o re-registro de baseline (sharpe=None) tem que PRESERVAR valor e notes
     reg = trials_gate.register_hypothesis(cfg, "h2-lowvol-252", H2_FROZEN_KEYS,
                                           "pré-registro de novo", trials_path=tp)
     h2 = [t for t in reg.load() if t["name"] == "h2-lowvol-252"][0]
@@ -136,11 +135,15 @@ def test_attest_then_register_and_identity_lock(tmp_path):
     assert trials.attestation_path_for(tp).exists()
 
     reg = trials.TrialRegistry(tp)
-    reg.register("h2-lowvol-252", params={"x": 1}, metric=trials_gate.METRIC)
+    fp = rec["pipeline_fingerprint"]
+    reg.register("h2-lowvol-252", params={"x": 1}, metric=trials_gate.METRIC,
+                 pipeline_fingerprint=fp)
     # re-registro idempotente (mesmos params) OK; params diferentes = N+1, erro
-    reg.register("h2-lowvol-252", params={"x": 1}, sharpe=0.01, metric=trials_gate.METRIC)
+    reg.register("h2-lowvol-252", params={"x": 1}, sharpe=0.01,
+                 metric=trials_gate.METRIC, pipeline_fingerprint=fp)
     with pytest.raises(ValueError):
-        reg.register("h2-lowvol-252", params={"x": 2}, metric=trials_gate.METRIC)
+        reg.register("h2-lowvol-252", params={"x": 2}, metric=trials_gate.METRIC,
+                     pipeline_fingerprint=fp)
     assert reg.validate() == []
 
 
@@ -154,7 +157,7 @@ def _dates(n, start=(2016, 7, 1)):
 def test_run_h2_smoke(tmp_path, capsys):
     from config import load_config
     cfg = load_config()
-    cfg["bootstrap"] = dict(_FAST_BOOT)          # veredito sintético não paga 10k boots
+    cfg["bootstrap"] = dict(_FAST_BOOT)
 
     conn = db.get_connection(tmp_path / "s.db")
     tickers = [f"T{c}{c}{c}3" for c in "ABCDEFGHIJKL"]
@@ -168,9 +171,8 @@ def test_run_h2_smoke(tmp_path, capsys):
     conn.close()
 
     assert "H2:" in capsys.readouterr().out
-    assert v["n"] > 60 and v.get("n_trials") == 2      # DSR descontou H1+H2
+    assert v["n"] > 60 and v.get("n_trials") == 2
     assert v.get("dsr") is not None and 0.0 <= v["dsr"] <= 1.0
-    # o sharpe realizado da trial h2 foi gravado no registro
     reg = trials.TrialRegistry(tp)
     h2 = [t for t in reg.load() if t["name"] == "h2-lowvol-252"][0]
     assert h2["sharpe"] is not None and reg.validate() == []
@@ -192,5 +194,5 @@ def test_h2_frozen_hash_ignores_operational_params():
     cfg["bootstrap"]["seed"] = 999
     cfg["h2_criteria"]["trials_path"] = "outro/trials.json"
     assert h2_frozen_config_hash(cfg) == base
-    cfg["h2_factor"]["lookback_days"] = 63       # tocar num FROZEN muda o lacre
+    cfg["h2_factor"]["lookback_days"] = 63
     assert h2_frozen_config_hash(cfg) != base

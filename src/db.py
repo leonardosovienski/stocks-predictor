@@ -5,9 +5,7 @@ import os
 import pathlib
 import sqlite3
 import subprocess
-import sys
 
-sys.path.insert(0, str(pathlib.Path(__file__).parent.parent / "vendor"))
 from predictor_core import infra
 
 DB_DEFAULT = pathlib.Path(__file__).parent.parent / "data" / "stocks.db"

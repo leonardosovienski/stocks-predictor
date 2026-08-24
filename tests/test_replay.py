@@ -1,7 +1,7 @@
-"""Anti-lookahead estrutural ('feed, don't query') — testado na cópia vendorizada."""
+"""Anti-lookahead estrutural ('feed, don't query') — contrato do Core compartilhado."""
 import pytest
 
-from predictor_core.replay import replay, PastView, LookaheadError
+from predictor_core.replay import LookaheadError, PastView, replay
 
 
 def test_replay_feeds_growing_past_once_per_step():
@@ -16,14 +16,15 @@ def test_replay_collects_nonnull_decisions_as_ledger():
 
 
 def test_pastview_allows_past_and_present():
-    pv = PastView((1, 2, 3, 4, 5), 2)        # asof = índice 2 (valor 3)
+    # Core 2.3 recebe somente o prefixo já observado; o futuro nem existe na view.
+    pv = PastView((1, 2, 3))
     assert pv.latest == 3 and len(pv) == 3
     assert pv[0] == 1 and pv[2] == 3
     assert list(pv) == [1, 2, 3]
 
 
 def test_pastview_blocks_future_index():
-    pv = PastView((1, 2, 3, 4, 5), 2)
+    pv = PastView((1, 2, 3))
     with pytest.raises(LookaheadError):
         _ = pv[3]
     with pytest.raises(LookaheadError):
@@ -31,9 +32,9 @@ def test_pastview_blocks_future_index():
 
 
 def test_pastview_slice_clamps_no_leak():
-    pv = PastView((1, 2, 3, 4, 5), 2)
+    pv = PastView((1, 2, 3))
     assert pv[:] == (1, 2, 3)
-    assert pv[:100] == (1, 2, 3)             # clampa ao passado, não vaza o futuro
+    assert pv[:100] == (1, 2, 3)
 
 
 def test_replay_handler_cannot_peek_future():

@@ -10,9 +10,7 @@ Atualização (2026-08-24): o portão foi aberto para o domínio RJ — `config_
 `config.yaml` do domínio de ações seguem stdlib, sem pyyaml.
 """
 import pathlib
-import sys
 
-sys.path.insert(0, str(pathlib.Path(__file__).parent.parent / "vendor"))
 from predictor_core import infra
 
 CONFIG_DEFAULT = pathlib.Path(__file__).parent.parent / "config.yaml"
