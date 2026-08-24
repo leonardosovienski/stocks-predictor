@@ -13,7 +13,6 @@ import db
 import factor
 import portfolio
 import universe
-from config import load_config
 from execution import next_open_after
 
 
@@ -74,7 +73,6 @@ def settle_executions(conn, cfg) -> int:
 
 
 def main():
-    cfg = load_config()
     conn = db.get_connection()
     run_id = db.new_run(conn, {"paper": True}, notes="paper forward")
     print("paper forward pronto — chame record_forward(conn, cfg, asof, run_id) no cron.")
