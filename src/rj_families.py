@@ -164,7 +164,7 @@ def time_since_rj(rj_request_date: str, trough_date: str, all_dates: list[str]) 
     return len(idx) - 1 if idx else None
 
 
-def info_trigger(events: list[dict], trough_date: str, window_days: int = 10) -> int:
+def info_trigger(events: list[dict], trough_date: str, window_days: int = 10) -> int | None:
     """H31 (nova versão do plano) e o "gatilho informacional" da seção 11 do
     relatório original: indicador binário — fato relevante CONHECIDO
     (known_at, não event_date) nos `window_days` corridos ANTES do fundo.
