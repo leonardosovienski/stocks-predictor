@@ -204,8 +204,11 @@ def run_pipeline(conn: sqlite3.Connection, cfg: dict, asof: str,
         ep["scores"] = compute_family_scores(conn, ep, cfg, free_float, asof)
 
     # análise primária: episódios PRIMÁRIOS, janela PRIMÁRIA, sem censurados
+    # e sem dado inválido (preço de fundo <= 0 = dado quebrado: conta como
+    # excluído/missing, NUNCA como controle — viraria denominador falso).
     primary = [ep for ep in built["episodes"]
-               if ep["is_primary"] == 1 and ep["primary"]["censored"] == 0]
+               if ep["is_primary"] == 1 and ep["primary"]["censored"] == 0
+               and ep["primary"]["outcome"] != "invalid_data"]
     units_by_family = {name: [] for name in families.REGISTRY}
     for ep in primary:
         group = 1 if ep["primary"]["outcome"] == "rally" else 0
@@ -224,7 +227,8 @@ def run_pipeline(conn: sqlite3.Connection, cfg: dict, asof: str,
     # pregões), julgados como verificação separada — nunca somados ao
     # veredito primário nem ao FDR oficial; robustez, não hipótese.
     secondary_eps = [ep for ep in built["episodes"]
-                     if ep["secondary"]["censored"] == 0]
+                     if ep["secondary"]["censored"] == 0
+                     and ep["secondary"]["outcome"] != "invalid_data"]
     units_secondary = {name: [] for name in families.REGISTRY}
     for ep in secondary_eps:
         group = 1 if ep["secondary"]["outcome"] == "rally" else 0
@@ -256,6 +260,11 @@ def run_pipeline(conn: sqlite3.Connection, cfg: dict, asof: str,
         "n_censored_excluded": sum(
             1 for ep in built["episodes"]
             if ep["is_primary"] == 1 and ep["primary"]["censored"] == 1),
+        # preço de fundo <= 0 = dado quebrado: excluído/missing, não controle
+        "n_invalid_data_excluded": sum(
+            1 for ep in built["episodes"]
+            if ep["primary"]["outcome"] == "invalid_data"
+            or ep["secondary"]["outcome"] == "invalid_data"),
         "missing_scores_by_family": missing,
         "verdicts": verdicts,
         "verdicts_secondary_check": verdicts_secondary,

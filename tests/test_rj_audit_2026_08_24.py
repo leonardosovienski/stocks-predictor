@@ -173,3 +173,28 @@ def test_open_zip_csv_ambiguous_match_raises():
         zf.writestr("ipe_cia_aberta_2023_extra.csv", "a;b\n3;4\n")
     with pytest.raises(ValueError, match="2 CSVs"):
         list(ingest_cvm._open_zip_csv(buf.getvalue(), "ipe_cia_aberta"))
+
+
+# --- Bug D: preço de fundo <= 0 + assert fail-closed de asof ------------------
+
+import rj_episodes as episodes
+
+
+def test_classify_episode_nonpositive_trough_is_invalid_not_control():
+    """Fundo com preço <= 0 (dado quebrado) NUNCA é 'no_rally_observed' —
+    viraria controle falso e contaminaria o denominador do judge."""
+    dates = ["2020-01-02", "2020-01-03", "2020-01-06", "2020-01-07"]
+    closes = [10.0, 0.0, 11.0, 12.0]
+    res = episodes.classify_episode(dates, closes, "2020-01-03",
+                                    _minimal_cfg(), "2020-01-07")
+    assert res["outcome"] == "invalid_data"
+    assert res["censored"] == 0
+
+
+def test_classify_episode_asserts_series_not_beyond_asof():
+    """asof_today era parâmetro morto: série estendendo além do corte =
+    lookahead estrutural — fail-closed."""
+    dates = ["2020-01-02", "2020-01-03"]
+    with pytest.raises(AssertionError):
+        episodes.classify_episode(dates, [10.0, 9.0], "2020-01-03",
+                                  _minimal_cfg(), "2020-01-02")
