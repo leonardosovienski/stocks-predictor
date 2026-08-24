@@ -53,3 +53,81 @@ def test_ownership_invalid_trough_date_is_unavailable_not_zero():
     assert families.ownership([], "nao-e-data") is None
     assert families.info_trigger([], "2020-13-99") is None
     assert nextgen.equity_issuance([], "lixo") is None
+
+
+# --- Bug B: fila de revisão humana (approved_by IS NOT NULL, fail-closed) ---
+
+import db
+import ingest_cvm
+import rj_pipeline as pipeline
+
+
+def _universe_row(conn, ticker, approved):
+    conn.execute(
+        "INSERT INTO rj_universe(ticker, company_name, rj_request_date, source,"
+        " approved_by) VALUES(?,?,?,?,?)",
+        (ticker, f"{ticker} SA", "2020-01-10", "synthetic", approved))
+
+
+def test_pipeline_ignores_universe_rows_pending_approval(tmp_path):
+    """Regra 5 (fila de revisão humana): linha de rj_universe sem approved_by
+    NÃO pode entrar na análise — fail-closed, não fail-open."""
+    conn = db.get_connection(tmp_path / "t.db")
+    _universe_row(conn, "PEND3", approved=None)
+    _universe_row(conn, "APRV3", approved="revisor")
+    tickers = {r[0] for r in conn.execute(
+        "SELECT ticker FROM rj_universe WHERE approved_by IS NOT NULL")}
+    assert tickers == {"APRV3"}
+    built = pipeline.build_episodes(conn, _minimal_cfg(), "2020-02-01")
+    seen = {ep["ticker"] for ep in built["episodes"]} | set(built["excluded"])
+    assert "PEND3" not in seen
+
+
+def test_pipeline_ignores_events_pending_approval(tmp_path):
+    conn = db.get_connection(tmp_path / "t.db")
+    _universe_row(conn, "APRV3", approved="revisor")
+    conn.execute(
+        "INSERT INTO rj_events(ticker, event_date, known_at, event_type,"
+        " source, approved_by) VALUES(?,?,?,?,?,?)",
+        ("APRV3", "2020-01-12", "2020-01-12", "fato_relevante", "cvm", None))
+    conn.commit()
+    events = pipeline._load_events(conn, "APRV3")
+    assert events == []
+
+
+def _minimal_cfg():
+    return {"rally": {"threshold_pct": 0.50,
+                      "primary_window_trading_days": 60,
+                      "secondary_window_trading_days": 252,
+                      "point_in_time_backward_lookback_days": 40}}
+
+
+def test_ingest_cvm_inserts_events_pending_approval(tmp_path, monkeypatch):
+    """Ingest CVM grava com approved_by NULL (pendente de revisão) — nunca
+    auto-aprovado."""
+    conn = db.get_connection(tmp_path / "t.db")
+    _universe_row(conn, "AMER3", approved="revisor")
+    csv_text = ("CNPJ_Companhia;Nome_Companhia;Data_Referencia;Data_Entrega;"
+                "Categoria;Tipo;Assunto;Link_Download\n"
+                "00.000.000/0001-91;AMERICANAS S.A.;2023-01-10;2023-01-11;"
+                "Fato Relevante;Fato Relevante;Pedido de RJ;http://x\n")
+    monkeypatch.setattr(ingest_cvm, "download_zip",
+                        lambda url, timeout=300: _zip(csv_text))
+    n = ingest_cvm.ingest_ipe_year(
+        conn, 2023, companies={"americanas_s.a."},
+        ticker_of={"americanas_s.a.": "AMER3"})
+    assert n == 1
+    row = conn.execute(
+        "SELECT approved_by FROM rj_events WHERE ticker='AMER3'").fetchone()
+    assert row[0] is None
+
+
+import io
+import zipfile
+
+
+def _zip(csv_text: str) -> bytes:
+    buf = io.BytesIO()
+    with zipfile.ZipFile(buf, "w") as zf:
+        zf.writestr("ipe_cia_aberta_2023.csv", csv_text)
+    return buf.getvalue()

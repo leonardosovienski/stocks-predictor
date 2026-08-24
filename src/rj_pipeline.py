@@ -21,7 +21,11 @@ Disciplina de escopo (fail-closed, sem exceção silenciosa):
   "dado indisponível" (reportada como tal), NÃO estimada de mentirinha;
 - famílias cujo score é None para um episódio simplesmente não entram nas
   units daquela família — o judge já lida com N pequeno por família;
-- nenhum parâmetro [RJ-FROZEN] é redefinido aqui: tudo vem do config.
+- nenhum parâmetro [RJ-FROZEN] é redefinido aqui: tudo vem do config;
+- fila de revisão humana (regra 5, fail-closed): TODA leitura de
+  `rj_universe` e `rj_events` filtra `approved_by IS NOT NULL` — linhas
+  pendentes de revisão não existem para a análise (o ingest CVM grava
+  deliberadamente com approved_by NULL; aprovar é ato humano explícito).
 
 Uso (CLI):
     python src/rj_pipeline.py --db data/stocks.db --config config_rj.yaml \
@@ -65,9 +69,12 @@ def _load_volumes(conn: sqlite3.Connection, ticker: str,
 def _load_events(conn: sqlite3.Connection, ticker: str) -> list[dict]:
     """Eventos discretos da empresa; o FILTRO por known_at é das famílias
     (anti-lookahead informacional vive lá, não aqui)."""
+    # fila de revisão humana (regra 5): evento sem approved_by NÃO entra —
+    # fail-closed. Evento pendente de revisão não existe para a análise.
     cols = ["event_date", "published_at", "known_at", "event_type"]
     rows = conn.execute(
-        f"SELECT {', '.join(cols)} FROM rj_events WHERE ticker=?", (ticker,))
+        f"SELECT {', '.join(cols)} FROM rj_events "
+        "WHERE ticker=? AND approved_by IS NOT NULL", (ticker,))
     return [dict(zip(cols, r)) for r in rows]
 
 
@@ -91,9 +98,13 @@ def build_episodes(conn: sqlite3.Connection, cfg: dict, asof: str) -> dict:
     lookback = rcfg["point_in_time_backward_lookback_days"]
     min_sep = rcfg["primary_window_trading_days"]
     out, excluded = [], {}
+    # fila de revisão humana (regra 5): só empresas APROVADAS entram no
+    # universo analisado — uma linha pendente (approved_by NULL) é candidata
+    # a universo, não universo. Fail-closed: na dúvida, fica de fora.
     universe = conn.execute(
         "SELECT ticker, rj_request_date, plan_presented_date, "
-        "plan_approved_date, rj_end_date FROM rj_universe ORDER BY ticker"
+        "plan_approved_date, rj_end_date FROM rj_universe "
+        "WHERE approved_by IS NOT NULL ORDER BY ticker"
     ).fetchall()
     for ticker, rj_date, plan_pres, plan_appr, rj_end in universe:
         dates, closes = _load_price_series(conn, ticker, asof)
@@ -227,7 +238,9 @@ def run_pipeline(conn: sqlite3.Connection, cfg: dict, asof: str,
     verdicts_secondary = (judge.run_all_families(units_secondary, cfg)
                           if secondary_eps else None)
 
-    n_universe = conn.execute("SELECT COUNT(*) FROM rj_universe").fetchone()[0]
+    n_universe = conn.execute(
+        "SELECT COUNT(*) FROM rj_universe WHERE approved_by IS NOT NULL"
+    ).fetchone()[0]
     n_rally = sum(1 for ep in primary if ep["primary"]["outcome"] == "rally")
     missing = {name: sum(1 for ep in primary if ep["scores"][name] is None)
                for name in families.REGISTRY}
