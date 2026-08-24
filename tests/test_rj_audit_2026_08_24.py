@@ -131,3 +131,45 @@ def _zip(csv_text: str) -> bytes:
     with zipfile.ZipFile(buf, "w") as zf:
         zf.writestr("ipe_cia_aberta_2023.csv", csv_text)
     return buf.getvalue()
+
+
+# --- Bug C: parse vazio / zip ambíguo / datas malformadas (CVM) --------------
+
+_IPE_HEADER = ("CNPJ_Companhia;Nome_Companhia;Data_Referencia;Data_Entrega;"
+               "Categoria;Tipo;Assunto;Link_Download\n")
+
+
+def test_parse_ipe_empty_csv_raises():
+    """Regra 4: CSV vazio (só cabeçalho, ou nem isso) não pode retornar 0
+    eventos silenciosamente — é falha de layout/fonte, não 'sem fatos'."""
+    with pytest.raises(ValueError, match="0 linhas"):
+        ingest_cvm.parse_ipe_rows([_IPE_HEADER.strip().split(";")])
+    with pytest.raises(ValueError, match="0 linhas"):
+        ingest_cvm.parse_ipe_rows(iter([]))
+
+
+def test_parse_ipe_company_filter_emptying_everything_raises():
+    """Filtro de companhias que esvazia TUDO: fail-loud (provável erro de
+    mapeamento de nomes), não zero silencioso."""
+    rows = [ _IPE_HEADER.strip().split(";"),
+             ["00", "AMERICANAS S.A.", "2023-01-10", "2023-01-11",
+              "Fato Relevante", "Fato Relevante", "RJ", "http://x"]]
+    with pytest.raises(ValueError, match="filtro de companhias"):
+        ingest_cvm.parse_ipe_rows(rows, companies={"outra_s.a."})
+
+
+def test_parse_ipe_malformed_dates_raise_with_count():
+    rows = [_IPE_HEADER.strip().split(";"),
+            ["00", "A S.A.", "2023-01-10", "11/01/2023", "F", "F", "s", "l"],
+            ["00", "B S.A.", "2023-01-10", "2023-13-40", "F", "F", "s", "l"]]
+    with pytest.raises(ValueError, match="2"):
+        ingest_cvm.parse_ipe_rows(rows)
+
+
+def test_open_zip_csv_ambiguous_match_raises():
+    buf = io.BytesIO()
+    with zipfile.ZipFile(buf, "w") as zf:
+        zf.writestr("ipe_cia_aberta_2023.csv", "a;b\n1;2\n")
+        zf.writestr("ipe_cia_aberta_2023_extra.csv", "a;b\n3;4\n")
+    with pytest.raises(ValueError, match="2 CSVs"):
+        list(ingest_cvm._open_zip_csv(buf.getvalue(), "ipe_cia_aberta"))
