@@ -171,17 +171,33 @@ def compute_family_scores(conn: sqlite3.Connection, ep: dict, cfg: dict,
 
 
 def persist_run(conn: sqlite3.Connection, built: dict, asof: str) -> None:
-    """Grava episódios + scores (INSERT OR IGNORE — re-rodar no mesmo asof é
-    idempotente; recálculo deliberado é outro asof/run, não reescrita)."""
+    """Grava episódios + scores. Re-rodar no MESMO asof é idempotente
+    (INSERT OR IGNORE + nada diverge). Re-rodar com asof POSTERIOR atualiza
+    a linha existente quando o outcome diverge (ex.: censored -> rally) —
+    manter o outcome velho gravado deixaria o banco contradizer a trilha
+    mais recente da observação. Scores de família (PK episode_id+family)
+    divergentes também são atualizados."""
     for ep in built["episodes"]:
+        cols = (ep["ticker"], ep["trough_date"], ep["trough_price"], ep["is_primary"],
+                ep["primary"]["outcome"], ep["primary"]["rally_pct"],
+                ep["primary"]["rally_date"], ep["primary"]["trading_days_to_rally"],
+                ep["primary"]["censored"])
         conn.execute(
             "INSERT OR IGNORE INTO rj_episodes(ticker, trough_date, trough_price,"
             " is_primary, outcome, rally_pct, rally_date, trading_days_to_rally,"
-            " censored) VALUES(?,?,?,?,?,?,?,?,?)",
-            (ep["ticker"], ep["trough_date"], ep["trough_price"], ep["is_primary"],
-             ep["primary"]["outcome"], ep["primary"]["rally_pct"],
-             ep["primary"]["rally_date"], ep["primary"]["trading_days_to_rally"],
-             ep["primary"]["censored"]))
+            " censored) VALUES(?,?,?,?,?,?,?,?,?)", cols)
+        old = conn.execute(
+            "SELECT trough_price, is_primary, outcome, rally_pct, rally_date,"
+            " trading_days_to_rally, censored FROM rj_episodes"
+            " WHERE ticker=? AND trough_date=?",
+            (ep["ticker"], ep["trough_date"])).fetchone()
+        new = cols[2:]
+        if tuple(old) != tuple(new):
+            conn.execute(
+                "UPDATE rj_episodes SET trough_price=?, is_primary=?, outcome=?,"
+                " rally_pct=?, rally_date=?, trading_days_to_rally=?, censored=?"
+                " WHERE ticker=? AND trough_date=?",
+                (*new, ep["ticker"], ep["trough_date"]))
         episode_id = conn.execute(
             "SELECT id FROM rj_episodes WHERE ticker=? AND trough_date=?",
             (ep["ticker"], ep["trough_date"])).fetchone()[0]
@@ -191,6 +207,10 @@ def persist_run(conn: sqlite3.Connection, built: dict, asof: str) -> None:
             conn.execute(
                 "INSERT OR IGNORE INTO rj_family_scores(episode_id, family, value)"
                 " VALUES(?,?,?)", (episode_id, fam, val))
+            conn.execute(
+                "UPDATE rj_family_scores SET value=?"
+                " WHERE episode_id=? AND family=? AND value IS NOT ?",
+                (val, episode_id, fam, val))
     conn.commit()
 
 

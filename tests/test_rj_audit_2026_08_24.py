@@ -249,3 +249,70 @@ def test_romano_wolf_pvalue_never_zero():
     for res in rw.values():
         assert res["p_romanowolf"] > 0
         assert res["p_romanowolf"] >= 1 / 101 - 1e-12
+
+
+# --- Bug G: persist_run com INSERT OR IGNORE mantinha outcome velho ------------
+
+import yaml
+
+
+def _cfg_real():
+    with open(ROOT / "config_rj.yaml", encoding="utf-8") as f:
+        c = yaml.safe_load(f)
+    c["judge"]["n_boot"] = 100
+    return c
+
+
+def _calendar(n_days=600, start="2019-01-02"):
+    import datetime
+    d = datetime.date.fromisoformat(start)
+    out = []
+    while len(out) < n_days:
+        if d.weekday() < 5:
+            out.append(d.isoformat())
+        d += datetime.timedelta(days=1)
+    return out
+
+
+def test_persist_run_updates_row_when_asof_advances(tmp_path):
+    """Re-run com asof posterior NÃO pode manter o outcome censurado velho
+    no banco (INSERT OR IGNORE puro). E re-run no MESMO asof é idempotente
+    (banco bit a bit idêntico)."""
+    conn = db.get_connection(tmp_path / "t.db")
+    dates = _calendar(600)
+    # queda monotônica até idx 90 (1º candidato point-in-time, RJ em 50 +
+    # lookback 40) e alta em seguida: rally cruza +50% por volta de idx 104
+    closes = [20.0 * (0.97 ** i) for i in range(91)]
+    closes += [closes[-1] * (1.03 ** i) for i in range(1, 600 - 90)]
+    for d, c in zip(dates, closes):
+        conn.execute(
+            "INSERT INTO prices_raw(date,ticker,bdi_code,market_type,open,high,"
+            "low,close,volume_fin,qty,quote_factor,source_file) "
+            "VALUES(?,?,?,?,?,?,?,?,?,?,?,?)",
+            (d, "EVOL3", "02", "010", c, c, c, c, 1e6, 100, 1, "SYNTH"))
+    conn.execute(
+        "INSERT INTO rj_universe(ticker, company_name, rj_request_date, source,"
+        " approved_by) VALUES(?,?,?,?,?)",
+        ("EVOL3", "Evol SA", dates[50], "synthetic", "test"))
+    conn.commit()
+    cfg = _cfg_real()
+
+    t1 = dates[100]     # janela de 60 pregões ainda incompleta -> censored
+    pipeline.run_pipeline(conn, cfg, t1)
+    row1 = conn.execute(
+        "SELECT outcome, censored FROM rj_episodes WHERE ticker='EVOL3'").fetchone()
+    assert tuple(row1) == ("censored", 1)
+
+    dump = lambda: conn.execute(
+        "SELECT ticker, trough_date, outcome, rally_pct, rally_date, censored"
+        " FROM rj_episodes ORDER BY ticker, trough_date").fetchall()
+    pipeline.run_pipeline(conn, cfg, t1)
+    assert dump() == dump()    # mesmo asof: idempotente
+
+    t2 = dates[-1]      # rally aconteceu e a janela fechou
+    pipeline.run_pipeline(conn, cfg, t2)
+    row2 = conn.execute(
+        "SELECT outcome, censored FROM rj_episodes WHERE ticker='EVOL3'").fetchone()
+    assert tuple(row2) == ("rally", 0)
+    pipeline.run_pipeline(conn, cfg, t2)
+    assert dump() == dump()    # idempotente também no asof novo
