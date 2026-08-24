@@ -51,6 +51,53 @@ Os testes específicos da mecânica RJ podem ser executados com:
 uv run pytest tests/test_rj_smoke_synthetic.py tests/test_rj_power_gate.py -q
 ```
 
+Ferramentas da linha RJ (contribuição 2026-08-24 — nenhum parâmetro
+[RJ-FROZEN] alterado; são aditivas ao protocolo):
+
+```powershell
+# poder prospectivo: dado o N do universo, qual o menor efeito detectável?
+uv run python src/rj_power.py --n-companies 20 30 40 --effects 0.5 1.0 1.5 2.0 --fast
+
+# runner integrado: universo -> episódios -> famílias -> judge -> relatório
+uv run python src/rj_pipeline.py --db data/stocks.db --asof 2026-08-24 \
+    --free-float-csv free_float.csv --out reports/rj_run.json
+```
+
+Módulos aditivos desta geração:
+
+- `src/rj_power.py` — análise de poder/MDE prospectiva via Monte Carlo sobre
+  o próprio judge (decide se o N disponível sustenta o desenho ANTES de
+  coletar dado real);
+- `src/rj_pipeline.py` — runner integrado fail-closed (universo -> episódios
+  -> famílias -> judge -> relatório JSON + persistência idempotente),
+  incluindo a checagem secundária (episódios múltiplos, janela de 252
+  pregões) como verificação separada, nunca fundida ao veredito primário;
+- `src/ingest_rj_universe.py` — snapshots datados e append-only da lista
+  pública de emissores em RJ (migração 0005): a lista é um retrato de hoje;
+  sem snapshots, quem saiu (falência/encerramento/deslistagem) some do
+  universo histórico — viés de sobrevivência proibido pelo protocolo §3.
+  Diff entre retratos gera a fila de revisão humana (source+approved_by);
+- `src/ingest_cvm.py` — dados abertos da CVM: IPE (a data de ENTREGA do fato
+  relevante é o `known_at` exigido pelo protocolo §8) e FRE (ações em
+  circulação = free float da família `liquidity`); parsing por palavra-chave
+  normalizada, fail-loud em coluna ausente;
+- `src/rj_families_next.py` — famílias NEXT-GEN (MAX/lottery, emissão de
+  ações, migração de base retail, Altman Z, CHS-NIMTA) inspiradas na
+  literatura de distressed/lottery. EXPLORATÓRIAS: assert em código garante
+  disjunção com as 8 pré-registradas — entrar no FDR exige NOVO pré-registro;
+- `src/rj_judge_robust.py` — Romano-Wolf por permutação conjunta (robustez ao
+  BH pré-registrado) e haircut out-of-sample de 36% (Harvey-Liu) para a
+  futura etapa econômica;
+- `src/rj_outcomes.py` — rally ajustado ao mercado (outcome AUXILIAR, nunca
+  fundido aos congelados) e walk-forward expanding-window para a fase de
+  validação preditiva com modelo;
+- `src/rj_coda.py` — tratamento CoDa de razões contábeis (imputação de zeros
+  auditável + CLR) para não perder empresas por dado faltante em N pequeno.
+
+Testes correspondentes: `tests/test_rj_power.py`, `tests/test_rj_pipeline.py`
+(inclui a trava de invariância do ajuste corporativo retroativo sobre os
+scores das famílias), `tests/test_rj_next_gen.py` e `tests/test_rj_ingest.py`.
+
 ## Layout
 
 ```text
