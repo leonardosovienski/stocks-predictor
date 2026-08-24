@@ -211,6 +211,16 @@ def ingest_ipe_year(conn, year: int, companies: set[str] | None = None,
             continue    # companhia sem ticker mapeado: revisão humana antes
         etype = ("fato_relevante" if "fato" in _norm(e["category"])
                  else "ipe_outro")
+        # idempotência por SELECT-before-INSERT (sem UNIQUE novo no schema —
+        # migrações já aplicadas não são tocadas): re-executar o ingest do
+        # mesmo ano não duplica eventos.
+        dup = conn.execute(
+            "SELECT 1 FROM rj_events WHERE ticker=? AND event_date=?"
+            " AND known_at=? AND event_type=? AND source=?",
+            (ticker, e["event_date"], e["known_at"], etype,
+             f"CVM IPE {year}")).fetchone()
+        if dup:
+            continue
         conn.execute(
             "INSERT INTO rj_events(ticker, event_date, known_at, event_type,"
             " source, notes) VALUES(?,?,?,?,?,?)",

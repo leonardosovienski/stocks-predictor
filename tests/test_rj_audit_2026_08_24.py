@@ -316,3 +316,26 @@ def test_persist_run_updates_row_when_asof_advances(tmp_path):
     assert tuple(row2) == ("rally", 0)
     pipeline.run_pipeline(conn, cfg, t2)
     assert dump() == dump()    # idempotente também no asof novo
+
+
+# --- Bug H: ingest CVM duplicava eventos em re-execução -------------------------
+
+def test_ingest_ipe_year_idempotent(tmp_path, monkeypatch):
+    conn = db.get_connection(tmp_path / "t.db")
+    _universe_row(conn, "AMER3", approved="revisor")
+    csv_text = ("CNPJ_Companhia;Nome_Companhia;Data_Referencia;Data_Entrega;"
+                "Categoria;Tipo;Assunto;Link_Download\n"
+                "00.000.000/0001-91;AMERICANAS S.A.;2023-01-10;2023-01-11;"
+                "Fato Relevante;Fato Relevante;Pedido de RJ;http://x\n")
+    monkeypatch.setattr(ingest_cvm, "download_zip",
+                        lambda url, timeout=300: _zip(csv_text))
+    n1 = ingest_cvm.ingest_ipe_year(
+        conn, 2023, companies={"americanas_s.a."},
+        ticker_of={"americanas_s.a.": "AMER3"})
+    n2 = ingest_cvm.ingest_ipe_year(
+        conn, 2023, companies={"americanas_s.a."},
+        ticker_of={"americanas_s.a.": "AMER3"})
+    assert n1 == 1
+    assert n2 == 0     # re-execução não duplica
+    assert conn.execute(
+        "SELECT COUNT(*) FROM rj_events WHERE ticker='AMER3'").fetchone()[0] == 1
