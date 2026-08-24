@@ -40,6 +40,8 @@ def simulate_power(cfg: dict, n_companies: int, planted_effect: float,
 
     Réplicas usam seeds distintas e determinísticas (seed + rep) — resultado
     reproduzível bit a bit para a mesma (cfg, N, effect, reps, seed)."""
+    if n_reps < 1:
+        raise ValueError(f"n_reps deve ser >= 1 (recebido: {n_reps})")
     names = list(families.REGISTRY.keys())
     n_detected = 0
     for rep in range(n_reps):

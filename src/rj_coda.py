@@ -33,6 +33,10 @@ def impute_zeros(matrix: list[list[float]], delta: float = 0.5) -> dict:
     if not matrix:
         return {"data": [], "mask": [], "dropped_cols": []}
     n_cols = len(matrix[0])
+    if any(len(row) != n_cols for row in matrix):
+        raise ValueError(
+            "matriz não retangular: linhas com tamanhos diferentes "
+            f"(esperado {n_cols} colunas) — erro de domínio, não de CoDa")
     mins = []
     for c in range(n_cols):
         positives = [row[c] for row in matrix

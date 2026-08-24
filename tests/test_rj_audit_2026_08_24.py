@@ -418,3 +418,67 @@ def test_universe_dedup_on_pn_tie_is_deterministic(tmp_path):
     conn.commit()
     uni = universe.select_universe(conn, d[15], top_n=5, lookback=5, min_history=8)
     assert "ZZAA3" in uni and "ZZAA4" not in uni
+
+
+# --- Bug J: robustez / menores -------------------------------------------------
+
+import rj_coda as coda
+import rj_outcomes as outcomes
+import rj_power
+
+
+def test_simulate_power_rejects_zero_reps():
+    with pytest.raises(ValueError, match="n_reps"):
+        rj_power.simulate_power(_cfg_real(), 10, 1.0, n_reps=0)
+
+
+def test_robustness_report_none_bh_gives_none_concordant(monkeypatch):
+    """bh_sig=None (família fora do FDR/sem p-valor) não é False — concordant
+    deve ser None (não aplicável), não 'discorda'."""
+    import rj_judge_robust as robust
+    monkeypatch.setattr(robust, "romano_wolf_stepdown",
+                        lambda u, n_perm, seed, alpha: {
+                            "drawdown": {"t_obs": 2.0, "p_romanowolf": 0.01,
+                                         "significant_romanowolf": True}})
+    rep = robust.robustness_report({}, {"drawdown": {"significant_after_fdr": None}})
+    assert rep["drawdown"]["concordant"] is None
+    rep2 = robust.robustness_report({}, {"drawdown": {"significant_after_fdr": True}})
+    assert rep2["drawdown"]["concordant"] is True
+
+
+def test_walk_forward_evaluate_rejects_non_monotonic_dates():
+    """Se as units carregam data, a ordenação temporal é CONTRATO verificado
+    (fail-closed), não suposição."""
+    units = [{"date": "2020-02-01", "v": 1}, {"date": "2020-01-01", "v": 2}]
+    with pytest.raises(ValueError, match="ordena"):
+        outcomes.walk_forward_evaluate(
+            units, lambda tr: None, lambda m, te: 0.0, min_train=1, step=1)
+    ok = [{"date": "2020-01-01", "v": 1}, {"date": "2020-02-01", "v": 2}]
+    assert outcomes.walk_forward_evaluate(
+        ok, lambda tr: None, lambda m, te: 0.0, min_train=1, step=1)
+
+
+def test_load_free_float_takes_latest_ref_date(monkeypatch):
+    """Múltiplas linhas FRE por companhia: vale a de maior ref_date
+    (determinístico), não a última lida."""
+    csv_text = ("Nome_Companhia;Data_Referencia;Quantidade_Total_Acoes;"
+                "Quantidade_Acoes_Circulacao\n"
+                "EMPRESA S.A.;2022-12-31;1000;400\n"
+                "EMPRESA S.A.;2023-12-31;1000;450\n"
+                "EMPRESA S.A.;2021-12-31;1000;300\n")
+    import io as _io
+    import zipfile as _zf
+    buf = _io.BytesIO()
+    with _zf.ZipFile(buf, "w") as z:
+        z.writestr("fre_cia_aberta_distribuicao_capital_2023.csv", csv_text)
+    monkeypatch.setattr(ingest_cvm, "download_zip",
+                        lambda url, timeout=300: buf.getvalue())
+    out = ingest_cvm.load_free_float(2023)
+    assert out["empresa_s.a."] == pytest.approx(450.0)
+
+
+def test_coda_impute_zeros_requires_rectangular_matrix():
+    with pytest.raises(ValueError, match="retangular"):
+        coda.impute_zeros([[1.0, 2.0], [3.0]])
+    with pytest.raises(ValueError, match="retangular"):
+        coda.clr_matrix([[1.0, 2.0], [3.0]])

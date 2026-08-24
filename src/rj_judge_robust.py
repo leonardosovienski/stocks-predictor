@@ -103,8 +103,12 @@ def robustness_report(units_by_family: dict, verdicts_bh: dict,
     report = {}
     for name, rw_res in rw.items():
         bh_sig = (verdicts_bh.get(name) or {}).get("significant_after_fdr")
+        # bh_sig=None = FDR não se aplica a esta família (descritiva/sem
+        # p-valor) — "concorda?" não faz sentido: None, não False.
+        concordant = (None if bh_sig is None
+                      else rw_res["significant_romanowolf"] == bool(bh_sig))
         report[name] = {**rw_res, "significant_bh_fdr": bh_sig,
-                        "concordant": rw_res["significant_romanowolf"] == bool(bh_sig)}
+                        "concordant": concordant}
     return report
 
 

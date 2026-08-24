@@ -110,8 +110,9 @@ def altman_z(financials: dict) -> float | None:
     demonstrativo publicado (o chamador garante known_at: passar só números
     de DFP/ITR já entregues à CVM antes de asof).
 
-    financials: working_capital, retained_earnings, ebit, market_cap_equity
-    (ou book_value_equity com flag), total_liabilities, sales, total_assets.
+    financials: working_capital, retained_earnings, ebit, equity_value
+    (valor de mercado do equity; o valor contábil é fallback declarado pelo
+    chamador), total_liabilities, sales, total_assets.
     Falta qualquer componente: None — nunca imputa zero (zero fabricaria
     distress artificial; ver rj_coda para tratamento explícito de zeros)."""
     keys = ("working_capital", "retained_earnings", "ebit",

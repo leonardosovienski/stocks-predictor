@@ -251,16 +251,22 @@ def build_ticker_map(cvm_names: list[str],
 
 def load_free_float(year: int, companies: set[str] | None = None) -> dict:
     """FRE -> {nome_companhia_normalizado: free_float} do ano (insumo da
-    família liquidity via --free-float-csv no rj_pipeline)."""
+    família liquidity via --free-float-csv no rj_pipeline).
+
+    Múltiplas linhas por companhia no mesmo FRE: vale a de MAIOR ref_date
+    (determinístico — nunca "a última lida", que dependeria da ordem do
+    arquivo)."""
     rows = parse_fre_float_rows(
         _open_zip_csv(download_zip(FRE_URL.format(year=year)),
                       "distribuicao_capital"))
-    out = {}
+    best: dict[str, tuple[str, float]] = {}
     for r in rows:
         if r["free_float"] is None:
             continue
         key = _norm(r["company"])
         if companies and key not in companies:
             continue
-        out[key] = r["free_float"]
-    return out
+        ref = r["ref_date"] or ""
+        if key not in best or ref >= best[key][0]:
+            best[key] = (ref, r["free_float"])
+    return {k: v for k, (_, v) in best.items()}
