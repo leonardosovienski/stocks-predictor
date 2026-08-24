@@ -1,5 +1,37 @@
 # HANDOFF — predictor-stocks
 
+> ## NOVO DOMÍNIO ADICIONADO (2026-08-23): predictor-rj (event study, RJ na B3)
+>
+> Módulo novo, INDEPENDENTE do domínio de momentum/fatores abaixo — reaproveita
+> `prices_raw`/`adjustments`/`quarantine` (mesmo COTAHIST já ingerido, mesmo
+> `quote_factor`) e o `vendor/predictor_core` (bootstrap, infra), mas não toca
+> em nenhuma tabela, sinal ou veredito do domínio de ações. Estuda rallies
+> ≥50% em ações de empresas em recuperação judicial — estrutura evento-driven
+> (fundo→outcome por empresa), não ranking cross-sectional recorrente.
+>
+> **Arquivos:** `src/rj_episodes.py` (detecção de fundo, ex-post vs.
+> point-in-time), `src/rj_families.py` (8 famílias preditivas + 1 descritiva,
+> condensando 114 hipóteses de um relatório de Fase 1), `src/rj_judge.py`
+> (permutação + bootstrap cluster + FDR de Benjamini-Hochberg — não DSR, que é
+> Sharpe-específico). Config em `config_rj.yaml` (namespace separado de
+> `config.yaml` — não compartilha chaves). Documento canônico:
+> [docs/RJ_DESIGN.md](docs/RJ_DESIGN.md). Schema novo via migração
+> `0004_rj_domain_schema` (append-only, nenhuma tabela existente alterada).
+>
+> **Estado:** M0 — núcleo validado em dados SINTÉTICOS
+> (`tests/test_rj_smoke_synthetic.py` + `tests/test_rj_power_gate.py`, 12/12
+> verde). Suíte completa do repo: **156/156 verde** (144 do domínio de ações,
+> intocado + 12 novos). Nenhum dado real de RJ foi coletado — `rj_universe`
+> está vazia. Pendências: universo completo de RJ da B3 (decisão de fonte),
+> port do parser COTAHIST/`adjust.py` para popular `rj_episodes` a partir de
+> preço real, e atestado formal de power gate antes de qualquer H1 real. Ver
+> `docs/RJ_DESIGN.md` §10 para a lista completa do que NÃO fazer.
+>
+> Passou por 3 rodadas de revisão externa antes de integrar aqui (lookahead na
+> escolha do fundo corrigido, features contemporâneas separadas de
+> antecedentes, `rj_stage` tratado como categórico não ordinal, seleção de
+> episódio primário fixada a priori — nunca por outcome).
+
 > ## STATUS: FECHADO (2026-07-26) — 4 hipóteses, 4 ruído, nenhuma pendente
 >
 > Fechamento formal. O bloco de reabertura abaixo continua válido como
@@ -875,6 +907,7 @@ nova hipótese / novo pré-registro. Aplica-se igualmente à estratégia E ao be
 | `numpy` | PRÉ-APROVADO (M0) | Matriz de retornos cruzada + stationary bootstrap |
 | `pandas` | NÃO aprovado | Parse COTAHIST é trivial em stdlib; revisar na dor do M1 |
 | `pytest` | dev — precedente domínio 1 | |
+| `pyyaml` | APROVADO (portão, 2026-08-24) | `config_rj.yaml` usa 3 níveis de aninhamento (`families: → <familia>: → metric/direction_expected`), fora do subconjunto plano do mini-parser de `src/config.py`. As alternativas foram achatar o config do RJ ou estender o mini-parser — esta última exigiria alterar `tests/test_config.py`, que asserta a rejeição de 3 níveis como fronteira de design. Operador escolheu a dependência. Declarada em `requirements.txt`; o CI já a instala. O domínio de ações continua no mini-parser stdlib — `src/config.py` NÃO passa a usar pyyaml. |
 
 ---
 

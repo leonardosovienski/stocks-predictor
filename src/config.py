@@ -4,6 +4,10 @@ Decisão registrada no HANDOFF (revisão pós-M0): rota stdlib-first. O config u
 seções de 1 nível com pares chave: valor — não há listas, âncoras, multiline nem
 aninhamento profundo. Se o config um dia precisar disso, a decisão de pyyaml volta
 ao portão.
+
+Atualização (2026-08-24): o portão foi aberto para o domínio RJ — `config_rj.yaml` tem
+3 níveis e é lido com pyyaml (ver HANDOFF, tabela de dependências). Este parser e o
+`config.yaml` do domínio de ações seguem stdlib, sem pyyaml.
 """
 import pathlib
 import sys
