@@ -9,7 +9,10 @@ cospe linhas no formato posicional EXATO (volatilidade controlada, determinísti
 Quando o arquivo real da B3 chegar, troca-se a fonte das linhas — o parser não vê
 diferença. Destrava M1–M6 sem o arquivo físico.
 """
+import logging
 import random
+
+logger = logging.getLogger(__name__)
 
 RECORD_LEN = 245
 
@@ -108,15 +111,49 @@ def is_avista(rec) -> bool:
     return rec["market_type"] == AVISTA_MARKET and rec["bdi_code"] == AVISTA_BDI
 
 
+def parse_lines(lines):
+    """Parseia linhas posicionais tolerando falhas INDIVIDUAIS: uma linha
+    malformada (campos numéricos quebrados etc.) é PULADA e contada — não
+    derruba o arquivo inteiro (comportamento anterior: um ValueError solto
+    matava a carga de um COTAHIST de anos). Linhas que não são registro tipo
+    01 não contam como malformadas (são cabeçalho/trailler/outros tipos).
+
+    Retorna (records, n_malformed). Se TODAS as linhas de cotação forem
+    malformadas, levanta ValueError — aí o problema é o arquivo/layout, não
+    uma linha podre, e aceitar "zero registros" seria silêncio."""
+    recs, n_bad, n_quote = [], 0, 0
+    for line in lines:
+        raw = line.rstrip("\r\n")
+        if raw[F_TIPREG] != "01":
+            continue
+        n_quote += 1
+        try:
+            rec = parse_line(line)
+        except (ValueError, IndexError):
+            n_bad += 1
+            continue
+        if rec is not None:
+            recs.append(rec)
+    if n_quote and n_bad == n_quote:
+        raise ValueError(
+            f"{n_bad} linhas malformadas em {n_quote} linhas de cotação — "
+            "arquivo inteiro ilegível, revisar layout/fonte")
+    return recs, n_bad
+
+
 def load_prices(conn, lines, source_file: str, avista_only: bool = True) -> int:
     """Parseia linhas (de arquivo ou sintéticas) e carrega em prices_raw. Idempotente
     via UNIQUE(date,ticker,source_file). Por padrão filtra à-vista lote-padrão (a H1 só
-    negocia ação à-vista). Retorna nº de registros carregados."""
+    negocia ação à-vista). Retorna nº de registros carregados.
+
+    Linhas malformadas são puladas, contadas e logadas com o nome do arquivo
+    (ver `parse_lines`) — nunca derrubam a carga nem passam em silêncio."""
+    recs, n_bad = parse_lines(lines)
+    if n_bad:
+        logger.warning("%s: %d linhas malformadas puladas no parse",
+                       source_file, n_bad)
     rows = []
-    for line in lines:
-        rec = parse_line(line)
-        if rec is None:
-            continue
+    for rec in recs:
         if avista_only and not is_avista(rec):
             continue
         rows.append((rec["date"], rec["ticker"], rec["bdi_code"], rec["market_type"],

@@ -32,6 +32,25 @@ from predictor_core.measurement.stats import (max_drawdown,
                                               probabilistic_sharpe_ratio, sharpe)
 
 
+def equal_weight_turnover_cost(prev_port, port_set, cost_per_side):
+    """Arrasto de turnover para carteira EQUIPONDERADA, já normalizado:
+    cada SAÍDA pesa 1/len(prev_port) (peso que ela tinha), cada ENTRADA pesa
+    1/len(port_set) (peso que ela passa a ter). Dividir tudo pelo tamanho da
+    carteira nova (comportamento anterior) superestimava o custo das saídas
+    quando a carteira encolhia e subestimava quando crescia.
+
+    Carteira inicial (prev vazio): tudo é entrada => 1 * cost_per_side,
+    independente do tamanho — igual à convenção de weighted_turnover_cost.
+    """
+    prev_port, port_set = set(prev_port), set(port_set)
+    exits = len(prev_port - port_set)
+    entries = len(port_set - prev_port)
+    cost = entries * cost_per_side / len(port_set) if port_set else 0.0
+    if prev_port:
+        cost += exits * cost_per_side / len(prev_port)
+    return cost
+
+
 def _daily_returns(dates, closes):
     return {dates[i]: closes[i] / closes[i - 1] - 1.0
             for i in range(1, len(closes)) if closes[i - 1] > 0}
@@ -100,9 +119,9 @@ def walk_forward(conn, cfg, signal_fn=None, take="top", portfolio_fn=None):
                 prev_port = set()
                 continue
             port_set = set(port)
-            # custo do turnover real, normalizado pelo peso 1/n da posição equiponderada.
-            # 1ª carteira (prev vazio) = tudo entrando => custo de entrada por posição.
-            period_cost = execution.calculate_turnover_cost(prev_port, port_set, one_way) / len(port_set)
+            # custo do turnover real: saídas pesam 1/len(prev_port), entradas
+            # 1/len(port_set) — ver equal_weight_turnover_cost.
+            period_cost = equal_weight_turnover_cost(prev_port, port_set, one_way)
             prev_port = port_set
             weights = None
         else:

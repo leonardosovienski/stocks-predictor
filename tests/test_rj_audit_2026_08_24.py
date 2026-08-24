@@ -339,3 +339,82 @@ def test_ingest_ipe_year_idempotent(tmp_path, monkeypatch):
     assert n2 == 0     # re-execução não duplica
     assert conn.execute(
         "SELECT COUNT(*) FROM rj_events WHERE ticker='AMER3'").fetchone()[0] == 1
+
+
+# --- Bug I: domínio histórico (reparáveis, não científicos) ---------------------
+
+import adjust
+import backtest
+import cotahist
+import factor
+import universe
+
+
+def test_momentum_12_1_nonpositive_end_price_is_unavailable():
+    """closes[i_end] <= 0 tornava o retorno calculável e distorcido (só
+    closes[i_start] era validado)."""
+    dates = _calendar(300, start="2020-01-06")
+    closes = [10.0] * 300
+    asof = dates[-1]
+    closes[-22] = 0.0     # exatamente i_end (asof - skip)
+    assert factor.momentum_12_1(dates, closes, asof) is None
+    closes[-22] = 11.0
+    assert factor.momentum_12_1(dates, closes, asof) is not None
+
+
+def test_turnover_cost_weights_exits_by_prev_portfolio():
+    """Saídas pagam 1/len(prev_port), entradas 1/len(port_set) — antes TUDO
+    era dividido pelo tamanho da carteira nova, distorcendo o custo quando
+    os tamanhos diferem."""
+    cost = backtest.equal_weight_turnover_cost({"A", "B", "C", "D"}, {"C", "D"}, 0.01)
+    # 2 saídas * (1/4) * 0.01 + 0 entradas = 0.005
+    assert cost == pytest.approx(2 * 0.01 / 4)
+    cost2 = backtest.equal_weight_turnover_cost({"A"}, {"B", "C"}, 0.01)
+    # 1 saída * 1 * 0.01 + 2 entradas * (1/2) * 0.01 = 0.02
+    assert cost2 == pytest.approx(0.01 + 2 * 0.01 / 2)
+    # carteira inicial: tudo entrada
+    assert backtest.equal_weight_turnover_cost(set(), {"A", "B"}, 0.01) == pytest.approx(0.01)
+
+
+def test_cotahist_malformed_line_counted_not_fatal():
+    """Uma linha malformada não pode derrubar o arquivo inteiro nem passar
+    em silêncio: é pulada, contada e logada com contexto."""
+    good = cotahist.synthetic_cotahist(["PETR4"], ["2024-01-02"], seed=1)
+    bad = "01" + "X" * 243   # tipo 01, mas campos numéricos lixo
+    recs, n_bad = cotahist.parse_lines(good + [bad])
+    assert len(recs) == 1 and n_bad == 1
+    with pytest.raises(ValueError, match="linhas malformadas"):
+        cotahist.parse_lines([bad, bad])   # 100% malformado: arquivo quebrado
+
+
+def test_scan_and_quarantine_rerun_counts_zero_new(tmp_path):
+    """n += 1 incondicional contava salto já quarentenado de novo — o número
+    retornado deve ser de NOVAS quarentenas (cursor.rowcount)."""
+    conn = db.get_connection(tmp_path / "s.db")
+    for d, c in [("2024-01-01", 20.0), ("2024-01-02", 10.0)]:
+        conn.execute(
+            "INSERT INTO prices_raw(date,ticker,bdi_code,market_type,open,high,low,"
+            "close,volume_fin,qty,quote_factor,source_file) "
+            "VALUES(?,?,?,?,?,?,?,?,?,?,?,?)",
+            (d, "PETR4", "02", "010", c, c, c, c, 1e6, 100, 1, "SYNTH"))
+    conn.commit()
+    assert adjust.scan_and_quarantine(conn, threshold=0.30) == 1
+    assert adjust.scan_and_quarantine(conn, threshold=0.30) == 0   # idempotente
+
+
+def test_universe_dedup_on_pn_tie_is_deterministic(tmp_path):
+    """Empate de liquidez ON/PN: sem ORDER BY a query de hist dependia da
+    ordem física do banco. Com ORDER BY determinístico, o primeiro ticker
+    (ordem alfabética) vence o empate — reproduzível entre máquinas."""
+    conn = db.get_connection(tmp_path / "s.db")
+    d = _calendar(20, start="2023-01-02")
+    for tk in ("ZZAA4", "ZZAA3"):   # inserir o PN antes, de propósito
+        for dt in d:
+            conn.execute(
+                "INSERT INTO prices_raw(date,ticker,bdi_code,market_type,open,high,"
+                "low,close,volume_fin,qty,quote_factor,source_file) "
+                "VALUES(?,?,?,?,?,?,?,?,?,?,?,?)",
+                (dt, tk, "02", "010", 10.0, 10.0, 10.0, 10.0, 1000.0, 100, 1, "S"))
+    conn.commit()
+    uni = universe.select_universe(conn, d[15], top_n=5, lookback=5, min_history=8)
+    assert "ZZAA3" in uni and "ZZAA4" not in uni

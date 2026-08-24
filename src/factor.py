@@ -29,8 +29,8 @@ def momentum_12_1(dates, closes, asof, lookback=252, skip=21):
     if i is None:
         return None
     i_end, i_start = i - skip, i - lookback
-    if i_start < 0 or closes[i_start] <= 0:
-        return None
+    if i_start < 0 or closes[i_start] <= 0 or closes[i_end] <= 0:
+        return None   # preço <= 0 em qualquer ponta = retorno indefinido
     return closes[i_end] / closes[i_start] - 1.0
 
 
