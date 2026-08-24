@@ -47,7 +47,9 @@ def permutation_pvalue(units, n_perm: int = 10000, seed: int = 42) -> float | No
         d = _mean_diff(list(zip((u[0] for u in units), vals, shuffled)))
         if d is not None and abs(d) >= abs(obs):
             n_ge += 1
-    return n_ge / n_perm
+    # convenção (n_ge + 1)/(n_perm + 1): a estatística observada é ela mesma
+    # uma permutação possível — p-valor de permutação nunca é exatamente 0.
+    return (n_ge + 1) / (n_perm + 1)
 
 
 def family_verdict(units, direction_expected: str, cfg: dict) -> dict:
@@ -129,7 +131,7 @@ def categorical_family_verdict(units, cfg: dict) -> dict:
         v = _cramers_v(list(zip(tickers, vals, shuffled)))
         if v >= obs_v:
             n_ge += 1
-    p = n_ge / n_perm
+    p = (n_ge + 1) / (n_perm + 1)   # mesma convenção do teste contínuo
     return {"n": len(units), "effect": obs_v, "ci": (None, None),
             "p_value": p, "direction_match": None}
 

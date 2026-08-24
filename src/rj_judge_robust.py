@@ -82,8 +82,13 @@ def romano_wolf_stepdown(units_by_family: dict, n_perm: int = 5000,
         for n, t in t_obs.items():
             if max_t >= abs(t):
                 ge_count[n] += 1
-    return {n: {"t_obs": t_obs[n], "p_romanowolf": ge_count[n] / n_perm,
-                "significant_romanowolf": (ge_count[n] / n_perm) <= alpha}
+    # (n_ge + 1)/(n_perm + 1): p de permutação nunca é exatamente 0 (a
+    # estatística observada é uma permutação possível). Convenção idêntica à
+    # do judge — não altera alpha nem o BH oficial.
+    return {n: {"t_obs": t_obs[n],
+                "p_romanowolf": (ge_count[n] + 1) / (n_perm + 1),
+                "significant_romanowolf":
+                    ((ge_count[n] + 1) / (n_perm + 1)) <= alpha}
             for n in t_obs}
 
 

@@ -212,3 +212,40 @@ def test_chs_nimta_nonpositive_mta_is_unavailable():
     assert nextgen.chs_nimta(fin0) is None
     ok = {"net_income": 30, "total_liabilities": 400, "equity_value": 500}
     assert nextgen.chs_nimta(ok) == pytest.approx(30 / 900)
+
+
+# --- Bug F: p-valor de permutação (n_ge + 1) / (n_perm + 1) ---------------------
+
+import rj_judge as judge
+import rj_judge_robust as robust
+
+
+def test_permutation_pvalue_never_zero():
+    """Convenção correta de permutação: p = (n_ge + 1) / (n_perm + 1) —
+    p = 0.0 é impossível (a estatística observada é sempre uma permutação
+    possível). Separação perfeita dos grupos: nenhuma permutação supera a
+    observada, logo p = 1/(n_perm+1), não 0."""
+    units = [(f"T{i}3", 10.0 + i, 1) for i in range(4)] + \
+            [(f"C{i}3", 0.0 + i * 0.01, 0) for i in range(4)]
+    p = judge.permutation_pvalue(units, n_perm=100, seed=1)
+    assert p > 0
+    assert p >= pytest.approx(1 / 101)   # piso (0+1)/(100+1), nunca 0
+
+
+def test_categorical_pvalue_never_zero():
+    cfg = {"judge": {"seed": 1, "n_boot": 100}}
+    units = ([(f"T{i}3", "exited", 1) for i in range(6)]
+             + [(f"C{i}3", "requested", 0) for i in range(6)])
+    v = judge.categorical_family_verdict(units, cfg)
+    assert v["p_value"] == pytest.approx(1 / 101)
+    assert v["p_value"] > 0
+
+
+def test_romano_wolf_pvalue_never_zero():
+    units_by_family = {name: [(f"T{i}3", 10.0 + i, 1) for i in range(4)]
+                             + [(f"C{i}3", float(i) * 0.01, 0) for i in range(4)]
+                       for name in ["drawdown", "liquidity"]}
+    rw = robust.romano_wolf_stepdown(units_by_family, n_perm=100, seed=1)
+    for res in rw.values():
+        assert res["p_romanowolf"] > 0
+        assert res["p_romanowolf"] >= pytest.approx(1 / 101)
