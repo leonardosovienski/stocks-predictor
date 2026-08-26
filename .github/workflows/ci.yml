@@ -19,7 +19,7 @@ jobs:
         with:
           version: "0.12.1"
           enable-cache: true
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.13"
       - name: Install project and dev dependencies
