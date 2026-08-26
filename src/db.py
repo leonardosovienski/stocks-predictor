@@ -199,6 +199,13 @@ MIGRATIONS: list[tuple[str, str]] = [
             PRIMARY KEY (snapshot_date, source, ticker)
         );
     """),
+    ("0006_rj_secondary_outcome", """
+        ALTER TABLE rj_episodes ADD COLUMN secondary_outcome TEXT;
+        ALTER TABLE rj_episodes ADD COLUMN secondary_rally_pct REAL;
+        ALTER TABLE rj_episodes ADD COLUMN secondary_rally_date TEXT;
+        ALTER TABLE rj_episodes ADD COLUMN secondary_trading_days_to_rally INTEGER;
+        ALTER TABLE rj_episodes ADD COLUMN secondary_censored INTEGER;
+    """),
 ]
 
 

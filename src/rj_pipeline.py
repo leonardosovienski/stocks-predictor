@@ -181,14 +181,20 @@ def persist_run(conn: sqlite3.Connection, built: dict, asof: str) -> None:
         cols = (ep["ticker"], ep["trough_date"], ep["trough_price"], ep["is_primary"],
                 ep["primary"]["outcome"], ep["primary"]["rally_pct"],
                 ep["primary"]["rally_date"], ep["primary"]["trading_days_to_rally"],
-                ep["primary"]["censored"])
+                ep["primary"]["censored"], ep["secondary"]["outcome"],
+                ep["secondary"]["rally_pct"], ep["secondary"]["rally_date"],
+                ep["secondary"]["trading_days_to_rally"], ep["secondary"]["censored"])
         conn.execute(
             "INSERT OR IGNORE INTO rj_episodes(ticker, trough_date, trough_price,"
             " is_primary, outcome, rally_pct, rally_date, trading_days_to_rally,"
-            " censored) VALUES(?,?,?,?,?,?,?,?,?)", cols)
+            " censored, secondary_outcome, secondary_rally_pct, secondary_rally_date,"
+            " secondary_trading_days_to_rally, secondary_censored)"
+            " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)", cols)
         old = conn.execute(
             "SELECT trough_price, is_primary, outcome, rally_pct, rally_date,"
-            " trading_days_to_rally, censored FROM rj_episodes"
+            " trading_days_to_rally, censored, secondary_outcome, secondary_rally_pct,"
+            " secondary_rally_date, secondary_trading_days_to_rally, secondary_censored"
+            " FROM rj_episodes"
             " WHERE ticker=? AND trough_date=?",
             (ep["ticker"], ep["trough_date"])).fetchone()
         new = cols[2:]
@@ -196,6 +202,8 @@ def persist_run(conn: sqlite3.Connection, built: dict, asof: str) -> None:
             conn.execute(
                 "UPDATE rj_episodes SET trough_price=?, is_primary=?, outcome=?,"
                 " rally_pct=?, rally_date=?, trading_days_to_rally=?, censored=?"
+                ", secondary_outcome=?, secondary_rally_pct=?, secondary_rally_date=?"
+                ", secondary_trading_days_to_rally=?, secondary_censored=?"
                 " WHERE ticker=? AND trough_date=?",
                 (*new, ep["ticker"], ep["trough_date"]))
         episode_id = conn.execute(

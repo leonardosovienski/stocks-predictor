@@ -105,6 +105,12 @@ def test_pipeline_end_to_end_on_synthetic_db(tmp_path, cfg):
     # persistência: episódios e scores gravados e idempotentes
     n_ep = conn.execute("SELECT COUNT(*) FROM rj_episodes").fetchone()[0]
     assert n_ep == len(report["episodes"])
+    persisted = conn.execute(
+        "SELECT secondary_outcome, secondary_censored FROM rj_episodes"
+    ).fetchall()
+    assert len(persisted) == n_ep
+    assert all(outcome is not None and censored is not None
+               for outcome, censored in persisted)
     pipeline.run_pipeline(conn, cfg, asof)
     assert conn.execute("SELECT COUNT(*) FROM rj_episodes").fetchone()[0] == n_ep
 
