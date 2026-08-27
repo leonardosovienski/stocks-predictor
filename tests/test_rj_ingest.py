@@ -76,9 +76,12 @@ def test_ingest_fail_loud_on_empty_parse(conn, monkeypatch):
 # --- parsers CVM --------------------------------------------------------------
 
 def _zip_of(name: str, content: str) -> bytes:
+    # latin-1: mesma codificação real dos arquivos da CVM que _open_zip_csv
+    # espera — conteúdo acentuado (ex.: "ÚLTIMO") escrito como UTF-8 aqui
+    # viraria mojibake na leitura e quebraria comparações por palavra-chave.
     buf = io.BytesIO()
     with zipfile.ZipFile(buf, "w") as zf:
-        zf.writestr(name, content)
+        zf.writestr(name, content.encode("latin-1"))
     return buf.getvalue()
 
 
@@ -120,3 +123,115 @@ def test_build_ticker_map_marks_unmapped():
                                     known={"oi_s.a.": "OIBR3"})
     assert m["oi_s.a."] == "OIBR3"
     assert m["americanas_s.a."] is None    # pendente de revisão humana
+
+
+# --- parser DFP (fundamentos, H7) --------------------------------------------
+
+_DFP_HEADER = "CNPJ_CIA;DENOM_CIA;ORDEM_EXERC;DT_REFER;CD_CONTA;DS_CONTA;VL_CONTA\n"
+
+
+def test_parse_dfp_drops_penultimo_comparison_column():
+    csv_text = (_DFP_HEADER +
+                "00.000/0001-91;EMPRESA S.A.;ÚLTIMO;2023-12-31;1;Ativo Total;1000000\n"
+                "00.000/0001-91;EMPRESA S.A.;PENÚLTIMO;2022-12-31;1;Ativo Total;900000\n")
+    rows = ingest_cvm._open_zip_csv(
+        _zip_of("dfp_cia_aberta_BPA_con_2023.csv", csv_text), "bpa_con")
+    out = ingest_cvm.parse_dfp_statement_rows(rows, "BPA_con")
+    assert len(out) == 1 and out[0]["ref_date"] == "2023-12-31"
+
+
+def test_parse_dfp_fail_loud_without_value_column():
+    csv_text = "CNPJ_CIA;DENOM_CIA;ORDEM_EXERC;DT_REFER;CD_CONTA;DS_CONTA\nx;y;ÚLTIMO;2023-12-31;1;Ativo Total\n"
+    rows = ingest_cvm._open_zip_csv(
+        _zip_of("dfp_cia_aberta_BPA_con_2023.csv", csv_text), "bpa_con")
+    with pytest.raises(ValueError, match="value"):
+        ingest_cvm.parse_dfp_statement_rows(rows, "BPA_con")
+
+
+def test_compute_fundamentals_leverage_excludes_equity_from_passivo_total():
+    # Ativo Total = Passivo Total (identidade contábil do plano CVM: CD "2"
+    # já inclui o PL) — leverage tem que descontar o PL, não usar 1:1.
+    bpa = [{"company": "EMPRESA S.A.", "ref_date": "2023-12-31",
+            "account_code": "1", "account_desc": "Ativo Total", "value": 1_000_000.0}]
+    bpp = [
+        {"company": "EMPRESA S.A.", "ref_date": "2023-12-31",
+         "account_code": "2", "account_desc": "Passivo Total", "value": 1_000_000.0},
+        {"company": "EMPRESA S.A.", "ref_date": "2023-12-31",
+         "account_code": "2.03", "account_desc": "Patrimônio Líquido Consolidado",
+         "value": 400_000.0},
+    ]
+    dre = [{"company": "EMPRESA S.A.", "ref_date": "2023-12-31",
+            "account_code": "3.11", "account_desc": "Lucro/Prejuízo Consolidado do Período",
+            "value": 50_000.0}]
+    out = ingest_cvm.compute_fundamentals(bpa, bpp, dre)
+    assert len(out) == 1
+    f = out[0]
+    assert f["roe"] == pytest.approx(50_000.0 / 400_000.0)
+    # leverage = (passivo_total - PL) / ativo = (1_000_000 - 400_000) / 1_000_000
+    assert f["leverage"] == pytest.approx(0.6)
+
+
+def test_compute_fundamentals_skips_company_missing_any_account():
+    bpa = [{"company": "X S.A.", "ref_date": "2023-12-31",
+            "account_code": "1", "account_desc": "Ativo Total", "value": 100.0}]
+    bpp = []    # sem passivo/PL -> não entra
+    dre = [{"company": "X S.A.", "ref_date": "2023-12-31",
+            "account_code": "3.11", "account_desc": "Lucro/Prejuízo do Período",
+            "value": 10.0}]
+    assert ingest_cvm.compute_fundamentals(bpa, bpp, dre) == []
+
+
+def test_ingest_dfp_year_writes_fundamentals(conn, monkeypatch):
+    bpa_csv = (_DFP_HEADER +
+              "00.000/0001-91;EMPRESA S.A.;ÚLTIMO;2023-12-31;1;Ativo Total;1000000\n")
+    bpp_csv = (_DFP_HEADER +
+              "00.000/0001-91;EMPRESA S.A.;ÚLTIMO;2023-12-31;2;Passivo Total;1000000\n"
+              "00.000/0001-91;EMPRESA S.A.;ÚLTIMO;2023-12-31;2.03;"
+              "Patrimônio Líquido Consolidado;400000\n")
+    dre_csv = (_DFP_HEADER +
+              "00.000/0001-91;EMPRESA S.A.;ÚLTIMO;2023-12-31;3.11;"
+              "Lucro/Prejuízo Consolidado do Período;50000\n")
+    buf = io.BytesIO()
+    with zipfile.ZipFile(buf, "w") as zf:
+        zf.writestr("dfp_cia_aberta_BPA_con_2023.csv", bpa_csv.encode("latin-1"))
+        zf.writestr("dfp_cia_aberta_BPP_con_2023.csv", bpp_csv.encode("latin-1"))
+        zf.writestr("dfp_cia_aberta_DRE_con_2023.csv", dre_csv.encode("latin-1"))
+    zbytes = buf.getvalue()
+    monkeypatch.setattr(ingest_cvm, "download_zip", lambda url, timeout=300: zbytes)
+
+    n = ingest_cvm.ingest_dfp_year(conn, 2023, ticker_of={"empresa_s.a.": "EMPR3"})
+    assert n == 1
+    row = conn.execute(
+        "SELECT ticker, ref_date, roe, leverage, source FROM fundamentals").fetchone()
+    assert row["ticker"] == "EMPR3" and row["ref_date"] == "2023-12-31"
+    assert row["roe"] == pytest.approx(0.125)
+    assert row["leverage"] == pytest.approx(0.6)
+    assert row["source"] == "CVM DFP 2023"
+
+    # re-executar o mesmo ano não duplica (UNIQUE ticker+ref_date+source)
+    n2 = ingest_cvm.ingest_dfp_year(conn, 2023, ticker_of={"empresa_s.a.": "EMPR3"})
+    assert n2 == 0
+    assert conn.execute("SELECT COUNT(*) FROM fundamentals").fetchone()[0] == 1
+
+
+def test_ingest_dfp_year_skips_unmapped_company(conn, monkeypatch):
+    bpa_csv = (_DFP_HEADER +
+              "00.000/0001-91;SEM MAPA S.A.;ÚLTIMO;2023-12-31;1;Ativo Total;1000000\n")
+    bpp_csv = (_DFP_HEADER +
+              "00.000/0001-91;SEM MAPA S.A.;ÚLTIMO;2023-12-31;2;Passivo Total;1000000\n"
+              "00.000/0001-91;SEM MAPA S.A.;ÚLTIMO;2023-12-31;2.03;"
+              "Patrimônio Líquido Consolidado;400000\n")
+    dre_csv = (_DFP_HEADER +
+              "00.000/0001-91;SEM MAPA S.A.;ÚLTIMO;2023-12-31;3.11;"
+              "Lucro/Prejuízo Consolidado do Período;50000\n")
+    buf = io.BytesIO()
+    with zipfile.ZipFile(buf, "w") as zf:
+        zf.writestr("dfp_cia_aberta_BPA_con_2023.csv", bpa_csv.encode("latin-1"))
+        zf.writestr("dfp_cia_aberta_BPP_con_2023.csv", bpp_csv.encode("latin-1"))
+        zf.writestr("dfp_cia_aberta_DRE_con_2023.csv", dre_csv.encode("latin-1"))
+    zbytes = buf.getvalue()
+    monkeypatch.setattr(ingest_cvm, "download_zip", lambda url, timeout=300: zbytes)
+
+    n = ingest_cvm.ingest_dfp_year(conn, 2023, ticker_of={})   # mapa vazio
+    assert n == 0
+    assert conn.execute("SELECT COUNT(*) FROM fundamentals").fetchone()[0] == 0

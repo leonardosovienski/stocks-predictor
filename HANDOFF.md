@@ -1,5 +1,49 @@
 # HANDOFF — predictor-stocks
 
+> ## Ingestão DFP da CVM (2026-08-27) — dado novo para viabilizar a H7 (fator de qualidade)
+>
+> Terceira frente do pedido do operador (H6/H8 já pré-registradas acima). A
+> H7 (ROE/alavancagem, quintil superior) não pôde ser pré-registrada antes
+> porque o dado contábil não existia no banco — `ingest_cvm.py` só cobria
+> IPE (fatos relevantes) e FRE (free float). Resolvido: `ingest_cvm.py`
+> ganhou `parse_dfp_statement_rows`/`compute_fundamentals`/`ingest_dfp_year`
+> (Demonstrações Financeiras Padronizadas, BPA/BPP/DRE consolidados) e
+> `db.py` ganhou a migração `0007_fundamentals` (tabela nova, append-only —
+> nenhuma migração existente tocada).
+>
+> **Armadilha de dado registrada** (por isso a implementação, não só o
+> anúncio): no plano de contas padronizado da CVM, `CD_CONTA "2" - Passivo
+> Total` do BPP **já inclui** o Patrimônio Líquido (é o espelho contábil do
+> Ativo Total por identidade — sempre bate 1:1). Um `leverage =
+> passivo_total / ativo_total` ingênuo daria sempre ~1.0, um índice inútil.
+> `leverage` gravado é `(passivo_total - patrimonio_liquido) / ativo_total`
+> — dívida excluindo o PL. Documentado no docstring de `compute_fundamentals`
+> pra não repetir o erro.
+>
+> **Limitação conhecida, não escondida**: contas de ROE/alavancagem são
+> casadas por `CD_CONTA` (BPA/BPP) e por palavra-chave na descrição (DRE,
+> onde o código do lucro líquido varia mais). Companhias financeiras
+> (bancos/seguradoras) usam um plano de contas diferente do não-financeiro e
+> podem não casar — ficam de fora silenciosamente nesta 1ª versão (não é
+> erro, é escopo: `ingest_dfp_year` só grava o que resolveu sem
+> ambiguidade). `ref_date` (fim do exercício) é usado como `known_at`
+> conservador — na prática o dado é PUBLICADO bem depois do fechamento; a
+> H7, quando pré-registrada, decide se soma um embargo de divulgação.
+>
+> **PENDENTE — H7 ainda NÃO pré-registrada.** Isso é só o dado. Próximo
+> passo (não feito aqui, decisão de protocolo separada): definir o sinal
+> exato (ROE isolado? ROE E alavancagem baixa, filtro duplo como H8?
+> quintil de quê sobre qual universo?) e travar em `config.yaml`/
+> `config.py`/HANDOFF ANTES de rodar — mesma disciplina de H6/H8. Também
+> falta rodar `ingest_dfp_year` com anos reais (2018-2026) contra o
+> `stocks.db` real e o `ticker_of` de verdade — testado aqui só com dado
+> sintético, sem rede (este ambiente não baixa da CVM).
+>
+> Testes: `tests/test_rj_ingest.py` (parsing DFP + `compute_fundamentals` +
+> `ingest_dfp_year` end-to-end, dado sintético). Validado manualmente nesta
+> sessão com um stub de `predictor_core.infra` (sem depender do vendor) —
+> ver `python -m pytest tests/ -v` para a suíte oficial.
+
 > ## H6 e H8 ABERTAS — PRÉ-REGISTRO (2026-08-27, ANTES de qualquer rodada)
 >
 > Decisão humana explícita (pedido do operador de tentar achar uma estratégia
