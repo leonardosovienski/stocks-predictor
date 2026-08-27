@@ -27,11 +27,22 @@ alimentar um modelo que se pretenda executável, porque o candidato só é
 confirmado como "o" fundo depois do fato. Ver `families.py` para a versão
 antecedente correspondente.
 
-Regra de censura (protocolo, risco #3): uma empresa só entra no grupo
-"sem rally" se sua janela de observação (desde o pedido de RJ até
-`censoring_horizon_trading_days` OU até hoje, o que vier primeiro) já
-COMPLETOU o horizonte. Empresa recente demais não teve tempo de "falhar" —
-fica marcada `censored`, fora do grupo controle definitivo.
+Regra de censura POR EPISÓDIO (protocolo, risco #3, IMPLEMENTADA aqui): um
+episódio só entra no grupo "sem rally" se sua janela de observação — desde
+o FUNDO até `rally.primary_window_trading_days`/`secondary_window_trading_days`
+pregões depois, OU até hoje (o que vier primeiro) — já COMPLETOU a janela
+(ver `classify_episode`). Episódio recente demais não teve tempo de
+"falhar" — fica marcado `censored`, fora do grupo controle definitivo.
+
+Regra de censura POR EMPRESA (`docs/RJ_DESIGN.md` §5,
+`censoring_horizon_trading_days` em `config_rj.yaml`, AINDA NÃO
+IMPLEMENTADA): cobre o caso de empresa sem NENHUM candidato a fundo ainda
+identificado — hoje essas empresas viram `excluded` em
+`rj_pipeline.build_episodes` e desaparecem do denominador do estudo, em
+vez de contar como `censored` (RJ recente demais) ou como controle
+definitivo (janela desde o pedido de RJ já completou o horizonte sem
+nenhum fundo qualificado). Ver HANDOFF.md — pendente de decisão de
+protocolo antes de codificar.
 """
 
 
