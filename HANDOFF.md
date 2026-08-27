@@ -1,5 +1,57 @@
 # HANDOFF — predictor-stocks
 
+> ## H6 e H8 ABERTAS — PRÉ-REGISTRO (2026-08-27, ANTES de qualquer rodada)
+>
+> Decisão humana explícita (pedido do operador de tentar achar uma estratégia
+> com sucesso real, após H1/H2/H4/H5 fecharem "ruído"). Duas hipóteses NOVAS,
+> formalizadas e travadas em `config.yaml`/`config.py` ANTES de qualquer
+> código de sinal ter rodado — mesma disciplina de H4/H5. Uma terceira
+> candidata (fator de qualidade — ROE/alavancagem) foi DESCARTADA desta
+> rodada: exige ingestão nova de demonstrações financeiras da CVM (DFP/ITR),
+> que não existe hoje (`ingest_cvm.py` só cobre IPE/FRE) — escopo de
+> engenharia de dados separado, não uma hipótese pronta para travar agora.
+>
+> **H6 — momentum 6-1** (`config.yaml` `h6_*`, `config.h6_frozen_config_hash`
+> = `7ff75a9ade2ee9fb`): mesma maquinaria da H1 (universo/custos/pareamento/
+> pedágio, quintil superior, equiponderado), sinal com janela mais curta —
+> 126 pregões (~6 meses), skip 21. Racional: H1 (12-1) fracassou, mas
+> mercados menos líquidos/eficientes que os desenvolvidos às vezes mostram
+> momentum mais forte em janelas mais curtas (incorporação de informação mais
+> lenta) — hipótese distinta, não o mesmo teste com outro número. Critério:
+> IC95% diff-Sharpe > 0 E DSR >= 0.95 (N=6 tentativas no registro).
+>
+> **H8 — filtro duplo momentum ∩ baixa vol** (`config.yaml` `h8_*`,
+> `config.h8_frozen_config_hash` = `8bad7034233189c0`): top 40% do universo
+> por momentum 12-1 (mesma régua da H1), depois a metade de menor vol
+> realizada 252d (mesma régua da H2) DENTRO desse subconjunto — não do
+> universo inteiro. Equiponderado, long-only. Racional: H1 (momentum
+> isolado) e H2 (baixa vol isolada) fracassaram isoladas, mas a literatura
+> mostra que a interseção às vezes filtra o lado mais arriscado do momentum
+> e sobrevive onde nenhuma das duas isoladas sobrevive — hipótese distinta
+> de ambas, não combinação escolhida depois de ver resultado. Critério:
+> IC95% diff-Sharpe > 0 E DSR >= 0.95 (N=6 tentativas no registro).
+>
+> **Implementação:** `backtest.run_h6`, `backtest.run_h8`,
+> `portfolio.momentum_lowvol_double_filter` (nova função — filtro em duas
+> etapas, interseção explícita de tickers com AMBOS os sinais antes de
+> rankear). Testes de smoke (dado sintético) + golden hash em
+> `tests/test_h6_momentum6.py`/`tests/test_h8_double_filter.py`.
+>
+> **PENDENTE — não rodado ainda.** Este ambiente de sessão não tem o
+> `data/stocks.db` real (histórico 2016-2026, ~250MB, nunca versionado no
+> git — só existe na máquina Windows do operador). O código está pronto e
+> travado; a rodada única que produz o veredito de verdade precisa rodar
+> onde o banco real existe:
+> ```powershell
+> python -c "import backtest; backtest.run_h6(write_report=True)"
+> python -c "import backtest; backtest.run_h8(write_report=True)"
+> python -m pytest tests/ -v
+> ```
+> Depois de rodar: preencher o `sharpe`/`notes` desta entrada com o veredito
+> real (COMPROVADA ou não) e commitar o `trials.json` atualizado — mesma
+> disciplina das hipóteses anteriores. NÃO ajustar nenhum valor `[H6-FROZEN]`/
+> `[H8-FROZEN]` depois de ver o resultado.
+
 > ## Errata de auditoria (2026-08-27) — bugs corrigidos no código, vereditos antigos INTOCADOS
 >
 > Auditoria de bugs/lógica/matemática (via IA, revisão cruzada e verificação
