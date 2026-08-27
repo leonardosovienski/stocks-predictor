@@ -7,9 +7,21 @@ universe:
   # companhias com ações negociadas na B3, período de entrada no universo.
   period_start: "2015-01-01"
   period_end: "2026-06-30"
-  # horizonte de observação por empresa antes de virar CENSURA (não "sem rally"
-  # permanente) — protocolo, risco de censura. 36 meses = 3 anos de calendário
-  # de pregões, não meses corridos (evita ambiguidade de feriados/pregões).
+  # horizonte de observação por EMPRESA antes de virar CENSURA definitiva —
+  # protocolo canônico docs/RJ_DESIGN.md §5, risco #3. 36 meses = 3 anos de
+  # calendário de pregões, não meses corridos (evita ambiguidade de
+  # feriados/pregões). STATUS (2026-08-27): parâmetro lido pelo config mas
+  # AINDA NÃO CONSUMIDO por nenhum código — só a censura POR EPISÓDIO (a
+  # partir do fundo, `rally.primary/secondary_window_trading_days`, em
+  # `rj_episodes.classify_episode`) está implementada. A censura por
+  # EMPRESA (a partir do pedido de RJ; cobre o caso de empresa sem nenhum
+  # candidato a fundo ainda, hoje descartada em `excluded` e fora do
+  # denominador) segue pendente — já registrada como risco de viés de
+  # denominador em `docs/audit/kimi_2026-08-24/RELATORIO_AUDITORIA_RJ.md`.
+  # Implementar exige decisão explícita de protocolo (é a definição do
+  # grupo controle do estudo), não uma correção silenciosa de código — ver
+  # HANDOFF.md. RJ ainda em M0 (sem dado real, nada julgado): não há
+  # veredito em risco, só a lacuna a fechar antes da primeira rodada real.
   censoring_horizon_trading_days: 756   # ~36 meses úteis
 
 rally:

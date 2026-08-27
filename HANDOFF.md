@@ -55,14 +55,26 @@
 >     usa hoje) — indexação negativa do Python leria preço fora da janela.
 >     Guarda defensiva adicionada.
 >
-> **Pendência registrada, não corrigida** (decisão de design, não bug de
-> implementação): `config_rj.yaml.universe.censoring_horizon_trading_days`
-> (756 pregões) é lido só em comentário/docstring — nenhum código o
-> consome. A regra de censura hoje implementada em `rj_episodes.py` usa a
-> janela do rally (`max_window_trading_days`), não este horizonte de 756
-> pregões em nível de universo. Requer decisão humana de qual horizonte
-> deve mesmo governar a censura antes de qualquer implementação (regra
-> `CLAUDE.md`: "em dúvida de design não coberta, parar e perguntar").
+> **Errata (2026-08-27, revisão): `censoring_horizon_trading_days` NÃO é
+> parâmetro morto — é regra de protocolo real, ainda não implementada.**
+> Correção da entrada anterior desta mesma errata, que classificou o
+> parâmetro como "config morto"/lookahead: `docs/RJ_DESIGN.md` §5 (o
+> documento canônico — manda em caso de conflito, `CLAUDE.md`) DECLARA a
+> censura por EMPRESA (`censoring_horizon_trading_days`, a partir do
+> pedido de RJ) como regra de protocolo pré-registrada. O que existe hoje
+> em `rj_episodes.classify_episode` é uma censura por EPISÓDIO (a partir
+> do FUNDO, `rally.primary/secondary_window_trading_days`) — implementada
+> corretamente, mas é uma camada DIFERENTE, não um substituto. Lacuna real:
+> empresa sem nenhum candidato a fundo ainda vira `excluded` em
+> `rj_pipeline.build_episodes` (fora do denominador do estudo) em vez de
+> `censored`/controle definitivo — viés de denominador já registrado
+> independentemente em `docs/audit/kimi_2026-08-24/RELATORIO_AUDITORIA_RJ.md`.
+> Não implementei: definir o grupo controle de um estudo ainda não julgado
+> é decisão de protocolo, não bug de código — cabe a quem decide o
+> pré-registro do RJ (regra `CLAUDE.md`: "em dúvida de design não coberta,
+> parar e perguntar"), não a esta sessão inferir sozinha a partir de um
+> comentário. `censoring_horizon_trading_days` foi mantido no
+> `config_rj.yaml` com nota explicando o gap; nada foi codificado.
 >
 > Suíte de testes não pôde ser executada nesta sessão (ambiente sem
 > `predictor_core`/`predictor_ops` vendorizados) — correções verificadas
