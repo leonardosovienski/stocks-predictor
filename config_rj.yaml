@@ -70,7 +70,11 @@ families:
     metric: "dias_uteis_desde_pedido_rj_ate_fundo"
     direction_expected: "ambiguous"  # H89-H92 do banco original divergem; sem direção fixada
   info_trigger:
-    metric: "indicador_binario(fato_relevante_ate_10p_antes_do_fundo, filtrado por known_at)"
+    # rótulo corrigido: era "10p" (pregões) mas src/rj_families.py:info_trigger
+    # sempre implementou window_days como dias CORRIDOS (bug de rótulo, não de
+    # cálculo — o código e o docstring já diziam "corridos"; só o metric label
+    # aqui divergia). Nenhuma rodada usou este valor ainda (M0/RJ não julgado).
+    metric: "indicador_binario(fato_relevante_ate_10_dias_corridos_antes_do_fundo, filtrado por known_at)"
     direction_expected: "positive"
 
   # DESCRITIVA — fora do FDR primário (ver judge.py DESCRIPTIVE_ONLY_FAMILIES)

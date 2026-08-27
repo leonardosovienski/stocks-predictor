@@ -20,6 +20,7 @@ import csv
 import logging
 
 from db import price_expr
+from universe import SPOT_MARKET
 
 logger = logging.getLogger(__name__)
 
@@ -90,8 +91,8 @@ def scan_and_quarantine(conn, threshold) -> int:
         # GROUP BY date: re-ingest sob outro source_file duplica (date,ticker) —
         # sem o dedup, o par duplicado viraria um "retorno" espúrio de ~0%.
         rows = conn.execute(
-            f"SELECT date, MAX({_CLOSE}) FROM prices_raw WHERE ticker=? "
-            "GROUP BY date ORDER BY date", (t,)).fetchall()
+            f"SELECT date, MAX({_CLOSE}) FROM prices_raw WHERE ticker=? AND market_type=? "
+            "GROUP BY date ORDER BY date", (t, SPOT_MARKET)).fetchall()
         dates = [r[0] for r in rows]
         closes = [r[1] for r in rows]
         explained = {r[0] for r in conn.execute(
@@ -112,8 +113,8 @@ def adjusted_series(conn, ticker):
     GROUP BY date dedupa re-ingest sob outro source_file. Ajuste com ex_date fora do
     range de preços é IGNORADO com warning (provável erro de fonte/dados incompletos)."""
     rows = conn.execute(
-        f"SELECT date, MAX({_CLOSE}) FROM prices_raw WHERE ticker=? "
-        "GROUP BY date ORDER BY date", (ticker,)).fetchall()
+        f"SELECT date, MAX({_CLOSE}) FROM prices_raw WHERE ticker=? AND market_type=? "
+        "GROUP BY date ORDER BY date", (ticker, SPOT_MARKET)).fetchall()
     dates = [r[0] for r in rows]
     closes = [r[1] for r in rows]
     adjustments = []
@@ -144,8 +145,8 @@ def list_split_candidates(conn, tol=0.08):
         # série do ticker UMA vez (não por linha de quarentena); GROUP BY date protege
         # contra duplicatas de re-ingest (UNIQUE inclui source_file).
         prices = conn.execute(
-            f"SELECT date, MAX({_CLOSE}) FROM prices_raw WHERE ticker=? "
-            "GROUP BY date ORDER BY date", (tk,)).fetchall()
+            f"SELECT date, MAX({_CLOSE}) FROM prices_raw WHERE ticker=? AND market_type=? "
+            "GROUP BY date ORDER BY date", (tk, SPOT_MARKET)).fetchall()
         idx = {r[0]: i for i, r in enumerate(prices)}
         for d in qdates:
             i = idx.get(d)

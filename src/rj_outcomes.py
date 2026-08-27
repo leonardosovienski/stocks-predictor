@@ -39,7 +39,11 @@ def market_adjusted_rally(dates: list[str], closes: list[float],
             continue
         stock_ret = closes[i] / closes[t0] - 1.0
         idx_ret = index_closes[idx_map[d]] / index_closes[i0] - 1.0
-        excess = stock_ret - idx_ret
+        # excesso GEOMÉTRICO, não aritmético: (1+stock)/(1+idx)-1. Para
+        # rallies >=50% (o regime deste projeto) a subtração simples
+        # subestima o excesso real quando o índice também sobe — bug
+        # corrigido (era stock_ret - idx_ret).
+        excess = (1.0 + stock_ret) / (1.0 + idx_ret) - 1.0
         if excess >= threshold_pct:
             return {"outcome": "rally_market_adjusted", "excess_pct": excess,
                     "date": d, "trading_days": i - t0}

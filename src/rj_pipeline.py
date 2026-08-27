@@ -41,6 +41,7 @@ from datetime import date
 import rj_episodes as episodes
 import rj_families as families
 import rj_judge as judge
+import universe
 from adjust import adjusted_series
 
 logger = logging.getLogger(__name__)
@@ -59,10 +60,13 @@ def _load_price_series(conn: sqlite3.Connection, ticker: str,
 
 def _load_volumes(conn: sqlite3.Connection, ticker: str,
                   asof: str) -> tuple[list[str], list[float]]:
+    # market_type=SPOT_MARKET: defesa de leitura (mesma disciplina de
+    # universe.py/paper.py) — sem o filtro, volume de termo/fracionário do
+    # mesmo ticker/data entraria no MAX() se o banco tiver avista_only=False.
     rows = conn.execute(
         f"SELECT date, MAX({_VOL}) FROM prices_raw "
-        "WHERE ticker=? AND date<=? GROUP BY date ORDER BY date",
-        (ticker, asof)).fetchall()
+        "WHERE ticker=? AND date<=? AND market_type=? GROUP BY date ORDER BY date",
+        (ticker, asof, universe.SPOT_MARKET)).fetchall()
     return ([r[0] for r in rows], [r[1] for r in rows])
 
 

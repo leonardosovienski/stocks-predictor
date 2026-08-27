@@ -66,12 +66,19 @@ def clr(row: list[float]) -> list[float] | None:
 
 def clr_matrix(matrix: list[list[float]], delta: float = 0.5) -> dict:
     """Pipeline completo: imputa zeros (com máscara auditável) e aplica CLR
-    linha a linha. Linhas que continuam inválidas após imputação (coluna
-    inteira sem positivo) viram None e são contadas."""
+    linha a linha. Colunas em `dropped_cols` (sem nenhum valor positivo em
+    toda a matriz) são EXCLUÍDAS antes do CLR — do contrário elas carregam
+    zero em toda linha e o `clr` fail-closed colapsa a matriz inteira para
+    None (bug corrigido: uma única coluna sem dado inutilizava a análise
+    toda). Linhas que continuam inválidas após a exclusão (ex.: outro valor
+    <=0 fora de dropped_cols) viram None e são contadas."""
     imp = impute_zeros(matrix, delta=delta)
+    dropped = set(imp["dropped_cols"])
+    kept_cols = [c for c in range(len(matrix[0]) if matrix else 0) if c not in dropped]
     out, failed = [], 0
     for row in imp["data"]:
-        v = clr(row)
+        trimmed = [row[c] for c in kept_cols]
+        v = clr(trimmed)
         if v is None:
             failed += 1
         out.append(v)
