@@ -29,7 +29,10 @@ def momentum_12_1(dates, closes, asof, lookback=252, skip=21):
     if i is None:
         return None
     i_end, i_start = i - skip, i - lookback
-    if i_start < 0 or closes[i_start] <= 0 or closes[i_end] <= 0:
+    # i_end<0 só ocorre se skip>lookback (config malformada — nenhuma
+    # hipótese registrada usa isso hoje); sem esta guarda, `closes[i_end]`
+    # indexava por trás (Python) e lia um preço fora da janela pretendida.
+    if i_start < 0 or i_end < 0 or closes[i_start] <= 0 or closes[i_end] <= 0:
         return None   # preço <= 0 em qualquer ponta = retorno indefinido
     return closes[i_end] / closes[i_start] - 1.0
 

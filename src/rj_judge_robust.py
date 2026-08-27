@@ -59,8 +59,12 @@ def romano_wolf_stepdown(units_by_family: dict, n_perm: int = 5000,
     # Fallback documentado: conjuntos de units diferentes (família com dado
     # faltante) => permutações independentes (aproximação; a correlação
     # cruzada fica subestimada e o ajuste, mais conservador).
-    unit_sets = {n: [(u[0], u[1]) for u in units_by_family[n]] for n in t_obs}
-    same_units = len({tuple(v) for v in unit_sets.values()}) == 1
+    # Comparar só a IDENTIDADE/ORDEM dos tickers (não o valor, que difere por
+    # construção entre famílias — comparar (ticker, valor) fazia same_units
+    # dar False quase sempre, mesmo quando todas as famílias usam exatamente
+    # as mesmas empresas, e a permutação conjunta nunca era exercitada).
+    unit_sets = {n: tuple(u[0] for u in units_by_family[n]) for n in t_obs}
+    same_units = len(set(unit_sets.values())) == 1
     ge_count = {n: 0 for n in t_obs}
     for _ in range(n_perm):
         shared_perm: list | None = None

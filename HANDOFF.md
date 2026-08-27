@@ -1,5 +1,75 @@
 # HANDOFF — predictor-stocks
 
+> ## Errata de auditoria (2026-08-27) — bugs corrigidos no código, vereditos antigos INTOCADOS
+>
+> Auditoria de bugs/lógica/matemática (via IA, revisão cruzada e verificação
+> manual linha a linha antes de qualquer correção). **Nenhum `trials.json`,
+> `reports/*` ou número congelado de H1/H2/H4/H5 foi alterado** — são
+> encerramento formal (2026-07-26) e ficam como registro histórico. As
+> correções abaixo valem para rodadas FUTURAS; reabrir H1-H5 continua
+> exigindo decisão humana explícita + pré-registro (regra inalterada).
+>
+> Domínio de ações (motor compartilhado por H1/H2/H4/H5):
+> 1. `backtest.py` (`walk_forward`): custo de turnover só era cobrado quando
+>    `j==0` dentro do loop de pregões do período — se o 1º pregão não tivesse
+>    retorno válido (`continue`), o custo do rebalanceamento inteiro sumia
+>    silenciosamente (inflava o retorno líquido). Corrigido com flag
+>    `cost_pending`, cobrado no 1º par de retornos efetivamente registrado.
+> 2. `backtest.py` (`walk_forward`): ativo sem retorno no dia (suspensão/
+>    iliquidez) era descartado da média da carteira, redistribuindo peso
+>    grátis para os sobreviventes (viés de sobrevivência silencioso).
+>    Corrigido: retorno tratado como 0 no dia sem cotação, denominador fixo
+>    em `len(port)`/pesos declarados.
+> 3. `adjust.py` (`scan_and_quarantine`, `adjusted_series`,
+>    `list_split_candidates`): leituras de `prices_raw` não filtravam
+>    `market_type` — defesa que `universe.py`/`paper.py` já tinham e
+>    documentavam, mas não estava replicada aqui. Corrigido: mesmo filtro
+>    `market_type=SPOT_MARKET` nas três queries.
+>
+> Domínio RJ (M0 — nenhum dado real ainda, nada julgado, correções livres):
+> 4. `rj_coda.py` (`clr_matrix`): colunas em `dropped_cols` (sem nenhum valor
+>    positivo em toda a matriz) não eram excluídas antes do `clr` — uma
+>    única coluna morta colapsava a matriz inteira para `None`
+>    (`rows_failed` = 100%). Corrigido: colunas dropped excluídas antes do CLR.
+> 5. `rj_judge_robust.py` (`romano_wolf_stepdown`): `same_units` comparava
+>    `(ticker, valor)` entre famílias — como o valor difere por construção,
+>    a permutação CONJUNTA (o ponto central do método) quase nunca era
+>    exercitada, mesmo com as mesmas empresas em todas as famílias. Corrigido
+>    para comparar só identidade/ordem dos tickers.
+> 6. `rj_pipeline.py` (`_load_volumes`): mesma falta de filtro `market_type`
+>    do item 3, agora também aqui.
+> 7. `rj_families.py` (`drawdown`): sem checar `pre_rj_high_date < trough_date`
+>    — erro de dado do chamador (máxima "pré-RJ" no/após o fundo) produzia
+>    drawdown 0% em vez de `None`. Corrigido com a guarda `i_h >= i_t`.
+> 8. `config_rj.yaml` (`info_trigger.metric`): rótulo dizia "10p" (pregões),
+>    mas a implementação (`rj_families.info_trigger`) sempre usou dias
+>    CORRIDOS (já documentado no docstring do código — só o rótulo do YAML
+>    divergia). Rótulo corrigido para bater com o código.
+> 9. `rj_outcomes.py` (`market_adjusted_rally`): excesso de retorno sobre o
+>    índice calculado por subtração aritmética (`stock_ret - idx_ret`) em vez
+>    de geométrica — distorce magnitude em rallies grandes (regime deste
+>    projeto). Corrigido para `(1+stock_ret)/(1+idx_ret)-1`. Outcome é
+>    AUXILIAR (nunca alimentou veredito primário/secundário).
+> 10. `factor.py` (`momentum_12_1`): guarda `i_start<0` não cobria `i_end<0`
+>     (só ocorre se `skip>lookback`, config que nenhuma hipótese registrada
+>     usa hoje) — indexação negativa do Python leria preço fora da janela.
+>     Guarda defensiva adicionada.
+>
+> **Pendência registrada, não corrigida** (decisão de design, não bug de
+> implementação): `config_rj.yaml.universe.censoring_horizon_trading_days`
+> (756 pregões) é lido só em comentário/docstring — nenhum código o
+> consome. A regra de censura hoje implementada em `rj_episodes.py` usa a
+> janela do rally (`max_window_trading_days`), não este horizonte de 756
+> pregões em nível de universo. Requer decisão humana de qual horizonte
+> deve mesmo governar a censura antes de qualquer implementação (regra
+> `CLAUDE.md`: "em dúvida de design não coberta, parar e perguntar").
+>
+> Suíte de testes não pôde ser executada nesta sessão (ambiente sem
+> `predictor_core`/`predictor_ops` vendorizados) — correções verificadas
+> por scripts isolados ad-hoc reproduzindo o comportamento antes/depois
+> (ver histórico da sessão), não pela suíte oficial. **Rodar
+> `python -m pytest tests/ -v` antes de confiar nestas mudanças em produção.**
+
 > ## NOVO DOMÍNIO ADICIONADO (2026-08-23): predictor-rj (event study, RJ na B3)
 >
 > Módulo novo, INDEPENDENTE do domínio de momentum/fatores abaixo — reaproveita

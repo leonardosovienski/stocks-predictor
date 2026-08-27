@@ -28,7 +28,10 @@ def drawdown(dates: list[str], closes: list[float], trough_date: str,
     aqui para não acoplar este módulo a I/O de banco)."""
     i_t = _closes_upto(dates, closes, trough_date)
     i_h = _closes_upto(dates, closes, pre_rj_high_date)
-    if i_t is None or i_h is None or closes[i_h] <= 0:
+    # i_h deve ser ESTRITAMENTE anterior ao fundo — máxima "pré-RJ" que cai
+    # em/após o fundo é erro de dado do chamador (bug corrigido: sem esta
+    # guarda, a função devolvia drawdown 0% em vez de None nesse caso).
+    if i_t is None or i_h is None or i_h >= i_t or closes[i_h] <= 0:
         return None
     return 1.0 - closes[i_t] / closes[i_h]
 

@@ -133,19 +133,30 @@ def walk_forward(conn, cfg, signal_fn=None, take="top", portfolio_fn=None):
             prev_w = weights
 
         period = [d for d in all_dates if t < d <= t1]
-        for j, d in enumerate(period):
+        cost_pending = True   # cobra no 1º par de retornos REGISTRADO, não em j==0
+        # (bug corrigido: se o 1º pregão do período não tiver retorno válido,
+        # `continue` pulava o índice sem cobrar, e o `j` nunca mais voltava a
+        # 0 — o custo do rebalance inteiro sumia do período, inflando o
+        # retorno líquido).
+        for d in period:
             brets = [dret[tk][d] for tk in uni if d in dret[tk]]
             if weights is None:
-                srets = [dret[tk][d] for tk in port if d in dret[tk]]
-                if not srets or not brets:
+                # ativo sem retorno no dia (suspensão/iliquidez) NÃO é
+                # descartado da média silenciosamente — entraria como peso
+                # extra grátis para os sobreviventes (viés de sobrevivência).
+                # Convenção declarada: retorno 0 no dia sem cotação, mantendo
+                # o denominador em len(port) inteiro.
+                srets = [dret[tk].get(d, 0.0) for tk in port]
+                if not brets:
                     continue
-                s = sum(srets) / len(srets) - (period_cost if j == 0 else 0.0)
+                s = sum(srets) / len(port) - (period_cost if cost_pending else 0.0)
             else:
-                sw = [(w, dret[tk][d]) for tk, w in weights.items() if d in dret[tk]]
+                sw = [(w, dret[tk].get(d, 0.0)) for tk, w in weights.items()]
                 den = sum(w for w, _ in sw)
-                if not sw or not brets or den <= 0:
+                if not brets or den <= 0:
                     continue
-                s = sum(w * r for w, r in sw) / den - (period_cost if j == 0 else 0.0)
+                s = sum(w * r for w, r in sw) / den - (period_cost if cost_pending else 0.0)
+            cost_pending = False
             strat.append(s)
             bench.append(sum(brets) / len(brets))
     return strat, bench
