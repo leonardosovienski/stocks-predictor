@@ -303,6 +303,61 @@ def run_h5(cfg=None, conn=None, write_report=False, run_id=None, trials_path=Non
     return _conclude(verdict, strat, bench, cfg, "H5", write_report, run_id)
 
 
+def run_h6(cfg=None, conn=None, write_report=False, run_id=None, trials_path=None):
+    """H6 — momentum 6-1 (pré-registro 2026-08-27): MESMA maquinaria da H1,
+    janela mais curta (126 pregões ~6 meses, skip 21) — hipótese de que a B3
+    (menos líquida/eficiente que mercados desenvolvidos) incorpora momentum
+    numa janela mais curta que o clássico 12-1 (que fracassou na H1)."""
+    import trials_gate
+    from config import H6_FROZEN_KEYS
+    cfg = cfg or load_config()
+    conn = conn or db.get_connection()
+    h6f = cfg.get("h6_factor", {})
+    lb, skip = h6f.get("lookback_days", 126), h6f.get("skip_days", 21)
+    strat, bench = walk_forward(
+        conn, cfg, signal_fn=lambda sub, asof: factor.signals(sub, asof, lb, skip),
+        take="top")
+    verdict = trials_gate.apply_dsr(
+        judge(strat, bench, cfg), strat, cfg, trials_path=trials_path,
+        trial_name="h6-momentum-6-1", frozen_keys=H6_FROZEN_KEYS,
+        criteria_section="h6_criteria",
+        notes="rodada única da H6 (momentum 6-1; sharpe por-período realizado)")
+    return _conclude(verdict, strat, bench, cfg, "H6", write_report, run_id)
+
+
+def run_h8(cfg=None, conn=None, write_report=False, run_id=None, trials_path=None):
+    """H8 — filtro duplo momentum ∩ baixa vol (pré-registro 2026-08-27): top
+    `h8_portfolio.momentum_quantile` do universo por momentum 12-1, depois a
+    fração `h8_portfolio.vol_quantile` de menor vol realizada DENTRO desse
+    subconjunto. H1 (momentum isolado) e H2 (baixa vol isolada) fracassaram —
+    hipótese distinta: a interseção filtra o lado mais arriscado do momentum."""
+    import trials_gate
+    from config import H8_FROZEN_KEYS
+    cfg = cfg or load_config()
+    conn = conn or db.get_connection()
+    h8f = cfg.get("h8_factor", {})
+    mom_lb = h8f.get("momentum_lookback_days", 252)
+    mom_skip = h8f.get("momentum_skip_days", 21)
+    vol_lb = h8f.get("vol_lookback_days", 252)
+    h8p = cfg.get("h8_portfolio", {})
+    mom_q = h8p.get("momentum_quantile", 0.4)
+    vol_q = h8p.get("vol_quantile", 0.5)
+
+    def _pf(sub, asof):
+        mom = factor.signals(sub, asof, mom_lb, mom_skip)
+        vol = factor.vol_signals(sub, asof, vol_lb)
+        return portfolio.momentum_lowvol_double_filter(mom, vol, mom_q, vol_q)
+
+    strat, bench = walk_forward(conn, cfg, portfolio_fn=_pf)
+    verdict = trials_gate.apply_dsr(
+        judge(strat, bench, cfg), strat, cfg, trials_path=trials_path,
+        trial_name="h8-mom-lowvol-double", frozen_keys=H8_FROZEN_KEYS,
+        criteria_section="h8_criteria",
+        notes="rodada única da H8 (filtro duplo momentum top ∩ baixa vol; "
+              "sharpe por-período realizado)")
+    return _conclude(verdict, strat, bench, cfg, "H8", write_report, run_id)
+
+
 if __name__ == "__main__":
     if run() is None:
         sys.exit(1)

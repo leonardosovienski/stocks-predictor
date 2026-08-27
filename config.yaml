@@ -86,6 +86,47 @@ h5_portfolio:
 h5_criteria:
   dsr_min: 0.95                    # [H5-FROZEN] DSR mínimo (N=4 tentativas)
 
+# ── H6 (pré-registrada 2026-08-27; ver HANDOFF) ─────────────────────────────
+# NÃO alterar valores [H6-FROZEN] após qualquer rodada de resultado da H6.
+# Momentum de janela mais curta (6-1 em vez de 12-1): hipótese de que mercados
+# menos líquidos/eficientes (B3) incorporam informação de momentum mais rápido
+# que o clássico 12 meses — H1 (12-1) fracassou, mas isso não testa a mesma
+# coisa: é uma janela distinta, não repescagem do mesmo sinal.
+
+h6_factor:
+  name: momentum_6_1               # [H6-FROZEN]
+  lookback_days: 126               # [H6-FROZEN] ~6 meses
+  skip_days: 21                    # [H6-FROZEN] excluir último mês (mesmo racional da H1)
+
+h6_portfolio:
+  quantile: top_quintile           # [H6-FROZEN]
+  weighting: equal                 # [H6-FROZEN]
+  direction: long_only             # [H6-FROZEN]
+
+h6_criteria:
+  dsr_min: 0.95                    # [H6-FROZEN] DSR mínimo (N=6 tentativas no registro)
+
+# ── H8 (pré-registrada 2026-08-27; ver HANDOFF) ─────────────────────────────
+# NÃO alterar valores [H8-FROZEN] após qualquer rodada de resultado da H8.
+# Filtro duplo: top momentum ∩ baixa vol DENTRO desse subconjunto. H1
+# (momentum isolado) e H2 (baixa vol isolada) fracassaram, mas a literatura
+# mostra que a interseção às vezes sobrevive filtrando o momentum mais
+# arriscado — hipótese distinta das duas isoladas, não combinação pós-hoc.
+
+h8_factor:
+  momentum_lookback_days: 252      # [H8-FROZEN] mesma régua da H1
+  momentum_skip_days: 21           # [H8-FROZEN] mesma régua da H1
+  vol_lookback_days: 252           # [H8-FROZEN] mesma régua da H2
+
+h8_portfolio:
+  momentum_quantile: 0.4           # [H8-FROZEN] top 40% do universo por momentum
+  vol_quantile: 0.5                # [H8-FROZEN] metade inferior de vol DENTRO desse subconjunto
+  weighting: equal                 # [H8-FROZEN]
+  direction: long_only             # [H8-FROZEN]
+
+h8_criteria:
+  dsr_min: 0.95                    # [H8-FROZEN] DSR mínimo (N=6 tentativas no registro)
+
 data:
   db_path: "data/stocks.db"
   cotahist_dir: "data/cotahist"

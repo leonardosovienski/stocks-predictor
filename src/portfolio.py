@@ -21,6 +21,30 @@ def inverse_vol_weights(vols):
     return {t: x / total for t, x in inv.items()}
 
 
+def momentum_lowvol_double_filter(mom_signals: dict, vol_signals: dict,
+                                  momentum_quantile: float = 0.4,
+                                  vol_quantile: float = 0.5) -> dict:
+    """H8 — filtro duplo: primeiro o top `momentum_quantile` do universo por
+    momentum, depois a fração `vol_quantile` de menor volatilidade DENTRO
+    desse subconjunto (não do universo inteiro). Equiponderado, long-only.
+
+    Só tickers com AMBOS os sinais entram na 1ª seleção — sem isso um ticker
+    com momentum sem histórico de vol suficiente (ou vice-versa) seria
+    rankeado num filtro e sumiria no outro sem essa interseção explícita.
+    {} se não houver nenhum ticker com os dois sinais."""
+    common = [t for t in mom_signals if t in vol_signals]
+    if not common:
+        return {}
+    ranked_mom = sorted(common, key=lambda t: mom_signals[t], reverse=True)
+    k_mom = max(1, round(len(ranked_mom) * momentum_quantile))
+    top_mom = ranked_mom[:k_mom]
+    ranked_vol = sorted(top_mom, key=lambda t: vol_signals[t])
+    k_vol = max(1, round(len(ranked_vol) * vol_quantile))
+    chosen = ranked_vol[:k_vol]
+    w = 1.0 / len(chosen)
+    return {t: w for t in chosen}
+
+
 def select_portfolio(signals, quantile=0.2, take="top"):
     """Quintil (default 20%) por sinal, equiponderado, long-only. {ticker: peso}."""
     if take not in ("top", "bottom"):

@@ -196,3 +196,51 @@ H5_FROZEN_KEYS = [
 def h5_frozen_config_hash(config: dict) -> str:
     """O LACRE da H5 — mesmo mecanismo dos lacres anteriores."""
     return _frozen_hash(config, H5_FROZEN_KEYS, "H5-FROZEN")
+
+
+# Subconjunto H6-FROZEN (pré-registro 2026-08-27, HANDOFF). Momentum 6-1 —
+# mesma família da H1, janela mais curta — mesmo reuso declarado de
+# universo/execução/janela/bootstrap das anteriores.
+H6_FROZEN_KEYS = [
+    ("universe", "top_n"), ("universe", "lookback_trading_days"),
+    ("universe", "min_history_days"), ("universe", "rebalance_frequency"),
+    ("h6_factor", "name"), ("h6_factor", "lookback_days"), ("h6_factor", "skip_days"),
+    ("h6_portfolio", "quantile"), ("h6_portfolio", "weighting"),
+    ("h6_portfolio", "direction"),
+    ("execution", "price"), ("execution", "b3_fee_pct"),
+    ("execution", "brokerage_pct"), ("execution", "spread_slippage_pct"),
+    ("backtest", "warmup_end"), ("backtest", "test_start"),
+    ("backtest", "purge_embargo_months"),
+    ("bootstrap", "n_boot"), ("bootstrap", "block_length"),
+    ("bootstrap", "confidence"), ("bootstrap", "method"),
+    ("h6_criteria", "dsr_min"),
+]
+
+
+def h6_frozen_config_hash(config: dict) -> str:
+    """O LACRE da H6 — mesmo mecanismo dos lacres anteriores."""
+    return _frozen_hash(config, H6_FROZEN_KEYS, "H6-FROZEN")
+
+
+# Subconjunto H8-FROZEN (pré-registro 2026-08-27, HANDOFF). Filtro duplo
+# momentum ∩ baixa vol — reuso declarado de universo/execução/janela/bootstrap.
+H8_FROZEN_KEYS = [
+    ("universe", "top_n"), ("universe", "lookback_trading_days"),
+    ("universe", "min_history_days"), ("universe", "rebalance_frequency"),
+    ("h8_factor", "momentum_lookback_days"), ("h8_factor", "momentum_skip_days"),
+    ("h8_factor", "vol_lookback_days"),
+    ("h8_portfolio", "momentum_quantile"), ("h8_portfolio", "vol_quantile"),
+    ("h8_portfolio", "weighting"), ("h8_portfolio", "direction"),
+    ("execution", "price"), ("execution", "b3_fee_pct"),
+    ("execution", "brokerage_pct"), ("execution", "spread_slippage_pct"),
+    ("backtest", "warmup_end"), ("backtest", "test_start"),
+    ("backtest", "purge_embargo_months"),
+    ("bootstrap", "n_boot"), ("bootstrap", "block_length"),
+    ("bootstrap", "confidence"), ("bootstrap", "method"),
+    ("h8_criteria", "dsr_min"),
+]
+
+
+def h8_frozen_config_hash(config: dict) -> str:
+    """O LACRE da H8 — mesmo mecanismo dos lacres anteriores."""
+    return _frozen_hash(config, H8_FROZEN_KEYS, "H8-FROZEN")
