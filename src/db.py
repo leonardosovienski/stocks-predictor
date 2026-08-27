@@ -206,6 +206,28 @@ MIGRATIONS: list[tuple[str, str]] = [
         ALTER TABLE rj_episodes ADD COLUMN secondary_trading_days_to_rally INTEGER;
         ALTER TABLE rj_episodes ADD COLUMN secondary_censored INTEGER;
     """),
+    ("0007_fundamentals", """
+        -- Demonstrações financeiras padronizadas (DFP/ITR da CVM) — insumo
+        -- da futura H7 (fator de qualidade: ROE/alavancagem). Domínio
+        -- INDEPENDENTE de ações/RJ (não referencia prices_raw/rj_*); um
+        -- ticker+ref_date por linha, append-only via UNIQUE(ticker,ref_date).
+        CREATE TABLE IF NOT EXISTS fundamentals (
+            id                  INTEGER PRIMARY KEY,
+            ticker              TEXT    NOT NULL,
+            ref_date            TEXT    NOT NULL,      -- DT_REFER (fim do exercício/trimestre)
+            ativo_total         REAL,
+            passivo_total       REAL,
+            patrimonio_liquido  REAL,
+            lucro_liquido       REAL,
+            roe                 REAL,                  -- lucro_liquido / patrimonio_liquido
+            leverage            REAL,                  -- passivo_total / ativo_total
+            source              TEXT    NOT NULL,       -- 'CVM DFP <ano>' / 'CVM ITR <ano>'
+            inserted_at         TEXT    NOT NULL DEFAULT (datetime('now')),
+            UNIQUE(ticker, ref_date, source)
+        );
+        CREATE INDEX IF NOT EXISTS idx_fundamentals_ticker_ref
+            ON fundamentals(ticker, ref_date);
+    """),
 ]
 
 

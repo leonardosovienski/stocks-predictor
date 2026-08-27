@@ -1,7 +1,7 @@
-"""Ingestão dos dados abertos da CVM para o domínio RJ.
+"""Ingestão dos dados abertos da CVM para os domínios RJ e ações.
 
-Resolve as duas lacunas de dados que travam a coleta real (todas as fontes
-são o Portal de Dados Abertos da CVM — dados.cvm.gov.br):
+Resolve as lacunas de dados que travam a coleta real (todas as fontes são o
+Portal de Dados Abertos da CVM — dados.cvm.gov.br):
 
 1. IPE (Informações Periódicas e Eventuais): fatos relevantes com
    **data de entrega no sistema** — essa data é literalmente o `known_at`
@@ -14,13 +14,20 @@ são o Portal de Dados Abertos da CVM — dados.cvm.gov.br):
    acionistas >=5% — alimenta `free_float` (família `liquidity`, hoje sem
    fonte) e a base para a futura família de migração de base acionária.
 
+3. DFP (Demonstrações Financeiras Padronizadas): balanço patrimonial e DRE
+   anuais consolidados — insumo da futura H7 (fator de qualidade: ROE/
+   alavancagem, ver HANDOFF 2026-08-27). `ref_date` (DT_REFER, fim do
+   exercício) é o `known_at` conservador (o dado só é PUBLICADO bem depois
+   do fechamento — usar `ref_date` sem embargo adicional é otimista; a H7,
+   quando pré-registrada, decide se soma um embargo de divulgação).
+
 Os layouts da CVM usam cabeçalhos com nomes longos e acentuados que mudam de
 ano para ano — por isso o parsing é por PALAVRA-CHAVE normalizada (sem
 acento, minúsculo), não por nome exato de coluna: perder uma coluna por
 renomeação silenciosa é o modo de falha que este módulo existe para evitar.
 
 Fail-loud: arquivo sem as colunas mínimas levanta exceção — nunca grava
-evento com known_at fabricado.
+evento com known_at fabricado, nunca grava fundamento com conta ambígua.
 """
 import csv
 import io
@@ -33,6 +40,7 @@ logger = logging.getLogger(__name__)
 
 IPE_URL = "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/IPE/DADOS/ipe_cia_aberta_{year}.zip"
 FRE_URL = "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FRE/DADOS/fre_cia_aberta_{year}.zip"
+DFP_URL = "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_{year}.zip"
 
 # palavras-chave (normalizadas) para localizar colunas tolerando renomeações
 _IPE_COLS = {
@@ -52,6 +60,34 @@ _FRE_FLOAT_COLS = {
     "free_float": ("quantidade_acoes_circulacao", "acoes_em_circulacao",
                    "circulacao"),
 }
+_DFP_COLS = {
+    "cnpj": ("cnpj_cia",),
+    "company": ("denom_cia",),
+    "ref_date": ("dt_refer",),
+    "order": ("ordem_exerc",),
+    "account_code": ("cd_conta",),
+    "account_desc": ("ds_conta",),
+    "value": ("vl_conta",),
+}
+# CD_CONTA padrão do plano de contas CVM (BPA/BPP consolidados) — estável
+# entre anos para companhias NÃO financeiras. Cruzado com DS_CONTA
+# (palavra-chave) como checagem de sanidade: código bate mas descrição não
+# contém a palavra esperada = suspeito, linha descartada com aviso (nunca
+# um número fabricado). Companhias financeiras (bancos/seguradoras) usam
+# plano de contas diferente e podem não casar — ficam de fora silenciosamente
+# nesta 1ª versão (registrado, não escondido: ver `ingest_dfp_year`).
+_ASSET_TOTAL_CODE = "1"
+_ASSET_TOTAL_KEYWORDS = ("ativo_total",)
+_LIABILITY_TOTAL_CODE = "2"
+_LIABILITY_TOTAL_KEYWORDS = ("passivo_total",)
+_EQUITY_CODE = "2.03"
+_EQUITY_KEYWORDS = ("patrimonio_liquido_consolidado", "patrimonio_liquido")
+# DRE: código do lucro/prejuízo do período varia mais entre companhias
+# (financeiras vs. não financeiras usam DRE distintas) — casado só por
+# DESCRIÇÃO (mais estável que código aqui), exigindo "lucro"/"prejuizo" E
+# "periodo" na mesma linha para não pegar subtotal intermediário.
+_NET_INCOME_KEYWORDS_ALL = ("periodo",)
+_NET_INCOME_KEYWORDS_ANY = ("lucro", "prejuizo")
 
 
 def _norm(s: str) -> str:
@@ -194,6 +230,149 @@ def parse_fre_float_rows(rows) -> list[dict]:
             "free_float": num("free_float"),
         })
     return out
+
+
+def parse_dfp_statement_rows(rows, statement: str) -> list[dict]:
+    """Linhas de UM demonstrativo DFP (BPA_con/BPP_con/DRE_con) ->
+    [{company, cnpj, ref_date, account_code, account_desc, value}].
+
+    Filtra ORDEM_EXERC='ÚLTIMO': o CVM inclui, na MESMA tabela, uma coluna de
+    comparação do exercício ANTERIOR ('PENÚLTIMO') — incluir as duas
+    duplicaria patrimônio/lucro de um ano que já tem seu próprio arquivo
+    DFP (o do ano anterior). Fail-loud: sem VL_CONTA/CD_CONTA/DS_CONTA/
+    ORDEM_EXERC no cabeçalho, ou zero linhas 'ÚLTIMO' válidas, exceção —
+    nunca um demonstrativo vazio silencioso."""
+    header = None
+    idx = {}
+    out = []
+    for row in rows:
+        if header is None:
+            header = row
+            idx = {k: _find_col(header, kw) for k, kw in _DFP_COLS.items()}
+            missing = [k for k in ("ref_date", "order", "account_desc", "value")
+                      if idx[k] is None]
+            if missing:
+                raise ValueError(
+                    f"DFP {statement} sem coluna(s) {missing}; cabeçalho={header}")
+            continue
+        if len(row) < len(header):
+            continue
+        if _norm(row[idx["order"]]) != "ultimo":
+            continue    # descarta a coluna de comparação do exercício anterior
+        val = row[idx["value"]].strip()
+        if not val:
+            continue
+        out.append({
+            "company": row[idx["company"]].strip() if idx["company"] is not None else "",
+            "cnpj": row[idx["cnpj"]].strip() if idx["cnpj"] is not None else "",
+            "ref_date": row[idx["ref_date"]].strip()[:10],
+            "account_code": row[idx["account_code"]].strip() if idx["account_code"] is not None else "",
+            "account_desc": row[idx["account_desc"]].strip(),
+            "value": float(val.replace(".", "").replace(",", ".")),
+        })
+    if not out:
+        raise ValueError(
+            f"DFP {statement}: 0 linhas válidas (ORDEM_EXERC='ÚLTIMO') — "
+            "arquivo vazio ou layout quebrado; NADA foi ingerido")
+    return out
+
+
+def _pick_account(rows: list[dict], code: str | None,
+                  keywords_all: tuple[str, ...],
+                  keywords_any: tuple[str, ...] = ()) -> dict[tuple[str, str], float]:
+    """{(company_normalizado, ref_date): valor} da conta que bate `code`
+    (quando informado) E contém todas as palavras de `keywords_all` E ao
+    menos uma de `keywords_any` (quando informado) na descrição normalizada.
+    Múltiplas linhas casando a MESMA (company, ref_date) é ambiguidade —
+    marcada com None e removida no chamador (fail-closed, nunca 'a última
+    lida')."""
+    found: dict[tuple[str, str], float | None] = {}
+    for r in rows:
+        if code is not None and r["account_code"] != code:
+            continue
+        desc = _norm(r["account_desc"])
+        if not all(kw in desc for kw in keywords_all):
+            continue
+        if keywords_any and not any(kw in desc for kw in keywords_any):
+            continue
+        key = (_norm(r["company"]), r["ref_date"])
+        if key in found:
+            found[key] = None      # ambíguo: mais de uma conta bateu
+        else:
+            found[key] = r["value"]
+    return {k: v for k, v in found.items() if v is not None}
+
+
+def compute_fundamentals(bpa_rows: list[dict], bpp_rows: list[dict],
+                         dre_rows: list[dict]) -> list[dict]:
+    """BPA+BPP+DRE já parseados -> [{company, ref_date, ativo_total,
+    passivo_total, patrimonio_liquido, lucro_liquido, roe, leverage}].
+
+    ARMADILHA do plano de contas padronizado CVM (registrada aqui para não
+    repetir o erro): `CD_CONTA "2" - Passivo Total` no BPP JÁ INCLUI o
+    Patrimônio Líquido (2.01 Circulante + 2.02 Não Circulante + 2.03 PL) —
+    por identidade contábil, `passivo_total` (CD 2) SEMPRE bate com
+    `ativo_total` (CD 1). Um `leverage = passivo_total / ativo_total`
+    ingênuo daria sempre ~1.0 (índice inútil). `passivo_total` gravado é
+    o valor CRU do CD_CONTA "2" (útil como checagem de integridade contra
+    `ativo_total`); `leverage` é calculado como dívida EXCLUINDO patrimônio:
+    `(passivo_total - patrimonio_liquido) / ativo_total`.
+
+    Só entra (company, ref_date) com AS QUATRO contas resolvidas sem
+    ambiguidade — ratio calculado com conta faltante seria pior que não
+    calcular (fail-closed). roe/leverage ficam None se o denominador for
+    <=0 (patrimônio negativo/zero é dado real de empresa em dificuldade,
+    mas ROE sobre PL negativo inverte o sinal do índice e não é comparável
+    — melhor None e registrado do que um número que engana)."""
+    ativo = _pick_account(bpa_rows, _ASSET_TOTAL_CODE, _ASSET_TOTAL_KEYWORDS)
+    passivo = _pick_account(bpp_rows, _LIABILITY_TOTAL_CODE, _LIABILITY_TOTAL_KEYWORDS)
+    pl = _pick_account(bpp_rows, _EQUITY_CODE, _EQUITY_KEYWORDS)
+    lucro = _pick_account(dre_rows, None, _NET_INCOME_KEYWORDS_ALL, _NET_INCOME_KEYWORDS_ANY)
+    keys = set(ativo) & set(passivo) & set(pl) & set(lucro)
+    out = []
+    for company, ref_date in sorted(keys):
+        a, p, e, l = ativo[(company, ref_date)], passivo[(company, ref_date)], \
+            pl[(company, ref_date)], lucro[(company, ref_date)]
+        out.append({
+            "company": company, "ref_date": ref_date,
+            "ativo_total": a, "passivo_total": p,
+            "patrimonio_liquido": e, "lucro_liquido": l,
+            "roe": (l / e) if e > 0 else None,
+            "leverage": ((p - e) / a) if a > 0 else None,
+        })
+    return out
+
+
+def ingest_dfp_year(conn, year: int, companies: set[str] | None = None,
+                    ticker_of: dict | None = None) -> int:
+    """Baixa o DFP consolidado de `year`, calcula ROE/alavancagem por
+    companhia e grava em `fundamentals`. `ticker_of`: mesmo mapa
+    nome_companhia_normalizado -> ticker de `ingest_ipe_year` (ligação
+    CVM->B3 revisável por humano). Companhias sem as 4 contas resolvidas
+    (comum em financeiras, plano de contas diferente — ver módulo) ficam
+    de fora, contadas no aviso, nunca com ratio fabricado."""
+    zbytes = download_zip(DFP_URL.format(year=year))
+    bpa = parse_dfp_statement_rows(_open_zip_csv(zbytes, "bpa_con"), "BPA_con")
+    bpp = parse_dfp_statement_rows(_open_zip_csv(zbytes, "bpp_con"), "BPP_con")
+    dre = parse_dfp_statement_rows(_open_zip_csv(zbytes, "dre_con"), "DRE_con")
+    fundamentals = compute_fundamentals(bpa, bpp, dre)
+    n = 0
+    for f in fundamentals:
+        if companies and f["company"] not in companies:
+            continue
+        ticker = (ticker_of or {}).get(f["company"])
+        if ticker is None:
+            continue    # companhia sem ticker mapeado: revisão humana antes
+        conn.execute(
+            "INSERT OR IGNORE INTO fundamentals"
+            "(ticker, ref_date, ativo_total, passivo_total, patrimonio_liquido,"
+            " lucro_liquido, roe, leverage, source) VALUES (?,?,?,?,?,?,?,?,?)",
+            (ticker, f["ref_date"], f["ativo_total"], f["passivo_total"],
+             f["patrimonio_liquido"], f["lucro_liquido"], f["roe"], f["leverage"],
+             f"CVM DFP {year}"))
+        n += conn.execute("SELECT changes()").fetchone()[0]
+    conn.commit()
+    return n
 
 
 def ingest_ipe_year(conn, year: int, companies: set[str] | None = None,
