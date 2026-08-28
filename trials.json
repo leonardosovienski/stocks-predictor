@@ -132,5 +132,78 @@
       "2026-07-03"
     ],
     "metric": "sharpe_diff_ci95"
+  },
+  {
+    "name": "h6-momentum-6-1",
+    "registered_at": "2026-08-28T02:30:14Z",
+    "params": {
+      "universe.top_n": 60,
+      "universe.lookback_trading_days": 126,
+      "universe.min_history_days": 252,
+      "universe.rebalance_frequency": "monthly",
+      "h6_factor.name": "momentum_6_1",
+      "h6_factor.lookback_days": 126,
+      "h6_factor.skip_days": 21,
+      "h6_portfolio.quantile": "top_quintile",
+      "h6_portfolio.weighting": "equal",
+      "h6_portfolio.direction": "long_only",
+      "execution.price": "next_open",
+      "execution.b3_fee_pct": 0.0003,
+      "execution.brokerage_pct": 0.0,
+      "execution.spread_slippage_pct": 0.0015,
+      "backtest.warmup_end": "2017-12-31",
+      "backtest.test_start": "2018-01-01",
+      "backtest.purge_embargo_months": 1,
+      "bootstrap.n_boot": 10000,
+      "bootstrap.block_length": 21,
+      "bootstrap.confidence": 0.95,
+      "bootstrap.method": "stationary",
+      "h6_criteria.dsr_min": 0.95
+    },
+    "sharpe": 0.011356,
+    "notes": "rodada única da H6 (momentum 6-1; sharpe por-período realizado)",
+    "test_period": [
+      "2018-01-01",
+      "2026-07-03"
+    ],
+    "pipeline_fingerprint": null,
+    "metric": "sharpe_diff_ci95"
+  },
+  {
+    "name": "h8-mom-lowvol-double",
+    "registered_at": "2026-08-28T02:33:21Z",
+    "params": {
+      "universe.top_n": 60,
+      "universe.lookback_trading_days": 126,
+      "universe.min_history_days": 252,
+      "universe.rebalance_frequency": "monthly",
+      "h8_factor.momentum_lookback_days": 252,
+      "h8_factor.momentum_skip_days": 21,
+      "h8_factor.vol_lookback_days": 252,
+      "h8_portfolio.momentum_quantile": 0.4,
+      "h8_portfolio.vol_quantile": 0.5,
+      "h8_portfolio.weighting": "equal",
+      "h8_portfolio.direction": "long_only",
+      "execution.price": "next_open",
+      "execution.b3_fee_pct": 0.0003,
+      "execution.brokerage_pct": 0.0,
+      "execution.spread_slippage_pct": 0.0015,
+      "backtest.warmup_end": "2017-12-31",
+      "backtest.test_start": "2018-01-01",
+      "backtest.purge_embargo_months": 1,
+      "bootstrap.n_boot": 10000,
+      "bootstrap.block_length": 21,
+      "bootstrap.confidence": 0.95,
+      "bootstrap.method": "stationary",
+      "h8_criteria.dsr_min": 0.95
+    },
+    "sharpe": 0.019597,
+    "notes": "rodada única da H8 (filtro duplo momentum top ∩ baixa vol; sharpe por-período realizado)",
+    "test_period": [
+      "2018-01-01",
+      "2026-07-03"
+    ],
+    "pipeline_fingerprint": null,
+    "metric": "sharpe_diff_ci95"
   }
 ]

@@ -81,20 +81,91 @@
 > rankear). Testes de smoke (dado sintético) + golden hash em
 > `tests/test_h6_momentum6.py`/`tests/test_h8_double_filter.py`.
 >
-> **PENDENTE — não rodado ainda.** Este ambiente de sessão não tem o
-> `data/stocks.db` real (histórico 2016-2026, ~250MB, nunca versionado no
-> git — só existe na máquina Windows do operador). O código está pronto e
-> travado; a rodada única que produz o veredito de verdade precisa rodar
-> onde o banco real existe:
+> **RESOLVIDO (2026-08-27/28) — banco real reconstruído, rodada única executada.**
+> O `data/stocks.db` anterior (250MB, 2016-2026) não existia mais nesta máquina;
+> reconstruído do zero nesta sessão a partir dos COTAHIST anuais oficiais da B3
+> (`bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A{ano}.ZIP`, 2016-2026,
+> download automatizado via `ingest_cotahist.download_cotahist` — rede não
+> bloqueou desta vez) + `main.py ingest` por ano: **1.149.872 linhas em
+> `prices_raw`** (mesma ordem de grandeza do banco anterior). Detector de saltos
+> (`main.py adjust`) achou 2.227 saltos sem ajuste registrado; `splits-review`
+> exportou 440 candidatos com proporção redonda plausível, dos quais **39
+> tickers (46 eventos)** de fato entraram no universo top-60 de liquidez em
+> algum momento 2018-2026 (mesmo filtro de relevância usado na adjudicação da
+> H1) — os ~394 restantes ficam em quarentena conservadora (sem liquidez
+> relevante, decisão formalizada, não silenciosa).
+>
+> **Adjudicação humana dos 46 candidatos relevantes** (§9b/§11: IA pesquisou via
+> WebSearch contra fonte financeira nomeada e propôs `source` por linha; humano
+> aprovou explicitamente, `approved_by=Superleo13`): **43 confirmados** (39
+> desdobramentos/grupamentos formais + NATU3/PSSA3, bonificações com efeito de
+> preço idêntico a split, mesmo tratamento do precedente da H1) gravados em
+> `adjustments` via `splits-import`. **3 excluídos por não serem splits reais**
+> (permanecem em quarentena): **GOLL4** 2025-06-09 (não foi split — troca de
+> ticker GOLL4→GOLL54 + diluição massiva pós-recuperação judicial, ação subiu
+> >1800% no debut, direção oposta a um split); **PCAR3** 2023-08-23 (não foi
+> split — spin-off do Grupo Éxito via BDR, queda ~20% incompatível com a queda
+> ~67% que um split 1:3 exigiria); **RAIZ4** 2026-07-31 (nenhuma operação
+> corporativa encontrada — provável ruído de dado, queda orgânica por crise de
+> dívida/RJ extrajudicial). Suíte revalidada pós-adjudicação: **230/230 verde**.
+>
+> **Comandos executados exatamente como travado no pré-registro** (nenhum
+> parâmetro `[H6-FROZEN]`/`[H8-FROZEN]` tocado):
 > ```powershell
 > python -c "import backtest; backtest.run_h6(write_report=True)"
 > python -c "import backtest; backtest.run_h8(write_report=True)"
-> python -m pytest tests/ -v
 > ```
-> Depois de rodar: preencher o `sharpe`/`notes` desta entrada com o veredito
-> real (COMPROVADA ou não) e commitar o `trials.json` atualizado — mesma
-> disciplina das hipóteses anteriores. NÃO ajustar nenhum valor `[H6-FROZEN]`/
-> `[H8-FROZEN]` depois de ver o resultado.
+> Nota de gap, registrada por transparência (não corrigida retroativamente —
+> mesma disciplina do item 2 da errata de 2026-07-28): a chamada ad hoc não
+> passou `run_id` (não houve `db.new_run`), então os relatórios saem como
+> `reports/h6_verdict_adhoc.md`/`h8_verdict_adhoc.md` com `run_id: n/d` em vez
+> do padrão `h#_verdict_<run_id>.md` das hipóteses anteriores — e o texto
+> herdado do template ("veredito real exige COTAHIST real — sintético só valida
+> a máquina") ficou obsoleto no artefato (já rodou com dado real). O bootstrap é
+> determinístico (seed=42 fixa em `config.yaml`), então a rodada é
+> reproduzível bit-a-bit; não há necessidade de re-rodar.
+>
+> ### VEREDITO H6 — ENCERRADA: NÃO COMPROVADA (2026-08-28, rodada única)
+>
+> - 2.131 pregões pareados
+> - **IC 95% diff-Sharpe (stationary, bloco 21): (−0,3526, +0,3256)** — cruza zero
+> - **DSR: 0,4828 < 0,95** (N=5; E[max SR|N=5] = 0,0123 por-período)
+> - PSR 0,4898. Descritivo: Sharpe anual. 0,1802 vs 0,1891 (benchmark
+>   levemente superior); Sortino 0,2414 vs 0,2570; retorno total 11,03% vs
+>   14,51%; max drawdown 49,65% vs 48,26%. Momentum 6-1 não supera o
+>   buy-and-hold nem no descritivo nesta janela.
+> - **Não comprovada. Sem repescagem.**
+> - Relatório: [`reports/h6_verdict_adhoc.md`](reports/h6_verdict_adhoc.md)
+>   (versionado via `git add -f`); `trials.json` com sharpe realizado 0,011356
+>   por-período.
+>
+> ### VEREDITO H8 — ENCERRADA: NÃO COMPROVADA (2026-08-28, rodada única)
+>
+> - 2.131 pregões pareados
+> - **IC 95% diff-Sharpe (stationary, bloco 21): (−0,1508, +0,4138)** — cruza zero
+> - **DSR: 0,6050 < 0,95** (N=6; E[max SR|N=6] = 0,0137 por-período)
+> - PSR 0,6366. Descritivo: o melhor do domínio até aqui — Sharpe anual. 0,3110
+>   vs 0,1891; Sortino 0,4188 vs 0,2570; retorno total 44,42% vs 14,51%; max
+>   drawdown 44,18% vs 48,26% (melhor que o benchmark nas quatro métricas). Mesmo
+>   assim, a régua estatística (IC + DSR) não deixa promover a um edge — a
+>   amostra (2018-2026, mesma janela reutilizada 6x) não tem poder para
+>   distinguir isso de sorte.
+> - **Não comprovada. Sem repescagem.**
+> - Relatório: [`reports/h8_verdict_adhoc.md`](reports/h8_verdict_adhoc.md)
+>   (versionado via `git add -f`); `trials.json` com sharpe realizado 0,019597
+>   por-período.
+>
+> **Leitura acumulada (6 tentativas, 0 comprovadas):** H1/H6 (momentum, duas
+> janelas) e H2/H4/H5/H8 (vol/sizing/reversão/filtro-duplo) — nenhuma sobreviveu
+> à régua nesta janela de 8,5 anos de dado diário da B3. H8 é o resultado
+> descritivo mais forte do domínio (bate o benchmark nas 4 métricas) e AINDA
+> ASSIM falha DSR por margem grande — o registro honesto de tentativas (N=6)
+> está fazendo exatamente o trabalho para o qual foi criado: impedir que um
+> resultado bonito, mas indistinguível de sorte com 8 tentativas no denominador,
+> vire "comprovado". Com dados só-preço e a maquinaria momentum/vol/sizing
+> esgotada nesta B3, a próxima fronteira honesta do domínio é FONTE NOVA — a
+> H7 (fundamentos ROE/alavancagem, dado DFP da CVM já ingerido, ver entrada
+> acima) segue como candidata não pré-registrada, decisão do operador.
 
 > ## Errata de auditoria (2026-08-27) — bugs corrigidos no código, vereditos antigos INTOCADOS
 >
