@@ -40,12 +40,59 @@ def test_scan_quarantines_unexplained_jump(tmp_path):
 def test_explained_jump_is_not_quarantined(tmp_path):
     conn = db.get_connection(tmp_path / "s.db")
     _insert(conn, "VALE3", [("2024-01-01", 20.0), ("2024-01-02", 10.0)])
-    conn.execute("INSERT INTO adjustments(ticker,ex_date,factor,type,source) "
-                 "VALUES('VALE3','2024-01-02',0.5,'split','inferred')")
+    conn.execute("INSERT INTO adjustments(ticker,ex_date,factor,type,source,approved_by) "
+                 "VALUES('VALE3','2024-01-02',0.5,'split','inferred','teste')")
     conn.commit()
     assert adjust.scan_and_quarantine(conn, threshold=0.30) == 0   # salto explicado
     _, adj = adjust.adjusted_series(conn, "VALE3")
     assert adj == [10.0, 10.0]                                     # série ajustada contínua
+    conn.close()
+
+
+def test_pending_adjustment_without_approval_does_not_explain_jump(tmp_path):
+    """Achado de revisão de código 2026-08-28: um ajuste PENDENTE (approved_by
+    NULL, §9b/§11 — nunca gravado pela IA sozinha) não pode contar como "salto
+    explicado" nem entrar na série que alimenta o fator/backtest — senão o
+    evento sumiria da fila de revisão humana E seria aplicado sem aprovação."""
+    conn = db.get_connection(tmp_path / "s.db")
+    _insert(conn, "VALE3", [("2024-01-01", 20.0), ("2024-01-02", 10.0)])
+    conn.execute("INSERT INTO adjustments(ticker,ex_date,factor,type,source) "
+                 "VALUES('VALE3','2024-01-02',0.5,'split','inferred')")  # approved_by NULL
+    conn.commit()
+    assert adjust.scan_and_quarantine(conn, threshold=0.30) == 1   # ainda vai pra fila
+    _, adj = adjust.adjusted_series(conn, "VALE3")
+    assert adj == [20.0, 10.0]                                     # fator PENDENTE não aplicado
+    conn.close()
+
+
+def test_require_scanned_passes_on_small_test_db(tmp_path):
+    """Fixtures sintéticas de teste (poucas linhas) nunca disparam o guard —
+    só bancos de escala de produção nunca escaneados."""
+    conn = db.get_connection(tmp_path / "s.db")
+    _insert(conn, "PETR4", [("2024-01-01", 20.0), ("2024-01-02", 19.5)])
+    adjust.require_scanned(conn)   # não levanta
+    conn.close()
+
+
+def test_require_scanned_fails_loud_when_never_scanned(tmp_path):
+    """Achado de revisão de código 2026-08-28: nada impedia rodar o backtest
+    direto após o ingest, sem nunca rodar `adjust` — um split real ficaria
+    sem excluir/ajustar e corromperia o Sharpe em silêncio. Banco de escala de
+    produção (>= min_rows) com quarantine E adjustments vazios tem que falhar
+    alto, não seguir em frente calado."""
+    conn = db.get_connection(tmp_path / "s.db")
+    dates = [f"2024-{m:02d}-{d:02d}" for m in range(1, 13) for d in (1, 15)]
+    rows = [(dt, "PETR4", 20.0) for dt in dates] * 3000   # >= min_rows sintético
+    for i, (dt, tk, c) in enumerate(rows):
+        conn.execute(
+            "INSERT INTO prices_raw(date,ticker,bdi_code,market_type,open,high,"
+            "low,close,volume_fin,qty,quote_factor,source_file) "
+            "VALUES(?,?,?,?,?,?,?,?,?,?,?,?)",
+            (dt, f"{tk}{i}", "02", "010", c, c, c, c, 1.0, 1, 1, "SYNTH"))
+    conn.commit()
+    import pytest
+    with pytest.raises(RuntimeError, match="nunca rodou"):
+        adjust.require_scanned(conn, min_rows=1000)
     conn.close()
 
 

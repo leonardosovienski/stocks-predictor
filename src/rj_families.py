@@ -220,7 +220,11 @@ CATEGORICAL_FAMILIES = {"rj_stage"}
 DESCRIPTIVE_ONLY_FAMILIES = {"volume_dynamics_contemporaneous"}
 
 PREDICTIVE_FAMILIES = set(REGISTRY.keys()) - DESCRIPTIVE_ONLY_FAMILIES
-assert len(PREDICTIVE_FAMILIES) == 8, (
-    f"esperado exatamente 8 famílias preditivas, encontrado {len(PREDICTIVE_FAMILIES)} "
-    f"— o pré-registro (DESIGN.md) declara '8 famílias'; se REGISTRY mudar, "
-    "atualizar DESCRIPTIVE_ONLY_FAMILIES ou o número no DESIGN junto")
+# `assert` seria removido com -O/PYTHONOPTIMIZE, apagando este guard de
+# consistência do registry (achado de revisão de código 2026-08-28) — usa
+# raise explícito, nunca stripado pelo interpretador.
+if len(PREDICTIVE_FAMILIES) != 8:
+    raise AssertionError(
+        f"esperado exatamente 8 famílias preditivas, encontrado {len(PREDICTIVE_FAMILIES)} "
+        f"— o pré-registro (DESIGN.md) declara '8 famílias'; se REGISTRY mudar, "
+        "atualizar DESCRIPTIVE_ONLY_FAMILIES ou o número no DESIGN junto")

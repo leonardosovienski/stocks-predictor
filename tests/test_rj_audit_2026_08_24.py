@@ -251,6 +251,17 @@ def test_romano_wolf_pvalue_never_zero():
         assert res["p_romanowolf"] >= 1 / 101 - 1e-12
 
 
+def test_permutation_pvalue_formula_is_shared_not_reimplemented():
+    """Achado de revisão de código 2026-08-28: a fórmula (n_ge+1)/(n_perm+1)
+    estava implementada 3x independentemente (permutation_pvalue,
+    categorical_family_verdict, romano_wolf_stepdown) — uma correção num
+    lugar não propagaria para os outros dois. `romano_wolf_stepdown` tem que
+    usar o MESMO helper que `rj_judge.permutation_pvalue`, não uma cópia."""
+    assert judge.permutation_pvalue_from_count(0, 100) == pytest.approx(1 / 101)
+    assert judge.permutation_pvalue_from_count(99, 100) == pytest.approx(100 / 101)
+    assert robust.permutation_pvalue_from_count is judge.permutation_pvalue_from_count
+
+
 # --- Bug G: persist_run com INSERT OR IGNORE mantinha outcome velho ------------
 
 import yaml

@@ -70,3 +70,22 @@ def test_turnover_cost_accuracy():
                - 2 * cps) < 1e-12
     # carteira inicial (prev vazio): tudo entrando => 1 lado por posição
     assert abs(execution.calculate_turnover_cost(set(), {"A", "B"}, cps) - 2 * cps) < 1e-12
+
+
+def test_equal_weight_turnover_cost_is_the_one_canonical_implementation():
+    """Achado de revisão de código 2026-08-28: a versão NORMALIZADA e correta
+    do custo de turnover (a que `backtest.walk_forward` realmente usa) vivia
+    duplicada como função privada dentro de backtest.py, arriscando divergir
+    da canônica em execution.py. `backtest.equal_weight_turnover_cost` tem
+    que ser o MESMO objeto de `execution.equal_weight_turnover_cost` — não
+    uma cópia — e blindar o mesmo caso (carteira encolhendo/crescendo) que
+    motivou a correção original."""
+    import backtest
+    assert backtest.equal_weight_turnover_cost is execution.equal_weight_turnover_cost
+    cps = 0.0018
+    # carteira de 4 encolhe pra 2: 2 saem (pesavam 1/4 cada), nenhuma entra
+    cost = execution.equal_weight_turnover_cost({"A", "B", "C", "D"}, {"C", "D"}, cps)
+    assert abs(cost - 2 * cps / 4) < 1e-12
+    # carteira de 1 cresce pra 3: 2 entram (passam a pesar 1/3 cada)
+    cost2 = execution.equal_weight_turnover_cost({"A"}, {"A", "B", "C"}, cps)
+    assert abs(cost2 - 2 * cps / 3) < 1e-12

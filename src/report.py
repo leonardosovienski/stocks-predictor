@@ -73,6 +73,17 @@ _BIAS_NOTE = {
           "de maior yield como 'perdedores' e o provento omitido subestima o retorno "
           "da carteira → o viés tende a PENALIZAR a estratégia — conservador "
           "(declarado no pré-registro da H5).",
+    "H6": "- Retorno **só-preço** (rota (b)): dividendos/JCP omitidos; papéis de "
+          "momentum tendem a MENOR yield, logo o viés FAVORECE a estratégia de "
+          "momentum 6-1 contra o benchmark — mesma direção e racional da H1 (não "
+          "fixado explicitamente no pré-registro original da H6; nota técnica "
+          "adicionada na revisão de código de 2026-08-28).",
+    "H8": "- Retorno **só-preço** (rota (b)): direção MISTA — a perna momentum tende "
+          "a FAVORECER a estratégia (menor yield, como H1/H6) e a perna baixa-vol "
+          "tende a PENALIZAR (maior yield, como H2/H4); como a H8 é a INTERSEÇÃO das "
+          "duas, o viés líquido não tem sinal a priori (não fixado explicitamente no "
+          "pré-registro original da H8; nota técnica adicionada na revisão de código "
+          "de 2026-08-28).",
 }
 
 
@@ -100,7 +111,11 @@ def build_markdown(verdict, strat, bench, cfg, run_id=None, hypothesis="H1"):
         f"{'ACIMA de zero' if lo is not None and lo > 0 else 'CRUZA zero / negativo'}",
     ]
     if "dsr" in verdict:
-        crit = cfg.get(f"{hypothesis.lower()}_criteria", cfg.get("h2_criteria", {}))
+        # mesmo fallback de trials_gate.apply_dsr (que realmente decide o veredito):
+        # seção `{h}_criteria` ausente -> {} -> dsr_min default 0.95. Divergir daqui
+        # (ex.: cair para h2_criteria) exibiria um limiar que não foi o usado pra
+        # julgar (achado de revisão de código 2026-08-28).
+        crit = cfg.get(f"{hypothesis.lower()}_criteria", {})
         lines += [
             f"- **Critério (ii) — DSR (Deflated Sharpe Ratio):** "
             f"{_fmt(_num(verdict.get('dsr')))} contra E[max SR | N="
@@ -127,7 +142,11 @@ def build_markdown(verdict, strat, bench, cfg, run_id=None, hypothesis="H1"):
         "",
         "## Ressalvas registradas (não-negociáveis)",
         "",
-        _BIAS_NOTE.get(hypothesis, _BIAS_NOTE["H1"]),
+        _BIAS_NOTE.get(hypothesis, "- Retorno **só-preço** (rota (b)): dividendos/JCP "
+                                   f"omitidos; direção do viés NÃO documentada para "
+                                   f"{hypothesis} em `report._BIAS_NOTE` — adicionar "
+                                   "antes de interpretar o veredito (não herdar a nota "
+                                   "de outra hipótese)."),
         "- Custo proporcional ao turnover real; execução na abertura de D+1.",
         f"- Veredito real da {hypothesis} exige COTAHIST **real** da B3 — sintético só "
         "valida a máquina.",

@@ -1,5 +1,79 @@
 # HANDOFF — predictor-stocks
 
+> ## Revisão de código pós-reconstrução do banco (2026-08-28) — 10 achados, todos corrigidos
+>
+> Pedido do operador ("testa a qualidade dele, acertos e erros") logo após a
+> reconstrução do `stocks.db` e o julgamento de H6/H8 (ver entrada abaixo).
+> Duas frentes: (1) `/code-review high src/` — revisão multi-agente com
+> verificação adversarial; (2) taxa de acerto (hit rate) das 6 hipóteses já
+> julgadas sobre o dado real, puramente descritivo (papel de analista §9b,
+> não altera nenhum veredito). Achados da frente (1), todos corrigidos nesta
+> sessão, suíte revalidada **240/240 verde** (230 + 10 testes de regressão
+> novos):
+>
+> 1. `rj_pipeline.py` (`persist_run`): `UPDATE ... WHERE value IS NOT ?` com
+>    parâmetro `None` virava `IS NOT NULL` no SQLite — uma rodada que
+>    recomputasse uma família como indisponível apagava com NULL um score
+>    válido de rodada anterior, sem trilha em `adjustments`/`quarantine`.
+>    Corrigido: score `None` nunca escreve (rodada sem dado não apaga rodada
+>    anterior com dado).
+> 2. `rj_families.py` (`ownership`): só dispara com
+>    `rj_events.event_type == "investidor_5pct"`, mas NENHUM ingestor deste
+>    repo produz esse tipo (`ingest_cvm.ingest_ipe_year` só grava
+>    `fato_relevante`/`ipe_outro`) — a família sempre voltava 0, uma falsa
+>    certeza de "não houve entrada de investidor". Corrigida a fiação em
+>    `compute_family_scores`: `ownership` fica `None` (dado indisponível,
+>    mesma disciplina de `liquidity`/free_float) até existir um ingestor real.
+> 3. `report.py` (`_BIAS_NOTE`): faltavam entradas H6/H8 — o relatório caía
+>    silenciosamente na ressalva de viés da H1, errada para a H8 (perna
+>    baixa-vol tem viés oposto). Corrigido + notas próprias para H6/H8 +
+>    fallback genérico (nunca mais herda nota de outra hipótese) — ver
+>    entrada de veredito H6/H8 abaixo para o impacto no DSR da H6.
+> 4. `rj_episodes.py`/`rj_families.py`/`rj_families_next.py`: guards
+>    estruturais (anti-lookahead; consistência de registry) eram `assert` nu
+>    — removível com `-O`/`PYTHONOPTIMIZE`. Trocado por `raise` explícito
+>    (mesmo tipo de exceção onde havia teste dependente).
+> 5. `adjust.py` (`adjusted_series`, `scan_and_quarantine`): faltava
+>    `approved_by IS NOT NULL` nas leituras de `adjustments` — defesa em
+>    profundidade (hoje latente, já que o único writer exige aprovação antes
+>    de inserir); um ajuste PENDENTE agora nem "explica" o salto na
+>    quarentena nem entra na série ajustada.
+> 6. `execution.py`/`backtest.py`: a versão NORMALIZADA e correta do custo de
+>    turnover (`equal_weight_turnover_cost`) vivia duplicada como função
+>    privada em `backtest.py`, enquanto `execution.py` exportava só a versão
+>    BRUTA (`calculate_turnover_cost`) sem avisar que não é normalizada —
+>    risco de reintroduzir o bug histórico de custo já diagnosticado. Movida
+>    para `execution.py` como canônica; `backtest.py` importa (não duplica).
+> 7. `universe.py`/`backtest.py`: nada impedia rodar `backtest` sem nunca ter
+>    rodado `adjust` — um split real ficaria sem excluir/ajustar, corrompendo
+>    o Sharpe em silêncio. Novo guard `adjust.require_scanned` (fail loud se
+>    `prices_raw` tem escala de produção e `quarantine`+`adjustments` estão
+>    os DOIS vazios), chamado no início de `walk_forward`.
+> 8. `report.py`: o limiar de DSR exibido caía para `h2_criteria` quando a
+>    seção própria da hipótese faltava no config — divergindo do fallback
+>    REAL usado por `trials_gate.apply_dsr` (vazio -> default 0.95). Corrigido
+>    para bater exatamente com o que decidiu o veredito.
+> 9. `backtest.py`: `run_h2/h4/h5/h6/h8` eram 5 funções quase idênticas
+>    copiadas à mão — a mesma duplicação que já causou o bug real do clobber
+>    de sharpe da H2 (2026-07-18). Extraído `_run_hypothesis` genérico; cada
+>    `run_hN` fica só com o que É específico dela (parâmetros do config,
+>    `signal_fn`/`portfolio_fn`).
+> 10. `rj_judge.py`/`rj_judge_robust.py`: a convenção de p-valor de permutação
+>     `(n_ge+1)/(n_perm+1)` estava implementada 3x independentemente
+>     (`permutation_pvalue`, `categorical_family_verdict`,
+>     `romano_wolf_stepdown`). Extraído `permutation_pvalue_from_count`
+>     (+ `_permutation_test` genérico para os dois testes de família única);
+>     `romano_wolf_stepdown` importa a mesma função.
+>
+> **Frente (2), hit rate** (descritivo, sobre o dado real 2018-2026, não
+> altera veredito): taxa de acerto essencialmente de moeda honesta em quase
+> tudo (H1 50,8%, H2 50,2%, H4 49,8%, H6 50,2%, H8 51,0%) — consistente com
+> "mercado eficiente, nenhuma comprovada". **H5 destoa negativamente** (47,1%
+> de acerto, só 39,8% dos meses batendo o benchmark), confirmando o achado de
+> anti-sinal já registrado. **H8 tem a melhor taxa (51,0%/55,3%)**, batendo
+> com "melhor descritivo do domínio" — mas DSR/IC já reprovaram, então
+> continua não comprovada.
+
 > ## Ingestão DFP da CVM (2026-08-27) — dado novo para viabilizar a H7 (fator de qualidade)
 >
 > Terceira frente do pedido do operador (H6/H8 já pré-registradas acima). A
@@ -119,17 +193,40 @@
 > mesma disciplina do item 2 da errata de 2026-07-28): a chamada ad hoc não
 > passou `run_id` (não houve `db.new_run`), então os relatórios saem como
 > `reports/h6_verdict_adhoc.md`/`h8_verdict_adhoc.md` com `run_id: n/d` em vez
-> do padrão `h#_verdict_<run_id>.md` das hipóteses anteriores — e o texto
-> herdado do template ("veredito real exige COTAHIST real — sintético só valida
-> a máquina") ficou obsoleto no artefato (já rodou com dado real). O bootstrap é
+> do padrão `h#_verdict_<run_id>.md` das hipóteses anteriores. O bootstrap é
 > determinístico (seed=42 fixa em `config.yaml`), então a rodada é
-> reproduzível bit-a-bit; não há necessidade de re-rodar.
+> reproduzível bit-a-bit.
+>
+> **Errata (2026-08-28, mesmo dia — revisão de código pós-veredito, achados
+> aplicados):** revisão de código encontrou e corrigiu, entre outros, dois bugs
+> que tocam diretamente estes dois relatórios (nenhum mexe em `[H6-FROZEN]`/
+> `[H8-FROZEN]` nem inverte veredito nenhum):
+> 1. `report.py`: `_BIAS_NOTE` só tinha entradas H1/H2/H4/H5 — o relatório da
+>    H6/H8 imprimia silenciosamente a ressalva de viés da H1 (momentum puro),
+>    errada para a H8 (perna baixa-vol tem viés na direção OPOSTA). Também o
+>    texto herdado do template ("veredito real exige COTAHIST real — sintético
+>    só valida a máquina") tinha ficado obsoleto (já rodou com dado real).
+>    Corrigido; relatórios REGERADOS (mesmo `seed=42`, números idênticos) para
+>    carregar o texto certo.
+> 2. **A H6 tinha sido julgada a primeira vez com N=5 no DSR**, não N=6 como o
+>    próprio pré-registro da H6 fixa ("N=6 tentativas no registro", igual à
+>    H8) — a chamada ad hoc rodou H6 ANTES de H8 existir no `trials.json`,
+>    então o denominador do DSR (todas as tentativas do registro NO MOMENTO do
+>    cálculo) ficou incompleto. Ao regerar o relatório (depois de H8 já
+>    registrada), a H6 saiu corretamente com N=6. **PSR, IC e sharpe realizado
+>    da H6 são idênticos** (o sinal/carteira/custo não mudaram) — só o DSR e o
+>    E[max SR] mudam porque o denominador agora tem a tentativa que faltava.
+>    Não é reabertura de hipótese nem ajuste de parâmetro: é a correção de um
+>    artefato de ORDEM de execução no registro de tentativas. **Não inverte
+>    veredito**: DSR ficou ainda MENOR (0,4565 < 0,4828), mais longe do
+>    limiar, não mais perto.
 >
 > ### VEREDITO H6 — ENCERRADA: NÃO COMPROVADA (2026-08-28, rodada única)
 >
 > - 2.131 pregões pareados
 > - **IC 95% diff-Sharpe (stationary, bloco 21): (−0,3526, +0,3256)** — cruza zero
-> - **DSR: 0,4828 < 0,95** (N=5; E[max SR|N=5] = 0,0123 por-período)
+> - **DSR: 0,4565 < 0,95** (N=6; E[max SR|N=6] = 0,0137 por-período — ver
+>   errata de correção do N acima)
 > - PSR 0,4898. Descritivo: Sharpe anual. 0,1802 vs 0,1891 (benchmark
 >   levemente superior); Sortino 0,2414 vs 0,2570; retorno total 11,03% vs
 >   14,51%; max drawdown 49,65% vs 48,26%. Momentum 6-1 não supera o

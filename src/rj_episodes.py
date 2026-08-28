@@ -163,9 +163,13 @@ def classify_episode(dates: list[str], closes: list[float], trough_date: str,
     que não teve rally": o outcome é `invalid_data` e o episódio deve ser
     contabilizado como excluído/missing pelo chamador — NUNCA como controle
     (`no_rally_observed` fabricaria denominador falso no judge)."""
-    assert not dates or dates[-1] <= asof_today, (
-        f"série estende além do asof ({dates[-1]} > {asof_today}) — "
-        "lookahead estrutural; truncar a série no chamador")
+    # `assert` seria removido com -O/PYTHONOPTIMIZE, apagando este guard
+    # anti-lookahead estrutural em produção (achado de revisão de código
+    # 2026-08-28) — usa raise explícito, nunca stripado pelo interpretador.
+    if dates and dates[-1] > asof_today:
+        raise AssertionError(
+            f"série estende além do asof ({dates[-1]} > {asof_today}) — "
+            "lookahead estrutural; truncar a série no chamador")
     rcfg = cfg["rally"]
     max_window = rcfg[window_key]
     trough_idx = dates.index(trough_date)

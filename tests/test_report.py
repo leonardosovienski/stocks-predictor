@@ -47,6 +47,50 @@ def test_write_report_grava_md_e_emite_telemetria(tmp_path, monkeypatch):
     assert ev["metadata"]["veredito"].startswith("não comprovada")
 
 
+def test_h6_and_h8_get_their_own_bias_note_not_h1s(tmp_path):
+    """Achado de revisão de código 2026-08-28: `_BIAS_NOTE` só tinha H1/H2/H4/H5
+    — o fallback `.get(hypothesis, _BIAS_NOTE["H1"])` imprimia silenciosamente
+    a ressalva de viés da H1 (momentum puro) nos relatórios de H6/H8, errada
+    para a H8 (perna baixa-vol tem viés na direção OPOSTA da H1)."""
+    verdict = {"n": 10, "psr": 0.5, "sharpe_diff_ci": (-0.1, 0.1), "veredito": "x"}
+    md6, _, _ = report.build_markdown(verdict, [0.01] * 10, [0.01] * 10, _CFG,
+                                      hypothesis="H6")
+    assert "momentum 6-1" in md6
+    assert "MISTA" not in md6
+
+    md8, _, _ = report.build_markdown(verdict, [0.01] * 10, [0.01] * 10, _CFG,
+                                      hypothesis="H8")
+    assert "MISTA" in md8
+    assert "momentum 6-1" not in md8
+
+
+def test_unknown_hypothesis_does_not_inherit_h1_bias_note(tmp_path):
+    """Uma hipótese futura (H9+) sem entrada em `_BIAS_NOTE` tem que avisar que
+    a nota não foi documentada — nunca herdar silenciosamente o texto da H1."""
+    verdict = {"n": 10, "psr": 0.5, "sharpe_diff_ci": (-0.1, 0.1), "veredito": "x"}
+    md, _, _ = report.build_markdown(verdict, [0.01] * 10, [0.01] * 10, _CFG,
+                                     hypothesis="H9")
+    assert "NÃO documentada" in md
+    assert "FAVORECE a estratégia de momentum" not in md
+
+
+def test_dsr_threshold_shown_matches_hypothesis_own_criteria_not_h2s():
+    """Achado de revisão de código 2026-08-28: o relatório caía para
+    `h2_criteria` quando a seção `{h}_criteria` da hipótese não existia no
+    config — divergindo do fallback REAL de `trials_gate.apply_dsr` (seção
+    ausente -> {} -> dsr_min default 0.95). Config com h2_criteria.dsr_min
+    diferente do default prova que o relatório não pode mais herdar o valor
+    de outra hipótese."""
+    cfg = {"bootstrap": {"confidence": 0.95, "block_length": 21},
+          "h2_criteria": {"dsr_min": 0.80}}   # deliberadamente != 0.95
+    verdict = {"n": 10, "psr": 0.5, "sharpe_diff_ci": (-0.1, 0.1), "veredito": "x",
+              "dsr": 0.5, "n_trials": 9, "sr0": 0.01}
+    md, _, _ = report.build_markdown(verdict, [0.01] * 10, [0.01] * 10, cfg,
+                                     hypothesis="H9")   # sem h9_criteria no cfg
+    assert "mínimo pré-registrado: 0.95" in md
+    assert "0.8" not in md.split("mínimo pré-registrado:")[1][:6]
+
+
 def test_nan_psr_nao_corrompe_telemetria(tmp_path, monkeypatch):
     """NaN passa isinstance(float) e json.dumps o serializa como 'NaN' — JSON inválido
     p/ qualquer parser estrito. O filtro de metrics tem que barrar não-finitos."""

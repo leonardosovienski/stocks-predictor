@@ -166,7 +166,16 @@ def compute_family_scores(conn: sqlite3.Connection, ep: dict, cfg: dict,
             families.volume_dynamics(vols, vdates, trough),
         "rj_stage": families.rj_stage(trough, ep["plan_presented_date"],
                                       ep["plan_approved_date"], ep["rj_end_date"]),
-        "ownership": families.ownership(events, trough),
+        # ownership (H51-H60) só é elegível com rj_events.event_type="investidor_5pct".
+        # NENHUM ingestor deste repo produz esse tipo hoje (ingest_cvm.ingest_ipe_year só
+        # grava "fato_relevante"/"ipe_outro") — sem essa fonte, families.ownership()
+        # nunca encontraria o evento e sempre cairia no "sem evento -> 0", uma falsa
+        # certeza (achado de revisão de código 2026-08-28: a família ficaria
+        # silenciosamente degenerada/constante para toda empresa). Até existir o
+        # ingestor real de participação acionária relevante, a família fica
+        # "dado indisponível" (None) — mesma disciplina que `liquidity` usa para
+        # free_float ausente.
+        "ownership": None,
         "momentum_volatility": families.momentum_volatility(dates, closes, trough),
         "time_since_rj": families.time_since_rj(ep["rj_request_date"], trough, dates),
         "info_trigger": families.info_trigger(events, trough),
@@ -216,6 +225,12 @@ def persist_run(conn: sqlite3.Connection, built: dict, asof: str) -> None:
         for fam, val in ep["scores"].items():
             if isinstance(val, str):      # rj_stage categórico: guarda hash-free
                 continue                  # (tabela é REAL; categórico vive no relatório)
+            if val is None:
+                # dado indisponível NESTA rodada (ex.: free_float não fornecido) não
+                # apaga um score válido persistido por uma rodada anterior — `value IS
+                # NOT ?` com parâmetro None vira `IS NOT NULL` no SQLite e casaria
+                # qualquer valor existente, sobrescrevendo-o com NULL silenciosamente.
+                continue
             conn.execute(
                 "INSERT OR IGNORE INTO rj_family_scores(episode_id, family, value)"
                 " VALUES(?,?,?)", (episode_id, fam, val))

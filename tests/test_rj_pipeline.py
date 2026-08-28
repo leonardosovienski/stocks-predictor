@@ -162,6 +162,62 @@ def test_pipeline_liquidity_unavailable_without_free_float(tmp_path, cfg):
     assert report["missing_scores_by_family"]["liquidity"] == len(primaries)
 
 
+def test_ownership_family_is_always_unavailable_pending_real_ingester(tmp_path, cfg):
+    """Achado de revisão de código 2026-08-28: `families.ownership` só é
+    elegível com rj_events.event_type="investidor_5pct", mas NENHUM ingestor
+    deste repo produz esse tipo (só fato_relevante/ipe_outro via
+    ingest_cvm.ingest_ipe_year) — mesmo inserindo o evento diretamente na
+    tabela (bypassando o ingestor real), `compute_family_scores` tem que
+    reportar `ownership` como indisponível (None), nunca 0 (que afirmaria
+    falsamente "sabemos que não houve entrada de investidor >=5%")."""
+    conn = db.get_connection(tmp_path / "test.db")
+    dates = _calendar(600)
+    rng = random.Random(21)
+    # evento "investidor_5pct" bem perto do fundo — se a família estivesse
+    # ativa, isto dispararia ownership=1. Mesmo assim deve sair None.
+    _insert_company(conn, "RALLY3", dates, _series(dates, rng, 50, rally=True),
+                    rj_idx=50, events=[(dates[109], "investidor_5pct")])
+    report = pipeline.run_pipeline(conn, cfg, dates[-1])
+    primaries = [ep for ep in report["episodes"] if ep["is_primary"] == 1]
+    assert primaries
+    assert all(ep["scores"]["ownership"] is None for ep in primaries)
+
+
+def test_persist_run_does_not_overwrite_score_with_null(tmp_path, cfg):
+    """Achado de revisão de código 2026-08-28: `persist_run` gravava um score
+    válido de uma rodada anterior e uma rodada SEGUINTE com aquela família
+    indisponível (None) apagava o valor com NULL — `value IS NOT ?` com
+    parâmetro None vira `IS NOT NULL` no SQLite e casa qualquer valor
+    existente. Score persistido tem que sobreviver a uma rodada com dado
+    faltante para a mesma família/episódio."""
+    conn = db.get_connection(tmp_path / "test.db")
+    dates = _calendar(600)
+    rng = random.Random(22)
+    ff = {"RALLY3": 1_000_000}
+    _insert_company(conn, "RALLY3", dates, _series(dates, rng, 50, rally=True),
+                    rj_idx=50)
+    asof = dates[-1]
+    built = pipeline.build_episodes(conn, cfg, asof)
+    for ep in built["episodes"]:
+        ep["scores"] = pipeline.compute_family_scores(conn, ep, cfg, ff, asof)
+    pipeline.persist_run(conn, built, asof)
+    ep_id = conn.execute("SELECT id FROM rj_episodes WHERE ticker='RALLY3'").fetchone()[0]
+    before = conn.execute(
+        "SELECT value FROM rj_family_scores WHERE episode_id=? AND family='liquidity'",
+        (ep_id,)).fetchone()[0]
+    assert before is not None    # score real gravado com free_float presente
+
+    # 2ª rodada SEM free_float: liquidity sai None para este episódio.
+    built2 = pipeline.build_episodes(conn, cfg, asof)
+    for ep in built2["episodes"]:
+        ep["scores"] = pipeline.compute_family_scores(conn, ep, cfg, None, asof)
+    pipeline.persist_run(conn, built2, asof)
+    after = conn.execute(
+        "SELECT value FROM rj_family_scores WHERE episode_id=? AND family='liquidity'",
+        (ep_id,)).fetchone()[0]
+    assert after == before      # score anterior NÃO foi apagado com NULL
+
+
 def test_adjustment_applied_after_trough_does_not_change_family_scores():
     """[anti-vazamento do ajuste retroativo] Um split adjudicado com ex_date
     DEPOIS do fundo escala todos os preços anteriores por um fator constante.

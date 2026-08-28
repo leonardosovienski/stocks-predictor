@@ -25,23 +25,45 @@ def one_way_cost(fee_pct, slippage_pct):
 
 
 def calculate_turnover_cost(prev_port, curr_port, cost_per_side):
-    """Custo de transação proporcional ao turnover REAL entre dois rebalanceamentos.
+    """Custo de transação BRUTO (não-normalizado) proporcional ao turnover REAL entre
+    dois rebalanceamentos: só posições que de fato entraram ou saíram pagam.
 
-    SÓ posições que de fato entraram ou saíram pagam — papéis que permanecem na carteira
-    não geram operação, logo custo zero. Blinda contra a fraude clássica de cobrar custo
-    sobre o portfólio inteiro (que superestima o arrasto para carteiras com persistência
-    normal e distorce o veredito CONTRA a estratégia).
+    ATENÇÃO (achado de revisão de código 2026-08-28): esta função retorna a contagem
+    SOMADA (exits+entries) × cost_per_side, em unidades de "lado por posição" — NÃO é
+    o arrasto pronto para somar ao retorno da carteira. Dividir esse total por um único
+    denominador (ex.: `len(curr_port)`) foi exatamente o bug diagnosticado e corrigido no
+    `backtest.py` (superestimava o custo das saídas quando a carteira encolhia e
+    subestimava quando crescia). Para o arrasto NORMALIZADO e correto de uma carteira
+    EQUIPONDERADA, use `equal_weight_turnover_cost` abaixo — não reimplemente a
+    normalização aqui.
 
     prev_port / curr_port: conjuntos de tickers. cost_per_side = fee + slippage por lado.
-    Retorna o custo SOMADO em unidades de "lado por posição" — o chamador normaliza pelo
-    peso (1/n) para obter o arrasto sobre o retorno equiponderado do portfólio.
-
     Carteira inicial (prev vazio): todas as posições entram => cobra entrada de cada uma.
     """
     prev_port, curr_port = set(prev_port), set(curr_port)
     exiting = len(prev_port - curr_port)
     entering = len(curr_port - prev_port)
     return (exiting + entering) * cost_per_side
+
+
+def equal_weight_turnover_cost(prev_port, curr_port, cost_per_side):
+    """Arrasto de turnover NORMALIZADO para carteira EQUIPONDERADA — o arrasto pronto
+    para subtrair do retorno do período (não a contagem bruta de `calculate_turnover_cost`
+    acima). Cada SAÍDA pesa 1/len(prev_port) (peso que ela tinha), cada ENTRADA pesa
+    1/len(curr_port) (peso que ela passa a ter). Dividir tudo por um único denominador
+    (bug histórico, ver `calculate_turnover_cost`) superestimava o custo das saídas
+    quando a carteira encolhia e subestimava quando crescia.
+
+    Carteira inicial (prev vazio): tudo é entrada => 1 × cost_per_side, independente do
+    tamanho — mesma convenção de `weighted_turnover_cost`.
+    """
+    prev_port, curr_port = set(prev_port), set(curr_port)
+    exits = len(prev_port - curr_port)
+    entries = len(curr_port - prev_port)
+    cost = entries * cost_per_side / len(curr_port) if curr_port else 0.0
+    if prev_port:
+        cost += exits * cost_per_side / len(prev_port)
+    return cost
 
 
 def weighted_turnover_cost(prev_weights, curr_weights, cost_per_side):

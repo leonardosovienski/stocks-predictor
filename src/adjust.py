@@ -95,8 +95,13 @@ def scan_and_quarantine(conn, threshold) -> int:
             "GROUP BY date ORDER BY date", (t, SPOT_MARKET)).fetchall()
         dates = [r[0] for r in rows]
         closes = [r[1] for r in rows]
+        # approved_by IS NOT NULL: um ajuste PENDENTE (ainda não aprovado por humano,
+        # §9b/§11) não pode contar como "salto já explicado" — senão o evento nunca
+        # entraria em quarentena e sumiria da fila de revisão (achado de revisão de
+        # código 2026-08-28, mesma defesa que adjusted_series ganhou abaixo).
         explained = {r[0] for r in conn.execute(
-            "SELECT ex_date FROM adjustments WHERE ticker=?", (t,))}
+            "SELECT ex_date FROM adjustments WHERE ticker=? AND approved_by IS NOT NULL",
+            (t,))}
         for d, ret in detect_jumps(dates, closes, threshold):
             if d in explained:
                 continue
@@ -106,6 +111,31 @@ def scan_and_quarantine(conn, threshold) -> int:
             n += cur.rowcount   # conta só quarentenas NOVAS (re-execução = 0)
     conn.commit()
     return n
+
+
+def require_scanned(conn, min_rows=50_000):
+    """Fail loud (achado de revisão de código 2026-08-28) se `prices_raw` parece ter
+    dado real de bulk (muitas linhas) mas `quarantine`/`adjustments` estão os DOIS
+    vazios — sinal forte de que `main.py adjust` nunca rodou neste banco. Sem o
+    scan, um split/grupamento real no meio da janela de teste não seria excluído
+    nem ajustado: `adjusted_series` devolveria a série CRUA e o momentum/turnover/
+    Sharpe seriam corrompidos por um salto overnight falso, sem erro nem aviso.
+
+    `min_rows` é deliberadamente bem acima do maior fixture sintético dos testes
+    (poucos milhares de linhas) e bem abaixo de uma carga real de B3 (~1M+) — não
+    dispara em dado de teste, dispara em dado de produção nunca escaneado."""
+    n_prices = conn.execute("SELECT COUNT(*) FROM prices_raw").fetchone()[0]
+    if n_prices < min_rows:
+        return
+    n_q = conn.execute("SELECT COUNT(*) FROM quarantine").fetchone()[0]
+    n_adj = conn.execute("SELECT COUNT(*) FROM adjustments").fetchone()[0]
+    if n_q == 0 and n_adj == 0:
+        raise RuntimeError(
+            f"prices_raw tem {n_prices} linhas mas quarantine/adjustments estão "
+            "AMBOS vazios — parece que `main.py adjust` nunca rodou neste banco. "
+            "Rode `python main.py adjust` antes do backtest (M2, portão crítico do "
+            "design): sem isso, splits/grupamentos reais não seriam excluídos nem "
+            "ajustados, corrompendo o Sharpe silenciosamente.")
 
 
 def adjusted_series(conn, ticker):
@@ -118,8 +148,14 @@ def adjusted_series(conn, ticker):
     dates = [r[0] for r in rows]
     closes = [r[1] for r in rows]
     adjustments = []
+    # approved_by IS NOT NULL: defesa em profundidade (achado de revisão de código
+    # 2026-08-28) — hoje o único writer (import_approved_adjustments) já exige
+    # approved_by preenchido antes de inserir, mas esta query não pode depender
+    # disso silenciosamente; um ajuste PENDENTE nunca deve entrar na série que
+    # alimenta o fator/backtest.
     for ex_date, factor in conn.execute(
-            "SELECT ex_date, factor FROM adjustments WHERE ticker=? ORDER BY ex_date",
+            "SELECT ex_date, factor FROM adjustments WHERE ticker=? "
+            "AND approved_by IS NOT NULL ORDER BY ex_date",
             (ticker,)):
         if dates and (ex_date < dates[0] or ex_date > dates[-1]):
             logger.warning("ajuste de %s em %s fora do range de preços [%s, %s] — ignorado",

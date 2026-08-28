@@ -22,6 +22,6 @@
 
 ## Ressalvas registradas (não-negociáveis)
 
-- Retorno **só-preço** (rota (b)): dividendos/JCP omitidos; o viés FAVORECE a estratégia de momentum contra o benchmark (declarado no pré-registro).
+- Retorno **só-preço** (rota (b)): direção MISTA — a perna momentum tende a FAVORECER a estratégia (menor yield, como H1/H6) e a perna baixa-vol tende a PENALIZAR (maior yield, como H2/H4); como a H8 é a INTERSEÇÃO das duas, o viés líquido não tem sinal a priori (não fixado explicitamente no pré-registro original da H8; nota técnica adicionada na revisão de código de 2026-08-28).
 - Custo proporcional ao turnover real; execução na abertura de D+1.
 - Veredito real da H8 exige COTAHIST **real** da B3 — sintético só valida a máquina.

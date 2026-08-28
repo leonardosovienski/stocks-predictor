@@ -162,6 +162,10 @@ NEXT_GEN_REGISTRY = {
 import rj_families as _preregistered  # noqa: E402
 
 _overlap = set(NEXT_GEN_REGISTRY) & set(_preregistered.REGISTRY)
-assert not _overlap, (
-    f"família(s) {_overlap} em AMBOS os registries — next-gen não pode "
-    "colidir com as pré-registradas sem novo pré-registro formal")
+# `assert` seria removido com -O/PYTHONOPTIMIZE, apagando este guard de
+# disjunção entre registries (achado de revisão de código 2026-08-28) — usa
+# raise explícito, nunca stripado pelo interpretador.
+if _overlap:
+    raise ValueError(
+        f"família(s) {_overlap} em AMBOS os registries — next-gen não pode "
+        "colidir com as pré-registradas sem novo pré-registro formal")

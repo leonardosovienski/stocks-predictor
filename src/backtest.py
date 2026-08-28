@@ -25,30 +25,17 @@ import execution
 import factor
 import portfolio
 from config import load_config
+from execution import equal_weight_turnover_cost
 from returns import month_end_dates
 import universe
 from predictor_core.measurement.bootstrap import bootstrap_ci
 from predictor_core.measurement.stats import (max_drawdown,
                                               probabilistic_sharpe_ratio, sharpe)
 
-
-def equal_weight_turnover_cost(prev_port, port_set, cost_per_side):
-    """Arrasto de turnover para carteira EQUIPONDERADA, já normalizado:
-    cada SAÍDA pesa 1/len(prev_port) (peso que ela tinha), cada ENTRADA pesa
-    1/len(port_set) (peso que ela passa a ter). Dividir tudo pelo tamanho da
-    carteira nova (comportamento anterior) superestimava o custo das saídas
-    quando a carteira encolhia e subestimava quando crescia.
-
-    Carteira inicial (prev vazio): tudo é entrada => 1 * cost_per_side,
-    independente do tamanho — igual à convenção de weighted_turnover_cost.
-    """
-    prev_port, port_set = set(prev_port), set(port_set)
-    exits = len(prev_port - port_set)
-    entries = len(port_set - prev_port)
-    cost = entries * cost_per_side / len(port_set) if port_set else 0.0
-    if prev_port:
-        cost += exits * cost_per_side / len(prev_port)
-    return cost
+# equal_weight_turnover_cost agora vive em execution.py (canônica, ao lado da versão
+# bruta calculate_turnover_cost — achado de revisão de código 2026-08-28: a duplicata
+# local aqui arriscava divergir da correção já diagnosticada). Import acima mantém
+# `backtest.equal_weight_turnover_cost` funcionando para quem já chamava por aqui.
 
 
 def _daily_returns(dates, closes):
@@ -75,6 +62,7 @@ def walk_forward(conn, cfg, signal_fn=None, take="top", portfolio_fn=None):
     (Σ|Δw| × lado). Quando presente, ignora signal_fn/take. O caminho
     equiponderado de H1/H2 permanece intocado.
     """
+    adjust.require_scanned(conn)
     f, u = cfg["factor"], cfg["universe"]
     e, bt = cfg["execution"], cfg["backtest"]
     lookback_mom, skip = f.get("lookback_days", 252), f.get("skip_days", 21)
@@ -223,23 +211,6 @@ def _conclude(verdict, strat, bench, cfg, hypothesis, write_report, run_id, extr
     return verdict
 
 
-def run_h2(cfg=None, conn=None, write_report=False, run_id=None, trials_path=None):
-    """H2 — baixa volatilidade (pré-registro 2026-07-16). MESMA maquinaria da H1
-    (universo/custos/pareamento/pedágio); o que muda é o sinal (vol realizada,
-    quintil INFERIOR) e o critério extra da 2ª hipótese: DSR >= dsr_min,
-    descontado por todas as tentativas do trials.json (trials_gate)."""
-    import trials_gate
-    cfg = cfg or load_config()
-    conn = conn or db.get_connection()
-    lb = cfg.get("h2_factor", {}).get("lookback_days", 252)
-    strat, bench = walk_forward(
-        conn, cfg, signal_fn=lambda sub, asof: factor.vol_signals(sub, asof, lb),
-        take="bottom")
-    verdict = trials_gate.apply_dsr(judge(strat, bench, cfg), strat, cfg,
-                                    trials_path=trials_path)
-    return _conclude(verdict, strat, bench, cfg, "H2", write_report, run_id)
-
-
 def _max_dd(returns):
     """Max drawdown da curva de capital (base 1.0) de uma série de retornos."""
     eq, v = [], 1.0
@@ -249,35 +220,75 @@ def _max_dd(returns):
     return max_drawdown(eq)
 
 
+def _h4_extra_criteria(strat, bench, cfg):
+    """Critério (iii) da H4 ("julgado por Sharpe líquido E drawdown", design §10):
+    maxDD da estratégia <= maxDD do benchmark. Isolado do runner genérico porque só
+    a H4 tem um 3º critério além de IC+DSR."""
+    dd_s = dd_b = None
+    failures = []
+    if strat and cfg.get("h4_criteria", {}).get("require_maxdd_not_worse", True):
+        dd_s, dd_b = _max_dd(strat), _max_dd(bench)
+        if dd_s > dd_b:
+            failures.append(f"maxDD estratégia {dd_s:.2%} > benchmark {dd_b:.2%}")
+    return failures, {"maxdd_strat": dd_s, "maxdd_bench": dd_b}, f"maxDD strat/bench={dd_s}/{dd_b} | "
+
+
+def _run_hypothesis(hypothesis, trial_name, frozen_keys, criteria_section, notes,
+                    cfg, conn, write_report, run_id, trials_path,
+                    signal_fn=None, take="top", portfolio_fn=None,
+                    extra_criteria=None):
+    """Runner comum das hipóteses H2+ (achado de revisão de código 2026-08-28: os
+    run_hN eram 5 funções quase idênticas copiadas à mão — a mesma duplicação que já
+    causou o bug real do clobber de sharpe da H2, ver `trials_gate.register_hypothesis`).
+    Cada `run_hN` abaixo fica só com o que É específico dela: extrair os parâmetros
+    `[hN-FROZEN]` do config e montar `signal_fn`/`take`/`portfolio_fn`."""
+    import trials_gate
+    strat, bench = walk_forward(conn, cfg, signal_fn=signal_fn, take=take,
+                                portfolio_fn=portfolio_fn)
+    base = judge(strat, bench, cfg)
+    extra_failures, extra_fields, extra_text = [], {}, ""
+    if extra_criteria is not None:
+        extra_failures, extra_fields, extra_text = extra_criteria(strat, bench, cfg)
+    verdict = trials_gate.apply_dsr(
+        base, strat, cfg, trials_path=trials_path,
+        trial_name=trial_name, frozen_keys=frozen_keys,
+        criteria_section=criteria_section, extra_failures=extra_failures, notes=notes)
+    verdict.update(extra_fields)
+    return _conclude(verdict, strat, bench, cfg, hypothesis, write_report, run_id,
+                     extra=extra_text)
+
+
+def run_h2(cfg=None, conn=None, write_report=False, run_id=None, trials_path=None):
+    """H2 — baixa volatilidade (pré-registro 2026-07-16). MESMA maquinaria da H1
+    (universo/custos/pareamento/pedágio); o que muda é o sinal (vol realizada,
+    quintil INFERIOR) e o critério extra da 2ª hipótese: DSR >= dsr_min,
+    descontado por todas as tentativas do trials.json (trials_gate)."""
+    cfg = cfg or load_config()
+    conn = conn or db.get_connection()
+    lb = cfg.get("h2_factor", {}).get("lookback_days", 252)
+    return _run_hypothesis(
+        "H2", "h2-lowvol-252", None, "h2_criteria", None,
+        cfg, conn, write_report, run_id, trials_path,
+        signal_fn=lambda sub, asof: factor.vol_signals(sub, asof, lb), take="bottom")
+
+
 def run_h4(cfg=None, conn=None, write_report=False, run_id=None, trials_path=None):
     """H4 — sizing por volatility targeting (pré-registro 2026-07-18): universo
     INTEIRO com peso ∝ 1/vol realizada 252d vs. o MESMO universo equiponderado.
     Critérios (todos, fixados a priori): (i) IC95% diff-Sharpe > 0;
     (ii) DSR >= dsr_min (N=3 tentativas); (iii) maxDD da estratégia <= maxDD do
     benchmark ("julgado por Sharpe líquido E drawdown", design §10)."""
-    import trials_gate
     from config import H4_FROZEN_KEYS
     cfg = cfg or load_config()
     conn = conn or db.get_connection()
     lb = cfg.get("h4_weighting", {}).get("vol_lookback_days", 252)
-    strat, bench = walk_forward(
-        conn, cfg,
+    return _run_hypothesis(
+        "H4", "h4-invvol-sizing-252", H4_FROZEN_KEYS, "h4_criteria",
+        "rodada única da H4 (sizing 1/vol; sharpe por-período realizado)",
+        cfg, conn, write_report, run_id, trials_path,
         portfolio_fn=lambda sub, asof: portfolio.inverse_vol_weights(
-            factor.vol_signals(sub, asof, lb)))
-    base = judge(strat, bench, cfg)
-    extra, dd_s, dd_b = [], None, None
-    if strat and cfg.get("h4_criteria", {}).get("require_maxdd_not_worse", True):
-        dd_s, dd_b = _max_dd(strat), _max_dd(bench)
-        if dd_s > dd_b:
-            extra.append(f"maxDD estratégia {dd_s:.2%} > benchmark {dd_b:.2%}")
-    verdict = trials_gate.apply_dsr(
-        base, strat, cfg, trials_path=trials_path,
-        trial_name="h4-invvol-sizing-252", frozen_keys=H4_FROZEN_KEYS,
-        criteria_section="h4_criteria", extra_failures=extra,
-        notes="rodada única da H4 (sizing 1/vol; sharpe por-período realizado)")
-    verdict["maxdd_strat"], verdict["maxdd_bench"] = dd_s, dd_b
-    return _conclude(verdict, strat, bench, cfg, "H4", write_report, run_id,
-                     extra=f"maxDD strat/bench={dd_s}/{dd_b} | ")
+            factor.vol_signals(sub, asof, lb)),
+        extra_criteria=_h4_extra_criteria)
 
 
 def run_h5(cfg=None, conn=None, write_report=False, run_id=None, trials_path=None):
@@ -286,21 +297,16 @@ def run_h5(cfg=None, conn=None, write_report=False, run_id=None, trials_path=Non
     universo/custos/pedágio. Critérios: (i) IC95% diff-Sharpe > 0;
     (ii) DSR >= dsr_min (N=4 tentativas). O sinal é momentum_12_1 com
     lookback=21, skip=0 — retorno de [asof-21, asof] na série ajustada."""
-    import trials_gate
     from config import H5_FROZEN_KEYS
     cfg = cfg or load_config()
     conn = conn or db.get_connection()
     h5f = cfg.get("h5_factor", {})
     lb, skip = h5f.get("lookback_days", 21), h5f.get("skip_days", 0)
-    strat, bench = walk_forward(
-        conn, cfg, signal_fn=lambda sub, asof: factor.signals(sub, asof, lb, skip),
-        take="bottom")
-    verdict = trials_gate.apply_dsr(
-        judge(strat, bench, cfg), strat, cfg, trials_path=trials_path,
-        trial_name="h5-strev-21", frozen_keys=H5_FROZEN_KEYS,
-        criteria_section="h5_criteria",
-        notes="rodada única da H5 (reversão 21d; sharpe por-período realizado)")
-    return _conclude(verdict, strat, bench, cfg, "H5", write_report, run_id)
+    return _run_hypothesis(
+        "H5", "h5-strev-21", H5_FROZEN_KEYS, "h5_criteria",
+        "rodada única da H5 (reversão 21d; sharpe por-período realizado)",
+        cfg, conn, write_report, run_id, trials_path,
+        signal_fn=lambda sub, asof: factor.signals(sub, asof, lb, skip), take="bottom")
 
 
 def run_h6(cfg=None, conn=None, write_report=False, run_id=None, trials_path=None):
@@ -308,21 +314,16 @@ def run_h6(cfg=None, conn=None, write_report=False, run_id=None, trials_path=Non
     janela mais curta (126 pregões ~6 meses, skip 21) — hipótese de que a B3
     (menos líquida/eficiente que mercados desenvolvidos) incorpora momentum
     numa janela mais curta que o clássico 12-1 (que fracassou na H1)."""
-    import trials_gate
     from config import H6_FROZEN_KEYS
     cfg = cfg or load_config()
     conn = conn or db.get_connection()
     h6f = cfg.get("h6_factor", {})
     lb, skip = h6f.get("lookback_days", 126), h6f.get("skip_days", 21)
-    strat, bench = walk_forward(
-        conn, cfg, signal_fn=lambda sub, asof: factor.signals(sub, asof, lb, skip),
-        take="top")
-    verdict = trials_gate.apply_dsr(
-        judge(strat, bench, cfg), strat, cfg, trials_path=trials_path,
-        trial_name="h6-momentum-6-1", frozen_keys=H6_FROZEN_KEYS,
-        criteria_section="h6_criteria",
-        notes="rodada única da H6 (momentum 6-1; sharpe por-período realizado)")
-    return _conclude(verdict, strat, bench, cfg, "H6", write_report, run_id)
+    return _run_hypothesis(
+        "H6", "h6-momentum-6-1", H6_FROZEN_KEYS, "h6_criteria",
+        "rodada única da H6 (momentum 6-1; sharpe por-período realizado)",
+        cfg, conn, write_report, run_id, trials_path,
+        signal_fn=lambda sub, asof: factor.signals(sub, asof, lb, skip), take="top")
 
 
 def run_h8(cfg=None, conn=None, write_report=False, run_id=None, trials_path=None):
@@ -331,7 +332,6 @@ def run_h8(cfg=None, conn=None, write_report=False, run_id=None, trials_path=Non
     fração `h8_portfolio.vol_quantile` de menor vol realizada DENTRO desse
     subconjunto. H1 (momentum isolado) e H2 (baixa vol isolada) fracassaram —
     hipótese distinta: a interseção filtra o lado mais arriscado do momentum."""
-    import trials_gate
     from config import H8_FROZEN_KEYS
     cfg = cfg or load_config()
     conn = conn or db.get_connection()
@@ -348,14 +348,11 @@ def run_h8(cfg=None, conn=None, write_report=False, run_id=None, trials_path=Non
         vol = factor.vol_signals(sub, asof, vol_lb)
         return portfolio.momentum_lowvol_double_filter(mom, vol, mom_q, vol_q)
 
-    strat, bench = walk_forward(conn, cfg, portfolio_fn=_pf)
-    verdict = trials_gate.apply_dsr(
-        judge(strat, bench, cfg), strat, cfg, trials_path=trials_path,
-        trial_name="h8-mom-lowvol-double", frozen_keys=H8_FROZEN_KEYS,
-        criteria_section="h8_criteria",
-        notes="rodada única da H8 (filtro duplo momentum top ∩ baixa vol; "
-              "sharpe por-período realizado)")
-    return _conclude(verdict, strat, bench, cfg, "H8", write_report, run_id)
+    return _run_hypothesis(
+        "H8", "h8-mom-lowvol-double", H8_FROZEN_KEYS, "h8_criteria",
+        "rodada única da H8 (filtro duplo momentum top ∩ baixa vol; "
+        "sharpe por-período realizado)",
+        cfg, conn, write_report, run_id, trials_path, portfolio_fn=_pf)
 
 
 if __name__ == "__main__":

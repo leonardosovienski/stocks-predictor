@@ -30,26 +30,43 @@ def _mean_diff(units):
     return statistics.mean(g1) - statistics.mean(g0)
 
 
-def permutation_pvalue(units, n_perm: int = 10000, seed: int = 42) -> float | None:
-    """P-valor de 2 lados: proporção de permutações do rótulo grupo com
-    |diff| >= |diff observado|. Permuta rótulos entre EMPRESAS (uma por
-    unidade na análise primária) — não entre episódios soltos."""
-    obs = _mean_diff(units)
+def permutation_pvalue_from_count(n_ge: int, n_perm: int) -> float:
+    """Convenção do p-valor de permutação: (n_ge+1)/(n_perm+1) — a estatística
+    observada é ela mesma uma permutação possível, então o p-valor nunca é
+    exatamente 0. Único ponto de verdade desta fórmula (achado de revisão de
+    código 2026-08-28: estava implementada 3x independentemente — aqui, em
+    `categorical_family_verdict` e em `rj_judge_robust.romano_wolf_stepdown`
+    — arriscando divergir se alguém corrigisse só uma cópia)."""
+    return (n_ge + 1) / (n_perm + 1)
+
+
+def _permutation_test(units, stat_fn, compare_ge, n_perm: int, seed: int) -> float | None:
+    """Motor comum de permutação de rótulo: embaralha `grupo` n_perm vezes,
+    recomputa `stat_fn` na réplica e conta quantas vezes `compare_ge(réplica,
+    observado)` é verdadeiro. `stat_fn(units) -> float | None`."""
+    obs = stat_fn(units)
     if obs is None:
         return None
     rng = random.Random(seed)
-    vals = [v for _, v, _ in units]
-    groups = [g for _, _, g in units]
+    tickers = [u[0] for u in units]
+    vals = [u[1] for u in units]
+    groups = [u[2] for u in units]
     n_ge = 0
     for _ in range(n_perm):
         shuffled = groups[:]
         rng.shuffle(shuffled)
-        d = _mean_diff(list(zip((u[0] for u in units), vals, shuffled)))
-        if d is not None and abs(d) >= abs(obs):
+        d = stat_fn(list(zip(tickers, vals, shuffled)))
+        if d is not None and compare_ge(d, obs):
             n_ge += 1
-    # convenção (n_ge + 1)/(n_perm + 1): a estatística observada é ela mesma
-    # uma permutação possível — p-valor de permutação nunca é exatamente 0.
-    return (n_ge + 1) / (n_perm + 1)
+    return permutation_pvalue_from_count(n_ge, n_perm)
+
+
+def permutation_pvalue(units, n_perm: int = 10000, seed: int = 42) -> float | None:
+    """P-valor de 2 lados: proporção de permutações do rótulo grupo com
+    |diff| >= |diff observado|. Permuta rótulos entre EMPRESAS (uma por
+    unidade na análise primária) — não entre episódios soltos."""
+    return _permutation_test(units, _mean_diff, lambda d, obs: abs(d) >= abs(obs),
+                             n_perm, seed)
 
 
 def family_verdict(units, direction_expected: str, cfg: dict) -> dict:
@@ -120,18 +137,8 @@ def categorical_family_verdict(units, cfg: dict) -> dict:
         return {"n": len(units), "effect": None, "ci": (None, None),
                 "p_value": None, "direction_match": None}
     obs_v = _cramers_v(units)
-    rng = random.Random(cfg["judge"]["seed"])
-    tickers = [u[0] for u in units]
-    vals = [u[1] for u in units]
-    groups = [u[2] for u in units]
-    n_ge, n_perm = 0, cfg["judge"]["n_boot"]
-    for _ in range(n_perm):
-        shuffled = groups[:]
-        rng.shuffle(shuffled)
-        v = _cramers_v(list(zip(tickers, vals, shuffled)))
-        if v >= obs_v:
-            n_ge += 1
-    p = (n_ge + 1) / (n_perm + 1)   # mesma convenção do teste contínuo
+    p = _permutation_test(units, _cramers_v, lambda v, obs: v >= obs,
+                          cfg["judge"]["n_boot"], cfg["judge"]["seed"])
     return {"n": len(units), "effect": obs_v, "ci": (None, None),
             "p_value": p, "direction_match": None}
 
