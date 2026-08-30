@@ -112,10 +112,6 @@ def test_settle_exits_pending_stays_open_until_next_rebalance(tmp_path):
     disponível ainda) fica pendente — nunca fecha cedo demais (anti-lookahead)."""
     conn = _load(tmp_path)
     last_spot = conn.execute("SELECT MAX(date) FROM prices_raw").fetchone()[0]
-    # último fim-de-mês do histórico como asof: não há mês seguinte completo no banco
-    asof = conn.execute(
-        "SELECT MAX(date) FROM prices_raw WHERE strftime('%Y-%m', date) < strftime('%Y-%m', ?)",
-        (last_spot,)).fetchone()[0]
     paper.record_forward(conn, _CFG, asof=last_spot, run_id="run_open")
     paper.settle_executions(conn, _CFG)
     assert paper.settle_exits(conn, _CFG) == 0
