@@ -8,12 +8,16 @@ contaminar. Quando os preços chegam, a parte RISK é preenchida WRITE-ONCE via 
 Operacional: roda no cron diário em rede limpa (mesmo padrão do domínio 1). Começa após
 o veredito da H1 (M6) e nunca para.
 """
+import datetime
+
 import adjust
 import db
+import execution
 import factor
 import portfolio
 import universe
 from execution import next_open_after
+from returns import month_end_dates
 
 
 def record_forward(conn, cfg, asof, run_id) -> int:
@@ -67,6 +71,65 @@ def settle_executions(conn, cfg) -> int:
             "UPDATE decisions SET exec_date=COALESCE(exec_date,?), "
             "exec_price=COALESCE(exec_price,?) WHERE run_id=? AND asof=? AND ticker=?",
             (exec_date, exec_price, run_id, asof, tk))
+        filled += 1
+    conn.commit()
+    return filled
+
+
+def settle_exits(conn, cfg) -> int:
+    """Preenche exit_date/exit_price/cost_paid/realized_return_net/holding_days das
+    decisões forward já EXECUTADAS (exec_price preenchido), na ABERTURA de D+1 após o
+    PRÓXIMO rebalance mensal (mesma convenção 'segura até o próximo mês' de
+    `backtest.walk_forward` — reaproveitada aqui, não inventada: é a única cadência
+    de holding já pré-registrada no design). WRITE-ONCE via COALESCE.
+
+    Achado de auditoria (2026-08-30): sem esta função, `decisions.realized_return_net`
+    nunca era escrito por nenhum código do repositório — o ledger forward (M6) nunca
+    conseguia produzir o veredito real que existe para produzir. `next_asof` é o
+    próximo fim-de-mês do calendário à vista estritamente após `asof`; se ainda não
+    houver pregão suficiente (posição ainda 'aberta' no fim do histórico carregado),
+    a linha fica pendente e é reprocessada na próxima chamada (nada é escrito cedo
+    demais — mesmo espírito anti-lookahead do resto do M6)."""
+    e = cfg.get("execution", {})
+    fee_pct = e.get("b3_fee_pct", 0.0003) + e.get("brokerage_pct", 0.0)
+    slippage_pct = e.get("spread_slippage_pct", 0.0015)
+    all_dates = [r[0] for r in conn.execute(
+        "SELECT DISTINCT date FROM prices_raw WHERE market_type=? ORDER BY date",
+        (universe.SPOT_MARKET,))]
+    month_ends = month_end_dates(all_dates)
+    pending = conn.execute(
+        "SELECT run_id, asof, ticker, exec_price FROM decisions "
+        "WHERE frozen_mode=1 AND exec_price IS NOT NULL AND exit_price IS NULL"
+    ).fetchall()
+    filled = 0
+    series_cache: dict[str, tuple[list, list]] = {}
+    for run_id, asof, tk, entry_price in [(r[0], r[1], r[2], r[3]) for r in pending]:
+        next_asof = next((d for d in month_ends if d > asof), None)
+        if next_asof is None:
+            continue    # ainda dentro do mês do exec_date — posição segue aberta
+        if tk not in series_cache:
+            prices = conn.execute(
+                f"SELECT date, MAX({db.price_expr('open')}) FROM prices_raw "
+                "WHERE ticker=? AND market_type=? GROUP BY date ORDER BY date",
+                (tk, universe.SPOT_MARKET)).fetchall()
+            series_cache[tk] = ([r[0] for r in prices], [r[1] for r in prices])
+        dates, opens = series_cache[tk]
+        nxt = next_open_after(dates, opens, next_asof)
+        if nxt is None:
+            continue
+        exit_date, exit_price = nxt
+        cost_paid = execution.roundtrip_cost(fee_pct, slippage_pct) * entry_price
+        realized_return_net = execution.net_return(entry_price, exit_price, fee_pct, slippage_pct)
+        holding_days = (datetime.date.fromisoformat(exit_date)
+                        - datetime.date.fromisoformat(asof)).days
+        conn.execute(
+            "UPDATE decisions SET exit_date=COALESCE(exit_date,?), "
+            "exit_price=COALESCE(exit_price,?), cost_paid=COALESCE(cost_paid,?), "
+            "realized_return_net=COALESCE(realized_return_net,?), "
+            "holding_days=COALESCE(holding_days,?) "
+            "WHERE run_id=? AND asof=? AND ticker=?",
+            (exit_date, exit_price, cost_paid, realized_return_net, holding_days,
+             run_id, asof, tk))
         filled += 1
     conn.commit()
     return filled

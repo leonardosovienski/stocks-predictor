@@ -77,3 +77,46 @@ def test_settle_fills_exec_write_once(tmp_path):
         "LIMIT 1").fetchone()
     assert same["exec_price"] == first_price
     conn.close()
+
+
+def test_settle_exits_writes_risk_part_write_once(tmp_path):
+    """Achado de auditoria (2026-08-30): sem `settle_exits`, `realized_return_net`
+    nunca era escrito por nenhum código do repositório — o ledger forward (M6)
+    nunca conseguia fechar o ciclo EVAL->RISK que existe para produzir. Liquida no
+    próximo fim-de-mês (mesma cadência de `backtest.walk_forward`), D+1 abertura."""
+    conn = _load(tmp_path)
+    paper.record_forward(conn, _CFG, asof="2018-01-31", run_id="run_paper")
+    paper.settle_executions(conn, _CFG)
+    exited = paper.settle_exits(conn, _CFG)
+    assert exited > 0
+    row = conn.execute(
+        "SELECT exec_date, exit_date, exit_price, cost_paid, realized_return_net, "
+        "holding_days FROM decisions "
+        "WHERE run_id='run_paper' AND exit_price IS NOT NULL LIMIT 1").fetchone()
+    assert row["exit_date"] > row["exec_date"]                     # saída depois da entrada
+    assert row["cost_paid"] > 0
+    assert row["holding_days"] > 0
+    assert row["realized_return_net"] is not None
+    first_exit_price = row["exit_price"]
+    # write-once via COALESCE — segunda liquidação não reescreve
+    assert paper.settle_exits(conn, _CFG) == 0
+    same = conn.execute(
+        "SELECT exit_price FROM decisions WHERE run_id='run_paper' AND exit_price IS NOT NULL "
+        "LIMIT 1").fetchone()
+    assert same["exit_price"] == first_exit_price
+    conn.close()
+
+
+def test_settle_exits_pending_stays_open_until_next_rebalance(tmp_path):
+    """Posição executada perto do fim do histórico carregado (sem próximo fim-de-mês
+    disponível ainda) fica pendente — nunca fecha cedo demais (anti-lookahead)."""
+    conn = _load(tmp_path)
+    last_spot = conn.execute("SELECT MAX(date) FROM prices_raw").fetchone()[0]
+    # último fim-de-mês do histórico como asof: não há mês seguinte completo no banco
+    asof = conn.execute(
+        "SELECT MAX(date) FROM prices_raw WHERE strftime('%Y-%m', date) < strftime('%Y-%m', ?)",
+        (last_spot,)).fetchone()[0]
+    paper.record_forward(conn, _CFG, asof=last_spot, run_id="run_open")
+    paper.settle_executions(conn, _CFG)
+    assert paper.settle_exits(conn, _CFG) == 0
+    conn.close()

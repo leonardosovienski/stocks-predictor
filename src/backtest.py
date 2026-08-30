@@ -57,10 +57,19 @@ def walk_forward(conn, cfg, signal_fn=None, take="top", portfolio_fn=None):
     maquinaria de universo/custos/pareamento. Defaults = H1 exata.
 
     `portfolio_fn(sub, asof) -> {ticker: peso}` (H4+) troca a CONSTRUÇÃO por
-    uma carteira PONDERADA (Σw=1): retorno diário = média ponderada
-    (re-normalizada pelos presentes no dia) e custo = turnover de pesos
-    (Σ|Δw| × lado). Quando presente, ignora signal_fn/take. O caminho
-    equiponderado de H1/H2 permanece intocado.
+    uma carteira PONDERADA (Σw=1): retorno diário = média ponderada dos pesos
+    FIXOS do rebalance (denominador Σw permanece ~1 mesmo se algum ticker não
+    tiver pregão no dia) e custo = turnover de pesos (Σ|Δw| × lado). Quando
+    presente, ignora signal_fn/take. O caminho equiponderado de H1/H2
+    permanece intocado.
+
+    Convenção deliberada (achado de auditoria 2026-08-30, docstring corrigida
+    para bater com o código, não o contrário): ticker sem retorno no dia
+    (suspensão/iliquidez) entra como retorno 0 SEM sair do denominador — a
+    mesma disciplina anti-viés-de-sobrevivência do ramo equiponderado acima
+    (ver comentário em `srets`). Renormalizar só pelos "presentes no dia"
+    daria peso extra grátis para quem sobreviveu, reintroduzindo exatamente o
+    viés que essa disciplina existe para evitar.
     """
     adjust.require_scanned(conn)
     f, u = cfg["factor"], cfg["universe"]
@@ -139,6 +148,9 @@ def walk_forward(conn, cfg, signal_fn=None, take="top", portfolio_fn=None):
                     continue
                 s = sum(srets) / len(port) - (period_cost if cost_pending else 0.0)
             else:
+                # mesma convenção do ramo equiponderado acima: ticker sem retorno no
+                # dia entra como 0, sem sair do denominador (anti-viés-de-sobrevivência
+                # — ver docstring de `walk_forward`).
                 sw = [(w, dret[tk].get(d, 0.0)) for tk, w in weights.items()]
                 den = sum(w for w, _ in sw)
                 if not brets or den <= 0:

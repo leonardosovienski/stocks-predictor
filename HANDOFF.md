@@ -1,5 +1,63 @@
 # HANDOFF — predictor-stocks
 
+> ## Auditoria full-tree de `src/` (2026-08-30) — 3 achados corrigidos, 1 escalado ao humano
+>
+> Pedido do operador ("roda a auditoria de verdade" / "roda a varredura completa em
+> src/"), após um relatório externo genérico (não deste repo, cheio de nomes de
+> função inexistentes) ser descartado por não bater com o código real. `/code-review
+> high` rodado full-tree (sem diff — árvore de trabalho limpa no commit `00b2a5e`).
+>
+> **Corrigidos:**
+> 1. `paper.py`: `settle_executions` só preenchia `exec_date`/`exec_price` — nenhum
+>    código do repositório jamais escrevia `exit_date`/`exit_price`/`cost_paid`/
+>    `realized_return_net`/`holding_days`, apesar de `db.py` documentar esse bloco
+>    como "preenchida na liquidação" e o M6 existir justamente para produzir esse
+>    veredito real. Adicionado `settle_exits`: liquida no PRÓXIMO fim-de-mês do
+>    calendário à vista (mesma cadência "segura até o próximo mês" já pré-registrada
+>    em `backtest.walk_forward` — reaproveitada, não inventada), abertura D+1,
+>    `execution.net_return`/`roundtrip_cost` para custo/retorno líquido, WRITE-ONCE
+>    via COALESCE. Ligado em `main.py cmd_paper`. Testes novos em `test_paper.py`
+>    (liquidação, write-once, posição ainda aberta fica pendente). **Nota para
+>    revisão humana**: a cadência "próximo fim-de-mês" é uma escolha de engenharia
+>    (reaproveita a única convenção de holding já pré-registrada no design), não uma
+>    decisão de pesquisa nova — mas o cron do paper forward nunca rodou em produção
+>    (ver marco M6 abaixo), então vale confirmar antes de religar o cron real.
+> 2. `backtest.py` (`walk_forward`, ramo `portfolio_fn`/H4): docstring prometia
+>    "retorno diário = média ponderada (re-normalizada pelos presentes no dia)", mas
+>    o código nunca fez essa renormalização (o denominador é sempre Σw≈1, fixo).
+>    Corrigida a DOCSTRING para bater com o código, não o código para bater com a
+>    docstring: renormalizar só pelos "presentes no dia" daria peso extra grátis aos
+>    sobreviventes, reintroduzindo o mesmo viés de sobrevivência que o ramo
+>    equiponderado (H1/H2) explicitamente evita com a convenção "retorno 0 no dia sem
+>    cotação, denominador cheio" (comentário ao lado de `srets`). Mudar o código para
+>    bater com a doc teria piorado o H4, não corrigido um bug.
+> 3. `rj_pipeline.py` (`build_episodes`): variável local `universe` sombreava o
+>    `import universe` usado por `_load_price_series`/outras funções do mesmo
+>    arquivo — um `AttributeError` esperando um edit futuro que reusasse
+>    `universe.SPOT_MARKET` dentro de `build_episodes`. Renomeada para
+>    `approved_universe` (é exatamente o que a variável é: a fila já aprovada,
+>    `approved_by IS NOT NULL`).
+>
+> **Escalado, NÃO corrigido — decisão do humano**: `pyproject.toml` declara
+> `predictor-core`/`predictor-ops` como dependências pip/uv (wheels do GitHub
+> Releases, `[tool.uv.sources]`), e `tests/conftest.py` ativamente barra o uso do
+> `vendor/predictor_core` (exceto via `STOCKS_ALLOW_VENDOR_SHIM=1`). Isso contradiz o
+> texto atual de `CLAUDE.md`/`docs/DESIGN.md` ("PROIBIDO instalar o core via pip",
+> sem condicional). MAS não é drift acidental: é uma migração deliberada em ~8
+> commits (`build: add modern Python project metadata`, `test: stop injecting
+> vendored core into test runtime`, `tooling: permitir shim vendor via
+> STOCKS_ALLOW_VENDOR_SHIM`, `ci: phase in quality gates...`). Reverter destruiria
+> esse trabalho; manter deixa a regra escrita do projeto tecnicamente violada. Regra
+> do próprio CLAUDE.md ("dúvida de design não coberta: PARAR e perguntar") — decisão
+> real é do operador: (a) atualizar CLAUDE.md/DESIGN.md para refletir a migração para
+> wheels pip/uv (com o vendor como fallback/dev), ou (b) reverter a migração e voltar
+> o import a vir de `vendor/predictor_core`. **Efeito colateral observado**: neste
+> sandbox, sem acesso às wheels reais, `vendor/predictor_core` está desatualizado
+> frente à API que os testes já esperam da v2.3 (`PastView.__init__` mudou de
+> assinatura; `trials_gate.attest` não devolve mais `pipeline_fingerprint` na versão
+> vendorizada) — 4 testes falham só por isso (`test_h2_gate.py`,
+> `test_replay.py`×3), pré-existente, não introduzido por esta sessão.
+
 > ## Revisão de código pós-reconstrução do banco (2026-08-28) — 10 achados, todos corrigidos
 >
 > Pedido do operador ("testa a qualidade dele, acertos e erros") logo após a
