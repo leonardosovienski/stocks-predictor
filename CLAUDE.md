@@ -29,8 +29,8 @@
   `C:\Claude-projetos\Claude\predictor_core\` e o sync é UNIDIRECIONAL via o
   `sync_core.py` de lá (`--check`/`--write`). Evolução por demanda vai PRO upstream
   primeiro e desce pelo sync; código customizado no vendor é DELETADO pelo prune.
-- Migrações em `src/db.py` são append-only: nunca alterar uma existente, sempre adicionar.
-- Config: `src/config.py` (mini-parser stdlib do subconjunto plano de YAML). Parâmetros
+- Migrações em `stocks_predictor/db.py` são append-only: nunca alterar uma existente, sempre adicionar.
+- Config: `stocks_predictor/config.py` (mini-parser stdlib do subconjunto plano de YAML). Parâmetros
   `[H1-FROZEN]` no config.yaml não se tocam após qualquer rodada de resultado.
 
 ## Comandos

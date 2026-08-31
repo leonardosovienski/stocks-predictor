@@ -21,7 +21,7 @@ import pytest
 import yaml
 
 ROOT = pathlib.Path(__file__).parent.parent
-sys.path.insert(0, str(ROOT / "src"))
+sys.path.insert(0, str(ROOT / "stocks_predictor"))
 
 import adjust
 import db
@@ -127,6 +127,32 @@ def test_pipeline_excludes_company_without_prices(tmp_path, cfg):
     conn.commit()
     report = pipeline.run_pipeline(conn, cfg, dates[-1])
     assert report["excluded"].get("NOPX3") == "sem serie de precos no banco"
+
+
+def test_company_without_trough_is_censored_then_becomes_control(tmp_path, cfg):
+    conn = db.get_connection(tmp_path / "test.db")
+    dates = _calendar(800)
+    closes = [10.0 + index for index in range(len(dates))]
+    cfg["rally"]["censoring_horizon_trading_days"] = 100
+    _insert_company(conn, "OLDJ3", dates, closes, rj_idx=50)
+    _insert_company(conn, "NEWJ3", dates, closes, rj_idx=750)
+
+    report = pipeline.run_pipeline(conn, cfg, dates[-1])
+
+    assert report["excluded"] == {}
+    assert report["n_company_censored"] == 1
+    assert report["n_company_no_candidate_control"] == 1
+    assert {item["ticker"]: item["status"] for item in report["company_observations"]} == {
+        "NEWJ3": "censored",
+        "OLDJ3": "no_candidate_control",
+    }
+    persisted = conn.execute(
+        "SELECT ticker,status FROM rj_company_observations ORDER BY ticker"
+    ).fetchall()
+    assert [tuple(row) for row in persisted] == [
+        ("NEWJ3", "censored"),
+        ("OLDJ3", "no_candidate_control"),
+    ]
 
 
 def test_pipeline_reports_censored_separately(tmp_path, cfg):

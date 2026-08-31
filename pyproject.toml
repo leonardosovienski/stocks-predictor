@@ -10,8 +10,7 @@ readme = "README.md"
 requires-python = ">=3.13,<3.15"
 dependencies = [
   "PyYAML>=6.0,<7",
-  "predictor-core>=2.3,<3",
-  "predictor-ops>=3.1,<4",
+  "predictor-core>=3.0,<4",
 ]
 
 [project.optional-dependencies]
@@ -24,10 +23,10 @@ dev = [
 ]
 
 [project.entry-points."predictor.plugins"]
-stocks = "src.ecosystem_plugin:PLUGIN"
+stocks = "stocks_predictor.ecosystem_plugin:PLUGIN"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src"]
+packages = ["stocks_predictor"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
@@ -47,19 +46,18 @@ pythonVersion = "3.13"
 typeCheckingMode = "basic"
 # O gate começa na linha científica ativa RJ; ampliar cobertura é trabalho
 # posterior e não deve alterar o experimento para satisfazer uma migração.
-include = ["src/rj_episodes.py", "src/rj_families.py", "src/rj_judge.py"]
+include = ["stocks_predictor/rj_episodes.py", "stocks_predictor/rj_families.py", "stocks_predictor/rj_judge.py"]
 # O código RJ usa dicionários heterogêneos deliberadamente. Os três erros
 # iniciais de argument type são dívida de anotação, não falhas funcionais; o
 # restante do basic type-check continua ativo nesta etapa.
 reportArgumentType = "none"
 
 [tool.coverage.run]
-source = ["src"]
+source = ["stocks_predictor"]
 branch = true
 
 [tool.coverage.report]
 show_missing = true
 
 [tool.uv.sources]
-predictor-core = { url = "https://github.com/leonardosovienski/core-predictor/releases/download/v2.3.0/predictor_core-2.3.0-py3-none-any.whl" }
-predictor-ops = { url = "https://github.com/leonardosovienski/predictor-ops/releases/download/v3.1.0/predictor_ops-3.1.0-py3-none-any.whl" }
+predictor-core = { url = "https://github.com/leonardosovienski/core-predictor/releases/download/v3.0.0/predictor_core-3.0.0-py3-none-any.whl" }

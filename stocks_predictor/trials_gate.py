@@ -29,7 +29,7 @@ METRIC = "sharpe_diff_ci95"
 # Sharpe POR-PERÍODO da H1 (a unidade que o registro/DSR usam): 0.1592
 # anualizado no veredito final (run 20260712T091903477689-41cc24) / sqrt(252).
 H1_SHARPE_PER_PERIOD = 0.1592 / math.sqrt(252)
-H2_TEST_PERIOD = ["2018-01-01", "2026-07-03"]
+H2_TEST_PERIOD = ["2018-01-01T00:00:00Z", "2026-07-03T23:59:59Z"]
 
 
 def trials_path_from(cfg, override=None):

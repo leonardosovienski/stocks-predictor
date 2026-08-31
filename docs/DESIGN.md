@@ -75,7 +75,7 @@ primeiro porque o sinal é menos diluído (análogo de começar por 1x2 e não p
 ```
 predictor-stocks/
   vendor/predictor_core/     # vendorizado, com VERSION carimbada — NÃO editar local
-  src/
+  stocks_predictor/
     ingest_cotahist.py       # download (rede limpa) + parse posicional → raw
     adjust.py                # camada de ajustes (proventos/splits) → adjusted
     universe.py              # universo point-in-time por liquidez

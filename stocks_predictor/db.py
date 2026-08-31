@@ -228,6 +228,21 @@ MIGRATIONS: list[tuple[str, str]] = [
         CREATE INDEX IF NOT EXISTS idx_fundamentals_ticker_ref
             ON fundamentals(ticker, ref_date);
     """),
+    ("0008_rj_company_censoring", """
+        -- Empresas aprovadas sem nenhum candidato a fundo não podem sumir do
+        -- denominador. A observação é separada de rj_episodes porque não existe
+        -- trough_date legítima para usar como episódio.
+        CREATE TABLE IF NOT EXISTS rj_company_observations (
+            ticker              TEXT NOT NULL REFERENCES rj_universe(ticker),
+            asof                TEXT NOT NULL,
+            rj_request_date     TEXT NOT NULL,
+            observed_trading_days INTEGER NOT NULL,
+            censoring_horizon_trading_days INTEGER NOT NULL,
+            status              TEXT NOT NULL CHECK(status IN ('censored','no_candidate_control')),
+            inserted_at         TEXT NOT NULL DEFAULT (datetime('now')),
+            PRIMARY KEY (ticker, asof)
+        );
+    """),
 ]
 
 

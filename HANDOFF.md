@@ -1,5 +1,14 @@
 # HANDOFF — predictor-stocks
 
+> ## Migração de namespace do pacote (2026-08-31)
+>
+> Autorização explícita do operador para corrigir a colisão cross-repo confirmada
+> pela auditoria. O pacote Python genérico `src` foi renomeado para
+> `stocks_predictor`; entry point, Hatch, cobertura, Pyright, CI, testes, comandos
+> e documentação operacional foram atualizados. Nenhum sinal, parâmetro congelado,
+> banco, ledger ou resultado científico foi alterado. Validação pós-migração:
+> **242/242 testes verdes** e wheel sem pacote top-level `src`.
+
 > ## Auditoria full-tree de `src/` (2026-08-30) — 3 achados corrigidos, 1 escalado ao humano
 >
 > Pedido do operador ("roda a auditoria de verdade" / "roda a varredura completa em
@@ -397,6 +406,13 @@
 > parar e perguntar"), não a esta sessão inferir sozinha a partir de um
 > comentário. `censoring_horizon_trading_days` foi mantido no
 > `config_rj.yaml` com nota explicando o gap; nada foi codificado.
+
+> **Atualização de implementação (2026-08-31): lacuna fechada.**
+> `rj_pipeline.build_episodes` agora registra empresas sem candidato em
+> `rj_company_observations`: `censored` antes do horizonte e
+> `no_candidate_control` ao atingi-lo. A migração `0008_rj_company_censoring`,
+> persistência, relatório e teste de regressão foram adicionados; nenhum fundo
+> ou trough é inferido para completar o denominador.
 >
 > Suíte de testes não pôde ser executada nesta sessão (ambiente sem
 > `predictor_core`/`predictor_ops` vendorizados) — correções verificadas

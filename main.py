@@ -23,7 +23,7 @@ from contextlib import closing
 ROOT = pathlib.Path(__file__).parent
 # O código de domínio continua com imports planos por compatibilidade histórica,
 # mas Core/Ops vêm do ambiente/package manager. vendor/ não participa do runtime.
-sys.path.insert(0, str(ROOT / "src"))
+sys.path.insert(0, str(ROOT / "stocks_predictor"))
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")

@@ -1,4 +1,4 @@
-"""Configuração comum dos testes — código local em src/, Core/Ops via wheels."""
+"""Configuração comum dos testes — código local em stocks_predictor/, Core/Ops via wheels."""
 import pathlib
 import sys
 
@@ -7,15 +7,12 @@ import sys
 # exercita as wheels oficiais durante a migração, sem depender da ordem dos
 # testes nem reescrever ciência para satisfazer packaging.
 import predictor_core
-import predictor_ops
 
 ROOT = pathlib.Path(__file__).parent.parent
-SRC = ROOT / "src"
+SRC = ROOT / "stocks_predictor"
 if str(SRC) not in sys.path:
     sys.path.insert(0, str(SRC))
 
 import os
 if os.environ.get("STOCKS_ALLOW_VENDOR_SHIM") != "1":
     assert "vendor" not in pathlib.Path(predictor_core.__file__).parts
-    assert "vendor" not in pathlib.Path(predictor_ops.__file__).parts
-

@@ -10,18 +10,11 @@ universe:
   # horizonte de observação por EMPRESA antes de virar CENSURA definitiva —
   # protocolo canônico docs/RJ_DESIGN.md §5, risco #3. 36 meses = 3 anos de
   # calendário de pregões, não meses corridos (evita ambiguidade de
-  # feriados/pregões). STATUS (2026-08-27): parâmetro lido pelo config mas
-  # AINDA NÃO CONSUMIDO por nenhum código — só a censura POR EPISÓDIO (a
-  # partir do fundo, `rally.primary/secondary_window_trading_days`, em
-  # `rj_episodes.classify_episode`) está implementada. A censura por
-  # EMPRESA (a partir do pedido de RJ; cobre o caso de empresa sem nenhum
-  # candidato a fundo ainda, hoje descartada em `excluded` e fora do
-  # denominador) segue pendente — já registrada como risco de viés de
-  # denominador em `docs/audit/kimi_2026-08-24/RELATORIO_AUDITORIA_RJ.md`.
-  # Implementar exige decisão explícita de protocolo (é a definição do
-  # grupo controle do estudo), não uma correção silenciosa de código — ver
-  # HANDOFF.md. RJ ainda em M0 (sem dado real, nada julgado): não há
-  # veredito em risco, só a lacuna a fechar antes da primeira rodada real.
+  # feriados/pregões). STATUS (2026-08-31): a censura por EMPRESA é consumida
+  # pelo pipeline. Antes deste horizonte a observação é `censored`; ao
+  # atingi-lo sem candidato, vira `no_candidate_control`. Nenhum trough é
+  # fabricado. A censura por episódio continua separada em
+  # `rj_episodes.classify_episode`.
   censoring_horizon_trading_days: 756   # ~36 meses úteis
 
 rally:
@@ -82,7 +75,7 @@ families:
     metric: "dias_uteis_desde_pedido_rj_ate_fundo"
     direction_expected: "ambiguous"  # H89-H92 do banco original divergem; sem direção fixada
   info_trigger:
-    # rótulo corrigido: era "10p" (pregões) mas src/rj_families.py:info_trigger
+    # rótulo corrigido: era "10p" (pregões) mas stocks_predictor/rj_families.py:info_trigger
     # sempre implementou window_days como dias CORRIDOS (bug de rótulo, não de
     # cálculo — o código e o docstring já diziam "corridos"; só o metric label
     # aqui divergia). Nenhuma rodada usou este valor ainda (M0/RJ não julgado).

@@ -28,7 +28,7 @@ Disciplina de escopo (fail-closed, sem exceção silenciosa):
   deliberadamente com approved_by NULL; aprovar é ato humano explícito).
 
 Uso (CLI):
-    python src/rj_pipeline.py --db data/stocks.db --config config_rj.yaml \
+    python stocks_predictor/rj_pipeline.py --db data/stocks.db --config config_rj.yaml \
         --asof 2026-08-24 --out reports/rj_run.json \
         [--free-float-csv free_float.csv]   # colunas: ticker,shares_outstanding
 """
@@ -101,7 +101,7 @@ def build_episodes(conn: sqlite3.Connection, cfg: dict, asof: str) -> dict:
     rcfg = cfg["rally"]
     lookback = rcfg["point_in_time_backward_lookback_days"]
     min_sep = rcfg["primary_window_trading_days"]
-    out, excluded = [], {}
+    out, excluded, company_observations = [], {}, []
     # fila de revisão humana (regra 5): só empresas APROVADAS entram no
     # universo analisado — uma linha pendente (approved_by NULL) é candidata
     # a universo, não universo. Fail-closed: na dúvida, fica de fora.
@@ -119,8 +119,17 @@ def build_episodes(conn: sqlite3.Connection, cfg: dict, asof: str) -> dict:
             dates, closes, rj_date, backward_lookback=lookback)
         primary = episodes.select_primary_episode(candidates)
         if primary is None:
-            excluded[ticker] = ("nenhum candidato point-in-time "
-                                "(historico insuficiente ou nunca foi minima)")
+            observed = sum(1 for trading_day in dates if rj_date <= trading_day <= asof)
+            horizon = int(rcfg["censoring_horizon_trading_days"])
+            status = "no_candidate_control" if observed >= horizon else "censored"
+            company_observations.append({
+                "ticker": ticker,
+                "asof": asof,
+                "rj_request_date": rj_date,
+                "observed_trading_days": observed,
+                "censoring_horizon_trading_days": horizon,
+                "status": status,
+            })
             continue
         kept = episodes.select_secondary_episodes(candidates, dates, min_sep)
         for k, trough_date in enumerate(kept):
@@ -142,7 +151,11 @@ def build_episodes(conn: sqlite3.Connection, cfg: dict, asof: str) -> dict:
                 "dates": dates, "closes": closes,
             }
             out.append(ep)
-    return {"episodes": out, "excluded": excluded}
+    return {
+        "episodes": out,
+        "excluded": excluded,
+        "company_observations": company_observations,
+    }
 
 
 def compute_family_scores(conn: sqlite3.Connection, ep: dict, cfg: dict,
@@ -190,6 +203,20 @@ def persist_run(conn: sqlite3.Connection, built: dict, asof: str) -> None:
     manter o outcome velho gravado deixaria o banco contradizer a trilha
     mais recente da observação. Scores de família (PK episode_id+family)
     divergentes também são atualizados."""
+    for observation in built["company_observations"]:
+        conn.execute(
+            "INSERT INTO rj_company_observations(ticker,asof,rj_request_date,"
+            "observed_trading_days,censoring_horizon_trading_days,status) "
+            "VALUES(?,?,?,?,?,?) ON CONFLICT(ticker,asof) DO UPDATE SET "
+            "rj_request_date=excluded.rj_request_date, "
+            "observed_trading_days=excluded.observed_trading_days, "
+            "censoring_horizon_trading_days=excluded.censoring_horizon_trading_days, "
+            "status=excluded.status",
+            tuple(observation[key] for key in (
+                "ticker", "asof", "rj_request_date", "observed_trading_days",
+                "censoring_horizon_trading_days", "status"
+            )),
+        )
     for ep in built["episodes"]:
         cols = (ep["ticker"], ep["trough_date"], ep["trough_price"], ep["is_primary"],
                 ep["primary"]["outcome"], ep["primary"]["rally_pct"],
@@ -307,6 +334,12 @@ def run_pipeline(conn: sqlite3.Connection, cfg: dict, asof: str,
         "n_censored_excluded": sum(
             1 for ep in built["episodes"]
             if ep["is_primary"] == 1 and ep["primary"]["censored"] == 1),
+        "n_company_censored": sum(
+            item["status"] == "censored" for item in built["company_observations"]),
+        "n_company_no_candidate_control": sum(
+            item["status"] == "no_candidate_control"
+            for item in built["company_observations"]),
+        "company_observations": built["company_observations"],
         # preço de fundo <= 0 = dado quebrado: excluído/missing, não controle
         "n_invalid_data_excluded": sum(
             1 for ep in built["episodes"]

@@ -25,7 +25,7 @@ jobs:
       - name: Install project and dev dependencies
         run: uv sync --all-extras --python 3.13
       - name: Ruff
-        run: uv run ruff check src tests main.py
+        run: uv run ruff check stocks_predictor tests main.py
       - name: Pyright
         run: uv run pyright
       - name: Tests
@@ -38,9 +38,8 @@ jobs:
         run: |
           uv venv /tmp/stocks-wheel --python 3.13 --seed
           /tmp/stocks-wheel/bin/pip install dist/*.whl \
-            "predictor-core @ https://github.com/leonardosovienski/core-predictor/releases/download/v2.3.0/predictor_core-2.3.0-py3-none-any.whl" \
-            "predictor-ops @ https://github.com/leonardosovienski/predictor-ops/releases/download/v3.1.0/predictor_ops-3.1.0-py3-none-any.whl"
-          /tmp/stocks-wheel/bin/python -c "import predictor_core, predictor_ops, src.rj_episodes, src.rj_judge"
+            "predictor-core @ https://github.com/leonardosovienski/core-predictor/releases/download/v3.0.0/predictor_core-3.0.0-py3-none-any.whl"
+          /tmp/stocks-wheel/bin/python -c "import predictor_core, stocks_predictor.rj_episodes, stocks_predictor.rj_judge"
 
   secrets:
     runs-on: ubuntu-latest

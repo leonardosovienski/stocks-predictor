@@ -11,7 +11,7 @@ import sys
 import yaml
 
 ROOT = pathlib.Path(__file__).parent.parent
-sys.path.insert(0, str(ROOT / "src"))
+sys.path.insert(0, str(ROOT / "stocks_predictor"))
 
 import rj_power
 

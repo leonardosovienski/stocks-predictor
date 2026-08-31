@@ -34,15 +34,10 @@ pregões depois, OU até hoje (o que vier primeiro) — já COMPLETOU a janela
 (ver `classify_episode`). Episódio recente demais não teve tempo de
 "falhar" — fica marcado `censored`, fora do grupo controle definitivo.
 
-Regra de censura POR EMPRESA (`docs/RJ_DESIGN.md` §5,
-`censoring_horizon_trading_days` em `config_rj.yaml`, AINDA NÃO
-IMPLEMENTADA): cobre o caso de empresa sem NENHUM candidato a fundo ainda
-identificado — hoje essas empresas viram `excluded` em
-`rj_pipeline.build_episodes` e desaparecem do denominador do estudo, em
-vez de contar como `censored` (RJ recente demais) ou como controle
-definitivo (janela desde o pedido de RJ já completou o horizonte sem
-nenhum fundo qualificado). Ver HANDOFF.md — pendente de decisão de
-protocolo antes de codificar.
+Regra de censura POR EMPRESA (`docs/RJ_DESIGN.md` §5): empresas sem candidato
+ficam em `rj_company_observations`. Antes de completar
+`censoring_horizon_trading_days` são `censored`; depois são
+`no_candidate_control`. Nunca se fabrica um trough para representá-las.
 """
 
 

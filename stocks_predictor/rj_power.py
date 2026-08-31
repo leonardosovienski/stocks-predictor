@@ -16,7 +16,7 @@ saem do config vigente (ou de um override explícito passado pelo chamador,
 para rodar rápido em CI).
 
 Uso típico (CLI):
-    python src/rj_power.py --config config_rj.yaml --n-companies 20 30 40 \
+    python stocks_predictor/rj_power.py --config config_rj.yaml --n-companies 20 30 40 \
         --effects 0.5 1.0 1.5 2.0 --reps 50 --fast
 
 Saída: tabela poder x (N, effect size) + MDE (menor effect com poder >= 80%).
