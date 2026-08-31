@@ -229,8 +229,9 @@ def cmd_paper(args) -> int:
                             notes="paper forward")
         n = paper.record_forward(conn, cfg, args[0], run_id)
         filled = paper.settle_executions(conn, cfg)
+        exited = paper.settle_exits(conn, cfg)
         print(f"paper {args[0]}: {n} decisões registradas (run {run_id}); "
-              f"{filled} execução(ões) liquidada(s)")
+              f"{filled} execução(ões) liquidada(s); {exited} saída(s) liquidada(s)")
     return 0
 
 

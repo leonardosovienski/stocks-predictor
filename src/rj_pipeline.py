@@ -105,12 +105,12 @@ def build_episodes(conn: sqlite3.Connection, cfg: dict, asof: str) -> dict:
     # fila de revisão humana (regra 5): só empresas APROVADAS entram no
     # universo analisado — uma linha pendente (approved_by NULL) é candidata
     # a universo, não universo. Fail-closed: na dúvida, fica de fora.
-    universe = conn.execute(
+    approved_universe = conn.execute(
         "SELECT ticker, rj_request_date, plan_presented_date, "
         "plan_approved_date, rj_end_date FROM rj_universe "
         "WHERE approved_by IS NOT NULL ORDER BY ticker"
     ).fetchall()
-    for ticker, rj_date, plan_pres, plan_appr, rj_end in universe:
+    for ticker, rj_date, plan_pres, plan_appr, rj_end in approved_universe:
         dates, closes = _load_price_series(conn, ticker, asof)
         if not dates:
             excluded[ticker] = "sem serie de precos no banco"
