@@ -17,8 +17,8 @@ continuidade histórica e devem ser interpretados pela data.
 
 - Python: `>=3.13,<3.15`;
 - package metadata: `pyproject.toml`;
-- Core compartilhado: `predictor-core 2.3.x` por wheel oficial;
-- Ops compartilhado: `predictor-ops 3.1.x` por wheel oficial;
+- Core compartilhado: `predictor-core 3.0.x` por wheel oficial;
+- Ops: não é dependência declarada deste domínio no estado atual;
 - `vendor/predictor_core/` é preservado como artefato histórico de integridade e não é
   a dependência-alvo da arquitetura moderna;
 - CI: Python 3.13, Ruff, Pyright na linha RJ, pytest+coverage, build/wheel smoke e
@@ -26,6 +26,11 @@ continuidade histórica e devem ser interpretados pela data.
 
 A migração de infraestrutura não altera thresholds, famílias, universo, janelas,
 FDR, seleção de episódios nem qualquer outro parâmetro científico congelado do RJ.
+
+Uma primitiva econômica opt-in `REBALANCE/HOLD` vive em
+`stocks_predictor/economic_gate.py`. Ela exige que o limite conservador da vantagem
+bruta pague turnover e hurdle, mas ainda não está ligada ao walk-forward congelado nem
+autoriza capital. Integração futura exige hipótese nova e janela forward nova.
 
 ## Linha ativa: predictor-rj
 
@@ -41,7 +46,7 @@ packaging, Core/Ops ou CI não constitui evidência de hipótese.
 uv sync --all-extras --python 3.13
 uv run pytest -q
 uv run pyright
-uv run ruff check src tests main.py
+uv run ruff check stocks_predictor tests main.py
 uv build
 ```
 

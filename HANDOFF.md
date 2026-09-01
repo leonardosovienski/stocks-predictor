@@ -1,5 +1,26 @@
 # HANDOFF — predictor-stocks
 
+> **Estado técnico corrente — 2026-09-01:** pacote `stocks_predictor`, Core
+> 3.0.x por wheel e nenhuma dependência declarada de Ops. A migração moderna
+> prevalece sobre a antiga pendência Core 2.3/Ops 3.1 e sobre caminhos históricos
+> `src/*` citados abaixo. Esses blocos permanecem como evidência datada, não como
+> instrução operacional atual.
+
+> ## Infra econômica opt-in para hipótese FUTURA (2026-09-01)
+>
+> Adicionado `stocks_predictor/economic_gate.py`: uma trava prequential que só
+> recomenda `REBALANCE` quando o limite conservador da vantagem bruta observada
+> em períodos já maturados paga o custo de turnover e um hurdle explícito. Com
+> amostra insuficiente ou edge líquido conservador não positivo, recomenda
+> `HOLD`. Toda decisão carrega `capital_enabled=False`: é infraestrutura de
+> shadow/research, não autorização para operar dinheiro real.
+>
+> A trava não foi conectada retroativamente ao `walk_forward` congelado e não
+> altera H1/H2/H4/H5/H6/H8, seus parâmetros, relatórios ou vereditos. Usá-la em
+> uma estratégia requer hipótese nova, pré-registro e janela forward nova. Testes
+> cobrem amostra insuficiente, custo+hurdle, causalidade (resultado corrente só
+> entra depois da decisão) e entradas inválidas.
+
 > ## Migração de namespace do pacote (2026-08-31)
 >
 > Autorização explícita do operador para corrigir a colisão cross-repo confirmada
