@@ -1361,3 +1361,30 @@ nova hipótese / novo pré-registro. Aplica-se igualmente à estratégia E ao be
 - IA (analista) NUNCA escreve no banco, NUNCA resolve quarentena.
 - Nenhum lookahead: exec_ts > signal_ts em toda linha do ledger (teste automatizado obrigatório no M4).
 - Parâmetros H1-FROZEN não se tocam após qualquer rodada de resultado.
+
+---
+
+## Congelamento científico (2026-09-02)
+
+Pesquisa ativa de fatores **encerrada**. `stocks-predictor` passa a ser
+`FROZEN_RESEARCH_ASSET + REUSABLE_QUANT_COMPONENTS + SCIENTIFIC_CASE_STUDY`.
+Decisões completas, evidence registry, component inventory e case studies em
+[RESEARCH_FREEZE.md](RESEARCH_FREEZE.md). Resumo:
+
+- Nenhuma família de fatores (momentum 12-1/6-1, low-vol, vol-target, reversão 21d,
+  interseção) pode ser reaberta sem os 6 campos exigidos em `reopen_policy` do manifesto.
+- `purge_embargo_months` [H1-FROZEN] permanece declarado no config mas **nunca foi
+  consumido pelo backtest** — decisão: `DOCUMENTED_HISTORICAL_LIMITATION` (não implementar
+  retroativamente, não remover parâmetro frozen). Vereditos H1-H8 não têm proteção formal
+  de purge/embargo.
+- `vendor/predictor_core/` (congelado em 1.3.0-ga) resolvido como `ARCHIVE_FOR_REPRODUCTION`
+  — nenhum caminho de runtime o usa (guard já ativo em `tests/conftest.py`); único
+  consumidor é `poc_leak.py`, classificado `HISTORICAL_POC / NOT_REPRODUCIBLE_AGAINST_CORE_3_0`.
+- Linha RJ: `ST_RJ_STATE = ARCHIVED` — zero dados reais coletados, protocolo preservado,
+  sem trabalho ativo/ingestão nova autorizada.
+- `trials.json` migrado de forma não-destrutiva/idempotente para o schema prospectivo
+  canônico em `trials_v2.json` (`tools/migrate_trials_schema.py`); campos sem informação
+  registrada usam `"UNKNOWN"` (seed, dataset_hash, selection_path nunca inventados).
+- **Blocker operacional pendente:** `data/stocks.db` não está neste checkout (excluído por
+  `.gitignore`) e não tem backup offsite verificado — ação humana necessária antes de
+  qualquer desligamento da máquina de pesquisa.
