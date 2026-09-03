@@ -28,8 +28,12 @@ def _digits(s):
 
 
 def load_universe(path="universo_2018_2026.txt"):
-    with open(path, encoding="utf-8") as f:
-        lines = [l.strip() for l in f if l.strip()]
+    # Windows PowerShell (não pwsh) grava `>` em UTF-16LE por padrão (BOM
+    # FF FE) — detecta pelo BOM em vez de assumir UTF-8, que quebrava aqui.
+    with open(path, "rb") as f:
+        raw = f.read()
+    encoding = "utf-16" if raw[:2] in (b"\xff\xfe", b"\xfe\xff") else "utf-8-sig"
+    lines = [l.strip() for l in raw.decode(encoding).splitlines() if l.strip()]
     # 1ª linha é a contagem (print(len(seen)) do script anterior)
     return set(lines[1:]) if lines and lines[0].isdigit() else set(lines)
 
@@ -46,7 +50,7 @@ def cnpj_to_company(dfp_year=2023):
     return out
 
 
-FCA_URL = "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FCA/DADOS/fca_cia_aberta_valor_mobiliario_{year}.zip"
+FCA_URL = "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FCA/DADOS/fca_cia_aberta_{year}.zip"
 
 
 def cnpj_to_tickers(fca_year=2023):
