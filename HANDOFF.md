@@ -1,5 +1,28 @@
 # HANDOFF — predictor-stocks
 
+> ## Errata de schema em `trials.json` (2026-09-03) — campo órfão removido, NENHUM veredito alterado
+>
+> Ao tentar registrar a H7 na máquina do operador (Core `predictor-core==3.0.0` real,
+> não o vendor/shim), `trials_gate.apply_dsr` falhou com
+> `ValueError: registro violaria o schema de trials` — não na trial nova, mas em
+> `trial[4]` (`h6-momentum-6-1`) e `trial[5]` (`h8-mom-lowvol-double`), que tinham um
+> campo `"pipeline_fingerprint": null` gravado **dentro do objeto da trial**. Inspeção
+> do código-fonte real do wheel 3.0.0 (`predictor_core/measurement/trials.py`,
+> `_TRIAL_FIELDS`) confirma que esse campo **não faz parte do schema** — é só um
+> parâmetro de validação passado na hora de `register()` (comparado contra o
+> atestado), nunca deveria ter sido persistido no registro. Alguma chamada/versão
+> anterior gravou esse campo a mais quando H6/H8 foram registradas (H1/H2/H4/H5 não
+> têm); o Core 3.0.0 real, mais estrito, passou a rejeitar a lista inteira por causa
+> dessas duas entradas — bloqueando qualquer registro novo, não só a H7.
+>
+> **Correção**: removida só a chave `"pipeline_fingerprint": null` (valor sempre nulo,
+> nunca teve dado real) de `trial[4]`/`trial[5]` — `name`, `registered_at`, `params`,
+> `sharpe`, `notes`, `metric`, `test_period` de H6/H8 preservados byte a byte. Nenhum
+> veredito, Sharpe ou parâmetro `[H6-FROZEN]`/`[H8-FROZEN]` foi tocado — é limpeza de
+> schema, mesma disciplina do `tools/migrate_trials_schema.py` já existente no
+> projeto. Validado: `json.load` + checagem de chaves nas 6 trials, todas agora com o
+> mesmo conjunto de campos.
+
 > ## H7 ABERTA — PRÉ-REGISTRO (2026-09-03, ANTES de qualquer rodada real) — implementada, NÃO julgada
 >
 > Decisão explícita do operador ("faz tudo" / "o que precisar pro lucro"), após o
