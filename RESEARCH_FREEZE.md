@@ -81,7 +81,7 @@ verificado idêntico entre origem e destino em cada uma:
   `test_min_history_excludes_short`.
 - Cobertura confirmada para "empresa delistada some do universo após sair" (`test_excludes_delisted_ticker_stale_before_window`).
   Cobertura para "empresa listada depois não aparece antes" é **indireta** (via `min_history_excludes_short` + `test_universe_is_point_in_time`), não há teste nomeado explicitamente para esse caso — **registrado como gap, não fabricado como PASS perfeito**.
-- **Limitação honesta:** a suíte completa não pôde ser executada nesta sessão de auditoria (ambiente sandbox sem `predictor-core` instalado e sem permissão para o shim de vendor). Última execução conhecida (2026-08-24, `docs/audit/kimi_2026-08-24/RELATORIO_AUDITORIA_RJ.md`): 211 passed / 4 failed, falhas atribuídas a artefatos do shim de auditoria, não a regressões reais. **Não declaramos "testes verdes" sem tê-los rodado nesta sessão — isso é uma citação da última execução registrada, não uma nova verificação.**
+- **Atualização (2026-09-03):** a suíte completa FOI executada nesta sessão com Python 3.13.12 (instalado via `python3.13` no ambiente de auditoria) + `predictor-core==3.0.0` real (wheel oficial do GitHub Release, mesma fonte de `pyproject.toml`/`uv.lock`) — `python -m pytest tests/ -q` → **251 passed, 0 failed**. Isso supera a execução anterior conhecida (2026-08-24, 211 passed / 4 failed com shim de vendor) e confirma que a suíte está verde com o Core real, não com o shim histórico.
 
 ---
 
@@ -111,9 +111,17 @@ treino/teste — apenas um filtro de data de início (`test_start`).
   "não comprovada" — um viés de embargo ausente tenderia a, se algo, *inflar* falsamente um
   sinal positivo, e mesmo assim a maioria não cruzou o gate; H5 é claramente anti-sinal). É uma
   limitação de rigor a registrar, não uma falha que exige reabrir os testes.
-- Nenhum teste de label-overlap foi criado (§10 da tarefa), porque a decisão foi documentar a
-  limitação histórica, não implementar/consumir purge — implementar o teste sem o consumidor
-  real seria decoração.
+- **Atualização (2026-09-03):** em vez de um teste de label-overlap que dependeria de um
+  purge/embargo inexistente (decoração, como registrado antes), foi adicionado
+  `tests/test_purge_embargo_limitation.py` — dois testes que tornam a lacuna **verificável em
+  código**, não só descritiva: (1) `test_purge_embargo_months_has_no_effect_on_walk_forward`
+  prova que rodar o mesmo walk-forward com `purge_embargo_months=1` vs `=12` produz séries
+  estrategicamente **idênticas** (o parâmetro é comprovadamente inerte); (2)
+  `test_first_rebalance_after_test_start_has_no_embargo_gap` prova que o primeiro rebalance
+  elegível após `test_start` não guarda nenhum espaçamento de embargo. Os dois passam hoje
+  (documentando a limitação atual) e **vão quebrar** se algum dia alguém implementar
+  purge/embargo de verdade — forçando atualização consciente deste documento em vez de uma
+  suíte verde por acidente sobre uma mudança de proteção temporal.
 
 ---
 
@@ -132,9 +140,14 @@ treino/teste — apenas um filtro de data de início (`test_start`).
   histórico/demonstrativo, não parte do pipeline.
 - **Freshness guard já existe:** `tests/conftest.py` faz
   `assert "vendor" not in pathlib.Path(predictor_core.__file__).parts` a menos que
-  `STOCKS_ALLOW_VENDOR_SHIM=1` esteja setado explicitamente — isso **já é** o "import path
-  test" pedido na tarefa (§12): se o runtime resolvesse `predictor_core` para o vendor por
-  acidente, esse assert falha por padrão.
+  `STOCKS_ALLOW_VENDOR_SHIM=1` esteja setado explicitamente — isso já cobria o "import path
+  test" pedido na tarefa (§12) como efeito colateral de import.
+- **Atualização (2026-09-03):** adicionado `tests/test_core_import_path.py`, um teste NOMEADO
+  e independente (`test_predictor_core_does_not_resolve_to_vendor`,
+  `test_predictor_core_version_is_at_least_3`) que reproduz e reforça o guard do conftest —
+  agora citável e executável isoladamente (`pytest tests/test_core_import_path.py -v`), sem
+  depender de reestruturação futura do conftest. Executado nesta sessão com o Core 3.0.0
+  real instalado: **2 passed**.
 - **Por que arquivar em vez de remover:** o vendor snapshot é necessário para reproduzir
   historicamente o ambiente em que `poc_leak.py` foi originalmente demonstrado (ele depende de
   uma API específica de `vendor/predictor_core/replay.py` que não existe/mudou no Core 3.0.0
@@ -424,7 +437,7 @@ esta seção — o valor é o **case em si**, preservado e documentado, não uma
 ```
 ST_PRESERVATION       = PASS (data/stocks.db canônico localizado, auditado e replicado offsite com hash verificado em 2026-09-02)
 ST_TRIAL_SCHEMA       = PASS
-ST_PIT_INTEGRITY      = PASS (com gap documentado: sem teste nomeado p/ "listada depois")
+ST_PIT_INTEGRITY      = PASS (suíte reexecutada em 2026-09-03: 251 passed, 0 failed; gap documentado: sem teste nomeado p/ "listada depois")
 ST_PURGE_EMBARGO_STATUS = DOCUMENTED_HISTORICAL_LIMITATION
 ST_VENDOR_STATE       = RESOLVED (ARCHIVE_FOR_REPRODUCTION + freshness guard já ativo em tests/conftest.py)
 ST_RJ_STATE           = ARCHIVED
@@ -441,11 +454,11 @@ ST_CASE_STUDY_READY   = YES
    de auditoria/dev sem volume real de dados, e replicou o canônico para
    `D:\backups\stocks-predictor-db-20260902_214421\` com hash SHA-256 idêntico
    origem↔destino. Ver §1.
-2. **Suíte de testes não pôde ser executada nesta sessão** (ambiente sandbox sem
-   `predictor-core` instalável). O último resultado conhecido (211 passed / 4 failed,
-   2026-08-24) é citado, não reverificado — recomenda-se rodar
-   `python -m pytest tests/ -v` em ambiente com o Core 3.0.0 instalado antes de considerar o
-   congelamento definitivamente fechado do ponto de vista de CI.
+2. ~~Suíte de testes não pôde ser executada nesta sessão.~~ **RESOLVIDO (2026-09-03):**
+   instalado Python 3.13.12 + `predictor-core==3.0.0` real (mesmo wheel do GitHub Release
+   declarado em `pyproject.toml`/`uv.lock`) no ambiente de auditoria; `python -m pytest
+   tests/ -q` → **251 passed, 0 failed**, incluindo os 4 testes novos desta rodada
+   (`test_core_import_path.py`, `test_purge_embargo_limitation.py`).
 3. **Sem teste nomeado explicitamente para "ativo listado depois não aparece antes da data
    real de listagem"** — coberto apenas indiretamente. Não corrigido nesta rodada por estar
    fora do escopo de "não reabrir pesquisa" (é um gap de teste, não de fator); registrar para
