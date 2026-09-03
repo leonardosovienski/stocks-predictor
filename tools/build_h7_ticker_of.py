@@ -50,7 +50,7 @@ def cnpj_to_company(dfp_year=2023):
     return out
 
 
-FCA_URL = "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FCA/DADOS/fca_cia_aberta_valor_mobiliario_{year}.zip"
+FCA_URL = "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FCA/DADOS/fca_cia_aberta_{year}.zip"
 
 
 def cnpj_to_tickers(fca_year=2023):
