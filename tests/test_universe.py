@@ -125,3 +125,46 @@ def test_min_history_excludes_short(tmp_path):
     uni = universe.select_universe(conn, d[10], top_n=5, lookback=5, min_history=8)
     assert "NEW3" not in uni
     conn.close()
+
+
+def test_newly_listed_ticker_does_not_appear_before_its_ipo_date(tmp_path):
+    """IPOX3 estreia (primeiro pregão) só na METADE do calendário sintético, com volume
+    altíssimo desde o dia 1 de negociação — se apareceria em QUALQUER asof anterior à
+    estreia, seria survivorship bias ao contrário (o universo "conheceria" uma empresa
+    antes dela existir). RESEARCH_FREEZE.md §3/§13 (CLAIM-ST-PIT) registrava esse caso
+    como coberto só indiretamente via min_history_excludes_short; este teste o nomeia
+    explicitamente e cobre tanto `rank_universe` quanto `select_universe`, e confirma
+    que o MESMO ticker aparece normalmente uma vez que tenha `min_history` dias de
+    pregão acumulados após a estreia — não é uma exclusão permanente por nome."""
+    conn = db.get_connection(tmp_path / "s.db")
+    d = _dates(40)
+    ipo_idx = 20
+    _ins(conn, "AAAA3", d, [1000.0] * 40)                       # sempre listada, estável
+    _ins(conn, "IPOX3", d[ipo_idx:], [9_000_000.0] * (40 - ipo_idx))  # estreia em d[20]
+
+    asof_before_ipo = d[10]
+    ranked_before = dict(universe.rank_universe(
+        conn, asof_before_ipo, lookback=5, min_history=8))
+    assert "IPOX3" not in ranked_before, (
+        "ticker apareceu no ranking ANTES do seu próprio primeiro pregão (lookahead de "
+        "listagem!) — universo não pode conhecer uma empresa antes dela existir"
+    )
+    uni_before = universe.select_universe(
+        conn, asof_before_ipo, top_n=5, lookback=5, min_history=8)
+    assert "IPOX3" not in uni_before
+
+    asof_right_after_ipo = d[ipo_idx + 2]
+    uni_too_soon = universe.select_universe(
+        conn, asof_right_after_ipo, top_n=5, lookback=5, min_history=8)
+    assert "IPOX3" not in uni_too_soon, (
+        "min_history deveria continuar excluindo o recém-listado logo após a estreia"
+    )
+
+    asof_after_min_history = d[ipo_idx + 8]
+    uni_after = universe.select_universe(
+        conn, asof_after_min_history, top_n=5, lookback=5, min_history=8)
+    assert "IPOX3" in uni_after, (
+        "uma vez cumprido min_history após a estreia real, o ticker deve ficar elegível "
+        "normalmente — a exclusão é sobre disponibilidade temporal, não uma blacklist"
+    )
+    conn.close()
