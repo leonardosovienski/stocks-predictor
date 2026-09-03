@@ -81,31 +81,58 @@ def cnpj_to_tickers(fca_year=2023):
     return out
 
 
-def main():
-    universe = load_universe()
-    print(f"universo alvo: {len(universe)} tickers", file=sys.stderr)
+def build_ticker_of(year, universe):
+    """Ticker_of do ANO ESPECÍFICO (DFP + FCA do mesmo ano) — não um dict
+    global. Empresa que trocou de ticker no meio de 2018-2026 (fusão,
+    rebatismo — ex.: Arezzo/Grupo Soma viraram Azzas 2154 em 2024, negociada
+    como AZZA3, não mais ARZZ3) precisa do ticker VÁLIDO NAQUELE ANO, não
+    um fixo pra toda a janela. Retorna (ticker_of, ambiguous) — `ambiguous`
+    lista CNPJs cujo FCA do ano bate com MAIS DE UM ticker do universo (ex.:
+    ON e PN da mesma empresa, ambas no top-60 em algum momento): a chave
+    ganha só um (ordem alfabética, determinístico) — revisão humana decide
+    se os dois devem entrar."""
+    cnpj_company = cnpj_to_company(year)
+    cnpj_tickers = cnpj_to_tickers(year)
+    print(f"DFP {year}: {len(cnpj_company)} CNPJs | FCA {year}: "
+          f"{len(cnpj_tickers)} CNPJs com valor mobiliário", file=sys.stderr)
 
-    cnpj_company = cnpj_to_company(2023)
-    print(f"DFP 2023: {len(cnpj_company)} CNPJs", file=sys.stderr)
-
-    cnpj_tickers = cnpj_to_tickers(2023)
-    print(f"FCA 2023: {len(cnpj_tickers)} CNPJs com valor mobiliário", file=sys.stderr)
-
-    ticker_of = {}
-    matched_tickers = set()
+    ticker_of, matched_tickers, ambiguous = {}, set(), []
     for cnpj, company in cnpj_company.items():
-        tickers = cnpj_tickers.get(cnpj, set())
-        hit = tickers & universe
-        for tk in hit:
-            ticker_of[_norm(company)] = tk
-            matched_tickers.add(tk)
+        hit = sorted(cnpj_tickers.get(cnpj, set()) & universe)
+        if not hit:
+            continue
+        if len(hit) > 1:
+            ambiguous.append((company, hit))
+        ticker_of[_norm(company)] = hit[0]
+        matched_tickers.add(hit[0])
+    return ticker_of, matched_tickers, ambiguous
 
+
+def main():
+    year = int(sys.argv[1]) if len(sys.argv) > 1 else 2023
+    universe = load_universe()
+    print(f"universo alvo: {len(universe)} tickers | ano de referência: {year}",
+          file=sys.stderr)
+
+    ticker_of, matched_tickers, ambiguous = build_ticker_of(year, universe)
     missing = sorted(universe - matched_tickers)
-    print(f"\nticker_of proposto: {len(ticker_of)} entradas cobrindo "
+
+    print(f"\nticker_of proposto ({year}): {len(ticker_of)} entradas cobrindo "
           f"{len(matched_tickers)}/{len(universe)} tickers do universo\n", file=sys.stderr)
     print(json.dumps(ticker_of, ensure_ascii=True, indent=2, sort_keys=True))
-    print(f"\n# NÃO casaram (revisar manualmente — nome mudou, fusão, "
-          f"delistagem no meio da janela, ou CNPJ divergente entre datasets):",
+
+    if ambiguous:
+        print(f"\n# AMBÍGUOS ({len(ambiguous)}) — mesmo CNPJ bateu com MAIS DE UM "
+              f"ticker do universo (ex.: ON+PN); só o primeiro alfabético entrou "
+              f"no ticker_of acima, revisar se os dois precisam de linha própria:",
+              file=sys.stderr)
+        for company, tks in ambiguous:
+            print(f"#   {company} -> {tks}", file=sys.stderr)
+
+    print(f"\n# NÃO casaram em {year} (revisar manualmente — nome mudou, fusão, "
+          f"delistagem, ou CNPJ divergente entre datasets; rode com outro ano "
+          f"como argumento, ex. `python tools/build_h7_ticker_of.py 2019`, "
+          f"pra empresas que trocaram de ticker no meio da janela):",
           file=sys.stderr)
     for tk in missing:
         print(f"#   {tk}", file=sys.stderr)
