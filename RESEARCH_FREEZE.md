@@ -80,8 +80,8 @@ verificado idêntico entre origem e destino em cada uma:
   `test_excludes_delisted_ticker_stale_before_window`, `test_sporadic_trader_median_counts_no_trade_days_as_zero`,
   `test_min_history_excludes_short`.
 - Cobertura confirmada para "empresa delistada some do universo após sair" (`test_excludes_delisted_ticker_stale_before_window`).
-  Cobertura para "empresa listada depois não aparece antes" é **indireta** (via `min_history_excludes_short` + `test_universe_is_point_in_time`), não há teste nomeado explicitamente para esse caso — **registrado como gap, não fabricado como PASS perfeito**.
-- **Atualização (2026-09-03):** a suíte completa FOI executada nesta sessão com Python 3.13.12 (instalado via `python3.13` no ambiente de auditoria) + `predictor-core==3.0.0` real (wheel oficial do GitHub Release, mesma fonte de `pyproject.toml`/`uv.lock`) — `python -m pytest tests/ -q` → **251 passed, 0 failed**. Isso supera a execução anterior conhecida (2026-08-24, 211 passed / 4 failed com shim de vendor) e confirma que a suíte está verde com o Core real, não com o shim histórico.
+- **Atualização (2026-09-03):** adicionado `test_newly_listed_ticker_does_not_appear_before_its_ipo_date` — teste nomeado explicitamente que prova (i) um ticker recém-listado não aparece em `rank_universe`/`select_universe` para nenhum `asof` anterior ao seu próprio primeiro pregão, mesmo com volume altíssimo desde a estreia; (ii) continua excluído logo após a estreia até cumprir `min_history`; (iii) fica elegível normalmente depois disso — não é uma blacklist permanente. Fecha o gap que antes só tinha cobertura indireta via `min_history_excludes_short`.
+- **Atualização (2026-09-03):** a suíte completa FOI executada nesta sessão com Python 3.13.12 (instalado via `python3.13` no ambiente de auditoria) + `predictor-core==3.0.0` real (wheel oficial do GitHub Release, mesma fonte de `pyproject.toml`/`uv.lock`) — `python -m pytest tests/ -q` → **252 passed, 0 failed** (após os 5 testes novos desta rodada: import path, purge/embargo, listagem tardia). Isso supera a execução anterior conhecida (2026-08-24, 211 passed / 4 failed com shim de vendor) e confirma que a suíte está verde com o Core real, não com o shim histórico.
 
 ---
 
@@ -347,11 +347,13 @@ ST_RESEARCH_FREEZE:
   usando somente dados `< asof`; testes automatizados (`test_universe_is_point_in_time`,
   `test_excludes_delisted_ticker_stale_before_window`) verificam que uma empresa delistada
   continua aparecendo antes da saída e desaparece depois.
-- **result:** a arquitetura PIT está implementada e testada; a limitação registrada é que não
-  existe teste nomeado explicitamente para "empresa listada depois não aparece antes de sua
-  data real de listagem" (coberto apenas indiretamente por `min_history_excludes_short`).
+- **result:** a arquitetura PIT está implementada e testada; o caso "empresa listada depois
+  não aparece antes de sua data real de listagem" tinha cobertura só indireta e agora tem
+  teste nomeado explícito (`test_newly_listed_ticker_does_not_appear_before_its_ipo_date`,
+  adicionado 2026-09-03).
 - **failure_mode:** ausência de survivorship bias não foi *provada* de forma exaustiva — foi
-  testada nos casos que a suíte cobre.
+  testada nos casos que a suíte cobre (eventos corporativos fora dos 9 casos de
+  `test_universe.py` continuam fora do escopo verificado).
 - **lesson:** "proteção contra survivorship" não é um booleano — é uma lista de casos de teste,
   e é preciso ser honesto sobre qual subconjunto de casos está de fato coberto.
 
@@ -378,7 +380,7 @@ ST_RESEARCH_FREEZE:
 | `CLAIM-ST-MOMENTUM` (12-1 e 6-1) | INCONCLUSIVE_DUE_TO_POWER / NOT_SUPPORTED-IN-WINDOW (não "REFUTED") | H1 IC (-0,3192,0,2933); H6 DSR 0,4565<0,95 | janela única 2018-2026, sem repetição fora da amostra | ENCERRADA, sem reabertura sem os 6 campos de `reopen_policy` |
 | `CLAIM-ST-LOWVOL` | NOT_SUPPORTED-IN-WINDOW | H2 DSR 0,7092<0,95, IC cruza/negativo | idem | ENCERRADA |
 | `CLAIM-ST-REVERSAL` | ANTI_SIGNAL (mais forte que "não comprovada") | H5 Sharpe -0,1804, IC (-0,6406,-0,1009) inteiramente negativo | direção testada pode estar simplesmente errada para este mercado/janela | ENCERRADA — reabrir exigiria hipótese de sinal invertido, com novo pré-registro completo |
-| `CLAIM-ST-PIT` | SUPPORTED (com escopo declarado) | `universe.py` + testes citados em §3 | falta teste nomeado para "listada depois não aparece antes" | manter como está; gap registrado, não corrigido nesta rodada (fora do escopo de congelamento) |
+| `CLAIM-ST-PIT` | SUPPORTED | `universe.py` + testes citados em §3, incluindo `test_newly_listed_ticker_does_not_appear_before_its_ipo_date` (2026-09-03) | nenhuma conhecida além do escopo geral de `test_universe.py` (9 casos) | fechado |
 | `CLAIM-ST-SURVIVORSHIP` | SUPPORTED (parcial, não "perfeita") | `test_excludes_delisted_ticker_stale_before_window` | sem inventário completo de eventos corporativos/delistings da amostra inteira | registrado como limitação honesta |
 | `CLAIM-ST-PURGE` | **LIMITATION, não implementado** | config declara, `backtest.py` não consome | vereditos H1-H8 não têm proteção formal de purge/embargo | `DOCUMENTED_HISTORICAL_LIMITATION` — ver §4 |
 
@@ -394,7 +396,7 @@ nenhuma resposta nova, só a síntese direta como checklist de fechamento.
 
 | # | pergunta | resposta | evidência |
 |---|---|---|---|
-| 1 | **PIT** — há ativo aparecendo antes de existir? | Não, dentro do que a suíte cobre. `universe.py` filtra `WHERE date < asof` em todo lugar; `test_universe_is_point_in_time` prova isso para o caso testado. **Mas** não há teste nomeado explicitamente para "ativo recém-listado não aparece antes da data real de listagem" — coberto só indiretamente (`min_history_excludes_short`). Não declarado PASS perfeito. | §3, §13 (`CLAIM-ST-PIT`) |
+| 1 | **PIT** — há ativo aparecendo antes de existir? | Não. `universe.py` filtra `WHERE date < asof` em todo lugar; `test_universe_is_point_in_time` prova isso para delisting, e `test_newly_listed_ticker_does_not_appear_before_its_ipo_date` (2026-09-03) prova isso para listagem tardia — ambos os lados do ciclo de vida do ticker agora têm teste nomeado explícito. | §3, §13 (`CLAIM-ST-PIT`) |
 | 2 | **Survivorship** — delisted está desaparecendo do passado? | Não. `test_excludes_delisted_ticker_stale_before_window` prova que uma empresa delistada continua aparecendo antes da saída. Sem inventário completo de todos os eventos de delisting da amostra de 2018-2026 — gap registrado, não fabricado como cobertura total. | §3, §8, §13 (`CLAIM-ST-SURVIVORSHIP`) |
 | 3 | **Costs** — resultado líquido está subestimando fricção? | Parcialmente possível. `spread_slippage_pct=0.0015` e `b3_fee_pct=0.0003` são **ASSUMED** (constantes literais, não medidas de execução real); só `turnover` é **MEASURED**. Impostos e custo de aluguel **NOT_MODELED**. Isso tende a subestimar fricção real — viés que jogaria a favor dos resultados positivos, o que reforça (não enfraquece) a conclusão de "não comprovada" nas 6 famílias. | §7 |
 | 4 | **Purge** — config diz uma coisa e runtime faz outra? | **Sim, confirmado.** `purge_embargo_months: 1` está declarado e é usado só no hash de integridade de config; `backtest.py` nunca o consome no walk-forward. Não deixado ambíguo: decisão explícita `DOCUMENTED_HISTORICAL_LIMITATION` (§4), não implementação silenciosa nem remoção do parâmetro `[H1-FROZEN]`. | §4, §13 (`CLAIM-ST-PURGE`) |
@@ -437,7 +439,7 @@ esta seção — o valor é o **case em si**, preservado e documentado, não uma
 ```
 ST_PRESERVATION       = PASS (data/stocks.db canônico localizado, auditado e replicado offsite com hash verificado em 2026-09-02)
 ST_TRIAL_SCHEMA       = PASS
-ST_PIT_INTEGRITY      = PASS (suíte reexecutada em 2026-09-03: 251 passed, 0 failed; gap documentado: sem teste nomeado p/ "listada depois")
+ST_PIT_INTEGRITY      = PASS (suíte reexecutada em 2026-09-03: 252 passed, 0 failed; gap de "listada depois" fechado com teste nomeado)
 ST_PURGE_EMBARGO_STATUS = DOCUMENTED_HISTORICAL_LIMITATION
 ST_VENDOR_STATE       = RESOLVED (ARCHIVE_FOR_REPRODUCTION + freshness guard já ativo em tests/conftest.py)
 ST_RJ_STATE           = ARCHIVED
@@ -457,9 +459,14 @@ ST_CASE_STUDY_READY   = YES
 2. ~~Suíte de testes não pôde ser executada nesta sessão.~~ **RESOLVIDO (2026-09-03):**
    instalado Python 3.13.12 + `predictor-core==3.0.0` real (mesmo wheel do GitHub Release
    declarado em `pyproject.toml`/`uv.lock`) no ambiente de auditoria; `python -m pytest
-   tests/ -q` → **251 passed, 0 failed**, incluindo os 4 testes novos desta rodada
-   (`test_core_import_path.py`, `test_purge_embargo_limitation.py`).
-3. **Sem teste nomeado explicitamente para "ativo listado depois não aparece antes da data
-   real de listagem"** — coberto apenas indiretamente. Não corrigido nesta rodada por estar
-   fora do escopo de "não reabrir pesquisa" (é um gap de teste, não de fator); registrar para
-   decisão humana se vale a pena um teste dedicado.
+   tests/ -q` → **252 passed, 0 failed**, incluindo os 5 testes novos desta rodada
+   (`test_core_import_path.py` ×2, `test_purge_embargo_limitation.py` ×2,
+   `test_newly_listed_ticker_does_not_appear_before_its_ipo_date`).
+3. ~~Sem teste nomeado explicitamente para "ativo listado depois não aparece antes da data
+   real de listagem".~~ **RESOLVIDO (2026-09-03):** adicionado
+   `test_newly_listed_ticker_does_not_appear_before_its_ipo_date` em `tests/test_universe.py`
+   — prova que um ticker recém-listado fica ausente do universo em qualquer `asof` anterior
+   à sua estreia, permanece excluído até cumprir `min_history`, e fica elegível normalmente
+   depois disso.
+
+Nenhum blocker conhecido permanece em aberto nesta rodada.
