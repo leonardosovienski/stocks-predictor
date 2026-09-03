@@ -367,6 +367,27 @@ def run_h8(cfg=None, conn=None, write_report=False, run_id=None, trials_path=Non
         cfg, conn, write_report, run_id, trials_path, portfolio_fn=_pf)
 
 
+def run_h7(cfg=None, conn=None, write_report=False, run_id=None, trials_path=None):
+    """H7 — fator de qualidade, ROE isolado (pré-registro 2026-09-03): quintil
+    SUPERIOR de ROE (lucro líquido / patrimônio líquido, `fundamentals` da
+    CVM/DFP), embargo de divulgação sobre `ref_date` (`factor.roe_signals`),
+    mesma maquinaria de universo/custos/pareamento/pedágio das anteriores.
+    1ª hipótese sobre dado contábil — todas as anteriores (H1/H2/H4/H5/H6/H8)
+    são só-preço. Critérios: (i) IC95% diff-Sharpe > 0; (ii) DSR >= dsr_min
+    (N=7 tentativas no registro)."""
+    from config import H7_FROZEN_KEYS
+    cfg = cfg or load_config()
+    conn = conn or db.get_connection()
+    h7f = cfg.get("h7_factor", {})
+    embargo = h7f.get("disclosure_embargo_days", 90)
+    return _run_hypothesis(
+        "H7", "h7-quality-roe", H7_FROZEN_KEYS, "h7_criteria",
+        "rodada única da H7 (ROE isolado, quintil superior; sharpe por-período realizado)",
+        cfg, conn, write_report, run_id, trials_path,
+        signal_fn=lambda sub, asof: factor.roe_signals(conn, sub.keys(), asof, embargo),
+        take="top")
+
+
 if __name__ == "__main__":
     if run() is None:
         sys.exit(1)

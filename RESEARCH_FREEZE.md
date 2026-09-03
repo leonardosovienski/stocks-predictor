@@ -264,7 +264,19 @@ Nenhum componente foi movido para o Core nesta rodada — os dois já compartilh
 
 ```yaml
 ST_RESEARCH_FREEZE:
-  active_hypotheses: []
+  active_hypotheses:
+    - id: H7
+      family: quality_roe
+      status: PRE_REGISTERED_NOT_JUDGED
+      note: >
+        Aberta 2026-09-03 por decisão explícita do operador (ver HANDOFF.md).
+        NÃO é reabertura das famílias abaixo (não exige os 6 campos de
+        reopen_policy) — é hipótese nova sobre fonte de dado nova (DFP da
+        CVM), mesma disciplina de pré-registro de H4/H5/H6/H8. Código e
+        testes prontos (dado sintético); rodada real com dado real ainda NÃO
+        aconteceu (bloqueada pela ausência de stocks.db real e de rede à CVM
+        neste ambiente de auditoria — ver HANDOFF.md para os passos
+        mecânicos pendentes na máquina do operador).
   stopped_hypotheses:
     - id: H1
       family: momentum_12_1

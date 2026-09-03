@@ -84,6 +84,17 @@ _BIAS_NOTE = {
           "duas, o viés líquido não tem sinal a priori (não fixado explicitamente no "
           "pré-registro original da H8; nota técnica adicionada na revisão de código "
           "de 2026-08-28).",
+    "H7": "- Retorno **só-preço** (rota (b)): dividendos/JCP omitidos; SEM direção "
+          "declarada a priori — ao contrário de H1/H2/H4/H5/H6/H8 (fatores de "
+          "preço/vol, onde a relação com yield é conhecida da literatura), a relação "
+          "entre ROE alto e política de dividendos de empresas B3 não foi "
+          "estabelecida nesta rodada (poderia ir em qualquer direção: empresa lucrativa "
+          "paga mais OU reinveste mais). Viés não quantificado, registrado como "
+          "limitação honesta (declarado no pré-registro da H7, 2026-09-03) — não "
+          "inferir sinal. Adicionalmente: o dado de ROE tem embargo de divulgação de "
+          "90 dias sobre `ref_date` (`h7_factor.disclosure_embargo_days`), mas não "
+          "cobre a data REAL de entrega da DFP à CVM (ver `ingest_cvm.py`) — um "
+          "embargo curto demais vazaria informação contábil antes da publicação real.",
 }
 
 

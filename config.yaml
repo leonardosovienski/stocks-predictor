@@ -127,6 +127,30 @@ h8_portfolio:
 h8_criteria:
   dsr_min: 0.95                    # [H8-FROZEN] DSR mínimo (N=6 tentativas no registro)
 
+# ── H7 (pré-registrada 2026-09-03; ver HANDOFF) ─────────────────────────────
+# NÃO alterar valores [H7-FROZEN] após qualquer rodada de resultado da H7.
+# Fator de qualidade: ROE isolado (lucro líquido / patrimônio líquido), quintil
+# SUPERIOR do universo, equiponderado. H1-H6/H8 esgotaram o baralho só-preço
+# (momentum/vol/reversão/combinações); H7 é a primeira hipótese sobre fonte de
+# dado NOVA (DFP da CVM, `stocks_predictor/ingest_cvm.py`, migração
+# `0007_fundamentals`). Racional: empresas mais rentáveis (ROE alto) tendem a
+# superar em janelas longas (fator "quality" clássico da literatura) — hipótese
+# distinta de todas as anteriores (nenhuma usa dado contábil).
+
+h7_factor:
+  name: roe                        # [H7-FROZEN] lucro_liquido / patrimonio_liquido
+  disclosure_embargo_days: 90      # [H7-FROZEN] embargo sobre ref_date (fim do exercício);
+                                    # prazo regulamentar típico de entrega da DFP anual à CVM —
+                                    # ref_date sozinho seria otimista/lookahead (ver ingest_cvm.py)
+
+h7_portfolio:
+  quantile: top_quintile           # [H7-FROZEN] 12 papéis com N=60
+  weighting: equal                 # [H7-FROZEN]
+  direction: long_only             # [H7-FROZEN]
+
+h7_criteria:
+  dsr_min: 0.95                    # [H7-FROZEN] DSR mínimo (N=7 tentativas no registro)
+
 data:
   db_path: "data/stocks.db"
   cotahist_dir: "data/cotahist"
