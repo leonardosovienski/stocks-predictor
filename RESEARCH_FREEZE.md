@@ -1,0 +1,381 @@
+# RESEARCH_FREEZE — stocks-predictor
+
+**Status:** `FROZEN_RESEARCH_ASSET + REUSABLE_QUANT_COMPONENTS + SCIENTIFIC_CASE_STUDY`
+**Data do congelamento:** 2026-09-02
+**Regra de leitura:** este documento é a barreira contra reabertura por inércia. Uma
+sessão futura (humana ou de IA) que queira testar um novo fator, revisitar H1/H2/H4/H5/H6/H8,
+ou reabrir a linha RJ **deve** primeiro satisfazer `reopen_policy` abaixo — não decidir em silêncio.
+
+O projeto deixou de ser `ACTIVE_ALPHA_RESEARCH` / `TRADING_PRODUCT` / `SIGNAL_SERVICE`.
+Ele é `POINT_IN_TIME_CASE + SURVIVORSHIP_CASE + MULTIPLICITY_CASE + NEGATIVE_RESULT_PORTFOLIO`.
+
+---
+
+## 1. Preservation Result
+
+`ST_PRESERVATION = PASS (com 1 ressalva registrada)`
+
+| asset | path | source_of_truth | backup_status | offsite_copy? | hash_verified? | reconstructible? | irreversible? | risk | action |
+|---|---|---|---|---|---|---|---|---|---|
+| DB (prices_raw, adjustments, quarantine, decisions, universe_snapshots) | `data/stocks.db` | máquina onde o pipeline roda (cron rede limpa) | **AUSENTE neste checkout**; `.gitignore` exclui `*.db` | não verificado | não | **parcialmente** — `prices_raw` é re-baixável (COTAHIST é fonte pública B3), mas `adjustments`/`quarantine`/`decisions` são **julgamento humano acumulado**, não reconstituível a partir da fonte crua | SIM para as tabelas de julgamento humano | ALTO — se a máquina operacional for perdida sem backup, ~57 splits adjudicados e a trilha de decisão do H1 desaparecem | **AÇÃO PENDENTE (humana):** copiar `data/stocks.db` para armazenamento offsite (fora do repo, por ser dado privado/grande) antes de desligar/reaproveitar a máquina de pesquisa. Este relatório não pode executar essa cópia (sem acesso à máquina). |
+| Trials registry | `trials.json` | repo (versionado) | git | sim (GitHub) | não (sem hash de conteúdo, mas é texto pequeno e versionado) | sim, é o próprio arquivo fonte | não | baixo | preservado — nenhuma ação |
+| Trial schema canônico (novo) | `trials_v2.json` | repo (versionado, gerado por `tools/migrate_trials_schema.py`) | git | sim | idempotência verificada (`--check`) | sim, regenerável a qualquer momento a partir de `trials.json` | não | baixo | preservado — nenhuma ação |
+| Attestation | `trials.harness_attestation.json` | repo | git | sim | é ele mesmo um hash-gate | sim | não | baixo | preservado |
+| Reports/verdicts | `reports/*.md` (h1,h2,h4,h5,h6,h8) | repo (force-added, opt-in) | git | sim | não | sim, são os próprios registros do julgamento — **não reconstituíveis** se apagados (número exato de IC/DSR fica só na memória de quem rodou) | **SIM** | médio | preservado — recomenda-se nunca fazer `git rm` desses arquivos |
+| Configs | `config.yaml`, `config_rj.yaml` | repo | git | sim | sim, via `_frozen_hash` sobre `H1_FROZEN_KEYS` etc. | sim | não (mas params `[H1-FROZEN]` não podem mudar após rodada) | baixo | preservado |
+| Vendor snapshot | `vendor/predictor_core/` | repo | git | sim | sim, `CORE_MANIFEST.json` (SHA-256 por arquivo + agregado) | sim | não | baixo | preservado — ver §5 (Vendor Resolution) |
+| HANDOFF.md (decision log) | `HANDOFF.md` | repo | git | sim | não | é o log — não reconstituível | SIM | baixo (git já protege) | preservado |
+| RJ docs/protocol | `docs/RJ_DESIGN.md`, `config_rj.yaml`, `docs/audit/kimi_2026-08-24/*` | repo | git | sim | não | sim | não | baixo | preservado |
+
+**Por que PASS com ressalva:** todo ativo *reproduzível a partir de código versionado* (trials, reports, configs, vendor, docs) está preservado com segurança de git. O único gap real é o `data/stocks.db` — que contém julgamento humano irreversível (adjudicação de splits, quarentena) e não existe neste checkout. Isso é um blocker operacional, não um blocker de código; ver §15.
+
+---
+
+## 2. Trial Migration
+
+`ST_TRIAL_SCHEMA = PASS`
+
+- Schema legado de `trials.json` auditado campo a campo contra o schema prospectivo canônico (ver relatório de auditoria acima). Faltavam: `hypothesis_id`, `hypothesis_family`, `trial_id`, `executed_at`, `seed`, `forecast_horizon`, `dataset_hash`, `dataset_version`, `feature_version`, `model_version`, `code_version`, `selection_path`, `n_trials_family/domain/ecosystem`, `result`, `status`.
+- Migração implementada em `tools/migrate_trials_schema.py`: lê `trials.json` (não altera), escreve `trials_v2.json` com o schema canônico completo.
+  - **Não-destrutiva:** `trials.json` original permanece intocado.
+  - **Idempotente:** `--check` confirma que rodar de novo produz byte-a-byte o mesmo resultado.
+  - **Auditável:** cada campo migrado é rastreável ao campo legado de origem (`legacy_*` preservados no output).
+  - `seed`, `selection_path`, `dataset_hash` e `hypothesis_family` (quando o nome não permite mapeamento inequívoco) recebem `"UNKNOWN"` — **nada foi inventado**. `hypothesis_family` só foi preenchido para os 6 trials existentes porque o nome do trial já deixava a família inequívoca (mapeamento factual, não nova classificação).
+  - `n_trials_family=1` (uma rodada por hipótese, fato registrado), `n_trials_domain=6` (6 famílias no domínio de ações testadas, fato do HANDOFF), `n_trials_ecosystem="UNKNOWN"` (não temos visibilidade do denominador do ecossistema completo — não inventado).
+- A partir de agora, **qualquer novo trial pré-registrado deve nascer diretamente em `trials_v2.json`** com o schema canônico completo (schema prospectivo, não retrofit).
+
+---
+
+## 3. PIT Integrity
+
+`ST_PIT_INTEGRITY = PASS`
+
+- `stocks_predictor/universe.py` implementa a regra "em cada `asof`, usa SOMENTE dados < asof" com `WHERE date < ?` bound a `asof` em todas as queries relevantes.
+- Testes de survivorship/PIT existentes em `tests/test_universe.py`:
+  `test_universe_is_point_in_time`, `test_excludes_quarantined`, `test_future_quarantine_does_not_exclude`,
+  `test_resolved_quarantine_does_not_exclude`, `test_dedup_on_pn_keeps_more_liquid`,
+  `test_excludes_delisted_ticker_stale_before_window`, `test_sporadic_trader_median_counts_no_trade_days_as_zero`,
+  `test_min_history_excludes_short`.
+- Cobertura confirmada para "empresa delistada some do universo após sair" (`test_excludes_delisted_ticker_stale_before_window`).
+  Cobertura para "empresa listada depois não aparece antes" é **indireta** (via `min_history_excludes_short` + `test_universe_is_point_in_time`), não há teste nomeado explicitamente para esse caso — **registrado como gap, não fabricado como PASS perfeito**.
+- **Limitação honesta:** a suíte completa não pôde ser executada nesta sessão de auditoria (ambiente sandbox sem `predictor-core` instalado e sem permissão para o shim de vendor). Última execução conhecida (2026-08-24, `docs/audit/kimi_2026-08-24/RELATORIO_AUDITORIA_RJ.md`): 211 passed / 4 failed, falhas atribuídas a artefatos do shim de auditoria, não a regressões reais. **Não declaramos "testes verdes" sem tê-los rodado nesta sessão — isso é uma citação da última execução registrada, não uma nova verificação.**
+
+---
+
+## 4. Purge/Embargo Decision
+
+`ST_PURGE_EMBARGO_STATUS = DOCUMENTED_HISTORICAL_LIMITATION`
+
+**Evidência:** `config.yaml` declara `purge_embargo_months: 1  # [H1-FROZEN]`, e o valor é
+usado **apenas** dentro do cálculo de hash de integridade de config (`_frozen_hash` sobre
+`H1_FROZEN_KEYS`/`H2_FROZEN_KEYS`/etc. em `stocks_predictor/config.py`). O próprio docstring
+de `stocks_predictor/backtest.py` já admitia: *"o purge/embargo formal ficam para a evolução
+do M5"*. Não há nenhum trecho de `backtest.py` que exclua uma janela ao redor da fronteira
+treino/teste — apenas um filtro de data de início (`test_start`).
+
+**Decisão (Opção C, não B, não A):**
+- **Por que não A (implementar agora):** a pesquisa de fatores está **congelada**. Implementar
+  purge/embargo agora alteraria o comportamento do backtest que já produziu os vereditos
+  H1/H2/H4/H5/H6/H8 — isso seria "consertar dados/resultado sem trilha", proibido pelo design.
+  Além disso, não há consumidor real futuro declarado (nenhuma nova avaliação prevista).
+- **Por que não B (remover):** o parâmetro é `[H1-FROZEN]` — **não pode ser tocado após
+  qualquer rodada de resultado** (regra inviolável do CLAUDE.md). Remover a chave do config
+  quebraria o hash de integridade frozen retroativamente. A config fica como está.
+- **Opção C aplicada:** documentamos aqui e no Evidence Registry (§13) que, para todos os
+  vereditos H1–H8 já emitidos, **`purge_embargo_months` foi declarado mas nunca consumido
+  pelo motor de backtest** — os resultados não têm proteção formal de purge/embargo contra
+  overlap de labels na fronteira treino/teste. Isso não invalida os vereditos (a maioria já é
+  "não comprovada" — um viés de embargo ausente tenderia a, se algo, *inflar* falsamente um
+  sinal positivo, e mesmo assim a maioria não cruzou o gate; H5 é claramente anti-sinal). É uma
+  limitação de rigor a registrar, não uma falha que exige reabrir os testes.
+- Nenhum teste de label-overlap foi criado (§10 da tarefa), porque a decisão foi documentar a
+  limitação histórica, não implementar/consumir purge — implementar o teste sem o consumidor
+  real seria decoração.
+
+---
+
+## 5. Vendor Resolution
+
+`ST_VENDOR_STATE = RESOLVED`
+
+**Classificação: `ARCHIVE_FOR_REPRODUCTION` (com freshness guard já implementado).**
+
+- `vendor/predictor_core/` está congelado em `1.3.0-ga-20260711` (arquivo `VERSION`), com
+  manifesto de integridade `CORE_MANIFEST.json` (SHA-256 por arquivo).
+- Dependência real declarada é `predictor-core==3.0.0` (`pyproject.toml`, `uv.lock`, wheel do
+  GitHub Release), instalada como pacote — **nenhum caminho de runtime** (`main.py`,
+  `stocks_predictor/*.py`) importa de `vendor/`.
+- `poc_leak.py` é o **único** consumidor real do vendor (via `sys.path.insert` manual) — e é
+  histórico/demonstrativo, não parte do pipeline.
+- **Freshness guard já existe:** `tests/conftest.py` faz
+  `assert "vendor" not in pathlib.Path(predictor_core.__file__).parts` a menos que
+  `STOCKS_ALLOW_VENDOR_SHIM=1` esteja setado explicitamente — isso **já é** o "import path
+  test" pedido na tarefa (§12): se o runtime resolvesse `predictor_core` para o vendor por
+  acidente, esse assert falha por padrão.
+- **Por que arquivar em vez de remover:** o vendor snapshot é necessário para reproduzir
+  historicamente o ambiente em que `poc_leak.py` foi originalmente demonstrado (ele depende de
+  uma API específica de `vendor/predictor_core/replay.py` que não existe/mudou no Core 3.0.0
+  atual). Remover apagaria a capacidade de reproduzir esse caso histórico.
+- **Decisão final:** manter `vendor/predictor_core/` como arquivo histórico read-only, com o
+  guard de `conftest.py` como proteção permanente contra uso acidental. Nenhuma mudança de
+  código necessária — o estado já satisfaz `KEEP_WITH_FRESHNESS_GUARD` na prática.
+
+## 6. Runtime Core Import Test
+
+Resultado real (não simulado): o teste de guarda já existe e roda como parte da suíte —
+`tests/conftest.py`, fixture/assert que falha se `predictor_core.__file__` contiver o segmento
+`"vendor"`, salvo com a variável de ambiente explícita `STOCKS_ALLOW_VENDOR_SHIM=1`. Não foi
+necessário criar um teste novo porque este já cumpre a especificação do item 12 da tarefa
+(prova qual Core é usado no runtime, falha se resolver para vendor). Não foi possível executar
+a suíte completa nesta sessão (ambiente sandbox sem `predictor-core` instalado) — este é um
+relato do que o teste faz, não uma nova corrida com output.
+
+**`poc_leak.py` — classificação (§13 da tarefa):**
+```
+HISTORICAL_POC
+NOT_REPRODUCIBLE_AGAINST_CORE_3_0
+```
+Alvo: `vendor/predictor_core/replay.py` (API antiga). Demonstra bypass de encapsulamento de
+`PastView` via atributo privado `._data`, contornando o bloqueio público de lookahead
+(`LookaheadError`). Preservado como artefato de red-team histórico; **não é evidência de falha
+do Core 3.0.0 atual** (não há como comparar — o código-fonte do 3.0.0 não está neste checkout,
+só o pacote instalado).
+
+---
+
+## 7. Cost/Corporate Action Audit
+
+| componente | classificação | evidência |
+|---|---|---|
+| Emolumentos/liquidação B3 | ASSUMED | `execution.b3_fee_pct: 0.0003` — constante literal, não puxada de tabela oficial dinâmica |
+| Corretagem | ASSUMED | `brokerage_pct: 0.0000` |
+| Spread/slippage | ASSUMED (rotulado "conservador" no próprio config) | `spread_slippage_pct: 0.0015` por lado, flat |
+| Turnover | **MEASURED** | `equal_weight_turnover_cost()`/`weighted_turnover_cost()` calculam entradas/saídas reais da carteira a cada rebalanceamento |
+| Impostos (IR/JCP) | **NOT_MODELED** | nenhum caminho de código encontrado |
+| Custo de aluguel (short) | **NOT_MODELED** (deliberado) | estratégia é long-only por design (`docs/DESIGN.md` §6) — decisão de escopo, não gap |
+| Impacto de mercado além de slippage flat | **NOT_MODELED** | `roundtrip_cost() = 2×(fee+slippage)`, constante independe de tamanho de ordem/liquidez do papel |
+
+Resultados publicados (`reports/*.md`) já reportam Sharpe **líquido** de custos (0,36%
+ida-e-volta embutido). Não há decomposição gross-vs-net separada nos relatórios existentes —
+registrado como limitação, não corrigido retroativamente (corrigir exigiria nova rodada, que é
+reabertura, proibida sem novo pré-registro).
+
+**Dividendos/corporate actions:** decisão de design já documentada em HANDOFF.md
+(2026-06-16): rota (b) — retorno **só-preço**, sem proventos/JCP, com viés declarado e
+direcional (favorece a estratégia de momentum contra o benchmark, pois momentum tende a menor
+yield — "positivo marginal é suspeito por construção"). Splits: 57 saltos detectados, adjudicados
+manualmente (não auto-resolvidos, trilha em `adjustments`). Delistings/ticker changes: cobertos
+por `test_excludes_delisted_ticker_stale_before_window`, mas sem inventário completo publicado
+de todos os eventos corporativos da amostra — **limitação registrada, não corrigida**.
+
+---
+
+## 8. Multiplicity/Power Result
+
+- **DSR** aplicado ao domínio de fatores de ações (H2,H4,H5,H6,H8), threshold 0,95: **nenhum
+  passou** (H2 0,7092; H4 0,6843; H5 0,1274; H6 0,4565; H8 0,6050). H1 usa IC do bootstrap
+  pareado (não DSR) e também cruza zero.
+- **FDR (Benjamini-Hochberg)** reservado para o domínio RJ (8 famílias, diferença de médias —
+  métrica não-Sharpe, por isso FDR e não DSR, decisão já documentada em `config_rj.yaml`), ainda
+  não aplicado a dados reais (RJ não tem dados reais — §9).
+- **Romano-Wolf stepdown** existe como checagem cruzada de robustez contra o FDR, também restrito
+  a dados sintéticos do domínio RJ.
+- **Correção de rótulo no Evidence Registry (§13):** nenhuma hipótese estava rotulada como
+  "REFUTED" quando deveria ser "INCONCLUSIVE_DUE_TO_POWER" — os vereditos já usam a formulação
+  correta ("não comprovada nesta janela", explicitamente não-definitiva). Nenhuma correção de
+  rótulo foi necessária; verificado, não fabricado.
+
+---
+
+## 9. RJ Closure
+
+`ST_RJ_STATE = ARCHIVED`
+
+- Estado de dados real: **zero linhas reais** — `rj_universe` vazia (HANDOFF.md, 2026-08-23).
+  Todo o trabalho até aqui (auditoria kimi 2026-08-24, correções de censura por empresa
+  2026-08-31) foi sobre **scaffolding sintético/mecânico**, nunca sobre dados de RJ reais.
+- Sem comprador/consumidor declarado para dados reais de RJ nesta sessão.
+- **Nenhuma nova ingestão será iniciada.** Protocolo (`docs/RJ_DESIGN.md`), config congelada
+  (`config_rj.yaml`) e o relatório de auditoria externa (`docs/audit/kimi_2026-08-24/`) são
+  preservados como estavam — nenhuma edição de conteúdo, só a marcação de arquivamento aqui e
+  no manifesto (§11).
+- Riscos metodológicos remanescentes listados na auditoria kimi (8 itens) permanecem
+  **registrados, não resolvidos** — arquivar não significa declarar "resolvido", significa
+  "sem trabalho ativo".
+
+---
+
+## 10. Component Inventory
+
+| component | purpose | tested? | domain_specific? | consumer_count | second_real_consumer? | candidate_for_core? | decision |
+|---|---|---|---|---|---|---|---|
+| PIT universe builder (`universe.py`) | universo B3 point-in-time, exclui quarentena/delisted | sim (`test_universe.py`) | sim (B3/COTAHIST) | 1 (stocks-predictor) | não | não | `KEEP_DOMAIN_OWNED` |
+| Survivorship protection (dedup PN/ON, exclusão delisted) | evitar viés de sobrevivência | sim | sim | 1 | não | não | `KEEP_DOMAIN_OWNED` |
+| Cost model (`execution.py`) | custo de turnover/fee/slippage | parcial | parcial (fee B3 específico; lógica de turnover é genérica) | 1 | não | não (sem 2º consumidor real) | `KEEP_DOMAIN_OWNED` |
+| Walk-forward engine (`backtest.py`) | orquestra universo→fator→carteira→medição | sim | não (a mecânica é genérica) | 1 | não | não | `KEEP_DOMAIN_OWNED` (sem 2º consumidor comprovado, apesar de parecer genérico) |
+| Stationary bootstrap (IC de diferença de Sharpe) | inferência de significância pareada | sim | não | vendor (`predictor_core.measurement`) já é consumidor externo | **sim** (vendor + stocks-predictor) | já está no Core | já `IN_CORE` — nenhuma ação |
+| DSR (vendor `measurement/trials.py`) | correção de múltiplos testes, Sharpe-específico | sim | não | vendor + stocks-predictor | sim | já está no Core | já `IN_CORE` — nenhuma ação |
+| FDR/BH (`rj_judge.py`) | correção de múltiplos testes, domínio RJ (diff de médias) | sim (sintético) | sim (specíico ao desenho de 8 famílias RJ) | 1 | não | não | `KEEP_DOMAIN_OWNED` |
+| Romano-Wolf stepdown (`rj_judge_robust.py`) | checagem cruzada de robustez | sim (sintético) | não necessariamente | 1 | não | não sem 2º consumidor real | `KEEP_DOMAIN_OWNED` |
+| Trial governance (schema canônico, `tools/migrate_trials_schema.py`) | registro prospectivo de trials | sim (idempotência verificada) | não (schema é genérico) | 1 | não | possível candidato futuro, sem 2º consumidor hoje | `KEEP_DOMAIN_OWNED` (regra da tarefa: sem 2º consumidor real, não promove) |
+
+Nenhum componente foi movido para o Core nesta rodada — os dois já compartilhados
+(bootstrap, DSR) já residiam lá antes desta auditoria.
+
+---
+
+## 11. Research Freeze Manifest
+
+```yaml
+ST_RESEARCH_FREEZE:
+  active_hypotheses: []
+  stopped_hypotheses:
+    - id: H1
+      family: momentum_12_1
+      result: NOT_SUPPORTED (IC 95% diff-Sharpe cruza zero)
+      closed_at: 2026-07-12
+    - id: H2
+      family: low_vol_252
+      result: NOT_SUPPORTED (IC cruza zero; DSR 0.7092 < 0.95)
+    - id: H4
+      family: vol_target_sizing
+      result: NOT_SUPPORTED (IC cruza zero; DSR 0.6843 < 0.95)
+    - id: H5
+      family: reversal_21d
+      result: NOT_SUPPORTED (Sharpe negativo; IC inteiramente negativo -> anti-sinal; DSR 0.1274 < 0.95)
+    - id: H6
+      family: momentum_6_1
+      result: NOT_SUPPORTED (IC cruza zero; DSR 0.4565 < 0.95)
+    - id: H8
+      family: momentum_lowvol_intersection
+      result: NOT_SUPPORTED (IC cruza zero; DSR 0.6050 < 0.95)
+  preserved_components:
+    - stocks_predictor/universe.py (PIT universe + survivorship)
+    - stocks_predictor/execution.py (cost model)
+    - stocks_predictor/backtest.py (walk-forward engine)
+    - stocks_predictor/rj_judge.py, rj_judge_robust.py (FDR/Romano-Wolf, domínio RJ)
+    - vendor/predictor_core/ (arquivo histórico, freshness-guarded)
+    - trials.json, trials_v2.json (registro de trials, legado + canônico)
+    - reports/*.md (vereditos)
+    - poc_leak.py (HISTORICAL_POC, red-team artifact)
+  archived_lines:
+    - RJ (zero dados reais; protocolo e auditoria preservados; sem trabalho ativo)
+  reopen_policy: >
+    Nenhuma família de fatores já encerrada (momentum 12-1, momentum 6-1, low-vol,
+    vol-target, reversão 21d, interseção momentum×low-vol) pode ser reaberta sem
+    registrar EXPLICITAMENTE, antes de qualquer código novo:
+      previous_result, closure_reason, new_information, causal_reason,
+      why_old_test_no_longer_answers_question, new_protocol.
+    Sem esses 6 campos preenchidos e revisados por um humano, qualquer proposta de
+    reabertura deve ser recusada. A linha RJ segue a mesma regra e adicionalmente
+    exige uma fonte de dados reais nomeada antes de qualquer ingestão nova.
+```
+
+---
+
+## 12. Case Studies
+
+### CASE-ST-001 — Seis famílias de fatores testadas, nenhuma evidência suficiente
+- **claim:** momentum (12-1 e 6-1), low-vol, vol-target sizing, reversão 21d e a
+  interseção momentum×low-vol produzem Sharpe líquido superior ao benchmark equiponderado
+  do universo PIT da B3.
+- **protocol:** pré-registro de parâmetros antes de cada rodada (`trials.json`), janela
+  walk-forward 2018→2026, custo de 0,36% ida-e-volta, IC 95% via stationary bootstrap pareado
+  + DSR ≥ 0,95 como gate duplo.
+- **result:** todas as 6 famílias falharam o(s) gate(s) — IC contém zero e/ou DSR < 0,95.
+- **failure_mode:** nenhuma; ausência de sinal detectável na amostra/janela com os gates
+  pré-registrados. Não é um bug — é o resultado esperado de uma varredura honesta de fatores
+  conhecidos em um mercado razoavelmente eficiente.
+- **lesson:** um protocolo pré-registrado com gate duplo (significância + DSR) produz "não
+  comprovado" honesto em vez de promover o melhor ponto-estimado por acaso (H8 tinha o maior
+  Sharpe bruto, 0,3110, e mesmo assim falhou DSR).
+
+### CASE-ST-002 — Reversão aparente virou anti-sinal
+- **claim:** reversão de curto prazo (21 dias) no quintil de pior retorno recente geraria
+  Sharpe positivo (efeito reversão clássico da literatura).
+- **protocol:** mesmo desenho de H1/H2, quintil inferior de retorno 21d, long-only.
+- **result:** Sharpe da estratégia **negativo** (-0,1804 vs +0,1621 do benchmark); IC 95%
+  inteiramente negativo (-0,6406, -0,1009) — não apenas "sem evidência", mas evidência de
+  **anti-sinal** (pior que o benchmark com confiança estatística).
+- **failure_mode:** a hipótese não só não se sustentou como se inverteu — um lembrete de que
+  "reversão" em equities de mercado emergente/menor liquidez pode não se comportar como na
+  literatura de mercados desenvolvidos.
+- **lesson:** um resultado de anti-sinal com CI que não cruza zero é uma descoberta válida por
+  si só (mostra que a direção testada estava errada) — não precisa e não deve virar sinal
+  invertido sem novo pré-registro (isso seria HARKing).
+
+### CASE-ST-003 — Survivorship/PIT muda a interpretação de um backtest
+- **claim:** um backtest ingênuo sobre a lista atual de tickers da B3 (sem PIT) tende a
+  superestimar retorno porque exclui empresas que faliram/foram delistadas.
+- **protocol:** `universe.py` reconstrói o universo asof cada data de rebalanceamento,
+  usando somente dados `< asof`; testes automatizados (`test_universe_is_point_in_time`,
+  `test_excludes_delisted_ticker_stale_before_window`) verificam que uma empresa delistada
+  continua aparecendo antes da saída e desaparece depois.
+- **result:** a arquitetura PIT está implementada e testada; a limitação registrada é que não
+  existe teste nomeado explicitamente para "empresa listada depois não aparece antes de sua
+  data real de listagem" (coberto apenas indiretamente por `min_history_excludes_short`).
+- **failure_mode:** ausência de survivorship bias não foi *provada* de forma exaustiva — foi
+  testada nos casos que a suíte cobre.
+- **lesson:** "proteção contra survivorship" não é um booleano — é uma lista de casos de teste,
+  e é preciso ser honesto sobre qual subconjunto de casos está de fato coberto.
+
+### CASE-ST-004 — Múltiplos testes sem promoção artificial de vencedor
+- **claim:** entre 6 famílias testadas, nenhuma deveria ser promovida a "a vencedora" só por
+  ter o Sharpe bruto mais alto.
+- **protocol:** DSR (Sharpe-específico) aplicado a todas as 5 famílias pós-H1 com threshold
+  fixo 0,95, definido antes de ver os resultados; H8 (Sharpe bruto mais alto do conjunto,
+  0,3110) teve DSR 0,6050 — abaixo do gate.
+- **result:** nenhuma família foi promovida; todas os 6 vereditos registrados são
+  "não comprovada".
+- **failure_mode:** o risco clássico de "cherry-pick pós-hoc" (escolher H8 porque teve o maior
+  Sharpe) foi estruturalmente bloqueado pelo gate DSR pré-registrado.
+- **lesson:** o denominador de multiplicidade (quantos testes foram feitos) importa mais do
+  que o numerador (o melhor resultado pontual) — e por isso `n_trials_domain`/`n_trials_family`
+  agora são campos de primeira classe no schema de trials (§2).
+
+---
+
+## 13. Evidence Registry Updates
+
+| claim | state | evidence | limitations | decision |
+|---|---|---|---|---|
+| `CLAIM-ST-MOMENTUM` (12-1 e 6-1) | INCONCLUSIVE_DUE_TO_POWER / NOT_SUPPORTED-IN-WINDOW (não "REFUTED") | H1 IC (-0,3192,0,2933); H6 DSR 0,4565<0,95 | janela única 2018-2026, sem repetição fora da amostra | ENCERRADA, sem reabertura sem os 6 campos de `reopen_policy` |
+| `CLAIM-ST-LOWVOL` | NOT_SUPPORTED-IN-WINDOW | H2 DSR 0,7092<0,95, IC cruza/negativo | idem | ENCERRADA |
+| `CLAIM-ST-REVERSAL` | ANTI_SIGNAL (mais forte que "não comprovada") | H5 Sharpe -0,1804, IC (-0,6406,-0,1009) inteiramente negativo | direção testada pode estar simplesmente errada para este mercado/janela | ENCERRADA — reabrir exigiria hipótese de sinal invertido, com novo pré-registro completo |
+| `CLAIM-ST-PIT` | SUPPORTED (com escopo declarado) | `universe.py` + testes citados em §3 | falta teste nomeado para "listada depois não aparece antes" | manter como está; gap registrado, não corrigido nesta rodada (fora do escopo de congelamento) |
+| `CLAIM-ST-SURVIVORSHIP` | SUPPORTED (parcial, não "perfeita") | `test_excludes_delisted_ticker_stale_before_window` | sem inventário completo de eventos corporativos/delistings da amostra inteira | registrado como limitação honesta |
+| `CLAIM-ST-PURGE` | **LIMITATION, não implementado** | config declara, `backtest.py` não consome | vereditos H1-H8 não têm proteção formal de purge/embargo | `DOCUMENTED_HISTORICAL_LIMITATION` — ver §4 |
+
+`reopen_conditions` para todas as claims acima de fatores: idênticas à `reopen_policy` do
+manifesto (§11) — sem exceção.
+
+---
+
+## 14. Final Checkpoints
+
+```
+ST_PRESERVATION       = PASS (ressalva: data/stocks.db ausente deste checkout, backup offsite é ação humana pendente)
+ST_TRIAL_SCHEMA       = PASS
+ST_PIT_INTEGRITY      = PASS (com gap documentado: sem teste nomeado p/ "listada depois")
+ST_PURGE_EMBARGO_STATUS = DOCUMENTED_HISTORICAL_LIMITATION
+ST_VENDOR_STATE       = RESOLVED (ARCHIVE_FOR_REPRODUCTION + freshness guard já ativo em tests/conftest.py)
+ST_RJ_STATE           = ARCHIVED
+ST_RESEARCH_STATE     = FROZEN
+ST_CASE_STUDY_READY   = YES
+```
+
+## 15. Remaining Blockers
+
+1. **`data/stocks.db` não existe neste checkout e não tem cópia offsite verificada.** Ação
+   humana necessária (fora do alcance desta sessão, que não tem acesso à máquina de pesquisa
+   operacional): copiar o arquivo para armazenamento durável antes de qualquer desligamento de
+   máquina.
+2. **Suíte de testes não pôde ser executada nesta sessão** (ambiente sandbox sem
+   `predictor-core` instalável). O último resultado conhecido (211 passed / 4 failed,
+   2026-08-24) é citado, não reverificado — recomenda-se rodar
+   `python -m pytest tests/ -v` em ambiente com o Core 3.0.0 instalado antes de considerar o
+   congelamento definitivamente fechado do ponto de vista de CI.
+3. **Sem teste nomeado explicitamente para "ativo listado depois não aparece antes da data
+   real de listagem"** — coberto apenas indiretamente. Não corrigido nesta rodada por estar
+   fora do escopo de "não reabrir pesquisa" (é um gap de teste, não de fator); registrar para
+   decisão humana se vale a pena um teste dedicado.
