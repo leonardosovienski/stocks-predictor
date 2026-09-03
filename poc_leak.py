@@ -1,46 +1,52 @@
+"""PoC histórico do lookahead na implementação vendorizada legada.
+
+STATUS = HISTORICAL_POC
+TARGET = LEGACY_VENDORED_IMPLEMENTATION
+CURRENT_CORE_SCOPE = NOT_AFFECTED_BY_THIS_POC
+
+O vendor só entra no ``sys.path`` quando este arquivo é executado explicitamente.
+Importar ``poc_leak`` é inerte e não pode alterar a resolução normal do Core.
+"""
+
+from __future__ import annotations
+
 import sys
 from pathlib import Path
 
-# Adiciona a pasta vendor ao path para simular o ambiente de execução real
-sys.path.insert(0, str(Path("vendor")))
 
-from predictor_core.replay import replay, PastView, LookaheadError
+def testar_vazamento() -> None:
+    vendor = Path(__file__).resolve().parent / "vendor"
+    sys.path.insert(0, str(vendor))
 
-def handler_malicioso(past: PastView):
-    hoje = past.latest
-    asof = past.asof_index
-    
-    # 1. Acesso legal (Interface pública de slicing -> clampada ao passado)
-    historico_legal = past[:]
-    
-    # 2. Acesso ilegal via interface pública (Bloqueado corretamente)
-    try:
-        futuro_bloqueado = past[asof + 1]
-    except LookaheadError:
-        pass # A barreira do __getitem__ funcionou
-        
-    # 3. O EXPLOIT: Acessando a tupla original por referência interna
-    tupla_vazada = past._data
-    
-    # Lendo o "Oráculo" (o último evento de toda a simulação, independente do asof atual)
-    oraculo = tupla_vazada[-1]
-    
-    print(f"[Passo {asof}] Estamos no evento '{hoje}'. "
-          f"Mas eu espiei a tupla e sei que no final vai acontecer um '{oraculo}'!")
-    
-    return f"Apostei tudo em {hoje} porque sei sobre o {oraculo}"
+    from predictor_core.replay import LookaheadError, PastView, replay
 
-def testar_vazamento():
+    def handler_malicioso(past: PastView) -> str:
+        hoje = past.latest
+        asof = past.asof_index
+
+        try:
+            _ = past[asof + 1]
+        except LookaheadError:
+            pass
+
+        oraculo = past._data[-1]
+        print(
+            f"[Passo {asof}] Estamos no evento '{hoje}'. "
+            f"Mas eu espiei a tupla e sei que no final vai acontecer um '{oraculo}'!"
+        )
+        return f"Apostei tudo em {hoje} porque sei sobre {oraculo}"
+
     eventos = [
-        "Dia 1 (Mercado Calmo)", 
-        "Dia 2 (Pequena Alta)", 
-        "Dia 3 (Estabilidade)", 
-        "Dia 4 (CRASH GLOBAL)"
+        "Dia 1 (Mercado Calmo)",
+        "Dia 2 (Pequena Alta)",
+        "Dia 3 (Estabilidade)",
+        "Dia 4 (CRASH GLOBAL)",
     ]
-    
-    print("--- INICIANDO BACKTEST REPLAY ---")
-    ledger = replay(eventos, handler_malicioso)
-    print("--- BACKTEST CONCLUIDO ---\n")
+
+    print("--- INICIANDO POC HISTÓRICO CONTRA O VENDOR LEGADO ---")
+    replay(eventos, handler_malicioso)
+    print("--- POC HISTÓRICO CONCLUÍDO ---")
+
 
 if __name__ == "__main__":
     testar_vazamento()

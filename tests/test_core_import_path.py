@@ -13,6 +13,8 @@ usando o Core congelado (1.3.0-ga) em vez do Core real instalado (>=3.0,<4).
 """
 import os
 import pathlib
+import subprocess
+import sys
 
 import predictor_core
 
@@ -44,3 +46,13 @@ def test_predictor_core_version_is_at_least_3():
         f"predictor_core.__version__ == {version!r}, esperado major >= 3 "
         "(pyproject.toml declara predictor-core>=3.0,<4)."
     )
+
+
+def test_importing_historical_poc_does_not_mutate_import_path():
+    root = pathlib.Path(__file__).resolve().parents[1]
+    probe = (
+        "import sys; before=list(sys.path); import poc_leak; "
+        "assert sys.path == before; "
+        "assert not any(__import__('pathlib').Path(p).name == 'vendor' for p in sys.path if p)"
+    )
+    subprocess.run([sys.executable, "-c", probe], cwd=root, check=True)
