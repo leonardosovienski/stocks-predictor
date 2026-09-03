@@ -166,7 +166,6 @@
       "2018-01-01",
       "2026-07-03"
     ],
-    "pipeline_fingerprint": null,
     "metric": "sharpe_diff_ci95"
   },
   {
@@ -203,7 +202,6 @@
       "2018-01-01",
       "2026-07-03"
     ],
-    "pipeline_fingerprint": null,
     "metric": "sharpe_diff_ci95"
   }
 ]
