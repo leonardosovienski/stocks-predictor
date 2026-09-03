@@ -8,6 +8,7 @@ H2 (pré-registro 2026-07-16, H1 já julgada): `realized_vol` — desvio-padrão
 retornos diários dos últimos `lookback` pregões ≤ asof. Mesma disciplina
 point-in-time; a carteira da H2 toma o quintil INFERIOR (baixa volatilidade).
 """
+import datetime
 import statistics
 
 
@@ -68,4 +69,28 @@ def vol_signals(series_by_ticker, asof, lookback=252):
         v = realized_vol(dates, closes, asof, lookback)
         if v is not None:
             out[t] = v
+    return out
+
+
+def roe_signals(conn, tickers, asof, disclosure_embargo_days=90):
+    """H7 (pré-registro 2026-09-03) — {ticker: roe} point-in-time.
+
+    `fundamentals.ref_date` é o fim do exercício, não a data de publicação real
+    (a DFP só é PUBLICADA meses depois — ver `ingest_cvm.py`). Usar `ref_date`
+    puro como `known_at` seria otimista/lookahead. `disclosure_embargo_days`
+    soma um embargo fixo: só entra no sinal em `asof` a linha mais recente com
+    `ref_date + embargo <= asof` (comparação lexicográfica de datas ISO, dias
+    corridos). Ticker sem nenhuma linha elegível fica FORA (dado indisponível
+    > dado inventado, mesma disciplina de `vol_signals`/`ownership`)."""
+    out = {}
+    for t in tickers:
+        rows = conn.execute(
+            "SELECT ref_date, roe FROM fundamentals WHERE ticker = ? AND roe IS NOT NULL"
+            " ORDER BY ref_date DESC", (t,)).fetchall()
+        for ref_date, roe in rows:
+            known_at = (datetime.date.fromisoformat(ref_date)
+                       + datetime.timedelta(days=disclosure_embargo_days)).isoformat()
+            if known_at <= asof:
+                out[t] = roe
+                break
     return out

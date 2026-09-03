@@ -9,15 +9,20 @@ Este é o ponto de entrada técnico corrente. O código, Git/CI e
 
 ```text
 role = FROZEN_RESEARCH_ASSET + REUSABLE_COMPONENT_LIBRARY + NEGATIVE_RESULT_CASE
-research_state = FROZEN
-scientific_state = CLOSED
+research_state = FROZEN_EXCEPT_H7_PENDING_JUDGMENT   # ver HANDOFF.md, 2026-09-03
+scientific_state = CLOSED_FOR_H1_H2_H4_H5_H6_H8      # H7 pré-registrada, não julgada
 commercial_state = NOT_A_PRODUCT
-new_scientific_trials = 0
+new_scientific_trials = 1   # H7, pré-registrada 2026-09-03, código pronto, rodada real pendente
 ```
 
-As famílias de fatores e a linha RJ estão encerradas/congeladas. Não procurar novo
-alpha nem reinterpretar resultados negativos. Reabertura exige o dossiê completo
-definido em `RESEARCH_FREEZE.md` e informação materialmente nova.
+As famílias de fatores JÁ JULGADAS (H1/H2/H4/H5/H6/H8) e a linha RJ estão
+encerradas/congeladas. Não reinterpretar esses resultados negativos nem
+reabri-los sem o dossiê completo definido em `RESEARCH_FREEZE.md`. **H7**
+(fator de qualidade, ROE isolado) foi pré-registrada por decisão explícita do
+operador em 2026-09-03 — não é reabertura, é a única fronteira de dado novo
+que restava; ver HANDOFF.md para o pré-registro completo e os passos
+mecânicos pendentes (rodada real exige `stocks.db` real + rede à CVM,
+indisponíveis neste ambiente de auditoria).
 
 ## Dependência e vendor
 

@@ -244,3 +244,28 @@ H8_FROZEN_KEYS = [
 def h8_frozen_config_hash(config: dict) -> str:
     """O LACRE da H8 — mesmo mecanismo dos lacres anteriores."""
     return _frozen_hash(config, H8_FROZEN_KEYS, "H8-FROZEN")
+
+
+# Subconjunto H7-FROZEN (pré-registro 2026-09-03, HANDOFF). Fator de qualidade
+# (ROE isolado, quintil superior) — 1ª hipótese sobre dado contábil (DFP da
+# CVM), não sobre preço/momentum/vol. Reuso declarado de
+# universo/execução/janela/bootstrap das anteriores.
+H7_FROZEN_KEYS = [
+    ("universe", "top_n"), ("universe", "lookback_trading_days"),
+    ("universe", "min_history_days"), ("universe", "rebalance_frequency"),
+    ("h7_factor", "name"), ("h7_factor", "disclosure_embargo_days"),
+    ("h7_portfolio", "quantile"), ("h7_portfolio", "weighting"),
+    ("h7_portfolio", "direction"),
+    ("execution", "price"), ("execution", "b3_fee_pct"),
+    ("execution", "brokerage_pct"), ("execution", "spread_slippage_pct"),
+    ("backtest", "warmup_end"), ("backtest", "test_start"),
+    ("backtest", "purge_embargo_months"),
+    ("bootstrap", "n_boot"), ("bootstrap", "block_length"),
+    ("bootstrap", "confidence"), ("bootstrap", "method"),
+    ("h7_criteria", "dsr_min"),
+]
+
+
+def h7_frozen_config_hash(config: dict) -> str:
+    """O LACRE da H7 — mesmo mecanismo dos lacres anteriores."""
+    return _frozen_hash(config, H7_FROZEN_KEYS, "H7-FROZEN")

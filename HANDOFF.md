@@ -1,5 +1,95 @@
 # HANDOFF — predictor-stocks
 
+> ## H7 ABERTA — PRÉ-REGISTRO (2026-09-03, ANTES de qualquer rodada real) — implementada, NÃO julgada
+>
+> Decisão explícita do operador ("faz tudo" / "o que precisar pro lucro"), após o
+> `RESEARCH_FREEZE.md` (2026-09-02) fechar formalmente a pesquisa em 6 hipóteses
+> só-preço (H1/H2/H4/H5/H6/H8, todas não comprovadas). H7 é a única fronteira
+> honesta que restava: dado NOVO (fundamentos DFP da CVM, `ingest_cvm.py`, já
+> ingerido só em formato sintético desde 2026-08-27), nunca usada em sinal. Isso
+> **não** é reabertura de família encerrada (não toca H1-H6/H8, não exige os 6
+> campos de `reopen_policy` do `RESEARCH_FREEZE.md` — essa política cobre as
+> famílias já fechadas, não uma hipótese nova) — é a mesma disciplina de
+> pré-registro usada em H4/H5/H6/H8: formalizar ANTES de qualquer rodada real.
+>
+> **HIPÓTESE #7 (pré-registrada — critérios fixados ANTES de ver o dado real):**
+>
+> **H7 — fator de qualidade, ROE isolado** (`config.yaml` `h7_*`,
+> `config.h7_frozen_config_hash` = `61fd7d1c73999c73`): carteira long-only do
+> **quintil SUPERIOR de ROE** (lucro líquido / patrimônio líquido,
+> `fundamentals.roe`), universo B3 point-in-time (top 60 por liquidez, mesma
+> régua de H1/H2/H4/H5/H6/H8), equiponderada, mesmo custo/execução/pedágio.
+> Racional: fator "quality" clássico da literatura (empresas mais rentáveis
+> tendem a superar em janelas longas) — nunca testado neste projeto porque
+> nenhuma hipótese anterior usa dado contábil, só preço.
+>
+> **Sinal e embargo (`factor.roe_signals`, novo):** `fundamentals.ref_date`
+> (fim do exercício contábil) **não** é a data de publicação real — a DFP é
+> divulgada meses depois (já registrado em `ingest_cvm.py` desde 2026-08-27,
+> nunca implementado). `disclosure_embargo_days: 90` (`[H7-FROZEN]`) soma um
+> embargo fixo sobre `ref_date`: em cada `asof`, só entra a linha mais recente
+> com `ref_date + 90d <= asof`. Prazo escolhido por ser o prazo regulamentar
+> típico de entrega da DFP anual à CVM — não é a data de entrega REAL por
+> companhia (que existiria em outro campo da fonte, não capturado por
+> `ingest_dfp_year` nesta versão); é um embargo CONSERVADOR mas aproximado,
+> limitação declarada, não escondida.
+>
+> **Critério:** IC95% diff-Sharpe > 0 E DSR >= 0,95 (N=7 tentativas no
+> registro, contando H1/H2/H4/H5/H6/H8). Fixado antes de qualquer rodada real.
+>
+> **Implementação (código, testado com dado sintético):**
+> `factor.roe_signals` (sinal com embargo, testado por
+> `test_roe_signals_embargo_blocks_early_asof`/
+> `test_roe_signals_picks_most_recent_eligible_ref_date` — prova que o embargo
+> bloqueia leitura antecipada e que a linha mais recente elegível é escolhida,
+> não a mais antiga nem uma futura), `backtest.run_h7` (mesmo runner genérico
+> `_run_hypothesis` das anteriores, `signal_fn` fecha sobre `conn` porque o
+> sinal vem do banco, não da série de preço como as demais), `config.py`
+> (`H7_FROZEN_KEYS`/`h7_frozen_config_hash`), `report._BIAS_NOTE["H7"]` (viés
+> de retorno só-preço declarado como NÃO quantificado — ao contrário de
+> H1/H2/H4/H5/H6/H8, a relação ROE↔yield de dividendo na B3 não foi
+> estabelecida nesta rodada, então nenhuma direção é inferida). Testes em
+> `tests/test_h7_quality_roe.py` (smoke com dado sintético inserido direto em
+> `fundamentals`, golden hash do lacre, hash ignora parâmetro operacional,
+> embargo bloqueia leitura antecipada, seleção da linha mais recente elegível)
+> — validados manualmente nesta sessão via script ad-hoc reproduzindo os
+> asserts (ambiente sandbox sem `pytest` instalado e sem permissão de rede
+> para instalar; ver limitações abaixo). Suíte completa **NÃO** executada
+> nesta sessão — `python -m pytest tests/ -v` precisa rodar antes de confiar
+> nesta mudança em produção.
+>
+> **NÃO FEITO nesta sessão — bloqueadores reais do ambiente sandbox, não do
+> design:**
+> 1. **`ingest_dfp_year` NÃO rodou com anos reais.** Este container não tem
+>    acesso de rede a `dados.cvm.gov.br`/`bvmf.bmfbovespa.com.br` (egress
+>    bloqueado pela política do proxy, confirmado por teste direto) — só o
+>    GitHub Releases (wheel do Core) é alcançável daqui. A ingestão real de
+>    DFP 2018-2026 exige rodar `ingest_dfp_year` na máquina do operador (mesma
+>    onde `stocks.db` canônico vive, `C:\Users\Superleo13\stocks-predictor-work\`),
+>    com rede liberada para a CVM.
+> 2. **`data/stocks.db` não existe neste checkout** (é gitignored por
+>    design, ~256MB, vive só na máquina do operador) — a rodada única real da
+>    H7 (`python -c "import backtest; backtest.run_h7(write_report=True)"`,
+>    exatamente como H6/H8 foram rodadas) precisa acontecer lá, não aqui.
+> 3. **Suíte oficial (`pytest`) não roda neste sandbox** (módulo ausente,
+>    instalação via pip bloqueada pela política do ambiente) — validação
+>    desta sessão foi manual (script ad-hoc reproduzindo os asserts dos testes
+>    novos, ver acima), não a suíte oficial. Precisa reconfirmar com
+>    `python -m pytest tests/ -v` na máquina do operador antes do H7 ser
+>    considerado pronto para rodar.
+>
+> **Resumo honesto para o operador:** o código da H7 está pronto e a lógica
+> validada manualmente, mas **nenhuma rodada real aconteceu** — sem
+> `stocks.db` real e sem rede para a CVM neste ambiente, não há como produzir
+> o veredito de fato. Os próximos passos mecânicos, na sua máquina, são:
+> (1) `python -m pytest tests/ -v` (confirmar suíte verde com os testes
+> novos); (2) `ingest_dfp_year` para 2018-2026 contra o `stocks.db` real
+> (rede liberada); (3)
+> `python -c "import backtest; backtest.run_h7(write_report=True)"` (rodada
+> única, sem repescagem — mesma disciplina de H4/H5/H6/H8). Isso entra como
+> N=7 no `trials.json` automaticamente via `trials_gate.apply_dsr` — o
+> hurdle de DSR fica mais alto do que qualquer tentativa anterior.
+
 > **Estado técnico corrente — 2026-09-01:** pacote `stocks_predictor`, Core
 > 3.0.x por wheel e nenhuma dependência declarada de Ops. A migração moderna
 > prevalece sobre a antiga pendência Core 2.3/Ops 3.1 e sobre caminhos históricos
