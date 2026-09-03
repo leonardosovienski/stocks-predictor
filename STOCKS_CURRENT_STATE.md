@@ -1,59 +1,56 @@
 # Stocks Predictor — estado corrente
 
-**Vigência:** 2026-08-24
+**Vigência:** 2026-09-03
 
-Este documento é o ponto de entrada técnico corrente. `HANDOFF.md` preserva a
-continuidade histórica detalhada e deve ser interpretado pela data quando divergir
-deste estado ou do código/Git atual.
+Este é o ponto de entrada técnico corrente. O código, Git/CI e
+`RESEARCH_FREEZE.md` prevalecem sobre documentação histórica.
 
-## Papel atual
+## Estado canônico
 
-`stocks-predictor` é um dos três predictors econômicos canônicos do PREDICTORS. A
-linha científica ativa é `predictor-rj`, descrita em `docs/RJ_DESIGN.md`. O domínio
-cross-sectional/fatores anterior permanece histórico.
+```text
+role = FROZEN_RESEARCH_ASSET + REUSABLE_COMPONENT_LIBRARY + NEGATIVE_RESULT_CASE
+research_state = FROZEN
+scientific_state = CLOSED
+commercial_state = NOT_A_PRODUCT
+new_scientific_trials = 0
+```
 
-## Infraestrutura corrente
+As famílias de fatores e a linha RJ estão encerradas/congeladas. Não procurar novo
+alpha nem reinterpretar resultados negativos. Reabertura exige o dossiê completo
+definido em `RESEARCH_FREEZE.md` e informação materialmente nova.
 
-- Python `>=3.13,<3.15`;
-- package `stocks-predictor 0.1.0` via `pyproject.toml`;
-- `predictor-core>=2.3,<3` por wheel oficial;
-- `predictor-ops>=3.1,<4` por wheel oficial;
-- adapter canônico publicado em `[project.entry-points."predictor.plugins"]` como
-  `stocks = "src.ecosystem_plugin:PLUGIN"`;
-- CI em Python 3.13 com Ruff, Pyright RJ, pytest/coverage, build/wheel smoke e gitleaks;
-- `vendor/predictor_core` preservado como snapshot histórico/integrity artifact durante
-  a transição; não é a dependência arquitetural alvo.
+## Dependência e vendor
 
-O adapter do Ecosystem publica somente estado/capacidades fail-closed; ele não promove
-hipótese, não transforma associação RJ em recomendação econômica e mantém
-`capital_permission = FORBIDDEN`.
+- contrato: `predictor-core>=3.0,<4`;
+- resolução canônica do CI/lock: wheel oficial `predictor-core==3.0.0`;
+- `vendor/predictor_core/`: arquivo histórico íntegro, não runtime normal e não
+  incluído no pacote `stocks-predictor`;
+- `poc_leak.py`: PoC histórico contra o vendor legado, ativado apenas por execução
+  explícita; importá-lo é inerte;
+- `tests/conftest.py` e `tests/test_core_import_path.py`: impedem resolução silenciosa
+  para o vendor;
+- `tests/test_replay.py`: protege a fronteira temporal do Core instalado.
 
-A suíte deve fixar Core/Ops das wheels antes de módulos legados que ainda carreguem
-hooks históricos de `sys.path`. Remover esses hooks remanescentes é housekeeping de
-runtime e não pode alterar comportamento científico.
+Estado:
 
-## Estado científico
+```text
+STOCKS_RUNTIME_CORE_SOURCE = CANONICAL_PACKAGE_ONLY
+STOCKS_VENDOR_RUNTIME = UNREACHABLE_BY_DEFAULT
+STOCKS_VENDOR_MIGRATION = CLOSED
+LEGACY_VENDOR_LOOKAHEAD_CASE = PRESERVED
+CANONICAL_TEMPORAL_GUARD = PASS
+VENDOR_REINTRODUCTION_GUARD = PASS
+```
 
-A modernização técnica não promove nenhum estado científico. O RJ continua no estágio
-registrado em `docs/RJ_DESIGN.md`/histórico de 2026-08-23: protocolo criado, testes
-sintéticos/power gate existentes e coleta/validação real ainda separadas dessa prova de
-mecânica.
+## Alterações permitidas
 
-Nenhum parâmetro RJ foi alterado por esta modernização.
-
-## Estado econômico
-
-Não existe evidência suficiente neste estado técnico para alegar edge econômico ou
-lucro prospectivo. Detectar um padrão que anteceda rally é etapa anterior à definição
-de entrada/saída, preço executável, custos, liquidez e P&L.
-
-`capital_permission = FORBIDDEN` neste estado.
+Somente bug real, segurança, preservação ou integridade de dependência. Mudanças de
+manutenção não promovem claim científica ou comercial.
 
 ## Fontes
 
-1. `docs/RJ_DESIGN.md` — protocolo científico RJ;
-2. `config_rj.yaml` — parâmetros congelados;
-3. `pyproject.toml` — runtime/dependências/entry-point atuais;
-4. `.github/workflows/ci.yml` — gates técnicos atuais;
-5. Git/CI — evidência mecânica;
-6. `HANDOFF.md` — histórico detalhado, válido para suas datas.
+1. `RESEARCH_FREEZE.md` — estado científico, decisões e política de reabertura;
+2. `pyproject.toml` e `uv.lock` — contrato de dependências;
+3. `.github/workflows/ci.yml` — ambiente canônico de validação;
+4. `poc_leak.py` e testes de import/replay — preservação e regressão anti-drift;
+5. Git/CI — evidência mecânica atual.
