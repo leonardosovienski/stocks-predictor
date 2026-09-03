@@ -50,7 +50,7 @@ verificado idêntico entre origem e destino em cada uma:
 | HANDOFF.md (decision log) | `HANDOFF.md` | repo | git | sim | não | é o log — não reconstituível | SIM | baixo (git já protege) | preservado |
 | RJ docs/protocol | `docs/RJ_DESIGN.md`, `config_rj.yaml`, `docs/audit/kimi_2026-08-24/*` | repo | git | sim | não | sim | não | baixo | preservado |
 
-**Por que PASS:** todo ativo *reproduzível a partir de código versionado* (trials, reports, configs, vendor, docs) está preservado com segurança de git; o `data/stocks.db` canônico foi localizado, auditado por contagem de linhas e replicado com verificação de hash SHA-256 para armazenamento offsite (2026-09-02) — ver atualização acima. O blocker original (§15, item 1) está fechado.
+**Por que PASS:** todo ativo *reproduzível a partir de código versionado* (trials, reports, configs, vendor, docs) está preservado com segurança de git; o `data/stocks.db` canônico foi localizado, auditado por contagem de linhas e replicado com verificação de hash SHA-256 para armazenamento offsite (2026-09-02) — ver atualização acima. O blocker original (§17, item 1) está fechado.
 
 ---
 
@@ -374,7 +374,52 @@ manifesto (§11) — sem exceção.
 
 ---
 
-## 14. Final Checkpoints
+## 14. Red Team (checklist explícita pré-fechamento)
+
+Sete perguntas adversariais, respondidas com a evidência já levantada nas seções acima —
+nenhuma resposta nova, só a síntese direta como checklist de fechamento.
+
+| # | pergunta | resposta | evidência |
+|---|---|---|---|
+| 1 | **PIT** — há ativo aparecendo antes de existir? | Não, dentro do que a suíte cobre. `universe.py` filtra `WHERE date < asof` em todo lugar; `test_universe_is_point_in_time` prova isso para o caso testado. **Mas** não há teste nomeado explicitamente para "ativo recém-listado não aparece antes da data real de listagem" — coberto só indiretamente (`min_history_excludes_short`). Não declarado PASS perfeito. | §3, §13 (`CLAIM-ST-PIT`) |
+| 2 | **Survivorship** — delisted está desaparecendo do passado? | Não. `test_excludes_delisted_ticker_stale_before_window` prova que uma empresa delistada continua aparecendo antes da saída. Sem inventário completo de todos os eventos de delisting da amostra de 2018-2026 — gap registrado, não fabricado como cobertura total. | §3, §8, §13 (`CLAIM-ST-SURVIVORSHIP`) |
+| 3 | **Costs** — resultado líquido está subestimando fricção? | Parcialmente possível. `spread_slippage_pct=0.0015` e `b3_fee_pct=0.0003` são **ASSUMED** (constantes literais, não medidas de execução real); só `turnover` é **MEASURED**. Impostos e custo de aluguel **NOT_MODELED**. Isso tende a subestimar fricção real — viés que jogaria a favor dos resultados positivos, o que reforça (não enfraquece) a conclusão de "não comprovada" nas 6 famílias. | §7 |
+| 4 | **Purge** — config diz uma coisa e runtime faz outra? | **Sim, confirmado.** `purge_embargo_months: 1` está declarado e é usado só no hash de integridade de config; `backtest.py` nunca o consome no walk-forward. Não deixado ambíguo: decisão explícita `DOCUMENTED_HISTORICAL_LIMITATION` (§4), não implementação silenciosa nem remoção do parâmetro `[H1-FROZEN]`. | §4, §13 (`CLAIM-ST-PURGE`) |
+| 5 | **Vendor** — runtime pode resolver para código velho? | Não, por padrão. `tests/conftest.py` tem assert que falha se `predictor_core.__file__` contiver `"vendor"`, a menos que `STOCKS_ALLOW_VENDOR_SHIM=1` seja setado explicitamente. Único consumidor real do vendor é `poc_leak.py` (script standalone, fora do pipeline). | §5, §6 |
+| 6 | **Multiplicity** — há sweeps fora do ledger? | Não identificado nesta auditoria: `trials.json`/`trials_v2.json` cobre as 6 famílias citadas no HANDOFF (H1,H2,H4,H5,H6,H8); `n_trials_ecosystem` é registrado como `UNKNOWN` (não fabricado) porque esta auditoria não tem visibilidade do denominador do ecossistema completo fora deste repo. Isso é uma limitação de visibilidade, não uma alegação de completude. | §2, §17 (task) |
+| 7 | **Freeze** — alguma tarefa ainda reabre pesquisa ativa? | Não. Nenhuma família foi retestada, nenhum fator novo foi criado, nenhuma linha de código de sinal foi alterada. O único código novo desta rodada é `tools/migrate_trials_schema.py` (schema, não sinal) e a atualização de `data/stocks.db` é *preservação*, não nova ingestão de features. | §11 (manifesto), §26 (task) |
+
+## 15. Valor Comercial Indireto
+
+O `stocks-predictor` não vira produto próprio, mas fica pronto como case reutilizável para uma
+futura oferta de auditoria/consultoria quantitativa, com evidência concreta e reproduzível
+(não hipotética) em cada um destes pontos:
+
+- **Survivorship bias:** CASE-ST-003 e os testes de `test_excludes_delisted_ticker_stale_before_window`
+  são um exemplo real e auditável de como construir (e testar) um universo livre de
+  sobrevivência — útil para demonstrar a um cliente por que um backtest ingênuo superestima
+  retorno.
+- **Point-in-time universe:** `universe.py` + o design doc (`docs/DESIGN.md`) são referência
+  concreta de implementação de disciplina PIT, algo que muitos backtests comerciais pulam.
+- **Multiple testing / false discovery:** CASE-ST-001 e CASE-ST-004 mostram, com números reais
+  (DSR de 5 famílias todas abaixo de 0,95, incluindo a de maior Sharpe bruto), como um gate de
+  múltiplos testes pré-registrado evita promover um vencedor por acaso — argumento forte para
+  auditar processos de seleção de fatores de terceiros.
+- **Custos:** a decomposição MEASURED/ESTIMATED/ASSUMED/NOT_MODELED (§7) é um template direto
+  para uma checklist de due diligence de custos em qualquer backtest de terceiros.
+- **Hipóteses sem efeito / poder insuficiente:** a distinção entre `NOT_SUPPORTED-IN-WINDOW` e
+  "refutado" (§13, §19 da task) é um argumento técnico reutilizável contra a prática comum de
+  rotular resultado nulo como prova de ausência de efeito.
+- **Anti-sinal como achado válido:** CASE-ST-002 (reversão 21d) demonstra que um resultado
+  "pior que o benchmark com significância" é uma descoberta, não um fracasso a esconder —
+  argumento de honestidade científica que reforça credibilidade de uma oferta de auditoria.
+
+Nenhuma ação de produtização (SaaS, dashboard, API comercial) foi tomada ou é recomendada por
+esta seção — o valor é o **case em si**, preservado e documentado, não uma nova entrega.
+
+---
+
+## 16. Final Checkpoints
 
 ```
 ST_PRESERVATION       = PASS (data/stocks.db canônico localizado, auditado e replicado offsite com hash verificado em 2026-09-02)
@@ -387,7 +432,7 @@ ST_RESEARCH_STATE     = FROZEN
 ST_CASE_STUDY_READY   = YES
 ```
 
-## 15. Remaining Blockers
+## 17. Remaining Blockers
 
 1. ~~`data/stocks.db` não existe neste checkout e não tem cópia offsite verificada.~~
    **RESOLVIDO (2026-09-02):** operador localizou o banco canônico
