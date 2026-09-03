@@ -109,6 +109,7 @@ scores das famílias), `tests/test_rj_next_gen.py` e `tests/test_rj_ingest.py`.
 main.py                  entry point legado/CLI do domínio histórico
 pyproject.toml           runtime, package e dependências compartilhadas
 STOCKS_CURRENT_STATE.md  estado corrente desta geração
+RESEARCH_FREEZE.md       manifesto do congelamento científico (ver seção abaixo)
 config.yaml              parâmetros do domínio cross-sectional histórico
 config_rj.yaml           parâmetros congelados da linha RJ
 docs/DESIGN.md           protocolo histórico de fatores
@@ -118,7 +119,49 @@ vendor/predictor_core/   snapshot legado preservado; não editar
 tests/                   gates automatizados
 data/                    dados locais/SQLite fora do Git
 reports/                 resultados e registros históricos
+trials.json              registro legado de trials (schema original, versionado)
+trials_v2.json           registro de trials no schema prospectivo canônico
+tools/                   utilitários de manutenção (ex.: migração de schema de trials)
 ```
+
+## Congelamento científico (RESEARCH_FREEZE.md) — mapa do que está onde
+
+O domínio cross-sectional de fatores (momentum, low-vol, vol-target, reversão e a
+interseção momentum×low-vol) está **congelado** — pesquisa ativa encerrada, nenhuma
+família reaberta sem passar pela `reopen_policy`. Tudo que sustenta essa decisão está
+documentado e versionado; nada disto vive só no chat que gerou:
+
+| O quê | Onde no repo | O que prova |
+|---|---|---|
+| Manifesto completo do congelamento (17 seções: preservação, schema de trials, PIT, purge/embargo, vendor, custos, multiplicidade, RJ, component inventory, case studies, red team, valor comercial, checkpoints finais) | [`RESEARCH_FREEZE.md`](RESEARCH_FREEZE.md) | Decisão e evidência de cada item, com citação de arquivo/linha |
+| Vereditos dos 6 fatores testados (H1, H2, H4, H5, H6, H8 — todos "não comprovados"; H5 é anti-sinal) | [`reports/`](reports/), citados em `RESEARCH_FREEZE.md` §12 | Resultado científico de cada hipótese |
+| Schema de trials legado | [`trials.json`](trials.json) | Registro original, intocado |
+| Schema de trials prospectivo (canônico) | [`trials_v2.json`](trials_v2.json) | Migração não-destrutiva/idempotente do legado |
+| Script da migração de schema | [`tools/migrate_trials_schema.py`](tools/migrate_trials_schema.py) | Reprodutível: `python tools/migrate_trials_schema.py --check` |
+| Decisão sobre purge/embargo (`DOCUMENTED_HISTORICAL_LIMITATION`) | `RESEARCH_FREEZE.md` §4 | Config declara mas não implementa; decisão explícita, não silenciosa |
+| Prova em código de que purge/embargo é inerte hoje | [`tests/test_purge_embargo_limitation.py`](tests/test_purge_embargo_limitation.py) | Quebra sozinho se alguém implementar purge de verdade no futuro |
+| Prova em código de que o runtime não resolve para o vendor congelado | [`tests/test_core_import_path.py`](tests/test_core_import_path.py) | `predictor_core` sempre resolve para o pacote instalado, não `vendor/` |
+| Prova em código de survivorship/PIT (delisting + listagem tardia) | [`tests/test_universe.py`](tests/test_universe.py) | Inclui `test_excludes_delisted_ticker_stale_before_window` e `test_newly_listed_ticker_does_not_appear_before_its_ipo_date` |
+| Classificação do `vendor/predictor_core/` | `RESEARCH_FREEZE.md` §5 | `ARCHIVE_FOR_REPRODUCTION`, guard ativo em `tests/conftest.py` |
+| Classificação do `poc_leak.py` | [`poc_leak.py`](poc_leak.py), `RESEARCH_FREEZE.md` §6 | `HISTORICAL_POC`, não reproduzível contra o Core 3.0.0 atual |
+| Fechamento da linha RJ (`ARCHIVED`) | `RESEARCH_FREEZE.md` §9, [`docs/RJ_DESIGN.md`](docs/RJ_DESIGN.md), [`docs/audit/kimi_2026-08-24/`](docs/audit/kimi_2026-08-24/) | Zero dados reais coletados; protocolo preservado, sem ingestão nova |
+| Localização/backup do banco operacional real (`stocks.db`) | `RESEARCH_FREEZE.md` §1 | Caminho na máquina local, contagens por tabela, hash SHA-256 do backup offsite |
+| Regra para reabrir qualquer fator ou a linha RJ | `RESEARCH_FREEZE.md` §11 (`reopen_policy`) | Exige 6 campos preenchidos (resultado anterior, motivo do fechamento, nova informação, etc.) — nunca decisão em silêncio |
+
+**Verificação de que está tudo no Git remoto:** todo o conteúdo acima chegou à branch
+`main` do GitHub via pull requests já mergeados
+([#18](../../pull/18), [#19](../../pull/19), [#20](../../pull/20), [#21](../../pull/21),
+[#22](../../pull/22)). Para confirmar localmente a qualquer momento:
+
+```powershell
+git fetch origin main
+git log origin/main --oneline -10   # deve mostrar os merges dos PRs #18-#22
+git show origin/main:RESEARCH_FREEZE.md | Select-Object -First 5   # confirma que existe na main remota
+uv run pytest -q                    # suíte completa, incluindo os testes novos do congelamento
+```
+
+A suíte completa (252 testes, incluindo os 5 novos desta rodada) passa 100% sobre o
+`origin/main` no momento deste commit.
 
 ## Fronteira econômica
 
