@@ -1,7 +1,11 @@
 {
-  "passed_at": "2026-07-18T20:26:27+00:00",
+  "schema_version": "pipeline-power/2",
+  "passed_at": "2026-09-03T18:35:25+00:00",
+  "expires_at": "2026-09-10T18:35:25+00:00",
+  "core_version": "2.2.0",
   "evaluate": "<lambda>",
   "edge_verdict": "COMPROVADA",
   "note": "controle positivo do pedágio (judge real, séries sintéticas pareadas)",
-  "metric": "sharpe_diff_ci95"
+  "metric": "sharpe_diff_ci95",
+  "pipeline_fingerprint": "e554071ad018f4344d621cc92ea054398ab3ea70dca9a75b1ee50ff65dcd801d"
 }

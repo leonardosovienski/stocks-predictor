@@ -113,6 +113,36 @@
 > N=7 no `trials.json` automaticamente via `trials_gate.apply_dsr` — o
 > hurdle de DSR fica mais alto do que qualquer tentativa anterior.
 
+> ## VEREDITO H7 — ENCERRADA: NÃO COMPROVADA (2026-09-04, rodada única, dado real)
+>
+> Pendências do bloco acima resolvidas na máquina do operador, na ordem: suíte
+> pytest confirmada (252 passed pré-existentes + os novos da H7), ingestão real
+> da DFP 2018-2026 via `tools/ingest_h7_real.py` (695 linhas gravadas em
+> `fundamentals`, `ticker_of` por ano cruzado por CNPJ entre DFP e FCA — ver
+> `tools/build_h7_ticker_of.py`), errata de schema em `trials.json` (campo
+> órfão `pipeline_fingerprint` em H6/H8 removido, bloqueava qualquer registro
+> novo no Core 3.0.0 real — ver entrada de errata acima), reatestado o controle
+> positivo do pedágio (`trials_gate.attest`), rodada única via
+> `backtest.run_h7(write_report=True)`.
+>
+> - 1.826 pregões pareados
+> - **IC 95% diff-Sharpe (stationary, bloco 21): (−0,2149, +0,4724)** — cruza zero
+> - **DSR: 0,5795 < 0,95** (N=7 — primeira hipótese julgada com o denominador
+>   completo das 6 anteriores + ela mesma)
+> - PSR 0,6325.
+> - **Não comprovada. Sem repescagem.**
+> - Relatório: `reports/h7_verdict_adhoc.md` (a versionar via `git add -f`,
+>   mesmo padrão de H6/H8 — `run_id: n/d` porque a chamada foi ad hoc, sem
+>   `db.new_run`).
+>
+> **Leitura acumulada (7 tentativas, 0 comprovadas):** a única fronteira de
+> dado novo desde o congelamento de 2026-09-02 — fator de qualidade (ROE) via
+> DFP da CVM — também não sobrevive ao pedágio nesta janela/universo. Com
+> H1-H8 esgotadas (preço + agora fundamentos), não resta hipótese pré-registrada
+> pendente de execução. `RESEARCH_FREEZE.md`/`STOCKS_CURRENT_STATE.md`
+> atualizados de volta a `FROZEN`/`CLOSED` — a mesma `reopen_policy` (6 campos
+> preenchidos por humano) agora cobre também a H7.
+
 > **Estado técnico corrente — 2026-09-01:** pacote `stocks_predictor`, Core
 > 3.0.x por wheel e nenhuma dependência declarada de Ops. A migração moderna
 > prevalece sobre a antiga pendência Core 2.3/Ops 3.1 e sobre caminhos históricos
