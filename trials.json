@@ -27,8 +27,8 @@
     "sharpe": 0.010029,
     "notes": "retroativa: veredito final da H1 (run 20260712T091903477689-41cc24), Sharpe anualizado 0.1592 -> por-período /sqrt(252); não comprovada",
     "test_period": [
-      "2018-01-01",
-      "2026-07-03"
+      "2018-01-01T00:00:00Z",
+      "2026-07-03T23:59:59Z"
     ],
     "metric": "sharpe_diff_ci95"
   },
@@ -61,8 +61,8 @@
     "sharpe": 0.013363,
     "notes": "rodada única da H2 (sharpe por-período realizado); valor restaurado em 2026-07-18 apos bug de clobber no register_baseline_trials (re-registro de baseline zerava o sharpe realizado — corrigido com guarda anti-clobber)",
     "test_period": [
-      "2018-01-01",
-      "2026-07-03"
+      "2018-01-01T00:00:00Z",
+      "2026-07-03T23:59:59Z"
     ],
     "metric": "sharpe_diff_ci95"
   },
@@ -93,8 +93,8 @@
     "sharpe": 0.011372,
     "notes": "rodada única da H4 (sizing 1/vol; sharpe por-período realizado)",
     "test_period": [
-      "2018-01-01",
-      "2026-07-03"
+      "2018-01-01T00:00:00Z",
+      "2026-07-03T23:59:59Z"
     ],
     "metric": "sharpe_diff_ci95"
   },
@@ -128,8 +128,8 @@
     "sharpe": -0.011367,
     "notes": "rodada única da H5 (reversão 21d; sharpe por-período realizado)",
     "test_period": [
-      "2018-01-01",
-      "2026-07-03"
+      "2018-01-01T00:00:00Z",
+      "2026-07-03T23:59:59Z"
     ],
     "metric": "sharpe_diff_ci95"
   },
@@ -163,8 +163,8 @@
     "sharpe": 0.011356,
     "notes": "rodada única da H6 (momentum 6-1; sharpe por-período realizado)",
     "test_period": [
-      "2018-01-01",
-      "2026-07-03"
+      "2018-01-01T00:00:00Z",
+      "2026-07-03T23:59:59Z"
     ],
     "metric": "sharpe_diff_ci95"
   },
@@ -199,8 +199,8 @@
     "sharpe": 0.019597,
     "notes": "rodada única da H8 (filtro duplo momentum top ∩ baixa vol; sharpe por-período realizado)",
     "test_period": [
-      "2018-01-01",
-      "2026-07-03"
+      "2018-01-01T00:00:00Z",
+      "2026-07-03T23:59:59Z"
     ],
     "metric": "sharpe_diff_ci95"
   },
