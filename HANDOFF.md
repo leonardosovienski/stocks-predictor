@@ -95,14 +95,23 @@
 > `_BIAS_NOTE` dela não pode alegar "retorno total corrigido" sem qualificar
 > o período.
 >
-> **PENDENTE — decisão do operador**: (1) investigar por que 2023 saiu tão
-> baixo (parsing? nomenclatura de coluna mudou no meio do ano? poucas
-> empresas do universo distribuíram nesse ano específico?); (2) achar fonte
-> alternativa pra 2024-2026 (talvez `fre_cia_aberta_distribuicao_dividendos`
-> sem `_classe_acao` exista em anos onde a versão `_classe_acao` sumiu — não
-> testado; ou a B3 tenha um dataset próprio, não investigado nesta sessão
-> por falta de acesso de rede). Não implementado nesta sessão — aguardando
-> decisão de prioridade.
+> **Investigação do 2023 concluída (2026-09-04, mesmo dia): NÃO é bug do
+> parser.** Diagnóstico rodado pelo operador: `parse_fre_dividend_rows` sobre
+> o zip FRE 2023 devolve só **58 linhas brutas / 9 empresas distintas**,
+> ANTES de qualquer filtro por universo/ticker — a fonte da CVM já vem rala
+> nesse ano, não é perda no match de ticker. Consistente com o achado de
+> 2024-2026 (arquivo sumiu de vez): a CVM parece ter mudado/descontinuado a
+> forma de reportar distribuição de dividendos no FRE bem na transição
+> 2023→2024 — não é algo que dá pra corrigir ajustando o parser deste lado.
+>
+> **Cobertura real confirmada da fonte FRE para retorno total: sólida
+> 2018-2022, praticamente inexistente 2023-2026.** Decisão de prioridade
+> (não tomada nesta sessão): (1) aceitar a cobertura parcial e usar
+> `total_return_series` só para períodos/hipóteses dentro de 2018-2022; (2)
+> buscar fonte alternativa pra 2023-2026 (dataset próprio da B3, não
+> investigado por falta de acesso de rede neste ambiente); (3) não usar
+> retorno total até resolver a lacuna. Fica registrado como limitação
+> conhecida da infraestrutura, não como bug.
 
 > ## H10 ABERTA — PRÉ-REGISTRO (2026-09-04, ANTES de qualquer rodada real)
 >
