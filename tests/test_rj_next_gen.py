@@ -120,6 +120,30 @@ def test_walk_forward_never_looks_back():
         assert train.start == 0                    # expanding, não rolling
 
 
+def test_walk_forward_splits_rejects_nonpositive_step():
+    """Achado de varredura 2026-09-04: step<=0 nunca avança `start`, loop
+    infinito (silencioso, sem exceção) em vez de falhar alto."""
+    with pytest.raises(ValueError, match="step"):
+        list(outcomes.walk_forward_splits(n_obs=30, min_train=10, step=0))
+    with pytest.raises(ValueError, match="step"):
+        list(outcomes.walk_forward_splits(n_obs=30, min_train=10, step=-1))
+
+
+def test_market_adjusted_rally_skips_bad_index_tick_mid_window():
+    """Achado de varredura 2026-09-04: fechamento do índice <=0 num dia
+    QUALQUER da janela (não só no fundo, já validado) estourava
+    ZeroDivisionError na razão geométrica — agora o dia é pulado, sem
+    inventar retorno de benchmark."""
+    dates = _calendar(120)
+    closes = [10.0 * (1.6 ** (i / 119)) for i in range(120)]
+    idx = [1000.0 * (1.4 ** (i / 119)) for i in range(120)]
+    idx[55] = 0.0   # tick ruim do benchmark, dentro da janela
+    r = outcomes.market_adjusted_rally(dates, closes, dates, idx, dates[50],
+                                       threshold_pct=0.50,
+                                       max_window_trading_days=60)
+    assert r["outcome"] in ("rally_market_adjusted", "no_market_adjusted_rally")
+
+
 # --- robustez estatística ---------------------------------------------------
 
 def test_romano_wolf_detects_strong_signal_and_ignores_noise():

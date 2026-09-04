@@ -37,8 +37,18 @@ def market_adjusted_rally(dates: list[str], closes: list[float],
         d = dates[i]
         if d not in idx_map:
             continue
+        idx_close_d = index_closes[idx_map[d]]
+        if idx_close_d <= 0:
+            # tick ruim/artefato no benchmark (fechamento <=0 num dia
+            # QUALQUER da janela, não só no fundo — o fundo já era
+            # validado acima, mas um dia posterior não era). Sem essa
+            # checagem, (1+idx_ret) podia zerar e a divisão geométrica
+            # abaixo estourava ZeroDivisionError em vez de degradar como
+            # o resto da função (achado de varredura 2026-09-04) — pula o
+            # dia, mesmo espírito de "sem dado confiável, sem inventar".
+            continue
         stock_ret = closes[i] / closes[t0] - 1.0
-        idx_ret = index_closes[idx_map[d]] / index_closes[i0] - 1.0
+        idx_ret = idx_close_d / index_closes[i0] - 1.0
         # excesso GEOMÉTRICO, não aritmético: (1+stock)/(1+idx)-1. Para
         # rallies >=50% (o regime deste projeto) a subtração simples
         # subestima o excesso real quando o índice também sobe — bug
@@ -58,6 +68,12 @@ def walk_forward_splits(n_obs: int, min_train: int, step: int):
     índice de treino, e o treino nunca encolhe (expanding, não rolling — o
     conhecimento acumulado não é esquecido). Útil quando houver modelo; hoje
     serve para definir a mecânica da validação futura sem lookahead."""
+    if step <= 0:
+        # start = min(start+step, n_obs) nunca avança com step<=0 (e com
+        # step<0, `end` nem decresce — trava em start≥min_train sempre,
+        # loop infinito) — achado de varredura 2026-09-04, fail-loud em vez
+        # de travar o processo chamador em silêncio.
+        raise ValueError(f"step deve ser > 0, recebido {step}")
     start = min_train
     while start < n_obs:
         end = min(start + step, n_obs)
