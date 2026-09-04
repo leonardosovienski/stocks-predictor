@@ -110,6 +110,23 @@ def test_new_trial_requires_attestation(tmp_path):
         reg.register("h2-lowvol-252", params={"x": 1}, metric=trials_gate.METRIC)
 
 
+def test_trials_path_from_honors_env_var(tmp_path, monkeypatch):
+    """Achado de varredura de infraestrutura (2026-09-04): sem
+    `PREDICTOR_TRIALS_PATH`, qualquer chamador que não passe `trials_path`
+    explícito (ex.: `main.py backtest-h <N>` via subprocess, que não tem
+    como injetar o argumento direto) escrevia no `trials.json` REAL do
+    repo — mesmo padrão de `db.DB_PATH_ENV`/`report.REPORTS_ENV`, faltando
+    só aqui. Precedência: override explícito > env var > config > default."""
+    from config import load_config
+    cfg = load_config()
+    env_path = tmp_path / "via_env.json"
+    monkeypatch.setenv(trials_gate.TRIALS_PATH_ENV, str(env_path))
+    assert trials_gate.trials_path_from(cfg) == env_path
+    # override explícito ainda vence a env var
+    explicit_path = tmp_path / "via_override.json"
+    assert trials_gate.trials_path_from(cfg, explicit_path) == explicit_path
+
+
 def test_register_hypothesis_preserves_realized_sharpe(tmp_path):
     """Regressão do bug de clobber (2026-07-18): re-registrar baseline com
     sharpe=None NÃO pode apagar o sharpe realizado de uma rodada única."""

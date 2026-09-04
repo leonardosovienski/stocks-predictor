@@ -2438,3 +2438,58 @@ python -c "import backtest; backtest.run_h16(write_report=True)"
 ```
 Nenhum backfill/ingestão nova necessária — as 3 usam dado que já está em
 `prices_raw` desde o M1 (H14/H15) ou o mesmo universo/preço de H1 (H16).
+
+---
+
+## Revisão de infraestrutura (2026-09-04, pedido do operador)
+
+Pedido do operador: com a pesquisa de fatores esgotada (16/16), revisar o
+que existe mas nunca foi completado/conectado, sem reabrir nenhuma
+hipótese julgada nem "combinar até funcionar" (recusado explicitamente —
+ver conversa; combinar fatores já observados como fracos é exatamente o
+p-hacking que o pedágio IC95%+DSR existe pra impedir).
+
+**Achado 1 — CLI travado em H5, 11 hipóteses inalcançáveis pelo ponto de
+entrada documentado.** `main.py` só tinha comandos nomeados até
+`backtest-h5`; H6-H16 só eram alcançáveis via
+`python -c "import backtest; backtest.run_hN(...)"` (o workaround que
+usamos a sessão inteira, com o atrito real de `PYTHONPATH` manual toda
+vez). Corrigido: `main.py backtest-h <N>` — dispatcher genérico que chama
+`backtest.run_hN(write_report=True)` via `getattr`. Não adiciona hipótese
+nenhuma, só conecta o que já existia.
+
+**Achado 2 (sério) — `trials_gate.trials_path_from` sem variável de
+ambiente de override, ao contrário de `db.py`/`report.py`.** Descoberto
+testando o achado 1: meu próprio teste do dispatcher, rodado via
+subprocess, ESCREVEU no `trials.json` REAL do repo (adicionou de volta o
+campo `pipeline_fingerprint` que a errata de 2026-09-03 tinha removido) —
+porque não havia como isolar o path por variável de ambiente, só passando
+`trials_path=` explícito em código Python direto (impossível via
+subprocess/CLI). Revertido (`git checkout -- trials.json`, confirmado
+limpo) antes de qualquer commit. Corrigido: `trials_gate.TRIALS_PATH_ENV`
+("PREDICTOR_TRIALS_PATH"), mesma precedência de `db.DB_PATH_ENV`
+(override explícito > env var > config > default). Teste novo:
+`test_trials_path_from_honors_env_var`; o teste do dispatcher (achado 1)
+agora isola via essa env var.
+
+**Achado 3 — `economic_gate.py` órfão, nunca importado por nenhum outro
+módulo.** Gate econômico REBALANCE/HOLD completo e testado
+(`tests/test_economic_gate.py`), mas `paper.py` (M6) nunca o chama — a
+liquidação de execuções grava `realized_return_net`, mas nada decide se
+esse edge "paga" turnover+hurdle pra habilitar capital. **Não conectado
+nesta rodada**: com 16/16 hipóteses NOT_SUPPORTED, não há edge real pra
+gatear — conectar o gate agora seria infraestrutura para uma capacidade
+sem sinal nenhum pra usar (documentado, não implementado; decisão
+consciente de não fazer trabalho sem propósito no momento presente).
+
+**Achado 4 — `purge_embargo_months` declarado mas nunca consumido.** Já
+documentado e decidido em `RESEARCH_FREEZE.md` §4 como
+`DOCUMENTED_HISTORICAL_LIMITATION` (2026-09-02) — implementar
+retroativamente contaria como ajustar metodologia depois de já ter
+vereditos, proibido pelo próprio design. Confirmado ainda válido,
+nenhuma ação (a decisão já está tomada e registrada).
+
+Suite completa (sandbox): 324 passed, 1 skipped, 6 failed — mesmos 6
+pré-existentes do shim de vendor, não relacionados. `trials.json` real
+confirmado intocado (`md5sum` antes/depois idêntico) após a correção do
+achado 2.
