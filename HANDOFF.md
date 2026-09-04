@@ -30,6 +30,42 @@
 > `pytest`). Dado real já disponível — só falta rodar:
 > `python -c "import backtest; backtest.run_h10(write_report=True)"`.
 
+> ## VEREDITO H10 — ENCERRADA: NÃO COMPROVADA (2026-09-04, rodada única, dado real)
+>
+> Suíte confirmada (265 passed + 1 falha pré-existente/não relacionada,
+> versão do Core instalado). Rodada única via `backtest.run_h10(write_report=True)`,
+> dado já ingerido pela H7 (sem ingestão nova).
+>
+> - 1.826 pregões pareados
+> - **IC 95% diff-Sharpe (stationary, bloco 21): (−0,3820, +0,2029)** — cruza zero
+> - **DSR: 0,3661 < 0,95** (N=9)
+> - PSR 0,4139.
+> - **Não comprovada. Sem repescagem.**
+> - Relatório: `reports/h10_verdict_adhoc.md` (a versionar via `git add -f`).
+>
+> **Leitura acumulada (9 tentativas, 0 comprovadas):** nem os fatores contábeis
+> isolados (H7 ROE, H9 alavancagem) nem sua interseção (H10) sobrevivem ao
+> pedágio — mesmo padrão da H8 (interseção momentum∩baixa-vol também
+> reprovou). As duas variáveis contábeis da DFP e sua combinação estão
+> esgotadas. `RESEARCH_FREEZE.md`/`STOCKS_CURRENT_STATE.md` atualizados de
+> volta a `FROZEN`/`CLOSED`.
+>
+> **Próxima frente aberta pelo operador (decisão "A e B" + confirmação
+> posterior): construir uma série de RETORNO TOTAL (preço + proventos
+> reinvestidos)** para corrigir o viés só-preço declarado em TODAS as 9
+> hipóteses. Fonte confirmada via `tools/explore_dividend_sources.py`
+> (rodado pelo operador, saída no HANDOFF abaixo):
+> `fre_cia_aberta_distribuicao_dividendos_classe_acao_{ano}.csv` (CVM/FRE) —
+> `Montante` (total distribuído no ano por classe de ação) e
+> `Data_Pagamento_Dividendo`. **Limitação declarada, aprovada pelo
+> operador para prosseguir mesmo assim:** (1) `Montante` é AGREGADO
+> anual por classe, não valor por ação — precisa dividir pela quantidade de
+> ações da classe (`fre_cia_aberta_distribuicao_capital_classe_acao`) para
+> aproximar o valor por ação; (2) `Data_Pagamento_Dividendo` é a data de
+> PAGAMENTO, não a data-ex real (que costuma vir semanas/meses antes) — usada
+> como proxy conservador. Ver próxima entrada de HANDOFF para a
+> implementação.
+
 > ## H9 ABERTA — PRÉ-REGISTRO (2026-09-04, ANTES de qualquer rodada real)
 >
 > Decisão explícita do operador ("vamos fazer", após o veredito NÃO COMPROVADA
