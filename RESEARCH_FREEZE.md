@@ -264,19 +264,7 @@ Nenhum componente foi movido para o Core nesta rodada — os dois já compartilh
 
 ```yaml
 ST_RESEARCH_FREEZE:
-  active_hypotheses:
-    - id: H7
-      family: quality_roe
-      status: PRE_REGISTERED_NOT_JUDGED
-      note: >
-        Aberta 2026-09-03 por decisão explícita do operador (ver HANDOFF.md).
-        NÃO é reabertura das famílias abaixo (não exige os 6 campos de
-        reopen_policy) — é hipótese nova sobre fonte de dado nova (DFP da
-        CVM), mesma disciplina de pré-registro de H4/H5/H6/H8. Código e
-        testes prontos (dado sintético); rodada real com dado real ainda NÃO
-        aconteceu (bloqueada pela ausência de stocks.db real e de rede à CVM
-        neste ambiente de auditoria — ver HANDOFF.md para os passos
-        mecânicos pendentes na máquina do operador).
+  active_hypotheses: []
   stopped_hypotheses:
     - id: H1
       family: momentum_12_1
@@ -297,6 +285,16 @@ ST_RESEARCH_FREEZE:
     - id: H8
       family: momentum_lowvol_intersection
       result: NOT_SUPPORTED (IC cruza zero; DSR 0.6050 < 0.95)
+    - id: H7
+      family: quality_roe
+      result: NOT_SUPPORTED (IC cruza zero; DSR 0.5795 < 0.95)
+      closed_at: 2026-09-04
+      note: >
+        Única hipótese sobre fonte de dado NOVA (DFP/CVM, fundamentos) desde
+        o congelamento de 2026-09-02 — dado real ingerido (695 linhas em
+        fundamentals, 2018-2026), julgada em rodada única, mesma disciplina
+        das anteriores. Ver HANDOFF.md "VEREDITO H7" para detalhes completos
+        (IC, DSR, provenance da ingestão).
   preserved_components:
     - stocks_predictor/universe.py (PIT universe + survivorship)
     - stocks_predictor/execution.py (cost model)
@@ -310,8 +308,8 @@ ST_RESEARCH_FREEZE:
     - RJ (zero dados reais; protocolo e auditoria preservados; sem trabalho ativo)
   reopen_policy: >
     Nenhuma família de fatores já encerrada (momentum 12-1, momentum 6-1, low-vol,
-    vol-target, reversão 21d, interseção momentum×low-vol) pode ser reaberta sem
-    registrar EXPLICITAMENTE, antes de qualquer código novo:
+    vol-target, reversão 21d, interseção momentum×low-vol, qualidade/ROE) pode ser
+    reaberta sem registrar EXPLICITAMENTE, antes de qualquer código novo:
       previous_result, closure_reason, new_information, causal_reason,
       why_old_test_no_longer_answers_question, new_protocol.
     Sem esses 6 campos preenchidos e revisados por um humano, qualquer proposta de
