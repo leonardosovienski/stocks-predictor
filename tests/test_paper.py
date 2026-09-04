@@ -97,6 +97,13 @@ def test_settle_exits_writes_risk_part_write_once(tmp_path):
     assert row["cost_paid"] > 0
     assert row["holding_days"] > 0
     assert row["realized_return_net"] is not None
+    # achado de varredura 2026-09-04: holding_days tem que contar da execução
+    # real (exec_date), não do sinal (asof) — asof < exec_date sempre (D+1+),
+    # então usar asof infla o campo pelo atraso sinal->execução.
+    import datetime
+    expected = (datetime.date.fromisoformat(row["exit_date"])
+               - datetime.date.fromisoformat(row["exec_date"])).days
+    assert row["holding_days"] == expected
     first_exit_price = row["exit_price"]
     # write-once via COALESCE — segunda liquidação não reescreve
     assert paper.settle_exits(conn, _CFG) == 0

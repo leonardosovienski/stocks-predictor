@@ -1870,3 +1870,50 @@ confirmada; fonte B3 candidata em `tools/explore_b3_dividends_api.py` segue
 não verificada, endpoint precisa ser confirmado via devtools do navegador
 numa máquina com rede real) e a rodada real da H11 (só smoke test sintético
 rodou até agora).
+
+---
+
+## Varredura de qualidade — 2ª leva (2026-09-04)
+
+Continuação do pedido do operador ("faz tudo já"): rodada nova do
+`code-review` (`--full-tree stocks_predictor/ tools/`) sobre o resto do
+projeto (o núcleo financeiro/estatístico — anti-lookahead, point-in-time,
+custo/turnover, DSR/FDR, ledger write-once — não teve achado defensável).
+3 achados reais, todos em caminhos secundários (metadado de ledger, tooling
+ad-hoc), os três corrigidos:
+
+1. **`paper.settle_exits()` calculava `holding_days` a partir de `asof`
+   (data do SINAL), não de `exec_date` (data da EXECUÇÃO real).**
+   `settle_executions()` preenche `exec_date` em D+1 (ou mais, com
+   feriado/fim de semana no meio) — usar `asof` inflava sistematicamente o
+   campo de auditoria pelo atraso sinal→execução em toda linha do ledger
+   RISK. Corrigido buscando `exec_date` na mesma query e usando-o no cálculo.
+   `tests/test_paper.py::test_settle_exits_writes_risk_part_write_once`
+   ganhou um assert que confere `holding_days == (exit_date - exec_date).days`
+   exatamente (antes só checava `> 0`, o que não pegava a inflação).
+2. **`tools/migrate_trials_schema.py`: `_FAMILY_BY_PREFIX` nunca foi
+   atualizado para H7/H9 (já registradas em `trials.json`) nem H10/H11**,
+   então `hypothesis_family` saía `"UNKNOWN"` pras trials novas e
+   `n_trials_domain` ficava travado em `len(_FAMILY_BY_PREFIX)` (6) mesmo
+   com 8 trials reais já no ledger — o tipo exato de subestimação
+   silenciosa de multiplicidade que a disciplina DSR/FDR do projeto existe
+   pra evitar. Corrigido: mapa completado com os 4 prefixos que faltavam
+   (h7/h9/h10/h11) e `n_trials_domain` passou a ser `len(legacy_trials)`
+   (contagem real do ledger), não mais o tamanho do mapa. `trials_v2.json`
+   regerado (arquivo derivado/regenerável, não é o ledger — `trials.json`
+   não foi tocado); `--check` confirma idempotência.
+3. **`tools/ingest_h7_real.py` rebaixava e reparseava o zip do DFP inteiro
+   do ano a cada ticker extra (ON+PN da mesma empresa)** — pra um ano com 5
+   empresas ambíguas, 6 downloads completos em vez de 1, todos do mesmo
+   balanço já em mãos. Corrigido: `ingest_cvm.ingest_dfp_year` ganhou
+   parâmetro opcional `zbytes` (bytes já baixados; `None` = comportamento
+   antigo, baixa como sempre) e o script agora baixa o zip do ano UMA vez,
+   reusado pela passada primária e por todas as chamadas de 2ª classe. Teste
+   novo (`test_ingest_dfp_year_accepts_prefetched_zbytes_without_downloading`)
+   confirma que `download_zip` não é chamado quando `zbytes` é passado.
+
+Suite completa (sandbox, `STOCKS_ALLOW_VENDOR_SHIM=1`): 279 passed, 1
+skipped, 6 failed — os mesmos 6 pré-existentes do shim de vendor (Core
+vendorizado mais antigo que o canônico 3.0.0), documentados na entrada
+anterior, não relacionados a esta mudança. Confirmar verde total na
+máquina real com Core 3.0.0.

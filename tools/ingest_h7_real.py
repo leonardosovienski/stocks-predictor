@@ -69,8 +69,18 @@ def main():
         if dry_run:
             continue
 
+        # baixa o zip do ano UMA vez — reusado pela passada primária e por
+        # todas as chamadas de 2ª classe (ON+PN é o mesmo balanço, achado de
+        # varredura 2026-09-04: sem isso, cada ticker extra rebaixava e
+        # reparseava o DFP inteiro do ano à toa).
         try:
-            n = ingest_cvm.ingest_dfp_year(conn, year, ticker_of=primary)
+            zbytes = ingest_cvm.download_zip(ingest_cvm.DFP_URL.format(year=year))
+        except Exception as e:
+            print(f"{year}: download do DFP FALHOU ({e!r}) — pulado", file=sys.stderr)
+            continue
+
+        try:
+            n = ingest_cvm.ingest_dfp_year(conn, year, ticker_of=primary, zbytes=zbytes)
         except Exception as e:
             print(f"{year}: ingest_dfp_year (primária) FALHOU ({e!r}) — pulado", file=sys.stderr)
             continue
@@ -83,7 +93,8 @@ def main():
             for tk in extras:
                 try:
                     n2 = ingest_cvm.ingest_dfp_year(
-                        conn, year, companies={company}, ticker_of={company: tk})
+                        conn, year, companies={company}, ticker_of={company: tk},
+                        zbytes=zbytes)
                 except Exception as e:
                     print(f"{year}: 2ª classe {company}->{tk} FALHOU ({e!r})",
                           file=sys.stderr)

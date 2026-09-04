@@ -98,12 +98,13 @@ def settle_exits(conn, cfg) -> int:
         (universe.SPOT_MARKET,))]
     month_ends = month_end_dates(all_dates)
     pending = conn.execute(
-        "SELECT run_id, asof, ticker, exec_price FROM decisions "
+        "SELECT run_id, asof, ticker, exec_price, exec_date FROM decisions "
         "WHERE frozen_mode=1 AND exec_price IS NOT NULL AND exit_price IS NULL"
     ).fetchall()
     filled = 0
     series_cache: dict[str, tuple[list, list]] = {}
-    for run_id, asof, tk, entry_price in [(r[0], r[1], r[2], r[3]) for r in pending]:
+    for run_id, asof, tk, entry_price, exec_date in [
+            (r[0], r[1], r[2], r[3], r[4]) for r in pending]:
         next_asof = next((d for d in month_ends if d > asof), None)
         if next_asof is None:
             continue    # ainda dentro do mês do exec_date — posição segue aberta
@@ -120,8 +121,12 @@ def settle_exits(conn, cfg) -> int:
         exit_date, exit_price = nxt
         cost_paid = execution.roundtrip_cost(fee_pct, slippage_pct) * entry_price
         realized_return_net = execution.net_return(entry_price, exit_price, fee_pct, slippage_pct)
+        # holding_days conta da EXECUÇÃO real (exec_date), não do sinal (asof) —
+        # o preenchimento em settle_executions() ocorre em D+1 (ou mais, com
+        # feriado/fim de semana no meio), então usar asof infla o campo pelo
+        # atraso sinal->execução em toda linha (achado de varredura 2026-09-04).
         holding_days = (datetime.date.fromisoformat(exit_date)
-                        - datetime.date.fromisoformat(asof)).days
+                        - datetime.date.fromisoformat(exec_date)).days
         conn.execute(
             "UPDATE decisions SET exit_date=COALESCE(exit_date,?), "
             "exit_price=COALESCE(exit_price,?), cost_paid=COALESCE(cost_paid,?), "

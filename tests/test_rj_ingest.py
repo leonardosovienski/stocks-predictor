@@ -214,6 +214,38 @@ def test_ingest_dfp_year_writes_fundamentals(conn, monkeypatch):
     assert conn.execute("SELECT COUNT(*) FROM fundamentals").fetchone()[0] == 1
 
 
+def test_ingest_dfp_year_accepts_prefetched_zbytes_without_downloading(conn, monkeypatch):
+    # ON+PN da mesma empresa: 2ª chamada reusa o mesmo zip já baixado, sem
+    # rebaixar (achado de varredura 2026-09-04, tools/ingest_h7_real.py).
+    bpa_csv = (_DFP_HEADER +
+              "00.000/0001-91;EMPRESA S.A.;ÚLTIMO;2023-12-31;1;Ativo Total;1000000\n")
+    bpp_csv = (_DFP_HEADER +
+              "00.000/0001-91;EMPRESA S.A.;ÚLTIMO;2023-12-31;2;Passivo Total;1000000\n"
+              "00.000/0001-91;EMPRESA S.A.;ÚLTIMO;2023-12-31;2.03;"
+              "Patrimônio Líquido Consolidado;400000\n")
+    dre_csv = (_DFP_HEADER +
+              "00.000/0001-91;EMPRESA S.A.;ÚLTIMO;2023-12-31;3.11;"
+              "Lucro/Prejuízo Consolidado do Período;50000\n")
+    buf = io.BytesIO()
+    with zipfile.ZipFile(buf, "w") as zf:
+        zf.writestr("dfp_cia_aberta_BPA_con_2023.csv", bpa_csv.encode("latin-1"))
+        zf.writestr("dfp_cia_aberta_BPP_con_2023.csv", bpp_csv.encode("latin-1"))
+        zf.writestr("dfp_cia_aberta_DRE_con_2023.csv", dre_csv.encode("latin-1"))
+    zbytes = buf.getvalue()
+
+    def _fail_download(*a, **k):
+        raise AssertionError("download_zip não deveria ser chamado quando zbytes é passado")
+    monkeypatch.setattr(ingest_cvm, "download_zip", _fail_download)
+
+    n = ingest_cvm.ingest_dfp_year(conn, 2023, ticker_of={"empresa_s.a.": "EMPR3"},
+                                   zbytes=zbytes)
+    assert n == 1
+    n2 = ingest_cvm.ingest_dfp_year(conn, 2023, ticker_of={"empresa_s.a.": "EMPR4"},
+                                    zbytes=zbytes)
+    assert n2 == 1
+    assert conn.execute("SELECT COUNT(*) FROM fundamentals").fetchone()[0] == 2
+
+
 def test_ingest_dfp_year_skips_unmapped_company(conn, monkeypatch):
     bpa_csv = (_DFP_HEADER +
               "00.000/0001-91;SEM MAPA S.A.;ÚLTIMO;2023-12-31;1;Ativo Total;1000000\n")
