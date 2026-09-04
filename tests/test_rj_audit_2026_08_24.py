@@ -232,6 +232,26 @@ def test_permutation_pvalue_never_zero():
     assert p >= 1 / 101 - 1e-12   # piso (0+1)/(100+1), nunca 0
 
 
+def test_apply_fdr_family_without_data_is_none_not_false():
+    """Achado de varredura 2026-09-04: uma família ELEGÍVEL pro FDR mas sem
+    p_value (ex.: "ownership" hoje, sem ingestor real ainda — todo episódio
+    grava p_value=None pra ela) tinha significant_after_fdr virando False
+    ("testada e não significativa"), quando o correto é None ("nunca
+    testada") — mesma distinção que a família descritiva (fora do FDR)
+    já recebia corretamente."""
+    verdicts = {
+        "drawdown": {"p_value": 0.001},
+        "ownership": {"p_value": None},          # elegível, mas sem dado
+        "volume_dynamics_contemporaneous": {"p_value": 0.5},  # fora do FDR
+    }
+    out = judge.apply_fdr(
+        verdicts, alpha=0.1,
+        families_for_fdr={"drawdown", "ownership"})
+    assert out["drawdown"]["significant_after_fdr"] is True
+    assert out["ownership"]["significant_after_fdr"] is None
+    assert out["volume_dynamics_contemporaneous"]["significant_after_fdr"] is None
+
+
 def test_categorical_pvalue_never_zero():
     cfg = {"judge": {"seed": 1, "n_boot": 100}}
     units = ([(f"T{i}3", "exited", 1) for i in range(6)]
@@ -493,3 +513,21 @@ def test_coda_impute_zeros_requires_rectangular_matrix():
         coda.impute_zeros([[1.0, 2.0], [3.0]])
     with pytest.raises(ValueError, match="retangular"):
         coda.clr_matrix([[1.0, 2.0], [3.0]])
+
+
+def test_clr_matrix_mask_remapped_after_dropping_column():
+    """Achado de varredura 2026-09-04: coluna 1 é toda zero (sem positivo
+    algum) -> dropped_cols=[1]. `data` retornado tem só as colunas 0 e 2
+    (numeração NOVA 0 e 1); a máscara de imputação, que veio de
+    `impute_zeros` na numeração ORIGINAL (0,1,2), tem que vir remapeada pra
+    numeração nova — do contrário aponta pra célula errada em `data`."""
+    matrix = [[1.0, 0.0, 2.0], [3.0, 0.0, 0.0]]
+    out = coda.clr_matrix(matrix)
+    assert out["dropped_cols"] == [1]
+    # linha 1, coluna original 2 (única imputação: célula (1,2) era 0.0,
+    # coluna 1 nunca é imputada — está em dropped_cols) -> vira coluna NOVA 1
+    # (coluna original 2 é a 2ª coluna mantida, índice 1 após o remap).
+    assert out["mask"] == [(1, 1)]
+    # todo índice de coluna na máscara tem que existir em `data`.
+    for r, c in out["mask"]:
+        assert 0 <= c < len(out["data"][r])

@@ -1917,3 +1917,45 @@ skipped, 6 failed — os mesmos 6 pré-existentes do shim de vendor (Core
 vendorizado mais antigo que o canônico 3.0.0), documentados na entrada
 anterior, não relacionados a esta mudança. Confirmar verde total na
 máquina real com Core 3.0.0.
+
+---
+
+## Varredura de qualidade — 3ª leva, linha RJ (2026-09-04)
+
+Continuação do pedido do operador ("continua a varredura no resto do
+projeto"). `code-review` (`--full-tree`) sobre `tests/`, `config.py`,
+`config.yaml` e o resto do pipeline RJ (`rj_judge*`, `rj_pipeline`,
+`rj_episodes`, `rj_families*`, `rj_power`, `rj_coda`) — matemática de
+BH-FDR, Romano-Wolf, censura/candidatos point-in-time e o mini-parser de
+config conferidos corretos. 2 achados reais, ambos corrigidos (linha RJ é
+`ARCHIVED`/sem trabalho científico novo autorizado, mas
+`STOCKS_CURRENT_STATE.md` permite explicitamente "bug real" como alteração
+válida):
+
+1. **`rj_judge.apply_fdr()` marcava família ELEGÍVEL pro FDR mas SEM
+   p_value (ex.: `"ownership"`, sem ingestor real ainda — `rj_pipeline`
+   grava `p_value=None` pra ela em todo episódio) como
+   `significant_after_fdr=False`**, quando deveria ser `None` — a mesma
+   distinção "nunca testada" vs. "testada e não significativa" que o
+   próprio docstring da função já declarava para famílias descritivas
+   (fora do FDR), mas não implementava para famílias elegíveis sem dado.
+   Isso contaminaria o veredito real da linha RJ (`rj_judge_robust`
+   já tinha até um teste — `test_robustness_report_none_bh_gives_none_concordant`
+   — que assumia `None` corretamente, mas `apply_fdr` nunca entregava
+   `None` nesse caso). Corrigido: `significant_after_fdr=None` tanto pra
+   família fora do conjunto de FDR quanto pra elegível sem p_value.
+   Teste novo `test_apply_fdr_family_without_data_is_none_not_false`.
+2. **`rj_coda.clr_matrix()` descarta colunas sem nenhum valor positivo de
+   `data`, mas devolvia `mask` ainda indexada na numeração ORIGINAL das
+   colunas** (a de `impute_zeros`, antes do descarte) — qualquer auditoria
+   downstream usando `mask` pra localizar a célula imputada em `data` lia a
+   célula errada (ou estourava índice) sempre que `dropped_cols` não
+   fosse vazio, quebrando a garantia que o próprio docstring promete
+   ("qualquer análise downstream deve poder auditar quanto do dado é
+   imputado"). Corrigido: `mask` remapeada pra numeração nova (pós-descarte)
+   antes de retornar. Teste novo
+   `test_clr_matrix_mask_remapped_after_dropping_column`.
+
+Suite completa (sandbox): 281 passed, 1 skipped, 6 failed — mesmos 6
+pré-existentes do shim de vendor, não relacionados. Confirmar verde total
+na máquina real com Core 3.0.0.

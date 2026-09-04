@@ -164,11 +164,16 @@ def apply_fdr(verdicts: dict, alpha: float, families_for_fdr: set | None = None)
         if p <= (rank / m) * alpha:
             threshold_rank = rank
     significant_names = {name for name, _ in items[:threshold_rank]}
+    tested_names = {name for name, _ in items}
     for name, v in verdicts.items():
-        if name in eligible:
+        if name in eligible and name in tested_names:
             v["significant_after_fdr"] = name in significant_names
         else:
-            v["significant_after_fdr"] = None  # descritiva — FDR não se aplica
+            # fora do conjunto de FDR (descritiva) OU elegível mas sem
+            # p_value (família sem dado — ex.: "ownership" sem ingestor
+            # ainda, achado de varredura 2026-09-04): "nunca testada" não é
+            # "testada e não significativa", ambas viram None, nunca False.
+            v["significant_after_fdr"] = None
     return verdicts
 
 
