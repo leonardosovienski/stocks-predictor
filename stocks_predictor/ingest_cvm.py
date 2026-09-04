@@ -94,6 +94,22 @@ _NET_INCOME_KEYWORDS_ANY = ("lucro", "prejuizo")
 # descrição (mesma checagem de sanidade dos outros campos).
 _REVENUE_CODE = "3.01"
 _REVENUE_KEYWORDS = ("receita",)
+# DFC-MI (Demonstração de Fluxo de Caixa, método indireto, consolidada) —
+# insumo da H17 (accruals), pré-registrada 2026-09-04. Código 6.01 do plano
+# de contas CVM ("Caixa Líquido Atividades Operacionais"), cruzado com
+# "caixa" E "operacional" na descrição (mesma checagem de sanidade dos
+# outros campos: código sozinho já mudou de significado entre layouts em
+# outros datasets da CVM, descrição sozinha casa subtotal).
+#
+# Por que esta é a PRIMEIRA demonstração nova desde o M2: BPA (ativo), BPP
+# (passivo/PL) e DRE (resultado) são todas de COMPETÊNCIA — o mesmo regime
+# contábil, com os mesmos graus de liberdade de reconhecimento. A DFC é de
+# CAIXA. Nenhuma combinação de BPA/BPP/DRE reconstrói o fluxo de caixa
+# operacional; é dado genuinamente novo, não recombinação (ver
+# RESEARCH_FREEZE §11, que nomeia "fluxo de caixa" como fonte materialmente
+# nova admissível).
+_CASHFLOW_OPS_CODE = "6.01"
+_CASHFLOW_OPS_KEYWORDS_ALL = ("caixa", "operaciona")
 
 
 def _norm(s: str) -> str:
@@ -331,10 +347,23 @@ def _pick_account(rows: list[dict], code: str | None,
 
 
 def compute_fundamentals(bpa_rows: list[dict], bpp_rows: list[dict],
-                         dre_rows: list[dict]) -> list[dict]:
-    """BPA+BPP+DRE já parseados -> [{company, ref_date, ativo_total,
+                         dre_rows: list[dict],
+                         dfc_rows: list[dict] | None = None) -> list[dict]:
+    """BPA+BPP+DRE(+DFC) já parseados -> [{company, ref_date, ativo_total,
     passivo_total, patrimonio_liquido, lucro_liquido, roe, leverage,
-    receita_liquida, net_margin}].
+    receita_liquida, net_margin, fluxo_caixa_operacional, accruals}].
+
+    `dfc_rows` (H17, pré-registro 2026-09-04) é OPCIONAL e default `None` —
+    chamador que não passa DFC recebe as mesmas linhas de antes com
+    `fluxo_caixa_operacional`/`accruals` em `None`. H7-H16 e seus testes
+    não mudam de comportamento.
+
+    `accruals = (lucro_liquido - fluxo_caixa_operacional) / ativo_total`
+    (Sloan 1996): a parte do lucro que NÃO virou caixa, escalada pelo ativo.
+    Grupo de elegibilidade PRÓPRIO (lucro + fco + ativo resolvidos sem
+    ambiguidade), independente dos outros dois — mesma disciplina que
+    `receita_liquida`/`net_margin` já seguem. `ativo_total <= 0` -> `None`
+    (denominador inválido, sem ratio fabricado).
 
     `receita_liquida`/`net_margin` (H12/H13, pré-registro 2026-09-04) usam
     seu PRÓPRIO critério de elegibilidade (`lucro` + `receita` resolvidos
@@ -367,9 +396,11 @@ def compute_fundamentals(bpa_rows: list[dict], bpp_rows: list[dict],
     pl = _pick_account(bpp_rows, _EQUITY_CODE, _EQUITY_KEYWORDS)
     lucro = _pick_account(dre_rows, None, _NET_INCOME_KEYWORDS_ALL, _NET_INCOME_KEYWORDS_ANY)
     receita = _pick_account(dre_rows, _REVENUE_CODE, _REVENUE_KEYWORDS)
+    fco = _pick_account(dfc_rows or [], _CASHFLOW_OPS_CODE, _CASHFLOW_OPS_KEYWORDS_ALL)
     roe_leverage_keys = set(ativo) & set(passivo) & set(pl) & set(lucro)
     margin_keys = set(lucro) & set(receita)
-    keys = roe_leverage_keys | margin_keys
+    accrual_keys = set(lucro) & set(fco) & set(ativo)
+    keys = roe_leverage_keys | margin_keys | accrual_keys
     out = []
     for company, ref_date in sorted(keys):
         key = (company, ref_date)
@@ -377,7 +408,8 @@ def compute_fundamentals(bpa_rows: list[dict], bpp_rows: list[dict],
               "ativo_total": None, "passivo_total": None,
               "patrimonio_liquido": None, "lucro_liquido": None,
               "roe": None, "leverage": None,
-              "receita_liquida": None, "net_margin": None}
+              "receita_liquida": None, "net_margin": None,
+              "fluxo_caixa_operacional": None, "accruals": None}
         if key in roe_leverage_keys:
             a, p, e, l = ativo[key], passivo[key], pl[key], lucro[key]
             row.update({
@@ -391,6 +423,12 @@ def compute_fundamentals(bpa_rows: list[dict], bpp_rows: list[dict],
             row["lucro_liquido"] = l    # mesmo valor em ambos os grupos
             row["receita_liquida"] = r
             row["net_margin"] = (l / r) if r > 0 else None
+        if key in accrual_keys:
+            l, c, a = lucro[key], fco[key], ativo[key]
+            row["lucro_liquido"] = l    # mesmo valor dos outros grupos
+            row["ativo_total"] = a      # idem
+            row["fluxo_caixa_operacional"] = c
+            row["accruals"] = ((l - c) / a) if a > 0 else None
         out.append(row)
     return out
 
@@ -413,7 +451,19 @@ def ingest_dfp_year(conn, year: int, companies: set[str] | None = None,
     bpa = parse_dfp_statement_rows(_open_zip_csv(zbytes, "bpa_con"), "BPA_con")
     bpp = parse_dfp_statement_rows(_open_zip_csv(zbytes, "bpp_con"), "BPP_con")
     dre = parse_dfp_statement_rows(_open_zip_csv(zbytes, "dre_con"), "DRE_con")
-    fundamentals = compute_fundamentals(bpa, bpp, dre)
+    # DFC-MI (H17, pré-registro 2026-09-04). Ausência do CSV é TOLERADA com
+    # aviso, não fail-loud: o método indireto é o usual mas a companhia pode
+    # publicar DFC-MD (método direto), e anos antigos do dataset podem não
+    # trazer o arquivo. Nesse caso `accruals` fica None para o ano inteiro e
+    # os tickers simplesmente ficam fora do sinal da H17 (dado indisponível >
+    # dado inventado) — o resto da ingestão (H7/H9/H12/H13) segue intacto.
+    try:
+        dfc = parse_dfp_statement_rows(_open_zip_csv(zbytes, "dfc_mi_con"), "DFC_MI_con")
+    except ValueError as exc:
+        logger.warning("DFP %d: DFC-MI indisponível (%s) — accruals ficam NULL neste ano",
+                       year, exc)
+        dfc = None
+    fundamentals = compute_fundamentals(bpa, bpp, dre, dfc)
     n = 0
     for f in fundamentals:
         if companies and f["company"] not in companies:
@@ -424,8 +474,9 @@ def ingest_dfp_year(conn, year: int, companies: set[str] | None = None,
         conn.execute(
             "INSERT INTO fundamentals"
             "(ticker, ref_date, ativo_total, passivo_total, patrimonio_liquido,"
-            " lucro_liquido, roe, leverage, receita_liquida, net_margin, source)"
-            " VALUES (?,?,?,?,?,?,?,?,?,?,?)"
+            " lucro_liquido, roe, leverage, receita_liquida, net_margin,"
+            " fluxo_caixa_operacional, accruals, source)"
+            " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)"
             " ON CONFLICT(ticker, ref_date, source) DO UPDATE SET"
             # backfill APENAS quando a linha existente ainda não tem
             # receita/margem (rodadas de ingest anteriores à migração
@@ -434,13 +485,28 @@ def ingest_dfp_year(conn, year: int, companies: set[str] | None = None,
             # "mudança" num re-run comum (mesmo dado, WHERE não bate),
             # preservando a idempotência já testada (re-executar o mesmo
             # ano não duplica NEM recontabiliza).
-            " receita_liquida = excluded.receita_liquida,"
-            " net_margin = excluded.net_margin"
-            " WHERE fundamentals.receita_liquida IS NULL"
-            " AND excluded.receita_liquida IS NOT NULL",
+            # Backfill de colunas acrescentadas DEPOIS de rodadas de ingest
+            # anteriores (receita/margem na 0010; fluxo de caixa/accruals na
+            # 0011, H17 2026-09-04). COALESCE garante a regra que já valia:
+            # só preenche o que está NULL, NUNCA sobrescreve valor existente.
+            # O WHERE em OR dispara quando QUALQUER um dos dois grupos tem
+            # buraco a preencher — com ambos já preenchidos o WHERE é falso e
+            # o re-run não conta como mudança, preservando a idempotência já
+            # testada (re-executar o mesmo ano não duplica NEM recontabiliza).
+            " receita_liquida = COALESCE(fundamentals.receita_liquida,"
+            " excluded.receita_liquida),"
+            " net_margin = COALESCE(fundamentals.net_margin, excluded.net_margin),"
+            " fluxo_caixa_operacional = COALESCE(fundamentals.fluxo_caixa_operacional,"
+            " excluded.fluxo_caixa_operacional),"
+            " accruals = COALESCE(fundamentals.accruals, excluded.accruals)"
+            " WHERE (fundamentals.receita_liquida IS NULL"
+            " AND excluded.receita_liquida IS NOT NULL)"
+            " OR (fundamentals.fluxo_caixa_operacional IS NULL"
+            " AND excluded.fluxo_caixa_operacional IS NOT NULL)",
             (ticker, f["ref_date"], f["ativo_total"], f["passivo_total"],
              f["patrimonio_liquido"], f["lucro_liquido"], f["roe"], f["leverage"],
-             f["receita_liquida"], f["net_margin"], f"CVM DFP {year}"))
+             f["receita_liquida"], f["net_margin"],
+             f["fluxo_caixa_operacional"], f["accruals"], f"CVM DFP {year}"))
         n += conn.execute("SELECT changes()").fetchone()[0]
     conn.commit()
     return n
@@ -685,3 +751,59 @@ def load_free_float(year: int, companies: set[str] | None = None) -> dict:
         if key not in best or ref >= best[key][0]:
             best[key] = (ref, r["free_float"])
     return {k: v for k, (_, v) in best.items()}
+
+
+def ingest_fre_shares_year(conn, year: int, ticker_of: dict | None = None,
+                           zbytes: bytes | None = None) -> int:
+    """FRE de `year` -> `fundamentals.shares_outstanding`. Insumo de H18
+    (E/P) e H19 (B/P), pré-registradas 2026-09-04.
+
+    O parser (`parse_fre_float_rows`) já existia desde a família `liquidity`
+    — o que faltava era PERSISTIR `shares_outstanding`: sem quantidade de
+    ações não há capitalização de mercado, logo não há múltiplo. Esta função
+    só grava o que já era lido e jogado fora.
+
+    DECISÃO DE MODELAGEM (deliberada, não conveniência): a linha é gravada
+    com `source = "CVM FRE {year}"` e a `ref_date` DO PRÓPRIO FRE, NUNCA
+    casada à força com a `ref_date` da DFP. FRE e DFP são formulários
+    distintos, com datas de referência e de entrega distintas; alinhar os
+    dois por ano-calendário produziria uma capitalização de mercado com data
+    errada — lookahead sutil e silencioso, exatamente o que o domínio
+    proíbe. O sinal de valor (`factor._market_cap_signals`) resolve cada
+    fonte com seu PRÓPRIO embargo e junta só no momento do sinal.
+
+    Idempotente por `ON CONFLICT(ticker, ref_date, source)`: re-executar o
+    mesmo ano não duplica; `COALESCE` preserva valor já gravado."""
+    if zbytes is None:
+        zbytes = download_zip(FRE_URL.format(year=year))
+    rows = parse_fre_float_rows(_open_fre_distribuicao_capital_main(zbytes))
+    # Uma companhia aparece várias vezes no FRE (uma linha por classe de
+    # acionista). `shares_outstanding` é o MESMO total repetido — dedupa por
+    # (company, ref_date) ficando com o maior valor não-nulo. Divergência
+    # entre linhas da mesma chave seria layout quebrado, não dado: o max é
+    # determinístico e registrado aqui, não "a última lida".
+    best: dict[tuple[str, str], float] = {}
+    for r in rows:
+        shares = r["shares_outstanding"]
+        if shares is None or shares <= 0:
+            continue
+        key = (_norm(r["company"]), r["ref_date"][:10])
+        if not key[1]:
+            continue    # sem data de referência não há point-in-time possível
+        best[key] = max(best.get(key, 0.0), shares)
+    n = 0
+    for (company, ref_date), shares in sorted(best.items()):
+        ticker = (ticker_of or {}).get(company)
+        if ticker is None:
+            continue    # companhia sem ticker mapeado: revisão humana antes
+        conn.execute(
+            "INSERT INTO fundamentals(ticker, ref_date, shares_outstanding, source)"
+            " VALUES (?,?,?,?)"
+            " ON CONFLICT(ticker, ref_date, source) DO UPDATE SET"
+            " shares_outstanding = COALESCE(fundamentals.shares_outstanding,"
+            " excluded.shares_outstanding)"
+            " WHERE fundamentals.shares_outstanding IS NULL",
+            (ticker, ref_date, shares, f"CVM FRE {year}"))
+        n += conn.execute("SELECT changes()").fetchone()[0]
+    conn.commit()
+    return n

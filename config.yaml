@@ -316,6 +316,68 @@ h16_factor:
 h16_criteria:
   dsr_min: 0.95                    # [H16-FROZEN] DSR mínimo (N=15 tentativas no registro)
 
+# ── H17 (pré-registrada 2026-09-04; ver HANDOFF) ────────────────────────────
+# NÃO alterar valores [H17-FROZEN] após qualquer rodada de resultado da H17.
+# Accruals (Sloan 1996): (lucro_liquido − fluxo_caixa_operacional)/ativo_total,
+# quintil INFERIOR (lucro LASTREADO EM CAIXA). PRIMEIRA hipótese do domínio
+# com FONTE DE DADO NOVA desde o M2: a DFC-MI consolidada, que já vinha dentro
+# do zip DFP baixado desde a H7 mas nunca foi aberta. BPA/BPP/DRE são todas
+# de COMPETÊNCIA; a DFC é de CAIXA — não é recombinação de H7/H9/H12/H13.
+
+h17_factor:
+  name: accruals                   # [H17-FROZEN] (lucro - fco)/ativo_total
+  disclosure_embargo_days: 90      # [H17-FROZEN] mesmo embargo de H7/H9/H12/H13
+
+h17_portfolio:
+  quantile: bottom_quintile        # [H17-FROZEN] accrual BAIXO = lucro em caixa
+  weighting: equal                 # [H17-FROZEN]
+  direction: long_only             # [H17-FROZEN]
+
+h17_criteria:
+  dsr_min: 0.95                    # [H17-FROZEN] DSR mínimo (N=17 tentativas no registro)
+
+# ── H18 (pré-registrada 2026-09-04; ver HANDOFF) ────────────────────────────
+# NÃO alterar valores [H18-FROZEN] após qualquer rodada de resultado da H18.
+# Earnings yield E/P = lucro_liquido/(preço_cru × ações), quintil SUPERIOR
+# (mais barato). PRIMEIRO fator de VALOR do domínio — 16 hipóteses julgadas e
+# nenhuma testou o PREÇO PAGO pelo fundamento; H7/H9/H12/H13 medem a
+# qualidade do negócio, não quanto se paga por ela. Habilitado por
+# `fundamentals.shares_outstanding` (migração 0011), sem o qual não há
+# capitalização de mercado.
+
+h18_factor:
+  name: earnings_yield             # [H18-FROZEN] lucro/(preço × ações)
+  disclosure_embargo_days: 90      # [H18-FROZEN] mesmo embargo de H7/H9/H12/H13
+
+h18_portfolio:
+  quantile: top_quintile           # [H18-FROZEN] E/P alto = barato
+  weighting: equal                 # [H18-FROZEN]
+  direction: long_only             # [H18-FROZEN]
+
+h18_criteria:
+  dsr_min: 0.95                    # [H18-FROZEN] DSR mínimo (N=18 tentativas no registro)
+
+# ── H19 (pré-registrada 2026-09-04; ver HANDOFF) ────────────────────────────
+# NÃO alterar valores [H19-FROZEN] após qualquer rodada de resultado da H19.
+# Book-to-market B/M = patrimonio_liquido/(preço_cru × ações), quintil
+# SUPERIOR. Hipótese SEPARADA da H18 de propósito: E/P ancora no FLUXO de um
+# exercício, B/M no ESTOQUE acumulado (é por isso que o HML de Fama & French
+# usa B/M e não E/P). Rodar as duas e reportar a melhor seria p-hacking —
+# cada uma é julgada uma vez, com seu próprio N no DSR.
+
+h19_factor:
+  name: book_to_market             # [H19-FROZEN] PL/(preço × ações)
+  disclosure_embargo_days: 90      # [H19-FROZEN] mesmo embargo de H7/H9/H12/H13
+
+h19_portfolio:
+  quantile: top_quintile           # [H19-FROZEN] B/M alto = barato
+  weighting: equal                 # [H19-FROZEN]
+  direction: long_only             # [H19-FROZEN]
+
+h19_criteria:
+  dsr_min: 0.95                    # [H19-FROZEN] DSR mínimo (N=19 tentativas no registro)
+
+
 data:
   db_path: "data/stocks.db"
   cotahist_dir: "data/cotahist"

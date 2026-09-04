@@ -2534,3 +2534,170 @@ Suite completa (sandbox): 324 passed, 1 skipped, 6 failed — mesmos 6
 pré-existentes do shim de vendor, não relacionados. `trials.json` real
 confirmado intocado (`md5sum` antes/depois idêntico) após a correção do
 achado 2.
+
+---
+
+## H17, H18 e H19 ABERTAS — PRÉ-REGISTRO (2026-09-04, ANTES de qualquer rodada real)
+
+Decisão explícita do operador ("abre as duas, A e B") após a varredura que
+confirmou o esgotamento das duas linhas anteriores (16/16 NOT_SUPPORTED).
+Como sempre: cada hipótese é testada UMA vez, julgada UMA vez.
+
+**Por que estas três NÃO são recombinação do que já foi observado.** As 16
+anteriores esgotaram (a) a DFP consolidada em regime de COMPETÊNCIA
+(BPA/BPP/DRE — ROE, alavancagem, margem, crescimento e interseções) e (b) o
+COTAHIST (momentum, reversão, vol, proximidade de máxima, volume,
+calendário). As três abaixo entram por FONTE DE DADO NOVA, não por novo
+arranjo dos mesmos números — que seria o p-hacking recusado explicitamente
+na sessão anterior e que o pedágio IC95%+DSR existe para barrar.
+
+### H17 — accruals / qualidade do lucro (Sloan 1996)
+
+`config.yaml` `h17_*`, `config.h17_frozen_config_hash` = `aece696b814c0fd9`.
+
+Quintil **INFERIOR** de `(lucro_liquido − fluxo_caixa_operacional)/ativo_total`
+(`factor.accruals_signals`). Direção fixada ANTES da rodada: accrual baixo =
+lucro lastreado em caixa. A literatura prevê que accrual ALTO antecede
+retorno futuro BAIXO; testar as duas pontas e ficar com a que der seria
+exatamente o que o pedágio impede.
+
+**Dado novo:** `dfp_cia_aberta_DFC_MI_con_YYYY.csv` — a Demonstração de Fluxo
+de Caixa (método indireto, consolidada). Ela já vinha DENTRO do zip DFP que o
+`ingest_cvm.py` baixa desde a H7, mas o parser nunca abriu esse arquivo. É a
+primeira demonstração nova ingerida desde o M2. BPA, BPP e DRE são todas de
+COMPETÊNCIA — o mesmo regime contábil, com os mesmos graus de liberdade de
+reconhecimento; a DFC é de CAIXA, e nenhuma combinação das outras três a
+reconstrói. `RESEARCH_FREEZE.md` §11 nomeia "fluxo de caixa" como fonte
+materialmente nova admissível.
+
+### H18 — valor por earnings yield (Basu 1977; Fama & French 1992)
+
+`config.yaml` `h18_*`, `config.h18_frozen_config_hash` = `dded266f1bb712f1`.
+
+Quintil **SUPERIOR** de `E/P = lucro_liquido/(preço_cru × ações)`
+(`factor.earnings_yield_signals`) — E/P alto = mais barato.
+
+**PRIMEIRO fator de VALOR do domínio.** Dezesseis hipóteses julgadas e
+nenhuma mediu o PREÇO PAGO pelo fundamento: H7/H9/H12/H13 medem a qualidade
+do negócio, momentum/H14/H15 medem o comportamento do preço, mas ninguém
+mediu a RAZÃO entre os dois. É a lacuna mais visível do domínio contra a
+literatura.
+
+**Dado novo:** `fundamentals.shares_outstanding` (migração 0011). O parser do
+FRE (`parse_fre_float_rows`) já lia a quantidade de ações desde a família
+`liquidity`, mas o valor era transitório e era jogado fora. Sem ele não há
+capitalização de mercado, logo não há múltiplo nenhum — é a peça que faltava.
+
+Usa-se E/P e não P/L de propósito: P/L explode quando o lucro tende a zero e
+é indefinido com prejuízo, o que faria o RANKING depender de um polo
+instável. E/P é monotônico e finito no domínio admitido (lucro > 0).
+
+### H19 — valor por book-to-market (Fama & French 1992)
+
+`config.yaml` `h19_*`, `config.h19_frozen_config_hash` = `dabaa53adc9b9349`.
+
+Quintil **SUPERIOR** de `B/M = patrimonio_liquido/(preço_cru × ações)`
+(`factor.book_to_market_signals`).
+
+**Por que é hipótese SEPARADA da H18, e não a mesma coisa medida duas
+vezes** (decisão explícita, registrada para não ser lida como inflação de
+tentativas): E/P ancora no FLUXO de um único exercício — lucro é volátil e
+sensível a itens não recorrentes; B/M ancora no ESTOQUE acumulado —
+patrimônio líquido é estável. É precisamente por isso que Fama & French
+construíram o HML sobre B/M e não sobre E/P. Rodar as duas e reportar a que
+passar seria p-hacking; por isso cada uma tem seu próprio lacre, seu próprio
+registro e seu próprio N no DSR (H19 entra com N=19, não 18).
+
+**Nota ao operador:** o pedido original tratava "valor" como uma coisa só.
+Ele se divide necessariamente em duas tentativas sob a disciplina do
+projeto — o N do DSR sobe para 19 e o limiar fica mais duro. Rodar só a H18
+e deixar a H19 pré-registrada mas não executada é uma opção legítima; o que
+NÃO é legítimo é rodar as duas e reportar uma.
+
+### Critério (as três)
+
+IC95% diff-Sharpe > 0 **E** DSR >= 0,95 — H17 N=17, H18 N=18, H19 N=19.
+
+### Implementação
+
+- `db.py` migração **0011_fundamentals_cashflow_shares** (append-only):
+  `fluxo_caixa_operacional`, `accruals`, `shares_outstanding` em
+  `fundamentals`. Migrações 0007/0010 intocadas.
+- `ingest_cvm.py`: constantes `_CASHFLOW_OPS_CODE` (6.01) /
+  `_CASHFLOW_OPS_KEYWORDS_ALL`, cruzando código E descrição como todas as
+  outras contas. `compute_fundamentals` ganha o parâmetro OPCIONAL
+  `dfc_rows` (default `None` — chamador antigo recebe exatamente as linhas
+  de antes, com os campos novos em `None`; H7-H16 não mudam de
+  comportamento). Grupo de elegibilidade próprio para accruals, como já
+  valia para receita/margem.
+- `ingest_cvm.ingest_dfp_year`: abre a DFC-MI. **Ausência do arquivo é
+  tolerada com aviso, não fail-loud** — a companhia pode publicar pelo
+  método DIRETO (DFC-MD) e anos antigos podem não trazê-lo; nesse caso
+  `accruals` fica NULL e os papéis ficam fora do sinal, com o resto da
+  ingestão intacto.
+- `ingest_cvm.ingest_fre_shares_year` (novo): persiste `shares_outstanding`
+  com `source = "CVM FRE {year}"` e a `ref_date` DO PRÓPRIO FRE. **Decisão
+  deliberada: as datas de DFP e FRE NÃO são casadas à força.** São
+  formulários distintos, com datas de referência e de entrega distintas;
+  alinhá-los por ano-calendário produziria uma capitalização de mercado com
+  data errada — lookahead sutil e silencioso. Cada fonte é resolvida pelo
+  seu próprio embargo, e a junção acontece só no momento do sinal.
+- `factor.accruals_signals` (H17): motor comum `_fundamental_signals`,
+  mesmo embargo de H7/H9/H12/H13.
+- `factor._price_at` + `_value_signals` + `earnings_yield_signals` /
+  `book_to_market_signals` (H18/H19). **O preço do múltiplo é CRU**
+  (corrigido só pelo fator de cotação da B3), não a série ajustada:
+  multiplicar a série retro-ajustada pela contagem de ações vigente daria
+  uma capitalização de mercado que nunca existiu, e o erro cresce quanto
+  mais para trás se olha. Para RETORNO a série ajustada continua sendo a
+  correta em todas as hipóteses; para NÍVEL DE PREÇO num múltiplo, é a crua.
+  Fundamento <= 0 (prejuízo, PL negativo) fica FORA — o múltiplo inverte de
+  sinal e a empresa apareceria como "baratíssima" no ranking; mesma
+  disciplina do ROE sobre PL negativo.
+- `backtest.run_h17`/`run_h18`/`run_h19`: mesmo runner genérico
+  `_run_hypothesis` (`walk_forward`). `take="bottom"` na H17, `"top"` nas
+  outras duas. Nenhuma mudança na maquinaria compartilhada.
+- `config.yaml`/`config.py`: `h17_*`/`h18_*`/`h19_*` com
+  `[H17-FROZEN]`/`[H18-FROZEN]`/`[H19-FROZEN]`.
+- `report._BIAS_NOTE["H17"]/["H18"]/["H19"]`. Ponto importante em H18/H19:
+  a direção do viés É conhecida e **PENALIZA** a estratégia — ações de valor
+  têm sistematicamente maior dividend yield e a rota (b) descarta justamente
+  esse componente. O teste é CONSERVADOR: um NOT_SUPPORTED ali não separa
+  "o fator não funciona" de "o retorno do fator está no provento que esta
+  rota não mede". Declarado agora, não descoberto depois.
+- `main.py`: nenhuma mudança necessária — o dispatcher `backtest-h <N>`
+  (revisão de infraestrutura 2026-09-04) já é genérico.
+- Testes novos: `tests/test_h17_accruals.py` (8 casos),
+  `tests/test_h18_h19_value.py` (15 casos) — smoke, golden hash, hash ignora
+  parâmetro operacional, direção pré-registrada, embargo bloqueando `asof`
+  cedo, fator de cotação, point-in-time do preço, exclusão por fundamento
+  não-positivo e por ações ausentes, idempotência da ingestão do FRE.
+
+Suíte completa: **354 passed** (331 antes desta rodada, +23 novos), zero
+falhas, nenhuma regressão em H1-H16.
+
+### Dependências
+
+Nenhuma nova. Continua stdlib + `pyyaml`.
+
+### Próximo passo (máquina do operador)
+
+Ao contrário de H14-H16, **estas exigem ingestão nova** — o dado não está no
+banco atual.
+
+```
+python -m pytest tests/ -v                      # confirmar verde total
+python main.py backtest-h 17
+python main.py backtest-h 18
+python main.py backtest-h 19                    # opcional; ver "Nota ao operador"
+```
+
+Antes das rodadas é preciso re-executar a ingestão da DFP (para popular
+`fluxo_caixa_operacional`/`accruals` via DFC-MI) e a nova
+`ingest_fre_shares_year` (para popular `shares_outstanding`) nos anos da
+janela. A migração 0011 roda sozinha na primeira conexão; as colunas ficam
+NULL até a ingestão rodar, e um `run_hN` com as colunas vazias produz
+universo vazio — **checar a contagem de papéis por rebalance antes de
+interpretar qualquer veredito**, especialmente na H17, cujo universo efetivo
+pode ser menor que o de H7/H9/H12/H13 por causa da cobertura parcial da
+DFC-MI.

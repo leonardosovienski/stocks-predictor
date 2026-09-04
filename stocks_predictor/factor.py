@@ -11,6 +11,7 @@ point-in-time; a carteira da H2 toma o quintil INFERIOR (baixa volatilidade).
 import datetime
 import statistics
 
+import db as db_mod
 import universe as universe_mod
 
 
@@ -86,7 +87,8 @@ def _fundamental_signals(conn, tickers, asof, disclosure_embargo_days, column):
     `ref_date + embargo <= asof` (comparação lexicográfica de datas ISO, dias
     corridos). Ticker sem nenhuma linha elegível fica FORA (dado indisponível
     > dado inventado, mesma disciplina de `vol_signals`/`ownership`)."""
-    if column not in ("roe", "leverage", "net_margin"):
+    if column not in ("roe", "leverage", "net_margin", "accruals",
+                      "lucro_liquido", "patrimonio_liquido", "shares_outstanding"):
         raise ValueError(f"coluna de fundamentals não suportada: {column!r}")
     out = {}
     for t in tickers:
@@ -219,3 +221,122 @@ def volume_surge_signals(conn, tickers, asof, short_lookback=21, long_lookback=2
         short_avg = sum(vols[:short_lookback]) / short_lookback
         out[t] = short_avg / long_avg - 1.0
     return out
+
+
+def accruals_signals(conn, tickers, asof, disclosure_embargo_days=90):
+    """H17 (pré-registro 2026-09-04) — {ticker: accruals} point-in-time.
+
+    `accruals = (lucro_liquido − fluxo_caixa_operacional) / ativo_total`
+    (Sloan 1996), gravado na ingestão (`ingest_cvm.compute_fundamentals`).
+    Mede a fração do lucro que NÃO virou caixa: accrual alto = lucro
+    sustentado por reconhecimento contábil, não por caixa.
+
+    Direção pré-registrada: quintil INFERIOR (`take="bottom"`), ou seja
+    lucro LASTREADO EM CAIXA. Isso é o que a literatura prevê (accruals
+    altos anteciparam retorno FUTURO BAIXO) e está fixado ANTES da rodada —
+    testar as duas pontas e ficar com a que der é exatamente o p-hacking
+    que o pedágio IC95%+DSR existe para barrar.
+
+    Mesma fonte (DFP/CVM) e mesmo embargo de H7/H9/H12/H13, mesmo motor
+    `_fundamental_signals` — o que é NOVO é a demonstração de origem
+    (DFC-MI, regime de caixa), não a maquinaria."""
+    return _fundamental_signals(conn, tickers, asof, disclosure_embargo_days, "accruals")
+
+
+def _price_at(conn, ticker, asof):
+    """Preço POR AÇÃO do último pregão <= `asof` (fechamento CRU, corrigido
+    só pelo fator de cotação da B3), ou None.
+
+    Por que CRU e não a série ajustada: o múltiplo de valor é
+    `preço × ações ÷ fundamento`, e as três pernas têm que estar na MESMA
+    escala da época. A série ajustada é retro-ajustada por proventos/
+    desdobramentos — multiplicá-la pela quantidade de ações VIGENTE naquela
+    data daria uma capitalização de mercado que nunca existiu, e o erro
+    cresce quanto mais para trás se olha. Para RETORNO a série ajustada é a
+    correta (e continua sendo, em todas as hipóteses); para NÍVEL DE PREÇO
+    num múltiplo, é o preço cru. Ver `db.price_expr` para o fator de
+    cotação (FATCOT)."""
+    row = conn.execute(
+        f"SELECT MAX({db_mod.price_expr('close')}) FROM prices_raw"
+        " WHERE ticker=? AND market_type=? AND date<=?"
+        " GROUP BY date ORDER BY date DESC LIMIT 1",
+        (ticker, universe_mod.SPOT_MARKET, asof)).fetchone()
+    if row is None or row[0] is None or row[0] <= 0:
+        return None
+    return row[0]
+
+
+def _value_signals(conn, tickers, asof, disclosure_embargo_days, column):
+    """Motor comum dos fatores de VALOR (H18 E/P, H19 B/M):
+    {ticker: fundamento / capitalização de mercado} point-in-time.
+
+    `market_cap = preço_cru(asof) × shares_outstanding`, com CADA insumo
+    resolvido pelo seu PRÓPRIO caminho point-in-time:
+
+    - `column` (`lucro_liquido` ou `patrimonio_liquido`) vem da linha DFP
+      mais recente cujo embargo de divulgação já venceu em `asof`;
+    - `shares_outstanding` vem da linha FRE mais recente cujo embargo já
+      venceu em `asof` (formulário DIFERENTE, com data de referência
+      própria — ver `ingest_cvm.ingest_fre_shares_year`, que deliberadamente
+      NÃO casa as duas datas à força);
+    - o preço é o do último pregão <= `asof`.
+
+    Nada aqui olha para frente: as duas pernas contábeis passam pelo mesmo
+    embargo de H7/H9/H12/H13 e o preço é o do próprio dia de rebalance, já
+    conhecido no fechamento.
+
+    Ticker fica FORA se faltar qualquer perna, se as ações forem <= 0, ou se
+    o fundamento for <= 0. Fundamento negativo (prejuízo, ou patrimônio
+    líquido negativo) é dado REAL de empresa em dificuldade, mas o múltiplo
+    inverte de sinal e deixa de ser comparável — uma empresa com prejuízo
+    enorme apareceria como "baríssima" no ranking. Mesma disciplina do
+    `roe` sobre PL negativo em `compute_fundamentals`: None e registrado,
+    melhor que um número que engana."""
+    fundamento = _fundamental_signals(conn, tickers, asof,
+                                      disclosure_embargo_days, column)
+    shares = _fundamental_signals(conn, tickers, asof,
+                                  disclosure_embargo_days, "shares_outstanding")
+    out = {}
+    for t in tickers:
+        f, s = fundamento.get(t), shares.get(t)
+        if f is None or s is None or s <= 0 or f <= 0:
+            continue
+        price = _price_at(conn, t, asof)
+        if price is None:
+            continue
+        out[t] = f / (price * s)
+    return out
+
+
+def earnings_yield_signals(conn, tickers, asof, disclosure_embargo_days=90):
+    """H18 (pré-registro 2026-09-04) — {ticker: E/P} point-in-time.
+    `E/P = lucro_liquido / (preço × ações)` — o inverso do P/L.
+
+    Usa-se E/P e não P/L de propósito: P/L explode quando o lucro tende a
+    zero e é indefinido com prejuízo, o que faria o RANKING depender de um
+    polo instável. E/P é monotônico e finito no domínio admitido
+    (lucro > 0), então o quintil superior é bem definido.
+
+    Direção pré-registrada: quintil SUPERIOR (`take="top"`) = maior lucro
+    por real de preço = mais BARATO. É a direção clássica do fator valor
+    (Basu 1977; Fama & French 1992), fixada antes da rodada."""
+    return _value_signals(conn, tickers, asof, disclosure_embargo_days,
+                          "lucro_liquido")
+
+
+def book_to_market_signals(conn, tickers, asof, disclosure_embargo_days=90):
+    """H19 (pré-registro 2026-09-04) — {ticker: B/M} point-in-time.
+    `B/M = patrimonio_liquido / (preço × ações)` — o inverso do P/VPA.
+
+    Fator de valor DISTINTO de E/P (H18), não uma variação da mesma coisa:
+    E/P ancora no FLUXO de um exercício (lucro, volátil, afetado por itens
+    não recorrentes); B/M ancora no ESTOQUE acumulado (patrimônio líquido,
+    estável). É por isso que Fama & French escolheram B/M, e não E/P, para
+    o HML — e por isso as duas são hipóteses SEPARADAS aqui, cada uma
+    julgada uma vez, com N do DSR próprio. Testar as duas e reportar a
+    melhor seria p-hacking.
+
+    Direção pré-registrada: quintil SUPERIOR (`take="top"`) = maior
+    patrimônio por real de preço = mais barato."""
+    return _value_signals(conn, tickers, asof, disclosure_embargo_days,
+                          "patrimonio_liquido")

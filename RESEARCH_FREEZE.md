@@ -11,6 +11,39 @@ Ele é `POINT_IN_TIME_CASE + SURVIVORSHIP_CASE + MULTIPLICITY_CASE + NEGATIVE_RE
 
 ---
 
+## ADENDO 2026-09-04 — H17/H18/H19 pré-registradas por FONTE DE DADO NOVA
+
+Decisão do operador nesta data. **Nenhuma das 16 hipóteses julgadas é
+reaberta por este adendo** e a `reopen_policy` do §11 continua valendo
+integralmente para todas elas — os 6 campos + revisão humana seguem
+obrigatórios para qualquer proposta de revisitar H1-H16.
+
+O que este adendo registra são TRÊS hipóteses NOVAS, admitidas exatamente
+pelo critério que o §11 já previa ("fonte de dado genuinamente nova"), não
+por recombinação dos fatores já observados como fracos:
+
+| # | fator | direção (a priori) | fonte nova | lacre |
+|---|---|---|---|---|
+| H17 | accruals `(lucro − FCO)/ativo` | quintil INFERIOR | DFC-MI consolidada (regime de CAIXA; BPA/BPP/DRE são de competência) | `aece696b814c0fd9` |
+| H18 | earnings yield `E/P` | quintil SUPERIOR | `fundamentals.shares_outstanding` (FRE, migração 0011) → capitalização de mercado | `dded266f1bb712f1` |
+| H19 | book-to-market `B/M` | quintil SUPERIOR | idem H18 | `dabaa53adc9b9349` |
+
+H18/H19 preenchem a lacuna mais visível do domínio contra a literatura: as 16
+anteriores mediram a QUALIDADE do negócio (H7/H9/H12/H13) ou o COMPORTAMENTO
+do preço (momentum/H14/H15), nunca a RAZÃO entre os dois. São hipóteses
+separadas entre si de propósito — E/P ancora no fluxo de um exercício, B/M no
+estoque acumulado — cada uma com N próprio no DSR (17, 18, 19), justamente
+para que "rodar as duas e reportar a que passar" seja impossível.
+
+**Estado nesta data: pré-registro e código apenas. ZERO rodadas reais, ZERO
+vereditos, ZERO claims.** As três exigem ingestão nova (DFC-MI e ações em
+circulação) na máquina do operador. Direções e lacres acima estão fixados
+ANTES de qualquer resultado; alterá-los depois de uma rodada é a violação que
+este documento existe para impedir. Ver HANDOFF.md, "H17, H18 e H19 ABERTAS
+— PRÉ-REGISTRO".
+
+---
+
 ## 1. Preservation Result
 
 `ST_PRESERVATION = PASS`
