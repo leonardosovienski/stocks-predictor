@@ -123,6 +123,24 @@ _BIAS_NOTE = {
            "escondidas): valor por ação médio ON+PN (não por classe "
            "específica) e data de PAGAMENTO como proxy de data-ex (a CVM "
            "não expõe a data-ex real neste dataset).",
+    "H12": "- Retorno **só-preço** (rota (b)): dividendos/JCP omitidos; SEM direção "
+           "declarada a priori — a relação entre margem líquida e política de "
+           "dividendos de empresas B3 não foi estabelecida nesta rodada. Viés "
+           "não quantificado, registrado como limitação honesta (declarado no "
+           "pré-registro da H12, 2026-09-04) — não inferir sinal. Mesmo embargo "
+           "de divulgação de 90 dias sobre `ref_date` de H7/H9/H10 "
+           "(`h12_factor.disclosure_embargo_days`, mesma fonte DFP/CVM).",
+    "H13": "- Retorno **só-preço** (rota (b)): dividendos/JCP omitidos; SEM direção "
+           "declarada a priori — a relação entre crescimento de receita e "
+           "política de dividendos de empresas B3 não foi estabelecida nesta "
+           "rodada. Viés não quantificado, registrado como limitação honesta "
+           "(declarado no pré-registro da H13, 2026-09-04) — não inferir sinal. "
+           "Mesmo embargo de divulgação de 90 dias de H7/H9/H10/H12 "
+           "(`h13_factor.disclosure_embargo_days`, mesma fonte DFP/CVM). "
+           "Adicionalmente: granularidade ANUAL da DFP (não ITR trimestral) — "
+           "as duas linhas mais recentes elegíveis usadas no cálculo de "
+           "crescimento nem sempre estão exatamente 12 meses de distância "
+           "se houver ano com dado faltante (ver `factor.revenue_growth_signals`).",
 }
 
 

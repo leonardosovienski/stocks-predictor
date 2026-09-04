@@ -486,6 +486,55 @@ def run_h11(cfg=None, conn=None, write_report=False, run_id=None, trials_path=No
         series_fn=adjust.total_return_series)
 
 
+def run_h12(cfg=None, conn=None, write_report=False, run_id=None, trials_path=None):
+    """H12 — fator de qualidade, margem líquida isolada (pré-registro
+    2026-09-04): quintil SUPERIOR de margem líquida (`fundamentals.net_margin`
+    = lucro_liquido/receita_liquida, DFP/CVM), mesma fonte/embargo de
+    H7/H9/H10 — sem ingestão nova (receita já vinha na DRE parseada desde a
+    H7, só não era extraída). Racional: margem é qualidade OPERACIONAL,
+    distinta de ROE (que mistura alavancagem financeira no numerador via
+    identidade contábil) — H7 (ROE) e H9 (alavancagem) isoladas reprovaram;
+    H12 testa a 3ª variável contábil independente disponível na DFP.
+    Critérios: (i) IC95% diff-Sharpe > 0; (ii) DSR >= dsr_min (N=11
+    tentativas no registro)."""
+    from config import H12_FROZEN_KEYS
+    cfg = cfg or load_config()
+    conn = conn or db.get_connection()
+    h12f = cfg.get("h12_factor", {})
+    embargo = h12f.get("disclosure_embargo_days", 90)
+    return _run_hypothesis(
+        "H12", "h12-quality-net-margin", H12_FROZEN_KEYS, "h12_criteria",
+        "rodada única da H12 (margem líquida isolada, quintil superior; "
+        "sharpe por-período realizado)",
+        cfg, conn, write_report, run_id, trials_path,
+        signal_fn=lambda sub, asof: factor.net_margin_signals(conn, sub.keys(), asof, embargo),
+        take="top")
+
+
+def run_h13(cfg=None, conn=None, write_report=False, run_id=None, trials_path=None):
+    """H13 — crescimento de receita YoY (pré-registro 2026-09-04): quintil
+    SUPERIOR de crescimento de receita líquida ano-contra-ano
+    (`factor.revenue_growth_signals`, DFP/CVM), mesma fonte/embargo de
+    H7/H9/H10/H12. Primeira hipótese de CRESCIMENTO testada neste domínio —
+    todas as 11 anteriores são nível/valor (momentum é o mais próximo, mas
+    mede preço, não fundamento). Racional: literatura de "growth investing"
+    associa aceleração de receita a retorno futuro, mecanismo distinto de
+    qualidade/valor. Critérios: (i) IC95% diff-Sharpe > 0; (ii) DSR >=
+    dsr_min (N=12 tentativas no registro)."""
+    from config import H13_FROZEN_KEYS
+    cfg = cfg or load_config()
+    conn = conn or db.get_connection()
+    h13f = cfg.get("h13_factor", {})
+    embargo = h13f.get("disclosure_embargo_days", 90)
+    return _run_hypothesis(
+        "H13", "h13-revenue-growth-yoy", H13_FROZEN_KEYS, "h13_criteria",
+        "rodada única da H13 (crescimento de receita YoY, quintil superior; "
+        "sharpe por-período realizado)",
+        cfg, conn, write_report, run_id, trials_path,
+        signal_fn=lambda sub, asof: factor.revenue_growth_signals(conn, sub.keys(), asof, embargo),
+        take="top")
+
+
 if __name__ == "__main__":
     if run() is None:
         sys.exit(1)

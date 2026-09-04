@@ -84,7 +84,7 @@ def _fundamental_signals(conn, tickers, asof, disclosure_embargo_days, column):
     `ref_date + embargo <= asof` (comparação lexicográfica de datas ISO, dias
     corridos). Ticker sem nenhuma linha elegível fica FORA (dado indisponível
     > dado inventado, mesma disciplina de `vol_signals`/`ownership`)."""
-    if column not in ("roe", "leverage"):
+    if column not in ("roe", "leverage", "net_margin"):
         raise ValueError(f"coluna de fundamentals não suportada: {column!r}")
     out = {}
     for t in tickers:
@@ -111,3 +111,49 @@ def leverage_signals(conn, tickers, asof, disclosure_embargo_days=90):
     (ver `ingest_cvm.compute_fundamentals` — exclui o PL do passivo, senão
     o índice daria sempre ~1.0 por identidade contábil)."""
     return _fundamental_signals(conn, tickers, asof, disclosure_embargo_days, "leverage")
+
+
+def net_margin_signals(conn, tickers, asof, disclosure_embargo_days=90):
+    """H12 (pré-registro 2026-09-04) — {ticker: net_margin} point-in-time.
+    `net_margin = lucro_liquido / receita_liquida` (ver
+    `ingest_cvm.compute_fundamentals`). Mesma fonte/embargo de H7/H9
+    (DFP/CVM), motor comum `_fundamental_signals`."""
+    return _fundamental_signals(conn, tickers, asof, disclosure_embargo_days, "net_margin")
+
+
+def revenue_growth_signals(conn, tickers, asof, disclosure_embargo_days=90):
+    """H13 (pré-registro 2026-09-04) — {ticker: crescimento YoY de receita
+    líquida} point-in-time. Primeira hipótese de CRESCIMENTO testada neste
+    domínio (H1-H12 são todas nível/valor).
+
+    Diferente de `_fundamental_signals` (que lê 1 linha): precisa das DUAS
+    linhas mais RECENTES e ELEGÍVEIS (embargo já vencido em `asof`) de
+    `receita_liquida` do ticker — a mais nova é o numerador, a anterior o
+    denominador. `growth = (mais_recente - anterior) / anterior`. Como a
+    DFP é anual (`ingest_dfp_year`, não ITR trimestral), as duas linhas mais
+    recentes elegíveis são tipicamente ~12 meses de distância — mas isso não
+    é verificado aqui (dependeria do calendário real de cada empresa); um
+    gap maior por dado faltante num ano específico entra do mesmo jeito,
+    limitação herdada da granularidade anual da fonte, não escondida.
+    Ticker com menos de 2 linhas elegíveis, ou com receita anterior <= 0,
+    fica FORA (sem crescimento fabricado sobre denominador inválido)."""
+    out = {}
+    for t in tickers:
+        rows = conn.execute(
+            "SELECT ref_date, receita_liquida FROM fundamentals WHERE ticker = ?"
+            " AND receita_liquida IS NOT NULL ORDER BY ref_date DESC", (t,)).fetchall()
+        eligible = []
+        for ref_date, receita in rows:
+            known_at = (datetime.date.fromisoformat(ref_date)
+                       + datetime.timedelta(days=disclosure_embargo_days)).isoformat()
+            if known_at <= asof:
+                eligible.append((ref_date, receita))
+            if len(eligible) == 2:
+                break
+        if len(eligible) < 2:
+            continue
+        (_, latest), (_, previous) = eligible
+        if previous is None or previous <= 0:
+            continue
+        out[t] = (latest - previous) / previous
+    return out

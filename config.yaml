@@ -219,6 +219,48 @@ h11_backtest:
 h11_criteria:
   dsr_min: 0.95                    # [H11-FROZEN] DSR mínimo (N=10 tentativas no registro)
 
+# ── H12 (pré-registrada 2026-09-04; ver HANDOFF) ────────────────────────────
+# NÃO alterar valores [H12-FROZEN] após qualquer rodada de resultado da H12.
+# Fator de qualidade: margem líquida isolada (lucro_liquido/receita_liquida),
+# quintil SUPERIOR, equiponderado. Mesma fonte DFP/CVM de H7/H9/H10 (receita
+# já vinha na DRE parseada desde a H7, só nunca tinha sido extraída — sem
+# ingestão nova). Racional: margem é qualidade OPERACIONAL, distinta de ROE
+# (que mistura alavancagem financeira via identidade contábil) — H7 (ROE) e
+# H9 (alavancagem) isoladas reprovaram; H12 é a 3ª variável contábil
+# independente da DFP.
+
+h12_factor:
+  name: net_margin                 # [H12-FROZEN] lucro_liquido / receita_liquida
+  disclosure_embargo_days: 90      # [H12-FROZEN] mesmo embargo de H7/H9/H10
+
+h12_portfolio:
+  quantile: top_quintile           # [H12-FROZEN]
+  weighting: equal                 # [H12-FROZEN]
+  direction: long_only             # [H12-FROZEN]
+
+h12_criteria:
+  dsr_min: 0.95                    # [H12-FROZEN] DSR mínimo (N=11 tentativas no registro)
+
+# ── H13 (pré-registrada 2026-09-04; ver HANDOFF) ────────────────────────────
+# NÃO alterar valores [H13-FROZEN] após qualquer rodada de resultado da H13.
+# Crescimento de receita líquida YoY, quintil SUPERIOR. Mesma fonte DFP/CVM
+# de H7/H9/H10/H12, sem ingestão nova. PRIMEIRA hipótese de CRESCIMENTO
+# testada neste domínio — H1-H12 são todas nível/valor (momentum mede
+# preço, não fundamento). Racional: literatura de "growth investing"
+# associa aceleração de receita a retorno futuro, mecanismo distinto.
+
+h13_factor:
+  name: revenue_growth_yoy         # [H13-FROZEN] (receita_t - receita_t-1) / receita_t-1
+  disclosure_embargo_days: 90      # [H13-FROZEN] mesmo embargo de H7/H9/H10/H12
+
+h13_portfolio:
+  quantile: top_quintile           # [H13-FROZEN]
+  weighting: equal                 # [H13-FROZEN]
+  direction: long_only             # [H13-FROZEN]
+
+h13_criteria:
+  dsr_min: 0.95                    # [H13-FROZEN] DSR mínimo (N=12 tentativas no registro)
+
 data:
   db_path: "data/stocks.db"
   cotahist_dir: "data/cotahist"
