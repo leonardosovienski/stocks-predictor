@@ -1,5 +1,72 @@
 # HANDOFF — predictor-stocks
 
+> ## Retorno TOTAL implementado (2026-09-04) — infraestrutura opt-in, NÃO uma hipótese
+>
+> Decisão do operador ("A e B" + confirmação de prosseguir com a aproximação
+> declarada): construir a ROTA (a) do design §4 (preço + proventos
+> reinvestidos), corrigindo o viés só-preço declarado em TODAS as 9
+> hipóteses julgadas (H1-H10, exceto H3 que nunca existiu). **Isto é
+> infraestrutura, não uma hipótese nova** — mesma classificação do
+> `economic_gate.py` (2026-09-01): fica disponível para quem pré-registrar
+> a próxima hipótese, não altera nenhum veredito já emitido.
+>
+> **Fonte confirmada** (via `tools/explore_dividend_sources.py`, rodado pelo
+> operador): `fre_cia_aberta_distribuicao_dividendos_classe_acao_{ano}.csv`
+> (Montante + Data_Pagamento_Dividendo por categoria de distribuição) +
+> `fre_cia_aberta_distribuicao_capital_{ano}.csv` (Quantidade_Total_Acoes_Circulacao,
+> arquivo PRINCIPAL — não o `_classe_acao`, que só cobre PN).
+>
+> **Duas aproximações declaradas** (aprovadas pelo operador para prosseguir,
+> não escondidas):
+> 1. Valor por ação = Montante (somado por categoria/pagamento) ÷ total de
+>    ações em circulação (ON+PN) — não por classe específica. Companhias
+>    com política de proventos muito diferente entre ON/PN ficam com um
+>    valor médio, não exato por classe.
+> 2. `Data_Pagamento_Dividendo` usada como proxy de `ex_date` — a data-ex
+>    real (que de fato move o preço) tipicamente vem semanas/meses antes;
+>    este dataset da CVM não expõe a data-ex diretamente.
+>
+> **Implementação:**
+> - `stocks_predictor/db.py`: migração `0009_dividends` — tabela nova
+>   (`ticker, ex_date, value_per_share, source`), append-only,
+>   `UNIQUE(ticker, ex_date, source)`. Domínio independente de
+>   `prices_raw`/`adjustments` (não referencia, não é referenciado).
+> - `stocks_predictor/ingest_cvm.py`: `parse_fre_dividend_rows`,
+>   `parse_fre_capital_total_rows` (fail-loud sem coluna esperada, nunca
+>   fabrica número), `ingest_fre_dividends_year` (mesmo contrato de
+>   `ingest_dfp_year`: `companies`/`ticker_of`, `INSERT OR IGNORE`). Achado
+>   ao implementar: `_open_zip_csv(zbytes, "distribuicao_capital")` é
+>   AMBÍGUO no zip do FRE (bate tanto no arquivo principal quanto no
+>   `_classe_acao`) — resolvido com filtro manual de nome excluindo
+>   `classe_acao`, documentado no código (não é bug do `_open_zip_csv`
+>   genérico, é a especificidade deste caso). `_to_float` tolera os dois
+>   formatos numéricos que a CVM mistura entre datasets (ponto decimal nos
+>   exports novos vs. vírgula decimal BR em datasets mais antigos já usados
+>   no projeto) — tenta ponto primeiro, cai para vírgula só se falhar.
+> - `stocks_predictor/adjust.py`: `dividend_factor` (mesma direção
+>   matemática de `adjusted_closes` — multiplica preços ANTES da ex_date),
+>   `total_return_series` (combina `adjusted_series`, já split-ajustada, com
+>   `dividends`; proventos fora do range de preços são ignorados com aviso,
+>   mesma disciplina de `adjustments` fora de range).
+> - `tools/ingest_dividends_real.py`: script de ingestão real 2018-2026, por
+>   ano (mesmo padrão de `tools/ingest_h7_real.py`) — roda na máquina do
+>   operador (rede à CVM necessária).
+> - Testes: `tests/test_adjust.py` (4 novos —
+>   `test_dividend_factor_known_value`,
+>   `test_total_return_series_lowers_prices_before_ex_date`,
+>   `test_total_return_series_no_dividends_matches_adjusted_series`,
+>   `test_total_return_series_dividend_outside_range_ignored`). Validados
+>   manualmente nesta sessão (sandbox sem `pytest`) contra dado sintético
+>   E contra uma amostra real (linhas literais de
+>   `fre_cia_aberta_distribuicao_dividendos_classe_acao_2023.csv` coladas
+>   pelo operador via `explore_dividend_sources.py`).
+>
+> **NÃO FEITO nesta sessão:** ingestão real de proventos 2018-2026 (precisa
+> rodar `tools/ingest_dividends_real.py` na máquina do operador — mesmo
+> bloqueio de rede de sempre neste sandbox) e nenhuma hipótese usa
+> `total_return_series` ainda — é infraestrutura pronta, esperando a
+> próxima hipótese pré-registrada que decida usá-la (H11 em diante).
+
 > ## H10 ABERTA — PRÉ-REGISTRO (2026-09-04, ANTES de qualquer rodada real)
 >
 > Decisão explícita do operador ("A e B", após o veredito NÃO COMPROVADA da

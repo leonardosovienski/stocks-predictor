@@ -243,6 +243,29 @@ MIGRATIONS: list[tuple[str, str]] = [
             PRIMARY KEY (ticker, asof)
         );
     """),
+    ("0009_dividends", """
+        -- Proventos (dividendos/JCP) para a série de retorno TOTAL (preço +
+        -- reinvestimento) — corrige o viés só-preço declarado em H1-H10.
+        -- Fonte: FRE da CVM (fre_cia_aberta_distribuicao_dividendos_classe_acao),
+        -- não a data-ex real (não capturada por este dataset) — ver
+        -- ingest_cvm.ingest_fre_dividends_year para as duas aproximações
+        -- declaradas (valor por ação via divisão pelo total de ações em
+        -- circulação; ex_date = data de PAGAMENTO como proxy conservador,
+        -- não a data-ex real). Domínio INDEPENDENTE de ações (não referencia
+        -- prices_raw/adjustments); um ticker+ex_date+source por linha,
+        -- append-only via UNIQUE.
+        CREATE TABLE IF NOT EXISTS dividends (
+            id                  INTEGER PRIMARY KEY,
+            ticker              TEXT    NOT NULL,
+            ex_date             TEXT    NOT NULL,   -- proxy: Data_Pagamento_Dividendo
+            value_per_share     REAL    NOT NULL,
+            source              TEXT    NOT NULL,   -- 'CVM FRE <ano>'
+            inserted_at         TEXT    NOT NULL DEFAULT (datetime('now')),
+            UNIQUE(ticker, ex_date, source)
+        );
+        CREATE INDEX IF NOT EXISTS idx_dividends_ticker_exdate
+            ON dividends(ticker, ex_date);
+    """),
 ]
 
 

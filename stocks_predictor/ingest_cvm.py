@@ -375,6 +375,178 @@ def ingest_dfp_year(conn, year: int, companies: set[str] | None = None,
     return n
 
 
+_DIVIDEND_COLS = {
+    "cnpj": ("cnpj_companhia",),
+    "company": ("nome_companhia",),
+    "pay_date": ("data_pagamento_dividendo",),
+    "amount": ("montante",),
+}
+_CAPITAL_TOTAL_COLS = {
+    "cnpj": ("cnpj_companhia",),
+    "total_shares": ("quantidade_total_acoes_circulacao",),
+}
+
+
+def _to_float(raw: str) -> float | None:
+    """CVM mistura formato numérico entre datasets (DFP/FRE-float usam vírgula
+    decimal BR; FRE-dividendos observado usa ponto decimal já em 2026-09).
+    Tenta ponto primeiro (mais comum nos exports novos), cai para
+    `,`-decimal/`.`-milhar só se a 1ª tentativa falhar — nunca adivinha em
+    silêncio um valor que não faz parse de nenhum jeito (None)."""
+    raw = raw.strip()
+    if not raw:
+        return None
+    try:
+        return float(raw)
+    except ValueError:
+        pass
+    try:
+        return float(raw.replace(".", "").replace(",", "."))
+    except ValueError:
+        return None
+
+
+def parse_fre_dividend_rows(rows) -> list[dict]:
+    """Linhas de `fre_cia_aberta_distribuicao_dividendos_classe_acao` ->
+    [{cnpj, company, pay_date, amount}]. Uma linha por CATEGORIA de
+    distribuição (ex.: "Dividendo Obrigatório", "Outros") — o chamador soma
+    por (cnpj, pay_date). Linha sem data de pagamento (ainda não paga, ou
+    campo vazio) é DESCARTADA — sem isso um provento aprovado mas não pago
+    entraria como ex_date fabricado."""
+    header = None
+    idx = {}
+    out = []
+    for row in rows:
+        if header is None:
+            header = row
+            idx = {k: _find_col(header, kw) for k, kw in _DIVIDEND_COLS.items()}
+            missing = [k for k in ("cnpj", "company", "pay_date", "amount") if idx[k] is None]
+            if missing:
+                raise ValueError(
+                    f"FRE dividendos sem coluna(s) {missing}; cabeçalho={header}")
+            continue
+        if len(row) < len(header):
+            continue
+        pay_date = row[idx["pay_date"]].strip()[:10]
+        if not pay_date:
+            continue
+        amount = _to_float(row[idx["amount"]])
+        if amount is None:
+            continue
+        out.append({
+            "cnpj": row[idx["cnpj"]].strip(),
+            "company": row[idx["company"]].strip(),
+            "pay_date": pay_date,
+            "amount": amount,
+        })
+    return out
+
+
+def parse_fre_capital_total_rows(rows) -> dict[str, float]:
+    """Linhas de `fre_cia_aberta_distribuicao_capital` (arquivo PRINCIPAL,
+    não `_classe_acao`) -> {cnpj: total de ações em circulação}. Múltiplas
+    linhas por CNPJ (uma por versão/retificação do FRE): fica a de MAIOR
+    Data_Referencia, mesma disciplina de `load_free_float`."""
+    header = None
+    idx = {}
+    ref_col = None
+    best: dict[str, tuple[str, float]] = {}
+    for row in rows:
+        if header is None:
+            header = row
+            idx = {k: _find_col(header, kw) for k, kw in _CAPITAL_TOTAL_COLS.items()}
+            ref_col = _find_col(header, ("data_referencia",))
+            missing = [k for k in ("cnpj", "total_shares") if idx[k] is None]
+            if missing or ref_col is None:
+                raise ValueError(
+                    f"FRE capital total sem coluna(s) {missing or ['data_referencia']}; "
+                    f"cabeçalho={header}")
+            continue
+        if len(row) < len(header):
+            continue
+        total = _to_float(row[idx["total_shares"]])
+        if total is None or total <= 0:
+            continue
+        cnpj = row[idx["cnpj"]].strip()
+        ref_date = row[ref_col].strip()[:10]
+        prev = best.get(cnpj)
+        if prev is None or ref_date > prev[0]:
+            best[cnpj] = (ref_date, total)
+    return {cnpj: total for cnpj, (_, total) in best.items()}
+
+
+def ingest_fre_dividends_year(conn, year: int, companies: set[str] | None = None,
+                              ticker_of: dict | None = None) -> int:
+    """Baixa o FRE de `year`, aproxima valor por ação dos proventos
+    (`Montante` somado por categoria ÷ total de ações em circulação) e grava
+    em `dividends`. Duas aproximações DECLARADAS (não escondidas — ver
+    HANDOFF 2026-09-04, migração `0009_dividends`):
+
+    1. `Montante` é o total distribuído na categoria/período pela companhia
+       inteira, não por classe de ação isolada — dividido pelo total de
+       ações em circulação (ON+PN), não pela classe específica que recebeu
+       aquele valor. Companhias com ON e PN de proventos MUITO diferentes
+       (comum: PN paga mais) ficam com um valor por ação médio, não exato
+       por classe.
+    2. `Data_Pagamento_Dividendo` é usada como proxy de `ex_date` — a data-ex
+       real (a que de fato move o preço) tipicamente vem semanas/meses
+       antes; este dataset da CVM não expõe a data-ex. Conservador na
+       direção errada é possível (adiar o ajuste pode deixar dividendo
+       "vazar" um pedaço de retorno já capturado no preço real antes da
+       data escolhida) — limitação registrada, não escondida.
+
+    `companies`/`ticker_of`: mesmo contrato de `ingest_dfp_year`."""
+    zbytes = download_zip(FRE_URL.format(year=year))
+    div_rows = parse_fre_dividend_rows(
+        _open_zip_csv(zbytes, "distribuicao_dividendos_classe_acao"))
+
+    # `_open_zip_csv` recusa nome ambíguo — "distribuicao_capital" bate tanto
+    # no arquivo principal quanto no "_classe_acao" (substring). Reabre à mão
+    # escolhendo só o arquivo SEM "_classe_acao" no nome.
+    zf = zipfile.ZipFile(io.BytesIO(zbytes))
+    candidates = [n for n in zf.namelist()
+                 if "distribuicao_capital" in _norm(n) and "classe_acao" not in _norm(n)
+                 and n.endswith(".csv")]
+    if len(candidates) != 1:
+        raise ValueError(
+            f"esperava 1 CSV 'distribuicao_capital' (sem classe_acao), achei "
+            f"{len(candidates)}: {candidates}")
+    with zf.open(candidates[0]) as f:
+        text = io.TextIOWrapper(f, encoding="latin-1")
+        total_shares_by_cnpj = parse_fre_capital_total_rows(csv.reader(text, delimiter=";"))
+
+    # soma Montante por (cnpj, pay_date) — várias categorias de distribuição
+    # (ex.: "Dividendo Obrigatório" + "Outros") no mesmo pagamento.
+    summed: dict[tuple[str, str], float] = {}
+    company_by_cnpj: dict[str, str] = {}
+    for r in div_rows:
+        key = (r["cnpj"], r["pay_date"])
+        summed[key] = summed.get(key, 0.0) + r["amount"]
+        company_by_cnpj[r["cnpj"]] = r["company"]
+
+    n = 0
+    for (cnpj, pay_date), amount in summed.items():
+        total_shares = total_shares_by_cnpj.get(cnpj)
+        if not total_shares:
+            continue    # sem total de ações confiável: sem dado inventado
+        company = _norm(company_by_cnpj[cnpj])
+        if companies and company not in companies:
+            continue
+        ticker = (ticker_of or {}).get(company)
+        if ticker is None:
+            continue    # companhia sem ticker mapeado: revisão humana antes
+        value_per_share = amount / total_shares
+        if value_per_share <= 0:
+            continue
+        conn.execute(
+            "INSERT OR IGNORE INTO dividends(ticker, ex_date, value_per_share, source)"
+            " VALUES (?,?,?,?)",
+            (ticker, pay_date, value_per_share, f"CVM FRE {year}"))
+        n += conn.execute("SELECT changes()").fetchone()[0]
+    conn.commit()
+    return n
+
+
 def ingest_ipe_year(conn, year: int, companies: set[str] | None = None,
                     ticker_of: dict | None = None) -> int:
     """Baixa o IPE de `year`, filtra as companhias do universo e grava em
