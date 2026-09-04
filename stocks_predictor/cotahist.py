@@ -39,6 +39,16 @@ def parse_line(line: str):
         return None
     raw = raw.ljust(RECORD_LEN)
     d = raw[F_DATA]
+    # AAAAMMDD tem que ser 8 dígitos — sem essa checagem, um byte corrompido
+    # (espaço/lixo em vez de dígito) virava um "date" tipo "2024- x-  " sem
+    # levantar exceção nenhuma (os campos numéricos abaixo já quebram com
+    # int(), mas data era interpolação de string crua). Uma data assim
+    # corrompe silenciosamente a ordenação lexicográfica que TODA query
+    # anti-lookahead (`date < ?`, `ORDER BY date DESC`) depende — achado de
+    # varredura 2026-09-04. ValueError aqui é capturado e contado como
+    # n_bad por parse_lines, mesmo tratamento dos outros campos.
+    if not (len(d) == 8 and d.isdigit()):
+        raise ValueError(f"data malformada no registro tipo 01: {d!r}")
     return {
         "date": f"{d[0:4]}-{d[4:6]}-{d[6:8]}",
         "ticker": raw[F_CODNEG].strip(),
@@ -138,6 +148,16 @@ def parse_lines(lines):
         raise ValueError(
             f"{n_bad} linhas malformadas em {n_quote} linhas de cotação — "
             "arquivo inteiro ilegível, revisar layout/fonte")
+    if n_quote == 0:
+        # ZERO registros tipo 01 em toda a fonte — fonte errada (ex.: .TXT
+        # não-COTAHIST dentro do zip, layout mudou, arquivo vazio) NUNCA é
+        # "sem cotações para carregar": load_prices/parse_cotahist
+        # retornariam 0 silenciosamente, sem log e sem exceção (achado de
+        # varredura 2026-09-04). Fail-loud aqui é o único lugar que sabe a
+        # diferença entre "0 linhas boas" e "0 linhas, ponto".
+        raise ValueError(
+            "0 linhas de registro tipo 01 na fonte — arquivo errado, vazio "
+            "ou layout mudou, revisar antes de aceitar 'zero cotações'")
     return recs, n_bad
 
 

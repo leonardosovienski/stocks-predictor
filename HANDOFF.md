@@ -1959,3 +1959,63 @@ válida):
 Suite completa (sandbox): 281 passed, 1 skipped, 6 failed — mesmos 6
 pré-existentes do shim de vendor, não relacionados. Confirmar verde total
 na máquina real com Core 3.0.0.
+
+---
+
+## Varredura de qualidade — 4ª leva, módulos restantes (2026-09-04)
+
+Continuação do pedido do operador ("continua a varredura nos módulos
+restantes"). `code-review` (`--full-tree`) sobre `analyst.py`,
+`ecosystem_plugin.py`, `economic_gate.py`, `universe.py`, `returns.py`,
+`execution.py`, `cotahist.py`, `ingest_cotahist.py` — com isso, praticamente
+todo `stocks_predictor/`, `tools/` e `tests/` já passou por pelo menos uma
+leva. `universe.py`/`execution.py`/`returns.py` já estavam muito
+endurecidos por revisões anteriores (comentários citando achados prévios) e
+não tiveram achado novo. 4 achados, todos corrigidos:
+
+1. **`cotahist.parse_line()` construía o campo `date` por interpolação de
+   string CRUA, sem validação de dígito/formato** — ao contrário de TODOS
+   os outros campos (protegidos por `int()`, que já falha em lixo). Um
+   registro tipo 01 com os bytes de DATA corrompidos (posições 3-10)
+   virava `"2024- X-  "` sem levantar exceção nenhuma, e como não é
+   detectado por `int()`, não contava em `n_bad` — o EXATO tipo de
+   corrupção silenciosa que o resto do parser evita. Toda query
+   anti-lookahead (`date < ?`, `ORDER BY date DESC`) em `universe.py`/
+   `returns.py`/`execution.py` depende de ordenação lexicográfica dessa
+   string. Corrigido: `date` agora valida 8 dígitos antes de montar a
+   string ISO, levanta `ValueError` (capturado e contado como `n_bad` por
+   `parse_lines`, mesmo tratamento dos outros campos). Teste novo
+   `test_cotahist_corrupted_date_is_malformed_not_silently_accepted`.
+2. **`cotahist.parse_lines()` não tinha guard pra ZERO linhas tipo 01 na
+   fonte inteira** (`n_quote == 0`) — o guard existente só cobria "achou
+   linhas de cotação mas todas malformadas"; uma fonte com zero linhas tipo
+   01 (arquivo errado, vazio, layout mudou) retornava silenciosamente
+   `([], 0)`, sem log e sem exceção. Corrigido: `n_quote == 0` agora
+   também é fail-loud.
+3. **`ingest_cotahist.parse_cotahist()` escolhia o `.TXT` de dentro do zip
+   via `next(... .endswith(".TXT"))`** — pegava o primeiro que batesse por
+   sorte, sem checar se era de fato o arquivo de cotação (um
+   README/layout `.TXT` companheiro, se algum dia existir no zip, seria
+   escolhido no lugar). Combinado com o achado 2 acima (zero linhas tipo
+   01 → 0 silencioso), um zip assim "carregava com sucesso" sem carregar
+   nada. Corrigido: `_pick_cotahist_txt()` novo, prefere nome contendo
+   "COTAHIST", falha alto se ambíguo. Testes novos cobrindo o companheiro
+   e a ambiguidade.
+4. **`analyst.build_brief()` formatava `median_vol` com separador de
+   milhar padrão Python (`{:,.0f}`, convenção US — vírgula)** — o
+   briefing é em português pra operador brasileiro, onde vírgula é o
+   separador DECIMAL; "R$ 1,234,567" lido em convenção PT-BR sugeriria
+   ~1,23, não ~1,23 milhão, arriscando má leitura da magnitude no relatório
+   consultivo que existe pra transmitir exatamente isso. Corrigido:
+   `_fmt_ptbr()` novo (formata em US, troca separadores — não usa
+   `locale.setlocale`, que é estado global de processo). Primeiro arquivo
+   de teste pra `analyst.py` (`tests/test_analyst.py`, não existia
+   nenhum antes).
+5. **`economic_gate.estimate_edge()` chamava `float(x)` duas vezes por
+   observação** (uma no filtro, outra na expressão) — não era bug de
+   correção, só trabalho redundante; trocado por `fx := float(x)` numa
+   única conversão via walrus.
+
+Suite completa (sandbox): 287 passed, 1 skipped, 6 failed — mesmos 6
+pré-existentes do shim de vendor, não relacionados. Confirmar verde total
+na máquina real com Core 3.0.0.

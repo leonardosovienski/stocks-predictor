@@ -17,6 +17,17 @@ import pathlib
 ROOT = pathlib.Path(__file__).parent.parent
 
 
+def _fmt_ptbr(v: float) -> str:
+    """Formata número com separador de milhar PT-BR (ponto), não o padrão
+    US (vírgula) do `{:,.0f}` — o briefing é em português pra operador
+    brasileiro; "R$ 1,234,567" lido em convenção PT-BR (onde vírgula é
+    DECIMAL) sugeriria ~1,23, não ~1,23 milhão (achado de varredura
+    2026-09-04). Formata em US e troca os separadores — não depende de
+    `locale.setlocale`, que é estado global de processo (afetaria testes
+    e outros módulos rodando na mesma sessão)."""
+    return f"{v:,.0f}".replace(",", ".")
+
+
 def gather(conn):
     """Coleta SOMENTE-LEITURA do estado atual. Nenhum INSERT/UPDATE/DELETE."""
     state = {}
@@ -64,7 +75,7 @@ def build_brief(state):
     if state["universe_asof"]:
         L.append(f"- asof **{state['universe_asof']}** (top 10 por liquidez):")
         for tk, rank, med in state["universe"]:
-            L.append(f"  - {rank:>2}. {tk} — mediana vol R$ {med:,.0f}")
+            L.append(f"  - {rank:>2}. {tk} — mediana vol R$ {_fmt_ptbr(med)}")
     else:
         L.append("- (nenhum snapshot materializado ainda)")
 
