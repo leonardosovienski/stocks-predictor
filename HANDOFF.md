@@ -2306,3 +2306,49 @@ python tools/ingest_h7_real.py
 python -c "import backtest; backtest.run_h12(write_report=True)"
 python -c "import backtest; backtest.run_h13(write_report=True)"
 ```
+
+---
+
+## VEREDITO H12 e H13 — ENCERRADAS: NÃO COMPROVADAS (2026-09-04, rodada real, COTAHIST real)
+
+Backfill (`tools/ingest_h7_real.py`) confirmou o achado documentado acima: 733
+linhas gravadas/atualizadas em `fundamentals` (69-96 por ano, 2018-2026) — o
+`INSERT OR IGNORE` puro realmente travava o backfill; o UPSERT condicional
+corrigiu. Rodadas reais na máquina do operador, Core 3.1.0:
+
+```
+H12 (margem líquida, quintil superior):
+  1.826 pregões pareados
+  IC 95% diff-Sharpe: (-0,3356, +0,1848) — cruza zero
+  DSR: 0,1952 < 0,95 (N=11)
+  PSR: 0,4328
+  NÃO COMPROVADA.
+
+H13 (crescimento de receita YoY, quintil superior):
+  1.597 pregões pareados
+  IC 95% diff-Sharpe: (-0,4562, +0,1611) — cruza zero
+  DSR: 0,2598 < 0,95 (N=12)
+  PSR: 0,3579
+  NÃO COMPROVADA.
+```
+
+Ambas ficaram entre as DSR mais BAIXAS de toda a série (H12: 0,1952 — 2ª mais
+baixa depois da H5/0,1274; H13: 0,2598) — nem perto do limiar, ao contrário
+da H11 (0,8430). Relatórios: `reports/h12_verdict_adhoc.md`,
+`reports/h13_verdict_adhoc.md` (versionados via `git add -f`).
+
+**Achado adicional no caminho — H11 também tinha lacuna de ledger:** o
+mesmo padrão do H10 (achado 2026-09-04, entrada "VEREDITO H11" acima) se
+repetiu — o registro real da H11 em `trials.json` (sharpe 0,057773,
+2026-09-04T15:24:10Z) nunca tinha sido commitado, só o relatório `.md`.
+Commitado junto com H12/H13 nesta rodada, sem alterar nenhum valor
+(`chore: registra H11/H12/H13 no ledger`).
+
+**Leitura acumulada (12 tentativas, 0 comprovadas):** a 3ª e 4ª variáveis
+contábeis independentes da DFP (margem líquida, crescimento de receita)
+também reprovam, com folga — bem mais fracas que ROE/alavancagem/H10/H11.
+Isso esgota o baralho de fatores extraíveis da DFP consolidada sem uma
+fonte de dado genuinamente nova (fluxo de caixa, múltiplos de mercado,
+dado intraday/institucional) ou universo diferente. `RESEARCH_FREEZE.md`/
+`STOCKS_CURRENT_STATE.md` atualizados: `scientific_state=CLOSED_FOR_H1_THROUGH_H13`,
+`new_scientific_trials=0`.
