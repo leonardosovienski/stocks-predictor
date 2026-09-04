@@ -151,6 +151,26 @@ h7_portfolio:
 h7_criteria:
   dsr_min: 0.95                    # [H7-FROZEN] DSR mínimo (N=7 tentativas no registro)
 
+# ── H9 (pré-registrada 2026-09-04; ver HANDOFF) ─────────────────────────────
+# NÃO alterar valores [H9-FROZEN] após qualquer rodada de resultado da H9.
+# Fator de qualidade: alavancagem isolada, quintil INFERIOR (empresas menos
+# endividadas — mesmo racional de tilt de qualidade/baixo risco da H2/H4,
+# aplicado a dado contábil em vez de preço/vol). Mesmo dado real da H7
+# (fundamentals.leverage, DFP/CVM 2018-2026, já ingerido) — não exige nova
+# ingestão.
+
+h9_factor:
+  name: leverage                   # [H9-FROZEN] (passivo_total - patrimonio_liquido) / ativo_total
+  disclosure_embargo_days: 90      # [H9-FROZEN] mesmo embargo da H7 (mesma fonte DFP)
+
+h9_portfolio:
+  quantile: bottom_quintile        # [H9-FROZEN] 12 papéis com N=60 (MENOR alavancagem)
+  weighting: equal                 # [H9-FROZEN]
+  direction: long_only             # [H9-FROZEN]
+
+h9_criteria:
+  dsr_min: 0.95                    # [H9-FROZEN] DSR mínimo (N=8 tentativas no registro)
+
 data:
   db_path: "data/stocks.db"
   cotahist_dir: "data/cotahist"

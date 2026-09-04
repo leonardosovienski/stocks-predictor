@@ -1,5 +1,39 @@
 # HANDOFF — predictor-stocks
 
+> ## H9 ABERTA — PRÉ-REGISTRO (2026-09-04, ANTES de qualquer rodada real)
+>
+> Decisão explícita do operador ("vamos fazer", após o veredito NÃO COMPROVADA
+> da H7). Mesma disciplina de pré-registro: formalizar ANTES de qualquer
+> rodada. **H9 — fator de qualidade, alavancagem isolada**
+> (`config.yaml` `h9_*`, `config.h9_frozen_config_hash` = `af797c56c2ab36b7`):
+> quintil INFERIOR de alavancagem (`fundamentals.leverage`, empresas MENOS
+> endividadas), mesma fonte DFP/CVM e mesmo embargo de divulgação de 90 dias
+> da H7 — **dado já ingerido** (a mesma ingestão real 2018-2026 da H7 gravou
+> `leverage` junto com `roe`, mesma linha da tabela `fundamentals`), não exige
+> nova ingestão nem `tools/ingest_h7_real.py` de novo. Racional: mesmo tilt de
+> qualidade/baixo risco de H2 (baixa vol)/H4 (inverse-vol sizing), aplicado a
+> dado contábil em vez de preço.
+>
+> **Critério:** IC95% diff-Sharpe > 0 E DSR >= 0,95 (N=8 tentativas no
+> registro, contando H1/H2/H4/H5/H6/H7/H8). Fixado antes de qualquer rodada.
+>
+> **Implementação:** `factor._fundamental_signals` (motor comum extraído de
+> `roe_signals`, reaproveitado por `leverage_signals` — mesmo mecanismo de
+> embargo, sem duplicar lógica), `backtest.run_h9` (mesmo runner genérico,
+> `take="bottom"`), `config.py` (`H9_FROZEN_KEYS`/`h9_frozen_config_hash`),
+> `report._BIAS_NOTE["H9"]` (mesma limitação declarada da H7: direção do viés
+> só-preço não estabelecida). Testes em `tests/test_h9_quality_leverage.py`
+> (smoke com dado sintético, golden hash, hash ignora parâmetro operacional,
+> embargo bloqueia leitura antecipada) — validados manualmente nesta sessão
+> (mesma limitação de ambiente da H7: sandbox sem `pytest`/rede à CVM/
+> `stocks.db` real). Regressão de `factor.roe_signals` confirmada após o
+> refactor para `_fundamental_signals` (mesmo resultado de antes).
+>
+> **Como o dado já está na sua máquina, o próximo passo é só rodar** (sem
+> ingestão nova): `python -m pytest tests/ -v` (confirmar suíte verde) e
+> `python -c "import backtest; backtest.run_h9(write_report=True)"` (rodada
+> única, sem repescagem).
+
 > ## Errata de schema em `trials.json` (2026-09-03) — campo órfão removido, NENHUM veredito alterado
 >
 > Ao tentar registrar a H7 na máquina do operador (Core `predictor-core==3.0.0` real,

@@ -95,6 +95,15 @@ _BIAS_NOTE = {
           "90 dias sobre `ref_date` (`h7_factor.disclosure_embargo_days`), mas não "
           "cobre a data REAL de entrega da DFP à CVM (ver `ingest_cvm.py`) — um "
           "embargo curto demais vazaria informação contábil antes da publicação real.",
+    "H9": "- Retorno **só-preço** (rota (b)): dividendos/JCP omitidos; SEM direção "
+          "declarada a priori — mesma limitação da H7 (a relação entre baixa "
+          "alavancagem e política de dividendos de empresas B3 não foi estabelecida "
+          "nesta rodada; empresa pouco endividada poderia distribuir mais OU menos, "
+          "sem prior claro). Viés não quantificado, registrado como limitação honesta "
+          "(declarado no pré-registro da H9, 2026-09-04) — não inferir sinal. Mesmo "
+          "embargo de divulgação de 90 dias sobre `ref_date` da H7 "
+          "(`h9_factor.disclosure_embargo_days`, mesma fonte DFP/CVM), mesma limitação "
+          "de não cobrir a data REAL de entrega à CVM.",
 }
 
 

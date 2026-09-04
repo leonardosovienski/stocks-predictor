@@ -264,7 +264,19 @@ Nenhum componente foi movido para o Core nesta rodada — os dois já compartilh
 
 ```yaml
 ST_RESEARCH_FREEZE:
-  active_hypotheses: []
+  active_hypotheses:
+    - id: H9
+      family: quality_leverage
+      status: PRE_REGISTERED_NOT_JUDGED
+      note: >
+        Aberta 2026-09-04 por decisão explícita do operador (ver HANDOFF.md),
+        mesma disciplina de pré-registro da H7. Alavancagem isolada, quintil
+        inferior — dado já ingerido pela H7 (fundamentals.leverage, mesma
+        linha do ROE), não exige nova ingestão. Código e testes prontos
+        (dado sintético); rodada real ainda NÃO aconteceu neste ambiente de
+        auditoria (mesmos bloqueios da H7: sem stocks.db real, sem rede à
+        CVM, sem pytest — ver HANDOFF.md para os passos mecânicos pendentes
+        na máquina do operador).
   stopped_hypotheses:
     - id: H1
       family: momentum_12_1

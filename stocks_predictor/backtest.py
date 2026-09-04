@@ -388,6 +388,27 @@ def run_h7(cfg=None, conn=None, write_report=False, run_id=None, trials_path=Non
         take="top")
 
 
+def run_h9(cfg=None, conn=None, write_report=False, run_id=None, trials_path=None):
+    """H9 — fator de qualidade, alavancagem isolada (pré-registro 2026-09-04):
+    quintil INFERIOR de alavancagem (`fundamentals.leverage`, empresas menos
+    endividadas — mesmo racional de tilt de qualidade/baixo risco de H2/H4,
+    aplicado a dado contábil), mesma fonte DFP/embargo da H7. Critérios:
+    (i) IC95% diff-Sharpe > 0; (ii) DSR >= dsr_min (N=8 tentativas no
+    registro)."""
+    from config import H9_FROZEN_KEYS
+    cfg = cfg or load_config()
+    conn = conn or db.get_connection()
+    h9f = cfg.get("h9_factor", {})
+    embargo = h9f.get("disclosure_embargo_days", 90)
+    return _run_hypothesis(
+        "H9", "h9-quality-leverage", H9_FROZEN_KEYS, "h9_criteria",
+        "rodada única da H9 (alavancagem isolada, quintil inferior; "
+        "sharpe por-período realizado)",
+        cfg, conn, write_report, run_id, trials_path,
+        signal_fn=lambda sub, asof: factor.leverage_signals(conn, sub.keys(), asof, embargo),
+        take="bottom")
+
+
 if __name__ == "__main__":
     if run() is None:
         sys.exit(1)
