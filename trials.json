@@ -271,5 +271,40 @@
       "2026-07-03T23:59:59Z"
     ],
     "metric": "sharpe_diff_ci95"
+  },
+  {
+    "name": "h10-roe-leverage-double",
+    "registered_at": "2026-09-04T03:22:11Z",
+    "params": {
+      "universe.top_n": 60,
+      "universe.lookback_trading_days": 126,
+      "universe.min_history_days": 252,
+      "universe.rebalance_frequency": "monthly",
+      "h10_factor.roe_disclosure_embargo_days": 90,
+      "h10_factor.leverage_disclosure_embargo_days": 90,
+      "h10_portfolio.roe_quantile": 0.4,
+      "h10_portfolio.leverage_quantile": 0.5,
+      "h10_portfolio.weighting": "equal",
+      "h10_portfolio.direction": "long_only",
+      "execution.price": "next_open",
+      "execution.b3_fee_pct": 0.0003,
+      "execution.brokerage_pct": 0.0,
+      "execution.spread_slippage_pct": 0.0015,
+      "backtest.warmup_end": "2017-12-31",
+      "backtest.test_start": "2018-01-01",
+      "backtest.purge_embargo_months": 1,
+      "bootstrap.n_boot": 10000,
+      "bootstrap.block_length": 21,
+      "bootstrap.confidence": 0.95,
+      "bootstrap.method": "stationary",
+      "h10_criteria.dsr_min": 0.95
+    },
+    "sharpe": 0.006019,
+    "notes": "rodada única da H10 (filtro duplo ROE top ∩ baixa alavancagem; sharpe por-período realizado)",
+    "test_period": [
+      "2018-01-01T00:00:00Z",
+      "2026-07-03T23:59:59Z"
+    ],
+    "metric": "sharpe_diff_ci95"
   }
 ]
