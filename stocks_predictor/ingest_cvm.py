@@ -365,14 +365,20 @@ def compute_fundamentals(bpa_rows: list[dict], bpp_rows: list[dict],
 
 
 def ingest_dfp_year(conn, year: int, companies: set[str] | None = None,
-                    ticker_of: dict | None = None) -> int:
+                    ticker_of: dict | None = None, zbytes: bytes | None = None) -> int:
     """Baixa o DFP consolidado de `year`, calcula ROE/alavancagem por
     companhia e grava em `fundamentals`. `ticker_of`: mesmo mapa
     nome_companhia_normalizado -> ticker de `ingest_ipe_year` (ligação
     CVM->B3 revisável por humano). Companhias sem as 4 contas resolvidas
     (comum em financeiras, plano de contas diferente — ver módulo) ficam
-    de fora, contadas no aviso, nunca com ratio fabricado."""
-    zbytes = download_zip(DFP_URL.format(year=year))
+    de fora, contadas no aviso, nunca com ratio fabricado.
+
+    `zbytes`: bytes do zip já baixado, opcional — evita rebaixar o mesmo
+    ano quando o chamador precisa gravar o mesmo balanço sob tickers
+    diferentes (ex.: ON+PN da mesma empresa, ver `tools/ingest_h7_real.py`).
+    None (padrão) baixa como sempre."""
+    if zbytes is None:
+        zbytes = download_zip(DFP_URL.format(year=year))
     bpa = parse_dfp_statement_rows(_open_zip_csv(zbytes, "bpa_con"), "BPA_con")
     bpp = parse_dfp_statement_rows(_open_zip_csv(zbytes, "bpp_con"), "BPP_con")
     dre = parse_dfp_statement_rows(_open_zip_csv(zbytes, "dre_con"), "DRE_con")

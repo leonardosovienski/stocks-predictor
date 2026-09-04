@@ -33,6 +33,10 @@ _FAMILY_BY_PREFIX = {
     "h4-invvol": "vol_target_sizing",
     "h5-strev": "reversal_21d",
     "h8-mom-lowvol": "momentum_lowvol_intersection",
+    "h7-quality-roe": "quality_roe",
+    "h9-quality-leverage": "quality_leverage",
+    "h10-roe-leverage-double": "quality_roe_leverage_intersection",
+    "h11-momentum-12-1-total-return": "momentum_12_1_total_return",
 }
 
 
@@ -50,7 +54,7 @@ def _hypothesis_id(name: str) -> str:
     return head.upper() if head else UNKNOWN
 
 
-def migrate_trial(legacy: dict) -> dict:
+def migrate_trial(legacy: dict, n_trials_domain: int) -> dict:
     name = legacy.get("name", UNKNOWN)
     test_period = legacy.get("test_period") or [UNKNOWN, UNKNOWN]
     label_start = test_period[0] if len(test_period) > 0 else UNKNOWN
@@ -93,7 +97,12 @@ def migrate_trial(legacy: dict) -> dict:
         "params": params,
         "selection_path": UNKNOWN,
         "n_trials_family": 1,
-        "n_trials_domain": len(_FAMILY_BY_PREFIX),
+        # n_trials_domain = total de trials REGISTRADOS no ledger legado (todas as
+        # famílias somadas), não o tamanho do mapa de nomes conhecidos acima — um
+        # já bastou pra ficar desatualizado silenciosamente (achado de varredura
+        # 2026-09-04: len(_FAMILY_BY_PREFIX) tinha ficado parado em 6 com 8 trials
+        # já registrados, e ficaria parado pra sempre em H10/H11 futuras).
+        "n_trials_domain": n_trials_domain,
         "n_trials_ecosystem": UNKNOWN,
         "metric": legacy.get("metric", UNKNOWN),
         "result": result,
@@ -104,7 +113,8 @@ def migrate_trial(legacy: dict) -> dict:
 
 def migrate() -> list[dict]:
     legacy_trials = json.loads(LEGACY_PATH.read_text(encoding="utf-8"))
-    return [migrate_trial(t) for t in legacy_trials]
+    n_trials_domain = len(legacy_trials)
+    return [migrate_trial(t, n_trials_domain) for t in legacy_trials]
 
 
 def main() -> int:
