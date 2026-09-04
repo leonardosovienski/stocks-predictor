@@ -1,7 +1,12 @@
+import sys
 import sqlite3
 from pathlib import Path
 
 db_path = Path("data/stocks.db")
+if not db_path.exists():
+    print(f"Erro: {db_path} não existe (rode a partir da raiz do projeto, "
+          "após algum ingest).")
+    sys.exit(1)
 conn = sqlite3.connect(db_path)
 
 print("=== DIAGNÓSTICO SISTÊMICO DO UNIVERSO ===")
@@ -32,12 +37,18 @@ if most_frequent:
     sample_date = conn.execute(f"SELECT date FROM prices_raw WHERE ticker=? LIMIT 1", (tk,)).fetchone()[0]
     print(f"  - Formato real da string de data no banco: {repr(sample_date)}")
     
-    # Simulação da query do universe.py
+    # Simulação da query do universe.py — precisa do MESMO filtro market_type
+    # = SPOT_MARKET ("010") que rank_universe() sempre aplica (universe.py);
+    # sem ele, o diagnóstico conta linhas de mercados que a query real nunca
+    # vê (ex.: leilão), escondendo o motivo real de um ticker sumir do
+    # universo (achado de varredura 2026-09-04).
     asof = "2024-12-30"
     vols = [r[0] for r in conn.execute(
-        "SELECT volume_fin FROM prices_raw WHERE ticker=? AND date < ? ORDER BY date",
+        "SELECT volume_fin FROM prices_raw WHERE ticker=? AND date < ? "
+        "AND market_type = '010' ORDER BY date",
         (tk, asof))]
-    print(f"  - Executando: WHERE ticker={repr(tk)} AND date < {repr(asof)}")
+    print(f"  - Executando: WHERE ticker={repr(tk)} AND date < {repr(asof)} "
+          "AND market_type = '010'")
     print(f"  - Resultado: {len(vols)} registros de volume retornados.")
 
 conn.close()

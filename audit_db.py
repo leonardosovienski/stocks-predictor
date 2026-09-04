@@ -1,5 +1,13 @@
+import sys
 import sqlite3
 from pathlib import Path
+
+# Windows/cp1252 (default do stdout lá, não UTF-8) quebra em qualquer
+# emoji/acento antes mesmo do print de erro — mesmo padrão do main.py.
+# CLAUDE.md documenta esse exato pitfall ("já mordeu"); achado de
+# varredura 2026-09-04.
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
 
 db_path = Path("data/stocks.db")
 

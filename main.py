@@ -225,8 +225,13 @@ def cmd_paper(args) -> int:
         return 1
     cfg, conn = _conn()
     with closing(conn):
-        run_id = db.new_run(conn, {"command": "paper", "asof": args[0], "config": cfg},
-                            notes="paper forward")
+        # runs.config_hash tem que ser o hash do CONFIG REAL (cfg), igual a
+        # todo outro comando (cmd_backtest etc.) — passar um dict embrulhado
+        # com {"command", "asof", "config": cfg} fazia o hash gravado nunca
+        # bater com cfg_mod.config_hash(cfg) (reprodutibilidade por
+        # run_id+config_hash, §11) para NENHUMA rodada de paper. asof vai no
+        # notes, não no dict hasheado (achado de varredura 2026-09-04).
+        run_id = db.new_run(conn, cfg, notes=f"paper forward asof={args[0]}")
         n = paper.record_forward(conn, cfg, args[0], run_id)
         filled = paper.settle_executions(conn, cfg)
         exited = paper.settle_exits(conn, cfg)

@@ -2019,3 +2019,63 @@ não tiveram achado novo. 4 achados, todos corrigidos:
 Suite completa (sandbox): 287 passed, 1 skipped, 6 failed — mesmos 6
 pré-existentes do shim de vendor, não relacionados. Confirmar verde total
 na máquina real com Core 3.0.0.
+
+---
+
+## Varredura de qualidade — 5ª leva, módulos finais (2026-09-04)
+
+Continuação do pedido do operador ("continua a varredura nos módulos
+restantes"). `code-review` (`--full-tree`) sobre os arquivos que ainda
+não tinham passado por nenhuma leva: `rj_outcomes.py`, `main.py` e os
+scripts ad-hoc na raiz `audit_db.py`/`diagnose_universe.py`. Com isso,
+TODO o código do projeto (pacote, tools/, scripts de raiz, tests/) já
+passou por pelo menos uma leva de revisão. 6 achados, todos corrigidos:
+
+1. **`main.py::cmd_paper` gravava `runs.config_hash` do hash de um dict
+   EMBRULHADO (`{"command", "asof", "config": cfg}`), não de `cfg`
+   diretamente** — ao contrário de TODO outro comando (`cmd_backtest`,
+   `cmd_backtest_h2/h4/h5`). Violava a garantia do próprio design
+   (§11, "reproduzível por run_id+config_hash"): nenhuma rodada de paper
+   jamais teve `config_hash` igual ao `cfg_mod.config_hash(cfg)` real,
+   fazendo qualquer auditoria de "essa rodada usou o config atual?" falhar
+   sempre. Corrigido: `db.new_run(conn, cfg, ...)` direto, `asof` movido
+   pro `notes`.
+2. **`rj_outcomes.market_adjusted_rally()` só validava o fechamento do
+   índice no dia do FUNDO, nunca em dias posteriores da janela** — um
+   tick ruim do benchmark em qualquer outro dia (fechamento <=0) zerava
+   `(1+idx_ret)` e estourava `ZeroDivisionError` na razão geométrica, em
+   vez de degradar como o resto da função já fazia. Corrigido: dia com
+   fechamento de índice inválido é pulado (mesmo espírito "sem dado
+   confiável, sem inventar" do resto do outcome).
+3. **`rj_outcomes.walk_forward_splits()` sem validação de `step`** —
+   `step<=0` nunca avança o cursor (`start = min(start+step, n_obs)`
+   trava, ou até regride pra `step<0`), loop infinito silencioso.
+   Corrigido: `ValueError` fail-loud pra `step<=0`.
+4. **`diagnose_universe.py` simulava a query do universo SEM o filtro
+   `market_type = SPOT_MARKET`** que `universe.rank_universe()` sempre
+   aplica — o diagnóstico contava linhas de mercados que a query real
+   nunca vê (ex.: leilão), escondendo o motivo real de um ticker sumir
+   do universo, exatamente o tipo de coisa que este script existe pra
+   investigar. Corrigido: filtro adicionado.
+5. **`diagnose_universe.py` conectava em `data/stocks.db` sem checar
+   `Path.exists()`** — rodar antes de qualquer ingest criava um
+   `stocks.db` vazio espúrio e falhava com `OperationalError` cru em vez
+   de mensagem clara. Corrigido: mesma checagem que `audit_db.py` já
+   tinha.
+6. **`audit_db.py` nunca reconfigurava `stdout` pra UTF-8** — o próprio
+   `CLAUDE.md` documenta esse pitfall explicitamente ("default do Windows
+   é cp1252 — já mordeu"); o emoji `❌` no print de erro quebraria com
+   `UnicodeEncodeError` ANTES de mostrar a mensagem de erro pretendida.
+   Corrigido: mesmo `sys.stdout.reconfigure(encoding="utf-8")` que
+   `main.py` já usa.
+
+Testes novos em `tests/test_rj_next_gen.py`
+(`test_walk_forward_splits_rejects_nonpositive_step`,
+`test_market_adjusted_rally_skips_bad_index_tick_mid_window`). Os scripts
+de raiz (`audit_db.py`/`diagnose_universe.py`) são ad-hoc, sem suíte —
+validados manualmente rodando contra o `stocks.db` do sandbox (sem
+crash, comportamento preservado no caminho feliz).
+
+Suite completa (sandbox): 289 passed, 1 skipped, 6 failed — mesmos 6
+pré-existentes do shim de vendor, não relacionados. Confirmar verde total
+na máquina real com Core 3.0.0.
