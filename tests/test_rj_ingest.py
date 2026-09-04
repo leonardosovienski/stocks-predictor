@@ -235,3 +235,153 @@ def test_ingest_dfp_year_skips_unmapped_company(conn, monkeypatch):
     n = ingest_cvm.ingest_dfp_year(conn, 2023, ticker_of={})   # mapa vazio
     assert n == 0
     assert conn.execute("SELECT COUNT(*) FROM fundamentals").fetchone()[0] == 0
+
+
+# --- parser FRE dividendos/capital (H11, retorno total) -----------------------
+
+def test_to_float_requires_explicit_format():
+    with pytest.raises(ValueError, match="fmt"):
+        ingest_cvm._to_float("1.234", fmt="xx")
+
+
+def test_to_float_en_is_plain_decimal_point():
+    # fmt="en": ponto é decimal, NUNCA milhar — "450.000" é 450.0, não 450000.
+    assert ingest_cvm._to_float("450.000", fmt="en") == pytest.approx(450.0)
+    assert ingest_cvm._to_float("1234.56", fmt="en") == pytest.approx(1234.56)
+    assert ingest_cvm._to_float("", fmt="en") is None
+    assert ingest_cvm._to_float("n/a", fmt="en") is None
+
+
+def test_to_float_br_is_thousands_dot_decimal_comma():
+    # fmt="br": mesma convenção de parse_fre_float_rows — "450.000,00" é
+    # 450000.0. Nunca confundível com fmt="en" porque o chamador escolhe,
+    # não uma tentativa-e-erro que possa interpretar "450.000" errado.
+    assert ingest_cvm._to_float("450.000,00", fmt="br") == pytest.approx(450_000.0)
+    assert ingest_cvm._to_float("1.234.567", fmt="br") == pytest.approx(1_234_567.0)
+    assert ingest_cvm._to_float("", fmt="br") is None
+    assert ingest_cvm._to_float("n/a", fmt="br") is None
+
+
+_FRE_DIV_HEADER = ("CNPJ_Companhia;Nome_Companhia;Data_Pagamento_Dividendo;"
+                   "Categoria;Montante\n")
+
+
+def test_parse_fre_dividend_rows_sums_by_pay_date_downstream():
+    csv_text = (_FRE_DIV_HEADER +
+               "00.000/0001-91;EMPRESA S.A.;2023-04-10;Dividendo Obrigatório;1234.56\n"
+               "00.000/0001-91;EMPRESA S.A.;2023-04-10;Outros;100.00\n")
+    rows = ingest_cvm._open_zip_csv(
+        _zip_of("fre_cia_aberta_distribuicao_dividendos_classe_acao_2023.csv", csv_text),
+        "distribuicao_dividendos_classe_acao")
+    out = ingest_cvm.parse_fre_dividend_rows(rows)
+    assert len(out) == 2
+    assert {r["amount"] for r in out} == {1234.56, 100.0}
+    assert all(r["cnpj"] == "00.000/0001-91" and r["pay_date"] == "2023-04-10" for r in out)
+
+
+def test_parse_fre_dividend_rows_drops_rows_without_pay_date():
+    csv_text = (_FRE_DIV_HEADER +
+               "00.000/0001-91;EMPRESA S.A.;;Dividendo Obrigatório;1234.56\n")
+    rows = ingest_cvm._open_zip_csv(
+        _zip_of("fre_cia_aberta_distribuicao_dividendos_classe_acao_2023.csv", csv_text),
+        "distribuicao_dividendos_classe_acao")
+    assert ingest_cvm.parse_fre_dividend_rows(rows) == []
+
+
+def test_parse_fre_dividend_rows_fail_loud_without_amount_column():
+    csv_text = "CNPJ_Companhia;Nome_Companhia;Data_Pagamento_Dividendo\nx;y;2023-01-01\n"
+    rows = ingest_cvm._open_zip_csv(
+        _zip_of("fre_cia_aberta_distribuicao_dividendos_classe_acao_2023.csv", csv_text),
+        "distribuicao_dividendos_classe_acao")
+    with pytest.raises(ValueError, match="amount"):
+        ingest_cvm.parse_fre_dividend_rows(rows)
+
+
+_FRE_CAPITAL_HEADER = ("CNPJ_Companhia;Data_Referencia;"
+                       "Quantidade_Total_Acoes_Circulacao\n")
+
+
+def test_open_fre_distribuicao_capital_main_picks_non_classe_acao_file():
+    # o zip real tem os dois arquivos com "distribuicao_capital" no nome —
+    # `_open_fre_distribuicao_capital_main` tem que escolher só o principal.
+    buf = io.BytesIO()
+    with zipfile.ZipFile(buf, "w") as zf:
+        zf.writestr("fre_cia_aberta_distribuicao_capital_2023.csv",
+                   (_FRE_CAPITAL_HEADER +
+                    "00.000/0001-91;2023-12-31;450.000,00\n").encode("latin-1"))
+        zf.writestr("fre_cia_aberta_distribuicao_capital_classe_acao_2023.csv",
+                   "Nome_Classe;Quantidade\nON;999999\n".encode("latin-1"))
+    rows = ingest_cvm._open_fre_distribuicao_capital_main(buf.getvalue())
+    out = ingest_cvm.parse_fre_capital_total_rows(rows)
+    assert out == {"00.000/0001-91": pytest.approx(450_000.0)}
+
+
+def test_parse_fre_capital_total_rows_keeps_latest_ref_date_per_cnpj():
+    csv_text = (_FRE_CAPITAL_HEADER +
+               "00.000/0001-91;2022-12-31;100.000,00\n"
+               "00.000/0001-91;2023-12-31;450.000,00\n")
+    rows = ingest_cvm._open_zip_csv(
+        _zip_of("fre_cia_aberta_distribuicao_capital_2023.csv", csv_text),
+        "distribuicao_capital")
+    out = ingest_cvm.parse_fre_capital_total_rows(rows)
+    assert out == {"00.000/0001-91": pytest.approx(450_000.0)}
+
+
+def _fre_year_zip(div_csv: str, capital_csv: str) -> bytes:
+    buf = io.BytesIO()
+    with zipfile.ZipFile(buf, "w") as zf:
+        zf.writestr("fre_cia_aberta_distribuicao_dividendos_classe_acao_2023.csv",
+                   div_csv.encode("latin-1"))
+        zf.writestr("fre_cia_aberta_distribuicao_capital_2023.csv",
+                   capital_csv.encode("latin-1"))
+    return buf.getvalue()
+
+
+def test_ingest_fre_dividends_year_writes_value_per_share(conn, monkeypatch):
+    div_csv = (_FRE_DIV_HEADER +
+              "00.000/0001-91;EMPRESA S.A.;2023-04-10;Dividendo Obrigatório;450000.00\n")
+    capital_csv = (_FRE_CAPITAL_HEADER + "00.000/0001-91;2023-12-31;900.000,00\n")
+    zbytes = _fre_year_zip(div_csv, capital_csv)
+    monkeypatch.setattr(ingest_cvm, "download_zip", lambda url, timeout=300: zbytes)
+
+    n = ingest_cvm.ingest_fre_dividends_year(
+        conn, 2023, ticker_of={"empresa_s.a.": "EMPR3"})
+    assert n == 1
+    row = conn.execute(
+        "SELECT ticker, ex_date, value_per_share, source FROM dividends").fetchone()
+    assert row["ticker"] == "EMPR3" and row["ex_date"] == "2023-04-10"
+    assert row["value_per_share"] == pytest.approx(450_000.0 / 900_000.0)
+    assert row["source"] == "CVM FRE 2023"
+
+    # re-executar não duplica (UNIQUE ticker+ex_date+source)
+    n2 = ingest_cvm.ingest_fre_dividends_year(
+        conn, 2023, ticker_of={"empresa_s.a.": "EMPR3"})
+    assert n2 == 0
+    assert conn.execute("SELECT COUNT(*) FROM dividends").fetchone()[0] == 1
+
+
+def test_ingest_fre_dividends_year_skips_company_without_reliable_share_total(conn, monkeypatch):
+    # sem total de ações confiável (companhia ausente do FRE de capital):
+    # sem dado inventado — nada é gravado, não um valor-por-ação chutado.
+    div_csv = (_FRE_DIV_HEADER +
+              "00.000/0001-91;EMPRESA S.A.;2023-04-10;Dividendo Obrigatório;450000.00\n")
+    capital_csv = _FRE_CAPITAL_HEADER    # nenhuma companhia
+    zbytes = _fre_year_zip(div_csv, capital_csv)
+    monkeypatch.setattr(ingest_cvm, "download_zip", lambda url, timeout=300: zbytes)
+
+    n = ingest_cvm.ingest_fre_dividends_year(
+        conn, 2023, ticker_of={"empresa_s.a.": "EMPR3"})
+    assert n == 0
+    assert conn.execute("SELECT COUNT(*) FROM dividends").fetchone()[0] == 0
+
+
+def test_ingest_fre_dividends_year_skips_unmapped_company(conn, monkeypatch):
+    div_csv = (_FRE_DIV_HEADER +
+              "00.000/0001-91;SEM MAPA S.A.;2023-04-10;Dividendo Obrigatório;450000.00\n")
+    capital_csv = (_FRE_CAPITAL_HEADER + "00.000/0001-91;2023-12-31;900.000,00\n")
+    zbytes = _fre_year_zip(div_csv, capital_csv)
+    monkeypatch.setattr(ingest_cvm, "download_zip", lambda url, timeout=300: zbytes)
+
+    n = ingest_cvm.ingest_fre_dividends_year(conn, 2023, ticker_of={})
+    assert n == 0
+    assert conn.execute("SELECT COUNT(*) FROM dividends").fetchone()[0] == 0

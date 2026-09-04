@@ -202,6 +202,27 @@ def parse_ipe_rows(rows, companies: set[str] | None = None) -> list[dict]:
     return out
 
 
+def _open_fre_distribuicao_capital_main(zbytes: bytes):
+    """Abre o CSV `distribuicao_capital` PRINCIPAL de um zip FRE (não o
+    `_classe_acao`). `_open_zip_csv` recusa o nome puro por ambiguidade —
+    "distribuicao_capital" bate tanto no arquivo principal quanto no
+    "_classe_acao" (substring) — então filtra à mão excluindo
+    "classe_acao" do nome. Único ponto de verdade para essa seleção;
+    reutilizado por `load_free_float` e `ingest_fre_dividends_year`."""
+    zf = zipfile.ZipFile(io.BytesIO(zbytes))
+    candidates = [n for n in zf.namelist()
+                 if "distribuicao_capital" in _norm(n) and "classe_acao" not in _norm(n)
+                 and n.endswith(".csv")]
+    if len(candidates) != 1:
+        raise ValueError(
+            f"esperava 1 CSV 'distribuicao_capital' (sem classe_acao), achei "
+            f"{len(candidates)}: {candidates}")
+    with zf.open(candidates[0]) as f:
+        text = io.TextIOWrapper(f, encoding="latin-1")
+        reader = csv.reader(text, delimiter=";")
+        yield from reader
+
+
 def parse_fre_float_rows(rows) -> list[dict]:
     """Linhas FRE de distribuição de capital -> {company, ref_date,
     shares_outstanding, free_float}. Sem coluna de circulação: fail-loud,
@@ -387,20 +408,27 @@ _CAPITAL_TOTAL_COLS = {
 }
 
 
-def _to_float(raw: str) -> float | None:
-    """CVM mistura formato numérico entre datasets (DFP/FRE-float usam vírgula
-    decimal BR; FRE-dividendos observado usa ponto decimal já em 2026-09).
-    Tenta ponto primeiro (mais comum nos exports novos), cai para
-    `,`-decimal/`.`-milhar só se a 1ª tentativa falhar — nunca adivinha em
-    silêncio um valor que não faz parse de nenhum jeito (None)."""
+def _to_float(raw: str, fmt: str) -> float | None:
+    """Converte string numérica da CVM para float. CVM mistura formato entre
+    datasets (DFP/FRE-float usam vírgula decimal BR com ponto de milhar;
+    FRE-dividendos `Montante` observado usa ponto decimal puro, sem milhar).
+    Adivinhar o formato olhando só a string é ambíguo — "450.000" é 450 em
+    inglês e 450000 em BR — então `fmt` é OBRIGATÓRIO e escolhido pelo
+    chamador de acordo com o dataset/coluna, nunca inferido em silêncio:
+
+    - `fmt="en"`: ponto decimal, sem separador de milhar (`float(raw)` puro).
+    - `fmt="br"`: vírgula decimal, ponto de milhar (mesma convenção de
+      `parse_fre_float_rows`/DFP).
+
+    Nunca adivinha um valor que não faz parse no formato pedido (`None`)."""
+    if fmt not in ("en", "br"):
+        raise ValueError(f"_to_float: fmt inválido {fmt!r}, esperado 'en' ou 'br'")
     raw = raw.strip()
     if not raw:
         return None
     try:
-        return float(raw)
-    except ValueError:
-        pass
-    try:
+        if fmt == "en":
+            return float(raw)
         return float(raw.replace(".", "").replace(",", "."))
     except ValueError:
         return None
@@ -430,7 +458,7 @@ def parse_fre_dividend_rows(rows) -> list[dict]:
         pay_date = row[idx["pay_date"]].strip()[:10]
         if not pay_date:
             continue
-        amount = _to_float(row[idx["amount"]])
+        amount = _to_float(row[idx["amount"]], fmt="en")
         if amount is None:
             continue
         out.append({
@@ -464,7 +492,7 @@ def parse_fre_capital_total_rows(rows) -> dict[str, float]:
             continue
         if len(row) < len(header):
             continue
-        total = _to_float(row[idx["total_shares"]])
+        total = _to_float(row[idx["total_shares"]], fmt="br")
         if total is None or total <= 0:
             continue
         cnpj = row[idx["cnpj"]].strip()
@@ -499,21 +527,8 @@ def ingest_fre_dividends_year(conn, year: int, companies: set[str] | None = None
     zbytes = download_zip(FRE_URL.format(year=year))
     div_rows = parse_fre_dividend_rows(
         _open_zip_csv(zbytes, "distribuicao_dividendos_classe_acao"))
-
-    # `_open_zip_csv` recusa nome ambíguo — "distribuicao_capital" bate tanto
-    # no arquivo principal quanto no "_classe_acao" (substring). Reabre à mão
-    # escolhendo só o arquivo SEM "_classe_acao" no nome.
-    zf = zipfile.ZipFile(io.BytesIO(zbytes))
-    candidates = [n for n in zf.namelist()
-                 if "distribuicao_capital" in _norm(n) and "classe_acao" not in _norm(n)
-                 and n.endswith(".csv")]
-    if len(candidates) != 1:
-        raise ValueError(
-            f"esperava 1 CSV 'distribuicao_capital' (sem classe_acao), achei "
-            f"{len(candidates)}: {candidates}")
-    with zf.open(candidates[0]) as f:
-        text = io.TextIOWrapper(f, encoding="latin-1")
-        total_shares_by_cnpj = parse_fre_capital_total_rows(csv.reader(text, delimiter=";"))
+    total_shares_by_cnpj = parse_fre_capital_total_rows(
+        _open_fre_distribuicao_capital_main(zbytes))
 
     # soma Montante por (cnpj, pay_date) — várias categorias de distribuição
     # (ex.: "Dividendo Obrigatório" + "Outros") no mesmo pagamento.
@@ -608,8 +623,7 @@ def load_free_float(year: int, companies: set[str] | None = None) -> dict:
     (determinístico — nunca "a última lida", que dependeria da ordem do
     arquivo)."""
     rows = parse_fre_float_rows(
-        _open_zip_csv(download_zip(FRE_URL.format(year=year)),
-                      "distribuicao_capital"))
+        _open_fre_distribuicao_capital_main(download_zip(FRE_URL.format(year=year))))
     best: dict[str, tuple[str, float]] = {}
     for r in rows:
         if r["free_float"] is None:
