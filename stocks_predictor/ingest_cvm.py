@@ -88,6 +88,12 @@ _EQUITY_KEYWORDS = ("patrimonio_liquido_consolidado", "patrimonio_liquido")
 # "periodo" na mesma linha para não pegar subtotal intermediário.
 _NET_INCOME_KEYWORDS_ALL = ("periodo",)
 _NET_INCOME_KEYWORDS_ANY = ("lucro", "prejuizo")
+# Receita líquida (DRE) — insumo da H12 (margem)/H13 (crescimento YoY),
+# pré-registradas 2026-09-04. Código 3.01 do plano de contas CVM
+# ("Receita de Venda de Bens e/ou Serviços"), cruzado com "receita" na
+# descrição (mesma checagem de sanidade dos outros campos).
+_REVENUE_CODE = "3.01"
+_REVENUE_KEYWORDS = ("receita",)
 
 
 def _norm(s: str) -> str:
@@ -327,7 +333,18 @@ def _pick_account(rows: list[dict], code: str | None,
 def compute_fundamentals(bpa_rows: list[dict], bpp_rows: list[dict],
                          dre_rows: list[dict]) -> list[dict]:
     """BPA+BPP+DRE já parseados -> [{company, ref_date, ativo_total,
-    passivo_total, patrimonio_liquido, lucro_liquido, roe, leverage}].
+    passivo_total, patrimonio_liquido, lucro_liquido, roe, leverage,
+    receita_liquida, net_margin}].
+
+    `receita_liquida`/`net_margin` (H12/H13, pré-registro 2026-09-04) usam
+    seu PRÓPRIO critério de elegibilidade (`lucro` + `receita` resolvidos
+    sem ambiguidade), independente de `roe`/`leverage` — uma companhia com
+    receita e lucro mas sem PL resolvido ainda ganha `net_margin` (roe/
+    leverage ficam `None` para ela). A linha só existe se PELO MENOS UM dos
+    dois grupos (roe/leverage OU receita/net_margin) resolver; cada valor
+    individual é `None` quando seu próprio grupo de contas não resolveu —
+    nunca um ratio fabricado misturando contas de linhas diferentes.
+    `net_margin` fica `None` se `receita_liquida` <= 0.
 
     ARMADILHA do plano de contas padronizado CVM (registrada aqui para não
     repetir o erro): `CD_CONTA "2" - Passivo Total` no BPP JÁ INCLUI o
@@ -349,18 +366,32 @@ def compute_fundamentals(bpa_rows: list[dict], bpp_rows: list[dict],
     passivo = _pick_account(bpp_rows, _LIABILITY_TOTAL_CODE, _LIABILITY_TOTAL_KEYWORDS)
     pl = _pick_account(bpp_rows, _EQUITY_CODE, _EQUITY_KEYWORDS)
     lucro = _pick_account(dre_rows, None, _NET_INCOME_KEYWORDS_ALL, _NET_INCOME_KEYWORDS_ANY)
-    keys = set(ativo) & set(passivo) & set(pl) & set(lucro)
+    receita = _pick_account(dre_rows, _REVENUE_CODE, _REVENUE_KEYWORDS)
+    roe_leverage_keys = set(ativo) & set(passivo) & set(pl) & set(lucro)
+    margin_keys = set(lucro) & set(receita)
+    keys = roe_leverage_keys | margin_keys
     out = []
     for company, ref_date in sorted(keys):
-        a, p, e, l = ativo[(company, ref_date)], passivo[(company, ref_date)], \
-            pl[(company, ref_date)], lucro[(company, ref_date)]
-        out.append({
-            "company": company, "ref_date": ref_date,
-            "ativo_total": a, "passivo_total": p,
-            "patrimonio_liquido": e, "lucro_liquido": l,
-            "roe": (l / e) if e > 0 else None,
-            "leverage": ((p - e) / a) if a > 0 else None,
-        })
+        key = (company, ref_date)
+        row = {"company": company, "ref_date": ref_date,
+              "ativo_total": None, "passivo_total": None,
+              "patrimonio_liquido": None, "lucro_liquido": None,
+              "roe": None, "leverage": None,
+              "receita_liquida": None, "net_margin": None}
+        if key in roe_leverage_keys:
+            a, p, e, l = ativo[key], passivo[key], pl[key], lucro[key]
+            row.update({
+                "ativo_total": a, "passivo_total": p,
+                "patrimonio_liquido": e, "lucro_liquido": l,
+                "roe": (l / e) if e > 0 else None,
+                "leverage": ((p - e) / a) if a > 0 else None,
+            })
+        if key in margin_keys:
+            l, r = lucro[key], receita[key]
+            row["lucro_liquido"] = l    # mesmo valor em ambos os grupos
+            row["receita_liquida"] = r
+            row["net_margin"] = (l / r) if r > 0 else None
+        out.append(row)
     return out
 
 
@@ -391,12 +422,25 @@ def ingest_dfp_year(conn, year: int, companies: set[str] | None = None,
         if ticker is None:
             continue    # companhia sem ticker mapeado: revisão humana antes
         conn.execute(
-            "INSERT OR IGNORE INTO fundamentals"
+            "INSERT INTO fundamentals"
             "(ticker, ref_date, ativo_total, passivo_total, patrimonio_liquido,"
-            " lucro_liquido, roe, leverage, source) VALUES (?,?,?,?,?,?,?,?,?)",
+            " lucro_liquido, roe, leverage, receita_liquida, net_margin, source)"
+            " VALUES (?,?,?,?,?,?,?,?,?,?,?)"
+            " ON CONFLICT(ticker, ref_date, source) DO UPDATE SET"
+            # backfill APENAS quando a linha existente ainda não tem
+            # receita/margem (rodadas de ingest anteriores à migração
+            # 0010_fundamentals_revenue, H12/H13 2026-09-04) — nunca
+            # sobrescreve um valor já preenchido, e não conta como
+            # "mudança" num re-run comum (mesmo dado, WHERE não bate),
+            # preservando a idempotência já testada (re-executar o mesmo
+            # ano não duplica NEM recontabiliza).
+            " receita_liquida = excluded.receita_liquida,"
+            " net_margin = excluded.net_margin"
+            " WHERE fundamentals.receita_liquida IS NULL"
+            " AND excluded.receita_liquida IS NOT NULL",
             (ticker, f["ref_date"], f["ativo_total"], f["passivo_total"],
              f["patrimonio_liquido"], f["lucro_liquido"], f["roe"], f["leverage"],
-             f"CVM DFP {year}"))
+             f["receita_liquida"], f["net_margin"], f"CVM DFP {year}"))
         n += conn.execute("SELECT changes()").fetchone()[0]
     conn.commit()
     return n

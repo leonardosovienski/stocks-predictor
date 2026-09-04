@@ -345,3 +345,52 @@ H11_FROZEN_KEYS = [
 def h11_frozen_config_hash(config: dict) -> str:
     """O LACRE da H11 — mesmo mecanismo dos lacres anteriores."""
     return _frozen_hash(config, H11_FROZEN_KEYS, "H11-FROZEN")
+
+
+# Subconjunto H12-FROZEN (pré-registro 2026-09-04, HANDOFF). Fator de
+# qualidade, margem líquida isolada (top quintile) — 3ª variável contábil
+# independente da DFP (depois de ROE/H7 e alavancagem/H9), mesma fonte/
+# embargo. Reuso declarado de universo/execução/janela/bootstrap.
+H12_FROZEN_KEYS = [
+    ("universe", "top_n"), ("universe", "lookback_trading_days"),
+    ("universe", "min_history_days"), ("universe", "rebalance_frequency"),
+    ("h12_factor", "name"), ("h12_factor", "disclosure_embargo_days"),
+    ("h12_portfolio", "quantile"), ("h12_portfolio", "weighting"),
+    ("h12_portfolio", "direction"),
+    ("execution", "price"), ("execution", "b3_fee_pct"),
+    ("execution", "brokerage_pct"), ("execution", "spread_slippage_pct"),
+    ("backtest", "warmup_end"), ("backtest", "test_start"),
+    ("backtest", "purge_embargo_months"),
+    ("bootstrap", "n_boot"), ("bootstrap", "block_length"),
+    ("bootstrap", "confidence"), ("bootstrap", "method"),
+    ("h12_criteria", "dsr_min"),
+]
+
+
+def h12_frozen_config_hash(config: dict) -> str:
+    """O LACRE da H12 — mesmo mecanismo dos lacres anteriores."""
+    return _frozen_hash(config, H12_FROZEN_KEYS, "H12-FROZEN")
+
+
+# Subconjunto H13-FROZEN (pré-registro 2026-09-04, HANDOFF). Crescimento de
+# receita líquida YoY (top quintile) — primeira hipótese de CRESCIMENTO
+# testada neste domínio, mesma fonte/embargo DFP das anteriores contábeis.
+H13_FROZEN_KEYS = [
+    ("universe", "top_n"), ("universe", "lookback_trading_days"),
+    ("universe", "min_history_days"), ("universe", "rebalance_frequency"),
+    ("h13_factor", "name"), ("h13_factor", "disclosure_embargo_days"),
+    ("h13_portfolio", "quantile"), ("h13_portfolio", "weighting"),
+    ("h13_portfolio", "direction"),
+    ("execution", "price"), ("execution", "b3_fee_pct"),
+    ("execution", "brokerage_pct"), ("execution", "spread_slippage_pct"),
+    ("backtest", "warmup_end"), ("backtest", "test_start"),
+    ("backtest", "purge_embargo_months"),
+    ("bootstrap", "n_boot"), ("bootstrap", "block_length"),
+    ("bootstrap", "confidence"), ("bootstrap", "method"),
+    ("h13_criteria", "dsr_min"),
+]
+
+
+def h13_frozen_config_hash(config: dict) -> str:
+    """O LACRE da H13 — mesmo mecanismo dos lacres anteriores."""
+    return _frozen_hash(config, H13_FROZEN_KEYS, "H13-FROZEN")

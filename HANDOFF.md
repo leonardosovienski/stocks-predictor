@@ -2217,3 +2217,92 @@ pré-registrada pendente nem fronteira de dado nova identificada.
 `STOCKS_CURRENT_STATE.md` (`research_state=FROZEN`,
 `scientific_state=CLOSED_FOR_H1_THROUGH_H11`, `new_scientific_trials=0`)
 atualizados.
+
+---
+
+## H12 e H13 ABERTAS — PRÉ-REGISTRO (2026-09-04, ANTES de qualquer rodada real)
+
+Decisão explícita do operador (com a ressalva de que cada hipótese é
+testada UMA vez, julgada UMA vez — não é "tentar até passar", que é
+justamente o que o pedágio IC95%+DSR existe pra impedir). Duas hipóteses
+novas, ambas reusando dado JÁ ingerido (DRE da DFP/CVM, baixada desde a
+H7) — zero rede/ingestão nova, só extração de contas que já estavam nos
+arquivos e nunca tinham sido lidas.
+
+**H12 — margem líquida isolada** (`config.yaml` `h12_*`,
+`config.h12_frozen_config_hash` = `73444111b8bd969f`): quintil SUPERIOR de
+`net_margin = lucro_liquido/receita_liquida`, mesmo universo/custos/embargo
+(90 dias) de H7/H9/H10. Racional: 3ª variável contábil independente da
+DFP — ROE (H7) mistura alavancagem financeira no numerador por identidade
+contábil, alavancagem isolada (H9) também reprovou; margem é qualidade
+puramente OPERACIONAL, mecanismo distinto dos dois.
+
+**H13 — crescimento de receita YoY** (`config.yaml` `h13_*`,
+`config.h13_frozen_config_hash` = `473ca87ab5b1f8a0`): quintil SUPERIOR de
+`(receita_t − receita_t-1)/receita_t-1`, mesma fonte/embargo. **Primeira
+hipótese de CRESCIMENTO testada neste domínio** — H1-H12 são todas
+nível/valor (momentum mede preço, não fundamento). Precisa de DUAS linhas
+elegíveis de receita por ticker (a mais recente sobre a anterior); como a
+DFP é anual (não ITR trimestral), as duas linhas mais recentes elegíveis
+tipicamente distam ~12 meses, mas isso não é verificado — um gap maior por
+ano com dado faltante entra do mesmo jeito (limitação da granularidade da
+fonte, declarada em `report._BIAS_NOTE["H13"]`, não escondida).
+
+**Critério (ambas):** IC95% diff-Sharpe > 0 E DSR >= 0,95 — H12 com N=11
+tentativas no registro, H13 com N=12 (10 já julgadas + a outra nova).
+
+**Implementação:**
+- `db.py` migração `0010_fundamentals_revenue` (append-only: 2 colunas
+  novas em `fundamentals`, `0007` intocada) — `receita_liquida`,
+  `net_margin`.
+- `ingest_cvm.compute_fundamentals`: conta de receita (código `3.01`,
+  keyword "receita") extraída da MESMA DRE já parseada pela H7/H9; grupo
+  de contas de margem (`lucro` + `receita`) é INDEPENDENTE do grupo de
+  roe/leverage (`ativo`+`passivo`+`pl`+`lucro`) — uma empresa pode ter
+  `net_margin` sem `roe`/`leverage` resolvidos, e vice-versa. `ingest_dfp_year`
+  grava as 2 colunas novas no INSERT.
+- `factor.net_margin_signals` (H12): reusa o motor comum
+  `_fundamental_signals` (mesmo de roe/leverage), só adiciona `"net_margin"`
+  às colunas aceitas.
+- `factor.revenue_growth_signals` (H13): motor NOVO (não cabe no comum —
+  precisa de 2 linhas, não 1): pega as duas linhas mais recentes ELEGÍVEIS
+  (embargo já vencido) de `receita_liquida`, `growth = (mais_recente −
+  anterior)/anterior`; ticker com <2 linhas elegíveis ou receita anterior
+  <=0 fica fora (sem crescimento fabricado).
+- `backtest.run_h12`/`run_h13`: mesmo runner genérico `_run_hypothesis`,
+  `take="top"` nas duas.
+- `report._BIAS_NOTE["H12"]`/`["H13"]`: mesma limitação declarada de
+  H7/H9/H10 (direção do viés só-preço não estabelecida a priori); H13
+  soma a limitação de granularidade anual.
+- `tests/test_h12_quality_margin.py`, `tests/test_h13_revenue_growth.py`:
+  smoke com dado sintético, golden hash do lacre, hash ignora parâmetro
+  operacional, testes de embargo/2-linhas/denominador inválido.
+- `tests/test_rj_ingest.py`: 2 testes novos confirmando que os dois grupos
+  de contas (roe/leverage vs. margem) são independentes em
+  `compute_fundamentals`.
+
+Suite completa (sandbox): 302 passed, 1 skipped, 6 failed — mesmos 6
+pré-existentes do shim de vendor, não relacionados.
+
+**Achado no caminho — backfill é OBRIGATÓRIO, não opcional:** as linhas de
+`fundamentals` já gravadas pela H7 (antes desta migração) têm
+`receita_liquida`/`net_margin` NULL — a coluna não existia quando foram
+inseridas. `ingest_dfp_year` usava `INSERT OR IGNORE`, que NUNCA
+preencheria colunas novas em linha já existente (ignorada pra sempre).
+Corrigido para `INSERT ... ON CONFLICT DO UPDATE`, mas o UPDATE só dispara
+quando a linha existente tem `receita_liquida IS NULL` E o novo parse tem
+valor pra gravar — nunca sobrescreve um valor já preenchido, e não conta
+como "mudança" (nem quebra a idempotência já testada) quando rodado de
+novo sobre dado já backfillado. Teste novo:
+`test_ingest_dfp_year_backfills_revenue_on_preexisting_row`.
+
+**Próximo passo (máquina do operador):** `python -m pytest tests/ -v`
+pra confirmar verde total, depois RE-RODAR a ingestão real da H7 pra
+backfillar receita/margem nas linhas já existentes (mesmos zips já
+baixados, sem rede nova necessária se ainda estiverem em cache/repetir o
+download é barato):
+```
+python tools/ingest_h7_real.py
+python -c "import backtest; backtest.run_h12(write_report=True)"
+python -c "import backtest; backtest.run_h13(write_report=True)"
+```

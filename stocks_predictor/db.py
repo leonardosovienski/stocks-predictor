@@ -266,6 +266,17 @@ MIGRATIONS: list[tuple[str, str]] = [
         CREATE INDEX IF NOT EXISTS idx_dividends_ticker_exdate
             ON dividends(ticker, ex_date);
     """),
+    ("0010_fundamentals_revenue", """
+        -- Receita líquida (DRE, já baixada/parseada desde a H7 mas nunca
+        -- extraída) — insumo da H12 (margem líquida) e H13 (crescimento de
+        -- receita YoY), pré-registradas 2026-09-04. Append-only: nova coluna
+        -- em `fundamentals`, migração 0007 intocada. `net_margin` gravado
+        -- (mesmo padrão de roe/leverage, calculado uma vez na ingestão);
+        -- crescimento YoY é calculado no sinal (precisa comparar 2 linhas),
+        -- não faz sentido como coluna de uma linha só.
+        ALTER TABLE fundamentals ADD COLUMN receita_liquida REAL;
+        ALTER TABLE fundamentals ADD COLUMN net_margin REAL;
+    """),
 ]
 
 

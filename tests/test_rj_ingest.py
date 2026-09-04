@@ -181,6 +181,51 @@ def test_compute_fundamentals_skips_company_missing_any_account():
     assert ingest_cvm.compute_fundamentals(bpa, bpp, dre) == []
 
 
+def test_compute_fundamentals_net_margin_independent_of_roe_leverage():
+    # H12 (pré-registro 2026-09-04): empresa com receita+lucro resolvidos
+    # mas SEM PL (roe/leverage indisponíveis) ainda ganha net_margin — os
+    # dois grupos de contas são independentes, um não bloqueia o outro.
+    bpa = [{"company": "X S.A.", "ref_date": "2023-12-31",
+            "account_code": "1", "account_desc": "Ativo Total", "value": 100.0}]
+    bpp = []    # sem passivo/PL -> roe/leverage ficam None
+    dre = [
+        {"company": "X S.A.", "ref_date": "2023-12-31",
+         "account_code": "3.01", "account_desc": "Receita de Venda de Bens e/ou Serviços",
+         "value": 500.0},
+        {"company": "X S.A.", "ref_date": "2023-12-31",
+         "account_code": "3.11", "account_desc": "Lucro/Prejuízo Consolidado do Período",
+         "value": 50.0},
+    ]
+    out = ingest_cvm.compute_fundamentals(bpa, bpp, dre)
+    assert len(out) == 1
+    f = out[0]
+    assert f["roe"] is None and f["leverage"] is None
+    assert f["receita_liquida"] == pytest.approx(500.0)
+    assert f["net_margin"] == pytest.approx(0.1)
+
+
+def test_compute_fundamentals_net_margin_none_when_revenue_missing():
+    # roe/leverage resolvem normalmente (as 4 contas originais presentes),
+    # mas sem receita na DRE -> net_margin fica None, não quebra o resto.
+    bpa = [{"company": "EMPRESA S.A.", "ref_date": "2023-12-31",
+            "account_code": "1", "account_desc": "Ativo Total", "value": 1_000_000.0}]
+    bpp = [
+        {"company": "EMPRESA S.A.", "ref_date": "2023-12-31",
+         "account_code": "2", "account_desc": "Passivo Total", "value": 1_000_000.0},
+        {"company": "EMPRESA S.A.", "ref_date": "2023-12-31",
+         "account_code": "2.03", "account_desc": "Patrimônio Líquido Consolidado",
+         "value": 400_000.0},
+    ]
+    dre = [{"company": "EMPRESA S.A.", "ref_date": "2023-12-31",
+            "account_code": "3.11", "account_desc": "Lucro/Prejuízo Consolidado do Período",
+            "value": 50_000.0}]
+    out = ingest_cvm.compute_fundamentals(bpa, bpp, dre)
+    assert len(out) == 1
+    f = out[0]
+    assert f["roe"] == pytest.approx(50_000.0 / 400_000.0)
+    assert f["receita_liquida"] is None and f["net_margin"] is None
+
+
 def test_ingest_dfp_year_writes_fundamentals(conn, monkeypatch):
     bpa_csv = (_DFP_HEADER +
               "00.000/0001-91;EMPRESA S.A.;ÚLTIMO;2023-12-31;1;Ativo Total;1000000\n")
@@ -244,6 +289,53 @@ def test_ingest_dfp_year_accepts_prefetched_zbytes_without_downloading(conn, mon
                                     zbytes=zbytes)
     assert n2 == 1
     assert conn.execute("SELECT COUNT(*) FROM fundamentals").fetchone()[0] == 2
+
+
+def test_ingest_dfp_year_backfills_revenue_on_preexisting_row(conn, monkeypatch):
+    # Achado H12/H13 (2026-09-04): uma linha já ingerida ANTES da migração
+    # 0010_fundamentals_revenue (receita_liquida/net_margin NULL) precisa
+    # ganhar esses valores ao reingerir o mesmo ano — INSERT OR IGNORE puro
+    # nunca faria isso (a linha já existe, seria ignorada pra sempre).
+    conn.execute(
+        "INSERT INTO fundamentals(ticker, ref_date, ativo_total, passivo_total,"
+        " patrimonio_liquido, lucro_liquido, roe, leverage, source)"
+        " VALUES (?,?,?,?,?,?,?,?,?)",
+        ("EMPR3", "2023-12-31", 1_000_000.0, 1_000_000.0, 400_000.0, 50_000.0,
+         0.125, 0.6, "CVM DFP 2023"))
+    conn.commit()
+
+    bpa_csv = (_DFP_HEADER +
+              "00.000/0001-91;EMPRESA S.A.;ÚLTIMO;2023-12-31;1;Ativo Total;1000000\n")
+    bpp_csv = (_DFP_HEADER +
+              "00.000/0001-91;EMPRESA S.A.;ÚLTIMO;2023-12-31;2;Passivo Total;1000000\n"
+              "00.000/0001-91;EMPRESA S.A.;ÚLTIMO;2023-12-31;2.03;"
+              "Patrimônio Líquido Consolidado;400000\n")
+    dre_csv = (_DFP_HEADER +
+              "00.000/0001-91;EMPRESA S.A.;ÚLTIMO;2023-12-31;3.01;"
+              "Receita de Venda de Bens e/ou Servicos;500000\n"
+              "00.000/0001-91;EMPRESA S.A.;ÚLTIMO;2023-12-31;3.11;"
+              "Lucro/Prejuízo Consolidado do Período;50000\n")
+    buf = io.BytesIO()
+    with zipfile.ZipFile(buf, "w") as zf:
+        zf.writestr("dfp_cia_aberta_BPA_con_2023.csv", bpa_csv.encode("latin-1"))
+        zf.writestr("dfp_cia_aberta_BPP_con_2023.csv", bpp_csv.encode("latin-1"))
+        zf.writestr("dfp_cia_aberta_DRE_con_2023.csv", dre_csv.encode("latin-1"))
+    zbytes = buf.getvalue()
+    monkeypatch.setattr(ingest_cvm, "download_zip", lambda url, timeout=300: zbytes)
+
+    n = ingest_cvm.ingest_dfp_year(conn, 2023, ticker_of={"empresa_s.a.": "EMPR3"})
+    assert n == 1   # backfill conta como mudança
+    row = conn.execute(
+        "SELECT roe, leverage, receita_liquida, net_margin FROM fundamentals"
+        " WHERE ticker='EMPR3'").fetchone()
+    assert row["roe"] == pytest.approx(0.125) and row["leverage"] == pytest.approx(0.6)
+    assert row["receita_liquida"] == pytest.approx(500_000.0)
+    assert row["net_margin"] == pytest.approx(0.1)
+    assert conn.execute("SELECT COUNT(*) FROM fundamentals").fetchone()[0] == 1  # sem duplicar
+
+    # rodar de novo não recontabiliza (já preenchido, idempotência preservada)
+    n2 = ingest_cvm.ingest_dfp_year(conn, 2023, ticker_of={"empresa_s.a.": "EMPR3"})
+    assert n2 == 0
 
 
 def test_ingest_dfp_year_skips_unmapped_company(conn, monkeypatch):
