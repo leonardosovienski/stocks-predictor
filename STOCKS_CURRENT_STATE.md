@@ -8,11 +8,13 @@ Este é o ponto de entrada técnico corrente. O código, Git/CI e
 ## Estado canônico
 
 ```text
-role = FROZEN_RESEARCH_ASSET + REUSABLE_COMPONENT_LIBRARY + NEGATIVE_RESULT_CASE
-research_state = FROZEN                                # ver HANDOFF.md, 2026-09-04
-scientific_state = CLOSED_FOR_H1_THROUGH_H16           # todas as 16 hipóteses julgadas
+role = ACTIVE_RESEARCH_ASSET + REUSABLE_COMPONENT_LIBRARY + NEGATIVE_RESULT_CASE
+research_state = REOPENED_BY_NEW_DATA_SOURCE          # ver HANDOFF.md, 2026-09-04
+scientific_state = CLOSED_FOR_H1_THROUGH_H16          # as 16 primeiras seguem julgadas
+                                                      # e FECHADAS; H17-H19 pré-registradas,
+                                                      # NÃO rodadas
 commercial_state = NOT_A_PRODUCT
-new_scientific_trials = 0
+new_scientific_trials = 3                             # H17 accruals, H18 E/P, H19 B/M
 ```
 
 As famílias de fatores JÁ JULGADAS (H1/H2/H4/H5/H6/H7/H8/H9/H10/H11/H12/H13/
@@ -36,6 +38,30 @@ HANDOFF.md "VEREDITO H11"/"VEREDITO H12 e H13"/"VEREDITO H14, H15 e H16"
 para detalhes completos. Reabertura de qualquer uma das 16 exige o
 dossiê completo definido em `RESEARCH_FREEZE.md` e informação
 materialmente nova.
+
+## H17-H19 — pré-registradas, aguardando rodada real (2026-09-04)
+
+Decisão do operador de reabrir a pesquisa por **fonte de dado nova**, não por
+recombinação do que já foi observado (o que seria p-hacking e segue recusado):
+
+| # | fator | direção | dado novo | lacre |
+|---|---|---|---|---|
+| H17 | accruals `(lucro − FCO)/ativo` (Sloan 1996) | quintil INFERIOR | DFC-MI consolidada da CVM — 1ª demonstração nova desde o M2 | `aece696b814c0fd9` |
+| H18 | earnings yield `E/P` (Basu; Fama-French) | quintil SUPERIOR | `shares_outstanding` (FRE, migração 0011) | `dded266f1bb712f1` |
+| H19 | book-to-market `B/M` (Fama-French) | quintil SUPERIOR | idem H18 | `dabaa53adc9b9349` |
+
+H18/H19 são os **primeiros fatores de VALOR** do domínio — as 16 anteriores
+mediram qualidade do negócio ou comportamento do preço, nunca a razão entre
+os dois. São hipóteses separadas de propósito (fluxo vs. estoque), cada uma
+com N próprio no DSR (17/18/19).
+
+**Estado: código pronto e testado, NENHUMA rodada real executada.** Exigem
+ingestão nova (DFC-MI e ações em circulação) na máquina do operador antes de
+qualquer veredito. Ver HANDOFF.md "H17, H18 e H19 ABERTAS — PRÉ-REGISTRO".
+
+As 16 hipóteses já julgadas permanecem FECHADAS: nada aqui as reabre, e a
+`reopen_policy` de `RESEARCH_FREEZE.md` §11 (6 campos + revisão humana)
+continua valendo integralmente para elas.
 
 ## Dependência e vendor
 
@@ -62,8 +88,10 @@ VENDOR_REINTRODUCTION_GUARD = PASS
 
 ## Alterações permitidas
 
-Somente bug real, segurança, preservação ou integridade de dependência. Mudanças de
-manutenção não promovem claim científica ou comercial.
+Bug real, segurança, preservação, integridade de dependência — e o trabalho das
+hipóteses H17-H19 pré-registradas acima. Mudanças de manutenção não promovem claim
+científica ou comercial, e pré-registro NÃO é resultado: nenhuma claim pode ser feita
+sobre H17-H19 antes da rodada real e do pedágio.
 
 ## Fontes
 

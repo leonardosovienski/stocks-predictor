@@ -277,6 +277,29 @@ MIGRATIONS: list[tuple[str, str]] = [
         ALTER TABLE fundamentals ADD COLUMN receita_liquida REAL;
         ALTER TABLE fundamentals ADD COLUMN net_margin REAL;
     """),
+    ("0011_fundamentals_cashflow_shares", """
+        -- Insumos de H17 (accruals) e H18/H19 (valor), pré-registradas
+        -- 2026-09-04. Append-only: colunas novas em `fundamentals`,
+        -- migrações 0007/0010 intocadas.
+        --
+        -- `fluxo_caixa_operacional`: conta 6.01 da DFC-MI consolidada
+        -- (`dfp_cia_aberta_DFC_MI_con_YYYY.csv`) — arquivo que já vem DENTRO
+        -- do zip DFP baixado desde a H7, mas que nunca foi aberto. É a
+        -- primeira DEMONSTRAÇÃO nova ingerida desde o M2 (BPA/BPP/DRE):
+        -- fluxo de caixa não é derivável de nenhuma das três.
+        -- `accruals` gravado (mesmo padrão de roe/leverage/net_margin,
+        -- calculado uma vez na ingestão).
+        --
+        -- `shares_outstanding`: quantidade total de ações do FRE. O parser
+        -- já existia (`ingest_cvm.parse_fre_capital_total_rows`, usado para
+        -- converter montante de provento em valor-por-ação) mas o valor era
+        -- transitório, nunca persistido. Sem ele não há capitalização de
+        -- mercado, logo não há múltiplo — é a peça que faltava para
+        -- qualquer hipótese de VALOR.
+        ALTER TABLE fundamentals ADD COLUMN fluxo_caixa_operacional REAL;
+        ALTER TABLE fundamentals ADD COLUMN accruals REAL;
+        ALTER TABLE fundamentals ADD COLUMN shares_outstanding REAL;
+    """),
 ]
 
 

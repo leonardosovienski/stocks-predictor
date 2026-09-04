@@ -468,3 +468,75 @@ H16_FROZEN_KEYS = [
 def h16_frozen_config_hash(config: dict) -> str:
     """O LACRE da H16 — mesmo mecanismo dos lacres anteriores."""
     return _frozen_hash(config, H16_FROZEN_KEYS, "H16-FROZEN")
+
+
+# Subconjunto H17-FROZEN (pré-registro 2026-09-04, HANDOFF). Accruals
+# (Sloan 1996) — quintil INFERIOR. Primeira hipótese com FONTE DE DADO NOVA
+# (DFC-MI consolidada) desde o M2. Mesma janela/universo/execução/bootstrap
+# de H1; `disclosure_embargo_days` entra no lacre (é parâmetro CIENTÍFICO
+# aqui, como em H7/H9/H12/H13 — muda quais linhas contábeis são elegíveis).
+H17_FROZEN_KEYS = [
+    ("universe", "top_n"), ("universe", "lookback_trading_days"),
+    ("universe", "min_history_days"), ("universe", "rebalance_frequency"),
+    ("h17_factor", "name"), ("h17_factor", "disclosure_embargo_days"),
+    ("h17_portfolio", "quantile"), ("h17_portfolio", "weighting"),
+    ("h17_portfolio", "direction"),
+    ("execution", "price"), ("execution", "b3_fee_pct"),
+    ("execution", "brokerage_pct"), ("execution", "spread_slippage_pct"),
+    ("backtest", "warmup_end"), ("backtest", "test_start"),
+    ("backtest", "purge_embargo_months"),
+    ("bootstrap", "n_boot"), ("bootstrap", "block_length"),
+    ("bootstrap", "confidence"), ("bootstrap", "method"),
+    ("h17_criteria", "dsr_min"),
+]
+
+
+def h17_frozen_config_hash(config: dict) -> str:
+    """O LACRE da H17 — mesmo mecanismo dos lacres anteriores."""
+    return _frozen_hash(config, H17_FROZEN_KEYS, "H17-FROZEN")
+
+
+# Subconjunto H18-FROZEN (pré-registro 2026-09-04, HANDOFF). Earnings yield
+# E/P — quintil SUPERIOR. Primeiro fator de VALOR do domínio.
+H18_FROZEN_KEYS = [
+    ("universe", "top_n"), ("universe", "lookback_trading_days"),
+    ("universe", "min_history_days"), ("universe", "rebalance_frequency"),
+    ("h18_factor", "name"), ("h18_factor", "disclosure_embargo_days"),
+    ("h18_portfolio", "quantile"), ("h18_portfolio", "weighting"),
+    ("h18_portfolio", "direction"),
+    ("execution", "price"), ("execution", "b3_fee_pct"),
+    ("execution", "brokerage_pct"), ("execution", "spread_slippage_pct"),
+    ("backtest", "warmup_end"), ("backtest", "test_start"),
+    ("backtest", "purge_embargo_months"),
+    ("bootstrap", "n_boot"), ("bootstrap", "block_length"),
+    ("bootstrap", "confidence"), ("bootstrap", "method"),
+    ("h18_criteria", "dsr_min"),
+]
+
+
+def h18_frozen_config_hash(config: dict) -> str:
+    """O LACRE da H18 — mesmo mecanismo dos lacres anteriores."""
+    return _frozen_hash(config, H18_FROZEN_KEYS, "H18-FROZEN")
+
+
+# Subconjunto H19-FROZEN (pré-registro 2026-09-04, HANDOFF). Book-to-market
+# B/M — quintil SUPERIOR. Hipótese separada da H18 (fluxo vs. estoque).
+H19_FROZEN_KEYS = [
+    ("universe", "top_n"), ("universe", "lookback_trading_days"),
+    ("universe", "min_history_days"), ("universe", "rebalance_frequency"),
+    ("h19_factor", "name"), ("h19_factor", "disclosure_embargo_days"),
+    ("h19_portfolio", "quantile"), ("h19_portfolio", "weighting"),
+    ("h19_portfolio", "direction"),
+    ("execution", "price"), ("execution", "b3_fee_pct"),
+    ("execution", "brokerage_pct"), ("execution", "spread_slippage_pct"),
+    ("backtest", "warmup_end"), ("backtest", "test_start"),
+    ("backtest", "purge_embargo_months"),
+    ("bootstrap", "n_boot"), ("bootstrap", "block_length"),
+    ("bootstrap", "confidence"), ("bootstrap", "method"),
+    ("h19_criteria", "dsr_min"),
+]
+
+
+def h19_frozen_config_hash(config: dict) -> str:
+    """O LACRE da H19 — mesmo mecanismo dos lacres anteriores."""
+    return _frozen_hash(config, H19_FROZEN_KEYS, "H19-FROZEN")
