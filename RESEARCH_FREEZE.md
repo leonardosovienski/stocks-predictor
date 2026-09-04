@@ -264,18 +264,7 @@ Nenhum componente foi movido para o Core nesta rodada — os dois já compartilh
 
 ```yaml
 ST_RESEARCH_FREEZE:
-  active_hypotheses:
-    - id: H10
-      family: quality_roe_leverage_double_filter
-      status: PRE_REGISTERED_NOT_JUDGED
-      note: >
-        Aberta 2026-09-04 por decisão explícita do operador (ver HANDOFF.md).
-        Filtro duplo ROE ∩ baixa alavancagem — mesmo racional da H8 aplicado
-        às duas variáveis contábeis já testadas isoladamente (H7, H9, ambas
-        NOT_SUPPORTED). Dado já ingerido, não exige nova ingestão. Código e
-        testes prontos (dado sintético); rodada real ainda NÃO aconteceu
-        neste ambiente de auditoria — ver HANDOFF.md para os passos
-        mecânicos pendentes na máquina do operador.
+  active_hypotheses: []
   stopped_hypotheses:
     - id: H1
       family: momentum_12_1
@@ -315,6 +304,15 @@ ST_RESEARCH_FREEZE:
         (fundamentals.leverage, mesma linha do ROE da H7) — não exigiu
         ingestão nova. Alavancagem isolada, quintil inferior (empresas menos
         endividadas). Ver HANDOFF.md "VEREDITO H9" para detalhes completos.
+    - id: H10
+      family: quality_roe_leverage_double_filter
+      result: NOT_SUPPORTED (IC cruza zero; DSR 0.3661 < 0.95)
+      closed_at: 2026-09-04
+      note: >
+        Filtro duplo ROE ∩ baixa alavancagem — mesmo racional da H8
+        (momentum∩baixa-vol) sobre as duas variáveis contábeis (H7, H9,
+        ambas isoladamente NOT_SUPPORTED). Interseção também reprova. Ver
+        HANDOFF.md "VEREDITO H10" para detalhes completos.
   preserved_components:
     - stocks_predictor/universe.py (PIT universe + survivorship)
     - stocks_predictor/execution.py (cost model)
@@ -329,7 +327,7 @@ ST_RESEARCH_FREEZE:
   reopen_policy: >
     Nenhuma família de fatores já encerrada (momentum 12-1, momentum 6-1, low-vol,
     vol-target, reversão 21d, interseção momentum×low-vol, qualidade/ROE,
-    qualidade/alavancagem) pode ser
+    qualidade/alavancagem, interseção ROE×alavancagem) pode ser
     reaberta sem registrar EXPLICITAMENTE, antes de qualquer código novo:
       previous_result, closure_reason, new_information, causal_reason,
       why_old_test_no_longer_answers_question, new_protocol.

@@ -188,3 +188,45 @@ def _insert(conn, ticker, points):
             "volume_fin,qty,quote_factor,source_file) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)",
             (d, ticker, "02", "010", c, c, c, c, c * 1000, 1000, 1, "SYNTH"))
     conn.commit()
+
+
+# --- retorno TOTAL (rota (a), 2026-09-04) --------------------------------
+
+def test_dividend_factor_known_value():
+    assert adjust.dividend_factor(100.0, 5.0) == 100.0 / 105.0
+    assert adjust.dividend_factor(0.0, 5.0) is None      # preço indefinido
+    assert adjust.dividend_factor(100.0, 0.0) is None    # provento indefinido
+    assert adjust.dividend_factor(100.0, -1.0) is None   # provento negativo (dado inválido)
+
+
+def test_total_return_series_lowers_prices_before_ex_date(tmp_path):
+    conn = db.get_connection(tmp_path / "s.db")
+    _insert(conn, "AAAA3", [("2024-01-01", 20.0), ("2024-01-02", 20.0),
+                            ("2024-01-03", 20.0), ("2024-01-04", 20.0)])
+    conn.execute(
+        "INSERT INTO dividends(ticker, ex_date, value_per_share, source)"
+        " VALUES (?,?,?,?)", ("AAAA3", "2024-01-03", 1.0, "teste"))
+    conn.commit()
+    dates, tr = adjust.total_return_series(conn, "AAAA3")
+    raw = adjust.adjusted_series(conn, "AAAA3")[1]
+    factor = 20.0 / 21.0
+    assert tr[0] == raw[0] * factor and tr[1] == raw[1] * factor   # ANTES: reduzido
+    assert tr[2] == raw[2] and tr[3] == raw[3]                      # NA e DEPOIS: intocado
+
+
+def test_total_return_series_no_dividends_matches_adjusted_series(tmp_path):
+    conn = db.get_connection(tmp_path / "s.db")
+    _insert(conn, "BBBB3", [("2024-01-01", 10.0), ("2024-01-02", 11.0)])
+    dates, tr = adjust.total_return_series(conn, "BBBB3")
+    assert tr == adjust.adjusted_series(conn, "BBBB3")[1]   # sem provento = idêntica à split-ajustada
+
+
+def test_total_return_series_dividend_outside_range_ignored(tmp_path):
+    conn = db.get_connection(tmp_path / "s.db")
+    _insert(conn, "CCCC3", [("2024-01-01", 10.0), ("2024-01-02", 10.0)])
+    conn.execute(
+        "INSERT INTO dividends(ticker, ex_date, value_per_share, source)"
+        " VALUES (?,?,?,?)", ("CCCC3", "2025-01-01", 1.0, "teste"))   # fora do range
+    conn.commit()
+    dates, tr = adjust.total_return_series(conn, "CCCC3")
+    assert tr == adjust.adjusted_series(conn, "CCCC3")[1]   # provento fora do range = ignorado

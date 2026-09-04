@@ -5,11 +5,18 @@ evento sugere a proporção redonda (1:2, 1:4, 10:1...); o fator entra em `adjus
 Salto sem proporção plausível => QUARENTENA (nenhum retorno em quarentena alimenta o
 fator).
 
-Dividendos/JCP (pequenos — o detector NÃO pega): ROTA (b) do design §4 — primeira
-passada em retorno SÓ-PREÇO. Viés conhecido e DECLARADO: omitir proventos subestima o
-retorno total e o viés NÃO é neutro — papéis de momentum tendem a yield menor, então
-omitir FAVORECE a estratégia contra o benchmark (viés a nosso favor = o pior tipo).
-Registrado no HANDOFF. Rota (a) [proventos de fonte nomeada] fica para quando houver fonte.
+Dividendos/JCP (pequenos — o detector NÃO pega): ROTA (b) do design §4 é a que
+TODAS as hipóteses H1-H10 usam — primeira passada em retorno SÓ-PREÇO. Viés
+conhecido e DECLARADO: omitir proventos subestima o retorno total e o viés NÃO é
+neutro — papéis de momentum tendem a yield menor, então omitir FAVORECE a
+estratégia contra o benchmark (viés a nosso favor = o pior tipo). Registrado no
+HANDOFF.
+
+ROTA (a) [retorno total, proventos reinvestidos] implementada 2026-09-04 —
+`total_return_series` (fonte: CVM/FRE via `ingest_cvm.ingest_fre_dividends_year`,
+tabela `dividends`). Opt-in: NÃO substitui `adjusted_series`/rota (b) usada por
+H1-H10 já julgadas — usar exige hipótese NOVA, pré-registrada, ciente das
+aproximações declaradas (ver docstring de `total_return_series`).
 
 Adjudicação humana (export/import CSV): a IA infere a PROPORÇÃO redonda mas NUNCA grava
 em `adjustments` sozinha (§9b/§11 — sem fix silencioso). `export_candidates_csv` lista os
@@ -260,3 +267,57 @@ def import_approved_adjustments(conn, path) -> int:
                 (f"aprovado por {approved_by} ({source})", row["ticker"], row["ex_date"]))
     conn.commit()
     return n
+
+
+# --- retorno TOTAL (rota (a), 2026-09-04) — opt-in, NÃO substitui rota (b) --
+
+def dividend_factor(close_at_ex: float, value_per_share: float) -> float | None:
+    """Fator de ajuste de UM provento — mesma direção de `adjusted_closes`
+    (multiplica preços ANTES da ex_date): `close_at_ex / (close_at_ex +
+    value_per_share)`. None se `close_at_ex<=0` ou `value_per_share<=0`
+    (dado indefinido não vira fator fabricado)."""
+    if close_at_ex is None or close_at_ex <= 0 or value_per_share is None or value_per_share <= 0:
+        return None
+    return close_at_ex / (close_at_ex + value_per_share)
+
+
+def total_return_series(conn, ticker):
+    """(dates, closes) do `ticker` com proventos REINVESTIDOS, em cima da
+    série já ajustada por splits (`adjusted_series`) — retorno TOTAL, não
+    só-preço. ROTA (a) do design §4, implementada 2026-09-04 (fonte: CVM/FRE,
+    `dividends`, ver `ingest_cvm.ingest_fre_dividends_year` para as duas
+    aproximações declaradas — `ex_date` é proxy de data de pagamento, valor
+    por ação é médio ON+PN).
+
+    Opt-in: NÃO substitui `adjusted_series` (rota (b), só-preço) usada por
+    TODAS as hipóteses H1-H10 já julgadas — usar isto exige hipótese NOVA,
+    pré-registrada, ciente da rota (a) e suas aproximações (mesma disciplina
+    de qualquer mudança de metodologia após rodada julgada)."""
+    dates, closes = adjusted_series(conn, ticker)
+    if not dates:
+        return dates, closes
+    divs = conn.execute(
+        "SELECT ex_date, value_per_share FROM dividends WHERE ticker=? ORDER BY ex_date",
+        (ticker,)).fetchall()
+    date_idx = {d: i for i, d in enumerate(dates)}
+    adjustments = []
+    for ex_date, value_per_share in divs:
+        if ex_date < dates[0] or ex_date > dates[-1]:
+            logger.warning("provento de %s em %s fora do range de preços [%s, %s] — ignorado",
+                           ticker, ex_date, dates[0], dates[-1])
+            continue
+        # preço de referência: o pregão da própria ex_date, ou o próximo
+        # pregão disponível se ex_date cair fora do calendário de negócios
+        # (feriado/fim de semana) — nunca um pregão ANTERIOR, que reduziria
+        # o fator sem uma base de preço realmente pós-evento.
+        i = date_idx.get(ex_date)
+        if i is None:
+            later = [d for d in dates if d >= ex_date]
+            if not later:
+                continue
+            i = date_idx[later[0]]
+        factor = dividend_factor(closes[i], value_per_share)
+        if factor is None:
+            continue
+        adjustments.append((dates[i], factor))
+    return dates, adjusted_closes(dates, closes, adjustments)

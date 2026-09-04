@@ -9,19 +9,23 @@ Este é o ponto de entrada técnico corrente. O código, Git/CI e
 
 ```text
 role = FROZEN_RESEARCH_ASSET + REUSABLE_COMPONENT_LIBRARY + NEGATIVE_RESULT_CASE
-research_state = FROZEN_EXCEPT_H10_PENDING_JUDGMENT   # ver HANDOFF.md, 2026-09-04
-scientific_state = CLOSED_FOR_H1_H2_H4_H5_H6_H7_H8_H9 # H10 pré-registrada, não julgada
+research_state = FROZEN
+scientific_state = CLOSED
 commercial_state = NOT_A_PRODUCT
-new_scientific_trials = 1   # H10, pré-registrada 2026-09-04, código pronto, rodada real pendente
+new_scientific_trials = 0
+infrastructure_work_in_progress = total_return_series   # ver HANDOFF.md, 2026-09-04
 ```
 
-As famílias de fatores JÁ JULGADAS (H1/H2/H4/H5/H6/H7/H8/H9, todas
-NOT_SUPPORTED) e a linha RJ estão encerradas/congeladas. **H10** (filtro
-duplo ROE ∩ baixa alavancagem) foi pré-registrada por decisão explícita do
-operador em 2026-09-04 — mesmo dado contábil já ingerido, não exige nova
-ingestão. Ver HANDOFF.md para o pré-registro completo e os passos mecânicos
-pendentes (rodada real exige `stocks.db` real, indisponível neste ambiente
-de auditoria).
+As famílias de fatores e a linha RJ estão encerradas/congeladas — **9 hipóteses
+julgadas (H1/H2/H4/H5/H6/H7/H8/H9/H10), 0 comprovadas.** H10 (filtro duplo
+ROE ∩ baixa alavancagem) foi a última: IC 95% diff-Sharpe cruza zero, DSR
+0,3661 < 0,95 — NÃO COMPROVADA, mesmo desfecho da interseção momentum∩vol
+(H8). Não procurar novo alpha nem reinterpretar resultados negativos nas 9.
+Trabalho ATUAL (infraestrutura, não hipótese): construção de uma série de
+RETORNO TOTAL (preço + proventos reinvestidos, fonte CVM/FRE) para corrigir
+o viés só-preço declarado em todas as 9 — decisão explícita do operador, ver
+HANDOFF.md. Reabertura de qualquer uma das 9 exige o dossiê completo
+definido em `RESEARCH_FREEZE.md` e informação materialmente nova.
 
 ## Dependência e vendor
 

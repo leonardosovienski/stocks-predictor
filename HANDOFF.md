@@ -1,5 +1,72 @@
 # HANDOFF — predictor-stocks
 
+> ## Retorno TOTAL implementado (2026-09-04) — infraestrutura opt-in, NÃO uma hipótese
+>
+> Decisão do operador ("A e B" + confirmação de prosseguir com a aproximação
+> declarada): construir a ROTA (a) do design §4 (preço + proventos
+> reinvestidos), corrigindo o viés só-preço declarado em TODAS as 9
+> hipóteses julgadas (H1-H10, exceto H3 que nunca existiu). **Isto é
+> infraestrutura, não uma hipótese nova** — mesma classificação do
+> `economic_gate.py` (2026-09-01): fica disponível para quem pré-registrar
+> a próxima hipótese, não altera nenhum veredito já emitido.
+>
+> **Fonte confirmada** (via `tools/explore_dividend_sources.py`, rodado pelo
+> operador): `fre_cia_aberta_distribuicao_dividendos_classe_acao_{ano}.csv`
+> (Montante + Data_Pagamento_Dividendo por categoria de distribuição) +
+> `fre_cia_aberta_distribuicao_capital_{ano}.csv` (Quantidade_Total_Acoes_Circulacao,
+> arquivo PRINCIPAL — não o `_classe_acao`, que só cobre PN).
+>
+> **Duas aproximações declaradas** (aprovadas pelo operador para prosseguir,
+> não escondidas):
+> 1. Valor por ação = Montante (somado por categoria/pagamento) ÷ total de
+>    ações em circulação (ON+PN) — não por classe específica. Companhias
+>    com política de proventos muito diferente entre ON/PN ficam com um
+>    valor médio, não exato por classe.
+> 2. `Data_Pagamento_Dividendo` usada como proxy de `ex_date` — a data-ex
+>    real (que de fato move o preço) tipicamente vem semanas/meses antes;
+>    este dataset da CVM não expõe a data-ex diretamente.
+>
+> **Implementação:**
+> - `stocks_predictor/db.py`: migração `0009_dividends` — tabela nova
+>   (`ticker, ex_date, value_per_share, source`), append-only,
+>   `UNIQUE(ticker, ex_date, source)`. Domínio independente de
+>   `prices_raw`/`adjustments` (não referencia, não é referenciado).
+> - `stocks_predictor/ingest_cvm.py`: `parse_fre_dividend_rows`,
+>   `parse_fre_capital_total_rows` (fail-loud sem coluna esperada, nunca
+>   fabrica número), `ingest_fre_dividends_year` (mesmo contrato de
+>   `ingest_dfp_year`: `companies`/`ticker_of`, `INSERT OR IGNORE`). Achado
+>   ao implementar: `_open_zip_csv(zbytes, "distribuicao_capital")` é
+>   AMBÍGUO no zip do FRE (bate tanto no arquivo principal quanto no
+>   `_classe_acao`) — resolvido com filtro manual de nome excluindo
+>   `classe_acao`, documentado no código (não é bug do `_open_zip_csv`
+>   genérico, é a especificidade deste caso). `_to_float` tolera os dois
+>   formatos numéricos que a CVM mistura entre datasets (ponto decimal nos
+>   exports novos vs. vírgula decimal BR em datasets mais antigos já usados
+>   no projeto) — tenta ponto primeiro, cai para vírgula só se falhar.
+> - `stocks_predictor/adjust.py`: `dividend_factor` (mesma direção
+>   matemática de `adjusted_closes` — multiplica preços ANTES da ex_date),
+>   `total_return_series` (combina `adjusted_series`, já split-ajustada, com
+>   `dividends`; proventos fora do range de preços são ignorados com aviso,
+>   mesma disciplina de `adjustments` fora de range).
+> - `tools/ingest_dividends_real.py`: script de ingestão real 2018-2026, por
+>   ano (mesmo padrão de `tools/ingest_h7_real.py`) — roda na máquina do
+>   operador (rede à CVM necessária).
+> - Testes: `tests/test_adjust.py` (4 novos —
+>   `test_dividend_factor_known_value`,
+>   `test_total_return_series_lowers_prices_before_ex_date`,
+>   `test_total_return_series_no_dividends_matches_adjusted_series`,
+>   `test_total_return_series_dividend_outside_range_ignored`). Validados
+>   manualmente nesta sessão (sandbox sem `pytest`) contra dado sintético
+>   E contra uma amostra real (linhas literais de
+>   `fre_cia_aberta_distribuicao_dividendos_classe_acao_2023.csv` coladas
+>   pelo operador via `explore_dividend_sources.py`).
+>
+> **NÃO FEITO nesta sessão:** ingestão real de proventos 2018-2026 (precisa
+> rodar `tools/ingest_dividends_real.py` na máquina do operador — mesmo
+> bloqueio de rede de sempre neste sandbox) e nenhuma hipótese usa
+> `total_return_series` ainda — é infraestrutura pronta, esperando a
+> próxima hipótese pré-registrada que decida usá-la (H11 em diante).
+
 > ## H10 ABERTA — PRÉ-REGISTRO (2026-09-04, ANTES de qualquer rodada real)
 >
 > Decisão explícita do operador ("A e B", após o veredito NÃO COMPROVADA da
@@ -29,6 +96,42 @@
 > validados manualmente nesta sessão (mesma limitação de ambiente sem
 > `pytest`). Dado real já disponível — só falta rodar:
 > `python -c "import backtest; backtest.run_h10(write_report=True)"`.
+
+> ## VEREDITO H10 — ENCERRADA: NÃO COMPROVADA (2026-09-04, rodada única, dado real)
+>
+> Suíte confirmada (265 passed + 1 falha pré-existente/não relacionada,
+> versão do Core instalado). Rodada única via `backtest.run_h10(write_report=True)`,
+> dado já ingerido pela H7 (sem ingestão nova).
+>
+> - 1.826 pregões pareados
+> - **IC 95% diff-Sharpe (stationary, bloco 21): (−0,3820, +0,2029)** — cruza zero
+> - **DSR: 0,3661 < 0,95** (N=9)
+> - PSR 0,4139.
+> - **Não comprovada. Sem repescagem.**
+> - Relatório: `reports/h10_verdict_adhoc.md` (a versionar via `git add -f`).
+>
+> **Leitura acumulada (9 tentativas, 0 comprovadas):** nem os fatores contábeis
+> isolados (H7 ROE, H9 alavancagem) nem sua interseção (H10) sobrevivem ao
+> pedágio — mesmo padrão da H8 (interseção momentum∩baixa-vol também
+> reprovou). As duas variáveis contábeis da DFP e sua combinação estão
+> esgotadas. `RESEARCH_FREEZE.md`/`STOCKS_CURRENT_STATE.md` atualizados de
+> volta a `FROZEN`/`CLOSED`.
+>
+> **Próxima frente aberta pelo operador (decisão "A e B" + confirmação
+> posterior): construir uma série de RETORNO TOTAL (preço + proventos
+> reinvestidos)** para corrigir o viés só-preço declarado em TODAS as 9
+> hipóteses. Fonte confirmada via `tools/explore_dividend_sources.py`
+> (rodado pelo operador, saída no HANDOFF abaixo):
+> `fre_cia_aberta_distribuicao_dividendos_classe_acao_{ano}.csv` (CVM/FRE) —
+> `Montante` (total distribuído no ano por classe de ação) e
+> `Data_Pagamento_Dividendo`. **Limitação declarada, aprovada pelo
+> operador para prosseguir mesmo assim:** (1) `Montante` é AGREGADO
+> anual por classe, não valor por ação — precisa dividir pela quantidade de
+> ações da classe (`fre_cia_aberta_distribuicao_capital_classe_acao`) para
+> aproximar o valor por ação; (2) `Data_Pagamento_Dividendo` é a data de
+> PAGAMENTO, não a data-ex real (que costuma vir semanas/meses antes) — usada
+> como proxy conservador. Ver próxima entrada de HANDOFF para a
+> implementação.
 
 > ## H9 ABERTA — PRÉ-REGISTRO (2026-09-04, ANTES de qualquer rodada real)
 >
