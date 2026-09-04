@@ -66,6 +66,43 @@
 > bloqueio de rede de sempre neste sandbox) e nenhuma hipótese usa
 > `total_return_series` ainda — é infraestrutura pronta, esperando a
 > próxima hipótese pré-registrada que decida usá-la (H11 em diante).
+>
+> **Atualização (2026-09-04, mesmo dia) — ingestão real rodada, achado
+> IMPORTANTE de cobertura temporal:** `tools/ingest_dividends_real.py`
+> executado pelo operador: **2.384 linhas gravadas em `dividends`**, mas com
+> cobertura MUITO desigual entre anos:
+>
+> | ano | linhas | situação |
+> |---|---|---|
+> | 2018 | 366 | ok |
+> | 2019 | 509 | ok |
+> | 2020 | 530 | ok |
+> | 2021 | 486 | ok |
+> | 2022 | 485 | ok |
+> | 2023 | **8** | suspeito — muito abaixo do padrão, não investigado ainda |
+> | 2024 | 0 (falhou) | `fre_cia_aberta_distribuicao_dividendos_classe_acao_2024.csv` **não existe** no zip FRE 2024 (nem a versão sem `_classe_acao`) — zip de 2024 tem 35 arquivos contra 56 do de 2023, a CVM aparentemente parou de publicar esse CSV específico a partir de 2024 |
+> | 2025 | 0 (falhou) | mesmo motivo do 2024 |
+> | 2026 | 0 (falhou) | mesmo motivo do 2024 |
+>
+> **Implicação real:** a série de retorno total cobre bem 2018-2022, mas fica
+> capenga de 2023 em diante — justo a parte mais recente da janela 2018-2026
+> usada em H1-H10. Isso NÃO invalida a infraestrutura (ela é honesta sobre o
+> que tem: `total_return_series` só aplica os proventos que existem em
+> `dividends`, sem inventar nada para os anos sem cobertura — o resultado
+> pra 2023-2026 fica equivalente à rota (b) só-preço, não errado, só
+> incompleto) — mas qualquer hipótese futura que use `total_return_series`
+> precisa declarar essa limitação de cobertura explicitamente, e o
+> `_BIAS_NOTE` dela não pode alegar "retorno total corrigido" sem qualificar
+> o período.
+>
+> **PENDENTE — decisão do operador**: (1) investigar por que 2023 saiu tão
+> baixo (parsing? nomenclatura de coluna mudou no meio do ano? poucas
+> empresas do universo distribuíram nesse ano específico?); (2) achar fonte
+> alternativa pra 2024-2026 (talvez `fre_cia_aberta_distribuicao_dividendos`
+> sem `_classe_acao` exista em anos onde a versão `_classe_acao` sumiu — não
+> testado; ou a B3 tenha um dataset próprio, não investigado nesta sessão
+> por falta de acesso de rede). Não implementado nesta sessão — aguardando
+> decisão de prioridade.
 
 > ## H10 ABERTA — PRÉ-REGISTRO (2026-09-04, ANTES de qualquer rodada real)
 >
