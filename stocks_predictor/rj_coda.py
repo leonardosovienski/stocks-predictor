@@ -82,5 +82,15 @@ def clr_matrix(matrix: list[list[float]], delta: float = 0.5) -> dict:
         if v is None:
             failed += 1
         out.append(v)
-    return {"data": out, "mask": imp["mask"], "dropped_cols": imp["dropped_cols"],
+    # `imp["mask"]` indexa colunas na numeração ORIGINAL (impute_zeros nunca
+    # remove coluna); `out` acima já teve `dropped_cols` excluídas, então as
+    # posições da máscara têm que ser remapeadas pra numeração NOVA — sem
+    # isso, qualquer auditoria downstream usando `mask` contra `data` lê a
+    # célula errada (ou estoura índice) sempre que dropped_cols não é vazio
+    # (achado de varredura 2026-09-04). Colunas descartadas nunca aparecem em
+    # `mask` (impute_zeros só marca imputação em colunas com `mins[c]` válido,
+    # que são exatamente as mantidas), então o remapeamento é total.
+    col_remap = {old: new for new, old in enumerate(kept_cols)}
+    remapped_mask = [(r, col_remap[c]) for r, c in imp["mask"]]
+    return {"data": out, "mask": remapped_mask, "dropped_cols": imp["dropped_cols"],
             "rows_failed": failed}
