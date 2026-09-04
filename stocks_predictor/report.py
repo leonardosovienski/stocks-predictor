@@ -141,6 +141,24 @@ _BIAS_NOTE = {
            "as duas linhas mais recentes elegíveis usadas no cálculo de "
            "crescimento nem sempre estão exatamente 12 meses de distância "
            "se houver ano com dado faltante (ver `factor.revenue_growth_signals`).",
+    "H14": "- Retorno **só-preço** (rota (b)): dividendos/JCP omitidos; papel "
+           "próximo da máxima de 52 semanas tende a ter yield mais BAIXO "
+           "(preço subiu recentemente), na mesma direção do viés já declarado "
+           "no pré-registro da H1 pra momentum — mecanismo semelhante, não "
+           "quantificado aqui separadamente.",
+    "H15": "- Retorno **só-preço** (rota (b)): dividendos/JCP omitidos; SEM "
+           "direção declarada a priori — a relação entre surto de volume e "
+           "política de dividendos de empresas B3 não foi estabelecida nesta "
+           "rodada. Viés não quantificado, registrado como limitação honesta "
+           "(declarado no pré-registro da H15, 2026-09-04) — não inferir sinal.",
+    "H16": "- Retorno **só-preço** (rota (b)): dividendos/JCP omitidos — "
+           "irrelevante pro mecanismo desta hipótese (TIMING, não seleção "
+           "de papel; estratégia e benchmark usam o MESMO universo, "
+           "diferem só em quais dias contam o retorno). Custo simplificado: "
+           "cobra 1 perna (`one_way`) em cada transição cash/posicionado, "
+           "ignora turnover de composição do universo entre rebalances "
+           "mensais (ver `backtest.run_h16`) — aproximação declarada, não "
+           "escondida.",
 }
 
 

@@ -11,6 +11,8 @@ point-in-time; a carteira da H2 toma o quintil INFERIOR (baixa volatilidade).
 import datetime
 import statistics
 
+import universe as universe_mod
+
 
 def _idx_le(dates, asof):
     """Índice do último pregão <= asof (dates asc), ou None."""
@@ -156,4 +158,64 @@ def revenue_growth_signals(conn, tickers, asof, disclosure_embargo_days=90):
         if previous is None or previous <= 0:
             continue
         out[t] = (latest - previous) / previous
+    return out
+
+
+def near_52w_high(dates, closes, asof, lookback=252):
+    """H14 (pré-registro 2026-09-04) — `close(asof) / max(close nos últimos
+    `lookback` pregões incluindo asof)`. Fator de preço distinto de
+    momentum (George & Hwang 2004, "52-week high" — proximidade da máxima
+    tem poder preditivo próprio, não é redutível ao retorno acumulado que
+    momentum mede). Mesma disciplina point-in-time de `momentum_12_1`
+    (`_idx_le`, nada após `asof` entra). `None` se histórico insuficiente,
+    a máxima da janela for <=0, ou `close(asof)` <=0."""
+    i = _idx_le(dates, asof)
+    if i is None or i - lookback < 0:
+        return None
+    window = closes[i - lookback:i + 1]
+    high = max(window)
+    if high <= 0 or closes[i] <= 0:
+        return None
+    return closes[i] / high
+
+
+def near_52w_high_signals(series_by_ticker, asof, lookback=252):
+    """{ticker: proximidade da máxima de 52 semanas} para tickers com
+    histórico suficiente em asof."""
+    out = {}
+    for t, (dates, closes) in series_by_ticker.items():
+        v = near_52w_high(dates, closes, asof, lookback)
+        if v is not None:
+            out[t] = v
+    return out
+
+
+def volume_surge_signals(conn, tickers, asof, short_lookback=21, long_lookback=252):
+    """H15 (pré-registro 2026-09-04) — {ticker: volume médio recente /
+    volume médio de longo prazo − 1} point-in-time. `volume_fin` já vive em
+    `prices_raw` desde o M1 (usado só pra ranquear liquidez do universo,
+    nunca como SINAL de seleção) — zero ingestão nova.
+
+    Consulta direta em `prices_raw` (não `series_by_ticker`, que só carrega
+    preço) — mesmo padrão de `_fundamental_signals` (lê `conn` direto).
+    Só os `long_lookback` pregões mais recentes `< asof` (estritamente
+    anterior — o volume do próprio dia `asof` não é conhecido antes do
+    fechamento, mesma disciplina anti-lookahead do resto do domínio).
+    `None` se o ticker tiver menos de `long_lookback` pregões disponíveis
+    ou volume médio de longo prazo <=0 (denominador inválido, sem sinal
+    fabricado)."""
+    out = {}
+    for t in tickers:
+        rows = conn.execute(
+            "SELECT volume_fin FROM prices_raw WHERE ticker=? AND market_type=?"
+            " AND date < ? ORDER BY date DESC LIMIT ?",
+            (t, universe_mod.SPOT_MARKET, asof, long_lookback)).fetchall()
+        if len(rows) < long_lookback:
+            continue
+        vols = [r[0] for r in rows]    # mais recente primeiro
+        long_avg = sum(vols) / len(vols)
+        if long_avg <= 0:
+            continue
+        short_avg = sum(vols[:short_lookback]) / short_lookback
+        out[t] = short_avg / long_avg - 1.0
     return out

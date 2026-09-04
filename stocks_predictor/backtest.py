@@ -271,9 +271,22 @@ def _run_hypothesis(hypothesis, trial_name, frozen_keys, criteria_section, notes
 
     `series_fn` (H11+, 2026-09-04): repassado para `walk_forward` — troca a
     fonte de preço (default `adjust.adjusted_series`, rota (b))."""
-    import trials_gate
     strat, bench = walk_forward(conn, cfg, signal_fn=signal_fn, take=take,
                                 portfolio_fn=portfolio_fn, series_fn=series_fn)
+    return _finalize_hypothesis(hypothesis, trial_name, frozen_keys, criteria_section,
+                                notes, cfg, write_report, run_id, trials_path,
+                                strat, bench, extra_criteria=extra_criteria)
+
+
+def _finalize_hypothesis(hypothesis, trial_name, frozen_keys, criteria_section, notes,
+                         cfg, write_report, run_id, trials_path, strat, bench,
+                         extra_criteria=None):
+    """Fecho comum: pedágio (judge+DSR) + registro + relatório, dado
+    `strat`/`bench` JÁ calculados. Extraído de `_run_hypothesis` (H16,
+    2026-09-04) — H16 não usa `walk_forward` (mecânica de TIMING, não
+    seleção mensal por fator), mas usa o MESMO pedágio/registro de todas
+    as anteriores; nenhuma delas foi alterada por este refactor."""
+    import trials_gate
     base = judge(strat, bench, cfg)
     extra_failures, extra_fields, extra_text = [], {}, ""
     if extra_criteria is not None:
@@ -533,6 +546,158 @@ def run_h13(cfg=None, conn=None, write_report=False, run_id=None, trials_path=No
         cfg, conn, write_report, run_id, trials_path,
         signal_fn=lambda sub, asof: factor.revenue_growth_signals(conn, sub.keys(), asof, embargo),
         take="top")
+
+
+def run_h14(cfg=None, conn=None, write_report=False, run_id=None, trials_path=None):
+    """H14 — proximidade da máxima de 52 semanas (pré-registro 2026-09-04):
+    quintil SUPERIOR de `close(asof)/max(close, 252 pregões)`
+    (`factor.near_52w_high_signals`). Fator de preço distinto de momentum
+    (George & Hwang 2004) — mesma maquinaria de universo/custos/pareamento/
+    pedágio de H1, zero dado novo (só preço já ajustado). Critérios: (i)
+    IC95% diff-Sharpe > 0; (ii) DSR >= dsr_min (N=13 tentativas no
+    registro)."""
+    from config import H14_FROZEN_KEYS
+    cfg = cfg or load_config()
+    conn = conn or db.get_connection()
+    h14f = cfg.get("h14_factor", {})
+    lookback = h14f.get("lookback_days", 252)
+    return _run_hypothesis(
+        "H14", "h14-near-52w-high", H14_FROZEN_KEYS, "h14_criteria",
+        "rodada única da H14 (proximidade da máxima 52 semanas, quintil "
+        "superior; sharpe por-período realizado)",
+        cfg, conn, write_report, run_id, trials_path,
+        signal_fn=lambda sub, asof: factor.near_52w_high_signals(sub, asof, lookback),
+        take="top")
+
+
+def run_h15(cfg=None, conn=None, write_report=False, run_id=None, trials_path=None):
+    """H15 — volume anormal (pré-registro 2026-09-04): quintil SUPERIOR de
+    `volume_médio_21d/volume_médio_252d − 1` (`factor.volume_surge_signals`)
+    — `volume_fin` já vive em `prices_raw` desde o M1 (usado só pra
+    ranquear liquidez do universo), nunca como sinal de seleção. Mesma
+    maquinaria de universo/custos/pareamento/pedágio de H1, zero dado
+    novo. Racional: surto de volume recente pode antecipar informação
+    nova incorporada ao preço (literatura de volume-price, distinta de
+    momentum/proximidade-de-máxima). Critérios: (i) IC95% diff-Sharpe > 0;
+    (ii) DSR >= dsr_min (N=14 tentativas no registro)."""
+    from config import H15_FROZEN_KEYS
+    cfg = cfg or load_config()
+    conn = conn or db.get_connection()
+    h15f = cfg.get("h15_factor", {})
+    short_lb = h15f.get("short_lookback_days", 21)
+    long_lb = h15f.get("long_lookback_days", 252)
+    return _run_hypothesis(
+        "H15", "h15-volume-surge", H15_FROZEN_KEYS, "h15_criteria",
+        "rodada única da H15 (volume anormal, quintil superior; "
+        "sharpe por-período realizado)",
+        cfg, conn, write_report, run_id, trials_path,
+        signal_fn=lambda sub, asof: factor.volume_surge_signals(
+            conn, sub.keys(), asof, short_lb, long_lb),
+        take="top")
+
+
+def _turn_of_month_days(dates, last_days=1, first_days=3):
+    """{pregões dentro da janela virada-de-mês} — últimos `last_days`
+    pregões do mês corrente + primeiros `first_days` pregões do mês
+    seguinte (Lakonishok & Smidt 1988, "turn-of-the-month effect").
+    `dates` ordenado asc, agrupado por `YYYY-MM`."""
+    by_month = {}
+    for d in dates:
+        by_month.setdefault(d[:7], []).append(d)
+    months = sorted(by_month)
+    tom = set()
+    for i, m in enumerate(months):
+        tom.update(by_month[m][-last_days:])
+        if i + 1 < len(months):
+            tom.update(by_month[months[i + 1]][:first_days])
+    return tom
+
+
+def run_h16(cfg=None, conn=None, write_report=False, run_id=None, trials_path=None):
+    """H16 — efeito virada-de-mês (pré-registro 2026-09-04): retorno
+    anormal nos pregões ao redor da virada de mês (Lakonishok & Smidt
+    1988) — últimos `last_days_of_month` pregões do mês + primeiros
+    `first_days_of_month` do mês seguinte. PRIMEIRA hipótese de TIMING
+    testada neste domínio — H1-H15 são todas seleção transversal (QUAIS
+    papéis escolher); H16 testa QUANDO estar posicionado, no MESMO
+    universo (não seleciona por fator nenhum).
+
+    Mecânica NOVA, não reusa `walk_forward` (que é seleção mensal por
+    fator) — universo rebalanceado mensalmente (mesma disciplina PIT de
+    `universe.select_universe`), carteira equiponderada FIXA entre
+    rebalances (mesma de H1). A estratégia só "conta" o retorno do dia
+    (posicionada) nos pregões de virada-de-mês; o BENCHMARK é a MESMA
+    carteira posicionada TODO dia — isola o efeito de TIMING do efeito de
+    qual universo foi escolhido (os dois usam exatamente o mesmo top_n por
+    liquidez). Custo: um `one_way` na transição cash→posicionado E
+    posicionado→cash (aproximação declarada: ignora turnover de composição
+    do universo entre rebalances mensais — o custo dominante aqui é a
+    entrada/saída do timing, não a rotação de membros).
+
+    Usa o MESMO pedágio/registro de todas as anteriores via
+    `_finalize_hypothesis` (extraído de `_run_hypothesis` nesta mesma
+    sessão — H1-H15 continuam usando `walk_forward`, comportamento
+    intocado). Critérios: (i) IC95% diff-Sharpe > 0; (ii) DSR >= dsr_min
+    (N=15 tentativas no registro)."""
+    from config import H16_FROZEN_KEYS
+    import returns as returns_mod
+    cfg = cfg or load_config()
+    conn = conn or db.get_connection()
+    adjust.require_scanned(conn)
+    u, e, bt = cfg["universe"], cfg["execution"], cfg["backtest"]
+    h16f = cfg.get("h16_factor", {})
+    last_days = h16f.get("last_days_of_month", 1)
+    first_days = h16f.get("first_days_of_month", 3)
+    top_n = u.get("top_n", 60)
+    liq_lb, min_hist = u.get("lookback_trading_days", 126), u.get("min_history_days", 252)
+    test_start = bt.get("test_start", "0000-00-00")
+    one_way = execution.one_way_cost(
+        e.get("b3_fee_pct", 0.0003), e.get("spread_slippage_pct", 0.0015))
+
+    all_dates = [r[0] for r in conn.execute(
+        "SELECT DISTINCT date FROM prices_raw WHERE market_type=? AND date>=?"
+        " ORDER BY date", (universe.SPOT_MARKET, test_start))]
+    if not all_dates:
+        raise ValueError("H16: nenhum pregão >= backtest.test_start")
+    tom_days = _turn_of_month_days(all_dates, last_days, first_days)
+    month_ends = returns_mod.month_end_dates(all_dates)
+
+    series, dret = {}, {}
+
+    def _load(tk):
+        if tk not in series:
+            dates, closes = adjust.adjusted_series(conn, tk)
+            series[tk] = (dates, closes)
+            d = {dates[i]: closes[i] / closes[i - 1] - 1.0
+                for i in range(1, len(dates)) if closes[i - 1] > 0}
+            dret[tk] = d
+        return dret[tk]
+
+    strat, bench = [], []
+    current, next_rebal_idx, prev_in_window = None, 0, False
+    for day in all_dates:
+        # rebalanceia no primeiro pregão >= cada fim-de-mês elegível (PIT:
+        # asof = fim-de-mês, universo só vê dado < asof).
+        while next_rebal_idx < len(month_ends) and month_ends[next_rebal_idx] <= day:
+            asof = month_ends[next_rebal_idx]
+            current = universe.select_universe(conn, asof, top_n, liq_lb, min_hist)
+            next_rebal_idx += 1
+        if not current:
+            continue
+        rets = [_load(tk).get(day, 0.0) for tk in current]
+        bench_ret = sum(rets) / len(rets) if rets else 0.0
+        in_window = day in tom_days
+        strat_ret = bench_ret if in_window else 0.0
+        if in_window != prev_in_window:
+            strat_ret -= one_way   # entra/sai do timing: paga 1 perna
+        prev_in_window = in_window
+        strat.append(strat_ret)
+        bench.append(bench_ret)
+
+    return _finalize_hypothesis(
+        "H16", "h16-turn-of-month", H16_FROZEN_KEYS, "h16_criteria",
+        "rodada única da H16 (efeito virada-de-mês; sharpe por-período realizado)",
+        cfg, write_report, run_id, trials_path, strat, bench)
 
 
 if __name__ == "__main__":

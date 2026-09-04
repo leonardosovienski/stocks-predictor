@@ -394,3 +394,77 @@ H13_FROZEN_KEYS = [
 def h13_frozen_config_hash(config: dict) -> str:
     """O LACRE da H13 — mesmo mecanismo dos lacres anteriores."""
     return _frozen_hash(config, H13_FROZEN_KEYS, "H13-FROZEN")
+
+
+# Subconjunto H14-FROZEN (pré-registro 2026-09-04, HANDOFF). Proximidade da
+# máxima de 52 semanas (top quintile) — fator de preço distinto de momentum,
+# mesma janela/universo/execução/bootstrap de H1.
+H14_FROZEN_KEYS = [
+    ("universe", "top_n"), ("universe", "lookback_trading_days"),
+    ("universe", "min_history_days"), ("universe", "rebalance_frequency"),
+    ("h14_factor", "name"), ("h14_factor", "lookback_days"),
+    ("h14_portfolio", "quantile"), ("h14_portfolio", "weighting"),
+    ("h14_portfolio", "direction"),
+    ("execution", "price"), ("execution", "b3_fee_pct"),
+    ("execution", "brokerage_pct"), ("execution", "spread_slippage_pct"),
+    ("backtest", "warmup_end"), ("backtest", "test_start"),
+    ("backtest", "purge_embargo_months"),
+    ("bootstrap", "n_boot"), ("bootstrap", "block_length"),
+    ("bootstrap", "confidence"), ("bootstrap", "method"),
+    ("h14_criteria", "dsr_min"),
+]
+
+
+def h14_frozen_config_hash(config: dict) -> str:
+    """O LACRE da H14 — mesmo mecanismo dos lacres anteriores."""
+    return _frozen_hash(config, H14_FROZEN_KEYS, "H14-FROZEN")
+
+
+# Subconjunto H15-FROZEN (pré-registro 2026-09-04, HANDOFF). Volume anormal
+# (top quintile) — volume_fin já em prices_raw desde o M1, nunca usado como
+# sinal de seleção. Mesma janela/universo/execução/bootstrap de H1.
+H15_FROZEN_KEYS = [
+    ("universe", "top_n"), ("universe", "lookback_trading_days"),
+    ("universe", "min_history_days"), ("universe", "rebalance_frequency"),
+    ("h15_factor", "name"), ("h15_factor", "short_lookback_days"),
+    ("h15_factor", "long_lookback_days"),
+    ("h15_portfolio", "quantile"), ("h15_portfolio", "weighting"),
+    ("h15_portfolio", "direction"),
+    ("execution", "price"), ("execution", "b3_fee_pct"),
+    ("execution", "brokerage_pct"), ("execution", "spread_slippage_pct"),
+    ("backtest", "warmup_end"), ("backtest", "test_start"),
+    ("backtest", "purge_embargo_months"),
+    ("bootstrap", "n_boot"), ("bootstrap", "block_length"),
+    ("bootstrap", "confidence"), ("bootstrap", "method"),
+    ("h15_criteria", "dsr_min"),
+]
+
+
+def h15_frozen_config_hash(config: dict) -> str:
+    """O LACRE da H15 — mesmo mecanismo dos lacres anteriores."""
+    return _frozen_hash(config, H15_FROZEN_KEYS, "H15-FROZEN")
+
+
+# Subconjunto H16-FROZEN (pré-registro 2026-09-04, HANDOFF). Efeito
+# virada-de-mês — primeira hipótese de TIMING (não seleção transversal)
+# testada neste domínio; mecânica própria (backtest.run_h16), não usa
+# walk_forward, por isso não reusa backtest.test_start/purge_embargo_months
+# do jeito das anteriores (a mecânica não faz "rebalance mensal seleciona
+# quintil" — só reusa o universo/execução como base de custo/composição).
+H16_FROZEN_KEYS = [
+    ("universe", "top_n"), ("universe", "lookback_trading_days"),
+    ("universe", "min_history_days"), ("universe", "rebalance_frequency"),
+    ("h16_factor", "name"), ("h16_factor", "last_days_of_month"),
+    ("h16_factor", "first_days_of_month"),
+    ("execution", "price"), ("execution", "b3_fee_pct"),
+    ("execution", "brokerage_pct"), ("execution", "spread_slippage_pct"),
+    ("backtest", "test_start"),
+    ("bootstrap", "n_boot"), ("bootstrap", "block_length"),
+    ("bootstrap", "confidence"), ("bootstrap", "method"),
+    ("h16_criteria", "dsr_min"),
+]
+
+
+def h16_frozen_config_hash(config: dict) -> str:
+    """O LACRE da H16 — mesmo mecanismo dos lacres anteriores."""
+    return _frozen_hash(config, H16_FROZEN_KEYS, "H16-FROZEN")
