@@ -26,7 +26,7 @@
 
 - TODO I/O de texto declara `encoding="utf-8"` (default do Windows é cp1252 — já mordeu).
 - `vendor/predictor_core/` NÃO se edita à toa — a fonte da verdade é o repo irmão
-  `C:\Codex-projetos\Codex\predictor_core\` e o sync é UNIDIRECIONAL via o
+  `C:\Claude-projetos\Claude\predictor_core\` e o sync é UNIDIRECIONAL via o
   `sync_core.py` de lá (`--check`/`--write`). Evolução por demanda vai PRO upstream
   primeiro e desce pelo sync; código customizado no vendor é DELETADO pelo prune.
 - Migrações em `stocks_predictor/db.py` são append-only: nunca alterar uma existente, sempre adicionar.

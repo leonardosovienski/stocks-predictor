@@ -2079,3 +2079,74 @@ crash, comportamento preservado no caminho feliz).
 Suite completa (sandbox): 289 passed, 1 skipped, 6 failed — mesmos 6
 pré-existentes do shim de vendor, não relacionados. Confirmar verde total
 na máquina real com Core 3.0.0.
+
+---
+
+## Confirmação real da varredura + Core 3.1.0 (2026-09-04)
+
+Operador rodou a suíte completa na máquina real (Windows, Core recém
+atualizado): **296 passed, 0 failed** — confirma as 5 levas da varredura
+(PRs #38-#42, 22 achados corrigidos) de ponta a ponta, sem shim de vendor.
+
+Achado no caminho: `predictor-core` instalado na máquina estava em 2.2.0
+(pyproject.toml exige `>=3.0,<4`). O pacote NÃO está no PyPI público —
+distribuição é só por wheel de GitHub Release do repo irmão
+`leonardosovienski/core-predictor` (`README.md` de lá: "Distribution
+occurs through wheels"). Resolvido instalando direto do asset da release:
+
+```powershell
+python -m pip install --upgrade "https://github.com/leonardosovienski/core-predictor/releases/download/v3.1.0/predictor_core-3.1.0-py3-none-any.whl"
+```
+
+`core-predictor` (repo irmão) não tinha nada quebrado — release 3.1.0 já
+publicada e íntegra (`v3.0.0`→`v3.1.0`, wheel+sdist com attestation). O
+problema era só a versão instalada localmente estar desatualizada.
+
+## Retrospectiva da sessão (2026-09-04, pedido do operador)
+
+Pedido: reler a sessão inteira, avaliar se o caminho seguido foi correto,
+se eu manteria as decisões. Registro aqui pra não viver só no chat:
+
+**Mantido sem ressalva:** disciplina de pré-registro (parâmetros
+`[Hn-FROZEN]` travados por golden hash antes de qualquer código tocar
+dado real, em toda hipótese H7-H11); parar e perguntar via
+`AskUserQuestion` nos pontos de decisão de design não cobertos (edição do
+`trials.json`, fonte de dado de dividendos, desenho do sinal H9/H10) em
+vez de decidir em silêncio; declarar aproximações e limitações
+explicitamente (agregação ON+PN, data de pagamento como proxy de ex-date,
+lacuna de cobertura 2023-2026) em vez de escondê-las; vereditos honestos
+— 9/9 hipóteses `NOT_SUPPORTED` reportadas como são, sem dourar.
+
+**Faria diferente (tático, não estrutural):**
+1. A varredura de qualidade virou 5 PRs separados (#38-#42) — granularidade
+   fina demais pro tipo de achado (bugs de código, não decisão científica);
+   agrupar por módulo/tema em 2-3 PRs teria reduzido o overhead de
+   coordenação (5 ciclos de draft→watch→merge→check-in cancelado) sem
+   perder atomicidade de revisão.
+2. Chutei o caminho do repo (`C:\Claude-projetos\Claude\stocks-predictor`)
+   quando o operador reabriu o PowerShell, sem esse dado — devia ter
+   pedido pra localizar o repo primeiro.
+3. Girei tentando `pip install predictor-core` contra o PyPI público antes
+   de ir direto ao repo `core-predictor` no GitHub — o pacote nunca esteve
+   no PyPI, então essas tentativas eram fadadas a falhar; devia ter
+   perguntado "o Core tem repo remoto?" mais cedo.
+
+**Não é erro, é o processo funcionando:** 0/9 hipóteses comprovadas é o
+pedágio estatístico (IC95% + DSR) fazendo o trabalho dele, não falha de
+condução. H11 (única pendente) segue como a única ponta solta real — dado
+o histórico, a expectativa honesta é que também não passe, mas valia
+testar por corrigir um viés metodológico real (só-preço) declarado desde a
+H1.
+
+**Achado na varredura de documentação** (pedido do operador, "confere
+todos os md do projeto"): `AGENTS.md` e `CLAUDE.md` são idênticos exceto
+por uma linha — `AGENTS.md` apontava o repo irmão do Core em
+`C:\Codex-projetos\Codex\predictor_core\`, `CLAUDE.md` em
+`C:\Claude-projetos\Claude\predictor_core\` (a fonte de verdade real,
+confirmada nesta sessão). Drift de cópia, não decisão intencional
+(nenhuma data/nota diferenciando os dois). Corrigido: `AGENTS.md`
+alinhado ao caminho real. Demais menções a `predictor-core==3.0.0`/
+"252 testes" em `RESEARCH_FREEZE.md`/`README.md` são entradas DATADAS de
+sessões anteriores (registram o que era verdade naquele momento, não
+claim de estado atual) — preservadas intactas, mesma disciplina
+append-only do resto do projeto.
