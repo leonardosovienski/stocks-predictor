@@ -409,5 +409,104 @@
       "2026-07-03T23:59:59Z"
     ],
     "metric": "sharpe_diff_ci95"
+  },
+  {
+    "name": "h14-near-52w-high",
+    "registered_at": "2026-09-04T16:18:49Z",
+    "params": {
+      "universe.top_n": 60,
+      "universe.lookback_trading_days": 126,
+      "universe.min_history_days": 252,
+      "universe.rebalance_frequency": "monthly",
+      "h14_factor.name": "near_52w_high",
+      "h14_factor.lookback_days": 252,
+      "h14_portfolio.quantile": "top_quintile",
+      "h14_portfolio.weighting": "equal",
+      "h14_portfolio.direction": "long_only",
+      "execution.price": "next_open",
+      "execution.b3_fee_pct": 0.0003,
+      "execution.brokerage_pct": 0.0,
+      "execution.spread_slippage_pct": 0.0015,
+      "backtest.warmup_end": "2017-12-31",
+      "backtest.test_start": "2018-01-01",
+      "backtest.purge_embargo_months": 1,
+      "bootstrap.n_boot": 10000,
+      "bootstrap.block_length": 21,
+      "bootstrap.confidence": 0.95,
+      "bootstrap.method": "stationary",
+      "h14_criteria.dsr_min": 0.95
+    },
+    "sharpe": 0.016328,
+    "notes": "rodada única da H14 (proximidade da máxima 52 semanas, quintil superior; sharpe por-período realizado)",
+    "test_period": [
+      "2018-01-01T00:00:00Z",
+      "2026-07-03T23:59:59Z"
+    ],
+    "metric": "sharpe_diff_ci95"
+  },
+  {
+    "name": "h15-volume-surge",
+    "registered_at": "2026-09-04T16:27:59Z",
+    "params": {
+      "universe.top_n": 60,
+      "universe.lookback_trading_days": 126,
+      "universe.min_history_days": 252,
+      "universe.rebalance_frequency": "monthly",
+      "h15_factor.name": "volume_surge",
+      "h15_factor.short_lookback_days": 21,
+      "h15_factor.long_lookback_days": 252,
+      "h15_portfolio.quantile": "top_quintile",
+      "h15_portfolio.weighting": "equal",
+      "h15_portfolio.direction": "long_only",
+      "execution.price": "next_open",
+      "execution.b3_fee_pct": 0.0003,
+      "execution.brokerage_pct": 0.0,
+      "execution.spread_slippage_pct": 0.0015,
+      "backtest.warmup_end": "2017-12-31",
+      "backtest.test_start": "2018-01-01",
+      "backtest.purge_embargo_months": 1,
+      "bootstrap.n_boot": 10000,
+      "bootstrap.block_length": 21,
+      "bootstrap.confidence": 0.95,
+      "bootstrap.method": "stationary",
+      "h15_criteria.dsr_min": 0.95
+    },
+    "sharpe": 0.013167,
+    "notes": "rodada única da H15 (volume anormal, quintil superior; sharpe por-período realizado)",
+    "test_period": [
+      "2018-01-01T00:00:00Z",
+      "2026-07-03T23:59:59Z"
+    ],
+    "metric": "sharpe_diff_ci95"
+  },
+  {
+    "name": "h16-turn-of-month",
+    "registered_at": "2026-09-04T16:30:27Z",
+    "params": {
+      "universe.top_n": 60,
+      "universe.lookback_trading_days": 126,
+      "universe.min_history_days": 252,
+      "universe.rebalance_frequency": "monthly",
+      "h16_factor.name": "turn_of_month",
+      "h16_factor.last_days_of_month": 1,
+      "h16_factor.first_days_of_month": 3,
+      "execution.price": "next_open",
+      "execution.b3_fee_pct": 0.0003,
+      "execution.brokerage_pct": 0.0,
+      "execution.spread_slippage_pct": 0.0015,
+      "backtest.test_start": "2018-01-01",
+      "bootstrap.n_boot": 10000,
+      "bootstrap.block_length": 21,
+      "bootstrap.confidence": 0.95,
+      "bootstrap.method": "stationary",
+      "h16_criteria.dsr_min": 0.95
+    },
+    "sharpe": -0.02483,
+    "notes": "rodada única da H16 (efeito virada-de-mês; sharpe por-período realizado)",
+    "test_period": [
+      "2018-01-01T00:00:00Z",
+      "2026-07-03T23:59:59Z"
+    ],
+    "metric": "sharpe_diff_ci95"
   }
 ]
