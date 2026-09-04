@@ -1813,3 +1813,60 @@ Decisões completas, evidence registry, component inventory e case studies em
 - **Blocker operacional pendente:** `data/stocks.db` não está neste checkout (excluído por
   `.gitignore`) e não tem backup offsite verificado — ação humana necessária antes de
   qualquer desligamento da máquina de pesquisa.
+
+---
+
+## Varredura de qualidade — ingestão FRE (2026-09-04)
+
+Pedido do operador: revisão completa do projeto em busca de bugs/melhorias
+(`code-review` skill, `--full-tree stocks_predictor/ tools/ tests/`). Achados
+reais, todos em `stocks_predictor/ingest_cvm.py` (código de dividendos/H11
+escrito nesta mesma sessão, ainda sem cobertura de teste) — os três corrigidos:
+
+1. **`load_free_float()` usava `_open_zip_csv(zbytes, "distribuicao_capital")`**
+   — nome ambíguo (bate tanto no CSV principal quanto no `_classe_acao`), o
+   mesmo bug já contornado dentro de `ingest_fre_dividends_year` mas nunca
+   aplicado aqui; contra um zip FRE real teria levantado `ValueError`
+   ("2 CSVs contendo...") em toda chamada. Corrigido extraindo a lógica de
+   filtro manual (já existente, duplicada só em `ingest_fre_dividends_year`)
+   para uma função nova, `_open_fre_distribuicao_capital_main(zbytes)`,
+   reutilizada pelas duas chamadoras — ponto único de verdade pra essa
+   seleção de arquivo.
+2. **`_to_float()` tentava `float(raw)` puro primeiro, caindo pro parse BR
+   (`,`-decimal/`.`-milhar) só se isso falhasse.** Risco de corrupção
+   silenciosa ~1000x: `"450.000"` em notação BR de milhar (450 mil) seria
+   lido como `450.0` decimal inglês sem erro nenhum — violação direta da
+   regra "nunca consertar/adivinhar dado em silêncio". A ambiguidade é
+   inerente à string sozinha (não dá pra adivinhar com segurança); a
+   correção foi tornar `fmt` **obrigatório** (`"en"` ponto-decimal-puro pra
+   `Montante` de dividendos, formato observado nesse dataset; `"br"`
+   milhar-ponto/decimal-vírgula pra `Quantidade_Total_Acoes_Circulacao`,
+   mesma convenção do resto do FRE/DFP) — decisão de formato passa a ser do
+   chamador, nunca de tentativa-e-erro.
+3. **Zero cobertura de teste** pros parsers novos (`parse_fre_dividend_rows`,
+   `parse_fre_capital_total_rows`, `_to_float`, `_open_fre_distribuicao_capital_main`,
+   `ingest_fre_dividends_year`) — violava a regra de golden tests no parse.
+   Adicionados 12 testes em `tests/test_rj_ingest.py` seguindo o padrão
+   já estabelecido (zips sintéticos com cabeçalhos/nomes de coluna reais da
+   CVM, fixture `_zip_of`/`conn`), cobrindo: os dois formatos de `_to_float`
+   e o `fmt` inválido fail-loud; soma de `Montante` por `(cnpj, pay_date)`;
+   linha sem data de pagamento descartada; fail-loud sem coluna de valor;
+   seleção do CSV principal vs. `_classe_acao`; retenção da maior
+   `Data_Referencia` por CNPJ; ingestão fim-a-fim gravando `value_per_share`
+   correto e idempotente; companhia sem total de ações confiável não gera
+   dado inventado; companhia sem ticker mapeado é pulada.
+
+Suite completa (`STOCKS_ALLOW_VENDOR_SHIM=1` neste sandbox, sem rede real):
+278 passed, 1 skipped, 6 failed — os 6 falhos são pré-existentes, do shim de
+vendor deste sandbox (`predictor_core` vendorizado numa versão mais antiga
+que a canônica 3.0.0: `PastView.__init__` mudou de assinatura,
+`pipeline_fingerprint` não existe na versão vendorizada), não relacionados a
+esta mudança. Rodar `python -m pytest tests/ -v` na máquina real (Core 3.0.0
+canônico) pra confirmar verde total antes de considerar a varredura fechada.
+
+Não coberto ainda por este ciclo de varredura: os itens já pendentes de
+antes (lacuna de proventos 2023-2026 na fonte CVM/FRE — sem alternativa
+confirmada; fonte B3 candidata em `tools/explore_b3_dividends_api.py` segue
+não verificada, endpoint precisa ser confirmado via devtools do navegador
+numa máquina com rede real) e a rodada real da H11 (só smoke test sintético
+rodou até agora).
