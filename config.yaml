@@ -261,6 +261,61 @@ h13_portfolio:
 h13_criteria:
   dsr_min: 0.95                    # [H13-FROZEN] DSR mínimo (N=12 tentativas no registro)
 
+# ── H14 (pré-registrada 2026-09-04; ver HANDOFF) ────────────────────────────
+# NÃO alterar valores [H14-FROZEN] após qualquer rodada de resultado da H14.
+# Proximidade da máxima de 52 semanas (close/max(close, 252 pregões)), quintil
+# SUPERIOR. Fator de preço distinto de momentum (George & Hwang 2004) — DFP
+# consolidada esgotada (H7/H9/H10/H12/H13); volta ao dado só-preço, mas com
+# um mecanismo novo (proximidade, não retorno acumulado).
+
+h14_factor:
+  name: near_52w_high              # [H14-FROZEN] close(asof) / max(close, lookback)
+  lookback_days: 252               # [H14-FROZEN]
+
+h14_portfolio:
+  quantile: top_quintile           # [H14-FROZEN]
+  weighting: equal                 # [H14-FROZEN]
+  direction: long_only             # [H14-FROZEN]
+
+h14_criteria:
+  dsr_min: 0.95                    # [H14-FROZEN] DSR mínimo (N=13 tentativas no registro)
+
+# ── H15 (pré-registrada 2026-09-04; ver HANDOFF) ────────────────────────────
+# NÃO alterar valores [H15-FROZEN] após qualquer rodada de resultado da H15.
+# Volume anormal (média 21d / média 252d − 1), quintil SUPERIOR. `volume_fin`
+# já vive em prices_raw desde o M1 (usado só pra ranquear liquidez do
+# universo), nunca como sinal de seleção — zero ingestão nova.
+
+h15_factor:
+  name: volume_surge               # [H15-FROZEN] vol_medio_curto/vol_medio_longo - 1
+  short_lookback_days: 21          # [H15-FROZEN]
+  long_lookback_days: 252          # [H15-FROZEN]
+
+h15_portfolio:
+  quantile: top_quintile           # [H15-FROZEN]
+  weighting: equal                 # [H15-FROZEN]
+  direction: long_only             # [H15-FROZEN]
+
+h15_criteria:
+  dsr_min: 0.95                    # [H15-FROZEN] DSR mínimo (N=14 tentativas no registro)
+
+# ── H16 (pré-registrada 2026-09-04; ver HANDOFF) ────────────────────────────
+# NÃO alterar valores [H16-FROZEN] após qualquer rodada de resultado da H16.
+# Efeito virada-de-mês (Lakonishok & Smidt 1988): últimos last_days_of_month
+# pregões do mês + primeiros first_days_of_month do mês seguinte. PRIMEIRA
+# hipótese de TIMING testada neste domínio — H1-H15 são todas seleção
+# transversal (QUAIS papéis); H16 testa QUANDO estar posicionado, mesmo
+# universo (sem seleção por fator). Mecânica própria em backtest.run_h16,
+# não usa walk_forward.
+
+h16_factor:
+  name: turn_of_month              # [H16-FROZEN]
+  last_days_of_month: 1            # [H16-FROZEN] últimos N pregões do mês corrente
+  first_days_of_month: 3           # [H16-FROZEN] primeiros N pregões do mês seguinte
+
+h16_criteria:
+  dsr_min: 0.95                    # [H16-FROZEN] DSR mínimo (N=15 tentativas no registro)
+
 data:
   db_path: "data/stocks.db"
   cotahist_dir: "data/cotahist"

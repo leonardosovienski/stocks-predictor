@@ -2352,3 +2352,89 @@ fonte de dado genuinamente nova (fluxo de caixa, múltiplos de mercado,
 dado intraday/institucional) ou universo diferente. `RESEARCH_FREEZE.md`/
 `STOCKS_CURRENT_STATE.md` atualizados: `scientific_state=CLOSED_FOR_H1_THROUGH_H13`,
 `new_scientific_trials=0`.
+
+---
+
+## H14, H15 e H16 ABERTAS — PRÉ-REGISTRO (2026-09-04, ANTES de qualquer rodada real)
+
+Decisão explícita do operador ("as 3 ao msm tempo"), sempre com a ressalva
+de que cada hipótese é testada UMA vez, julgada UMA vez. Três candidatos
+levantados após o esgotamento da DFP (H7-H13): dois fatores de preço nunca
+testados (zero dado novo) e a primeira hipótese de TIMING do domínio.
+
+**H14 — proximidade da máxima de 52 semanas** (`config.yaml` `h14_*`,
+`config.h14_frozen_config_hash` = `21b9c2ca735a8684`): quintil SUPERIOR de
+`close(asof)/max(close, 252 pregões)` (`factor.near_52w_high_signals`).
+Fator de preço distinto de momentum (George & Hwang 2004) — proximidade da
+máxima tem poder preditivo próprio na literatura, não redutível ao retorno
+acumulado que momentum mede. Mesma maquinaria de H1 (`walk_forward`), zero
+dado novo.
+
+**H15 — volume anormal** (`config.yaml` `h15_*`,
+`config.h15_frozen_config_hash` = `a4d7e124231d6a5b`): quintil SUPERIOR de
+`volume_médio_21d/volume_médio_252d − 1` (`factor.volume_surge_signals`).
+`volume_fin` já vive em `prices_raw` desde o M1 (usado só pra ranquear
+liquidez do universo), NUNCA como sinal de seleção — zero dado novo. Mesma
+maquinaria de H1.
+
+**H16 — efeito virada-de-mês** (`config.yaml` `h16_*`,
+`config.h16_frozen_config_hash` = `584350278798ef6a`): últimos
+`last_days_of_month=1` pregões do mês + primeiros `first_days_of_month=3`
+do mês seguinte (Lakonishok & Smidt 1988, "turn-of-the-month effect").
+**PRIMEIRA hipótese de TIMING testada neste domínio** — H1-H15 são todas
+seleção transversal (QUAIS papéis escolher, rebalance mensal, hold até o
+próximo); H16 testa QUANDO estar posicionado, no MESMO universo, sem
+seleção por fator nenhum.
+
+**Critério (as 3):** IC95% diff-Sharpe > 0 E DSR >= 0,95 — H14 N=13, H15
+N=14, H16 N=15 (12 já julgadas + as outras duas novas cada vez).
+
+**Implementação:**
+- `factor.near_52w_high`/`near_52w_high_signals` (H14): mesma disciplina
+  point-in-time de `momentum_12_1` (`_idx_le`), `None` se histórico
+  insuficiente ou preço <=0.
+- `factor.volume_surge_signals` (H15): consulta `prices_raw` direto (não
+  `series_by_ticker`, que só carrega preço) — mesmo padrão de
+  `_fundamental_signals`. Só pregões ESTRITAMENTE anteriores a `asof`
+  (`date < asof`, não `<=`) — o volume do próprio dia não é conhecido
+  antes do fechamento, mesma disciplina anti-lookahead do resto do
+  domínio.
+- `backtest.run_h14`/`run_h15`: mesmo runner genérico `_run_hypothesis`
+  (`walk_forward`), `take="top"` nas duas.
+- `backtest.run_h16`: mecânica NOVA, não usa `walk_forward` — universo
+  rebalanceado mensalmente (mesma disciplina PIT de
+  `universe.select_universe`), carteira equiponderada FIXA entre
+  rebalances (mesma de H1); a estratégia só "conta" o retorno do dia nos
+  pregões de virada-de-mês (`backtest._turn_of_month_days`), o BENCHMARK
+  é a MESMA carteira posicionada TODO dia (isola timing de seleção de
+  universo). Custo: 1 `one_way` em cada transição cash/posicionado
+  (aproximação declarada: ignora turnover de composição do universo entre
+  rebalances — ver docstring de `run_h16`).
+- `backtest._run_hypothesis`/`_finalize_hypothesis`: refactor não-invasivo
+  — extraído o fecho comum (pedágio+registro+relatório) de
+  `_run_hypothesis` pra uma função própria, reusada por `run_h16` (que não
+  passa por `walk_forward`). H1-H15 continuam idênticas (mesma suíte
+  completa confirmando, sem quebra).
+- `config.yaml`/`config.py`: `h14_*`/`h15_*`/`h16_*` `[H14-FROZEN]`/
+  `[H15-FROZEN]`/`[H16-FROZEN]`.
+- `report._BIAS_NOTE["H14"]`/`["H15"]`/`["H16"]`: declaram a limitação de
+  cada uma (H14: mesma direção de viés da H1/momentum; H15: sem direção
+  estabelecida; H16: viés irrelevante ao mecanismo — timing, não seleção
+  — mas custo simplificado declarado).
+- Testes novos: `tests/test_h14_near_52w_high.py`,
+  `tests/test_h15_volume_surge.py`, `tests/test_h16_turn_of_month.py`
+  (smoke, golden hash, hash ignora parâmetro operacional, casos de borda
+  point-in-time, calendário de virada-de-mês com meses conhecidos).
+
+Suite completa (sandbox): 321 passed, 1 skipped, 6 failed — mesmos 6
+pré-existentes do shim de vendor, não relacionados.
+
+**Próximo passo (máquina do operador):** `python -m pytest tests/ -v` pra
+confirmar verde total, depois:
+```
+python -c "import backtest; backtest.run_h14(write_report=True)"
+python -c "import backtest; backtest.run_h15(write_report=True)"
+python -c "import backtest; backtest.run_h16(write_report=True)"
+```
+Nenhum backfill/ingestão nova necessária — as 3 usam dado que já está em
+`prices_raw` desde o M1 (H14/H15) ou o mesmo universo/preço de H1 (H16).
