@@ -112,6 +112,17 @@ _BIAS_NOTE = {
            "inferir sinal. Mesmo embargo de divulgação de 90 dias por variável "
            "(`h10_factor.roe_disclosure_embargo_days`/`leverage_disclosure_embargo_days`), "
            "mesma fonte DFP/CVM de H7/H9.",
+    "H11": "- Retorno **TOTAL** (rota (a), 2026-09-04): proventos "
+           "REINVESTIDOS via `adjust.total_return_series`, ao contrário de "
+           "H1-H10 (só-preço). **Cobertura de proventos parcial**: a fonte "
+           "(CVM/FRE, `dividends`) só é confiável 2018-2022 (achado "
+           "registrado no HANDOFF 2026-09-04 — 2023-2026 têm quase zero "
+           "cobertura) — por isso a janela da H11 é restrita a 2018-2022 "
+           "(`h11_backtest.test_start/test_end`), não os anos completos de "
+           "H1-H10. Duas aproximações do dado de provento em si (não "
+           "escondidas): valor por ação médio ON+PN (não por classe "
+           "específica) e data de PAGAMENTO como proxy de data-ex (a CVM "
+           "não expõe a data-ex real neste dataset).",
 }
 
 

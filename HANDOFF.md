@@ -1,5 +1,49 @@
 # HANDOFF — predictor-stocks
 
+> ## H11 ABERTA — PRÉ-REGISTRO (2026-09-04, ANTES de qualquer rodada real)
+>
+> Decisão explícita do operador ("todos vamos fazer tudo"), primeira
+> hipótese a usar a infraestrutura de retorno total (entrada abaixo). **H11
+> — momentum 12-1 em RETORNO TOTAL** (`config.yaml` `h11_*`,
+> `config.h11_frozen_config_hash` = `1a75b7f12695cc97`): mesmo sinal
+> exato da H1 (momentum 12-1, quintil superior, equiponderado), mas sobre
+> `adjust.total_return_series` (proventos reinvestidos) em vez de
+> `adjust.adjusted_series` (só-preço). Racional: o pré-registro da H1
+> declarou que omitir proventos FAVORECE momentum contra o benchmark
+> (papéis de momentum tendem a menor yield) — a H11 testa se corrigir esse
+> viés muda o veredito.
+>
+> **Janela restrita 2018-01-01 a 2022-12-31** (`h11_backtest.test_start/
+> test_end`, NÃO os mesmos de `backtest.test_start` global) — a cobertura
+> real de `dividends` (CVM/FRE) só é confiável nesse período (achado
+> registrado nesta mesma sessão, entrada "Retorno TOTAL implementado"
+> abaixo); 2023-2026 ficam de fora até uma fonte melhor aparecer. Isso é
+> MENOS dado que H1 (2018-2026 completo) — declarado, não escondido.
+>
+> **Critério:** IC95% diff-Sharpe > 0 E DSR >= 0,95 (N=10 tentativas no
+> registro, contando H1/H2/H4/H5/H6/H7/H8/H9/H10).
+>
+> **Implementação:** `backtest.walk_forward` ganhou dois parâmetros novos,
+> ambos com default que preserva H1-H10 byte a byte: `series_fn` (troca a
+> fonte de preço — default `adjust.adjusted_series`) e
+> `cfg["backtest"]["test_end"]` (corta a janela — default `None` = sem
+> corte). `_run_hypothesis` repassa `series_fn`. `run_h11` monta uma CÓPIA
+> de `cfg["backtest"]` só pra própria rodada (testado explicitamente —
+> `test_run_h11_does_not_mutate_shared_config` — que o `cfg` compartilhado
+> não é alterado, H1-H10 continuam vendo `test_start`/ausência de
+> `test_end` originais). `config.py` (`H11_FROZEN_KEYS`/
+> `h11_frozen_config_hash`), `report._BIAS_NOTE["H11"]` (declara a
+> cobertura parcial de proventos + as duas aproximações da fonte).
+> Testes em `tests/test_h11_total_return.py` (smoke com proventos
+> sintéticos, golden hash, hash ignora parâmetro operacional, não-mutação
+> do cfg compartilhado) — validados manualmente nesta sessão (sandbox sem
+> `pytest`). Regressão de H1 (`backtest.run`) e H6 confirmada funcionando
+> sem alteração após a mudança em `walk_forward`.
+>
+> **Próximo passo:** dado real já está na sua máquina (a mesma ingestão de
+> `dividends` já rodada) — só falta `python -m pytest tests/ -v` e
+> `python -c "import backtest; backtest.run_h11(write_report=True)"`.
+
 > ## Retorno TOTAL implementado (2026-09-04) — infraestrutura opt-in, NÃO uma hipótese
 >
 > Decisão do operador ("A e B" + confirmação de prosseguir com a aproximação
@@ -66,6 +110,52 @@
 > bloqueio de rede de sempre neste sandbox) e nenhuma hipótese usa
 > `total_return_series` ainda — é infraestrutura pronta, esperando a
 > próxima hipótese pré-registrada que decida usá-la (H11 em diante).
+>
+> **Atualização (2026-09-04, mesmo dia) — ingestão real rodada, achado
+> IMPORTANTE de cobertura temporal:** `tools/ingest_dividends_real.py`
+> executado pelo operador: **2.384 linhas gravadas em `dividends`**, mas com
+> cobertura MUITO desigual entre anos:
+>
+> | ano | linhas | situação |
+> |---|---|---|
+> | 2018 | 366 | ok |
+> | 2019 | 509 | ok |
+> | 2020 | 530 | ok |
+> | 2021 | 486 | ok |
+> | 2022 | 485 | ok |
+> | 2023 | **8** | suspeito — muito abaixo do padrão, não investigado ainda |
+> | 2024 | 0 (falhou) | `fre_cia_aberta_distribuicao_dividendos_classe_acao_2024.csv` **não existe** no zip FRE 2024 (nem a versão sem `_classe_acao`) — zip de 2024 tem 35 arquivos contra 56 do de 2023, a CVM aparentemente parou de publicar esse CSV específico a partir de 2024 |
+> | 2025 | 0 (falhou) | mesmo motivo do 2024 |
+> | 2026 | 0 (falhou) | mesmo motivo do 2024 |
+>
+> **Implicação real:** a série de retorno total cobre bem 2018-2022, mas fica
+> capenga de 2023 em diante — justo a parte mais recente da janela 2018-2026
+> usada em H1-H10. Isso NÃO invalida a infraestrutura (ela é honesta sobre o
+> que tem: `total_return_series` só aplica os proventos que existem em
+> `dividends`, sem inventar nada para os anos sem cobertura — o resultado
+> pra 2023-2026 fica equivalente à rota (b) só-preço, não errado, só
+> incompleto) — mas qualquer hipótese futura que use `total_return_series`
+> precisa declarar essa limitação de cobertura explicitamente, e o
+> `_BIAS_NOTE` dela não pode alegar "retorno total corrigido" sem qualificar
+> o período.
+>
+> **Investigação do 2023 concluída (2026-09-04, mesmo dia): NÃO é bug do
+> parser.** Diagnóstico rodado pelo operador: `parse_fre_dividend_rows` sobre
+> o zip FRE 2023 devolve só **58 linhas brutas / 9 empresas distintas**,
+> ANTES de qualquer filtro por universo/ticker — a fonte da CVM já vem rala
+> nesse ano, não é perda no match de ticker. Consistente com o achado de
+> 2024-2026 (arquivo sumiu de vez): a CVM parece ter mudado/descontinuado a
+> forma de reportar distribuição de dividendos no FRE bem na transição
+> 2023→2024 — não é algo que dá pra corrigir ajustando o parser deste lado.
+>
+> **Cobertura real confirmada da fonte FRE para retorno total: sólida
+> 2018-2022, praticamente inexistente 2023-2026.** Decisão de prioridade
+> (não tomada nesta sessão): (1) aceitar a cobertura parcial e usar
+> `total_return_series` só para períodos/hipóteses dentro de 2018-2022; (2)
+> buscar fonte alternativa pra 2023-2026 (dataset próprio da B3, não
+> investigado por falta de acesso de rede neste ambiente); (3) não usar
+> retorno total até resolver a lacuna. Fica registrado como limitação
+> conhecida da infraestrutura, não como bug.
 
 > ## H10 ABERTA — PRÉ-REGISTRO (2026-09-04, ANTES de qualquer rodada real)
 >
