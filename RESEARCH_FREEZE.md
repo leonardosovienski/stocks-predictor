@@ -266,6 +266,30 @@ Nenhum componente foi movido para o Core nesta rodada — os dois já compartilh
 ST_RESEARCH_FREEZE:
   active_hypotheses: []
   stopped_hypotheses:
+    - id: H12
+      family: quality_net_margin
+      result: NOT_SUPPORTED (IC cruza zero; DSR 0.1952 < 0.95)
+      closed_at: 2026-09-04
+      note: >
+        Rodada real na máquina do operador (1.826 pregões, COTAHIST real,
+        backfill de receita/margem via tools/ingest_h7_real.py). 3ª
+        variável contábil independente da DFP (depois de ROE/H7 e
+        alavancagem/H9) — margem líquida isolada, quintil superior. DSR
+        entre os mais baixos de toda a série (0.1952), bem abaixo do
+        limiar. Ver HANDOFF.md "VEREDITO H12 e H13" para detalhes
+        completos.
+    - id: H13
+      family: revenue_growth_yoy
+      result: NOT_SUPPORTED (IC cruza zero; DSR 0.2598 < 0.95)
+      closed_at: 2026-09-04
+      note: >
+        Rodada real na máquina do operador (1.597 pregões, COTAHIST real).
+        Primeira hipótese de CRESCIMENTO testada neste domínio (H1-H12 são
+        todas nível/valor) — crescimento de receita YoY, quintil superior.
+        DSR também bem abaixo do limiar. Com H12, esgota o baralho de
+        fatores extraíveis da DFP consolidada sem fonte de dado
+        genuinamente nova. Ver HANDOFF.md "VEREDITO H12 e H13" para
+        detalhes completos.
     - id: H11
       family: momentum_12_1_total_return
       result: NOT_SUPPORTED (IC cruza zero; DSR 0.8430 < 0.95)
@@ -343,7 +367,8 @@ ST_RESEARCH_FREEZE:
     Nenhuma família de fatores já encerrada (momentum 12-1, momentum 6-1, low-vol,
     vol-target, reversão 21d, interseção momentum×low-vol, qualidade/ROE,
     qualidade/alavancagem, interseção ROE×alavancagem, momentum 12-1 em
-    retorno total) pode ser
+    retorno total, qualidade/margem líquida, crescimento de receita YoY)
+    pode ser
     reaberta sem registrar EXPLICITAMENTE, antes de qualquer código novo:
       previous_result, closure_reason, new_information, causal_reason,
       why_old_test_no_longer_answers_question, new_protocol.

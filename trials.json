@@ -306,5 +306,108 @@
       "2026-07-03T23:59:59Z"
     ],
     "metric": "sharpe_diff_ci95"
+  },
+  {
+    "name": "h11-momentum-12-1-total-return",
+    "registered_at": "2026-09-04T15:24:10Z",
+    "params": {
+      "universe.top_n": 60,
+      "universe.lookback_trading_days": 126,
+      "universe.min_history_days": 252,
+      "universe.rebalance_frequency": "monthly",
+      "h11_factor.name": "momentum_12_1",
+      "h11_factor.lookback_days": 252,
+      "h11_factor.skip_days": 21,
+      "h11_portfolio.quantile": "top_quintile",
+      "h11_portfolio.weighting": "equal",
+      "h11_portfolio.direction": "long_only",
+      "execution.price": "next_open",
+      "execution.b3_fee_pct": 0.0003,
+      "execution.brokerage_pct": 0.0,
+      "execution.spread_slippage_pct": 0.0015,
+      "backtest.warmup_end": "2017-12-31",
+      "h11_backtest.test_start": "2018-01-01",
+      "h11_backtest.test_end": "2022-12-31",
+      "bootstrap.n_boot": 10000,
+      "bootstrap.block_length": 21,
+      "bootstrap.confidence": 0.95,
+      "bootstrap.method": "stationary",
+      "h11_criteria.dsr_min": 0.95
+    },
+    "sharpe": 0.057773,
+    "notes": "rodada única da H11 (momentum 12-1, retorno total, janela 2018-2022; sharpe por-período realizado)",
+    "test_period": [
+      "2018-01-01T00:00:00Z",
+      "2026-07-03T23:59:59Z"
+    ],
+    "metric": "sharpe_diff_ci95"
+  },
+  {
+    "name": "h12-quality-net-margin",
+    "registered_at": "2026-09-04T15:54:47Z",
+    "params": {
+      "universe.top_n": 60,
+      "universe.lookback_trading_days": 126,
+      "universe.min_history_days": 252,
+      "universe.rebalance_frequency": "monthly",
+      "h12_factor.name": "net_margin",
+      "h12_factor.disclosure_embargo_days": 90,
+      "h12_portfolio.quantile": "top_quintile",
+      "h12_portfolio.weighting": "equal",
+      "h12_portfolio.direction": "long_only",
+      "execution.price": "next_open",
+      "execution.b3_fee_pct": 0.0003,
+      "execution.brokerage_pct": 0.0,
+      "execution.spread_slippage_pct": 0.0015,
+      "backtest.warmup_end": "2017-12-31",
+      "backtest.test_start": "2018-01-01",
+      "backtest.purge_embargo_months": 1,
+      "bootstrap.n_boot": 10000,
+      "bootstrap.block_length": 21,
+      "bootstrap.confidence": 0.95,
+      "bootstrap.method": "stationary",
+      "h12_criteria.dsr_min": 0.95
+    },
+    "sharpe": 0.007152,
+    "notes": "rodada única da H12 (margem líquida isolada, quintil superior; sharpe por-período realizado)",
+    "test_period": [
+      "2018-01-01T00:00:00Z",
+      "2026-07-03T23:59:59Z"
+    ],
+    "metric": "sharpe_diff_ci95"
+  },
+  {
+    "name": "h13-revenue-growth-yoy",
+    "registered_at": "2026-09-04T15:57:30Z",
+    "params": {
+      "universe.top_n": 60,
+      "universe.lookback_trading_days": 126,
+      "universe.min_history_days": 252,
+      "universe.rebalance_frequency": "monthly",
+      "h13_factor.name": "revenue_growth_yoy",
+      "h13_factor.disclosure_embargo_days": 90,
+      "h13_portfolio.quantile": "top_quintile",
+      "h13_portfolio.weighting": "equal",
+      "h13_portfolio.direction": "long_only",
+      "execution.price": "next_open",
+      "execution.b3_fee_pct": 0.0003,
+      "execution.brokerage_pct": 0.0,
+      "execution.spread_slippage_pct": 0.0015,
+      "backtest.warmup_end": "2017-12-31",
+      "backtest.test_start": "2018-01-01",
+      "backtest.purge_embargo_months": 1,
+      "bootstrap.n_boot": 10000,
+      "bootstrap.block_length": 21,
+      "bootstrap.confidence": 0.95,
+      "bootstrap.method": "stationary",
+      "h13_criteria.dsr_min": 0.95
+    },
+    "sharpe": 0.010649,
+    "notes": "rodada única da H13 (crescimento de receita YoY, quintil superior; sharpe por-período realizado)",
+    "test_period": [
+      "2018-01-01T00:00:00Z",
+      "2026-07-03T23:59:59Z"
+    ],
+    "metric": "sharpe_diff_ci95"
   }
 ]
