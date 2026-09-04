@@ -294,3 +294,28 @@ H9_FROZEN_KEYS = [
 def h9_frozen_config_hash(config: dict) -> str:
     """O LACRE da H9 — mesmo mecanismo dos lacres anteriores."""
     return _frozen_hash(config, H9_FROZEN_KEYS, "H9-FROZEN")
+
+
+# Subconjunto H10-FROZEN (pré-registro 2026-09-04, HANDOFF). Filtro duplo
+# ROE ∩ baixa alavancagem — mesmo racional da H8 (momentum∩baixa-vol), agora
+# sobre as duas variáveis contábeis da H7/H9.
+H10_FROZEN_KEYS = [
+    ("universe", "top_n"), ("universe", "lookback_trading_days"),
+    ("universe", "min_history_days"), ("universe", "rebalance_frequency"),
+    ("h10_factor", "roe_disclosure_embargo_days"),
+    ("h10_factor", "leverage_disclosure_embargo_days"),
+    ("h10_portfolio", "roe_quantile"), ("h10_portfolio", "leverage_quantile"),
+    ("h10_portfolio", "weighting"), ("h10_portfolio", "direction"),
+    ("execution", "price"), ("execution", "b3_fee_pct"),
+    ("execution", "brokerage_pct"), ("execution", "spread_slippage_pct"),
+    ("backtest", "warmup_end"), ("backtest", "test_start"),
+    ("backtest", "purge_embargo_months"),
+    ("bootstrap", "n_boot"), ("bootstrap", "block_length"),
+    ("bootstrap", "confidence"), ("bootstrap", "method"),
+    ("h10_criteria", "dsr_min"),
+]
+
+
+def h10_frozen_config_hash(config: dict) -> str:
+    """O LACRE da H10 — mesmo mecanismo dos lacres anteriores."""
+    return _frozen_hash(config, H10_FROZEN_KEYS, "H10-FROZEN")

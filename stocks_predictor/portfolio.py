@@ -21,28 +21,56 @@ def inverse_vol_weights(vols):
     return {t: x / total for t, x in inv.items()}
 
 
+def double_filter(primary_signals: dict, secondary_signals: dict,
+                  primary_quantile: float, secondary_quantile: float,
+                  primary_take: str = "top", secondary_take: str = "top") -> dict:
+    """Motor comum de filtro duplo (H8: momentum∩baixa-vol; H10:
+    ROE∩baixa-alavancagem): 1ª etapa seleciona `primary_quantile` do universo
+    por `primary_signals` (`primary_take`="top"/"bottom"); 2ª etapa seleciona
+    `secondary_quantile` DENTRO desse subconjunto por `secondary_signals`
+    (não do universo inteiro). Equiponderado, long-only.
+
+    Só tickers com AMBOS os sinais entram na 1ª seleção — sem isso um ticker
+    com sinal primário sem sinal secundário (ou vice-versa) seria rankeado
+    num filtro e sumiria no outro sem essa interseção explícita. {} se não
+    houver nenhum ticker com os dois sinais."""
+    common = [t for t in primary_signals if t in secondary_signals]
+    if not common:
+        return {}
+    ranked_1 = sorted(common, key=lambda t: primary_signals[t],
+                      reverse=(primary_take == "top"))
+    k1 = max(1, round(len(ranked_1) * primary_quantile))
+    stage1 = ranked_1[:k1]
+    ranked_2 = sorted(stage1, key=lambda t: secondary_signals[t],
+                      reverse=(secondary_take == "top"))
+    k2 = max(1, round(len(ranked_2) * secondary_quantile))
+    chosen = ranked_2[:k2]
+    w = 1.0 / len(chosen)
+    return {t: w for t in chosen}
+
+
 def momentum_lowvol_double_filter(mom_signals: dict, vol_signals: dict,
                                   momentum_quantile: float = 0.4,
                                   vol_quantile: float = 0.5) -> dict:
     """H8 — filtro duplo: primeiro o top `momentum_quantile` do universo por
     momentum, depois a fração `vol_quantile` de menor volatilidade DENTRO
     desse subconjunto (não do universo inteiro). Equiponderado, long-only.
+    Wrapper fino sobre `double_filter` (refactor 2026-09-04 — comportamento
+    idêntico, byte a byte, ao original; H8 já julgada, não mexe no veredito)."""
+    return double_filter(mom_signals, vol_signals, momentum_quantile, vol_quantile,
+                         primary_take="top", secondary_take="bottom")
 
-    Só tickers com AMBOS os sinais entram na 1ª seleção — sem isso um ticker
-    com momentum sem histórico de vol suficiente (ou vice-versa) seria
-    rankeado num filtro e sumiria no outro sem essa interseção explícita.
-    {} se não houver nenhum ticker com os dois sinais."""
-    common = [t for t in mom_signals if t in vol_signals]
-    if not common:
-        return {}
-    ranked_mom = sorted(common, key=lambda t: mom_signals[t], reverse=True)
-    k_mom = max(1, round(len(ranked_mom) * momentum_quantile))
-    top_mom = ranked_mom[:k_mom]
-    ranked_vol = sorted(top_mom, key=lambda t: vol_signals[t])
-    k_vol = max(1, round(len(ranked_vol) * vol_quantile))
-    chosen = ranked_vol[:k_vol]
-    w = 1.0 / len(chosen)
-    return {t: w for t in chosen}
+
+def roe_lowlev_double_filter(roe_signals: dict, leverage_signals: dict,
+                             roe_quantile: float = 0.4,
+                             leverage_quantile: float = 0.5) -> dict:
+    """H10 — filtro duplo: primeiro o top `roe_quantile` do universo por ROE,
+    depois a fração `leverage_quantile` de MENOR alavancagem DENTRO desse
+    subconjunto. Equiponderado, long-only. Mesma maquinaria de
+    `double_filter` (H8), aplicada às duas variáveis contábeis da H7/H9 em
+    vez de momentum/vol — hipótese distinta de ambas isoladas."""
+    return double_filter(roe_signals, leverage_signals, roe_quantile, leverage_quantile,
+                         primary_take="top", secondary_take="bottom")
 
 
 def select_portfolio(signals, quantile=0.2, take="top"):

@@ -409,6 +409,35 @@ def run_h9(cfg=None, conn=None, write_report=False, run_id=None, trials_path=Non
         take="bottom")
 
 
+def run_h10(cfg=None, conn=None, write_report=False, run_id=None, trials_path=None):
+    """H10 — filtro duplo ROE ∩ baixa alavancagem (pré-registro 2026-09-04):
+    top `h10_portfolio.roe_quantile` do universo por ROE, depois a fração
+    `h10_portfolio.leverage_quantile` de menor alavancagem DENTRO desse
+    subconjunto. H7 (ROE isolado) e H9 (alavancagem isolada) fracassaram —
+    hipótese distinta: a interseção filtra o lado mais arriscado de cada
+    fator isolado (mesmo racional da H8 sobre momentum/vol)."""
+    from config import H10_FROZEN_KEYS
+    cfg = cfg or load_config()
+    conn = conn or db.get_connection()
+    h10f = cfg.get("h10_factor", {})
+    roe_embargo = h10f.get("roe_disclosure_embargo_days", 90)
+    lev_embargo = h10f.get("leverage_disclosure_embargo_days", 90)
+    h10p = cfg.get("h10_portfolio", {})
+    roe_q = h10p.get("roe_quantile", 0.4)
+    lev_q = h10p.get("leverage_quantile", 0.5)
+
+    def _pf(sub, asof):
+        roe = factor.roe_signals(conn, sub.keys(), asof, roe_embargo)
+        lev = factor.leverage_signals(conn, sub.keys(), asof, lev_embargo)
+        return portfolio.roe_lowlev_double_filter(roe, lev, roe_q, lev_q)
+
+    return _run_hypothesis(
+        "H10", "h10-roe-leverage-double", H10_FROZEN_KEYS, "h10_criteria",
+        "rodada única da H10 (filtro duplo ROE top ∩ baixa alavancagem; "
+        "sharpe por-período realizado)",
+        cfg, conn, write_report, run_id, trials_path, portfolio_fn=_pf)
+
+
 if __name__ == "__main__":
     if run() is None:
         sys.exit(1)

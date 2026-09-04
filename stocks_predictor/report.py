@@ -104,6 +104,14 @@ _BIAS_NOTE = {
           "embargo de divulgação de 90 dias sobre `ref_date` da H7 "
           "(`h9_factor.disclosure_embargo_days`, mesma fonte DFP/CVM), mesma limitação "
           "de não cobrir a data REAL de entrega à CVM.",
+    "H10": "- Retorno **só-preço** (rota (b)): dividendos/JCP omitidos; SEM direção "
+           "declarada a priori — mesma limitação de H7/H9 (a interseção de ROE alto "
+           "e baixa alavancagem não tem relação estabelecida com política de "
+           "dividendos nesta rodada). Viés não quantificado, registrado como "
+           "limitação honesta (declarado no pré-registro da H10, 2026-09-04) — não "
+           "inferir sinal. Mesmo embargo de divulgação de 90 dias por variável "
+           "(`h10_factor.roe_disclosure_embargo_days`/`leverage_disclosure_embargo_days`), "
+           "mesma fonte DFP/CVM de H7/H9.",
 }
 
 
