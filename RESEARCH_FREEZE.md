@@ -266,6 +266,44 @@ Nenhum componente foi movido para o Core nesta rodada — os dois já compartilh
 ST_RESEARCH_FREEZE:
   active_hypotheses: []
   stopped_hypotheses:
+    - id: H14
+      family: near_52w_high
+      result: NOT_SUPPORTED (IC cruza zero; DSR 0.3249 < 0.95)
+      closed_at: 2026-09-04
+      note: >
+        Rodada real na máquina do operador (2.131 pregões). Padrão técnico
+        (George & Hwang 2004): distância do preço até a máxima de 252
+        pregões, quintil superior (mais perto da máxima). Sharpe por-período
+        realizado positivo (0.016328) mas IC95% da diferença cruza zero;
+        DSR 0.3249 bem abaixo do limiar. Ver HANDOFF.md "VEREDITO H14, H15
+        e H16" e `reports/h14_verdict_adhoc.md` para detalhes completos.
+    - id: H15
+      family: volume_surge
+      result: NOT_SUPPORTED (IC cruza zero; DSR 0.2826 < 0.95)
+      closed_at: 2026-09-04
+      note: >
+        Rodada real na máquina do operador (2.131 pregões). Volume médio
+        recente (21 pregões) vs. histórico (252 pregões), quintil superior
+        (maior surto relativo); sinal calculado direto de `prices_raw` com
+        `date < asof` estrito (anti-lookahead do próprio dia). Sharpe
+        por-período realizado positivo (0.013167), IC95% cruza zero, DSR
+        0.2826 < 0.95. Ver HANDOFF.md "VEREDITO H14, H15 e H16" e
+        `reports/h15_verdict_adhoc.md` para detalhes completos.
+    - id: H16
+      family: turn_of_month
+      result: NOT_SUPPORTED (IC cruza zero; DSR 0.0052 < 0.95)
+      closed_at: 2026-09-04
+      note: >
+        Rodada real na máquina do operador (2.132 pregões). Primeira
+        hipótese de TIMING puro do domínio (Lakonishok & Smidt 1988):
+        último dia útil do mês + 3 primeiros do mês seguinte, motor de
+        backtest dedicado (não usa `walk_forward` — universo rebalanceado
+        mensalmente, benchmark = mesma carteira posicionada todo dia,
+        estratégia só "conta" retorno nos dias de virada). Sharpe
+        por-período realizado NEGATIVO (-0.02483) — sinal na direção
+        errada; DSR 0.0052, o mais baixo de toda a série de 16 hipóteses.
+        Ver HANDOFF.md "VEREDITO H14, H15 e H16" e
+        `reports/h16_verdict_adhoc.md` para detalhes completos.
     - id: H12
       family: quality_net_margin
       result: NOT_SUPPORTED (IC cruza zero; DSR 0.1952 < 0.95)

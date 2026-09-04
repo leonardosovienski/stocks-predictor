@@ -2441,6 +2441,47 @@ Nenhum backfill/ingestão nova necessária — as 3 usam dado que já está em
 
 ---
 
+## VEREDITO H14, H15 e H16 (2026-09-04, rodada real na máquina do operador)
+
+Rodadas reais via `python main.py backtest-h 14/15/16` (dispatcher novo
+da revisão de infraestrutura abaixo). Suite completa antes das rodadas:
+328 passed (sandbox). Todas as 3 **NOT_SUPPORTED** — com H14-H16, a
+pesquisa de fatores fecha em **16/16 NOT_SUPPORTED**.
+
+- **H14 (proximidade da máxima 52 semanas)** — 2.131 pregões. PSR
+  0.5800, IC95% diff-Sharpe (-0.2424, 0.3864) cruza zero, DSR 0.3249
+  (N=13) < 0.95. Sharpe por-período realizado positivo (0.016328) mas
+  insuficiente para passar o pedágio. Relatório:
+  `reports/h14_verdict_adhoc.md`.
+- **H15 (surto de volume)** — 2.131 pregões. PSR 0.5228, IC95%
+  diff-Sharpe (-0.2527, 0.3129) cruza zero, DSR 0.2826 (N=14) < 0.95.
+  Sharpe por-período realizado positivo (0.013167), mesma conclusão da
+  H14. Relatório: `reports/h15_verdict_adhoc.md`.
+- **H16 (efeito virada-de-mês)** — 2.132 pregões, motor de backtest
+  dedicado (não `walk_forward`). PSR 0.0427, IC95% diff-Sharpe
+  (-1.4044, 0.2011) cruza zero, DSR 0.0052 (N=15) — **o mais baixo de
+  toda a série de 16 hipóteses**. Sharpe por-período realizado
+  NEGATIVO (-0.02483): o sinal apontou na direção errada (virada de mês
+  não superou o resto do mês nesta janela/universo). Relatório:
+  `reports/h16_verdict_adhoc.md`.
+
+Ledger real (`trials.json` + `trials.harness_attestation.json`)
+atualizado e commitado (`f468e66`). `RESEARCH_FREEZE.md` e
+`STOCKS_CURRENT_STATE.md` atualizados: `scientific_state =
+CLOSED_FOR_H1_THROUGH_H16`.
+
+Com H14-H16, também se esgota — junto com o esgotamento fundamentalista
+de H12/H13 — a linha de padrões técnicos/calendário testável com os
+dados de preço já ingeridos (COTAHIST): momentum, reversão, vol,
+proximidade de máxima, volume e sazonalidade de calendário todos
+reprovaram. Qualquer hipótese nova exigiria fonte de dado genuinamente
+diferente (fluxo de caixa, múltiplos de mercado, dado intraday/
+institucional, opções) ou universo/mercado diferente — não mais uma
+recombinação do que já foi observado (isso seria p-hacking, recusado
+explicitamente nesta sessão).
+
+---
+
 ## Revisão de infraestrutura (2026-09-04, pedido do operador)
 
 Pedido do operador: com a pesquisa de fatores esgotada (16/16), revisar o

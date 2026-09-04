@@ -10,25 +10,32 @@ Este é o ponto de entrada técnico corrente. O código, Git/CI e
 ```text
 role = FROZEN_RESEARCH_ASSET + REUSABLE_COMPONENT_LIBRARY + NEGATIVE_RESULT_CASE
 research_state = FROZEN                                # ver HANDOFF.md, 2026-09-04
-scientific_state = CLOSED_FOR_H1_THROUGH_H13           # todas as 12 hipóteses julgadas
+scientific_state = CLOSED_FOR_H1_THROUGH_H16           # todas as 16 hipóteses julgadas
 commercial_state = NOT_A_PRODUCT
 new_scientific_trials = 0
 ```
 
-As famílias de fatores JÁ JULGADAS (H1/H2/H4/H5/H6/H7/H8/H9/H10/H11/H12/H13
-— 12 no total, todas NOT_SUPPORTED) e a linha RJ estão encerradas/congeladas.
-**H11** (momentum 12-1 em RETORNO TOTAL, proventos reinvestidos — corrige o
-viés só-preço das 9 anteriores) julgada 2026-09-04: NOT_SUPPORTED (DSR
-0,8430 < 0,95 — o maior de toda a série). **H12** (margem líquida isolada)
-e **H13** (crescimento de receita YoY, primeira hipótese de CRESCIMENTO
-testada) julgadas na mesma sessão: ambas NOT_SUPPORTED com DSR bem abaixo
-do limiar (0,1952 e 0,2598) — junto com H7/H9 (ROE/alavancagem
-isoladas), esgotam o baralho de fatores extraíveis da DFP consolidada da
-CVM sem uma fonte de dado genuinamente nova (fluxo de caixa, múltiplos de
-mercado, dado intraday/institucional) ou universo diferente. Ver
-HANDOFF.md "VEREDITO H11"/"VEREDITO H12 e H13" para detalhes completos.
-Reabertura de qualquer uma das 12 exige o dossiê completo definido em
-`RESEARCH_FREEZE.md` e informação materialmente nova.
+As famílias de fatores JÁ JULGADAS (H1/H2/H4/H5/H6/H7/H8/H9/H10/H11/H12/H13/
+H14/H15/H16 — 16 no total, todas NOT_SUPPORTED) e a linha RJ estão
+encerradas/congeladas. **H11** (momentum 12-1 em RETORNO TOTAL, proventos
+reinvestidos — corrige o viés só-preço das 9 anteriores) julgada
+2026-09-04: NOT_SUPPORTED (DSR 0,8430 < 0,95 — o maior de toda a série).
+**H12** (margem líquida isolada) e **H13** (crescimento de receita YoY,
+primeira hipótese de CRESCIMENTO testada) julgadas na mesma sessão: ambas
+NOT_SUPPORTED com DSR bem abaixo do limiar (0,1952 e 0,2598) — junto com
+H7/H9 (ROE/alavancagem isoladas), esgotam o baralho de fatores extraíveis
+da DFP consolidada da CVM sem uma fonte de dado genuinamente nova (fluxo
+de caixa, múltiplos de mercado, dado intraday/institucional) ou universo
+diferente. **H14** (proximidade da máxima 52 semanas), **H15** (surto de
+volume) e **H16** (efeito virada-de-mês, primeira hipótese de TIMING
+puro do domínio, motor de backtest dedicado) julgadas 2026-09-04: também
+NOT_SUPPORTED (DSR 0,3249 / 0,2826 / 0,0052 — H16 a mais baixa de toda a
+série). Com H14-H16, esgota-se também a linha de padrões técnicos/
+calendário testável com os dados de preço já ingeridos (COTAHIST). Ver
+HANDOFF.md "VEREDITO H11"/"VEREDITO H12 e H13"/"VEREDITO H14, H15 e H16"
+para detalhes completos. Reabertura de qualquer uma das 16 exige o
+dossiê completo definido em `RESEARCH_FREEZE.md` e informação
+materialmente nova.
 
 ## Dependência e vendor
 
