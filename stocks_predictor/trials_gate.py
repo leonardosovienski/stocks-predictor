@@ -16,6 +16,7 @@ VERSIONADOS de propósito) — nunca no banco (§9b/§11 intactos).
 """
 import json
 import math
+import os
 import pathlib
 import statistics
 
@@ -32,8 +33,22 @@ H1_SHARPE_PER_PERIOD = 0.1592 / math.sqrt(252)
 H2_TEST_PERIOD = ["2018-01-01T00:00:00Z", "2026-07-03T23:59:59Z"]
 
 
+TRIALS_PATH_ENV = "PREDICTOR_TRIALS_PATH"
+
+
 def trials_path_from(cfg, override=None):
-    """Path do trials.json: override > config. Relativo é ancorado no ROOT."""
+    """Path do trials.json: override (arg explícito) > `PREDICTOR_TRIALS_PATH`
+    (mesmo padrão de `db.DB_PATH_ENV`/`report.REPORTS_ENV`) > config. Relativo
+    é ancorado no ROOT.
+
+    Achado de varredura de infraestrutura (2026-09-04): sem a env var, os
+    testes/scripts que chamam `register_baseline_trials`/`attest` (H2+)
+    sem passar `trials_path` explicitamente escreviam no `trials.json` REAL
+    (o ledger sagrado) — descoberto ao adicionar `main.py backtest-h <N>` e
+    testar via subprocess (que não tem como injetar `trials_path` direto no
+    código, só por ambiente). Reverteu a poluição real que isso causou
+    antes desta correção; nenhum valor do ledger foi perdido."""
+    override = override or os.getenv(TRIALS_PATH_ENV)
     p = pathlib.Path(override or cfg.get("h2_criteria", {}).get("trials_path", "trials.json"))
     return p if p.is_absolute() else ROOT / p
 

@@ -159,6 +159,52 @@ def test_main_backtest_command_runs(tmp_path):
     assert "M5" not in out.stdout                       # não é mais 'bloqueado'
 
 
+def test_main_backtest_h_dispatcher_runs(tmp_path):
+    """Achado de varredura de infraestrutura (2026-09-04): H6-H16 só eram
+    alcançáveis via `python -c "import backtest; backtest.run_hN(...)"` —
+    o CLI nunca ganhou comando pra elas. `backtest-h <N>` conecta o que já
+    existia ao ponto de entrada documentado, mesmo smoke de
+    `test_main_backtest_command_runs` (banco vazio, só valida que a
+    maquinaria roda limpo)."""
+    import os
+    import subprocess
+    import sys as _sys
+    env = dict(os.environ)
+    env["PREDICTOR_DB_PATH"] = str(tmp_path / "s.db")
+    env["PREDICTOR_EVENTS_PATH"] = str(tmp_path / "events.jsonl")
+    env["PREDICTOR_REPORTS_DIR"] = str(tmp_path / "reports")
+    # achado de varredura de infraestrutura 2026-09-04: sem isolar via
+    # PREDICTOR_TRIALS_PATH (env var nova, mesmo padrão de PREDICTOR_DB_PATH),
+    # o comando escreveria no trials.json REAL do repo (ledger) — provado na
+    # prática antes desta env var existir.
+    env["PREDICTOR_TRIALS_PATH"] = str(tmp_path / "trials.json")
+    # trials.json isolado e novo em folha exige o atestado de poder primeiro
+    # (mesma sequência real: attest-power uma vez, depois backtest-hN) — o
+    # trials.json do repo já tem o atestado commitado, então isso só é
+    # necessário aqui por causa do isolamento do teste.
+    attest = subprocess.run(
+        [_sys.executable, str(ROOT / "main.py"), "attest-power"],
+        capture_output=True, text=True, timeout=60, encoding="utf-8", env=env,
+    )
+    assert attest.returncode == 0, f"main.py attest-power falhou:\n{attest.stderr}"
+    out = subprocess.run(
+        [_sys.executable, str(ROOT / "main.py"), "backtest-h", "6"],
+        capture_output=True, text=True, timeout=60, encoding="utf-8", env=env,
+    )
+    assert out.returncode == 0, f"main.py backtest-h 6 falhou:\n{out.stderr}"
+
+
+def test_main_backtest_h_dispatcher_unknown_hypothesis():
+    import subprocess
+    import sys as _sys
+    out = subprocess.run(
+        [_sys.executable, str(ROOT / "main.py"), "backtest-h", "999"],
+        capture_output=True, text=True, timeout=60, encoding="utf-8",
+    )
+    assert out.returncode != 0
+    assert "999" in out.stdout
+
+
 def test_main_unknown_command_exits_nonzero():
     import subprocess
     import sys as _sys
