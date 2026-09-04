@@ -65,11 +65,12 @@ def test_h6_and_h8_get_their_own_bias_note_not_h1s(tmp_path):
 
 
 def test_unknown_hypothesis_does_not_inherit_h1_bias_note(tmp_path):
-    """Uma hipótese futura (H9+) sem entrada em `_BIAS_NOTE` tem que avisar que
-    a nota não foi documentada — nunca herdar silenciosamente o texto da H1."""
+    """Uma hipótese futura sem entrada em `_BIAS_NOTE` tem que avisar que a nota
+    não foi documentada — nunca herdar silenciosamente o texto da H1. Usa um
+    nome fora do range hoje registrado (H1-H9 já têm nota própria)."""
     verdict = {"n": 10, "psr": 0.5, "sharpe_diff_ci": (-0.1, 0.1), "veredito": "x"}
     md, _, _ = report.build_markdown(verdict, [0.01] * 10, [0.01] * 10, _CFG,
-                                     hypothesis="H9")
+                                     hypothesis="H99")
     assert "NÃO documentada" in md
     assert "FAVORECE a estratégia de momentum" not in md
 
