@@ -72,8 +72,10 @@ def vol_signals(series_by_ticker, asof, lookback=252):
     return out
 
 
-def roe_signals(conn, tickers, asof, disclosure_embargo_days=90):
-    """H7 (pré-registro 2026-09-03) — {ticker: roe} point-in-time.
+def _fundamental_signals(conn, tickers, asof, disclosure_embargo_days, column):
+    """Motor comum de sinal contábil point-in-time (H7 ROE, H9 alavancagem):
+    {ticker: valor de `column` em `fundamentals`} usando a linha mais recente
+    cujo embargo de divulgação já venceu em `asof`.
 
     `fundamentals.ref_date` é o fim do exercício, não a data de publicação real
     (a DFP só é PUBLICADA meses depois — ver `ingest_cvm.py`). Usar `ref_date`
@@ -82,15 +84,30 @@ def roe_signals(conn, tickers, asof, disclosure_embargo_days=90):
     `ref_date + embargo <= asof` (comparação lexicográfica de datas ISO, dias
     corridos). Ticker sem nenhuma linha elegível fica FORA (dado indisponível
     > dado inventado, mesma disciplina de `vol_signals`/`ownership`)."""
+    if column not in ("roe", "leverage"):
+        raise ValueError(f"coluna de fundamentals não suportada: {column!r}")
     out = {}
     for t in tickers:
         rows = conn.execute(
-            "SELECT ref_date, roe FROM fundamentals WHERE ticker = ? AND roe IS NOT NULL"
-            " ORDER BY ref_date DESC", (t,)).fetchall()
-        for ref_date, roe in rows:
+            f"SELECT ref_date, {column} FROM fundamentals WHERE ticker = ?"
+            f" AND {column} IS NOT NULL ORDER BY ref_date DESC", (t,)).fetchall()
+        for ref_date, value in rows:
             known_at = (datetime.date.fromisoformat(ref_date)
                        + datetime.timedelta(days=disclosure_embargo_days)).isoformat()
             if known_at <= asof:
-                out[t] = roe
+                out[t] = value
                 break
     return out
+
+
+def roe_signals(conn, tickers, asof, disclosure_embargo_days=90):
+    """H7 (pré-registro 2026-09-03) — {ticker: roe} point-in-time."""
+    return _fundamental_signals(conn, tickers, asof, disclosure_embargo_days, "roe")
+
+
+def leverage_signals(conn, tickers, asof, disclosure_embargo_days=90):
+    """H9 (pré-registro 2026-09-04) — {ticker: leverage} point-in-time.
+    `leverage = (passivo_total - patrimonio_liquido) / ativo_total`
+    (ver `ingest_cvm.compute_fundamentals` — exclui o PL do passivo, senão
+    o índice daria sempre ~1.0 por identidade contábil)."""
+    return _fundamental_signals(conn, tickers, asof, disclosure_embargo_days, "leverage")
