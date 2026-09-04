@@ -171,6 +171,27 @@ h9_portfolio:
 h9_criteria:
   dsr_min: 0.95                    # [H9-FROZEN] DSR mínimo (N=8 tentativas no registro)
 
+# ── H10 (pré-registrada 2026-09-04; ver HANDOFF) ────────────────────────────
+# NÃO alterar valores [H10-FROZEN] após qualquer rodada de resultado da H10.
+# Filtro duplo: top ROE ∩ baixa alavancagem DENTRO desse subconjunto. H7 (ROE
+# isolado) e H9 (alavancagem isolada) fracassaram, mas a literatura mostra que
+# a interseção às vezes filtra o lado mais arriscado de cada fator isolado —
+# mesmo racional da H8 (momentum∩baixa-vol), agora sobre as duas variáveis
+# contábeis da H7/H9. Mesmo dado já ingerido, sem ingestão nova.
+
+h10_factor:
+  roe_disclosure_embargo_days: 90      # [H10-FROZEN] mesmo embargo de H7/H9
+  leverage_disclosure_embargo_days: 90 # [H10-FROZEN] mesmo embargo de H7/H9
+
+h10_portfolio:
+  roe_quantile: 0.4                # [H10-FROZEN] top 40% do universo por ROE
+  leverage_quantile: 0.5           # [H10-FROZEN] metade inferior de alavancagem DENTRO desse subconjunto
+  weighting: equal                 # [H10-FROZEN]
+  direction: long_only             # [H10-FROZEN]
+
+h10_criteria:
+  dsr_min: 0.95                    # [H10-FROZEN] DSR mínimo (N=9 tentativas no registro)
+
 data:
   db_path: "data/stocks.db"
   cotahist_dir: "data/cotahist"

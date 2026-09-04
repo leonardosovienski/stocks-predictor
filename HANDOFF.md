@@ -1,5 +1,35 @@
 # HANDOFF — predictor-stocks
 
+> ## H10 ABERTA — PRÉ-REGISTRO (2026-09-04, ANTES de qualquer rodada real)
+>
+> Decisão explícita do operador ("A e B", após o veredito NÃO COMPROVADA da
+> H9): opção (a) — filtro duplo ROE ∩ alavancagem, mesmo racional da H8
+> (momentum∩baixa-vol) aplicado às duas variáveis contábeis já testadas
+> isoladamente (H7 ROE, H9 alavancagem, ambas NÃO COMPROVADAS). **H10 —
+> filtro duplo ROE ∩ baixa alavancagem** (`config.yaml` `h10_*`,
+> `config.h10_frozen_config_hash` = `150023ca75fd4324`): top 40% do universo
+> por ROE, depois metade de menor alavancagem DENTRO desse subconjunto —
+> interseção explícita de tickers com AMBOS os sinais antes de rankear
+> (mesma disciplina de `portfolio.momentum_lowvol_double_filter`). Mesmo
+> dado já ingerido pela H7 (`fundamentals.roe`/`leverage`), não exige nova
+> ingestão.
+>
+> **Critério:** IC95% diff-Sharpe > 0 E DSR >= 0,95 (N=9 tentativas no
+> registro, contando H1/H2/H4/H5/H6/H7/H8/H9).
+>
+> **Implementação:** `portfolio.double_filter` (motor genérico extraído de
+> `momentum_lowvol_double_filter` — refactor comportamento-preservado,
+> regressão confirmada byte a byte contra os testes existentes da H8,
+> incluindo o golden hash `h8_frozen_config_hash`), `portfolio.
+> roe_lowlev_double_filter` (H10, reaproveita o motor), `backtest.run_h10`
+> (mesmo runner genérico, `portfolio_fn` fecha sobre `conn`),
+> `config.py` (`H10_FROZEN_KEYS`/`h10_frozen_config_hash`),
+> `report._BIAS_NOTE["H10"]`. Testes em `tests/test_h10_double_filter.py`
+> (smoke, golden hash, teste de interseção com valores conhecidos) —
+> validados manualmente nesta sessão (mesma limitação de ambiente sem
+> `pytest`). Dado real já disponível — só falta rodar:
+> `python -c "import backtest; backtest.run_h10(write_report=True)"`.
+
 > ## H9 ABERTA — PRÉ-REGISTRO (2026-09-04, ANTES de qualquer rodada real)
 >
 > Decisão explícita do operador ("vamos fazer", após o veredito NÃO COMPROVADA

@@ -264,7 +264,18 @@ Nenhum componente foi movido para o Core nesta rodada — os dois já compartilh
 
 ```yaml
 ST_RESEARCH_FREEZE:
-  active_hypotheses: []
+  active_hypotheses:
+    - id: H10
+      family: quality_roe_leverage_double_filter
+      status: PRE_REGISTERED_NOT_JUDGED
+      note: >
+        Aberta 2026-09-04 por decisão explícita do operador (ver HANDOFF.md).
+        Filtro duplo ROE ∩ baixa alavancagem — mesmo racional da H8 aplicado
+        às duas variáveis contábeis já testadas isoladamente (H7, H9, ambas
+        NOT_SUPPORTED). Dado já ingerido, não exige nova ingestão. Código e
+        testes prontos (dado sintético); rodada real ainda NÃO aconteceu
+        neste ambiente de auditoria — ver HANDOFF.md para os passos
+        mecânicos pendentes na máquina do operador.
   stopped_hypotheses:
     - id: H1
       family: momentum_12_1
