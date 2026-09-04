@@ -2150,3 +2150,29 @@ alinhado ao caminho real. Demais menções a `predictor-core==3.0.0`/
 sessões anteriores (registram o que era verdade naquele momento, não
 claim de estado atual) — preservadas intactas, mesma disciplina
 append-only do resto do projeto.
+
+---
+
+## Errata de schema — test_period (2026-09-04)
+
+Tentando registrar a H11 de verdade (Core 3.1.0 já instalado, atestado
+regerado com sucesso), `register_hypothesis` rejeitou o registro com um
+erro que não era da H11 em si: o Core 3.1.0 passou a validar TODAS as
+entradas de `trials.json` ao registrar qualquer trial nova (não só a
+nova), e ficou mais estrito sobre `test_period` — exige ISO-8601 UTC
+completo com `Z` em limites fechados. As 6 entradas mais antigas
+(H1/H2/H4/H5/H6/H8, registradas sob uma versão de Core mais antiga/frouxa)
+usavam só data (`"2018-01-01"`); H7/H9 (registradas depois, 2026-09-04)
+já usavam o formato completo — por isso só as 6 antigas quebravam.
+
+Mesmo padrão de errata do achado de 2026-09-03 (`pipeline_fingerprint`
+órfão): schema drift entre versões do Core, não erro de conteúdo.
+Corrigido com autorização explícita do operador antes de tocar o ledger:
+`"2018-01-01"` → `"2018-01-01T00:00:00Z"`, `"2026-07-03"` →
+`"2026-07-03T23:59:59Z"` nas 6 entradas — mesma data, só formatação;
+`sharpe`/`params`/`notes`/`registered_at` preservados byte a byte.
+Validado (`json.load` + contagem de entradas) antes de commitar.
+
+**Próximo passo:** operador roda de novo
+`python -c "import backtest; backtest.run_h11(write_report=True)"` — a
+H11 deve registrar sem erro agora (schema do ledger inteiro válido).
