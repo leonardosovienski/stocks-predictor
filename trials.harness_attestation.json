@@ -1,8 +1,8 @@
 {
   "schema_version": "pipeline-power/2",
-  "passed_at": "2026-09-04T02:54:46+00:00",
-  "expires_at": "2026-09-11T02:54:46+00:00",
-  "core_version": "2.2.0",
+  "passed_at": "2026-09-04T08:48:24Z",
+  "expires_at": "2026-09-11T08:48:24Z",
+  "core_version": "3.1.0",
   "evaluate": "<lambda>",
   "edge_verdict": "COMPROVADA",
   "note": "controle positivo do pedágio (judge real, séries sintéticas pareadas)",
