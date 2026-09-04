@@ -264,19 +264,7 @@ Nenhum componente foi movido para o Core nesta rodada — os dois já compartilh
 
 ```yaml
 ST_RESEARCH_FREEZE:
-  active_hypotheses:
-    - id: H9
-      family: quality_leverage
-      status: PRE_REGISTERED_NOT_JUDGED
-      note: >
-        Aberta 2026-09-04 por decisão explícita do operador (ver HANDOFF.md),
-        mesma disciplina de pré-registro da H7. Alavancagem isolada, quintil
-        inferior — dado já ingerido pela H7 (fundamentals.leverage, mesma
-        linha do ROE), não exige nova ingestão. Código e testes prontos
-        (dado sintético); rodada real ainda NÃO aconteceu neste ambiente de
-        auditoria (mesmos bloqueios da H7: sem stocks.db real, sem rede à
-        CVM, sem pytest — ver HANDOFF.md para os passos mecânicos pendentes
-        na máquina do operador).
+  active_hypotheses: []
   stopped_hypotheses:
     - id: H1
       family: momentum_12_1
@@ -307,6 +295,15 @@ ST_RESEARCH_FREEZE:
         fundamentals, 2018-2026), julgada em rodada única, mesma disciplina
         das anteriores. Ver HANDOFF.md "VEREDITO H7" para detalhes completos
         (IC, DSR, provenance da ingestão).
+    - id: H9
+      family: quality_leverage
+      result: NOT_SUPPORTED (IC cruza zero; DSR 0.3479 < 0.95)
+      closed_at: 2026-09-04
+      note: >
+        2ª e última variável contábil disponível na DFP/CVM já ingerida
+        (fundamentals.leverage, mesma linha do ROE da H7) — não exigiu
+        ingestão nova. Alavancagem isolada, quintil inferior (empresas menos
+        endividadas). Ver HANDOFF.md "VEREDITO H9" para detalhes completos.
   preserved_components:
     - stocks_predictor/universe.py (PIT universe + survivorship)
     - stocks_predictor/execution.py (cost model)
@@ -320,7 +317,8 @@ ST_RESEARCH_FREEZE:
     - RJ (zero dados reais; protocolo e auditoria preservados; sem trabalho ativo)
   reopen_policy: >
     Nenhuma família de fatores já encerrada (momentum 12-1, momentum 6-1, low-vol,
-    vol-target, reversão 21d, interseção momentum×low-vol, qualidade/ROE) pode ser
+    vol-target, reversão 21d, interseção momentum×low-vol, qualidade/ROE,
+    qualidade/alavancagem) pode ser
     reaberta sem registrar EXPLICITAMENTE, antes de qualquer código novo:
       previous_result, closure_reason, new_information, causal_reason,
       why_old_test_no_longer_answers_question, new_protocol.

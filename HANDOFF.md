@@ -34,6 +34,31 @@
 > `python -c "import backtest; backtest.run_h9(write_report=True)"` (rodada
 > única, sem repescagem).
 
+> ## VEREDITO H9 — ENCERRADA: NÃO COMPROVADA (2026-09-04, rodada única, dado real)
+>
+> Suíte pytest confirmada na máquina do operador (260 passed + 2 falhas
+> pré-existentes/não relacionadas: `test_predictor_core_version_is_at_least_3`,
+> Core instalado 2.2.0 vs 3.0.0 esperado — achado antigo, nada a ver com H9; e
+> `test_unknown_hypothesis_does_not_inherit_h1_bias_note`, que usava "H9" como
+> placeholder genérico — corrigido pra "H99" no mesmo commit). Rodada única via
+> `backtest.run_h9(write_report=True)`, dado já ingerido pela H7
+> (`fundamentals.leverage`, sem ingestão nova).
+>
+> - 1.826 pregões pareados
+> - **IC 95% diff-Sharpe (stationary, bloco 21): (−0,3724, +0,1602)** — cruza zero
+> - **DSR: 0,3479 < 0,95** (N=8)
+> - PSR 0,3987.
+> - **Não comprovada. Sem repescagem.**
+> - Relatório: `reports/h9_verdict_adhoc.md` (a versionar via `git add -f`,
+>   mesmo padrão de H6/H7/H8).
+>
+> **Leitura acumulada (8 tentativas, 0 comprovadas):** as duas variáveis
+> contábeis disponíveis na DFP da CVM (ROE e alavancagem, isoladas) também não
+> sobrevivem ao pedágio nesta janela/universo — mesmo desfecho do baralho
+> só-preço. `RESEARCH_FREEZE.md`/`STOCKS_CURRENT_STATE.md` atualizados de
+> volta a `FROZEN`/`CLOSED` — a `reopen_policy` agora cobre também
+> "qualidade/alavancagem".
+
 > ## Errata de schema em `trials.json` (2026-09-03) — campo órfão removido, NENHUM veredito alterado
 >
 > Ao tentar registrar a H7 na máquina do operador (Core `predictor-core==3.0.0` real,
