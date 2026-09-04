@@ -237,5 +237,39 @@
       "2026-07-03T23:59:59Z"
     ],
     "metric": "sharpe_diff_ci95"
+  },
+  {
+    "name": "h9-quality-leverage",
+    "registered_at": "2026-09-04T03:01:01Z",
+    "params": {
+      "universe.top_n": 60,
+      "universe.lookback_trading_days": 126,
+      "universe.min_history_days": 252,
+      "universe.rebalance_frequency": "monthly",
+      "h9_factor.name": "leverage",
+      "h9_factor.disclosure_embargo_days": 90,
+      "h9_portfolio.quantile": "bottom_quintile",
+      "h9_portfolio.weighting": "equal",
+      "h9_portfolio.direction": "long_only",
+      "execution.price": "next_open",
+      "execution.b3_fee_pct": 0.0003,
+      "execution.brokerage_pct": 0.0,
+      "execution.spread_slippage_pct": 0.0015,
+      "backtest.warmup_end": "2017-12-31",
+      "backtest.test_start": "2018-01-01",
+      "backtest.purge_embargo_months": 1,
+      "bootstrap.n_boot": 10000,
+      "bootstrap.block_length": 21,
+      "bootstrap.confidence": 0.95,
+      "bootstrap.method": "stationary",
+      "h9_criteria.dsr_min": 0.95
+    },
+    "sharpe": 0.005103,
+    "notes": "rodada única da H9 (alavancagem isolada, quintil inferior; sharpe por-período realizado)",
+    "test_period": [
+      "2018-01-01T00:00:00Z",
+      "2026-07-03T23:59:59Z"
+    ],
+    "metric": "sharpe_diff_ci95"
   }
 ]
