@@ -10,6 +10,7 @@ Uso:
     python main.py backtest-h2               # H2: walk-forward baixa-vol + pedágio + DSR
     python main.py backtest-h4               # H4: sizing 1/vol + pedágio + DSR + drawdown
     python main.py backtest-h5               # H5: reversão 21d + pedágio + DSR
+    python main.py backtest-h <N>            # H6-H16+: walk-forward + pedágio + DSR -> veredito
     python main.py paper <YYYY-MM-DD>        # M6: registra carteira forward + liquida exec
     python main.py analyst [rótulo]          # §9b: briefing consultivo read-only (reports/ai/)
     python main.py splits-review [saída.csv] # M2: exporta candidatos a split p/ revisão humana
@@ -216,6 +217,33 @@ def cmd_backtest_h5(args) -> int:
     return 0
 
 
+def cmd_backtest_hn(args) -> int:
+    """H6-H16+ — dispatcher genérico: `python main.py backtest-h <N>` chama
+    `backtest.run_hN(write_report=True)`. Achado de varredura de
+    infraestrutura (2026-09-04): H6-H16 só eram alcançáveis via
+    `python -c "import backtest; backtest.run_hN(...)"` (o CLI só tinha
+    comandos nomeados até H5, nunca atualizado) — friction real (PYTHONPATH
+    manual toda vez) sem motivo, já que `run_hN` já se autorregistra via
+    `trials_gate.apply_dsr` internamente (mesmo caminho de `cmd_backtest_h2`).
+    Não adiciona hipótese nenhuma, só conecta o que já existe ao ponto de
+    entrada documentado."""
+    import backtest
+    if not args or not args[0].lstrip("-").isdigit():
+        print("uso: python main.py backtest-h <N>   (ex.: backtest-h 6)")
+        return 1
+    n = int(args[0])
+    fn = getattr(backtest, f"run_h{n}", None)
+    if fn is None:
+        print(f"H{n}: sem backtest.run_h{n} — hipótese não existe ou número errado")
+        return 1
+    cfg, conn = _conn()
+    with closing(conn):
+        import trials_gate
+        trials_gate.register_baseline_trials(cfg)
+        fn(cfg=cfg, conn=conn, write_report=True)
+    return 0
+
+
 def cmd_paper(args) -> int:
     """M6 — registra a carteira forward (anti-tautologia) e liquida execuções."""
     import db
@@ -293,6 +321,7 @@ _COMMANDS = {
     "backtest-h2": cmd_backtest_h2,
     "backtest-h4": cmd_backtest_h4,
     "backtest-h5": cmd_backtest_h5,
+    "backtest-h": cmd_backtest_hn,
     "paper": cmd_paper,
     "analyst": cmd_analyst,
     "splits-review": cmd_splits_review,
