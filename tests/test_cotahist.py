@@ -5,6 +5,8 @@ constantes do parser) — quebra a circularidade: valida as fatias do parser con
 """
 import zipfile
 
+import pytest
+
 import cotahist
 import db
 import ingest_cotahist
@@ -94,3 +96,34 @@ def test_parse_cotahist_from_zip(tmp_path):
         z.write(txt, arcname="COTAHIST_A2024.TXT")
     n = ingest_cotahist.parse_cotahist(str(zp), db_path=str(tmp_path / "s.db"))
     assert n == 2
+
+
+def test_parse_cotahist_picks_cotahist_named_txt_over_companion(tmp_path):
+    """Achado de varredura 2026-09-04: `next(... .TXT)` pegava o primeiro
+    .TXT do zip por sorte — um README/layout .TXT companheiro (nome
+    diferente) não podia ser escolhido no lugar do arquivo de cotação real."""
+    lines = cotahist.synthetic_cotahist(["PETR4"], ["20240102"], seed=3)
+    zp = tmp_path / "COTAHIST_A2024.ZIP"
+    with zipfile.ZipFile(zp, "w") as z:
+        z.writestr("AAA_LEIAME.TXT", "layout doc, não é cotação\n")   # ordena antes
+        z.writestr("COTAHIST_A2024.TXT", "\n".join(lines))
+    n = ingest_cotahist.parse_cotahist(str(zp), db_path=str(tmp_path / "s.db"))
+    assert n == 1
+
+
+def test_pick_cotahist_txt_fails_loud_on_ambiguous_names():
+    with pytest.raises(ValueError, match="ambíguo"):
+        ingest_cotahist._pick_cotahist_txt(["A.TXT", "B.TXT"])
+    with pytest.raises(ValueError, match="ambíguo"):
+        ingest_cotahist._pick_cotahist_txt(["COTAHIST_A.TXT", "COTAHIST_B.TXT"])
+
+
+def test_parse_cotahist_fails_loud_on_zero_quote_lines(tmp_path):
+    """Se o .TXT escolhido não tem NENHUM registro tipo 01 (arquivo errado,
+    vazio, ou layout mudou), a carga não pode "suceder" retornando 0 em
+    silêncio — achado de varredura 2026-09-04."""
+    zp = tmp_path / "COTAHIST_A2024.ZIP"
+    with zipfile.ZipFile(zp, "w") as z:
+        z.writestr("COTAHIST_A2024.TXT", "99TRAILER\n")   # só trailler, 0 tipo 01
+    with pytest.raises(ValueError, match="0 linhas"):
+        ingest_cotahist.parse_cotahist(str(zp), db_path=str(tmp_path / "s.db"))

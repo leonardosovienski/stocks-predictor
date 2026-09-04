@@ -418,6 +418,22 @@ def test_cotahist_malformed_line_counted_not_fatal():
         cotahist.parse_lines([bad, bad])   # 100% malformado: arquivo quebrado
 
 
+def test_cotahist_corrupted_date_is_malformed_not_silently_accepted():
+    """Achado de varredura 2026-09-04: campo `date` era interpolação de
+    string crua, sem checagem — ao contrário dos outros campos (todos via
+    `int()`). Uma DATA corrompida (bytes não-dígito, resto do registro
+    íntegro) tinha que passar batida como "2024- X-  " em vez de virar
+    n_bad; corrigido, ValueError na data também conta como malformada."""
+    lines = cotahist.synthetic_cotahist(["PETR4"], ["2024-01-02", "2024-01-03"], seed=1)
+    # corrompe só o campo DATA (posições 3-10, 0-indexed slice(2,10)) da 1ª
+    # linha, preserva o resto — sem isso o teste não isola o campo certo. A
+    # 2ª linha boa evita o guard de "100% malformado" (arquivo inteiro
+    # ilegível), que não é o que este teste verifica.
+    corrupted = lines[0][:2] + "X" * 8 + lines[0][10:]
+    recs, n_bad = cotahist.parse_lines([corrupted, lines[1]])
+    assert len(recs) == 1 and n_bad == 1
+
+
 def test_scan_and_quarantine_rerun_counts_zero_new(tmp_path):
     """n += 1 incondicional contava salto já quarentenado de novo — o número
     retornado deve ser de NOVAS quarentenas (cursor.rowcount)."""

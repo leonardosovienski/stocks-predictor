@@ -27,7 +27,7 @@ def estimate_edge(observations, *, minimum_observations=12, z_score=1.96):
     """Estimate a conservative edge from already-matured period observations."""
     if minimum_observations < 2 or z_score < 0:
         raise ValueError("minimum_observations deve ser >= 2 e z_score >= 0")
-    xs = [float(x) for x in observations if math.isfinite(float(x))]
+    xs = [fx for x in observations if math.isfinite(fx := float(x))]
     if len(xs) < minimum_observations:
         return None
     mean = statistics.mean(xs)
