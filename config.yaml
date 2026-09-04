@@ -192,6 +192,33 @@ h10_portfolio:
 h10_criteria:
   dsr_min: 0.95                    # [H10-FROZEN] DSR mínimo (N=9 tentativas no registro)
 
+# ── H11 (pré-registrada 2026-09-04; ver HANDOFF) ────────────────────────────
+# NÃO alterar valores [H11-FROZEN] após qualquer rodada de resultado da H11.
+# Momentum 12-1 (mesmo sinal da H1), mas em RETORNO TOTAL (rota (a), proventos
+# reinvestidos via adjust.total_return_series) em vez de só-preço — testa se
+# o viés declarado no pré-registro da H1 ("omitir proventos FAVORECE momentum
+# contra o benchmark") de fato inflava o resultado. Janela restrita a
+# 2018-01-01 a 2022-12-31 porque a cobertura real de `dividends` (CVM/FRE)
+# só é confiável nesse período (achado registrado no HANDOFF 2026-09-04) —
+# 2023-2026 fica de fora até uma fonte melhor aparecer.
+
+h11_factor:
+  name: momentum_12_1              # [H11-FROZEN] mesmo sinal da H1
+  lookback_days: 252               # [H11-FROZEN]
+  skip_days: 21                    # [H11-FROZEN]
+
+h11_portfolio:
+  quantile: top_quintile           # [H11-FROZEN]
+  weighting: equal                 # [H11-FROZEN]
+  direction: long_only             # [H11-FROZEN]
+
+h11_backtest:
+  test_start: "2018-01-01"         # [H11-FROZEN] mesmo início de H1
+  test_end: "2022-12-31"           # [H11-FROZEN] cobertura real de proventos termina aqui
+
+h11_criteria:
+  dsr_min: 0.95                    # [H11-FROZEN] DSR mínimo (N=10 tentativas no registro)
+
 data:
   db_path: "data/stocks.db"
   cotahist_dir: "data/cotahist"

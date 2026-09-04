@@ -319,3 +319,29 @@ H10_FROZEN_KEYS = [
 def h10_frozen_config_hash(config: dict) -> str:
     """O LACRE da H10 — mesmo mecanismo dos lacres anteriores."""
     return _frozen_hash(config, H10_FROZEN_KEYS, "H10-FROZEN")
+
+
+# Subconjunto H11-FROZEN (pré-registro 2026-09-04, HANDOFF). Momentum 12-1
+# (mesmo sinal da H1) sobre RETORNO TOTAL em vez de só-preço, janela
+# restrita 2018-2022 (cobertura real de `dividends`). `h11_backtest.
+# test_start/test_end` substituem `backtest.test_start`/`purge_embargo_months`
+# do reuso padrão porque a janela É diferente por desenho, não por reuso.
+H11_FROZEN_KEYS = [
+    ("universe", "top_n"), ("universe", "lookback_trading_days"),
+    ("universe", "min_history_days"), ("universe", "rebalance_frequency"),
+    ("h11_factor", "name"), ("h11_factor", "lookback_days"), ("h11_factor", "skip_days"),
+    ("h11_portfolio", "quantile"), ("h11_portfolio", "weighting"),
+    ("h11_portfolio", "direction"),
+    ("execution", "price"), ("execution", "b3_fee_pct"),
+    ("execution", "brokerage_pct"), ("execution", "spread_slippage_pct"),
+    ("backtest", "warmup_end"),
+    ("h11_backtest", "test_start"), ("h11_backtest", "test_end"),
+    ("bootstrap", "n_boot"), ("bootstrap", "block_length"),
+    ("bootstrap", "confidence"), ("bootstrap", "method"),
+    ("h11_criteria", "dsr_min"),
+]
+
+
+def h11_frozen_config_hash(config: dict) -> str:
+    """O LACRE da H11 — mesmo mecanismo dos lacres anteriores."""
+    return _frozen_hash(config, H11_FROZEN_KEYS, "H11-FROZEN")

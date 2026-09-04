@@ -43,7 +43,7 @@ def _daily_returns(dates, closes):
             for i in range(1, len(closes)) if closes[i - 1] > 0}
 
 
-def walk_forward(conn, cfg, signal_fn=None, take="top", portfolio_fn=None):
+def walk_forward(conn, cfg, signal_fn=None, take="top", portfolio_fn=None, series_fn=None):
     """Retorna (strat_diaria, bench_diaria) — listas pareadas de retornos diários.
 
     Custo de transação: proporcional ao turnover REAL entre rebalanceamentos
@@ -70,6 +70,16 @@ def walk_forward(conn, cfg, signal_fn=None, take="top", portfolio_fn=None):
     (ver comentário em `srets`). Renormalizar só pelos "presentes no dia"
     daria peso extra grátis para quem sobreviveu, reintroduzindo exatamente o
     viés que essa disciplina existe para evitar.
+
+    `series_fn(conn, ticker) -> (dates, closes)` (H11+, 2026-09-04): troca a
+    FONTE de preço — default `adjust.adjusted_series` (rota (b), só-preço,
+    H1-H10 intocadas byte a byte). `adjust.total_return_series` (rota (a),
+    proventos reinvestidos) é o outro valor válido hoje.
+
+    `cfg["backtest"]["test_end"]` (H11+, 2026-09-04): corta `rebal` numa
+    data final — `None` (default) preserva o comportamento de H1-H10 (usa
+    todo o histórico disponível). Necessário para hipóteses cuja fonte de
+    dado (proventos, hoje) só tem cobertura confiável numa sub-janela.
     """
     adjust.require_scanned(conn)
     f, u = cfg["factor"], cfg["universe"]
@@ -83,6 +93,8 @@ def walk_forward(conn, cfg, signal_fn=None, take="top", portfolio_fn=None):
     one_way = execution.one_way_cost(
         e.get("b3_fee_pct", 0.0003), e.get("spread_slippage_pct", 0.0015))
     test_start = bt.get("test_start", "0000-00-00")
+    test_end = bt.get("test_end")   # None = sem corte (H1-H10, comportamento intocado)
+    series_fn = series_fn or adjust.adjusted_series   # default = rota (b), H1-H10 intocadas
 
     # carga PREGUIÇOSA e memoizada: só tickers que entram em algum universo mensal —
     # o banco tem centenas de papéis (deslistados, curtos, quarentenados) que nunca
@@ -91,7 +103,7 @@ def walk_forward(conn, cfg, signal_fn=None, take="top", portfolio_fn=None):
 
     def _load(tk):
         if tk not in series:
-            dates, closes = adjust.adjusted_series(conn, tk)
+            dates, closes = series_fn(conn, tk)
             series[tk] = (dates, closes)
             dret[tk] = _daily_returns(dates, closes)
 
@@ -99,6 +111,8 @@ def walk_forward(conn, cfg, signal_fn=None, take="top", portfolio_fn=None):
         "SELECT DISTINCT date FROM prices_raw WHERE market_type = ? ORDER BY date",
         (universe.SPOT_MARKET,))]
     rebal = [d for d in month_end_dates(all_dates) if d >= test_start]
+    if test_end is not None:
+        rebal = [d for d in rebal if d <= test_end]
 
     strat, bench = [], []
     prev_port: set = set()
@@ -248,15 +262,18 @@ def _h4_extra_criteria(strat, bench, cfg):
 def _run_hypothesis(hypothesis, trial_name, frozen_keys, criteria_section, notes,
                     cfg, conn, write_report, run_id, trials_path,
                     signal_fn=None, take="top", portfolio_fn=None,
-                    extra_criteria=None):
+                    extra_criteria=None, series_fn=None):
     """Runner comum das hipóteses H2+ (achado de revisão de código 2026-08-28: os
     run_hN eram 5 funções quase idênticas copiadas à mão — a mesma duplicação que já
     causou o bug real do clobber de sharpe da H2, ver `trials_gate.register_hypothesis`).
     Cada `run_hN` abaixo fica só com o que É específico dela: extrair os parâmetros
-    `[hN-FROZEN]` do config e montar `signal_fn`/`take`/`portfolio_fn`."""
+    `[hN-FROZEN]` do config e montar `signal_fn`/`take`/`portfolio_fn`.
+
+    `series_fn` (H11+, 2026-09-04): repassado para `walk_forward` — troca a
+    fonte de preço (default `adjust.adjusted_series`, rota (b))."""
     import trials_gate
     strat, bench = walk_forward(conn, cfg, signal_fn=signal_fn, take=take,
-                                portfolio_fn=portfolio_fn)
+                                portfolio_fn=portfolio_fn, series_fn=series_fn)
     base = judge(strat, bench, cfg)
     extra_failures, extra_fields, extra_text = [], {}, ""
     if extra_criteria is not None:
@@ -436,6 +453,37 @@ def run_h10(cfg=None, conn=None, write_report=False, run_id=None, trials_path=No
         "rodada única da H10 (filtro duplo ROE top ∩ baixa alavancagem; "
         "sharpe por-período realizado)",
         cfg, conn, write_report, run_id, trials_path, portfolio_fn=_pf)
+
+
+def run_h11(cfg=None, conn=None, write_report=False, run_id=None, trials_path=None):
+    """H11 — momentum 12-1 em RETORNO TOTAL (pré-registro 2026-09-04): mesmo
+    sinal da H1, mas sobre `adjust.total_return_series` (proventos
+    reinvestidos) em vez de só-preço, testando se o viés declarado no
+    pré-registro da H1 ("omitir proventos FAVORECE momentum") de fato
+    inflava o resultado. Janela restrita a `h11_backtest.test_start/
+    test_end` (2018-2022) — cobertura real de `dividends` (CVM/FRE) não
+    alcança 2023-2026 (achado registrado no HANDOFF 2026-09-04)."""
+    from config import H11_FROZEN_KEYS
+    cfg = cfg or load_config()
+    conn = conn or db.get_connection()
+    h11f = cfg.get("h11_factor", {})
+    lb, skip = h11f.get("lookback_days", 252), h11f.get("skip_days", 21)
+    h11bt = cfg.get("h11_backtest", {})
+
+    # cópia rasa de cfg["backtest"] só pra esta rodada — janela restrita da
+    # H11 não deve vazar pro cfg compartilhado nem afetar H1-H10.
+    run_cfg = dict(cfg)
+    run_cfg["backtest"] = dict(cfg.get("backtest", {}))
+    run_cfg["backtest"]["test_start"] = h11bt.get("test_start", "2018-01-01")
+    run_cfg["backtest"]["test_end"] = h11bt.get("test_end")
+
+    return _run_hypothesis(
+        "H11", "h11-momentum-12-1-total-return", H11_FROZEN_KEYS, "h11_criteria",
+        "rodada única da H11 (momentum 12-1, retorno total, janela 2018-2022; "
+        "sharpe por-período realizado)",
+        run_cfg, conn, write_report, run_id, trials_path,
+        signal_fn=lambda sub, asof: factor.signals(sub, asof, lb, skip), take="top",
+        series_fn=adjust.total_return_series)
 
 
 if __name__ == "__main__":

@@ -1,5 +1,49 @@
 # HANDOFF — predictor-stocks
 
+> ## H11 ABERTA — PRÉ-REGISTRO (2026-09-04, ANTES de qualquer rodada real)
+>
+> Decisão explícita do operador ("todos vamos fazer tudo"), primeira
+> hipótese a usar a infraestrutura de retorno total (entrada abaixo). **H11
+> — momentum 12-1 em RETORNO TOTAL** (`config.yaml` `h11_*`,
+> `config.h11_frozen_config_hash` = `1a75b7f12695cc97`): mesmo sinal
+> exato da H1 (momentum 12-1, quintil superior, equiponderado), mas sobre
+> `adjust.total_return_series` (proventos reinvestidos) em vez de
+> `adjust.adjusted_series` (só-preço). Racional: o pré-registro da H1
+> declarou que omitir proventos FAVORECE momentum contra o benchmark
+> (papéis de momentum tendem a menor yield) — a H11 testa se corrigir esse
+> viés muda o veredito.
+>
+> **Janela restrita 2018-01-01 a 2022-12-31** (`h11_backtest.test_start/
+> test_end`, NÃO os mesmos de `backtest.test_start` global) — a cobertura
+> real de `dividends` (CVM/FRE) só é confiável nesse período (achado
+> registrado nesta mesma sessão, entrada "Retorno TOTAL implementado"
+> abaixo); 2023-2026 ficam de fora até uma fonte melhor aparecer. Isso é
+> MENOS dado que H1 (2018-2026 completo) — declarado, não escondido.
+>
+> **Critério:** IC95% diff-Sharpe > 0 E DSR >= 0,95 (N=10 tentativas no
+> registro, contando H1/H2/H4/H5/H6/H7/H8/H9/H10).
+>
+> **Implementação:** `backtest.walk_forward` ganhou dois parâmetros novos,
+> ambos com default que preserva H1-H10 byte a byte: `series_fn` (troca a
+> fonte de preço — default `adjust.adjusted_series`) e
+> `cfg["backtest"]["test_end"]` (corta a janela — default `None` = sem
+> corte). `_run_hypothesis` repassa `series_fn`. `run_h11` monta uma CÓPIA
+> de `cfg["backtest"]` só pra própria rodada (testado explicitamente —
+> `test_run_h11_does_not_mutate_shared_config` — que o `cfg` compartilhado
+> não é alterado, H1-H10 continuam vendo `test_start`/ausência de
+> `test_end` originais). `config.py` (`H11_FROZEN_KEYS`/
+> `h11_frozen_config_hash`), `report._BIAS_NOTE["H11"]` (declara a
+> cobertura parcial de proventos + as duas aproximações da fonte).
+> Testes em `tests/test_h11_total_return.py` (smoke com proventos
+> sintéticos, golden hash, hash ignora parâmetro operacional, não-mutação
+> do cfg compartilhado) — validados manualmente nesta sessão (sandbox sem
+> `pytest`). Regressão de H1 (`backtest.run`) e H6 confirmada funcionando
+> sem alteração após a mudança em `walk_forward`.
+>
+> **Próximo passo:** dado real já está na sua máquina (a mesma ingestão de
+> `dividends` já rodada) — só falta `python -m pytest tests/ -v` e
+> `python -c "import backtest; backtest.run_h11(write_report=True)"`.
+
 > ## Retorno TOTAL implementado (2026-09-04) — infraestrutura opt-in, NÃO uma hipótese
 >
 > Decisão do operador ("A e B" + confirmação de prosseguir com a aproximação

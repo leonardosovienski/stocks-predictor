@@ -264,7 +264,18 @@ Nenhum componente foi movido para o Core nesta rodada — os dois já compartilh
 
 ```yaml
 ST_RESEARCH_FREEZE:
-  active_hypotheses: []
+  active_hypotheses:
+    - id: H11
+      family: momentum_12_1_total_return
+      status: PRE_REGISTERED_NOT_JUDGED
+      note: >
+        Aberta 2026-09-04 por decisão explícita do operador (ver HANDOFF.md).
+        Mesmo sinal da H1 (momentum 12-1), mas sobre retorno TOTAL (proventos
+        reinvestidos) em vez de só-preço — testa se o viés declarado no
+        pré-registro da H1 mudava o veredito. Janela restrita 2018-2022
+        (cobertura real de dividends). Código e testes prontos (dado
+        sintético); rodada real ainda NÃO aconteceu neste ambiente de
+        auditoria — ver HANDOFF.md para os passos mecânicos pendentes.
   stopped_hypotheses:
     - id: H1
       family: momentum_12_1
