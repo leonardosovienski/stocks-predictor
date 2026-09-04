@@ -264,19 +264,23 @@ Nenhum componente foi movido para o Core nesta rodada — os dois já compartilh
 
 ```yaml
 ST_RESEARCH_FREEZE:
-  active_hypotheses:
+  active_hypotheses: []
+  stopped_hypotheses:
     - id: H11
       family: momentum_12_1_total_return
-      status: PRE_REGISTERED_NOT_JUDGED
+      result: NOT_SUPPORTED (IC cruza zero; DSR 0.8430 < 0.95)
+      closed_at: 2026-09-04
       note: >
-        Aberta 2026-09-04 por decisão explícita do operador (ver HANDOFF.md).
+        Rodada real na máquina do operador (1.218 pregões, COTAHIST real).
         Mesmo sinal da H1 (momentum 12-1), mas sobre retorno TOTAL (proventos
-        reinvestidos) em vez de só-preço — testa se o viés declarado no
-        pré-registro da H1 mudava o veredito. Janela restrita 2018-2022
-        (cobertura real de dividends). Código e testes prontos (dado
-        sintético); rodada real ainda NÃO aconteceu neste ambiente de
-        auditoria — ver HANDOFF.md para os passos mecânicos pendentes.
-  stopped_hypotheses:
+        reinvestidos, `adjust.total_return_series`) em vez de só-preço —
+        testava se o viés declarado no pré-registro da H1 (omitir proventos
+        favorece momentum) mudava o veredito. Janela restrita 2018-2022
+        (cobertura real de `dividends`). Maior DSR de todas as 10 hipóteses
+        (0.8430, contra 0.0277-0.6843 das anteriores) — mais perto de passar
+        que qualquer outra, mas ainda abaixo do limiar 0.95. Reprova mesmo
+        corrigindo o viés metodológico. Ver HANDOFF.md "VEREDITO H11" e
+        `reports/h11_verdict_adhoc.md` para detalhes completos.
     - id: H1
       family: momentum_12_1
       result: NOT_SUPPORTED (IC 95% diff-Sharpe cruza zero)
@@ -338,7 +342,8 @@ ST_RESEARCH_FREEZE:
   reopen_policy: >
     Nenhuma família de fatores já encerrada (momentum 12-1, momentum 6-1, low-vol,
     vol-target, reversão 21d, interseção momentum×low-vol, qualidade/ROE,
-    qualidade/alavancagem, interseção ROE×alavancagem) pode ser
+    qualidade/alavancagem, interseção ROE×alavancagem, momentum 12-1 em
+    retorno total) pode ser
     reaberta sem registrar EXPLICITAMENTE, antes de qualquer código novo:
       previous_result, closure_reason, new_information, causal_reason,
       why_old_test_no_longer_answers_question, new_protocol.

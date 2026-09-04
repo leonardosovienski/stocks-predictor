@@ -9,22 +9,24 @@ Este é o ponto de entrada técnico corrente. O código, Git/CI e
 
 ```text
 role = FROZEN_RESEARCH_ASSET + REUSABLE_COMPONENT_LIBRARY + NEGATIVE_RESULT_CASE
-research_state = FROZEN_EXCEPT_H11_PENDING_JUDGMENT   # ver HANDOFF.md, 2026-09-04
-scientific_state = CLOSED_FOR_H1_THROUGH_H10          # H11 pré-registrada, não julgada
+research_state = FROZEN                                # ver HANDOFF.md, 2026-09-04
+scientific_state = CLOSED_FOR_H1_THROUGH_H11           # todas as 10 hipóteses julgadas
 commercial_state = NOT_A_PRODUCT
-new_scientific_trials = 1   # H11, pré-registrada 2026-09-04, código pronto, rodada real pendente
+new_scientific_trials = 0
 ```
 
-As famílias de fatores JÁ JULGADAS (H1/H2/H4/H5/H6/H7/H8/H9/H10 — 9 no
+As famílias de fatores JÁ JULGADAS (H1/H2/H4/H5/H6/H7/H8/H9/H10/H11 — 10 no
 total, todas NOT_SUPPORTED) e a linha RJ estão encerradas/congeladas.
-**H11** (momentum 12-1 em RETORNO TOTAL, janela restrita 2018-2022) foi
-pré-registrada por decisão explícita do operador em 2026-09-04 — primeira
-hipótese a usar a infraestrutura de retorno total (proventos reinvestidos,
-corrige o viés só-preço declarado nas 9 anteriores). Dado já ingerido. Ver
-HANDOFF.md para o pré-registro completo e os passos mecânicos pendentes.
-Reabertura de qualquer uma das 9 já julgadas exige o dossiê completo
-definido em `RESEARCH_FREEZE.md` e informação materialmente nova — não se
-aplica à H11, hipótese nova, não reaberta.
+**H11** (momentum 12-1 em RETORNO TOTAL, janela restrita 2018-2022,
+proventos reinvestidos — corrige o viés só-preço declarado nas 9
+anteriores) foi julgada com rodada real na máquina do operador em
+2026-09-04: **NOT_SUPPORTED** (IC95% cruza zero; DSR 0,8430 < 0,95,
+N=10) — o maior DSR de todas as 10 hipóteses, mas ainda abaixo do
+limiar. A pesquisa de fatores está formalmente esgotada, incluindo a
+correção do viés metodológico. Ver HANDOFF.md "VEREDITO H11" para
+detalhes completos. Reabertura de qualquer uma das 10 exige o dossiê
+completo definido em `RESEARCH_FREEZE.md` e informação materialmente
+nova.
 
 ## Dependência e vendor
 

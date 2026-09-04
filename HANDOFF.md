@@ -2176,3 +2176,44 @@ Validado (`json.load` + contagem de entradas) antes de commitar.
 **Próximo passo:** operador roda de novo
 `python -c "import backtest; backtest.run_h11(write_report=True)"` — a
 H11 deve registrar sem erro agora (schema do ledger inteiro válido).
+
+---
+
+## VEREDITO H11 — ENCERRADA: NÃO COMPROVADA (2026-09-04, rodada real, COTAHIST real)
+
+Rodada real na máquina do operador, Core 3.1.0, `backtest.run_h11(write_report=True)`,
+após a errata de `test_period` acima:
+
+```
+1.218 pregões pareados
+IC 95% diff-Sharpe (stationary, bloco 21): (-0,0378, +0,7914) — cruza zero
+DSR: 0,8430 < 0,95 (N=10)
+PSR: 0,7704
+NÃO COMPROVADA. Sem repescagem.
+```
+
+Estratégia vs. benchmark: Sharpe anualizado 0,9167 (estratégia) vs. 0,5660
+(benchmark); retorno total 205,51% vs. 77,28%; max drawdown 48,62% vs.
+46,50%. Relatório: `reports/h11_verdict_adhoc.md` (versionado via
+`git add -f`, mesmo padrão de H6-H10).
+
+**Achado no caminho — ledger `trials.json` sincronizado com atraso:** ao
+tentar registrar a H11, apareceu um `diff` local não commitado — o
+veredito real da H10 (sharpe 0,006019, registrado 2026-09-04T03:22:11Z)
+nunca tinha sido enviado ao repositório, mesmo já documentado no HANDOFF
+(entrada "VEREDITO H10" acima) e no `RESEARCH_FREEZE.md`. Commitado antes
+de prosseguir (`chore: registra H10 no ledger`), sem alterar nenhum valor
+— só levando ao GitHub o que já existia local.
+
+**Leitura acumulada (10 tentativas, 0 comprovadas, pesquisa de fatores
+ESGOTADA):** H11 teve o MAIOR DSR de todas as 10 hipóteses (0,8430 —
+contra 0,0277 a 0,6843 das anteriores) e o IC mais próximo de excluir
+zero, mas ainda reprova o limiar pré-registrado de 0,95. Mesmo corrigindo
+o viés metodológico mais sério declarado desde a H1 (retorno só-preço
+favorecendo momentum artificialmente), o sinal não sobrevive ao pedágio
+estatístico nesta janela/universo da B3. Não há mais nenhuma hipótese
+pré-registrada pendente nem fronteira de dado nova identificada.
+`RESEARCH_FREEZE.md` (H11 movida pra `stopped_hypotheses`) e
+`STOCKS_CURRENT_STATE.md` (`research_state=FROZEN`,
+`scientific_state=CLOSED_FOR_H1_THROUGH_H11`, `new_scientific_trials=0`)
+atualizados.
