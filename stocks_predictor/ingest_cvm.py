@@ -248,7 +248,29 @@ def _open_fre_distribuicao_capital_main(zbytes: bytes):
 def parse_fre_float_rows(rows) -> list[dict]:
     """Linhas FRE de distribuição de capital -> {company, ref_date,
     shares_outstanding, free_float}. Sem coluna de circulação: fail-loud,
-    porque free_float fabricado contaminaria a família liquidity inteira."""
+    porque free_float fabricado contaminaria a família liquidity inteira.
+
+    COLISÃO DE COLUNA (achado de auditoria 2026-09-04 — era BUG SILENCIOSO):
+    `_find_col` casa por SUBSTRING, e as duas chaves de quantidade colidem
+    no cabeçalho real da CVM. O arquivo
+    `fre_cia_aberta_distribuicao_capital_{ano}.csv` publica
+    `Quantidade_Total_Acoes_Circulacao` — que CONTÉM a substring
+    `quantidade_total_acoes` procurada por `shares_outstanding` E a
+    substring `circulacao` procurada por `free_float`. As duas chaves
+    resolviam para a MESMA coluna, e `shares_outstanding` recebia
+    silenciosamente o FREE FLOAT: a capitalização de mercado de H18/H19
+    ficava subestimada pelo percentual de ações em circulação, e o
+    ranking de "valor" virava um ranking de concentração acionária.
+
+    Defesa: se `shares_outstanding` resolver para a MESMA coluna que
+    `free_float`, o cabeçalho NÃO distingue as duas quantidades — então
+    `shares_outstanding` é `None` (desconhecido), nunca o valor da outra
+    coluna. `free_float` continua intacto (a coluna de circulação É o que
+    a família liquidity quer), então nenhum caminho que já funcionava
+    muda de comportamento. Quem precisa de ações totais descobre a
+    ausência no fail-loud de `ingest_fre_shares_year`, não num número
+    plausível e errado.
+    """
     header = None
     idx = {}
     out = []
@@ -259,6 +281,13 @@ def parse_fre_float_rows(rows) -> list[dict]:
             if idx["free_float"] is None:
                 raise ValueError(
                     f"FRE sem coluna de ações em circulação; cabeçalho={header}")
+            if idx["shares_outstanding"] == idx["free_float"]:
+                logging.warning(
+                    "FRE: 'shares_outstanding' e 'free_float' casaram a MESMA "
+                    "coluna (%r) — este cabeçalho não distingue ações totais de "
+                    "ações em circulação; shares_outstanding=None. cabecalho=%s",
+                    header[idx["free_float"]], header)
+                idx["shares_outstanding"] = None
             continue
         if len(row) < len(header):
             continue
@@ -769,7 +798,7 @@ def ingest_fre_shares_year(conn, year: int, ticker_of: dict | None = None,
     distintos, com datas de referência e de entrega distintas; alinhar os
     dois por ano-calendário produziria uma capitalização de mercado com data
     errada — lookahead sutil e silencioso, exatamente o que o domínio
-    proíbe. O sinal de valor (`factor._market_cap_signals`) resolve cada
+    proíbe. O sinal de valor (`factor._value_signals`) resolve cada
     fonte com seu PRÓPRIO embargo e junta só no momento do sinal.
 
     Idempotente por `ON CONFLICT(ticker, ref_date, source)`: re-executar o
@@ -791,6 +820,18 @@ def ingest_fre_shares_year(conn, year: int, ticker_of: dict | None = None,
         if not key[1]:
             continue    # sem data de referência não há point-in-time possível
         best[key] = max(best.get(key, 0.0), shares)
+    if not best:
+        # Nenhuma linha trouxe ações totais. Antes isto retornava 0 em
+        # silêncio e H18/H19 rodavam com universo vazio ou (pior, antes da
+        # correção de colisão em `parse_fre_float_rows`) com o free float
+        # no lugar das ações totais. Fail-loud: sem quantidade de ações não
+        # existe capitalização de mercado, logo não existe múltiplo.
+        raise ValueError(
+            f"FRE {year}: nenhuma linha com quantidade TOTAL de ações. O "
+            "cabeçalho deste arquivo pode não distinguir ações totais de "
+            "ações em circulação (ver `parse_fre_float_rows`) — H18/H19 "
+            "precisam de ações totais e NÃO podem rodar com free float. "
+            "Nada foi gravado.")
     n = 0
     for (company, ref_date), shares in sorted(best.items()):
         ticker = (ticker_of or {}).get(company)
