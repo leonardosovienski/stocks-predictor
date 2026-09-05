@@ -57,8 +57,18 @@ _FRE_FLOAT_COLS = {
     "company": ("nome_companhia", "companhia"),
     "ref_date": ("data_referencia", "datareferencia"),
     "shares_outstanding": ("quantidade_total_acoes", "qtd_acoes_total"),
-    "free_float": ("quantidade_acoes_circulacao", "acoes_em_circulacao",
-                   "circulacao"),
+    # ORDEM IMPORTA (achado 2026-09-05, contra o FRE 2023 real): o keyword
+    # genérico "circulacao" casava a PRIMEIRA coluna que o contém, que no
+    # arquivo real é `Quantidade_Acoes_Ordinarias_Circulacao` — o free float
+    # só das ORDINÁRIAS, não o total ON+PN. A coluna total vem primeiro na
+    # lista e o catch-all "circulacao" foi REMOVIDO: casar qualquer coluna
+    # com "circulacao" no nome é como o erro acontecia.
+    "free_float": ("quantidade_total_acoes_circulacao",
+                   "quantidade_acoes_circulacao", "acoes_em_circulacao"),
+    # Percentual do capital em circulação — a chave para DERIVAR as ações
+    # totais (ver `parse_fre_float_rows`). Formato EN neste dataset
+    # ("49.596000"), diferente das quantidades: parse próprio, nunca o BR.
+    "float_pct": ("percentual_total_acoes_circulacao",),
 }
 _DFP_COLS = {
     "cnpj": ("cnpj_cia",),
@@ -295,13 +305,62 @@ def parse_fre_float_rows(rows) -> list[dict]:
             if idx[col] is None or not row[idx[col]].strip():
                 return None
             return float(row[idx[col]].replace(".", "").replace(",", "."))
+        float_shares = num("free_float")
+        shares = num("shares_outstanding")
+        if shares is None:
+            shares = _derive_total_shares(float_shares, _pct(row, idx))
         out.append({
             "company": row[idx["company"]].strip() if idx["company"] is not None else "",
             "ref_date": row[idx["ref_date"]].strip()[:10] if idx["ref_date"] is not None else "",
-            "shares_outstanding": num("shares_outstanding"),
-            "free_float": num("free_float"),
+            "shares_outstanding": shares,
+            "free_float": float_shares,
         })
     return out
+
+
+def _pct(row, idx) -> float | None:
+    """Percentual do capital em circulação. Formato EN neste dataset da CVM
+    ("49.596000" = 49,596%), ao contrário das QUANTIDADES no mesmo arquivo
+    (inteiros sem separador). Parsear este campo com a convenção BR
+    (remover ".") multiplicaria o valor por 10^6 em silêncio — o mesmo modo
+    de falha que `_to_float` já documenta para `Montante`."""
+    i = idx.get("float_pct")
+    if i is None or i >= len(row) or not row[i].strip():
+        return None
+    try:
+        return float(row[i].strip())
+    except ValueError:
+        return None
+
+
+def _derive_total_shares(float_shares: float | None,
+                         pct: float | None) -> float | None:
+    """Ações TOTAIS emitidas = ações em circulação ÷ (percentual ÷ 100).
+
+    Por que derivar (achado 2026-09-05, confirmado contra o FRE 2023 real):
+    `fre_cia_aberta_distribuicao_capital` **não publica** a quantidade total
+    de ações emitidas. Publica, por classe e no total, apenas a quantidade
+    EM CIRCULAÇÃO e o PERCENTUAL que ela representa do capital — e a razão
+    entre os dois recupera o total exatamente.
+
+    Verificado contra o arquivo real: para as três primeiras companhias de
+    2023, o total derivado da linha TOTAL bate com a soma dos totais
+    derivados das pernas ON e PN a menos de 1e-4 relativo (só arredondamento
+    dos 6 decimais do percentual). BCO BRASIL: 2.842.247.534 / 0,49596 =
+    5.730.799.931 ações — a contagem real da companhia.
+
+    `None` (nunca um número fabricado) se faltar qualquer perna, se o
+    percentual estiver fora de (0, 100], ou se o total derivado ficar MENOR
+    que as ações em circulação — que é contábilmente impossível e denuncia
+    percentual ou quantidade corrompidos."""
+    if float_shares is None or pct is None:
+        return None
+    if not (0.0 < pct <= 100.0):
+        return None
+    total = float_shares / (pct / 100.0)
+    if total < float_shares:
+        return None
+    return total
 
 
 def parse_dfp_statement_rows(rows, statement: str) -> list[dict]:
