@@ -404,3 +404,35 @@ def test_distinct_total_and_float_columns_still_resolve_separately():
         ingest_cvm._open_fre_distribuicao_capital_main(zb))
     assert rows[0]["shares_outstanding"] == 1_000_000.0
     assert rows[0]["free_float"] == 400_000.0
+
+
+def test_collision_with_pct_is_info_not_warning(caplog):
+    """Higiene de sinal (achado de operação 2026-09-05): o cabeçalho real da
+    CVM cai SEMPRE na colisão, e antes isso emitia WARNING dizendo
+    `shares_outstanding=None` — sem contar que o total é derivado logo em
+    seguida. Aviso que assusta sem informar treina o operador a ignorar
+    avisos. Com percentual disponível nada se perde: é INFO."""
+    import logging
+    import ingest_cvm
+    zb = _fre_zip_with_header(_FRE_HEADER_REAL, _FRE_ROWS_REAL[:1])
+    with caplog.at_level(logging.INFO):
+        rows = ingest_cvm.parse_fre_float_rows(
+            ingest_cvm._open_fre_distribuicao_capital_main(zb))
+    assert rows[0]["shares_outstanding"] is not None      # derivou
+    assert not [r for r in caplog.records if r.levelno >= logging.WARNING]
+    assert [r for r in caplog.records if r.levelno == logging.INFO]
+
+
+def test_collision_without_pct_still_warns(caplog):
+    """Sem a coluna de percentual a derivação é impossível e o dado SE PERDE
+    — aí o WARNING é devido."""
+    import logging
+    import ingest_cvm
+    zb = _fre_zip_with_header(
+        "CNPJ_Companhia;Data_Referencia;Nome_Companhia;Quantidade_Total_Acoes_Circulacao",
+        [["00.000.000/0001-91", "2023-12-31", "CIA X", "2842247534"]])
+    with caplog.at_level(logging.INFO):
+        rows = ingest_cvm.parse_fre_float_rows(
+            ingest_cvm._open_fre_distribuicao_capital_main(zb))
+    assert rows[0]["shares_outstanding"] is None
+    assert [r for r in caplog.records if r.levelno >= logging.WARNING]
