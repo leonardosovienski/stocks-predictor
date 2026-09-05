@@ -22,16 +22,29 @@ Windows, **Python 3.13 global**, **nunca criar venv** (EDR corporativo
 quarentena venvs — regra do `CLAUDE.md`).
 
 ```powershell
-python --version          # precisa ser 3.13.x
+py -3.13 --version        # deve responder 3.13.x
 ```
+
+**Use `py -3.13` em TODOS os comandos deste runbook, não `python`.** Numa
+máquina com mais de um interpretador, `python` resolve para o que estiver
+primeiro no PATH — que pode ser um 3.14 ou 3.12. O `pyproject.toml` aceita
+`>=3.13,<3.15`, mas o CI exercita **só o 3.13**, e ingestão que escreve no
+banco não é lugar para estrear interpretador não testado.
+
+Se `py -3.13` não responder, **pare**: instale o 3.13 antes de seguir, ou
+decida conscientemente (e registre no HANDOFF) rodar noutra versão.
 
 O `predictor-core` **não está no PyPI público** — distribuição só por wheel
 de GitHub Release do repo irmão:
 
 ```powershell
-python -m pip install --upgrade "https://github.com/leonardosovienski/core-predictor/releases/download/v3.1.0/predictor_core-3.1.0-py3-none-any.whl"
-python -m pip install --upgrade PyYAML pytest
+py -3.13 -m pip install --upgrade "https://github.com/leonardosovienski/core-predictor/releases/download/v3.1.0/predictor_core-3.1.0-py3-none-any.whl"
+py -3.13 -m pip install --upgrade PyYAML pytest
 ```
+
+As dependências ficam no site-packages **daquele** interpretador. Instalar
+com `python` e rodar com `py -3.13` (ou o contrário) dá
+`ModuleNotFoundError` sem explicar a causa.
 
 Sintoma de core desatualizado: `pyproject.toml` exige `>=3.0,<4`; uma 2.x
 instalada quebra o import com erro pouco óbvio. Confira com
@@ -42,10 +55,16 @@ instalada quebra o import com erro pouco óbvio. Confira com
 ## 1. Repo atualizado
 
 ```powershell
-cd C:\caminho\para\stocks-predictor
+cd C:\Claude-projetos\Claude\stocks-predictor    # ajuste se o nome for outro
 git checkout main
 git pull origin main
 ```
+
+Não sabe o caminho? `Get-ChildItem C:\Claude-projetos -Directory`.
+
+**Todo comando deste runbook roda a partir da raiz do repositório.**
+`git pull` de outro diretório responde `fatal: not a git repository`, e
+`main.py`/`tools\*.py` viram `No such file or directory`.
 
 Precisa conter os PRs #52, #53 e #54 (correção do FRE + os dois scripts).
 
@@ -54,8 +73,8 @@ Precisa conter os PRs #52, #53 e #54 (correção do FRE + os dois scripts).
 ## 2. Diagnóstico — onde você está
 
 ```powershell
-python main.py                    # status: config_hash, contagem por tabela, trials
-python -m pytest tests\ -q        # precisa estar VERDE antes de qualquer ingestão
+py -3.13 main.py                    # status: config_hash, contagem por tabela, trials
+py -3.13 -m pytest tests\ -q        # precisa estar VERDE antes de qualquer ingestão
 ```
 
 Leia a contagem de `prices_raw` no status:
@@ -75,17 +94,17 @@ ambiente do agente.
 Baixar os COTAHIST anuais (a função existe; não há CLI para ela):
 
 ```powershell
-python -c "import sys; sys.path.insert(0,'stocks_predictor'); import ingest_cotahist as ic; [ic.download_cotahist(a,'data/cotahist') for a in range(2016,2027)]"
+py -3.13 -c "import sys; sys.path.insert(0,'stocks_predictor'); import ingest_cotahist as ic; [ic.download_cotahist(a,'data/cotahist') for a in range(2016,2027)]"
 ```
 
 Carregar cada zip e rodar o detector de saltos:
 
 ```powershell
-Get-ChildItem data\cotahist\COTAHIST_A*.ZIP | ForEach-Object { python main.py ingest $_.FullName }
-python main.py adjust                        # detector de saltos -> quarentena
-python main.py splits-review splits.csv      # exporta candidatos p/ revisão HUMANA
+Get-ChildItem data\cotahist\COTAHIST_A*.ZIP | ForEach-Object { py -3.13 main.py ingest $_.FullName }
+py -3.13 main.py adjust                        # detector de saltos -> quarentena
+py -3.13 main.py splits-review splits.csv      # exporta candidatos p/ revisão HUMANA
 # revise splits.csv à mão, aprove linha a linha, então:
-python main.py splits-import splits.csv
+py -3.13 main.py splits-import splits.csv
 ```
 
 O passo de revisão humana dos splits não é burocracia: `adjustments` só
@@ -99,8 +118,8 @@ no fator.
 **Rede limpa.** Escreve em `fundamentals`. Não verificado por mim.
 
 ```powershell
-python tools\ingest_h7_real.py --dry-run    # só mostra o mapeamento por ano
-python tools\ingest_h7_real.py              # grava
+py -3.13 tools\ingest_h7_real.py --dry-run    # só mostra o mapeamento por ano
+py -3.13 tools\ingest_h7_real.py              # grava
 ```
 
 **Rode isto mesmo que o H7 já tenha sido ingerido antes.** O upsert
@@ -123,8 +142,8 @@ referência: ele deriva o universo do próprio banco quando o arquivo falta.
 por mim contra o arquivo real.
 
 ```powershell
-python tools\ingest_fre_shares_real.py --dry-run
-python tools\ingest_fre_shares_real.py
+py -3.13 tools\ingest_fre_shares_real.py --dry-run
+py -3.13 tools\ingest_fre_shares_real.py
 ```
 
 **Faça o `--dry-run` primeiro e olhe o número de empresas casadas por ano.**
@@ -147,8 +166,8 @@ ações", isso é o fail-loud funcionando — não force, me chame.
 sintético.
 
 ```powershell
-python tools\cobertura_h18.py
-python tools\cobertura_h18.py --desde 2018-01-01     # janela explícita
+py -3.13 tools\cobertura_h18.py
+py -3.13 tools\cobertura_h18.py --desde 2018-01-01     # janela explícita
 ```
 
 Saída: contagem bruta por coluna de `fundamentals` (critério 2) e, por data
@@ -166,9 +185,9 @@ Cole a saída inteira para eu fechar os critérios.
 ## 7. O que NÃO rodar ainda
 
 ```powershell
-python main.py backtest-h 17     # NÃO
-python main.py backtest-h 18     # NÃO
-python main.py backtest-h 19     # NÃO
+py -3.13 main.py backtest-h 17     # NÃO
+py -3.13 main.py backtest-h 18     # NÃO
+py -3.13 main.py backtest-h 19     # NÃO
 ```
 
 Cada uma consome uma tentativa **irreversível** do denominador do DSR, e
@@ -202,18 +221,37 @@ Referência atual: `98BFC543DE1E80E2EAEC981E876E5A0C`.
 
 ---
 
+## Erros comuns
+
+| sintoma | causa | correção |
+|---|---|---|
+| `fatal: not a git repository` | você não está na raiz do repo | `cd` para a pasta do projeto (§1) |
+| `can't open file 'C:\WINDOWS\system32\main.py'` | idem | idem |
+| `ERROR: file or directory not found: tests\` | idem | idem |
+| caminho do python mostra `pythoncore-3.14` ou outra versão | `python` resolveu para o interpretador errado | use `py -3.13` em tudo (§0) |
+| `ModuleNotFoundError: predictor_core` | deps instaladas noutro interpretador | reinstale com `py -3.13 -m pip` (§0) |
+| `ValueError: ... quantidade TOTAL de ações` | fail-loud do FRE funcionando | **não contorne** — ver §5 |
+
+---
+
 ## Resumo executável
 
+Copie o bloco INTEIRO — as duas primeiras linhas são o que mais falha.
+
 ```powershell
-# uma vez
-python -m pip install --upgrade "https://github.com/leonardosovienski/core-predictor/releases/download/v3.1.0/predictor_core-3.1.0-py3-none-any.whl"
+cd C:\Claude-projetos\Claude\stocks-predictor    # ajuste se o nome for outro
+py -3.13 --version                                # tem de dizer 3.13.x
+
+# uma vez por máquina
+py -3.13 -m pip install --upgrade "https://github.com/leonardosovienski/core-predictor/releases/download/v3.1.0/predictor_core-3.1.0-py3-none-any.whl"
+py -3.13 -m pip install --upgrade PyYAML pytest
 
 # sempre
 git pull origin main
-python main.py                              # onde estou?
-python -m pytest tests\ -q                  # verde antes de tudo
+py -3.13 main.py                              # onde estou?
+py -3.13 -m pytest tests\ -q                  # 361 passed antes de tudo
 
-python tools\ingest_h7_real.py              # DFP  (rede limpa)
-python tools\ingest_fre_shares_real.py      # FRE  (rede limpa)
-python tools\cobertura_h18.py               # medir -> me mandar a saída
+py -3.13 tools\ingest_h7_real.py              # DFP  (rede limpa)
+py -3.13 tools\ingest_fre_shares_real.py      # FRE  (rede limpa)
+py -3.13 tools\cobertura_h18.py               # medir -> me mandar a saída
 ```
