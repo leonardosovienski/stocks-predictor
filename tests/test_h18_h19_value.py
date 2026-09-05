@@ -252,8 +252,30 @@ def test_ingest_fre_shares_skips_unmapped_company(tmp_path):
 # HANDOFF.md:58-61 ("fonte confirmada", `tools/explore_dividend_sources.py`),
 # onde a única coluna de quantidade é `Quantidade_Total_Acoes_Circulacao`.
 
-_FRE_HEADER_REAL = ("CNPJ_Companhia;Data_Referencia;Versao;Nome_Companhia;"
-                    "Quantidade_Total_Acoes_Circulacao;Percentual_Total_Acoes_Circulacao")
+# Cabeçalho GOLDEN: as 15 colunas do `fre_cia_aberta_distribuicao_capital_2023.csv`
+# real, obtidas do arquivo baixado do Portal de Dados Abertos da CVM pelo
+# operador em 2026-09-05. Não é sintético e não é de memória.
+_FRE_HEADER_REAL = (
+    "CNPJ_Companhia;Data_Referencia;Versao;ID_Documento;Nome_Companhia;"
+    "Quantidade_Acionistas_PF;Quantidade_Acionistas_PJ;"
+    "Quantidade_Acionistas_Investidores_Institucionais;"
+    "Quantidade_Acoes_Ordinarias_Circulacao;Percentual_Acoes_Ordinarias_Circulacao;"
+    "Quantidade_Acoes_Preferenciais_Circulacao;Percentual_Acoes_Preferenciais_Circulacao;"
+    "Quantidade_Total_Acoes_Circulacao;Percentual_Total_Acoes_Circulacao;"
+    "Data_Ultima_Assembleia")
+
+# Linhas GOLDEN: as três primeiras companhias do arquivo real de 2023, verbatim.
+_FRE_ROWS_REAL = [
+    ["00.000.000/0001-91", "2023-12-31", "19", "137597", "BCO BRASIL S.A.",
+     "1143917", "14856", "1266", "2842247534", "49.596000", "0", "0.000000",
+     "2842247534", "49.596000", "2024-04-15"],
+    ["00.000.208/0001-00", "2023-12-31", "13", "135745", "BRB BANCO DE BRASILIA S.A.",
+     "2843", "33", "0", "39346566", "14.045000", "2608000", "3.146000",
+     "41954566", "11.556000", "2023-04-28"],
+    ["00.001.180/0001-26", "2023-12-31", "23", "136627", "AXIA ENERGIA S.A.",
+     "144406", "10701", "677", "1977170723", "97.541000", "268875696", "95.997000",
+     "2246046419", "97.354000", "2024-04-26"],
+]
 
 
 def _fre_zip_with_header(header, rows):
@@ -267,40 +289,107 @@ def _fre_zip_with_header(header, rows):
     return buf.getvalue()
 
 
-def test_real_fre_header_does_not_silently_report_float_as_total_shares():
-    """BUG DE AUDITORIA: contra o cabeçalho real, `shares_outstanding` e
-    `free_float` casavam a MESMA coluna e o free float era gravado como
-    ações totais — capitalização subestimada pelo percentual de circulação,
-    e o ranking de valor virava ranking de concentração acionária.
+def test_real_fre_header_derives_total_shares_and_total_float():
+    """GOLDEN contra o arquivo real da CVM (2023).
 
-    Agora `shares_outstanding` é None (desconhecido) e `free_float`
-    continua correto: recusar é o único comportamento honesto, porque o
-    cabeçalho genuinamente não distingue as duas quantidades."""
+    Dois bugs que este teste tranca:
+
+    1. `free_float` casava `Quantidade_Acoes_Ordinarias_Circulacao` — o float
+       só das ORDINÁRIAS — porque o keyword genérico "circulacao" pegava a
+       primeira coluna com essa palavra. Agora casa a coluna TOTAL.
+    2. `shares_outstanding` recebia a quantidade EM CIRCULAÇÃO como se fosse
+       o capital total. O arquivo não publica ações totais; elas são
+       DERIVADAS de quantidade ÷ percentual.
+
+    BCO BRASIL: 2.842.247.534 / 0,49596 = 5.730.799.931 ações — a contagem
+    real da companhia, e o dobro do que a implementação anterior usaria."""
     import ingest_cvm
-    zb = _fre_zip_with_header(
-        _FRE_HEADER_REAL,
-        [["00.000.000/0001-00", "2020-12-31", "1", "CIA X", "400.000", "40,0"]])
+    zb = _fre_zip_with_header(_FRE_HEADER_REAL, _FRE_ROWS_REAL)
     rows = ingest_cvm.parse_fre_float_rows(
         ingest_cvm._open_fre_distribuicao_capital_main(zb))
-    assert len(rows) == 1
-    assert rows[0]["free_float"] == 400_000.0          # caminho liquidity intacto
-    assert rows[0]["shares_outstanding"] is None       # nunca o free float
+    by = {r["company"]: r for r in rows}
+
+    bb = by["BCO BRASIL S.A."]
+    assert bb["free_float"] == 2_842_247_534.0             # coluna TOTAL, não ON
+    assert abs(bb["shares_outstanding"] - 5_730_799_931) < 1.0
+    # o erro que este teste existe para impedir: float tratado como total
+    assert bb["shares_outstanding"] != bb["free_float"]
+
+    axia = by["AXIA ENERGIA S.A."]
+    assert axia["free_float"] == 2_246_046_419.0
+    assert abs(axia["shares_outstanding"] - 2_307_092_075) < 1.0
 
 
-def test_ingest_fre_shares_fails_loud_when_total_shares_absent(tmp_path):
-    """Sem ações totais não existe capitalização de mercado, logo não existe
-    múltiplo. Antes: retornava 0 em silêncio. Agora: exceção — H18/H19 não
-    podem rodar com free float no lugar de ações totais."""
+def test_derived_total_is_consistent_with_on_plus_pn_legs():
+    """Checagem cruzada interna do arquivo real: o total derivado da linha
+    TOTAL bate com a soma dos totais derivados das pernas ON e PN. Se a
+    derivação estivesse errada, as duas rotas divergiriam."""
+    import ingest_cvm
+    for row in _FRE_ROWS_REAL:
+        on = ingest_cvm._derive_total_shares(float(row[8]), float(row[9]))
+        pn = ingest_cvm._derive_total_shares(float(row[10]), float(row[11]))
+        total = ingest_cvm._derive_total_shares(float(row[12]), float(row[13]))
+        soma = (on or 0.0) + (pn or 0.0)
+        assert abs(soma - total) / total < 1e-4, row[4]
+
+
+def test_derive_total_shares_refuses_impossible_inputs():
+    """Sem número fabricado: percentual ausente, zero, negativo ou >100 ->
+    None. Nunca um total menor que o próprio free float."""
+    import ingest_cvm
+    d = ingest_cvm._derive_total_shares
+    assert d(1000.0, None) is None
+    assert d(None, 50.0) is None
+    assert d(1000.0, 0.0) is None
+    assert d(1000.0, -5.0) is None
+    assert d(1000.0, 100.5) is None
+    assert d(1000.0, 100.0) == 1000.0        # 100% em circulação é válido
+
+
+def test_percentual_is_parsed_as_en_not_br():
+    """`49.596000` é 49,596% (formato EN). Parseado com a convenção BR
+    (remover o ponto) viraria 49596000 e o total derivado ficaria ~10^6x
+    menor — corrupção silenciosa, o modo de falha que `_to_float` documenta."""
+    import ingest_cvm
+    zb = _fre_zip_with_header(_FRE_HEADER_REAL, _FRE_ROWS_REAL[:1])
+    rows = ingest_cvm.parse_fre_float_rows(
+        ingest_cvm._open_fre_distribuicao_capital_main(zb))
+    assert rows[0]["shares_outstanding"] > rows[0]["free_float"]
+    assert rows[0]["shares_outstanding"] < rows[0]["free_float"] * 10
+
+
+def test_ingest_fre_shares_fails_loud_when_total_shares_underivable(tmp_path):
+    """Sem a coluna de PERCENTUAL não há como derivar as ações totais, e sem
+    ações totais não há capitalização de mercado — logo não há múltiplo.
+    Fail-loud: exceção, nunca `0` em silêncio nem o free float no lugar."""
     import pytest
     import ingest_cvm
     conn = db.get_connection(tmp_path / "s.db")
+    # mesmo arquivo real, mas SEM a coluna de percentual: derivação impossível
     zb = _fre_zip_with_header(
-        _FRE_HEADER_REAL,
-        [["00.000.000/0001-00", "2020-12-31", "1", "CIA X", "400.000", "40,0"]])
+        "CNPJ_Companhia;Data_Referencia;Nome_Companhia;Quantidade_Total_Acoes_Circulacao",
+        [["00.000.000/0001-91", "2023-12-31", "CIA X", "2842247534"]])
     with pytest.raises(ValueError, match="quantidade TOTAL de ações"):
         ingest_cvm.ingest_fre_shares_year(
-            conn, 2020, {ingest_cvm._norm("CIA X"): "AAAA3"}, zbytes=zb)
+            conn, 2023, {ingest_cvm._norm("CIA X"): "AAAA3"}, zbytes=zb)
     assert conn.execute("SELECT COUNT(*) FROM fundamentals").fetchone()[0] == 0
+
+
+def test_ingest_fre_shares_persists_derived_total_from_real_header(tmp_path):
+    """Ponta a ponta contra o cabeçalho real: o que chega em `fundamentals`
+    é o capital TOTAL derivado, não a quantidade em circulação."""
+    import ingest_cvm
+    conn = db.get_connection(tmp_path / "s.db")
+    zb = _fre_zip_with_header(_FRE_HEADER_REAL, _FRE_ROWS_REAL)
+    n = ingest_cvm.ingest_fre_shares_year(
+        conn, 2023, {ingest_cvm._norm("BCO BRASIL S.A."): "BBAS3"}, zbytes=zb)
+    assert n == 1
+    ref, shares = conn.execute(
+        "SELECT ref_date, shares_outstanding FROM fundamentals"
+        " WHERE ticker='BBAS3'").fetchone()
+    assert ref == "2023-12-31"
+    assert abs(shares - 5_730_799_931) < 1.0
+    assert shares != 2_842_247_534.0          # nunca o free float
 
 
 def test_distinct_total_and_float_columns_still_resolve_separately():
