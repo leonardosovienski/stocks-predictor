@@ -37,7 +37,14 @@ if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
 
 # Pistas de coluna que indicariam data de ENTREGA/recebimento do documento.
-_PISTAS_ENTREGA = ("entrega", "recebimento", "protocolo", "envio", "divulgacao")
+# `receb` ABREVIADO, não `recebimento` (achado 2026-09-05): a coluna real da
+# CVM é `DT_RECEB`, e a lista original — que exigia a palavra inteira — deu
+# FALSO NEGATIVO, anunciando "o FRE não expõe data de entrega" três linhas
+# acima de imprimir `DT_RECEB = 2022-05-31`. Mesmo erro de casamento por
+# palavra-chave longa demais que a auditoria pegou em `_FRE_FLOAT_COLS`;
+# aqui o custo foi uma conclusão errada em letra garrafal.
+_PISTAS_ENTREGA = ("entrega", "receb", "protocolo", "envio", "divulgacao",
+                   "dt_rec")
 
 
 def _anos():
