@@ -292,12 +292,24 @@ def parse_fre_float_rows(rows) -> list[dict]:
                 raise ValueError(
                     f"FRE sem coluna de ações em circulação; cabeçalho={header}")
             if idx["shares_outstanding"] == idx["free_float"]:
-                logging.warning(
-                    "FRE: 'shares_outstanding' e 'free_float' casaram a MESMA "
-                    "coluna (%r) — este cabeçalho não distingue ações totais de "
-                    "ações em circulação; shares_outstanding=None. cabecalho=%s",
-                    header[idx["free_float"]], header)
+                # O cabeçalho real da CVM cai SEMPRE aqui: só existe a coluna
+                # de circulação. Dois desfechos MUITO diferentes, e o nível de
+                # log distingue os dois (achado de operação 2026-09-05: a
+                # mensagem anterior anunciava "shares_outstanding=None" e
+                # calava que a derivação acontecia em seguida — assustava sem
+                # informar, que é o pior tipo de aviso).
                 idx["shares_outstanding"] = None
+                if idx.get("float_pct") is not None:
+                    logging.info(
+                        "FRE: sem coluna de ações totais (%r é circulação) — "
+                        "total DERIVADO de circulação ÷ percentual",
+                        header[idx["free_float"]])
+                else:
+                    logging.warning(
+                        "FRE: sem coluna de ações totais (%r é circulação) e "
+                        "sem coluna de percentual — não há como derivar; "
+                        "shares_outstanding fica None. cabecalho=%s",
+                        header[idx["free_float"]], header)
             continue
         if len(row) < len(header):
             continue
