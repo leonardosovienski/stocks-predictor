@@ -243,3 +243,75 @@ def test_ingest_fre_shares_skips_unmapped_company(tmp_path):
     zb = _fre_zip_bytes([["CIA DESCONHECIDA", "2020-12-31", "1.000.000", "400.000"]])
     assert ingest_cvm.ingest_fre_shares_year(conn, 2020, {}, zbytes=zb) == 0
     assert conn.execute("SELECT COUNT(*) FROM fundamentals").fetchone()[0] == 0
+
+
+# --- Regressão da auditoria 2026-09-04: colisão de coluna no FRE -------------
+# Os testes acima usam um cabeçalho SINTÉTICO com duas colunas separadas
+# (`Quantidade_Total_Acoes` + `Quantidade_Acoes_Circulacao`) que a CVM não
+# publica. Os testes abaixo usam o cabeçalho REAL registrado pelo operador no
+# HANDOFF.md:58-61 ("fonte confirmada", `tools/explore_dividend_sources.py`),
+# onde a única coluna de quantidade é `Quantidade_Total_Acoes_Circulacao`.
+
+_FRE_HEADER_REAL = ("CNPJ_Companhia;Data_Referencia;Versao;Nome_Companhia;"
+                    "Quantidade_Total_Acoes_Circulacao;Percentual_Total_Acoes_Circulacao")
+
+
+def _fre_zip_with_header(header, rows):
+    import io as _io
+    import zipfile as _zip
+    lines = [header] + [";".join(r) for r in rows]
+    buf = _io.BytesIO()
+    with _zip.ZipFile(buf, "w") as zf:
+        zf.writestr("fre_cia_aberta_distribuicao_capital_2020.csv",
+                    "\n".join(lines).encode("latin-1"))
+    return buf.getvalue()
+
+
+def test_real_fre_header_does_not_silently_report_float_as_total_shares():
+    """BUG DE AUDITORIA: contra o cabeçalho real, `shares_outstanding` e
+    `free_float` casavam a MESMA coluna e o free float era gravado como
+    ações totais — capitalização subestimada pelo percentual de circulação,
+    e o ranking de valor virava ranking de concentração acionária.
+
+    Agora `shares_outstanding` é None (desconhecido) e `free_float`
+    continua correto: recusar é o único comportamento honesto, porque o
+    cabeçalho genuinamente não distingue as duas quantidades."""
+    import ingest_cvm
+    zb = _fre_zip_with_header(
+        _FRE_HEADER_REAL,
+        [["00.000.000/0001-00", "2020-12-31", "1", "CIA X", "400.000", "40,0"]])
+    rows = ingest_cvm.parse_fre_float_rows(
+        ingest_cvm._open_fre_distribuicao_capital_main(zb))
+    assert len(rows) == 1
+    assert rows[0]["free_float"] == 400_000.0          # caminho liquidity intacto
+    assert rows[0]["shares_outstanding"] is None       # nunca o free float
+
+
+def test_ingest_fre_shares_fails_loud_when_total_shares_absent(tmp_path):
+    """Sem ações totais não existe capitalização de mercado, logo não existe
+    múltiplo. Antes: retornava 0 em silêncio. Agora: exceção — H18/H19 não
+    podem rodar com free float no lugar de ações totais."""
+    import pytest
+    import ingest_cvm
+    conn = db.get_connection(tmp_path / "s.db")
+    zb = _fre_zip_with_header(
+        _FRE_HEADER_REAL,
+        [["00.000.000/0001-00", "2020-12-31", "1", "CIA X", "400.000", "40,0"]])
+    with pytest.raises(ValueError, match="quantidade TOTAL de ações"):
+        ingest_cvm.ingest_fre_shares_year(
+            conn, 2020, {ingest_cvm._norm("CIA X"): "AAAA3"}, zbytes=zb)
+    assert conn.execute("SELECT COUNT(*) FROM fundamentals").fetchone()[0] == 0
+
+
+def test_distinct_total_and_float_columns_still_resolve_separately():
+    """A defesa é contra COLISÃO, não contra o caso legítimo: um cabeçalho
+    que de fato traga as duas quantidades em colunas distintas continua
+    resolvendo as duas."""
+    import ingest_cvm
+    zb = _fre_zip_with_header(
+        "Nome_Companhia;Data_Referencia;Quantidade_Total_Acoes;Quantidade_Acoes_Circulacao",
+        [["CIA X", "2020-12-31", "1.000.000", "400.000"]])
+    rows = ingest_cvm.parse_fre_float_rows(
+        ingest_cvm._open_fre_distribuicao_capital_main(zb))
+    assert rows[0]["shares_outstanding"] == 1_000_000.0
+    assert rows[0]["free_float"] == 400_000.0
