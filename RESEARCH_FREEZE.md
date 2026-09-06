@@ -183,9 +183,12 @@ treino/teste — apenas um filtro de data de início (`test_start`).
 
 - `vendor/predictor_core/` está congelado em `1.3.0-ga-20260711` (arquivo `VERSION`), com
   manifesto de integridade `CORE_MANIFEST.json` (SHA-256 por arquivo).
-- Dependência real declarada é `predictor-core==3.0.0` (`pyproject.toml`, `uv.lock`, wheel do
-  GitHub Release), instalada como pacote — **nenhum caminho de runtime** (`main.py`,
-  `stocks_predictor/*.py`) importa de `vendor/`.
+- Dependência real declarada é `predictor-core==3.2.0` (`pyproject.toml`, `uv.lock`,
+  `.github/workflows/ci.yml`, wheel do GitHub Release), instalada como pacote —
+  **nenhum caminho de runtime** (`main.py`, `stocks_predictor/*.py`) importa de
+  `vendor/`. (Era `3.0.0` até 2026-09-06, quando o pin subiu para 3.2.0; as
+  execuções datadas registradas neste documento rodaram sob a versão que a data
+  delas indica e não são reescritas.)
 - `poc_leak.py` é o **único** consumidor real do vendor (via `sys.path.insert` manual) — e é
   histórico/demonstrativo, não parte do pipeline.
 - **Freshness guard já existe:** `tests/conftest.py` faz

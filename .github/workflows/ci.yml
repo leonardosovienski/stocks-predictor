@@ -38,7 +38,7 @@ jobs:
         run: |
           uv venv /tmp/stocks-wheel --python 3.13 --seed
           /tmp/stocks-wheel/bin/pip install dist/*.whl \
-            "predictor-core @ https://github.com/leonardosovienski/core-predictor/releases/download/v3.0.0/predictor_core-3.0.0-py3-none-any.whl"
+            "predictor-core @ https://github.com/leonardosovienski/core-predictor/releases/download/v3.2.0/predictor_core-3.2.0-py3-none-any.whl"
           /tmp/stocks-wheel/bin/python -c "import predictor_core, stocks_predictor.rj_episodes, stocks_predictor.rj_judge"
 
   secrets:
