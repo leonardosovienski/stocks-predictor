@@ -227,8 +227,10 @@ NOT_REPRODUCIBLE_AGAINST_CORE_3_0
 Alvo: `vendor/predictor_core/replay.py` (API antiga). Demonstra bypass de encapsulamento de
 `PastView` via atributo privado `._data`, contornando o bloqueio público de lookahead
 (`LookaheadError`). Preservado como artefato de red-team histórico; **não é evidência de falha
-do Core 3.0.0 atual** (não há como comparar — o código-fonte do 3.0.0 não está neste checkout,
-só o pacote instalado).
+do Core em uso** (não há como comparar — o código-fonte do Core não está neste checkout, só o
+pacote instalado). A classificação `NOT_REPRODUCIBLE_AGAINST_CORE_3_0` é do dia em que foi
+escrita; o pin em uso é `3.2.0` desde 2026-09-06, e a conclusão vale com mais folga ainda,
+já que o alvo era uma API de `vendor/` anterior a toda a linha 3.x.
 
 ---
 
