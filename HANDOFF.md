@@ -1,5 +1,99 @@
 # HANDOFF — predictor-stocks
 
+> ## VEREDITO: os 5 critérios da H18 fecharam — VALE RODAR (2026-09-06)
+>
+> Medição final, com as duas pernas point-in-time corretas. Encerra a
+> auditoria independente de 2026-09-04 (`docs/auditoria_2026-09-04.md`).
+>
+> ### Cobertura de `known_at` — 100%
+>
+>     total 1579 | com known_at 1579 (100.0%)
+>       DFP: 733 linhas, 733 com known_at (100.0%)
+>       FRE: 846 linhas, 846 com known_at (100.0%)
+>
+> **Nenhuma linha cai no embargo estimado.** Todo `known_at` é data
+> observada de recebimento pela CVM (`DT_RECEB`). O
+> `disclosure_embargo_days: 90` permanece no config como fallback, mas hoje
+> não é exercido por nenhuma linha das fontes ingeridas.
+>
+> ### Os cinco critérios
+>
+> | # | critério | medido | veredito |
+> |---|---|---|---|
+> | 1 | coluna de ações existe e vem preenchida | derivada; BBAS3/ABEV3/ASAI3 conferem | APROVADO |
+> | 2 | `shares_outstanding` em fração relevante | 846 linhas, 126 de 132 tickers | APROVADO |
+> | 3 | duas pernas juntas por rebalance | mediana 49,5 papéis com E/P | APROVADO |
+> | 4 | comparável a H7/H9/H12/H13 | 49,5 vs. 53 / 53 / 54 (~93%) | APROVADO |
+> | 5 | nada entra antes de ser público | 100% `known_at` observado | APROVADO |
+>
+> **VALE RODAR A H18.** Foi a primeira vez, em toda a auditoria, que a
+> resposta deixou de ser "não".
+>
+> ### Cobertura por rebalance (104 datas, 2026-09-06, pós-correção)
+>
+> | sinal | mediana | zeros | antes (embargo) |
+> |---|---|---|---|
+> | universo | 60,0 | 0 | 60,0 · 0 |
+> | lucro | 56,0 | 12 | 56,0 · 15 |
+> | ações | 57,0 | 12 | 58,0 · 3 |
+> | E/P (H18) | 49,5 | 13 | 50,0 · 15 |
+> | B/M (H19) | 53,0 | 13 | 53,0 · 15 |
+> | roe (H7) | 53,0 | **15** | 53,0 · 15 |
+> | lev (H9) | 53,0 | **15** | 53,0 · 15 |
+> | marg (H12) | 54,0 | **15** | 54,0 · 15 |
+> | accruals (H17) | 56,0 | 12 | 56,0 · 15 |
+>
+> **`roe`, `lev` e `marg` saíram IDÊNTICOS** enquanto `lucro` e `accruals`
+> mudaram, sobre as MESMAS linhas de `fundamentals`. É a prova no dado real
+> de que a política explícita por hipótese funciona: as julgadas continuam
+> presas ao embargo estimado, H17/H18/H19 usam a data observada.
+>
+> ### Uma previsão minha que ERROU, e o mecanismo que ela revelou
+>
+> Antes de ver o resultado ficou registrado que o E/P deveria SUBIR. Ele
+> CAIU de 50,0 para 49,5. A previsão estava incompleta, não a implementação:
+>
+> - quem entrega CEDO (BBAS3, fevereiro) fica elegível ANTES -> zeros do E/P
+>   caem de 15 para 13;
+> - quem entrega TARDE tem `DT_RECEB` POSTERIOR aos 90 dias e agora sai
+>   corretamente do sinal em datas onde antes entrava -> a contagem cai em
+>   algumas datas.
+>
+> Os dois efeitos brigam; o saldo foi -0,5 na mediana. **A queda é lookahead
+> real sendo removido de quem entrega atrasado** — exatamente o que o embargo
+> fixo escondia, e o motivo pelo qual a correção valeu a pena mesmo sem
+> melhorar a cobertura agregada.
+>
+> ### DECISÃO PENDENTE — a ordem das rodadas, e ela precisa ser fixada ANTES da primeira
+>
+> O N do DSR cresce a cada tentativa registrada. Hoje são **15**. Quem rodar
+> primeiro enfrenta N=16; a segunda, N=17; a terceira, N=18. **A terceira tem
+> a barra mais alta só por ter sido rodada por último.**
+>
+> O pré-registro de 2026-09-04 NÃO fixou essa ordem. Escolher depois de ver
+> qualquer resultado é p-hacking. Critério defensável sugerido: rodar na
+> ordem de pré-registro (H17 -> H18 -> H19), arbitrária mas independente de
+> qualquer expectativa sobre qual funciona.
+>
+> ### O que fica declarado e NÃO corrigido
+>
+> `execution.price: next_open` e `backtest.purge_embargo_months` continuam
+> `[FROZEN]` e inertes — a liquidação real é close-to-close no dia do sinal.
+> Vale igual para as 16 julgadas, então não torna a H18 especial, mas quem
+> auditar o `config_hash` precisa saber. Ver a lista completa de dívidas na
+> entrada "ESTADO ATUAL E PRÓXIMOS PASSOS".
+>
+> ### Estado
+>
+> `trials.json` em 15 tentativas, md5 `98BFC543DE1E80E2EAEC981E876E5A0C` —
+> inalterado desde o início da auditoria. **H17/H18/H19 continuam NÃO
+> EXECUTADAS.** Nenhuma métrica de desempenho delas foi observada por
+> ninguém, que é o que mantém legítimos os re-pré-registros de 2026-09-06.
+>
+> Suíte: **374 verdes**.
+
+---
+
 > ## BUG: known_at da DFP nunca era gravado (2026-09-06, corrigido)
 >
 > A primeira rodada real da ingestão da DFP com `known_at` reportou
