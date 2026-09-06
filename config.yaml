@@ -347,7 +347,9 @@ h17_criteria:
 
 h18_factor:
   name: earnings_yield             # [H18-FROZEN] lucro/(preço × ações)
-  disclosure_embargo_days: 90      # [H18-FROZEN] mesmo embargo de H7/H9/H12/H13
+  disclosure_embargo_days: 90      # [H18-FROZEN] fallback: só p/ linha sem known_at
+  known_at_policy: observed        # [H18-FROZEN] DT_RECEB do FRE manda (re-pré-registro 2026-09-06)
+  split_base: adjusted             # [H18-FROZEN] ações convertidas p/ a base de preço de asof
 
 h18_portfolio:
   quantile: top_quintile           # [H18-FROZEN] E/P alto = barato
@@ -367,7 +369,9 @@ h18_criteria:
 
 h19_factor:
   name: book_to_market             # [H19-FROZEN] PL/(preço × ações)
-  disclosure_embargo_days: 90      # [H19-FROZEN] mesmo embargo de H7/H9/H12/H13
+  disclosure_embargo_days: 90      # [H19-FROZEN] fallback: só p/ linha sem known_at
+  known_at_policy: observed        # [H19-FROZEN] DT_RECEB do FRE manda (re-pré-registro 2026-09-06)
+  split_base: adjusted             # [H19-FROZEN] ações convertidas p/ a base de preço de asof
 
 h19_portfolio:
   quantile: top_quintile           # [H19-FROZEN] B/M alto = barato

@@ -93,11 +93,12 @@ def _fundamental_signals(conn, tickers, asof, disclosure_embargo_days, column):
     out = {}
     for t in tickers:
         rows = conn.execute(
-            f"SELECT ref_date, {column} FROM fundamentals WHERE ticker = ?"
+            f"SELECT ref_date, {column}, known_at FROM fundamentals WHERE ticker = ?"
             f" AND {column} IS NOT NULL ORDER BY ref_date DESC", (t,)).fetchall()
-        for ref_date, value in rows:
-            known_at = (datetime.date.fromisoformat(ref_date)
-                       + datetime.timedelta(days=disclosure_embargo_days)).isoformat()
+        for ref_date, value, observed_at in rows:
+            known_at = observed_at or (
+                datetime.date.fromisoformat(ref_date)
+                + datetime.timedelta(days=disclosure_embargo_days)).isoformat()
             if known_at <= asof:
                 out[t] = value
                 break
@@ -275,10 +276,12 @@ def _value_signals(conn, tickers, asof, disclosure_embargo_days, column):
 
     - `column` (`lucro_liquido` ou `patrimonio_liquido`) vem da linha DFP
       mais recente cujo embargo de divulgação já venceu em `asof`;
-    - `shares_outstanding` vem da linha FRE mais recente cujo embargo já
-      venceu em `asof` (formulário DIFERENTE, com data de referência
-      própria — ver `ingest_cvm.ingest_fre_shares_year`, que deliberadamente
-      NÃO casa as duas datas à força);
+    - `shares_outstanding` vem da linha FRE mais recente já PÚBLICA em `asof`
+      (por `known_at` observado quando existe, senão pelo embargo —
+      formulário DIFERENTE, com data própria; ver
+      `ingest_cvm.ingest_fre_shares_year`, que deliberadamente NÃO casa as
+      duas datas à força), e é convertida para a base de desdobramento
+      vigente em `asof` por `_shares_on_price_base`;
     - o preço é o do último pregão <= `asof`.
 
     Nada aqui olha para frente: as duas pernas contábeis passam pelo mesmo
@@ -294,18 +297,80 @@ def _value_signals(conn, tickers, asof, disclosure_embargo_days, column):
     melhor que um número que engana."""
     fundamento = _fundamental_signals(conn, tickers, asof,
                                       disclosure_embargo_days, column)
-    shares = _fundamental_signals(conn, tickers, asof,
-                                  disclosure_embargo_days, "shares_outstanding")
+    shares = _shares_with_ref_date(conn, tickers, asof, disclosure_embargo_days)
     out = {}
     for t in tickers:
-        f, s = fundamento.get(t), shares.get(t)
-        if f is None or s is None or s <= 0 or f <= 0:
+        f = fundamento.get(t)
+        par = shares.get(t)
+        if f is None or par is None or f <= 0:
+            continue
+        s = _shares_on_price_base(conn, t, par[0], par[1], asof)
+        if s is None or s <= 0:
             continue
         price = _price_at(conn, t, asof)
         if price is None:
             continue
         out[t] = f / (price * s)
     return out
+
+
+def _shares_with_ref_date(conn, tickers, asof, disclosure_embargo_days):
+    """{ticker: (shares_outstanding, ref_date)} point-in-time.
+
+    Igual a `_fundamental_signals` para `shares_outstanding`, mas devolve
+    TAMBÉM a `ref_date` da linha escolhida — necessária para saber em que
+    base de desdobramento aquela contagem de ações está."""
+    out = {}
+    for t in tickers:
+        rows = conn.execute(
+            "SELECT ref_date, shares_outstanding, known_at FROM fundamentals"
+            " WHERE ticker = ? AND shares_outstanding IS NOT NULL"
+            " ORDER BY ref_date DESC", (t,)).fetchall()
+        for ref_date, value, observed_at in rows:
+            known_at = observed_at or (
+                datetime.date.fromisoformat(ref_date)
+                + datetime.timedelta(days=disclosure_embargo_days)).isoformat()
+            if known_at <= asof:
+                out[t] = (value, ref_date)
+                break
+    return out
+
+
+def _shares_on_price_base(conn, ticker, shares, shares_ref_date, asof):
+    """Traz `shares` da base do FRE para a base de preço vigente em `asof`.
+
+    O múltiplo é `fundamento / (preço_cru(asof) × ações)`. O preço vem de
+    `asof`; as ações vêm da `ref_date` do FRE. Se houve desdobramento ou
+    grupamento entre as duas datas, as pernas ficam em BASES DIFERENTES e o
+    market cap erra pelo fator do evento — enviesando o ranking justamente
+    nos papéis que desdobraram.
+
+    Isto não é hipotético: BBAS3 vai de 2.865.417.024 ações (FRE 2022) para
+    5.730.799.931 (FRE 2023), exatamente 2x, no papel mais líquido da bolsa
+    (achado da ingestão real 2026-09-05, ver HANDOFF).
+
+    `adjustments.factor` multiplica os PREÇOS anteriores à `ex_date` (ver
+    `adjust.adjusted_closes`), então a contagem de ações anterior se converte
+    pelo INVERSO: num split 1:2 o preço cai à metade (factor 0,5) e as ações
+    dobram. Só eventos de `type` split/grupamento entram — provento não muda
+    a quantidade de ações — e só os APROVADOS por humano, mesma disciplina de
+    `adjust._load`.
+
+    `ex_date` estritamente MAIOR que `shares_ref_date`: um evento na própria
+    data de referência já está refletido na contagem que o FRE publicou.
+    """
+    if shares is None or not shares_ref_date:
+        return shares
+    fatores = [r[0] for r in conn.execute(
+        "SELECT factor FROM adjustments WHERE ticker = ? AND approved_by IS NOT NULL"
+        " AND type IN ('split', 'grupamento')"
+        " AND ex_date > ? AND ex_date <= ?",
+        (ticker, shares_ref_date, asof))]
+    for f in fatores:
+        if not f > 0:
+            return None     # fator inválido: sem contagem fabricada
+        shares = shares / f
+    return shares
 
 
 def earnings_yield_signals(conn, tickers, asof, disclosure_embargo_days=90):

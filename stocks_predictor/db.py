@@ -300,6 +300,26 @@ MIGRATIONS: list[tuple[str, str]] = [
         ALTER TABLE fundamentals ADD COLUMN accruals REAL;
         ALTER TABLE fundamentals ADD COLUMN shares_outstanding REAL;
     """),
+    ("0012_fundamentals_known_at", """
+        -- `known_at`: data em que o documento FICOU PÚBLICO, OBSERVADA, não
+        -- estimada. Vem do `DT_RECEB` do arquivo principal do FRE
+        -- (`fre_cia_aberta_{ano}.csv`), casado por `ID_Documento` -> `ID_DOC`,
+        -- então é por companhia E por versão do documento.
+        --
+        -- Por que existe (achado da ingestão real 2026-09-05, ver HANDOFF): o
+        -- embargo fixo de 90 dias sobre `ref_date` erra em direções OPOSTAS
+        -- antes e depois de 2023, porque `DT_REFER` do FRE é rótulo de
+        -- exercício e não data do dado — no FRE 2023 a referência
+        -- (2023-12-31) é POSTERIOR à entrega (2023-05-30). Somar dias a esse
+        -- campo não produz nada interpretável.
+        --
+        -- Append-only: coluna nova, migrações 0007/0010/0011 intocadas.
+        -- NULL = desconhecido, e o consumidor (`factor._fundamental_signals`)
+        -- cai no embargo por `ref_date` — as linhas da DFP não têm known_at
+        -- e continuam se comportando EXATAMENTE como antes, preservando
+        -- H7/H9/H12/H13/H17 já julgadas ou pré-registradas.
+        ALTER TABLE fundamentals ADD COLUMN known_at TEXT;
+    """),
 ]
 
 
