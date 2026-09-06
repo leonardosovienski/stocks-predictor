@@ -293,6 +293,31 @@
 >    RETROATIVAMENTE para H7/H9/H12/H13. Não invalida veredito; a janela
 >    declarada é que estava errada.
 >
+> ### A MÁQUINA DO OPERADOR (verificado 2026-09-06)
+>
+> Fatos que não estavam em lugar nenhum e sem os quais uma sessão nova
+> perde tempo — ou pior, roda no lugar errado:
+>
+> - **Repo canônico:** `C:\Users\Superleo13\stocks-predictor-work`
+>   (o `docs/RUNBOOK_H18.md` chegou a mandar `C:\Claude-projetos\Claude\
+>   stocks-predictor`, que NÃO EXISTE — palpite meu, corrigido).
+> - **Existem QUATRO checkouts do projeto na máquina**; três com `stocks.db`
+>   vazio (~110-140 KB) em `.kimi-work\predictors-audit\`,
+>   `Documents\Codex\2026-08-27\...` e `Documents\Codex\2026-09-02\...`.
+>   Rodar no errado grava no banco errado sem aviso. Confirme com
+>   `python main.py`: `prices_raw` tem de dar ~1.149.872.
+> - **`python` NÃO é o 3.13** nessa máquina: resolve para
+>   `pythoncore-3.14-64` (3.14.6). Use `py -3.13` (3.13.14) em TUDO,
+>   inclusive no `pip`.
+> - **Artefatos locais não versionados na raiz do repo**, dos quais a
+>   ingestão depende: `universo_2018_2026.txt` (obrigatório para
+>   `ingest_h7_real.py`), `ticker_of_2019.json`, `ticker_of_proposto.json`,
+>   `dfp_2023_companies.txt`, `dividend_exploration.txt`,
+>   `universo_snapshots.txt`. Não apagar.
+> - **Rede:** as máquinas de agente (Claude Code na web) NÃO alcançam
+>   `dados.cvm.gov.br` — 403 na política de rede. Toda ingestão real roda na
+>   máquina do operador. Isso valeu para a auditoria inteira.
+>
 > ### Onde está cada coisa
 >
 > - `docs/auditoria_2026-09-04.md` — o parecer independente, íntegro, com
