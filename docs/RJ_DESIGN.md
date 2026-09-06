@@ -114,7 +114,7 @@ FDR — é descritiva por design (medida no candidato, só reconhecível como
 "o fundo" depois do fato; ver §2).
 
 Cada família preditiva tem:
-- 1 métrica operacional definida em código (`src/families.py`)
+- 1 métrica operacional definida em código (`stocks_predictor/rj_families.py`)
 - 1 direção esperada declarada ANTES de qualquer rodada (`positive`,
   `negative`, `ambiguous` quando o próprio banco de hipóteses original
   diverge internamente, ou `categorical` quando a família não admite ordem)
@@ -157,7 +157,7 @@ entre grupo-rally e grupo-controle, por família, na análise primária.
   sensibilidade (detecta effect size plantado em dado sintético) e
   especificidade (taxa de falso positivo pós-FDR compatível com o alpha
   nominal, em muitas repetições de ruído puro) — ver
-  `tests/test_power_gate.py`. Sem isso, um NO-GO não é interpretável: não
+  `tests/test_rj_power_gate.py`. Sem isso, um NO-GO não é interpretável: não
   se sabe se o judge é cego.
 
 ## 10. O que NÃO fazer

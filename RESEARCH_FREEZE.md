@@ -9,6 +9,23 @@ ou reabrir a linha RJ **deve** primeiro satisfazer `reopen_policy` abaixo — n�
 O projeto deixou de ser `ACTIVE_ALPHA_RESEARCH` / `TRADING_PRODUCT` / `SIGNAL_SERVICE`.
 Ele é `POINT_IN_TIME_CASE + SURVIVORSHIP_CASE + MULTIPLICITY_CASE + NEGATIVE_RESULT_PORTFOLIO`.
 
+> **NOTA DE EVIDÊNCIA (2026-09-06) — H14, H15 e H16.** As notas dessas três
+> hipóteses remetem a `reports/h14_verdict_adhoc.md`, `h15` e `h16` "para detalhes
+> completos". **Os três arquivos não estão versionados** e nunca estiveram
+> (`git log --all` vazio para eles), ao contrário dos relatórios de H1-H13, que
+> foram versionados por `git add -f` — `reports/` é gitignored e o versionamento é
+> opt-in. Existem apenas na máquina do operador.
+>
+> O que isso NÃO afeta: o veredito das três está no ledger real (`trials.json` +
+> `trials.harness_attestation.json`, commit `f468e66`), com os números
+> reproduzidos por extenso no HANDOFF ("VEREDITO H14, H15 e H16"). O
+> `CLOSED_FOR_H1_THROUGH_H16` se sustenta nesse registro.
+>
+> O que isso afeta: quem auditar de fora do computador do operador não alcança os
+> detalhes completos dos três últimos vereditos da série. Para fechar, rode
+> `git add -f reports/h14_verdict_adhoc.md reports/h15_verdict_adhoc.md
+> reports/h16_verdict_adhoc.md` na máquina onde eles existem.
+
 ---
 
 ## ADENDO 2026-09-04 — H17/H18/H19 pré-registradas por FONTE DE DADO NOVA

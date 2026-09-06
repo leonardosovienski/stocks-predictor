@@ -18,8 +18,12 @@
 ## Ambiente
 
 - Windows, Python 3.13 **global** — NUNCA criar venv (EDR corporativo quarentena venvs).
-- stdlib-first. `numpy` pré-aprovado (ainda não usado — só adicionar quando precisar).
-  `pytest` é dev. Qualquer outra dependência: justificar no HANDOFF e o humano decide.
+- stdlib-first, mas o runtime NÃO é stdlib puro: `PyYAML>=6.0,<7` é dependência
+  declarada (`pyproject.toml`, `requirements.txt`) e usada de verdade em
+  `rj_power.py` e `rj_pipeline.py` — a linha RJ lê YAML completo, o mini-parser de
+  `config.py` cobre só o subconjunto plano. `predictor-core` vem por wheel (abaixo).
+  `numpy` está pré-aprovado e continua NÃO usado. `pytest` é dev. Qualquer outra
+  dependência: justificar no HANDOFF e o humano decide.
 - Downloads bulk rodam em rede limpa (cron) — código separa "baixar" de "processar".
 
 ## Convenções do projeto
