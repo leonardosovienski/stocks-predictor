@@ -57,9 +57,13 @@ def test_run_h17_smoke(tmp_path, capsys):
 
 
 def test_h17_frozen_config_hash_golden():
-    """Mexeu num param [H17-FROZEN] -> quebra alto AQUI (pré-registro 2026-09-04)."""
+    """Mexeu num param [H17-FROZEN] -> quebra alto AQUI (pré-registro 2026-09-04).
+
+    Lacre RE-EMITIDO em 2026-09-06 (`aece696b814c0fd9` -> `e6cf9bd7454750c3`):
+    entrou `known_at_policy: observed`. Legítimo porque a H17 NUNCA rodou —
+    revisão de pré-registro, não mover a trave. Ver HANDOFF."""
     from config import h17_frozen_config_hash, load_config
-    assert h17_frozen_config_hash(load_config()) == "aece696b814c0fd9"
+    assert h17_frozen_config_hash(load_config()) == "e6cf9bd7454750c3"
 
 
 def test_h17_frozen_hash_ignores_operational_params():

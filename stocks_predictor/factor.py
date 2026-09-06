@@ -75,7 +75,8 @@ def vol_signals(series_by_ticker, asof, lookback=252):
     return out
 
 
-def _fundamental_signals(conn, tickers, asof, disclosure_embargo_days, column):
+def _fundamental_signals(conn, tickers, asof, disclosure_embargo_days, column,
+                         use_known_at=True):
     """Motor comum de sinal contábil point-in-time (H7 ROE, H9 alavancagem):
     {ticker: valor de `column` em `fundamentals`} usando a linha mais recente
     cujo embargo de divulgação já venceu em `asof`.
@@ -96,9 +97,9 @@ def _fundamental_signals(conn, tickers, asof, disclosure_embargo_days, column):
             f"SELECT ref_date, {column}, known_at FROM fundamentals WHERE ticker = ?"
             f" AND {column} IS NOT NULL ORDER BY ref_date DESC", (t,)).fetchall()
         for ref_date, value, observed_at in rows:
-            known_at = observed_at or (
+            known_at = (observed_at if (use_known_at and observed_at) else (
                 datetime.date.fromisoformat(ref_date)
-                + datetime.timedelta(days=disclosure_embargo_days)).isoformat()
+                + datetime.timedelta(days=disclosure_embargo_days)).isoformat())
             if known_at <= asof:
                 out[t] = value
                 break
@@ -107,7 +108,9 @@ def _fundamental_signals(conn, tickers, asof, disclosure_embargo_days, column):
 
 def roe_signals(conn, tickers, asof, disclosure_embargo_days=90):
     """H7 (pré-registro 2026-09-03) — {ticker: roe} point-in-time."""
-    return _fundamental_signals(conn, tickers, asof, disclosure_embargo_days, "roe")
+    # JULGADA: embargo estimado, explicitamente. Ver `_fundamental_signals`.
+    return _fundamental_signals(conn, tickers, asof, disclosure_embargo_days,
+                                "roe", use_known_at=False)
 
 
 def leverage_signals(conn, tickers, asof, disclosure_embargo_days=90):
@@ -115,7 +118,9 @@ def leverage_signals(conn, tickers, asof, disclosure_embargo_days=90):
     `leverage = (passivo_total - patrimonio_liquido) / ativo_total`
     (ver `ingest_cvm.compute_fundamentals` — exclui o PL do passivo, senão
     o índice daria sempre ~1.0 por identidade contábil)."""
-    return _fundamental_signals(conn, tickers, asof, disclosure_embargo_days, "leverage")
+    # JULGADA: embargo estimado, explicitamente. Ver `_fundamental_signals`.
+    return _fundamental_signals(conn, tickers, asof, disclosure_embargo_days,
+                                "leverage", use_known_at=False)
 
 
 def net_margin_signals(conn, tickers, asof, disclosure_embargo_days=90):
@@ -123,7 +128,9 @@ def net_margin_signals(conn, tickers, asof, disclosure_embargo_days=90):
     `net_margin = lucro_liquido / receita_liquida` (ver
     `ingest_cvm.compute_fundamentals`). Mesma fonte/embargo de H7/H9
     (DFP/CVM), motor comum `_fundamental_signals`."""
-    return _fundamental_signals(conn, tickers, asof, disclosure_embargo_days, "net_margin")
+    # JULGADA: embargo estimado, explicitamente. Ver `_fundamental_signals`.
+    return _fundamental_signals(conn, tickers, asof, disclosure_embargo_days,
+                                "net_margin", use_known_at=False)
 
 
 def revenue_growth_signals(conn, tickers, asof, disclosure_embargo_days=90):
@@ -149,6 +156,7 @@ def revenue_growth_signals(conn, tickers, asof, disclosure_embargo_days=90):
             " AND receita_liquida IS NOT NULL ORDER BY ref_date DESC", (t,)).fetchall()
         eligible = []
         for ref_date, receita in rows:
+            # JULGADA: embargo estimado, sem known_at. Ver `_fundamental_signals`.
             known_at = (datetime.date.fromisoformat(ref_date)
                        + datetime.timedelta(days=disclosure_embargo_days)).isoformat()
             if known_at <= asof:
@@ -238,10 +246,15 @@ def accruals_signals(conn, tickers, asof, disclosure_embargo_days=90):
     testar as duas pontas e ficar com a que der é exatamente o p-hacking
     que o pedágio IC95%+DSR existe para barrar.
 
-    Mesma fonte (DFP/CVM) e mesmo embargo de H7/H9/H12/H13, mesmo motor
-    `_fundamental_signals` — o que é NOVO é a demonstração de origem
-    (DFC-MI, regime de caixa), não a maquinaria."""
-    return _fundamental_signals(conn, tickers, asof, disclosure_embargo_days, "accruals")
+    Mesma fonte (DFP/CVM) e mesmo motor `_fundamental_signals` de
+    H7/H9/H12/H13 — o que é NOVO é a demonstração de origem (DFC-MI, regime
+    de caixa), não a maquinaria.
+
+    RE-PRÉ-REGISTRO 2026-09-06: usa `known_at` OBSERVADO (`DT_RECEB` da DFP)
+    quando disponível, com o embargo só como fallback. Legítimo porque a H17
+    NUNCA rodou. As julgadas ficam no embargo estimado, explicitamente."""
+    return _fundamental_signals(conn, tickers, asof, disclosure_embargo_days,
+                                "accruals", use_known_at=True)
 
 
 def _price_at(conn, ticker, asof):

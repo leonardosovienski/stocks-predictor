@@ -567,3 +567,44 @@ def test_ingest_fre_grava_known_at_do_dt_receb(tmp_path):
     # o embargo diria 2024-03-30; a data observada é ~10 meses ANTES
     assert factor._fundamental_signals(
         conn, ["BBAS3"], "2023-06-01", 90, "shares_outstanding") != {}
+
+
+def test_julgadas_ignoram_known_at_mesmo_quando_existe(tmp_path):
+    """PROTEÇÃO DAS JÁ JULGADAS. Com a DFP passando a gravar `known_at`,
+    H7/H9/H12 mudariam de comportamento por efeito colateral da ingestão —
+    e o veredito delas é registro histórico, selado com o embargo estimado.
+    Cada hipótese declara sua política; nenhuma herda a da outra."""
+    conn = db.get_connection(tmp_path / "s.db")
+    conn.execute(
+        "INSERT INTO fundamentals(ticker, ref_date, roe, net_margin, accruals,"
+        " known_at, source) VALUES (?,?,?,?,?,?,?)",
+        ("AAAA3", "2020-12-31", 0.2, 0.1, 0.05, "2021-02-08", "CVM DFP"))
+    conn.commit()
+    cedo = "2021-02-10"        # depois do known_at, ANTES do embargo (2021-03-31)
+    # julgadas: presas ao embargo, não veem
+    assert factor.roe_signals(conn, ["AAAA3"], cedo) == {}
+    assert factor.net_margin_signals(conn, ["AAAA3"], cedo) == {}
+    # H17 (nunca rodada, re-pré-registrada): usa a data observada
+    assert factor.accruals_signals(conn, ["AAAA3"], cedo) == {"AAAA3": 0.05}
+    # no embargo, todas veem
+    tarde = "2021-03-31"
+    assert factor.roe_signals(conn, ["AAAA3"], tarde) == {"AAAA3": 0.2}
+    assert factor.accruals_signals(conn, ["AAAA3"], tarde) == {"AAAA3": 0.05}
+
+
+def test_parse_dfp_received_dates_pega_a_versao_mais_antiga():
+    """Retificação tem DT_RECEB próprio; vale a data em que o exercício ficou
+    público pela PRIMEIRA vez."""
+    import ingest_cvm
+    import io as _io
+    import zipfile as _zip
+    buf = _io.BytesIO()
+    with _zip.ZipFile(buf, "w") as zf:
+        zf.writestr("dfp_cia_aberta_2023.csv",
+                    ("CNPJ_CIA;DT_REFER;VERSAO;DENOM_CIA;CD_CVM;CATEG_DOC;ID_DOC;"
+                     "DT_RECEB;LINK_DOC\n"
+                     "00.000.000/0001-91;2023-12-31;2;BB;001023;DFP;9;2024-07-01;x\n"
+                     "00.000.000/0001-91;2023-12-31;1;BB;001023;DFP;8;2024-02-08;x"
+                     ).encode("latin-1"))
+    got = ingest_cvm.parse_dfp_received_dates(buf.getvalue(), 2023)
+    assert got == {("00000000000191", "2023-12-31"): "2024-02-08"}

@@ -1,5 +1,77 @@
 # HANDOFF — predictor-stocks
 
+> ## DFP também tem DT_RECEB — H17 re-pré-registrada, julgadas protegidas (2026-09-06)
+>
+> `tools/explore_fre_ref_date.py --dataset dfp --anos 2023`, rodado pelo
+> operador: `dfp_cia_aberta_2023.csv` traz `DT_RECEB`, igual ao FRE.
+>
+>     BBAS3 DFP 2023: DT_REFER 2023-12-31, DT_RECEB 2024-02-08
+>     embargo de 90 dias liberaria só em 2024-03-30 -> 51 dias de atraso
+>
+> Ao contrário do FRE, o `DT_REFER` da DFP é fim de exercício DE VERDADE, e
+> o embargo de 90 dias bate com o prazo regulamentar de 3 meses — era muito
+> mais defensável. Ainda assim erra dos dois lados: atrasa quem entrega
+> cedo (a maioria das grandes, em fevereiro) e ANTECIPA quem entrega
+> depois de 90 dias, que aí entra no sinal antes de ser público.
+>
+> ### A armadilha que isso criava, e como foi resolvida
+>
+> `_fundamental_signals` preferia `known_at` sempre que existisse. Enquanto
+> só o FRE gravava, isso afetava apenas H18/H19, que declararam a política.
+> Com a DFP passando a gravar, **H7/H9/H10/H12/H13 mudariam de comportamento
+> por efeito colateral da ingestão** — e o veredito delas é registro
+> histórico, selado com o embargo estimado. Um re-run daria número diferente
+> em silêncio, com o `config_hash` selado sem refletir isso.
+>
+> Correção: a preferência virou EXPLÍCITA por hipótese
+> (`use_known_at`). As julgadas passam `False`, documentado como preservação
+> do que foi efetivamente rodado. Nenhuma hipótese herda a política de outra.
+>
+> | hipótese | estado | política de `known_at` |
+> |---|---|---|
+> | H7, H9, H10, H12, H13 | JULGADAS | embargo estimado, explícito |
+> | H17 | pré-registrada, nunca rodou | **observado** (re-pré-registro) |
+> | H18, H19 | pré-registradas, nunca rodaram | observado (2026-09-06) |
+>
+> **Lacre da H17 re-emitido:** `aece696b814c0fd9` -> `e6cf9bd7454750c3`
+> (entrou `known_at_policy: observed`). Legítimo pelo mesmo motivo de
+> H18/H19: a H17 nunca rodou, nenhum resultado foi observado.
+>
+> ### Junção por (CNPJ, DT_REFER), não por documento
+>
+> Os CSVs de demonstrativo da DFP não trazem `ID_DOC` — diferente do
+> `distribuicao_capital` do FRE. A junção é por `(CNPJ_CIA, DT_REFER)`,
+> ficando com o `DT_RECEB` MAIS ANTIGO entre versões: é quando o exercício
+> ficou público pela primeira vez. `parse_dfp_received_dates`.
+>
+> ### Remedição do FRE (2026-09-06) — o que ela mostrou
+>
+> Depois de re-ingerir o FRE com `known_at`, só a linha `acoes` mudou:
+> mediana 58 -> 57, datas com zero 3 -> 12. É o lookahead de ~2 meses do
+> FRE pré-2023 sendo removido, e é a PROVA de que o mecanismo funciona.
+>
+> **O E/P não se moveu** (mediana 50, 15 datas zeradas, idêntico) porque a
+> perna do LUCRO (DFP) é o gargalo: 15 datas zeradas contra 12 das ações. O
+> múltiplo é limitado pela perna mais escassa. H7/H9/H12/H13/H17 saíram byte
+> a byte iguais no dado real — a promessa de não mudar nada retroativo se
+> sustentou fora dos testes.
+>
+> ### O que falta agora
+>
+> ```powershell
+> git pull origin main
+> py -3.13 tools\ingest_h7_real.py              # backfill do known_at na DFP
+> py -3.13 tools\cobertura_h18.py               # remedir com AS DUAS pernas corretas
+> ```
+>
+> Só depois disso o critério 5 fecha: até aqui a perna das ações está
+> point-in-time correta e a do lucro ainda não. Esta é a última medição.
+>
+> Suíte: **372 verdes**. `trials.json` intacto em 15 tentativas.
+> H17/H18/H19 continuam NÃO EXECUTADAS.
+
+---
+
 > ## ESTADO ATUAL E PRÓXIMOS PASSOS (2026-09-06) — leia isto primeiro
 >
 > Consolidação escrita para não depender de nenhuma conversa: o chat da

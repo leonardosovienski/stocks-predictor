@@ -326,7 +326,8 @@ h16_criteria:
 
 h17_factor:
   name: accruals                   # [H17-FROZEN] (lucro - fco)/ativo_total
-  disclosure_embargo_days: 90      # [H17-FROZEN] mesmo embargo de H7/H9/H12/H13
+  disclosure_embargo_days: 90      # [H17-FROZEN] fallback: só p/ linha sem known_at
+  known_at_policy: observed        # [H17-FROZEN] DT_RECEB da DFP manda (re-pré-registro 2026-09-06)
 
 h17_portfolio:
   quantile: bottom_quintile        # [H17-FROZEN] accrual BAIXO = lucro em caixa

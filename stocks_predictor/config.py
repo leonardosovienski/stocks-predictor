@@ -479,6 +479,7 @@ H17_FROZEN_KEYS = [
     ("universe", "top_n"), ("universe", "lookback_trading_days"),
     ("universe", "min_history_days"), ("universe", "rebalance_frequency"),
     ("h17_factor", "name"), ("h17_factor", "disclosure_embargo_days"),
+    ("h17_factor", "known_at_policy"),
     ("h17_portfolio", "quantile"), ("h17_portfolio", "weighting"),
     ("h17_portfolio", "direction"),
     ("execution", "price"), ("execution", "b3_fee_pct"),

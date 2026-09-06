@@ -336,13 +336,70 @@ def parse_fre_float_rows(rows) -> list[dict]:
     return out
 
 
+def parse_fre_received_dates(zbytes: bytes) -> dict[str, str]:
+    """Alias histórico de `parse_received_dates(zbytes, "fre_cia_aberta_")`."""
+    return parse_received_dates(zbytes, "fre_cia_aberta_")
+
+
+_DFP_MAIN_COLS = {
+    "cnpj": ("cnpj_cia",),
+    "ref_date": ("dt_refer",),
+    "received_at": ("dt_receb",),
+}
+
+
+def parse_dfp_received_dates(zbytes: bytes, year: int) -> dict[tuple[str, str], str]:
+    """{(cnpj_só_dígitos, ref_date): DT_RECEB MAIS ANTIGO} do principal da DFP.
+
+    Diferente do FRE, os CSVs de demonstrativo da DFP (BPA/BPP/DRE/DFC) NÃO
+    trazem `ID_DOC`, então a junção é por `(CNPJ_CIA, DT_REFER)` em vez de
+    por documento. Entre versões (retificações) fica a data MAIS ANTIGA: é
+    quando aquele exercício ficou público pela primeira vez.
+
+    O `DT_REFER` da DFP é fim de exercício DE VERDADE — ao contrário do FRE,
+    onde é rótulo — então o embargo de 90 dias sobre ele era muito mais
+    defensável aqui. Ainda assim erra: BBAS3 2023 foi recebido em 2024-02-08
+    e o embargo só liberaria em 2024-03-30, 51 dias de atraso; e quem entrega
+    DEPOIS de 90 dias entraria no sinal antes de ser público."""
+    zf = zipfile.ZipFile(io.BytesIO(zbytes))
+    alvo = [n for n in zf.namelist()
+            if _norm(n).split("/")[-1] == f"dfp_cia_aberta_{year}.csv"]
+    if len(alvo) != 1:
+        logging.warning("DFP %d: arquivo principal não identificado (%d candidatos) "
+                        "— known_at ficará NULL", year, len(alvo))
+        return {}
+    with zf.open(alvo[0]) as f:
+        rows = csv.reader(io.TextIOWrapper(f, encoding="latin-1"), delimiter=";")
+        header = next(rows, None)
+        if header is None:
+            return {}
+        idx = {k: _find_col(header, kw) for k, kw in _DFP_MAIN_COLS.items()}
+        if any(v is None for v in idx.values()):
+            logging.warning("DFP %d: principal sem CNPJ/DT_REFER/DT_RECEB "
+                            "(cabecalho=%s) — known_at ficará NULL", year, header)
+            return {}
+        out: dict[tuple[str, str], str] = {}
+        for row in rows:
+            if max(idx.values()) >= len(row):
+                continue
+            cnpj = "".join(c for c in row[idx["cnpj"]] if c.isdigit())
+            ref = row[idx["ref_date"]].strip()[:10]
+            receb = row[idx["received_at"]].strip()[:10]
+            if not (cnpj and ref and receb):
+                continue
+            key = (cnpj, ref)
+            if key not in out or receb < out[key]:
+                out[key] = receb
+        return out
+
+
 _FRE_MAIN_COLS = {
     "doc_id": ("id_doc",),
     "received_at": ("dt_receb",),
 }
 
 
-def parse_fre_received_dates(zbytes: bytes) -> dict[str, str]:
+def parse_received_dates(zbytes: bytes, prefixo: str) -> dict[str, str]:
     """{ID_DOC: DT_RECEB} do arquivo PRINCIPAL do FRE.
 
     `DT_RECEB` é a data em que a CVM RECEBEU o documento — o instante a
@@ -360,11 +417,11 @@ def parse_fre_received_dates(zbytes: bytes) -> dict[str, str]:
     """
     zf = zipfile.ZipFile(io.BytesIO(zbytes))
     alvo = [n for n in zf.namelist()
-            if n.endswith(".csv") and _norm(n).split("/")[-1].startswith("fre_cia_aberta_")
+            if n.endswith(".csv") and _norm(n).split("/")[-1].startswith(prefixo)
             and _norm(n).split("/")[-1].count("_") == 3]
     if len(alvo) != 1:
-        logging.warning("FRE: arquivo principal não identificado (%d candidatos) — "
-                        "known_at ficará NULL", len(alvo))
+        logging.warning("%s: arquivo principal não identificado (%d candidatos) — "
+                        "known_at ficará NULL", prefixo, len(alvo))
         return {}
     with zf.open(alvo[0]) as f:
         rows = csv.reader(io.TextIOWrapper(f, encoding="latin-1"), delimiter=";")
@@ -373,8 +430,8 @@ def parse_fre_received_dates(zbytes: bytes) -> dict[str, str]:
             return {}
         idx = {k: _find_col(header, kw) for k, kw in _FRE_MAIN_COLS.items()}
         if idx["doc_id"] is None or idx["received_at"] is None:
-            logging.warning("FRE: arquivo principal sem ID_DOC/DT_RECEB "
-                            "(cabecalho=%s) — known_at ficará NULL", header)
+            logging.warning("%s: arquivo principal sem ID_DOC/DT_RECEB "
+                            "(cabecalho=%s) — known_at ficará NULL", prefixo, header)
             return {}
         out = {}
         for row in rows:
@@ -620,6 +677,15 @@ def ingest_dfp_year(conn, year: int, companies: set[str] | None = None,
                        year, exc)
         dfc = None
     fundamentals = compute_fundamentals(bpa, bpp, dre, dfc)
+    # `compute_fundamentals` chaveia por (company_norm, ref_date) e descarta o
+    # CNPJ; o mapa abaixo o recupera das linhas parseadas para a junção com o
+    # arquivo principal.
+    cnpj_de = {}
+    for r in (bpa + bpp + dre + (dfc or [])):
+        cnpj = "".join(c for c in r.get("cnpj", "") if c.isdigit())
+        if cnpj:
+            cnpj_de.setdefault((_norm(r["company"]), r["ref_date"]), cnpj)
+    recebido_em = parse_dfp_received_dates(zbytes, year)
     n = 0
     for f in fundamentals:
         if companies and f["company"] not in companies:
@@ -631,8 +697,8 @@ def ingest_dfp_year(conn, year: int, companies: set[str] | None = None,
             "INSERT INTO fundamentals"
             "(ticker, ref_date, ativo_total, passivo_total, patrimonio_liquido,"
             " lucro_liquido, roe, leverage, receita_liquida, net_margin,"
-            " fluxo_caixa_operacional, accruals, source)"
-            " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)"
+            " fluxo_caixa_operacional, accruals, known_at, source)"
+            " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
             " ON CONFLICT(ticker, ref_date, source) DO UPDATE SET"
             # backfill APENAS quando a linha existente ainda não tem
             # receita/margem (rodadas de ingest anteriores à migração
@@ -654,15 +720,21 @@ def ingest_dfp_year(conn, year: int, companies: set[str] | None = None,
             " net_margin = COALESCE(fundamentals.net_margin, excluded.net_margin),"
             " fluxo_caixa_operacional = COALESCE(fundamentals.fluxo_caixa_operacional,"
             " excluded.fluxo_caixa_operacional),"
-            " accruals = COALESCE(fundamentals.accruals, excluded.accruals)"
+            " accruals = COALESCE(fundamentals.accruals, excluded.accruals),"
+            # known_at (migração 0012) — mesmo backfill condicional dos demais
+            " known_at = COALESCE(fundamentals.known_at, excluded.known_at)"
             " WHERE (fundamentals.receita_liquida IS NULL"
             " AND excluded.receita_liquida IS NOT NULL)"
             " OR (fundamentals.fluxo_caixa_operacional IS NULL"
-            " AND excluded.fluxo_caixa_operacional IS NOT NULL)",
+            " AND excluded.fluxo_caixa_operacional IS NOT NULL)"
+            " OR (fundamentals.known_at IS NULL"
+            " AND excluded.known_at IS NOT NULL)",
             (ticker, f["ref_date"], f["ativo_total"], f["passivo_total"],
              f["patrimonio_liquido"], f["lucro_liquido"], f["roe"], f["leverage"],
              f["receita_liquida"], f["net_margin"],
-             f["fluxo_caixa_operacional"], f["accruals"], f"CVM DFP {year}"))
+             f["fluxo_caixa_operacional"], f["accruals"],
+             recebido_em.get(cnpj_de.get((f["company"], f["ref_date"]), ""), None),
+             f"CVM DFP {year}"))
         n += conn.execute("SELECT changes()").fetchone()[0]
     conn.commit()
     return n
@@ -938,7 +1010,7 @@ def ingest_fre_shares_year(conn, year: int, ticker_of: dict | None = None,
     # (company, ref_date) ficando com o maior valor não-nulo. Divergência
     # entre linhas da mesma chave seria layout quebrado, não dado: o max é
     # determinístico e registrado aqui, não "a última lida".
-    recebido_em = parse_fre_received_dates(zbytes)
+    recebido_em = parse_received_dates(zbytes, "fre_cia_aberta_")
     best: dict[tuple[str, str], float] = {}
     known: dict[tuple[str, str], str] = {}
     for r in rows:
