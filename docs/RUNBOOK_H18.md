@@ -22,8 +22,14 @@ Windows, **Python 3.13 global**, **nunca criar venv** (EDR corporativo
 quarentena venvs — regra do `CLAUDE.md`).
 
 ```powershell
-py -3.13 --version        # deve responder 3.13.x
+py -3.13 --version        # deve responder 3.13.x  (nesta máquina: 3.13.14)
 ```
+
+**Nesta máquina, `python` NÃO é o 3.13.** Resolve para
+`C:\Users\Superleo13\AppData\Local\Python\pythoncore-3.14-64\python.exe`
+(3.14.6), verificado em 2026-09-06. Por isso `py -3.13` em tudo, sem exceção
+— e por isso as dependências precisam ser instaladas com `py -3.13 -m pip`,
+ou dá `ModuleNotFoundError` sem explicar a causa.
 
 **Use `py -3.13` em TODOS os comandos deste runbook, não `python`.** Numa
 máquina com mais de um interpretador, `python` resolve para o que estiver
@@ -55,12 +61,49 @@ instalada quebra o import com erro pouco óbvio. Confira com
 ## 1. Repo atualizado
 
 ```powershell
-cd C:\Claude-projetos\Claude\stocks-predictor    # ajuste se o nome for outro
+cd C:\Users\Superleo13\stocks-predictor-work
 git checkout main
 git pull origin main
 ```
 
-Não sabe o caminho? `Get-ChildItem C:\Claude-projetos -Directory`.
+**Este é o caminho REAL, verificado em 2026-09-06.** Uma versão anterior
+deste runbook mandava `cd C:\Claude-projetos\Claude\stocks-predictor`, que
+NÃO EXISTE — era um palpite. `C:\Claude-projetos\Claude` contém apenas
+`lol-predictor`.
+
+### ⚠️ Existem QUATRO checkouts deste projeto na máquina
+
+Rodar no errado grava no banco errado, sem aviso:
+
+| caminho | `stocks.db` |
+|---|---|
+| `C:\Users\Superleo13\stocks-predictor-work` | **o real (~1,1M linhas)** |
+| `C:\Users\Superleo13\.kimi-work\predictors-audit\stocks-predictor` | ~108 KB, vazio |
+| `C:\Users\Superleo13\Documents\Codex\2026-08-27\le-x20\work\repo` | ~116 KB, vazio |
+| `C:\Users\Superleo13\Documents\Codex\2026-09-02\...` | ~140 KB, vazio |
+
+Confirme sempre com `python main.py`: `prices_raw` tem de dar ~1.149.872.
+Se der 0, você está no checkout errado.
+
+Se o caminho mudar um dia, localize assim (não adivinhe):
+
+```powershell
+Get-ChildItem C:\Users\Superleo13 -Recurse -Depth 5 -Directory -Filter stocks_predictor -ErrorAction SilentlyContinue | Select-Object -ExpandProperty FullName
+```
+
+### Artefatos LOCAIS não versionados — não apague
+
+Vivem na raiz do repo, fora do git, e a ingestão depende deles:
+
+    universo_2018_2026.txt        <- ingest_h7_real.py e ingest_fre_shares_real.py
+    ticker_of_2019.json
+    ticker_of_proposto.json
+    dfp_2023_companies.txt
+    dividend_exploration.txt
+    universo_snapshots.txt
+
+Se `universo_2018_2026.txt` sumir, `ingest_fre_shares_real.py` deriva o
+universo do próprio banco; `ingest_h7_real.py` NÃO — ele quebra.
 
 **Todo comando deste runbook roda a partir da raiz do repositório.**
 `git pull` de outro diretório responde `fatal: not a git repository`, e
@@ -239,7 +282,7 @@ Referência atual: `98BFC543DE1E80E2EAEC981E876E5A0C`.
 Copie o bloco INTEIRO — as duas primeiras linhas são o que mais falha.
 
 ```powershell
-cd C:\Claude-projetos\Claude\stocks-predictor    # ajuste se o nome for outro
+cd C:\Users\Superleo13\stocks-predictor-work    # caminho REAL (ver §1)
 py -3.13 --version                                # tem de dizer 3.13.x
 
 # uma vez por máquina
