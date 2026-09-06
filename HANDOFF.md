@@ -1,5 +1,96 @@
 # HANDOFF — predictor-stocks
 
+> ## ESTADO ATUAL E PRÓXIMOS PASSOS (2026-09-06) — leia isto primeiro
+>
+> Consolidação escrita para não depender de nenhuma conversa: o chat da
+> sessão de auditoria foi apagado, e tudo que importa está aqui, no
+> `docs/auditoria_2026-09-04.md` e no `docs/RUNBOOK_H18.md`.
+>
+> ### Onde H17/H18/H19 estão
+>
+> **Pré-registradas, NUNCA executadas.** `trials.json` em 15 tentativas
+> (md5 `98BFC543DE1E80E2EAEC981E876E5A0C`). Nenhuma métrica de desempenho
+> delas foi observada por ninguém — nem Sharpe, nem PSR, nem DSR, nem
+> retorno. Essa condição é o que tornou legítimo o re-pré-registro de
+> 2026-09-06; se ela for quebrada, qualquer ajuste posterior de parâmetro
+> vira p-hacking.
+>
+> ### Critérios de aceite da H18 (auditoria 2026-09-04)
+>
+> | # | critério | estado |
+> |---|---|---|
+> | 1 | coluna de ações existe e vem preenchida | APROVADO (derivada; ver 2026-09-05) |
+> | 2 | `shares_outstanding` em fração relevante | APROVADO com o embargo ANTIGO — **remedir** |
+> | 3 | duas pernas juntas por rebalance | APROVADO com o embargo ANTIGO — **remedir** |
+> | 4 | comparável a H7/H9/H12/H13 | APROVADO com o embargo ANTIGO — **remedir** |
+> | 5 | nada entra antes de ser público | **PENDENTE de remedição** |
+>
+> Os números de 2, 3 e 4 (E/P mediana 50, etc.) foram medidos ANTES da
+> correção do `known_at`. **Não valem mais.** A correção muda QUANDO cada
+> linha fica elegível: mais dado de 2023 em diante, menos antes de 2023.
+>
+> ### Os três passos que faltam, em ordem
+>
+> ```powershell
+> git pull origin main
+> py -3.13 tools\ingest_fre_shares_real.py     # backfill do known_at
+> py -3.13 tools\cobertura_h18.py              # remedir 2, 3 e 4
+> ```
+>
+> Sinal de sanidade esperado na remedição: mediana de E/P SOBE de 2023 em
+> diante e CAI antes de 2023. Padrão diferente disso indica erro na
+> implementação do `known_at` — investigar antes de seguir.
+>
+> Só depois disso o critério 5 pode ser declarado APROVADO e a pergunta
+> "vale rodar a H18?" tem resposta. **Hoje a resposta ainda é NÃO**, e não
+> por falta de código: por falta da medição pós-correção.
+>
+> ### A última incógnita: a DFP
+>
+> `tools/explore_fre_ref_date.py --dataset dfp --anos 2023` responde se o
+> `dfp_cia_aberta_{ano}.csv` também traz `DT_RECEB`. Se trouxer, o embargo
+> de 90 dias de H7/H9/H12/H13/H17 pode virar data OBSERVADA nas próximas
+> rodadas, como já foi feito no FRE.
+>
+> **Isso NÃO reabre veredito nenhum.** As quatro julgadas deram
+> NOT_SUPPORTED, e um embargo conservador demais não fabrica resultado
+> positivo — no máximo esconde um. Reabertura exigiria o dossiê de 6 campos
+> do `RESEARCH_FREEZE` §11, e nada aqui pede isso.
+>
+> ### Dívidas conhecidas e NÃO corrigidas
+>
+> 1. **`execution.price: next_open` e `backtest.purge_embargo_months` são
+>    `[FROZEN]` mas o `walk_forward` NUNCA os lê.** A liquidação real é
+>    close-to-close no dia do sinal. Está declarado no docstring de
+>    `backtest.py`, mas o selo criptográfico afirma o que a máquina não faz.
+>    Vale para as 16 hipóteses julgadas. Não muda veredito (o viés é o mesmo
+>    para estratégia e benchmark), mas quem auditar o `config_hash` no
+>    futuro vai concluir errado.
+> 2. **`_pick_account` chaveia por nome de companhia normalizado**, com o
+>    CNPJ disponível e não usado. Colisão vira `None` (fail-closed, não
+>    fabrica número), mas derruba linhas boas em silêncio.
+> 3. **`CLAUDE.md` diz que a fonte da verdade é `vendor/predictor_core/`**;
+>    `tests/conftest.py:18` asserta o contrário. A suíte só roda contra as
+>    wheels dos repos irmãos.
+> 4. **Janela efetiva das hipóteses de fundamento é 2019-04 em diante**, não
+>    2018-01 — 15 das 104 datas de rebalance não têm sinal contábil. Vale
+>    RETROATIVAMENTE para H7/H9/H12/H13. Não invalida veredito; a janela
+>    declarada é que estava errada.
+>
+> ### Onde está cada coisa
+>
+> - `docs/auditoria_2026-09-04.md` — o parecer independente, íntegro, com
+>   nota de errata no topo. Estava em `reports/` (gitignored, efêmero);
+>   movido para cá em 2026-09-06 para não se perder.
+> - `docs/RUNBOOK_H18.md` — do zero até a medição, com tabela de erros comuns.
+> - `tools/ingest_fre_shares_real.py`, `tools/cobertura_h18.py`,
+>   `tools/explore_fre_ref_date.py` — ingestão, medição e investigação.
+> - Entradas de 2026-09-05 e 2026-09-06 abaixo — os achados e as correções.
+>
+> Suíte: **370 verdes**.
+
+---
+
 > ## H18/H19 RE-PRÉ-REGISTRADAS (2026-09-06, ANTES de qualquer rodada)
 >
 > Ordem explícita do operador ("faz todas") sobre as duas correções que a
