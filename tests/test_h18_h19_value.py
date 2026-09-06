@@ -608,3 +608,75 @@ def test_parse_dfp_received_dates_pega_a_versao_mais_antiga():
                      ).encode("latin-1"))
     got = ingest_cvm.parse_dfp_received_dates(buf.getvalue(), 2023)
     assert got == {("00000000000191", "2023-12-31"): "2024-02-08"}
+
+
+def _dfp_zip(year=2023, cnpj="00.000.000/0001-91", nome="BCO BRASIL S.A.",
+             ref="2023-12-31", receb="2024-02-08"):
+    """Zip DFP mínimo COM arquivo principal, cabeçalhos reais da CVM."""
+    import io as _io
+    import zipfile as _zip
+
+    def demo(*linhas):
+        return ("CNPJ_CIA;DT_REFER;VERSAO;DENOM_CIA;ORDEM_EXERC;CD_CONTA;"
+                "DS_CONTA;VL_CONTA\n" + "\n".join(linhas)).encode("latin-1")
+
+    def ln(cd, ds, vl):
+        return f"{cnpj};{ref};1;{nome};ÚLTIMO;{cd};{ds};{vl}"
+
+    buf = _io.BytesIO()
+    with _zip.ZipFile(buf, "w") as zf:
+        zf.writestr(f"dfp_cia_aberta_{year}.csv",
+                    ("CNPJ_CIA;DT_REFER;VERSAO;DENOM_CIA;CD_CVM;CATEG_DOC;ID_DOC;"
+                     "DT_RECEB;LINK_DOC\n"
+                     f"{cnpj};{ref};1;{nome};001023;DFP;133944;{receb};x"
+                     ).encode("latin-1"))
+        zf.writestr(f"dfp_cia_aberta_BPA_con_{year}.csv",
+                    demo(ln("1", "Ativo Total", "2000")))
+        zf.writestr(f"dfp_cia_aberta_BPP_con_{year}.csv",
+                    demo(ln("2", "Passivo Total", "2000"),
+                         ln("2.03", "Patrimônio Líquido Consolidado", "800")))
+        zf.writestr(f"dfp_cia_aberta_DRE_con_{year}.csv",
+                    demo(ln("3.11", "Lucro Líquido do Período", "100"),
+                         ln("3.01", "Receita de Venda de Bens e/ou Serviços", "1500")))
+        zf.writestr(f"dfp_cia_aberta_DFC_MI_con_{year}.csv",
+                    demo(ln("6.01", "Caixa Líquido Atividades Operacionais", "90")))
+    return buf.getvalue()
+
+
+def test_ingest_dfp_grava_known_at_do_dt_receb(tmp_path):
+    """REGRESSÃO (bug de 2026-09-06, pego só na rodada real): a consulta de
+    `known_at` usava só o CNPJ contra um dicionário chaveado por
+    (cnpj, ref_date). Nunca casava — `known_at` ficava NULL em 100% das
+    linhas e a ingestão reportava "0 linhas gravadas" sem erro nenhum.
+
+    O teste de então cobria `parse_dfp_received_dates` isolado; a JUNÇÃO,
+    que era onde estava o bug, não tinha cobertura. Este teste é ponta a
+    ponta de propósito."""
+    import ingest_cvm
+    conn = db.get_connection(tmp_path / "s.db")
+    zb = _dfp_zip()
+    n = ingest_cvm.ingest_dfp_year(
+        conn, 2023, ticker_of={ingest_cvm._norm("BCO BRASIL S.A."): "BBAS3"},
+        zbytes=zb)
+    assert n == 1
+    ref, known, accr = conn.execute(
+        "SELECT ref_date, known_at, accruals FROM fundamentals"
+        " WHERE ticker='BBAS3'").fetchone()
+    assert (ref, known) == ("2023-12-31", "2024-02-08")
+    assert accr is not None
+
+    # e o efeito que importa: H17 vê o dado em fevereiro, não no fim de março
+    assert factor.accruals_signals(conn, ["BBAS3"], "2024-02-10") != {}
+    # as JULGADAS continuam presas ao embargo, mesmo com known_at gravado
+    assert factor.roe_signals(conn, ["BBAS3"], "2024-02-10") == {}
+    assert factor.roe_signals(conn, ["BBAS3"], "2024-03-30") != {}
+
+
+def test_ingest_dfp_known_at_e_idempotente(tmp_path):
+    """Re-run não conta mudança depois que known_at já está preenchido."""
+    import ingest_cvm
+    conn = db.get_connection(tmp_path / "s.db")
+    zb = _dfp_zip()
+    tk = {ingest_cvm._norm("BCO BRASIL S.A."): "BBAS3"}
+    assert ingest_cvm.ingest_dfp_year(conn, 2023, ticker_of=tk, zbytes=zb) == 1
+    assert ingest_cvm.ingest_dfp_year(conn, 2023, ticker_of=tk, zbytes=zb) == 0

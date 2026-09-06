@@ -1,5 +1,55 @@
 # HANDOFF — predictor-stocks
 
+> ## BUG: known_at da DFP nunca era gravado (2026-09-06, corrigido)
+>
+> A primeira rodada real da ingestão da DFP com `known_at` reportou
+> **`TOTAL: 0 linhas gravadas`** e a cobertura saiu idêntica à anterior.
+>
+> Causa: `parse_dfp_received_dates` devolve chaves `(cnpj, ref_date)` —
+> TUPLA — e a consulta usava só o CNPJ, uma string. Nunca casava.
+> `known_at` ficava NULL em 100% das linhas, o `WHERE` do upsert não
+> disparava, e a ingestão terminava com zero mudanças **sem erro nenhum**.
+>
+> O padrão veio copiado da versão do FRE, que é chaveada por `doc_id`
+> (string), sem ajustar para a chave composta da DFP — os demonstrativos da
+> DFP não trazem `ID_DOC`, por isso a chave é outra.
+>
+> **A suíte estava verde com a junção quebrada (372 testes).** O teste de
+> então cobria `parse_dfp_received_dates` ISOLADO; a junção, que era onde
+> estava o bug, não tinha cobertura. É o mesmo modo de falha que a auditoria
+> de 2026-09-04 apontou no parser do FRE — teste que exercita a peça e não o
+> encaixe — cometido por quem tinha acabado de apontá-lo.
+>
+> Correção: `_known_at_dfp()`, função nomeada com as duas indireções
+> explícitas. Dois testes PONTA A PONTA novos, um deles verificado por
+> reversão (com o bug de volta: `None != '2024-02-08'`; com a correção:
+> verde), mais o de idempotência.
+>
+> ### O que a rodada de 2026-09-06 mostrou, antes da correção
+>
+> Cobertura idêntica à de antes em TODAS as linhas — consistente com zero
+> linhas gravadas. Nenhuma contaminação ocorreu; as julgadas continuam
+> intactas por não ter havido mudança alguma.
+>
+> ### A medição da DFP CONTINUA PENDENTE
+>
+> ```powershell
+> git pull origin main
+> py -3.13 tools\ingest_h7_real.py      # agora grava known_at de verdade
+> py -3.13 tools\cobertura_h18.py
+> ```
+>
+> Previsões registradas ANTES de ver o resultado:
+> - `lucro`: 15 datas zeradas devem CAIR (DT_RECEB ~fevereiro vs. embargo 30/mar)
+> - `E/P (H18)`: deve SUBIR — a perna do lucro era o gargalo
+> - `roe`, `lev`, `marg`: devem ficar IDÊNTICOS (julgadas, presas ao embargo).
+>   Se mudarem, a proteção falhou.
+>
+> Suíte: **374 verdes**. `trials.json` intacto em 15 tentativas.
+> H17/H18/H19 continuam NÃO EXECUTADAS.
+
+---
+
 > ## DFP também tem DT_RECEB — H17 re-pré-registrada, julgadas protegidas (2026-09-06)
 >
 > `tools/explore_fre_ref_date.py --dataset dfp --anos 2023`, rodado pelo
