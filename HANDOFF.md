@@ -216,7 +216,13 @@
 
 ---
 
-> ## ESTADO ATUAL E PRÓXIMOS PASSOS (2026-09-06) — leia isto primeiro
+> ## Referência: dívidas, máquina e onde está cada coisa (2026-09-06)
+>
+> **A tabela de critérios abaixo está SUPERADA** — foi escrita antes da
+> remedição. O estado corrente está na entrada `VEREDITO`, no topo deste
+> arquivo: os cinco critérios fecharam. Esta seção fica pelo que continua
+> válido: as dívidas conhecidas, os fatos da máquina do operador e o mapa
+> de onde cada artefato vive.
 >
 > Consolidação escrita para não depender de nenhuma conversa: o chat da
 > sessão de auditoria foi apagado, e tudo que importa está aqui, no
@@ -233,17 +239,9 @@
 >
 > ### Critérios de aceite da H18 (auditoria 2026-09-04)
 >
-> | # | critério | estado |
-> |---|---|---|
-> | 1 | coluna de ações existe e vem preenchida | APROVADO (derivada; ver 2026-09-05) |
-> | 2 | `shares_outstanding` em fração relevante | APROVADO com o embargo ANTIGO — **remedir** |
-> | 3 | duas pernas juntas por rebalance | APROVADO com o embargo ANTIGO — **remedir** |
-> | 4 | comparável a H7/H9/H12/H13 | APROVADO com o embargo ANTIGO — **remedir** |
-> | 5 | nada entra antes de ser público | **PENDENTE de remedição** |
->
-> Os números de 2, 3 e 4 (E/P mediana 50, etc.) foram medidos ANTES da
-> correção do `known_at`. **Não valem mais.** A correção muda QUANDO cada
-> linha fica elegível: mais dado de 2023 em diante, menos antes de 2023.
+> ~~Tabela de critérios~~ — removida por estar superada. Ver a entrada
+> `VEREDITO` no topo: os cinco fecharam em 2026-09-06, com a remedição
+> feita depois da correção do `known_at` nas duas pernas.
 >
 > ### Os três passos que faltam, em ordem
 >
