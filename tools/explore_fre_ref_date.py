@@ -20,9 +20,17 @@ se o FRE publica a data de ENTREGA do documento, como o IPE publica
 observado — que é o que o protocolo §8 pede, e o que `ingest_ipe_year` já faz
 para os fatos relevantes.
 
+DFP (2026-09-06): o mesmo probe roda contra o zip da DFP com `--dataset dfp`.
+A pergunta ali é se `dfp_cia_aberta_{ano}.csv` também traz `DT_RECEB` — se
+trouxer, o embargo de 90 dias de H7/H9/H12/H13/H17 pode ser substituído por
+data OBSERVADA nas próximas rodadas, do mesmo jeito que foi no FRE. Isso NÃO
+reabre veredito nenhum: as quatro julgadas deram NOT_SUPPORTED, e um embargo
+conservador demais não fabrica resultado positivo.
+
 Uso (rede limpa):
-    py -3.13 tools\\explore_fre_ref_date.py                 # 2022 e 2023
+    py -3.13 tools\\explore_fre_ref_date.py                          # FRE, 2022 e 2023
     py -3.13 tools\\explore_fre_ref_date.py --anos 2019,2022,2023,2024
+    py -3.13 tools\\explore_fre_ref_date.py --dataset dfp --anos 2023
 """
 import collections
 import csv
@@ -52,6 +60,16 @@ def _anos():
         if a == "--anos" and i + 1 < len(sys.argv):
             return [int(x) for x in sys.argv[i + 1].split(",")]
     return [2022, 2023]
+
+
+def _dataset():
+    for i, a in enumerate(sys.argv):
+        if a == "--dataset" and i + 1 < len(sys.argv):
+            d = sys.argv[i + 1].lower()
+            if d not in ("fre", "dfp"):
+                raise SystemExit(f"--dataset deve ser fre ou dfp, veio {d!r}")
+            return d
+    return "fre"
 
 
 def _rows(zf, name):
@@ -131,10 +149,59 @@ def investiga(year):
             print(f"       {v!r:10s} {n}")
 
 
+def investiga_dfp(year):
+    """Mesma pergunta, no zip da DFP: existe data de recebimento?"""
+    print("=" * 72)
+    print(f"DFP {year}")
+    print("=" * 72)
+    zbytes = ingest_cvm.download_zip(ingest_cvm.DFP_URL.format(year=year))
+    zf = zipfile.ZipFile(io.BytesIO(zbytes))
+    nomes = sorted(n for n in zf.namelist() if n.lower().endswith(".csv"))
+    print(f"\n{len(nomes)} CSVs no zip (10 primeiros):")
+    for n in nomes[:10]:
+        print(f"   {n}")
+
+    print("\n--- procurando coluna de data de ENTREGA em todos os CSVs ---")
+    achou = False
+    for n in nomes:
+        try:
+            header = next(_rows(zf, n))
+        except (StopIteration, UnicodeDecodeError):
+            continue
+        hits = [c for c in header
+                if any(p in ingest_cvm._norm(c) for p in _PISTAS_ENTREGA)]
+        if hits:
+            achou = True
+            print(f"   {n}")
+            for c in hits:
+                print(f"       -> {c}")
+    if not achou:
+        print("   NENHUMA — o embargo de 90 dias continuaria sendo a única opção")
+        print("   para H7/H9/H12/H13/H17.")
+
+    principal = [n for n in nomes
+                 if ingest_cvm._norm(n).endswith(f"dfp_cia_aberta_{year}.csv")]
+    if principal:
+        print(f"\n--- cabeçalho do arquivo principal ({principal[0]}) ---")
+        it = _rows(zf, principal[0])
+        header = next(it)
+        for i, c in enumerate(header):
+            print(f"   [{i}] {c}")
+        amostra = next(it, None)
+        if amostra:
+            print("\n   1ª linha:")
+            for c, v in zip(header, amostra):
+                print(f"       {c} = {v}")
+    else:
+        print(f"\n   arquivo principal dfp_cia_aberta_{year}.csv NÃO encontrado")
+
+
 def main():
+    dataset = _dataset()
+    fn = investiga if dataset == "fre" else investiga_dfp
     for year in _anos():
         try:
-            investiga(year)
+            fn(year)
         except Exception as e:
             print(f"{year}: FALHOU ({e!r})")
         print()
