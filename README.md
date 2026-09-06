@@ -160,8 +160,10 @@ git show origin/main:RESEARCH_FREEZE.md | Select-Object -First 5   # confirma qu
 uv run pytest -q                    # suíte completa, incluindo os testes novos do congelamento
 ```
 
-A suíte completa (252 testes, incluindo os 5 novos desta rodada) passa 100% sobre o
-`origin/main` no momento deste commit.
+A suíte completa passa 100% sobre o `origin/main`. **A contagem canônica é a da
+última execução do CI na `main`, não um número escrito aqui:** eram 252 testes quando
+esta linha foi escrita e são 374 em 2026-09-06. Número de teste em README envelhece a
+cada PR; o CI não.
 
 ## Fronteira econômica
 
