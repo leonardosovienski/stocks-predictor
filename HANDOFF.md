@@ -1,5 +1,192 @@
 # HANDOFF — predictor-stocks
 
+## Ingestão real de FRE/DFP e medição dos critérios de H18/H19 (2026-09-05)
+
+Primeira vez que a ingestão do FRE roda contra dado REAL. Origem: auditoria
+independente de 2026-09-04 (`reports/auditoria_2026-09-04.md`), que marcou
+os critérios de aceite 2, 3 e 4 da H18 como **nunca medidos** — nem pela
+sessão que pré-registrou H17/H18/H19, nem pela própria auditoria (ambas sem
+banco e sem rede à CVM).
+
+**Nenhuma hipótese foi executada.** H17/H18/H19 continuam não rodadas,
+`trials.json` intacto em 15 tentativas, nenhum parâmetro `[FROZEN]` tocado.
+
+### 1. BUG BLOQUEANTE corrigido: o FRE gravava FREE FLOAT como ações totais
+
+`_find_col` casa por SUBSTRING, e as duas chaves de quantidade do FRE
+colidiam no cabeçalho real: `Quantidade_Total_Acoes_Circulacao` contém tanto
+`quantidade_total_acoes` (procurada por `shares_outstanding`) quanto
+`circulacao` (procurada por `free_float`). O free float ia para o banco como
+capital total, **sem erro e sem aviso**.
+
+Consequência se tivesse rodado: `market_cap = preço × free float` infla E/P e
+B/M por `1 ÷ (fração de circulação)` — fator que varia ~6x entre papéis na
+B3. H18/H19 teriam ranqueado por **concentração acionária**, não por valor, e
+o veredito consumiria tentativa irreversível do denominador do DSR.
+
+O teste que devia pegar isso usava cabeçalho SINTÉTICO com duas colunas
+separadas (`Quantidade_Total_Acoes` + `Quantidade_Acoes_Circulacao`) que a
+CVM não publica — passava POR CONSTRUÇÃO, violando a regra "golden tests com
+dados reais no parse" do `CLAUDE.md`. Corrigido com golden sobre as 15
+colunas e 3 primeiras linhas do arquivo real de 2023 (PRs #52, #53).
+
+Achado colateral, pré-existente: `free_float` casava
+`Quantidade_Acoes_Ordinarias_Circulacao` (só ON) pelo keyword genérico
+`"circulacao"`. Não afeta veredito — `load_free_float` não está ligada ao
+`rj_pipeline`, que recebe free float por CSV.
+
+### 2. O FRE NÃO publica ações totais — elas são DERIVADAS
+
+`fre_cia_aberta_distribuicao_capital` publica, por classe e no total, apenas
+a quantidade EM CIRCULAÇÃO e o PERCENTUAL que ela representa. Não existe
+coluna de capital total emitido.
+
+    ações totais = quantidade em circulação ÷ (percentual ÷ 100)
+
+Verificação cruzada interna do próprio arquivo: o total derivado da linha
+TOTAL bate com a soma dos totais derivados das pernas ON e PN a menos de
+1e-4 relativo (arredondamento dos 6 decimais do percentual). Validado contra
+companhias conhecidas: BBAS3 2023 = 5.730.799.931; ABEV3 = 15.726.802.114;
+ASAI3 = 1.347.213.155.
+
+O percentual vem em formato EN (`"49.596000"`), diferente das quantidades no
+MESMO arquivo (inteiros sem separador). Parseado com a convenção BR viraria
+49596000 e o total ficaria ~10^6x menor, em silêncio.
+
+### 3. Critérios de aceite 1-4: MEDIDOS e APROVADOS
+
+Ingestão real (`tools/ingest_h7_real.py` + `tools/ingest_fre_shares_real.py`)
+sobre banco com `prices_raw` = 1.149.872: **718 linhas** de DFP e **846
+linhas** de `shares_outstanding` gravadas. `fundamentals` passa a ter 1.579
+linhas em 127 tickers.
+
+| # | critério | medido | veredito |
+|---|---|---|---|
+| 1 | coluna existe e vem preenchida | derivada e validada (§2) | APROVADO |
+| 2 | `shares_outstanding` em fração relevante | 846 linhas, 126 de 132 tickers (53,6%) | APROVADO |
+| 3 | duas pernas juntas por rebalance | mediana 50 papéis com E/P | APROVADO |
+| 4 | comparável a H7/H9/H12/H13 | H18 50 vs. H7 53, H9 53, H12 54 | APROVADO |
+| 5 | nada entra antes de ser público | ver §4 | **REPROVADO** |
+
+Cobertura por rebalance (104 datas desde 2018-01-01, `tools/cobertura_h18.py`,
+somente leitura, mede COBERTURA e nunca desempenho):
+
+| sinal | mediana | mín | máx | datas com 0 |
+|---|---|---|---|---|
+| universo | 60 | 60 | 60 | 0 |
+| lucro | 56 | 0 | 57 | 15 |
+| ações | 58 | 0 | 58 | 3 |
+| E/P (H18) | 50 | 0 | 53 | 15 |
+| B/M (H19) | 53 | 0 | 54 | 15 |
+| roe (H7) | 53 | 0 | 54 | 15 |
+| accruals (H17) | 56 | 0 | 57 | 15 |
+
+`accruals` com 716 linhas em 123 tickers: a H17 ganhou insumo. Isso exigiu
+RE-RODAR a ingestão da DFP num banco já ingerido — o upsert de `fundamentals`
+(`ingest_cvm.py`) faz backfill via `COALESCE` das colunas acrescentadas
+depois (receita/margem na migração 0010; fluxo de caixa/accruals na 0011).
+Sem esse re-run, um banco anterior à 0011 não tem accruals e a H17 ficaria
+sem insumo em silêncio.
+
+### 4. Critério 5 REPROVADO: o embargo de 90 dias erra em DIREÇÕES OPOSTAS
+
+A `ref_date` gravada muda de convenção no meio da amostra:
+
+    BBAS3  2019-01-01 .. 2022-01-01     primeiro dia do ano
+    BBAS3  2023-12-31 .. 2026-12-31     último dia do ano
+
+`tools/explore_fre_ref_date.py` (rodado pelo operador contra 2019/2022/2023/
+2024) mostrou por quê: o arquivo principal `fre_cia_aberta_{ano}.csv` traz
+`DT_RECEB`, a data de recebimento do documento pela CVM.
+
+| ano | `DT_REFER` | `DT_RECEB` (real) | `known_at` usado (ref+90d) | erro |
+|---|---|---|---|---|
+| 2019 | 2019-01-01 | 2019-05-21 | 2019-04-01 | 50 dias de LOOKAHEAD |
+| 2022 | 2022-01-01 | 2022-05-31 | 2022-04-01 | 60 dias de LOOKAHEAD |
+| 2023 | 2023-12-31 | 2023-05-30 | 2024-03-30 | 305 dias CONSERVADOR DEMAIS |
+| 2024 | 2024-12-31 | 2024-05-29 | 2025-03-31 | 306 dias CONSERVADOR DEMAIS |
+
+No FRE 2023 a data de referência é POSTERIOR à entrega: recebido em maio de
+2023, rotulado `2023-12-31`. **`DT_REFER` é rótulo de exercício, não data do
+dado** — somar dias a esse campo não produz nada interpretável, e o viés não
+é constante: troca de sinal em 2023.
+
+A auditoria de 2026-09-04 estimou "lookahead de ~2 meses". Estava certa para
+2019-2022 e ERRADA para 2023+, onde o erro inverte e fica dez vezes maior.
+
+**Caminho de correção disponível, NÃO implementado:** join
+`distribuicao_capital.ID_Documento` -> `fre_cia_aberta_{ano}.csv.ID_DOC` ->
+`DT_RECEB` dá o `known_at` OBSERVADO, por empresa e por versão do documento
+— eliminando o embargo em vez de recalibrá-lo. É o que `ingest_ipe_year` já
+faz com `Data_Entrega` para fatos relevantes, e o que o protocolo §8 pede.
+Implementar isso muda `disclosure_embargo_days`, que é `[H18-FROZEN]` e
+`[H19-FROZEN]` — **exige decisão do operador e re-pré-registro**.
+
+Pergunta aberta relacionada: se `dfp_cia_aberta_{ano}.csv` também traz
+`DT_RECEB`, o mesmo vale para H7/H9/H12/H13/H17 nas próximas rodadas. Não
+verificado.
+
+### 5. Desdobramento deixou de ser risco teórico
+
+    BBAS3  2022-01-01   2.865.417.024
+    BBAS3  2023-12-31   5.730.799.931     exatamente 2x
+
+`factor._value_signals` compõe `preço_cru(asof) × ações(ref_date do FRE)`. Com
+um desdobramento no intervalo, as duas pernas ficam em bases diferentes e o
+market cap erra pelo fator do split — no papel mais líquido da bolsa. A
+tabela `adjustments` permite corrigir (`type IN ('split','grupamento')`,
+`ex_date`, `factor`), mas `_value_signals` não faz isso hoje e nenhum teste
+cobre o caso. Também exige decisão: corrigir muda o sinal de hipótese
+pré-registrada.
+
+### 6. Janela efetiva das hipóteses de fundamento: 2019-04 em diante
+
+15 das 104 datas de rebalance têm ZERO papéis com sinal contábil. Não é bug:
+a DFP ingerida começa no exercício 2018 (`ref_date` 2018-12-31), elegível só
+a partir de 2019-03-31 com o embargo de 90 dias. De 2018-01 a 2019-03 são
+exatamente 15 meses.
+
+**Isto vale RETROATIVAMENTE para H7/H9/H12/H13**, que foram julgadas com a
+mesma limitação. Não invalida veredito nenhum (`walk_forward` pula rebalance
+sem carteira), mas a janela efetiva dessas hipóteses é 2019-04 a 2026, não
+2018-01 a 2026 como o `backtest.test_start` sugere. Nunca foi registrado.
+
+### 7. Higiene de log
+
+O `WARNING` da colisão de coluna anunciava `shares_outstanding=None` e calava
+que o total é derivado logo em seguida: 3-4 avisos alarmantes por ano de
+ingestão, nenhum acionável, num caminho correto. Aviso que assusta sem
+informar treina o operador a ignorar avisos. Agora o nível distingue: com
+coluna de percentual nada se perde (INFO); sem ela a derivação é impossível e
+o dado se perde (WARNING). Dois testes travam o comportamento.
+
+### PRs desta sessão
+
+#52 (colisão detectada, fail-loud), #53 (derivação + golden real), #54
+(scripts de ingestão e cobertura), #55 (`docs/RUNBOOK_H18.md`), #56 (higiene
+de log + probe da ref_date), #57 (falso negativo do probe: as pistas exigiam
+`"recebimento"` inteiro e a coluna real é `DT_RECEB` — mesmo erro de
+palavra-chave que a auditoria pegou no parser, com sinal trocado).
+
+Suíte: **363 verdes**.
+
+### PENDENTE DE DECISÃO DO OPERADOR
+
+H18/H19 têm fonte de dado, cobertura adequada e quatro dos cinco critérios
+aprovados. **Não devem rodar** enquanto o critério 5 estiver reprovado.
+Opções, todas mexendo em `[FROZEN]`:
+
+1. Re-pré-registrar H18/H19 com `known_at` observado (`DT_RECEB`) —
+   elimina o embargo em vez de recalibrá-lo, e corrige os dois lados do erro.
+2. Manter o embargo de 90 dias declarando a limitação no pré-registro —
+   agora sabendo que ela inverte de sinal em 2023.
+3. Investigar antes se a DFP traz `DT_RECEB`, para decidir uma vez só
+   incluindo H7/H9/H12/H13/H17.
+
+Decisão do desdobramento (§5) é separada e igualmente do operador.
+
+---
+
 > ## H11 ABERTA — PRÉ-REGISTRO (2026-09-04, ANTES de qualquer rodada real)
 >
 > Decisão explícita do operador ("todos vamos fazer tudo"), primeira
