@@ -32,10 +32,18 @@
 - O core vem por WHEEL do repo irmão `leonardosovienski/core-predictor`, NÃO do
   `vendor/`. `tests/conftest.py` asserta isso (`assert "vendor" not in
   predictor_core.__file__`) — a suíte se recusa a rodar contra o vendor. Instalar:
-  `py -3.13 -m pip install --upgrade "https://github.com/leonardosovienski/core-predictor/releases/download/v3.1.0/predictor_core-3.1.0-py3-none-any.whl"`.
+  `py -3.13 -m pip install --upgrade "https://github.com/leonardosovienski/core-predictor/releases/download/v3.2.0/predictor_core-3.2.0-py3-none-any.whl"`.
   (Correção de 2026-09-06: este arquivo dizia que a fonte da verdade era o
   `vendor/`, contradizendo o `conftest.py` desde a migração para wheels.
   `vendor/` permanece no repo como fallback histórico, fora do runtime.)
+  (Migração de 2026-09-06 para **3.2.0**, decidida pelo operador: antes deste dia
+  o `CLAUDE.md` mandava instalar 3.1.0 enquanto o `pyproject.toml`/`uv.lock`
+  resolviam 3.0.0 e o atestado vigente fora emitido com 3.1.0 — três fontes,
+  três versões. Suíte 374/374 sob 3.2.0. **Duas consequências que mordem:**
+  (1) o bump INVALIDA o atestado vigente — reemita antes de qualquer rodada que
+  crie ou atualize trial; (2) o 3.2.0 recusa emitir atestado com árvore de
+  trabalho suja, então rodar a suíte com alteração não commitada derruba ~21
+  testes com `DirtyWorkingTreeError`. Commite antes de rodar; não é regressão.)
 - Migrações em `stocks_predictor/db.py` são append-only: nunca alterar uma existente, sempre adicionar.
 - Config: `stocks_predictor/config.py` (mini-parser stdlib do subconjunto plano de YAML). Parâmetros
   `[H1-FROZEN]` no config.yaml não se tocam após qualquer rodada de resultado.

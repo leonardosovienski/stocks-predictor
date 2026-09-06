@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.13,<3.15"
 dependencies = [
   "PyYAML>=6.0,<7",
-  "predictor-core>=3.0,<4",
+  "predictor-core>=3.2,<4",
 ]
 
 [project.optional-dependencies]
@@ -60,4 +60,4 @@ branch = true
 show_missing = true
 
 [tool.uv.sources]
-predictor-core = { url = "https://github.com/leonardosovienski/core-predictor/releases/download/v3.0.0/predictor_core-3.0.0-py3-none-any.whl" }
+predictor-core = { url = "https://github.com/leonardosovienski/core-predictor/releases/download/v3.2.0/predictor_core-3.2.0-py3-none-any.whl" }

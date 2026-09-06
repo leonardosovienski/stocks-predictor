@@ -44,7 +44,7 @@ O `predictor-core` **não está no PyPI público** — distribuição só por wh
 de GitHub Release do repo irmão:
 
 ```powershell
-py -3.13 -m pip install --upgrade "https://github.com/leonardosovienski/core-predictor/releases/download/v3.1.0/predictor_core-3.1.0-py3-none-any.whl"
+py -3.13 -m pip install --upgrade "https://github.com/leonardosovienski/core-predictor/releases/download/v3.2.0/predictor_core-3.2.0-py3-none-any.whl"
 py -3.13 -m pip install --upgrade PyYAML pytest
 ```
 
@@ -52,9 +52,19 @@ As dependências ficam no site-packages **daquele** interpretador. Instalar
 com `python` e rodar com `py -3.13` (ou o contrário) dá
 `ModuleNotFoundError` sem explicar a causa.
 
-Sintoma de core desatualizado: `pyproject.toml` exige `>=3.0,<4`; uma 2.x
-instalada quebra o import com erro pouco óbvio. Confira com
-`python -c "import predictor_core; print(predictor_core.__version__)"`.
+Sintoma de core desatualizado: `pyproject.toml` exige `>=3.2,<4`; uma 3.1 ou
+anterior instalada quebra o import com erro pouco óbvio. Confira com
+`python -c "import predictor_core; print(predictor_core.__version__)"` — tem
+que dizer `3.2.0`.
+
+> **Antes da medição, sob 3.2.0 (migração de 2026-09-06).** O atestado em
+> `trials.harness_attestation.json` foi emitido com o core 3.1.0 e **um bump do
+> core invalida o atestado**: reemita antes de rodar, ou a H18 não registra
+> trial. E o 3.2.0 recusa emitir atestado a partir de árvore de trabalho suja —
+> `git status` limpo antes de reemitir, senão o `code_version` sai com `;dirty`
+> e a trial nasce marcada como irreprodutível. O ganho que justificou a
+> migração: o Deflated Sharpe agora **trava** (`strict`) quando o desconto não é
+> estimável, em vez de devolver PSR disfarçado de DSR em silêncio.
 
 ---
 
@@ -286,7 +296,7 @@ cd C:\Users\Superleo13\stocks-predictor-work    # caminho REAL (ver §1)
 py -3.13 --version                                # tem de dizer 3.13.x
 
 # uma vez por máquina
-py -3.13 -m pip install --upgrade "https://github.com/leonardosovienski/core-predictor/releases/download/v3.1.0/predictor_core-3.1.0-py3-none-any.whl"
+py -3.13 -m pip install --upgrade "https://github.com/leonardosovienski/core-predictor/releases/download/v3.2.0/predictor_core-3.2.0-py3-none-any.whl"
 py -3.13 -m pip install --upgrade PyYAML pytest
 
 # sempre

@@ -66,7 +66,7 @@ continua valendo integralmente para elas.
 ## Dependência e vendor
 
 - contrato: `predictor-core>=3.0,<4`;
-- resolução canônica do CI/lock: wheel oficial `predictor-core==3.0.0`;
+- resolução canônica do CI/lock: wheel oficial `predictor-core==3.2.0`;
 - `vendor/predictor_core/`: arquivo histórico íntegro, não runtime normal e não
   incluído no pacote `stocks-predictor`;
 - `poc_leak.py`: PoC histórico contra o vendor legado, ativado apenas por execução
