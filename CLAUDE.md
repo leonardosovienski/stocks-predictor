@@ -25,16 +25,44 @@
 ## Convenções do projeto
 
 - TODO I/O de texto declara `encoding="utf-8"` (default do Windows é cp1252 — já mordeu).
-- `vendor/predictor_core/` NÃO se edita à toa — a fonte da verdade é o repo irmão
-  `C:\Claude-projetos\Claude\predictor_core\` e o sync é UNIDIRECIONAL via o
-  `sync_core.py` de lá (`--check`/`--write`). Evolução por demanda vai PRO upstream
-  primeiro e desce pelo sync; código customizado no vendor é DELETADO pelo prune.
+- O core vem por WHEEL do repo irmão `leonardosovienski/core-predictor`, NÃO do
+  `vendor/`. `tests/conftest.py` asserta isso (`assert "vendor" not in
+  predictor_core.__file__`) — a suíte se recusa a rodar contra o vendor. Instalar:
+  `py -3.13 -m pip install --upgrade "https://github.com/leonardosovienski/core-predictor/releases/download/v3.1.0/predictor_core-3.1.0-py3-none-any.whl"`.
+  (Correção de 2026-09-06: este arquivo dizia que a fonte da verdade era o
+  `vendor/`, contradizendo o `conftest.py` desde a migração para wheels.
+  `vendor/` permanece no repo como fallback histórico, fora do runtime.)
 - Migrações em `stocks_predictor/db.py` são append-only: nunca alterar uma existente, sempre adicionar.
 - Config: `stocks_predictor/config.py` (mini-parser stdlib do subconjunto plano de YAML). Parâmetros
   `[H1-FROZEN]` no config.yaml não se tocam após qualquer rodada de resultado.
 
+## Onde ler antes de tocar em H17/H18/H19
+
+- **`HANDOFF.md`, entrada `VEREDITO` no topo** — estado corrente: os 5 critérios
+  de aceite da H18 fecharam em 2026-09-06; falta FIXAR A ORDEM das rodadas
+  (o N do DSR cresce a cada tentativa, então quem roda por último enfrenta a
+  barra mais alta — escolher depois de ver resultado é p-hacking).
+- **`docs/RUNBOOK_H18.md`** — do zero até a medição, com o caminho real do repo
+  nesta máquina, os quatro checkouts existentes e a tabela de erros comuns.
+- **`docs/auditoria_2026-09-04.md`** — o parecer independente que originou tudo,
+  com errata no topo apontando o que medições posteriores corrigiram.
+
+## Política de `known_at` — não herde por acidente
+
+`fundamentals.known_at` é a data OBSERVADA de recebimento pela CVM (`DT_RECEB`).
+`factor._fundamental_signals` só a usa quando o chamador passa `use_known_at=True`.
+
+- **H7, H9, H10, H12, H13 (JULGADAS)** passam `False`: ficam no embargo estimado
+  com que foram efetivamente rodadas. Não mude isso — o veredito delas é registro
+  histórico e um re-run silenciosamente diferente quebraria a reprodutibilidade.
+- **H17, H18, H19 (nunca rodaram)** usam a data observada, declarado em
+  `known_at_policy: observed` no config e selado no hash congelado.
+
 ## Comandos
 
 ```powershell
-python -m pytest tests/ -v        # suíte completa (deve estar SEMPRE verde no main)
+py -3.13 -m pytest tests\ -q      # suíte completa (deve estar SEMPRE verde no main)
+py -3.13 main.py                  # status: contagem por tabela, hashes, trials
 ```
+
+**Use `py -3.13`, não `python`** — nesta máquina `python` resolve para 3.14.
