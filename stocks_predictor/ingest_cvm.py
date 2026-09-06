@@ -348,6 +348,18 @@ _DFP_MAIN_COLS = {
 }
 
 
+def _known_at_dfp(recebido_em, cnpj_de, f):
+    """`known_at` observado de uma linha de `compute_fundamentals`, ou None.
+
+    Duas indireções porque `compute_fundamentals` chaveia por
+    (company_norm, ref_date) e descarta o CNPJ, enquanto o arquivo principal
+    da DFP é chaveado por (CNPJ, DT_REFER)."""
+    cnpj = cnpj_de.get((f["company"], f["ref_date"]))
+    if not cnpj:
+        return None
+    return recebido_em.get((cnpj, f["ref_date"]))
+
+
 def parse_dfp_received_dates(zbytes: bytes, year: int) -> dict[tuple[str, str], str]:
     """{(cnpj_só_dígitos, ref_date): DT_RECEB MAIS ANTIGO} do principal da DFP.
 
@@ -733,7 +745,13 @@ def ingest_dfp_year(conn, year: int, companies: set[str] | None = None,
              f["patrimonio_liquido"], f["lucro_liquido"], f["roe"], f["leverage"],
              f["receita_liquida"], f["net_margin"],
              f["fluxo_caixa_operacional"], f["accruals"],
-             recebido_em.get(cnpj_de.get((f["company"], f["ref_date"]), ""), None),
+             # `recebido_em` é chaveado por (cnpj, ref_date) — TUPLA. A versão
+             # do FRE é chaveada por doc_id (string), e copiar aquele padrão
+             # aqui produziu uma consulta que nunca casava: known_at ficava
+             # NULL em 100% das linhas e a ingestão reportava "0 linhas
+             # gravadas" sem erro. Pego só na rodada real (2026-09-06); o
+             # teste de então cobria o parser isolado, não a junção.
+             _known_at_dfp(recebido_em, cnpj_de, f),
              f"CVM DFP {year}"))
         n += conn.execute("SELECT changes()").fetchone()[0]
     conn.commit()
