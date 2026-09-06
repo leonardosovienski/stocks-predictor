@@ -144,14 +144,16 @@ def cobertura_por_rebalance(conn, cfg, desde):
 
     uni_med = _mediana(series["universo"])
     print("\n  LEITURA:")
+    # 1 casa decimal, igual à tabela acima: com `.0f` uma mediana de 49,5
+    # saía como "50" e contradizia a própria tabela na mesma tela.
     print(f"  - critério 3 (as duas pernas juntas): mediana de "
-          f"{_mediana(series['E/P(H18)']):.0f} papéis com E/P, contra "
-          f"{_mediana(series['lucro']):.0f} com lucro e "
-          f"{_mediana(series['acoes']):.0f} com ações — a perna mais escassa manda")
+          f"{_mediana(series['E/P(H18)']):.1f} papéis com E/P, contra "
+          f"{_mediana(series['lucro']):.1f} com lucro e "
+          f"{_mediana(series['acoes']):.1f} com ações — a perna mais escassa manda")
     print(f"  - critério 4 (comparação com hipóteses JÁ rodadas): H18 mediana "
-          f"{_mediana(series['E/P(H18)']):.0f} vs. H7 {_mediana(series['roe(H7)']):.0f}, "
-          f"H9 {_mediana(series['lev(H9)']):.0f}, H12 {_mediana(series['marg(H12)']):.0f}")
-    print(f"  - universo point-in-time mediano: {uni_med:.0f} papéis")
+          f"{_mediana(series['E/P(H18)']):.1f} vs. H7 {_mediana(series['roe(H7)']):.1f}, "
+          f"H9 {_mediana(series['lev(H9)']):.1f}, H12 {_mediana(series['marg(H12)']):.1f}")
+    print(f"  - universo point-in-time mediano: {uni_med:.1f} papéis")
     print("\n  (nenhum valor de sinal foi lido — só contagens; ver a TRAVA no topo)")
 
 

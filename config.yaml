@@ -358,7 +358,7 @@ h18_portfolio:
   direction: long_only             # [H18-FROZEN]
 
 h18_criteria:
-  dsr_min: 0.95                    # [H18-FROZEN] DSR mínimo (N=18 tentativas no registro)
+  dsr_min: 0.95                    # [H18-FROZEN] DSR mínimo; o N vem do trials.json em tempo de execução (15 registradas em 2026-09-06)
 
 # ── H19 (pré-registrada 2026-09-04; ver HANDOFF) ────────────────────────────
 # NÃO alterar valores [H19-FROZEN] após qualquer rodada de resultado da H19.
