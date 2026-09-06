@@ -73,11 +73,16 @@ def test_run_h19_smoke(tmp_path, capsys):
 
 
 def test_h18_h19_frozen_config_hash_golden():
-    """Mexeu num param [H18/H19-FROZEN] -> quebra alto AQUI."""
+    """Mexeu num param [H18/H19-FROZEN] -> quebra alto AQUI.
+
+    Lacres RE-EMITIDOS em 2026-09-06 (re-pré-registro, HANDOFF): entraram
+    `known_at_policy` e `split_base`. Legítimo porque H18/H19 NUNCA rodaram
+    — nenhum resultado foi observado, então isto é revisão de pré-registro,
+    não mover a trave depois do chute."""
     from config import h18_frozen_config_hash, h19_frozen_config_hash, load_config
     cfg = load_config()
-    assert h18_frozen_config_hash(cfg) == "dded266f1bb712f1"
-    assert h19_frozen_config_hash(cfg) == "dabaa53adc9b9349"
+    assert h18_frozen_config_hash(cfg) == "cbea4d3c98ac3422"
+    assert h19_frozen_config_hash(cfg) == "d96753f2af7b39a6"
 
 
 def test_h18_h19_are_distinct_seals():
@@ -436,3 +441,129 @@ def test_collision_without_pct_still_warns(caplog):
             ingest_cvm._open_fre_distribuicao_capital_main(zb))
     assert rows[0]["shares_outstanding"] is None
     assert [r for r in caplog.records if r.levelno >= logging.WARNING]
+
+
+# --- known_at observado + base de desdobramento (re-pré-registro 2026-09-06) ---
+
+def test_known_at_observado_manda_sobre_o_embargo(tmp_path):
+    """A linha com `known_at` gravado usa a data OBSERVADA, e o embargo é
+    ignorado para ela. Aqui o embargo diria 2021-03-31 (ref + 90d) mas o
+    documento só ficou público em 2021-05-30: entre 01/04 e 29/05 o sinal
+    NÃO pode ver o dado."""
+    conn = db.get_connection(tmp_path / "s.db")
+    conn.execute(
+        "INSERT INTO fundamentals(ticker, ref_date, lucro_liquido, known_at, source)"
+        " VALUES (?,?,?,?,?)", ("AAAA3", "2020-12-31", 100.0, "2021-05-30", "CVM FRE"))
+    conn.commit()
+    f = factor._fundamental_signals
+    assert f(conn, ["AAAA3"], "2021-04-15", 90, "lucro_liquido") == {}   # embargo diria SIM
+    assert f(conn, ["AAAA3"], "2021-05-29", 90, "lucro_liquido") == {}
+    assert f(conn, ["AAAA3"], "2021-05-30", 90, "lucro_liquido") == {"AAAA3": 100.0}
+
+
+def test_known_at_nulo_cai_no_embargo_sem_mudar_comportamento(tmp_path):
+    """Linha SEM `known_at` (todas as da DFP hoje) mantém o embargo byte a
+    byte — é o que preserva H7/H9/H12/H13/H17."""
+    conn = db.get_connection(tmp_path / "s.db")
+    conn.execute(
+        "INSERT INTO fundamentals(ticker, ref_date, lucro_liquido, source)"
+        " VALUES (?,?,?,?)", ("AAAA3", "2020-12-31", 100.0, "CVM DFP"))
+    conn.commit()
+    f = factor._fundamental_signals
+    assert f(conn, ["AAAA3"], "2021-03-30", 90, "lucro_liquido") == {}
+    assert f(conn, ["AAAA3"], "2021-03-31", 90, "lucro_liquido") == {"AAAA3": 100.0}
+
+
+def test_split_entre_fre_e_asof_corrige_a_base_das_acoes(tmp_path):
+    """BUG REAL (BBAS3 dobrou entre FRE 2022 e FRE 2023): preço vem de `asof`,
+    ações vêm da `ref_date` do FRE. Com um split 1:2 no meio, o preço já caiu
+    à metade e a contagem antiga subestimaria o market cap em 50% — dobrando
+    o E/P e jogando o papel para o quintil 'barato' por artefato mecânico."""
+    conn = _one_ticker_conn(tmp_path, price=10.0, shares=1000.0, lucro=500.0, pl=2000.0,
+                            fund_ref="2020-12-31", shares_ref="2020-12-31")
+    sem_split = factor.earnings_yield_signals(conn, ["AAAA3"], "2021-06-20")
+    conn.execute(
+        "INSERT INTO adjustments(ticker, ex_date, factor, type, source, approved_by)"
+        " VALUES (?,?,?,?,?,?)",
+        ("AAAA3", "2021-03-01", 0.5, "split", "inferred", "operador"))
+    conn.commit()
+    com_split = factor.earnings_yield_signals(conn, ["AAAA3"], "2021-06-20")
+    # ações 1000 -> 2000 (dividido pelo fator 0,5): market cap dobra, E/P cai à metade
+    assert abs(com_split["AAAA3"] - sem_split["AAAA3"] / 2.0) < 1e-12
+
+
+def test_split_fora_da_janela_nao_altera_nada(tmp_path):
+    """Evento ANTERIOR à ref_date do FRE já está refletido na contagem
+    publicada; evento POSTERIOR a asof ainda não aconteceu."""
+    conn = _one_ticker_conn(tmp_path, price=10.0, shares=1000.0, lucro=500.0, pl=2000.0,
+                            fund_ref="2020-12-31", shares_ref="2020-12-31")
+    base = factor.earnings_yield_signals(conn, ["AAAA3"], "2021-06-20")
+    conn.execute(
+        "INSERT INTO adjustments(ticker, ex_date, factor, type, source, approved_by)"
+        " VALUES (?,?,?,?,?,?)",
+        ("AAAA3", "2019-01-01", 0.5, "split", "inferred", "operador"))
+    conn.execute(
+        "INSERT INTO adjustments(ticker, ex_date, factor, type, source, approved_by)"
+        " VALUES (?,?,?,?,?,?)",
+        ("AAAA3", "2025-01-01", 0.5, "split", "inferred", "operador"))
+    conn.commit()
+    assert factor.earnings_yield_signals(conn, ["AAAA3"], "2021-06-20") == base
+
+
+def test_provento_nao_altera_contagem_de_acoes(tmp_path):
+    """Só split/grupamento mudam quantidade de ações. Um dividendo em
+    `adjustments` (que também mexe em preço) não pode mexer na contagem."""
+    conn = _one_ticker_conn(tmp_path, price=10.0, shares=1000.0, lucro=500.0, pl=2000.0,
+                            fund_ref="2020-12-31", shares_ref="2020-12-31")
+    base = factor.earnings_yield_signals(conn, ["AAAA3"], "2021-06-20")
+    conn.execute(
+        "INSERT INTO adjustments(ticker, ex_date, factor, type, source, approved_by)"
+        " VALUES (?,?,?,?,?,?)",
+        ("AAAA3", "2021-03-01", 0.97, "dividendo", "csv_manual", "operador"))
+    conn.commit()
+    assert factor.earnings_yield_signals(conn, ["AAAA3"], "2021-06-20") == base
+
+
+def test_split_nao_aprovado_e_ignorado(tmp_path):
+    """`approved_by IS NULL` = proposta pendente de revisão humana. Mesma
+    disciplina de `adjust._load`: não entra no cálculo."""
+    conn = _one_ticker_conn(tmp_path, price=10.0, shares=1000.0, lucro=500.0, pl=2000.0,
+                            fund_ref="2020-12-31", shares_ref="2020-12-31")
+    base = factor.earnings_yield_signals(conn, ["AAAA3"], "2021-06-20")
+    conn.execute(
+        "INSERT INTO adjustments(ticker, ex_date, factor, type, source)"
+        " VALUES (?,?,?,?,?)", ("AAAA3", "2021-03-01", 0.5, "split", "inferred"))
+    conn.commit()
+    assert factor.earnings_yield_signals(conn, ["AAAA3"], "2021-06-20") == base
+
+
+def test_ingest_fre_grava_known_at_do_dt_receb(tmp_path):
+    """Ponta a ponta com os cabeçalhos REAIS: o `DT_RECEB` do arquivo
+    principal chega em `fundamentals.known_at`, casado por ID_Documento."""
+    import ingest_cvm
+    import io as _io
+    import zipfile as _zip
+    buf = _io.BytesIO()
+    with _zip.ZipFile(buf, "w") as zf:
+        zf.writestr("fre_cia_aberta_2023.csv",
+                    ("CNPJ_CIA;DT_REFER;VERSAO;DENOM_CIA;CD_CVM;CATEG_DOC;ID_DOC;"
+                     "DT_RECEB;LINK_DOC\n"
+                     "00.000.000/0001-91;2023-12-31;19;BCO BRASIL S.A.;001023;"
+                     "FRE WEB;137597;2023-05-30;http://x").encode("latin-1"))
+        zf.writestr("fre_cia_aberta_distribuicao_capital_2023.csv",
+                    (_FRE_HEADER_REAL + "\n" + ";".join(_FRE_ROWS_REAL[0])).encode("latin-1"))
+    zb = buf.getvalue()
+    assert ingest_cvm.parse_fre_received_dates(zb) == {"137597": "2023-05-30"}
+
+    conn = db.get_connection(tmp_path / "s.db")
+    n = ingest_cvm.ingest_fre_shares_year(
+        conn, 2023, {ingest_cvm._norm("BCO BRASIL S.A."): "BBAS3"}, zbytes=zb)
+    assert n == 1
+    ref, shares, known = conn.execute(
+        "SELECT ref_date, shares_outstanding, known_at FROM fundamentals"
+        " WHERE ticker='BBAS3'").fetchone()
+    assert (ref, known) == ("2023-12-31", "2023-05-30")
+    assert abs(shares - 5_730_799_931) < 1.0
+    # o embargo diria 2024-03-30; a data observada é ~10 meses ANTES
+    assert factor._fundamental_signals(
+        conn, ["BBAS3"], "2023-06-01", 90, "shares_outstanding") != {}

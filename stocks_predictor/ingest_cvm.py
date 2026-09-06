@@ -69,6 +69,10 @@ _FRE_FLOAT_COLS = {
     # totais (ver `parse_fre_float_rows`). Formato EN neste dataset
     # ("49.596000"), diferente das quantidades: parse próprio, nunca o BR.
     "float_pct": ("percentual_total_acoes_circulacao",),
+    # ID do documento — chave de junção com o arquivo PRINCIPAL do FRE, que
+    # é onde vive a data de recebimento (`DT_RECEB`). Por documento, logo
+    # por VERSÃO: uma retificação tem ID próprio e data própria.
+    "doc_id": ("id_documento",),
 }
 _DFP_COLS = {
     "cnpj": ("cnpj_cia",),
@@ -321,13 +325,65 @@ def parse_fre_float_rows(rows) -> list[dict]:
         shares = num("shares_outstanding")
         if shares is None:
             shares = _derive_total_shares(float_shares, _pct(row, idx))
+        i_doc = idx.get("doc_id")
         out.append({
             "company": row[idx["company"]].strip() if idx["company"] is not None else "",
             "ref_date": row[idx["ref_date"]].strip()[:10] if idx["ref_date"] is not None else "",
             "shares_outstanding": shares,
             "free_float": float_shares,
+            "doc_id": row[i_doc].strip() if i_doc is not None and i_doc < len(row) else "",
         })
     return out
+
+
+_FRE_MAIN_COLS = {
+    "doc_id": ("id_doc",),
+    "received_at": ("dt_receb",),
+}
+
+
+def parse_fre_received_dates(zbytes: bytes) -> dict[str, str]:
+    """{ID_DOC: DT_RECEB} do arquivo PRINCIPAL do FRE.
+
+    `DT_RECEB` é a data em que a CVM RECEBEU o documento — o instante a
+    partir do qual ele é público. É o `known_at` OBSERVADO, análogo exato do
+    `Data_Entrega` que `ingest_ipe_year` já usa para fatos relevantes.
+
+    Por que isso importa mais que um embargo (achado 2026-09-05): a
+    `DT_REFER` do FRE é rótulo de exercício, não data do dado. No FRE 2023 a
+    referência (2023-12-31) é POSTERIOR ao recebimento (2023-05-30) — somar
+    dias a esse campo não produz nada interpretável, e o erro de fazê-lo
+    troca de SINAL entre as convenções pré e pós-2023.
+
+    Ausência do arquivo principal ou das colunas devolve `{}` — o chamador
+    grava `known_at` NULL e o consumidor cai no embargo, sem inventar data.
+    """
+    zf = zipfile.ZipFile(io.BytesIO(zbytes))
+    alvo = [n for n in zf.namelist()
+            if n.endswith(".csv") and _norm(n).split("/")[-1].startswith("fre_cia_aberta_")
+            and _norm(n).split("/")[-1].count("_") == 3]
+    if len(alvo) != 1:
+        logging.warning("FRE: arquivo principal não identificado (%d candidatos) — "
+                        "known_at ficará NULL", len(alvo))
+        return {}
+    with zf.open(alvo[0]) as f:
+        rows = csv.reader(io.TextIOWrapper(f, encoding="latin-1"), delimiter=";")
+        header = next(rows, None)
+        if header is None:
+            return {}
+        idx = {k: _find_col(header, kw) for k, kw in _FRE_MAIN_COLS.items()}
+        if idx["doc_id"] is None or idx["received_at"] is None:
+            logging.warning("FRE: arquivo principal sem ID_DOC/DT_RECEB "
+                            "(cabecalho=%s) — known_at ficará NULL", header)
+            return {}
+        out = {}
+        for row in rows:
+            if max(idx["doc_id"], idx["received_at"]) >= len(row):
+                continue
+            doc, receb = row[idx["doc_id"]].strip(), row[idx["received_at"]].strip()[:10]
+            if doc and receb:
+                out[doc] = receb
+        return out
 
 
 def _pct(row, idx) -> float | None:
@@ -882,7 +938,9 @@ def ingest_fre_shares_year(conn, year: int, ticker_of: dict | None = None,
     # (company, ref_date) ficando com o maior valor não-nulo. Divergência
     # entre linhas da mesma chave seria layout quebrado, não dado: o max é
     # determinístico e registrado aqui, não "a última lida".
+    recebido_em = parse_fre_received_dates(zbytes)
     best: dict[tuple[str, str], float] = {}
+    known: dict[tuple[str, str], str] = {}
     for r in rows:
         shares = r["shares_outstanding"]
         if shares is None or shares <= 0:
@@ -891,6 +949,14 @@ def ingest_fre_shares_year(conn, year: int, ticker_of: dict | None = None,
         if not key[1]:
             continue    # sem data de referência não há point-in-time possível
         best[key] = max(best.get(key, 0.0), shares)
+        # known_at OBSERVADO por documento. Entre versões da mesma
+        # (company, ref_date) fica a MAIS ANTIGA: é quando aquela informação
+        # ficou pública pela primeira vez. Pegar a mais recente (uma
+        # retificação de meses depois) atrasaria o sinal sem motivo; pegar
+        # "a última lida" seria não-determinístico.
+        receb = recebido_em.get(r.get("doc_id", ""))
+        if receb and (key not in known or receb < known[key]):
+            known[key] = receb
     if not best:
         # Nenhuma linha trouxe ações totais. Antes isto retornava 0 em
         # silêncio e H18/H19 rodavam com universo vazio ou (pior, antes da
@@ -909,13 +975,24 @@ def ingest_fre_shares_year(conn, year: int, ticker_of: dict | None = None,
         if ticker is None:
             continue    # companhia sem ticker mapeado: revisão humana antes
         conn.execute(
-            "INSERT INTO fundamentals(ticker, ref_date, shares_outstanding, source)"
-            " VALUES (?,?,?,?)"
+            "INSERT INTO fundamentals(ticker, ref_date, shares_outstanding,"
+            " known_at, source) VALUES (?,?,?,?,?)"
             " ON CONFLICT(ticker, ref_date, source) DO UPDATE SET"
             " shares_outstanding = COALESCE(fundamentals.shares_outstanding,"
-            " excluded.shares_outstanding)"
-            " WHERE fundamentals.shares_outstanding IS NULL",
-            (ticker, ref_date, shares, f"CVM FRE {year}"))
+            " excluded.shares_outstanding),"
+            # backfill de `known_at` em bancos ingeridos antes da migração
+            " known_at = COALESCE(fundamentals.known_at, excluded.known_at)"
+            # O update só dispara quando há buraco A PREENCHER e valor novo
+            # PARA preencher. Sem a segunda metade de cada cláusula, um
+            # re-run com known_at indisponível (zip sem arquivo principal)
+            # contaria mudança toda vez e quebraria a idempotência — pego
+            # pelo teste de re-execução ao implementar.
+            " WHERE (fundamentals.shares_outstanding IS NULL"
+            "        AND excluded.shares_outstanding IS NOT NULL)"
+            "    OR (fundamentals.known_at IS NULL"
+            "        AND excluded.known_at IS NOT NULL)",
+            (ticker, ref_date, shares, known.get((company, ref_date)),
+             f"CVM FRE {year}"))
         n += conn.execute("SELECT changes()").fetchone()[0]
     conn.commit()
     return n

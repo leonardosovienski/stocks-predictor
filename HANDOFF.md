@@ -1,5 +1,85 @@
 # HANDOFF — predictor-stocks
 
+> ## H18/H19 RE-PRÉ-REGISTRADAS (2026-09-06, ANTES de qualquer rodada)
+>
+> Ordem explícita do operador ("faz todas") sobre as duas correções que a
+> entrada de 2026-09-05 deixou pendentes. **Isto é revisão de pré-registro,
+> não mover a trave:** H18 e H19 NUNCA rodaram, nenhum resultado de
+> desempenho foi observado por ninguém, e a trava do `cobertura_h18.py`
+> existiu justamente para manter isso verdadeiro enquanto a cobertura era
+> medida. Mudar parâmetro ANTES de qualquer observação é legítimo; depois
+> seria p-hacking.
+>
+> **Lacres RE-EMITIDOS** (`config.py`): H18 `dded266f1bb712f1` ->
+> `cbea4d3c98ac3422`; H19 `dabaa53adc9b9349` -> `d96753f2af7b39a6`.
+> Entraram dois parâmetros novos em `h18_factor`/`h19_factor`:
+> `known_at_policy: observed` e `split_base: adjusted`.
+> `disclosure_embargo_days: 90` permanece como FALLBACK, aplicável só a
+> linha sem `known_at`.
+>
+> **N do DSR inalterado:** 15 tentativas registradas; H18 seria a 16ª. O
+> re-pré-registro não cria tentativa nova — nada foi rodado.
+>
+> ### Correção 1 — `known_at` OBSERVADO substitui o embargo estimado
+>
+> Migração `0012_fundamentals_known_at` (append-only): coluna `known_at` em
+> `fundamentals`. A ingestão do FRE passa a ler o `DT_RECEB` do arquivo
+> principal (`fre_cia_aberta_{ano}.csv`), casado por `ID_Documento` ->
+> `ID_DOC` — logo por companhia E por versão do documento. Entre versões da
+> mesma `(company, ref_date)` fica a data MAIS ANTIGA: é quando aquela
+> informação ficou pública pela primeira vez.
+>
+> `factor._fundamental_signals` passa a preferir `known_at` quando existe, e
+> só cai no embargo quando é NULL. **Todas as linhas da DFP têm `known_at`
+> NULL hoje**, então H7/H9/H12/H13/H17 mantêm comportamento byte a byte —
+> nenhum veredito emitido muda, e a H17 pré-registrada não é afetada.
+>
+> Corrige o erro que trocava de SINAL no meio da amostra (60 dias de
+> lookahead até 2022; 305 dias conservador demais depois de 2023).
+>
+> ### Correção 2 — base de desdobramento
+>
+> `factor._shares_on_price_base`: as ações da `ref_date` do FRE são
+> convertidas para a base de preço vigente em `asof`, dividindo pelos
+> `adjustments.factor` de `type IN ('split','grupamento')` com
+> `ex_date` em `(ref_date, asof]`. Só ajustes APROVADOS por humano contam
+> (mesma disciplina de `adjust._load`); provento não entra, porque não muda
+> quantidade de ações; `ex_date` estritamente maior que `ref_date`, porque
+> evento na própria data de referência já está refletido na contagem
+> publicada.
+>
+> Sem isso, BBAS3 (2.865.417.024 ações no FRE 2022 -> 5.730.799.931 no FRE
+> 2023) teria o market cap subestimado em 50% na janela entre os dois
+> formulários, dobrando o E/P e jogando o papel para o quintil "barato" por
+> artefato mecânico — no papel mais líquido da bolsa.
+>
+> ### Bug encontrado ao implementar
+>
+> A primeira versão do upsert de `shares_outstanding` disparava UPDATE
+> sempre que `known_at` fosse NULL nos dois lados, contando mudança em todo
+> re-run e quebrando a idempotência já testada. Pego pelo teste de
+> re-execução que já existia. O `WHERE` passou a exigir buraco A PREENCHER
+> **e** valor novo PARA preencher.
+>
+> ### O que falta antes de rodar
+>
+> 1. **Re-ingerir o FRE** (`py -3.13 tools\ingest_fre_shares_real.py`) para
+>    popular `known_at` — as 846 linhas gravadas em 2026-09-05 estão com
+>    `known_at` NULL e cairiam no embargo antigo. O upsert faz backfill.
+> 2. **Re-medir a cobertura** (`tools/cobertura_h18.py`): a mudança de
+>    `known_at` altera QUANDO cada linha fica elegível, então os números de
+>    critério 3 e 4 mudam — para melhor de 2023 em diante (o dado passa a
+>    entrar ~10 meses antes) e para pior antes de 2023 (some o lookahead).
+>    O critério 5 só pode ser declarado APROVADO depois disso.
+> 3. **Verificar se a DFP também traz `DT_RECEB`** — se trouxer, o mesmo
+>    tratamento vale para H7/H9/H12/H13/H17 nas próximas rodadas. Não
+>    verificado; nada foi mudado na ingestão da DFP.
+>
+> Suíte: **370 verdes**. `trials.json` intacto em 15 tentativas.
+> H17/H18/H19 continuam NÃO EXECUTADAS.
+
+---
+
 ## Ingestão real de FRE/DFP e medição dos critérios de H18/H19 (2026-09-05)
 
 Primeira vez que a ingestão do FRE roda contra dado REAL. Origem: auditoria
