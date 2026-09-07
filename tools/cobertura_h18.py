@@ -160,7 +160,7 @@ def cobertura_por_rebalance(conn, cfg, desde):
 def main():
     cfg = load_config()
     desde = _arg("--desde", cfg.get("backtest", {}).get("test_start", "2018-01-01"))
-    conn = db.get_connection()
+    conn = db.get_readonly_connection()
     try:
         cobertura_bruta(conn)
         cobertura_por_rebalance(conn, cfg, desde)

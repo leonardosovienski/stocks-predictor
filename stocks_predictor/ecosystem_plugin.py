@@ -1,6 +1,6 @@
-"""Adapter mínimo do Stocks/RJ para o registry do ecosystem-predictor.
+"""Adapter mínimo do Stocks para o registry do ecosystem-predictor.
 
-A linha RJ ainda está em pesquisa. O adapter não transforma M0 em readiness,
+A linha H19 ainda está em pesquisa. O adapter não transforma testes em prontidão,
 não cria sinal econômico e não autoriza capital.
 """
 
@@ -18,7 +18,7 @@ class StocksPredictorPlugin:
             "version": "0.1.0",
             "details": {
                 "mode": "research",
-                "active_line": "predictor-rj",
+                "active_line": "H19_QUARTERLY_DISCOVERY",
                 "adapter": "plugin-v1",
             },
         }
@@ -29,13 +29,15 @@ class StocksPredictorPlugin:
             "supports_prediction": False,
             "supports_settlement": False,
             "supports_collection": False,
-            "scientific_status": "M0",
-            "predictive_status": "NOT_TESTED_REAL_DATA",
-            "economic_status": "NOT_DEFINED",
+            "scientific_status": "DISCOVERY_INCONCLUSIVE",
+            "predictive_status": "NO_VALIDATED_NET_EDGE",
+            "economic_status": "NO_GO",
             "capital_permission": "FORBIDDEN",
             "extra": {
                 "mode": "research",
-                "active_line": "predictor-rj",
+                "active_line": "H19_QUARTERLY_DISCOVERY",
+                "net_historical_replay_complete": False,
+                "historical_lines_preserved": ["H1-H18", "predictor-rj"],
                 "source_of_scientific_truth": "STOCKS_CURRENT_STATE.md",
             },
         }

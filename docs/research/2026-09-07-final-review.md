@@ -20,6 +20,11 @@ nesta janela seria exploratório. A revisão atual não revela retorno novo.
 
 ## Defeitos corrigidos
 
+- Os comandos consultivos `status`, `analyst`, `splits-review` e `cobertura_h18`
+  abriam a conexão que cria/migra o banco. A consulta agora usa SQLite somente
+  leitura, e `status` com banco ausente não cria nada. O adapter do ecossistema
+  informa H19 inconclusiva/NO_GO, alinhado ao estado corrente.
+
 - Venda parcial de ações negociáveis antes do crédito não reduzia o lote pendente.
   O lote podia exceder a posição restante e bloquear vendas posteriores indevidamente.
 - Compra junto a uma entrega ainda pendente era rejeitada, embora fosse possível

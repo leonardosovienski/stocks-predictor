@@ -23,7 +23,7 @@ continuidade histórica e devem ser interpretados pela data.
 - Ops: não é dependência declarada deste domínio no estado atual;
 - `vendor/predictor_core/` é preservado como artefato histórico de integridade e não é
   a dependência-alvo da arquitetura moderna;
-- CI: Python 3.13, Ruff, Pyright na linha RJ, pytest+coverage, build/wheel smoke e
+- CI: Python 3.13, Ruff, Pyright nos módulos RJ/H19 declarados, pytest+coverage, build/wheel smoke e
   gitleaks.
 
 A migração de infraestrutura não altera thresholds, famílias, universo, janelas,

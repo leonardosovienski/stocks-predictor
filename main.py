@@ -38,11 +38,12 @@ def _db_path(cfg):
     return pathlib.Path(override) if override else ROOT / cfg["data"]["db_path"]
 
 
-def _conn():
+def _conn(*, read_only=False):
     import config as cfg_mod
     import db
     cfg = cfg_mod.load_config()
-    return cfg, db.get_connection(_db_path(cfg))
+    connect = db.get_readonly_connection if read_only else db.get_connection
+    return cfg, connect(_db_path(cfg))
 
 
 def status() -> int:
@@ -71,15 +72,17 @@ def status() -> int:
 
     db_path = _db_path(cfg)
     print(f"\nbanco            : {db_path} "
-          f"({'existe' if db_path.exists() else 'será criado na 1ª conexão'})")
-    conn = db.get_connection(db_path)
+          f"({'existe' if db_path.exists() else 'ausente; status não cria banco'})")
     print("tabela           | linhas")
     print("-" * 30)
-    for table in ("prices_raw", "adjustments", "quarantine",
-                  "universe_snapshots", "decisions", "runs"):
-        n = conn.execute(f"SELECT COUNT(*) FROM {table}").fetchone()[0]
-        print(f"{table:<17}| {n}")
-    conn.close()
+    if db_path.is_file():
+        with closing(db.get_readonly_connection(db_path)) as conn:
+            tables = {r[0] for r in conn.execute("SELECT name FROM sqlite_master WHERE type='table'")}
+            for table in ("prices_raw", "adjustments", "quarantine", "universe_snapshots", "decisions", "runs"):
+                n = conn.execute(f"SELECT COUNT(*) FROM {table}").fetchone()[0] if table in tables else 'ausente'
+                print(f"{table:<17}| {n}")
+    else:
+        print("(nenhum banco existente; somente o estado do código foi consultado)")
 
     import trials_gate
     reg_trials = trials_gate.trials_path_from(cfg)
@@ -91,9 +94,9 @@ def status() -> int:
     else:
         print("\ntrials (DSR)     : registro ainda não criado (rode attest-power)")
 
-    print("\nmarcos           : M1–M6 completos. H1/H2/H4/H5 julgadas — nenhuma "
-          "comprovada (ver HANDOFF).")
-    print("testes           : uv run pytest -q")
+    print("\npesquisa         : H19 trimestral em Discovery; H18 controle; H17 inconclusiva.")
+    print("economia         : lucro líquido não validado; NO_GO para operar (ver HANDOFF).")
+    print("testes           : py -3.13 -m pytest -q")
     return 0
 
 
@@ -280,7 +283,7 @@ def _anchor(path_str: str) -> pathlib.Path:
 def cmd_splits_review(args) -> int:
     """M2 — exporta candidatos a split/grupamento (quarentena c/ proporção redonda) p/ CSV."""
     import adjust
-    cfg, conn = _conn()
+    cfg, conn = _conn(read_only=True)
     with closing(conn):
         out = _anchor(args[0] if args else "reports/splits_candidates.csv")
         out.parent.mkdir(parents=True, exist_ok=True)
@@ -306,7 +309,7 @@ def cmd_splits_import(args) -> int:
 def cmd_analyst(args) -> int:
     """Analista somente-leitura (§9b) — briefing consultivo em reports/ai/."""
     import analyst
-    cfg, conn = _conn()
+    cfg, conn = _conn(read_only=True)
     with closing(conn):
         stamp = args[0] if args else "adhoc"
         path = analyst.write_brief(conn, stamp=stamp)

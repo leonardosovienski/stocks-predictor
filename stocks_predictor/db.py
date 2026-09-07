@@ -401,6 +401,16 @@ def get_connection(db_path: pathlib.Path | str | None = None,
     return conn
 
 
+def get_readonly_connection(db_path: pathlib.Path | str | None = None) -> sqlite3.Connection:
+    """Open existing evidence without creation, WAL changes or migrations."""
+    path = pathlib.Path(db_path or os.getenv(DB_PATH_ENV) or DB_DEFAULT).resolve()
+    if not path.is_file():
+        raise FileNotFoundError(f"Banco de leitura ausente: {path}")
+    conn = sqlite3.connect(path.as_uri() + '?mode=ro', uri=True)
+    conn.execute('PRAGMA query_only=ON')
+    return conn
+
+
 def get_code_version() -> str:
     """Hash curto do git HEAD; 'unknown' fora de um checkout (ex.: cópia em rede limpa)."""
     try:

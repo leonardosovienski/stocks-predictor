@@ -8,6 +8,6 @@ def test_ecosystem_plugin_contract_shape():
     assert health["status"] == "WAITING"
     assert caps["domain"] == "stocks"
     assert caps["supports_prediction"] is False
-    assert caps["scientific_status"] == "M0"
-    assert caps["economic_status"] == "NOT_DEFINED"
+    assert caps["scientific_status"] == "DISCOVERY_INCONCLUSIVE"
+    assert caps["economic_status"] == "NO_GO"
     assert caps["capital_permission"] == "FORBIDDEN"

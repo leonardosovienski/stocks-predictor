@@ -111,7 +111,7 @@ def write_brief(conn, out_dir=None, stamp="adhoc"):
 
 def main():
     import db
-    conn = db.get_connection()
+    conn = db.get_readonly_connection()
     try:
         print(f"briefing: {write_brief(conn)}")
     finally:

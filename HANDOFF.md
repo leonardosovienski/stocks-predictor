@@ -1,5 +1,13 @@
 ## Revisão final solicitada pelo usuário (2026-09-07)
 
+Revisão adicional da CLI: status, analyst, splits-review e cobertura_h18 abriam
+o conector de escrita/migrações apesar de serem consultas. Agora usam conexão
+SQLite mode=ro/query_only; status com banco ausente não cria arquivo nem diretório.
+O adapter do ecossistema passa a declarar H19 Discovery inconclusiva/NO_GO, sem
+habilitar previsão, liquidação ou capital. Cinco regressões protegem leitura e
+preservação de schema antigo. A primeira passagem completa da revisão passou
+587 testes; uma nova passagem validará também esta correção adicional.
+
 Revisão de código, histórico H1–H19, documentação, fonte e capacidade do executor.
 Corrigidos consumo de entregas em vendas parciais e compras junto a lotes pendentes;
 termos societários futuros agora exigem evento de revisão, sem antecipar quantidade.
