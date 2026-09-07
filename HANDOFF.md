@@ -1,3 +1,18 @@
+## H18/H19: quatro observações reais concluídas (2026-09-07)
+
+Código d8d93b26c217fbd5e45a745b9c5e208dc2ffc1a2: 504 testes passaram em 138,62 s,
+cobertura 82%, Ruff no escopo CI, Pyright configurado, wheel e import externo aprovados.
+H18 mensal/trimestral e H19 mensal/trimestral foram medidas e todas ficaram NO_PRIORITY_UPGRADE.
+Spreads nos períodos completos são positivos, mas são condicionais. H19 tem IC positivo nas duas
+metades; cenários adversos de faltantes falham. Não há GO ou estimativa de lucro líquido.
+
+A primeira saída está preservada no ledger `docs/research/2026-09-07-value-observations.jsonl`.
+Não tratar H18/H19 como protegidas ou nunca vistas novamente. Contagens mínimas: 20 configurações,
+21 avaliações; nenhuma Proof. Auditoria após a primeira saída identificou preço AMER3 após 19/01/2023
+no COTAHIST sob BDI 08, embora o extrato antigo só contenha BDI 02. NATU3 e PSSA3 têm bonificação
+B3 e legado rotulado split contados duas vezes. Preparar correção de medição registrada,
+preservando seleções e saídas originais, antes de qualquer reavaliação.
+
 ## H18/H19: novo diagnóstico registrado, ainda sem observação (2026-09-07)
 
 O usuário pediu continuidade autônoma e autorizou mudanças de método. A revisão H1-H16
