@@ -1,0 +1,56 @@
+{
+  "scientific_state": "DISCOVERY_H19_NET_INCONCLUSIVE_DATA_QUALITY",
+  "runtime_commit": "5e71bc8642cc2b0759e8a1885cab446e315121fd",
+  "full_history_executed": false,
+  "net_profit": null,
+  "new_return_evaluations": 0,
+  "budget_minimum": {
+    "configurations": 32,
+    "historical_return_evaluations": 37
+  },
+  "capital_brl": [
+    5000,
+    10000
+  ],
+  "user_minimum_annual_profit": null,
+  "user_monthly_maintenance_hours": null,
+  "first_entry_checks": 4,
+  "full_tests": 558,
+  "seconds": 154.91,
+  "queue_summary": {
+    "queue_rows": 778,
+    "selected_rows": 133,
+    "reviewed_payment_rows": 144,
+    "selected_reviewed_payment_rows": 107,
+    "without_candidate_date": 545,
+    "selected_without_candidate_date": 16
+  },
+  "issue_counts": {
+    "CASH_COVERAGE": 1237,
+    "CASH_EVENT_FIELD": 4221,
+    "CASH_CHRONOLOGY": 632,
+    "EXECUTION_CHECK": 4,
+    "CORPORATE_TAX_AND_DELIVERY": 12,
+    "ORDINARY_STOCK_ACTION_DELIVERY_AND_BASIS": 24,
+    "JBS_HISTORY_TRUNCATED": 1
+  },
+  "archive": {
+    "archive": "STOCKS_H19_CAIXA_TESTADO_V2.zip",
+    "sha256": "8f9e8375c77c9575c12447e69a85d2888e1a827a9943c15b75cac276f5f79b7e",
+    "bytes": 89780196,
+    "payload_files": 1056,
+    "archive_entries": 1057,
+    "offline_replay": "PASS_EXPECTED_BLOCKED_STATUS",
+    "repeated_output_identical": true,
+    "output_sha256": "457b94faa2e26522e4b1a2c75673a3e50863ad2bff5a47cdb16d07980e0f316f",
+    "exit_code": 2,
+    "historical_profit": null,
+    "first_entry_checks": 4,
+    "source_databases_unchanged": {
+      "C:\\Users\\Superleo13\\stocks-predictor-work\\data\\stocks.db": "a22739794ba4a43a11544338d4a91e14cb6a0b1f7b132ab460f96d3359f63cf4",
+      "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-06\\files-pasted-by-the-user-autonomous\\work\\stocks-tested-real-v2-20260907.db": "a8238568980d3303890b04590cfb5c55ab2d24c9271edd86820269336b09679a"
+    }
+  },
+  "next_irreversible_decision": "Observe continuous net-wealth returns only after complete reviewed inputs and implementation checks; no such observation in this round",
+  "promote": false
+}

@@ -10,7 +10,11 @@ Não chamar esse módulo de simulador econômico concluído.
 
 19 testes de invariantes passaram, incluindo anti-lookahead, caixa futuro,
 direitos após venda, rollback de rebalanceamento e isenção sem contar compras
-como vendas. Suíte geral, lint e build serão executados em commit limpo.
+como vendas. Commit 5e71bc8642cc2b0759e8a1885cab446e315121fd passou a suíte
+completa: 558 testes em 154,91 s, cobertura geral 79%, módulo novo 85%.
+Ruff CI, Pyright no escopo RJ configurado, build e importação externa da wheel
+passaram. Quatro testes da PRIMEIRA COMPRA com fontes reais (02/07/2018)
+fecharam o caixa para R$5/10 mil e 18/36 pb por lado. Não são backtests.
 Nenhuma dependência nova de runtime. Fontes oficiais de referência fiscal:
 Receita /renda-variavel/bolsa-de-valores-1/{isencoes,compensacoes,bolsa-de-valores};
 Lei 11.033/2004 art.3; Lei 9.249/1995 e LC224/2025 para JCP. Alíquota líquida
@@ -23,6 +27,24 @@ Aviso Cogna de 18/12/2025, anexo I p.3: parcela .04858806025 prevista para
 As revisões são de pagamento declarado, não de crédito em conta do investidor.
 Não houve nova observação de retorno: >=32 configurações / >=37 avaliações.
 Bancos anteriores e seleções preservados; sem Proof, ordens ou gastos.
+
+Resultado final desta rodada: 144/778 linhas com pagamento individual
+conciliado, 107/133 selecionadas. Mais duas linhas ALSO foram normalizadas em
+duas parcelas com pagamento em 24/05 e 26/07/2023; não deduplicar nem antecipar.
+Restam 545 linhas sem data candidata na fila original, 16 selecionadas; exclui
+11 eventos JBS posteriores e caixa ordinário dos sucessores. Três pagamentos
+VIVT foram conferidos visualmente no PDF escaneado, incluindo valor líquido.
+Não confundir data conciliada com cobertura integral. Auditoria exige 1.237
+intervalos de ambas as carteiras, 236 selecionados, incluindo sucessores.
+12 reorganizações e 24 eventos ordinários têm pendências de entrega/frações/
+custo fiscal no conjunto. Selecionadas: TIMP, BRML, SOMA e CRFB.
+
+Pacote de AUDITORIA V2 (não simulador contínuo) reproduzido offline numa pasta
+nova: 1.056 payloads SHA256, duas saídas idênticas, exit 2 esperado por dados
+incompletos. ZIP SHA256 8f9e8375c77c9575c12447e69a85d2888e1a827a9943c15b75cac276f5f79b7e.
+V1 preservada; V2 integra parcelas ALSO. Nenhum lucro novo calculado. Estado
+líquido INCONCLUSIVE_DATA_QUALITY com integração pendente; não promover H19
+ou abrir H20 para contornar. Relatório em docs/research/2026-09-07-h19-retail-results.md.
 
 ## H19 trimestral: piloto de fontes de caixa, execução ainda pendente (2026-09-07)
 
