@@ -1,3 +1,14 @@
+### Resultado intermediário da integração real (sem resultados científicos)
+
+A primeira matriz mecânica encontrou 32 controles corretos e quatro falhas ENGI no preço
+`worst` (dois capitais × dois custos). A compra pelo preço adverso conservava um alvo residual
+calculado na abertura; após bonificação e alta, esse alvo gerava venda sem novo sinal.
+Corrigido: dimensionar a compra incremental pelo preço adverso efetivo. Regressão sintética
+confere conclusão da ordem sem venda posterior. Também há rejeição explícita quando uma
+bonificação cria lote ímpar que exigiria cotação de outro mercado para execução.
+A primeira suíte completa passou 461 testes; depois desta correção a suíte será repetida.
+A matriz completa precisa ser repetida porque a regra comum de execução foi corrigida.
+
 ## 2026-09-07 — Protocolo de integração real registrado antes da execução
 
 Atendimento ao pedido do operador para completar o necessário e testar, na cópia isolada.

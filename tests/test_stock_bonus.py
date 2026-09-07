@@ -72,3 +72,21 @@ def test_lot_rounding_keeps_cash_and_pays_only_actual_trade_cost():
     assert len(result["executions"]) == 1
     assert result["cash"] == pytest.approx(190.4)
     assert result["nav"][-1] == pytest.approx(4990.4)
+
+
+def test_adverse_buy_completes_its_budget_and_does_not_turn_into_a_later_sale():
+    bars = {"A": {d: (100, 110) if d <= DAYS[1] else (120, 120) for d in DAYS}}
+    result = simulation.simulate_portfolio(DAYS, bars, {DAYS[0]: {"A": 1}}, initial_cash=5000,
+                                          cost_per_side=0.0018, price_mode="worst")
+    assert len(result["executions"]) == 1
+    assert result["pending_orders"] == {}
+    assert result["holdings"]["A"] == pytest.approx(5000 / (110 * 1.0018))
+
+
+def test_board_lot_setting_does_not_silently_sell_bonus_odd_lots():
+    bars = {"A": {d: (100, 100) for d in DAYS}}
+    with pytest.raises(ValueError, match="odd lots"):
+        simulation.simulate_portfolio(
+            DAYS, bars, {DAYS[0]: {"A": 1}, DAYS[-2]: {}}, initial_cash=10000,
+            cost_per_side=0, quantity_step=100, stock_events={"A": [(DAYS[3], DAYS[-1], 0.1)]},
+        )

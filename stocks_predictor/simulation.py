@@ -227,10 +227,18 @@ def simulate_portfolio(
                 if is_buy != buying:
                     continue
                 price = (max(quote) if buying else min(quote)) if price_mode == "worst" else mid
-                desired = desired_value / mid
+                # Under adverse fills, spend the intended incremental notional
+                # at the adverse price. Dividing by the opening mark would ask
+                # for unaffordable extra shares and leave a residual order that
+                # could later turn into an unintended sale after a bonus/rally.
+                desired = (
+                    current + (desired_value - current * mid) / price if buying else desired_value / mid
+                )
                 if quantity_step:
                     desired = math.floor(desired / quantity_step + 1e-10) * quantity_step
                 delta = desired - current
+                if quantity_step and abs(delta / quantity_step - round(delta / quantity_step)) > 1e-8:
+                    raise ValueError("corporate-action odd lots require a separate execution market")
                 if abs(delta * price) < initial_cash * 1e-12:
                     pending.pop(ticker)
                     continue
