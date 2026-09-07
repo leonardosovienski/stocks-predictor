@@ -1,3 +1,23 @@
+## H18/H19: pesquisa executada e correção concluída (2026-09-07)
+
+As quatro configurações foram reavaliadas com as seleções congeladas: todas permanecem
+NO_PRIORITY_UPGRADE pelo critério registrado. H19 tem IC positivo em ambas as metades,
+mas não passa o cenário adverso e o obstáculo econômico. Sem lucro líquido demonstrado.
+Foram recuperadas 28 células, zero retornos já medidos alterados. Faltam 17 retornos no
+mensal e 18 no trimestral por família, ou 35 intervalos distintos de eventos/instrumentos.
+Não promover H19 por seu spread condicional favorável; H18 perde prioridade por instabilidade.
+
+Último código validado: 2a86e0cf4c6dac53c267390e57235d3ad6b87a80; 515 testes em 140,09 s,
+cobertura 81%, lint no CI, Pyright configurado e wheel fora do checkout aprovados. Nenhuma
+dependência de runtime nova. A primeira versão passou 504 testes; ambas saídas ficam preservadas.
+
+Resultados, limites, regra de parada e decisão econômica em
+`docs/research/2026-09-07-value-results.md` e `2026-09-07-value-decision.json`.
+Ledger append-only atualizado: >=20 configurações, >=25 avaliações históricas mínimas;
+busca adaptativa antiga desconhecida, nenhuma Proof. H17/H18/H19 já foram observadas.
+Nenhuma variante H20 ou ajuste de parâmetro foi aberto para escapar da decisão negativa.
+Autonomia do usuário para pesquisa reversível continua válida; ordens/gastos não autorizados.
+
 ## H18/H19: correção de medição registrada, ainda sem nova saída (2026-09-07)
 
 `discovery_value_repair.py` relê as mesmas quatro seleções da primeira observação,
