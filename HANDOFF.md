@@ -1,3 +1,24 @@
+## H18/H19: reorganizações executadas, sem promoção (2026-09-07)
+
+Código 54fd8643ef43c3b8182deb0d82a8e186498f1f91: 533 testes em 153,45 s; cobertura 80%,
+Ruff CI, Pyright configurado, build e importação externa aprovados. 35 intervalos/70 células
+passaram a ter marca diagnóstica; zero retornos já medidos, fatores ou seleções alterados.
+Todos os 93 meses e 31 trimestres elegíveis estão medidos nesta definição. Isso NÃO fecha
+o cadastro de retorno total, frações ou entrega física. Direitos de subscrição a zero,
+dividendos/JCP ordinários omitidos e valores de reorganizações brutos continuam explícitos.
+
+Todas as quatro configurações NO_PRIORITY_UPGRADE. H19 trimestral estável, +0,358834 p.p.
+por mês após desconto de 72 pb por trimestre, abaixo de 0,42 p.p. H19 mensal negativa
+em estresse. H18 tem IC negativo na primeira metade. Nenhum GO, Proof ou lucro líquido.
+Contagem >=24 configurações e >=29 avaliações históricas; manter saídas anteriores.
+
+Checagem seguinte executada sem novos retornos: H19 trimestral tem 40,16% de peso-alvo
+em nomes novos por rebalanceamento; isso NÃO mede giro real. Nenhuma das 233 posições
+selecionadas tem cobertura integral de caixa já verificada (cadastro só ABEV/ENGI).
+Próximo passo, se barato: obter cobertura primária e medir execução das MESMAS seleções,
+sem tunar fator/período/régua. Regras de parada e cinco ações em reorganization-results.md;
+viabilidade em next-execution-feasibility.json. H11 e ML não foram reabertos.
+
 ## H18/H19: diagnóstico de reorganizações registrado (2026-09-07)
 
 Continuidade solicitada pelo usuário. Protocolo de preço mais direitos compulsórios,
