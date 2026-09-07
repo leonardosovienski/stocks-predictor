@@ -1,3 +1,14 @@
+## H17 Discovery: protocolo registrado antes da observação (2026-09-07)
+
+O pedido do usuário para completar o necessário e rodar será atendido pelo diagnóstico
+explícito `python -m stocks_predictor.discovery_h17`, com argumentos de arquivos e resultado
+append-only. O protocolo e a [justificativa](docs/research/2026-09-07-h17-registration.md)
+estão registrados antes de qualquer IC/spread da H17. Não é P&L executável nem confirmação.
+Dados: identidade histórica COTAHIST, documentos DFP/FCA já públicos, eventos B3 e cruzamento
+secundário Yahoo. Sem dependência nova. Todos os inputs são lidos em modo somente leitura.
+Após a execução, registrar o primeiro resultado e o consumo da família H17; H18/H19 seguem
+protegidas. O diagnóstico não altera os lacres ou runners formais antigos.
+
 ## Integração real concluída em 2026-09-07
 
 Motor v3 corrigido: bonificação com direito/entrega separados e dimensionamento correto no
