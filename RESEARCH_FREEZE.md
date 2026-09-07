@@ -1,3 +1,16 @@
+## H17 Discovery observada em 2026-09-07 — atualização de exposição
+
+H17 já teve outputs observados no protocolo `H17-DISCOVERY-PRICE-DIAGNOSTIC-1`.
+Foram duas revisões de medição, preservadas no ledger
+`docs/research/2026-09-07-h17-observations.jsonl`, com 16 candidatos nominais expostos
+e pelo menos 17 avaliações históricas de retorno, sem denominador adaptativo completo.
+O resultado corrigido é INCONCLUSIVE_DATA_QUALITY: IC disponível médio -0,013201,
+spread mensal condicionado a meses completos -0,161341 p.p., 47/5.399 células sem
+retorno validado. Não há P&L executável nem confirmação. Nenhum lacre antigo foi
+alterado e os runners formais permanecem bloqueados. H18/H19 seguem não observadas.
+As afirmações históricas abaixo de que nenhum retorno H17 foi visto são superadas
+por este registro. Não reutilizar H17 como confirmação nunca observada.
+
 ## Integração real concluída em 2026-09-07
 
 Motor v3 corrigido: bonificação com direito/entrega separados e dimensionamento correto no
