@@ -1,3 +1,17 @@
+# Atualização 2026-09-07 — H17 Discovery observada
+
+H17 agora tem duas saídas históricas de um único protocolo exploratório: primeira
+medição e correção documentada de quatro falsas divergências de fatores. A última
+execução completou 94 meses elegíveis, mediu 5.352/5.399 células e classificou a
+rodada como INCONCLUSIVE_DATA_QUALITY. IC disponível médio -0,013201; diferença
+mensal apenas nos 59 meses completos -0,161341 p.p. Sem rentabilidade executável,
+holdout intacto identificado, GO ou confirmação. H18/H19 seguem não observadas.
+
+Código testado `4f487098e702004a88f02fe65d62a008c6df618b`, 483 testes aprovados.
+Ver os registros append-only em `docs/research/2026-09-07-h17-observations.jsonl`
+e `docs/research/2026-09-07-h17-budget-update.json`. Os estados abaixo são históricos
+e suas referências a H17 nunca vista foram superadas por esta atualização.
+
 ## Integração real concluída em 2026-09-07
 
 Motor v3 corrigido: bonificação com direito/entrega separados e dimensionamento correto no
@@ -156,16 +170,3 @@ sobre H17-H19 antes da rodada real e do pedágio.
 3. `.github/workflows/ci.yml` — ambiente canônico de validação;
 4. `poc_leak.py` e testes de import/replay — preservação e regressão anti-drift;
 5. Git/CI — evidência mecânica atual.
-# Atualização 2026-09-07 — H17 Discovery observada
-
-H17 agora tem duas saídas históricas de um único protocolo exploratório: primeira
-medição e correção documentada de quatro falsas divergências de fatores. A última
-execução completou 94 meses elegíveis, mediu 5.352/5.399 células e classificou a
-rodada como INCONCLUSIVE_DATA_QUALITY. IC disponível médio -0,013201; diferença
-mensal apenas nos 59 meses completos -0,161341 p.p. Sem rentabilidade executável,
-holdout intacto identificado, GO ou confirmação. H18/H19 seguem não observadas.
-
-Código testado `4f487098e702004a88f02fe65d62a008c6df618b`, 483 testes aprovados.
-Ver os registros append-only em `docs/research/2026-09-07-h17-observations.jsonl`
-e `docs/research/2026-09-07-h17-budget-update.json`. Os estados abaixo são históricos
-e suas referências a H17 nunca vista foram superadas por esta atualização.
