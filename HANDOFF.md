@@ -1,3 +1,26 @@
+## H18/H19: novo diagnóstico registrado, ainda sem observação (2026-09-07)
+
+O usuário pediu continuidade autônoma e autorizou mudanças de método. A revisão H1-H16
+preserva os 15 vereditos NOT_SUPPORTED mas distingue a qualidade desigual da medição;
+nenhum resultado antigo foi recalculado ou promovido. H17 permanece observada/inconclusiva.
+
+`discovery_value.py` registra quatro configurações: lucro/preço H18 e patrimônio/preço H19,
+cada uma mensal e trimestral. Proxy explicitamente defasada: capital original do mesmo DFP,
+líquido de tesouraria, somente classe ON única, traduzido por eventos de unidade conhecidos.
+Lucro/equity são atribuíveis ao controlador no consolidado; `disclosed_accounting.py` atende
+os diferentes layouts, sem fallback para balanço individual. Nenhuma dependência nova.
+
+Protocolo: `docs/research/2026-09-07-value-discovery-protocol.json`, hash semântico
+`b6a2cc4ba4cbe8fb2d614427ad4d26a3193c7943bbba4e4c9449982ff72a1dde`.
+745/750 capitais obtidos; 748 lucros e 750 patrimônios atribuídos; mediana 39 nomes,
+93/96 meses com pelo menos 20 nomes. Isso é cobertura, sem associação com retornos ainda.
+21 testes específicos passaram. A suíte geral será executada no commit limpo antes de medir.
+
+Orçamento após as quatro saídas: >=20 configurações nominais e >=21 avaliações históricas
+de retorno; busca adaptativa antiga continua desconhecida. Apenas duas famílias Discovery,
+nenhuma Proof. Todas as saídas, faltantes e cenário adverso fixado serão preservados.
+Não há holdout histórico intacto, GO, lucro executável ou autorização para ordens/gastos.
+
 ## H17: diagnóstico corrigido executado (2026-09-07)
 
 Código `4f487098e702004a88f02fe65d62a008c6df618b`: 483 testes em 138,36 s, cobertura

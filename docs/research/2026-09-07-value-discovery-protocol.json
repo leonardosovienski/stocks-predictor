@@ -1,0 +1,101 @@
+{
+  "protocol_id": "H18-H19-DISCOVERY-DISCLOSED-CAPITAL-1",
+  "registered_at_utc": "2026-09-07T06:17:44.288350+00:00",
+  "phase": "DISCOVERY",
+  "candidate_results_observed_before_registration": false,
+  "previous_shared_price_history_exposed": true,
+  "untouched_historical_holdout_claim": false,
+  "reason_for_revision": "User authorizes changes. Test an explicitly stale observable valuation proxy before paying for exact dynamic capitalization and full return reconstruction.",
+  "fixed_trials_in_order": [
+    {
+      "family": "H18",
+      "holding_months": 1
+    },
+    {
+      "family": "H18",
+      "holding_months": 3
+    },
+    {
+      "family": "H19",
+      "holding_months": 1
+    },
+    {
+      "family": "H19",
+      "holding_months": 3
+    }
+  ],
+  "hypothesis": {
+    "H18": "Higher consolidated earnings attributable to parent shareholders divided by disclosed-capital price proxy predicts higher subsequent price returns.",
+    "H19": "Higher consolidated equity net of noncontrolling interests divided by disclosed-capital price proxy predicts higher subsequent price returns."
+  },
+  "source_universe": "Existing 96 PIT CNPJ-deduplicated monthly top-60 snapshots, January 2018 through December 2025. No current-provider survival screen.",
+  "source_metadata": "Exact CNPJ, fiscal date, DFP version, original receipt date and document id. Both FCA security and DFP already public by signal; date-only receipt usable the next calendar day.",
+  "capital": "Original CVM document capital HTML, own Unidade or Mil scale, issued minus treasury ordinary shares. Preferred issued shares must equal zero. Unknown capital/treasury remains missing.",
+  "accounting": "Consolidated DRE unique parent-company attribution below net income; BPP consolidated equity root minus explicit NCI. No individual-statement, obsolete-version or zero fallback. Monetary amounts in BRL. Annual earnings duration 330 through 400 days.",
+  "capital_proxy": "Reported outstanding ordinary shares divided by product of mechanical price adjustment factors with fiscal_date < ex_date <= signal, multiplied by raw signal close normalized by quote factor.",
+  "proxy_limitations": [
+    "Not exact live market capitalization; buybacks and unrecorded issuances after the fiscal date are not fully covered.",
+    "Known intervening unsupported capital events, factor conflicts and unexplained adjusted overnight moves over 30% cause causal feature abstention.",
+    "Corporate-action archives acquired today are retrospective reconstructions; date filtering is not a complete historical publication audit.",
+    "Treasury and financial numerators may be stale; rounded share disclosures retain their precision.",
+    "Price screens omit dividends, JCP, taxes, cash payment timing, execution sizing and a cash-rate opportunity benchmark."
+  ],
+  "causal_eligibility": {
+    "report_max_age_days": 550,
+    "median_daily_volume_min_brl": 1000000,
+    "same_ordinary_ISIN_from_fiscal_date_to_signal": true,
+    "fiscal_date_prior_quote_max_calendar_days": 10,
+    "minimum_factor_names": 20
+  },
+  "portfolio": "Highest floor(N/5) signed ratios, equal weights, ties by ascending ticker. Cohort universe benchmark equal weights over every eligible factor name.",
+  "execution_intervals": "Signal at month end, enter first market open strictly after signal, exit first market open after the end of month signal_month+holding_months. Quarterly signals March/June/September/December.",
+  "outcomes": "Reuse corrected H17 price measurement: splits/groups/bonus mathematical units; no cash returns. Exact entry/exit quotes and instrument continuity required. Unsupported noncash actions and unexplained adjusted overnight moves >30% stay missing.",
+  "missingness": "Keep every selected and unselected member. Report available-case IC and complete-period spread as conditional statistics. Additionally evaluate all eligible periods with missing selected returns -100%, missing other returns +100%; identical assigned outcome in strategy and benchmark. This is an adverse scenario, not a mathematical bound; upside is unbounded.",
+  "cost_scenarios": "Subtract 36bp and stress 72bp from cohort spread per holding period; benchmark incremental cost treated as zero, conservatively. Haircuts are hurdles, not calibrated executable net P&L. Divide arithmetic spread by holding months only for comparability.",
+  "resource_decision_rule": {
+    "minimum_periods": "36 monthly or 12 quarterly, and >=12 monthly or >=4 quarterly in each fixed half",
+    "fixed_halves": [
+      "2018-2021",
+      "2022-2025"
+    ],
+    "stability": "Positive available-case mean IC and positive mean adverse-missing spread after 72bp in BOTH fixed halves",
+    "materiality": "Overall adverse-missing mean spread after 72bp >=0.0042 per month equivalent",
+    "economic_scale": "0.42%/month is an approximate R$500/year incremental research hurdle on R$10k, not a forecast. User only confirmed R$5-10k capital; profit floor and maintenance budget remain unconfirmed.",
+    "pass": "PRIORITIZE_TOTAL_RETURN_AND_EXECUTION_REPAIR",
+    "fail": "NO_PRIORITY_UPGRADE, or INSUFFICIENT_DISCOVERY_COVERAGE; neither proves absence of total-return edge"
+  },
+  "search_budget": {
+    "previous_legacy_candidates_minimum": 15,
+    "previous_H17_candidates": 1,
+    "previous_observed_return_evaluations_minimum": 17,
+    "new_configurations": 4,
+    "nominal_configurations_after_minimum": 20,
+    "observed_evaluations_after_minimum": 21,
+    "active_discovery_families": [
+      "H18",
+      "H19"
+    ],
+    "proof_trials": 0,
+    "unknown_historical_adaptive_search": true,
+    "frequency_variants_are_counted": true,
+    "post_result_parameter_tuning_authorized_by_this_protocol": false
+  },
+  "input_sha256": {
+    "work/h17-run-pack-v2/data/quotes.db": "30ce8e91fba9cb0a0c09571be71821c9da2d0aec49d12ec15aab8b26522ffd2c",
+    "work/h17-run-pack-v2/data/snapshots.json": "774ac1ed0225d6306421f86c25d87e665d6999c0356be71f24cddebd5d673cee",
+    "work/h17-run-pack-v2/data/events.json": "396f7c42164b729bf78493c1c8b7b0e5372054a8f9b65158c6ef3bb7975c6795",
+    "work/h17-run-pack-v2/data/identity/identity-2016.jsonl": "2cf5727ac460538bf9eafa9152927ee05c694a89111e4192f231fd9204b64207",
+    "work/h17-run-pack-v2/data/identity/identity-2017.jsonl": "d6ea7f8cf15907a1e80d89ef23f137d7c3396b7f43c43790bf5236996183ec24",
+    "work/h17-run-pack-v2/data/identity/identity-2018.jsonl": "47311139b8dd2d6f28d703bac1dcc240193173ee4a61f50636ee8eeace3c62bf",
+    "work/h17-run-pack-v2/data/identity/identity-2019.jsonl": "ef7fba4daad7c16626df85d44618378baff3fa117d682038048b3e0853cd3888",
+    "work/h17-run-pack-v2/data/identity/identity-2020.jsonl": "eb3ffcef338d43b3a2a6cad1f5a2485bd184f3bc46357797e3d18ac4ca11fa6c",
+    "work/h17-run-pack-v2/data/identity/identity-2021.jsonl": "1211d44d1b190352d15c80fc93a5d3d91bdbd47b58fb4017e98314db23e12646",
+    "work/h17-run-pack-v2/data/identity/identity-2022.jsonl": "3e53300fc105165cd68d6ad1bcad8855d898b722635294947f6794384303a486",
+    "work/h17-run-pack-v2/data/identity/identity-2023.jsonl": "1e664696c8b70a06a9f7c2034aad5a67dbc62c33e285d20e105d186b7a96f416",
+    "work/h17-run-pack-v2/data/identity/identity-2024.jsonl": "c779b31cd9d47b494f45e698775076595280abbbb464736536cb70a55610e677",
+    "work/h17-run-pack-v2/data/identity/identity-2025.jsonl": "02d17ce5a039b6bcd84c10cd3fd7caaa3ee52617bace7e1138c20d4d6fe4b290",
+    "work/h17-run-pack-v2/data/identity/identity-2026.jsonl": "5dc6256a13bf368964bc16720f5781646c74a4d649f5df2722c3319049aef893",
+    "work/value-capital-source/acquisition-retried.json": "ed225ab6571324f2036b20fc8b1ded3e47969aae77efd8471d0501381953b37d",
+    "work/value-capital-source/accounting-v2.json": "f049dd9f9b8b9f011007af0f63934929edb6aca5c9f0cbb3de3b21c66ed225a6"
+  }
+}

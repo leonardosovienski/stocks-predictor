@@ -1,0 +1,307 @@
+{
+  "review_type": "READ_ONLY_POST_REPAIR_RELIABILITY_REVIEW",
+  "historical_trials": 15,
+  "H3_executed": false,
+  "new_return_observations": 0,
+  "families": [
+    {
+      "hypothesis": "H1",
+      "trial_name": "h1-momentum-12-1",
+      "mechanism": "momentum 12-1",
+      "historical_official_verdict_preserved": "NOT_SUPPORTED",
+      "updated_reliability": "INCONCLUSIVE_METHOD",
+      "execution_ready_alpha_evidence": false,
+      "material_reopening_basis": "Demonstrated data/execution errors, only through a separate disclosed replication protocol.",
+      "automatic_reopening": false,
+      "issues": [
+        "Historical quantities not carried self-financing between rebalance dates; daily averages implement an implicit reset.",
+        "Quarantine resolution uses its current state, rather than resolution known at each historical signal.",
+        "Missing quotes and terminal delistings do not have a fully documented settlement model.",
+        "Shared adaptive historical window; no intact confirmation sample demonstrated.",
+        "Signal uses the same closing price from which evaluated returns start, despite next_open configuration.",
+        "Benchmark is a daily average over available assets, not self-financing buy-and-hold with symmetric costs.",
+        "Price-only target omits cash distributions, with a strategy-dependent relative bias."
+      ]
+    },
+    {
+      "hypothesis": "H2",
+      "trial_name": "h2-lowvol-252",
+      "mechanism": "low volatility",
+      "historical_official_verdict_preserved": "NOT_SUPPORTED",
+      "updated_reliability": "INCONCLUSIVE_METHOD",
+      "execution_ready_alpha_evidence": false,
+      "material_reopening_basis": "Demonstrated data/execution errors, only through a separate disclosed replication protocol.",
+      "automatic_reopening": false,
+      "issues": [
+        "Historical quantities not carried self-financing between rebalance dates; daily averages implement an implicit reset.",
+        "Quarantine resolution uses its current state, rather than resolution known at each historical signal.",
+        "Missing quotes and terminal delistings do not have a fully documented settlement model.",
+        "Shared adaptive historical window; no intact confirmation sample demonstrated.",
+        "Signal uses the same closing price from which evaluated returns start, despite next_open configuration.",
+        "Benchmark is a daily average over available assets, not self-financing buy-and-hold with symmetric costs.",
+        "Price-only target omits cash distributions, with a strategy-dependent relative bias."
+      ]
+    },
+    {
+      "hypothesis": "H4",
+      "trial_name": "h4-invvol-sizing-252",
+      "mechanism": "inverse-volatility sizing",
+      "historical_official_verdict_preserved": "NOT_SUPPORTED",
+      "updated_reliability": "WEAK_NEGATIVE_UNDER_LEGACY_MEASUREMENT",
+      "execution_ready_alpha_evidence": false,
+      "material_reopening_basis": "Demonstrated data/execution errors, only through a separate disclosed replication protocol.",
+      "automatic_reopening": false,
+      "issues": [
+        "Historical quantities not carried self-financing between rebalance dates; daily averages implement an implicit reset.",
+        "Quarantine resolution uses its current state, rather than resolution known at each historical signal.",
+        "Missing quotes and terminal delistings do not have a fully documented settlement model.",
+        "Shared adaptive historical window; no intact confirmation sample demonstrated.",
+        "Signal uses the same closing price from which evaluated returns start, despite next_open configuration.",
+        "Benchmark is a daily average over available assets, not self-financing buy-and-hold with symmetric costs.",
+        "Price-only target omits cash distributions, with a strategy-dependent relative bias."
+      ]
+    },
+    {
+      "hypothesis": "H5",
+      "trial_name": "h5-strev-21",
+      "mechanism": "21-day reversal",
+      "historical_official_verdict_preserved": "NOT_SUPPORTED",
+      "updated_reliability": "STRONGEST_NEGATIVE_UNDER_LEGACY_MEASUREMENT",
+      "execution_ready_alpha_evidence": false,
+      "material_reopening_basis": "Demonstrated data/execution errors, only through a separate disclosed replication protocol.",
+      "automatic_reopening": false,
+      "issues": [
+        "Historical quantities not carried self-financing between rebalance dates; daily averages implement an implicit reset.",
+        "Quarantine resolution uses its current state, rather than resolution known at each historical signal.",
+        "Missing quotes and terminal delistings do not have a fully documented settlement model.",
+        "Shared adaptive historical window; no intact confirmation sample demonstrated.",
+        "Signal uses the same closing price from which evaluated returns start, despite next_open configuration.",
+        "Benchmark is a daily average over available assets, not self-financing buy-and-hold with symmetric costs.",
+        "Price-only target omits cash distributions, with a strategy-dependent relative bias."
+      ]
+    },
+    {
+      "hypothesis": "H6",
+      "trial_name": "h6-momentum-6-1",
+      "mechanism": "momentum 6-1",
+      "historical_official_verdict_preserved": "NOT_SUPPORTED",
+      "updated_reliability": "INCONCLUSIVE_METHOD",
+      "execution_ready_alpha_evidence": false,
+      "material_reopening_basis": "Demonstrated data/execution errors, only through a separate disclosed replication protocol.",
+      "automatic_reopening": false,
+      "issues": [
+        "Historical quantities not carried self-financing between rebalance dates; daily averages implement an implicit reset.",
+        "Quarantine resolution uses its current state, rather than resolution known at each historical signal.",
+        "Missing quotes and terminal delistings do not have a fully documented settlement model.",
+        "Shared adaptive historical window; no intact confirmation sample demonstrated.",
+        "Signal uses the same closing price from which evaluated returns start, despite next_open configuration.",
+        "Benchmark is a daily average over available assets, not self-financing buy-and-hold with symmetric costs.",
+        "Price-only target omits cash distributions, with a strategy-dependent relative bias."
+      ]
+    },
+    {
+      "hypothesis": "H8",
+      "trial_name": "h8-mom-lowvol-double",
+      "mechanism": "momentum and low-volatility",
+      "historical_official_verdict_preserved": "NOT_SUPPORTED",
+      "updated_reliability": "WEAK_POSITIVE_METHOD_LIMITED",
+      "execution_ready_alpha_evidence": false,
+      "material_reopening_basis": "Demonstrated data/execution errors, only through a separate disclosed replication protocol.",
+      "automatic_reopening": false,
+      "issues": [
+        "Historical quantities not carried self-financing between rebalance dates; daily averages implement an implicit reset.",
+        "Quarantine resolution uses its current state, rather than resolution known at each historical signal.",
+        "Missing quotes and terminal delistings do not have a fully documented settlement model.",
+        "Shared adaptive historical window; no intact confirmation sample demonstrated.",
+        "Signal uses the same closing price from which evaluated returns start, despite next_open configuration.",
+        "Benchmark is a daily average over available assets, not self-financing buy-and-hold with symmetric costs.",
+        "Price-only target omits cash distributions, with a strategy-dependent relative bias."
+      ]
+    },
+    {
+      "hypothesis": "H7",
+      "trial_name": "h7-quality-roe",
+      "mechanism": "ROE",
+      "historical_official_verdict_preserved": "NOT_SUPPORTED",
+      "updated_reliability": "WEAK_POSITIVE_DATA_AND_METHOD_LIMITED",
+      "execution_ready_alpha_evidence": false,
+      "material_reopening_basis": "Demonstrated data/execution errors, only through a separate disclosed replication protocol.",
+      "automatic_reopening": false,
+      "issues": [
+        "Historical quantities not carried self-financing between rebalance dates; daily averages implement an implicit reset.",
+        "Quarantine resolution uses its current state, rather than resolution known at each historical signal.",
+        "Missing quotes and terminal delistings do not have a fully documented settlement model.",
+        "Shared adaptive historical window; no intact confirmation sample demonstrated.",
+        "Signal uses the same closing price from which evaluated returns start, despite next_open configuration.",
+        "Benchmark is a daily average over available assets, not self-financing buy-and-hold with symmetric costs.",
+        "Legacy CVM issuer/date/version/scale assumptions; source repairs materially affect eligibility and signal values.",
+        "Price-only target omits cash distributions, with a strategy-dependent relative bias."
+      ]
+    },
+    {
+      "hypothesis": "H9",
+      "trial_name": "h9-quality-leverage",
+      "mechanism": "low leverage",
+      "historical_official_verdict_preserved": "NOT_SUPPORTED",
+      "updated_reliability": "INCONCLUSIVE_DATA_AND_METHOD",
+      "execution_ready_alpha_evidence": false,
+      "material_reopening_basis": "Demonstrated data/execution errors, only through a separate disclosed replication protocol.",
+      "automatic_reopening": false,
+      "issues": [
+        "Historical quantities not carried self-financing between rebalance dates; daily averages implement an implicit reset.",
+        "Quarantine resolution uses its current state, rather than resolution known at each historical signal.",
+        "Missing quotes and terminal delistings do not have a fully documented settlement model.",
+        "Shared adaptive historical window; no intact confirmation sample demonstrated.",
+        "Signal uses the same closing price from which evaluated returns start, despite next_open configuration.",
+        "Benchmark is a daily average over available assets, not self-financing buy-and-hold with symmetric costs.",
+        "Legacy CVM issuer/date/version/scale assumptions; source repairs materially affect eligibility and signal values.",
+        "Price-only target omits cash distributions, with a strategy-dependent relative bias."
+      ]
+    },
+    {
+      "hypothesis": "H10",
+      "trial_name": "h10-roe-leverage-double",
+      "mechanism": "ROE and low leverage",
+      "historical_official_verdict_preserved": "NOT_SUPPORTED",
+      "updated_reliability": "INCONCLUSIVE_DATA_AND_METHOD",
+      "execution_ready_alpha_evidence": false,
+      "material_reopening_basis": "Demonstrated data/execution errors, only through a separate disclosed replication protocol.",
+      "automatic_reopening": false,
+      "issues": [
+        "Historical quantities not carried self-financing between rebalance dates; daily averages implement an implicit reset.",
+        "Quarantine resolution uses its current state, rather than resolution known at each historical signal.",
+        "Missing quotes and terminal delistings do not have a fully documented settlement model.",
+        "Shared adaptive historical window; no intact confirmation sample demonstrated.",
+        "Signal uses the same closing price from which evaluated returns start, despite next_open configuration.",
+        "Benchmark is a daily average over available assets, not self-financing buy-and-hold with symmetric costs.",
+        "Legacy CVM issuer/date/version/scale assumptions; source repairs materially affect eligibility and signal values.",
+        "Price-only target omits cash distributions, with a strategy-dependent relative bias."
+      ]
+    },
+    {
+      "hypothesis": "H11",
+      "trial_name": "h11-momentum-12-1-total-return",
+      "mechanism": "momentum with approximate cash distributions",
+      "historical_official_verdict_preserved": "NOT_SUPPORTED",
+      "updated_reliability": "APPARENT_POSITIVE_UNVERIFIED_TOTAL_RETURN",
+      "execution_ready_alpha_evidence": false,
+      "material_reopening_basis": "Demonstrated data/execution errors, only through a separate disclosed replication protocol.",
+      "automatic_reopening": false,
+      "issues": [
+        "Historical quantities not carried self-financing between rebalance dates; daily averages implement an implicit reset.",
+        "Quarantine resolution uses its current state, rather than resolution known at each historical signal.",
+        "Missing quotes and terminal delistings do not have a fully documented settlement model.",
+        "Shared adaptive historical window; no intact confirmation sample demonstrated.",
+        "Signal uses the same closing price from which evaluated returns start, despite next_open configuration.",
+        "Benchmark is a daily average over available assets, not self-financing buy-and-hold with symmetric costs.",
+        "Payment dates used as ex-date proxies, class-average distributions and split-adjusted price divided into historical cash amounts.",
+        "2018-2022 actual window differs from generic ledger period; compare only like-for-like evidence."
+      ]
+    },
+    {
+      "hypothesis": "H12",
+      "trial_name": "h12-quality-net-margin",
+      "mechanism": "net margin",
+      "historical_official_verdict_preserved": "NOT_SUPPORTED",
+      "updated_reliability": "INCONCLUSIVE_DATA_AND_METHOD",
+      "execution_ready_alpha_evidence": false,
+      "material_reopening_basis": "Demonstrated data/execution errors, only through a separate disclosed replication protocol.",
+      "automatic_reopening": false,
+      "issues": [
+        "Historical quantities not carried self-financing between rebalance dates; daily averages implement an implicit reset.",
+        "Quarantine resolution uses its current state, rather than resolution known at each historical signal.",
+        "Missing quotes and terminal delistings do not have a fully documented settlement model.",
+        "Shared adaptive historical window; no intact confirmation sample demonstrated.",
+        "Signal uses the same closing price from which evaluated returns start, despite next_open configuration.",
+        "Benchmark is a daily average over available assets, not self-financing buy-and-hold with symmetric costs.",
+        "Legacy CVM issuer/date/version/scale assumptions; source repairs materially affect eligibility and signal values.",
+        "Price-only target omits cash distributions, with a strategy-dependent relative bias."
+      ]
+    },
+    {
+      "hypothesis": "H13",
+      "trial_name": "h13-revenue-growth-yoy",
+      "mechanism": "revenue growth",
+      "historical_official_verdict_preserved": "NOT_SUPPORTED",
+      "updated_reliability": "INCONCLUSIVE_DATA_AND_METHOD",
+      "execution_ready_alpha_evidence": false,
+      "material_reopening_basis": "Demonstrated data/execution errors, only through a separate disclosed replication protocol.",
+      "automatic_reopening": false,
+      "issues": [
+        "Historical quantities not carried self-financing between rebalance dates; daily averages implement an implicit reset.",
+        "Quarantine resolution uses its current state, rather than resolution known at each historical signal.",
+        "Missing quotes and terminal delistings do not have a fully documented settlement model.",
+        "Shared adaptive historical window; no intact confirmation sample demonstrated.",
+        "Signal uses the same closing price from which evaluated returns start, despite next_open configuration.",
+        "Benchmark is a daily average over available assets, not self-financing buy-and-hold with symmetric costs.",
+        "Legacy CVM issuer/date/version/scale assumptions; source repairs materially affect eligibility and signal values.",
+        "Price-only target omits cash distributions, with a strategy-dependent relative bias."
+      ]
+    },
+    {
+      "hypothesis": "H14",
+      "trial_name": "h14-near-52w-high",
+      "mechanism": "52-week high proximity",
+      "historical_official_verdict_preserved": "NOT_SUPPORTED",
+      "updated_reliability": "WEAK_POSITIVE_METHOD_LIMITED",
+      "execution_ready_alpha_evidence": false,
+      "material_reopening_basis": "Demonstrated data/execution errors, only through a separate disclosed replication protocol.",
+      "automatic_reopening": false,
+      "issues": [
+        "Historical quantities not carried self-financing between rebalance dates; daily averages implement an implicit reset.",
+        "Quarantine resolution uses its current state, rather than resolution known at each historical signal.",
+        "Missing quotes and terminal delistings do not have a fully documented settlement model.",
+        "Shared adaptive historical window; no intact confirmation sample demonstrated.",
+        "Signal uses the same closing price from which evaluated returns start, despite next_open configuration.",
+        "Benchmark is a daily average over available assets, not self-financing buy-and-hold with symmetric costs.",
+        "Price-only target omits cash distributions, with a strategy-dependent relative bias."
+      ]
+    },
+    {
+      "hypothesis": "H15",
+      "trial_name": "h15-volume-surge",
+      "mechanism": "relative volume",
+      "historical_official_verdict_preserved": "NOT_SUPPORTED",
+      "updated_reliability": "INCONCLUSIVE_METHOD",
+      "execution_ready_alpha_evidence": false,
+      "material_reopening_basis": "Demonstrated data/execution errors, only through a separate disclosed replication protocol.",
+      "automatic_reopening": false,
+      "issues": [
+        "Historical quantities not carried self-financing between rebalance dates; daily averages implement an implicit reset.",
+        "Quarantine resolution uses its current state, rather than resolution known at each historical signal.",
+        "Missing quotes and terminal delistings do not have a fully documented settlement model.",
+        "Shared adaptive historical window; no intact confirmation sample demonstrated.",
+        "Signal uses the same closing price from which evaluated returns start, despite next_open configuration.",
+        "Benchmark is a daily average over available assets, not self-financing buy-and-hold with symmetric costs.",
+        "Price-only target omits cash distributions, with a strategy-dependent relative bias."
+      ]
+    },
+    {
+      "hypothesis": "H16",
+      "trial_name": "h16-turn-of-month",
+      "mechanism": "turn of month",
+      "historical_official_verdict_preserved": "NOT_SUPPORTED",
+      "updated_reliability": "WEAK_NEGATIVE_UNDER_LEGACY_MEASUREMENT",
+      "execution_ready_alpha_evidence": false,
+      "material_reopening_basis": "Demonstrated data/execution errors, only through a separate disclosed replication protocol.",
+      "automatic_reopening": false,
+      "issues": [
+        "Historical quantities not carried self-financing between rebalance dates; daily averages implement an implicit reset.",
+        "Quarantine resolution uses its current state, rather than resolution known at each historical signal.",
+        "Missing quotes and terminal delistings do not have a fully documented settlement model.",
+        "Shared adaptive historical window; no intact confirmation sample demonstrated.",
+        "Timing uses same-day close-to-close returns and free daily equal weighting; cash return is zero and composition turnover omitted."
+      ]
+    }
+  ],
+  "decision": "Do not rerun all closed families or pick the highest old Sharpe. First test the genuinely new valuation information already registered as H18/H19, with original reported share counts, fixed order and explicit observable-proxy limitations.",
+  "why_not_H11_first": "Its favorable point estimate is unvalidated, its total-return input is materially unreliable, and complete historical corporate-action repair is still expensive.",
+  "why_not_more_H17_tuning": "First price diagnostic is weak and partly censored; no empirical basis for reversing the direction or optimizing thresholds.",
+  "economic_priority": "Use actual owner earnings/equity and disclosed share capital, instead of adding models or more combinations of weak existing factors.",
+  "source_hashes": {
+    "trials.json": "3364bd10e5103ea5e1f41830e2ff00932e77c9af21555b26cf88bb038123ba41",
+    "stocks_predictor/backtest.py": "661908e86de34adecdcd88e8ae40366ea932f2fcc94609cb9e23b298e2a6940a",
+    "stocks_predictor/universe.py": "0d681463d3a6b046c45d2779d985c9195be597baf91c7b0951e67081a2634a6c",
+    "stocks_predictor/adjust.py": "48bd5e795124cdbfd612e5a688c24ef87319f1a0d2aade7ea17449973f57016d"
+  }
+}
