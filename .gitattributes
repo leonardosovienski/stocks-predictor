@@ -6,3 +6,4 @@
 VERSION text eol=lf
 # Exact hashes of the CVM source extracts must survive Windows checkouts.
 tests/fixtures/cvm_dfp_2023/*.csv text eol=lf
+tests/fixtures/cvm_source_history/*.csv text eol=lf
