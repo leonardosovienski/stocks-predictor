@@ -41,6 +41,8 @@ class OrdinaryTaxLedger:
         if month == self.month:
             return
         if self.month:
+            if self.last is None:
+                raise ValueError('previous tax month was not assessed')
             self.assessments.append(self.last)
             self.loss = self.last['loss_carry']
             self.credit = self.last['credit_carry']
@@ -52,6 +54,8 @@ class OrdinaryTaxLedger:
         self.refresh(book)
 
     def refresh(self, book):
+        if self.month is None:
+            raise ValueError('enter a tax month before assessment')
         spec = self.calendar[self.month]
         if spec.get('source_review') is not True or not spec.get('sources'):
             raise ValueError('unreviewed monthly tax calendar')
@@ -129,6 +133,8 @@ def apply_action(book, action):
         raise ValueError('unreviewed or mistimed action')
     if not action.get('sources') or not action.get('tax_source'):
         raise ValueError('corporate source and fiscal treatment required')
+    if iso(action.get('terms_known_on')) > book.day:
+        raise ValueError('future corporate quantity terms require a dated revision event')
     original = staged.positions.get(action['ticker'])
     if not original:
         return []
@@ -190,11 +196,7 @@ def apply_action(book, action):
             if existing:
                 if existing.isin != leg['isin'] or existing.tax_class != leg['tax_class']:
                     raise ValueError('merged delivery identity mismatch')
-                if existing.available_on > book.day:
-                    existing.locked_deliveries.append({'quantity': existing.quantity,
-                                                      'credit_date': existing.available_on,
-                                                      'tradable_on': existing.tradable_on})
-                    existing.available_on = book.day
+                existing.normalize_deliveries(book.day)
                 if credit > book.day:
                     existing.locked_deliveries.append({'quantity': whole, 'credit_date': credit,
                                                        'tradable_on': tradable})
@@ -241,16 +243,25 @@ def run_continuous(capital, cost_rate, plans, quotes, sessions, settlements,
     """
     if coverage_ready is not True or coverage_issues:
         raise ValueError('complete reviewed strategy AND comparison evidence required')
+    if number(capital) <= 0 or not 0 <= number(cost_rate) < 1:
+        raise ValueError('positive capital and valid cost required')
     if len(plans) < 2 or plans[-1]['members'] or any(not p['members'] for p in plans[:-1]):
         raise ValueError('nonempty rebalance plans and an explicit final liquidation required')
     if [p['entry'] for p in plans] != sorted({p['entry'] for p in plans}):
         raise ValueError('unique chronological plans required')
     session_set = set(sessions)
+    if sessions != sorted(session_set) or any(iso(d) != d for d in sessions):
+        raise ValueError('unique chronological sessions required')
     for p in plans:
         if iso(p['asof']) >= iso(p['entry']) or p['entry'] not in session_set or p['asof'] not in session_set:
             raise ValueError('plan must use an earlier session signal')
         if len({m['ticker'] for m in p['members']}) != len(p['members']):
             raise ValueError('duplicate plan member')
+        if sessions.index(p['entry']) != sessions.index(p['asof']) + 1:
+            raise ValueError('execution must follow the signal in the next session')
+        settlement = iso(settlements[p['entry']])
+        if settlement not in session_set or settlement <= p['entry']:
+            raise ValueError('settlement must be a later exchange session')
     by_day = {p['entry']: p for p in plans}
     by_signal = {p['asof']: p for p in plans}
     if len(by_signal) != len(plans):
@@ -296,7 +307,12 @@ def run_continuous(capital, cost_rate, plans, quotes, sessions, settlements,
             target = targets[plan['asof']]
             # A split/conversion between signal and entry changes order units;
             # require an explicit transformed plan instead of silent wrong units.
-            if any(plan['asof'] < e['ex_date'] <= day and e['ticker'] in target for e in actions):
+            # A bonus in a DIFFERENT class leaves original order units intact.
+            # Only previous holders get that entitlement; planned new buys do
+            # not receive free bonus shares. Its sale is an ordinary reduction.
+            if any(plan['asof'] < e['ex_date'] <= day and e['ticker'] in target
+                   and (e['removes_original'] or any(s['ticker'] == e['ticker'] for s in e['stocks']))
+                   for e in actions):
                 raise ValueError('corporate action between signal and execution requires reviewed order transformation')
             identities = {m['ticker']: m for m in plan['members']}
             if any(t in identities and (identities[t]['isin'] != h.isin

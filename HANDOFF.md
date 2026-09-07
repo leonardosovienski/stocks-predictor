@@ -1,3 +1,33 @@
+## Revisão final solicitada pelo usuário (2026-09-07)
+
+Revisão de código, histórico H1–H19, documentação, fonte e capacidade do executor.
+Corrigidos consumo de entregas em vendas parciais e compras junto a lotes pendentes;
+termos societários futuros agora exigem evento de revisão, sem antecipar quantidade.
+Protocolo e seleções H19 são ligados aos hashes congelados, além do manifesto local.
+Casos vazios, duplicados ou inválidos, calendário/encerramento divergente e mercado
+de cotação indevido são rejeitados. Toda a fita de cotação é validada mesmo se o
+cadastro econômico bloquear o replay. Testes sintéticos têm rótulo e orçamento próprios.
+Bonificação de outra classe preserva as unidades da ordem original; só a posição
+anterior ganha o direito. Isso resolve o bloqueio mecânico desse caso de entrada,
+mas não supre os termos reais nem o tratamento fiscal de CYRE4.
+
+11 regressões reproduziram falhas no commit anterior 4b899f4. O escopo Pyright
+passou a incluir os três módulos H19, além dos três RJ anteriores. README e
+STOCKS_CURRENT_STATE passam a apontar H19 Discovery e a ausência de lucro validado.
+Releitura independente confirmou 365.198 registros contra extratos brutos B3
+(cinco campos numéricos por registro), identidade e 367 cópias de fontes primárias.
+Não confundir essa integridade com completude de eventos ou comprovação de fills.
+
+A suíte completa e reprodução da versão final serão registradas ao término da
+validação; não atribuir os 572 testes anteriores ao código desta revisão.
+Continuam faltando 356 datas de pagamento, cobertura completa de 1.237 intervalos,
+integração dos 36 registros societários e tratamento fiscal dependente da carteira.
+H19 não demonstrou lucro nem perda líquida; decisão operacional NO_GO. H1–H16
+não são reexecutadas no motor legado inválido como nova busca por um resultado bom.
+H17 inconclusiva, H18 controle enfraquecido, H19 pista exploratória sem Proof.
+Contagem preservada >=32 configurações / >=37 avaliações; nenhuma ordem, gasto ou
+escrita em banco. Parecer em docs/research/2026-09-07-final-review.md.
+
 ## H19: execução contínua com bloqueio de evidência (2026-09-07)
 
 `continuous_cash.py` implementa um livro persistente, giro por diferenças,

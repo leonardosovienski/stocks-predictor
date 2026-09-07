@@ -1,4 +1,20 @@
-# Atualização 2026-09-07 — H17 Discovery observada
+# Estado vigente — revisão final de 07/09/2026
+
+**H19 trimestral está em Discovery; H18 é controle; H17 já foi observada e ficou
+inconclusiva. Nenhum lucro líquido executável foi demonstrado. NO_GO para operar.**
+
+A contabilidade contínua existe e está sob validação da revisão final. Faltam
+356 datas no cadastro de pagamentos, cobertura de caixa de 1.237 intervalos e
+integração fiscal/física de 36 registros societários. Isso impede um replay
+econômico completo; saída de auditoria bloqueada não é lucro zero.
+O código, as cotações e os testes não substituem essas evidências.
+
+O estado mais recente está no início de [HANDOFF.md](HANDOFF.md) e em
+[revisão final](docs/research/2026-09-07-final-review.md). Os textos abaixo são
+históricos: referências a H18/H19 não observadas e a RJ como linha ativa foram
+superadas. As estatísticas antigas continuam associadas às suas versões.
+
+# Atualização anterior 2026-09-07 — H17 Discovery observada
 
 H17 agora tem duas saídas históricas de um único protocolo exploratório: primeira
 medição e correção documentada de quatro falsas divergências de fatores. A última

@@ -1,0 +1,97 @@
+# Revisão final de Stocks — 07/09/2026
+
+O projeto é um protótipo de pesquisa com evidência econômica incompleta. Não é
+um sistema de investimento validado. A revisão encontrou defeitos reais, corrigiu
+os casos reproduzíveis e mantém como desconhecido o resultado líquido histórico.
+
+## Histórico científico
+
+| Linha | Leitura após revisão |
+|---|---|
+| H1–H16 | Quinze hipóteses executadas; H3 não executada. Preservar os vereditos históricos, mas os motores/preços/benchmarks antigos não sustentam lucro executável. H11 em particular tem proventos e retorno total não certificados. |
+| H17 | Diagnóstico observado duas vezes, com correção documentada. INCONCLUSIVE_DATA_QUALITY; não ajustar direção ou limiar para resgatar o resultado. |
+| H18 | Controle de valor, enfraquecido por instabilidade temporal. Sem promoção. |
+| H19 trimestral | Prioridade relativa para resolver evidência; não é edge confirmado. Os 12 intervalos descritivos da validação de preços incluem zero. |
+| RJ | Código e registro histórico preservados; testes mecânicos não criam evidência nova nem autorizam operar. |
+
+Ao menos 32 configurações e 37 avaliações já foram expostas ao histórico.
+Não existe holdout intacto demonstrado. Mesmo um futuro replay líquido positivo
+nesta janela seria exploratório. A revisão atual não revela retorno novo.
+
+## Defeitos corrigidos
+
+- Venda parcial de ações negociáveis antes do crédito não reduzia o lote pendente.
+  O lote podia exceder a posição restante e bloquear vendas posteriores indevidamente.
+- Compra junto a uma entrega ainda pendente era rejeitada, embora fosse possível
+  manter o bloqueio individual da entrega. Agora somente a quantidade pendente fica travada.
+- Quantidades societárias publicadas depois da data-ex podiam ser aplicadas no
+  passado. A API exige conhecimento dos termos até a data do evento; revisões
+  futuras precisam ser representadas como revisões datadas.
+- Um manifesto refeito localmente permitia trocar o protocolo, as carteiras ou
+  a janela sem comprovar igualdade com a observação congelada. A H19 agora confere
+  os dois hashes registrados e todos os membros/datas de ambas as carteiras.
+- Lista vazia de casos podia terminar em sucesso sem executar carteira alguma.
+  Capital, custos, unicidade, datas, lotes e calendário recebem controles explícitos.
+- O bloqueio econômico ocorria antes da leitura das cotações. O executor agora
+  valida a fita inteira mesmo quando ainda faltam eventos; mercados indevidos,
+  preços inválidos, identidades ambíguas e duplicatas são erros de entrada.
+- Bonificação em outra classe não altera as unidades da ordem na ação original.
+  O executor aceita esse caso e atribui o direito só à posição anterior. Não cria
+  direito para compras na data-ex. Isso não aprova automaticamente os termos reais.
+- Testes sintéticos agora são identificados como tais e não incrementam o contador
+  de observações históricas. README/estado/metadados desatualizados foram corrigidos.
+
+Onze casos de regressão falharam no código anterior, reproduzido em pasta isolada.
+O Pyright foi ampliado para os módulos H19; suas 11 queixas de estado opcional
+foram resolvidas com invariantes/validação, sem desativar as checagens.
+
+## Fonte, execução e lacunas
+
+Conferidos 365.198 registros de cotação contra os extratos brutos da B3, com cinco
+campos numéricos por registro, identidade e unicidade. As 367 cópias das fontes
+referenciadas possuem o hash esperado. Isso mede integridade do conjunto adquirido;
+não prova que o universo de eventos está completo, nem que uma ordem teria sido
+preenchida na abertura do mercado fracionário. Custo/slippage continuam cenários.
+
+Dos 778 registros atuais de caixa, 356 não têm data de pagamento. Nenhum dos
+1.237 intervalos tem certificação de inventário completo. O arquivo operacional
+de eventos societários contém zero entradas aprovadas frente a 36 requisitos:
+existem fontes e revisões parciais, que ainda precisam virar dados executáveis.
+Esses números não são uma contagem de erros de Python.
+
+Além das fontes, permanece trabalho de implementação/integração: imposto individual
+de reorganizações e leilões depende de custo fiscal e quantidade de cada carteira;
+uma constante por ação não é uma solução geral. Conversões que mudam a unidade de
+ordem entre sinal e execução exigem transformação revisada. Bonificações de outra
+classe são suportadas mecanicamente, mas precisam dos termos reais de entrega,
+negociabilidade, fração e tributação. O caixa dos sucessores e a história posterior
+de JBS também impedem certificar o conjunto como completo.
+
+O arredondamento de centavos por nota/pagamento, alternativas líquidas de caixa,
+custos fixos, tempo de manutenção e fills prospectivos continuam sem validação
+integral. Ter o calendário DARF de 95 meses não resolve toda a fiscalidade.
+
+## Decisão de projeto
+
+Manter fontes imutáveis, identidades, protocolo congelado e bloqueio de resultados
+incompletos. Consolidar a leitura corrente em um parecer e um pacote reproduzível,
+preservando os relatórios antigos como história. Não adicionar ML, H20 ou uma
+varredura de parâmetros para contornar lacunas de medição. Não promover a antiga
+curva sintética de preços a lucro real. A conclusão apropriada é
+INCONCLUSIVE_NET_PROFIT / OPERATIONAL_NO_GO, e não lucro zero ou prejuízo demonstrado.
+
+Sobre R$5 mil/R$10 mil, cada ponto percentual anual incremental corresponde a
+R$50/R$100 antes de custos fixos. É escala aritmética, não previsão. A necessidade
+de reconstrução manual extensa reduz a atratividade econômica da operação neste
+capital. Não há evidência suficiente para afirmar rentabilidade futura.
+
+As regras ordinárias de IRRF e isenção foram reconferidas nas páginas primárias
+da Receita: [retenções](https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda/pagamento/renda-variavel/bolsa-de-valores-1/retencoes)
+e [isenções](https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda/pagamento/renda-variavel/bolsa-de-valores-1/isencoes).
+Essas regras não certificam a tributação específica das reorganizações.
+
+## Validação desta versão
+
+Em execução; o resultado, tempo, commit, hashes, cobertura e reprodução serão
+anexados após a execução. Nenhuma ordem, gasto ou escrita em banco foi solicitado
+por estes comandos de revisão.

@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "stocks-predictor"
 version = "0.1.0"
-description = "B3 predictor research domain; active research line: predictor-rj"
+description = "B3 equity research and evidence-gated historical simulation"
 readme = "README.md"
 requires-python = ">=3.13,<3.15"
 dependencies = [
@@ -44,9 +44,9 @@ select = ["F"]
 [tool.pyright]
 pythonVersion = "3.13"
 typeCheckingMode = "basic"
-# O gate começa na linha científica ativa RJ; ampliar cobertura é trabalho
-# posterior e não deve alterar o experimento para satisfazer uma migração.
-include = ["stocks_predictor/rj_episodes.py", "stocks_predictor/rj_families.py", "stocks_predictor/rj_judge.py"]
+# Escopo RJ original mais a contabilidade e o executor contínuo da H19.
+# Isto verifica código, sem alterar parâmetros científicos congelados.
+include = ["stocks_predictor/rj_episodes.py", "stocks_predictor/rj_families.py", "stocks_predictor/rj_judge.py", "stocks_predictor/retail_cash.py", "stocks_predictor/continuous_cash.py", "stocks_predictor/continuous_research.py"]
 # O código RJ usa dicionários heterogêneos deliberadamente. Os três erros
 # iniciais de argument type são dívida de anotação, não falhas funcionais; o
 # restante do basic type-check continua ativo nesta etapa.

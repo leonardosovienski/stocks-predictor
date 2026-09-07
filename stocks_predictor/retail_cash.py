@@ -38,6 +38,37 @@ class Holding:
     locked_deliveries: list = dataclass_field(default_factory=list)
     tradable_on: str | None = None
 
+    def normalize_deliveries(self, day):
+        """Represent undelivered shares individually before a quantity mutation."""
+        locked = sum(r['quantity'] for r in self.locked_deliveries)
+        if locked < 0 or locked > self.quantity:
+            raise ValueError('invalid undelivered quantity')
+        if self.available_on > day:
+            base = self.quantity - locked
+            if base:
+                self.locked_deliveries.append({'quantity': base, 'credit_date': self.available_on,
+                                              'tradable_on': self.tradable_on})
+            self.available_on = day
+            self.tradable_on = None
+        self.locked_deliveries[:] = [r for r in self.locked_deliveries if r['credit_date'] > day]
+
+    def consume_delivery(self, quantity, day, settlement_date):
+        """Consume delivered shares first, then legally tradable pending lots.
+
+        A partial pre-credit sale must reduce its delivery lot as well as the
+        total position, or later sales can lock shares which no longer exist.
+        """
+        self.normalize_deliveries(day)
+        remaining = max(0, quantity - (self.quantity - sum(r['quantity'] for r in self.locked_deliveries)))
+        for row in sorted(self.locked_deliveries, key=lambda r: r['credit_date']):
+            if row.get('tradable_on') is not None and row['tradable_on'] <= day and row['credit_date'] <= settlement_date:
+                take = min(remaining, row['quantity'])
+                row['quantity'] -= take
+                remaining -= take
+        if remaining:
+            raise ValueError('sale exceeds delivered position')
+        self.locked_deliveries[:] = [r for r in self.locked_deliveries if r['quantity']]
+
     def available_quantity(self, day, settlement_date=None):
         def usable(credit, tradable):
             return credit <= day or (tradable is not None and tradable <= day
@@ -218,16 +249,17 @@ class RetailBook:
         if delta > 0:
             gain = Decimal(0)
             if existing:
-                if existing.available_on > self.day:
-                    raise ValueError("merge with undelivered shares requires separate lots")
+                existing.normalize_deliveries(self.day)
                 existing.quantity += quantity
                 existing.basis += gross + costs
             else:
                 self.positions[ticker] = Holding(isin, quantity, gross + costs, tax_class)
             cash_flow = -gross - costs
         else:
+            assert existing is not None  # Sale validation above establishes this invariant.
             removed_basis = existing.basis * quantity / existing.quantity
             gain = gross - costs - removed_basis
+            existing.consume_delivery(quantity, self.day, settlement_date)
             existing.quantity -= quantity
             existing.basis -= removed_basis
             if not existing.quantity:

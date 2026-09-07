@@ -1,12 +1,14 @@
 # stocks-predictor
 
-Predictor econômico de ações da B3 do ecossistema PREDICTORS. A linha de pesquisa
-**ativa** é `predictor-rj`: investigar, com informação disponível no instante da
-decisão, se condições observáveis antecedem rallies especulativos em empresas em
-recuperação judicial.
+Projeto de pesquisa econômica de ações da B3. Na revisão de 07/09/2026, a linha
+em investigação nesta cópia é **H19 trimestral**, com H18 como controle. H17 foi
+observada e ficou inconclusiva. **Não há lucro líquido validado nem autorização
+técnica para operar.** O executor contínuo exige cobertura de caixa e eventos
+societários ainda incompleta. Testes verdes não demonstram rentabilidade.
 
-O domínio cross-sectional/fatores anterior permanece preservado no repositório como
-histórico científico. Seus vereditos não são apagados nem promovidos pela linha RJ.
+As linhas H1–H16 e `predictor-rj` permanecem como histórico científico. Os relatórios
+antigos preservam resultados de suas respectivas versões; não descrevem o estado
+corrente. [HANDOFF.md](HANDOFF.md) registra a continuidade mais recente.
 
 **Leitura corrente:** [STOCKS_CURRENT_STATE.md](STOCKS_CURRENT_STATE.md) para estado
 técnico atual e [docs/RJ_DESIGN.md](docs/RJ_DESIGN.md) para o protocolo RJ.
@@ -17,7 +19,7 @@ continuidade histórica e devem ser interpretados pela data.
 
 - Python: `>=3.13,<3.15`;
 - package metadata: `pyproject.toml`;
-- Core compartilhado: `predictor-core 3.0.x` por wheel oficial;
+- Core compartilhado: `predictor-core >=3.2,<4` por wheel oficial;
 - Ops: não é dependência declarada deste domínio no estado atual;
 - `vendor/predictor_core/` é preservado como artefato histórico de integridade e não é
   a dependência-alvo da arquitetura moderna;
@@ -32,7 +34,7 @@ Uma primitiva econômica opt-in `REBALANCE/HOLD` vive em
 bruta pague turnover e hurdle, mas ainda não está ligada ao walk-forward congelado nem
 autoriza capital. Integração futura exige hipótese nova e janela forward nova.
 
-## Linha ativa: predictor-rj
+## Linha histórica: predictor-rj
 
 Pergunta central: existem condições, eventos ou padrões observáveis **antes** de
 rallies em ações de empresas em RJ, de forma conhecível no momento da decisão?

@@ -128,6 +128,7 @@ def test_bdr_tax_small_darf_accumulates_and_equity_loss_carries_forward():
 
 def bonus():
     return {'event_id': 'bonus', 'ticker': 'A', 'isin': 'A-ISIN', 'ex_date': '2020-01-15',
+            'terms_known_on': '2020-01-14',
             'source_review': True, 'sources': ['synthetic'], 'tax_source': ['synthetic'],
             'basis_mode': 'bonus', 'removes_original': False, 'cash': [],
             'stocks': [{'ticker': 'A', 'isin': 'A-ISIN', 'ratio': '.1', 'credit_date': '2020-01-20',
@@ -204,3 +205,73 @@ def test_documented_trading_before_credit_requires_delivery_by_sale_settlement()
     with pytest.raises(ValueError, match='delivered position'):
         book.order('A', 'A-ISIN', -10, q, '2020-01-14', '2020-01-17')
     assert book.order('A', 'A-ISIN', -10, q, '2020-01-14', '2020-01-20')
+
+
+def test_partial_precredit_sale_consumes_only_the_usable_delivery_lots():
+    book = RetailBook(0, '2020-01-15')
+    book.positions['A'] = Holding('A-ISIN', 100, D(1000), locked_deliveries=[
+        {'quantity': 40, 'credit_date': '2020-01-20', 'tradable_on': '2020-01-15'},
+        {'quantity': 30, 'credit_date': '2020-01-23', 'tradable_on': None}])
+    q = {'date': book.day, 'isin': 'A-ISIN', 'standard': '10', 'fractional': '10'}
+    # Sell 30 already delivered + 20 legally tradable, leaving 20 + 30 pending.
+    assert book.order('A', 'A-ISIN', -50, q, '2020-01-14', '2020-01-20', 0)
+    h = book.positions['A']
+    assert h.quantity == 50 and h.basis == 500
+    assert h.available_quantity('2020-01-16', '2020-01-20') == 20
+    assert h.available_quantity('2020-01-20') == 20
+    assert h.available_quantity('2020-01-23') == 50
+    assert [r['quantity'] for r in h.locked_deliveries] == [20, 30]
+
+
+def test_purchase_merges_with_a_pending_delivery_without_unlocking_it():
+    book = RetailBook(1000, '2020-01-15')
+    book.positions['A'] = Holding('A-ISIN', 10, D(100), available_on='2020-01-23')
+    q = {'date': book.day, 'isin': 'A-ISIN', 'standard': '10', 'fractional': '10'}
+    assert book.order('A', 'A-ISIN', 20, q, '2020-01-14', '2020-01-20', 0)
+    h = book.positions['A']
+    assert h.quantity == 30 and h.basis == 300
+    assert h.available_quantity('2020-01-16') == 20
+    assert h.available_quantity('2020-01-23') == 30
+
+
+def test_multiple_deliveries_merge_without_double_locking_the_base_position():
+    book = RetailBook(0, '2020-01-15')
+    book.positions['A'] = Holding('A-ISIN', 100, D(1000), available_on='2020-01-20')
+    apply_action(book, bonus())
+    h = book.positions['A']
+    assert h.quantity == 110 and h.available_quantity('2020-01-15') == 0
+    assert h.available_quantity('2020-01-20') == 110
+
+
+def test_future_corporate_quantity_information_rejected_without_mutation():
+    book = RetailBook(0, '2020-01-15'); book.positions['A'] = Holding('A-ISIN', 100, D(1000))
+    action = bonus(); action['terms_known_on'] = '2020-01-20'
+    before = deepcopy(book.__dict__)
+    with pytest.raises(ValueError, match='future corporate quantity'):
+        apply_action(book, action)
+    assert book.__dict__ == before
+
+
+def test_delayed_plan_and_weekend_settlement_do_not_pass_next_session_protocol():
+    data = tape(); data['plans'][0]['entry'] = '2020-01-06'
+    with pytest.raises(ValueError, match='next session'):
+        run_continuous(**data)
+    data = tape(); data['settlements']['2020-01-03'] = '2020-01-04'
+    with pytest.raises(ValueError, match='later exchange session'):
+        run_continuous(**data)
+
+
+def test_entry_day_bonus_in_another_class_preserves_original_order_units():
+    data = tape(); action = bonus()
+    action.update(ex_date='2020-02-03', terms_known_on='2020-01-30')
+    action['stocks'][0].update(ticker='B', isin='B-ISIN', credit_date='2020-02-05',
+                               tradable_on='2020-02-03')
+    data['actions'] = [action]
+    data['quotes'][('2020-02-03', 'B')] = {'date': '2020-02-03', 'isin': 'B-ISIN',
+        'standard': '2', 'fractional': '2', 'close': '2', 'lot': 100}
+    result = run_continuous(**data)
+    # 100 A retained; 10 B awarded to previous ownership and sold for R$20.
+    # The new signal never acquires or invents bonus entitlements.
+    assert [(r['ticker'], r['quantity']) for r in result['trades']] == [('A', 100), ('B', -10), ('A', -100)]
+    assert result['profit_excluding_unpaid_receivables'] == 120
+    assert next(r for r in result['trades'] if r['ticker'] == 'B')['gain'] == 0
