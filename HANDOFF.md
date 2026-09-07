@@ -1,3 +1,22 @@
+## H18/H19: diagnóstico de reorganizações registrado (2026-09-07)
+
+Continuidade solicitada pelo usuário. Protocolo de preço mais direitos compulsórios,
+com as quatro seleções congeladas, registrado antes da agregação. Hash semântico:
+c714aee9fde793fd1e612426782dac61abe5f6231c6a0d2429e115618622a2f4.
+Treze reorganizações com termos finais de emissores/B3/CVM e seis subscrições com
+política explícita de não exercer/não vender direitos, marcados a zero. Não é retorno
+total. Subscrições não geram ações grátis. Ordem confirmadamente impossível permanece
+em caixa. Recebíveis e ações ainda não creditadas não viram caixa para reinvestimento.
+Quantidades fracionárias e valores brutos são marcas diagnósticas; impostos, juros,
+dividendos ordinários e disponibilidade efetiva para execução continuam fora.
+
+Novo extrato contém 13.465 cotações B3 dos 11 sucessores, sem alterar bases anteriores.
+18 testes específicos passaram; suíte geral será executada em commit limpo antes da
+nova agregação. Nenhuma dependência de runtime nova; pypdf já incluído no ambiente do
+aplicativo foi usado apenas na leitura de documentos, fora do runtime Stocks.
+Contagem conservadora após esta observação: >=24 configurações, >=29 avaliações de
+retorno; mesma história observada, nenhuma Proof. H19 continua prioridade e H18 controle.
+
 ## H18/H19: pesquisa executada e correção concluída (2026-09-07)
 
 As quatro configurações foram reavaliadas com as seleções congeladas: todas permanecem
