@@ -1,3 +1,12 @@
+## H17: primeira observação real concluída (2026-09-07)
+
+H17 foi observada: diagnóstico com 94 meses elegíveis, 51/5.399 células sem retorno
+validado, IC disponível -0,013189 e spread mensal condicionado a meses completos
+-0,252221 p.p. Resultado INCONCLUSIVE_DATA_QUALITY, sem P&L executável ou alpha.
+Os 479 testes passaram. A [primeira observação](docs/research/2026-09-07-h17-first-observation.md)
+registra quatro exclusões mecânicas indevidas e a correção antes da segunda saída.
+Não tratar H17 novamente como nunca vista. H18/H19 permanecem protegidas.
+
 ## H17 Discovery: protocolo registrado antes da observação (2026-09-07)
 
 O pedido do usuário para completar o necessário e rodar será atendido pelo diagnóstico

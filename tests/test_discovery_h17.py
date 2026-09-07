@@ -58,6 +58,24 @@ def test_conflicting_sources_are_not_silently_chosen():
     assert issues == {"2021-02-15": ["CONFLICTING_CORPORATE_ACTION_FACTORS"]}
 
 
+@pytest.mark.parametrize("ticker,day", [("MULT3", "2018-07-23"), ("TOTS3", "2020-05-04"),
+                                      ("CSMG3", "2020-11-26")])
+def test_real_legacy_rounded_thirds_match_b3_without_changing_b3(ticker, day):
+    factors, issues = h17.adjustment_map([event(day, 1/3)], [
+        {"ticker": ticker, "ex_date": day, "factor": 0.333333, "type": "split", "approved_by": "historical"}
+    ])
+    assert factors[day] == 1/3
+    assert not issues
+
+
+def test_real_vivt_legacy_net_factor_matches_b3_components():
+    factors, issues = h17.adjustment_map(
+        [event("2025-04-15", 1/80), event("2025-04-15", 40, "GRUPAMENTO")],
+        [{"ex_date": "2025-04-15", "factor": 0.5, "type": "split", "approved_by": "historical"}])
+    assert factors["2025-04-15"] == 0.5
+    assert not issues
+
+
 def test_split_adjustment_and_ex_date_entry_boundary():
     bars = {"AAAA3": {"2021-02-01": (100, 100), "2021-02-15": (50, 50), "2021-03-01": (55, 55)}}
     result = h17.score_outcome(member(), "2021-02-01", "2021-03-01", bars, identity(),

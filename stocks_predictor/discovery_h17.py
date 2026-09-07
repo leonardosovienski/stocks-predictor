@@ -78,7 +78,12 @@ def adjustment_map(events, legacy):
             continue
         key = row["ex_date"], label
         if key in by_type:
-            if not math.isclose(row["factor"], by_type[key], rel_tol=1e-7):
+            # Legacy records can describe the net share-base change, while B3
+            # lists component actions (VIVT: +7900% then grouping 0.025).
+            # The B3 factor already applied above remains authoritative here.
+            matches_component = math.isclose(row["factor"], by_type[key], rel_tol=1e-4)
+            matches_net = math.isclose(row["factor"], factors[row["ex_date"]], rel_tol=1e-4)
+            if not (matches_component or matches_net):
                 reasons[row["ex_date"]].append("CONFLICTING_CORPORATE_ACTION_FACTORS")
         else:
             if not math.isfinite(row["factor"]) or row["factor"] <= 0:
