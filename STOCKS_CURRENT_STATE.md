@@ -12,7 +12,7 @@
 > validar o dataset reconstruído e registrar a metodologia corrigida primeiro.
 >
 > [Implementação, evidências e limites](docs/research/2026-09-07-repairs.md).
-> 47 testes dirigidos passaram; suíte completa será registrada na entrega.
+> Suíte completa: **422 testes aprovados**, com cobertura; lint e Pyright verdes.
 > Parser validado no ZIP integral 2023: 475 documentos DFP e 455 FRE.
 > Nenhum resultado protegido observado; nenhuma dependência de runtime nova.
 
