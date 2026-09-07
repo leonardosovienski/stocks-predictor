@@ -1,3 +1,4 @@
+# Historical regression fixtures use explicit legacy APIs; see test_repairs_*.py for current paths.
 """H18 (E/P) e H19 (B/M) — os primeiros fatores de VALOR do domínio
 (pré-registro 2026-09-04).
 
@@ -13,7 +14,6 @@ import backtest
 import cotahist
 import db
 import factor
-import trials_gate
 
 
 def _dates(n, start=(2016, 7, 1)):
@@ -42,34 +42,26 @@ def _synthetic_conn(tmp_path):
     return conn
 
 
-def test_run_h18_smoke(tmp_path, capsys):
-    from config import load_config
-    cfg = load_config()
-    cfg["bootstrap"] = {"n_boot": 300, "block_length": 21, "confidence": 0.95, "seed": 42}
+def test_run_h18_blocked_before_protected_performance(tmp_path):
+    import pytest
     conn = _synthetic_conn(tmp_path)
-    tp = tmp_path / "trials.json"
-    trials_gate.attest(cfg, trials_path=tp)
-    trials_gate.register_baseline_trials(cfg, trials_path=tp)
-    v = backtest.run_h18(cfg, conn, trials_path=tp)
+    before = conn.total_changes
+    with pytest.raises(ValueError, match="H18 PAUSED"):
+        backtest.run_h18(conn=conn, trials_path=tmp_path / "trials.json")
+    assert conn.total_changes == before
+    assert not (tmp_path / "trials.json").exists()
     conn.close()
-    assert "H18:" in capsys.readouterr().out
-    assert v["n"] > 60 and v.get("n_trials") == 3
-    assert v.get("dsr") is not None and 0.0 <= v["dsr"] <= 1.0
 
 
-def test_run_h19_smoke(tmp_path, capsys):
-    from config import load_config
-    cfg = load_config()
-    cfg["bootstrap"] = {"n_boot": 300, "block_length": 21, "confidence": 0.95, "seed": 42}
+def test_run_h19_blocked_before_protected_performance(tmp_path):
+    import pytest
     conn = _synthetic_conn(tmp_path)
-    tp = tmp_path / "trials.json"
-    trials_gate.attest(cfg, trials_path=tp)
-    trials_gate.register_baseline_trials(cfg, trials_path=tp)
-    v = backtest.run_h19(cfg, conn, trials_path=tp)
+    before = conn.total_changes
+    with pytest.raises(ValueError, match="H19 PAUSED"):
+        backtest.run_h19(conn=conn, trials_path=tmp_path / "trials.json")
+    assert conn.total_changes == before
+    assert not (tmp_path / "trials.json").exists()
     conn.close()
-    assert "H19:" in capsys.readouterr().out
-    assert v["n"] > 60 and v.get("n_trials") == 3
-    assert v.get("dsr") is not None and 0.0 <= v["dsr"] <= 1.0
 
 
 def test_h18_h19_frozen_config_hash_golden():
@@ -125,15 +117,15 @@ def _one_ticker_conn(tmp_path, price, shares, lucro, pl,
 def test_earnings_yield_is_fundamental_over_market_cap(tmp_path):
     """E/P = lucro / (preço × ações), com as ações vindo de linha FRE separada."""
     conn = _one_ticker_conn(tmp_path, price=10.0, shares=1000.0, lucro=500.0, pl=2000.0)
-    v = factor.earnings_yield_signals(conn, ["AAAA3"], "2021-06-20")
+    v = factor.legacy_earnings_yield_signals(conn, ["AAAA3"], "2021-06-20")
     assert abs(v["AAAA3"] - 500.0 / (10.0 * 1000.0)) < 1e-12    # 0.05
 
 
 def test_book_to_market_uses_equity_not_earnings(tmp_path):
     """H19 é fator DISTINTO de H18 — mesmo preço/ações, numerador diferente."""
     conn = _one_ticker_conn(tmp_path, price=10.0, shares=1000.0, lucro=500.0, pl=2000.0)
-    ep = factor.earnings_yield_signals(conn, ["AAAA3"], "2021-06-20")["AAAA3"]
-    bm = factor.book_to_market_signals(conn, ["AAAA3"], "2021-06-20")["AAAA3"]
+    ep = factor.legacy_earnings_yield_signals(conn, ["AAAA3"], "2021-06-20")["AAAA3"]
+    bm = factor.legacy_book_to_market_signals(conn, ["AAAA3"], "2021-06-20")["AAAA3"]
     assert abs(bm - 2000.0 / (10.0 * 1000.0)) < 1e-12           # 0.20
     assert bm != ep
 
@@ -143,8 +135,8 @@ def test_value_signals_embargo_blocks_early_asof(tmp_path):
     nem por E/P nem por B/M."""
     conn = _one_ticker_conn(tmp_path, price=10.0, shares=1000.0, lucro=500.0, pl=2000.0)
     # 2021-03-01 é 60 dias após ref_date 2020-12-31; embargo de 90 não venceu
-    assert factor.earnings_yield_signals(conn, ["AAAA3"], "2021-03-01") == {}
-    assert factor.book_to_market_signals(conn, ["AAAA3"], "2021-03-01") == {}
+    assert factor.legacy_earnings_yield_signals(conn, ["AAAA3"], "2021-03-01") == {}
+    assert factor.legacy_book_to_market_signals(conn, ["AAAA3"], "2021-03-01") == {}
 
 
 def test_value_signals_excluded_when_shares_missing(tmp_path):
@@ -158,16 +150,16 @@ def test_value_signals_excluded_when_shares_missing(tmp_path):
         "INSERT INTO fundamentals(ticker, ref_date, lucro_liquido, patrimonio_liquido,"
         " source) VALUES (?,?,?,?,?)", ("AAAA3", "2020-12-31", 500.0, 2000.0, "CVM DFP"))
     conn.commit()
-    assert factor.earnings_yield_signals(conn, ["AAAA3"], "2021-06-20") == {}
-    assert factor.book_to_market_signals(conn, ["AAAA3"], "2021-06-20") == {}
+    assert factor.legacy_earnings_yield_signals(conn, ["AAAA3"], "2021-06-20") == {}
+    assert factor.legacy_book_to_market_signals(conn, ["AAAA3"], "2021-06-20") == {}
 
 
 def test_value_signals_exclude_non_positive_fundamental(tmp_path):
     """Prejuízo / PL negativo invertem o múltiplo e fariam a empresa parecer
     "baratíssima" no ranking — ficam FORA, como o ROE sobre PL negativo."""
     conn = _one_ticker_conn(tmp_path, price=10.0, shares=1000.0, lucro=-500.0, pl=-200.0)
-    assert factor.earnings_yield_signals(conn, ["AAAA3"], "2021-06-20") == {}
-    assert factor.book_to_market_signals(conn, ["AAAA3"], "2021-06-20") == {}
+    assert factor.legacy_earnings_yield_signals(conn, ["AAAA3"], "2021-06-20") == {}
+    assert factor.legacy_book_to_market_signals(conn, ["AAAA3"], "2021-06-20") == {}
 
 
 def test_price_at_applies_quote_factor(tmp_path):
@@ -201,7 +193,7 @@ def test_value_signals_do_not_force_align_dfp_and_fre_dates(tmp_path):
     (nem são casadas à força na ingestão)."""
     conn = _one_ticker_conn(tmp_path, price=10.0, shares=1000.0, lucro=500.0, pl=2000.0,
                             fund_ref="2020-12-31", shares_ref="2021-01-31")
-    v = factor.earnings_yield_signals(conn, ["AAAA3"], "2021-06-20")
+    v = factor.legacy_earnings_yield_signals(conn, ["AAAA3"], "2021-06-20")
     assert abs(v["AAAA3"] - 0.05) < 1e-12
 
 
@@ -228,14 +220,14 @@ def test_ingest_fre_shares_persists_and_is_idempotent(tmp_path):
     zb = _fre_zip_bytes([["CIA X", "2020-12-31", "1.000.000", "400.000"]])
     ticker_of = {ingest_cvm._norm("CIA X"): "AAAA3"}
 
-    n1 = ingest_cvm.ingest_fre_shares_year(conn, 2020, ticker_of, zbytes=zb)
+    n1 = ingest_cvm.legacy_ingest_fre_shares_year(conn, 2020, ticker_of, zbytes=zb)
     assert n1 == 1
     row = conn.execute(
         "SELECT ref_date, shares_outstanding, source FROM fundamentals"
         " WHERE ticker='AAAA3'").fetchone()
     assert tuple(row) == ("2020-12-31", 1_000_000.0, "CVM FRE 2020")
 
-    n2 = ingest_cvm.ingest_fre_shares_year(conn, 2020, ticker_of, zbytes=zb)
+    n2 = ingest_cvm.legacy_ingest_fre_shares_year(conn, 2020, ticker_of, zbytes=zb)
     assert n2 == 0                                     # nada mudou no re-run
     assert conn.execute("SELECT COUNT(*) FROM fundamentals").fetchone()[0] == 1
 
@@ -246,7 +238,7 @@ def test_ingest_fre_shares_skips_unmapped_company(tmp_path):
     import ingest_cvm
     conn = db.get_connection(tmp_path / "s.db")
     zb = _fre_zip_bytes([["CIA DESCONHECIDA", "2020-12-31", "1.000.000", "400.000"]])
-    assert ingest_cvm.ingest_fre_shares_year(conn, 2020, {}, zbytes=zb) == 0
+    assert ingest_cvm.legacy_ingest_fre_shares_year(conn, 2020, {}, zbytes=zb) == 0
     assert conn.execute("SELECT COUNT(*) FROM fundamentals").fetchone()[0] == 0
 
 
@@ -375,7 +367,7 @@ def test_ingest_fre_shares_fails_loud_when_total_shares_underivable(tmp_path):
         "CNPJ_Companhia;Data_Referencia;Nome_Companhia;Quantidade_Total_Acoes_Circulacao",
         [["00.000.000/0001-91", "2023-12-31", "CIA X", "2842247534"]])
     with pytest.raises(ValueError, match="quantidade TOTAL de ações"):
-        ingest_cvm.ingest_fre_shares_year(
+        ingest_cvm.legacy_ingest_fre_shares_year(
             conn, 2023, {ingest_cvm._norm("CIA X"): "AAAA3"}, zbytes=zb)
     assert conn.execute("SELECT COUNT(*) FROM fundamentals").fetchone()[0] == 0
 
@@ -386,7 +378,7 @@ def test_ingest_fre_shares_persists_derived_total_from_real_header(tmp_path):
     import ingest_cvm
     conn = db.get_connection(tmp_path / "s.db")
     zb = _fre_zip_with_header(_FRE_HEADER_REAL, _FRE_ROWS_REAL)
-    n = ingest_cvm.ingest_fre_shares_year(
+    n = ingest_cvm.legacy_ingest_fre_shares_year(
         conn, 2023, {ingest_cvm._norm("BCO BRASIL S.A."): "BBAS3"}, zbytes=zb)
     assert n == 1
     ref, shares = conn.execute(
@@ -481,13 +473,13 @@ def test_split_entre_fre_e_asof_corrige_a_base_das_acoes(tmp_path):
     o E/P e jogando o papel para o quintil 'barato' por artefato mecânico."""
     conn = _one_ticker_conn(tmp_path, price=10.0, shares=1000.0, lucro=500.0, pl=2000.0,
                             fund_ref="2020-12-31", shares_ref="2020-12-31")
-    sem_split = factor.earnings_yield_signals(conn, ["AAAA3"], "2021-06-20")
+    sem_split = factor.legacy_earnings_yield_signals(conn, ["AAAA3"], "2021-06-20")
     conn.execute(
         "INSERT INTO adjustments(ticker, ex_date, factor, type, source, approved_by)"
         " VALUES (?,?,?,?,?,?)",
         ("AAAA3", "2021-03-01", 0.5, "split", "inferred", "operador"))
     conn.commit()
-    com_split = factor.earnings_yield_signals(conn, ["AAAA3"], "2021-06-20")
+    com_split = factor.legacy_earnings_yield_signals(conn, ["AAAA3"], "2021-06-20")
     # ações 1000 -> 2000 (dividido pelo fator 0,5): market cap dobra, E/P cai à metade
     assert abs(com_split["AAAA3"] - sem_split["AAAA3"] / 2.0) < 1e-12
 
@@ -497,7 +489,7 @@ def test_split_fora_da_janela_nao_altera_nada(tmp_path):
     publicada; evento POSTERIOR a asof ainda não aconteceu."""
     conn = _one_ticker_conn(tmp_path, price=10.0, shares=1000.0, lucro=500.0, pl=2000.0,
                             fund_ref="2020-12-31", shares_ref="2020-12-31")
-    base = factor.earnings_yield_signals(conn, ["AAAA3"], "2021-06-20")
+    base = factor.legacy_earnings_yield_signals(conn, ["AAAA3"], "2021-06-20")
     conn.execute(
         "INSERT INTO adjustments(ticker, ex_date, factor, type, source, approved_by)"
         " VALUES (?,?,?,?,?,?)",
@@ -507,7 +499,7 @@ def test_split_fora_da_janela_nao_altera_nada(tmp_path):
         " VALUES (?,?,?,?,?,?)",
         ("AAAA3", "2025-01-01", 0.5, "split", "inferred", "operador"))
     conn.commit()
-    assert factor.earnings_yield_signals(conn, ["AAAA3"], "2021-06-20") == base
+    assert factor.legacy_earnings_yield_signals(conn, ["AAAA3"], "2021-06-20") == base
 
 
 def test_provento_nao_altera_contagem_de_acoes(tmp_path):
@@ -515,13 +507,13 @@ def test_provento_nao_altera_contagem_de_acoes(tmp_path):
     `adjustments` (que também mexe em preço) não pode mexer na contagem."""
     conn = _one_ticker_conn(tmp_path, price=10.0, shares=1000.0, lucro=500.0, pl=2000.0,
                             fund_ref="2020-12-31", shares_ref="2020-12-31")
-    base = factor.earnings_yield_signals(conn, ["AAAA3"], "2021-06-20")
+    base = factor.legacy_earnings_yield_signals(conn, ["AAAA3"], "2021-06-20")
     conn.execute(
         "INSERT INTO adjustments(ticker, ex_date, factor, type, source, approved_by)"
         " VALUES (?,?,?,?,?,?)",
         ("AAAA3", "2021-03-01", 0.97, "dividendo", "csv_manual", "operador"))
     conn.commit()
-    assert factor.earnings_yield_signals(conn, ["AAAA3"], "2021-06-20") == base
+    assert factor.legacy_earnings_yield_signals(conn, ["AAAA3"], "2021-06-20") == base
 
 
 def test_split_nao_aprovado_e_ignorado(tmp_path):
@@ -529,12 +521,12 @@ def test_split_nao_aprovado_e_ignorado(tmp_path):
     disciplina de `adjust._load`: não entra no cálculo."""
     conn = _one_ticker_conn(tmp_path, price=10.0, shares=1000.0, lucro=500.0, pl=2000.0,
                             fund_ref="2020-12-31", shares_ref="2020-12-31")
-    base = factor.earnings_yield_signals(conn, ["AAAA3"], "2021-06-20")
+    base = factor.legacy_earnings_yield_signals(conn, ["AAAA3"], "2021-06-20")
     conn.execute(
         "INSERT INTO adjustments(ticker, ex_date, factor, type, source)"
         " VALUES (?,?,?,?,?)", ("AAAA3", "2021-03-01", 0.5, "split", "inferred"))
     conn.commit()
-    assert factor.earnings_yield_signals(conn, ["AAAA3"], "2021-06-20") == base
+    assert factor.legacy_earnings_yield_signals(conn, ["AAAA3"], "2021-06-20") == base
 
 
 def test_ingest_fre_grava_known_at_do_dt_receb(tmp_path):
@@ -556,7 +548,7 @@ def test_ingest_fre_grava_known_at_do_dt_receb(tmp_path):
     assert ingest_cvm.parse_fre_received_dates(zb) == {"137597": "2023-05-30"}
 
     conn = db.get_connection(tmp_path / "s.db")
-    n = ingest_cvm.ingest_fre_shares_year(
+    n = ingest_cvm.legacy_ingest_fre_shares_year(
         conn, 2023, {ingest_cvm._norm("BCO BRASIL S.A."): "BBAS3"}, zbytes=zb)
     assert n == 1
     ref, shares, known = conn.execute(
@@ -585,11 +577,11 @@ def test_julgadas_ignoram_known_at_mesmo_quando_existe(tmp_path):
     assert factor.roe_signals(conn, ["AAAA3"], cedo) == {}
     assert factor.net_margin_signals(conn, ["AAAA3"], cedo) == {}
     # H17 (nunca rodada, re-pré-registrada): usa a data observada
-    assert factor.accruals_signals(conn, ["AAAA3"], cedo) == {"AAAA3": 0.05}
+    assert factor.legacy_accruals_signals(conn, ["AAAA3"], cedo) == {"AAAA3": 0.05}
     # no embargo, todas veem
     tarde = "2021-03-31"
     assert factor.roe_signals(conn, ["AAAA3"], tarde) == {"AAAA3": 0.2}
-    assert factor.accruals_signals(conn, ["AAAA3"], tarde) == {"AAAA3": 0.05}
+    assert factor.legacy_accruals_signals(conn, ["AAAA3"], tarde) == {"AAAA3": 0.05}
 
 
 def test_parse_dfp_received_dates_pega_a_versao_mais_antiga():
@@ -606,7 +598,7 @@ def test_parse_dfp_received_dates_pega_a_versao_mais_antiga():
                      "00.000.000/0001-91;2023-12-31;2;BB;001023;DFP;9;2024-07-01;x\n"
                      "00.000.000/0001-91;2023-12-31;1;BB;001023;DFP;8;2024-02-08;x"
                      ).encode("latin-1"))
-    got = ingest_cvm.parse_dfp_received_dates(buf.getvalue(), 2023)
+    got = ingest_cvm.legacy_parse_dfp_received_dates(buf.getvalue(), 2023)
     assert got == {("00000000000191", "2023-12-31"): "2024-02-08"}
 
 
@@ -655,7 +647,7 @@ def test_ingest_dfp_grava_known_at_do_dt_receb(tmp_path):
     import ingest_cvm
     conn = db.get_connection(tmp_path / "s.db")
     zb = _dfp_zip()
-    n = ingest_cvm.ingest_dfp_year(
+    n = ingest_cvm.legacy_ingest_dfp_year(
         conn, 2023, ticker_of={ingest_cvm._norm("BCO BRASIL S.A."): "BBAS3"},
         zbytes=zb)
     assert n == 1
@@ -666,7 +658,7 @@ def test_ingest_dfp_grava_known_at_do_dt_receb(tmp_path):
     assert accr is not None
 
     # e o efeito que importa: H17 vê o dado em fevereiro, não no fim de março
-    assert factor.accruals_signals(conn, ["BBAS3"], "2024-02-10") != {}
+    assert factor.legacy_accruals_signals(conn, ["BBAS3"], "2024-02-10") != {}
     # as JULGADAS continuam presas ao embargo, mesmo com known_at gravado
     assert factor.roe_signals(conn, ["BBAS3"], "2024-02-10") == {}
     assert factor.roe_signals(conn, ["BBAS3"], "2024-03-30") != {}
@@ -678,5 +670,5 @@ def test_ingest_dfp_known_at_e_idempotente(tmp_path):
     conn = db.get_connection(tmp_path / "s.db")
     zb = _dfp_zip()
     tk = {ingest_cvm._norm("BCO BRASIL S.A."): "BBAS3"}
-    assert ingest_cvm.ingest_dfp_year(conn, 2023, ticker_of=tk, zbytes=zb) == 1
-    assert ingest_cvm.ingest_dfp_year(conn, 2023, ticker_of=tk, zbytes=zb) == 0
+    assert ingest_cvm.legacy_ingest_dfp_year(conn, 2023, ticker_of=tk, zbytes=zb) == 1
+    assert ingest_cvm.legacy_ingest_dfp_year(conn, 2023, ticker_of=tk, zbytes=zb) == 0

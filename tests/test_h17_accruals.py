@@ -1,3 +1,4 @@
+# Historical regression fixtures use explicit legacy APIs; see test_repairs_*.py for current paths.
 """H17 — accruals / qualidade do lucro (pré-registro 2026-09-04, Sloan 1996).
 
 Mesma maquinaria de H7/H9/H12/H13 (universo/custos/pareamento/pedágio/embargo
@@ -12,7 +13,6 @@ import cotahist
 import db
 import factor
 import ingest_cvm
-import trials_gate
 
 
 def _dates(n, start=(2016, 7, 1)):
@@ -39,21 +39,15 @@ def _synthetic_conn(tmp_path):
     return conn
 
 
-def test_run_h17_smoke(tmp_path, capsys):
-    from config import load_config
-    cfg = load_config()
-    cfg["bootstrap"] = {"n_boot": 300, "block_length": 21, "confidence": 0.95, "seed": 42}
-
+def test_run_h17_blocked_before_protected_performance(tmp_path):
+    import pytest
     conn = _synthetic_conn(tmp_path)
-    tp = tmp_path / "trials.json"
-    trials_gate.attest(cfg, trials_path=tp)
-    trials_gate.register_baseline_trials(cfg, trials_path=tp)
-    v = backtest.run_h17(cfg, conn, trials_path=tp)
+    before = conn.total_changes
+    with pytest.raises(ValueError, match="H17 PAUSED"):
+        backtest.run_h17(conn=conn, trials_path=tmp_path / "trials.json")
+    assert conn.total_changes == before
+    assert not (tmp_path / "trials.json").exists()
     conn.close()
-
-    assert "H17:" in capsys.readouterr().out
-    assert v["n"] > 60 and v.get("n_trials") == 3
-    assert v.get("dsr") is not None and 0.0 <= v["dsr"] <= 1.0
 
 
 def test_h17_frozen_config_hash_golden():
@@ -94,9 +88,9 @@ def test_accruals_signals_embargo_blocks_early_asof(tmp_path):
         ("AAAA3", "2020-12-31", 1000.0, 100.0, 60.0, 0.04, "CVM DFP 2020"))
     conn.commit()
 
-    assert "AAAA3" not in factor.accruals_signals(
+    assert "AAAA3" not in factor.legacy_accruals_signals(
         conn, ["AAAA3"], "2021-03-01", disclosure_embargo_days=90)
-    assert factor.accruals_signals(
+    assert factor.legacy_accruals_signals(
         conn, ["AAAA3"], "2021-04-01", disclosure_embargo_days=90)["AAAA3"] == 0.04
 
 

@@ -1,3 +1,4 @@
+# Historical regression fixtures use explicit legacy APIs; see test_repairs_*.py for current paths.
 """M2 — detector de saltos, inferência de split, série ajustada e quarentena."""
 import adjust
 import db
@@ -207,7 +208,7 @@ def test_total_return_series_lowers_prices_before_ex_date(tmp_path):
         "INSERT INTO dividends(ticker, ex_date, value_per_share, source)"
         " VALUES (?,?,?,?)", ("AAAA3", "2024-01-03", 1.0, "teste"))
     conn.commit()
-    dates, tr = adjust.total_return_series(conn, "AAAA3")
+    dates, tr = adjust.legacy_total_return_series(conn, "AAAA3")
     raw = adjust.adjusted_series(conn, "AAAA3")[1]
     factor = 20.0 / 21.0
     assert tr[0] == raw[0] * factor and tr[1] == raw[1] * factor   # ANTES: reduzido
@@ -217,7 +218,7 @@ def test_total_return_series_lowers_prices_before_ex_date(tmp_path):
 def test_total_return_series_no_dividends_matches_adjusted_series(tmp_path):
     conn = db.get_connection(tmp_path / "s.db")
     _insert(conn, "BBBB3", [("2024-01-01", 10.0), ("2024-01-02", 11.0)])
-    dates, tr = adjust.total_return_series(conn, "BBBB3")
+    dates, tr = adjust.legacy_total_return_series(conn, "BBBB3")
     assert tr == adjust.adjusted_series(conn, "BBBB3")[1]   # sem provento = idêntica à split-ajustada
 
 
@@ -228,5 +229,5 @@ def test_total_return_series_dividend_outside_range_ignored(tmp_path):
         "INSERT INTO dividends(ticker, ex_date, value_per_share, source)"
         " VALUES (?,?,?,?)", ("CCCC3", "2025-01-01", 1.0, "teste"))   # fora do range
     conn.commit()
-    dates, tr = adjust.total_return_series(conn, "CCCC3")
+    dates, tr = adjust.legacy_total_return_series(conn, "CCCC3")
     assert tr == adjust.adjusted_series(conn, "CCCC3")[1]   # provento fora do range = ignorado

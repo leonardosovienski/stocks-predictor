@@ -1,3 +1,4 @@
+# Historical regression fixtures use explicit legacy APIs; see test_repairs_*.py for current paths.
 """Testes dos ingestores: snapshots da lista B3 (anti-viés de sobrevivência
 do universo) e parsers dos dados abertos da CVM (IPE/FRE)."""
 import io
@@ -136,7 +137,7 @@ def test_parse_dfp_drops_penultimo_comparison_column():
                 "00.000/0001-91;EMPRESA S.A.;PENÚLTIMO;2022-12-31;1;Ativo Total;900000\n")
     rows = ingest_cvm._open_zip_csv(
         _zip_of("dfp_cia_aberta_BPA_con_2023.csv", csv_text), "bpa_con")
-    out = ingest_cvm.parse_dfp_statement_rows(rows, "BPA_con")
+    out = ingest_cvm.legacy_parse_dfp_statement_rows(rows, "BPA_con")
     assert len(out) == 1 and out[0]["ref_date"] == "2023-12-31"
 
 
@@ -145,7 +146,7 @@ def test_parse_dfp_fail_loud_without_value_column():
     rows = ingest_cvm._open_zip_csv(
         _zip_of("dfp_cia_aberta_BPA_con_2023.csv", csv_text), "bpa_con")
     with pytest.raises(ValueError, match="value"):
-        ingest_cvm.parse_dfp_statement_rows(rows, "BPA_con")
+        ingest_cvm.legacy_parse_dfp_statement_rows(rows, "BPA_con")
 
 
 def test_compute_fundamentals_leverage_excludes_equity_from_passivo_total():
@@ -244,7 +245,7 @@ def test_ingest_dfp_year_writes_fundamentals(conn, monkeypatch):
     zbytes = buf.getvalue()
     monkeypatch.setattr(ingest_cvm, "download_zip", lambda url, timeout=300: zbytes)
 
-    n = ingest_cvm.ingest_dfp_year(conn, 2023, ticker_of={"empresa_s.a.": "EMPR3"})
+    n = ingest_cvm.legacy_ingest_dfp_year(conn, 2023, ticker_of={"empresa_s.a.": "EMPR3"})
     assert n == 1
     row = conn.execute(
         "SELECT ticker, ref_date, roe, leverage, source FROM fundamentals").fetchone()
@@ -254,7 +255,7 @@ def test_ingest_dfp_year_writes_fundamentals(conn, monkeypatch):
     assert row["source"] == "CVM DFP 2023"
 
     # re-executar o mesmo ano não duplica (UNIQUE ticker+ref_date+source)
-    n2 = ingest_cvm.ingest_dfp_year(conn, 2023, ticker_of={"empresa_s.a.": "EMPR3"})
+    n2 = ingest_cvm.legacy_ingest_dfp_year(conn, 2023, ticker_of={"empresa_s.a.": "EMPR3"})
     assert n2 == 0
     assert conn.execute("SELECT COUNT(*) FROM fundamentals").fetchone()[0] == 1
 
@@ -282,10 +283,10 @@ def test_ingest_dfp_year_accepts_prefetched_zbytes_without_downloading(conn, mon
         raise AssertionError("download_zip não deveria ser chamado quando zbytes é passado")
     monkeypatch.setattr(ingest_cvm, "download_zip", _fail_download)
 
-    n = ingest_cvm.ingest_dfp_year(conn, 2023, ticker_of={"empresa_s.a.": "EMPR3"},
+    n = ingest_cvm.legacy_ingest_dfp_year(conn, 2023, ticker_of={"empresa_s.a.": "EMPR3"},
                                    zbytes=zbytes)
     assert n == 1
-    n2 = ingest_cvm.ingest_dfp_year(conn, 2023, ticker_of={"empresa_s.a.": "EMPR4"},
+    n2 = ingest_cvm.legacy_ingest_dfp_year(conn, 2023, ticker_of={"empresa_s.a.": "EMPR4"},
                                     zbytes=zbytes)
     assert n2 == 1
     assert conn.execute("SELECT COUNT(*) FROM fundamentals").fetchone()[0] == 2
@@ -323,7 +324,7 @@ def test_ingest_dfp_year_backfills_revenue_on_preexisting_row(conn, monkeypatch)
     zbytes = buf.getvalue()
     monkeypatch.setattr(ingest_cvm, "download_zip", lambda url, timeout=300: zbytes)
 
-    n = ingest_cvm.ingest_dfp_year(conn, 2023, ticker_of={"empresa_s.a.": "EMPR3"})
+    n = ingest_cvm.legacy_ingest_dfp_year(conn, 2023, ticker_of={"empresa_s.a.": "EMPR3"})
     assert n == 1   # backfill conta como mudança
     row = conn.execute(
         "SELECT roe, leverage, receita_liquida, net_margin FROM fundamentals"
@@ -334,7 +335,7 @@ def test_ingest_dfp_year_backfills_revenue_on_preexisting_row(conn, monkeypatch)
     assert conn.execute("SELECT COUNT(*) FROM fundamentals").fetchone()[0] == 1  # sem duplicar
 
     # rodar de novo não recontabiliza (já preenchido, idempotência preservada)
-    n2 = ingest_cvm.ingest_dfp_year(conn, 2023, ticker_of={"empresa_s.a.": "EMPR3"})
+    n2 = ingest_cvm.legacy_ingest_dfp_year(conn, 2023, ticker_of={"empresa_s.a.": "EMPR3"})
     assert n2 == 0
 
 
@@ -356,7 +357,7 @@ def test_ingest_dfp_year_skips_unmapped_company(conn, monkeypatch):
     zbytes = buf.getvalue()
     monkeypatch.setattr(ingest_cvm, "download_zip", lambda url, timeout=300: zbytes)
 
-    n = ingest_cvm.ingest_dfp_year(conn, 2023, ticker_of={})   # mapa vazio
+    n = ingest_cvm.legacy_ingest_dfp_year(conn, 2023, ticker_of={})   # mapa vazio
     assert n == 0
     assert conn.execute("SELECT COUNT(*) FROM fundamentals").fetchone()[0] == 0
 
@@ -468,7 +469,7 @@ def test_ingest_fre_dividends_year_writes_value_per_share(conn, monkeypatch):
     zbytes = _fre_year_zip(div_csv, capital_csv)
     monkeypatch.setattr(ingest_cvm, "download_zip", lambda url, timeout=300: zbytes)
 
-    n = ingest_cvm.ingest_fre_dividends_year(
+    n = ingest_cvm.legacy_ingest_fre_dividends_year(
         conn, 2023, ticker_of={"empresa_s.a.": "EMPR3"})
     assert n == 1
     row = conn.execute(
@@ -478,7 +479,7 @@ def test_ingest_fre_dividends_year_writes_value_per_share(conn, monkeypatch):
     assert row["source"] == "CVM FRE 2023"
 
     # re-executar não duplica (UNIQUE ticker+ex_date+source)
-    n2 = ingest_cvm.ingest_fre_dividends_year(
+    n2 = ingest_cvm.legacy_ingest_fre_dividends_year(
         conn, 2023, ticker_of={"empresa_s.a.": "EMPR3"})
     assert n2 == 0
     assert conn.execute("SELECT COUNT(*) FROM dividends").fetchone()[0] == 1
@@ -493,7 +494,7 @@ def test_ingest_fre_dividends_year_skips_company_without_reliable_share_total(co
     zbytes = _fre_year_zip(div_csv, capital_csv)
     monkeypatch.setattr(ingest_cvm, "download_zip", lambda url, timeout=300: zbytes)
 
-    n = ingest_cvm.ingest_fre_dividends_year(
+    n = ingest_cvm.legacy_ingest_fre_dividends_year(
         conn, 2023, ticker_of={"empresa_s.a.": "EMPR3"})
     assert n == 0
     assert conn.execute("SELECT COUNT(*) FROM dividends").fetchone()[0] == 0
@@ -506,6 +507,6 @@ def test_ingest_fre_dividends_year_skips_unmapped_company(conn, monkeypatch):
     zbytes = _fre_year_zip(div_csv, capital_csv)
     monkeypatch.setattr(ingest_cvm, "download_zip", lambda url, timeout=300: zbytes)
 
-    n = ingest_cvm.ingest_fre_dividends_year(conn, 2023, ticker_of={})
+    n = ingest_cvm.legacy_ingest_fre_dividends_year(conn, 2023, ticker_of={})
     assert n == 0
     assert conn.execute("SELECT COUNT(*) FROM dividends").fetchone()[0] == 0

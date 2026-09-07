@@ -1,3 +1,4 @@
+# Historical regression fixtures use explicit legacy APIs; see test_repairs_*.py for current paths.
 """M5 — walk-forward + pedágio de 2 lentes, end-to-end sobre dados sintéticos.
 
 Verifica a MAQUINARIA (gera séries pareadas, o pedágio roda e devolve veredito). Não
@@ -36,14 +37,14 @@ def _load(tmp_path):
 
 def test_walk_forward_produces_paired_series(tmp_path):
     conn = _load(tmp_path)
-    strat, bench = backtest.walk_forward(conn, _CFG)
+    strat, bench = backtest.legacy_walk_forward(conn, _CFG)
     assert len(strat) > 60 and len(strat) == len(bench)   # diária, pareada, > 2*bloco
     conn.close()
 
 
 def test_judge_runs_the_two_lens_toll(tmp_path):
     conn = _load(tmp_path)
-    strat, bench = backtest.walk_forward(conn, _CFG)
+    strat, bench = backtest.legacy_walk_forward(conn, _CFG)
     v = backtest.judge(strat, bench, _CFG)
     assert v["n"] == len(strat)
     assert v["psr"] is None or 0.0 <= v["psr"] <= 1.0

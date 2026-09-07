@@ -232,6 +232,9 @@ def cmd_backtest_hn(args) -> int:
         print("uso: python main.py backtest-h <N>   (ex.: backtest-h 6)")
         return 1
     n = int(args[0])
+    if n in (17, 18, 19):
+        print(f"H{n} PAUSED: dados e instrumento corrigidos exigem validação e novo pré-registro.")
+        return 2   # Before _conn(), migrations, baseline ledger or any performance.
     fn = getattr(backtest, f"run_h{n}", None)
     if fn is None:
         print(f"H{n}: sem backtest.run_h{n} — hipótese não existe ou número errado")

@@ -1,3 +1,4 @@
+# Historical regression fixtures use explicit legacy APIs; see test_repairs_*.py for current paths.
 """H4 — sizing por volatility targeting: pesos 1/vol, custo por turnover de
 pesos, walk-forward ponderado e o veredito de 3 critérios (IC + DSR + drawdown).
 
@@ -72,7 +73,7 @@ def test_walk_forward_weighted_produces_paired_series(tmp_path):
     from config import load_config
     cfg = load_config()
     conn = _synthetic_conn(tmp_path)
-    strat, bench = backtest.walk_forward(
+    strat, bench = backtest.legacy_walk_forward(
         conn, cfg,
         portfolio_fn=lambda sub, asof: portfolio.inverse_vol_weights(
             factor.vol_signals(sub, asof, 252)))

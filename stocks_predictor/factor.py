@@ -232,7 +232,7 @@ def volume_surge_signals(conn, tickers, asof, short_lookback=21, long_lookback=2
     return out
 
 
-def accruals_signals(conn, tickers, asof, disclosure_embargo_days=90):
+def legacy_accruals_signals(conn, tickers, asof, disclosure_embargo_days=90):
     """H17 (pré-registro 2026-09-04) — {ticker: accruals} point-in-time.
 
     `accruals = (lucro_liquido − fluxo_caixa_operacional) / ativo_total`
@@ -280,7 +280,7 @@ def _price_at(conn, ticker, asof):
     return row[0]
 
 
-def _value_signals(conn, tickers, asof, disclosure_embargo_days, column):
+def legacy__value_signals(conn, tickers, asof, disclosure_embargo_days, column):
     """Motor comum dos fatores de VALOR (H18 E/P, H19 B/M):
     {ticker: fundamento / capitalização de mercado} point-in-time.
 
@@ -294,7 +294,7 @@ def _value_signals(conn, tickers, asof, disclosure_embargo_days, column):
       formulário DIFERENTE, com data própria; ver
       `ingest_cvm.ingest_fre_shares_year`, que deliberadamente NÃO casa as
       duas datas à força), e é convertida para a base de desdobramento
-      vigente em `asof` por `_shares_on_price_base`;
+      vigente em `asof` por `legacy__shares_on_price_base`;
     - o preço é o do último pregão <= `asof`.
 
     Nada aqui olha para frente: as duas pernas contábeis passam pelo mesmo
@@ -310,14 +310,14 @@ def _value_signals(conn, tickers, asof, disclosure_embargo_days, column):
     melhor que um número que engana."""
     fundamento = _fundamental_signals(conn, tickers, asof,
                                       disclosure_embargo_days, column)
-    shares = _shares_with_ref_date(conn, tickers, asof, disclosure_embargo_days)
+    shares = legacy__shares_with_ref_date(conn, tickers, asof, disclosure_embargo_days)
     out = {}
     for t in tickers:
         f = fundamento.get(t)
         par = shares.get(t)
         if f is None or par is None or f <= 0:
             continue
-        s = _shares_on_price_base(conn, t, par[0], par[1], asof)
+        s = legacy__shares_on_price_base(conn, t, par[0], par[1], asof)
         if s is None or s <= 0:
             continue
         price = _price_at(conn, t, asof)
@@ -327,7 +327,7 @@ def _value_signals(conn, tickers, asof, disclosure_embargo_days, column):
     return out
 
 
-def _shares_with_ref_date(conn, tickers, asof, disclosure_embargo_days):
+def legacy__shares_with_ref_date(conn, tickers, asof, disclosure_embargo_days):
     """{ticker: (shares_outstanding, ref_date)} point-in-time.
 
     Igual a `_fundamental_signals` para `shares_outstanding`, mas devolve
@@ -349,7 +349,7 @@ def _shares_with_ref_date(conn, tickers, asof, disclosure_embargo_days):
     return out
 
 
-def _shares_on_price_base(conn, ticker, shares, shares_ref_date, asof):
+def legacy__shares_on_price_base(conn, ticker, shares, shares_ref_date, asof):
     """Traz `shares` da base do FRE para a base de preço vigente em `asof`.
 
     O múltiplo é `fundamento / (preço_cru(asof) × ações)`. O preço vem de
@@ -386,7 +386,7 @@ def _shares_on_price_base(conn, ticker, shares, shares_ref_date, asof):
     return shares
 
 
-def earnings_yield_signals(conn, tickers, asof, disclosure_embargo_days=90):
+def legacy_earnings_yield_signals(conn, tickers, asof, disclosure_embargo_days=90):
     """H18 (pré-registro 2026-09-04) — {ticker: E/P} point-in-time.
     `E/P = lucro_liquido / (preço × ações)` — o inverso do P/L.
 
@@ -398,11 +398,11 @@ def earnings_yield_signals(conn, tickers, asof, disclosure_embargo_days=90):
     Direção pré-registrada: quintil SUPERIOR (`take="top"`) = maior lucro
     por real de preço = mais BARATO. É a direção clássica do fator valor
     (Basu 1977; Fama & French 1992), fixada antes da rodada."""
-    return _value_signals(conn, tickers, asof, disclosure_embargo_days,
+    return legacy__value_signals(conn, tickers, asof, disclosure_embargo_days,
                           "lucro_liquido")
 
 
-def book_to_market_signals(conn, tickers, asof, disclosure_embargo_days=90):
+def legacy_book_to_market_signals(conn, tickers, asof, disclosure_embargo_days=90):
     """H19 (pré-registro 2026-09-04) — {ticker: B/M} point-in-time.
     `B/M = patrimonio_liquido / (preço × ações)` — o inverso do P/VPA.
 
@@ -416,5 +416,26 @@ def book_to_market_signals(conn, tickers, asof, disclosure_embargo_days=90):
 
     Direção pré-registrada: quintil SUPERIOR (`take="top"`) = maior
     patrimônio por real de preço = mais barato."""
-    return _value_signals(conn, tickers, asof, disclosure_embargo_days,
+    return legacy__value_signals(conn, tickers, asof, disclosure_embargo_days,
                           "patrimonio_liquido")
+
+
+# Current factors consume verified versioned derivations only, never the legacy table.
+def accruals_signals(conn, tickers, asof, disclosure_embargo_days=90):
+    from cvm_pit import fundamental_values
+    return fundamental_values(conn, tickers, asof, "accruals")
+
+
+def earnings_yield_signals(conn, tickers, asof, disclosure_embargo_days=90):
+    from cvm_pit import value_signals
+    return value_signals(conn, tickers, asof, "lucro_liquido")
+
+
+def book_to_market_signals(conn, tickers, asof, disclosure_embargo_days=90):
+    from cvm_pit import value_signals
+    return value_signals(conn, tickers, asof, "patrimonio_liquido")
+
+
+def _shares_on_price_base(conn, ticker, shares, basis_date, asof):
+    from cvm_pit import shares_on_price_base
+    return shares_on_price_base(conn, ticker, shares, basis_date, asof)

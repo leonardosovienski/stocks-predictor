@@ -1,6 +1,6 @@
 """Read-only DFP provenance/unit checks; never evaluates a stock hypothesis.
 
-The current ingestion path is compared with document-version dates and the
+The archived ingestion path is compared with document-version dates and the
 explicit currency scale in the CVM export. Passing these checks is NOT proof
 readiness: prices, share classes, corporate actions and execution need separate
 validation. The CLI opens only the supplied ZIP and writes JSON to stdout.
@@ -83,7 +83,7 @@ def audit_dfp_zip(payload: bytes, year: int) -> dict:
                 date.fromisoformat(r["DT_REFER"])
                 date.fromisoformat(r["DT_RECEB"][:10])
                 version_dates[(_digits(r["CNPJ_CIA"]), r["DT_REFER"], r["VERSAO"])].add(r["DT_RECEB"][:10])
-        assigned_dates = ingest_cvm.parse_dfp_received_dates(payload, year)
+        assigned_dates = ingest_cvm.legacy_parse_dfp_received_dates(payload, year)
         version_mismatches = set()
         unit_count = 0
         for statement in ("BPA_con", "BPP_con", "DRE_con", "DFC_MI_con"):
@@ -97,7 +97,7 @@ def audit_dfp_zip(payload: bytes, year: int) -> dict:
                 raise ValueError(f"{statement}: version/unit metadata missing")
             rows = [dict(zip(raw[0], r)) for r in raw[1:] if len(r) == len(raw[0])]
             rows = [r for r in rows if ingest_cvm._norm(r["ORDEM_EXERC"]) == "ultimo" and r["VL_CONTA"].strip()]
-            parsed = ingest_cvm.parse_dfp_statement_rows(raw, statement)
+            parsed = ingest_cvm.legacy_parse_dfp_statement_rows(raw, statement)
             if len(rows) != len(parsed):
                 raise ValueError(f"{statement}: cannot align source and parsed observations")
             detail = {"rows": len(rows), "scales": dict(Counter(r["ESCALA_MOEDA"] for r in rows)),

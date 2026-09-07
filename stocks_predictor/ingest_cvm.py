@@ -89,7 +89,7 @@ _DFP_COLS = {
 # contém a palavra esperada = suspeito, linha descartada com aviso (nunca
 # um número fabricado). Companhias financeiras (bancos/seguradoras) usam
 # plano de contas diferente e podem não casar — ficam de fora silenciosamente
-# nesta 1ª versão (registrado, não escondido: ver `ingest_dfp_year`).
+# nesta 1ª versão (registrado, não escondido: ver `legacy_ingest_dfp_year`).
 _ASSET_TOTAL_CODE = "1"
 _ASSET_TOTAL_KEYWORDS = ("ativo_total",)
 _LIABILITY_TOTAL_CODE = "2"
@@ -244,7 +244,7 @@ def _open_fre_distribuicao_capital_main(zbytes: bytes):
     "distribuicao_capital" bate tanto no arquivo principal quanto no
     "_classe_acao" (substring) — então filtra à mão excluindo
     "classe_acao" do nome. Único ponto de verdade para essa seleção;
-    reutilizado por `load_free_float` e `ingest_fre_dividends_year`."""
+    reutilizado por `load_free_float` e `legacy_ingest_fre_dividends_year`."""
     zf = zipfile.ZipFile(io.BytesIO(zbytes))
     candidates = [n for n in zf.namelist()
                  if "distribuicao_capital" in _norm(n) and "classe_acao" not in _norm(n)
@@ -282,7 +282,7 @@ def parse_fre_float_rows(rows) -> list[dict]:
     coluna. `free_float` continua intacto (a coluna de circulação É o que
     a família liquidity quer), então nenhum caminho que já funcionava
     muda de comportamento. Quem precisa de ações totais descobre a
-    ausência no fail-loud de `ingest_fre_shares_year`, não num número
+    ausência no fail-loud de `legacy_ingest_fre_shares_year`, não num número
     plausível e errado.
     """
     header = None
@@ -360,7 +360,7 @@ def _known_at_dfp(recebido_em, cnpj_de, f):
     return recebido_em.get((cnpj, f["ref_date"]))
 
 
-def parse_dfp_received_dates(zbytes: bytes, year: int) -> dict[tuple[str, str], str]:
+def legacy_parse_dfp_received_dates(zbytes: bytes, year: int) -> dict[tuple[str, str], str]:
     """{(cnpj_só_dígitos, ref_date): DT_RECEB MAIS ANTIGO} do principal da DFP.
 
     Diferente do FRE, os CSVs de demonstrativo da DFP (BPA/BPP/DRE/DFC) NÃO
@@ -500,7 +500,7 @@ def _derive_total_shares(float_shares: float | None,
     return total
 
 
-def parse_dfp_statement_rows(rows, statement: str) -> list[dict]:
+def legacy_parse_dfp_statement_rows(rows, statement: str) -> list[dict]:
     """Linhas de UM demonstrativo DFP (BPA_con/BPP_con/DRE_con) ->
     [{company, cnpj, ref_date, account_code, account_desc, value}].
 
@@ -658,7 +658,7 @@ def compute_fundamentals(bpa_rows: list[dict], bpp_rows: list[dict],
     return out
 
 
-def ingest_dfp_year(conn, year: int, companies: set[str] | None = None,
+def legacy_ingest_dfp_year(conn, year: int, companies: set[str] | None = None,
                     ticker_of: dict | None = None, zbytes: bytes | None = None) -> int:
     """Baixa o DFP consolidado de `year`, calcula ROE/alavancagem por
     companhia e grava em `fundamentals`. `ticker_of`: mesmo mapa
@@ -673,9 +673,9 @@ def ingest_dfp_year(conn, year: int, companies: set[str] | None = None,
     None (padrão) baixa como sempre."""
     if zbytes is None:
         zbytes = download_zip(DFP_URL.format(year=year))
-    bpa = parse_dfp_statement_rows(_open_zip_csv(zbytes, "bpa_con"), "BPA_con")
-    bpp = parse_dfp_statement_rows(_open_zip_csv(zbytes, "bpp_con"), "BPP_con")
-    dre = parse_dfp_statement_rows(_open_zip_csv(zbytes, "dre_con"), "DRE_con")
+    bpa = legacy_parse_dfp_statement_rows(_open_zip_csv(zbytes, "bpa_con"), "BPA_con")
+    bpp = legacy_parse_dfp_statement_rows(_open_zip_csv(zbytes, "bpp_con"), "BPP_con")
+    dre = legacy_parse_dfp_statement_rows(_open_zip_csv(zbytes, "dre_con"), "DRE_con")
     # DFC-MI (H17, pré-registro 2026-09-04). Ausência do CSV é TOLERADA com
     # aviso, não fail-loud: o método indireto é o usual mas a companhia pode
     # publicar DFC-MD (método direto), e anos antigos do dataset podem não
@@ -683,7 +683,7 @@ def ingest_dfp_year(conn, year: int, companies: set[str] | None = None,
     # os tickers simplesmente ficam fora do sinal da H17 (dado indisponível >
     # dado inventado) — o resto da ingestão (H7/H9/H12/H13) segue intacto.
     try:
-        dfc = parse_dfp_statement_rows(_open_zip_csv(zbytes, "dfc_mi_con"), "DFC_MI_con")
+        dfc = legacy_parse_dfp_statement_rows(_open_zip_csv(zbytes, "dfc_mi_con"), "DFC_MI_con")
     except ValueError as exc:
         logger.warning("DFP %d: DFC-MI indisponível (%s) — accruals ficam NULL neste ano",
                        year, exc)
@@ -697,7 +697,7 @@ def ingest_dfp_year(conn, year: int, companies: set[str] | None = None,
         cnpj = "".join(c for c in r.get("cnpj", "") if c.isdigit())
         if cnpj:
             cnpj_de.setdefault((_norm(r["company"]), r["ref_date"]), cnpj)
-    recebido_em = parse_dfp_received_dates(zbytes, year)
+    recebido_em = legacy_parse_dfp_received_dates(zbytes, year)
     n = 0
     for f in fundamentals:
         if companies and f["company"] not in companies:
@@ -865,7 +865,7 @@ def parse_fre_capital_total_rows(rows) -> dict[str, float]:
     return {cnpj: total for cnpj, (_, total) in best.items()}
 
 
-def ingest_fre_dividends_year(conn, year: int, companies: set[str] | None = None,
+def legacy_ingest_fre_dividends_year(conn, year: int, companies: set[str] | None = None,
                               ticker_of: dict | None = None) -> int:
     """Baixa o FRE de `year`, aproxima valor por ação dos proventos
     (`Montante` somado por categoria ÷ total de ações em circulação) e grava
@@ -885,7 +885,7 @@ def ingest_fre_dividends_year(conn, year: int, companies: set[str] | None = None
        "vazar" um pedaço de retorno já capturado no preço real antes da
        data escolhida) — limitação registrada, não escondida.
 
-    `companies`/`ticker_of`: mesmo contrato de `ingest_dfp_year`."""
+    `companies`/`ticker_of`: mesmo contrato de `legacy_ingest_dfp_year`."""
     zbytes = download_zip(FRE_URL.format(year=year))
     div_rows = parse_fre_dividend_rows(
         _open_zip_csv(zbytes, "distribuicao_dividendos_classe_acao"))
@@ -999,7 +999,7 @@ def load_free_float(year: int, companies: set[str] | None = None) -> dict:
     return {k: v for k, (_, v) in best.items()}
 
 
-def ingest_fre_shares_year(conn, year: int, ticker_of: dict | None = None,
+def legacy_ingest_fre_shares_year(conn, year: int, ticker_of: dict | None = None,
                            zbytes: bytes | None = None) -> int:
     """FRE de `year` -> `fundamentals.shares_outstanding`. Insumo de H18
     (E/P) e H19 (B/P), pré-registradas 2026-09-04.
@@ -1086,3 +1086,31 @@ def ingest_fre_shares_year(conn, year: int, ticker_of: dict | None = None,
         n += conn.execute("SELECT changes()").fetchone()[0]
     conn.commit()
     return n
+
+
+# Corrected public API. Legacy functions above only reproduce historical derivations.
+def _pit_module():
+    import importlib
+    return importlib.import_module(f"{__package__}.cvm_pit" if __package__ else "cvm_pit")
+
+
+def parse_dfp_statement_rows(rows, statement):
+    return _pit_module().statement_rows(rows, statement)
+
+
+def parse_dfp_received_dates(zbytes, year):
+    """Keys include document version; values are observed receipt dates."""
+    return {key: dates[0] for key, dates in _pit_module().dfp_received_dates(zbytes, year).items()}
+
+
+def ingest_dfp_year(conn, year, companies=None, ticker_of=None, zbytes=None):
+    return _pit_module().ingest_dfp(conn, year, companies, ticker_of, zbytes)
+
+
+def ingest_fre_shares_year(conn, year, ticker_of=None, zbytes=None, *, basis_by_document=None):
+    return _pit_module().ingest_fre_shares(conn, year, ticker_of, zbytes, basis_by_document=basis_by_document)
+
+
+def ingest_fre_dividends_year(conn, year, companies=None, ticker_of=None):
+    raise ValueError("FRE payment-date/company-total proxy is not a total-return source. "
+                     "Use cash_events.import_verified_events with per-ticker ex-dates and amounts.")

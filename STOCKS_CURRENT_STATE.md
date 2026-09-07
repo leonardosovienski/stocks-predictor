@@ -1,5 +1,22 @@
 # Stocks Predictor — estado corrente
 
+> ## Correções implementadas em cópia isolada — 2026-09-07
+>
+> As APIs públicas de ingestão agora gravam versões separadas, em reais,
+> nas tabelas PIT da migração 0013. Base de ações desconhecida não gera
+> múltiplo; retorno total exige eventos por papel e cobertura documentada.
+> O novo `backtest.walk_forward` mantém quantidades, negocia após o sinal
+> e contabiliza caixa/custos igualmente para estratégia e benchmark.
+> Os runners julgados usam explicitamente o instrumento `legacy_*`.
+> H17/H18/H19 estão bloqueadas no CLI antes de banco/ledger/desempenho:
+> validar o dataset reconstruído e registrar a metodologia corrigida primeiro.
+>
+> [Implementação, evidências e limites](docs/research/2026-09-07-repairs.md).
+> 47 testes dirigidos passaram; suíte completa será registrada na entrega.
+> Parser validado no ZIP integral 2023: 475 documentos DFP e 455 FRE.
+> Nenhum resultado protegido observado; nenhuma dependência de runtime nova.
+
+
 **Vigência:** 2026-09-06 (auditoria de prontidão; nenhuma nova rodada)
 
 **H17-H19: PAUSE antes de desempenho.** A auditoria em

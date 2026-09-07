@@ -320,6 +320,47 @@ MIGRATIONS: list[tuple[str, str]] = [
         -- H7/H9/H12/H13/H17 já julgadas ou pré-registradas.
         ALTER TABLE fundamentals ADD COLUMN known_at TEXT;
     """),
+    ("0013_verified_derivations", """
+        -- New derivations only. Historical raw data, fundamentals and ledgers remain intact.
+        CREATE TABLE ingestion_issues (
+            source_sha256 TEXT NOT NULL, document_key TEXT NOT NULL, reason TEXT NOT NULL,
+            UNIQUE(source_sha256,document_key,reason)
+        );
+        CREATE TABLE fundamentals_pit (
+            ticker TEXT NOT NULL, cnpj TEXT NOT NULL, ref_date TEXT NOT NULL,
+            document_version INTEGER NOT NULL CHECK(document_version>0),
+            received_at TEXT NOT NULL, available_at TEXT NOT NULL,
+            source TEXT NOT NULL, source_sha256 TEXT NOT NULL,
+            ativo_total REAL, passivo_total REAL, patrimonio_liquido REAL,
+            lucro_liquido REAL, receita_liquida REAL, fluxo_caixa_operacional REAL,
+            roe REAL, leverage REAL, net_margin REAL, accruals REAL,
+            CHECK(available_at>received_at),
+            UNIQUE(ticker,cnpj,ref_date,document_version,source_sha256)
+        );
+        CREATE INDEX idx_fundamentals_pit ON fundamentals_pit(ticker,available_at,ref_date);
+        CREATE TABLE shares_pit (
+            ticker TEXT NOT NULL, ref_date TEXT NOT NULL, document_id TEXT NOT NULL,
+            received_at TEXT NOT NULL, available_at TEXT NOT NULL,
+            shares_outstanding REAL NOT NULL CHECK(shares_outstanding>0),
+            basis_date TEXT, basis_source TEXT, price_basis_source TEXT,
+            source TEXT NOT NULL, source_sha256 TEXT NOT NULL,
+            CHECK(available_at>received_at),
+            CHECK(basis_date IS NULL OR (basis_date<=received_at AND basis_source IS NOT NULL)),
+            UNIQUE(ticker,document_id,source_sha256)
+        );
+        CREATE INDEX idx_shares_pit ON shares_pit(ticker,available_at);
+        CREATE TABLE cash_events (
+            ticker TEXT NOT NULL, event_id TEXT NOT NULL, ex_date TEXT NOT NULL,
+            payment_date TEXT NOT NULL, value_per_share REAL NOT NULL CHECK(value_per_share>0),
+            source TEXT NOT NULL, source_sha256 TEXT NOT NULL,
+            CHECK(payment_date>=ex_date), UNIQUE(ticker,event_id)
+        );
+        CREATE TABLE cash_event_coverage (
+            ticker TEXT NOT NULL, start_date TEXT NOT NULL, end_date TEXT NOT NULL,
+            source TEXT NOT NULL, source_sha256 TEXT NOT NULL,
+            CHECK(end_date>=start_date), UNIQUE(ticker,start_date,end_date)
+        );
+    """),
 ]
 
 

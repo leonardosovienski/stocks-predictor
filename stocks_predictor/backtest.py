@@ -43,7 +43,7 @@ def _daily_returns(dates, closes):
             for i in range(1, len(closes)) if closes[i - 1] > 0}
 
 
-def walk_forward(conn, cfg, signal_fn=None, take="top", portfolio_fn=None, series_fn=None):
+def legacy_walk_forward(conn, cfg, signal_fn=None, take="top", portfolio_fn=None, series_fn=None):
     """Retorna (strat_diaria, bench_diaria) — listas pareadas de retornos diários.
 
     Custo de transação: proporcional ao turnover REAL entre rebalanceamentos
@@ -164,7 +164,7 @@ def walk_forward(conn, cfg, signal_fn=None, take="top", portfolio_fn=None, serie
             else:
                 # mesma convenção do ramo equiponderado acima: ticker sem retorno no
                 # dia entra como 0, sem sair do denominador (anti-viés-de-sobrevivência
-                # — ver docstring de `walk_forward`).
+                # — ver docstring de `legacy_walk_forward`).
                 sw = [(w, dret[tk].get(d, 0.0)) for tk, w in weights.items()]
                 den = sum(w for w, _ in sw)
                 if not brets or den <= 0:
@@ -211,7 +211,7 @@ def judge(strat, bench, cfg):
 def run(cfg=None, conn=None, write_report=False, run_id=None):
     cfg = cfg or load_config()
     conn = conn or db.get_connection()
-    strat, bench = walk_forward(conn, cfg)
+    strat, bench = legacy_walk_forward(conn, cfg)
     verdict = judge(strat, bench, cfg)
     print(f"walk-forward: {verdict['n']} pregões | PSR={verdict['psr']} | "
           f"IC95% diff-Sharpe={verdict['sharpe_diff_ci']} | H1: {verdict['veredito']}")
@@ -269,9 +269,9 @@ def _run_hypothesis(hypothesis, trial_name, frozen_keys, criteria_section, notes
     Cada `run_hN` abaixo fica só com o que É específico dela: extrair os parâmetros
     `[hN-FROZEN]` do config e montar `signal_fn`/`take`/`portfolio_fn`.
 
-    `series_fn` (H11+, 2026-09-04): repassado para `walk_forward` — troca a
+    `series_fn` (H11+, 2026-09-04): repassado para `legacy_walk_forward` — troca a
     fonte de preço (default `adjust.adjusted_series`, rota (b))."""
-    strat, bench = walk_forward(conn, cfg, signal_fn=signal_fn, take=take,
+    strat, bench = legacy_walk_forward(conn, cfg, signal_fn=signal_fn, take=take,
                                 portfolio_fn=portfolio_fn, series_fn=series_fn)
     return _finalize_hypothesis(hypothesis, trial_name, frozen_keys, criteria_section,
                                 notes, cfg, write_report, run_id, trials_path,
@@ -283,7 +283,7 @@ def _finalize_hypothesis(hypothesis, trial_name, frozen_keys, criteria_section, 
                          extra_criteria=None):
     """Fecho comum: pedágio (judge+DSR) + registro + relatório, dado
     `strat`/`bench` JÁ calculados. Extraído de `_run_hypothesis` (H16,
-    2026-09-04) — H16 não usa `walk_forward` (mecânica de TIMING, não
+    2026-09-04) — H16 não usa `legacy_walk_forward` (mecânica de TIMING, não
     seleção mensal por fator), mas usa o MESMO pedágio/registro de todas
     as anteriores; nenhuma delas foi alterada por este refactor."""
     import trials_gate
@@ -496,7 +496,7 @@ def run_h11(cfg=None, conn=None, write_report=False, run_id=None, trials_path=No
         "sharpe por-período realizado)",
         run_cfg, conn, write_report, run_id, trials_path,
         signal_fn=lambda sub, asof: factor.signals(sub, asof, lb, skip), take="top",
-        series_fn=adjust.total_return_series)
+        series_fn=adjust.legacy_total_return_series)
 
 
 def run_h12(cfg=None, conn=None, write_report=False, run_id=None, trials_path=None):
@@ -597,89 +597,21 @@ def run_h15(cfg=None, conn=None, write_report=False, run_id=None, trials_path=No
 
 
 def run_h17(cfg=None, conn=None, write_report=False, run_id=None, trials_path=None):
-    """H17 — accruals / qualidade do lucro (pré-registro 2026-09-04):
-    quintil INFERIOR de `(lucro_liquido − fluxo_caixa_operacional)/ativo_total`
-    (`factor.accruals_signals`, Sloan 1996).
-
-    PRIMEIRA hipótese do domínio com FONTE DE DADO NOVA desde o M2: a DFC-MI
-    consolidada (`dfp_cia_aberta_DFC_MI_con_YYYY.csv`), que já vinha dentro
-    do zip DFP baixado desde a H7 mas nunca tinha sido aberta. Não é
-    recombinação de H7/H9/H12/H13: BPA/BPP/DRE são todas de COMPETÊNCIA, a
-    DFC é de CAIXA — nenhuma combinação das três reconstrói o fluxo de caixa
-    operacional (ver RESEARCH_FREEZE §11, que nomeia "fluxo de caixa" como
-    fonte materialmente nova admissível).
-
-    Direção pré-registrada ANTES da rodada: quintil INFERIOR (accrual baixo =
-    lucro lastreado em caixa). Critérios: (i) IC95% diff-Sharpe > 0;
-    (ii) DSR >= dsr_min (N=17 tentativas no registro)."""
-    from config import H17_FROZEN_KEYS
-    cfg = cfg or load_config()
-    conn = conn or db.get_connection()
-    embargo = cfg.get("h17_factor", {}).get("disclosure_embargo_days", 90)
-    return _run_hypothesis(
-        "H17", "h17-accruals-sloan", H17_FROZEN_KEYS, "h17_criteria",
-        "rodada única da H17 (accruals, quintil INFERIOR; "
-        "sharpe por-período realizado)",
-        cfg, conn, write_report, run_id, trials_path,
-        signal_fn=lambda sub, asof: factor.accruals_signals(conn, sub.keys(), asof, embargo),
-        take="bottom")
+    """Protected: corrected measurement needs a new preregistration before observation."""
+    raise ValueError("H17 PAUSED: CVM/execution methodology changed; validate the rebuilt "
+                     "dataset and preregister the corrected instrument before observing performance.")
 
 
 def run_h18(cfg=None, conn=None, write_report=False, run_id=None, trials_path=None):
-    """H18 — valor por earnings yield (pré-registro 2026-09-04): quintil
-    SUPERIOR de `E/P = lucro_liquido/(preço_cru × ações)`
-    (`factor.earnings_yield_signals`, Basu 1977; Fama & French 1992).
-
-    PRIMEIRO fator de VALOR do domínio. Dezesseis hipóteses julgadas e
-    nenhuma testou o PREÇO PAGO pelo fundamento — H7/H9/H12/H13 medem a
-    qualidade do negócio, momentum/H14/H15 medem o comportamento do preço,
-    mas ninguém mediu a RAZÃO entre os dois. Habilitado por
-    `fundamentals.shares_outstanding` (migração 0011): o parser do FRE já
-    lia a quantidade de ações desde a família `liquidity`, mas jogava fora —
-    sem ela não existe capitalização de mercado, logo não existe múltiplo.
-
-    Critérios: (i) IC95% diff-Sharpe > 0; (ii) DSR >= dsr_min (N=18
-    tentativas no registro)."""
-    from config import H18_FROZEN_KEYS
-    cfg = cfg or load_config()
-    conn = conn or db.get_connection()
-    embargo = cfg.get("h18_factor", {}).get("disclosure_embargo_days", 90)
-    return _run_hypothesis(
-        "H18", "h18-value-earnings-yield", H18_FROZEN_KEYS, "h18_criteria",
-        "rodada única da H18 (earnings yield E/P, quintil superior; "
-        "sharpe por-período realizado)",
-        cfg, conn, write_report, run_id, trials_path,
-        signal_fn=lambda sub, asof: factor.earnings_yield_signals(
-            conn, sub.keys(), asof, embargo),
-        take="top")
+    """Protected: corrected measurement needs a new preregistration before observation."""
+    raise ValueError("H18 PAUSED: CVM/execution methodology changed; validate the rebuilt "
+                     "dataset and preregister the corrected instrument before observing performance.")
 
 
 def run_h19(cfg=None, conn=None, write_report=False, run_id=None, trials_path=None):
-    """H19 — valor por book-to-market (pré-registro 2026-09-04): quintil
-    SUPERIOR de `B/M = patrimonio_liquido/(preço_cru × ações)`
-    (`factor.book_to_market_signals`, Fama & French 1992).
-
-    Hipótese SEPARADA da H18 por decisão explícita, não por descuido: E/P
-    ancora no FLUXO de um exercício (lucro, volátil, sensível a itens não
-    recorrentes), B/M no ESTOQUE acumulado (patrimônio líquido, estável) — é
-    exatamente por isso que o HML de Fama & French usa B/M e não E/P. Rodar
-    as duas e reportar a que passar seria p-hacking; cada uma é julgada uma
-    vez, com seu próprio N no DSR (por isso o N da H19 é 19, não 18).
-
-    Critérios: (i) IC95% diff-Sharpe > 0; (ii) DSR >= dsr_min (N=19
-    tentativas no registro)."""
-    from config import H19_FROZEN_KEYS
-    cfg = cfg or load_config()
-    conn = conn or db.get_connection()
-    embargo = cfg.get("h19_factor", {}).get("disclosure_embargo_days", 90)
-    return _run_hypothesis(
-        "H19", "h19-value-book-to-market", H19_FROZEN_KEYS, "h19_criteria",
-        "rodada única da H19 (book-to-market B/M, quintil superior; "
-        "sharpe por-período realizado)",
-        cfg, conn, write_report, run_id, trials_path,
-        signal_fn=lambda sub, asof: factor.book_to_market_signals(
-            conn, sub.keys(), asof, embargo),
-        take="top")
+    """Protected: corrected measurement needs a new preregistration before observation."""
+    raise ValueError("H19 PAUSED: CVM/execution methodology changed; validate the rebuilt "
+                     "dataset and preregister the corrected instrument before observing performance.")
 
 
 def _turn_of_month_days(dates, last_days=1, first_days=3):
@@ -708,7 +640,7 @@ def run_h16(cfg=None, conn=None, write_report=False, run_id=None, trials_path=No
     papéis escolher); H16 testa QUANDO estar posicionado, no MESMO
     universo (não seleciona por fator nenhum).
 
-    Mecânica NOVA, não reusa `walk_forward` (que é seleção mensal por
+    Mecânica NOVA, não reusa `legacy_walk_forward` (que é seleção mensal por
     fator) — universo rebalanceado mensalmente (mesma disciplina PIT de
     `universe.select_universe`), carteira equiponderada FIXA entre
     rebalances (mesma de H1). A estratégia só "conta" o retorno do dia
@@ -722,7 +654,7 @@ def run_h16(cfg=None, conn=None, write_report=False, run_id=None, trials_path=No
 
     Usa o MESMO pedágio/registro de todas as anteriores via
     `_finalize_hypothesis` (extraído de `_run_hypothesis` nesta mesma
-    sessão — H1-H15 continuam usando `walk_forward`, comportamento
+    sessão — H1-H15 continuam usando `legacy_walk_forward`, comportamento
     intocado). Critérios: (i) IC95% diff-Sharpe > 0; (ii) DSR >= dsr_min
     (N=15 tentativas no registro)."""
     from config import H16_FROZEN_KEYS
@@ -789,3 +721,10 @@ def run_h16(cfg=None, conn=None, write_report=False, run_id=None, trials_path=No
 if __name__ == "__main__":
     if run() is None:
         sys.exit(1)
+
+
+
+def walk_forward(conn, cfg, signal_fn=None, take="top", portfolio_fn=None, series_fn=None):
+    """Corrected instrument. Historical hypothesis runners explicitly use legacy_walk_forward."""
+    from simulation import walk_forward as simulate
+    return simulate(conn, cfg, signal_fn, take, portfolio_fn, series_fn)

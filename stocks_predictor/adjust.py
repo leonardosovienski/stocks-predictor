@@ -13,10 +13,10 @@ estratégia contra o benchmark (viés a nosso favor = o pior tipo). Registrado n
 HANDOFF.
 
 ROTA (a) [retorno total, proventos reinvestidos] implementada 2026-09-04 —
-`total_return_series` (fonte: CVM/FRE via `ingest_cvm.ingest_fre_dividends_year`,
+`legacy_total_return_series` (fonte: CVM/FRE via `ingest_cvm.ingest_fre_dividends_year`,
 tabela `dividends`). Opt-in: NÃO substitui `adjusted_series`/rota (b) usada por
 H1-H10 já julgadas — usar exige hipótese NOVA, pré-registrada, ciente das
-aproximações declaradas (ver docstring de `total_return_series`).
+aproximações declaradas (ver docstring de `legacy_total_return_series`).
 
 Adjudicação humana (export/import CSV): a IA infere a PROPORÇÃO redonda mas NUNCA grava
 em `adjustments` sozinha (§9b/§11 — sem fix silencioso). `export_candidates_csv` lista os
@@ -281,7 +281,7 @@ def dividend_factor(close_at_ex: float, value_per_share: float) -> float | None:
     return close_at_ex / (close_at_ex + value_per_share)
 
 
-def total_return_series(conn, ticker):
+def legacy_total_return_series(conn, ticker):
     """(dates, closes) do `ticker` com proventos REINVESTIDOS, em cima da
     série já ajustada por splits (`adjusted_series`) — retorno TOTAL, não
     só-preço. ROTA (a) do design §4, implementada 2026-09-04 (fonte: CVM/FRE,
@@ -321,3 +321,10 @@ def total_return_series(conn, ticker):
             continue
         adjustments.append((dates[i], factor))
     return dates, adjusted_closes(dates, closes, adjustments)
+
+
+
+def total_return_series(conn, ticker, *, asof=None):
+    """Verified ex-date cash events, with explicit coverage and split-consistent units."""
+    from cash_events import total_return_series as verified_series
+    return verified_series(conn, ticker, asof=asof)

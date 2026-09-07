@@ -1,3 +1,4 @@
+# Historical regression fixtures use explicit legacy APIs; see test_repairs_*.py for current paths.
 """Documenta, com um teste executável, a limitação conhecida de purge/embargo.
 
 RESEARCH_FREEZE.md §4/§9/§14 registra a decisão `DOCUMENTED_HISTORICAL_LIMITATION`:
@@ -63,8 +64,8 @@ def test_purge_embargo_months_has_no_effect_on_walk_forward(tmp_path):
     conn_b = db.get_connection(tmp_path / "b.db")
     cotahist.load_prices(conn_b, lines, "COTAHIST_SYNTH.TXT")
 
-    strat_a, bench_a = backtest.walk_forward(conn_a, _cfg(purge_embargo_months=1))
-    strat_b, bench_b = backtest.walk_forward(conn_b, _cfg(purge_embargo_months=12))
+    strat_a, bench_a = backtest.legacy_walk_forward(conn_a, _cfg(purge_embargo_months=1))
+    strat_b, bench_b = backtest.legacy_walk_forward(conn_b, _cfg(purge_embargo_months=12))
     conn_a.close()
     conn_b.close()
 
