@@ -1,0 +1,137 @@
+{
+  "protocol_id": "H18-H19-MEASUREMENT-REPAIR-1",
+  "registered_at_utc": "2026-09-07T06:32:46.251065+00:00",
+  "phase": "DISCOVERY",
+  "first_outputs_already_observed": true,
+  "repaired_cohort_metrics_observed_before_registration": false,
+  "reason": "Source audit found BDI 08 held quotes omitted and two B3 bonuses double-counted as legacy splits; confirmed market jumps must not become missing losses or gains.",
+  "fixed_trials": [
+    {
+      "family": "H18",
+      "holding_months": 1
+    },
+    {
+      "family": "H18",
+      "holding_months": 3
+    },
+    {
+      "family": "H19",
+      "holding_months": 1
+    },
+    {
+      "family": "H19",
+      "holding_months": 3
+    }
+  ],
+  "frozen": "Use exactly the original first-observation factor values, universe, selections, signal/entry/exit dates, costs, adverse missing scenario and decision rule. No re-ranking, new feature or variant.",
+  "repairs": [
+    "Quote and identity extract from the same original B3 cash-market 010 archives, across BDI classifications, keeping existing 387101 quote values identical.",
+    "NATU3 2019-09-18 and PSSA3 2021-10-21: one original B3 100% bonus each; preserve legacy source in audit but do not apply it a second time.",
+    "Five exact primary-quote-confirmed price jumps accepted with quality notes; review includes positive and negative moves. Any unreviewed >30% move remains missing."
+  ],
+  "reviewed_moves": [
+    {
+      "ticker": "QUAL3",
+      "date": "2019-08-09",
+      "previous_date": "2019-08-08",
+      "isin": "BRQUALACNOR6",
+      "previous_close": 22.0,
+      "next_open": 29.0,
+      "price_factor": 1,
+      "decision": "Preserve confirmed primary-source market move, including losses, with an explicit quality note. This does not certify full corporate-action coverage.",
+      "source": "https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2019.ZIP",
+      "archive_sha256": "5170d3f8f079c3306424b36c2fae9b467391f8fa37d16d389f487b4c5c28edb9",
+      "previous_raw_line_sha256": "fa52f10f97be2a5220b10611c68bd94c4ad2b38cfa366c0c2c9a48983538a2c4",
+      "next_raw_line_sha256": "821d055af88fde065317be788d8865b8d269c6cc61f859064f8a411d1574c46f"
+    },
+    {
+      "ticker": "HGTX3",
+      "date": "2021-04-26",
+      "previous_date": "2021-04-23",
+      "isin": "BRHGTXACNOR9",
+      "previous_close": 22.68,
+      "next_open": 30.0,
+      "price_factor": 1,
+      "decision": "Preserve confirmed primary-source market move, including losses, with an explicit quality note. This does not certify full corporate-action coverage.",
+      "source": "https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2021.ZIP",
+      "archive_sha256": "b0d4aed17d609c7ba615a23320c2fd513b580a251ae7d884a5015ef8a3fe4705",
+      "previous_raw_line_sha256": "92ae1df0ac9e2d919579894dd5357a13885c2ff86f4ee8c695d911dafe24b263",
+      "next_raw_line_sha256": "201eabd2caa74329794baacd562b720c4da1448395c33c516787b16f5193b40f"
+    },
+    {
+      "ticker": "AMER3",
+      "date": "2023-01-12",
+      "previous_date": "2023-01-11",
+      "isin": "BRAMERACNOR6",
+      "previous_close": 12.0,
+      "next_open": 2.8,
+      "price_factor": 1,
+      "decision": "Preserve confirmed primary-source market move, including losses, with an explicit quality note. This does not certify full corporate-action coverage.",
+      "source": "https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2023.ZIP",
+      "archive_sha256": "ad1603788d78aaa1de806498572277f1d9443f88ae116452751b5800cb23523e",
+      "previous_raw_line_sha256": "0909bb86542851e5bb47f6144b49af82011968542e9cc3e305e599ab65b81897",
+      "next_raw_line_sha256": "b2a2161d1403e0eb2df475865df883ba3fc2db6570a16d71d355460d7aad0092"
+    },
+    {
+      "ticker": "PETZ3",
+      "date": "2024-04-19",
+      "previous_date": "2024-04-18",
+      "isin": "BRPETZACNOR2",
+      "previous_close": 3.5,
+      "next_open": 5.14,
+      "price_factor": 1,
+      "decision": "Preserve confirmed primary-source market move, including losses, with an explicit quality note. This does not certify full corporate-action coverage.",
+      "source": "https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2024.ZIP",
+      "archive_sha256": "96a003d10fab0fa2ace0c64cdc2b892b4c111adf9da8e538aa0b28437bd2a172",
+      "previous_raw_line_sha256": "0c68458b7084c044f0cf2ece929bfaec4c3e5f3fd020dae4c19f4b653fe4f9b9",
+      "next_raw_line_sha256": "b3404b3af9932c45fcaa04d528050fd09a390893306856f90ac811c1a8943413"
+    },
+    {
+      "ticker": "HAPV3",
+      "date": "2025-11-13",
+      "previous_date": "2025-11-12",
+      "isin": "BRHAPVACNOR4",
+      "previous_close": 32.69,
+      "next_open": 22.5,
+      "price_factor": 1,
+      "decision": "Preserve confirmed primary-source market move, including losses, with an explicit quality note. This does not certify full corporate-action coverage.",
+      "source": "https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2025.ZIP",
+      "archive_sha256": "6cc0ad851c8f605ca30418acac48be81f1767f6ed05b4f563772d06ae448047d",
+      "previous_raw_line_sha256": "8560de4b2a1b750b7514391ee222a2331dceba1afea6195ed3303f19eef36b00",
+      "next_raw_line_sha256": "6e1d225805f8c1b9b1f53568fec7ad25bbf46e3692a725d9e31eeea9dc8c008c"
+    }
+  ],
+  "unchanged_limits": [
+    "Merger/delisting/identity transitions and subscriptions without modeled terms remain unresolved.",
+    "Original feature coverage remains frozen, including historical exclusions induced by the earlier source-quality filter; this is measurement repair of that cohort, not a fully repaired new strategy.",
+    "No dividends/JCP/total return, executable sizing, taxes, cash-rate benchmark, untouched holdout or proof claim."
+  ],
+  "search_budget": {
+    "nominal_configurations_minimum": 20,
+    "observed_return_evaluations_before_minimum": 21,
+    "measurement_reevaluations": 4,
+    "observed_return_evaluations_after_minimum": 25,
+    "active_discovery_families": [
+      "H18",
+      "H19"
+    ],
+    "proof_trials": 0
+  },
+  "input_sha256": {
+    "outputs/h18-h19-first-observation.json": "95cb6672432a6a64bcf85728f9b0aa8847f2b87a45bf955655de5418a2ea6769",
+    "work/value-measurement-source/quotes.db": "0bceedac3936dc4162562ec35e03177c7e71b99e13b66837035d1ccd151f0512",
+    "work/value-measurement-source/events.json": "65b44124d0d1317b18b2d67c2dac379f567fdaa1149916fa792dd9f462173c52",
+    "work/value-measurement-source/reviewed-jumps.json": "80939e404498d71d3eb93c54ab115cb0e399d520ca8a7d55823927a6bb22ffb3",
+    "work/value-measurement-source/identity/identity-2016.jsonl": "a3202c9c019d70fa65707f51a9afe1f3a5cd94b7ce4490abc066bc0c02a0f17a",
+    "work/value-measurement-source/identity/identity-2017.jsonl": "568f6ef2d7d79f4ceb34ff8980e0838c87ce71fa2a970358180107bda72fa087",
+    "work/value-measurement-source/identity/identity-2018.jsonl": "8879f6636f544a4f3ef86c2f31f5f29d158aa80fed88ebe6dba5bb9824fbd1e0",
+    "work/value-measurement-source/identity/identity-2019.jsonl": "a36d13cf747b0fb8facc87cdd302cd1200fb5c6480b65477441d7a1765a4bcfd",
+    "work/value-measurement-source/identity/identity-2020.jsonl": "f6ec157730bc9aa485f4ab1b16b231575b150fcbc3000c1986b225e4bb034022",
+    "work/value-measurement-source/identity/identity-2021.jsonl": "2ed2c5beac73b63a7dbffc9077c1043190343c36be3b341da37dbf9200921cd1",
+    "work/value-measurement-source/identity/identity-2022.jsonl": "22cb5233fbeb2fd444e2844bdf06ee6a1ad3cdb4e6ee42e6b32bc1c4df8ba53c",
+    "work/value-measurement-source/identity/identity-2023.jsonl": "dd640e15d59489240451c3fdba10b7d44102e1a092fcfbbe2e125a77195b918b",
+    "work/value-measurement-source/identity/identity-2024.jsonl": "2c617de9593527d0e9e402e2d24e3fce9330f2abc2845375c9bd823abdaf57fb",
+    "work/value-measurement-source/identity/identity-2025.jsonl": "d3edbaec213d70700d48cc68a397a0b99ef3273d470f6cb4d82eb42d9cbfae07",
+    "work/value-measurement-source/identity/identity-2026.jsonl": "898bb44edcb2ea4b6ad8d76a5024b72ba7a598636fa47cee73012485d0f6b7b7"
+  }
+}

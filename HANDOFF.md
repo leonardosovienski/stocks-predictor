@@ -1,3 +1,20 @@
+## H18/H19: correção de medição registrada, ainda sem nova saída (2026-09-07)
+
+`discovery_value_repair.py` relê as mesmas quatro seleções da primeira observação,
+sem refazer ranking, fatores ou critérios. Extrato B3 ampliado: 391.824 cotações,
+4.723 adicionais, zero alterações de valor nas 387.101 anteriores. Inclui BDI 08
+para posição que entra em recuperação judicial. Dois ajustes legados são explicitamente
+substituídos pelas bonificações primárias correspondentes, registradas uma vez.
+Cinco saltos confirmados diretamente no COTAHIST, positivos e negativos, são medidos
+com alerta de qualidade; outros saltos continuam sem medição. Fusões, subscrições e
+demais eventos ainda sem termos não são resolvidos por presunção.
+
+Protocolo `docs/research/2026-09-07-value-repair-protocol.json`, hash semântico
+`1f4ad50cd682f4611f16676f64cf56de1c37a5eeab9704b8f7257fc816c1ab0f`.
+Orçamento após reavaliação: >=20 configurações, >=25 avaliações de retorno. Não é
+nova evidência independente. 11 testes específicos passaram, incluindo a perda
+efetiva da AMER3 e manutenção da identidade BDI 02 para 08. Sem dependência nova.
+
 ## H18/H19: quatro observações reais concluídas (2026-09-07)
 
 Código d8d93b26c217fbd5e45a745b9c5e208dc2ffc1a2: 504 testes passaram em 138,62 s,
