@@ -1,0 +1,70 @@
+{
+  "action": "INTEGRATE_AND_VALIDATE_FROZEN_H19_CONTINUOUS_REPLAY",
+  "recorded_at_utc": "2026-09-07T22:38:22.893401+00:00",
+  "software_status": "TESTED_GUARDED_REPLAY_IMPLEMENTED",
+  "economic_status": "INCONCLUSIVE_DATA_QUALITY",
+  "operation_status": "NO_GO_UNVALIDATED_NET_PROFIT",
+  "full_history_executed": false,
+  "net_profit_brl": null,
+  "source_commit_tested": "d6740817e1e0433bbcb9fdcbfe11ab128914ec56",
+  "full_suite": {
+    "passed": 572,
+    "elapsed_seconds": 177.43,
+    "coverage_percent": 79
+  },
+  "targeted_and_external_bundle_tests": 33,
+  "ruff_ci_scope": "PASS",
+  "pyright_configured_rj_scope": "PASS",
+  "wheel_and_external_import": "PASS",
+  "independent_reproduction": {
+    "source_commit": "d6740817e1e0433bbcb9fdcbfe11ab128914ec56",
+    "zip_sha256": "e6144a954ff55b12ef067b8459dfb59482ebf75f0c426e79642c261f448931b0",
+    "zip_bytes": 325754637,
+    "payload_files_verified": 418,
+    "source_files_copied": 367,
+    "unresolved_raw_source_copies": [],
+    "replay_exit_codes": [
+      2,
+      2
+    ],
+    "identical_replays": true,
+    "result_sha256": "db499b94ed77baa83561413ca72626fe4c983b3a0dc2112c34b979ac7e21cc5e",
+    "real_historical_pnl_computed": false,
+    "new_return_evaluations": 0,
+    "source_directory": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-06\\files-pasted-by-the-user-autonomous\\work\\h19-continuous-reproduced-e6144a954ff5",
+    "status": "REPRODUCED_EVIDENCE_BLOCK_NO_VALIDATED_PROFIT"
+  },
+  "observation_budget": {
+    "minimum_configurations": 32,
+    "minimum_historical_return_evaluations": 37,
+    "new_configurations": 0,
+    "new_historical_return_evaluations": 0
+  },
+  "config_or_selection_changed": false,
+  "remaining_evidence": {
+    "unreviewed_payment_dates_excluding_normalized_installments": 356,
+    "dated_events_without_reviewed_net": 33,
+    "complete_cash_intervals_uncertified": 1237,
+    "corporate_records_not_fully_integrated": 36,
+    "successor_cash_uncertified": true,
+    "post_2019_jbs_events_not_fully_integrated": 11
+  },
+  "stop_decision": "Do not operate or reveal a partial profit. The frozen protocol stops when source repair cannot cheaply establish an executable comparison.",
+  "not_claimed": [
+    "no edge exists",
+    "full historical simulation completed",
+    "economic validation passed"
+  ],
+  "reopening_requirements": [
+    "Source-complete cash inventory for both frozen portfolios including successors and PN shares",
+    "Reviewed cash dates, final net amounts and actual fiscal basis/auction treatment",
+    "Integrated whole-share corporate delivery paths with causal revisions and code-level tax treatment when needed",
+    "Only after those gates: four registered paired historical evaluations, net benchmark and risk analysis"
+  ],
+  "database_integrity": {
+    "operational_sha256": "a22739794ba4a43a11544338d4a91e14cb6a0b1f7b132ab460f96d3359f63cf4",
+    "isolated_sha256": "a8238568980d3303890b04590cfb5c55ab2d24c9271edd86820269336b09679a",
+    "unchanged": true
+  },
+  "orders_or_paid_resources_used": false
+}

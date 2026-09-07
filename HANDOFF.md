@@ -14,12 +14,16 @@ seguido de desdobramento com arredondamento por lote. Frações continuam exigin
 líquido e tratamento fiscal revisados; o programa NÃO calcula sozinho o imposto
 individual das reorganizações. Nenhuma dependência nova de runtime.
 
-33 testes direcionados passaram; Ruff do escopo CI passou. Suíte completa,
-wheel e reprodução externa ainda serão verificadas nesta mesma rodada.
+Validação concluída do commit d6740817e1e0433bbcb9fdcbfe11ab128914ec56: 572 testes passaram
+em 177,43 s; cobertura geral 79%, módulo contínuo 76%, driver 85%. Ruff CI,
+Pyright no escopo RJ, wheel e importação externa passaram. Recorte do pacote:
+33 testes passaram fora do repositório. Duas reproduções reais idênticas,
+ambas exit 2 por evidência incompleta; 418 payloads e 367 fontes verificados.
+ZIP SHA256 e6144a954ff55b12ef067b8459dfb59482ebf75f0c426e79642c261f448931b0.
 
 Fontes: 95 meses de DARF 6015 conferidos na Receita; 76.301 dias de posições
-do universo anteriormente mapeado sem falta de cotação; mais 125 cotações ON/PN
-principais e 125 fracionárias de RENT4/CYRE4, sem lacunas nos intervalos adicionais.
+do universo anteriormente mapeado sem falta de cotação; mais 125 cotações PN no mercado
+padrão e 125 fracionárias de RENT4/CYRE4, sem lacunas nos intervalos adicionais.
 1.345 boletins B3 inteiros forneceram 31.601 linhas de crédito. Cadastro V5:
 420/778 pagamentos individuais revisados, 131/133 selecionados; as outras duas
 selecionadas têm calendário de parcelas. 389 eventos têm líquido teórico com
