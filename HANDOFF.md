@@ -108,7 +108,7 @@
 > core 3.1.0 contra runtime 3.2.0 e expira em 2026-09-11 — precisa ser reemitido
 > com árvore limpa antes de qualquer rodada.
 >
-> Suíte: **413 verdes** (374 + 39 novos).
+> Suíte: **403 verdes** (374 + 29 novos).
 
 ---
 
