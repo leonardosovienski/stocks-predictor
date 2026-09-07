@@ -1,3 +1,17 @@
+## Integração real concluída em 2026-09-07
+
+Motor v3 corrigido: bonificação com direito/entrega separados e dimensionamento correto no
+preço adverso. A primeira matriz encontrou quatro falhas; após correção, os 36 controles reais
+passaram (R$5/10 mil, três preços, dois custos). Suíte completa: 463 testes, cobertura 86%;
+lint, Pyright configurado e wheel instalada fora do checkout aprovados. Código testado:
+`5c09c7b8ffebefef00467cbab12481f3535a7837`. Fontes e bancos originais preservados por hash.
+
+Capital original CVM validado em três documentos com escala própria e base em 31/12/2023;
+isso não resolve toda a base histórica de capitalização. Nenhum retorno H17–H19 observado,
+nenhum trial científico novo. O painel DFP/FCA foi verificado em 104 datas sem performance.
+Rentabilidade continua INCONCLUSIVE_DATA_QUALITY e os runners H17–H19 permanecem pausados.
+[Resultado completo e limites](docs/research/2026-09-07-real-integration-results.md).
+
 ### Resultado intermediário da integração real (sem resultados científicos)
 
 A primeira matriz mecânica encontrou 32 controles corretos e quatro falhas ENGI no preço
