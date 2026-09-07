@@ -1,3 +1,34 @@
+## H19: 16 datas selecionadas conciliadas, auditoria V3 (2026-09-07)
+
+Fechadas com fontes primárias todas as 16 linhas selecionadas que não tinham
+data candidata na V2. Agora: 160/778 pagamentos individuais revisados, 123/133
+selecionados; mais duas linhas ALSO com calendário explícito de parcelas.
+Oito selecionadas ainda têm apenas candidatos, embora zero estejam sem data.
+Restam 529 linhas sem candidato no conjunto original. Não confundir data com
+cobertura: JBS posterior, caixa dos sucessores e completude continuam pendentes.
+
+Scripts de pesquisa externos ao runtime: work/close_h19_selected_dates.py e
+work/package_h19_dates_v3.py, relativos à raiz da tarefa. Cadastro V3 recomposto
+de forma idêntica numa extração nova; pacote offline com 71 payloads verificados.
+ZIP SHA256 5ba1884ab9b414583f22f2d225e03539398d57b006f04b345b8dfb1e2574b1dd.
+Auditoria continua BLOCKED_MISSING_EVIDENCE, exit 2 esperado; quatro testes de
+compra inicial passam. Ainda não existe simulação histórica contínua concluída.
+Runtime inalterado; 558 testes são da validação anterior, não repetidos agora.
+
+BBAS atualizações conciliadas por total final menos nominal, sem duplicar caixa.
+Cogna/Eztec confirmadas por boletins de crédito B3. Ressalvas Tupy (tradução),
+Copasa (exercício na ata), Natura (líquido inconsistente e precisão) preservadas.
+Revisão de datas não autoriza inferir o líquido ou zerar eventos ausentes.
+Nenhum DB alterado, retorno observado, fator ajustado, ordem ou gasto.
+Contagem mantida >=32 configurações / >=37 avaliações. H19 Discovery inconclusiva.
+
+Próximo trabalho: inventário completo de caixa de ambas as carteiras, revisão
+dos líquidos/entregas/frações/bases e integração da execução contínua/fiscal.
+Cada 1 pp anual adicional vale R$50/100 sobre R$5/10 mil; mera escala aritmética,
+não previsão. Limiar econômico e horas aceitáveis do usuário seguem desconhecidos.
+Avaliar custo da reconstrução antes de expandir. Não reabrir famílias para
+contornar lacunas. Relatório e decisão V3 em docs/research/2026-09-07-h19-dates-v3*.
+
 ## H19: contabilidade de varejo e revisão de pagamentos (2026-09-07)
 
 Protocolo H19_QUARTERLY_RETAIL_CASH_1 registrado para R$5/10 mil, custos

@@ -1,0 +1,73 @@
+{
+  "scientific_state": "DISCOVERY_H19_NET_INCONCLUSIVE_DATA_QUALITY",
+  "source_update": "H19_PAYMENT_DATES_V3",
+  "runtime_commit": "5e71bc8642cc2b0759e8a1885cab446e315121fd",
+  "runtime_unchanged": true,
+  "prior_runtime_tests": 558,
+  "runtime_tests_repeated": false,
+  "full_history_executed": false,
+  "net_profit": null,
+  "new_return_evaluations": 0,
+  "budget_minimum": {
+    "configurations": 32,
+    "historical_return_evaluations": 37
+  },
+  "capital_brl": [
+    5000,
+    10000
+  ],
+  "user_minimum_annual_profit": null,
+  "user_monthly_maintenance_hours": null,
+  "incremental_selected_rows_reviewed": 16,
+  "queue_summary": {
+    "queue_rows": 778,
+    "selected_rows": 133,
+    "reviewed_payment_rows": 160,
+    "selected_reviewed_payment_rows": 123,
+    "without_candidate_date": 529,
+    "selected_without_candidate_date": 0
+  },
+  "normalized_installment_rows": 2,
+  "selected_candidate_only_rows_remaining": 8,
+  "complete_cash_coverage_verified": false,
+  "issue_counts": {
+    "CASH_COVERAGE": 1237,
+    "CASH_EVENT_FIELD": 4173,
+    "CASH_CHRONOLOGY": 616,
+    "EXECUTION_CHECK": 4,
+    "CORPORATE_TAX_AND_DELIVERY": 12,
+    "ORDINARY_STOCK_ACTION_DELIVERY_AND_BASIS": 24,
+    "JBS_HISTORY_TRUNCATED": 1
+  },
+  "reproduction": {
+    "archive": "STOCKS_H19_DATAS_E_AUDITORIA_V3.zip",
+    "sha256": "5ba1884ab9b414583f22f2d225e03539398d57b006f04b345b8dfb1e2574b1dd",
+    "bytes": 6134037,
+    "payload_files": 71,
+    "date_reconciliation": "PASS_16_PRIMARY_SOURCE_REVIEWS",
+    "rebuilt_registry_identical": true,
+    "registry_sha256": "7dfe6ae00486a9cf8fbd909c41a7c55c1e8d16c4e8cc849796aaeee45eeee6bc",
+    "audit": "PASS_EXPECTED_MISSING_EVIDENCE_EXIT_2",
+    "audit_sha256": "c8f90daa7d54f74f80d27480372597996f2c7a23f733a2d71f46776ca9b8286e",
+    "runtime_unchanged": true,
+    "prior_runtime_tests": 558,
+    "runtime_tests_repeated": false,
+    "new_return_evaluations": 0,
+    "profit": null,
+    "summary": {
+      "queue_rows": 778,
+      "selected_rows": 133,
+      "reviewed_payment_rows": 160,
+      "selected_reviewed_payment_rows": 123,
+      "without_candidate_date": 529,
+      "selected_without_candidate_date": 0
+    }
+  },
+  "promote": false,
+  "next_work": [
+    "Review remaining candidates and complete both cash inventories including JBS and successors",
+    "Review net amounts, corporate deliveries, fractions and fiscal basis",
+    "Implement continuous historical portfolio and dated fiscal schedule",
+    "Evaluate reconstruction cost before expanding research; no new factor family or tuning"
+  ]
+}
