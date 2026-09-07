@@ -1,3 +1,32 @@
+## H18/H19: validação econômica concluída, lucro não confirmado (2026-09-07)
+
+Código 28cf87e1819d25eb031067d6c707fa8519171953: 539 testes em 153,65 s,
+cobertura 79%, Ruff CI, Pyright configurado, wheel e importação externa aprovados.
+Segundo cálculo confirmou 9.732 células (erro máximo 2,22e-16). Mesmas quatro
+seleções; oito novos cenários de preço registrados/observados. Todos os 12 ICs
+descritivos em blocos incluem zero; não são ajustados à busca adaptativa.
+
+H19 trimestral: spread após 72 pb/período de +0,3588 p.p./mês na abertura,
++0,4816 no fechamento e +0,3800 no preço adverso. Não escolher o melhor modo.
+Crescimento hipotético na abertura após desconto fixo: 9,35% a.a.; drawdown entre
+trimestres -44,55%. Isso NÃO é P&L executável ou total return. Referência Selic
+bruta na mesma janela: 9,02% a.a.; não é comparação líquida homogênea.
+
+Busca de fonte ampliada: históricos localizados para 126 instrumentos; 872 linhas
+de caixa nas janelas, todas com preço anterior compatível com COTAHIST. Apenas
+92 linhas têm alguma data de pagamento no suplemento consultado, sem certificar
+completude/unicidade. Dez grupos de valores iguais podem ser parcelas: WEGE3 tem
+pagamentos em 2026/27/28. Não somar como caixa imediato nem deduplicar cegamente.
+Auditoria decimal v1 (33 matches) foi corrigida para remover zeros insignificantes
+na comparação (v2:92); ambas preservadas, nenhum retorno de caixa observado.
+
+4.225 endpoints fracionários encontrados; todos dos selecionados. Única ausência
+JBSS32 em 01/07/2025: BDR com lote unitário na fonte B3; não exige fracionário.
+Ainda falta executar carteira contínua com caixa/entregas/frações/giro/impostos.
+Sem Proof, promoção ou ordens. Orçamento >=32 configurações / >=37 avaliações.
+Resultados e decisão em docs/research/2026-09-07-profit-validation-results.md;
+bancos operacional e de fonte anterior preservados por SHA256.
+
 ## H18/H19: validação de lucro registrada (2026-09-07)
 
 Usuário pediu validar tudo para procurar lucro. `profit_validation.py` implementa
