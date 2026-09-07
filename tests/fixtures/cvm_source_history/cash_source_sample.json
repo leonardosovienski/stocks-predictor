@@ -1,0 +1,29 @@
+{
+  "b3": {
+    "typeStock": "UNT",
+    "dateApproval": "06/08/2026",
+    "valueCash": "0,5",
+    "ratio": "1",
+    "corporateAction": "DIVIDENDO",
+    "lastDatePriorEx": "11/08/2026",
+    "dateClosingPricePriorExDate": "11/08/2026",
+    "closingPricePriorExDate": "45,64",
+    "quotedPerShares": "1",
+    "corporateActionPrice": "1,095530",
+    "lastDateTimePriorEx": "2026-08-11T00:00:00"
+  },
+  "ri_sheet": "ESA - Holding",
+  "ri_row": 61,
+  "ri_values_D_to_J": [
+    "2026-08-06 00:00:00",
+    "2026-08-11 00:00:00",
+    "2026-08-12 00:00:00",
+    "2026-08-24 00:00:00",
+    0.1,
+    0.1,
+    0.5
+  ],
+  "b3_archive_sha256": "14b0babaeb318781c76d96a9b8cde8c458522b942a69f0f967e10fc8be4da90f",
+  "ri_xlsx_sha256": "bfbcd8def4e2e619c18a813024f98e337fcf902d64a7f0fd808f17ed87e09289",
+  "ri_source": "https://api.mziq.com/mzfilemanager/v2/d/60f49a2d-bd8c-4fd9-95ab-bdf833097a83/c1722b44-9139-333e-3545-30dc98ed51c0?origin=2"
+}

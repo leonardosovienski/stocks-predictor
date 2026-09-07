@@ -1,3 +1,17 @@
+## Complemento executado em 2026-09-07
+
+Reconstruídos 2016–2026 em cópia isolada: 4.177 DFP, 4.824 observações de
+circulação, 7.450 registros de capital emitido e 4.336 vínculos FCA. Coletados
+9.812 registros B3 de 100 emissores. Reconciliados 184 recebíveis B3/RI;
+95 recebíveis com quatro intervalos de cobertura importados apenas na cópia.
+FRE inválido é rejeitado por documento, com motivo persistente. Migração 0014
+isola observações de fontes das entradas de fatores. Nenhum desempenho protegido.
+
+Ainda faltam bases efetivas de ações, versões históricas completas, cobertura
+dos demais emissores e eventos sem dinheiro. H17–H19 permanecem pausadas.
+Detalhes: [relatório de fontes](docs/research/2026-09-07-source-completion.md).
+Validação completa e hashes são registrados no manifesto da entrega.
+
 # RESEARCH_FREEZE — stocks-predictor
 
 > ## Correções implementadas em cópia isolada — 2026-09-07

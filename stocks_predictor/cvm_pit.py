@@ -309,7 +309,7 @@ def ingest_dfp(conn, year, companies=None, ticker_of=None, zbytes=None):
         raise
 
 
-def derive_fre_shares(payload, year, basis_by_document=None):
+def derive_fre_shares(payload, year, basis_by_document=None, *, issues=None):
     """Preserve ID_DOC versions. Unknown share/price basis stays ineligible."""
     main = zip_rows(payload, f"fre_cia_aberta_{year}.csv", {"ID_DOC", "DT_RECEB"})
     received = {}
@@ -327,15 +327,20 @@ def derive_fre_shares(payload, year, basis_by_document=None):
         raise ValueError("empty FRE capital file")
     rows = ingest_cvm.parse_fre_float_rows([list(raw[0])] + [list(r.values()) for r in raw])
     unique = {}
+    issues = issues if issues is not None else []
+    rejected = set()
     for row in rows:
         doc = row["doc_id"]
         if doc not in received:
             raise ValueError(f"FRE capital has no matching ID_DOC: {doc}")
         shares = row["shares_outstanding"]
-        if shares is None:
+        if shares is None or not math.isfinite(shares) or shares <= 0:
+            reason = "MISSING_TOTAL_SHARES" if shares is None else "INVALID_TOTAL_SHARES"
+            issue = {"document_key": json.dumps(["FRE", doc]), "reason": reason}
+            if issue not in issues:
+                issues.append(issue)
+            rejected.add(doc)
             continue
-        if not math.isfinite(shares) or shares <= 0:
-            raise ValueError("invalid FRE total share count")
         basis = (basis_by_document or {}).get(doc, {})
         basis_date = basis.get("basis_date")
         if basis_date:
@@ -358,6 +363,8 @@ def derive_fre_shares(payload, year, basis_by_document=None):
         if doc in unique and unique[doc] != record:
             raise ValueError(f"conflicting share counts within FRE document {doc}")
         unique[doc] = record
+    for doc in rejected:
+        unique.pop(doc, None)
     if not unique:
         raise ValueError("FRE: nenhuma linha com quantidade TOTAL de ações")
     return sorted(unique.values(), key=lambda r: (r["company"], r["available_at"], r["document_id"]))
@@ -367,11 +374,26 @@ def ingest_fre_shares(conn, year, ticker_of=None, zbytes=None, *, basis_by_docum
     if zbytes is None:
         zbytes = ingest_cvm.download_zip(ingest_cvm.FRE_URL.format(year=year))
     records = []
-    for row in derive_fre_shares(zbytes, year, basis_by_document):
+    issues = []
+    for row in derive_fre_shares(zbytes, year, basis_by_document, issues=issues):
         ticker = (ticker_of or {}).get(row["company"])
         if ticker:
             records.append({"ticker": ticker, **{k: v for k, v in row.items() if k != "company"}})
-    return append_rows(conn, "shares_pit", records, ("ticker", "document_id", "source_sha256"))
+    conn.execute("SAVEPOINT fre_import")
+    try:
+        count = append_rows(conn, "shares_pit", records, ("ticker", "document_id", "source_sha256"))
+        append_rows(
+            conn,
+            "ingestion_issues",
+            [{**r, "source_sha256": hashlib.sha256(zbytes).hexdigest()} for r in issues],
+            ("source_sha256", "document_key", "reason"),
+        )
+        conn.execute("RELEASE fre_import")
+        return count
+    except Exception:
+        conn.execute("ROLLBACK TO fre_import")
+        conn.execute("RELEASE fre_import")
+        raise
 
 
 def fundamental_values(conn, tickers, asof, column):

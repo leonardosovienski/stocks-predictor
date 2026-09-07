@@ -361,6 +361,15 @@ MIGRATIONS: list[tuple[str, str]] = [
             CHECK(end_date>=start_date), UNIQUE(ticker,start_date,end_date)
         );
     """),
+    ("0014_research_source_documents", """
+        -- Source audit staging only. Factor/return APIs do not read this table.
+        CREATE TABLE research_source_documents (
+            record_id TEXT PRIMARY KEY, kind TEXT NOT NULL, archive_year INTEGER,
+            cnpj TEXT, document_id TEXT, available_at TEXT,
+            source_sha256 TEXT NOT NULL, payload_json TEXT NOT NULL
+        );
+        CREATE INDEX idx_research_sources ON research_source_documents(kind,cnpj,available_at);
+    """),
 ]
 
 

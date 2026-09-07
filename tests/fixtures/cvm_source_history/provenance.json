@@ -1,0 +1,54 @@
+{
+  "selection": "Verbatim field values from public CVM archives; CSV row selection and newline normalization only.",
+  "files": [
+    {
+      "name": "fre_cia_aberta_2016.csv",
+      "rows": 3,
+      "sha256": "21a47160125fcdcdee1ca9627c843483cc25d6d1a658279415dfa1e711b55ca3",
+      "original_archive_sha256": "bfd0513d903cb3e5a43360dcb1673b3c9ac1f23396974726cca764df64d481cc",
+      "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FRE/DADOS/fre_cia_aberta_2016.zip"
+    },
+    {
+      "name": "fre_cia_aberta_distribuicao_capital_2016.csv",
+      "rows": 3,
+      "sha256": "51c424934a4f95a352bc2a5efddb85b8af2a66462091b7f5a200ed3aa70043eb",
+      "original_archive_sha256": "bfd0513d903cb3e5a43360dcb1673b3c9ac1f23396974726cca764df64d481cc",
+      "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FRE/DADOS/fre_cia_aberta_2016.zip"
+    },
+    {
+      "name": "fre_cia_aberta_2023.csv",
+      "rows": 1,
+      "sha256": "bb2d69f4af1b68ba7d785978b8bb945834154e478dd1be82707f56c638208031",
+      "original_archive_sha256": "995c8c3faa11bb4970e33e423366e6eab6b33c37ae82ec71fb60e54264b96fb7",
+      "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FRE/DADOS/fre_cia_aberta_2023.zip"
+    },
+    {
+      "name": "fre_cia_aberta_distribuicao_capital_2023.csv",
+      "rows": 1,
+      "sha256": "514e406414f7040200adb96c13486ffbc8358048f6746b23e41016e574d6b9ea",
+      "original_archive_sha256": "995c8c3faa11bb4970e33e423366e6eab6b33c37ae82ec71fb60e54264b96fb7",
+      "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FRE/DADOS/fre_cia_aberta_2023.zip"
+    },
+    {
+      "name": "fre_cia_aberta_capital_social_2023.csv",
+      "rows": 3,
+      "sha256": "c8f6b168c39b50e55e0ed3d995cfff2e6cf3d0ee32dde5eb6283b0e9b370feb8",
+      "original_archive_sha256": "995c8c3faa11bb4970e33e423366e6eab6b33c37ae82ec71fb60e54264b96fb7",
+      "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FRE/DADOS/fre_cia_aberta_2023.zip"
+    },
+    {
+      "name": "fca_cia_aberta_2023.csv",
+      "rows": 2,
+      "sha256": "44d595c23b44919838c142854c651935edc47f3abbdf722aea8c4f488ae900eb",
+      "original_archive_sha256": "40c732b6d386ef32c30e1434a9c999e9d6b1b2d346d40f7d6e86aadde08108c1",
+      "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FCA/DADOS/fca_cia_aberta_2023.zip"
+    },
+    {
+      "name": "fca_cia_aberta_valor_mobiliario_2023.csv",
+      "rows": 6,
+      "sha256": "717e0a1f5416550d13756625240356a613816fb6a3dad1516bf2d46affe89053",
+      "original_archive_sha256": "40c732b6d386ef32c30e1434a9c999e9d6b1b2d346d40f7d6e86aadde08108c1",
+      "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FCA/DADOS/fca_cia_aberta_2023.zip"
+    }
+  ]
+}
