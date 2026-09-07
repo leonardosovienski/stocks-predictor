@@ -207,7 +207,7 @@ def test_corrected_modules_import_as_a_package_without_flat_import_shims():
     )
     result = subprocess.run([sys.executable, "-c", code], capture_output=True, text=True, encoding="utf-8")
     assert result.returncode == 0, result.stderr
-    assert result.stdout.strip() == "stocks-causal-execution-v2"
+    assert result.stdout.strip() == "stocks-causal-execution-v3"
 
 
 def test_copy_rebuilder_preserves_source_and_never_overwrites(tmp_path):

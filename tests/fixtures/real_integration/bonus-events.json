@@ -1,0 +1,26 @@
+[
+  {
+    "ticker": "ENGI3",
+    "event_id": "ENERGISA-2025-11-BONUS-ENGI3",
+    "ex_date": "2025-11-28",
+    "credit_date": "2025-12-02",
+    "new_shares_per_old": 0.1,
+    "source": "https://api.mziq.com/mzfilemanager/v2/d/60f49a2d-bd8c-4fd9-95ab-bdf833097a83/c27daac3-4dc2-ff18-d469-6cd61cd1418f?origin=1; page 3 sections 5.2.2 and 5.2.4; B3 CVM 15253 supplement cross-check"
+  },
+  {
+    "ticker": "ENGI4",
+    "event_id": "ENERGISA-2025-11-BONUS-ENGI4",
+    "ex_date": "2025-11-28",
+    "credit_date": "2025-12-02",
+    "new_shares_per_old": 0.1,
+    "source": "https://api.mziq.com/mzfilemanager/v2/d/60f49a2d-bd8c-4fd9-95ab-bdf833097a83/c27daac3-4dc2-ff18-d469-6cd61cd1418f?origin=1; page 3 sections 5.2.2 and 5.2.4; B3 CVM 15253 supplement cross-check"
+  },
+  {
+    "ticker": "ENGI11",
+    "event_id": "ENERGISA-2025-11-BONUS-ENGI11",
+    "ex_date": "2025-11-28",
+    "credit_date": "2025-12-02",
+    "new_shares_per_old": 0.1,
+    "source": "https://api.mziq.com/mzfilemanager/v2/d/60f49a2d-bd8c-4fd9-95ab-bdf833097a83/c27daac3-4dc2-ff18-d469-6cd61cd1418f?origin=1; page 3 sections 5.2.2 and 5.2.4; B3 CVM 15253 supplement cross-check"
+  }
+]

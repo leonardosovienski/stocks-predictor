@@ -1,0 +1,20 @@
+{
+  "capital-134335.html": {
+    "url": "https://www.rad.cvm.gov.br/ENET/frmDadosComposicaoCapitalITR.aspx?Grupo=Dados+da+Empresa&Quadro=Composi%c3%a7%c3%a3o+do+Capital&NomeTipoDocumento=DFP&Empresa=AMBEV%20S.A.&DataReferencia=2023-12-31&Versao=1&CodTipoDocumento=4&NumeroSequencialDocumento=134335&NumeroSequencialRegistroCvm=2182&CodigoTipoInstituicao=1&Hash=Ui7LbIl2j1YmpJ2wwdGK1liuM0Y6gFdrZfs1Zwb5A",
+    "viewer_url": "https://www.rad.cvm.gov.br/ENET/frmGerenciaPaginaFRE.aspx?CodigoTipoInstituicao=1&NumeroSequencialDocumento=134335",
+    "sha256": "80d06589ec40f545b7981b9f3ce6cfda37c82b195f8e3d8a49bef28ecabfcaa0",
+    "retrieved_at": "2026-09-07T04:10:39.983954+00:00"
+  },
+  "capital-133944.html": {
+    "url": "https://www.rad.cvm.gov.br/ENET/frmDadosComposicaoCapitalITR.aspx?Grupo=Dados+da+Empresa&Quadro=Composi%c3%a7%c3%a3o+do+Capital&NomeTipoDocumento=DFP&Empresa=BCO%20BRASIL%20S.A.&DataReferencia=2023-12-31&Versao=1&CodTipoDocumento=4&NumeroSequencialDocumento=133944&NumeroSequencialRegistroCvm=1354&CodigoTipoInstituicao=1&Hash=0Hv91uPzYwGawOmOuFM6TSvMBjjT16puGiqZi328BY",
+    "viewer_url": "https://www.rad.cvm.gov.br/ENET/frmGerenciaPaginaFRE.aspx?CodigoTipoInstituicao=1&NumeroSequencialDocumento=133944",
+    "sha256": "7c7c44650599d835392cbfd86f9bee4dc2fd3af2fbb491e695d502aaa4b5170c",
+    "retrieved_at": "2026-09-07T04:10:31.280835+00:00"
+  },
+  "capital-134790.html": {
+    "url": "https://www.rad.cvm.gov.br/ENET/frmDadosComposicaoCapitalITR.aspx?Grupo=Dados+da+Empresa&Quadro=Composi%c3%a7%c3%a3o+do+Capital&NomeTipoDocumento=DFP&Empresa=ENERGISA%20S.A.&DataReferencia=2023-12-31&Versao=3&CodTipoDocumento=4&NumeroSequencialDocumento=134790&NumeroSequencialRegistroCvm=1383&CodigoTipoInstituicao=1&Hash=Al3ZZcVVOfvY8eUdppzbfAW4iW2eIWK6AvJ6ZYt7U",
+    "viewer_url": "https://www.rad.cvm.gov.br/ENET/frmGerenciaPaginaFRE.aspx?CodigoTipoInstituicao=1&NumeroSequencialDocumento=134790",
+    "sha256": "5b58d6424607e6c0cdeb3fb555c6b01d4ba449b6e15f1245b3ffc70841345c09",
+    "retrieved_at": "2026-09-07T04:10:31.619109+00:00"
+  }
+}

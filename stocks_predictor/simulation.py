@@ -9,7 +9,7 @@ from bisect import bisect_right
 import math
 
 
-ENGINE_VERSION = "stocks-causal-execution-v2"
+ENGINE_VERSION = "stocks-causal-execution-v3"
 
 
 def load_bars(conn, ticker, end=None):
@@ -53,7 +53,7 @@ def split_events(conn, ticker, end):
 def point_in_time_series(conn, ticker, asof):
     bars = load_bars(conn, ticker, end=asof)
     dates = sorted(bars)
-    splits = split_events(conn, ticker, asof)
+    splits = price_adjustment_events(conn, ticker, asof)
     closes = []
     for day in dates:
         close = bars[day][1]
@@ -62,6 +62,18 @@ def point_in_time_series(conn, ticker, asof):
                 close *= factor
         closes.append(close)
     return dates, closes
+
+
+def price_adjustment_events(conn, ticker, end):
+    """Price-base changes; bonus shares are valued from ex, delivered separately."""
+    if __package__:
+        from .stock_events import bonus_events
+    else:
+        from stock_events import bonus_events
+    events = split_events(conn, ticker, end)
+    for ex, _, ratio in bonus_events(conn, ticker, end):
+        events[ex] = events.get(ex, 1.0) / (1 + ratio)
+    return events
 
 
 def simulate_portfolio(
@@ -73,7 +85,9 @@ def simulate_portfolio(
     price_mode="next_open",
     splits=None,
     cash_events=None,
+    stock_events=None,
     initial_cash=1.0,
+    quantity_step=0.0,
     require_final_quotes=True,
 ):
     """Return daily NAV returns, executions and pending-order diagnostics.
@@ -91,6 +105,8 @@ def simulate_portfolio(
         raise ValueError("invalid transaction cost")
     if initial_cash <= 0 or not math.isfinite(initial_cash):
         raise ValueError("invalid initial cash")
+    if not math.isfinite(quantity_step) or quantity_step < 0:
+        raise ValueError("invalid quantity step")
     if dates != sorted(set(dates)):
         raise ValueError("session dates must be unique and sorted")
     for weights in targets.values():
@@ -102,26 +118,64 @@ def simulate_portfolio(
     signal_dates = sorted(targets)
     signal_index = 0
     returns, navs, executions, stale_marks, receivables = [], [], [], [], []
+    stock_receivables, stock_entitlements, stock_deliveries = [], [], []
     splits = splits or {}
     cash_events = cash_events or {}
+    stock_events = stock_events or {}
+    for events in stock_events.values():
+        for ex, credit, ratio in events:
+            if credit < ex or not math.isfinite(ratio) or ratio <= 0:
+                raise ValueError("invalid stock bonus dates/ratio")
     last_day = dates[0] if dates else None
     for day in dates:
-        # Apply actions during quote gaps as well as on the next trading day.
-        for ticker in list(holdings):
-            for ex, multiplier in sorted(splits.get(ticker, {}).items()):
-                if last_day < ex <= day:
+        # Apply actions chronologically, including days without a quote.
+        assets = set(holdings) | {t for t, _, _ in stock_receivables}
+        action_days = sorted({
+            d for ticker in assets
+            for d in (
+                list(splits.get(ticker, {}))
+                + [ex for ex, _, _ in cash_events.get(ticker, [])]
+                + [ex for ex, _, _ in stock_events.get(ticker, [])]
+                + [credit for _, credit, _ in stock_events.get(ticker, [])]
+            ) if last_day < d <= day
+        })
+        for action_day in action_days:
+            for ticker in assets:
+                multiplier = splits.get(ticker, {}).get(action_day)
+                if multiplier is not None:
                     if multiplier <= 0 or not math.isfinite(multiplier):
                         raise ValueError("invalid split factor")
-                    holdings[ticker] /= multiplier
+                    if ticker in holdings:
+                        holdings[ticker] /= multiplier
+                    stock_receivables = [
+                        (t, credit, q / multiplier if t == ticker else q)
+                        for t, credit, q in stock_receivables
+                    ]
                     if ticker in marks:
                         marks[ticker] *= multiplier
-            # Event amounts are on the post-split ex-date share base. Obtain
-            # the entitlement before today's trades; purchases ex-date get none.
-            for ex, pay, amount in cash_events.get(ticker, []):
-                if last_day < ex <= day:
-                    later_splits = math.prod(f for d, f in splits.get(ticker, {}).items() if ex < d <= day)
-                    entitled = holdings[ticker] * later_splits
-                    receivables.append((pay, entitled * amount))
+                for ex, credit, ratio in stock_events.get(ticker, []):
+                    if ex == action_day:
+                        if any(t == ticker for t, _, _ in stock_receivables):
+                            raise ValueError("overlapping stock bonuses require instrument-specific terms")
+                        quantity = holdings.get(ticker, 0) * ratio
+                        if quantity:
+                            stock_receivables.append((ticker, credit, quantity))
+                            stock_entitlements.append((ex, ticker, credit, quantity))
+                            if ticker in marks:
+                                marks[ticker] /= 1 + ratio
+                for ex, pay, amount in cash_events.get(ticker, []):
+                    if ex == action_day:
+                        if any(t == ticker and credit > ex for t, credit, _ in stock_receivables):
+                            raise ValueError("cash rights on undelivered bonus shares require explicit terms")
+                        entitled = holdings.get(ticker, 0) + sum(
+                            q for t, credit, q in stock_receivables if t == ticker and credit <= ex
+                        )
+                        receivables.append((pay, entitled * amount))
+            for ticker, credit, quantity in stock_receivables:
+                if credit <= action_day:
+                    holdings[ticker] = holdings.get(ticker, 0) + quantity
+                    stock_deliveries.append((credit, ticker, quantity))
+            stock_receivables = [(t, credit, q) for t, credit, q in stock_receivables if credit > action_day]
         cash += sum(amount for pay, amount in receivables if pay <= day)
         receivables = [(pay, amount) for pay, amount in receivables if pay > day]
         receivable_value = sum(amount for _, amount in receivables)
@@ -140,8 +194,8 @@ def simulate_portfolio(
         if new_signal is not None:
             active_signal = new_signal
             weights = targets[new_signal]
-            nav = cash + receivable_value + sum(q * mark(t) for t, q in holdings.items())
-            investable = nav - receivable_value
+            # Neither unpaid money nor undelivered shares can finance a trade.
+            investable = cash + sum(q * mark(t) for t, q in holdings.items())
             # Solve self-financing target weights, including resizing names
             # that remain members but whose weights drifted since last month.
             post_cost = investable
@@ -174,12 +228,16 @@ def simulate_portfolio(
                     continue
                 price = (max(quote) if buying else min(quote)) if price_mode == "worst" else mid
                 desired = desired_value / mid
+                if quantity_step:
+                    desired = math.floor(desired / quantity_step + 1e-10) * quantity_step
                 delta = desired - current
                 if abs(delta * price) < initial_cash * 1e-12:
                     pending.pop(ticker)
                     continue
                 if delta > 0:
                     delta = min(delta, max(0.0, cash) / (price * (1 + cost_per_side)))
+                    if quantity_step:
+                        delta = math.floor(delta / quantity_step + 1e-10) * quantity_step
                 if abs(delta * price) < initial_cash * 1e-12:
                     continue
                 cost = abs(delta) * price * cost_per_side
@@ -203,7 +261,8 @@ def simulate_portfolio(
                 )
                 if abs((desired - (current + delta)) * price) <= initial_cash * 1e-10:
                     pending.pop(ticker)
-        for ticker in holdings:
+        valued_assets = set(holdings) | {t for t, _, _ in stock_receivables}
+        for ticker in valued_assets:
             quote = bars.get(ticker, {}).get(day)
             if quote:
                 marks[ticker] = quote[1]
@@ -212,14 +271,15 @@ def simulate_portfolio(
                 raise ValueError("holding has no valuation price")
             else:
                 stale_marks.append((day, ticker, last_quote.get(ticker)))
-        nav = cash + receivable_value + sum(q * marks[t] for t, q in holdings.items())
+        stock_receivable_value = sum(q * marks[t] for t, _, q in stock_receivables)
+        nav = cash + receivable_value + stock_receivable_value + sum(q * marks[t] for t, q in holdings.items())
         if not math.isfinite(nav) or nav <= 0:
             raise ValueError("nonpositive portfolio NAV")
         returns.append(nav / previous_nav - 1.0)
         navs.append(nav)
         previous_nav, last_day = nav, day
     if dates and require_final_quotes:
-        stale = [t for t in holdings if last_quote.get(t) != dates[-1]]
+        stale = [t for t in set(holdings) | {r[0] for r in stock_receivables} if last_quote.get(t) != dates[-1]]
         if stale:
             raise ValueError(f"incomplete final valuation; stale holdings: {stale}")
     return {
@@ -230,6 +290,9 @@ def simulate_portfolio(
         "holdings": holdings,
         "cash": cash,
         "receivables": receivables,
+        "stock_receivables": stock_receivables,
+        "stock_entitlements": stock_entitlements,
+        "stock_deliveries": stock_deliveries,
         "stale_marks": stale_marks,
         "engine_version": ENGINE_VERSION,
     }
@@ -238,6 +301,7 @@ def simulate_portfolio(
 def walk_forward(conn, cfg, signal_fn=None, take="top", portfolio_fn=None, series_fn=None):
     if __package__:
         from . import adjust, factor, portfolio, universe
+        from .stock_events import bonus_events
         from .returns import month_end_dates
         from .cash_events import require_coverage
     else:
@@ -245,6 +309,7 @@ def walk_forward(conn, cfg, signal_fn=None, take="top", portfolio_fn=None, serie
         import factor
         import portfolio
         import universe
+        from stock_events import bonus_events
         from returns import month_end_dates
         from cash_events import require_coverage
 
@@ -271,7 +336,7 @@ def walk_forward(conn, cfg, signal_fn=None, take="top", portfolio_fn=None, serie
     end = bt.get("test_end") or (all_dates[-1] if all_dates else test_start)
     dates = [d for d in all_dates if test_start <= d <= end]
     rebalances = [d for d in month_end_dates(all_dates) if test_start <= d < end]
-    targets, bench_targets, bars, splits, events = {}, {}, {}, {}, {}
+    targets, bench_targets, bars, splits, events, bonuses = {}, {}, {}, {}, {}, {}
     mode = execution.get("return_mode", "price")
     if mode not in {"price", "total"}:
         raise ValueError("unknown return mode")
@@ -295,6 +360,7 @@ def walk_forward(conn, cfg, signal_fn=None, take="top", portfolio_fn=None, serie
             if ticker not in bars:
                 bars[ticker] = load_bars(conn, ticker, end=end)
                 splits[ticker] = split_events(conn, ticker, end)
+                bonuses[ticker] = bonus_events(conn, ticker, end)
                 if mode == "total":
                     require_coverage(conn, ticker, dates[0], end)
                     events[ticker] = conn.execute(
@@ -324,6 +390,7 @@ def walk_forward(conn, cfg, signal_fn=None, take="top", portfolio_fn=None, serie
         "price_mode": execution.get("price", "next_open"),
         "splits": splits,
         "cash_events": events,
+        "stock_events": bonuses,
     }
     strategy = simulate_portfolio(dates, bars, targets, **settings)
     benchmark = simulate_portfolio(dates, bars, bench_targets, **settings)

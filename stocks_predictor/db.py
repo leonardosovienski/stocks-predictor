@@ -370,6 +370,14 @@ MIGRATIONS: list[tuple[str, str]] = [
         );
         CREATE INDEX idx_research_sources ON research_source_documents(kind,cnpj,available_at);
     """),
+    ("0015_stock_bonus_events", """
+        CREATE TABLE stock_bonus_events (
+            ticker TEXT NOT NULL, event_id TEXT NOT NULL, ex_date TEXT NOT NULL,
+            credit_date TEXT NOT NULL, new_shares_per_old REAL NOT NULL CHECK(new_shares_per_old>0),
+            source TEXT NOT NULL, source_sha256 TEXT NOT NULL,
+            CHECK(credit_date>=ex_date), UNIQUE(ticker,event_id)
+        );
+    """),
 ]
 
 

@@ -1,3 +1,24 @@
+## 2026-09-07 — Protocolo de integração real registrado antes da execução
+
+Atendimento ao pedido do operador para completar o necessário e testar, na cópia isolada.
+A matriz de 36 controles mecânicos está em `docs/research/2026-09-07-real-integration-protocol.json`:
+BBAS/split, ENGI/bonificação+dividendo e ABEV/parcelas; R$5/10 mil, três preços e dois custos.
+São controles de contabilidade escolhidos por eventos conhecidos, sem portfólio rankeado,
+sem observar H17-H19 e sem inferir alpha. Não são novos trials científicos.
+
+O motor v3 distingue direito à bonificação no ex de entrega física posterior. A ata oficial
+Energisa de 19/11/2025, p.3 §5.2.2, comprova ex 28/11 e crédito 02/12. Eventos sobrepostos
+sem termos específicos falham explicitamente. Quantidades matemáticas fracionárias continuam
+no controle ENGI/BBAS; ABEV testa arredondamento de ordens de 100 ações com caixa residual.
+Frações de bonificação leiloadas e regras tributárias não foram modeladas. Migração 0015 é append-only.
+
+`document_panel.py` cruza DFP/FCA apenas depois de ambos públicos, exclui cadastros sem
+código na última versão e rejeita conflitos. O parser de capital das páginas originais da CVM
+preserva escala própria: Ambev em mil; BBAS/Energisa em unidade; a base é 31/12/2023.
+Escala mil preserva precisão arredondada. Três observações não certificam capitalização
+histórica completa nem equivalência de classe/preço. Sem dependência nova de runtime.
+Os 33 testes focados passaram. Resultado integral e controles reais serão registrados após execução.
+
 ## Complemento executado em 2026-09-07
 
 Reconstruídos 2016–2026 em cópia isolada: 4.177 DFP, 4.824 observações de

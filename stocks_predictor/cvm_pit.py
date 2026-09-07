@@ -248,6 +248,7 @@ def append_rows(conn, table, rows, identity):
         "cash_events",
         "cash_event_coverage",
         "ingestion_issues",
+        "stock_bonus_events",
     }:
         raise ValueError("unsupported derivation table")
     count = 0

@@ -1,0 +1,23 @@
+{
+  "id": "stocks-real-integration-20260907",
+  "mode": "ENGINEERING_AND_DATA_FEASIBILITY",
+  "purpose": "Validate real-source accounting end to end before any H17-H19 return observation",
+  "created_before_execution": true,
+  "registered_at_utc": "2026-09-07T04:20:44Z",
+  "source_copy_sha256": "e21a89c38f2792c826291baa1175da4fe9dfbf626316635a536f7c28b250146a",
+  "capitals_brl": [5000, 10000],
+  "cost_per_side": [0.0018, 0.0036],
+  "execution_modes": ["next_open", "next_close", "worst"],
+  "cases": [
+    {"id": "BBAS_SPLIT", "ticker": "BBAS3", "start": "2024-04-12", "end": "2024-04-19", "exit_signal": "2024-04-18", "quantity_step": 0, "cash": false},
+    {"id": "ENGI_BONUS_AND_CASH", "ticker": "ENGI11", "start": "2025-11-25", "end": "2025-12-22", "exit_signal": "2025-12-19", "quantity_step": 0, "cash": true},
+    {"id": "ABEV_INSTALLMENTS", "ticker": "ABEV3", "start": "2025-12-17", "end": "2026-06-22", "exit_signal": "2026-06-19", "quantity_step": 100, "cash": true}
+  ],
+  "expected_runs": 36,
+  "selection_basis": "Corporate-event dates and previously reconciled sources, not measured returns",
+  "checks": ["trade strictly after signal", "nonnegative cash", "independent quantity reconciliation", "independent cash and receivables reconciliation", "bonus credited only on delivery date", "no spending future payments", "source database unchanged"],
+  "stopping_rule": "One fixed matrix, fix accounting errors and repeat only failed controls; no optimization or scientific verdict",
+  "research_trials_added": 0,
+  "protected_trials_observed": [],
+  "limitations": ["The two action controls use fractional mathematical quantities", "ABEV uses 100-share order rounding and ordinary-market quotes", "No taxes, broker-specific fills or bonus fractional auction modeled", "BBAS case measures the split mechanism with cash excluded", "These cases cannot establish portfolio alpha, strategy profitability or complete universe coverage"]
+}

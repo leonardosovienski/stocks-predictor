@@ -96,16 +96,16 @@ def total_return_series(conn, ticker, *, asof=None):
     corporate actions between two quotes. No future split rescales past cash.
     """
     if __package__:
-        from .simulation import load_bars, split_events
+        from .simulation import load_bars, price_adjustment_events
     else:
-        from simulation import load_bars, split_events
+        from simulation import load_bars, price_adjustment_events
 
     bars = load_bars(conn, ticker, end=asof)
     if not bars:
         return [], []
     dates = sorted(bars)
     require_coverage(conn, ticker, dates[0], dates[-1])
-    splits = split_events(conn, ticker, dates[-1])
+    splits = price_adjustment_events(conn, ticker, dates[-1])
     dividends = {}
     for ex, amount in conn.execute(
         "SELECT ex_date,value_per_share FROM cash_events WHERE ticker=?"
