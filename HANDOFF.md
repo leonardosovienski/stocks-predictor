@@ -1,3 +1,18 @@
+## H17: diagnóstico corrigido executado (2026-09-07)
+
+Código `4f487098e702004a88f02fe65d62a008c6df618b`: 483 testes em 138,36 s, cobertura
+84%, Ruff no escopo do CI, Pyright e wheel fora do checkout aprovados. A execução
+corrigida mediu 5.352/5.399 células em 94 meses elegíveis; 59 meses completos.
+Restam 47 células não medidas (14 selecionadas); IC disponível médio -0,013201 e
+spread mensal nos meses completos -0,161341 p.p. INCONCLUSIVE_DATA_QUALITY permanece.
+São métricas condicionais, não P&L executável. Nenhum GO ou veredito confirmatório.
+
+As quatro diferenças de medição estão documentadas, todas as demais células e
+seleções são idênticas às da primeira rodada. Bancos operacional e de fontes
+preservados por hash. A contagem e ambas as observações estão no ledger
+`docs/research/2026-09-07-h17-observations.jsonl`; o orçamento foi atualizado em
+`docs/research/2026-09-07-h17-budget-update.json`. Não apagar a exposição da H17.
+
 ## H17: primeira observação real concluída (2026-09-07)
 
 H17 foi observada: diagnóstico com 94 meses elegíveis, 51/5.399 células sem retorno

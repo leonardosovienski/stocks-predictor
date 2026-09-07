@@ -1,0 +1,26 @@
+{
+  "recorded_at_utc": "2026-09-07T05:35:20.873223+00:00",
+  "mode": "DISCOVERY",
+  "family": "H17",
+  "status": "FIRST_SCREEN_COMPLETED_INCONCLUSIVE_DATA_QUALITY",
+  "candidate_outputs_observed": [
+    "H17"
+  ],
+  "candidate_outputs_still_protected": [
+    "H18",
+    "H19"
+  ],
+  "nominal_candidates_exposed_minimum": 16,
+  "historical_return_evaluations_minimum": 17,
+  "H17_measurement_revisions": 2,
+  "hyperparameter_sweeps": 0,
+  "independent_search_denominator": "UNKNOWN",
+  "capital_brl": [
+    5000,
+    10000
+  ],
+  "capital_authorized": false,
+  "spending_authorized": false,
+  "profit_estimate": null,
+  "next_economic_evidence_gate": "Resolve remaining event/identity outcomes and total-return data before an executable economic verdict; H18/H19 additionally require historical valuation share bases."
+}
