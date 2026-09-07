@@ -1,0 +1,39 @@
+{
+  "created_at_utc": "2026-09-07T18:56:29.885648+00:00",
+  "phase": "DISCOVERY_SOURCE_REPAIR",
+  "decision": "CONTINUE_BOUNDED_SOURCE_REPAIR_ONLY",
+  "execution_ready": false,
+  "net_profit_demonstrated": false,
+  "new_return_evaluations": 0,
+  "capital_scenarios_brl": [
+    5000,
+    10000
+  ],
+  "bbas_newly_reconciled_cash_cells": 13,
+  "bbas_newly_reconciled_selected_cells": 11,
+  "bbas_unreconciled_update_cells": 3,
+  "jbs_missing_after_2019_declarations": 11,
+  "jbs_selected_affected_quarter_cells": 1,
+  "original_queue_remaining_without_candidate_payment_date": 644,
+  "original_selected_queue_remaining_without_candidate_payment_date": 89,
+  "remaining_counts_exclude_new_jbs_and_successor_events": true,
+  "search_configurations_minimum": 32,
+  "historical_return_evaluations_minimum": 37,
+  "strategy_code_last_full_test": {
+    "commit": "28cf87e1819d25eb031067d6c707fa8519171953",
+    "passed": 539,
+    "rerun_this_pilot": false
+  },
+  "source_inputs_sha256": {
+    "outputs\\H19_CAIXA_PRIMEIRAS_CORRECOES.json": "e4282eb0155808fd57469704966d7e1718c6560fbe9520a3ef2f420b3c5b7bf2",
+    "outputs\\H19_CAIXA_FILA_DE_VALIDACAO.json": "fa5572a86d1be71f1433d59442bcf58f3da753e1ed14fde899f7368e264106eb",
+    "outputs\\h18-h19-reorganization-observation.json": "c47fcca89d07e2064c1ba6ebc7a1f1dc763473a1364291284dfe6d761d7e9128",
+    "outputs\\VALIDACAO_PROVENTOS_AMPLIADA_STOCKS_V2.json": "8dd8979785bb1d1b5c4785f39c2d0af31d4e9cda1dcec9101609391608e13787",
+    "outputs\\cash-source-matches.jsonl": "aeb43e831af3d3d7f011b16e39be70106da606d78aecdb33d9555a56d5a80115",
+    "work\\source-acquisition\\ri-bbas-payments.pdf": "ac3f23b76b018d048da3816cebc9c1ae1437a365bbe638525d1d1eb105b29169",
+    "work\\source-acquisition\\ri-bbas-payments-extracted.json": "6e0f84f2e567189a682b851e45779bf60453e5a369411ff1dfab3959862fb3e3",
+    "work\\source-acquisition\\b3-cvm1023-cash-all.json": "45491bfcfb1331e23c24492ce1120f63ce4e83a500e50964452d740f1e95d978",
+    "work\\profit-cash-source\\raw-name-JBSS3-cash-all.json": "a54169de9dfba48b8ae34cb6d0c6ae2c345d8f3caf12d630d85a5b71271a3dc3",
+    "work\\value-measurement-source\\quotes.db": "0bceedac3936dc4162562ec35e03177c7e71b99e13b66837035d1ccd151f0512"
+  }
+}

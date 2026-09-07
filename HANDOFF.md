@@ -1,3 +1,23 @@
+## H19 trimestral: piloto de fontes de caixa, execução ainda pendente (2026-09-07)
+
+Não confundir históricos localizados com históricos completos: consulta B3 por
+nome JBS para em 2019; RI revela 11 dividendos posteriores, afetando 11 células
+trimestrais, apenas uma selecionada. Valor divulgado com quatro casas decimais
+não certifica precisão exata. Ata e RI confirmam termos de junho/2023 com ressalva
+de valor estimado na ata. BBAS: 13 células conciliadas (11 selecionadas), três
+atualizações monetárias ainda sem conciliação. Pagamento junho/2025 corrigido
+por boletim de crédito B3; data civil ex 24/02/2020 separada do pregão 26/02.
+Não houve alteração de DB, de retorno, de seleção ou novo trial. Orçamento
+>=32 configurações / >=37 avaliações. Runtime mantém os 539 testes anteriores;
+nesta rodada foram verificados dados, scripts e hashes, sem repetir a suíte.
+
+Restam 644 células sem data candidata na fila original, 89 selecionadas; valores
+excluem novos eventos JBS e caixa de sucessores. Cobertura integral não certificada.
+Próximo passo: completar fontes de ambas as carteiras antes de quantidades/caixa,
+giro real e impostos para R$5 mil e R$10 mil. Não tunar fator ou período. O custo
+de reconstrução é critério de parada; lucro e execução continuam não demonstrados.
+Detalhes em docs/research/2026-09-07-h19-cash-pilot.md e respectivo JSON.
+
 ## H18/H19: validação econômica concluída, lucro não confirmado (2026-09-07)
 
 Código 28cf87e1819d25eb031067d6c707fa8519171953: 539 testes em 153,65 s,
