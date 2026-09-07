@@ -335,7 +335,7 @@ h17_portfolio:
   direction: long_only             # [H17-FROZEN]
 
 h17_criteria:
-  dsr_min: 0.95                    # [H17-FROZEN] DSR mínimo (N=17 tentativas no registro)
+  dsr_min: 0.95                    # [H17-FROZEN] DSR mínimo; o N vem do trials.json em tempo de execução (15 registradas em 2026-09-07 -> a 1ª das três a rodar enfrenta N=16)
 
 # ── H18 (pré-registrada 2026-09-04; ver HANDOFF) ────────────────────────────
 # NÃO alterar valores [H18-FROZEN] após qualquer rodada de resultado da H18.
@@ -380,8 +380,23 @@ h19_portfolio:
   direction: long_only             # [H19-FROZEN]
 
 h19_criteria:
-  dsr_min: 0.95                    # [H19-FROZEN] DSR mínimo (N=19 tentativas no registro)
+  dsr_min: 0.95                    # [H19-FROZEN] DSR mínimo; o N vem do trials.json em tempo de execução (15 registradas em 2026-09-07; a ordem das rodadas decide o N de cada uma)
 
+
+# ── Economia (OPERACIONAL — NÃO entra em lacre nenhum) ──────────────────────
+# O mínimo economicamente interessante (charter §6). Nenhum destes campos está
+# em `*_FROZEN_KEYS`, logo mudá-los NÃO altera o config_hash de hipótese
+# alguma: é decisão de negócio, revisável, não parâmetro de experimento.
+#
+# Enquanto estiverem NAO_DECLARADO, `economics.classify` devolve NAO_DECLARADO
+# e se recusa a dizer se um resultado vale a pena — de propósito. Um default
+# aqui responderia em silêncio a pergunta que o operador precisa responder por
+# escrito, e foi a ausência dessa resposta que deixou 15 tentativas serem
+# gastas sem ninguém checar se valiam.
+economics:
+  capital_brl: "NAO_DECLARADO"              # capital realisticamente disponível
+  min_annual_net_profit_brl: "NAO_DECLARADO"  # lucro anual líquido que justifica operar
+  max_acceptable_drawdown: "NAO_DECLARADO"    # fração (0.25 = 25%)
 
 data:
   db_path: "data/stocks.db"
