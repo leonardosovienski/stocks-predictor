@@ -97,6 +97,17 @@ Essas regras não certificam a tributação específica das reorganizações.
 
 ## Validação desta versão
 
-Em execução; o resultado, tempo, commit, hashes, cobertura e reprodução serão
-anexados após a execução. Nenhuma ordem, gasto ou escrita em banco foi solicitado
-por estes comandos de revisão.
+Validação final do código `741d237388405970127492a4eff81ab1e5c755a1`: **592 testes passaram** em
+206.77 segundos. Cobertura geral 79%; contabilidade de varejo
+86%, execução contínua 78% e driver
+78%. Ruff, Pyright no escopo ampliado, build da wheel e importação
+fora do checkout passaram. O recorte independente passou 48 testes. O comando
+de status foi executado no banco real com conexão somente leitura; os dois bancos
+mantiveram os hashes anteriores. Nenhuma instalação/dependência nova de runtime.
+
+O replay real validou 31 arquivos de entrada e 365.198 registros de cotação,
+então terminou com **exit 2 / BLOCKED_MISSING_EVIDENCE**. Não executou o histórico
+completo nem publicou retorno parcial. Os quatro casos continuam cadastrados;
+nenhum foi observado nesta revisão. A reprodução anterior conferiu 1.448 arquivos,
+as quatro coortes, 9.732 células e os 12 cenários/intervalos antigos idênticos.
+Isso não acrescenta amostra independente nem transforma preços em lucro líquido.

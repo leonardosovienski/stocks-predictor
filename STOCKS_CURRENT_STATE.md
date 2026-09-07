@@ -3,7 +3,7 @@
 **H19 trimestral está em Discovery; H18 é controle; H17 já foi observada e ficou
 inconclusiva. Nenhum lucro líquido executável foi demonstrado. NO_GO para operar.**
 
-A contabilidade contínua existe e está sob validação da revisão final. Faltam
+A revisão final passou 592 testes e os controles técnicos declarados. Faltam
 356 datas no cadastro de pagamentos, cobertura de caixa de 1.237 intervalos e
 integração fiscal/física de 36 registros societários. Isso impede um replay
 econômico completo; saída de auditoria bloqueada não é lucro zero.

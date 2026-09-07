@@ -1,3 +1,17 @@
+## Encerramento da revisão final (2026-09-07)
+
+Código validado 741d237388405970127492a4eff81ab1e5c755a1: 592 testes, 79% cobertura, Ruff,
+Pyright RJ+H19, wheel/importação externa e 48 testes do recorte passaram.
+Status real executado somente leitura e hashes dos dois bancos preservados.
+365.198 registros confrontados com extratos brutos; 367 fontes verificadas.
+Reprodução histórica de 9.732 células e 12 cenários antiga idêntica.
+Replay econômico atual exit 2, 356 datas pendentes, 0/1.237 intervalos com
+inventário certificado e 0/36 registros societários integrados/aprovados.
+Não há lucro líquido confirmado; não há prova de prejuízo. NO_GO operacional,
+H19 Discovery inconclusiva. Nenhuma avaliação histórica nova, ordem ou gasto.
+Parecer canônico: docs/research/2026-09-07-final-review.md. O pacote final
+inclui código-fonte completo em ZIP, wheel, recorte executável e entradas/fontes.
+
 ## Revisão final solicitada pelo usuário (2026-09-07)
 
 Revisão adicional da CLI: status, analyst, splits-review e cobertura_h18 abriam
