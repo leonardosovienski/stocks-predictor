@@ -1,3 +1,29 @@
+## H19: contabilidade de varejo e revisão de pagamentos (2026-09-07)
+
+Protocolo H19_QUARTERLY_RETAIL_CASH_1 registrado para R$5/10 mil, custos
+hipotéticos de 18/36 pb por lado, mesmas seleções. retail_cash.py adiciona
+quantidades inteiras, preço fracionário, caixa por liquidação, recebíveis por
+pagamento, giro apenas das diferenças e apuração mensal ordinária limitada ao
+cenário documentado. Não implementa uma carteira histórica completa: ainda
+exige calendário fiscal, direitos/frações, custo fiscal e cobertura integral.
+Não chamar esse módulo de simulador econômico concluído.
+
+19 testes de invariantes passaram, incluindo anti-lookahead, caixa futuro,
+direitos após venda, rollback de rebalanceamento e isenção sem contar compras
+como vendas. Suíte geral, lint e build serão executados em commit limpo.
+Nenhuma dependência nova de runtime. Fontes oficiais de referência fiscal:
+Receita /renda-variavel/bolsa-de-valores-1/{isencoes,compensacoes,bolsa-de-valores};
+Lei 11.033/2004 art.3; Lei 9.249/1995 e LC224/2025 para JCP. Alíquota líquida
+por evento continua explícita; não inferir imposto apenas pela data de pagamento.
+
+Avisos CVM IPE 2018–2026 foram baixados fora do runtime e extraídos com pypdf
+do aplicativo. Tabelas de RI têm erros materiais de datas, escala e valores.
+Aviso Cogna de 18/12/2025, anexo I p.3: parcela .04858806025 prevista para
+20/12/2028, valor estimado. Nunca creditar esse caixa no ex em 2025.
+As revisões são de pagamento declarado, não de crédito em conta do investidor.
+Não houve nova observação de retorno: >=32 configurações / >=37 avaliações.
+Bancos anteriores e seleções preservados; sem Proof, ordens ou gastos.
+
 ## H19 trimestral: piloto de fontes de caixa, execução ainda pendente (2026-09-07)
 
 Não confundir históricos localizados com históricos completos: consulta B3 por

@@ -1,0 +1,26 @@
+{
+  "protocol": "H19_QUARTERLY_RETAIL_CASH_1",
+  "phase": "DISCOVERY",
+  "source_observation": "h18-h19-reorganization-observation.json",
+  "source_observation_sha256": "c47fcca89d07e2064c1ba6ebc7a1f1dc763473a1364291284dfe6d761d7e9128",
+  "selection_change": false,
+  "capital_brl": [5000, 10000],
+  "one_way_cost_rates": [0.0018, 0.0036],
+  "cost_rates_are_research_assumptions_not_broker_quotes": true,
+  "price_mode": "next_session_open_standard_and_fractional_markets",
+  "sizing": "Integer target quantities fixed from signal-day closing prices. Equal target capital per selected issuer. Sell reductions before buying increases; deterministic ticker order. Unaffordable shares remain unfilled, with no cash borrowing.",
+  "retained_positions": "Only quantity differences trade; retained quantities do not pay a fictitious round trip.",
+  "cash": "Trade proceeds and purchase obligations may offset only on their dated settlement schedule. Ordinary dividends/JCP become receivables on the ex session for the prior entitled position; actual payment is credited at the end of its date, available for the following session. Unpaid receivables do not fund purchases.",
+  "tax": "Brazilian resident individual research scenario, no outside trades or income assumed. Only explicitly supplied and source-reviewed tax treatments and cost-basis actions are accepted. No guessed treatment for compulsory conversions, foreign distributions or auctioned fractions.",
+  "corporate_actions": "Require exact security identity, quantity, credit dates, cash dates and disposal/retained basis allocation. Fractional entitlements are unavailable until a documented cash-in-lieu payment or a verified tradable delivery. Do not round a legal entitlement into cash at a convenient quote.",
+  "required_gate": "Full strategy and comparison cash-coverage inventory including successor intervals; unique entitlements/installments; quote and identity coverage; usable delivery and fractional terms; dated tax specification. Fail before publishing returns if an input is missing.",
+  "observation_budget": {
+    "current_minimum_configurations": 32,
+    "current_minimum_return_evaluations": 37,
+    "new_configurations_if_all_four_cases_observed": 4,
+    "new_return_evaluations_if_all_four_cases_observed": 4,
+    "blocked_attempt_and_source_audits_add_zero_return_evaluations": true
+  },
+  "no_proof_or_deployment": true,
+  "stopping_rule": "Do not change factors, periods or hurdles to rescue historical results. Pause if source repair cannot cheaply establish an executable and economically meaningful comparison. No total-return or net-profit claim from incomplete coverage."
+}
