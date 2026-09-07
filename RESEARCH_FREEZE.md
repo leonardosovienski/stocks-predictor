@@ -1,5 +1,18 @@
 # RESEARCH_FREEZE — stocks-predictor
 
+> **Auditoria 2026-09-06, posterior às notas de prontidão:** H17-H19
+> continuam não executadas. A prontidão para observar desempenho foi
+> refutada por falhas de versão/data e unidades no DFP real; ver
+> [registro da auditoria](docs/research/2026-09-06-readiness.md).
+> Os lacres vigentes, já reemitidos antes desta auditoria no HANDOFF, são
+> H17 `e6cf9bd7454750c3`, H18 `cbea4d3c98ac3422`, H19 `d96753f2af7b39a6`.
+> O ledger legado tem 15 tentativas (H3 não executada). As menções históricas
+> a 16 julgadas e os lacres antigos abaixo são preservados como histórico.
+> Nenhum parâmetro, julgamento ou hipótese fechada é reaberto por esta nota.
+> Os relatórios locais H14-H16 foram recuperados sem regeneração; suas
+> cópias são incluídas na alteração desta auditoria. O v2 foi regenerado
+> mecanicamente a partir dos 15 registros legados, sem editar `trials.json`.
+
 **Status:** `FROZEN_RESEARCH_ASSET + REUSABLE_QUANT_COMPONENTS + SCIENTIFIC_CASE_STUDY`
 **Data do congelamento:** 2026-09-02
 **Regra de leitura:** este documento é a barreira contra reabertura por inércia. Uma

@@ -1,0 +1,34 @@
+{
+  "source_url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2023.zip",
+  "downloaded_at_utc": "2026-09-07",
+  "source_sha256": "d7ecbeb48b132d9e7480236d410d3587f4bd15efdf738e0b857647e178d3a261",
+  "encoding": "latin-1",
+  "selection": "AMBEV and ENERGISA, fixed accounts 1/2/2.03/3.01/6.01, ULTIMO; main includes all versions. Exact field content; CSV quoting/EOL normalized. No price or return data.",
+  "files": [
+    {
+      "name": "dfp_cia_aberta_2023.csv",
+      "rows": 4,
+      "sha256": "dd0f77c9ae0e7f24878b9cac5cbbb91e99d8ee4fe1817ee106a65f57468768f3"
+    },
+    {
+      "name": "dfp_cia_aberta_BPA_con_2023.csv",
+      "rows": 2,
+      "sha256": "481aa442e0f1ec00113071493fbaf56b64e7821f0f725195ebfc5a3bcc2d940e"
+    },
+    {
+      "name": "dfp_cia_aberta_BPP_con_2023.csv",
+      "rows": 4,
+      "sha256": "079c4b8f75dcd39324ffd793e79e4a01104f7233d0e7bed52fb63524cca27fde"
+    },
+    {
+      "name": "dfp_cia_aberta_DRE_con_2023.csv",
+      "rows": 2,
+      "sha256": "ace4bb203dea85406d811314bcc95ef758a4d009eb82b24e8536c8cb602c80ac"
+    },
+    {
+      "name": "dfp_cia_aberta_DFC_MI_con_2023.csv",
+      "rows": 2,
+      "sha256": "e98d610599fce8fe85176d09a2b9a6000ad1514c02a5e12ff7e3c6f45df2c8dd"
+    }
+  ]
+}

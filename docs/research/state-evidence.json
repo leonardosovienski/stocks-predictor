@@ -1,0 +1,509 @@
+{
+  "observed_at": "2026-09-07T02:08:59.147200+00:00",
+  "kind": "READ_ONLY_METADATA_NO_NEW_PERFORMANCE",
+  "file_hashes": {
+    "C:\\Users\\Superleo13\\stocks-predictor-work\\data\\stocks.db": "a22739794ba4a43a11544338d4a91e14cb6a0b1f7b132ab460f96d3359f63cf4",
+    "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-06\\files-pasted-by-the-user-autonomous\\work\\stocks-predictor\\trials.json": "3364bd10e5103ea5e1f41830e2ff00932e77c9af21555b26cf88bb038123ba41",
+    "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-06\\files-pasted-by-the-user-autonomous\\work\\stocks-predictor\\trials_v2.json": "41b6ef06b4af8279b06854a2ca47c64504e63d82cde45784d656ab1d82f06d58",
+    "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-06\\files-pasted-by-the-user-autonomous\\work\\stocks-predictor\\trials.harness_attestation.json": "a38b1bb88c019e1c2ff4c083ea65426bb8ed018cc7a130ef303a640fbdf58e50",
+    "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-06\\files-pasted-by-the-user-autonomous\\work\\stocks-predictor\\config.yaml": "cb9143549d52f3a748a8ead11cab32df05a5f219d92bb7a6de407b9366753148",
+    "C:\\Users\\Superleo13\\stocks-predictor-work\\trials.json": "3364bd10e5103ea5e1f41830e2ff00932e77c9af21555b26cf88bb038123ba41",
+    "C:\\Users\\Superleo13\\stocks-predictor-work\\trials_v2.json": "41b6ef06b4af8279b06854a2ca47c64504e63d82cde45784d656ab1d82f06d58",
+    "C:\\Users\\Superleo13\\stocks-predictor-work\\trials.harness_attestation.json": "a38b1bb88c019e1c2ff4c083ea65426bb8ed018cc7a130ef303a640fbdf58e50",
+    "C:\\Users\\Superleo13\\stocks-predictor-work\\config.yaml": "a78f7d0cf423dd23dc1a17dc7db351eb1b2043df8729c790df2f08589c9a0e81"
+  },
+  "database_sidecars": {
+    "-wal": false,
+    "-shm": false,
+    "-journal": false
+  },
+  "table_counts": {
+    "_migrations": 12,
+    "prices_raw": 1149872,
+    "adjustments": 43,
+    "quarantine": 2227,
+    "universe_snapshots": 60,
+    "decisions": 0,
+    "runs": 1,
+    "rj_universe": 0,
+    "rj_episodes": 0,
+    "rj_events": 0,
+    "rj_family_scores": 0,
+    "rj_universe_snapshots": 0,
+    "fundamentals": 1579,
+    "rj_company_observations": 0,
+    "dividends": 2384
+  },
+  "fundamentals_schema": [
+    {
+      "cid": 0,
+      "name": "id",
+      "type": "INTEGER",
+      "notnull": 0,
+      "default": null,
+      "pk": 1
+    },
+    {
+      "cid": 1,
+      "name": "ticker",
+      "type": "TEXT",
+      "notnull": 1,
+      "default": null,
+      "pk": 0
+    },
+    {
+      "cid": 2,
+      "name": "ref_date",
+      "type": "TEXT",
+      "notnull": 1,
+      "default": null,
+      "pk": 0
+    },
+    {
+      "cid": 3,
+      "name": "ativo_total",
+      "type": "REAL",
+      "notnull": 0,
+      "default": null,
+      "pk": 0
+    },
+    {
+      "cid": 4,
+      "name": "passivo_total",
+      "type": "REAL",
+      "notnull": 0,
+      "default": null,
+      "pk": 0
+    },
+    {
+      "cid": 5,
+      "name": "patrimonio_liquido",
+      "type": "REAL",
+      "notnull": 0,
+      "default": null,
+      "pk": 0
+    },
+    {
+      "cid": 6,
+      "name": "lucro_liquido",
+      "type": "REAL",
+      "notnull": 0,
+      "default": null,
+      "pk": 0
+    },
+    {
+      "cid": 7,
+      "name": "roe",
+      "type": "REAL",
+      "notnull": 0,
+      "default": null,
+      "pk": 0
+    },
+    {
+      "cid": 8,
+      "name": "leverage",
+      "type": "REAL",
+      "notnull": 0,
+      "default": null,
+      "pk": 0
+    },
+    {
+      "cid": 9,
+      "name": "source",
+      "type": "TEXT",
+      "notnull": 1,
+      "default": null,
+      "pk": 0
+    },
+    {
+      "cid": 10,
+      "name": "inserted_at",
+      "type": "TEXT",
+      "notnull": 1,
+      "default": "datetime('now')",
+      "pk": 0
+    },
+    {
+      "cid": 11,
+      "name": "receita_liquida",
+      "type": "REAL",
+      "notnull": 0,
+      "default": null,
+      "pk": 0
+    },
+    {
+      "cid": 12,
+      "name": "net_margin",
+      "type": "REAL",
+      "notnull": 0,
+      "default": null,
+      "pk": 0
+    },
+    {
+      "cid": 13,
+      "name": "fluxo_caixa_operacional",
+      "type": "REAL",
+      "notnull": 0,
+      "default": null,
+      "pk": 0
+    },
+    {
+      "cid": 14,
+      "name": "accruals",
+      "type": "REAL",
+      "notnull": 0,
+      "default": null,
+      "pk": 0
+    },
+    {
+      "cid": 15,
+      "name": "shares_outstanding",
+      "type": "REAL",
+      "notnull": 0,
+      "default": null,
+      "pk": 0
+    },
+    {
+      "cid": 16,
+      "name": "known_at",
+      "type": "TEXT",
+      "notnull": 0,
+      "default": null,
+      "pk": 0
+    }
+  ],
+  "prices_metadata": [
+    "2016-01-04",
+    "2026-08-27",
+    1784,
+    2647
+  ],
+  "fundamentals_by_source": [
+    [
+      "CVM DFP 2018",
+      71,
+      71,
+      71,
+      "2018-12-31",
+      "2018-12-31",
+      "2019-01-31",
+      "2019-04-01"
+    ],
+    [
+      "CVM DFP 2019",
+      89,
+      89,
+      89,
+      "2019-12-31",
+      "2019-12-31",
+      "2020-01-27",
+      "2020-08-03"
+    ],
+    [
+      "CVM DFP 2020",
+      98,
+      98,
+      98,
+      "2020-12-31",
+      "2020-12-31",
+      "2021-01-26",
+      "2021-04-20"
+    ],
+    [
+      "CVM DFP 2021",
+      97,
+      97,
+      97,
+      "2021-03-31",
+      "2021-12-31",
+      "2021-05-31",
+      "2022-03-31"
+    ],
+    [
+      "CVM DFP 2022",
+      97,
+      97,
+      97,
+      "2022-03-31",
+      "2022-12-31",
+      "2022-05-13",
+      "2023-11-16"
+    ],
+    [
+      "CVM DFP 2023",
+      97,
+      97,
+      97,
+      "2023-03-31",
+      "2023-12-31",
+      "2023-05-12",
+      "2024-08-14"
+    ],
+    [
+      "CVM DFP 2024",
+      93,
+      93,
+      93,
+      "2024-03-31",
+      "2024-12-31",
+      "2024-05-13",
+      "2025-03-31"
+    ],
+    [
+      "CVM DFP 2025",
+      90,
+      90,
+      90,
+      "2025-03-31",
+      "2025-12-31",
+      "2025-05-13",
+      "2026-03-31"
+    ],
+    [
+      "CVM DFP 2026",
+      1,
+      1,
+      1,
+      "2026-03-31",
+      "2026-03-31",
+      "2026-06-29",
+      "2026-06-29"
+    ],
+    [
+      "CVM FRE 2018",
+      74,
+      74,
+      74,
+      "2018-01-01",
+      "2018-01-01",
+      "2019-01-24",
+      "2019-05-31"
+    ],
+    [
+      "CVM FRE 2019",
+      92,
+      92,
+      92,
+      "2019-01-01",
+      "2019-01-01",
+      "2019-09-20",
+      "2020-07-31"
+    ],
+    [
+      "CVM FRE 2020",
+      102,
+      102,
+      102,
+      "2020-01-01",
+      "2020-01-01",
+      "2020-06-30",
+      "2022-10-31"
+    ],
+    [
+      "CVM FRE 2021",
+      101,
+      101,
+      101,
+      "2021-01-01",
+      "2021-01-01",
+      "2021-11-30",
+      "2022-10-31"
+    ],
+    [
+      "CVM FRE 2022",
+      101,
+      101,
+      101,
+      "2022-01-01",
+      "2022-03-31",
+      "2022-08-02",
+      "2023-06-06"
+    ],
+    [
+      "CVM FRE 2023",
+      99,
+      99,
+      99,
+      "2023-03-31",
+      "2023-12-31",
+      "2023-08-21",
+      "2024-06-04"
+    ],
+    [
+      "CVM FRE 2024",
+      96,
+      96,
+      96,
+      "2024-03-31",
+      "2024-12-31",
+      "2024-05-31",
+      "2025-09-03"
+    ],
+    [
+      "CVM FRE 2025",
+      92,
+      92,
+      92,
+      "2025-03-31",
+      "2025-12-31",
+      "2025-08-12",
+      "2026-05-28"
+    ],
+    [
+      "CVM FRE 2026",
+      89,
+      89,
+      89,
+      "2026-03-31",
+      "2026-12-31",
+      "2026-05-28",
+      "2026-09-04"
+    ]
+  ],
+  "fundamentals_coverage": {
+    "lucro_liquido": [
+      733,
+      124
+    ],
+    "patrimonio_liquido": [
+      695,
+      119
+    ],
+    "shares_outstanding": [
+      846,
+      126
+    ],
+    "roe": [
+      677,
+      119
+    ],
+    "leverage": [
+      693,
+      119
+    ],
+    "net_margin": [
+      712,
+      121
+    ],
+    "receita_liquida": [
+      733,
+      124
+    ],
+    "fluxo_caixa_operacional": [
+      718,
+      123
+    ],
+    "accruals": [
+      716,
+      123
+    ]
+  },
+  "adjustment_types": [
+    [
+      "grupamento",
+      3,
+      "2016-06-13",
+      "2024-05-27"
+    ],
+    [
+      "split",
+      40,
+      "2016-06-15",
+      "2026-04-29"
+    ]
+  ],
+  "quarantine_counts": [
+    2227,
+    2184
+  ],
+  "dividend_schema": [
+    [
+      0,
+      "id",
+      "INTEGER",
+      0,
+      null,
+      1
+    ],
+    [
+      1,
+      "ticker",
+      "TEXT",
+      1,
+      null,
+      0
+    ],
+    [
+      2,
+      "ex_date",
+      "TEXT",
+      1,
+      null,
+      0
+    ],
+    [
+      3,
+      "value_per_share",
+      "REAL",
+      1,
+      null,
+      0
+    ],
+    [
+      4,
+      "source",
+      "TEXT",
+      1,
+      null,
+      0
+    ],
+    [
+      5,
+      "inserted_at",
+      "TEXT",
+      1,
+      "datetime('now')",
+      0
+    ]
+  ],
+  "dividend_range": [
+    "2015-02-02",
+    "2919-08-19",
+    105
+  ],
+  "ledger": {
+    "trials.json": {
+      "count": 15,
+      "names": [
+        "h1-momentum-12-1",
+        "h2-lowvol-252",
+        "h4-invvol-sizing-252",
+        "h5-strev-21",
+        "h6-momentum-6-1",
+        "h8-mom-lowvol-double",
+        "h7-quality-roe",
+        "h9-quality-leverage",
+        "h10-roe-leverage-double",
+        "h11-momentum-12-1-total-return",
+        "h12-quality-net-margin",
+        "h13-revenue-growth-yoy",
+        "h14-near-52w-high",
+        "h15-volume-surge",
+        "h16-turn-of-month"
+      ]
+    },
+    "trials_v2.json": {
+      "count": 8,
+      "names": [
+        "h1-momentum-12-1",
+        "h2-lowvol-252",
+        "h4-invvol-sizing-252",
+        "h5-strev-21",
+        "h6-momentum-6-1",
+        "h8-mom-lowvol-double",
+        "h7-quality-roe",
+        "h9-quality-leverage"
+      ]
+    }
+  }
+}

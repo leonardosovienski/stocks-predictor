@@ -4,3 +4,5 @@
 *.yaml text eol=lf
 *.txt text eol=lf
 VERSION text eol=lf
+# Exact hashes of the CVM source extracts must survive Windows checkouts.
+tests/fixtures/cvm_dfp_2023/*.csv text eol=lf

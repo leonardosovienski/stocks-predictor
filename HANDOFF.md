@@ -1,5 +1,38 @@
 # HANDOFF — predictor-stocks
 
+> ## Auditoria de prontidão — PAUSE H17-H19 (2026-09-06, após a nota “VALE RODAR”)
+>
+> O ZIP oficial DFP 2023 contém `VERSAO`. O parser ignora a versão e usa
+> a primeira `DT_RECEB` do exercício: foram encontradas 80 combinações
+> companhia/exercício com recebimento da versão efetiva posterior à data
+> atribuída. ENGI11 existe no banco com receita da versão 3 vinculada a
+> 12/mar/2024, embora essa versão tenha sido recebida em 15/mar/2024.
+> Além disso, ponto decimal é removido e `ESCALA_MOEDA` é ignorada:
+> receita ABEV3 2023 está 10 milhões de vezes acima da unidade em reais.
+>
+> Detalhes, limites, budgets e decisão econômica:
+> [docs/research/2026-09-06-readiness.md](docs/research/2026-09-06-readiness.md).
+> Ferramenta nova: `tools/audit_dfp_readiness.py --zip <DFP.zip> --year 2023`.
+> Só lê o ZIP, não abre banco, não calcula desempenho; exit code 2 indica
+> falha. É auditoria independente, não trava automática do dispatcher.
+>
+> As contagens de cobertura anteriores foram reproduzidas em SQLite
+> `mode=ro`: 104 datas, H17 56, H18 49,5, H19 53 (medianas). Portanto a
+> falha é de provenance/unidade, não falta de linhas. H17/H18/H19 continuam
+> sem qualquer métrica de desempenho observada nesta sessão.
+>
+> A implementação histórica, config, ledger legado, atestado e banco
+> operacional permanecem preservados. Nenhuma dependência de runtime nova.
+> Python 3.13.14 + wheel Core 3.2.0 isolada; suíte anterior: 374 verdes.
+> A auditoria possui fixtures extraídas do ZIP real com hashes e testes
+> próprios. A validação final é registrada no relatório da sessão.
+> `trials_v2.json` estava atrasado em 8 entradas; regenerado pelo migrador
+> existente para 15, com `--check` aprovado. Campos históricos desconhecidos
+> continuam desconhecidos, sem inventar metadados. Relatórios H14-H16
+> recuperados do checkout operacional sem editar seus conteúdos.
+
+---
+
 > ## VEREDITO: os 5 critérios da H18 fecharam — VALE RODAR (2026-09-06)
 >
 > Medição final, com as duas pernas point-in-time corretas. Encerra a

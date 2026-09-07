@@ -1,0 +1,269 @@
+{
+  "schema_version": 1,
+  "mode": "DATA_FEASIBILITY_NO_PERFORMANCE",
+  "input_sha256": "d7ecbeb48b132d9e7480236d410d3587f4bd15efdf738e0b857647e178d3a261",
+  "year": 2023,
+  "status": "NOT_READY",
+  "proof_authorized": false,
+  "scope": "DFP monetary units and linkage to the received date of each version",
+  "issues": [
+    {
+      "code": "MONETARY_UNIT_MISMATCH",
+      "rows": 69024
+    },
+    {
+      "code": "VERSION_DATE_MISMATCH",
+      "company_periods": 80
+    }
+  ],
+  "statements": {
+    "BPA_con": {
+      "rows": 32426,
+      "scales": {
+        "MIL": 31887,
+        "UNIDADE": 539
+      },
+      "unit_mismatches": 15770,
+      "date_mismatches": 5214,
+      "unresolved_versions": 0,
+      "unit_examples": [
+        {
+          "company": "BCO BRASIL S.A.",
+          "account": "1",
+          "raw_value": "2153878452.0000000000",
+          "scale": "MIL",
+          "expected_reais": "2153878452000.0000000000",
+          "parsed_value": "2.153878452E+19"
+        },
+        {
+          "company": "BCO BRASIL S.A.",
+          "account": "1.01",
+          "raw_value": "54999815.0000000000",
+          "scale": "MIL",
+          "expected_reais": "54999815000.0000000000",
+          "parsed_value": "5.4999815E+17"
+        },
+        {
+          "company": "BCO BRASIL S.A.",
+          "account": "1.01.01",
+          "raw_value": "17327745.0000000000",
+          "scale": "MIL",
+          "expected_reais": "17327745000.0000000000",
+          "parsed_value": "1.7327745E+17"
+        }
+      ],
+      "date_examples": [
+        {
+          "company": "BRB BANCO DE BRASILIA S.A.",
+          "cnpj": "00000208000100",
+          "reference": "2023-12-31",
+          "version": "6",
+          "assigned_known_at": "2024-04-10",
+          "version_received_at": "2024-07-31"
+        },
+        {
+          "company": "BRB BANCO DE BRASILIA S.A.",
+          "cnpj": "00000208000100",
+          "reference": "2023-12-31",
+          "version": "6",
+          "assigned_known_at": "2024-04-10",
+          "version_received_at": "2024-07-31"
+        },
+        {
+          "company": "BRB BANCO DE BRASILIA S.A.",
+          "cnpj": "00000208000100",
+          "reference": "2023-12-31",
+          "version": "6",
+          "assigned_known_at": "2024-04-10",
+          "version_received_at": "2024-07-31"
+        }
+      ]
+    },
+    "BPP_con": {
+      "rows": 55431,
+      "scales": {
+        "MIL": 54442,
+        "UNIDADE": 989
+      },
+      "unit_mismatches": 21878,
+      "date_mismatches": 8732,
+      "unresolved_versions": 0,
+      "unit_examples": [
+        {
+          "company": "BCO BRASIL S.A.",
+          "account": "2",
+          "raw_value": "2153878452.0000000000",
+          "scale": "MIL",
+          "expected_reais": "2153878452000.0000000000",
+          "parsed_value": "2.153878452E+19"
+        },
+        {
+          "company": "BCO BRASIL S.A.",
+          "account": "2.01",
+          "raw_value": "2509742.0000000000",
+          "scale": "MIL",
+          "expected_reais": "2509742000.0000000000",
+          "parsed_value": "2.509742E+16"
+        },
+        {
+          "company": "BCO BRASIL S.A.",
+          "account": "2.02",
+          "raw_value": "1884405380.0000000000",
+          "scale": "MIL",
+          "expected_reais": "1884405380000.0000000000",
+          "parsed_value": "1.88440538E+19"
+        }
+      ],
+      "date_examples": [
+        {
+          "company": "BRB BANCO DE BRASILIA S.A.",
+          "cnpj": "00000208000100",
+          "reference": "2023-12-31",
+          "version": "6",
+          "assigned_known_at": "2024-04-10",
+          "version_received_at": "2024-07-31"
+        },
+        {
+          "company": "BRB BANCO DE BRASILIA S.A.",
+          "cnpj": "00000208000100",
+          "reference": "2023-12-31",
+          "version": "6",
+          "assigned_known_at": "2024-04-10",
+          "version_received_at": "2024-07-31"
+        },
+        {
+          "company": "BRB BANCO DE BRASILIA S.A.",
+          "cnpj": "00000208000100",
+          "reference": "2023-12-31",
+          "version": "6",
+          "assigned_known_at": "2024-04-10",
+          "version_received_at": "2024-07-31"
+        }
+      ]
+    },
+    "DRE_con": {
+      "rows": 17035,
+      "scales": {
+        "MIL": 16735,
+        "UNIDADE": 300
+      },
+      "unit_mismatches": 11716,
+      "date_mismatches": 2750,
+      "unresolved_versions": 0,
+      "unit_examples": [
+        {
+          "company": "BCO BRASIL S.A.",
+          "account": "3.01",
+          "raw_value": "265438605.0000000000",
+          "scale": "MIL",
+          "expected_reais": "265438605000.0000000000",
+          "parsed_value": "2.65438605E+18"
+        },
+        {
+          "company": "BCO BRASIL S.A.",
+          "account": "3.01.01",
+          "raw_value": "265438605.0000000000",
+          "scale": "MIL",
+          "expected_reais": "265438605000.0000000000",
+          "parsed_value": "2.65438605E+18"
+        },
+        {
+          "company": "BCO BRASIL S.A.",
+          "account": "3.02",
+          "raw_value": "-176689874.0000000000",
+          "scale": "MIL",
+          "expected_reais": "-176689874000.0000000000",
+          "parsed_value": "-1.76689874E+18"
+        }
+      ],
+      "date_examples": [
+        {
+          "company": "BRB BANCO DE BRASILIA S.A.",
+          "cnpj": "00000208000100",
+          "reference": "2023-12-31",
+          "version": "6",
+          "assigned_known_at": "2024-04-10",
+          "version_received_at": "2024-07-31"
+        },
+        {
+          "company": "BRB BANCO DE BRASILIA S.A.",
+          "cnpj": "00000208000100",
+          "reference": "2023-12-31",
+          "version": "6",
+          "assigned_known_at": "2024-04-10",
+          "version_received_at": "2024-07-31"
+        },
+        {
+          "company": "BRB BANCO DE BRASILIA S.A.",
+          "cnpj": "00000208000100",
+          "reference": "2023-12-31",
+          "version": "6",
+          "assigned_known_at": "2024-04-10",
+          "version_received_at": "2024-07-31"
+        }
+      ]
+    },
+    "DFC_MI_con": {
+      "rows": 25774,
+      "scales": {
+        "MIL": 25528,
+        "UNIDADE": 246
+      },
+      "unit_mismatches": 19660,
+      "date_mismatches": 4079,
+      "unresolved_versions": 0,
+      "unit_examples": [
+        {
+          "company": "BCO BRASIL S.A.",
+          "account": "6.01",
+          "raw_value": "14740786.0000000000",
+          "scale": "MIL",
+          "expected_reais": "14740786000.0000000000",
+          "parsed_value": "1.4740786E+17"
+        },
+        {
+          "company": "BCO BRASIL S.A.",
+          "account": "6.01.01",
+          "raw_value": "88811835.0000000000",
+          "scale": "MIL",
+          "expected_reais": "88811835000.0000000000",
+          "parsed_value": "8.8811835E+17"
+        },
+        {
+          "company": "BCO BRASIL S.A.",
+          "account": "6.01.01.01",
+          "raw_value": "33165591.0000000000",
+          "scale": "MIL",
+          "expected_reais": "33165591000.0000000000",
+          "parsed_value": "3.3165591E+17"
+        }
+      ],
+      "date_examples": [
+        {
+          "company": "AXIA ENERGIA S.A.",
+          "cnpj": "00001180000126",
+          "reference": "2023-12-31",
+          "version": "2",
+          "assigned_known_at": "2024-03-14",
+          "version_received_at": "2024-05-14"
+        },
+        {
+          "company": "AXIA ENERGIA S.A.",
+          "cnpj": "00001180000126",
+          "reference": "2023-12-31",
+          "version": "2",
+          "assigned_known_at": "2024-03-14",
+          "version_received_at": "2024-05-14"
+        },
+        {
+          "company": "AXIA ENERGIA S.A.",
+          "cnpj": "00001180000126",
+          "reference": "2023-12-31",
+          "version": "2",
+          "assigned_known_at": "2024-03-14",
+          "version_received_at": "2024-05-14"
+        }
+      ]
+    }
+  }
+}

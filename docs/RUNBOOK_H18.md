@@ -1,5 +1,13 @@
 # Runbook — do zero até medir os critérios da H18/H19
 
+> **Atualização 2026-09-06:** a cobertura foi reproduzida, mas não prova
+> prontidão. A [auditoria posterior](research/2026-09-06-readiness.md)
+> identificou erros de versão/data, unidades monetárias e base de ações.
+> H17-H19 continuam sem execução real. Antes de qualquer avaliação:
+> `py -3.13 tools/audit_dfp_readiness.py --zip <DFP.zip> --year 2023`.
+> A ferramenta só lê o ZIP; exit code 2 indica falha. Seu eventual sucesso
+> não substitui os demais gates de dados, execução e protocolo.
+
 **Objetivo:** sair de uma máquina limpa e chegar às contagens que respondem
 os critérios de aceite 2, 3 e 4 da auditoria de 2026-09-04
 (`reports/auditoria_2026-09-04.md`) — os que nunca foram medidos.

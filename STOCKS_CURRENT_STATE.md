@@ -1,6 +1,14 @@
 # Stocks Predictor — estado corrente
 
-**Vigência:** 2026-09-04
+**Vigência:** 2026-09-06 (auditoria de prontidão; nenhuma nova rodada)
+
+**H17-H19: PAUSE antes de desempenho.** A auditoria em
+[docs/research/2026-09-06-readiness.md](docs/research/2026-09-06-readiness.md)
+encontrou no DFP real associação de valores revisados à primeira entrega e
+escala monetária incorreta. Os 100% de `known_at` preenchidos não demonstram
+PIT por versão. `tools/audit_dfp_readiness.py` reproduz os bloqueios sem
+avaliar retornos e sem abrir o banco. Não está ligado automaticamente ao
+dispatcher de backtests; é uma checagem de auditoria com exit code 2 em falha.
 
 Este é o ponto de entrada técnico corrente. O código, Git/CI e
 `RESEARCH_FREEZE.md` prevalecem sobre documentação histórica.
@@ -18,7 +26,7 @@ new_scientific_trials = 3                             # H17 accruals, H18 E/P, H
 ```
 
 As famílias de fatores JÁ JULGADAS (H1/H2/H4/H5/H6/H7/H8/H9/H10/H11/H12/H13/
-H14/H15/H16 — 16 no total, todas NOT_SUPPORTED) e a linha RJ estão
+H14/H15/H16 — 15 no total, todas NOT_SUPPORTED; H3 não executada) e a linha RJ estão
 encerradas/congeladas. **H11** (momentum 12-1 em RETORNO TOTAL, proventos
 reinvestidos — corrige o viés só-preço das 9 anteriores) julgada
 2026-09-04: NOT_SUPPORTED (DSR 0,8430 < 0,95 — o maior de toda a série).
@@ -39,27 +47,30 @@ para detalhes completos. Reabertura de qualquer uma das 16 exige o
 dossiê completo definido em `RESEARCH_FREEZE.md` e informação
 materialmente nova.
 
-## H17-H19 — pré-registradas, aguardando rodada real (2026-09-04)
+## H17-H19 — re-pré-registradas, aguardando integridade de dados (2026-09-06)
 
 Decisão do operador de reabrir a pesquisa por **fonte de dado nova**, não por
 recombinação do que já foi observado (o que seria p-hacking e segue recusado):
 
 | # | fator | direção | dado novo | lacre |
 |---|---|---|---|---|
-| H17 | accruals `(lucro − FCO)/ativo` (Sloan 1996) | quintil INFERIOR | DFC-MI consolidada da CVM — 1ª demonstração nova desde o M2 | `aece696b814c0fd9` |
-| H18 | earnings yield `E/P` (Basu; Fama-French) | quintil SUPERIOR | `shares_outstanding` (FRE, migração 0011) | `dded266f1bb712f1` |
-| H19 | book-to-market `B/M` (Fama-French) | quintil SUPERIOR | idem H18 | `dabaa53adc9b9349` |
+| H17 | accruals `(lucro − FCO)/ativo` (Sloan 1996) | quintil INFERIOR | DFC-MI consolidada da CVM — 1ª demonstração nova desde o M2 | `e6cf9bd7454750c3` |
+| H18 | earnings yield `E/P` (Basu; Fama-French) | quintil SUPERIOR | `shares_outstanding` (FRE, migração 0011) | `cbea4d3c98ac3422` |
+| H19 | book-to-market `B/M` (Fama-French) | quintil SUPERIOR | idem H18 | `d96753f2af7b39a6` |
 
-H18/H19 são os **primeiros fatores de VALOR** do domínio — as 16 anteriores
+H18/H19 são os **primeiros fatores de VALOR** do domínio — as 15 julgadas
 mediram qualidade do negócio ou comportamento do preço, nunca a razão entre
 os dois. São hipóteses separadas de propósito (fluxo vs. estoque), cada uma
-com N próprio no DSR (17/18/19).
+com registro próprio. Há 15 tentativas executadas; a ordem das três ainda
+precisa ser congelada. O N nominal seria 16/17/18 na ordem de execução,
+sem representar uma contabilidade completa de escolhas adaptativas.
 
-**Estado: código pronto e testado, NENHUMA rodada real executada.** Exigem
-ingestão nova (DFC-MI e ações em circulação) na máquina do operador antes de
-qualquer veredito. Ver HANDOFF.md "H17, H18 e H19 ABERTAS — PRÉ-REGISTRO".
+**Estado: NENHUMA rodada real executada; dados ingeridos, prontidão refutada.**
+Cobertura remensurada em conexão somente-leitura: medianas H17=56,
+H18=49,5 e H19=53 em 104 datas. A ingestão precisa resolver versão/unidade
+e base de ações em derivação isolada antes de qualquer veredito.
 
-As 16 hipóteses já julgadas permanecem FECHADAS: nada aqui as reabre, e a
+As 15 hipóteses já julgadas permanecem FECHADAS: nada aqui as reabre, e a
 `reopen_policy` de `RESEARCH_FREEZE.md` §11 (6 campos + revisão humana)
 continua valendo integralmente para elas.
 
