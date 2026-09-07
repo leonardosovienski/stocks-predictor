@@ -1,3 +1,44 @@
+## H19: execução contínua com bloqueio de evidência (2026-09-07)
+
+`continuous_cash.py` implementa um livro persistente, giro por diferenças,
+liquidação datada, IRRF/DARF mensal, reserva de imposto inferior a R$10,
+créditos após a venda e marcação diária sem antecipar valores só divulgados
+depois. `continuous_research.py` integra ambas as carteiras e os quatro casos
+pré-registrados, com manifesto SHA256 e bloqueio antes de emitir retornos.
+Fracasso em um caminho não publica lucros parciais; tentativas de avaliação
+depois do gate são registradas no orçamento, mesmo se uma execução falhar.
+
+Entregas incluem bloqueio individual das ações bonificadas, negociação antes
+do crédito apenas quando documentada e liquidável até a entrega, e grupamento
+seguido de desdobramento com arredondamento por lote. Frações continuam exigindo
+líquido e tratamento fiscal revisados; o programa NÃO calcula sozinho o imposto
+individual das reorganizações. Nenhuma dependência nova de runtime.
+
+33 testes direcionados passaram; Ruff do escopo CI passou. Suíte completa,
+wheel e reprodução externa ainda serão verificadas nesta mesma rodada.
+
+Fontes: 95 meses de DARF 6015 conferidos na Receita; 76.301 dias de posições
+do universo anteriormente mapeado sem falta de cotação; mais 125 cotações ON/PN
+principais e 125 fracionárias de RENT4/CYRE4, sem lacunas nos intervalos adicionais.
+1.345 boletins B3 inteiros forneceram 31.601 linhas de crédito. Cadastro V5:
+420/778 pagamentos individuais revisados, 131/133 selecionados; as outras duas
+selecionadas têm calendário de parcelas. 389 eventos têm líquido teórico com
+regra fiscal documentada no cenário PF. Isso não certifica completude de caixa.
+
+Achados materiais: LIGT 100:1 seguido de 1:100 arredonda posição para centenas;
+VIVT 40:1 seguido de 1:80 arredonda por blocos de 80. Sobras vão a leilão e têm
+tributação própria. Bonificações RENT/CYRE entregam RENT4/CYRE4, não ON adicionais.
+Os fatores de preço anteriores não validam esses caminhos de varejo. O painel de
+fontes primárias registra oito revisões parciais; não inferir imposto de PF a
+partir de resultado de leilão "líquido de taxas".
+
+Rodada real bloqueou antes dos retornos: cobertura completa de 1.237 intervalos,
+356 datas de linhas ordinárias fora das parcelas, fiscalidade de 36 registros
+societários, JBS posterior e caixa de sucessores ainda não certificados. Não
+forçar o gate nem publicar a antiga medida de preços como lucro líquido.
+Sem alteração de DB, seleções, ordens, gastos ou resultados protegidos.
+Contagem mantida >=32 configurações / >=37 avaliações; H19 Discovery inconclusiva.
+
 ## H19: 16 datas selecionadas conciliadas, auditoria V3 (2026-09-07)
 
 Fechadas com fontes primárias todas as 16 linhas selecionadas que não tinham

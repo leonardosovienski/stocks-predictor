@@ -7,7 +7,7 @@ Corporate deliveries and cost bases must be supplied by their reviewed terms.
 
 from collections import defaultdict
 from copy import deepcopy
-from dataclasses import dataclass
+from dataclasses import dataclass, field as dataclass_field
 from datetime import date
 from decimal import Decimal, InvalidOperation, ROUND_FLOOR
 
@@ -35,6 +35,20 @@ class Holding:
     basis: Decimal
     tax_class: str = "equity"
     available_on: str = "0001-01-01"
+    locked_deliveries: list = dataclass_field(default_factory=list)
+    tradable_on: str | None = None
+
+    def available_quantity(self, day, settlement_date=None):
+        def usable(credit, tradable):
+            return credit <= day or (tradable is not None and tradable <= day
+                                     and settlement_date is not None and credit <= settlement_date)
+        if not usable(self.available_on, self.tradable_on):
+            return 0
+        locked = sum(r['quantity'] for r in self.locked_deliveries
+                     if not usable(r['credit_date'], r.get('tradable_on')))
+        if locked < 0 or locked > self.quantity:
+            raise ValueError('invalid undelivered quantity')
+        return self.quantity - locked
 
 
 def trade_value(quantity, quote, lot=100):
@@ -119,6 +133,7 @@ class RetailBook:
         self.rights = {}
         self.seen_right_ids = set()
         self.trades = []
+        self.cash_buffer = Decimal(0)
 
     def advance(self, day):
         day = iso(day)
@@ -145,7 +160,7 @@ class RetailBook:
         if amount < 0 or iso(settlement_date) <= self.day:
             raise ValueError("nonnegative funding after the current date required")
         flows = [*self.pending, {"date": settlement_date, "amount": -amount}]
-        cash = self.cash
+        cash = self.cash - self.cash_buffer
         for day in sorted({f["date"] for f in flows}):
             cash += sum((f["amount"] for f in flows if f["date"] == day), Decimal(0))
             if cash < 0:
@@ -194,7 +209,7 @@ class RetailBook:
             raise ValueError("intraday reversal requires a separate day-trade ledger")
         quantity = abs(delta)
         if delta < 0:
-            if not existing or quantity > existing.quantity or existing.available_on > self.day:
+            if not existing or quantity > existing.available_quantity(self.day, settlement_date):
                 raise ValueError("sale exceeds delivered position")
         gross = trade_value(quantity, quote, lot)
         costs = gross * fee
