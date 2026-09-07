@@ -11,8 +11,12 @@ point-in-time; a carteira da H2 toma o quintil INFERIOR (baixa volatilidade).
 import datetime
 import statistics
 
-import db as db_mod
-import universe as universe_mod
+if __package__:
+    from . import cvm_pit, db as db_mod, universe as universe_mod
+else:
+    import cvm_pit
+    import db as db_mod
+    import universe as universe_mod
 
 
 def _idx_le(dates, asof):
@@ -422,20 +426,16 @@ def legacy_book_to_market_signals(conn, tickers, asof, disclosure_embargo_days=9
 
 # Current factors consume verified versioned derivations only, never the legacy table.
 def accruals_signals(conn, tickers, asof, disclosure_embargo_days=90):
-    from cvm_pit import fundamental_values
-    return fundamental_values(conn, tickers, asof, "accruals")
+    return cvm_pit.fundamental_values(conn, tickers, asof, "accruals")
 
 
 def earnings_yield_signals(conn, tickers, asof, disclosure_embargo_days=90):
-    from cvm_pit import value_signals
-    return value_signals(conn, tickers, asof, "lucro_liquido")
+    return cvm_pit.value_signals(conn, tickers, asof, "lucro_liquido")
 
 
 def book_to_market_signals(conn, tickers, asof, disclosure_embargo_days=90):
-    from cvm_pit import value_signals
-    return value_signals(conn, tickers, asof, "patrimonio_liquido")
+    return cvm_pit.value_signals(conn, tickers, asof, "patrimonio_liquido")
 
 
 def _shares_on_price_base(conn, ticker, shares, basis_date, asof):
-    from cvm_pit import shares_on_price_base
-    return shares_on_price_base(conn, ticker, shares, basis_date, asof)
+    return cvm_pit.shares_on_price_base(conn, ticker, shares, basis_date, asof)

@@ -418,7 +418,10 @@ def shares_on_price_base(conn, ticker, shares, basis_date, asof):
 
 
 def value_signals(conn, tickers, asof, column):
-    import factor
+    if __package__:
+        from . import factor
+    else:
+        import factor
 
     tickers = list(tickers)
     values = fundamental_values(conn, tickers, asof, column)

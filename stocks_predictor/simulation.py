@@ -236,11 +236,17 @@ def simulate_portfolio(
 
 
 def walk_forward(conn, cfg, signal_fn=None, take="top", portfolio_fn=None, series_fn=None):
-    import adjust
-    import factor
-    import portfolio
-    import universe
-    from returns import month_end_dates
+    if __package__:
+        from . import adjust, factor, portfolio, universe
+        from .returns import month_end_dates
+        from .cash_events import require_coverage
+    else:
+        import adjust
+        import factor
+        import portfolio
+        import universe
+        from returns import month_end_dates
+        from cash_events import require_coverage
 
     adjust.require_scanned(conn)
     bt, execution, u = cfg["backtest"], cfg["execution"], cfg["universe"]
@@ -290,8 +296,6 @@ def walk_forward(conn, cfg, signal_fn=None, take="top", portfolio_fn=None, serie
                 bars[ticker] = load_bars(conn, ticker, end=end)
                 splits[ticker] = split_events(conn, ticker, end)
                 if mode == "total":
-                    from cash_events import require_coverage
-
                     require_coverage(conn, ticker, dates[0], end)
                     events[ticker] = conn.execute(
                         "SELECT ex_date,payment_date,value_per_share FROM cash_events"

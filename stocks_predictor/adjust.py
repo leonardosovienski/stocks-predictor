@@ -26,8 +26,12 @@ o humano preencheu com `source` E `approved_by` — o resto fica em quarentena.
 import csv
 import logging
 
-from db import price_expr
-from universe import SPOT_MARKET
+if __package__:
+    from .db import price_expr
+    from .universe import SPOT_MARKET
+else:
+    from db import price_expr
+    from universe import SPOT_MARKET
 
 logger = logging.getLogger(__name__)
 
@@ -326,5 +330,8 @@ def legacy_total_return_series(conn, ticker):
 
 def total_return_series(conn, ticker, *, asof=None):
     """Verified ex-date cash events, with explicit coverage and split-consistent units."""
-    from cash_events import total_return_series as verified_series
+    if __package__:
+        from .cash_events import total_return_series as verified_series
+    else:
+        from cash_events import total_return_series as verified_series
     return verified_series(conn, ticker, asof=asof)

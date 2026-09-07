@@ -9,7 +9,10 @@ import hashlib
 import io
 import math
 
-from cvm_pit import append_rows, iso_date
+if __package__:
+    from .cvm_pit import append_rows, iso_date
+else:
+    from cvm_pit import append_rows, iso_date
 
 
 def import_verified_events(conn, payload, coverage):
@@ -92,7 +95,10 @@ def total_return_series(conn, ticker, *, asof=None):
     per-share cash stay in their contemporaneous bases, including multiple
     corporate actions between two quotes. No future split rescales past cash.
     """
-    from simulation import load_bars, split_events
+    if __package__:
+        from .simulation import load_bars, split_events
+    else:
+        from simulation import load_bars, split_events
 
     bars = load_bars(conn, ticker, end=asof)
     if not bars:
