@@ -1,0 +1,21 @@
+{
+  "protocol_id": "H18-H19-PROFIT-VALIDATION-1",
+  "registered_at_utc": "2026-09-07T18:13:09.279397+00:00",
+  "source_observation_sha256": "c47fcca89d07e2064c1ba6ebc7a1f1dc763473a1364291284dfe6d761d7e9128",
+  "scope": "Audit all four unchanged H18/H19 cohorts, their calculations, causal dates and economic fragility. H1-H17 prior verdicts remain preserved; no parameter search.",
+  "audit": "Recompute each priced entitlement with an independent chronological holding book, independently check ranking, next-session execution, original-source hashes and cross-section arithmetic.",
+  "risk": "Report arithmetic and geometric selected/benchmark outcomes, period-mark drawdown (not daily drawdown), fixed halves and calendar years. No omitted loss periods. Synthetic compounded diagnostic wealth is not executable P&L.",
+  "uncertainty": "Existing Core stationary paired bootstrap, seed 20260907, 10000 draws, expected blocks 12 months or 4 quarters; report 95 percent intervals on monthly-equivalent spread with unchanged 72bp/period haircut. Descriptive post-selection intervals, not Proof or selection-adjusted significance.",
+  "cash_feasibility": "Audit every required issuer/class/entitlement in saved paginated B3 data. Compare prior close and quotation scale against original COTAHIST; preserve duplicates, conflicts and absent payment dates. A B3 cash accrual diagnostic is allowed only if explicitly single-source/unverified and never called executable net profit. No silent missing=zero for coverage.",
+  "execution_feasibility": "For R$5000 and R$10000 examine ticket sizes and the need for fractional-market prices, bonus fractions, settlement and physical credit. Do not represent standard-lot opens as verified retail fills.",
+  "stress": "Same cohorts at next close and adverse buy=max(open,close), sell=min(open,close); no refitting. Constant 36/72bp holding-period haircuts remain scenarios, not measured turnover cost. All modes must be reported, not selected by performance.",
+  "budget": "Existing minimum 24 configurations / 29 return evaluations. Independent reproduction and descriptive risk summaries do not add candidates. If both new price modes are observed for all four cohorts, add 8 configurations/evaluations; any ordinary-cash diagnostic adds four more. Record actual work, not unexecuted possibilities.",
+  "stopping_rule": "Do not expand to Proof or claim net profit without full ordinary cash, rights/credit/auction terms and retail execution. If cheap audit finds no credible economic edge, record that result rather than tune the hurdle, assets or dates.",
+  "capital_brl": [
+    5000,
+    10000
+  ],
+  "economic_hurdle_monthly": 0.0042,
+  "hurdle_is_assumption_not_user_confirmed_minimum": true,
+  "orders_or_spending_authorized": false
+}

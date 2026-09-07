@@ -1,3 +1,21 @@
+## H18/H19: validação de lucro registrada (2026-09-07)
+
+Usuário pediu validar tudo para procurar lucro. `profit_validation.py` implementa
+uma segunda contabilidade cronológica de ações/direitos para conferir a medição,
+sem chamar o scorer original. Mesmas seleções, três preços (abertura, fechamento,
+pior dos dois), mesmas premissas de 36/72 pb. Risco por marca de período e bootstrap
+pareado descritivo, não Proof. Protocolo profit-validation-protocol.json registrado
+antes das novas métricas. Se oito sensibilidades de preço forem observadas, orçamento
+passa a >=32 configurações e >=37 avaliações. Nenhuma dependência nova.
+
+Seis testes específicos passaram; Ruff no escopo CI passou. Suíte completa ainda
+será rodada em commit limpo antes de agregar. Auditoria de fonte já executada:
+732 linhas de caixa B3 nas janelas requeridas, 37 colisões de chave econômica
+precisam de distinção por aviso/valor. Preço anterior coincide com COTAHIST nas
+732 linhas normalizadas. Pagamentos históricos e completude continuam sem validação.
+Em H19 trimestral, 182/233 tickets com R$5 mil e 115/233 com R$10 mil têm menos
+de 100 ações; preços de lote padrão não demonstram essas execuções no fracionário.
+
 ## H18/H19: reorganizações executadas, sem promoção (2026-09-07)
 
 Código 54fd8643ef43c3b8182deb0d82a8e186498f1f91: 533 testes em 153,45 s; cobertura 80%,
