@@ -36,7 +36,9 @@ def test_source_review_unblocks_only_unchanged_original_units_and_invents_no_bon
         {'ticker': 'A', 'isin': 'I', 'tax_class': 'equity', 'lot': 100}]}
     quotes={('2020-01-02', 'A'): {'date': '2020-01-02', 'isin': 'I', 'close': 10},
             ('2020-01-03', 'A'): {'date': '2020-01-03', 'isin': 'I', 'standard': 10, 'fractional': 10}}
-    requirement=[{'event_id': 'bonus', 'ticker': 'A', 'isin': 'I', 'ex_date': '2020-01-03'}]
+    # Real ordinary-action requirements omit ISIN; bind the review to the
+    # independently frozen plan's identity instead of assuming that field.
+    requirement=[{'event_id': 'bonus', 'ticker': 'A', 'ex_date': '2020-01-03'}]
     result=entry_case(1000, 0, plan, quotes, '2020-01-07', requirement, reviews)
     assert result['filled_shares'] == 100 and result['bonus_rights_received_by_new_entry'] == 0
     assert [r['ticker'] for r in result['orders']] == ['A']

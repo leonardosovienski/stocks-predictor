@@ -21,7 +21,8 @@ def entry_case(capital, cost, plan, quotes, settlement, action_requirements, uni
               'entry_date': plan['entry'], 'settlement_date': settlement,
               'target_names': len(plan['members']), 'status': 'BLOCKED',
               'actual_continuous_turnover': None, 'profit': None}
-    names = {m['ticker'] for m in plan['members']}
+    identities = {m['ticker']: m for m in plan['members']}
+    names = set(identities)
     reviewed = {r['event_id']: r for r in unit_reviews}
     boundary = []
     applied = []
@@ -31,7 +32,9 @@ def entry_case(capital, cost, plan, quotes, settlement, action_requirements, uni
         review = reviewed.get(r['event_id'], {})
         if (review.get('kind') == 'BONUS_IN_DIFFERENT_CLASS' and review.get('removes_original') is False
                 and review.get('original_share_units_unchanged') is True
-                and review.get('ticker') == r['ticker'] and review.get('isin') == r['isin']
+                and review.get('ticker') == r['ticker']
+                and review.get('isin') == identities[r['ticker']]['isin']
+                and (not r.get('isin') or review['isin'] == r['isin'])
                 and review.get('ex_date') == r['ex_date'] and review.get('sources_verified') is True
                 and iso(review['terms_known_on']) <= plan['entry']
                 and review.get('delivered_tickers') and r['ticker'] not in review['delivered_tickers']):
@@ -45,7 +48,6 @@ def entry_case(capital, cost, plan, quotes, settlement, action_requirements, uni
         # No silent inference from a price factor, even in a cheap diagnostic.
         return {**result, 'reason': 'ENTRY_ACTION_REQUIRES_REVIEWED_ORDER_UNITS', 'events': boundary}
     try:
-        identities = {m['ticker']: m for m in plan['members']}
         closes = {}
         for m in plan['members']:
             q = quotes[(plan['asof'], m['ticker'])]
