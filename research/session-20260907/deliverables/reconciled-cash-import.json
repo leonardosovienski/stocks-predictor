@@ -1,0 +1,47 @@
+{
+  "inserted": 95,
+  "receivables": 95,
+  "intervals": [
+    {
+      "ticker": "ENGI3",
+      "start_date": "2016-01-04",
+      "end_date": "2026-08-27",
+      "b3_entitlements": 23,
+      "receivables": 23,
+      "all_entitlements_reconciled": true
+    },
+    {
+      "ticker": "ENGI4",
+      "start_date": "2016-01-04",
+      "end_date": "2026-08-27",
+      "b3_entitlements": 23,
+      "receivables": 23,
+      "all_entitlements_reconciled": true
+    },
+    {
+      "ticker": "ENGI11",
+      "start_date": "2016-01-04",
+      "end_date": "2026-08-27",
+      "b3_entitlements": 23,
+      "receivables": 23,
+      "all_entitlements_reconciled": true
+    },
+    {
+      "ticker": "ABEV3",
+      "start_date": "2016-01-04",
+      "end_date": "2026-06-22",
+      "b3_entitlements": 24,
+      "receivables": 26,
+      "all_entitlements_reconciled": true
+    }
+  ],
+  "idempotent_reimport": true,
+  "whole_universe_coverage": false,
+  "noncash_actions_certified": false,
+  "performance_observed": false,
+  "excluded_abev_event": {
+    "ex_date": "2026-06-23",
+    "reason": "Conflicting payment dates: RI workbook 2026-12-30; B3 supplement 2026-12-31"
+  },
+  "database_sha256": "e21a89c38f2792c826291baa1175da4fe9dfbf626316635a536f7c28b250146a"
+}

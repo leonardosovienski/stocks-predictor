@@ -1,0 +1,6 @@
+Processing .\work\historical-wheel\stocks_predictor-0.1.0-py3-none-any.whl
+Installing collected packages: stocks-predictor
+Successfully installed stocks-predictor-0.1.0
+
+[notice] A new release of pip is available: 26.1.2 -> 26.2.1
+[notice] To update, run: C:\Users\Superleo13\AppData\Local\Python\pythoncore-3.13-64\python.exe -m pip install --upgrade pip

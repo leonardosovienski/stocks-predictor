@@ -1,0 +1,11 @@
+{
+  "file": "stocks-testes-reais.zip",
+  "bytes": 157473155,
+  "sha256": "24a0f64ea5a1392386d809f4aae51617627877260ee557039beaa4d35e616235",
+  "entries": 410,
+  "crc_valid": true,
+  "database_hashes_match": true,
+  "capital_fixture_hashes_match": true,
+  "clean_clone_economic_results_identical": true,
+  "original_bonus_payload_preserved": true
+}

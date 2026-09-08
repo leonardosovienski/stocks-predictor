@@ -1,0 +1,7 @@
+{
+  "zip_crc_check": "PASS",
+  "packaged_golden_fixture_hashes": "PASS",
+  "entries": 1831,
+  "tested_commit": "ce94aeecd2f7b78308cdb09b4a22ba2a06feea70",
+  "tests_passed": 448
+}

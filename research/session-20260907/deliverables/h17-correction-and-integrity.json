@@ -1,0 +1,42 @@
+{
+  "same_hypothesis_selection_and_source_inputs": true,
+  "unchanged_outcomes": 5395,
+  "changed_measurement_cells": [
+    {
+      "asof": "2018-06-29",
+      "ticker": "MULT3",
+      "previous_status": [
+        "CONFLICTING_CORPORATE_ACTION_FACTORS"
+      ],
+      "corrected_price_return": 0.0759064118592605
+    },
+    {
+      "asof": "2020-03-31",
+      "ticker": "TOTS3",
+      "previous_status": [
+        "CONFLICTING_CORPORATE_ACTION_FACTORS"
+      ],
+      "corrected_price_return": 0.3185564713744711
+    },
+    {
+      "asof": "2020-10-30",
+      "ticker": "CSMG3",
+      "previous_status": [
+        "CONFLICTING_CORPORATE_ACTION_FACTORS"
+      ],
+      "corrected_price_return": 2.220446049250313e-16
+    },
+    {
+      "asof": "2025-03-31",
+      "ticker": "VIVT3",
+      "previous_status": [
+        "CONFLICTING_CORPORATE_ACTION_FACTORS"
+      ],
+      "corrected_price_return": 0.1153923339353804
+    }
+  ],
+  "first_observation_sha256": "fcd9cb6e30f8b56cc1b09b23f4b663d14c95cb1c4b461603b8396d04114d4e5c",
+  "corrected_observation_sha256": "45bfbc925c62b9561b2c5cea5dc6c65c2c73fa6e5d1b02c5c19f0dae16526135",
+  "operational_database_unchanged": true,
+  "source_database_unchanged": true
+}

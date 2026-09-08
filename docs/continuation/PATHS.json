@@ -1,0 +1,13 @@
+{
+  "original_research_root": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-06\\files-pasted-by-the-user-autonomous",
+  "durable_research_root": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907",
+  "durable_checkout": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\stocks-predictor",
+  "main_git_repository": "C:\\Users\\Superleo13\\stocks-predictor-work",
+  "research_branch": "fix/stocks-cvm-execution-20260907",
+  "original_prompt_sha256": "86edfed4153a4549502161f421e4a21e56434b45da3e5b8ef25eec27728bc133",
+  "relocation": "Resolve original root prefixes to durable_research_root without modifying evidence bytes.",
+  "large_data_policy": "Raw downloads, databases and ZIPs are copied and hashed outside Git object storage.",
+  "local_git_only": true,
+  "github_push_performed": false,
+  "external_database": "C:\\Users\\Superleo13\\stocks-predictor-work\\data\\stocks.db"
+}

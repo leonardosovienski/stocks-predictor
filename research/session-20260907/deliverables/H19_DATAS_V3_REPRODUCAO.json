@@ -1,0 +1,24 @@
+{
+  "archive": "STOCKS_H19_DATAS_E_AUDITORIA_V3.zip",
+  "sha256": "5ba1884ab9b414583f22f2d225e03539398d57b006f04b345b8dfb1e2574b1dd",
+  "bytes": 6134037,
+  "payload_files": 71,
+  "date_reconciliation": "PASS_16_PRIMARY_SOURCE_REVIEWS",
+  "rebuilt_registry_identical": true,
+  "registry_sha256": "7dfe6ae00486a9cf8fbd909c41a7c55c1e8d16c4e8cc849796aaeee45eeee6bc",
+  "audit": "PASS_EXPECTED_MISSING_EVIDENCE_EXIT_2",
+  "audit_sha256": "c8f90daa7d54f74f80d27480372597996f2c7a23f733a2d71f46776ca9b8286e",
+  "runtime_unchanged": true,
+  "prior_runtime_tests": 558,
+  "runtime_tests_repeated": false,
+  "new_return_evaluations": 0,
+  "profit": null,
+  "summary": {
+    "queue_rows": 778,
+    "selected_rows": 133,
+    "reviewed_payment_rows": 160,
+    "selected_reviewed_payment_rows": 123,
+    "without_candidate_date": 529,
+    "selected_without_candidate_date": 0
+  }
+}

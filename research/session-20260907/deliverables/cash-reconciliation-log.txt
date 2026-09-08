@@ -1,0 +1,25 @@
+{
+  "raw_b3_records_staged": 0,
+  "b3_records_in_calendar": 4469,
+  "calendar_start": "2016-01-04",
+  "calendar_end": "2026-08-27",
+  "calendar_sha256": "e9bbdda93fdf48e176a9168a2595f9980c9c60bfc82efbf0da4626cb30eb537f",
+  "matched_payments": 184,
+  "matched_by_ticker": {
+    "ABEV3": 27,
+    "BBAS3": 88,
+    "ENGI3": 23,
+    "ENGI4": 23,
+    "ENGI11": 23
+  },
+  "b3_normalization_issue_counts": {
+    "cum/ex date outside observed exchange calendar": 5154,
+    "unsupported B3 amount or quotation basis": 4,
+    "missing B3 cash-event field": 180,
+    "approval follows entitlement date": 5
+  },
+  "complete_event_coverage": false,
+  "missing_fields_fabricated": false,
+  "performance_observed": false,
+  "output_database_sha256": "98c4048b07d99491b448bd4e5490368bd6203f47a66e8962ca0843e6bab94a5d"
+}

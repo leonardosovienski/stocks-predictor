@@ -1,0 +1,226 @@
+{
+  "facts": [
+    {
+      "ticker": "LIGT3",
+      "ex_date": "2021-06-28",
+      "quantity_rule": "floor(original_quantity/100)*100",
+      "source": {
+        "file": "cvm-corporate-0041.pdf",
+        "sha256": "59416c13454cca626dde2781c072691aa7713682e0b62269ff7a7c77cdead939",
+        "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=879252&numSequencia=403989&numVersao=1",
+        "page": 1,
+        "verified_fragments": [
+          "múltiplos de 100",
+          "múltiplo de 100"
+        ]
+      },
+      "auction_date": "2021-07-27",
+      "payment_deadline": "2021-08-03",
+      "auction_net_of_fees_reported_per_share": "15.19",
+      "auction_source": {
+        "file": "cvm-corporate-0043.pdf",
+        "sha256": "c7107793aaa174ee396fdd0aa0f991e43adb32b97d1e5d3ffd9ac7e372d00ef0",
+        "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=886736&numSequencia=411473&numVersao=1",
+        "page": 1,
+        "verified_fragments": [
+          "R$15,19",
+          "3 de agosto de 2021"
+        ]
+      },
+      "not_net_of_personal_income_tax": true
+    },
+    {
+      "ticker": "VIVT3",
+      "ex_date": "2025-04-15",
+      "quantity_rule": "floor(original_quantity/40)*80",
+      "source": {
+        "file": "cvm-corporate-0148.pdf",
+        "sha256": "bbda4ebde04155efeea92b99820c27f160cd248e3aecac3d435869a36f23a8f6",
+        "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1380678&numSequencia=905390&numVersao=1",
+        "page": 1,
+        "verified_fragments": [
+          "40 (quarenta)",
+          "80 (oitenta)",
+          "26,64196300439",
+          "28 de maio de 2025"
+        ]
+      },
+      "auction_date": "2025-05-19",
+      "payment_deadline": "2025-05-28",
+      "auction_net_of_fees_per_share": "26.64196300439",
+      "not_net_of_personal_income_tax": true,
+      "tax_warning_source": {
+        "file": "cvm-corporate-0148.pdf",
+        "sha256": "bbda4ebde04155efeea92b99820c27f160cd248e3aecac3d435869a36f23a8f6",
+        "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1380678&numSequencia=905390&numVersao=1",
+        "page": 2,
+        "verified_fragments": [
+          "poderão estar sujeitos",
+          "ganhos líquidos"
+        ]
+      }
+    },
+    {
+      "ticker": "RENT3",
+      "ex_date": "2025-12-30",
+      "delivered_ticker": "RENT4",
+      "delivered_isin": "BRRENTACNPR1",
+      "declared_bonus_ratio": "1/26",
+      "operational_bonus_ratio": "0.0384609533429",
+      "credit_date": "2026-01-05",
+      "tradable_on": "2025-12-30",
+      "basis_per_new_share": "49.60",
+      "source": {
+        "file": "cvm-corporate-0157.pdf",
+        "sha256": "e150ca684f6029928872b10a242726849a9431b704cfd6e204786c0a1e9bd6c1",
+        "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1462029&numSequencia=986735&numVersao=1",
+        "page": 2,
+        "verified_fragments": [
+          "26 (vinte e seis)",
+          "05 de janeiro de 2026",
+          "R$49,60"
+        ]
+      },
+      "security_source": {
+        "file": "cvm-corporate-0157.pdf",
+        "sha256": "e150ca684f6029928872b10a242726849a9431b704cfd6e204786c0a1e9bd6c1",
+        "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1462029&numSequencia=986735&numVersao=1",
+        "page": 3,
+        "verified_fragments": [
+          "RENT4",
+          "30 de dezembro de 2025"
+        ]
+      },
+      "operational_ratio_source": {
+        "file": "cvm-corporate-0196.pdf",
+        "sha256": "d7972e8c9ca90ee49c7d4dcf417b0e612a5cfc3cfda0cfa0169f76eff8b89e72",
+        "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1463722&numSequencia=988428&numVersao=1",
+        "page": 1,
+        "verified_fragments": [
+          "0,0384609533429"
+        ]
+      },
+      "ratio_revision_requires_causal_handling": true
+    },
+    {
+      "ticker": "CYRE3",
+      "ex_date": "2026-01-02",
+      "delivered_ticker": "CYRE4",
+      "delivered_isin": "BRCYREACNPR4",
+      "declared_bonus_ratio": "0.18958333333",
+      "credit_date": "2026-01-06",
+      "basis_per_new_share": "34.33",
+      "source": {
+        "file": "cvm-corporate-0166.pdf",
+        "sha256": "b5db60cd77d8ea1ca3473059a7ae5ff36f7106cd644a4aef007d573fc674ace6",
+        "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1462916&numSequencia=987622&numVersao=1",
+        "page": 1,
+        "verified_fragments": [
+          "0,18958333333",
+          "preferenciais de classe especial"
+        ]
+      },
+      "delivery_source": {
+        "file": "cvm-corporate-0166.pdf",
+        "sha256": "b5db60cd77d8ea1ca3473059a7ae5ff36f7106cd644a4aef007d573fc674ace6",
+        "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1462916&numSequencia=987622&numVersao=1",
+        "page": 2,
+        "verified_fragments": [
+          "06 de janeiro de 2026",
+          "34,33"
+        ]
+      }
+    },
+    {
+      "ticker": "BRML3",
+      "ex_date": "2023-01-09",
+      "delivered_ticker": "ALSO3",
+      "credit_date": "2023-01-11",
+      "source": {
+        "file": "cvm-corporate-0099.pdf",
+        "sha256": "f5c3244071e1a2830acdc29245f120c79046cf96056e588d5eb9aa96fde7b5bd",
+        "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1044100&numSequencia=568830&numVersao=2",
+        "page": 3,
+        "verified_fragments": [
+          "11 de janeiro de 2023: crédito efetivo"
+        ]
+      },
+      "auction_date": "2023-01-24",
+      "payment_deadline": "2023-02-02",
+      "auction_net_of_fees_per_share": "17.694416",
+      "auction_source": {
+        "file": "cvm-successor-0053.pdf",
+        "sha256": "c411dd6cb2939a485060509de5c3d98744ec394832be723e703d9dc46e55f61e",
+        "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1051879&numSequencia=576609&numVersao=1",
+        "page": 1,
+        "verified_fragments": [
+          "24 de janeiro de 2023",
+          "17,694416",
+          "2 de fevereiro de 2023"
+        ]
+      },
+      "not_net_of_personal_income_tax": true
+    },
+    {
+      "ticker": "ALSC3",
+      "ex_date": "2019-08-06",
+      "auction_date": "2020-01-15",
+      "auction_reported_per_share": "54.26688776859",
+      "notice_date": "2020-01-30",
+      "payment_deadline_description": "7 business days from notice; credit day not independently confirmed",
+      "source": {
+        "file": "cvm-successor-0023.pdf",
+        "sha256": "9618d1f7eb8277c6109e7838e1cf1e95ce4d58fdac1ce68ca60288acddeee972",
+        "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=732740&numSequencia=257520&numVersao=1",
+        "page": 1,
+        "verified_fragments": [
+          "15 de janeiro de 2020",
+          "54,26688776859",
+          "7 (sete) dias úteis"
+        ]
+      }
+    },
+    {
+      "ticker": "LCAM3",
+      "ex_date": "2022-07-04",
+      "auction_date": "2022-09-05",
+      "payment_date": "2022-09-14",
+      "auction_reported_per_share": "63.200889473",
+      "source": {
+        "file": "cvm-successor-0044.pdf",
+        "sha256": "ef747ed1a787ca757b2967e396bc5cb271fff833cd4d5835b82eec9e0afca225",
+        "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1013434&numSequencia=538168&numVersao=1",
+        "page": 1,
+        "verified_fragments": [
+          "05 de setembro de 2022",
+          "63,200889473",
+          "14 de setembro de 2022"
+        ]
+      }
+    },
+    {
+      "ticker": "SOMA3",
+      "ex_date": "2024-08-01",
+      "auction_date": "2024-08-22",
+      "payment_deadline": "2024-08-26",
+      "auction_reported_approximate_per_share": "50.20718",
+      "auction_total": "916532.03",
+      "auction_whole_shares": 18255,
+      "source": {
+        "file": "cvm-successor-0063.pdf",
+        "sha256": "ab38276f73b5997b9557e15910c34b4def36ef77df02232d984567d276a29bb8",
+        "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1274971&numSequencia=799697&numVersao=1",
+        "page": 1,
+        "verified_fragments": [
+          "916.532,03",
+          "50,20718",
+          "26 de agosto de 2024"
+        ]
+      },
+      "personal_tax_and_net_custody_credit_not_confirmed": true
+    }
+  ],
+  "full_action_execution_certified": false,
+  "new_return_evaluations": 0,
+  "interpretation": "Physical terms and primary references; not a completed personal-tax or continuous-return calculation."
+}

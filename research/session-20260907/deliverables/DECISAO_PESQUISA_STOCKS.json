@@ -1,0 +1,107 @@
+{
+  "created_at_utc": "2026-09-07T06:42:34.546949+00:00",
+  "phase": "DISCOVERY",
+  "economic_state": "NO_PRIORITY_UPGRADE_IN_REGISTERED_SCREENS",
+  "capital_scenarios_brl": [
+    5000,
+    10000
+  ],
+  "capital_authorization": false,
+  "expenses_authorization": false,
+  "candidate_closest_to_further_investigation": "H19",
+  "hypothesis_promoted_to_proof": null,
+  "search_budget": 25,
+  "count_is_minimum_not_complete_search_denominator": true,
+  "priority_scores_are_subjective_not_probabilities": true,
+  "options": [
+    {
+      "line": "Completar evidência da H19",
+      "positive": {
+        "Probability edge exists": 2,
+        "Potential net economic value": 2,
+        "Data advantage": 1,
+        "Executability": 2,
+        "Capacity": 4,
+        "Speed to falsify": 2
+      },
+      "negative": {
+        "Overfitting risk": 4,
+        "Research cost": 3,
+        "Data cost": 1,
+        "Operational complexity": 3,
+        "Time to deployable evidence": 4
+      },
+      "heuristic_score": -2,
+      "rationale": "Prioridade relativa de informação; não passou o gate e não autoriza promoção. IC e spread condicional positivos nas duas metades, porém o cenário adverso falha."
+    },
+    {
+      "line": "Aprofundar H18 sem informação nova",
+      "positive": {
+        "Probability edge exists": 1,
+        "Potential net economic value": 2,
+        "Data advantage": 1,
+        "Executability": 2,
+        "Capacity": 4,
+        "Speed to falsify": 2
+      },
+      "negative": {
+        "Overfitting risk": 4,
+        "Research cost": 3,
+        "Data cost": 1,
+        "Operational complexity": 3,
+        "Time to deployable evidence": 4
+      },
+      "heuristic_score": -3,
+      "rationale": "Baixa prioridade: IC negativo em 2018–2021, estabilidade inferior à H19."
+    },
+    {
+      "line": "Reabrir H11 dividendos legado",
+      "positive": {
+        "Probability edge exists": 1,
+        "Potential net economic value": 2,
+        "Data advantage": 1,
+        "Executability": 2,
+        "Capacity": 4,
+        "Speed to falsify": 1
+      },
+      "negative": {
+        "Overfitting risk": 4,
+        "Research cost": 4,
+        "Data cost": 2,
+        "Operational complexity": 4,
+        "Time to deployable evidence": 4
+      },
+      "heuristic_score": -7,
+      "rationale": "Custo maior para corrigir datas, equivalência ON/PN e histórico de caixa; o número positivo antigo não é confiável."
+    },
+    {
+      "line": "Adicionar ML aos mesmos dados",
+      "positive": {
+        "Probability edge exists": 1,
+        "Potential net economic value": 2,
+        "Data advantage": 0,
+        "Executability": 1,
+        "Capacity": 4,
+        "Speed to falsify": 1
+      },
+      "negative": {
+        "Overfitting risk": 5,
+        "Research cost": 4,
+        "Data cost": 1,
+        "Operational complexity": 4,
+        "Time to deployable evidence": 5
+      },
+      "heuristic_score": -10,
+      "rationale": "Não justificado: nenhuma vantagem informacional nova e risco adaptativo maior."
+    }
+  ],
+  "expected_value_of_research": "A evidência nova tem maior valor se resolve eventos de saída/fusão que dominam a incerteza. Repetir parâmetros sobre os mesmos preços não produz validação independente. Com R$5–10 mil, recorrência de custo operacional precisa ser baixa; lucro anual mínimo e horas de manutenção não foram confirmados.",
+  "stopping_rule_applied": "As quatro configurações e uma correção de medição foram encerradas sem aprovação econômica. Sem nova variante, novo modelo, papel real ou Proof gerado para escapar deste resultado.",
+  "next_five_concrete_actions_if_research_is_resumed": [
+    "Resolver com termos primários todos os 35 intervalos restantes, incluindo ativos fora da seleção; conservar caixa, trocas e direitos, sem substituir ticker automaticamente.",
+    "Auditar a cobertura de dividendos/JCP e eventos completos dos emissores necessários antes de estimar retorno total.",
+    "Registrar um experimento novo se corrigir também a elegibilidade/fatores históricos; a revisão atual mantém as seleções originais.",
+    "Só após fonte suficiente, simular quantidades/caixa em R$5 mil e R$10 mil, custos e uma alternativa de caixa, com execução após o sinal.",
+    "Exigir evidência futura separada e custos realizáveis antes de qualquer GO; interromper se o benefício plausível não compensa a manutenção."
+  ]
+}

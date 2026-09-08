@@ -1,0 +1,99 @@
+{
+  "scope": "SOURCE_AND_CAPABILITY_REVIEW_NO_RETURN_CALCULATION",
+  "quote_sources": [
+    {
+      "file": "quotes-2018.jsonl",
+      "raw_sha256": "8fad0b7a46aa5bc583d34c7aff5c0eebd209637b2c54d94b10b3bc7bfe3fb0ab",
+      "records_equal_to_raw": 21381,
+      "economic_numeric_fields_per_record": 5
+    },
+    {
+      "file": "quotes-2019.jsonl",
+      "raw_sha256": "5068264eba965725b7db24c12d4db0c553d4f4eb6a1d2d6aa43e54dbf2d13e03",
+      "records_equal_to_raw": 43567,
+      "economic_numeric_fields_per_record": 5
+    },
+    {
+      "file": "quotes-2020.jsonl",
+      "raw_sha256": "d9d0ebf88122561d9b0514f13703e36b3193cf0151816cc82afb8b7c14587996",
+      "records_equal_to_raw": 47078,
+      "economic_numeric_fields_per_record": 5
+    },
+    {
+      "file": "quotes-2021.jsonl",
+      "raw_sha256": "de09c82c4b2c138c750b43ff5d65134bc1915c58281df34a61a8b0e98c634713",
+      "records_equal_to_raw": 50852,
+      "economic_numeric_fields_per_record": 5
+    },
+    {
+      "file": "quotes-2022.jsonl",
+      "raw_sha256": "d4351c52a877c6b504280ef1a90b3001a1d068e012957a34fc4c16c651c252c6",
+      "records_equal_to_raw": 50603,
+      "economic_numeric_fields_per_record": 5
+    },
+    {
+      "file": "quotes-2023.jsonl",
+      "raw_sha256": "0ae5e60f5d804e8a4dc60268655d17f543142f1be735d451ff3864161e318e03",
+      "records_equal_to_raw": 48028,
+      "economic_numeric_fields_per_record": 5
+    },
+    {
+      "file": "quotes-2024.jsonl",
+      "raw_sha256": "181e7f2e53b72810797d4cf20d4e5ca83a44024d281d480ec3b35f1d461464da",
+      "records_equal_to_raw": 47120,
+      "economic_numeric_fields_per_record": 5
+    },
+    {
+      "file": "quotes-2025.jsonl",
+      "raw_sha256": "a2fbea0bbfd3e25e46ee226b4aa373ff5fa80acbea726f97ddcf53af767aed76",
+      "records_equal_to_raw": 45591,
+      "economic_numeric_fields_per_record": 5
+    },
+    {
+      "file": "quotes-2026.jsonl",
+      "raw_sha256": "e7caad400b40a484c92d211f5ba9ff5b884ae886b4ae7a1ac40f423ba0a7210c",
+      "records_equal_to_raw": 10728,
+      "economic_numeric_fields_per_record": 5
+    },
+    {
+      "file": "quotes-bonus-pn.jsonl",
+      "raw_sha256": "129d3f14b7889d420b64e32aee2591edbb86e1ec6166dff17fadc83d15d90d57",
+      "records_equal_to_raw": 250,
+      "economic_numeric_fields_per_record": 5
+    }
+  ],
+  "total_quote_records_equal_to_raw": 365198,
+  "primary_raw_copies_verified": 367,
+  "primary_raw_copies_missing_in_existing_registry": [],
+  "frozen_protocol_sha256": "721f1ce6f8d5f0dcaa89e75aa5226f2cad9de9d9774e1902d675ba8d6002d115",
+  "frozen_selection_sha256": "c47fcca89d07e2064c1ba6ebc7a1f1dc763473a1364291284dfe6d761d7e9128",
+  "source_quote_availability_is_not_a_fill_or_capacity_certificate": true,
+  "cash_event_rows": 778,
+  "cash_rows_without_payment_date": 356,
+  "missing_payment_by_ex_year": {
+    "2018": 41,
+    "2019": 67,
+    "2020": 24,
+    "2021": 22,
+    "2022": 20,
+    "2023": 51,
+    "2024": 53,
+    "2025": 58,
+    "2026": 20
+  },
+  "required_cash_intervals": 1237,
+  "certified_cash_intervals": 0,
+  "required_action_records": 36,
+  "integrated_action_records": 0,
+  "new_historical_return_evaluations": 0,
+  "entry_day_actions_requiring_terms": [
+    {
+      "portfolio": "comparison",
+      "asof": "2025-12-30",
+      "entry": "2026-01-02",
+      "ticker": "CYRE3",
+      "event_id": "CYRE3:2026-01-02:BONIFICACAO",
+      "status": "CROSS_CLASS_BONUS_ENGINE_CASE_FIXED_REAL_TERMS_NOT_INTEGRATED"
+    }
+  ]
+}

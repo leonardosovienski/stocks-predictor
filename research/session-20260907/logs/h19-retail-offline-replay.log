@@ -1,0 +1,18 @@
+{
+  "status": "BLOCKED_MISSING_EVIDENCE",
+  "full_history_executed": false,
+  "profit": null,
+  "required_cash_intervals": 1237,
+  "selected_required_intervals": 236,
+  "issue_counts": {
+    "CASH_COVERAGE": 1237,
+    "CASH_EVENT_FIELD": 4221,
+    "CASH_CHRONOLOGY": 632,
+    "EXECUTION_CHECK": 4,
+    "CORPORATE_TAX_AND_DELIVERY": 12,
+    "ORDINARY_STOCK_ACTION_DELIVERY_AND_BASIS": 24,
+    "JBS_HISTORY_TRUNCATED": 1
+  }
+}
+First-entry accounting checks: 4 PASS; output: C:\Users\Superleo13\Documents\Codex\2026-09-06\files-pasted-by-the-user-autonomous\work\h19-retail-offline-replay.json
+

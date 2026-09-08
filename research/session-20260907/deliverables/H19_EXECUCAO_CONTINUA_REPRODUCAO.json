@@ -1,0 +1,18 @@
+{
+  "source_commit": "d6740817e1e0433bbcb9fdcbfe11ab128914ec56",
+  "zip_sha256": "e6144a954ff55b12ef067b8459dfb59482ebf75f0c426e79642c261f448931b0",
+  "zip_bytes": 325754637,
+  "payload_files_verified": 418,
+  "source_files_copied": 367,
+  "unresolved_raw_source_copies": [],
+  "replay_exit_codes": [
+    2,
+    2
+  ],
+  "identical_replays": true,
+  "result_sha256": "db499b94ed77baa83561413ca72626fe4c983b3a0dc2112c34b979ac7e21cc5e",
+  "real_historical_pnl_computed": false,
+  "new_return_evaluations": 0,
+  "source_directory": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-06\\files-pasted-by-the-user-autonomous\\work\\h19-continuous-reproduced-e6144a954ff5",
+  "status": "REPRODUCED_EVIDENCE_BLOCK_NO_VALIDATED_PROFIT"
+}

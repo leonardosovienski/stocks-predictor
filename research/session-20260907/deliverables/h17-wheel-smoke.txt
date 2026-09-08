@@ -1,0 +1,4 @@
+Processing .\work\h17-wheel\stocks_predictor-0.1.0-py3-none-any.whl
+Installing collected packages: stocks-predictor
+Successfully installed stocks-predictor-0.1.0
+WHEEL_SMOKE_PASS H17-DISCOVERY-PRICE-DIAGNOSTIC-1 C:\Users\Superleo13\Documents\Codex\2026-09-06\files-pasted-by-the-user-autonomous\work\h17-wheel-installed\stocks_predictor\discovery_h17.py

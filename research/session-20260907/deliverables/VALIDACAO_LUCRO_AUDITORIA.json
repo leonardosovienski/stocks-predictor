@@ -1,0 +1,27 @@
+{
+  "protocol_id": "H18-H19-PROFIT-VALIDATION-1",
+  "observed_at_utc": "2026-09-07T18:20:36.419242+00:00",
+  "code_commit": "28cf87e1819d25eb031067d6c707fa8519171953",
+  "output_sha256": "111407124ebdf1ef190fdac6387b549e979bdd0842686aafbcb09eaa92c673f5",
+  "mode": "DISCOVERY_VALIDATION_NOT_EXECUTABLE_PROFIT",
+  "new_price_scenarios": 8,
+  "budget": {
+    "nominal_configurations_minimum_after": 32,
+    "historical_return_evaluations_minimum_after": 37,
+    "reason": "Eight new execution-price sensitivities; no new asset selection or independent holdout."
+  },
+  "status": "NO_CONFIRMED_NET_PROFIT",
+  "all_12_descriptive_CIs_include_zero": true,
+  "ordinary_cash_returns_not_observed": true,
+  "tests": "539 passed in 153.65s; 79% coverage",
+  "original_databases_unchanged": [
+    {
+      "path": "C:\\Users\\Superleo13\\stocks-predictor-work\\data\\stocks.db",
+      "sha256": "a22739794ba4a43a11544338d4a91e14cb6a0b1f7b132ab460f96d3359f63cf4"
+    },
+    {
+      "path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-06\\files-pasted-by-the-user-autonomous\\work\\stocks-tested-real-v2-20260907.db",
+      "sha256": "a8238568980d3303890b04590cfb5c55ab2d24c9271edd86820269336b09679a"
+    }
+  ]
+}

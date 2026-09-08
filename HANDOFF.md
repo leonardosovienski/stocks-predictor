@@ -1,3 +1,12 @@
+## Continuidade sem depender deste chat (2026-09-07)
+
+Usuário pediu commitar todo o trabalho, conferir o prompt e permitir apagar a
+conversa. Prompt e contexto estão em docs/continuation; scripts/entregas/logs
+autorais externos foram incorporados em research/session-20260907. Dados extensos
+são preservados com SHA256 na raiz durável de PATHS.json, fora da pasta do chat.
+A conclusão econômica permanece NO_GO/inconclusiva; não houve novo experimento.
+Ver o recibo de preservação para o resultado da cópia e retomada independente.
+
 ## Encerramento da revisão final (2026-09-07)
 
 Código validado 741d237388405970127492a4eff81ab1e5c755a1: 592 testes, 79% cobertura, Ruff,

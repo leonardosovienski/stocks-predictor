@@ -1,0 +1,208 @@
+{
+  "mode": "DATA_FEASIBILITY_ONLY_NO_STRATEGY_RETURNS",
+  "raw_sources": {
+    "dfp": {
+      "sha256": "d7ecbeb48b132d9e7480236d410d3587f4bd15efdf738e0b857647e178d3a261",
+      "bytes": 13563384,
+      "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2023.zip"
+    },
+    "fre": {
+      "sha256": "995c8c3faa11bb4970e33e423366e6eab6b33c37ae82ec71fb60e54264b96fb7",
+      "bytes": 8132066,
+      "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FRE/DADOS/fre_cia_aberta_2023.zip"
+    }
+  },
+  "dfp_headers": {
+    "main": [
+      "CNPJ_CIA",
+      "DT_REFER",
+      "VERSAO",
+      "DENOM_CIA",
+      "CD_CVM",
+      "CATEG_DOC",
+      "ID_DOC",
+      "DT_RECEB",
+      "LINK_DOC"
+    ],
+    "dre": [
+      "CNPJ_CIA",
+      "DT_REFER",
+      "VERSAO",
+      "DENOM_CIA",
+      "CD_CVM",
+      "GRUPO_DFP",
+      "MOEDA",
+      "ESCALA_MOEDA",
+      "ORDEM_EXERC",
+      "DT_INI_EXERC",
+      "DT_FIM_EXERC",
+      "CD_CONTA",
+      "DS_CONTA",
+      "VL_CONTA",
+      "ST_CONTA_FIXA"
+    ]
+  },
+  "dfp_scales": {
+    "MIL": 33370,
+    "UNIDADE": 600
+  },
+  "dfp_main_multiple_versions": 126,
+  "dfp_version_date_mismatch_companies": 80,
+  "dfp_version_date_examples": [
+    {
+      "CNPJ_CIA": "00.000.208/0001-00",
+      "DENOM_CIA": "BRB BANCO DE BRASILIA S.A.",
+      "DT_REFER": "2023-12-31",
+      "VERSAO": "6",
+      "CD_CONTA": "3.01",
+      "VL_CONTA": "4290058.0000000000",
+      "ESCALA_MOEDA": "MIL",
+      "assigned_first_date": "2024-04-10",
+      "matching_version_date": "2024-07-31"
+    },
+    {
+      "CNPJ_CIA": "00.001.180/0001-26",
+      "DENOM_CIA": "AXIA ENERGIA S.A.",
+      "DT_REFER": "2023-12-31",
+      "VERSAO": "2",
+      "CD_CONTA": "3.01",
+      "VL_CONTA": "37158908.0000000000",
+      "ESCALA_MOEDA": "MIL",
+      "assigned_first_date": "2024-03-14",
+      "matching_version_date": "2024-05-14"
+    },
+    {
+      "CNPJ_CIA": "00.194.724/0001-13",
+      "DENOM_CIA": "AUREN OPERAÇÕES S.A.",
+      "DT_REFER": "2023-12-31",
+      "VERSAO": "2",
+      "CD_CONTA": "3.01",
+      "VL_CONTA": "3018802.0000000000",
+      "ESCALA_MOEDA": "MIL",
+      "assigned_first_date": "2024-02-26",
+      "matching_version_date": "2024-03-01"
+    },
+    {
+      "CNPJ_CIA": "00.389.481/0001-79",
+      "DENOM_CIA": "LM TRANSPORTES INTERESTADUAIS SERVIÇOS E COMÉRCIO S.A.",
+      "DT_REFER": "2023-12-31",
+      "VERSAO": "2",
+      "CD_CONTA": "3.01",
+      "VL_CONTA": "2963057.0000000000",
+      "ESCALA_MOEDA": "MIL",
+      "assigned_first_date": "2024-03-14",
+      "matching_version_date": "2024-04-16"
+    },
+    {
+      "CNPJ_CIA": "00.864.214/0001-06",
+      "DENOM_CIA": "ENERGISA S.A.",
+      "DT_REFER": "2023-12-31",
+      "VERSAO": "3",
+      "CD_CONTA": "3.01",
+      "VL_CONTA": "28531858.0000000000",
+      "ESCALA_MOEDA": "MIL",
+      "assigned_first_date": "2024-03-12",
+      "matching_version_date": "2024-03-15"
+    }
+  ],
+  "dfp_scale_example": {
+    "CNPJ_CIA": "07.526.557/0001-00",
+    "DENOM_CIA": "AMBEV S.A.",
+    "DT_REFER": "2023-12-31",
+    "VERSAO": "1",
+    "CD_CONTA": "3.01",
+    "VL_CONTA": "79736856.0000000000",
+    "ESCALA_MOEDA": "MIL"
+  },
+  "fre_groups": 455,
+  "fre_future_max_assigned_earlier": 0,
+  "fre_future_max_examples": [],
+  "fre_bbas_documents": [
+    {
+      "company": "BCO BRASIL S.A.",
+      "ref_date": "2023-12-31",
+      "shares_outstanding": 5730799931.446085,
+      "free_float": 2842247534.0,
+      "doc_id": "137597"
+    },
+    {
+      "company": "BCO NORDESTE DO BRASIL S.A.",
+      "ref_date": "2023-12-31",
+      "shares_outstanding": 86424331.92686357,
+      "free_float": 614477.0,
+      "doc_id": "136818"
+    },
+    {
+      "company": "BCO MERCANTIL DO BRASIL S.A.",
+      "ref_date": "2023-12-31",
+      "shares_outstanding": 104830749.1605894,
+      "free_float": 49017810.0,
+      "doc_id": "136152"
+    },
+    {
+      "company": "BCO ABC BRASIL S.A.",
+      "ref_date": "2023-12-31",
+      "shares_outstanding": 244659688.89033222,
+      "free_float": 75338058.0,
+      "doc_id": "137178"
+    },
+    {
+      "company": "BCO SANTANDER (BRASIL) S.A.",
+      "ref_date": "2023-12-31",
+      "shares_outstanding": 7488366327.387198,
+      "free_float": 713641311.0,
+      "doc_id": "137940"
+    }
+  ],
+  "real_db_matching_revision_examples": [
+    {
+      "raw": {
+        "CNPJ_CIA": "00.864.214/0001-06",
+        "DENOM_CIA": "ENERGISA S.A.",
+        "DT_REFER": "2023-12-31",
+        "VERSAO": "3",
+        "CD_CONTA": "3.01",
+        "VL_CONTA": "28531858.0000000000",
+        "ESCALA_MOEDA": "MIL",
+        "assigned_first_date": "2024-03-12",
+        "matching_version_date": "2024-03-15"
+      },
+      "db": [
+        [
+          "ENGI11",
+          "2023-12-31",
+          "CVM DFP 2023",
+          2.8531858e+17,
+          "2024-03-12"
+        ],
+        [
+          "ENGI11",
+          "2023-12-31",
+          "CVM FRE 2023",
+          null,
+          "2024-05-10"
+        ]
+      ]
+    }
+  ],
+  "mapping_shape": "<class 'dict'>",
+  "db_ab_ev": [
+    [
+      "ABEV3",
+      "2023-12-31",
+      "CVM DFP 2023",
+      7.9736856e+17,
+      "2024-02-29"
+    ]
+  ],
+  "db_bbas_shares": [
+    [
+      "BBAS3",
+      "2023-12-31",
+      "CVM FRE 2023",
+      5730799931.446085,
+      "2024-05-16"
+    ]
+  ],
+  "dividend_out_of_plausible_range": 5
+}

@@ -1,0 +1,142 @@
+[
+  {
+    "ticker": "ALOS3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "ALOS3.SA",
+    "source_file": "yahoo-h17-ALOS3-actions.json"
+  },
+  {
+    "ticker": "AMER3",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "AMER3.SA",
+    "source_file": "yahoo-h17-AMER3-actions.json"
+  },
+  {
+    "ticker": "AXIA3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "AXIA3.SA",
+    "source_file": "yahoo-h17-AXIA3-actions.json"
+  },
+  {
+    "ticker": "AZZA3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "AZZA3.SA",
+    "source_file": "yahoo-h17-AZZA3-actions.json"
+  },
+  {
+    "ticker": "BHIA3",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "BHIA3.SA",
+    "source_file": "yahoo-h17-BHIA3-actions.json"
+  },
+  {
+    "ticker": "BIED3",
+    "status": "ACQUIRED",
+    "events": 2,
+    "symbol": "BIED3.SA",
+    "source_file": "yahoo-h17-BIED3-actions.json"
+  },
+  {
+    "ticker": "BRAV3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "BRAV3.SA",
+    "source_file": "yahoo-h17-BRAV3-actions.json"
+  },
+  {
+    "ticker": "CSUD3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "CSUD3.SA",
+    "source_file": "yahoo-h17-CSUD3-actions.json"
+  },
+  {
+    "ticker": "DXCO3",
+    "status": "ACQUIRED",
+    "events": 3,
+    "symbol": "DXCO3.SA",
+    "source_file": "yahoo-h17-DXCO3-actions.json"
+  },
+  {
+    "ticker": "EMBJ3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "EMBJ3.SA",
+    "source_file": "yahoo-h17-EMBJ3-actions.json"
+  },
+  {
+    "ticker": "ISAE4",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "ISAE4.SA",
+    "source_file": "yahoo-h17-ISAE4-actions.json"
+  },
+  {
+    "ticker": "MBRF3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "MBRF3.SA",
+    "source_file": "yahoo-h17-MBRF3-actions.json"
+  },
+  {
+    "ticker": "MOTV3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "MOTV3.SA",
+    "source_file": "yahoo-h17-MOTV3-actions.json"
+  },
+  {
+    "ticker": "RIAA3",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "RIAA3.SA",
+    "source_file": "yahoo-h17-RIAA3-actions.json"
+  },
+  {
+    "ticker": "SAUD3",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "SAUD3.SA",
+    "source_file": "yahoo-h17-SAUD3-actions.json"
+  },
+  {
+    "ticker": "SBFG3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "SBFG3.SA",
+    "source_file": "yahoo-h17-SBFG3-actions.json"
+  },
+  {
+    "ticker": "TASA4",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "TASA4.SA",
+    "source_file": "yahoo-h17-TASA4-actions.json"
+  },
+  {
+    "ticker": "VBBR3",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "VBBR3.SA",
+    "source_file": "yahoo-h17-VBBR3-actions.json"
+  },
+  {
+    "ticker": "WIZC3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "WIZC3.SA",
+    "source_file": "yahoo-h17-WIZC3-actions.json"
+  },
+  {
+    "ticker": "YDUQ3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "YDUQ3.SA",
+    "source_file": "yahoo-h17-YDUQ3-actions.json"
+  }
+]

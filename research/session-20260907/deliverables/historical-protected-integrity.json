@@ -1,0 +1,73 @@
+{
+  "checked_at": "2026-09-07T03:47:22.191493+00:00",
+  "all_protected_inputs_unchanged": true,
+  "checks": [
+    {
+      "path": "C:\\Users\\Superleo13\\stocks-predictor-work\\data\\stocks.db",
+      "before_sha256": "a22739794ba4a43a11544338d4a91e14cb6a0b1f7b132ab460f96d3359f63cf4",
+      "after_sha256": "a22739794ba4a43a11544338d4a91e14cb6a0b1f7b132ab460f96d3359f63cf4",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-06\\files-pasted-by-the-user-autonomous\\work\\stocks-predictor\\trials.json",
+      "before_sha256": "3364bd10e5103ea5e1f41830e2ff00932e77c9af21555b26cf88bb038123ba41",
+      "after_sha256": "3364bd10e5103ea5e1f41830e2ff00932e77c9af21555b26cf88bb038123ba41",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-06\\files-pasted-by-the-user-autonomous\\work\\stocks-predictor\\trials.harness_attestation.json",
+      "before_sha256": "a38b1bb88c019e1c2ff4c083ea65426bb8ed018cc7a130ef303a640fbdf58e50",
+      "after_sha256": "a38b1bb88c019e1c2ff4c083ea65426bb8ed018cc7a130ef303a640fbdf58e50",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-06\\files-pasted-by-the-user-autonomous\\work\\stocks-predictor\\config.yaml",
+      "before_sha256": "cb9143549d52f3a748a8ead11cab32df05a5f219d92bb7a6de407b9366753148",
+      "after_sha256": "cb9143549d52f3a748a8ead11cab32df05a5f219d92bb7a6de407b9366753148",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\Superleo13\\stocks-predictor-work\\trials.json",
+      "before_sha256": "3364bd10e5103ea5e1f41830e2ff00932e77c9af21555b26cf88bb038123ba41",
+      "after_sha256": "3364bd10e5103ea5e1f41830e2ff00932e77c9af21555b26cf88bb038123ba41",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\Superleo13\\stocks-predictor-work\\trials_v2.json",
+      "before_sha256": "41b6ef06b4af8279b06854a2ca47c64504e63d82cde45784d656ab1d82f06d58",
+      "after_sha256": "41b6ef06b4af8279b06854a2ca47c64504e63d82cde45784d656ab1d82f06d58",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\Superleo13\\stocks-predictor-work\\trials.harness_attestation.json",
+      "before_sha256": "a38b1bb88c019e1c2ff4c083ea65426bb8ed018cc7a130ef303a640fbdf58e50",
+      "after_sha256": "a38b1bb88c019e1c2ff4c083ea65426bb8ed018cc7a130ef303a640fbdf58e50",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\Superleo13\\stocks-predictor-work\\config.yaml",
+      "before_sha256": "a78f7d0cf423dd23dc1a17dc7db351eb1b2043df8729c790df2f08589c9a0e81",
+      "after_sha256": "a78f7d0cf423dd23dc1a17dc7db351eb1b2043df8729c790df2f08589c9a0e81",
+      "unchanged": true
+    },
+    {
+      "path": "reports/h14_verdict_adhoc.md",
+      "source_sha256": "348d8e7d1926a58f3a6a43ba8ba56cea8d5cdc159f5a8ed90364cddcc4bfdc45",
+      "copied_sha256": "348d8e7d1926a58f3a6a43ba8ba56cea8d5cdc159f5a8ed90364cddcc4bfdc45",
+      "unchanged": true
+    },
+    {
+      "path": "reports/h15_verdict_adhoc.md",
+      "source_sha256": "4883ca07bb6eba76096d7e35b55ac142ecb65b18fddc62369b4fa30a55a9d3c6",
+      "copied_sha256": "4883ca07bb6eba76096d7e35b55ac142ecb65b18fddc62369b4fa30a55a9d3c6",
+      "unchanged": true
+    },
+    {
+      "path": "reports/h16_verdict_adhoc.md",
+      "source_sha256": "59dd1fa17f1478016d6142236afa8c3c1843fcfbd26c4fde8fa718a6c414fa65",
+      "copied_sha256": "59dd1fa17f1478016d6142236afa8c3c1843fcfbd26c4fde8fa718a6c414fa65",
+      "unchanged": true
+    }
+  ],
+  "declared_derived_change": "Only audit-checkout trials_v2.json regenerated from existing 15-trial legacy ledger. Operational checkout untouched."
+}

@@ -1,0 +1,10 @@
+2018 305
+2019 566
+2020 516
+2021 514
+2022 568
+2023 524
+2024 563
+2025 546
+2026 123
+{"required_unique_endpoints": 4226, "found": 4225, "trials": [{"family": "H18", "holding_months": 1, "selected_entry_tickets": 688, "missing_fractional_endpoints": [], "mean_fractional_minus_standard_open_relative": 0.0012333806242442195, "max_absolute_fractional_vs_standard_open_gap": 0.057558507273877124, "no_position_sizing_or_net_return_measured": true}, {"family": "H18", "holding_months": 3, "selected_entry_tickets": 233, "missing_fractional_endpoints": [], "mean_fractional_minus_standard_open_relative": 0.0019754320035807464, "max_absolute_fractional_vs_standard_open_gap": 0.035051546391752675, "no_position_sizing_or_net_return_measured": true}, {"family": "H19", "holding_months": 1, "selected_entry_tickets": 688, "missing_fractional_endpoints": [], "mean_fractional_minus_standard_open_relative": 0.00013196883520870007, "max_absolute_fractional_vs_standard_open_gap": 0.08306581059390039, "no_position_sizing_or_net_return_measured": true}, {"family": "H19", "holding_months": 3, "selected_entry_tickets": 233, "missing_fractional_endpoints": [], "mean_fractional_minus_standard_open_relative": 0.000564337356914184, "max_absolute_fractional_vs_standard_open_gap": 0.04683840749414514, "no_position_sizing_or_net_return_measured": true}], "limit": "A daily fractional quote is not a guaranteed fill or evidence of auction depth, bid-ask spread, tax or settlement. No actual small-capital P&L has been inferred."}

@@ -1,0 +1,13 @@
+{
+  "files": {
+    "real-integration-reproduction-check.json": {
+      "bytes": 1198,
+      "sha256": "b5ff7c30f7e8621f345a4df19f87a7d868787a36018091e3acd958dd79c61d33"
+    },
+    "real-integration-bonus-input.json": {
+      "bytes": 1175,
+      "sha256": "e6fe28ebfcabe0e1b0198475568e464d98bbed50f78369bee0bd5278a2834aa3"
+    }
+  },
+  "reason": "Preserve exact CRLF bytes imported in the first tested copy and document equivalent clean-clone replay."
+}

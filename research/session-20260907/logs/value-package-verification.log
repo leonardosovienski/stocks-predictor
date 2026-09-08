@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "source_verification": {
+    "original_capitals_reparsed": 745,
+    "original_accounting_documents_rederived": 750
+  },
+  "all_four_trials_identical_in_both_versions": true,
+  "new_adaptive_trial": false,
+  "operational_orders": false,
+  "profit_claim": false,
+  "result_files": [
+    "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-06\\files-pasted-by-the-user-autonomous\\work\\value-verified-reproduction\\first-reproduced.json",
+    "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-06\\files-pasted-by-the-user-autonomous\\work\\value-verified-reproduction\\repair-reproduced.json"
+  ]
+}

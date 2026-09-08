@@ -1,0 +1,1613 @@
+..................................F..................................... [ 18%]
+...........F...F..FF....F.....F.....F.....F.....F.......FF.............. [ 37%]
+.............................FFF........F....F..F..F.......F..F......... [ 56%]
+........................................................................ [ 74%]
+........................................................................ [ 93%]
+.........................                                                [100%]
+================================== FAILURES ===================================
+____________________ test_main_backtest_h_dispatcher_runs _____________________
+
+tmp_path = WindowsPath('C:/Users/Superleo13/AppData/Local/Temp/pytest-of-Superleo13/pytest-2551/test_main_backtest_h_dispatche0')
+
+    def test_main_backtest_h_dispatcher_runs(tmp_path):
+        """Achado de varredura de infraestrutura (2026-09-04): H6-H16 só eram
+        alcançáveis via `python -c "import backtest; backtest.run_hN(...)"` —
+        o CLI nunca ganhou comando pra elas. `backtest-h <N>` conecta o que já
+        existia ao ponto de entrada documentado, mesmo smoke de
+        `test_main_backtest_command_runs` (banco vazio, só valida que a
+        maquinaria roda limpo)."""
+        import os
+        import subprocess
+        import sys as _sys
+        env = dict(os.environ)
+        env["PREDICTOR_DB_PATH"] = str(tmp_path / "s.db")
+        env["PREDICTOR_EVENTS_PATH"] = str(tmp_path / "events.jsonl")
+        env["PREDICTOR_REPORTS_DIR"] = str(tmp_path / "reports")
+        # achado de varredura de infraestrutura 2026-09-04: sem isolar via
+        # PREDICTOR_TRIALS_PATH (env var nova, mesmo padrão de PREDICTOR_DB_PATH),
+        # o comando escreveria no trials.json REAL do repo (ledger) — provado na
+        # prática antes desta env var existir.
+        env["PREDICTOR_TRIALS_PATH"] = str(tmp_path / "trials.json")
+        # trials.json isolado e novo em folha exige o atestado de poder primeiro
+        # (mesma sequência real: attest-power uma vez, depois backtest-hN) — o
+        # trials.json do repo já tem o atestado commitado, então isso só é
+        # necessário aqui por causa do isolamento do teste.
+        attest = subprocess.run(
+            [_sys.executable, str(ROOT / "main.py"), "attest-power"],
+            capture_output=True, text=True, timeout=60, encoding="utf-8", env=env,
+        )
+>       assert attest.returncode == 0, f"main.py attest-power falhou:\n{attest.stderr}"
+E       AssertionError: main.py attest-power falhou:
+E         Traceback (most recent call last):
+E           File "C:\Users\Superleo13\Documents\Codex\2026-09-06\files-pasted-by-the-user-autonomous\work\stocks-predictor\main.py", line 345, in <module>
+E             raise SystemExit(main())
+E                              ~~~~^^
+E           File "C:\Users\Superleo13\Documents\Codex\2026-09-06\files-pasted-by-the-user-autonomous\work\stocks-predictor\main.py", line 341, in main
+E             return handler(args[1:])
+E           File "C:\Users\Superleo13\Documents\Codex\2026-09-06\files-pasted-by-the-user-autonomous\work\stocks-predictor\main.py", line 161, in cmd_attest_power
+E             rec = trials_gate.attest(cfg)
+E           File "C:\Users\Superleo13\Documents\Codex\2026-09-06\files-pasted-by-the-user-autonomous\work\stocks-predictor\stocks_predictor\trials_gate.py", line 84, in attest
+E             return harness.attest_pipeline_power(
+E                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+E                 lambda pair: _judge_verdict(pair, cfg),
+E                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E             ...<3 lines>...
+E                 edge_verdict="COMPROVADA", null_verdict="não comprovada",
+E                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E                 metric=METRIC)
+E                 ^^^^^^^^^^^^^^
+E           File "C:\Users\Superleo13\Documents\Codex\2026-09-06\files-pasted-by-the-user-autonomous\work\runtime\predictor_core\testing\harness.py", line 167, in attest_pipeline_power
+E             raise DirtyWorkingTreeError(
+E             ...<4 lines>...
+E             )
+E         predictor_core.testing.harness.DirtyWorkingTreeError: árvore de trabalho suja (package:3.2.0;git:d48d05dc590c7e14a9186e7097c048c3020a6a53;dirty) — o atestado destrava trials novas, e um atestado de código não identificável destrava trials que ninguém consegue reproduzir. Faça commit do estado avaliado, ou passe allow_dirty=True assumindo que a trial nasce irreprodutível.
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['C:\\Users\\Superleo13\\AppData\\Local\\Python\\pythoncore-3.13-64\\python.exe', 'C:\\Users\\Su...e reproduzir. Faça commit do estado avaliado, ou passe allow_dirty=True assumindo que a trial nasce irreprodutível.\n').returncode
+
+tests\test_config.py:189: AssertionError
+_____________________________ test_run_h10_smoke ______________________________
+
+tmp_path = WindowsPath('C:/Users/Superleo13/AppData/Local/Temp/pytest-of-Superleo13/pytest-2551/test_run_h10_smoke0')
+capsys = <_pytest.capture.CaptureFixture object at 0x000002921C47E5D0>
+
+    def test_run_h10_smoke(tmp_path, capsys):
+        from config import load_config
+        cfg = load_config()
+        cfg["bootstrap"] = {"n_boot": 300, "block_length": 21, "confidence": 0.95, "seed": 42}
+    
+        conn = _synthetic_conn(tmp_path)
+        tp = tmp_path / "trials.json"
+>       trials_gate.attest(cfg, trials_path=tp)
+
+tests\test_h10_double_filter.py:48: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+stocks_predictor\trials_gate.py:84: in attest
+    return harness.attest_pipeline_power(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+evaluate_func = <function attest.<locals>.<lambda> at 0x000002921C3A3740>
+edge_generator = <function edge_pair at 0x000002921C3A2D40>
+noise_generator = <function noise_pair at 0x000002921C3A2DE0>
+attestation_path = WindowsPath('C:/Users/Superleo13/AppData/Local/Temp/pytest-of-Superleo13/pytest-2551/test_run_h10_smoke0/trials.harness_attestation.json')
+note = 'controle positivo do pedágio (judge real, séries sintéticas pareadas)'
+edge_verdict = 'COMPROVADA', null_verdict = 'não comprovada'
+metric = 'sharpe_diff_ci95', valid_for = datetime.timedelta(days=7), repo = None
+allow_dirty = False
+
+    def attest_pipeline_power(
+        evaluate_func,
+        edge_generator,
+        noise_generator,
+        *,
+        attestation_path: Path | str,
+        note: str = "",
+        edge_verdict: str = "COMPROVADA",
+        null_verdict: str = "REFUTADA",
+        metric: str = "",
+        valid_for: timedelta = timedelta(days=7),
+        repo: Path | str | None = None,
+        allow_dirty: bool = False,
+    ) -> dict:
+        """Roda o controle positivo e, PASSANDO, emite o atestado que destrava a
+        criação de trials novas no Experiment Registry (measurement.trials).
+    
+        `attestation_path`: onde gravar — use `trials.attestation_path_for(trials_json)`
+        para o local canônico (irmão do trials.json). Falhando o controle, levanta
+        PipelineHasNoPowerError e NÃO grava nada. Retorna o dict do atestado.
+    
+        `metric`: nome da métrica que o pipeline atestado
+        usa (ex.: "brier" para binário, "rps" para ordinal). Vai no atestado; o
+        registry exige que a trial declare a MESMA métrica e o
+        `pipeline_fingerprint` retornado. `valid_for` limita a vida do atestado.
+    
+        `repo`: raiz do repositório cujo estado de código entra no atestado (padrão:
+        diretório corrente). O atestado passa a gravar `code_version`.
+    
+        `allow_dirty`: FALSE por padrão — árvore suja levanta DirtyWorkingTreeError e
+        NÃO grava nada. Passe True apenas para exploração local, ciente de que a
+        trial autorizada nasce irreprodutível."""
+        if not isinstance(metric, str) or not metric:
+            raise ValueError("metric é obrigatória para emitir atestado de poder")
+        if valid_for <= timedelta(0):
+            raise ValueError("valid_for deve ser positivo")
+        code_version = current_code_version(repo)
+        if code_version.endswith(";dirty") and not allow_dirty:
+>           raise DirtyWorkingTreeError(
+                f"árvore de trabalho suja ({code_version}) — o atestado destrava trials "
+                "novas, e um atestado de código não identificável destrava trials que "
+                "ninguém consegue reproduzir. Faça commit do estado avaliado, ou passe "
+                "allow_dirty=True assumindo que a trial nasce irreprodutível."
+            )
+E           predictor_core.testing.harness.DirtyWorkingTreeError: árvore de trabalho suja (package:3.2.0;git:d48d05dc590c7e14a9186e7097c048c3020a6a53;dirty) — o atestado destrava trials novas, e um atestado de código não identificável destrava trials que ninguém consegue reproduzir. Faça commit do estado avaliado, ou passe allow_dirty=True assumindo que a trial nasce irreprodutível.
+
+..\runtime\predictor_core\testing\harness.py:167: DirtyWorkingTreeError
+_____________________________ test_run_h11_smoke ______________________________
+
+tmp_path = WindowsPath('C:/Users/Superleo13/AppData/Local/Temp/pytest-of-Superleo13/pytest-2551/test_run_h11_smoke0')
+capsys = <_pytest.capture.CaptureFixture object at 0x000002921C47F750>
+
+    def test_run_h11_smoke(tmp_path, capsys):
+        from config import load_config
+        cfg = load_config()
+        cfg["bootstrap"] = {"n_boot": 300, "block_length": 21, "confidence": 0.95, "seed": 42}
+    
+        conn = _synthetic_conn(tmp_path)
+        tp = tmp_path / "trials.json"
+>       trials_gate.attest(cfg, trials_path=tp)
+
+tests\test_h11_total_return.py:46: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+stocks_predictor\trials_gate.py:84: in attest
+    return harness.attest_pipeline_power(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+evaluate_func = <function attest.<locals>.<lambda> at 0x000002921C5EBD80>
+edge_generator = <function edge_pair at 0x000002921C3A2D40>
+noise_generator = <function noise_pair at 0x000002921C3A2DE0>
+attestation_path = WindowsPath('C:/Users/Superleo13/AppData/Local/Temp/pytest-of-Superleo13/pytest-2551/test_run_h11_smoke0/trials.harness_attestation.json')
+note = 'controle positivo do pedágio (judge real, séries sintéticas pareadas)'
+edge_verdict = 'COMPROVADA', null_verdict = 'não comprovada'
+metric = 'sharpe_diff_ci95', valid_for = datetime.timedelta(days=7), repo = None
+allow_dirty = False
+
+    def attest_pipeline_power(
+        evaluate_func,
+        edge_generator,
+        noise_generator,
+        *,
+        attestation_path: Path | str,
+        note: str = "",
+        edge_verdict: str = "COMPROVADA",
+        null_verdict: str = "REFUTADA",
+        metric: str = "",
+        valid_for: timedelta = timedelta(days=7),
+        repo: Path | str | None = None,
+        allow_dirty: bool = False,
+    ) -> dict:
+        """Roda o controle positivo e, PASSANDO, emite o atestado que destrava a
+        criação de trials novas no Experiment Registry (measurement.trials).
+    
+        `attestation_path`: onde gravar — use `trials.attestation_path_for(trials_json)`
+        para o local canônico (irmão do trials.json). Falhando o controle, levanta
+        PipelineHasNoPowerError e NÃO grava nada. Retorna o dict do atestado.
+    
+        `metric`: nome da métrica que o pipeline atestado
+        usa (ex.: "brier" para binário, "rps" para ordinal). Vai no atestado; o
+        registry exige que a trial declare a MESMA métrica e o
+        `pipeline_fingerprint` retornado. `valid_for` limita a vida do atestado.
+    
+        `repo`: raiz do repositório cujo estado de código entra no atestado (padrão:
+        diretório corrente). O atestado passa a gravar `code_version`.
+    
+        `allow_dirty`: FALSE por padrão — árvore suja levanta DirtyWorkingTreeError e
+        NÃO grava nada. Passe True apenas para exploração local, ciente de que a
+        trial autorizada nasce irreprodutível."""
+        if not isinstance(metric, str) or not metric:
+            raise ValueError("metric é obrigatória para emitir atestado de poder")
+        if valid_for <= timedelta(0):
+            raise ValueError("valid_for deve ser positivo")
+        code_version = current_code_version(repo)
+        if code_version.endswith(";dirty") and not allow_dirty:
+>           raise DirtyWorkingTreeError(
+                f"árvore de trabalho suja ({code_version}) — o atestado destrava trials "
+                "novas, e um atestado de código não identificável destrava trials que "
+                "ninguém consegue reproduzir. Faça commit do estado avaliado, ou passe "
+                "allow_dirty=True assumindo que a trial nasce irreprodutível."
+            )
+E           predictor_core.testing.harness.DirtyWorkingTreeError: árvore de trabalho suja (package:3.2.0;git:d48d05dc590c7e14a9186e7097c048c3020a6a53;dirty) — o atestado destrava trials novas, e um atestado de código não identificável destrava trials que ninguém consegue reproduzir. Faça commit do estado avaliado, ou passe allow_dirty=True assumindo que a trial nasce irreprodutível.
+
+..\runtime\predictor_core\testing\harness.py:167: DirtyWorkingTreeError
+_________________ test_run_h11_does_not_mutate_shared_config __________________
+
+tmp_path = WindowsPath('C:/Users/Superleo13/AppData/Local/Temp/pytest-of-Superleo13/pytest-2551/test_run_h11_does_not_mutate_s0')
+
+    def test_run_h11_does_not_mutate_shared_config(tmp_path):
+        """H11 sobrescreve backtest.test_start/test_end SÓ pra própria rodada —
+        não pode vazar pro cfg compartilhado (que H1-H10 continuam usando)."""
+        from config import load_config
+        cfg = load_config()
+        original_test_start = cfg["backtest"]["test_start"]
+        assert "test_end" not in cfg["backtest"]
+    
+        conn = _synthetic_conn(tmp_path)
+        tp = tmp_path / "trials.json"
+>       trials_gate.attest(cfg, trials_path=tp)
+
+tests\test_h11_total_return.py:83: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+stocks_predictor\trials_gate.py:84: in attest
+    return harness.attest_pipeline_power(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+evaluate_func = <function attest.<locals>.<lambda> at 0x0000029219DAC360>
+edge_generator = <function edge_pair at 0x000002921C3A2D40>
+noise_generator = <function noise_pair at 0x000002921C3A2DE0>
+attestation_path = WindowsPath('C:/Users/Superleo13/AppData/Local/Temp/pytest-of-Superleo13/pytest-2551/test_run_h11_does_not_mutate_s0/trials.harness_attestation.json')
+note = 'controle positivo do pedágio (judge real, séries sintéticas pareadas)'
+edge_verdict = 'COMPROVADA', null_verdict = 'não comprovada'
+metric = 'sharpe_diff_ci95', valid_for = datetime.timedelta(days=7), repo = None
+allow_dirty = False
+
+    def attest_pipeline_power(
+        evaluate_func,
+        edge_generator,
+        noise_generator,
+        *,
+        attestation_path: Path | str,
+        note: str = "",
+        edge_verdict: str = "COMPROVADA",
+        null_verdict: str = "REFUTADA",
+        metric: str = "",
+        valid_for: timedelta = timedelta(days=7),
+        repo: Path | str | None = None,
+        allow_dirty: bool = False,
+    ) -> dict:
+        """Roda o controle positivo e, PASSANDO, emite o atestado que destrava a
+        criação de trials novas no Experiment Registry (measurement.trials).
+    
+        `attestation_path`: onde gravar — use `trials.attestation_path_for(trials_json)`
+        para o local canônico (irmão do trials.json). Falhando o controle, levanta
+        PipelineHasNoPowerError e NÃO grava nada. Retorna o dict do atestado.
+    
+        `metric`: nome da métrica que o pipeline atestado
+        usa (ex.: "brier" para binário, "rps" para ordinal). Vai no atestado; o
+        registry exige que a trial declare a MESMA métrica e o
+        `pipeline_fingerprint` retornado. `valid_for` limita a vida do atestado.
+    
+        `repo`: raiz do repositório cujo estado de código entra no atestado (padrão:
+        diretório corrente). O atestado passa a gravar `code_version`.
+    
+        `allow_dirty`: FALSE por padrão — árvore suja levanta DirtyWorkingTreeError e
+        NÃO grava nada. Passe True apenas para exploração local, ciente de que a
+        trial autorizada nasce irreprodutível."""
+        if not isinstance(metric, str) or not metric:
+            raise ValueError("metric é obrigatória para emitir atestado de poder")
+        if valid_for <= timedelta(0):
+            raise ValueError("valid_for deve ser positivo")
+        code_version = current_code_version(repo)
+        if code_version.endswith(";dirty") and not allow_dirty:
+>           raise DirtyWorkingTreeError(
+                f"árvore de trabalho suja ({code_version}) — o atestado destrava trials "
+                "novas, e um atestado de código não identificável destrava trials que "
+                "ninguém consegue reproduzir. Faça commit do estado avaliado, ou passe "
+                "allow_dirty=True assumindo que a trial nasce irreprodutível."
+            )
+E           predictor_core.testing.harness.DirtyWorkingTreeError: árvore de trabalho suja (package:3.2.0;git:d48d05dc590c7e14a9186e7097c048c3020a6a53;dirty) — o atestado destrava trials novas, e um atestado de código não identificável destrava trials que ninguém consegue reproduzir. Faça commit do estado avaliado, ou passe allow_dirty=True assumindo que a trial nasce irreprodutível.
+
+..\runtime\predictor_core\testing\harness.py:167: DirtyWorkingTreeError
+_____________________________ test_run_h12_smoke ______________________________
+
+tmp_path = WindowsPath('C:/Users/Superleo13/AppData/Local/Temp/pytest-of-Superleo13/pytest-2551/test_run_h12_smoke0')
+capsys = <_pytest.capture.CaptureFixture object at 0x000002921C4E6780>
+
+    def test_run_h12_smoke(tmp_path, capsys):
+        from config import load_config
+        cfg = load_config()
+        cfg["bootstrap"] = {"n_boot": 300, "block_length": 21, "confidence": 0.95, "seed": 42}
+    
+        conn = _synthetic_conn(tmp_path)
+        tp = tmp_path / "trials.json"
+>       trials_gate.attest(cfg, trials_path=tp)
+
+tests\test_h12_quality_margin.py:49: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+stocks_predictor\trials_gate.py:84: in attest
+    return harness.attest_pipeline_power(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+evaluate_func = <function attest.<locals>.<lambda> at 0x000002921C3A3740>
+edge_generator = <function edge_pair at 0x000002921C3A2D40>
+noise_generator = <function noise_pair at 0x000002921C3A2DE0>
+attestation_path = WindowsPath('C:/Users/Superleo13/AppData/Local/Temp/pytest-of-Superleo13/pytest-2551/test_run_h12_smoke0/trials.harness_attestation.json')
+note = 'controle positivo do pedágio (judge real, séries sintéticas pareadas)'
+edge_verdict = 'COMPROVADA', null_verdict = 'não comprovada'
+metric = 'sharpe_diff_ci95', valid_for = datetime.timedelta(days=7), repo = None
+allow_dirty = False
+
+    def attest_pipeline_power(
+        evaluate_func,
+        edge_generator,
+        noise_generator,
+        *,
+        attestation_path: Path | str,
+        note: str = "",
+        edge_verdict: str = "COMPROVADA",
+        null_verdict: str = "REFUTADA",
+        metric: str = "",
+        valid_for: timedelta = timedelta(days=7),
+        repo: Path | str | None = None,
+        allow_dirty: bool = False,
+    ) -> dict:
+        """Roda o controle positivo e, PASSANDO, emite o atestado que destrava a
+        criação de trials novas no Experiment Registry (measurement.trials).
+    
+        `attestation_path`: onde gravar — use `trials.attestation_path_for(trials_json)`
+        para o local canônico (irmão do trials.json). Falhando o controle, levanta
+        PipelineHasNoPowerError e NÃO grava nada. Retorna o dict do atestado.
+    
+        `metric`: nome da métrica que o pipeline atestado
+        usa (ex.: "brier" para binário, "rps" para ordinal). Vai no atestado; o
+        registry exige que a trial declare a MESMA métrica e o
+        `pipeline_fingerprint` retornado. `valid_for` limita a vida do atestado.
+    
+        `repo`: raiz do repositório cujo estado de código entra no atestado (padrão:
+        diretório corrente). O atestado passa a gravar `code_version`.
+    
+        `allow_dirty`: FALSE por padrão — árvore suja levanta DirtyWorkingTreeError e
+        NÃO grava nada. Passe True apenas para exploração local, ciente de que a
+        trial autorizada nasce irreprodutível."""
+        if not isinstance(metric, str) or not metric:
+            raise ValueError("metric é obrigatória para emitir atestado de poder")
+        if valid_for <= timedelta(0):
+            raise ValueError("valid_for deve ser positivo")
+        code_version = current_code_version(repo)
+        if code_version.endswith(";dirty") and not allow_dirty:
+>           raise DirtyWorkingTreeError(
+                f"árvore de trabalho suja ({code_version}) — o atestado destrava trials "
+                "novas, e um atestado de código não identificável destrava trials que "
+                "ninguém consegue reproduzir. Faça commit do estado avaliado, ou passe "
+                "allow_dirty=True assumindo que a trial nasce irreprodutível."
+            )
+E           predictor_core.testing.harness.DirtyWorkingTreeError: árvore de trabalho suja (package:3.2.0;git:d48d05dc590c7e14a9186e7097c048c3020a6a53;dirty) — o atestado destrava trials novas, e um atestado de código não identificável destrava trials que ninguém consegue reproduzir. Faça commit do estado avaliado, ou passe allow_dirty=True assumindo que a trial nasce irreprodutível.
+
+..\runtime\predictor_core\testing\harness.py:167: DirtyWorkingTreeError
+_____________________________ test_run_h13_smoke ______________________________
+
+tmp_path = WindowsPath('C:/Users/Superleo13/AppData/Local/Temp/pytest-of-Superleo13/pytest-2551/test_run_h13_smoke0')
+capsys = <_pytest.capture.CaptureFixture object at 0x000002921C4E6B10>
+
+    def test_run_h13_smoke(tmp_path, capsys):
+        from config import load_config
+        cfg = load_config()
+        cfg["bootstrap"] = {"n_boot": 300, "block_length": 21, "confidence": 0.95, "seed": 42}
+    
+        conn = _synthetic_conn(tmp_path)
+        tp = tmp_path / "trials.json"
+>       trials_gate.attest(cfg, trials_path=tp)
+
+tests\test_h13_revenue_growth.py:53: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+stocks_predictor\trials_gate.py:84: in attest
+    return harness.attest_pipeline_power(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+evaluate_func = <function attest.<locals>.<lambda> at 0x000002921D427920>
+edge_generator = <function edge_pair at 0x000002921C3A2D40>
+noise_generator = <function noise_pair at 0x000002921C3A2DE0>
+attestation_path = WindowsPath('C:/Users/Superleo13/AppData/Local/Temp/pytest-of-Superleo13/pytest-2551/test_run_h13_smoke0/trials.harness_attestation.json')
+note = 'controle positivo do pedágio (judge real, séries sintéticas pareadas)'
+edge_verdict = 'COMPROVADA', null_verdict = 'não comprovada'
+metric = 'sharpe_diff_ci95', valid_for = datetime.timedelta(days=7), repo = None
+allow_dirty = False
+
+    def attest_pipeline_power(
+        evaluate_func,
+        edge_generator,
+        noise_generator,
+        *,
+        attestation_path: Path | str,
+        note: str = "",
+        edge_verdict: str = "COMPROVADA",
+        null_verdict: str = "REFUTADA",
+        metric: str = "",
+        valid_for: timedelta = timedelta(days=7),
+        repo: Path | str | None = None,
+        allow_dirty: bool = False,
+    ) -> dict:
+        """Roda o controle positivo e, PASSANDO, emite o atestado que destrava a
+        criação de trials novas no Experiment Registry (measurement.trials).
+    
+        `attestation_path`: onde gravar — use `trials.attestation_path_for(trials_json)`
+        para o local canônico (irmão do trials.json). Falhando o controle, levanta
+        PipelineHasNoPowerError e NÃO grava nada. Retorna o dict do atestado.
+    
+        `metric`: nome da métrica que o pipeline atestado
+        usa (ex.: "brier" para binário, "rps" para ordinal). Vai no atestado; o
+        registry exige que a trial declare a MESMA métrica e o
+        `pipeline_fingerprint` retornado. `valid_for` limita a vida do atestado.
+    
+        `repo`: raiz do repositório cujo estado de código entra no atestado (padrão:
+        diretório corrente). O atestado passa a gravar `code_version`.
+    
+        `allow_dirty`: FALSE por padrão — árvore suja levanta DirtyWorkingTreeError e
+        NÃO grava nada. Passe True apenas para exploração local, ciente de que a
+        trial autorizada nasce irreprodutível."""
+        if not isinstance(metric, str) or not metric:
+            raise ValueError("metric é obrigatória para emitir atestado de poder")
+        if valid_for <= timedelta(0):
+            raise ValueError("valid_for deve ser positivo")
+        code_version = current_code_version(repo)
+        if code_version.endswith(";dirty") and not allow_dirty:
+>           raise DirtyWorkingTreeError(
+                f"árvore de trabalho suja ({code_version}) — o atestado destrava trials "
+                "novas, e um atestado de código não identificável destrava trials que "
+                "ninguém consegue reproduzir. Faça commit do estado avaliado, ou passe "
+                "allow_dirty=True assumindo que a trial nasce irreprodutível."
+            )
+E           predictor_core.testing.harness.DirtyWorkingTreeError: árvore de trabalho suja (package:3.2.0;git:d48d05dc590c7e14a9186e7097c048c3020a6a53;dirty) — o atestado destrava trials novas, e um atestado de código não identificável destrava trials que ninguém consegue reproduzir. Faça commit do estado avaliado, ou passe allow_dirty=True assumindo que a trial nasce irreprodutível.
+
+..\runtime\predictor_core\testing\harness.py:167: DirtyWorkingTreeError
+_____________________________ test_run_h14_smoke ______________________________
+
+tmp_path = WindowsPath('C:/Users/Superleo13/AppData/Local/Temp/pytest-of-Superleo13/pytest-2551/test_run_h14_smoke0')
+capsys = <_pytest.capture.CaptureFixture object at 0x000002921C58B530>
+
+    def test_run_h14_smoke(tmp_path, capsys):
+        from config import load_config
+        cfg = load_config()
+        cfg["bootstrap"] = {"n_boot": 300, "block_length": 21, "confidence": 0.95, "seed": 42}
+    
+        conn = _synthetic_conn(tmp_path)
+        tp = tmp_path / "trials.json"
+>       trials_gate.attest(cfg, trials_path=tp)
+
+tests\test_h14_near_52w_high.py:36: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+stocks_predictor\trials_gate.py:84: in attest
+    return harness.attest_pipeline_power(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+evaluate_func = <function attest.<locals>.<lambda> at 0x000002921D4276A0>
+edge_generator = <function edge_pair at 0x000002921C3A2D40>
+noise_generator = <function noise_pair at 0x000002921C3A2DE0>
+attestation_path = WindowsPath('C:/Users/Superleo13/AppData/Local/Temp/pytest-of-Superleo13/pytest-2551/test_run_h14_smoke0/trials.harness_attestation.json')
+note = 'controle positivo do pedágio (judge real, séries sintéticas pareadas)'
+edge_verdict = 'COMPROVADA', null_verdict = 'não comprovada'
+metric = 'sharpe_diff_ci95', valid_for = datetime.timedelta(days=7), repo = None
+allow_dirty = False
+
+    def attest_pipeline_power(
+        evaluate_func,
+        edge_generator,
+        noise_generator,
+        *,
+        attestation_path: Path | str,
+        note: str = "",
+        edge_verdict: str = "COMPROVADA",
+        null_verdict: str = "REFUTADA",
+        metric: str = "",
+        valid_for: timedelta = timedelta(days=7),
+        repo: Path | str | None = None,
+        allow_dirty: bool = False,
+    ) -> dict:
+        """Roda o controle positivo e, PASSANDO, emite o atestado que destrava a
+        criação de trials novas no Experiment Registry (measurement.trials).
+    
+        `attestation_path`: onde gravar — use `trials.attestation_path_for(trials_json)`
+        para o local canônico (irmão do trials.json). Falhando o controle, levanta
+        PipelineHasNoPowerError e NÃO grava nada. Retorna o dict do atestado.
+    
+        `metric`: nome da métrica que o pipeline atestado
+        usa (ex.: "brier" para binário, "rps" para ordinal). Vai no atestado; o
+        registry exige que a trial declare a MESMA métrica e o
+        `pipeline_fingerprint` retornado. `valid_for` limita a vida do atestado.
+    
+        `repo`: raiz do repositório cujo estado de código entra no atestado (padrão:
+        diretório corrente). O atestado passa a gravar `code_version`.
+    
+        `allow_dirty`: FALSE por padrão — árvore suja levanta DirtyWorkingTreeError e
+        NÃO grava nada. Passe True apenas para exploração local, ciente de que a
+        trial autorizada nasce irreprodutível."""
+        if not isinstance(metric, str) or not metric:
+            raise ValueError("metric é obrigatória para emitir atestado de poder")
+        if valid_for <= timedelta(0):
+            raise ValueError("valid_for deve ser positivo")
+        code_version = current_code_version(repo)
+        if code_version.endswith(";dirty") and not allow_dirty:
+>           raise DirtyWorkingTreeError(
+                f"árvore de trabalho suja ({code_version}) — o atestado destrava trials "
+                "novas, e um atestado de código não identificável destrava trials que "
+                "ninguém consegue reproduzir. Faça commit do estado avaliado, ou passe "
+                "allow_dirty=True assumindo que a trial nasce irreprodutível."
+            )
+E           predictor_core.testing.harness.DirtyWorkingTreeError: árvore de trabalho suja (package:3.2.0;git:d48d05dc590c7e14a9186e7097c048c3020a6a53;dirty) — o atestado destrava trials novas, e um atestado de código não identificável destrava trials que ninguém consegue reproduzir. Faça commit do estado avaliado, ou passe allow_dirty=True assumindo que a trial nasce irreprodutível.
+
+..\runtime\predictor_core\testing\harness.py:167: DirtyWorkingTreeError
+_____________________________ test_run_h15_smoke ______________________________
+
+tmp_path = WindowsPath('C:/Users/Superleo13/AppData/Local/Temp/pytest-of-Superleo13/pytest-2551/test_run_h15_smoke0')
+capsys = <_pytest.capture.CaptureFixture object at 0x000002921C5E4E20>
+
+    def test_run_h15_smoke(tmp_path, capsys):
+        from config import load_config
+        cfg = load_config()
+        cfg["bootstrap"] = {"n_boot": 300, "block_length": 21, "confidence": 0.95, "seed": 42}
+    
+        conn = _synthetic_conn(tmp_path)
+        tp = tmp_path / "trials.json"
+>       trials_gate.attest(cfg, trials_path=tp)
+
+tests\test_h15_volume_surge.py:39: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+stocks_predictor\trials_gate.py:84: in attest
+    return harness.attest_pipeline_power(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+evaluate_func = <function attest.<locals>.<lambda> at 0x000002921C25B6A0>
+edge_generator = <function edge_pair at 0x000002921C3A2D40>
+noise_generator = <function noise_pair at 0x000002921C3A2DE0>
+attestation_path = WindowsPath('C:/Users/Superleo13/AppData/Local/Temp/pytest-of-Superleo13/pytest-2551/test_run_h15_smoke0/trials.harness_attestation.json')
+note = 'controle positivo do pedágio (judge real, séries sintéticas pareadas)'
+edge_verdict = 'COMPROVADA', null_verdict = 'não comprovada'
+metric = 'sharpe_diff_ci95', valid_for = datetime.timedelta(days=7), repo = None
+allow_dirty = False
+
+    def attest_pipeline_power(
+        evaluate_func,
+        edge_generator,
+        noise_generator,
+        *,
+        attestation_path: Path | str,
+        note: str = "",
+        edge_verdict: str = "COMPROVADA",
+        null_verdict: str = "REFUTADA",
+        metric: str = "",
+        valid_for: timedelta = timedelta(days=7),
+        repo: Path | str | None = None,
+        allow_dirty: bool = False,
+    ) -> dict:
+        """Roda o controle positivo e, PASSANDO, emite o atestado que destrava a
+        criação de trials novas no Experiment Registry (measurement.trials).
+    
+        `attestation_path`: onde gravar — use `trials.attestation_path_for(trials_json)`
+        para o local canônico (irmão do trials.json). Falhando o controle, levanta
+        PipelineHasNoPowerError e NÃO grava nada. Retorna o dict do atestado.
+    
+        `metric`: nome da métrica que o pipeline atestado
+        usa (ex.: "brier" para binário, "rps" para ordinal). Vai no atestado; o
+        registry exige que a trial declare a MESMA métrica e o
+        `pipeline_fingerprint` retornado. `valid_for` limita a vida do atestado.
+    
+        `repo`: raiz do repositório cujo estado de código entra no atestado (padrão:
+        diretório corrente). O atestado passa a gravar `code_version`.
+    
+        `allow_dirty`: FALSE por padrão — árvore suja levanta DirtyWorkingTreeError e
+        NÃO grava nada. Passe True apenas para exploração local, ciente de que a
+        trial autorizada nasce irreprodutível."""
+        if not isinstance(metric, str) or not metric:
+            raise ValueError("metric é obrigatória para emitir atestado de poder")
+        if valid_for <= timedelta(0):
+            raise ValueError("valid_for deve ser positivo")
+        code_version = current_code_version(repo)
+        if code_version.endswith(";dirty") and not allow_dirty:
+>           raise DirtyWorkingTreeError(
+                f"árvore de trabalho suja ({code_version}) — o atestado destrava trials "
+                "novas, e um atestado de código não identificável destrava trials que "
+                "ninguém consegue reproduzir. Faça commit do estado avaliado, ou passe "
+                "allow_dirty=True assumindo que a trial nasce irreprodutível."
+            )
+E           predictor_core.testing.harness.DirtyWorkingTreeError: árvore de trabalho suja (package:3.2.0;git:d48d05dc590c7e14a9186e7097c048c3020a6a53;dirty) — o atestado destrava trials novas, e um atestado de código não identificável destrava trials que ninguém consegue reproduzir. Faça commit do estado avaliado, ou passe allow_dirty=True assumindo que a trial nasce irreprodutível.
+
+..\runtime\predictor_core\testing\harness.py:167: DirtyWorkingTreeError
+_____________________________ test_run_h16_smoke ______________________________
+
+tmp_path = WindowsPath('C:/Users/Superleo13/AppData/Local/Temp/pytest-of-Superleo13/pytest-2551/test_run_h16_smoke0')
+capsys = <_pytest.capture.CaptureFixture object at 0x000002921C5E4F30>
+
+    def test_run_h16_smoke(tmp_path, capsys):
+        from config import load_config
+        cfg = load_config()
+        cfg["bootstrap"] = {"n_boot": 300, "block_length": 21, "confidence": 0.95, "seed": 42}
+    
+        conn = _synthetic_conn(tmp_path)
+        tp = tmp_path / "trials.json"
+>       trials_gate.attest(cfg, trials_path=tp)
+
+tests\test_h16_turn_of_month.py:35: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+stocks_predictor\trials_gate.py:84: in attest
+    return harness.attest_pipeline_power(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+evaluate_func = <function attest.<locals>.<lambda> at 0x000002921C5EBD80>
+edge_generator = <function edge_pair at 0x000002921C3A2D40>
+noise_generator = <function noise_pair at 0x000002921C3A2DE0>
+attestation_path = WindowsPath('C:/Users/Superleo13/AppData/Local/Temp/pytest-of-Superleo13/pytest-2551/test_run_h16_smoke0/trials.harness_attestation.json')
+note = 'controle positivo do pedágio (judge real, séries sintéticas pareadas)'
+edge_verdict = 'COMPROVADA', null_verdict = 'não comprovada'
+metric = 'sharpe_diff_ci95', valid_for = datetime.timedelta(days=7), repo = None
+allow_dirty = False
+
+    def attest_pipeline_power(
+        evaluate_func,
+        edge_generator,
+        noise_generator,
+        *,
+        attestation_path: Path | str,
+        note: str = "",
+        edge_verdict: str = "COMPROVADA",
+        null_verdict: str = "REFUTADA",
+        metric: str = "",
+        valid_for: timedelta = timedelta(days=7),
+        repo: Path | str | None = None,
+        allow_dirty: bool = False,
+    ) -> dict:
+        """Roda o controle positivo e, PASSANDO, emite o atestado que destrava a
+        criação de trials novas no Experiment Registry (measurement.trials).
+    
+        `attestation_path`: onde gravar — use `trials.attestation_path_for(trials_json)`
+        para o local canônico (irmão do trials.json). Falhando o controle, levanta
+        PipelineHasNoPowerError e NÃO grava nada. Retorna o dict do atestado.
+    
+        `metric`: nome da métrica que o pipeline atestado
+        usa (ex.: "brier" para binário, "rps" para ordinal). Vai no atestado; o
+        registry exige que a trial declare a MESMA métrica e o
+        `pipeline_fingerprint` retornado. `valid_for` limita a vida do atestado.
+    
+        `repo`: raiz do repositório cujo estado de código entra no atestado (padrão:
+        diretório corrente). O atestado passa a gravar `code_version`.
+    
+        `allow_dirty`: FALSE por padrão — árvore suja levanta DirtyWorkingTreeError e
+        NÃO grava nada. Passe True apenas para exploração local, ciente de que a
+        trial autorizada nasce irreprodutível."""
+        if not isinstance(metric, str) or not metric:
+            raise ValueError("metric é obrigatória para emitir atestado de poder")
+        if valid_for <= timedelta(0):
+            raise ValueError("valid_for deve ser positivo")
+        code_version = current_code_version(repo)
+        if code_version.endswith(";dirty") and not allow_dirty:
+>           raise DirtyWorkingTreeError(
+                f"árvore de trabalho suja ({code_version}) — o atestado destrava trials "
+                "novas, e um atestado de código não identificável destrava trials que "
+                "ninguém consegue reproduzir. Faça commit do estado avaliado, ou passe "
+                "allow_dirty=True assumindo que a trial nasce irreprodutível."
+            )
+E           predictor_core.testing.harness.DirtyWorkingTreeError: árvore de trabalho suja (package:3.2.0;git:d48d05dc590c7e14a9186e7097c048c3020a6a53;dirty) — o atestado destrava trials novas, e um atestado de código não identificável destrava trials que ninguém consegue reproduzir. Faça commit do estado avaliado, ou passe allow_dirty=True assumindo que a trial nasce irreprodutível.
+
+..\runtime\predictor_core\testing\harness.py:167: DirtyWorkingTreeError
+_____________________________ test_run_h17_smoke ______________________________
+
+tmp_path = WindowsPath('C:/Users/Superleo13/AppData/Local/Temp/pytest-of-Superleo13/pytest-2551/test_run_h17_smoke0')
+capsys = <_pytest.capture.CaptureFixture object at 0x000002921C523750>
+
+    def test_run_h17_smoke(tmp_path, capsys):
+        from config import load_config
+        cfg = load_config()
+        cfg["bootstrap"] = {"n_boot": 300, "block_length": 21, "confidence": 0.95, "seed": 42}
+    
+        conn = _synthetic_conn(tmp_path)
+        tp = tmp_path / "trials.json"
+>       trials_gate.attest(cfg, trials_path=tp)
+
+tests\test_h17_accruals.py:49: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+stocks_predictor\trials_gate.py:84: in attest
+    return harness.attest_pipeline_power(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+evaluate_func = <function attest.<locals>.<lambda> at 0x000002921C5EBD80>
+edge_generator = <function edge_pair at 0x000002921C3A2D40>
+noise_generator = <function noise_pair at 0x000002921C3A2DE0>
+attestation_path = WindowsPath('C:/Users/Superleo13/AppData/Local/Temp/pytest-of-Superleo13/pytest-2551/test_run_h17_smoke0/trials.harness_attestation.json')
+note = 'controle positivo do pedágio (judge real, séries sintéticas pareadas)'
+edge_verdict = 'COMPROVADA', null_verdict = 'não comprovada'
+metric = 'sharpe_diff_ci95', valid_for = datetime.timedelta(days=7), repo = None
+allow_dirty = False
+
+    def attest_pipeline_power(
+        evaluate_func,
+        edge_generator,
+        noise_generator,
+        *,
+        attestation_path: Path | str,
+        note: str = "",
+        edge_verdict: str = "COMPROVADA",
+        null_verdict: str = "REFUTADA",
+        metric: str = "",
+        valid_for: timedelta = timedelta(days=7),
+        repo: Path | str | None = None,
+        allow_dirty: bool = False,
+    ) -> dict:
+        """Roda o controle positivo e, PASSANDO, emite o atestado que destrava a
+        criação de trials novas no Experiment Registry (measurement.trials).
+    
+        `attestation_path`: onde gravar — use `trials.attestation_path_for(trials_json)`
+        para o local canônico (irmão do trials.json). Falhando o controle, levanta
+        PipelineHasNoPowerError e NÃO grava nada. Retorna o dict do atestado.
+    
+        `metric`: nome da métrica que o pipeline atestado
+        usa (ex.: "brier" para binário, "rps" para ordinal). Vai no atestado; o
+        registry exige que a trial declare a MESMA métrica e o
+        `pipeline_fingerprint` retornado. `valid_for` limita a vida do atestado.
+    
+        `repo`: raiz do repositório cujo estado de código entra no atestado (padrão:
+        diretório corrente). O atestado passa a gravar `code_version`.
+    
+        `allow_dirty`: FALSE por padrão — árvore suja levanta DirtyWorkingTreeError e
+        NÃO grava nada. Passe True apenas para exploração local, ciente de que a
+        trial autorizada nasce irreprodutível."""
+        if not isinstance(metric, str) or not metric:
+            raise ValueError("metric é obrigatória para emitir atestado de poder")
+        if valid_for <= timedelta(0):
+            raise ValueError("valid_for deve ser positivo")
+        code_version = current_code_version(repo)
+        if code_version.endswith(";dirty") and not allow_dirty:
+>           raise DirtyWorkingTreeError(
+                f"árvore de trabalho suja ({code_version}) — o atestado destrava trials "
+                "novas, e um atestado de código não identificável destrava trials que "
+                "ninguém consegue reproduzir. Faça commit do estado avaliado, ou passe "
+                "allow_dirty=True assumindo que a trial nasce irreprodutível."
+            )
+E           predictor_core.testing.harness.DirtyWorkingTreeError: árvore de trabalho suja (package:3.2.0;git:d48d05dc590c7e14a9186e7097c048c3020a6a53;dirty) — o atestado destrava trials novas, e um atestado de código não identificável destrava trials que ninguém consegue reproduzir. Faça commit do estado avaliado, ou passe allow_dirty=True assumindo que a trial nasce irreprodutível.
+
+..\runtime\predictor_core\testing\harness.py:167: DirtyWorkingTreeError
+_____________________________ test_run_h18_smoke ______________________________
+
+tmp_path = WindowsPath('C:/Users/Superleo13/AppData/Local/Temp/pytest-of-Superleo13/pytest-2551/test_run_h18_smoke0')
+capsys = <_pytest.capture.CaptureFixture object at 0x000002921D434050>
+
+    def test_run_h18_smoke(tmp_path, capsys):
+        from config import load_config
+        cfg = load_config()
+        cfg["bootstrap"] = {"n_boot": 300, "block_length": 21, "confidence": 0.95, "seed": 42}
+        conn = _synthetic_conn(tmp_path)
+        tp = tmp_path / "trials.json"
+>       trials_gate.attest(cfg, trials_path=tp)
+
+tests\test_h18_h19_value.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+stocks_predictor\trials_gate.py:84: in attest
+    return harness.attest_pipeline_power(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+evaluate_func = <function attest.<locals>.<lambda> at 0x000002921C25B6A0>
+edge_generator = <function edge_pair at 0x000002921C3A2D40>
+noise_generator = <function noise_pair at 0x000002921C3A2DE0>
+attestation_path = WindowsPath('C:/Users/Superleo13/AppData/Local/Temp/pytest-of-Superleo13/pytest-2551/test_run_h18_smoke0/trials.harness_attestation.json')
+note = 'controle positivo do pedágio (judge real, séries sintéticas pareadas)'
+edge_verdict = 'COMPROVADA', null_verdict = 'não comprovada'
+metric = 'sharpe_diff_ci95', valid_for = datetime.timedelta(days=7), repo = None
+allow_dirty = False
+
+    def attest_pipeline_power(
+        evaluate_func,
+        edge_generator,
+        noise_generator,
+        *,
+        attestation_path: Path | str,
+        note: str = "",
+        edge_verdict: str = "COMPROVADA",
+        null_verdict: str = "REFUTADA",
+        metric: str = "",
+        valid_for: timedelta = timedelta(days=7),
+        repo: Path | str | None = None,
+        allow_dirty: bool = False,
+    ) -> dict:
+        """Roda o controle positivo e, PASSANDO, emite o atestado que destrava a
+        criação de trials novas no Experiment Registry (measurement.trials).
+    
+        `attestation_path`: onde gravar — use `trials.attestation_path_for(trials_json)`
+        para o local canônico (irmão do trials.json). Falhando o controle, levanta
+        PipelineHasNoPowerError e NÃO grava nada. Retorna o dict do atestado.
+    
+        `metric`: nome da métrica que o pipeline atestado
+        usa (ex.: "brier" para binário, "rps" para ordinal). Vai no atestado; o
+        registry exige que a trial declare a MESMA métrica e o
+        `pipeline_fingerprint` retornado. `valid_for` limita a vida do atestado.
+    
+        `repo`: raiz do repositório cujo estado de código entra no atestado (padrão:
+        diretório corrente). O atestado passa a gravar `code_version`.
+    
+        `allow_dirty`: FALSE por padrão — árvore suja levanta DirtyWorkingTreeError e
+        NÃO grava nada. Passe True apenas para exploração local, ciente de que a
+        trial autorizada nasce irreprodutível."""
+        if not isinstance(metric, str) or not metric:
+            raise ValueError("metric é obrigatória para emitir atestado de poder")
+        if valid_for <= timedelta(0):
+            raise ValueError("valid_for deve ser positivo")
+        code_version = current_code_version(repo)
+        if code_version.endswith(";dirty") and not allow_dirty:
+>           raise DirtyWorkingTreeError(
+                f"árvore de trabalho suja ({code_version}) — o atestado destrava trials "
+                "novas, e um atestado de código não identificável destrava trials que "
+                "ninguém consegue reproduzir. Faça commit do estado avaliado, ou passe "
+                "allow_dirty=True assumindo que a trial nasce irreprodutível."
+            )
+E           predictor_core.testing.harness.DirtyWorkingTreeError: árvore de trabalho suja (package:3.2.0;git:d48d05dc590c7e14a9186e7097c048c3020a6a53;dirty) — o atestado destrava trials novas, e um atestado de código não identificável destrava trials que ninguém consegue reproduzir. Faça commit do estado avaliado, ou passe allow_dirty=True assumindo que a trial nasce irreprodutível.
+
+..\runtime\predictor_core\testing\harness.py:167: DirtyWorkingTreeError
+_____________________________ test_run_h19_smoke ______________________________
+
+tmp_path = WindowsPath('C:/Users/Superleo13/AppData/Local/Temp/pytest-of-Superleo13/pytest-2551/test_run_h19_smoke0')
+capsys = <_pytest.capture.CaptureFixture object at 0x000002921D422D50>
+
+    def test_run_h19_smoke(tmp_path, capsys):
+        from config import load_config
+        cfg = load_config()
+        cfg["bootstrap"] = {"n_boot": 300, "block_length": 21, "confidence": 0.95, "seed": 42}
+        conn = _synthetic_conn(tmp_path)
+        tp = tmp_path / "trials.json"
+>       trials_gate.attest(cfg, trials_path=tp)
+
+tests\test_h18_h19_value.py:66: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+stocks_predictor\trials_gate.py:84: in attest
+    return harness.attest_pipeline_power(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+evaluate_func = <function attest.<locals>.<lambda> at 0x000002921C25B6A0>
+edge_generator = <function edge_pair at 0x000002921C3A2D40>
+noise_generator = <function noise_pair at 0x000002921C3A2DE0>
+attestation_path = WindowsPath('C:/Users/Superleo13/AppData/Local/Temp/pytest-of-Superleo13/pytest-2551/test_run_h19_smoke0/trials.harness_attestation.json')
+note = 'controle positivo do pedágio (judge real, séries sintéticas pareadas)'
+edge_verdict = 'COMPROVADA', null_verdict = 'não comprovada'
+metric = 'sharpe_diff_ci95', valid_for = datetime.timedelta(days=7), repo = None
+allow_dirty = False
+
+    def attest_pipeline_power(
+        evaluate_func,
+        edge_generator,
+        noise_generator,
+        *,
+        attestation_path: Path | str,
+        note: str = "",
+        edge_verdict: str = "COMPROVADA",
+        null_verdict: str = "REFUTADA",
+        metric: str = "",
+        valid_for: timedelta = timedelta(days=7),
+        repo: Path | str | None = None,
+        allow_dirty: bool = False,
+    ) -> dict:
+        """Roda o controle positivo e, PASSANDO, emite o atestado que destrava a
+        criação de trials novas no Experiment Registry (measurement.trials).
+    
+        `attestation_path`: onde gravar — use `trials.attestation_path_for(trials_json)`
+        para o local canônico (irmão do trials.json). Falhando o controle, levanta
+        PipelineHasNoPowerError e NÃO grava nada. Retorna o dict do atestado.
+    
+        `metric`: nome da métrica que o pipeline atestado
+        usa (ex.: "brier" para binário, "rps" para ordinal). Vai no atestado; o
+        registry exige que a trial declare a MESMA métrica e o
+        `pipeline_fingerprint` retornado. `valid_for` limita a vida do atestado.
+    
+        `repo`: raiz do repositório cujo estado de código entra no atestado (padrão:
+        diretório corrente). O atestado passa a gravar `code_version`.
+    
+        `allow_dirty`: FALSE por padrão — árvore suja levanta DirtyWorkingTreeError e
+        NÃO grava nada. Passe True apenas para exploração local, ciente de que a
+        trial autorizada nasce irreprodutível."""
+        if not isinstance(metric, str) or not metric:
+            raise ValueError("metric é obrigatória para emitir atestado de poder")
+        if valid_for <= timedelta(0):
+            raise ValueError("valid_for deve ser positivo")
+        code_version = current_code_version(repo)
+        if code_version.endswith(";dirty") and not allow_dirty:
+>           raise DirtyWorkingTreeError(
+                f"árvore de trabalho suja ({code_version}) — o atestado destrava trials "
+                "novas, e um atestado de código não identificável destrava trials que "
+                "ninguém consegue reproduzir. Faça commit do estado avaliado, ou passe "
+                "allow_dirty=True assumindo que a trial nasce irreprodutível."
+            )
+E           predictor_core.testing.harness.DirtyWorkingTreeError: árvore de trabalho suja (package:3.2.0;git:d48d05dc590c7e14a9186e7097c048c3020a6a53;dirty) — o atestado destrava trials novas, e um atestado de código não identificável destrava trials que ninguém consegue reproduzir. Faça commit do estado avaliado, ou passe allow_dirty=True assumindo que a trial nasce irreprodutível.
+
+..\runtime\predictor_core\testing\harness.py:167: DirtyWorkingTreeError
+_____________ test_register_hypothesis_preserves_realized_sharpe ______________
+
+tmp_path = WindowsPath('C:/Users/Superleo13/AppData/Local/Temp/pytest-of-Superleo13/pytest-2551/test_register_hypothesis_prese0')
+
+    def test_register_hypothesis_preserves_realized_sharpe(tmp_path):
+        """Regressão do bug de clobber (2026-07-18): re-registrar baseline com
+        sharpe=None NÃO pode apagar o sharpe realizado de uma rodada única."""
+        from config import H2_FROZEN_KEYS, load_config
+        cfg = load_config()
+        tp = tmp_path / "trials.json"
+>       trials_gate.attest(_fast_cfg(), trials_path=tp)
+
+tests\test_h2_gate.py:136: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+stocks_predictor\trials_gate.py:84: in attest
+    return harness.attest_pipeline_power(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+evaluate_func = <function attest.<locals>.<lambda> at 0x000002921D4A7060>
+edge_generator = <function edge_pair at 0x000002921C3A2D40>
+noise_generator = <function noise_pair at 0x000002921C3A2DE0>
+attestation_path = WindowsPath('C:/Users/Superleo13/AppData/Local/Temp/pytest-of-Superleo13/pytest-2551/test_register_hypothesis_prese0/trials.harness_attestation.json')
+note = 'controle positivo do pedágio (judge real, séries sintéticas pareadas)'
+edge_verdict = 'COMPROVADA', null_verdict = 'não comprovada'
+metric = 'sharpe_diff_ci95', valid_for = datetime.timedelta(days=7), repo = None
+allow_dirty = False
+
+    def attest_pipeline_power(
+        evaluate_func,
+        edge_generator,
+        noise_generator,
+        *,
+        attestation_path: Path | str,
+        note: str = "",
+        edge_verdict: str = "COMPROVADA",
+        null_verdict: str = "REFUTADA",
+        metric: str = "",
+        valid_for: timedelta = timedelta(days=7),
+        repo: Path | str | None = None,
+        allow_dirty: bool = False,
+    ) -> dict:
+        """Roda o controle positivo e, PASSANDO, emite o atestado que destrava a
+        criação de trials novas no Experiment Registry (measurement.trials).
+    
+        `attestation_path`: onde gravar — use `trials.attestation_path_for(trials_json)`
+        para o local canônico (irmão do trials.json). Falhando o controle, levanta
+        PipelineHasNoPowerError e NÃO grava nada. Retorna o dict do atestado.
+    
+        `metric`: nome da métrica que o pipeline atestado
+        usa (ex.: "brier" para binário, "rps" para ordinal). Vai no atestado; o
+        registry exige que a trial declare a MESMA métrica e o
+        `pipeline_fingerprint` retornado. `valid_for` limita a vida do atestado.
+    
+        `repo`: raiz do repositório cujo estado de código entra no atestado (padrão:
+        diretório corrente). O atestado passa a gravar `code_version`.
+    
+        `allow_dirty`: FALSE por padrão — árvore suja levanta DirtyWorkingTreeError e
+        NÃO grava nada. Passe True apenas para exploração local, ciente de que a
+        trial autorizada nasce irreprodutível."""
+        if not isinstance(metric, str) or not metric:
+            raise ValueError("metric é obrigatória para emitir atestado de poder")
+        if valid_for <= timedelta(0):
+            raise ValueError("valid_for deve ser positivo")
+        code_version = current_code_version(repo)
+        if code_version.endswith(";dirty") and not allow_dirty:
+>           raise DirtyWorkingTreeError(
+                f"árvore de trabalho suja ({code_version}) — o atestado destrava trials "
+                "novas, e um atestado de código não identificável destrava trials que "
+                "ninguém consegue reproduzir. Faça commit do estado avaliado, ou passe "
+                "allow_dirty=True assumindo que a trial nasce irreprodutível."
+            )
+E           predictor_core.testing.harness.DirtyWorkingTreeError: árvore de trabalho suja (package:3.2.0;git:d48d05dc590c7e14a9186e7097c048c3020a6a53;dirty) — o atestado destrava trials novas, e um atestado de código não identificável destrava trials que ninguém consegue reproduzir. Faça commit do estado avaliado, ou passe allow_dirty=True assumindo que a trial nasce irreprodutível.
+
+..\runtime\predictor_core\testing\harness.py:167: DirtyWorkingTreeError
+_________________ test_attest_then_register_and_identity_lock _________________
+
+tmp_path = WindowsPath('C:/Users/Superleo13/AppData/Local/Temp/pytest-of-Superleo13/pytest-2551/test_attest_then_register_and_0')
+
+    def test_attest_then_register_and_identity_lock(tmp_path):
+        cfg = _fast_cfg()
+        tp = tmp_path / "trials.json"
+>       rec = trials_gate.attest(cfg, trials_path=tp)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_h2_gate.py:150: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+stocks_predictor\trials_gate.py:84: in attest
+    return harness.attest_pipeline_power(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+evaluate_func = <function attest.<locals>.<lambda> at 0x000002921D4B9A80>
+edge_generator = <function edge_pair at 0x000002921C3A2D40>
+noise_generator = <function noise_pair at 0x000002921C3A2DE0>
+attestation_path = WindowsPath('C:/Users/Superleo13/AppData/Local/Temp/pytest-of-Superleo13/pytest-2551/test_attest_then_register_and_0/trials.harness_attestation.json')
+note = 'controle positivo do pedágio (judge real, séries sintéticas pareadas)'
+edge_verdict = 'COMPROVADA', null_verdict = 'não comprovada'
+metric = 'sharpe_diff_ci95', valid_for = datetime.timedelta(days=7), repo = None
+allow_dirty = False
+
+    def attest_pipeline_power(
+        evaluate_func,
+        edge_generator,
+        noise_generator,
+        *,
+        attestation_path: Path | str,
+        note: str = "",
+        edge_verdict: str = "COMPROVADA",
+        null_verdict: str = "REFUTADA",
+        metric: str = "",
+        valid_for: timedelta = timedelta(days=7),
+        repo: Path | str | None = None,
+        allow_dirty: bool = False,
+    ) -> dict:
+        """Roda o controle positivo e, PASSANDO, emite o atestado que destrava a
+        criação de trials novas no Experiment Registry (measurement.trials).
+    
+        `attestation_path`: onde gravar — use `trials.attestation_path_for(trials_json)`
+        para o local canônico (irmão do trials.json). Falhando o controle, levanta
+        PipelineHasNoPowerError e NÃO grava nada. Retorna o dict do atestado.
+    
+        `metric`: nome da métrica que o pipeline atestado
+        usa (ex.: "brier" para binário, "rps" para ordinal). Vai no atestado; o
+        registry exige que a trial declare a MESMA métrica e o
+        `pipeline_fingerprint` retornado. `valid_for` limita a vida do atestado.
+    
+        `repo`: raiz do repositório cujo estado de código entra no atestado (padrão:
+        diretório corrente). O atestado passa a gravar `code_version`.
+    
+        `allow_dirty`: FALSE por padrão — árvore suja levanta DirtyWorkingTreeError e
+        NÃO grava nada. Passe True apenas para exploração local, ciente de que a
+        trial autorizada nasce irreprodutível."""
+        if not isinstance(metric, str) or not metric:
+            raise ValueError("metric é obrigatória para emitir atestado de poder")
+        if valid_for <= timedelta(0):
+            raise ValueError("valid_for deve ser positivo")
+        code_version = current_code_version(repo)
+        if code_version.endswith(";dirty") and not allow_dirty:
+>           raise DirtyWorkingTreeError(
+                f"árvore de trabalho suja ({code_version}) — o atestado destrava trials "
+                "novas, e um atestado de código não identificável destrava trials que "
+                "ninguém consegue reproduzir. Faça commit do estado avaliado, ou passe "
+                "allow_dirty=True assumindo que a trial nasce irreprodutível."
+            )
+E           predictor_core.testing.harness.DirtyWorkingTreeError: árvore de trabalho suja (package:3.2.0;git:d48d05dc590c7e14a9186e7097c048c3020a6a53;dirty) — o atestado destrava trials novas, e um atestado de código não identificável destrava trials que ninguém consegue reproduzir. Faça commit do estado avaliado, ou passe allow_dirty=True assumindo que a trial nasce irreprodutível.
+
+..\runtime\predictor_core\testing\harness.py:167: DirtyWorkingTreeError
+______________________________ test_run_h2_smoke ______________________________
+
+tmp_path = WindowsPath('C:/Users/Superleo13/AppData/Local/Temp/pytest-of-Superleo13/pytest-2551/test_run_h2_smoke0')
+capsys = <_pytest.capture.CaptureFixture object at 0x000002921D4AC5F0>
+
+    def test_run_h2_smoke(tmp_path, capsys):
+        from config import load_config
+        cfg = load_config()
+        cfg["bootstrap"] = dict(_FAST_BOOT)
+    
+        conn = db.get_connection(tmp_path / "s.db")
+        tickers = [f"T{c}{c}{c}3" for c in "ABCDEFGHIJKL"]
+        cotahist.load_prices(conn, cotahist.synthetic_cotahist(tickers, _dates(900), seed=11),
+                             "COTAHIST_SYNTH.TXT")
+    
+        tp = tmp_path / "trials.json"
+>       trials_gate.attest(cfg, trials_path=tp)
+
+tests\test_h2_gate.py:185: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+stocks_predictor\trials_gate.py:84: in attest
+    return harness.attest_pipeline_power(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+evaluate_func = <function attest.<locals>.<lambda> at 0x000002921D4A5DA0>
+edge_generator = <function edge_pair at 0x000002921C3A2D40>
+noise_generator = <function noise_pair at 0x000002921C3A2DE0>
+attestation_path = WindowsPath('C:/Users/Superleo13/AppData/Local/Temp/pytest-of-Superleo13/pytest-2551/test_run_h2_smoke0/trials.harness_attestation.json')
+note = 'controle positivo do pedágio (judge real, séries sintéticas pareadas)'
+edge_verdict = 'COMPROVADA', null_verdict = 'não comprovada'
+metric = 'sharpe_diff_ci95', valid_for = datetime.timedelta(days=7), repo = None
+allow_dirty = False
+
+    def attest_pipeline_power(
+        evaluate_func,
+        edge_generator,
+        noise_generator,
+        *,
+        attestation_path: Path | str,
+        note: str = "",
+        edge_verdict: str = "COMPROVADA",
+        null_verdict: str = "REFUTADA",
+        metric: str = "",
+        valid_for: timedelta = timedelta(days=7),
+        repo: Path | str | None = None,
+        allow_dirty: bool = False,
+    ) -> dict:
+        """Roda o controle positivo e, PASSANDO, emite o atestado que destrava a
+        criação de trials novas no Experiment Registry (measurement.trials).
+    
+        `attestation_path`: onde gravar — use `trials.attestation_path_for(trials_json)`
+        para o local canônico (irmão do trials.json). Falhando o controle, levanta
+        PipelineHasNoPowerError e NÃO grava nada. Retorna o dict do atestado.
+    
+        `metric`: nome da métrica que o pipeline atestado
+        usa (ex.: "brier" para binário, "rps" para ordinal). Vai no atestado; o
+        registry exige que a trial declare a MESMA métrica e o
+        `pipeline_fingerprint` retornado. `valid_for` limita a vida do atestado.
+    
+        `repo`: raiz do repositório cujo estado de código entra no atestado (padrão:
+        diretório corrente). O atestado passa a gravar `code_version`.
+    
+        `allow_dirty`: FALSE por padrão — árvore suja levanta DirtyWorkingTreeError e
+        NÃO grava nada. Passe True apenas para exploração local, ciente de que a
+        trial autorizada nasce irreprodutível."""
+        if not isinstance(metric, str) or not metric:
+            raise ValueError("metric é obrigatória para emitir atestado de poder")
+        if valid_for <= timedelta(0):
+            raise ValueError("valid_for deve ser positivo")
+        code_version = current_code_version(repo)
+        if code_version.endswith(";dirty") and not allow_dirty:
+>           raise DirtyWorkingTreeError(
+                f"árvore de trabalho suja ({code_version}) — o atestado destrava trials "
+                "novas, e um atestado de código não identificável destrava trials que "
+                "ninguém consegue reproduzir. Faça commit do estado avaliado, ou passe "
+                "allow_dirty=True assumindo que a trial nasce irreprodutível."
+            )
+E           predictor_core.testing.harness.DirtyWorkingTreeError: árvore de trabalho suja (package:3.2.0;git:d48d05dc590c7e14a9186e7097c048c3020a6a53;dirty) — o atestado destrava trials novas, e um atestado de código não identificável destrava trials que ninguém consegue reproduzir. Faça commit do estado avaliado, ou passe allow_dirty=True assumindo que a trial nasce irreprodutível.
+
+..\runtime\predictor_core\testing\harness.py:167: DirtyWorkingTreeError
+______________________________ test_run_h4_smoke ______________________________
+
+tmp_path = WindowsPath('C:/Users/Superleo13/AppData/Local/Temp/pytest-of-Superleo13/pytest-2551/test_run_h4_smoke0')
+capsys = <_pytest.capture.CaptureFixture object at 0x000002921C5975B0>
+
+    def test_run_h4_smoke(tmp_path, capsys):
+        from config import load_config
+        cfg = load_config()
+        cfg["bootstrap"] = {"n_boot": 300, "block_length": 21, "confidence": 0.95, "seed": 42}
+    
+        conn = _synthetic_conn(tmp_path)
+        tp = tmp_path / "trials.json"
+>       trials_gate.attest(cfg, trials_path=tp)
+
+tests\test_h4_sizing.py:90: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+stocks_predictor\trials_gate.py:84: in attest
+    return harness.attest_pipeline_power(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+evaluate_func = <function attest.<locals>.<lambda> at 0x000002921D4B9A80>
+edge_generator = <function edge_pair at 0x000002921C3A2D40>
+noise_generator = <function noise_pair at 0x000002921C3A2DE0>
+attestation_path = WindowsPath('C:/Users/Superleo13/AppData/Local/Temp/pytest-of-Superleo13/pytest-2551/test_run_h4_smoke0/trials.harness_attestation.json')
+note = 'controle positivo do pedágio (judge real, séries sintéticas pareadas)'
+edge_verdict = 'COMPROVADA', null_verdict = 'não comprovada'
+metric = 'sharpe_diff_ci95', valid_for = datetime.timedelta(days=7), repo = None
+allow_dirty = False
+
+    def attest_pipeline_power(
+        evaluate_func,
+        edge_generator,
+        noise_generator,
+        *,
+        attestation_path: Path | str,
+        note: str = "",
+        edge_verdict: str = "COMPROVADA",
+        null_verdict: str = "REFUTADA",
+        metric: str = "",
+        valid_for: timedelta = timedelta(days=7),
+        repo: Path | str | None = None,
+        allow_dirty: bool = False,
+    ) -> dict:
+        """Roda o controle positivo e, PASSANDO, emite o atestado que destrava a
+        criação de trials novas no Experiment Registry (measurement.trials).
+    
+        `attestation_path`: onde gravar — use `trials.attestation_path_for(trials_json)`
+        para o local canônico (irmão do trials.json). Falhando o controle, levanta
+        PipelineHasNoPowerError e NÃO grava nada. Retorna o dict do atestado.
+    
+        `metric`: nome da métrica que o pipeline atestado
+        usa (ex.: "brier" para binário, "rps" para ordinal). Vai no atestado; o
+        registry exige que a trial declare a MESMA métrica e o
+        `pipeline_fingerprint` retornado. `valid_for` limita a vida do atestado.
+    
+        `repo`: raiz do repositório cujo estado de código entra no atestado (padrão:
+        diretório corrente). O atestado passa a gravar `code_version`.
+    
+        `allow_dirty`: FALSE por padrão — árvore suja levanta DirtyWorkingTreeError e
+        NÃO grava nada. Passe True apenas para exploração local, ciente de que a
+        trial autorizada nasce irreprodutível."""
+        if not isinstance(metric, str) or not metric:
+            raise ValueError("metric é obrigatória para emitir atestado de poder")
+        if valid_for <= timedelta(0):
+            raise ValueError("valid_for deve ser positivo")
+        code_version = current_code_version(repo)
+        if code_version.endswith(";dirty") and not allow_dirty:
+>           raise DirtyWorkingTreeError(
+                f"árvore de trabalho suja ({code_version}) — o atestado destrava trials "
+                "novas, e um atestado de código não identificável destrava trials que "
+                "ninguém consegue reproduzir. Faça commit do estado avaliado, ou passe "
+                "allow_dirty=True assumindo que a trial nasce irreprodutível."
+            )
+E           predictor_core.testing.harness.DirtyWorkingTreeError: árvore de trabalho suja (package:3.2.0;git:d48d05dc590c7e14a9186e7097c048c3020a6a53;dirty) — o atestado destrava trials novas, e um atestado de código não identificável destrava trials que ninguém consegue reproduzir. Faça commit do estado avaliado, ou passe allow_dirty=True assumindo que a trial nasce irreprodutível.
+
+..\runtime\predictor_core\testing\harness.py:167: DirtyWorkingTreeError
+______________________________ test_run_h5_smoke ______________________________
+
+tmp_path = WindowsPath('C:/Users/Superleo13/AppData/Local/Temp/pytest-of-Superleo13/pytest-2551/test_run_h5_smoke0')
+capsys = <_pytest.capture.CaptureFixture object at 0x000002921C5D7770>
+
+    def test_run_h5_smoke(tmp_path, capsys):
+        from config import load_config
+        cfg = load_config()
+        cfg["bootstrap"] = {"n_boot": 300, "block_length": 21, "confidence": 0.95, "seed": 42}
+    
+        conn = db.get_connection(tmp_path / "s.db")
+        tickers = [f"T{c}{c}{c}3" for c in "ABCDEFGHIJKL"]
+        cotahist.load_prices(conn, cotahist.synthetic_cotahist(tickers, _dates(900), seed=11),
+                             "COTAHIST_SYNTH.TXT")
+    
+        tp = tmp_path / "trials.json"
+>       trials_gate.attest(cfg, trials_path=tp)
+
+tests\test_h5_reversal.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+stocks_predictor\trials_gate.py:84: in attest
+    return harness.attest_pipeline_power(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+evaluate_func = <function attest.<locals>.<lambda> at 0x000002921D4BA020>
+edge_generator = <function edge_pair at 0x000002921C3A2D40>
+noise_generator = <function noise_pair at 0x000002921C3A2DE0>
+attestation_path = WindowsPath('C:/Users/Superleo13/AppData/Local/Temp/pytest-of-Superleo13/pytest-2551/test_run_h5_smoke0/trials.harness_attestation.json')
+note = 'controle positivo do pedágio (judge real, séries sintéticas pareadas)'
+edge_verdict = 'COMPROVADA', null_verdict = 'não comprovada'
+metric = 'sharpe_diff_ci95', valid_for = datetime.timedelta(days=7), repo = None
+allow_dirty = False
+
+    def attest_pipeline_power(
+        evaluate_func,
+        edge_generator,
+        noise_generator,
+        *,
+        attestation_path: Path | str,
+        note: str = "",
+        edge_verdict: str = "COMPROVADA",
+        null_verdict: str = "REFUTADA",
+        metric: str = "",
+        valid_for: timedelta = timedelta(days=7),
+        repo: Path | str | None = None,
+        allow_dirty: bool = False,
+    ) -> dict:
+        """Roda o controle positivo e, PASSANDO, emite o atestado que destrava a
+        criação de trials novas no Experiment Registry (measurement.trials).
+    
+        `attestation_path`: onde gravar — use `trials.attestation_path_for(trials_json)`
+        para o local canônico (irmão do trials.json). Falhando o controle, levanta
+        PipelineHasNoPowerError e NÃO grava nada. Retorna o dict do atestado.
+    
+        `metric`: nome da métrica que o pipeline atestado
+        usa (ex.: "brier" para binário, "rps" para ordinal). Vai no atestado; o
+        registry exige que a trial declare a MESMA métrica e o
+        `pipeline_fingerprint` retornado. `valid_for` limita a vida do atestado.
+    
+        `repo`: raiz do repositório cujo estado de código entra no atestado (padrão:
+        diretório corrente). O atestado passa a gravar `code_version`.
+    
+        `allow_dirty`: FALSE por padrão — árvore suja levanta DirtyWorkingTreeError e
+        NÃO grava nada. Passe True apenas para exploração local, ciente de que a
+        trial autorizada nasce irreprodutível."""
+        if not isinstance(metric, str) or not metric:
+            raise ValueError("metric é obrigatória para emitir atestado de poder")
+        if valid_for <= timedelta(0):
+            raise ValueError("valid_for deve ser positivo")
+        code_version = current_code_version(repo)
+        if code_version.endswith(";dirty") and not allow_dirty:
+>           raise DirtyWorkingTreeError(
+                f"árvore de trabalho suja ({code_version}) — o atestado destrava trials "
+                "novas, e um atestado de código não identificável destrava trials que "
+                "ninguém consegue reproduzir. Faça commit do estado avaliado, ou passe "
+                "allow_dirty=True assumindo que a trial nasce irreprodutível."
+            )
+E           predictor_core.testing.harness.DirtyWorkingTreeError: árvore de trabalho suja (package:3.2.0;git:d48d05dc590c7e14a9186e7097c048c3020a6a53;dirty) — o atestado destrava trials novas, e um atestado de código não identificável destrava trials que ninguém consegue reproduzir. Faça commit do estado avaliado, ou passe allow_dirty=True assumindo que a trial nasce irreprodutível.
+
+..\runtime\predictor_core\testing\harness.py:167: DirtyWorkingTreeError
+______________________________ test_run_h6_smoke ______________________________
+
+tmp_path = WindowsPath('C:/Users/Superleo13/AppData/Local/Temp/pytest-of-Superleo13/pytest-2551/test_run_h6_smoke0')
+capsys = <_pytest.capture.CaptureFixture object at 0x000002921D42A680>
+
+    def test_run_h6_smoke(tmp_path, capsys):
+        from config import load_config
+        cfg = load_config()
+        cfg["bootstrap"] = {"n_boot": 300, "block_length": 21, "confidence": 0.95, "seed": 42}
+    
+        conn = _synthetic_conn(tmp_path)
+        tp = tmp_path / "trials.json"
+>       trials_gate.attest(cfg, trials_path=tp)
+
+tests\test_h6_momentum6.py:35: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+stocks_predictor\trials_gate.py:84: in attest
+    return harness.attest_pipeline_power(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+evaluate_func = <function attest.<locals>.<lambda> at 0x000002921D4A7060>
+edge_generator = <function edge_pair at 0x000002921C3A2D40>
+noise_generator = <function noise_pair at 0x000002921C3A2DE0>
+attestation_path = WindowsPath('C:/Users/Superleo13/AppData/Local/Temp/pytest-of-Superleo13/pytest-2551/test_run_h6_smoke0/trials.harness_attestation.json')
+note = 'controle positivo do pedágio (judge real, séries sintéticas pareadas)'
+edge_verdict = 'COMPROVADA', null_verdict = 'não comprovada'
+metric = 'sharpe_diff_ci95', valid_for = datetime.timedelta(days=7), repo = None
+allow_dirty = False
+
+    def attest_pipeline_power(
+        evaluate_func,
+        edge_generator,
+        noise_generator,
+        *,
+        attestation_path: Path | str,
+        note: str = "",
+        edge_verdict: str = "COMPROVADA",
+        null_verdict: str = "REFUTADA",
+        metric: str = "",
+        valid_for: timedelta = timedelta(days=7),
+        repo: Path | str | None = None,
+        allow_dirty: bool = False,
+    ) -> dict:
+        """Roda o controle positivo e, PASSANDO, emite o atestado que destrava a
+        criação de trials novas no Experiment Registry (measurement.trials).
+    
+        `attestation_path`: onde gravar — use `trials.attestation_path_for(trials_json)`
+        para o local canônico (irmão do trials.json). Falhando o controle, levanta
+        PipelineHasNoPowerError e NÃO grava nada. Retorna o dict do atestado.
+    
+        `metric`: nome da métrica que o pipeline atestado
+        usa (ex.: "brier" para binário, "rps" para ordinal). Vai no atestado; o
+        registry exige que a trial declare a MESMA métrica e o
+        `pipeline_fingerprint` retornado. `valid_for` limita a vida do atestado.
+    
+        `repo`: raiz do repositório cujo estado de código entra no atestado (padrão:
+        diretório corrente). O atestado passa a gravar `code_version`.
+    
+        `allow_dirty`: FALSE por padrão — árvore suja levanta DirtyWorkingTreeError e
+        NÃO grava nada. Passe True apenas para exploração local, ciente de que a
+        trial autorizada nasce irreprodutível."""
+        if not isinstance(metric, str) or not metric:
+            raise ValueError("metric é obrigatória para emitir atestado de poder")
+        if valid_for <= timedelta(0):
+            raise ValueError("valid_for deve ser positivo")
+        code_version = current_code_version(repo)
+        if code_version.endswith(";dirty") and not allow_dirty:
+>           raise DirtyWorkingTreeError(
+                f"árvore de trabalho suja ({code_version}) — o atestado destrava trials "
+                "novas, e um atestado de código não identificável destrava trials que "
+                "ninguém consegue reproduzir. Faça commit do estado avaliado, ou passe "
+                "allow_dirty=True assumindo que a trial nasce irreprodutível."
+            )
+E           predictor_core.testing.harness.DirtyWorkingTreeError: árvore de trabalho suja (package:3.2.0;git:d48d05dc590c7e14a9186e7097c048c3020a6a53;dirty) — o atestado destrava trials novas, e um atestado de código não identificável destrava trials que ninguém consegue reproduzir. Faça commit do estado avaliado, ou passe allow_dirty=True assumindo que a trial nasce irreprodutível.
+
+..\runtime\predictor_core\testing\harness.py:167: DirtyWorkingTreeError
+______________________________ test_run_h7_smoke ______________________________
+
+tmp_path = WindowsPath('C:/Users/Superleo13/AppData/Local/Temp/pytest-of-Superleo13/pytest-2551/test_run_h7_smoke0')
+capsys = <_pytest.capture.CaptureFixture object at 0x000002921C19D790>
+
+    def test_run_h7_smoke(tmp_path, capsys):
+        from config import load_config
+        cfg = load_config()
+        cfg["bootstrap"] = {"n_boot": 300, "block_length": 21, "confidence": 0.95, "seed": 42}
+    
+        conn = _synthetic_conn(tmp_path)
+        tp = tmp_path / "trials.json"
+>       trials_gate.attest(cfg, trials_path=tp)
+
+tests\test_h7_quality_roe.py:50: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+stocks_predictor\trials_gate.py:84: in attest
+    return harness.attest_pipeline_power(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+evaluate_func = <function attest.<locals>.<lambda> at 0x000002921D4A7060>
+edge_generator = <function edge_pair at 0x000002921C3A2D40>
+noise_generator = <function noise_pair at 0x000002921C3A2DE0>
+attestation_path = WindowsPath('C:/Users/Superleo13/AppData/Local/Temp/pytest-of-Superleo13/pytest-2551/test_run_h7_smoke0/trials.harness_attestation.json')
+note = 'controle positivo do pedágio (judge real, séries sintéticas pareadas)'
+edge_verdict = 'COMPROVADA', null_verdict = 'não comprovada'
+metric = 'sharpe_diff_ci95', valid_for = datetime.timedelta(days=7), repo = None
+allow_dirty = False
+
+    def attest_pipeline_power(
+        evaluate_func,
+        edge_generator,
+        noise_generator,
+        *,
+        attestation_path: Path | str,
+        note: str = "",
+        edge_verdict: str = "COMPROVADA",
+        null_verdict: str = "REFUTADA",
+        metric: str = "",
+        valid_for: timedelta = timedelta(days=7),
+        repo: Path | str | None = None,
+        allow_dirty: bool = False,
+    ) -> dict:
+        """Roda o controle positivo e, PASSANDO, emite o atestado que destrava a
+        criação de trials novas no Experiment Registry (measurement.trials).
+    
+        `attestation_path`: onde gravar — use `trials.attestation_path_for(trials_json)`
+        para o local canônico (irmão do trials.json). Falhando o controle, levanta
+        PipelineHasNoPowerError e NÃO grava nada. Retorna o dict do atestado.
+    
+        `metric`: nome da métrica que o pipeline atestado
+        usa (ex.: "brier" para binário, "rps" para ordinal). Vai no atestado; o
+        registry exige que a trial declare a MESMA métrica e o
+        `pipeline_fingerprint` retornado. `valid_for` limita a vida do atestado.
+    
+        `repo`: raiz do repositório cujo estado de código entra no atestado (padrão:
+        diretório corrente). O atestado passa a gravar `code_version`.
+    
+        `allow_dirty`: FALSE por padrão — árvore suja levanta DirtyWorkingTreeError e
+        NÃO grava nada. Passe True apenas para exploração local, ciente de que a
+        trial autorizada nasce irreprodutível."""
+        if not isinstance(metric, str) or not metric:
+            raise ValueError("metric é obrigatória para emitir atestado de poder")
+        if valid_for <= timedelta(0):
+            raise ValueError("valid_for deve ser positivo")
+        code_version = current_code_version(repo)
+        if code_version.endswith(";dirty") and not allow_dirty:
+>           raise DirtyWorkingTreeError(
+                f"árvore de trabalho suja ({code_version}) — o atestado destrava trials "
+                "novas, e um atestado de código não identificável destrava trials que "
+                "ninguém consegue reproduzir. Faça commit do estado avaliado, ou passe "
+                "allow_dirty=True assumindo que a trial nasce irreprodutível."
+            )
+E           predictor_core.testing.harness.DirtyWorkingTreeError: árvore de trabalho suja (package:3.2.0;git:d48d05dc590c7e14a9186e7097c048c3020a6a53;dirty) — o atestado destrava trials novas, e um atestado de código não identificável destrava trials que ninguém consegue reproduzir. Faça commit do estado avaliado, ou passe allow_dirty=True assumindo que a trial nasce irreprodutível.
+
+..\runtime\predictor_core\testing\harness.py:167: DirtyWorkingTreeError
+______________________________ test_run_h8_smoke ______________________________
+
+tmp_path = WindowsPath('C:/Users/Superleo13/AppData/Local/Temp/pytest-of-Superleo13/pytest-2551/test_run_h8_smoke0')
+capsys = <_pytest.capture.CaptureFixture object at 0x000002921D44FAD0>
+
+    def test_run_h8_smoke(tmp_path, capsys):
+        from config import load_config
+        cfg = load_config()
+        cfg["bootstrap"] = {"n_boot": 300, "block_length": 21, "confidence": 0.95, "seed": 42}
+    
+        conn = _synthetic_conn(tmp_path)
+        tp = tmp_path / "trials.json"
+>       trials_gate.attest(cfg, trials_path=tp)
+
+tests\test_h8_double_filter.py:68: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+stocks_predictor\trials_gate.py:84: in attest
+    return harness.attest_pipeline_power(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+evaluate_func = <function attest.<locals>.<lambda> at 0x000002921D4A7060>
+edge_generator = <function edge_pair at 0x000002921C3A2D40>
+noise_generator = <function noise_pair at 0x000002921C3A2DE0>
+attestation_path = WindowsPath('C:/Users/Superleo13/AppData/Local/Temp/pytest-of-Superleo13/pytest-2551/test_run_h8_smoke0/trials.harness_attestation.json')
+note = 'controle positivo do pedágio (judge real, séries sintéticas pareadas)'
+edge_verdict = 'COMPROVADA', null_verdict = 'não comprovada'
+metric = 'sharpe_diff_ci95', valid_for = datetime.timedelta(days=7), repo = None
+allow_dirty = False
+
+    def attest_pipeline_power(
+        evaluate_func,
+        edge_generator,
+        noise_generator,
+        *,
+        attestation_path: Path | str,
+        note: str = "",
+        edge_verdict: str = "COMPROVADA",
+        null_verdict: str = "REFUTADA",
+        metric: str = "",
+        valid_for: timedelta = timedelta(days=7),
+        repo: Path | str | None = None,
+        allow_dirty: bool = False,
+    ) -> dict:
+        """Roda o controle positivo e, PASSANDO, emite o atestado que destrava a
+        criação de trials novas no Experiment Registry (measurement.trials).
+    
+        `attestation_path`: onde gravar — use `trials.attestation_path_for(trials_json)`
+        para o local canônico (irmão do trials.json). Falhando o controle, levanta
+        PipelineHasNoPowerError e NÃO grava nada. Retorna o dict do atestado.
+    
+        `metric`: nome da métrica que o pipeline atestado
+        usa (ex.: "brier" para binário, "rps" para ordinal). Vai no atestado; o
+        registry exige que a trial declare a MESMA métrica e o
+        `pipeline_fingerprint` retornado. `valid_for` limita a vida do atestado.
+    
+        `repo`: raiz do repositório cujo estado de código entra no atestado (padrão:
+        diretório corrente). O atestado passa a gravar `code_version`.
+    
+        `allow_dirty`: FALSE por padrão — árvore suja levanta DirtyWorkingTreeError e
+        NÃO grava nada. Passe True apenas para exploração local, ciente de que a
+        trial autorizada nasce irreprodutível."""
+        if not isinstance(metric, str) or not metric:
+            raise ValueError("metric é obrigatória para emitir atestado de poder")
+        if valid_for <= timedelta(0):
+            raise ValueError("valid_for deve ser positivo")
+        code_version = current_code_version(repo)
+        if code_version.endswith(";dirty") and not allow_dirty:
+>           raise DirtyWorkingTreeError(
+                f"árvore de trabalho suja ({code_version}) — o atestado destrava trials "
+                "novas, e um atestado de código não identificável destrava trials que "
+                "ninguém consegue reproduzir. Faça commit do estado avaliado, ou passe "
+                "allow_dirty=True assumindo que a trial nasce irreprodutível."
+            )
+E           predictor_core.testing.harness.DirtyWorkingTreeError: árvore de trabalho suja (package:3.2.0;git:d48d05dc590c7e14a9186e7097c048c3020a6a53;dirty) — o atestado destrava trials novas, e um atestado de código não identificável destrava trials que ninguém consegue reproduzir. Faça commit do estado avaliado, ou passe allow_dirty=True assumindo que a trial nasce irreprodutível.
+
+..\runtime\predictor_core\testing\harness.py:167: DirtyWorkingTreeError
+______________________________ test_run_h9_smoke ______________________________
+
+tmp_path = WindowsPath('C:/Users/Superleo13/AppData/Local/Temp/pytest-of-Superleo13/pytest-2551/test_run_h9_smoke0')
+capsys = <_pytest.capture.CaptureFixture object at 0x000002921D503070>
+
+    def test_run_h9_smoke(tmp_path, capsys):
+        from config import load_config
+        cfg = load_config()
+        cfg["bootstrap"] = {"n_boot": 300, "block_length": 21, "confidence": 0.95, "seed": 42}
+    
+        conn = _synthetic_conn(tmp_path)
+        tp = tmp_path / "trials.json"
+>       trials_gate.attest(cfg, trials_path=tp)
+
+tests\test_h9_quality_leverage.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+stocks_predictor\trials_gate.py:84: in attest
+    return harness.attest_pipeline_power(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+evaluate_func = <function attest.<locals>.<lambda> at 0x000002921D4A7060>
+edge_generator = <function edge_pair at 0x000002921C3A2D40>
+noise_generator = <function noise_pair at 0x000002921C3A2DE0>
+attestation_path = WindowsPath('C:/Users/Superleo13/AppData/Local/Temp/pytest-of-Superleo13/pytest-2551/test_run_h9_smoke0/trials.harness_attestation.json')
+note = 'controle positivo do pedágio (judge real, séries sintéticas pareadas)'
+edge_verdict = 'COMPROVADA', null_verdict = 'não comprovada'
+metric = 'sharpe_diff_ci95', valid_for = datetime.timedelta(days=7), repo = None
+allow_dirty = False
+
+    def attest_pipeline_power(
+        evaluate_func,
+        edge_generator,
+        noise_generator,
+        *,
+        attestation_path: Path | str,
+        note: str = "",
+        edge_verdict: str = "COMPROVADA",
+        null_verdict: str = "REFUTADA",
+        metric: str = "",
+        valid_for: timedelta = timedelta(days=7),
+        repo: Path | str | None = None,
+        allow_dirty: bool = False,
+    ) -> dict:
+        """Roda o controle positivo e, PASSANDO, emite o atestado que destrava a
+        criação de trials novas no Experiment Registry (measurement.trials).
+    
+        `attestation_path`: onde gravar — use `trials.attestation_path_for(trials_json)`
+        para o local canônico (irmão do trials.json). Falhando o controle, levanta
+        PipelineHasNoPowerError e NÃO grava nada. Retorna o dict do atestado.
+    
+        `metric`: nome da métrica que o pipeline atestado
+        usa (ex.: "brier" para binário, "rps" para ordinal). Vai no atestado; o
+        registry exige que a trial declare a MESMA métrica e o
+        `pipeline_fingerprint` retornado. `valid_for` limita a vida do atestado.
+    
+        `repo`: raiz do repositório cujo estado de código entra no atestado (padrão:
+        diretório corrente). O atestado passa a gravar `code_version`.
+    
+        `allow_dirty`: FALSE por padrão — árvore suja levanta DirtyWorkingTreeError e
+        NÃO grava nada. Passe True apenas para exploração local, ciente de que a
+        trial autorizada nasce irreprodutível."""
+        if not isinstance(metric, str) or not metric:
+            raise ValueError("metric é obrigatória para emitir atestado de poder")
+        if valid_for <= timedelta(0):
+            raise ValueError("valid_for deve ser positivo")
+        code_version = current_code_version(repo)
+        if code_version.endswith(";dirty") and not allow_dirty:
+>           raise DirtyWorkingTreeError(
+                f"árvore de trabalho suja ({code_version}) — o atestado destrava trials "
+                "novas, e um atestado de código não identificável destrava trials que "
+                "ninguém consegue reproduzir. Faça commit do estado avaliado, ou passe "
+                "allow_dirty=True assumindo que a trial nasce irreprodutível."
+            )
+E           predictor_core.testing.harness.DirtyWorkingTreeError: árvore de trabalho suja (package:3.2.0;git:d48d05dc590c7e14a9186e7097c048c3020a6a53;dirty) — o atestado destrava trials novas, e um atestado de código não identificável destrava trials que ninguém consegue reproduzir. Faça commit do estado avaliado, ou passe allow_dirty=True assumindo que a trial nasce irreprodutível.
+
+..\runtime\predictor_core\testing\harness.py:167: DirtyWorkingTreeError
+=========================== short test summary info ===========================
+FAILED tests/test_config.py::test_main_backtest_h_dispatcher_runs - Assertion...
+FAILED tests/test_h10_double_filter.py::test_run_h10_smoke - predictor_core.t...
+FAILED tests/test_h11_total_return.py::test_run_h11_smoke - predictor_core.te...
+FAILED tests/test_h11_total_return.py::test_run_h11_does_not_mutate_shared_config
+FAILED tests/test_h12_quality_margin.py::test_run_h12_smoke - predictor_core....
+FAILED tests/test_h13_revenue_growth.py::test_run_h13_smoke - predictor_core....
+FAILED tests/test_h14_near_52w_high.py::test_run_h14_smoke - predictor_core.t...
+FAILED tests/test_h15_volume_surge.py::test_run_h15_smoke - predictor_core.te...
+FAILED tests/test_h16_turn_of_month.py::test_run_h16_smoke - predictor_core.t...
+FAILED tests/test_h17_accruals.py::test_run_h17_smoke - predictor_core.testin...
+FAILED tests/test_h18_h19_value.py::test_run_h18_smoke - predictor_core.testi...
+FAILED tests/test_h18_h19_value.py::test_run_h19_smoke - predictor_core.testi...
+FAILED tests/test_h2_gate.py::test_register_hypothesis_preserves_realized_sharpe
+FAILED tests/test_h2_gate.py::test_attest_then_register_and_identity_lock - p...
+FAILED tests/test_h2_gate.py::test_run_h2_smoke - predictor_core.testing.harn...
+FAILED tests/test_h4_sizing.py::test_run_h4_smoke - predictor_core.testing.ha...
+FAILED tests/test_h5_reversal.py::test_run_h5_smoke - predictor_core.testing....
+FAILED tests/test_h6_momentum6.py::test_run_h6_smoke - predictor_core.testing...
+FAILED tests/test_h7_quality_roe.py::test_run_h7_smoke - predictor_core.testi...
+FAILED tests/test_h8_double_filter.py::test_run_h8_smoke - predictor_core.tes...
+FAILED tests/test_h9_quality_leverage.py::test_run_h9_smoke - predictor_core....
+21 failed, 364 passed in 65.69s (0:01:05)

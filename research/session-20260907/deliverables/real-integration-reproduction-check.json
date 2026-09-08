@@ -1,0 +1,37 @@
+{
+  "offline_git_clone": "PASS",
+  "controls_identical": true,
+  "protocol_hash_identical": true,
+  "capital_observations_identical": true,
+  "other_tables_identical": [
+    "adjustments",
+    "cash_event_coverage",
+    "cash_events",
+    "decisions",
+    "dividends",
+    "fundamentals",
+    "fundamentals_pit",
+    "ingestion_issues",
+    "prices_raw",
+    "quarantine",
+    "research_source_documents",
+    "rj_company_observations",
+    "rj_episodes",
+    "rj_events",
+    "rj_family_scores",
+    "rj_universe",
+    "rj_universe_snapshots",
+    "runs",
+    "shares_pit",
+    "universe_snapshots"
+  ],
+  "stock_bonus_economic_records_identical": true,
+  "metadata_differences": {
+    "_migrations": "Application timestamp in the fresh database",
+    "stock_bonus_events.source_sha256": "Original CRLF input vs Git-normalized LF; both source byte streams preserved, economic values identical"
+  },
+  "database_bytes_identical": false,
+  "original_tested_commit": "5c09c7b8ffebefef00467cbab12481f3535a7837",
+  "delivery_clone_commit": "8b3c3fcd32ffecdf0bfe328f6f80b247b9800174",
+  "code_difference": "Documentation only; execution and control code unchanged."
+}

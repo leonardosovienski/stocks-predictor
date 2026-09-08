@@ -1,0 +1,11 @@
+{
+  "packaged_at_utc": "2026-09-07T05:43:20.224173+00:00",
+  "archive": "stocks-h17-pronto-final.zip",
+  "sha256": "5096bf505dc72f930ffbccbc93dfe255aa37682a467ee13bf8c93846e66d2341",
+  "bytes": 12027471,
+  "files": 768,
+  "crc_check": "PASS",
+  "code_commit": "4f487098e702004a88f02fe65d62a008c6df618b",
+  "repository_delivery_commit": "bd5b09b905d56bb65fcd50acf1f031d6d1679bb0",
+  "corrected_observation_sha256": "45bfbc925c62b9561b2c5cea5dc6c65c2c73fa6e5d1b02c5c19f0dae16526135"
+}

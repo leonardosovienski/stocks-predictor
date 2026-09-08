@@ -1,0 +1,40 @@
+2016 cash equity records 32657
+2017 cash equity records 67628
+2018 cash equity records 104549
+2019 cash equity records 141974
+2020 cash equity records 180926
+2021 cash equity records 221656
+2022 cash equity records 261217
+2023 cash equity records 298640
+2024 cash equity records 335718
+2025 cash equity records 370854
+2026 cash equity records 391824
+{
+  "raw_excerpts": [
+    "cash-equity-2016.txt",
+    "cash-equity-2017.txt",
+    "cash-equity-2018.txt",
+    "cash-equity-2019.txt",
+    "cash-equity-2020.txt",
+    "cash-equity-2021.txt",
+    "cash-equity-2022.txt",
+    "cash-equity-2023.txt",
+    "cash-equity-2024.txt",
+    "cash-equity-2025.txt",
+    "cash-equity-2026.txt"
+  ],
+  "old_quote_count": 387101,
+  "new_quote_count": 391824,
+  "existing_quote_value_changes": 0,
+  "added_tickers": [
+    "NEOE3B"
+  ],
+  "bdi_counts": {
+    "02": 387102,
+    "05": 65,
+    "07": 137,
+    "08": 4036,
+    "58": 484
+  },
+  "selection_policy": "Original frozen candidate features and selections will be retained; only outcomes remeasured."
+}

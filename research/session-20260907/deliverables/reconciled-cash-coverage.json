@@ -1,0 +1,26 @@
+[
+  {
+    "ticker": "ENGI3",
+    "start_date": "2016-01-04",
+    "end_date": "2026-08-27",
+    "source": "B3 CVM 15253 full paginated cash history + https://api.mziq.com/mzfilemanager/v2/d/60f49a2d-bd8c-4fd9-95ab-bdf833097a83/c1722b44-9139-333e-3545-30dc98ed51c0?origin=2; source manifests in delivery; reconciliation 2026-09-07"
+  },
+  {
+    "ticker": "ENGI4",
+    "start_date": "2016-01-04",
+    "end_date": "2026-08-27",
+    "source": "B3 CVM 15253 full paginated cash history + https://api.mziq.com/mzfilemanager/v2/d/60f49a2d-bd8c-4fd9-95ab-bdf833097a83/c1722b44-9139-333e-3545-30dc98ed51c0?origin=2; source manifests in delivery; reconciliation 2026-09-07"
+  },
+  {
+    "ticker": "ENGI11",
+    "start_date": "2016-01-04",
+    "end_date": "2026-08-27",
+    "source": "B3 CVM 15253 full paginated cash history + https://api.mziq.com/mzfilemanager/v2/d/60f49a2d-bd8c-4fd9-95ab-bdf833097a83/c1722b44-9139-333e-3545-30dc98ed51c0?origin=2; source manifests in delivery; reconciliation 2026-09-07"
+  },
+  {
+    "ticker": "ABEV3",
+    "start_date": "2016-01-04",
+    "end_date": "2026-06-22",
+    "source": "B3 CVM 23264 full paginated cash history + https://api.mziq.com/mzfilemanager/v2/d/c8182463-4b7e-408c-9d0f-42797662435e/24107927-8c3d-7046-8ae8-b2c677b4ed63?origin=2; source manifests in delivery; reconciliation 2026-09-07"
+  }
+]

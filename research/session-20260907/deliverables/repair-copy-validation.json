@@ -1,0 +1,48 @@
+{
+  "source_database_sha256": "a22739794ba4a43a11544338d4a91e14cb6a0b1f7b132ab460f96d3359f63cf4",
+  "source_unchanged": true,
+  "output_database": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-06\\files-pasted-by-the-user-autonomous\\work\\stocks-cvm-2023-repaired-example.db",
+  "output_database_sha256": "07197228920e4082954afbc9035509ae74e84be1773195a4c5b71a435481a804",
+  "inputs": [
+    {
+      "kind": "dfp",
+      "year": 2023,
+      "zip_sha256": "d7ecbeb48b132d9e7480236d410d3587f4bd15efdf738e0b857647e178d3a261",
+      "mapping_sha256": "25051927bd4222ad734c2503d98816cee6c33be61072a8b11a9b6ec10dc6670b",
+      "derived_documents": 475,
+      "mapped_documents": 3,
+      "basis_sha256": null
+    },
+    {
+      "kind": "fre",
+      "year": 2023,
+      "zip_sha256": "995c8c3faa11bb4970e33e423366e6eab6b33c37ae82ec71fb60e54264b96fb7",
+      "mapping_sha256": "25051927bd4222ad734c2503d98816cee6c33be61072a8b11a9b6ec10dc6670b",
+      "derived_documents": 455,
+      "mapped_documents": 3,
+      "basis_sha256": null
+    }
+  ],
+  "results": [
+    {
+      "kind": "dfp",
+      "year": 2023,
+      "inserted": 3
+    },
+    {
+      "kind": "fre",
+      "year": 2023,
+      "inserted": 3
+    }
+  ],
+  "integrity_check": "ok",
+  "historical_tables_updated": false,
+  "performance_observed": false,
+  "proof_authorized": false,
+  "limitations": [
+    "Only supplied years and explicit mappings were rebuilt.",
+    "FRE observations lack a verified effective share/price basis.",
+    "Verified security-specific cash-event history must be supplied separately."
+  ],
+  "scope": "2023 only, explicit three-issuer demonstrator; not a full operational backfill"
+}

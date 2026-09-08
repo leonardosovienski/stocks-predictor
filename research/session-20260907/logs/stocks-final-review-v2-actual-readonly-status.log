@@ -1,0 +1,31 @@
+============================================================
+stocks-predictor — status
+============================================================
+
+core compartilhado: 3.2.0
+code_version      : 741d237
+config_hash       : 277cd20502649410
+frozen_hash (H1)  : 4a4e8d57e1224191
+frozen_hash (H2)  : da5a063cedf2cd3a
+frozen_hash (H4)  : 5ef902a7765eda90
+frozen_hash (H5)  : 77f0e1a65033aad7
+  universo       : top 60 por liquidez, janela 126 pregões
+  fator          : momentum_12_1 (252-21)
+  carteira       : top_quintile, long_only
+  custo roundtrip: ~0.36%
+
+banco            : C:\Users\Superleo13\stocks-predictor-work\data\stocks.db (existe)
+tabela           | linhas
+------------------------------
+prices_raw       | 1149872
+adjustments      | 43
+quarantine       | 2227
+universe_snapshots| 60
+decisions        | 0
+runs             | 1
+
+trials (DSR)     : 15 tentativa(s) registrada(s) — h1-momentum-12-1, h2-lowvol-252, h4-invvol-sizing-252, h5-strev-21, h6-momentum-6-1, h8-mom-lowvol-double, h7-quality-roe, h9-quality-leverage, h10-roe-leverage-double, h11-momentum-12-1-total-return, h12-quality-net-margin, h13-revenue-growth-yoy, h14-near-52w-high, h15-volume-surge, h16-turn-of-month
+
+pesquisa         : H19 trimestral em Discovery; H18 controle; H17 inconclusiva.
+economia         : lucro líquido não validado; NO_GO para operar (ver HANDOFF).
+testes           : py -3.13 -m pytest -q

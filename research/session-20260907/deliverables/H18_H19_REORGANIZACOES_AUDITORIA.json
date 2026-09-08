@@ -1,0 +1,21 @@
+{
+  "observed_at_utc": "2026-09-07T18:01:01.684485+00:00",
+  "tested_code_commit": "54fd8643ef43c3b8182deb0d82a8e186498f1f91",
+  "test_suite": "533 passed in 153.45s",
+  "coverage_percent": 80,
+  "specific_tests": 18,
+  "ruff_ci_scope": "PASS",
+  "pyright_configured_scope": "PASS",
+  "wheel_build": "PASS",
+  "installed_wheel_import_outside_checkout": "PASS",
+  "changed_cells": 70,
+  "distinct_holding_intervals_now_measured": 35,
+  "previously_scored_returns_changed": 0,
+  "original_selections_and_factors_verified_identical": true,
+  "primary_reorganizations": 13,
+  "subscription_policies": 6,
+  "operational_db_sha256": "a22739794ba4a43a11544338d4a91e14cb6a0b1f7b132ab460f96d3359f63cf4",
+  "tested_prior_source_db_sha256": "a8238568980d3303890b04590cfb5c55ab2d24c9271edd86820269336b09679a",
+  "result_sha256": "c47fcca89d07e2064c1ba6ebc7a1f1dc763473a1364291284dfe6d761d7e9128",
+  "protocol_semantic_sha256": "c714aee9fde793fd1e612426782dac61abe5f6231c6a0d2429e115618622a2f4"
+}

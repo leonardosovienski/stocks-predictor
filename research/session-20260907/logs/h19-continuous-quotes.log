@@ -1,0 +1,10 @@
+{"year": 2018, "cumulative_rows": {"010": 10702, "020": 10679}}
+{"year": 2019, "cumulative_rows": {"010": 32460, "020": 32488}}
+{"year": 2020, "cumulative_rows": {"010": 55992, "020": 56034}}
+{"year": 2021, "cumulative_rows": {"010": 81418, "020": 81460}}
+{"year": 2022, "cumulative_rows": {"010": 106720, "020": 106761}}
+{"year": 2023, "cumulative_rows": {"010": 130734, "020": 130775}}
+{"year": 2024, "cumulative_rows": {"010": 154294, "020": 154335}}
+{"year": 2025, "cumulative_rows": {"010": 177161, "020": 177059}}
+{"year": 2026, "cumulative_rows": {"010": 182556, "020": 182392}}
+{"complete_quote_extraction": true, "rows": {"010": 182556, "020": 182392}, "plans_per_case": 32}

@@ -1,0 +1,181 @@
+{
+  "all_historical_tables_unchanged": true,
+  "checks": [
+    {
+      "table": "adjustments",
+      "source": {
+        "rows": 43,
+        "sha256": "40ef4fc2a1293465309fcbaaca794acd5324763e40dea1277387dcdb58a62f99"
+      },
+      "copy": {
+        "rows": 43,
+        "sha256": "40ef4fc2a1293465309fcbaaca794acd5324763e40dea1277387dcdb58a62f99"
+      },
+      "unchanged": true
+    },
+    {
+      "table": "decisions",
+      "source": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "copy": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "unchanged": true
+    },
+    {
+      "table": "dividends",
+      "source": {
+        "rows": 2384,
+        "sha256": "e87b870fc64ea4ab381604c424bb576452ace1679eaf45231c46e19f3c26a2d1"
+      },
+      "copy": {
+        "rows": 2384,
+        "sha256": "e87b870fc64ea4ab381604c424bb576452ace1679eaf45231c46e19f3c26a2d1"
+      },
+      "unchanged": true
+    },
+    {
+      "table": "fundamentals",
+      "source": {
+        "rows": 1579,
+        "sha256": "ff93997158996180a9d8e172549805f52e230167946cf5cec577ca9c0e5e072f"
+      },
+      "copy": {
+        "rows": 1579,
+        "sha256": "ff93997158996180a9d8e172549805f52e230167946cf5cec577ca9c0e5e072f"
+      },
+      "unchanged": true
+    },
+    {
+      "table": "prices_raw",
+      "source": {
+        "rows": 1149872,
+        "sha256": "78e7a8557b621ee434e40b74509aae9609295e57e9cb073901942994193bb964"
+      },
+      "copy": {
+        "rows": 1149872,
+        "sha256": "78e7a8557b621ee434e40b74509aae9609295e57e9cb073901942994193bb964"
+      },
+      "unchanged": true
+    },
+    {
+      "table": "quarantine",
+      "source": {
+        "rows": 2227,
+        "sha256": "78808f7856cf66a3a2776e45c467787b304e93e8c17ed8cbf991791e2d1721b7"
+      },
+      "copy": {
+        "rows": 2227,
+        "sha256": "78808f7856cf66a3a2776e45c467787b304e93e8c17ed8cbf991791e2d1721b7"
+      },
+      "unchanged": true
+    },
+    {
+      "table": "rj_company_observations",
+      "source": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "copy": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "unchanged": true
+    },
+    {
+      "table": "rj_episodes",
+      "source": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "copy": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "unchanged": true
+    },
+    {
+      "table": "rj_events",
+      "source": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "copy": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "unchanged": true
+    },
+    {
+      "table": "rj_family_scores",
+      "source": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "copy": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "unchanged": true
+    },
+    {
+      "table": "rj_universe",
+      "source": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "copy": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "unchanged": true
+    },
+    {
+      "table": "rj_universe_snapshots",
+      "source": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "copy": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "unchanged": true
+    },
+    {
+      "table": "runs",
+      "source": {
+        "rows": 1,
+        "sha256": "9138bb136b9d1c054e3a1f89ef84cfb6bc71ad43c737c9f1fcac12769a33290c"
+      },
+      "copy": {
+        "rows": 1,
+        "sha256": "9138bb136b9d1c054e3a1f89ef84cfb6bc71ad43c737c9f1fcac12769a33290c"
+      },
+      "unchanged": true
+    },
+    {
+      "table": "universe_snapshots",
+      "source": {
+        "rows": 60,
+        "sha256": "929900aad27709d495a130d7c69997e5b4c33263e270ca87be66fbc7b1f42d58"
+      },
+      "copy": {
+        "rows": 60,
+        "sha256": "929900aad27709d495a130d7c69997e5b4c33263e270ca87be66fbc7b1f42d58"
+      },
+      "unchanged": true
+    }
+  ],
+  "new_counts": {
+    "fundamentals_pit": 0,
+    "shares_pit": 0,
+    "cash_events": 95,
+    "cash_event_coverage": 4,
+    "ingestion_issues": 0,
+    "research_source_documents": 30835
+  }
+}

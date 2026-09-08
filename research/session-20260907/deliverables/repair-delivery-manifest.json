@@ -1,0 +1,45 @@
+{
+  "commit": "1117fee33552648e5a698ba86c83b5d5187aa700",
+  "tested_code_commit": "608ac2c709db239128886545168548049026f03b",
+  "branch": "fix/stocks-cvm-execution-20260907",
+  "patch_base": "d48d05dc590c7e14a9186e7097c048c3020a6a53",
+  "tests": {
+    "passed": 422,
+    "seconds": 139.14,
+    "python": "3.13.14",
+    "core": "3.2.0",
+    "coverage": "7.16.0",
+    "ruff": "PASS",
+    "pyright": "PASS",
+    "wheel_build": "PASS",
+    "installed_wheel_smoke": "PASS"
+  },
+  "pushed": false,
+  "protected_performance_observed": false,
+  "operational_database_modified": false,
+  "complete_historical_backfill": false,
+  "real_database_copy_scope": "2023, 3 issuers; complete raw 2023 derived separately without ticker inference",
+  "remaining_source_gaps": [
+    "verified share effective date and price-class equivalence",
+    "verified per-security cash events and coverage",
+    "full historical rebuild"
+  ],
+  "sha256": {
+    "CORRECOES_STOCKS.md": "473fc8a0abb9a58a5829bda16b517e418d2833ccf1d4b7be1673f229fe9df8ac",
+    "stocks-correcoes.patch": "43f708a7795901f4435441dae2967756ec0f8e62a6ca83731362b9b95cec5044",
+    "stocks-correcoes-codigo.zip": "0f0f2b58731be1d07639c3f3d0c97b03400e60ab44cd3750fe341b4ad6e5012f",
+    "stocks_predictor-0.1.0-py3-none-any.whl": "74aed2f9af8723c1a88488aec40c05ceac6ce300b8675c456a6df9815e050fbe",
+    "repair-tests-full.txt": "631958c22746805a509c8a2fd6bbafc701d2e2c1e2dc645e222764d06ec8e565",
+    "repair-real-validation.json": "39adcb50aea2b6e225082093351dc5bebedf382b48e0dc1c3a759b160b2916fc",
+    "repair-copy-validation.json": "2164e86ddd4ec212053fd137b62b510145a3f1d4f662cb3dd7b3dc7058c275bd",
+    "repair-historical-integrity.json": "fa29b2592deb4c0693086598e1cb599e764152ee6d783613326049965e8cce74",
+    "integrity-verification.json": "c51e2eff6183fabd6a62e3f80feff97cb88fcb286aee3cc66a5d2c53a926c709",
+    "repair-pyright.txt": "c584b21ee012de391dc2799d5455db619d3fefbb192ab07ea4ba83fb0d704c14",
+    "repair-build.txt": "57a378f72b2678bb74ebd8e6ec6bbe8f1f3b78704c11efe48d2b7cea8fa286c0",
+    "repair-wheel-smoke.txt": "6117e1346c49aa5e9c104d08d25adbdb99b5710d0003ad2bdb34cf6bad121ce6",
+    "repair-coverage.txt": "61a239384c354cd4ac19bb8938cca54c2db8195208dd81856389bb082a91dd3a",
+    "repair-lint.txt": "a4443afdcfb6d7363adb285762515ccf7cf50473b1a05c20c1a50f6bed4d26b0",
+    "dfp-2023-corrigida.jsonl": "bc2fea8a54fc5b18fae144ef615c9a448cdfb2a2f265707f76988da9e6e686d7",
+    "fre-2023-documentos.jsonl": "ec4b3dffc06ed70b90288b1069c7e32a27ebb13ee92f66601aa079f3d239c8e8"
+  }
+}

@@ -1,0 +1,950 @@
+{
+  "universe": [
+    "ABEV3",
+    "ALOS3",
+    "ALPA4",
+    "ALSO3",
+    "AMBP3",
+    "AMER3",
+    "ARZZ3",
+    "ASAI3",
+    "AURE3",
+    "AZUL4",
+    "AZZA3",
+    "B3SA3",
+    "BBAS3",
+    "BBDC4",
+    "BBSE3",
+    "BEEF3",
+    "BPAC11",
+    "BRAP4",
+    "BRAV3",
+    "BRDT3",
+    "BRFS3",
+    "BRKM5",
+    "BRML3",
+    "BRSR6",
+    "BTOW3",
+    "BVMF3",
+    "CASH3",
+    "CCRO3",
+    "CEAB3",
+    "CESP6",
+    "CIEL3",
+    "CMIG4",
+    "CMIN3",
+    "COGN3",
+    "CPFE3",
+    "CPLE3",
+    "CPLE6",
+    "CRFB3",
+    "CSAN3",
+    "CSMG3",
+    "CSNA3",
+    "CURY3",
+    "CVCB3",
+    "CXSE3",
+    "CYRE3",
+    "DIRR3",
+    "DTEX3",
+    "ECOR3",
+    "EGIE3",
+    "EMBR3",
+    "ENAT3",
+    "ENBR3",
+    "ENEV3",
+    "ENGI11",
+    "EQTL3",
+    "ESTC3",
+    "EZTC3",
+    "FIBR3",
+    "FLRY3",
+    "GGBR4",
+    "GGPS3",
+    "GNDI3",
+    "GOAU4",
+    "HAPV3",
+    "HGTX3",
+    "HYPE3",
+    "IGTA3",
+    "IGTI11",
+    "IRBR3",
+    "ISAE4",
+    "ITSA4",
+    "ITUB4",
+    "JHSF3",
+    "KLBN11",
+    "KROT3",
+    "LAME4",
+    "LIGT3",
+    "LINX3",
+    "LREN3",
+    "LWSA3",
+    "MDIA3",
+    "MOTV3",
+    "MOVI3",
+    "MRFG3",
+    "MRVE3",
+    "MULT3",
+    "MYPK3",
+    "NATU3",
+    "NEOE3",
+    "NTCO3",
+    "ORVR3",
+    "PCAR4",
+    "PETR4",
+    "PETZ3",
+    "POMO4",
+    "PSSA3",
+    "QUAL3",
+    "RADL3",
+    "RAIL3",
+    "RAIZ4",
+    "RDOR3",
+    "RECV3",
+    "RENT3",
+    "RRRP3",
+    "SANB11",
+    "SAPR11",
+    "SAPR4",
+    "SBSP3",
+    "SLCE3",
+    "SMFT3",
+    "SOMA3",
+    "SRNA3",
+    "STBP3",
+    "SULA11",
+    "SUZB3",
+    "SUZB5",
+    "TAEE11",
+    "TASA4",
+    "TIMP3",
+    "TIMS3",
+    "TOTS3",
+    "TRPL4",
+    "UGPA3",
+    "VALE3",
+    "VBBR3",
+    "VIIA3",
+    "VIVT3",
+    "VIVT4",
+    "VVAR11",
+    "VVAR3",
+    "WEGE3",
+    "YDUQ3"
+  ],
+  "issuers": [
+    {
+      "cnpj": "00.000.000/0001-91",
+      "codeCVM": "1023",
+      "tickers": [
+        "BBAS3"
+      ]
+    },
+    {
+      "cnpj": "00.776.574/0001-56",
+      "codeCVM": "20990",
+      "tickers": [
+        "AMER3",
+        "BTOW3"
+      ]
+    },
+    {
+      "cnpj": "00.864.214/0001-06",
+      "codeCVM": "15253",
+      "tickers": [
+        "ENGI11"
+      ]
+    },
+    {
+      "cnpj": "01.027.058/0001-91",
+      "codeCVM": "21733",
+      "tickers": [
+        "CIEL3"
+      ]
+    },
+    {
+      "cnpj": "01.083.200/0001-18",
+      "codeCVM": "15539",
+      "tickers": [
+        "NEOE3"
+      ]
+    },
+    {
+      "cnpj": "01.838.723/0001-27",
+      "codeCVM": "16292",
+      "tickers": [
+        "BRFS3"
+      ]
+    },
+    {
+      "cnpj": "02.149.205/0001-69",
+      "codeCVM": "16659",
+      "tickers": [
+        "PSSA3"
+      ]
+    },
+    {
+      "cnpj": "02.351.877/0001-52",
+      "codeCVM": "24910",
+      "tickers": [
+        "LWSA3"
+      ]
+    },
+    {
+      "cnpj": "02.387.241/0001-60",
+      "codeCVM": "17450",
+      "tickers": [
+        "RAIL3"
+      ]
+    },
+    {
+      "cnpj": "02.421.421/0001-11",
+      "codeCVM": "24929",
+      "tickers": [
+        "TIMS3"
+      ]
+    },
+    {
+      "cnpj": "02.429.144/0001-93",
+      "codeCVM": "18660",
+      "tickers": [
+        "CPFE3"
+      ]
+    },
+    {
+      "cnpj": "02.474.103/0001-19",
+      "codeCVM": "17329",
+      "tickers": [
+        "EGIE3"
+      ]
+    },
+    {
+      "cnpj": "02.558.115/0001-21",
+      "codeCVM": "17639",
+      "tickers": [
+        "TIMP3"
+      ]
+    },
+    {
+      "cnpj": "02.558.157/0001-62",
+      "codeCVM": "17671",
+      "tickers": [
+        "VIVT3",
+        "VIVT4"
+      ]
+    },
+    {
+      "cnpj": "02.762.121/0001-04",
+      "codeCVM": "17892",
+      "tickers": [
+        "STBP3"
+      ]
+    },
+    {
+      "cnpj": "02.800.026/0001-40",
+      "codeCVM": "17973",
+      "tickers": [
+        "COGN3"
+      ]
+    },
+    {
+      "cnpj": "02.846.056/0001-97",
+      "codeCVM": "18821",
+      "tickers": [
+        "CCRO3",
+        "MOTV3"
+      ]
+    },
+    {
+      "cnpj": "02.932.074/0001-91",
+      "codeCVM": "21431",
+      "tickers": [
+        "HYPE3"
+      ]
+    },
+    {
+      "cnpj": "02.998.611/0001-04",
+      "codeCVM": "18376",
+      "tickers": [
+        "ISAE4",
+        "TRPL4"
+      ]
+    },
+    {
+      "cnpj": "03.220.438/0001-73",
+      "codeCVM": "20010",
+      "tickers": [
+        "EQTL3"
+      ]
+    },
+    {
+      "cnpj": "03.342.704/0001-30",
+      "codeCVM": "25780",
+      "tickers": [
+        "RECV3"
+      ]
+    },
+    {
+      "cnpj": "03.378.521/0001-75",
+      "codeCVM": "19879",
+      "tickers": [
+        "LIGT3"
+      ]
+    },
+    {
+      "cnpj": "03.847.461/0001-92",
+      "codeCVM": "18724",
+      "tickers": [
+        "BRAP4"
+      ]
+    },
+    {
+      "cnpj": "03.853.896/0001-40",
+      "codeCVM": "20788",
+      "tickers": [
+        "MRFG3"
+      ]
+    },
+    {
+      "cnpj": "03.983.431/0001-03",
+      "codeCVM": "19763",
+      "tickers": [
+        "ENBR3"
+      ]
+    },
+    {
+      "cnpj": "04.149.454/0001-80",
+      "codeCVM": "19453",
+      "tickers": [
+        "ECOR3"
+      ]
+    },
+    {
+      "cnpj": "04.423.567/0001-21",
+      "codeCVM": "21237",
+      "tickers": [
+        "ENEV3"
+      ]
+    },
+    {
+      "cnpj": "05.197.443/0001-38",
+      "codeCVM": "24392",
+      "tickers": [
+        "HAPV3"
+      ]
+    },
+    {
+      "cnpj": "05.878.397/0001-32",
+      "codeCVM": "22357",
+      "tickers": [
+        "ALOS3",
+        "ALSO3"
+      ]
+    },
+    {
+      "cnpj": "06.047.087/0001-39",
+      "codeCVM": "24821",
+      "tickers": [
+        "RDOR3"
+      ]
+    },
+    {
+      "cnpj": "06.057.223/0001-71",
+      "codeCVM": "25372",
+      "tickers": [
+        "ASAI3"
+      ]
+    },
+    {
+      "cnpj": "06.948.969/0001-75",
+      "codeCVM": "23035",
+      "tickers": [
+        "LINX3"
+      ]
+    },
+    {
+      "cnpj": "06.977.745/0001-91",
+      "codeCVM": "19909",
+      "tickers": [
+        "BRML3"
+      ]
+    },
+    {
+      "cnpj": "07.206.816/0001-15",
+      "codeCVM": "20338",
+      "tickers": [
+        "MDIA3"
+      ]
+    },
+    {
+      "cnpj": "07.526.557/0001-00",
+      "codeCVM": "23264",
+      "tickers": [
+        "ABEV3"
+      ]
+    },
+    {
+      "cnpj": "07.594.978/0001-78",
+      "codeCVM": "24260",
+      "tickers": [
+        "SMFT3"
+      ]
+    },
+    {
+      "cnpj": "07.689.002/0001-89",
+      "codeCVM": "20087",
+      "tickers": [
+        "EMBR3"
+      ]
+    },
+    {
+      "cnpj": "07.816.890/0001-53",
+      "codeCVM": "20982",
+      "tickers": [
+        "MULT3"
+      ]
+    },
+    {
+      "cnpj": "07.859.971/0001-30",
+      "codeCVM": "20257",
+      "tickers": [
+        "TAEE11"
+      ]
+    },
+    {
+      "cnpj": "08.294.224/0001-65",
+      "codeCVM": "20605",
+      "tickers": [
+        "JHSF3"
+      ]
+    },
+    {
+      "cnpj": "08.312.229/0001-73",
+      "codeCVM": "20770",
+      "tickers": [
+        "EZTC3"
+      ]
+    },
+    {
+      "cnpj": "08.343.492/0001-20",
+      "codeCVM": "20915",
+      "tickers": [
+        "MRVE3"
+      ]
+    },
+    {
+      "cnpj": "08.797.760/0001-83",
+      "codeCVM": "25100",
+      "tickers": [
+        "CURY3"
+      ]
+    },
+    {
+      "cnpj": "08.807.432/0001-10",
+      "codeCVM": "21016",
+      "tickers": [
+        "ESTC3",
+        "YDUQ3"
+      ]
+    },
+    {
+      "cnpj": "09.229.201/0001-30",
+      "codeCVM": "25712",
+      "tickers": [
+        "GGPS3"
+      ]
+    },
+    {
+      "cnpj": "09.305.994/0001-29",
+      "codeCVM": "24112",
+      "tickers": [
+        "AZUL4"
+      ]
+    },
+    {
+      "cnpj": "09.346.601/0001-25",
+      "codeCVM": "21610",
+      "tickers": [
+        "B3SA3",
+        "BVMF3"
+      ]
+    },
+    {
+      "cnpj": "10.285.590/0001-08",
+      "codeCVM": "25011",
+      "tickers": [
+        "SOMA3"
+      ]
+    },
+    {
+      "cnpj": "10.760.260/0001-19",
+      "codeCVM": "23310",
+      "tickers": [
+        "CVCB3"
+      ]
+    },
+    {
+      "cnpj": "11.421.994/0001-36",
+      "codeCVM": "25550",
+      "tickers": [
+        "ORVR3"
+      ]
+    },
+    {
+      "cnpj": "11.669.021/0001-10",
+      "codeCVM": "22365",
+      "tickers": [
+        "ENAT3"
+      ]
+    },
+    {
+      "cnpj": "11.992.680/0001-93",
+      "codeCVM": "22497",
+      "tickers": [
+        "QUAL3"
+      ]
+    },
+    {
+      "cnpj": "12.091.809/0001-55",
+      "codeCVM": "25291",
+      "tickers": [
+        "BRAV3",
+        "RRRP3"
+      ]
+    },
+    {
+      "cnpj": "12.648.266/0001-24",
+      "codeCVM": "24961",
+      "tickers": [
+        "AMBP3"
+      ]
+    },
+    {
+      "cnpj": "14.110.585/0001-07",
+      "codeCVM": "25232",
+      "tickers": [
+        "CASH3"
+      ]
+    },
+    {
+      "cnpj": "16.404.287/0001-55",
+      "codeCVM": "13986",
+      "tickers": [
+        "SUZB3"
+      ]
+    },
+    {
+      "cnpj": "16.590.234/0001-76",
+      "codeCVM": "22349",
+      "tickers": [
+        "ARZZ3",
+        "AZZA3"
+      ]
+    },
+    {
+      "cnpj": "16.614.075/0001-00",
+      "codeCVM": "21350",
+      "tickers": [
+        "DIRR3"
+      ]
+    },
+    {
+      "cnpj": "16.670.085/0001-55",
+      "codeCVM": "19739",
+      "tickers": [
+        "RENT3"
+      ]
+    },
+    {
+      "cnpj": "17.155.730/0001-64",
+      "codeCVM": "2453",
+      "tickers": [
+        "CMIG4"
+      ]
+    },
+    {
+      "cnpj": "17.281.106/0001-03",
+      "codeCVM": "19445",
+      "tickers": [
+        "CSMG3"
+      ]
+    },
+    {
+      "cnpj": "17.344.597/0001-94",
+      "codeCVM": "23159",
+      "tickers": [
+        "BBSE3"
+      ]
+    },
+    {
+      "cnpj": "18.328.118/0001-09",
+      "codeCVM": "25089",
+      "tickers": [
+        "PETZ3"
+      ]
+    },
+    {
+      "cnpj": "19.853.511/0001-84",
+      "codeCVM": "24384",
+      "tickers": [
+        "GNDI3"
+      ]
+    },
+    {
+      "cnpj": "21.314.559/0001-66",
+      "codeCVM": "23825",
+      "tickers": [
+        "MOVI3"
+      ]
+    },
+    {
+      "cnpj": "22.543.331/0001-00",
+      "codeCVM": "23795",
+      "tickers": [
+        "CXSE3"
+      ]
+    },
+    {
+      "cnpj": "28.594.234/0001-23",
+      "codeCVM": "26620",
+      "tickers": [
+        "AURE3"
+      ]
+    },
+    {
+      "cnpj": "29.978.814/0001-87",
+      "codeCVM": "21121",
+      "tickers": [
+        "SULA11"
+      ]
+    },
+    {
+      "cnpj": "32.785.497/0001-97",
+      "codeCVM": "24783",
+      "tickers": [
+        "NTCO3"
+      ]
+    },
+    {
+      "cnpj": "33.000.167/0001-01",
+      "codeCVM": "9512",
+      "tickers": [
+        "PETR4"
+      ]
+    },
+    {
+      "cnpj": "33.014.556/0001-96",
+      "codeCVM": "8087",
+      "tickers": [
+        "LAME4"
+      ]
+    },
+    {
+      "cnpj": "33.041.260/0652-90",
+      "codeCVM": "6505",
+      "tickers": [
+        "VIIA3",
+        "VVAR11",
+        "VVAR3"
+      ]
+    },
+    {
+      "cnpj": "33.256.439/0001-39",
+      "codeCVM": "18465",
+      "tickers": [
+        "UGPA3"
+      ]
+    },
+    {
+      "cnpj": "33.376.989/0001-91",
+      "codeCVM": "24180",
+      "tickers": [
+        "IRBR3"
+      ]
+    },
+    {
+      "cnpj": "33.453.598/0001-23",
+      "codeCVM": "25917",
+      "tickers": [
+        "RAIZ4"
+      ]
+    },
+    {
+      "cnpj": "33.592.510/0001-54",
+      "codeCVM": "4170",
+      "tickers": [
+        "VALE3"
+      ]
+    },
+    {
+      "cnpj": "33.611.500/0001-19",
+      "codeCVM": "3980",
+      "tickers": [
+        "GGBR4"
+      ]
+    },
+    {
+      "cnpj": "34.274.233/0001-02",
+      "codeCVM": "24295",
+      "tickers": [
+        "BRDT3",
+        "VBBR3"
+      ]
+    },
+    {
+      "cnpj": "42.150.391/0001-70",
+      "codeCVM": "4820",
+      "tickers": [
+        "BRKM5"
+      ]
+    },
+    {
+      "cnpj": "42.500.384/0001-51",
+      "codeCVM": "26441",
+      "tickers": [
+        "SRNA3"
+      ]
+    },
+    {
+      "cnpj": "43.776.517/0001-80",
+      "codeCVM": "14443",
+      "tickers": [
+        "SBSP3"
+      ]
+    },
+    {
+      "cnpj": "45.242.914/0001-05",
+      "codeCVM": "24848",
+      "tickers": [
+        "CEAB3"
+      ]
+    },
+    {
+      "cnpj": "47.508.411/0001-56",
+      "codeCVM": "14826",
+      "tickers": [
+        "PCAR4"
+      ]
+    },
+    {
+      "cnpj": "50.746.577/0001-15",
+      "codeCVM": "19836",
+      "tickers": [
+        "CSAN3"
+      ]
+    },
+    {
+      "cnpj": "51.218.147/0001-93",
+      "codeCVM": "20494",
+      "tickers": [
+        "IGTA3"
+      ]
+    },
+    {
+      "cnpj": "53.113.791/0001-22",
+      "codeCVM": "19992",
+      "tickers": [
+        "TOTS3"
+      ]
+    },
+    {
+      "cnpj": "60.543.816/0001-93",
+      "codeCVM": "8672",
+      "tickers": [
+        "IGTI11"
+      ]
+    },
+    {
+      "cnpj": "60.643.228/0001-21",
+      "codeCVM": "12793",
+      "tickers": [
+        "FIBR3"
+      ]
+    },
+    {
+      "cnpj": "60.746.948/0001-12",
+      "codeCVM": "906",
+      "tickers": [
+        "BBDC4"
+      ]
+    },
+    {
+      "cnpj": "60.840.055/0001-31",
+      "codeCVM": "21881",
+      "tickers": [
+        "FLRY3"
+      ]
+    },
+    {
+      "cnpj": "60.872.504/0001-23",
+      "codeCVM": "19348",
+      "tickers": [
+        "ITUB4"
+      ]
+    },
+    {
+      "cnpj": "60.933.603/0001-78",
+      "codeCVM": "2577",
+      "tickers": [
+        "CESP6"
+      ]
+    },
+    {
+      "cnpj": "61.079.117/0001-05",
+      "codeCVM": "10456",
+      "tickers": [
+        "ALPA4"
+      ]
+    },
+    {
+      "cnpj": "61.156.113/0001-75",
+      "codeCVM": "11932",
+      "tickers": [
+        "MYPK3"
+      ]
+    },
+    {
+      "cnpj": "61.532.644/0001-15",
+      "codeCVM": "7617",
+      "tickers": [
+        "ITSA4"
+      ]
+    },
+    {
+      "cnpj": "61.585.865/0001-51",
+      "codeCVM": "5258",
+      "tickers": [
+        "RADL3"
+      ]
+    },
+    {
+      "cnpj": "67.620.377/0001-14",
+      "codeCVM": "20931",
+      "tickers": [
+        "BEEF3"
+      ]
+    },
+    {
+      "cnpj": "71.673.990/0001-77",
+      "codeCVM": "19550",
+      "tickers": [
+        "NATU3"
+      ]
+    },
+    {
+      "cnpj": "73.178.600/0001-18",
+      "codeCVM": "14460",
+      "tickers": [
+        "CYRE3"
+      ]
+    },
+    {
+      "cnpj": "75.315.333/0001-09",
+      "codeCVM": "24171",
+      "tickers": [
+        "CRFB3"
+      ]
+    },
+    {
+      "cnpj": "76.483.817/0001-20",
+      "codeCVM": "14311",
+      "tickers": [
+        "CPLE3",
+        "CPLE6"
+      ]
+    },
+    {
+      "cnpj": "76.484.013/0001-45",
+      "codeCVM": "18627",
+      "tickers": [
+        "SAPR11",
+        "SAPR4"
+      ]
+    },
+    {
+      "cnpj": "78.876.950/0001-71",
+      "codeCVM": "14761",
+      "tickers": [
+        "HGTX3"
+      ]
+    },
+    {
+      "cnpj": "84.429.695/0001-11",
+      "codeCVM": "5410",
+      "tickers": [
+        "WEGE3"
+      ]
+    },
+    {
+      "cnpj": "88.611.835/0001-29",
+      "codeCVM": "8451",
+      "tickers": [
+        "POMO4"
+      ]
+    },
+    {
+      "cnpj": "89.096.457/0001-55",
+      "codeCVM": "20745",
+      "tickers": [
+        "SLCE3"
+      ]
+    },
+    {
+      "cnpj": "89.637.490/0001-45",
+      "codeCVM": "12653",
+      "tickers": [
+        "KLBN11"
+      ]
+    },
+    {
+      "cnpj": "90.400.888/0001-42",
+      "codeCVM": "20532",
+      "tickers": [
+        "SANB11"
+      ]
+    },
+    {
+      "cnpj": "92.690.783/0001-09",
+      "codeCVM": "8656",
+      "tickers": [
+        "GOAU4"
+      ]
+    },
+    {
+      "cnpj": "92.702.067/0001-96",
+      "codeCVM": "1210",
+      "tickers": [
+        "BRSR6"
+      ]
+    },
+    {
+      "cnpj": "92.754.738/0001-62",
+      "codeCVM": "8133",
+      "tickers": [
+        "LREN3"
+      ]
+    },
+    {
+      "cnpj": "92.781.335/0001-02",
+      "codeCVM": "6173",
+      "tickers": [
+        "TASA4"
+      ]
+    },
+    {
+      "cnpj": "97.837.181/0001-47",
+      "codeCVM": "21091",
+      "tickers": [
+        "DTEX3"
+      ]
+    }
+  ],
+  "not_linked": [
+    "BPAC11",
+    "CMIN3",
+    "CSNA3",
+    "KROT3",
+    "SUZB5"
+  ]
+}

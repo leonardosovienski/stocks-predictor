@@ -10,3 +10,7 @@ tests/fixtures/cvm_source_history/*.csv text eol=lf
 tests/fixtures/real_integration/*.html -text
 tests/fixtures/real_integration/*.json text eol=lf
 docs/research/2026-09-07-real-integration-protocol.json text eol=lf
+
+# Preserve exact archival bytes and SHA256.
+research/session-20260907/** -text !eol
+docs/continuation/INITIAL_REQUEST.md -text !eol

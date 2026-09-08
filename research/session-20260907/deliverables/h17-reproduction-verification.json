@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "method": "Extracted delivered ZIP with standalone RODAR_H17.py, verified sealed files and repeated actual calculation offline in a different directory.",
+  "same_protocol": true,
+  "same_input_content_hashes": true,
+  "same_5399_member_outcomes": true,
+  "same_summary": true,
+  "corrected_observation_sha256": "45bfbc925c62b9561b2c5cea5dc6c65c2c73fa6e5d1b02c5c19f0dae16526135",
+  "replay_observation_sha256": "55005e28bc32ea72dff4492ff67867148215f9cf1caaf5659b49fbe82ff0ad5d",
+  "expected_metadata_differences": [
+    "observation timestamp",
+    "absolute input paths"
+  ],
+  "code_tests": {
+    "passed": 483,
+    "coverage_percent": 84,
+    "ruff_ci_scope": "PASS",
+    "pyright_configured_scope": "PASS",
+    "wheel_build": "PASS",
+    "wheel_smoke_outside_checkout": "PASS"
+  },
+  "operational_database_sha256": "a22739794ba4a43a11544338d4a91e14cb6a0b1f7b132ab460f96d3359f63cf4"
+}

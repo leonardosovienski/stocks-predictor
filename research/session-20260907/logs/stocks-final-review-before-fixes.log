@@ -1,0 +1,225 @@
+FFFFFFFFFFF                                                              [100%]
+================================== FAILURES ===================================
+_____ test_partial_precredit_sale_consumes_only_the_usable_delivery_lots ______
+
+    def test_partial_precredit_sale_consumes_only_the_usable_delivery_lots():
+        book = RetailBook(0, '2020-01-15')
+        book.positions['A'] = Holding('A-ISIN', 100, D(1000), locked_deliveries=[
+            {'quantity': 40, 'credit_date': '2020-01-20', 'tradable_on': '2020-01-15'},
+            {'quantity': 30, 'credit_date': '2020-01-23', 'tradable_on': None}])
+        q = {'date': book.day, 'isin': 'A-ISIN', 'standard': '10', 'fractional': '10'}
+        # Sell 30 already delivered + 20 legally tradable, leaving 20 + 30 pending.
+        assert book.order('A', 'A-ISIN', -50, q, '2020-01-14', '2020-01-20', 0)
+        h = book.positions['A']
+        assert h.quantity == 50 and h.basis == 500
+        assert h.available_quantity('2020-01-16', '2020-01-20') == 20
+        assert h.available_quantity('2020-01-20') == 20
+        assert h.available_quantity('2020-01-23') == 50
+>       assert [r['quantity'] for r in h.locked_deliveries] == [20, 30]
+E       assert [40, 30] == [20, 30]
+E         
+E         At index 0 diff: 40 != 20
+E         Use -v to get more diff
+
+tests\test_continuous_cash.py:223: AssertionError
+______ test_purchase_merges_with_a_pending_delivery_without_unlocking_it ______
+
+    def test_purchase_merges_with_a_pending_delivery_without_unlocking_it():
+        book = RetailBook(1000, '2020-01-15')
+        book.positions['A'] = Holding('A-ISIN', 10, D(100), available_on='2020-01-23')
+        q = {'date': book.day, 'isin': 'A-ISIN', 'standard': '10', 'fractional': '10'}
+>       assert book.order('A', 'A-ISIN', 20, q, '2020-01-14', '2020-01-20', 0)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_continuous_cash.py:230: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <stocks_predictor.retail_cash.RetailBook object at 0x000001C6B74A25D0>
+ticker = 'A', isin = 'A-ISIN', delta = 20
+quote = {'date': '2020-01-15', 'isin': 'A-ISIN', 'standard': '10', 'fractional': '10'}
+signal_date = '2020-01-14', settlement_date = '2020-01-20', cost_rate = 0
+lot = 100, tax_class = 'equity'
+
+    def order(self, ticker, isin, delta, quote, signal_date, settlement_date,
+              cost_rate="0.0018", lot=100, tax_class="equity"):
+        if type(delta) is not int or iso(signal_date) >= self.day:
+            raise ValueError("integer order after its signal required")
+        if quote.get("date") != self.day or quote.get("isin") != isin:
+            raise ValueError("execution quote date or identity mismatch")
+        if iso(settlement_date) <= self.day or tax_class not in {"equity", "bdr"}:
+            raise ValueError("invalid settlement or unreviewed tax class")
+        fee = number(cost_rate)
+        if not 0 <= fee < 1:
+            raise ValueError("invalid cost rate")
+        existing = self.positions.get(ticker)
+        if existing and (existing.isin != isin or existing.tax_class != tax_class):
+            raise ValueError("holding identity mismatch")
+        if not delta:
+            return None
+        if any(r["date"] == self.day and r["isin"] == isin and (r["quantity"] > 0) != (delta > 0)
+               for r in self.trades):
+            raise ValueError("intraday reversal requires a separate day-trade ledger")
+        quantity = abs(delta)
+        if delta < 0:
+            if not existing or quantity > existing.available_quantity(self.day, settlement_date):
+                raise ValueError("sale exceeds delivered position")
+        gross = trade_value(quantity, quote, lot)
+        costs = gross * fee
+        if delta > 0 and not self.fundable(gross + costs, settlement_date):
+            return None  # Unfilled, never a loan or negative cash.
+        if delta > 0:
+            gain = Decimal(0)
+            if existing:
+                if existing.available_on > self.day:
+>                   raise ValueError("merge with undelivered shares requires separate lots")
+E                   ValueError: merge with undelivered shares requires separate lots
+
+stocks_predictor\retail_cash.py:222: ValueError
+____ test_future_corporate_quantity_information_rejected_without_mutation _____
+
+    def test_future_corporate_quantity_information_rejected_without_mutation():
+        book = RetailBook(0, '2020-01-15'); book.positions['A'] = Holding('A-ISIN', 100, D(1000))
+        action = bonus(); action['terms_known_on'] = '2020-01-20'
+        before = deepcopy(book.__dict__)
+>       with pytest.raises(ValueError, match='future corporate quantity'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests\test_continuous_cash.py:250: Failed
+_ test_delayed_plan_and_weekend_settlement_do_not_pass_next_session_protocol __
+
+    def test_delayed_plan_and_weekend_settlement_do_not_pass_next_session_protocol():
+        data = tape(); data['plans'][0]['entry'] = '2020-01-06'
+>       with pytest.raises(ValueError, match='next session'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests\test_continuous_cash.py:257: Failed
+_ test_empty_or_invalid_cases_cannot_report_success_without_running[capital_brl-value0] _
+
+tmp_path = WindowsPath('C:/Users/Superleo13/AppData/Local/Temp/pytest-of-Superleo13/pytest-2619/test_empty_or_invalid_cases_ca0')
+field = 'capital_brl', value = []
+
+    @pytest.mark.parametrize('field,value', [('capital_brl', []), ('one_way_cost_rates', []),
+        ('capital_brl', [1000, 1000]), ('capital_brl', [0]), ('one_way_cost_rates', [-1])])
+    def test_empty_or_invalid_cases_cannot_report_success_without_running(tmp_path, field, value):
+        bundle(tmp_path)
+        protocol = json.loads((tmp_path / 'protocol.json').read_text(encoding='utf-8'))
+        protocol[field] = value; replace_input(tmp_path, 'protocol.json', protocol)
+>       with pytest.raises(ValueError, match='nonempty unique valid'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests\test_continuous_research.py:96: Failed
+_ test_empty_or_invalid_cases_cannot_report_success_without_running[one_way_cost_rates-value1] _
+
+tmp_path = WindowsPath('C:/Users/Superleo13/AppData/Local/Temp/pytest-of-Superleo13/pytest-2619/test_empty_or_invalid_cases_ca1')
+field = 'one_way_cost_rates', value = []
+
+    @pytest.mark.parametrize('field,value', [('capital_brl', []), ('one_way_cost_rates', []),
+        ('capital_brl', [1000, 1000]), ('capital_brl', [0]), ('one_way_cost_rates', [-1])])
+    def test_empty_or_invalid_cases_cannot_report_success_without_running(tmp_path, field, value):
+        bundle(tmp_path)
+        protocol = json.loads((tmp_path / 'protocol.json').read_text(encoding='utf-8'))
+        protocol[field] = value; replace_input(tmp_path, 'protocol.json', protocol)
+>       with pytest.raises(ValueError, match='nonempty unique valid'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests\test_continuous_research.py:96: Failed
+_ test_empty_or_invalid_cases_cannot_report_success_without_running[capital_brl-value2] _
+
+tmp_path = WindowsPath('C:/Users/Superleo13/AppData/Local/Temp/pytest-of-Superleo13/pytest-2619/test_empty_or_invalid_cases_ca2')
+field = 'capital_brl', value = [1000, 1000]
+
+    @pytest.mark.parametrize('field,value', [('capital_brl', []), ('one_way_cost_rates', []),
+        ('capital_brl', [1000, 1000]), ('capital_brl', [0]), ('one_way_cost_rates', [-1])])
+    def test_empty_or_invalid_cases_cannot_report_success_without_running(tmp_path, field, value):
+        bundle(tmp_path)
+        protocol = json.loads((tmp_path / 'protocol.json').read_text(encoding='utf-8'))
+        protocol[field] = value; replace_input(tmp_path, 'protocol.json', protocol)
+>       with pytest.raises(ValueError, match='nonempty unique valid'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests\test_continuous_research.py:96: Failed
+_ test_empty_or_invalid_cases_cannot_report_success_without_running[capital_brl-value3] _
+
+tmp_path = WindowsPath('C:/Users/Superleo13/AppData/Local/Temp/pytest-of-Superleo13/pytest-2619/test_empty_or_invalid_cases_ca3')
+field = 'capital_brl', value = [0]
+
+    @pytest.mark.parametrize('field,value', [('capital_brl', []), ('one_way_cost_rates', []),
+        ('capital_brl', [1000, 1000]), ('capital_brl', [0]), ('one_way_cost_rates', [-1])])
+    def test_empty_or_invalid_cases_cannot_report_success_without_running(tmp_path, field, value):
+        bundle(tmp_path)
+        protocol = json.loads((tmp_path / 'protocol.json').read_text(encoding='utf-8'))
+        protocol[field] = value; replace_input(tmp_path, 'protocol.json', protocol)
+>       with pytest.raises(ValueError, match='nonempty unique valid'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests\test_continuous_research.py:96: Failed
+_ test_empty_or_invalid_cases_cannot_report_success_without_running[one_way_cost_rates-value4] _
+
+tmp_path = WindowsPath('C:/Users/Superleo13/AppData/Local/Temp/pytest-of-Superleo13/pytest-2619/test_empty_or_invalid_cases_ca4')
+field = 'one_way_cost_rates', value = [-1]
+
+    @pytest.mark.parametrize('field,value', [('capital_brl', []), ('one_way_cost_rates', []),
+        ('capital_brl', [1000, 1000]), ('capital_brl', [0]), ('one_way_cost_rates', [-1])])
+    def test_empty_or_invalid_cases_cannot_report_success_without_running(tmp_path, field, value):
+        bundle(tmp_path)
+        protocol = json.loads((tmp_path / 'protocol.json').read_text(encoding='utf-8'))
+        protocol[field] = value; replace_input(tmp_path, 'protocol.json', protocol)
+>       with pytest.raises(ValueError, match='nonempty unique valid'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests\test_continuous_research.py:96: Failed
+______ test_manifest_does_not_authorize_a_different_production_protocol _______
+
+tmp_path = WindowsPath('C:/Users/Superleo13/AppData/Local/Temp/pytest-of-Superleo13/pytest-2619/test_manifest_does_not_authori0')
+
+    def test_manifest_does_not_authorize_a_different_production_protocol(tmp_path):
+        bundle(tmp_path)
+        protocol = json.loads((tmp_path / 'protocol.json').read_text(encoding='utf-8'))
+        protocol['protocol'] = 'H19_QUARTERLY_RETAIL_CASH_1'
+        replace_input(tmp_path, 'protocol.json', protocol)
+>       with pytest.raises(ValueError, match='registered H19 protocol changed'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests\test_continuous_research.py:105: Failed
+___________ test_economic_gate_does_not_hide_a_corrupt_quote_record ___________
+
+tmp_path = WindowsPath('C:/Users/Superleo13/AppData/Local/Temp/pytest-of-Superleo13/pytest-2619/test_economic_gate_does_not_hi0')
+
+    def test_economic_gate_does_not_hide_a_corrupt_quote_record(tmp_path):
+        bundle(tmp_path, ready=False)
+        path = tmp_path / 'quotes.jsonl'
+        lines = path.read_text(encoding='utf-8').splitlines()
+        row = json.loads(lines[0]); row['market_type'] = '030'; lines[0] = json.dumps(row)
+        path.write_text('\n'.join(lines) + '\n', encoding='utf-8')
+        manifest = json.loads((tmp_path / 'SHA256.json').read_text(encoding='utf-8'))
+        manifest['quotes.jsonl'] = sha(path)
+        (tmp_path / 'SHA256.json').write_text(json.dumps(manifest), encoding='utf-8')
+        index = json.loads((tmp_path / 'quote-tape-index.json').read_text(encoding='utf-8'))
+        index['sources'][0]['quotes_sha256'] = sha(path)
+        replace_input(tmp_path, 'quote-tape-index.json', index)
+>       with pytest.raises(ValueError, match='unsupported execution market'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests\test_continuous_research.py:154: Failed
+=========================== short test summary info ===========================
+FAILED tests/test_continuous_cash.py::test_partial_precredit_sale_consumes_only_the_usable_delivery_lots
+FAILED tests/test_continuous_cash.py::test_purchase_merges_with_a_pending_delivery_without_unlocking_it
+FAILED tests/test_continuous_cash.py::test_future_corporate_quantity_information_rejected_without_mutation
+FAILED tests/test_continuous_cash.py::test_delayed_plan_and_weekend_settlement_do_not_pass_next_session_protocol
+FAILED tests/test_continuous_research.py::test_empty_or_invalid_cases_cannot_report_success_without_running[capital_brl-value0]
+FAILED tests/test_continuous_research.py::test_empty_or_invalid_cases_cannot_report_success_without_running[one_way_cost_rates-value1]
+FAILED tests/test_continuous_research.py::test_empty_or_invalid_cases_cannot_report_success_without_running[capital_brl-value2]
+FAILED tests/test_continuous_research.py::test_empty_or_invalid_cases_cannot_report_success_without_running[capital_brl-value3]
+FAILED tests/test_continuous_research.py::test_empty_or_invalid_cases_cannot_report_success_without_running[one_way_cost_rates-value4]
+FAILED tests/test_continuous_research.py::test_manifest_does_not_authorize_a_different_production_protocol
+FAILED tests/test_continuous_research.py::test_economic_gate_does_not_hide_a_corrupt_quote_record
+11 failed, 17 deselected in 0.29s

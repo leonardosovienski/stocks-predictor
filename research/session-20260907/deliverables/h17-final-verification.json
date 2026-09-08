@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "archive": "stocks-h17-pronto-final.zip",
+  "same_protocol": true,
+  "same_input_content_hashes": true,
+  "same_5399_outcomes": true,
+  "same_summary": true
+}

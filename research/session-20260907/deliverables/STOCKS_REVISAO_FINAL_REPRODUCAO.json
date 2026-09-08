@@ -1,0 +1,26 @@
+{
+  "package": "STOCKS_REVISAO_FINAL.zip",
+  "package_sha256": "98c7576c918b554cfbf249c8d831302a5b80936b045dfb4005c934b9f773aa83",
+  "bytes": 342133528,
+  "verified_payloads": 450,
+  "primary_sources": 367,
+  "standalone_tests_passed": 48,
+  "fresh_extraction_replays": [
+    {
+      "run": 1,
+      "exit_code": 2,
+      "sha256": "585c72395fc2fefc2e0bbd90b6756c516e58d0f1e29ada3d6de196f46ea49c27"
+    },
+    {
+      "run": 2,
+      "exit_code": 2,
+      "sha256": "585c72395fc2fefc2e0bbd90b6756c516e58d0f1e29ada3d6de196f46ea49c27"
+    }
+  ],
+  "identical_to_installed_wheel_execution": true,
+  "full_economic_history_executed": false,
+  "profit": null,
+  "new_historical_return_evaluations": 0,
+  "validated_runtime_commit": "741d237388405970127492a4eff81ab1e5c755a1",
+  "review_commit": "858ba52315be3508bfe3d442388f1f9ed793f371"
+}

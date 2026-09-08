@@ -1,0 +1,17 @@
+{
+  "archive": "STOCKS_H19_CAIXA_TESTADO.zip",
+  "sha256": "c7fb01a9340565d774e2c0fd688704a19131b86c8ab0e7b7d8f058dfcb6f0ed1",
+  "bytes": 89777634,
+  "payload_files": 1055,
+  "archive_entries": 1056,
+  "offline_replay": "PASS_EXPECTED_BLOCKED_STATUS",
+  "repeated_output_identical": true,
+  "output_sha256": "bd49da402a74b5fa78fe2c04a13b412ba82d609e0fbc4c508ea3231134766781",
+  "exit_code": 2,
+  "historical_profit": null,
+  "first_entry_checks": 4,
+  "source_databases_unchanged": {
+    "C:\\Users\\Superleo13\\stocks-predictor-work\\data\\stocks.db": "a22739794ba4a43a11544338d4a91e14cb6a0b1f7b132ab460f96d3359f63cf4",
+    "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-06\\files-pasted-by-the-user-autonomous\\work\\stocks-tested-real-v2-20260907.db": "a8238568980d3303890b04590cfb5c55ab2d24c9271edd86820269336b09679a"
+  }
+}

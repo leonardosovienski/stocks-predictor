@@ -1,0 +1,398 @@
+[
+  {
+    "ticker": "FIBR3",
+    "isin": "BRFIBRACNOR9",
+    "entry": "2019-01-02",
+    "exit": "2019-02-01",
+    "quality_reasons": [
+      "INSTRUMENT_IDENTITY_BREAK_OR_MISSING",
+      "MISSING_EXECUTION_ENDPOINT"
+    ],
+    "selected_in": []
+  },
+  {
+    "ticker": "TIMP3",
+    "isin": "BRTIMPACNOR1",
+    "entry": "2020-10-01",
+    "exit": "2020-11-03",
+    "quality_reasons": [
+      "INSTRUMENT_IDENTITY_BREAK_OR_MISSING",
+      "MISSING_EXECUTION_ENDPOINT"
+    ],
+    "selected_in": [
+      "H18-1",
+      "H19-1"
+    ]
+  },
+  {
+    "ticker": "IGTA3",
+    "isin": "BRIGTAACNOR5",
+    "entry": "2021-11-01",
+    "exit": "2021-12-01",
+    "quality_reasons": [
+      "INSTRUMENT_IDENTITY_BREAK_OR_MISSING",
+      "MISSING_EXECUTION_ENDPOINT",
+      "UNMODELLED_INCORPORACAO"
+    ],
+    "selected_in": []
+  },
+  {
+    "ticker": "GNDI3",
+    "isin": "BRGNDIACNOR2",
+    "entry": "2022-02-01",
+    "exit": "2022-03-02",
+    "quality_reasons": [
+      "INSTRUMENT_IDENTITY_BREAK_OR_MISSING",
+      "MISSING_EXECUTION_ENDPOINT"
+    ],
+    "selected_in": []
+  },
+  {
+    "ticker": "LCAM3",
+    "isin": "BRLCAMACNOR3",
+    "entry": "2022-07-01",
+    "exit": "2022-08-01",
+    "quality_reasons": [
+      "INSTRUMENT_IDENTITY_BREAK_OR_MISSING",
+      "MISSING_EXECUTION_ENDPOINT"
+    ],
+    "selected_in": []
+  },
+  {
+    "ticker": "BRML3",
+    "isin": "BRBRMLACNOR9",
+    "entry": "2023-01-02",
+    "exit": "2023-02-01",
+    "quality_reasons": [
+      "INSTRUMENT_IDENTITY_BREAK_OR_MISSING",
+      "MISSING_EXECUTION_ENDPOINT",
+      "UNMODELLED_INCORPORACAO"
+    ],
+    "selected_in": [
+      "H19-1"
+    ]
+  },
+  {
+    "ticker": "MGLU3",
+    "isin": "BRMGLUACNOR2",
+    "entry": "2024-01-02",
+    "exit": "2024-02-01",
+    "quality_reasons": [
+      "UNMODELLED_SUBSCRICAO"
+    ],
+    "selected_in": []
+  },
+  {
+    "ticker": "RENT3",
+    "isin": "BRRENTACNOR4",
+    "entry": "2024-06-03",
+    "exit": "2024-07-01",
+    "quality_reasons": [
+      "UNMODELLED_SUBSCRICAO"
+    ],
+    "selected_in": []
+  },
+  {
+    "ticker": "SOMA3",
+    "isin": "BRSOMAACNOR3",
+    "entry": "2024-07-01",
+    "exit": "2024-08-01",
+    "quality_reasons": [
+      "INSTRUMENT_IDENTITY_BREAK_OR_MISSING",
+      "MISSING_EXECUTION_ENDPOINT"
+    ],
+    "selected_in": [
+      "H18-1",
+      "H19-1"
+    ]
+  },
+  {
+    "ticker": "SOMA3",
+    "isin": "BRSOMAACNOR3",
+    "entry": "2024-08-01",
+    "exit": "2024-09-02",
+    "quality_reasons": [
+      "INSTRUMENT_IDENTITY_BREAK_OR_MISSING",
+      "MISSING_EXECUTION_ENDPOINT"
+    ],
+    "selected_in": [
+      "H18-1",
+      "H19-1"
+    ]
+  },
+  {
+    "ticker": "VAMO3",
+    "isin": "BRVAMOACNOR7",
+    "entry": "2024-12-02",
+    "exit": "2025-01-02",
+    "quality_reasons": [
+      "UNMODELLED_CIS_RED_CAP"
+    ],
+    "selected_in": []
+  },
+  {
+    "ticker": "EQTL3",
+    "isin": "BREQTLACNOR0",
+    "entry": "2025-01-02",
+    "exit": "2025-02-03",
+    "quality_reasons": [
+      "UNMODELLED_SUBSCRICAO"
+    ],
+    "selected_in": []
+  },
+  {
+    "ticker": "CCRO3",
+    "isin": "BRCCROACNOR2",
+    "entry": "2025-04-01",
+    "exit": "2025-05-02",
+    "quality_reasons": [
+      "INSTRUMENT_IDENTITY_BREAK_OR_MISSING",
+      "MISSING_EXECUTION_ENDPOINT"
+    ],
+    "selected_in": []
+  },
+  {
+    "ticker": "BEEF3",
+    "isin": "BRBEEFACNOR6",
+    "entry": "2025-04-01",
+    "exit": "2025-05-02",
+    "quality_reasons": [
+      "UNMODELLED_SUBSCRICAO"
+    ],
+    "selected_in": []
+  },
+  {
+    "ticker": "JBSS3",
+    "isin": "BRJBSSACNOR8",
+    "entry": "2025-06-02",
+    "exit": "2025-07-01",
+    "quality_reasons": [
+      "INSTRUMENT_IDENTITY_BREAK_OR_MISSING",
+      "MISSING_EXECUTION_ENDPOINT"
+    ],
+    "selected_in": []
+  },
+  {
+    "ticker": "NTCO3",
+    "isin": "BRNTCOACNOR5",
+    "entry": "2025-07-01",
+    "exit": "2025-08-01",
+    "quality_reasons": [
+      "INSTRUMENT_IDENTITY_BREAK_OR_MISSING",
+      "MISSING_EXECUTION_ENDPOINT"
+    ],
+    "selected_in": []
+  },
+  {
+    "ticker": "SMFT3",
+    "isin": "BRSMFTACNOR1",
+    "entry": "2025-12-01",
+    "exit": "2026-01-02",
+    "quality_reasons": [
+      "UNMODELLED_SUBSCRICAO"
+    ],
+    "selected_in": []
+  },
+  {
+    "ticker": "FIBR3",
+    "isin": "BRFIBRACNOR9",
+    "entry": "2019-01-02",
+    "exit": "2019-04-01",
+    "quality_reasons": [
+      "INSTRUMENT_IDENTITY_BREAK_OR_MISSING",
+      "MISSING_EXECUTION_ENDPOINT"
+    ],
+    "selected_in": []
+  },
+  {
+    "ticker": "ALSC3",
+    "isin": "BRALSCACNOR0",
+    "entry": "2019-07-01",
+    "exit": "2019-10-01",
+    "quality_reasons": [
+      "INSTRUMENT_IDENTITY_BREAK_OR_MISSING",
+      "MISSING_EXECUTION_ENDPOINT"
+    ],
+    "selected_in": []
+  },
+  {
+    "ticker": "TIMP3",
+    "isin": "BRTIMPACNOR1",
+    "entry": "2020-10-01",
+    "exit": "2021-01-04",
+    "quality_reasons": [
+      "INSTRUMENT_IDENTITY_BREAK_OR_MISSING",
+      "MISSING_EXECUTION_ENDPOINT"
+    ],
+    "selected_in": [
+      "H18-3",
+      "H19-3"
+    ]
+  },
+  {
+    "ticker": "CVCB3",
+    "isin": "BRCVCBACNOR1",
+    "entry": "2021-04-01",
+    "exit": "2021-07-01",
+    "quality_reasons": [
+      "UNMODELLED_SUBSCRICAO"
+    ],
+    "selected_in": []
+  },
+  {
+    "ticker": "GNDI3",
+    "isin": "BRGNDIACNOR2",
+    "entry": "2022-01-03",
+    "exit": "2022-04-01",
+    "quality_reasons": [
+      "INSTRUMENT_IDENTITY_BREAK_OR_MISSING",
+      "MISSING_EXECUTION_ENDPOINT"
+    ],
+    "selected_in": []
+  },
+  {
+    "ticker": "LCAM3",
+    "isin": "BRLCAMACNOR3",
+    "entry": "2022-07-01",
+    "exit": "2022-10-03",
+    "quality_reasons": [
+      "INSTRUMENT_IDENTITY_BREAK_OR_MISSING",
+      "MISSING_EXECUTION_ENDPOINT"
+    ],
+    "selected_in": []
+  },
+  {
+    "ticker": "BRML3",
+    "isin": "BRBRMLACNOR9",
+    "entry": "2023-01-02",
+    "exit": "2023-04-03",
+    "quality_reasons": [
+      "INSTRUMENT_IDENTITY_BREAK_OR_MISSING",
+      "MISSING_EXECUTION_ENDPOINT",
+      "UNMODELLED_INCORPORACAO"
+    ],
+    "selected_in": [
+      "H19-3"
+    ]
+  },
+  {
+    "ticker": "MGLU3",
+    "isin": "BRMGLUACNOR2",
+    "entry": "2024-01-02",
+    "exit": "2024-04-01",
+    "quality_reasons": [
+      "UNMODELLED_SUBSCRICAO"
+    ],
+    "selected_in": []
+  },
+  {
+    "ticker": "RENT3",
+    "isin": "BRRENTACNOR4",
+    "entry": "2024-04-01",
+    "exit": "2024-07-01",
+    "quality_reasons": [
+      "UNMODELLED_SUBSCRICAO"
+    ],
+    "selected_in": []
+  },
+  {
+    "ticker": "SOMA3",
+    "isin": "BRSOMAACNOR3",
+    "entry": "2024-07-01",
+    "exit": "2024-10-01",
+    "quality_reasons": [
+      "INSTRUMENT_IDENTITY_BREAK_OR_MISSING",
+      "MISSING_EXECUTION_ENDPOINT"
+    ],
+    "selected_in": [
+      "H18-3",
+      "H19-3"
+    ]
+  },
+  {
+    "ticker": "VAMO3",
+    "isin": "BRVAMOACNOR7",
+    "entry": "2024-10-01",
+    "exit": "2025-01-02",
+    "quality_reasons": [
+      "UNMODELLED_CIS_RED_CAP"
+    ],
+    "selected_in": []
+  },
+  {
+    "ticker": "EQTL3",
+    "isin": "BREQTLACNOR0",
+    "entry": "2025-01-02",
+    "exit": "2025-04-01",
+    "quality_reasons": [
+      "UNMODELLED_SUBSCRICAO"
+    ],
+    "selected_in": []
+  },
+  {
+    "ticker": "CRFB3",
+    "isin": "BRCRFBACNOR2",
+    "entry": "2025-04-01",
+    "exit": "2025-07-01",
+    "quality_reasons": [
+      "INSTRUMENT_IDENTITY_BREAK_OR_MISSING",
+      "MISSING_EXECUTION_ENDPOINT"
+    ],
+    "selected_in": [
+      "H19-3"
+    ]
+  },
+  {
+    "ticker": "JBSS3",
+    "isin": "BRJBSSACNOR8",
+    "entry": "2025-04-01",
+    "exit": "2025-07-01",
+    "quality_reasons": [
+      "INSTRUMENT_IDENTITY_BREAK_OR_MISSING",
+      "MISSING_EXECUTION_ENDPOINT"
+    ],
+    "selected_in": []
+  },
+  {
+    "ticker": "CCRO3",
+    "isin": "BRCCROACNOR2",
+    "entry": "2025-04-01",
+    "exit": "2025-07-01",
+    "quality_reasons": [
+      "INSTRUMENT_IDENTITY_BREAK_OR_MISSING",
+      "MISSING_EXECUTION_ENDPOINT"
+    ],
+    "selected_in": []
+  },
+  {
+    "ticker": "BEEF3",
+    "isin": "BRBEEFACNOR6",
+    "entry": "2025-04-01",
+    "exit": "2025-07-01",
+    "quality_reasons": [
+      "UNMODELLED_SUBSCRICAO"
+    ],
+    "selected_in": []
+  },
+  {
+    "ticker": "NTCO3",
+    "isin": "BRNTCOACNOR5",
+    "entry": "2025-07-01",
+    "exit": "2025-10-01",
+    "quality_reasons": [
+      "INSTRUMENT_IDENTITY_BREAK_OR_MISSING",
+      "MISSING_EXECUTION_ENDPOINT"
+    ],
+    "selected_in": []
+  },
+  {
+    "ticker": "SMFT3",
+    "isin": "BRSMFTACNOR1",
+    "entry": "2025-10-01",
+    "exit": "2026-01-02",
+    "quality_reasons": [
+      "UNMODELLED_SUBSCRICAO"
+    ],
+    "selected_in": []
+  }
+]

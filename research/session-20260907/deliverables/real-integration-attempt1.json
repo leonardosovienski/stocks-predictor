@@ -1,0 +1,36 @@
+{
+  "attempt": 1,
+  "code_commit": "621a05d",
+  "engineering_controls_checked": 36,
+  "passed": 32,
+  "failed": 4,
+  "failed_cases": [
+    {
+      "case": "ENGI_BONUS_AND_CASH",
+      "capital_brl": 5000,
+      "cost_per_side": 0.0018,
+      "price_mode": "worst"
+    },
+    {
+      "case": "ENGI_BONUS_AND_CASH",
+      "capital_brl": 5000,
+      "cost_per_side": 0.0036,
+      "price_mode": "worst"
+    },
+    {
+      "case": "ENGI_BONUS_AND_CASH",
+      "capital_brl": 10000,
+      "cost_per_side": 0.0018,
+      "price_mode": "worst"
+    },
+    {
+      "case": "ENGI_BONUS_AND_CASH",
+      "capital_brl": 10000,
+      "cost_per_side": 0.0036,
+      "price_mode": "worst"
+    }
+  ],
+  "failure": "Adverse entry sized at opening price left residual target; post-bonus rally caused an unsignalled sale on 2025-12-05.",
+  "correction": "Size incremental buy notional at actual adverse execution price; pending target clears when funded quantity is filled.",
+  "research_trials_observed": []
+}

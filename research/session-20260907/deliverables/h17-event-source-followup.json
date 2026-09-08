@@ -1,0 +1,391 @@
+[
+  {
+    "cnpj": "00001180000126",
+    "codeCVM": "2437",
+    "detail": {
+      "issuingCompany": "AXIA",
+      "companyName": "AXIA ENERGIA S.A.",
+      "tradingName": "AXIA ENERGIA",
+      "cnpj": "00001180000126",
+      "industryClassification": "Utilidade Pública / Energia Elétrica / Energia Elétrica",
+      "industryClassificationEng": null,
+      "activity": "Empresa Holding de Geração. Transmissão de Energia",
+      "website": "www.eletrobras.com",
+      "hasQuotation": "S",
+      "status": "A",
+      "marketIndicator": "18",
+      "market": "NOVO MERCADO",
+      "institutionCommon": "ITAU CORRETORA ACOES",
+      "institutionPreferred": "ITAU CORRETORA ACOES",
+      "code": "AXIA98",
+      "codeCVM": "2437",
+      "lastDate": "04/09/2026 23:09:35",
+      "otherCodes": [
+        {
+          "code": "AXIA3",
+          "isin": "BRAXIAACNOR0"
+        },
+        {
+          "code": "AXIA7",
+          "isin": "BRAXIAACNPC9"
+        },
+        {
+          "code": "AXIA99",
+          "isin": "BRAXIACDAM14"
+        },
+        {
+          "code": "AXIA98",
+          "isin": "BRAXIACDAXX0"
+        }
+      ],
+      "hasEmissions": false,
+      "hasBDR": false,
+      "typeBDR": null,
+      "describleCategoryBVMF": null,
+      "dateQuotation": "07/09/1971"
+    },
+    "status": "ACQUIRED",
+    "source_file": "b3-h17-2437-current-supplement.json",
+    "returned_codes": [
+      "2437"
+    ]
+  },
+  {
+    "cnpj": "01896779000138",
+    "codeCVM": "20044",
+    "detail": {
+      "issuingCompany": "CSUD",
+      "companyName": "CSU DIGITAL S.A.",
+      "tradingName": "CSU DIGITAL",
+      "cnpj": "01896779000138",
+      "industryClassification": "Financeiro / Serviços Financeiros Diversos / Serviços Financeiros Diversos",
+      "industryClassificationEng": null,
+      "activity": "Terceirização em administração e processamento de meios eletrônicos de pagamento. gestão em terceirização de contact center. desenvolvimento e gestão operacional de programas de fidelidade e incentivo",
+      "website": "www.csu.com.br",
+      "hasQuotation": "S",
+      "status": "A",
+      "marketIndicator": "18",
+      "market": "NOVO MERCADO",
+      "institutionCommon": "BTG PACTUAL SERVIÇOS FINANCEIROS SA DTVM",
+      "institutionPreferred": "",
+      "code": "CSUD3",
+      "codeCVM": "20044",
+      "lastDate": "04/09/2026 23:18:06",
+      "otherCodes": [
+        {
+          "code": "CSUD3",
+          "isin": "BRCSUDACNOR5"
+        }
+      ],
+      "hasEmissions": false,
+      "hasBDR": false,
+      "typeBDR": null,
+      "describleCategoryBVMF": null,
+      "dateQuotation": "02/05/2006"
+    },
+    "status": "ACQUIRED",
+    "source_file": "b3-h17-20044-current-supplement.json",
+    "returned_codes": [
+      "20044"
+    ]
+  },
+  {
+    "cnpj": "02916265000160",
+    "codeCVM": "20575",
+    "detail": {},
+    "status": "NO_DETAIL"
+  },
+  {
+    "cnpj": "08402943000152",
+    "codeCVM": "4669",
+    "detail": {
+      "issuingCompany": "RIAA",
+      "companyName": "GUARARAPES CONFECCOES S.A.",
+      "tradingName": "RIACHUELO",
+      "cnpj": "08402943000152",
+      "industryClassification": "Consumo Cíclico / Comércio / Tecidos. Vestuário e Calçados",
+      "industryClassificationEng": null,
+      "activity": "Confecções de roupas e tecidos em geral.",
+      "website": "www.riachuelo.com.br/ri",
+      "hasQuotation": "S",
+      "status": "A",
+      "marketIndicator": "18",
+      "market": "NOVO MERCADO",
+      "institutionCommon": "ITAU CORRETORA ACOES",
+      "institutionPreferred": "ITAU CORRETORA ACOES",
+      "code": "RIAA3",
+      "codeCVM": "4669",
+      "lastDate": "04/09/2026 23:24:42",
+      "otherCodes": [
+        {
+          "code": "RIAA3",
+          "isin": "BRRIAAACNOR2"
+        }
+      ],
+      "hasEmissions": false,
+      "hasBDR": false,
+      "typeBDR": null,
+      "describleCategoryBVMF": null,
+      "dateQuotation": "03/01/1972"
+    },
+    "status": "ACQUIRED",
+    "source_file": "b3-h17-4669-current-supplement.json",
+    "returned_codes": [
+      "4669"
+    ]
+  },
+  {
+    "cnpj": "08741499000108",
+    "codeCVM": "21482",
+    "detail": {},
+    "status": "NO_DETAIL"
+  },
+  {
+    "cnpj": "09149503000106",
+    "codeCVM": "23426",
+    "detail": {
+      "issuingCompany": "SEGE",
+      "companyName": "SERENA GERACAO S.A",
+      "tradingName": "SERENA GER",
+      "cnpj": "09149503000106",
+      "industryClassification": "Utilidade Pública / Energia Elétrica / Energia Elétrica",
+      "industryClassificationEng": null,
+      "activity": "Geração e comercialização de energia elétrica ou Participação. direta ou por meio de joint venture. consórcio ou qualquer outra sociedade. em ativos que já tenham atingido a fase operacional.",
+      "website": "https://ri.srna.co/",
+      "hasQuotation": "S",
+      "status": "A",
+      "marketIndicator": "8",
+      "market": "BALCAO NAO ORG.",
+      "institutionCommon": "ITAU CORRETORA ACOES",
+      "institutionPreferred": "",
+      "code": null,
+      "codeCVM": "23426",
+      "lastDate": "04/09/2026 23:37:56",
+      "otherCodes": null,
+      "hasEmissions": false,
+      "hasBDR": false,
+      "typeBDR": null,
+      "describleCategoryBVMF": null,
+      "dateQuotation": null
+    },
+    "status": "ACQUIRED",
+    "source_file": "b3-h17-23426-current-supplement.json",
+    "returned_codes": [
+      "23426"
+    ]
+  },
+  {
+    "cnpj": "10215988000160",
+    "codeCVM": "22691",
+    "detail": {},
+    "status": "NO_DETAIL"
+  },
+  {
+    "cnpj": "11669021000110",
+    "codeCVM": "22365",
+    "detail": {},
+    "status": "NO_DETAIL"
+  },
+  {
+    "cnpj": "13217485000111",
+    "codeCVM": "24694",
+    "detail": {
+      "issuingCompany": "SBFG",
+      "companyName": "GRUPO SBF SA",
+      "tradingName": "GRUPO SBF",
+      "cnpj": "13217485000111",
+      "industryClassification": "Consumo Cíclico / Comércio / Produtos Diversos",
+      "industryClassificationEng": null,
+      "activity": "A Companhia tem por objeto social (a) administração de bens próprios; e. (b) a participação. como sócia ou acionista. em outras empresas.",
+      "website": "ri.gruposbf.com.br/en/",
+      "hasQuotation": "S",
+      "status": "A",
+      "marketIndicator": "18",
+      "market": "NOVO MERCADO",
+      "institutionCommon": "ITAU CORRETORA ACOES",
+      "institutionPreferred": "",
+      "code": "SBFG3",
+      "codeCVM": "24694",
+      "lastDate": "04/09/2026 23:24:38",
+      "otherCodes": [
+        {
+          "code": "SBFG3",
+          "isin": "BRSBFGACNOR1"
+        }
+      ],
+      "hasEmissions": false,
+      "hasBDR": false,
+      "typeBDR": null,
+      "describleCategoryBVMF": null,
+      "dateQuotation": "17/04/2019"
+    },
+    "status": "ACQUIRED",
+    "source_file": "b3-h17-24694-current-supplement.json",
+    "returned_codes": [
+      "24694"
+    ]
+  },
+  {
+    "cnpj": "13574594000196",
+    "codeCVM": "24317",
+    "detail": {
+      "issuingCompany": "ZAMP",
+      "companyName": "ZAMP S.A.",
+      "tradingName": "ZAMP S.A.",
+      "cnpj": "13574594000196",
+      "industryClassification": "Consumo Cíclico / Hoteis e Restaurantes / Restaurante e Similares",
+      "industryClassificationEng": null,
+      "activity": "Prestação de serviços de operação e assessoria a restaurantes",
+      "website": "www.burgerking.com.br/ri",
+      "hasQuotation": "S",
+      "status": "A",
+      "marketIndicator": "8",
+      "market": "BALCAO NAO ORG.",
+      "institutionCommon": "ITAU CORRETORA ACOES",
+      "institutionPreferred": "",
+      "code": null,
+      "codeCVM": "24317",
+      "lastDate": "04/09/2026 23:44:06",
+      "otherCodes": null,
+      "hasEmissions": false,
+      "hasBDR": false,
+      "typeBDR": null,
+      "describleCategoryBVMF": null,
+      "dateQuotation": null
+    },
+    "status": "ACQUIRED",
+    "source_file": "b3-h17-24317-current-supplement.json",
+    "returned_codes": [
+      "24317"
+    ]
+  },
+  {
+    "cnpj": "18328118000109",
+    "codeCVM": "25089",
+    "detail": {},
+    "status": "NO_DETAIL"
+  },
+  {
+    "cnpj": "42278473000103",
+    "codeCVM": "23590",
+    "detail": {
+      "issuingCompany": "WIZC",
+      "companyName": "WIZ CO PARTICIPAÇÕES E CORRETAGEM DE SEGUROS S.A.",
+      "tradingName": "WIZ CO",
+      "cnpj": "42278473000103",
+      "industryClassification": "Financeiro / Previdência e Seguros / Corretoras de Seguros e Resseguros",
+      "industryClassificationEng": null,
+      "activity": "Corretagem de seguros de todos os ramos. assessoria e consultoria na área de seguros em geral. intermediação e desenvolvimento de soluções em negócios. sem especificação definida. dentre outros.",
+      "website": "www.wizsolucoes.com.br",
+      "hasQuotation": "S",
+      "status": "A",
+      "marketIndicator": "18",
+      "market": "NOVO MERCADO",
+      "institutionCommon": "BTG PACTUAL SERVIÇOS FINANCEIROS SA DTVM",
+      "institutionPreferred": "",
+      "code": "WIZC3",
+      "codeCVM": "23590",
+      "lastDate": "04/09/2026 23:43:44",
+      "otherCodes": [
+        {
+          "code": "WIZC3",
+          "isin": "BRWIZCACNOR5"
+        }
+      ],
+      "hasEmissions": false,
+      "hasBDR": false,
+      "typeBDR": null,
+      "describleCategoryBVMF": null,
+      "dateQuotation": "05/06/2015"
+    },
+    "status": "ACQUIRED",
+    "source_file": "b3-h17-23590-current-supplement.json",
+    "returned_codes": [
+      "23590"
+    ]
+  },
+  {
+    "cnpj": "45987245000192",
+    "codeCVM": "701",
+    "detail": {
+      "issuingCompany": "BIED",
+      "companyName": "BIOMA EDUCAÇÃO S.A.",
+      "tradingName": "BIOMA EDUC",
+      "cnpj": "45987245000192",
+      "industryClassification": "Consumo Cíclico / Diversos / Serviços Educacionais",
+      "industryClassificationEng": null,
+      "activity": "Prestação de serviços educacionais. diretamente ou por meio de participação em outras sociedades. nas áreas de educação pré-escolar. infantil e básica (ensino fundamental ao ensino médio).",
+      "website": "www.bahema.com.br",
+      "hasQuotation": "S",
+      "status": "A",
+      "marketIndicator": "1",
+      "market": "BOLSA",
+      "institutionCommon": "ITAUBANCO - ACOES",
+      "institutionPreferred": "ITAUBANCO - ACOES",
+      "code": "BIED3",
+      "codeCVM": "701",
+      "lastDate": "04/09/2026 23:11:36",
+      "otherCodes": [
+        {
+          "code": "BIED3",
+          "isin": "BRBIEDACNOR2"
+        }
+      ],
+      "hasEmissions": false,
+      "hasBDR": false,
+      "typeBDR": null,
+      "describleCategoryBVMF": null,
+      "dateQuotation": "02/01/1974"
+    },
+    "status": "ACQUIRED",
+    "source_file": "b3-h17-701-current-supplement.json",
+    "returned_codes": [
+      "701"
+    ]
+  },
+  {
+    "cnpj": "58119199000151",
+    "codeCVM": "20125",
+    "detail": {
+      "issuingCompany": "SAUD",
+      "companyName": "BRADSAUDE S.A.",
+      "tradingName": "BRADSAUDE",
+      "cnpj": "58119199000151",
+      "industryClassification": "Saúde / Serv.Méd.Hospit..Análises e Diagnósticos / Serv.Méd.Hospit..Análises e Diagnósticos",
+      "industryClassificationEng": null,
+      "activity": "A Bradsaúde reúne operadoras de saúde e odontologia. hospitais. clínicas de atenção primária. tecnologia. e investimentos em diagnósticos e oncologia.",
+      "website": "www.odontoprev.com.br/ri",
+      "hasQuotation": "S",
+      "status": "A",
+      "marketIndicator": "18",
+      "market": "NOVO MERCADO",
+      "institutionCommon": "BRADESCO",
+      "institutionPreferred": "",
+      "code": "SAUD3",
+      "codeCVM": "20125",
+      "lastDate": "04/09/2026 23:12:12",
+      "otherCodes": [
+        {
+          "code": "SAUD3",
+          "isin": "BRSAUDACNOR9"
+        }
+      ],
+      "hasEmissions": false,
+      "hasBDR": false,
+      "typeBDR": null,
+      "describleCategoryBVMF": null,
+      "dateQuotation": "01/12/2006"
+    },
+    "status": "ACQUIRED",
+    "source_file": "b3-h17-20125-current-supplement.json",
+    "returned_codes": [
+      "20125"
+    ]
+  },
+  {
+    "cnpj": "82641325000118",
+    "codeCVM": "20141",
+    "detail": {},
+    "status": "NO_DETAIL"
+  }
+]

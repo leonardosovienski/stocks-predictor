@@ -1,0 +1,2045 @@
+{
+  "run_id": "stocks-real-integration-20260907",
+  "completed_at_utc": "2026-09-07T04:26:39.963746+00:00",
+  "code_commit": "5c09c7b8ffebefef00467cbab12481f3535a7837",
+  "protocol_sha256": "80228ccf3bdd2bf9912e4e642dbee7bd740a6e46252ecfaba7f5b1a1f2c20d5b",
+  "source_db_sha256": "e21a89c38f2792c826291baa1175da4fe9dfbf626316635a536f7c28b250146a",
+  "engine_version": "stocks-causal-execution-v3",
+  "mechanical_status": "PASS",
+  "real_scenarios_passed": 36,
+  "controls": [
+    {
+      "case": "BBAS_SPLIT",
+      "capital_brl": 5000,
+      "cost_per_side": 0.0018,
+      "price_mode": "next_open",
+      "sessions": 6,
+      "quantity_step": 0,
+      "checks": "PASS",
+      "executions": [
+        {
+          "signal_date": "2024-04-12",
+          "exec_date": "2024-04-15",
+          "ticker": "BBAS3",
+          "quantity": 87.16409659260205,
+          "price": 57.26,
+          "cost": 8.983829107606308,
+          "cash_after": 0.0
+        },
+        {
+          "signal_date": "2024-04-18",
+          "exec_date": "2024-04-19",
+          "ticker": "BBAS3",
+          "quantity": -174.3281931852041,
+          "price": 28.02,
+          "cost": 8.792416751488954,
+          "cash_after": 4875.883556297929
+        }
+      ],
+      "stock_entitlements": [],
+      "stock_deliveries": [],
+      "settled_cash_brl": 4875.883556297929,
+      "future_receivables_brl": 0.0,
+      "accounting_nav_brl": 4875.883556297929,
+      "accounting_residual_brl": 0.0
+    },
+    {
+      "case": "BBAS_SPLIT",
+      "capital_brl": 5000,
+      "cost_per_side": 0.0018,
+      "price_mode": "next_close",
+      "sessions": 6,
+      "quantity_step": 0,
+      "checks": "PASS",
+      "executions": [
+        {
+          "signal_date": "2024-04-12",
+          "exec_date": "2024-04-15",
+          "ticker": "BBAS3",
+          "quantity": 88.3991528673821,
+          "price": 56.46,
+          "cost": 8.983829107606308,
+          "cash_after": 0.0
+        },
+        {
+          "signal_date": "2024-04-18",
+          "exec_date": "2024-04-19",
+          "ticker": "BBAS3",
+          "quantity": -176.7983057347642,
+          "price": 27.71,
+          "cost": 8.818345893438568,
+          "cash_after": 4890.262706016878
+        }
+      ],
+      "stock_entitlements": [],
+      "stock_deliveries": [],
+      "settled_cash_brl": 4890.262706016878,
+      "future_receivables_brl": 0.0,
+      "accounting_nav_brl": 4890.262706016878,
+      "accounting_residual_brl": 9.094947017729282e-13
+    },
+    {
+      "case": "BBAS_SPLIT",
+      "capital_brl": 5000,
+      "cost_per_side": 0.0018,
+      "price_mode": "worst",
+      "sessions": 6,
+      "quantity_step": 0,
+      "checks": "PASS",
+      "executions": [
+        {
+          "signal_date": "2024-04-12",
+          "exec_date": "2024-04-15",
+          "ticker": "BBAS3",
+          "quantity": 87.16409659260205,
+          "price": 57.26,
+          "cost": 8.983829107606308,
+          "cash_after": 0.0
+        },
+        {
+          "signal_date": "2024-04-18",
+          "exec_date": "2024-04-19",
+          "ticker": "BBAS3",
+          "quantity": -174.3281931852041,
+          "price": 27.71,
+          "cost": 8.69514161969161,
+          "cash_after": 4821.939091542314
+        }
+      ],
+      "stock_entitlements": [],
+      "stock_deliveries": [],
+      "settled_cash_brl": 4821.939091542314,
+      "future_receivables_brl": 0.0,
+      "accounting_nav_brl": 4821.939091542314,
+      "accounting_residual_brl": 0.0
+    },
+    {
+      "case": "BBAS_SPLIT",
+      "capital_brl": 5000,
+      "cost_per_side": 0.0036,
+      "price_mode": "next_open",
+      "sessions": 6,
+      "quantity_step": 0,
+      "checks": "PASS",
+      "executions": [
+        {
+          "signal_date": "2024-04-12",
+          "exec_date": "2024-04-15",
+          "ticker": "BBAS3",
+          "quantity": 87.0077640160111,
+          "price": 57.26,
+          "cost": 17.935432443204462,
+          "cash_after": 9.094947017729282e-13
+        },
+        {
+          "signal_date": "2024-04-18",
+          "exec_date": "2024-04-19",
+          "ticker": "BBAS3",
+          "quantity": -174.0155280320222,
+          "price": 28.02,
+          "cost": 17.55329434364614,
+          "cash_after": 4858.361801113616
+        }
+      ],
+      "stock_entitlements": [],
+      "stock_deliveries": [],
+      "settled_cash_brl": 4858.361801113616,
+      "future_receivables_brl": 0.0,
+      "accounting_nav_brl": 4858.361801113616,
+      "accounting_residual_brl": 0.0
+    },
+    {
+      "case": "BBAS_SPLIT",
+      "capital_brl": 5000,
+      "cost_per_side": 0.0036,
+      "price_mode": "next_close",
+      "sessions": 6,
+      "quantity_step": 0,
+      "checks": "PASS",
+      "executions": [
+        {
+          "signal_date": "2024-04-12",
+          "exec_date": "2024-04-15",
+          "ticker": "BBAS3",
+          "quantity": 88.24060516395316,
+          "price": 56.46,
+          "cost": 17.935432443204466,
+          "cash_after": 0.0
+        },
+        {
+          "signal_date": "2024-04-18",
+          "exec_date": "2024-04-19",
+          "ticker": "BBAS3",
+          "quantity": -176.48121032790633,
+          "price": 27.71,
+          "cost": 17.605059617470623,
+          "cash_after": 4872.689278568813
+        }
+      ],
+      "stock_entitlements": [],
+      "stock_deliveries": [],
+      "settled_cash_brl": 4872.689278568813,
+      "future_receivables_brl": 0.0,
+      "accounting_nav_brl": 4872.689278568813,
+      "accounting_residual_brl": 0.0
+    },
+    {
+      "case": "BBAS_SPLIT",
+      "capital_brl": 5000,
+      "cost_per_side": 0.0036,
+      "price_mode": "worst",
+      "sessions": 6,
+      "quantity_step": 0,
+      "checks": "PASS",
+      "executions": [
+        {
+          "signal_date": "2024-04-12",
+          "exec_date": "2024-04-15",
+          "ticker": "BBAS3",
+          "quantity": 87.0077640160111,
+          "price": 57.26,
+          "cost": 17.935432443204462,
+          "cash_after": 9.094947017729282e-13
+        },
+        {
+          "signal_date": "2024-04-18",
+          "exec_date": "2024-04-19",
+          "ticker": "BBAS3",
+          "quantity": -174.0155280320222,
+          "price": 27.71,
+          "cost": 17.359093014362404,
+          "cash_after": 4804.611188752973
+        }
+      ],
+      "stock_entitlements": [],
+      "stock_deliveries": [],
+      "settled_cash_brl": 4804.611188752973,
+      "future_receivables_brl": 0.0,
+      "accounting_nav_brl": 4804.611188752973,
+      "accounting_residual_brl": 0.0
+    },
+    {
+      "case": "BBAS_SPLIT",
+      "capital_brl": 10000,
+      "cost_per_side": 0.0018,
+      "price_mode": "next_open",
+      "sessions": 6,
+      "quantity_step": 0,
+      "checks": "PASS",
+      "executions": [
+        {
+          "signal_date": "2024-04-12",
+          "exec_date": "2024-04-15",
+          "ticker": "BBAS3",
+          "quantity": 174.3281931852041,
+          "price": 57.26,
+          "cost": 17.967658215212616,
+          "cash_after": 0.0
+        },
+        {
+          "signal_date": "2024-04-18",
+          "exec_date": "2024-04-19",
+          "ticker": "BBAS3",
+          "quantity": -348.6563863704082,
+          "price": 28.02,
+          "cost": 17.584833502977908,
+          "cash_after": 9751.767112595859
+        }
+      ],
+      "stock_entitlements": [],
+      "stock_deliveries": [],
+      "settled_cash_brl": 9751.767112595859,
+      "future_receivables_brl": 0.0,
+      "accounting_nav_brl": 9751.767112595859,
+      "accounting_residual_brl": 0.0
+    },
+    {
+      "case": "BBAS_SPLIT",
+      "capital_brl": 10000,
+      "cost_per_side": 0.0018,
+      "price_mode": "next_close",
+      "sessions": 6,
+      "quantity_step": 0,
+      "checks": "PASS",
+      "executions": [
+        {
+          "signal_date": "2024-04-12",
+          "exec_date": "2024-04-15",
+          "ticker": "BBAS3",
+          "quantity": 176.7983057347642,
+          "price": 56.46,
+          "cost": 17.967658215212616,
+          "cash_after": 0.0
+        },
+        {
+          "signal_date": "2024-04-18",
+          "exec_date": "2024-04-19",
+          "ticker": "BBAS3",
+          "quantity": -353.5966114695284,
+          "price": 27.71,
+          "cost": 17.636691786877137,
+          "cash_after": 9780.525412033756
+        }
+      ],
+      "stock_entitlements": [],
+      "stock_deliveries": [],
+      "settled_cash_brl": 9780.525412033756,
+      "future_receivables_brl": 0.0,
+      "accounting_nav_brl": 9780.525412033756,
+      "accounting_residual_brl": 1.8189894035458565e-12
+    },
+    {
+      "case": "BBAS_SPLIT",
+      "capital_brl": 10000,
+      "cost_per_side": 0.0018,
+      "price_mode": "worst",
+      "sessions": 6,
+      "quantity_step": 0,
+      "checks": "PASS",
+      "executions": [
+        {
+          "signal_date": "2024-04-12",
+          "exec_date": "2024-04-15",
+          "ticker": "BBAS3",
+          "quantity": 174.3281931852041,
+          "price": 57.26,
+          "cost": 17.967658215212616,
+          "cash_after": 0.0
+        },
+        {
+          "signal_date": "2024-04-18",
+          "exec_date": "2024-04-19",
+          "ticker": "BBAS3",
+          "quantity": -348.6563863704082,
+          "price": 27.71,
+          "cost": 17.39028323938322,
+          "cash_after": 9643.878183084627
+        }
+      ],
+      "stock_entitlements": [],
+      "stock_deliveries": [],
+      "settled_cash_brl": 9643.878183084627,
+      "future_receivables_brl": 0.0,
+      "accounting_nav_brl": 9643.878183084627,
+      "accounting_residual_brl": 0.0
+    },
+    {
+      "case": "BBAS_SPLIT",
+      "capital_brl": 10000,
+      "cost_per_side": 0.0036,
+      "price_mode": "next_open",
+      "sessions": 6,
+      "quantity_step": 0,
+      "checks": "PASS",
+      "executions": [
+        {
+          "signal_date": "2024-04-12",
+          "exec_date": "2024-04-15",
+          "ticker": "BBAS3",
+          "quantity": 174.0155280320222,
+          "price": 57.26,
+          "cost": 35.870864886408924,
+          "cash_after": 1.8189894035458565e-12
+        },
+        {
+          "signal_date": "2024-04-18",
+          "exec_date": "2024-04-19",
+          "ticker": "BBAS3",
+          "quantity": -348.0310560640444,
+          "price": 28.02,
+          "cost": 35.10658868729228,
+          "cash_after": 9716.723602227232
+        }
+      ],
+      "stock_entitlements": [],
+      "stock_deliveries": [],
+      "settled_cash_brl": 9716.723602227232,
+      "future_receivables_brl": 0.0,
+      "accounting_nav_brl": 9716.723602227232,
+      "accounting_residual_brl": 0.0
+    },
+    {
+      "case": "BBAS_SPLIT",
+      "capital_brl": 10000,
+      "cost_per_side": 0.0036,
+      "price_mode": "next_close",
+      "sessions": 6,
+      "quantity_step": 0,
+      "checks": "PASS",
+      "executions": [
+        {
+          "signal_date": "2024-04-12",
+          "exec_date": "2024-04-15",
+          "ticker": "BBAS3",
+          "quantity": 176.48121032790633,
+          "price": 56.46,
+          "cost": 35.87086488640893,
+          "cash_after": 0.0
+        },
+        {
+          "signal_date": "2024-04-18",
+          "exec_date": "2024-04-19",
+          "ticker": "BBAS3",
+          "quantity": -352.96242065581265,
+          "price": 27.71,
+          "cost": 35.210119234941246,
+          "cash_after": 9745.378557137627
+        }
+      ],
+      "stock_entitlements": [],
+      "stock_deliveries": [],
+      "settled_cash_brl": 9745.378557137627,
+      "future_receivables_brl": 0.0,
+      "accounting_nav_brl": 9745.378557137627,
+      "accounting_residual_brl": 0.0
+    },
+    {
+      "case": "BBAS_SPLIT",
+      "capital_brl": 10000,
+      "cost_per_side": 0.0036,
+      "price_mode": "worst",
+      "sessions": 6,
+      "quantity_step": 0,
+      "checks": "PASS",
+      "executions": [
+        {
+          "signal_date": "2024-04-12",
+          "exec_date": "2024-04-15",
+          "ticker": "BBAS3",
+          "quantity": 174.0155280320222,
+          "price": 57.26,
+          "cost": 35.870864886408924,
+          "cash_after": 1.8189894035458565e-12
+        },
+        {
+          "signal_date": "2024-04-18",
+          "exec_date": "2024-04-19",
+          "ticker": "BBAS3",
+          "quantity": -348.0310560640444,
+          "price": 27.71,
+          "cost": 34.71818602872481,
+          "cash_after": 9609.222377505946
+        }
+      ],
+      "stock_entitlements": [],
+      "stock_deliveries": [],
+      "settled_cash_brl": 9609.222377505946,
+      "future_receivables_brl": 0.0,
+      "accounting_nav_brl": 9609.222377505946,
+      "accounting_residual_brl": 0.0
+    },
+    {
+      "case": "ENGI_BONUS_AND_CASH",
+      "capital_brl": 5000,
+      "cost_per_side": 0.0018,
+      "price_mode": "next_open",
+      "sessions": 20,
+      "quantity_step": 0,
+      "checks": "PASS",
+      "executions": [
+        {
+          "signal_date": "2025-11-25",
+          "exec_date": "2025-11-26",
+          "ticker": "ENGI11",
+          "quantity": 92.40911258826871,
+          "price": 54.01,
+          "cost": 8.983829107606308,
+          "cash_after": 0.0
+        },
+        {
+          "signal_date": "2025-12-19",
+          "exec_date": "2025-12-22",
+          "ticker": "ENGI11",
+          "quantity": -101.65002384709558,
+          "price": 47.22,
+          "cost": 8.639845426907737,
+          "cash_after": 4856.067421649733
+        }
+      ],
+      "stock_entitlements": [
+        [
+          "2025-11-28",
+          "ENGI11",
+          "2025-12-02",
+          9.240911258826872
+        ]
+      ],
+      "stock_deliveries": [
+        [
+          "2025-12-02",
+          "ENGI11",
+          9.240911258826872
+        ]
+      ],
+      "settled_cash_brl": 4856.067421649733,
+      "future_receivables_brl": 0.0,
+      "accounting_nav_brl": 4856.067421649733,
+      "accounting_residual_brl": 0.0
+    },
+    {
+      "case": "ENGI_BONUS_AND_CASH",
+      "capital_brl": 5000,
+      "cost_per_side": 0.0018,
+      "price_mode": "next_close",
+      "sessions": 20,
+      "quantity_step": 0,
+      "checks": "PASS",
+      "executions": [
+        {
+          "signal_date": "2025-11-25",
+          "exec_date": "2025-11-26",
+          "ticker": "ENGI11",
+          "quantity": 89.86345284285908,
+          "price": 55.54,
+          "cost": 8.983829107606308,
+          "cash_after": 0.0
+        },
+        {
+          "signal_date": "2025-12-19",
+          "exec_date": "2025-12-22",
+          "ticker": "ENGI11",
+          "quantity": -98.84979812714498,
+          "price": 46.1,
+          "cost": 8.202556248590492,
+          "cash_after": 4611.781375553172
+        }
+      ],
+      "stock_entitlements": [
+        [
+          "2025-11-28",
+          "ENGI11",
+          "2025-12-02",
+          8.986345284285909
+        ]
+      ],
+      "stock_deliveries": [
+        [
+          "2025-12-02",
+          "ENGI11",
+          8.986345284285909
+        ]
+      ],
+      "settled_cash_brl": 4611.781375553172,
+      "future_receivables_brl": 0.0,
+      "accounting_nav_brl": 4611.781375553172,
+      "accounting_residual_brl": 0.0
+    },
+    {
+      "case": "ENGI_BONUS_AND_CASH",
+      "capital_brl": 5000,
+      "cost_per_side": 0.0018,
+      "price_mode": "worst",
+      "sessions": 20,
+      "quantity_step": 0,
+      "checks": "PASS",
+      "executions": [
+        {
+          "signal_date": "2025-11-25",
+          "exec_date": "2025-11-26",
+          "ticker": "ENGI11",
+          "quantity": 89.86345284285908,
+          "price": 55.54,
+          "cost": 8.983829107606308,
+          "cash_after": 0.0
+        },
+        {
+          "signal_date": "2025-12-19",
+          "exec_date": "2025-12-22",
+          "ticker": "ENGI11",
+          "quantity": -98.84979812714498,
+          "price": 46.1,
+          "cost": 8.202556248590492,
+          "cash_after": 4611.781375553172
+        }
+      ],
+      "stock_entitlements": [
+        [
+          "2025-11-28",
+          "ENGI11",
+          "2025-12-02",
+          8.986345284285909
+        ]
+      ],
+      "stock_deliveries": [
+        [
+          "2025-12-02",
+          "ENGI11",
+          8.986345284285909
+        ]
+      ],
+      "settled_cash_brl": 4611.781375553172,
+      "future_receivables_brl": 0.0,
+      "accounting_nav_brl": 4611.781375553172,
+      "accounting_residual_brl": 0.0
+    },
+    {
+      "case": "ENGI_BONUS_AND_CASH",
+      "capital_brl": 5000,
+      "cost_per_side": 0.0036,
+      "price_mode": "next_open",
+      "sessions": 20,
+      "quantity_step": 0,
+      "checks": "PASS",
+      "executions": [
+        {
+          "signal_date": "2025-11-25",
+          "exec_date": "2025-11-26",
+          "ticker": "ENGI11",
+          "quantity": 92.24337284867238,
+          "price": 54.01,
+          "cost": 17.935432443204462,
+          "cash_after": 9.094947017729282e-13
+        },
+        {
+          "signal_date": "2025-12-19",
+          "exec_date": "2025-12-22",
+          "ticker": "ENGI11",
+          "quantity": -101.46771013353961,
+          "price": 47.22,
+          "cost": 17.248698981020667,
+          "cash_after": 4838.733505241158
+        }
+      ],
+      "stock_entitlements": [
+        [
+          "2025-11-28",
+          "ENGI11",
+          "2025-12-02",
+          9.224337284867238
+        ]
+      ],
+      "stock_deliveries": [
+        [
+          "2025-12-02",
+          "ENGI11",
+          9.224337284867238
+        ]
+      ],
+      "settled_cash_brl": 4838.733505241158,
+      "future_receivables_brl": 0.0,
+      "accounting_nav_brl": 4838.733505241158,
+      "accounting_residual_brl": 0.0
+    },
+    {
+      "case": "ENGI_BONUS_AND_CASH",
+      "capital_brl": 5000,
+      "cost_per_side": 0.0036,
+      "price_mode": "next_close",
+      "sessions": 20,
+      "quantity_step": 0,
+      "checks": "PASS",
+      "executions": [
+        {
+          "signal_date": "2025-11-25",
+          "exec_date": "2025-11-26",
+          "ticker": "ENGI11",
+          "quantity": 89.70227885410146,
+          "price": 55.54,
+          "cost": 17.935432443204462,
+          "cash_after": 9.094947017729282e-13
+        },
+        {
+          "signal_date": "2025-12-19",
+          "exec_date": "2025-12-22",
+          "ticker": "ENGI11",
+          "quantity": -98.67250673951162,
+          "price": 46.1,
+          "cost": 16.37568921848935,
+          "cash_after": 4595.322101613523
+        }
+      ],
+      "stock_entitlements": [
+        [
+          "2025-11-28",
+          "ENGI11",
+          "2025-12-02",
+          8.970227885410146
+        ]
+      ],
+      "stock_deliveries": [
+        [
+          "2025-12-02",
+          "ENGI11",
+          8.970227885410146
+        ]
+      ],
+      "settled_cash_brl": 4595.322101613523,
+      "future_receivables_brl": 0.0,
+      "accounting_nav_brl": 4595.322101613523,
+      "accounting_residual_brl": 0.0
+    },
+    {
+      "case": "ENGI_BONUS_AND_CASH",
+      "capital_brl": 5000,
+      "cost_per_side": 0.0036,
+      "price_mode": "worst",
+      "sessions": 20,
+      "quantity_step": 0,
+      "checks": "PASS",
+      "executions": [
+        {
+          "signal_date": "2025-11-25",
+          "exec_date": "2025-11-26",
+          "ticker": "ENGI11",
+          "quantity": 89.70227885410146,
+          "price": 55.54,
+          "cost": 17.935432443204462,
+          "cash_after": 9.094947017729282e-13
+        },
+        {
+          "signal_date": "2025-12-19",
+          "exec_date": "2025-12-22",
+          "ticker": "ENGI11",
+          "quantity": -98.67250673951162,
+          "price": 46.1,
+          "cost": 16.37568921848935,
+          "cash_after": 4595.322101613523
+        }
+      ],
+      "stock_entitlements": [
+        [
+          "2025-11-28",
+          "ENGI11",
+          "2025-12-02",
+          8.970227885410146
+        ]
+      ],
+      "stock_deliveries": [
+        [
+          "2025-12-02",
+          "ENGI11",
+          8.970227885410146
+        ]
+      ],
+      "settled_cash_brl": 4595.322101613523,
+      "future_receivables_brl": 0.0,
+      "accounting_nav_brl": 4595.322101613523,
+      "accounting_residual_brl": 0.0
+    },
+    {
+      "case": "ENGI_BONUS_AND_CASH",
+      "capital_brl": 10000,
+      "cost_per_side": 0.0018,
+      "price_mode": "next_open",
+      "sessions": 20,
+      "quantity_step": 0,
+      "checks": "PASS",
+      "executions": [
+        {
+          "signal_date": "2025-11-25",
+          "exec_date": "2025-11-26",
+          "ticker": "ENGI11",
+          "quantity": 184.81822517653742,
+          "price": 54.01,
+          "cost": 17.967658215212616,
+          "cash_after": 0.0
+        },
+        {
+          "signal_date": "2025-12-19",
+          "exec_date": "2025-12-22",
+          "ticker": "ENGI11",
+          "quantity": -203.30004769419116,
+          "price": 47.22,
+          "cost": 17.279690853815474,
+          "cash_after": 9712.134843299466
+        }
+      ],
+      "stock_entitlements": [
+        [
+          "2025-11-28",
+          "ENGI11",
+          "2025-12-02",
+          18.481822517653743
+        ]
+      ],
+      "stock_deliveries": [
+        [
+          "2025-12-02",
+          "ENGI11",
+          18.481822517653743
+        ]
+      ],
+      "settled_cash_brl": 9712.134843299466,
+      "future_receivables_brl": 0.0,
+      "accounting_nav_brl": 9712.134843299466,
+      "accounting_residual_brl": 0.0
+    },
+    {
+      "case": "ENGI_BONUS_AND_CASH",
+      "capital_brl": 10000,
+      "cost_per_side": 0.0018,
+      "price_mode": "next_close",
+      "sessions": 20,
+      "quantity_step": 0,
+      "checks": "PASS",
+      "executions": [
+        {
+          "signal_date": "2025-11-25",
+          "exec_date": "2025-11-26",
+          "ticker": "ENGI11",
+          "quantity": 179.72690568571815,
+          "price": 55.54,
+          "cost": 17.967658215212616,
+          "cash_after": 0.0
+        },
+        {
+          "signal_date": "2025-12-19",
+          "exec_date": "2025-12-22",
+          "ticker": "ENGI11",
+          "quantity": -197.69959625428996,
+          "price": 46.1,
+          "cost": 16.405112497180983,
+          "cash_after": 9223.562751106345
+        }
+      ],
+      "stock_entitlements": [
+        [
+          "2025-11-28",
+          "ENGI11",
+          "2025-12-02",
+          17.972690568571817
+        ]
+      ],
+      "stock_deliveries": [
+        [
+          "2025-12-02",
+          "ENGI11",
+          17.972690568571817
+        ]
+      ],
+      "settled_cash_brl": 9223.562751106345,
+      "future_receivables_brl": 0.0,
+      "accounting_nav_brl": 9223.562751106345,
+      "accounting_residual_brl": 0.0
+    },
+    {
+      "case": "ENGI_BONUS_AND_CASH",
+      "capital_brl": 10000,
+      "cost_per_side": 0.0018,
+      "price_mode": "worst",
+      "sessions": 20,
+      "quantity_step": 0,
+      "checks": "PASS",
+      "executions": [
+        {
+          "signal_date": "2025-11-25",
+          "exec_date": "2025-11-26",
+          "ticker": "ENGI11",
+          "quantity": 179.72690568571815,
+          "price": 55.54,
+          "cost": 17.967658215212616,
+          "cash_after": 0.0
+        },
+        {
+          "signal_date": "2025-12-19",
+          "exec_date": "2025-12-22",
+          "ticker": "ENGI11",
+          "quantity": -197.69959625428996,
+          "price": 46.1,
+          "cost": 16.405112497180983,
+          "cash_after": 9223.562751106345
+        }
+      ],
+      "stock_entitlements": [
+        [
+          "2025-11-28",
+          "ENGI11",
+          "2025-12-02",
+          17.972690568571817
+        ]
+      ],
+      "stock_deliveries": [
+        [
+          "2025-12-02",
+          "ENGI11",
+          17.972690568571817
+        ]
+      ],
+      "settled_cash_brl": 9223.562751106345,
+      "future_receivables_brl": 0.0,
+      "accounting_nav_brl": 9223.562751106345,
+      "accounting_residual_brl": 0.0
+    },
+    {
+      "case": "ENGI_BONUS_AND_CASH",
+      "capital_brl": 10000,
+      "cost_per_side": 0.0036,
+      "price_mode": "next_open",
+      "sessions": 20,
+      "quantity_step": 0,
+      "checks": "PASS",
+      "executions": [
+        {
+          "signal_date": "2025-11-25",
+          "exec_date": "2025-11-26",
+          "ticker": "ENGI11",
+          "quantity": 184.48674569734476,
+          "price": 54.01,
+          "cost": 35.870864886408924,
+          "cash_after": 1.8189894035458565e-12
+        },
+        {
+          "signal_date": "2025-12-19",
+          "exec_date": "2025-12-22",
+          "ticker": "ENGI11",
+          "quantity": -202.93542026707922,
+          "price": 47.22,
+          "cost": 34.49739796204133,
+          "cash_after": 9677.467010482316
+        }
+      ],
+      "stock_entitlements": [
+        [
+          "2025-11-28",
+          "ENGI11",
+          "2025-12-02",
+          18.448674569734475
+        ]
+      ],
+      "stock_deliveries": [
+        [
+          "2025-12-02",
+          "ENGI11",
+          18.448674569734475
+        ]
+      ],
+      "settled_cash_brl": 9677.467010482316,
+      "future_receivables_brl": 0.0,
+      "accounting_nav_brl": 9677.467010482316,
+      "accounting_residual_brl": 0.0
+    },
+    {
+      "case": "ENGI_BONUS_AND_CASH",
+      "capital_brl": 10000,
+      "cost_per_side": 0.0036,
+      "price_mode": "next_close",
+      "sessions": 20,
+      "quantity_step": 0,
+      "checks": "PASS",
+      "executions": [
+        {
+          "signal_date": "2025-11-25",
+          "exec_date": "2025-11-26",
+          "ticker": "ENGI11",
+          "quantity": 179.40455770820293,
+          "price": 55.54,
+          "cost": 35.870864886408924,
+          "cash_after": 1.8189894035458565e-12
+        },
+        {
+          "signal_date": "2025-12-19",
+          "exec_date": "2025-12-22",
+          "ticker": "ENGI11",
+          "quantity": -197.34501347902324,
+          "price": 46.1,
+          "cost": 32.7513784369787,
+          "cash_after": 9190.644203227046
+        }
+      ],
+      "stock_entitlements": [
+        [
+          "2025-11-28",
+          "ENGI11",
+          "2025-12-02",
+          17.940455770820293
+        ]
+      ],
+      "stock_deliveries": [
+        [
+          "2025-12-02",
+          "ENGI11",
+          17.940455770820293
+        ]
+      ],
+      "settled_cash_brl": 9190.644203227046,
+      "future_receivables_brl": 0.0,
+      "accounting_nav_brl": 9190.644203227046,
+      "accounting_residual_brl": 0.0
+    },
+    {
+      "case": "ENGI_BONUS_AND_CASH",
+      "capital_brl": 10000,
+      "cost_per_side": 0.0036,
+      "price_mode": "worst",
+      "sessions": 20,
+      "quantity_step": 0,
+      "checks": "PASS",
+      "executions": [
+        {
+          "signal_date": "2025-11-25",
+          "exec_date": "2025-11-26",
+          "ticker": "ENGI11",
+          "quantity": 179.40455770820293,
+          "price": 55.54,
+          "cost": 35.870864886408924,
+          "cash_after": 1.8189894035458565e-12
+        },
+        {
+          "signal_date": "2025-12-19",
+          "exec_date": "2025-12-22",
+          "ticker": "ENGI11",
+          "quantity": -197.34501347902324,
+          "price": 46.1,
+          "cost": 32.7513784369787,
+          "cash_after": 9190.644203227046
+        }
+      ],
+      "stock_entitlements": [
+        [
+          "2025-11-28",
+          "ENGI11",
+          "2025-12-02",
+          17.940455770820293
+        ]
+      ],
+      "stock_deliveries": [
+        [
+          "2025-12-02",
+          "ENGI11",
+          17.940455770820293
+        ]
+      ],
+      "settled_cash_brl": 9190.644203227046,
+      "future_receivables_brl": 0.0,
+      "accounting_nav_brl": 9190.644203227046,
+      "accounting_residual_brl": 0.0
+    },
+    {
+      "case": "ABEV_INSTALLMENTS",
+      "capital_brl": 5000,
+      "cost_per_side": 0.0018,
+      "price_mode": "next_open",
+      "sessions": 124,
+      "quantity_step": 100,
+      "checks": "PASS",
+      "executions": [
+        {
+          "signal_date": "2025-12-17",
+          "exec_date": "2025-12-18",
+          "ticker": "ABEV3",
+          "quantity": 300,
+          "price": 13.95,
+          "cost": 7.5329999999999995,
+          "cash_after": 807.4669999999996
+        },
+        {
+          "signal_date": "2026-06-19",
+          "exec_date": "2026-06-22",
+          "ticker": "ABEV3",
+          "quantity": -300.0,
+          "price": 16.16,
+          "cost": 8.7264,
+          "cash_after": 5807.6006
+        }
+      ],
+      "stock_entitlements": [],
+      "stock_deliveries": [],
+      "settled_cash_brl": 5807.6006,
+      "future_receivables_brl": 58.199999999999996,
+      "accounting_nav_brl": 5865.8006,
+      "accounting_residual_brl": 7.318590178329032e-13
+    },
+    {
+      "case": "ABEV_INSTALLMENTS",
+      "capital_brl": 5000,
+      "cost_per_side": 0.0018,
+      "price_mode": "next_close",
+      "sessions": 124,
+      "quantity_step": 100,
+      "checks": "PASS",
+      "executions": [
+        {
+          "signal_date": "2025-12-17",
+          "exec_date": "2025-12-18",
+          "ticker": "ABEV3",
+          "quantity": 300,
+          "price": 13.92,
+          "cost": 7.5168,
+          "cash_after": 816.4831999999997
+        },
+        {
+          "signal_date": "2026-06-19",
+          "exec_date": "2026-06-22",
+          "ticker": "ABEV3",
+          "quantity": -300.0,
+          "price": 16.17,
+          "cost": 8.731800000000002,
+          "cash_after": 5819.611400000001
+        }
+      ],
+      "stock_entitlements": [],
+      "stock_deliveries": [],
+      "settled_cash_brl": 5819.611400000001,
+      "future_receivables_brl": 58.199999999999996,
+      "accounting_nav_brl": 5877.8114000000005,
+      "accounting_residual_brl": 7.318590178329032e-13
+    },
+    {
+      "case": "ABEV_INSTALLMENTS",
+      "capital_brl": 5000,
+      "cost_per_side": 0.0018,
+      "price_mode": "worst",
+      "sessions": 124,
+      "quantity_step": 100,
+      "checks": "PASS",
+      "executions": [
+        {
+          "signal_date": "2025-12-17",
+          "exec_date": "2025-12-18",
+          "ticker": "ABEV3",
+          "quantity": 300,
+          "price": 13.95,
+          "cost": 7.5329999999999995,
+          "cash_after": 807.4669999999996
+        },
+        {
+          "signal_date": "2026-06-19",
+          "exec_date": "2026-06-22",
+          "ticker": "ABEV3",
+          "quantity": -300.0,
+          "price": 16.16,
+          "cost": 8.7264,
+          "cash_after": 5807.6006
+        }
+      ],
+      "stock_entitlements": [],
+      "stock_deliveries": [],
+      "settled_cash_brl": 5807.6006,
+      "future_receivables_brl": 58.199999999999996,
+      "accounting_nav_brl": 5865.8006,
+      "accounting_residual_brl": 7.318590178329032e-13
+    },
+    {
+      "case": "ABEV_INSTALLMENTS",
+      "capital_brl": 5000,
+      "cost_per_side": 0.0036,
+      "price_mode": "next_open",
+      "sessions": 124,
+      "quantity_step": 100,
+      "checks": "PASS",
+      "executions": [
+        {
+          "signal_date": "2025-12-17",
+          "exec_date": "2025-12-18",
+          "ticker": "ABEV3",
+          "quantity": 300,
+          "price": 13.95,
+          "cost": 15.065999999999999,
+          "cash_after": 799.9340000000002
+        },
+        {
+          "signal_date": "2026-06-19",
+          "exec_date": "2026-06-22",
+          "ticker": "ABEV3",
+          "quantity": -300.0,
+          "price": 16.16,
+          "cost": 17.4528,
+          "cash_after": 5791.3412
+        }
+      ],
+      "stock_entitlements": [],
+      "stock_deliveries": [],
+      "settled_cash_brl": 5791.3412,
+      "future_receivables_brl": 58.199999999999996,
+      "accounting_nav_brl": 5849.5412,
+      "accounting_residual_brl": -1.7763568394002505e-13
+    },
+    {
+      "case": "ABEV_INSTALLMENTS",
+      "capital_brl": 5000,
+      "cost_per_side": 0.0036,
+      "price_mode": "next_close",
+      "sessions": 124,
+      "quantity_step": 100,
+      "checks": "PASS",
+      "executions": [
+        {
+          "signal_date": "2025-12-17",
+          "exec_date": "2025-12-18",
+          "ticker": "ABEV3",
+          "quantity": 300,
+          "price": 13.92,
+          "cost": 15.0336,
+          "cash_after": 808.9664000000002
+        },
+        {
+          "signal_date": "2026-06-19",
+          "exec_date": "2026-06-22",
+          "ticker": "ABEV3",
+          "quantity": -300.0,
+          "price": 16.17,
+          "cost": 17.463600000000003,
+          "cash_after": 5803.362800000001
+        }
+      ],
+      "stock_entitlements": [],
+      "stock_deliveries": [],
+      "settled_cash_brl": 5803.362800000001,
+      "future_receivables_brl": 58.199999999999996,
+      "accounting_nav_brl": 5861.562800000001,
+      "accounting_residual_brl": -1.7763568394002505e-13
+    },
+    {
+      "case": "ABEV_INSTALLMENTS",
+      "capital_brl": 5000,
+      "cost_per_side": 0.0036,
+      "price_mode": "worst",
+      "sessions": 124,
+      "quantity_step": 100,
+      "checks": "PASS",
+      "executions": [
+        {
+          "signal_date": "2025-12-17",
+          "exec_date": "2025-12-18",
+          "ticker": "ABEV3",
+          "quantity": 300,
+          "price": 13.95,
+          "cost": 15.065999999999999,
+          "cash_after": 799.9340000000002
+        },
+        {
+          "signal_date": "2026-06-19",
+          "exec_date": "2026-06-22",
+          "ticker": "ABEV3",
+          "quantity": -300.0,
+          "price": 16.16,
+          "cost": 17.4528,
+          "cash_after": 5791.3412
+        }
+      ],
+      "stock_entitlements": [],
+      "stock_deliveries": [],
+      "settled_cash_brl": 5791.3412,
+      "future_receivables_brl": 58.199999999999996,
+      "accounting_nav_brl": 5849.5412,
+      "accounting_residual_brl": -1.7763568394002505e-13
+    },
+    {
+      "case": "ABEV_INSTALLMENTS",
+      "capital_brl": 10000,
+      "cost_per_side": 0.0018,
+      "price_mode": "next_open",
+      "sessions": 124,
+      "quantity_step": 100,
+      "checks": "PASS",
+      "executions": [
+        {
+          "signal_date": "2025-12-17",
+          "exec_date": "2025-12-18",
+          "ticker": "ABEV3",
+          "quantity": 700,
+          "price": 13.95,
+          "cost": 17.576999999999998,
+          "cash_after": 217.42300000000068
+        },
+        {
+          "signal_date": "2026-06-19",
+          "exec_date": "2026-06-22",
+          "ticker": "ABEV3",
+          "quantity": -700.0,
+          "price": 16.16,
+          "cost": 20.3616,
+          "cash_after": 11884.4014
+        }
+      ],
+      "stock_entitlements": [],
+      "stock_deliveries": [],
+      "settled_cash_brl": 11884.4014,
+      "future_receivables_brl": 135.8,
+      "accounting_nav_brl": 12020.2014,
+      "accounting_residual_brl": 1.0800249583553523e-12
+    },
+    {
+      "case": "ABEV_INSTALLMENTS",
+      "capital_brl": 10000,
+      "cost_per_side": 0.0018,
+      "price_mode": "next_close",
+      "sessions": 124,
+      "quantity_step": 100,
+      "checks": "PASS",
+      "executions": [
+        {
+          "signal_date": "2025-12-17",
+          "exec_date": "2025-12-18",
+          "ticker": "ABEV3",
+          "quantity": 700,
+          "price": 13.92,
+          "cost": 17.5392,
+          "cash_after": 238.46080000000075
+        },
+        {
+          "signal_date": "2026-06-19",
+          "exec_date": "2026-06-22",
+          "ticker": "ABEV3",
+          "quantity": -700.0,
+          "price": 16.17,
+          "cost": 20.374200000000002,
+          "cash_after": 11912.426600000003
+        }
+      ],
+      "stock_entitlements": [],
+      "stock_deliveries": [],
+      "settled_cash_brl": 11912.426600000003,
+      "future_receivables_brl": 135.8,
+      "accounting_nav_brl": 12048.226600000002,
+      "accounting_residual_brl": 1.0800249583553523e-12
+    },
+    {
+      "case": "ABEV_INSTALLMENTS",
+      "capital_brl": 10000,
+      "cost_per_side": 0.0018,
+      "price_mode": "worst",
+      "sessions": 124,
+      "quantity_step": 100,
+      "checks": "PASS",
+      "executions": [
+        {
+          "signal_date": "2025-12-17",
+          "exec_date": "2025-12-18",
+          "ticker": "ABEV3",
+          "quantity": 700,
+          "price": 13.95,
+          "cost": 17.576999999999998,
+          "cash_after": 217.42300000000068
+        },
+        {
+          "signal_date": "2026-06-19",
+          "exec_date": "2026-06-22",
+          "ticker": "ABEV3",
+          "quantity": -700.0,
+          "price": 16.16,
+          "cost": 20.3616,
+          "cash_after": 11884.4014
+        }
+      ],
+      "stock_entitlements": [],
+      "stock_deliveries": [],
+      "settled_cash_brl": 11884.4014,
+      "future_receivables_brl": 135.8,
+      "accounting_nav_brl": 12020.2014,
+      "accounting_residual_brl": 1.0800249583553523e-12
+    },
+    {
+      "case": "ABEV_INSTALLMENTS",
+      "capital_brl": 10000,
+      "cost_per_side": 0.0036,
+      "price_mode": "next_open",
+      "sessions": 124,
+      "quantity_step": 100,
+      "checks": "PASS",
+      "executions": [
+        {
+          "signal_date": "2025-12-17",
+          "exec_date": "2025-12-18",
+          "ticker": "ABEV3",
+          "quantity": 700,
+          "price": 13.95,
+          "cost": 35.153999999999996,
+          "cash_after": 199.84599999999955
+        },
+        {
+          "signal_date": "2026-06-19",
+          "exec_date": "2026-06-22",
+          "ticker": "ABEV3",
+          "quantity": -700.0,
+          "price": 16.16,
+          "cost": 40.7232,
+          "cash_after": 11846.4628
+        }
+      ],
+      "stock_entitlements": [],
+      "stock_deliveries": [],
+      "settled_cash_brl": 11846.4628,
+      "future_receivables_brl": 135.8,
+      "accounting_nav_brl": 11982.262799999999,
+      "accounting_residual_brl": -7.389644451905042e-13
+    },
+    {
+      "case": "ABEV_INSTALLMENTS",
+      "capital_brl": 10000,
+      "cost_per_side": 0.0036,
+      "price_mode": "next_close",
+      "sessions": 124,
+      "quantity_step": 100,
+      "checks": "PASS",
+      "executions": [
+        {
+          "signal_date": "2025-12-17",
+          "exec_date": "2025-12-18",
+          "ticker": "ABEV3",
+          "quantity": 700,
+          "price": 13.92,
+          "cost": 35.0784,
+          "cash_after": 220.92159999999967
+        },
+        {
+          "signal_date": "2026-06-19",
+          "exec_date": "2026-06-22",
+          "ticker": "ABEV3",
+          "quantity": -700.0,
+          "price": 16.17,
+          "cost": 40.748400000000004,
+          "cash_after": 11874.513200000001
+        }
+      ],
+      "stock_entitlements": [],
+      "stock_deliveries": [],
+      "settled_cash_brl": 11874.513200000001,
+      "future_receivables_brl": 135.8,
+      "accounting_nav_brl": 12010.3132,
+      "accounting_residual_brl": -7.389644451905042e-13
+    },
+    {
+      "case": "ABEV_INSTALLMENTS",
+      "capital_brl": 10000,
+      "cost_per_side": 0.0036,
+      "price_mode": "worst",
+      "sessions": 124,
+      "quantity_step": 100,
+      "checks": "PASS",
+      "executions": [
+        {
+          "signal_date": "2025-12-17",
+          "exec_date": "2025-12-18",
+          "ticker": "ABEV3",
+          "quantity": 700,
+          "price": 13.95,
+          "cost": 35.153999999999996,
+          "cash_after": 199.84599999999955
+        },
+        {
+          "signal_date": "2026-06-19",
+          "exec_date": "2026-06-22",
+          "ticker": "ABEV3",
+          "quantity": -700.0,
+          "price": 16.16,
+          "cost": 40.7232,
+          "cash_after": 11846.4628
+        }
+      ],
+      "stock_entitlements": [],
+      "stock_deliveries": [],
+      "settled_cash_brl": 11846.4628,
+      "future_receivables_brl": 135.8,
+      "accounting_nav_brl": 11982.262799999999,
+      "accounting_residual_brl": -7.389644451905042e-13
+    }
+  ],
+  "capital_source_observations": [
+    {
+      "document_id": "134335",
+      "cnpj": "07526557000100",
+      "ref_date": "2023-12-31",
+      "version": 1,
+      "received_at": "2024-02-29",
+      "available_at": "2024-03-01",
+      "ordinary": 15753833000,
+      "preferred": 0,
+      "total": 15753833000,
+      "treasury_ordinary": 4384000,
+      "treasury_preferred": 0,
+      "treasury_total": 4384000,
+      "basis_date": "2023-12-31",
+      "share_scale": "Mil",
+      "rounding_unit_shares": 1000,
+      "source": "https://www.rad.cvm.gov.br/ENET/frmGerenciaPaginaFRE.aspx?CodigoTipoInstituicao=1&NumeroSequencialDocumento=134335",
+      "source_sha256": "80d06589ec40f545b7981b9f3ce6cfda37c82b195f8e3d8a49bef28ecabfcaa0",
+      "outstanding_ordinary": 15749449000,
+      "outstanding_preferred": 0,
+      "eligible_for_valuation": false,
+      "remaining_gate": "class-price equivalence and intervening capital events"
+    },
+    {
+      "document_id": "133944",
+      "cnpj": "00000000000191",
+      "ref_date": "2023-12-31",
+      "version": 1,
+      "received_at": "2024-02-08",
+      "available_at": "2024-02-09",
+      "ordinary": 2865417020,
+      "preferred": 0,
+      "total": 2865417020,
+      "treasury_ordinary": 11640980,
+      "treasury_preferred": 0,
+      "treasury_total": 11640980,
+      "basis_date": "2023-12-31",
+      "share_scale": "Unidade",
+      "rounding_unit_shares": 1,
+      "source": "https://www.rad.cvm.gov.br/ENET/frmGerenciaPaginaFRE.aspx?CodigoTipoInstituicao=1&NumeroSequencialDocumento=133944",
+      "source_sha256": "7c7c44650599d835392cbfd86f9bee4dc2fd3af2fbb491e695d502aaa4b5170c",
+      "outstanding_ordinary": 2853776040,
+      "outstanding_preferred": 0,
+      "eligible_for_valuation": false,
+      "remaining_gate": "class-price equivalence and intervening capital events"
+    },
+    {
+      "document_id": "134790",
+      "cnpj": "00864214000106",
+      "ref_date": "2023-12-31",
+      "version": 3,
+      "received_at": "2024-03-15",
+      "available_at": "2024-03-16",
+      "ordinary": 800898864,
+      "preferred": 1238187676,
+      "total": 2039086540,
+      "treasury_ordinary": 754475,
+      "treasury_preferred": 3017900,
+      "treasury_total": 3772375,
+      "basis_date": "2023-12-31",
+      "share_scale": "Unidade",
+      "rounding_unit_shares": 1,
+      "source": "https://www.rad.cvm.gov.br/ENET/frmGerenciaPaginaFRE.aspx?CodigoTipoInstituicao=1&NumeroSequencialDocumento=134790",
+      "source_sha256": "5b58d6424607e6c0cdeb3fb555c6b01d4ba449b6e15f1245b3ffc70841345c09",
+      "outstanding_ordinary": 800144389,
+      "outstanding_preferred": 1235169776,
+      "eligible_for_valuation": false,
+      "remaining_gate": "class-price equivalence and intervening capital events"
+    }
+  ],
+  "monthly_PIT_coverage": [
+    {
+      "date": "2018-01-31",
+      "tickers_with_accruals_and_quote": 3,
+      "independent_issuers": 3
+    },
+    {
+      "date": "2018-02-28",
+      "tickers_with_accruals_and_quote": 20,
+      "independent_issuers": 19
+    },
+    {
+      "date": "2018-03-29",
+      "tickers_with_accruals_and_quote": 44,
+      "independent_issuers": 39
+    },
+    {
+      "date": "2018-04-30",
+      "tickers_with_accruals_and_quote": 59,
+      "independent_issuers": 50
+    },
+    {
+      "date": "2018-05-30",
+      "tickers_with_accruals_and_quote": 93,
+      "independent_issuers": 75
+    },
+    {
+      "date": "2018-06-29",
+      "tickers_with_accruals_and_quote": 110,
+      "independent_issuers": 92
+    },
+    {
+      "date": "2018-07-31",
+      "tickers_with_accruals_and_quote": 119,
+      "independent_issuers": 99
+    },
+    {
+      "date": "2018-08-31",
+      "tickers_with_accruals_and_quote": 139,
+      "independent_issuers": 114
+    },
+    {
+      "date": "2018-09-28",
+      "tickers_with_accruals_and_quote": 158,
+      "independent_issuers": 133
+    },
+    {
+      "date": "2018-10-31",
+      "tickers_with_accruals_and_quote": 177,
+      "independent_issuers": 146
+    },
+    {
+      "date": "2018-11-30",
+      "tickers_with_accruals_and_quote": 177,
+      "independent_issuers": 148
+    },
+    {
+      "date": "2018-12-28",
+      "tickers_with_accruals_and_quote": 185,
+      "independent_issuers": 153
+    },
+    {
+      "date": "2019-01-31",
+      "tickers_with_accruals_and_quote": 166,
+      "independent_issuers": 136
+    },
+    {
+      "date": "2019-02-28",
+      "tickers_with_accruals_and_quote": 142,
+      "independent_issuers": 122
+    },
+    {
+      "date": "2019-03-29",
+      "tickers_with_accruals_and_quote": 119,
+      "independent_issuers": 103
+    },
+    {
+      "date": "2019-04-30",
+      "tickers_with_accruals_and_quote": 118,
+      "independent_issuers": 103
+    },
+    {
+      "date": "2019-05-31",
+      "tickers_with_accruals_and_quote": 128,
+      "independent_issuers": 110
+    },
+    {
+      "date": "2019-06-28",
+      "tickers_with_accruals_and_quote": 123,
+      "independent_issuers": 105
+    },
+    {
+      "date": "2019-07-31",
+      "tickers_with_accruals_and_quote": 134,
+      "independent_issuers": 112
+    },
+    {
+      "date": "2019-08-30",
+      "tickers_with_accruals_and_quote": 136,
+      "independent_issuers": 117
+    },
+    {
+      "date": "2019-09-30",
+      "tickers_with_accruals_and_quote": 154,
+      "independent_issuers": 128
+    },
+    {
+      "date": "2019-10-31",
+      "tickers_with_accruals_and_quote": 166,
+      "independent_issuers": 138
+    },
+    {
+      "date": "2019-11-29",
+      "tickers_with_accruals_and_quote": 183,
+      "independent_issuers": 150
+    },
+    {
+      "date": "2019-12-30",
+      "tickers_with_accruals_and_quote": 203,
+      "independent_issuers": 164
+    },
+    {
+      "date": "2020-01-31",
+      "tickers_with_accruals_and_quote": 187,
+      "independent_issuers": 150
+    },
+    {
+      "date": "2020-02-28",
+      "tickers_with_accruals_and_quote": 184,
+      "independent_issuers": 148
+    },
+    {
+      "date": "2020-03-31",
+      "tickers_with_accruals_and_quote": 170,
+      "independent_issuers": 145
+    },
+    {
+      "date": "2020-04-30",
+      "tickers_with_accruals_and_quote": 176,
+      "independent_issuers": 147
+    },
+    {
+      "date": "2020-05-29",
+      "tickers_with_accruals_and_quote": 179,
+      "independent_issuers": 146
+    },
+    {
+      "date": "2020-06-30",
+      "tickers_with_accruals_and_quote": 167,
+      "independent_issuers": 139
+    },
+    {
+      "date": "2020-07-31",
+      "tickers_with_accruals_and_quote": 162,
+      "independent_issuers": 136
+    },
+    {
+      "date": "2020-08-31",
+      "tickers_with_accruals_and_quote": 167,
+      "independent_issuers": 135
+    },
+    {
+      "date": "2020-09-30",
+      "tickers_with_accruals_and_quote": 172,
+      "independent_issuers": 142
+    },
+    {
+      "date": "2020-10-30",
+      "tickers_with_accruals_and_quote": 181,
+      "independent_issuers": 152
+    },
+    {
+      "date": "2020-11-30",
+      "tickers_with_accruals_and_quote": 195,
+      "independent_issuers": 160
+    },
+    {
+      "date": "2020-12-30",
+      "tickers_with_accruals_and_quote": 214,
+      "independent_issuers": 177
+    },
+    {
+      "date": "2021-01-29",
+      "tickers_with_accruals_and_quote": 200,
+      "independent_issuers": 164
+    },
+    {
+      "date": "2021-02-26",
+      "tickers_with_accruals_and_quote": 217,
+      "independent_issuers": 173
+    },
+    {
+      "date": "2021-03-31",
+      "tickers_with_accruals_and_quote": 185,
+      "independent_issuers": 153
+    },
+    {
+      "date": "2021-04-30",
+      "tickers_with_accruals_and_quote": 192,
+      "independent_issuers": 156
+    },
+    {
+      "date": "2021-05-31",
+      "tickers_with_accruals_and_quote": 190,
+      "independent_issuers": 149
+    },
+    {
+      "date": "2021-06-30",
+      "tickers_with_accruals_and_quote": 148,
+      "independent_issuers": 118
+    },
+    {
+      "date": "2021-07-30",
+      "tickers_with_accruals_and_quote": 158,
+      "independent_issuers": 126
+    },
+    {
+      "date": "2021-08-31",
+      "tickers_with_accruals_and_quote": 165,
+      "independent_issuers": 133
+    },
+    {
+      "date": "2021-09-30",
+      "tickers_with_accruals_and_quote": 166,
+      "independent_issuers": 137
+    },
+    {
+      "date": "2021-10-29",
+      "tickers_with_accruals_and_quote": 173,
+      "independent_issuers": 143
+    },
+    {
+      "date": "2021-11-30",
+      "tickers_with_accruals_and_quote": 185,
+      "independent_issuers": 152
+    },
+    {
+      "date": "2021-12-30",
+      "tickers_with_accruals_and_quote": 197,
+      "independent_issuers": 161
+    },
+    {
+      "date": "2022-01-31",
+      "tickers_with_accruals_and_quote": 172,
+      "independent_issuers": 142
+    },
+    {
+      "date": "2022-02-25",
+      "tickers_with_accruals_and_quote": 156,
+      "independent_issuers": 133
+    },
+    {
+      "date": "2022-03-31",
+      "tickers_with_accruals_and_quote": 184,
+      "independent_issuers": 157
+    },
+    {
+      "date": "2022-04-29",
+      "tickers_with_accruals_and_quote": 197,
+      "independent_issuers": 168
+    },
+    {
+      "date": "2022-05-31",
+      "tickers_with_accruals_and_quote": 211,
+      "independent_issuers": 174
+    },
+    {
+      "date": "2022-06-30",
+      "tickers_with_accruals_and_quote": 196,
+      "independent_issuers": 169
+    },
+    {
+      "date": "2022-07-29",
+      "tickers_with_accruals_and_quote": 211,
+      "independent_issuers": 181
+    },
+    {
+      "date": "2022-08-31",
+      "tickers_with_accruals_and_quote": 227,
+      "independent_issuers": 195
+    },
+    {
+      "date": "2022-09-30",
+      "tickers_with_accruals_and_quote": 242,
+      "independent_issuers": 205
+    },
+    {
+      "date": "2022-10-31",
+      "tickers_with_accruals_and_quote": 259,
+      "independent_issuers": 218
+    },
+    {
+      "date": "2022-11-30",
+      "tickers_with_accruals_and_quote": 272,
+      "independent_issuers": 231
+    },
+    {
+      "date": "2022-12-29",
+      "tickers_with_accruals_and_quote": 290,
+      "independent_issuers": 246
+    },
+    {
+      "date": "2023-01-31",
+      "tickers_with_accruals_and_quote": 266,
+      "independent_issuers": 229
+    },
+    {
+      "date": "2023-02-28",
+      "tickers_with_accruals_and_quote": 243,
+      "independent_issuers": 212
+    },
+    {
+      "date": "2023-03-31",
+      "tickers_with_accruals_and_quote": 240,
+      "independent_issuers": 204
+    },
+    {
+      "date": "2023-04-28",
+      "tickers_with_accruals_and_quote": 223,
+      "independent_issuers": 193
+    },
+    {
+      "date": "2023-05-31",
+      "tickers_with_accruals_and_quote": 208,
+      "independent_issuers": 176
+    },
+    {
+      "date": "2023-06-30",
+      "tickers_with_accruals_and_quote": 218,
+      "independent_issuers": 186
+    },
+    {
+      "date": "2023-07-31",
+      "tickers_with_accruals_and_quote": 217,
+      "independent_issuers": 187
+    },
+    {
+      "date": "2023-08-31",
+      "tickers_with_accruals_and_quote": 227,
+      "independent_issuers": 195
+    },
+    {
+      "date": "2023-09-29",
+      "tickers_with_accruals_and_quote": 245,
+      "independent_issuers": 209
+    },
+    {
+      "date": "2023-10-31",
+      "tickers_with_accruals_and_quote": 256,
+      "independent_issuers": 220
+    },
+    {
+      "date": "2023-11-30",
+      "tickers_with_accruals_and_quote": 265,
+      "independent_issuers": 228
+    },
+    {
+      "date": "2023-12-28",
+      "tickers_with_accruals_and_quote": 296,
+      "independent_issuers": 253
+    },
+    {
+      "date": "2024-01-31",
+      "tickers_with_accruals_and_quote": 270,
+      "independent_issuers": 232
+    },
+    {
+      "date": "2024-02-29",
+      "tickers_with_accruals_and_quote": 253,
+      "independent_issuers": 218
+    },
+    {
+      "date": "2024-03-28",
+      "tickers_with_accruals_and_quote": 238,
+      "independent_issuers": 203
+    },
+    {
+      "date": "2024-04-30",
+      "tickers_with_accruals_and_quote": 215,
+      "independent_issuers": 190
+    },
+    {
+      "date": "2024-05-31",
+      "tickers_with_accruals_and_quote": 193,
+      "independent_issuers": 166
+    },
+    {
+      "date": "2024-06-28",
+      "tickers_with_accruals_and_quote": 196,
+      "independent_issuers": 165
+    },
+    {
+      "date": "2024-07-31",
+      "tickers_with_accruals_and_quote": 202,
+      "independent_issuers": 173
+    },
+    {
+      "date": "2024-08-30",
+      "tickers_with_accruals_and_quote": 217,
+      "independent_issuers": 184
+    },
+    {
+      "date": "2024-09-30",
+      "tickers_with_accruals_and_quote": 218,
+      "independent_issuers": 184
+    },
+    {
+      "date": "2024-10-31",
+      "tickers_with_accruals_and_quote": 242,
+      "independent_issuers": 204
+    },
+    {
+      "date": "2024-11-29",
+      "tickers_with_accruals_and_quote": 261,
+      "independent_issuers": 222
+    },
+    {
+      "date": "2024-12-30",
+      "tickers_with_accruals_and_quote": 274,
+      "independent_issuers": 232
+    },
+    {
+      "date": "2025-01-31",
+      "tickers_with_accruals_and_quote": 256,
+      "independent_issuers": 218
+    },
+    {
+      "date": "2025-02-28",
+      "tickers_with_accruals_and_quote": 237,
+      "independent_issuers": 203
+    },
+    {
+      "date": "2025-03-31",
+      "tickers_with_accruals_and_quote": 233,
+      "independent_issuers": 198
+    },
+    {
+      "date": "2025-04-30",
+      "tickers_with_accruals_and_quote": 227,
+      "independent_issuers": 191
+    },
+    {
+      "date": "2025-05-30",
+      "tickers_with_accruals_and_quote": 207,
+      "independent_issuers": 176
+    },
+    {
+      "date": "2025-06-30",
+      "tickers_with_accruals_and_quote": 198,
+      "independent_issuers": 169
+    },
+    {
+      "date": "2025-07-31",
+      "tickers_with_accruals_and_quote": 210,
+      "independent_issuers": 179
+    },
+    {
+      "date": "2025-08-29",
+      "tickers_with_accruals_and_quote": 223,
+      "independent_issuers": 193
+    },
+    {
+      "date": "2025-09-30",
+      "tickers_with_accruals_and_quote": 226,
+      "independent_issuers": 195
+    },
+    {
+      "date": "2025-10-31",
+      "tickers_with_accruals_and_quote": 236,
+      "independent_issuers": 204
+    },
+    {
+      "date": "2025-11-28",
+      "tickers_with_accruals_and_quote": 252,
+      "independent_issuers": 218
+    },
+    {
+      "date": "2025-12-30",
+      "tickers_with_accruals_and_quote": 268,
+      "independent_issuers": 230
+    },
+    {
+      "date": "2026-01-30",
+      "tickers_with_accruals_and_quote": 261,
+      "independent_issuers": 221
+    },
+    {
+      "date": "2026-02-27",
+      "tickers_with_accruals_and_quote": 244,
+      "independent_issuers": 208
+    },
+    {
+      "date": "2026-03-31",
+      "tickers_with_accruals_and_quote": 240,
+      "independent_issuers": 201
+    },
+    {
+      "date": "2026-04-30",
+      "tickers_with_accruals_and_quote": 227,
+      "independent_issuers": 197
+    },
+    {
+      "date": "2026-05-29",
+      "tickers_with_accruals_and_quote": 236,
+      "independent_issuers": 203
+    },
+    {
+      "date": "2026-06-30",
+      "tickers_with_accruals_and_quote": 230,
+      "independent_issuers": 194
+    },
+    {
+      "date": "2026-07-31",
+      "tickers_with_accruals_and_quote": 231,
+      "independent_issuers": 196
+    },
+    {
+      "date": "2026-08-27",
+      "tickers_with_accruals_and_quote": 246,
+      "independent_issuers": 210
+    }
+  ],
+  "cash_coverage_tickers": [
+    "ABEV3",
+    "ENGI11",
+    "ENGI3",
+    "ENGI4"
+  ],
+  "trial_status": "H17_H18_H19_NOT_EXECUTED",
+  "research_verdict": "INCONCLUSIVE_DATA_QUALITY",
+  "open_gaps": [
+    "Complete historical universe and lifecycle coverage",
+    "Complete cash and noncash events outside the reconciled subset",
+    "Intervening issuance, share-class prices and valuation bases",
+    "Earlier statement versions absent from current bulk files",
+    "Real execution, taxes and bonus fractional-auction proceeds"
+  ],
+  "limitations": [
+    "The two action controls use fractional mathematical quantities",
+    "ABEV uses 100-share order rounding and ordinary-market quotes",
+    "No taxes, broker-specific fills or bonus fractional auction modeled",
+    "BBAS case measures the split mechanism with cash excluded",
+    "These cases cannot establish portfolio alpha, strategy profitability or complete universe coverage"
+  ],
+  "source_unchanged": true,
+  "output_db_sha256": "a8238568980d3303890b04590cfb5c55ab2d24c9271edd86820269336b09679a"
+}

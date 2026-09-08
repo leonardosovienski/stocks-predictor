@@ -1,0 +1,58 @@
+{
+  "reference": {
+    "url": "https://api.bcb.gov.br/dados/serie/bcdata.sgs.11/dados?formato=json&dataInicial=01/01/2018&dataFinal=30/04/2026",
+    "sha256": "13bb78bfa04f37b04b7494fdd0fcd06e19fc92764ef4e2b8606dfe7988c32251",
+    "retrieved_at_utc": "2026-09-07T18:31:25.592025+00:00",
+    "metadata_url": "https://dadosabertos.bcb.gov.br/dataset/11-taxa-de-juros---selic",
+    "unit": "percent_per_day"
+  },
+  "intent": {
+    "purpose": "Compare fixed diagnostic equity outcomes with gross SGS11 on identical dates, with no selection or parameter change.",
+    "convention": "Compound official daily percent values for start <= rate_date < end; compare calendar time. No product fees, taxes, exact intraday settlement, or retail investability implied.",
+    "registered_at_utc": "2026-09-07T18:31:10.203176+00:00"
+  },
+  "comparisons": [
+    {
+      "family": "H18",
+      "holding_months": 1,
+      "start": "2018-05-02",
+      "end": "2026-02-02",
+      "selic_daily_records": 1949,
+      "selic_gross_terminal_multiple": 1.9305443577732706,
+      "selic_gross_annualized": 0.08850848401204492,
+      "strategy_price_entitlements_after_flat72_annualized": 0.026426237718016665
+    },
+    {
+      "family": "H18",
+      "holding_months": 3,
+      "start": "2018-07-02",
+      "end": "2026-04-01",
+      "selic_daily_records": 1947,
+      "selic_gross_terminal_multiple": 1.9531264619105277,
+      "selic_gross_annualized": 0.09024149809996418,
+      "strategy_price_entitlements_after_flat72_annualized": 0.09253686253480486
+    },
+    {
+      "family": "H19",
+      "holding_months": 1,
+      "start": "2018-05-02",
+      "end": "2026-02-02",
+      "selic_daily_records": 1949,
+      "selic_gross_terminal_multiple": 1.9305443577732706,
+      "selic_gross_annualized": 0.08850848401204492,
+      "strategy_price_entitlements_after_flat72_annualized": 0.024333854568942215
+    },
+    {
+      "family": "H19",
+      "holding_months": 3,
+      "start": "2018-07-02",
+      "end": "2026-04-01",
+      "selic_daily_records": 1947,
+      "selic_gross_terminal_multiple": 1.9531264619105277,
+      "selic_gross_annualized": 0.09024149809996418,
+      "strategy_price_entitlements_after_flat72_annualized": 0.09351207348158286
+    }
+  ],
+  "not_a_like_for_like_net_total_return_comparison": true,
+  "interpretation": "Opportunity-cost warning only: equities omit ordinary dividends and all taxes; Selic is an untaxed reference, not a traded product. Do not conclude a final net ranking from this comparison."
+}

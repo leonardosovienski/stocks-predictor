@@ -1,0 +1,2453 @@
+[
+  {
+    "cnpj": "00000000000191",
+    "codeCVM": "1023",
+    "tickers": [
+      "BBAS3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm1023-supplement.json"
+  },
+  {
+    "cnpj": "00001180000126",
+    "codeCVM": "2437",
+    "tickers": [
+      "ELET3",
+      "ELET6"
+    ],
+    "results": [
+      {
+        "prefix": "ELET",
+        "status": "FAILED",
+        "error": "Expecting value: line 1 column 1 (char 0)"
+      }
+    ]
+  },
+  {
+    "cnpj": "00416968000101",
+    "codeCVM": "24406",
+    "tickers": [
+      "BIDI11",
+      "BIDI4"
+    ],
+    "results": [
+      {
+        "prefix": "BIDI",
+        "source_file": "b3-h17-24406-BIDI-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 0,
+        "subscription_rows": 0,
+        "returned_codes": [
+          "24406"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "00776574000156",
+    "codeCVM": "20990",
+    "tickers": [
+      "AMER3",
+      "BTOW3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm20990-supplement.json"
+  },
+  {
+    "cnpj": "00864214000106",
+    "codeCVM": "15253",
+    "tickers": [
+      "ENGI11"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm15253-supplement.json"
+  },
+  {
+    "cnpj": "01027058000191",
+    "codeCVM": "21733",
+    "tickers": [
+      "CIEL3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm21733-supplement.json"
+  },
+  {
+    "cnpj": "01083200000118",
+    "codeCVM": "15539",
+    "tickers": [
+      "NEOE3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm15539-supplement.json"
+  },
+  {
+    "cnpj": "01838723000127",
+    "codeCVM": "16292",
+    "tickers": [
+      "BRFS3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm16292-supplement.json"
+  },
+  {
+    "cnpj": "01896779000138",
+    "codeCVM": "20044",
+    "tickers": [
+      "CARD3"
+    ],
+    "results": [
+      {
+        "prefix": "CARD",
+        "status": "FAILED",
+        "error": "Expecting value: line 1 column 1 (char 0)"
+      }
+    ]
+  },
+  {
+    "cnpj": "02149205000169",
+    "codeCVM": "16659",
+    "tickers": [
+      "PSSA3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm16659-supplement.json"
+  },
+  {
+    "cnpj": "02351877000152",
+    "codeCVM": "24910",
+    "tickers": [
+      "LWSA3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm24910-supplement.json"
+  },
+  {
+    "cnpj": "02387241000160",
+    "codeCVM": "17450",
+    "tickers": [
+      "RAIL3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm17450-supplement.json"
+  },
+  {
+    "cnpj": "02421421000111",
+    "codeCVM": "24929",
+    "tickers": [
+      "TIMS3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm24929-supplement.json"
+  },
+  {
+    "cnpj": "02429144000193",
+    "codeCVM": "18660",
+    "tickers": [
+      "CPFE3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm18660-supplement.json"
+  },
+  {
+    "cnpj": "02474103000119",
+    "codeCVM": "17329",
+    "tickers": [
+      "EGIE3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm17329-supplement.json"
+  },
+  {
+    "cnpj": "02558115000121",
+    "codeCVM": "17639",
+    "tickers": [
+      "TIMP3"
+    ],
+    "results": [
+      {
+        "prefix": "TIMP",
+        "source_file": "b3-h17-17639-TIMP-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 0,
+        "subscription_rows": 0,
+        "returned_codes": [
+          "17639"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "02558157000162",
+    "codeCVM": "17671",
+    "tickers": [
+      "VIVT3",
+      "VIVT4"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm17671-supplement.json"
+  },
+  {
+    "cnpj": "02762121000104",
+    "codeCVM": "17892",
+    "tickers": [
+      "STBP3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm17892-supplement.json"
+  },
+  {
+    "cnpj": "02800026000140",
+    "codeCVM": "17973",
+    "tickers": [
+      "COGN3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm17973-supplement.json"
+  },
+  {
+    "cnpj": "02846056000197",
+    "codeCVM": "18821",
+    "tickers": [
+      "CCRO3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm18821-supplement.json"
+  },
+  {
+    "cnpj": "02860694000162",
+    "codeCVM": "22454",
+    "tickers": [
+      "SHOW3"
+    ],
+    "results": [
+      {
+        "prefix": "SHOW",
+        "source_file": "b3-h17-22454-SHOW-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 1,
+        "subscription_rows": 0,
+        "returned_codes": [
+          "22454"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "02916265000160",
+    "codeCVM": "20575",
+    "tickers": [
+      "JBSS3"
+    ],
+    "results": [
+      {
+        "prefix": "JBSS",
+        "source_file": "b3-h17-20575-JBSS-supplement.json",
+        "status": "IDENTITY_UNVERIFIED",
+        "stock_rows": 0,
+        "subscription_rows": 0,
+        "returned_codes": [
+          "80233"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "02932074000191",
+    "codeCVM": "21431",
+    "tickers": [
+      "HYPE3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm21431-supplement.json"
+  },
+  {
+    "cnpj": "02998301000181",
+    "codeCVM": "18368",
+    "tickers": [
+      "GEPA4"
+    ],
+    "results": [
+      {
+        "prefix": "GEPA",
+        "source_file": "b3-h17-18368-GEPA-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 2,
+        "subscription_rows": 0,
+        "returned_codes": [
+          "18368"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "02998611000104",
+    "codeCVM": "18376",
+    "tickers": [
+      "TRPL4"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm18376-supplement.json"
+  },
+  {
+    "cnpj": "03220438000173",
+    "codeCVM": "20010",
+    "tickers": [
+      "EQTL3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm20010-supplement.json"
+  },
+  {
+    "cnpj": "03342704000130",
+    "codeCVM": "25780",
+    "tickers": [
+      "RECV3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm25780-supplement.json"
+  },
+  {
+    "cnpj": "03378521000175",
+    "codeCVM": "19879",
+    "tickers": [
+      "LIGT3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm19879-supplement.json"
+  },
+  {
+    "cnpj": "03847461000192",
+    "codeCVM": "18724",
+    "tickers": [
+      "BRAP4"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm18724-supplement.json"
+  },
+  {
+    "cnpj": "03853896000140",
+    "codeCVM": "20788",
+    "tickers": [
+      "MRFG3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm20788-supplement.json"
+  },
+  {
+    "cnpj": "03983431000103",
+    "codeCVM": "19763",
+    "tickers": [
+      "ENBR3"
+    ],
+    "results": [
+      {
+        "prefix": "ENBR",
+        "source_file": "b3-h17-19763-ENBR-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 0,
+        "subscription_rows": 0,
+        "returned_codes": [
+          "19763"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "04128563000110",
+    "codeCVM": "18970",
+    "tickers": [
+      "TIET11"
+    ],
+    "results": [
+      {
+        "prefix": "TIET",
+        "source_file": "b3-h17-18970-TIET-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 0,
+        "subscription_rows": 0,
+        "returned_codes": [
+          "18970"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "04149454000180",
+    "codeCVM": "19453",
+    "tickers": [
+      "ECOR3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm19453-supplement.json"
+  },
+  {
+    "cnpj": "04423567000121",
+    "codeCVM": "21237",
+    "tickers": [
+      "ENEV3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm21237-supplement.json"
+  },
+  {
+    "cnpj": "04986320000113",
+    "codeCVM": "23221",
+    "tickers": [
+      "SEER3"
+    ],
+    "results": [
+      {
+        "prefix": "SEER",
+        "source_file": "b3-h17-23221-SEER-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 0,
+        "subscription_rows": 1,
+        "returned_codes": [
+          "23221"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "05197443000138",
+    "codeCVM": "24392",
+    "tickers": [
+      "HAPV3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm24392-supplement.json"
+  },
+  {
+    "cnpj": "05730375000120",
+    "codeCVM": "24252",
+    "tickers": [
+      "SMLS3"
+    ],
+    "results": [
+      {
+        "prefix": "SMLS",
+        "source_file": "b3-h17-24252-SMLS-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 0,
+        "subscription_rows": 0,
+        "returned_codes": [
+          "24252"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "05799312000120",
+    "codeCVM": "20354",
+    "tickers": [
+      "TESA3"
+    ],
+    "results": [
+      {
+        "prefix": "TESA",
+        "source_file": "b3-h17-20354-TESA-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 0,
+        "subscription_rows": 0,
+        "returned_codes": [
+          "20354"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "05878397000132",
+    "codeCVM": "22357",
+    "tickers": [
+      "ALOS3",
+      "ALSO3",
+      "SSBR3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm22357-supplement.json"
+  },
+  {
+    "cnpj": "06047087000139",
+    "codeCVM": "24821",
+    "tickers": [
+      "RDOR3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm24821-supplement.json"
+  },
+  {
+    "cnpj": "06057223000171",
+    "codeCVM": "25372",
+    "tickers": [
+      "ASAI3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm25372-supplement.json"
+  },
+  {
+    "cnpj": "06082980000103",
+    "codeCVM": "21300",
+    "tickers": [
+      "ALSC3"
+    ],
+    "results": [
+      {
+        "prefix": "ALSC",
+        "source_file": "b3-h17-21300-ALSC-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 0,
+        "subscription_rows": 0,
+        "returned_codes": [
+          "21300"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "06164253000187",
+    "codeCVM": "19569",
+    "tickers": [
+      "GOLL4"
+    ],
+    "results": [
+      {
+        "prefix": "GOLL",
+        "source_file": "b3-h17-19569-GOLL-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 0,
+        "subscription_rows": 0,
+        "returned_codes": [
+          "19569"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "06948969000175",
+    "codeCVM": "23035",
+    "tickers": [
+      "LINX3"
+    ],
+    "results": [
+      {
+        "prefix": "LINX",
+        "source_file": "b3-h17-23035-LINX-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 0,
+        "subscription_rows": 0,
+        "returned_codes": [
+          "23035"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "06977745000191",
+    "codeCVM": "19909",
+    "tickers": [
+      "BRML3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm19909-supplement.json"
+  },
+  {
+    "cnpj": "07206816000115",
+    "codeCVM": "20338",
+    "tickers": [
+      "MDIA3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm20338-supplement.json"
+  },
+  {
+    "cnpj": "07415333000120",
+    "codeCVM": "25003",
+    "tickers": [
+      "SIMH3"
+    ],
+    "results": [
+      {
+        "prefix": "SIMH",
+        "source_file": "b3-h17-25003-SIMH-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 2,
+        "subscription_rows": 1,
+        "returned_codes": [
+          "25003"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "07526557000100",
+    "codeCVM": "23264",
+    "tickers": [
+      "ABEV3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm23264-supplement.json"
+  },
+  {
+    "cnpj": "07594978000178",
+    "codeCVM": "24260",
+    "tickers": [
+      "SMFT3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm24260-supplement.json"
+  },
+  {
+    "cnpj": "07628528000159",
+    "codeCVM": "20036",
+    "tickers": [
+      "AGRO3"
+    ],
+    "results": [
+      {
+        "prefix": "AGRO",
+        "source_file": "b3-h17-20036-AGRO-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 1,
+        "subscription_rows": 0,
+        "returned_codes": [
+          "20036"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "07689002000189",
+    "codeCVM": "20087",
+    "tickers": [
+      "EMBR3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm20087-supplement.json"
+  },
+  {
+    "cnpj": "07816890000153",
+    "codeCVM": "20982",
+    "tickers": [
+      "MULT3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm20982-supplement.json"
+  },
+  {
+    "cnpj": "07859971000130",
+    "codeCVM": "20257",
+    "tickers": [
+      "TAEE11"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm20257-supplement.json"
+  },
+  {
+    "cnpj": "08294224000165",
+    "codeCVM": "20605",
+    "tickers": [
+      "JHSF3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm20605-supplement.json"
+  },
+  {
+    "cnpj": "08312229000173",
+    "codeCVM": "20770",
+    "tickers": [
+      "EZTC3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm20770-supplement.json"
+  },
+  {
+    "cnpj": "08343492000120",
+    "codeCVM": "20915",
+    "tickers": [
+      "MRVE3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm20915-supplement.json"
+  },
+  {
+    "cnpj": "08364948000138",
+    "codeCVM": "21490",
+    "tickers": [
+      "ALUP11"
+    ],
+    "results": [
+      {
+        "prefix": "ALUP",
+        "source_file": "b3-h17-21490-ALUP-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 3,
+        "subscription_rows": 3,
+        "returned_codes": [
+          "21490"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "08402943000152",
+    "codeCVM": "4669",
+    "tickers": [
+      "GUAR3"
+    ],
+    "results": [
+      {
+        "prefix": "GUAR",
+        "status": "FAILED",
+        "error": "Expecting value: line 1 column 1 (char 0)"
+      }
+    ]
+  },
+  {
+    "cnpj": "08439659000150",
+    "codeCVM": "20540",
+    "tickers": [
+      "CPRE3"
+    ],
+    "results": [
+      {
+        "prefix": "CPRE",
+        "source_file": "b3-h17-20540-CPRE-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 0,
+        "subscription_rows": 1,
+        "returned_codes": [
+          "20540"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "08741499000108",
+    "codeCVM": "21482",
+    "tickers": [
+      "PRML3"
+    ],
+    "results": [
+      {
+        "prefix": "PRML",
+        "source_file": "b3-h17-21482-PRML-supplement.json",
+        "status": "IDENTITY_UNVERIFIED",
+        "stock_rows": 0,
+        "subscription_rows": 0,
+        "returned_codes": [
+          "900189"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "08764621000153",
+    "codeCVM": "21008",
+    "tickers": [
+      "GSHP3"
+    ],
+    "results": [
+      {
+        "prefix": "GSHP",
+        "source_file": "b3-h17-21008-GSHP-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 2,
+        "subscription_rows": 0,
+        "returned_codes": [
+          "21008"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "08797760000183",
+    "codeCVM": "25100",
+    "tickers": [
+      "CURY3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm25100-supplement.json"
+  },
+  {
+    "cnpj": "08807432000110",
+    "codeCVM": "21016",
+    "tickers": [
+      "ESTC3",
+      "YDUQ3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm21016-supplement.json"
+  },
+  {
+    "cnpj": "09149503000106",
+    "codeCVM": "23426",
+    "tickers": [
+      "OMGE3"
+    ],
+    "results": [
+      {
+        "prefix": "OMGE",
+        "status": "FAILED",
+        "error": "Expecting value: line 1 column 1 (char 0)"
+      }
+    ]
+  },
+  {
+    "cnpj": "09229201000130",
+    "codeCVM": "25712",
+    "tickers": [
+      "GGPS3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm25712-supplement.json"
+  },
+  {
+    "cnpj": "09288252000132",
+    "codeCVM": "23248",
+    "tickers": [
+      "ANIM3"
+    ],
+    "results": [
+      {
+        "prefix": "ANIM",
+        "source_file": "b3-h17-23248-ANIM-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 1,
+        "subscription_rows": 0,
+        "returned_codes": [
+          "23248"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "09305994000129",
+    "codeCVM": "24112",
+    "tickers": [
+      "AZUL4"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm24112-supplement.json"
+  },
+  {
+    "cnpj": "09346601000125",
+    "codeCVM": "21610",
+    "tickers": [
+      "BVMF3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm21610-supplement.json"
+  },
+  {
+    "cnpj": "10215988000160",
+    "codeCVM": "22691",
+    "tickers": [
+      "LCAM3"
+    ],
+    "results": [
+      {
+        "prefix": "LCAM",
+        "source_file": "b3-h17-22691-LCAM-supplement.json",
+        "status": "IDENTITY_UNVERIFIED",
+        "stock_rows": 0,
+        "subscription_rows": 0,
+        "returned_codes": []
+      }
+    ]
+  },
+  {
+    "cnpj": "10285590000108",
+    "codeCVM": "25011",
+    "tickers": [
+      "SOMA3"
+    ],
+    "results": [
+      {
+        "prefix": "SOMA",
+        "source_file": "b3-h17-25011-SOMA-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 0,
+        "subscription_rows": 0,
+        "returned_codes": [
+          "25011"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "10629105000168",
+    "codeCVM": "22187",
+    "tickers": [
+      "PRIO3"
+    ],
+    "results": [
+      {
+        "prefix": "PRIO",
+        "source_file": "b3-h17-22187-PRIO-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 2,
+        "subscription_rows": 0,
+        "returned_codes": [
+          "22187"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "10760260000119",
+    "codeCVM": "23310",
+    "tickers": [
+      "CVCB3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm23310-supplement.json"
+  },
+  {
+    "cnpj": "11094546000175",
+    "codeCVM": "21946",
+    "tickers": [
+      "MPLU3"
+    ],
+    "results": [
+      {
+        "prefix": "MPLU",
+        "source_file": "b3-h17-21946-MPLU-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 0,
+        "subscription_rows": 0,
+        "returned_codes": [
+          "21946"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "11669021000110",
+    "codeCVM": "22365",
+    "tickers": [
+      "ENAT3",
+      "QGEP3"
+    ],
+    "results": [
+      {
+        "prefix": "ENAT",
+        "source_file": "b3-h17-22365-ENAT-supplement.json",
+        "status": "IDENTITY_UNVERIFIED",
+        "stock_rows": 0,
+        "subscription_rows": 0,
+        "returned_codes": [
+          "900728"
+        ]
+      },
+      {
+        "prefix": "QGEP",
+        "status": "FAILED",
+        "error": "Expecting value: line 1 column 1 (char 0)"
+      }
+    ]
+  },
+  {
+    "cnpj": "11992680000193",
+    "codeCVM": "22497",
+    "tickers": [
+      "QUAL3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm22497-supplement.json"
+  },
+  {
+    "cnpj": "12091809000155",
+    "codeCVM": "25291",
+    "tickers": [
+      "BRAV3",
+      "RRRP3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm25291-supplement.json"
+  },
+  {
+    "cnpj": "12648266000124",
+    "codeCVM": "24961",
+    "tickers": [
+      "AMBP3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm24961-supplement.json"
+  },
+  {
+    "cnpj": "13217485000111",
+    "codeCVM": "24694",
+    "tickers": [
+      "CNTO3"
+    ],
+    "results": [
+      {
+        "prefix": "CNTO",
+        "status": "FAILED",
+        "error": "Expecting value: line 1 column 1 (char 0)"
+      }
+    ]
+  },
+  {
+    "cnpj": "13574594000196",
+    "codeCVM": "24317",
+    "tickers": [
+      "BKBR3"
+    ],
+    "results": [
+      {
+        "prefix": "BKBR",
+        "status": "FAILED",
+        "error": "Expecting value: line 1 column 1 (char 0)"
+      }
+    ]
+  },
+  {
+    "cnpj": "14110585000107",
+    "codeCVM": "25232",
+    "tickers": [
+      "CASH3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm25232-supplement.json"
+  },
+  {
+    "cnpj": "15141799000103",
+    "codeCVM": "3069",
+    "tickers": [
+      "FESA4"
+    ],
+    "results": [
+      {
+        "prefix": "FESA",
+        "source_file": "b3-h17-3069-FESA-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 7,
+        "subscription_rows": 5,
+        "returned_codes": [
+          "3069"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "16404287000155",
+    "codeCVM": "13986",
+    "tickers": [
+      "SUZB3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm13986-supplement.json"
+  },
+  {
+    "cnpj": "16590234000176",
+    "codeCVM": "22349",
+    "tickers": [
+      "ARZZ3",
+      "AZZA3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm22349-supplement.json"
+  },
+  {
+    "cnpj": "16614075000100",
+    "codeCVM": "21350",
+    "tickers": [
+      "DIRR3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm21350-supplement.json"
+  },
+  {
+    "cnpj": "16670085000155",
+    "codeCVM": "19739",
+    "tickers": [
+      "RENT3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm19739-supplement.json"
+  },
+  {
+    "cnpj": "17155730000164",
+    "codeCVM": "2453",
+    "tickers": [
+      "CMIG4"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm2453-supplement.json"
+  },
+  {
+    "cnpj": "17281106000103",
+    "codeCVM": "19445",
+    "tickers": [
+      "CSMG3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm19445-supplement.json"
+  },
+  {
+    "cnpj": "17344597000194",
+    "codeCVM": "23159",
+    "tickers": [
+      "BBSE3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm23159-supplement.json"
+  },
+  {
+    "cnpj": "18328118000109",
+    "codeCVM": "25089",
+    "tickers": [
+      "PETZ3"
+    ],
+    "results": [
+      {
+        "prefix": "PETZ",
+        "source_file": "b3-h17-25089-PETZ-supplement.json",
+        "status": "IDENTITY_UNVERIFIED",
+        "stock_rows": 0,
+        "subscription_rows": 0,
+        "returned_codes": [
+          "917942"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "19378769000176",
+    "codeCVM": "24090",
+    "tickers": [
+      "PARD3"
+    ],
+    "results": [
+      {
+        "prefix": "PARD",
+        "source_file": "b3-h17-24090-PARD-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 0,
+        "subscription_rows": 0,
+        "returned_codes": [
+          "24090"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "19853511000184",
+    "codeCVM": "24384",
+    "tickers": [
+      "GNDI3"
+    ],
+    "results": [
+      {
+        "prefix": "GNDI",
+        "source_file": "b3-h17-24384-GNDI-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 0,
+        "subscription_rows": 0,
+        "returned_codes": [
+          "24384"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "20258278000170",
+    "codeCVM": "23507",
+    "tickers": [
+      "OFSA3"
+    ],
+    "results": [
+      {
+        "prefix": "OFSA",
+        "source_file": "b3-h17-23507-OFSA-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 0,
+        "subscription_rows": 0,
+        "returned_codes": [
+          "23507"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "21314559000166",
+    "codeCVM": "23825",
+    "tickers": [
+      "MOVI3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm23825-supplement.json"
+  },
+  {
+    "cnpj": "22266175000188",
+    "codeCVM": "20621",
+    "tickers": [
+      "FHER3"
+    ],
+    "results": [
+      {
+        "prefix": "FHER",
+        "source_file": "b3-h17-20621-FHER-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 0,
+        "subscription_rows": 1,
+        "returned_codes": [
+          "20621"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "22543331000100",
+    "codeCVM": "23795",
+    "tickers": [
+      "CXSE3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm23795-supplement.json"
+  },
+  {
+    "cnpj": "23373000000132",
+    "codeCVM": "24716",
+    "tickers": [
+      "VAMO3"
+    ],
+    "results": [
+      {
+        "prefix": "VAMO",
+        "source_file": "b3-h17-24716-VAMO-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 3,
+        "subscription_rows": 1,
+        "returned_codes": [
+          "24716"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "24990777000109",
+    "codeCVM": "25186",
+    "tickers": [
+      "GMAT3"
+    ],
+    "results": [
+      {
+        "prefix": "GMAT",
+        "source_file": "b3-h17-25186-GMAT-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 0,
+        "subscription_rows": 1,
+        "returned_codes": [
+          "25186"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "27093558000115",
+    "codeCVM": "22012",
+    "tickers": [
+      "MILS3"
+    ],
+    "results": [
+      {
+        "prefix": "MILS",
+        "source_file": "b3-h17-22012-MILS-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 0,
+        "subscription_rows": 1,
+        "returned_codes": [
+          "22012"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "28195667000106",
+    "codeCVM": "20958",
+    "tickers": [
+      "ABCB4"
+    ],
+    "results": [
+      {
+        "prefix": "ABCB",
+        "source_file": "b3-h17-20958-ABCB-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 0,
+        "subscription_rows": 2,
+        "returned_codes": [
+          "20958"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "28594234000123",
+    "codeCVM": "26620",
+    "tickers": [
+      "AURE3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm26620-supplement.json"
+  },
+  {
+    "cnpj": "29978814000187",
+    "codeCVM": "21121",
+    "tickers": [
+      "SULA11"
+    ],
+    "results": [
+      {
+        "prefix": "SULA",
+        "source_file": "b3-h17-21121-SULA-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 0,
+        "subscription_rows": 0,
+        "returned_codes": [
+          "21121"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "32785497000197",
+    "codeCVM": "24783",
+    "tickers": [
+      "NTCO3"
+    ],
+    "results": [
+      {
+        "prefix": "NTCO",
+        "source_file": "b3-h17-24783-NTCO-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 0,
+        "subscription_rows": 0,
+        "returned_codes": [
+          "24783"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "33000167000101",
+    "codeCVM": "9512",
+    "tickers": [
+      "PETR4"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm9512-supplement.json"
+  },
+  {
+    "cnpj": "33014556000196",
+    "codeCVM": "8087",
+    "tickers": [
+      "LAME4"
+    ],
+    "results": [
+      {
+        "prefix": "LAME",
+        "source_file": "b3-h17-8087-LAME-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 0,
+        "subscription_rows": 0,
+        "returned_codes": [
+          "8087"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "33041260065290",
+    "codeCVM": "6505",
+    "tickers": [
+      "VIIA3",
+      "VVAR3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm6505-supplement.json"
+  },
+  {
+    "cnpj": "33113309000147",
+    "codeCVM": "20028",
+    "tickers": [
+      "VLID3"
+    ],
+    "results": [
+      {
+        "prefix": "VLID",
+        "source_file": "b3-h17-20028-VLID-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 1,
+        "subscription_rows": 1,
+        "returned_codes": [
+          "20028"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "33256439000139",
+    "codeCVM": "18465",
+    "tickers": [
+      "UGPA3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm18465-supplement.json"
+  },
+  {
+    "cnpj": "33376989000191",
+    "codeCVM": "24180",
+    "tickers": [
+      "IRBR3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm24180-supplement.json"
+  },
+  {
+    "cnpj": "33592510000154",
+    "codeCVM": "4170",
+    "tickers": [
+      "VALE3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm4170-supplement.json"
+  },
+  {
+    "cnpj": "33611500000119",
+    "codeCVM": "3980",
+    "tickers": [
+      "GGBR4"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm3980-supplement.json"
+  },
+  {
+    "cnpj": "33839910000111",
+    "codeCVM": "24805",
+    "tickers": [
+      "VIVA3"
+    ],
+    "results": [
+      {
+        "prefix": "VIVA",
+        "source_file": "b3-h17-24805-VIVA-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 0,
+        "subscription_rows": 0,
+        "returned_codes": [
+          "24805"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "33958695000178",
+    "codeCVM": "11592",
+    "tickers": [
+      "UNIP6"
+    ],
+    "results": [
+      {
+        "prefix": "UNIP",
+        "source_file": "b3-h17-11592-UNIP-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 6,
+        "subscription_rows": 2,
+        "returned_codes": [
+          "11592"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "34169557000172",
+    "codeCVM": "1309",
+    "tickers": [
+      "BMIN4"
+    ],
+    "results": [
+      {
+        "prefix": "BMIN",
+        "source_file": "b3-h17-1309-BMIN-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 5,
+        "subscription_rows": 2,
+        "returned_codes": [
+          "1309"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "34274233000102",
+    "codeCVM": "24295",
+    "tickers": [
+      "BRDT3",
+      "VBBR3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm24295-supplement.json"
+  },
+  {
+    "cnpj": "42150391000170",
+    "codeCVM": "4820",
+    "tickers": [
+      "BRKM5"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm4820-supplement.json"
+  },
+  {
+    "cnpj": "42278291000124",
+    "codeCVM": "20710",
+    "tickers": [
+      "LOGN3"
+    ],
+    "results": [
+      {
+        "prefix": "LOGN",
+        "source_file": "b3-h17-20710-LOGN-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 1,
+        "subscription_rows": 1,
+        "returned_codes": [
+          "20710"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "42278473000103",
+    "codeCVM": "23590",
+    "tickers": [
+      "WIZS3"
+    ],
+    "results": [
+      {
+        "prefix": "WIZS",
+        "status": "FAILED",
+        "error": "Expecting value: line 1 column 1 (char 0)"
+      }
+    ]
+  },
+  {
+    "cnpj": "42771949000135",
+    "codeCVM": "24058",
+    "tickers": [
+      "AALR3"
+    ],
+    "results": [
+      {
+        "prefix": "AALR",
+        "source_file": "b3-h17-24058-AALR-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 1,
+        "subscription_rows": 1,
+        "returned_codes": [
+          "24058"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "43776517000180",
+    "codeCVM": "14443",
+    "tickers": [
+      "SBSP3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm14443-supplement.json"
+  },
+  {
+    "cnpj": "45987245000192",
+    "codeCVM": "701",
+    "tickers": [
+      "BAHI3"
+    ],
+    "results": [
+      {
+        "prefix": "BAHI",
+        "status": "FAILED",
+        "error": "Expecting value: line 1 column 1 (char 0)"
+      }
+    ]
+  },
+  {
+    "cnpj": "47508411000156",
+    "codeCVM": "14826",
+    "tickers": [
+      "PCAR3",
+      "PCAR4"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm14826-supplement.json"
+  },
+  {
+    "cnpj": "47960950000121",
+    "codeCVM": "22470",
+    "tickers": [
+      "MGLU3"
+    ],
+    "results": [
+      {
+        "prefix": "MGLU",
+        "source_file": "b3-h17-22470-MGLU-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 3,
+        "subscription_rows": 1,
+        "returned_codes": [
+          "22470"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "49263189000102",
+    "codeCVM": "20877",
+    "tickers": [
+      "HBOR3"
+    ],
+    "results": [
+      {
+        "prefix": "HBOR",
+        "source_file": "b3-h17-20877-HBOR-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 3,
+        "subscription_rows": 1,
+        "returned_codes": [
+          "20877"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "50746577000115",
+    "codeCVM": "19836",
+    "tickers": [
+      "CSAN3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm19836-supplement.json"
+  },
+  {
+    "cnpj": "51218147000193",
+    "codeCVM": "20494",
+    "tickers": [
+      "IGTA3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm20494-supplement.json"
+  },
+  {
+    "cnpj": "51466860000156",
+    "codeCVM": "20516",
+    "tickers": [
+      "SMTO3"
+    ],
+    "results": [
+      {
+        "prefix": "SMTO",
+        "source_file": "b3-h17-20516-SMTO-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 1,
+        "subscription_rows": 1,
+        "returned_codes": [
+          "20516"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "52548435000179",
+    "codeCVM": "22020",
+    "tickers": [
+      "JSLG3"
+    ],
+    "results": [
+      {
+        "prefix": "JSLG",
+        "source_file": "b3-h17-22020-JSLG-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 1,
+        "subscription_rows": 0,
+        "returned_codes": [
+          "22020"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "53113791000122",
+    "codeCVM": "19992",
+    "tickers": [
+      "TOTS3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm19992-supplement.json"
+  },
+  {
+    "cnpj": "56643018000166",
+    "codeCVM": "5770",
+    "tickers": [
+      "EUCA4"
+    ],
+    "results": [
+      {
+        "prefix": "EUCA",
+        "source_file": "b3-h17-5770-EUCA-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 6,
+        "subscription_rows": 9,
+        "returned_codes": [
+          "5770"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "56720428000163",
+    "codeCVM": "7510",
+    "tickers": [
+      "ROMI3"
+    ],
+    "results": [
+      {
+        "prefix": "ROMI",
+        "source_file": "b3-h17-7510-ROMI-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 5,
+        "subscription_rows": 2,
+        "returned_codes": [
+          "7510"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "56992423000190",
+    "codeCVM": "1694",
+    "tickers": [
+      "BMKS3"
+    ],
+    "results": [
+      {
+        "prefix": "BMKS",
+        "source_file": "b3-h17-1694-BMKS-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 3,
+        "subscription_rows": 0,
+        "returned_codes": [
+          "1694"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "58119199000151",
+    "codeCVM": "20125",
+    "tickers": [
+      "ODPV3"
+    ],
+    "results": [
+      {
+        "prefix": "ODPV",
+        "status": "FAILED",
+        "error": "Expecting value: line 1 column 1 (char 0)"
+      }
+    ]
+  },
+  {
+    "cnpj": "59105999000186",
+    "codeCVM": "14346",
+    "tickers": [
+      "WHRL4"
+    ],
+    "results": [
+      {
+        "prefix": "WHRL",
+        "source_file": "b3-h17-14346-WHRL-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 0,
+        "subscription_rows": 0,
+        "returned_codes": [
+          "14346"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "59285411000113",
+    "codeCVM": "21199",
+    "tickers": [
+      "BPAN4"
+    ],
+    "results": [
+      {
+        "prefix": "BPAN",
+        "source_file": "b3-h17-21199-BPAN-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 0,
+        "subscription_rows": 0,
+        "returned_codes": [
+          "21199"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "60476884000187",
+    "codeCVM": "8575",
+    "tickers": [
+      "LEVE3"
+    ],
+    "results": [
+      {
+        "prefix": "LEVE",
+        "source_file": "b3-h17-8575-LEVE-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 6,
+        "subscription_rows": 1,
+        "returned_codes": [
+          "8575"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "60543816000193",
+    "codeCVM": "8672",
+    "tickers": [
+      "IGTI11"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm8672-supplement.json"
+  },
+  {
+    "cnpj": "60643228000121",
+    "codeCVM": "12793",
+    "tickers": [
+      "FIBR3"
+    ],
+    "results": [
+      {
+        "prefix": "FIBR",
+        "source_file": "b3-h17-12793-FIBR-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 0,
+        "subscription_rows": 0,
+        "returned_codes": [
+          "12793"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "60746948000112",
+    "codeCVM": "906",
+    "tickers": [
+      "BBDC4"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm906-supplement.json"
+  },
+  {
+    "cnpj": "60840055000131",
+    "codeCVM": "21881",
+    "tickers": [
+      "FLRY3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm21881-supplement.json"
+  },
+  {
+    "cnpj": "60872504000123",
+    "codeCVM": "19348",
+    "tickers": [
+      "ITUB4"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm19348-supplement.json"
+  },
+  {
+    "cnpj": "60894730000105",
+    "codeCVM": "14320",
+    "tickers": [
+      "USIM5"
+    ],
+    "results": [
+      {
+        "prefix": "USIM",
+        "source_file": "b3-h17-14320-USIM-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 8,
+        "subscription_rows": 3,
+        "returned_codes": [
+          "14320"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "60933603000178",
+    "codeCVM": "2577",
+    "tickers": [
+      "CESP6"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm2577-supplement.json"
+  },
+  {
+    "cnpj": "61079117000105",
+    "codeCVM": "10456",
+    "tickers": [
+      "ALPA4"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm10456-supplement.json"
+  },
+  {
+    "cnpj": "61156113000175",
+    "codeCVM": "11932",
+    "tickers": [
+      "MYPK3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm11932-supplement.json"
+  },
+  {
+    "cnpj": "61409892000173",
+    "codeCVM": "25984",
+    "tickers": [
+      "CBAV3"
+    ],
+    "results": [
+      {
+        "prefix": "CBAV",
+        "source_file": "b3-h17-25984-CBAV-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 0,
+        "subscription_rows": 1,
+        "returned_codes": [
+          "25984"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "61532644000115",
+    "codeCVM": "7617",
+    "tickers": [
+      "ITSA4"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm7617-supplement.json"
+  },
+  {
+    "cnpj": "61585865000151",
+    "codeCVM": "5258",
+    "tickers": [
+      "RADL3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm5258-supplement.json"
+  },
+  {
+    "cnpj": "61856571000117",
+    "codeCVM": "15636",
+    "tickers": [
+      "CGAS5"
+    ],
+    "results": [
+      {
+        "prefix": "CGAS",
+        "source_file": "b3-h17-15636-CGAS-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 2,
+        "subscription_rows": 2,
+        "returned_codes": [
+          "15636"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "64904295000103",
+    "codeCVM": "24228",
+    "tickers": [
+      "CAML3"
+    ],
+    "results": [
+      {
+        "prefix": "CAML",
+        "source_file": "b3-h17-24228-CAML-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 0,
+        "subscription_rows": 0,
+        "returned_codes": [
+          "24228"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "67571414000141",
+    "codeCVM": "20702",
+    "tickers": [
+      "VIVR3"
+    ],
+    "results": [
+      {
+        "prefix": "VIVR",
+        "source_file": "b3-h17-20702-VIVR-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 3,
+        "subscription_rows": 2,
+        "returned_codes": [
+          "20702"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "67620377000114",
+    "codeCVM": "20931",
+    "tickers": [
+      "BEEF3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm20931-supplement.json"
+  },
+  {
+    "cnpj": "71476527000135",
+    "codeCVM": "21148",
+    "tickers": [
+      "TEND3"
+    ],
+    "results": [
+      {
+        "prefix": "TEND",
+        "source_file": "b3-h17-21148-TEND-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 2,
+        "subscription_rows": 0,
+        "returned_codes": [
+          "21148"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "71673990000177",
+    "codeCVM": "19550",
+    "tickers": [
+      "NATU3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm19550-supplement.json"
+  },
+  {
+    "cnpj": "73178600000118",
+    "codeCVM": "14460",
+    "tickers": [
+      "CYRE3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm14460-supplement.json"
+  },
+  {
+    "cnpj": "75315333000109",
+    "codeCVM": "24171",
+    "tickers": [
+      "CRFB3"
+    ],
+    "results": [
+      {
+        "prefix": "CRFB",
+        "source_file": "b3-h17-24171-CRFB-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 0,
+        "subscription_rows": 0,
+        "returned_codes": [
+          "24171"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "76483817000120",
+    "codeCVM": "14311",
+    "tickers": [
+      "CPLE6"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm14311-supplement.json"
+  },
+  {
+    "cnpj": "76484013000145",
+    "codeCVM": "18627",
+    "tickers": [
+      "SAPR11"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm18627-supplement.json"
+  },
+  {
+    "cnpj": "78876950000171",
+    "codeCVM": "14761",
+    "tickers": [
+      "HGTX3"
+    ],
+    "results": [
+      {
+        "prefix": "HGTX",
+        "source_file": "b3-h17-14761-HGTX-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 0,
+        "subscription_rows": 0,
+        "returned_codes": [
+          "14761"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "81243735000148",
+    "codeCVM": "20362",
+    "tickers": [
+      "POSI3"
+    ],
+    "results": [
+      {
+        "prefix": "POSI",
+        "source_file": "b3-h17-20362-POSI-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 0,
+        "subscription_rows": 0,
+        "returned_codes": [
+          "20362"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "82641325000118",
+    "codeCVM": "20141",
+    "tickers": [
+      "CREM3"
+    ],
+    "results": [
+      {
+        "prefix": "CREM",
+        "source_file": "b3-h17-20141-CREM-supplement.json",
+        "status": "IDENTITY_UNVERIFIED",
+        "stock_rows": 0,
+        "subscription_rows": 0,
+        "returned_codes": [
+          "900179"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "82901000000127",
+    "codeCVM": "25453",
+    "tickers": [
+      "INTB3"
+    ],
+    "results": [
+      {
+        "prefix": "INTB",
+        "source_file": "b3-h17-25453-INTB-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 0,
+        "subscription_rows": 0,
+        "returned_codes": [
+          "25453"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "83475913000191",
+    "codeCVM": "13773",
+    "tickers": [
+      "PTBL3"
+    ],
+    "results": [
+      {
+        "prefix": "PTBL",
+        "source_file": "b3-h17-13773-PTBL-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 4,
+        "subscription_rows": 2,
+        "returned_codes": [
+          "13773"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "84429695000111",
+    "codeCVM": "5410",
+    "tickers": [
+      "WEGE3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm5410-supplement.json"
+  },
+  {
+    "cnpj": "84683374000149",
+    "codeCVM": "6343",
+    "tickers": [
+      "TUPY3"
+    ],
+    "results": [
+      {
+        "prefix": "TUPY",
+        "source_file": "b3-h17-6343-TUPY-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 5,
+        "subscription_rows": 2,
+        "returned_codes": [
+          "6343"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "84693183000168",
+    "codeCVM": "14664",
+    "tickers": [
+      "SHUL4"
+    ],
+    "results": [
+      {
+        "prefix": "SHUL",
+        "source_file": "b3-h17-14664-SHUL-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 6,
+        "subscription_rows": 0,
+        "returned_codes": [
+          "14664"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "86375425000109",
+    "codeCVM": "8753",
+    "tickers": [
+      "MTSA4"
+    ],
+    "results": [
+      {
+        "prefix": "MTSA",
+        "source_file": "b3-h17-8753-MTSA-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 4,
+        "subscription_rows": 2,
+        "returned_codes": [
+          "8753"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "88610191000154",
+    "codeCVM": "5312",
+    "tickers": [
+      "MNDL3"
+    ],
+    "results": [
+      {
+        "prefix": "MNDL",
+        "source_file": "b3-h17-5312-MNDL-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 2,
+        "subscription_rows": 2,
+        "returned_codes": [
+          "5312"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "88611835000129",
+    "codeCVM": "8451",
+    "tickers": [
+      "POMO4"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm8451-supplement.json"
+  },
+  {
+    "cnpj": "88613658000110",
+    "codeCVM": "9539",
+    "tickers": [
+      "PTNT4"
+    ],
+    "results": [
+      {
+        "prefix": "PTNT",
+        "source_file": "b3-h17-9539-PTNT-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 9,
+        "subscription_rows": 2,
+        "returned_codes": [
+          "9539"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "89086144000116",
+    "codeCVM": "14109",
+    "tickers": [
+      "RAPT4"
+    ],
+    "results": [
+      {
+        "prefix": "RAPT",
+        "source_file": "b3-h17-14109-RAPT-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 4,
+        "subscription_rows": 2,
+        "returned_codes": [
+          "14109"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "89096457000155",
+    "codeCVM": "20745",
+    "tickers": [
+      "SLCE3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm20745-supplement.json"
+  },
+  {
+    "cnpj": "89637490000145",
+    "codeCVM": "12653",
+    "tickers": [
+      "KLBN11"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm12653-supplement.json"
+  },
+  {
+    "cnpj": "89850341000160",
+    "codeCVM": "19615",
+    "tickers": [
+      "GRND3"
+    ],
+    "results": [
+      {
+        "prefix": "GRND",
+        "source_file": "b3-h17-19615-GRND-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 1,
+        "subscription_rows": 0,
+        "returned_codes": [
+          "19615"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "90400888000142",
+    "codeCVM": "20532",
+    "tickers": [
+      "SANB11"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm20532-supplement.json"
+  },
+  {
+    "cnpj": "92012467000170",
+    "codeCVM": "4537",
+    "tickers": [
+      "CGRA4"
+    ],
+    "results": [
+      {
+        "prefix": "CGRA",
+        "source_file": "b3-h17-4537-CGRA-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 6,
+        "subscription_rows": 3,
+        "returned_codes": [
+          "4537"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "92690783000109",
+    "codeCVM": "8656",
+    "tickers": [
+      "GOAU4"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm8656-supplement.json"
+  },
+  {
+    "cnpj": "92702067000196",
+    "codeCVM": "1210",
+    "tickers": [
+      "BRSR6"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm1210-supplement.json"
+  },
+  {
+    "cnpj": "92754738000162",
+    "codeCVM": "8133",
+    "tickers": [
+      "LREN3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm8133-supplement.json"
+  },
+  {
+    "cnpj": "92781335000102",
+    "codeCVM": "6173",
+    "tickers": [
+      "FJTA4",
+      "TASA4"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm6173-supplement.json"
+  },
+  {
+    "cnpj": "96418264021802",
+    "codeCVM": "25038",
+    "tickers": [
+      "LJQQ3"
+    ],
+    "results": [
+      {
+        "prefix": "LJQQ",
+        "source_file": "b3-h17-25038-LJQQ-supplement.json",
+        "status": "ACQUIRED",
+        "stock_rows": 0,
+        "subscription_rows": 1,
+        "returned_codes": [
+          "25038"
+        ]
+      }
+    ]
+  },
+  {
+    "cnpj": "97837181000147",
+    "codeCVM": "21091",
+    "tickers": [
+      "DTEX3"
+    ],
+    "status": "CACHED",
+    "source_file": "b3-cvm21091-supplement.json"
+  }
+]

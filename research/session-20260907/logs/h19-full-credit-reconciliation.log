@@ -1,0 +1,15 @@
+{
+  "credit_documents": 1345,
+  "parsed_credit_rows": 31601,
+  "new_exact_payment_matches": 254,
+  "selected_new_matches": 4,
+  "matched_by_year": {
+    "2019": 26,
+    "2020": 38,
+    "2021": 37,
+    "2022": 48,
+    "2023": 24,
+    "2024": 34,
+    "2025": 47
+  }
+}

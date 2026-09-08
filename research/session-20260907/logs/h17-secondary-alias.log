@@ -1,0 +1,179 @@
+aliases 22 acquired 20
+[
+  {
+    "historical_ticker": "ELET3",
+    "source_ticker": "AXIA3",
+    "cnpj": "00001180000126",
+    "codeCVM": "2437",
+    "detail_source": "b3-h17-2437-detail.json",
+    "mapping_purpose": "Retrospective corporate-action cross-check only, never universe membership; same CVM CNPJ and ISIN instrument class."
+  },
+  {
+    "historical_ticker": "BTOW3",
+    "source_ticker": "AMER3",
+    "cnpj": "00776574000156",
+    "codeCVM": "20990",
+    "detail_source": "b3-cvm20990-detail.json",
+    "mapping_purpose": "Retrospective corporate-action cross-check only, never universe membership; same CVM CNPJ and ISIN instrument class."
+  },
+  {
+    "historical_ticker": "CARD3",
+    "source_ticker": "CSUD3",
+    "cnpj": "01896779000138",
+    "codeCVM": "20044",
+    "detail_source": "b3-h17-20044-detail.json",
+    "mapping_purpose": "Retrospective corporate-action cross-check only, never universe membership; same CVM CNPJ and ISIN instrument class."
+  },
+  {
+    "historical_ticker": "CCRO3",
+    "source_ticker": "MOTV3",
+    "cnpj": "02846056000197",
+    "codeCVM": "18821",
+    "detail_source": "b3-cvm18821-detail.json",
+    "mapping_purpose": "Retrospective corporate-action cross-check only, never universe membership; same CVM CNPJ and ISIN instrument class."
+  },
+  {
+    "historical_ticker": "TRPL4",
+    "source_ticker": "ISAE4",
+    "cnpj": "02998611000104",
+    "codeCVM": "18376",
+    "detail_source": "b3-cvm18376-detail.json",
+    "mapping_purpose": "Retrospective corporate-action cross-check only, never universe membership; same CVM CNPJ and ISIN instrument class."
+  },
+  {
+    "historical_ticker": "MRFG3",
+    "source_ticker": "MBRF3",
+    "cnpj": "03853896000140",
+    "codeCVM": "20788",
+    "detail_source": "b3-cvm20788-detail.json",
+    "mapping_purpose": "Retrospective corporate-action cross-check only, never universe membership; same CVM CNPJ and ISIN instrument class."
+  },
+  {
+    "historical_ticker": "ALSO3",
+    "source_ticker": "ALOS3",
+    "cnpj": "05878397000132",
+    "codeCVM": "22357",
+    "detail_source": "b3-cvm22357-detail.json",
+    "mapping_purpose": "Retrospective corporate-action cross-check only, never universe membership; same CVM CNPJ and ISIN instrument class."
+  },
+  {
+    "historical_ticker": "SSBR3",
+    "source_ticker": "ALOS3",
+    "cnpj": "05878397000132",
+    "codeCVM": "22357",
+    "detail_source": "b3-cvm22357-detail.json",
+    "mapping_purpose": "Retrospective corporate-action cross-check only, never universe membership; same CVM CNPJ and ISIN instrument class."
+  },
+  {
+    "historical_ticker": "EMBR3",
+    "source_ticker": "EMBJ3",
+    "cnpj": "07689002000189",
+    "codeCVM": "20087",
+    "detail_source": "b3-cvm20087-detail.json",
+    "mapping_purpose": "Retrospective corporate-action cross-check only, never universe membership; same CVM CNPJ and ISIN instrument class."
+  },
+  {
+    "historical_ticker": "GUAR3",
+    "source_ticker": "RIAA3",
+    "cnpj": "08402943000152",
+    "codeCVM": "4669",
+    "detail_source": "b3-h17-4669-detail.json",
+    "mapping_purpose": "Retrospective corporate-action cross-check only, never universe membership; same CVM CNPJ and ISIN instrument class."
+  },
+  {
+    "historical_ticker": "ESTC3",
+    "source_ticker": "YDUQ3",
+    "cnpj": "08807432000110",
+    "codeCVM": "21016",
+    "detail_source": "b3-cvm21016-detail.json",
+    "mapping_purpose": "Retrospective corporate-action cross-check only, never universe membership; same CVM CNPJ and ISIN instrument class."
+  },
+  {
+    "historical_ticker": "RRRP3",
+    "source_ticker": "BRAV3",
+    "cnpj": "12091809000155",
+    "codeCVM": "25291",
+    "detail_source": "b3-cvm25291-detail.json",
+    "mapping_purpose": "Retrospective corporate-action cross-check only, never universe membership; same CVM CNPJ and ISIN instrument class."
+  },
+  {
+    "historical_ticker": "CNTO3",
+    "source_ticker": "SBFG3",
+    "cnpj": "13217485000111",
+    "codeCVM": "24694",
+    "detail_source": "b3-h17-24694-detail.json",
+    "mapping_purpose": "Retrospective corporate-action cross-check only, never universe membership; same CVM CNPJ and ISIN instrument class."
+  },
+  {
+    "historical_ticker": "ARZZ3",
+    "source_ticker": "AZZA3",
+    "cnpj": "16590234000176",
+    "codeCVM": "22349",
+    "detail_source": "b3-cvm22349-detail.json",
+    "mapping_purpose": "Retrospective corporate-action cross-check only, never universe membership; same CVM CNPJ and ISIN instrument class."
+  },
+  {
+    "historical_ticker": "VIIA3",
+    "source_ticker": "BHIA3",
+    "cnpj": "33041260065290",
+    "codeCVM": "6505",
+    "detail_source": "b3-cvm6505-detail.json",
+    "mapping_purpose": "Retrospective corporate-action cross-check only, never universe membership; same CVM CNPJ and ISIN instrument class."
+  },
+  {
+    "historical_ticker": "VVAR3",
+    "source_ticker": "BHIA3",
+    "cnpj": "33041260065290",
+    "codeCVM": "6505",
+    "detail_source": "b3-cvm6505-detail.json",
+    "mapping_purpose": "Retrospective corporate-action cross-check only, never universe membership; same CVM CNPJ and ISIN instrument class."
+  },
+  {
+    "historical_ticker": "BRDT3",
+    "source_ticker": "VBBR3",
+    "cnpj": "34274233000102",
+    "codeCVM": "24295",
+    "detail_source": "b3-cvm24295-detail.json",
+    "mapping_purpose": "Retrospective corporate-action cross-check only, never universe membership; same CVM CNPJ and ISIN instrument class."
+  },
+  {
+    "historical_ticker": "WIZS3",
+    "source_ticker": "WIZC3",
+    "cnpj": "42278473000103",
+    "codeCVM": "23590",
+    "detail_source": "b3-h17-23590-detail.json",
+    "mapping_purpose": "Retrospective corporate-action cross-check only, never universe membership; same CVM CNPJ and ISIN instrument class."
+  },
+  {
+    "historical_ticker": "BAHI3",
+    "source_ticker": "BIED3",
+    "cnpj": "45987245000192",
+    "codeCVM": "701",
+    "detail_source": "b3-h17-701-detail.json",
+    "mapping_purpose": "Retrospective corporate-action cross-check only, never universe membership; same CVM CNPJ and ISIN instrument class."
+  },
+  {
+    "historical_ticker": "ODPV3",
+    "source_ticker": "SAUD3",
+    "cnpj": "58119199000151",
+    "codeCVM": "20125",
+    "detail_source": "b3-h17-20125-detail.json",
+    "mapping_purpose": "Retrospective corporate-action cross-check only, never universe membership; same CVM CNPJ and ISIN instrument class."
+  },
+  {
+    "historical_ticker": "FJTA4",
+    "source_ticker": "TASA4",
+    "cnpj": "92781335000102",
+    "codeCVM": "6173",
+    "detail_source": "b3-cvm6173-detail.json",
+    "mapping_purpose": "Retrospective corporate-action cross-check only, never universe membership; same CVM CNPJ and ISIN instrument class."
+  },
+  {
+    "historical_ticker": "DTEX3",
+    "source_ticker": "DXCO3",
+    "cnpj": "97837181000147",
+    "codeCVM": "21091",
+    "detail_source": "b3-cvm21091-detail.json",
+    "mapping_purpose": "Retrospective corporate-action cross-check only, never universe membership; same CVM CNPJ and ISIN instrument class."
+  }
+]

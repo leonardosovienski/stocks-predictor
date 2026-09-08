@@ -1,0 +1,299 @@
+[
+  {
+    "kind": "dfp",
+    "year": 2016,
+    "status": "OK",
+    "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2016.zip",
+    "bytes": 9832691,
+    "sha256": "772f06a73c5fe80534b61365ea5d03f9d8fcce21b87823bd5c9d48699bcf71d5",
+    "retrieved_at": "2026-09-07T03:17:14.234109+00:00"
+  },
+  {
+    "kind": "fca",
+    "year": 2016,
+    "status": "OK",
+    "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FCA/DADOS/fca_cia_aberta_2016.zip",
+    "bytes": 376154,
+    "sha256": "229b2cfc8c0ac5e60083932381364bbdb6666f028422c13a1ac5f6dccc9e3e6c",
+    "retrieved_at": "2026-09-07T03:17:11.261597+00:00"
+  },
+  {
+    "kind": "fre",
+    "year": 2016,
+    "status": "OK",
+    "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FRE/DADOS/fre_cia_aberta_2016.zip",
+    "bytes": 7583877,
+    "sha256": "bfd0513d903cb3e5a43360dcb1673b3c9ac1f23396974726cca764df64d481cc",
+    "retrieved_at": "2026-09-07T03:17:13.169774+00:00"
+  },
+  {
+    "kind": "dfp",
+    "year": 2017,
+    "status": "OK",
+    "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2017.zip",
+    "bytes": 10150935,
+    "sha256": "1ff8185d61759e49b406c55c5d0b593587c2e76e9032c95f836f7fea02fc9d58",
+    "retrieved_at": "2026-09-07T03:17:14.970898+00:00"
+  },
+  {
+    "kind": "fca",
+    "year": 2017,
+    "status": "OK",
+    "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FCA/DADOS/fca_cia_aberta_2017.zip",
+    "bytes": 375132,
+    "sha256": "48127cf15d8baf4d31b9544b266f9511962db158d591fc9803e335a8ab081d45",
+    "retrieved_at": "2026-09-07T03:17:15.169495+00:00"
+  },
+  {
+    "kind": "fre",
+    "year": 2017,
+    "status": "OK",
+    "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FRE/DADOS/fre_cia_aberta_2017.zip",
+    "bytes": 7605478,
+    "sha256": "cb90963d1e7d6b2416265eb7aa0a463b98d067ade096f47b724467184273b0ab",
+    "retrieved_at": "2026-09-07T03:17:15.519253+00:00"
+  },
+  {
+    "kind": "dfp",
+    "year": 2018,
+    "status": "OK",
+    "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2018.zip",
+    "bytes": 10237924,
+    "sha256": "280dcf5acd7bdb529acc186c9a1195092a1e06cf1e33ddcdca0b11c31261296f",
+    "retrieved_at": "2026-09-07T03:17:17.103774+00:00"
+  },
+  {
+    "kind": "fca",
+    "year": 2018,
+    "status": "OK",
+    "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FCA/DADOS/fca_cia_aberta_2018.zip",
+    "bytes": 381642,
+    "sha256": "b20056b00927c5261ba587b668e52e4cdfe2d989e7d794491b2bb127fbd0a8cd",
+    "retrieved_at": "2026-09-07T03:17:16.334660+00:00"
+  },
+  {
+    "kind": "fre",
+    "year": 2018,
+    "status": "OK",
+    "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FRE/DADOS/fre_cia_aberta_2018.zip",
+    "bytes": 7824065,
+    "sha256": "7a349acbce124fdb0846c371b3e68e5ff06781ead4b8713d6080eabf6737d082",
+    "retrieved_at": "2026-09-07T03:17:16.695580+00:00"
+  },
+  {
+    "kind": "dfp",
+    "year": 2019,
+    "status": "OK",
+    "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2019.zip",
+    "bytes": 11185526,
+    "sha256": "bc82a1162b44686e8953b521e3424a5938b6661ff4655f832db4ea9488296a0d",
+    "retrieved_at": "2026-09-07T03:17:18.681251+00:00"
+  },
+  {
+    "kind": "fca",
+    "year": 2019,
+    "status": "OK",
+    "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FCA/DADOS/fca_cia_aberta_2019.zip",
+    "bytes": 371770,
+    "sha256": "09f84e5f5485217c8b36f8379c36f718dbdcd6d6908b4e96b68861394e76fe97",
+    "retrieved_at": "2026-09-07T03:17:18.031020+00:00"
+  },
+  {
+    "kind": "fre",
+    "year": 2019,
+    "status": "OK",
+    "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FRE/DADOS/fre_cia_aberta_2019.zip",
+    "bytes": 7935765,
+    "sha256": "30f461d5d3b3cdbab84faac20c158c6a41cea1ee0223c40d988db9845e2c6a51",
+    "retrieved_at": "2026-09-07T03:17:18.418632+00:00"
+  },
+  {
+    "kind": "dfp",
+    "year": 2020,
+    "status": "OK",
+    "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2020.zip",
+    "bytes": 12637854,
+    "sha256": "8fb97d1887aed1e1e2d85e54cb133baf9f65b9f46f60fa8720f09c1f7a74362e",
+    "retrieved_at": "2026-09-07T03:17:19.989801+00:00"
+  },
+  {
+    "kind": "fca",
+    "year": 2020,
+    "status": "OK",
+    "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FCA/DADOS/fca_cia_aberta_2020.zip",
+    "bytes": 405892,
+    "sha256": "ccf2ac081747da9ccefa50349a5494c263763d5dd8bb961565fd2ae64c264b20",
+    "retrieved_at": "2026-09-07T03:17:19.517227+00:00"
+  },
+  {
+    "kind": "fre",
+    "year": 2020,
+    "status": "OK",
+    "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FRE/DADOS/fre_cia_aberta_2020.zip",
+    "bytes": 9233986,
+    "sha256": "17d2d911201f64dc8ff501104ce8fe343cd4ab3bdb41ea03eb6bfc2c4f6b80ab",
+    "retrieved_at": "2026-09-07T03:17:20.101916+00:00"
+  },
+  {
+    "kind": "dfp",
+    "year": 2021,
+    "status": "OK",
+    "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2021.zip",
+    "bytes": 13283026,
+    "sha256": "64b8693b709538a0357c5179ae02231cb380d0000956ee57a873a21d4efda2e4",
+    "retrieved_at": "2026-09-07T03:17:21.916719+00:00"
+  },
+  {
+    "kind": "fca",
+    "year": 2021,
+    "status": "OK",
+    "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FCA/DADOS/fca_cia_aberta_2021.zip",
+    "bytes": 465704,
+    "sha256": "65ba4b0225e9b2106901cdf348215933be8affba79925fc71361e2f6818c7999",
+    "retrieved_at": "2026-09-07T03:17:21.050514+00:00"
+  },
+  {
+    "kind": "fre",
+    "year": 2021,
+    "status": "OK",
+    "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FRE/DADOS/fre_cia_aberta_2021.zip",
+    "bytes": 10494738,
+    "sha256": "882e4c19c0719b7ac75f8e906c264fdd69b899cf0a2942ad00c4eb14a1b855bd",
+    "retrieved_at": "2026-09-07T03:17:22.927069+00:00"
+  },
+  {
+    "kind": "dfp",
+    "year": 2022,
+    "status": "OK",
+    "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2022.zip",
+    "bytes": 13448891,
+    "sha256": "ecc4bb053d3a530a2aa34102c3a6482ef80fa9c7c6e680abd02cf3c5d81c3c88",
+    "retrieved_at": "2026-09-07T03:17:23.780718+00:00"
+  },
+  {
+    "kind": "fca",
+    "year": 2022,
+    "status": "OK",
+    "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FCA/DADOS/fca_cia_aberta_2022.zip",
+    "bytes": 458286,
+    "sha256": "d8a539e57477082a4bccd951885fab610ba20bcff94c015b462f6b47560d3c30",
+    "retrieved_at": "2026-09-07T03:17:23.569637+00:00"
+  },
+  {
+    "kind": "fre",
+    "year": 2022,
+    "status": "OK",
+    "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FRE/DADOS/fre_cia_aberta_2022.zip",
+    "bytes": 10754871,
+    "sha256": "0bc42c03fee8ca60e2bbf20aa23ea30d607712bbd7755a2277657e3d3e4f0f0b",
+    "retrieved_at": "2026-09-07T03:17:24.418398+00:00"
+  },
+  {
+    "kind": "dfp",
+    "year": 2023,
+    "status": "OK",
+    "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2023.zip",
+    "bytes": 13563384,
+    "sha256": "d7ecbeb48b132d9e7480236d410d3587f4bd15efdf738e0b857647e178d3a261",
+    "retrieved_at": "2026-09-07T03:17:23.585907+00:00"
+  },
+  {
+    "kind": "fca",
+    "year": 2023,
+    "status": "OK",
+    "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FCA/DADOS/fca_cia_aberta_2023.zip",
+    "bytes": 434044,
+    "sha256": "40c732b6d386ef32c30e1434a9c999e9d6b1b2d346d40f7d6e86aadde08108c1",
+    "retrieved_at": "2026-09-07T03:17:23.601156+00:00"
+  },
+  {
+    "kind": "fre",
+    "year": 2023,
+    "status": "OK",
+    "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FRE/DADOS/fre_cia_aberta_2023.zip",
+    "bytes": 8132066,
+    "sha256": "995c8c3faa11bb4970e33e423366e6eab6b33c37ae82ec71fb60e54264b96fb7",
+    "retrieved_at": "2026-09-07T03:17:23.599573+00:00"
+  },
+  {
+    "kind": "dfp",
+    "year": 2024,
+    "status": "OK",
+    "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2024.zip",
+    "bytes": 13396366,
+    "sha256": "87e647faf66a1cb5abd9573716fea305b27ceb4573ceb4e83574dfc1429a522a",
+    "retrieved_at": "2026-09-07T03:17:26.262746+00:00"
+  },
+  {
+    "kind": "fca",
+    "year": 2024,
+    "status": "OK",
+    "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FCA/DADOS/fca_cia_aberta_2024.zip",
+    "bytes": 392000,
+    "sha256": "37b7b849f76644cb06f0388cffeb25457a4a9299ac28b3d433c1a0896cf0a2d4",
+    "retrieved_at": "2026-09-07T03:17:25.357096+00:00"
+  },
+  {
+    "kind": "fre",
+    "year": 2024,
+    "status": "OK",
+    "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FRE/DADOS/fre_cia_aberta_2024.zip",
+    "bytes": 8409610,
+    "sha256": "28290bc045c12c0b11dc5efeb37a4eb9d6e1d97aa68d4644cbb1f9c07eaff61e",
+    "retrieved_at": "2026-09-07T03:17:25.420399+00:00"
+  },
+  {
+    "kind": "dfp",
+    "year": 2025,
+    "status": "OK",
+    "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2025.zip",
+    "bytes": 12753312,
+    "sha256": "de8b7be1cdae032a402ab33916015c74fdc30f0bc64be3f38a4b5dd1d43f6d79",
+    "retrieved_at": "2026-09-07T03:17:27.800956+00:00"
+  },
+  {
+    "kind": "fca",
+    "year": 2025,
+    "status": "OK",
+    "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FCA/DADOS/fca_cia_aberta_2025.zip",
+    "bytes": 383620,
+    "sha256": "dbbbda515a98d402ff0b0fb2808d15f3d81b029e0c61de8b95655323604d1192",
+    "retrieved_at": "2026-09-07T03:17:27.140665+00:00"
+  },
+  {
+    "kind": "fre",
+    "year": 2025,
+    "status": "OK",
+    "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FRE/DADOS/fre_cia_aberta_2025.zip",
+    "bytes": 8497239,
+    "sha256": "b28e2adc119bc7174b83b5fe372e737356dcddb313a73e3339bd1ab57ea15994",
+    "retrieved_at": "2026-09-07T03:17:27.791345+00:00"
+  },
+  {
+    "kind": "dfp",
+    "year": 2026,
+    "status": "OK",
+    "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2026.zip",
+    "bytes": 217658,
+    "sha256": "eae4de33f122af8590cd25ecc4a8abda81ba3b044c9b375663afa310ba67e083",
+    "retrieved_at": "2026-09-07T03:17:27.654358+00:00"
+  },
+  {
+    "kind": "fca",
+    "year": 2026,
+    "status": "OK",
+    "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FCA/DADOS/fca_cia_aberta_2026.zip",
+    "bytes": 360485,
+    "sha256": "a076bea5575125aa5d8b81faf58e27f6f5b74e738f538811fe4f8f54d9546c31",
+    "retrieved_at": "2026-09-07T03:17:28.304219+00:00"
+  },
+  {
+    "kind": "fre",
+    "year": 2026,
+    "status": "OK",
+    "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FRE/DADOS/fre_cia_aberta_2026.zip",
+    "bytes": 8102234,
+    "sha256": "2799b964d3ffb6b4cba9e9c003c201fe57e64aa9effb93ccccafe676e351a79b",
+    "retrieved_at": "2026-09-07T03:17:28.584106+00:00"
+  }
+]

@@ -1,0 +1,40 @@
+Name                                     Stmts   Miss Branch BrPart  Cover   Missing
+------------------------------------------------------------------------------------
+stocks_predictor\__init__.py                 0      0      0      0   100%
+stocks_predictor\adjust.py                 149     15     68     13    86%   30-31, 51->50, 66, 85, 87, 143->exit, 172-174, 201, 259->267, 302, 319-322, 325, 334
+stocks_predictor\analyst.py                 55     32     14      4    42%   33-57, 80, 84-87, 93-96, 105-109, 113-118, 122
+stocks_predictor\backtest.py               326     18     64     13    92%   123, 130-131, 141-142, 162, 171, 188, 191, 219-221, 233-236, 255->259, 257->259, 679, 722-723
+stocks_predictor\cash_events.py             85     12     38     10    82%   13, 30, 35, 41, 47, 65-68, 83, 84->86, 86->78, 99, 105
+stocks_predictor\cash_source_audit.py       73     10     38      8    84%   19-20, 22, 35, 58, 62, 84, 92, 124, 127
+stocks_predictor\config.py                 120      6     30      5    93%   37, 68, 71-72, 78, 117
+stocks_predictor\cotahist.py                94      1     24      2    97%   145->135, 173
+stocks_predictor\cvm_pit.py                305     46    136     37    81%   21, 44, 74, 78, 82, 94, 97, 107, 109-111, 114, 135, 139, 142, 145, 159, 175, 178, 196, 253, 282, 287, 289->285, 307-310, 320, 328, 336, 341->343, 350, 365, 376, 381->379, 394-397, 402, 418, 430, 438, 445, 464, 471->452, 477-479
+stocks_predictor\db.py                      33      3      2      1    89%   413-415
+stocks_predictor\document_panel.py          82      7     44      6    90%   14-15, 45, 52, 105, 109, 111
+stocks_predictor\economic_gate.py           58      2     12      1    96%   29, 70
+stocks_predictor\ecosystem_plugin.py         9      0      0      0   100%
+stocks_predictor\execution.py               31      1      8      1    95%   86
+stocks_predictor\factor.py                 165     10     78     13    91%   15, 38, 53->51, 77->75, 97, 193, 203->201, 233, 283, 326, 329, 380, 388
+stocks_predictor\ingest_cotahist.py         29      5      8      2    81%   15-17, 30, 37
+stocks_predictor\ingest_cvm.py             471     41    206     37    88%   144-146, 197, 202-203, 207->212, 224, 253, 296, 319, 359, 387, 390-392, 396, 401, 442, 445-447, 451, 453->449, 469-470, 499, 527, 532, 542, 565, 568, 698->696, 704, 819, 825, 851, 856, 859, 863->844, 911, 917, 939, 992, 995, 1024, 1040
+stocks_predictor\ingest_rj_universe.py      80      4     26      2    94%   48-50, 103->102, 180
+stocks_predictor\paper.py                   73      7     18      5    87%   58->65, 110, 111->117, 120, 144-147, 151
+stocks_predictor\portfolio.py               33      1      8      1    95%   82
+stocks_predictor\report.py                  56      3     12      2    93%   243-244, 283
+stocks_predictor\returns.py                 15      0      6      1    95%   18->17
+stocks_predictor\rj_coda.py                 40      2     18      2    93%   34, 83
+stocks_predictor\rj_episodes.py             56      4     30      4    91%   53, 78, 109, 128
+stocks_predictor\rj_families.py            109     19     46     16    77%   35, 45, 48, 64, 69, 82, 86, 89, 103, 105, 107, 129, 135-136, 137->127, 154, 158, 189-190, 227
+stocks_predictor\rj_families_next.py        73      7     28      6    87%   32, 36->35, 49, 72, 78-79, 124, 169
+stocks_predictor\rj_judge.py               115      2     44      3    97%   49, 124->122, 200
+stocks_predictor\rj_judge_robust.py         56      4     20      4    89%   30, 54, 82-83, 85->73
+stocks_predictor\rj_outcomes.py             44      5     24      4    84%   28, 33, 39, 97-100
+stocks_predictor\rj_pipeline.py            146     32     44      2    81%   90, 367-369, 373-409, 413
+stocks_predictor\rj_power.py                67     26     24      1    64%   75, 100-133, 137
+stocks_predictor\simulation.py             269     44    156     37    79%   29, 32, 34, 48, 61-62, 70, 75, 103, 105, 107, 109, 111, 114, 128, 146-155, 159, 161->156, 164->156, 169, 203->212, 213, 243-244, 250, 254, 270->218, 279, 285, 289->293, 311-314, 350, 352, 353->358, 373-374, 380, 382, 390-391, 393
+stocks_predictor\source_history.py          88     15     32      9    80%   14, 32, 34, 43, 87-93, 130, 133-134, 136, 171, 174-184
+stocks_predictor\stock_events.py            25      4     10      4    77%   8, 21, 23, 26
+stocks_predictor\trials_gate.py             81      4     12      3    92%   106-107, 174, 187, 192->194
+stocks_predictor\universe.py                40      7     18      2    81%   21, 40, 88-94
+------------------------------------------------------------------------------------
+TOTAL                                     3551    399   1346    261    86%

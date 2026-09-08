@@ -1,0 +1,687 @@
+[
+  {
+    "asof": "2018-03-29",
+    "entry": "2018-04-02",
+    "exit": "2018-05-02",
+    "ticker": "PRML3",
+    "cnpj": "08741499000108",
+    "isin": "BRPRMLACNOR9",
+    "accruals": -0.1251094535223731,
+    "selected": true,
+    "price_return": null,
+    "quality_reasons": [
+      "INSTRUMENT_IDENTITY_BREAK_OR_MISSING",
+      "MISSING_EXECUTION_ENDPOINT"
+    ]
+  },
+  {
+    "asof": "2018-03-29",
+    "entry": "2018-04-02",
+    "exit": "2018-05-02",
+    "ticker": "CREM3",
+    "cnpj": "82641325000118",
+    "isin": "BRCREMACNOR2",
+    "accruals": -0.07735250058818098,
+    "selected": false,
+    "price_return": null,
+    "quality_reasons": [
+      "MISSING_EXECUTION_ENDPOINT"
+    ]
+  },
+  {
+    "asof": "2018-03-29",
+    "entry": "2018-04-02",
+    "exit": "2018-05-02",
+    "ticker": "BMKS3",
+    "cnpj": "56992423000190",
+    "isin": "BRBMKSACNOR9",
+    "accruals": -0.035192815375885124,
+    "selected": false,
+    "price_return": null,
+    "quality_reasons": [
+      "MISSING_EXECUTION_ENDPOINT"
+    ]
+  },
+  {
+    "asof": "2018-03-29",
+    "entry": "2018-04-02",
+    "exit": "2018-05-02",
+    "ticker": "PTNT4",
+    "cnpj": "88613658000110",
+    "isin": "BRPTNTACNPR3",
+    "accruals": 0.0005688854991330324,
+    "selected": false,
+    "price_return": null,
+    "quality_reasons": [
+      "MISSING_EXECUTION_ENDPOINT"
+    ]
+  },
+  {
+    "asof": "2018-04-30",
+    "entry": "2018-05-02",
+    "exit": "2018-06-01",
+    "ticker": "PRML3",
+    "cnpj": "08741499000108",
+    "isin": "BRPRMLACNOR9",
+    "accruals": -0.1251094535223731,
+    "selected": true,
+    "price_return": null,
+    "quality_reasons": [
+      "INSTRUMENT_IDENTITY_BREAK_OR_MISSING",
+      "MISSING_EXECUTION_ENDPOINT"
+    ]
+  },
+  {
+    "asof": "2018-04-30",
+    "entry": "2018-05-02",
+    "exit": "2018-06-01",
+    "ticker": "MNDL3",
+    "cnpj": "88610191000154",
+    "isin": "BRMNDLACNOR4",
+    "accruals": -0.05761696879707206,
+    "selected": false,
+    "price_return": null,
+    "quality_reasons": [
+      "MISSING_EXECUTION_ENDPOINT"
+    ]
+  },
+  {
+    "asof": "2018-04-30",
+    "entry": "2018-05-02",
+    "exit": "2018-06-01",
+    "ticker": "PTNT4",
+    "cnpj": "88613658000110",
+    "isin": "BRPTNTACNPR3",
+    "accruals": 0.0005688854991330324,
+    "selected": false,
+    "price_return": null,
+    "quality_reasons": [
+      "MISSING_EXECUTION_ENDPOINT"
+    ]
+  },
+  {
+    "asof": "2018-10-31",
+    "entry": "2018-11-01",
+    "exit": "2018-12-03",
+    "ticker": "ENGI11",
+    "cnpj": "00864214000106",
+    "isin": "BRENGICDAM16",
+    "accruals": -0.030691585349946274,
+    "selected": false,
+    "price_return": null,
+    "quality_reasons": [
+      "UNMODELLED_SUBSCRICAO"
+    ]
+  },
+  {
+    "asof": "2018-12-28",
+    "entry": "2019-01-02",
+    "exit": "2019-02-01",
+    "ticker": "FIBR3",
+    "cnpj": "60643228000121",
+    "isin": "BRFIBRACNOR9",
+    "accruals": -0.07785364873342127,
+    "selected": true,
+    "price_return": null,
+    "quality_reasons": [
+      "INSTRUMENT_IDENTITY_BREAK_OR_MISSING",
+      "MISSING_EXECUTION_ENDPOINT"
+    ]
+  },
+  {
+    "asof": "2019-07-31",
+    "entry": "2019-08-01",
+    "exit": "2019-09-02",
+    "ticker": "QUAL3",
+    "cnpj": "11992680000193",
+    "isin": "BRQUALACNOR6",
+    "accruals": -0.1077028146010228,
+    "selected": true,
+    "price_return": null,
+    "quality_reasons": [
+      "UNRESOLVED_OVERNIGHT_GT_30PCT"
+    ]
+  },
+  {
+    "asof": "2019-08-30",
+    "entry": "2019-09-02",
+    "exit": "2019-10-01",
+    "ticker": "NATU3",
+    "cnpj": "71673990000177",
+    "isin": "BRNATUACNOR6",
+    "accruals": -0.01923905570963102,
+    "selected": false,
+    "price_return": null,
+    "quality_reasons": [
+      "UNRESOLVED_OVERNIGHT_GT_30PCT"
+    ]
+  },
+  {
+    "asof": "2019-11-29",
+    "entry": "2019-12-02",
+    "exit": "2020-01-02",
+    "ticker": "NATU3",
+    "cnpj": "71673990000177",
+    "isin": "BRNATUACNOR6",
+    "accruals": -0.01923905570963102,
+    "selected": false,
+    "price_return": null,
+    "quality_reasons": [
+      "INSTRUMENT_IDENTITY_BREAK_OR_MISSING",
+      "MISSING_EXECUTION_ENDPOINT",
+      "UNMODELLED_INCORPORACAO"
+    ]
+  },
+  {
+    "asof": "2020-02-28",
+    "entry": "2020-03-02",
+    "exit": "2020-04-01",
+    "ticker": "AZUL4",
+    "cnpj": "09305994000129",
+    "isin": "BRAZULACNPR4",
+    "accruals": -0.0019316206297083252,
+    "selected": false,
+    "price_return": null,
+    "quality_reasons": [
+      "UNRESOLVED_OVERNIGHT_GT_30PCT"
+    ]
+  },
+  {
+    "asof": "2020-09-30",
+    "entry": "2020-10-01",
+    "exit": "2020-11-03",
+    "ticker": "TIMP3",
+    "cnpj": "02558115000121",
+    "isin": "BRTIMPACNOR1",
+    "accruals": -0.08532071388074686,
+    "selected": true,
+    "price_return": null,
+    "quality_reasons": [
+      "INSTRUMENT_IDENTITY_BREAK_OR_MISSING",
+      "MISSING_EXECUTION_ENDPOINT"
+    ]
+  },
+  {
+    "asof": "2021-01-29",
+    "entry": "2021-02-01",
+    "exit": "2021-03-01",
+    "ticker": "PCAR3",
+    "cnpj": "47508411000156",
+    "isin": "BRPCARACNOR3",
+    "accruals": -0.005113296280461736,
+    "selected": false,
+    "price_return": null,
+    "quality_reasons": [
+      "UNMODELLED_CIS_RED_CAP",
+      "UNRESOLVED_OVERNIGHT_GT_30PCT"
+    ]
+  },
+  {
+    "asof": "2021-03-31",
+    "entry": "2021-04-01",
+    "exit": "2021-05-03",
+    "ticker": "HGTX3",
+    "cnpj": "78876950000171",
+    "isin": "BRHGTXACNOR9",
+    "accruals": 0.0979498890244189,
+    "selected": false,
+    "price_return": null,
+    "quality_reasons": [
+      "UNRESOLVED_OVERNIGHT_GT_30PCT"
+    ]
+  },
+  {
+    "asof": "2021-06-30",
+    "entry": "2021-07-01",
+    "exit": "2021-08-02",
+    "ticker": "LAME4",
+    "cnpj": "33014556000196",
+    "isin": "BRLAMEACNPR6",
+    "accruals": -0.02705260074097253,
+    "selected": false,
+    "price_return": null,
+    "quality_reasons": [
+      "UNRESOLVED_OVERNIGHT_GT_30PCT"
+    ]
+  },
+  {
+    "asof": "2021-08-31",
+    "entry": "2021-09-01",
+    "exit": "2021-10-01",
+    "ticker": "HGTX3",
+    "cnpj": "78876950000171",
+    "isin": "BRHGTXACNOR9",
+    "accruals": 0.0979498890244189,
+    "selected": false,
+    "price_return": null,
+    "quality_reasons": [
+      "INSTRUMENT_IDENTITY_BREAK_OR_MISSING",
+      "MISSING_EXECUTION_ENDPOINT"
+    ]
+  },
+  {
+    "asof": "2021-09-30",
+    "entry": "2021-10-01",
+    "exit": "2021-11-01",
+    "ticker": "SANB11",
+    "cnpj": "90400888000142",
+    "isin": "BRSANBCDAM13",
+    "accruals": -0.030834391381039092,
+    "selected": false,
+    "price_return": null,
+    "quality_reasons": [
+      "UNMODELLED_CIS_RED_CAP"
+    ]
+  },
+  {
+    "asof": "2021-09-30",
+    "entry": "2021-10-01",
+    "exit": "2021-11-01",
+    "ticker": "ITUB4",
+    "cnpj": "60872504000123",
+    "isin": "BRITUBACNPR1",
+    "accruals": -0.022001722420838223,
+    "selected": false,
+    "price_return": null,
+    "quality_reasons": [
+      "UNMODELLED_CIS_RED_CAP"
+    ]
+  },
+  {
+    "asof": "2021-09-30",
+    "entry": "2021-10-01",
+    "exit": "2021-11-01",
+    "ticker": "PSSA3",
+    "cnpj": "02149205000169",
+    "isin": "BRPSSAACNOR7",
+    "accruals": 0.006791631584274979,
+    "selected": false,
+    "price_return": null,
+    "quality_reasons": [
+      "UNRESOLVED_OVERNIGHT_GT_30PCT"
+    ]
+  },
+  {
+    "asof": "2021-10-29",
+    "entry": "2021-11-01",
+    "exit": "2021-12-01",
+    "ticker": "IGTA3",
+    "cnpj": "51218147000193",
+    "isin": "BRIGTAACNOR5",
+    "accruals": 0.00932719595259369,
+    "selected": false,
+    "price_return": null,
+    "quality_reasons": [
+      "INSTRUMENT_IDENTITY_BREAK_OR_MISSING",
+      "MISSING_EXECUTION_ENDPOINT",
+      "UNMODELLED_INCORPORACAO"
+    ]
+  },
+  {
+    "asof": "2021-11-30",
+    "entry": "2021-12-01",
+    "exit": "2022-01-03",
+    "ticker": "BRAP4",
+    "cnpj": "03847461000192",
+    "isin": "BRBRAPACNPR2",
+    "accruals": 0.04323886163787327,
+    "selected": false,
+    "price_return": null,
+    "quality_reasons": [
+      "UNMODELLED_REST_CAP_ACOES",
+      "UNRESOLVED_OVERNIGHT_GT_30PCT"
+    ]
+  },
+  {
+    "asof": "2021-12-30",
+    "entry": "2022-01-03",
+    "exit": "2022-02-01",
+    "ticker": "LAME4",
+    "cnpj": "33014556000196",
+    "isin": "BRLAMEACNPR6",
+    "accruals": -0.02705260074097253,
+    "selected": false,
+    "price_return": null,
+    "quality_reasons": [
+      "INSTRUMENT_IDENTITY_BREAK_OR_MISSING",
+      "MISSING_EXECUTION_ENDPOINT"
+    ]
+  },
+  {
+    "asof": "2022-01-31",
+    "entry": "2022-02-01",
+    "exit": "2022-03-02",
+    "ticker": "GNDI3",
+    "cnpj": "19853511000184",
+    "isin": "BRGNDIACNOR2",
+    "accruals": -0.014905642136543044,
+    "selected": false,
+    "price_return": null,
+    "quality_reasons": [
+      "INSTRUMENT_IDENTITY_BREAK_OR_MISSING",
+      "MISSING_EXECUTION_ENDPOINT"
+    ]
+  },
+  {
+    "asof": "2022-05-31",
+    "entry": "2022-06-01",
+    "exit": "2022-07-01",
+    "ticker": "BIDI11",
+    "cnpj": "00416968000101",
+    "isin": "BRBIDICDAXX3",
+    "accruals": -0.022358184491196722,
+    "selected": false,
+    "price_return": null,
+    "quality_reasons": [
+      "INSTRUMENT_IDENTITY_BREAK_OR_MISSING",
+      "MISSING_EXECUTION_ENDPOINT"
+    ]
+  },
+  {
+    "asof": "2022-06-30",
+    "entry": "2022-07-01",
+    "exit": "2022-08-01",
+    "ticker": "LCAM3",
+    "cnpj": "10215988000160",
+    "isin": "BRLCAMACNOR3",
+    "accruals": 0.133811283276573,
+    "selected": false,
+    "price_return": null,
+    "quality_reasons": [
+      "INSTRUMENT_IDENTITY_BREAK_OR_MISSING",
+      "MISSING_EXECUTION_ENDPOINT"
+    ]
+  },
+  {
+    "asof": "2022-12-29",
+    "entry": "2023-01-02",
+    "exit": "2023-02-01",
+    "ticker": "BRML3",
+    "cnpj": "06977745000191",
+    "isin": "BRBRMLACNOR9",
+    "accruals": -0.021410785204621193,
+    "selected": false,
+    "price_return": null,
+    "quality_reasons": [
+      "INSTRUMENT_IDENTITY_BREAK_OR_MISSING",
+      "MISSING_EXECUTION_ENDPOINT",
+      "UNMODELLED_INCORPORACAO"
+    ]
+  },
+  {
+    "asof": "2022-12-29",
+    "entry": "2023-01-02",
+    "exit": "2023-02-01",
+    "ticker": "AMER3",
+    "cnpj": "00776574000156",
+    "isin": "BRAMERACNOR6",
+    "accruals": 0.03076101851055684,
+    "selected": false,
+    "price_return": null,
+    "quality_reasons": [
+      "INSTRUMENT_IDENTITY_BREAK_OR_MISSING",
+      "MISSING_EXECUTION_ENDPOINT",
+      "UNRESOLVED_OVERNIGHT_GT_30PCT"
+    ]
+  },
+  {
+    "asof": "2023-12-28",
+    "entry": "2024-01-02",
+    "exit": "2024-02-01",
+    "ticker": "GOLL4",
+    "cnpj": "06164253000187",
+    "isin": "BRGOLLACNPR4",
+    "accruals": -0.2198103921059664,
+    "selected": true,
+    "price_return": null,
+    "quality_reasons": [
+      "INSTRUMENT_IDENTITY_BREAK_OR_MISSING",
+      "MISSING_EXECUTION_ENDPOINT"
+    ]
+  },
+  {
+    "asof": "2023-12-28",
+    "entry": "2024-01-02",
+    "exit": "2024-02-01",
+    "ticker": "MGLU3",
+    "cnpj": "47960950000121",
+    "isin": "BRMGLUACNOR2",
+    "accruals": -0.09434707471790979,
+    "selected": true,
+    "price_return": null,
+    "quality_reasons": [
+      "UNMODELLED_SUBSCRICAO"
+    ]
+  },
+  {
+    "asof": "2024-03-28",
+    "entry": "2024-04-01",
+    "exit": "2024-05-02",
+    "ticker": "PETZ3",
+    "cnpj": "18328118000109",
+    "isin": "BRPETZACNOR2",
+    "accruals": -0.10330501668038658,
+    "selected": true,
+    "price_return": null,
+    "quality_reasons": [
+      "UNRESOLVED_OVERNIGHT_GT_30PCT"
+    ]
+  },
+  {
+    "asof": "2024-05-31",
+    "entry": "2024-06-03",
+    "exit": "2024-07-01",
+    "ticker": "RENT3",
+    "cnpj": "16670085000155",
+    "isin": "BRRENTACNOR4",
+    "accruals": 0.14473930895398282,
+    "selected": false,
+    "price_return": null,
+    "quality_reasons": [
+      "UNMODELLED_SUBSCRICAO"
+    ]
+  },
+  {
+    "asof": "2024-06-28",
+    "entry": "2024-07-01",
+    "exit": "2024-08-01",
+    "ticker": "SOMA3",
+    "cnpj": "10285590000108",
+    "isin": "BRSOMAACNOR3",
+    "accruals": -0.19503954255275344,
+    "selected": true,
+    "price_return": null,
+    "quality_reasons": [
+      "INSTRUMENT_IDENTITY_BREAK_OR_MISSING",
+      "MISSING_EXECUTION_ENDPOINT"
+    ]
+  },
+  {
+    "asof": "2024-07-31",
+    "entry": "2024-08-01",
+    "exit": "2024-09-02",
+    "ticker": "SOMA3",
+    "cnpj": "10285590000108",
+    "isin": "BRSOMAACNOR3",
+    "accruals": -0.19503954255275344,
+    "selected": true,
+    "price_return": null,
+    "quality_reasons": [
+      "INSTRUMENT_IDENTITY_BREAK_OR_MISSING",
+      "MISSING_EXECUTION_ENDPOINT"
+    ]
+  },
+  {
+    "asof": "2024-11-29",
+    "entry": "2024-12-02",
+    "exit": "2025-01-02",
+    "ticker": "VAMO3",
+    "cnpj": "23373000000132",
+    "isin": "BRVAMOACNOR7",
+    "accruals": 0.1572883544703579,
+    "selected": false,
+    "price_return": null,
+    "quality_reasons": [
+      "UNMODELLED_CIS_RED_CAP"
+    ]
+  },
+  {
+    "asof": "2024-12-30",
+    "entry": "2025-01-02",
+    "exit": "2025-02-03",
+    "ticker": "EQTL3",
+    "cnpj": "03220438000173",
+    "isin": "BREQTLACNOR0",
+    "accruals": -0.0025365326504177034,
+    "selected": false,
+    "price_return": null,
+    "quality_reasons": [
+      "UNMODELLED_SUBSCRICAO"
+    ]
+  },
+  {
+    "asof": "2025-01-31",
+    "entry": "2025-02-03",
+    "exit": "2025-03-05",
+    "ticker": "ITSA4",
+    "cnpj": "61532644000115",
+    "isin": "BRITSAACNPR7",
+    "accruals": 0.12985533659870144,
+    "selected": false,
+    "price_return": null,
+    "quality_reasons": [
+      "UNMODELLED_SUBSCRICAO"
+    ]
+  },
+  {
+    "asof": "2025-03-31",
+    "entry": "2025-04-01",
+    "exit": "2025-05-02",
+    "ticker": "BEEF3",
+    "cnpj": "67620377000114",
+    "isin": "BRBEEFACNOR6",
+    "accruals": -0.192688696303555,
+    "selected": true,
+    "price_return": null,
+    "quality_reasons": [
+      "UNMODELLED_SUBSCRICAO"
+    ]
+  },
+  {
+    "asof": "2025-03-31",
+    "entry": "2025-04-01",
+    "exit": "2025-05-02",
+    "ticker": "CCRO3",
+    "cnpj": "02846056000197",
+    "isin": "BRCCROACNOR2",
+    "accruals": -0.09917458046460115,
+    "selected": true,
+    "price_return": null,
+    "quality_reasons": [
+      "INSTRUMENT_IDENTITY_BREAK_OR_MISSING",
+      "MISSING_EXECUTION_ENDPOINT"
+    ]
+  },
+  {
+    "asof": "2025-04-30",
+    "entry": "2025-05-02",
+    "exit": "2025-06-02",
+    "ticker": "AZUL4",
+    "cnpj": "09305994000129",
+    "isin": "BRAZULACNPR4",
+    "accruals": -0.45436425875405323,
+    "selected": true,
+    "price_return": null,
+    "quality_reasons": [
+      "INSTRUMENT_IDENTITY_BREAK_OR_MISSING",
+      "MISSING_EXECUTION_ENDPOINT"
+    ]
+  },
+  {
+    "asof": "2025-05-30",
+    "entry": "2025-06-02",
+    "exit": "2025-07-01",
+    "ticker": "JBSS3",
+    "cnpj": "02916265000160",
+    "isin": "BRJBSSACNOR8",
+    "accruals": -0.051017095045098784,
+    "selected": false,
+    "price_return": null,
+    "quality_reasons": [
+      "INSTRUMENT_IDENTITY_BREAK_OR_MISSING",
+      "MISSING_EXECUTION_ENDPOINT"
+    ]
+  },
+  {
+    "asof": "2025-06-30",
+    "entry": "2025-07-01",
+    "exit": "2025-08-01",
+    "ticker": "NTCO3",
+    "cnpj": "32785497000197",
+    "isin": "BRNTCOACNOR5",
+    "accruals": -0.1717166499840319,
+    "selected": true,
+    "price_return": null,
+    "quality_reasons": [
+      "INSTRUMENT_IDENTITY_BREAK_OR_MISSING",
+      "MISSING_EXECUTION_ENDPOINT"
+    ]
+  },
+  {
+    "asof": "2025-06-30",
+    "entry": "2025-07-01",
+    "exit": "2025-08-01",
+    "ticker": "RAPT4",
+    "cnpj": "89086144000116",
+    "isin": "BRRAPTACNPR4",
+    "accruals": 0.020441018300988573,
+    "selected": false,
+    "price_return": null,
+    "quality_reasons": [
+      "UNMODELLED_SUBSCRICAO"
+    ]
+  },
+  {
+    "asof": "2025-10-31",
+    "entry": "2025-11-03",
+    "exit": "2025-12-01",
+    "ticker": "HAPV3",
+    "cnpj": "05197443000138",
+    "isin": "BRHAPVACNOR4",
+    "accruals": -0.04592686065453975,
+    "selected": false,
+    "price_return": null,
+    "quality_reasons": [
+      "UNRESOLVED_OVERNIGHT_GT_30PCT"
+    ]
+  },
+  {
+    "asof": "2025-10-31",
+    "entry": "2025-11-03",
+    "exit": "2025-12-01",
+    "ticker": "ELET3",
+    "cnpj": "00001180000126",
+    "isin": "BRELETACNOR6",
+    "accruals": -0.006916275576477329,
+    "selected": false,
+    "price_return": null,
+    "quality_reasons": [
+      "INSTRUMENT_IDENTITY_BREAK_OR_MISSING",
+      "MISSING_EXECUTION_ENDPOINT"
+    ]
+  },
+  {
+    "asof": "2025-11-28",
+    "entry": "2025-12-01",
+    "exit": "2026-01-02",
+    "ticker": "SMFT3",
+    "cnpj": "07594978000178",
+    "isin": "BRSMFTACNOR1",
+    "accruals": -0.050950932578657286,
+    "selected": false,
+    "price_return": null,
+    "quality_reasons": [
+      "UNMODELLED_SUBSCRICAO"
+    ]
+  }
+]

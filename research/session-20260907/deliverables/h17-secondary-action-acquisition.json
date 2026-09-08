@@ -1,0 +1,1241 @@
+[
+  {
+    "ticker": "AALR3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "AALR3.SA",
+    "source_file": "yahoo-h17-AALR3-actions.json"
+  },
+  {
+    "ticker": "ABCB4",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "ABCB4.SA",
+    "source_file": "yahoo-h17-ABCB4-actions.json"
+  },
+  {
+    "ticker": "ABEV3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "ABEV3.SA",
+    "source_file": "yahoo-h17-ABEV3-actions.json"
+  },
+  {
+    "ticker": "AGRO3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "AGRO3.SA",
+    "source_file": "yahoo-h17-AGRO3-actions.json"
+  },
+  {
+    "ticker": "ALOS3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "ALOS3.SA",
+    "source_file": "yahoo-h17-ALOS3-actions.json"
+  },
+  {
+    "ticker": "ALPA4",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "ALPA4.SA",
+    "source_file": "yahoo-h17-ALPA4-actions.json"
+  },
+  {
+    "ticker": "ALSC3",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "ALSO3",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "ALUP11",
+    "status": "ACQUIRED",
+    "events": 4,
+    "symbol": "ALUP11.SA",
+    "source_file": "yahoo-h17-ALUP11-actions.json"
+  },
+  {
+    "ticker": "AMBP3",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "AMBP3.SA",
+    "source_file": "yahoo-h17-AMBP3-actions.json"
+  },
+  {
+    "ticker": "AMER3",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "AMER3.SA",
+    "source_file": "yahoo-h17-AMER3-actions.json"
+  },
+  {
+    "ticker": "ANIM3",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "ANIM3.SA",
+    "source_file": "yahoo-h17-ANIM3-actions.json"
+  },
+  {
+    "ticker": "ARZZ3",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "ASAI3",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "ASAI3.SA",
+    "source_file": "yahoo-h17-ASAI3-actions.json"
+  },
+  {
+    "ticker": "AURE3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "AURE3.SA",
+    "source_file": "yahoo-h17-AURE3-actions.json"
+  },
+  {
+    "ticker": "AZUL4",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "AZZA3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "AZZA3.SA",
+    "source_file": "yahoo-h17-AZZA3-actions.json"
+  },
+  {
+    "ticker": "BAHI3",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "BBAS3",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "BBAS3.SA",
+    "source_file": "yahoo-h17-BBAS3-actions.json"
+  },
+  {
+    "ticker": "BBDC4",
+    "status": "ACQUIRED",
+    "events": 7,
+    "symbol": "BBDC4.SA",
+    "source_file": "yahoo-h17-BBDC4-actions.json"
+  },
+  {
+    "ticker": "BBSE3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "BBSE3.SA",
+    "source_file": "yahoo-h17-BBSE3-actions.json"
+  },
+  {
+    "ticker": "BEEF3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "BEEF3.SA",
+    "source_file": "yahoo-h17-BEEF3-actions.json"
+  },
+  {
+    "ticker": "BIDI11",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "BIDI4",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "BKBR3",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "BMIN4",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "BMIN4.SA",
+    "source_file": "yahoo-h17-BMIN4-actions.json"
+  },
+  {
+    "ticker": "BMKS3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "BMKS3.SA",
+    "source_file": "yahoo-h17-BMKS3-actions.json"
+  },
+  {
+    "ticker": "BPAN4",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "BRAP4",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "BRAP4.SA",
+    "source_file": "yahoo-h17-BRAP4-actions.json"
+  },
+  {
+    "ticker": "BRAV3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "BRAV3.SA",
+    "source_file": "yahoo-h17-BRAV3-actions.json"
+  },
+  {
+    "ticker": "BRDT3",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "BRFS3",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "BRKM5",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "BRKM5.SA",
+    "source_file": "yahoo-h17-BRKM5-actions.json"
+  },
+  {
+    "ticker": "BRML3",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "BRSR6",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "BRSR6.SA",
+    "source_file": "yahoo-h17-BRSR6-actions.json"
+  },
+  {
+    "ticker": "BTOW3",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "BVMF3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "BVMF3.SA",
+    "source_file": "yahoo-h17-BVMF3-actions.json"
+  },
+  {
+    "ticker": "CAML3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "CAML3.SA",
+    "source_file": "yahoo-h17-CAML3-actions.json"
+  },
+  {
+    "ticker": "CARD3",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "CASH3",
+    "status": "ACQUIRED",
+    "events": 2,
+    "symbol": "CASH3.SA",
+    "source_file": "yahoo-h17-CASH3-actions.json"
+  },
+  {
+    "ticker": "CBAV3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "CBAV3.SA",
+    "source_file": "yahoo-h17-CBAV3-actions.json"
+  },
+  {
+    "ticker": "CCRO3",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "CESP6",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "CGAS5",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "CGAS5.SA",
+    "source_file": "yahoo-h17-CGAS5-actions.json"
+  },
+  {
+    "ticker": "CGRA4",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "CGRA4.SA",
+    "source_file": "yahoo-h17-CGRA4-actions.json"
+  },
+  {
+    "ticker": "CIEL3",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "CMIG4",
+    "status": "ACQUIRED",
+    "events": 4,
+    "symbol": "CMIG4.SA",
+    "source_file": "yahoo-h17-CMIG4-actions.json"
+  },
+  {
+    "ticker": "CNTO3",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "COGN3",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "COGN3.SA",
+    "source_file": "yahoo-h17-COGN3-actions.json"
+  },
+  {
+    "ticker": "CPFE3",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "CPFE3.SA",
+    "source_file": "yahoo-h17-CPFE3-actions.json"
+  },
+  {
+    "ticker": "CPLE6",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "CPRE3",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "CREM3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "CREM3.SA",
+    "source_file": "yahoo-h17-CREM3-actions.json"
+  },
+  {
+    "ticker": "CRFB3",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "CSAN3",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "CSAN3.SA",
+    "source_file": "yahoo-h17-CSAN3-actions.json"
+  },
+  {
+    "ticker": "CSMG3",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "CSMG3.SA",
+    "source_file": "yahoo-h17-CSMG3-actions.json"
+  },
+  {
+    "ticker": "CURY3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "CURY3.SA",
+    "source_file": "yahoo-h17-CURY3-actions.json"
+  },
+  {
+    "ticker": "CVCB3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "CVCB3.SA",
+    "source_file": "yahoo-h17-CVCB3-actions.json"
+  },
+  {
+    "ticker": "CXSE3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "CXSE3.SA",
+    "source_file": "yahoo-h17-CXSE3-actions.json"
+  },
+  {
+    "ticker": "CYRE3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "CYRE3.SA",
+    "source_file": "yahoo-h17-CYRE3-actions.json"
+  },
+  {
+    "ticker": "DIRR3",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "DIRR3.SA",
+    "source_file": "yahoo-h17-DIRR3-actions.json"
+  },
+  {
+    "ticker": "DTEX3",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "ECOR3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "ECOR3.SA",
+    "source_file": "yahoo-h17-ECOR3-actions.json"
+  },
+  {
+    "ticker": "EGIE3",
+    "status": "ACQUIRED",
+    "events": 2,
+    "symbol": "EGIE3.SA",
+    "source_file": "yahoo-h17-EGIE3-actions.json"
+  },
+  {
+    "ticker": "ELET3",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "ELET6",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "EMBR3",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "ENAT3",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "ENBR3",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "ENEV3",
+    "status": "ACQUIRED",
+    "events": 2,
+    "symbol": "ENEV3.SA",
+    "source_file": "yahoo-h17-ENEV3-actions.json"
+  },
+  {
+    "ticker": "ENGI11",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "ENGI11.SA",
+    "source_file": "yahoo-h17-ENGI11-actions.json"
+  },
+  {
+    "ticker": "EQTL3",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "EQTL3.SA",
+    "source_file": "yahoo-h17-EQTL3-actions.json"
+  },
+  {
+    "ticker": "ESTC3",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "EUCA4",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "EUCA4.SA",
+    "source_file": "yahoo-h17-EUCA4-actions.json"
+  },
+  {
+    "ticker": "EZTC3",
+    "status": "ACQUIRED",
+    "events": 3,
+    "symbol": "EZTC3.SA",
+    "source_file": "yahoo-h17-EZTC3-actions.json"
+  },
+  {
+    "ticker": "FESA4",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "FESA4.SA",
+    "source_file": "yahoo-h17-FESA4-actions.json"
+  },
+  {
+    "ticker": "FHER3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "FHER3.SA",
+    "source_file": "yahoo-h17-FHER3-actions.json"
+  },
+  {
+    "ticker": "FIBR3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "FIBR3.SA",
+    "source_file": "yahoo-h17-FIBR3-actions.json"
+  },
+  {
+    "ticker": "FJTA4",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "FLRY3",
+    "status": "ACQUIRED",
+    "events": 2,
+    "symbol": "FLRY3.SA",
+    "source_file": "yahoo-h17-FLRY3-actions.json"
+  },
+  {
+    "ticker": "GEPA4",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "GEPA4.SA",
+    "source_file": "yahoo-h17-GEPA4-actions.json"
+  },
+  {
+    "ticker": "GGBR4",
+    "status": "ACQUIRED",
+    "events": 2,
+    "symbol": "GGBR4.SA",
+    "source_file": "yahoo-h17-GGBR4-actions.json"
+  },
+  {
+    "ticker": "GGPS3",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "GGPS3.SA",
+    "source_file": "yahoo-h17-GGPS3-actions.json"
+  },
+  {
+    "ticker": "GMAT3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "GMAT3.SA",
+    "source_file": "yahoo-h17-GMAT3-actions.json"
+  },
+  {
+    "ticker": "GNDI3",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "GOAU4",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "GOAU4.SA",
+    "source_file": "yahoo-h17-GOAU4-actions.json"
+  },
+  {
+    "ticker": "GOLL4",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "GRND3",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "GRND3.SA",
+    "source_file": "yahoo-h17-GRND3-actions.json"
+  },
+  {
+    "ticker": "GSHP3",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "GSHP3.SA",
+    "source_file": "yahoo-h17-GSHP3-actions.json"
+  },
+  {
+    "ticker": "GUAR3",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "HAPV3",
+    "status": "ACQUIRED",
+    "events": 2,
+    "symbol": "HAPV3.SA",
+    "source_file": "yahoo-h17-HAPV3-actions.json"
+  },
+  {
+    "ticker": "HBOR3",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "HBOR3.SA",
+    "source_file": "yahoo-h17-HBOR3-actions.json"
+  },
+  {
+    "ticker": "HGTX3",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "HYPE3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "HYPE3.SA",
+    "source_file": "yahoo-h17-HYPE3-actions.json"
+  },
+  {
+    "ticker": "IGTA3",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "IGTI11",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "IGTI11.SA",
+    "source_file": "yahoo-h17-IGTI11-actions.json"
+  },
+  {
+    "ticker": "INTB3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "INTB3.SA",
+    "source_file": "yahoo-h17-INTB3-actions.json"
+  },
+  {
+    "ticker": "IRBR3",
+    "status": "ACQUIRED",
+    "events": 2,
+    "symbol": "IRBR3.SA",
+    "source_file": "yahoo-h17-IRBR3-actions.json"
+  },
+  {
+    "ticker": "ITSA4",
+    "status": "ACQUIRED",
+    "events": 7,
+    "symbol": "ITSA4.SA",
+    "source_file": "yahoo-h17-ITSA4-actions.json"
+  },
+  {
+    "ticker": "ITUB4",
+    "status": "ACQUIRED",
+    "events": 4,
+    "symbol": "ITUB4.SA",
+    "source_file": "yahoo-h17-ITUB4-actions.json"
+  },
+  {
+    "ticker": "JBSS3",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "JHSF3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "JHSF3.SA",
+    "source_file": "yahoo-h17-JHSF3-actions.json"
+  },
+  {
+    "ticker": "JSLG3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "JSLG3.SA",
+    "source_file": "yahoo-h17-JSLG3-actions.json"
+  },
+  {
+    "ticker": "KLBN11",
+    "status": "ACQUIRED",
+    "events": 2,
+    "symbol": "KLBN11.SA",
+    "source_file": "yahoo-h17-KLBN11-actions.json"
+  },
+  {
+    "ticker": "LAME4",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "LCAM3",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "LEVE3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "LEVE3.SA",
+    "source_file": "yahoo-h17-LEVE3-actions.json"
+  },
+  {
+    "ticker": "LIGT3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "LIGT3.SA",
+    "source_file": "yahoo-h17-LIGT3-actions.json"
+  },
+  {
+    "ticker": "LINX3",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "LJQQ3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "LJQQ3.SA",
+    "source_file": "yahoo-h17-LJQQ3-actions.json"
+  },
+  {
+    "ticker": "LOGN3",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "LOGN3.SA",
+    "source_file": "yahoo-h17-LOGN3-actions.json"
+  },
+  {
+    "ticker": "LREN3",
+    "status": "ACQUIRED",
+    "events": 4,
+    "symbol": "LREN3.SA",
+    "source_file": "yahoo-h17-LREN3-actions.json"
+  },
+  {
+    "ticker": "LWSA3",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "LWSA3.SA",
+    "source_file": "yahoo-h17-LWSA3-actions.json"
+  },
+  {
+    "ticker": "MDIA3",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "MDIA3.SA",
+    "source_file": "yahoo-h17-MDIA3-actions.json"
+  },
+  {
+    "ticker": "MGLU3",
+    "status": "ACQUIRED",
+    "events": 5,
+    "symbol": "MGLU3.SA",
+    "source_file": "yahoo-h17-MGLU3-actions.json"
+  },
+  {
+    "ticker": "MILS3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "MILS3.SA",
+    "source_file": "yahoo-h17-MILS3-actions.json"
+  },
+  {
+    "ticker": "MNDL3",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "MNDL3.SA",
+    "source_file": "yahoo-h17-MNDL3-actions.json"
+  },
+  {
+    "ticker": "MOVI3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "MOVI3.SA",
+    "source_file": "yahoo-h17-MOVI3-actions.json"
+  },
+  {
+    "ticker": "MPLU3",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "MRFG3",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "MRVE3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "MRVE3.SA",
+    "source_file": "yahoo-h17-MRVE3-actions.json"
+  },
+  {
+    "ticker": "MTSA4",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "MTSA4.SA",
+    "source_file": "yahoo-h17-MTSA4-actions.json"
+  },
+  {
+    "ticker": "MULT3",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "MULT3.SA",
+    "source_file": "yahoo-h17-MULT3-actions.json"
+  },
+  {
+    "ticker": "MYPK3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "MYPK3.SA",
+    "source_file": "yahoo-h17-MYPK3-actions.json"
+  },
+  {
+    "ticker": "NATU3",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "NATU3.SA",
+    "source_file": "yahoo-h17-NATU3-actions.json"
+  },
+  {
+    "ticker": "NEOE3",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "NTCO3",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "ODPV3",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "OFSA3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "OFSA3.SA",
+    "source_file": "yahoo-h17-OFSA3-actions.json"
+  },
+  {
+    "ticker": "OMGE3",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "PARD3",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "PCAR3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "PCAR3.SA",
+    "source_file": "yahoo-h17-PCAR3-actions.json"
+  },
+  {
+    "ticker": "PCAR4",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "PETR4",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "PETR4.SA",
+    "source_file": "yahoo-h17-PETR4-actions.json"
+  },
+  {
+    "ticker": "PETZ3",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "POMO4",
+    "status": "ACQUIRED",
+    "events": 2,
+    "symbol": "POMO4.SA",
+    "source_file": "yahoo-h17-POMO4-actions.json"
+  },
+  {
+    "ticker": "POSI3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "POSI3.SA",
+    "source_file": "yahoo-h17-POSI3-actions.json"
+  },
+  {
+    "ticker": "PRIO3",
+    "status": "ACQUIRED",
+    "events": 3,
+    "symbol": "PRIO3.SA",
+    "source_file": "yahoo-h17-PRIO3-actions.json"
+  },
+  {
+    "ticker": "PRML3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "PRML3.SA",
+    "source_file": "yahoo-h17-PRML3-actions.json"
+  },
+  {
+    "ticker": "PSSA3",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "PSSA3.SA",
+    "source_file": "yahoo-h17-PSSA3-actions.json"
+  },
+  {
+    "ticker": "PTBL3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "PTBL3.SA",
+    "source_file": "yahoo-h17-PTBL3-actions.json"
+  },
+  {
+    "ticker": "PTNT4",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "QGEP3",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "QUAL3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "QUAL3.SA",
+    "source_file": "yahoo-h17-QUAL3-actions.json"
+  },
+  {
+    "ticker": "RADL3",
+    "status": "ACQUIRED",
+    "events": 3,
+    "symbol": "RADL3.SA",
+    "source_file": "yahoo-h17-RADL3-actions.json"
+  },
+  {
+    "ticker": "RAIL3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "RAIL3.SA",
+    "source_file": "yahoo-h17-RAIL3-actions.json"
+  },
+  {
+    "ticker": "RAPT4",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "RAPT4.SA",
+    "source_file": "yahoo-h17-RAPT4-actions.json"
+  },
+  {
+    "ticker": "RDOR3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "RDOR3.SA",
+    "source_file": "yahoo-h17-RDOR3-actions.json"
+  },
+  {
+    "ticker": "RECV3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "RECV3.SA",
+    "source_file": "yahoo-h17-RECV3-actions.json"
+  },
+  {
+    "ticker": "RENT3",
+    "status": "ACQUIRED",
+    "events": 3,
+    "symbol": "RENT3.SA",
+    "source_file": "yahoo-h17-RENT3-actions.json"
+  },
+  {
+    "ticker": "ROMI3",
+    "status": "ACQUIRED",
+    "events": 4,
+    "symbol": "ROMI3.SA",
+    "source_file": "yahoo-h17-ROMI3-actions.json"
+  },
+  {
+    "ticker": "RRRP3",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "SANB11",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "SANB11.SA",
+    "source_file": "yahoo-h17-SANB11-actions.json"
+  },
+  {
+    "ticker": "SAPR11",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "SAPR11.SA",
+    "source_file": "yahoo-h17-SAPR11-actions.json"
+  },
+  {
+    "ticker": "SBSP3",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "SBSP3.SA",
+    "source_file": "yahoo-h17-SBSP3-actions.json"
+  },
+  {
+    "ticker": "SEER3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "SEER3.SA",
+    "source_file": "yahoo-h17-SEER3-actions.json"
+  },
+  {
+    "ticker": "SHOW3",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "SHOW3.SA",
+    "source_file": "yahoo-h17-SHOW3-actions.json"
+  },
+  {
+    "ticker": "SHUL4",
+    "status": "ACQUIRED",
+    "events": 3,
+    "symbol": "SHUL4.SA",
+    "source_file": "yahoo-h17-SHUL4-actions.json"
+  },
+  {
+    "ticker": "SIMH3",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "SIMH3.SA",
+    "source_file": "yahoo-h17-SIMH3-actions.json"
+  },
+  {
+    "ticker": "SLCE3",
+    "status": "ACQUIRED",
+    "events": 5,
+    "symbol": "SLCE3.SA",
+    "source_file": "yahoo-h17-SLCE3-actions.json"
+  },
+  {
+    "ticker": "SMFT3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "SMFT3.SA",
+    "source_file": "yahoo-h17-SMFT3-actions.json"
+  },
+  {
+    "ticker": "SMLS3",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "SMTO3",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "SMTO3.SA",
+    "source_file": "yahoo-h17-SMTO3-actions.json"
+  },
+  {
+    "ticker": "SOMA3",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "SSBR3",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "STBP3",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "SULA11",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "SUZB3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "SUZB3.SA",
+    "source_file": "yahoo-h17-SUZB3-actions.json"
+  },
+  {
+    "ticker": "TAEE11",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "TAEE11.SA",
+    "source_file": "yahoo-h17-TAEE11-actions.json"
+  },
+  {
+    "ticker": "TASA4",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "TASA4.SA",
+    "source_file": "yahoo-h17-TASA4-actions.json"
+  },
+  {
+    "ticker": "TEND3",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "TEND3.SA",
+    "source_file": "yahoo-h17-TEND3-actions.json"
+  },
+  {
+    "ticker": "TESA3",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "TIET11",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "TIMP3",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "TIMS3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "TIMS3.SA",
+    "source_file": "yahoo-h17-TIMS3-actions.json"
+  },
+  {
+    "ticker": "TOTS3",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "TOTS3.SA",
+    "source_file": "yahoo-h17-TOTS3-actions.json"
+  },
+  {
+    "ticker": "TRPL4",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "TUPY3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "TUPY3.SA",
+    "source_file": "yahoo-h17-TUPY3-actions.json"
+  },
+  {
+    "ticker": "UGPA3",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "UGPA3.SA",
+    "source_file": "yahoo-h17-UGPA3-actions.json"
+  },
+  {
+    "ticker": "UNIP6",
+    "status": "ACQUIRED",
+    "events": 4,
+    "symbol": "UNIP6.SA",
+    "source_file": "yahoo-h17-UNIP6-actions.json"
+  },
+  {
+    "ticker": "USIM5",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "USIM5.SA",
+    "source_file": "yahoo-h17-USIM5-actions.json"
+  },
+  {
+    "ticker": "VALE3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "VALE3.SA",
+    "source_file": "yahoo-h17-VALE3-actions.json"
+  },
+  {
+    "ticker": "VAMO3",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "VAMO3.SA",
+    "source_file": "yahoo-h17-VAMO3-actions.json"
+  },
+  {
+    "ticker": "VBBR3",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "VBBR3.SA",
+    "source_file": "yahoo-h17-VBBR3-actions.json"
+  },
+  {
+    "ticker": "VIIA3",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "VIVA3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "VIVA3.SA",
+    "source_file": "yahoo-h17-VIVA3-actions.json"
+  },
+  {
+    "ticker": "VIVR3",
+    "status": "ACQUIRED",
+    "events": 3,
+    "symbol": "VIVR3.SA",
+    "source_file": "yahoo-h17-VIVR3-actions.json"
+  },
+  {
+    "ticker": "VIVT3",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "VIVT3.SA",
+    "source_file": "yahoo-h17-VIVT3-actions.json"
+  },
+  {
+    "ticker": "VIVT4",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "VLID3",
+    "status": "ACQUIRED",
+    "events": 1,
+    "symbol": "VLID3.SA",
+    "source_file": "yahoo-h17-VLID3-actions.json"
+  },
+  {
+    "ticker": "VVAR3",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "WEGE3",
+    "status": "ACQUIRED",
+    "events": 2,
+    "symbol": "WEGE3.SA",
+    "source_file": "yahoo-h17-WEGE3-actions.json"
+  },
+  {
+    "ticker": "WHRL4",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "WHRL4.SA",
+    "source_file": "yahoo-h17-WHRL4-actions.json"
+  },
+  {
+    "ticker": "WIZS3",
+    "status": "FAILED",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ticker": "YDUQ3",
+    "status": "ACQUIRED",
+    "events": 0,
+    "symbol": "YDUQ3.SA",
+    "source_file": "yahoo-h17-YDUQ3-actions.json"
+  }
+]

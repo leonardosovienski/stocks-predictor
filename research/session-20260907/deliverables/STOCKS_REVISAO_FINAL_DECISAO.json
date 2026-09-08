@@ -1,0 +1,42 @@
+{
+  "date_utc": "2026-09-07T23:17:22.284191+00:00",
+  "review_commit": "858ba52315be3508bfe3d442388f1f9ed793f371",
+  "validated_runtime_commit": "741d237388405970127492a4eff81ab1e5c755a1",
+  "technical_validation": "PASSED_DECLARED_CHECKS",
+  "economic_verdict": "INCONCLUSIVE_NET_PROFIT",
+  "operational_decision": "NO_GO",
+  "net_profit_brl": null,
+  "loss_demonstrated": false,
+  "project_quality": "AUDITABLE_RESEARCH_PROTOTYPE_WITH_INCOMPLETE_ECONOMIC_IMPLEMENTATION_AND_INPUTS",
+  "capital_scenarios_brl": [
+    5000,
+    10000
+  ],
+  "tests_passed": 592,
+  "new_historical_return_evaluations": 0,
+  "minimum_exposed_configurations": 32,
+  "minimum_historical_evaluations": 37,
+  "untouched_holdout_demonstrated": false,
+  "paper_fill_history_validated": false,
+  "unresolved": {
+    "cash_payment_dates": 356,
+    "cash_intervals_without_inventory_certificate": 1237,
+    "required_corporate_records": 36,
+    "integrated_approved_corporate_records": 0,
+    "portfolio_dependent_corporate_tax_implemented": false,
+    "successor_and_later_JBS_cash_complete": false,
+    "actual_fills_and_broker_rounding_validated": false
+  },
+  "research_decisions": [
+    "Keep frozen H19 selections and source lineage",
+    "Do not reuse invalid legacy backtests as profit evidence",
+    "No new H20 or ML search to bypass measurement gaps",
+    "Finish case-dependent corporate accounting and primary cash coverage before any net-profit claim"
+  ],
+  "real_orders_submitted": false,
+  "external_paid_services_purchased": false,
+  "database_hashes_preserved": {
+    "C:\\Users\\Superleo13\\stocks-predictor-work\\data\\stocks.db": "a22739794ba4a43a11544338d4a91e14cb6a0b1f7b132ab460f96d3359f63cf4",
+    "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-06\\files-pasted-by-the-user-autonomous\\work\\stocks-tested-real-v2-20260907.db": "a8238568980d3303890b04590cfb5c55ab2d24c9271edd86820269336b09679a"
+  }
+}

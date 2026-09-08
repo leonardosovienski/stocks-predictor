@@ -1,0 +1,2240 @@
+[
+  {
+    "original_relative_path": "work/acquire_h19_cash_pilot.py",
+    "git_path": "research/session-20260907/scripts/acquire_h19_cash_pilot.py",
+    "bytes": 1733,
+    "sha256": "9a77af8cfbb7a77c53fb0c8ad6d07f76b1d30b91034a501aec439a937fb45f9c"
+  },
+  {
+    "original_relative_path": "work/acquire_h19_tax_calendar.py",
+    "git_path": "research/session-20260907/scripts/acquire_h19_tax_calendar.py",
+    "bytes": 4539,
+    "sha256": "63979d36a8c00b28cdc7d28ceda975499acbff59a9ef3ca57f0719c88f012363"
+  },
+  {
+    "original_relative_path": "work/acquire_h19_tax_pdf_gaps.py",
+    "git_path": "research/session-20260907/scripts/acquire_h19_tax_pdf_gaps.py",
+    "bytes": 2055,
+    "sha256": "509e813cf3505dc9a04a18d40bde42237c82b7c156766fadef5aa92b1b7a9833"
+  },
+  {
+    "original_relative_path": "work/acquire_profit_cash_gaps.py",
+    "git_path": "research/session-20260907/scripts/acquire_profit_cash_gaps.py",
+    "bytes": 3304,
+    "sha256": "2bea618687925b2d933c391c0510d0a5e50cb3b343fc7517dc89dec964c2e41a"
+  },
+  {
+    "original_relative_path": "work/acquire_profit_historical_cash.py",
+    "git_path": "research/session-20260907/scripts/acquire_profit_historical_cash.py",
+    "bytes": 3633,
+    "sha256": "667d8b193652c984d17490de7ac136bab8d391d6397ed630c30c63d6e045f9c8"
+  },
+  {
+    "original_relative_path": "work/acquire_two_cash_names.py",
+    "git_path": "research/session-20260907/scripts/acquire_two_cash_names.py",
+    "bytes": 2623,
+    "sha256": "89710dbb8eb99e46186171929536ca3cd6a6e870190b5fbd67b7f141e38543c8"
+  },
+  {
+    "original_relative_path": "work/assemble_h17_runtime.py",
+    "git_path": "research/session-20260907/scripts/assemble_h17_runtime.py",
+    "bytes": 2409,
+    "sha256": "0a4e6699a6818a65692801816b4824fbd17969d6d0b4c4496e76406d70a30732"
+  },
+  {
+    "original_relative_path": "work/assess_next_stocks_test.py",
+    "git_path": "research/session-20260907/scripts/assess_next_stocks_test.py",
+    "bytes": 4016,
+    "sha256": "8ce145185824bade81d80381c9b33bd9681b6c462d445822e481e28d359da460"
+  },
+  {
+    "original_relative_path": "work/audit_cvm_history.py",
+    "git_path": "research/session-20260907/scripts/audit_cvm_history.py",
+    "bytes": 1656,
+    "sha256": "c67e9626e727ce60e19c6a0dd44da6c17d27dc76b1b85096ca49a00f8377f43f"
+  },
+  {
+    "original_relative_path": "work/audit_fractional_quotes.py",
+    "git_path": "research/session-20260907/scripts/audit_fractional_quotes.py",
+    "bytes": 3919,
+    "sha256": "6af10ba53534433e4ea1d583a1a3bb2ee6f9f48e3d748c49f6bfb1c3b69a8dda"
+  },
+  {
+    "original_relative_path": "work/audit_h19_continuous_quote_coverage.py",
+    "git_path": "research/session-20260907/scripts/audit_h19_continuous_quote_coverage.py",
+    "bytes": 2265,
+    "sha256": "da1d4348387214164a237fa5af831aeacdfaf84dc7ec402da97d81476f6f7f96"
+  },
+  {
+    "original_relative_path": "work/audit_h19_remaining_cash.py",
+    "git_path": "research/session-20260907/scripts/audit_h19_remaining_cash.py",
+    "bytes": 1777,
+    "sha256": "3c8d69e56d5a0c71f0c23a76c87049637609bba739960693e2263ebe3fc4c813"
+  },
+  {
+    "original_relative_path": "work/audit_profit_opportunity_cost.py",
+    "git_path": "research/session-20260907/scripts/audit_profit_opportunity_cost.py",
+    "bytes": 3005,
+    "sha256": "841dc081549ada45a05ac46e5cbeae6fbed18a6712add63dd0aaad399453128f"
+  },
+  {
+    "original_relative_path": "work/audit_profit_sources.py",
+    "git_path": "research/session-20260907/scripts/audit_profit_sources.py",
+    "bytes": 6383,
+    "sha256": "5b89e05234e3e00bf54bd9ceb16fa4ba00907891f4405539e1762e317a307db7"
+  },
+  {
+    "original_relative_path": "work/audit_raw_sources.py",
+    "git_path": "research/session-20260907/scripts/audit_raw_sources.py",
+    "bytes": 5178,
+    "sha256": "8e12cb81b8ff905301673e4bca488aba5ebed6705732f5af6ca5c1a381362fcc"
+  },
+  {
+    "original_relative_path": "work/build_h17_event_panel.py",
+    "git_path": "research/session-20260907/scripts/build_h17_event_panel.py",
+    "bytes": 4313,
+    "sha256": "5a75eb8cd9d86e1aaa7559b5c09d1fe336b67528860a8547711c91dc76eb7f84"
+  },
+  {
+    "original_relative_path": "work/build_h19_continuous_evidence.py",
+    "git_path": "research/session-20260907/scripts/build_h19_continuous_evidence.py",
+    "bytes": 9786,
+    "sha256": "b8a22e6435c1b5a68798edf2dcdd7c2e1d69b408e7693a39b72f1261ffd33c0c"
+  },
+  {
+    "original_relative_path": "work/build_h19_payment_registry_v4.py",
+    "git_path": "research/session-20260907/scripts/build_h19_payment_registry_v4.py",
+    "bytes": 4120,
+    "sha256": "02c32ceea7c66a03a2fbfb10780e1d125cd7c589b491af435553d33747a1699b"
+  },
+  {
+    "original_relative_path": "work/build_h19_reviewed_dates.py",
+    "git_path": "research/session-20260907/scripts/build_h19_reviewed_dates.py",
+    "bytes": 13145,
+    "sha256": "7abbebe0d8a172a04025b855d1c0e8fbcac5a41a3b653db9df606eb0bc87befa"
+  },
+  {
+    "original_relative_path": "work/build_value_reorganization_terms.py",
+    "git_path": "research/session-20260907/scripts/build_value_reorganization_terms.py",
+    "bytes": 3938,
+    "sha256": "419324e3d0b878b14fbb81f2851b862aee89eade5cf7e34a36f869f28eb85bfc"
+  },
+  {
+    "original_relative_path": "work/cash_research_fetch.py",
+    "git_path": "research/session-20260907/scripts/cash_research_fetch.py",
+    "bytes": 2827,
+    "sha256": "cb20ed1443f6b55994c709e7c67510cb9de3e08cab2ad498fb252a476fe2fe5c"
+  },
+  {
+    "original_relative_path": "work/check_stocks_old_regressions.py",
+    "git_path": "research/session-20260907/scripts/check_stocks_old_regressions.py",
+    "bytes": 1729,
+    "sha256": "bbaee8eb62e240e0fe7f6ae06a24ddd4419edef0df36d458e72f961358e2fa82"
+  },
+  {
+    "original_relative_path": "work/check_value_event_inputs.py",
+    "git_path": "research/session-20260907/scripts/check_value_event_inputs.py",
+    "bytes": 2986,
+    "sha256": "531744dfd4e2e4915dd7561c0d42ce3c941fdfd8dae90e48b015f5999d78c432"
+  },
+  {
+    "original_relative_path": "work/close_h19_selected_dates.py",
+    "git_path": "research/session-20260907/scripts/close_h19_selected_dates.py",
+    "bytes": 9139,
+    "sha256": "f0eb290186fcad6faf87670aeb472e91c1ba1f956dd1e5cc37127f24a82758b6"
+  },
+  {
+    "original_relative_path": "work/collect_b3_universe.py",
+    "git_path": "research/session-20260907/scripts/collect_b3_universe.py",
+    "bytes": 3853,
+    "sha256": "6157cb068eac042efc6fdc98eb877fc02341fd171100d272600eb38775686124"
+  },
+  {
+    "original_relative_path": "work/collect_h17_events.py",
+    "git_path": "research/session-20260907/scripts/collect_h17_events.py",
+    "bytes": 1482,
+    "sha256": "0dcf8d6cbf996d781b557da62b6f36893cc45ae246e592a1dea97a39c3bb210f"
+  },
+  {
+    "original_relative_path": "work/complete_h17_events.py",
+    "git_path": "research/session-20260907/scripts/complete_h17_events.py",
+    "bytes": 1495,
+    "sha256": "2ab80fe71a5a4b7899291786fe13f7b0fe51e21d334212912cadcd1c9991d869"
+  },
+  {
+    "original_relative_path": "work/complete_h19_tax_calendar.py",
+    "git_path": "research/session-20260907/scripts/complete_h19_tax_calendar.py",
+    "bytes": 2369,
+    "sha256": "712e3fa6eee6ad26e7068defdc6f5b9154772b291ded16704b1c5005dd036627"
+  },
+  {
+    "original_relative_path": "work/derive_value_accounting.py",
+    "git_path": "research/session-20260907/scripts/derive_value_accounting.py",
+    "bytes": 2691,
+    "sha256": "d3aa0b7eb2385cfdb6d9da073378a36f98fa4aecb663343cad8153f95a9fb75f"
+  },
+  {
+    "original_relative_path": "work/download_b3_sample_history.py",
+    "git_path": "research/session-20260907/scripts/download_b3_sample_history.py",
+    "bytes": 2071,
+    "sha256": "cf237901f4e1d9c48de8b8ddd1b135cad297f681d17a1ecb7b221b75c17b240a"
+  },
+  {
+    "original_relative_path": "work/download_cvm_history.py",
+    "git_path": "research/session-20260907/scripts/download_cvm_history.py",
+    "bytes": 2254,
+    "sha256": "04086f8c493be60918b8b608836c59b948ee9791a4e3dbae09965e92e075df93"
+  },
+  {
+    "original_relative_path": "work/download_final_terms.py",
+    "git_path": "research/session-20260907/scripts/download_final_terms.py",
+    "bytes": 365,
+    "sha256": "c5a789b16e2b94851982df0f9c8421c54ffd8a75450dc1f9b8c53aaf2286f2d9"
+  },
+  {
+    "original_relative_path": "work/download_value_event_sources.py",
+    "git_path": "research/session-20260907/scripts/download_value_event_sources.py",
+    "bytes": 1539,
+    "sha256": "bf57f79894ee627979f8b9b8072dc8280fc691d71bca129a5bedf791a64f07c7"
+  },
+  {
+    "original_relative_path": "work/explore_b3_events.py",
+    "git_path": "research/session-20260907/scripts/explore_b3_events.py",
+    "bytes": 2490,
+    "sha256": "7876b68dafcd6b1ceb9cda590b91caebbe50cabdefeaf9899426f6831cc67448"
+  },
+  {
+    "original_relative_path": "work/explore_primary_sources.py",
+    "git_path": "research/session-20260907/scripts/explore_primary_sources.py",
+    "bytes": 2582,
+    "sha256": "127e41f4974030ae9711cc09595b440c582e005eb09322d2f8e7188cff05d2b7"
+  },
+  {
+    "original_relative_path": "work/extend_h19_ipe_payments.py",
+    "git_path": "research/session-20260907/scripts/extend_h19_ipe_payments.py",
+    "bytes": 2044,
+    "sha256": "79523b094d2b049748d61d849dddd497db183f31f70a0c89985ae5bb71af0908"
+  },
+  {
+    "original_relative_path": "work/extend_value_successor_quotes.py",
+    "git_path": "research/session-20260907/scripts/extend_value_successor_quotes.py",
+    "bytes": 3109,
+    "sha256": "d8cab50440d70a3f00e9cd76c4d8a8df678fc0dfaa803869fd825975fc6b091e"
+  },
+  {
+    "original_relative_path": "work/extract_cvm_fixture.py",
+    "git_path": "research/session-20260907/scripts/extract_cvm_fixture.py",
+    "bytes": 1814,
+    "sha256": "ed9ad4d626e7f21ee72a4f38be768935c0b2658e2a846cbf6b3b04102d69cfc5"
+  },
+  {
+    "original_relative_path": "work/extract_h17_identity.py",
+    "git_path": "research/session-20260907/scripts/extract_h17_identity.py",
+    "bytes": 1846,
+    "sha256": "764806d96f1bdc21cecd8c4db8c93c8ceae7b6fe7d441b9d47fa250ef989ea52"
+  },
+  {
+    "original_relative_path": "work/extract_h17_identity_contiguous.py",
+    "git_path": "research/session-20260907/scripts/extract_h17_identity_contiguous.py",
+    "bytes": 1994,
+    "sha256": "3516e2bf9000eddb18d43a252c5c02860f4f45f63381c043c91ab502bad6e4dd"
+  },
+  {
+    "original_relative_path": "work/extract_h17_identity_v3.py",
+    "git_path": "research/session-20260907/scripts/extract_h17_identity_v3.py",
+    "bytes": 2098,
+    "sha256": "497065da89b1b5dfe87388a30e649a9c39ddf0f6cdaf670fa24c80b4121f3839"
+  },
+  {
+    "original_relative_path": "work/extract_h19_complete_sources.py",
+    "git_path": "research/session-20260907/scripts/extract_h19_complete_sources.py",
+    "bytes": 1628,
+    "sha256": "d09d58748aff18d5f8a5fd308e73418027c4aebdbe9044907be2f00252d7cf0c"
+  },
+  {
+    "original_relative_path": "work/extract_h19_notices.py",
+    "git_path": "research/session-20260907/scripts/extract_h19_notices.py",
+    "bytes": 2130,
+    "sha256": "928bc25325603f7ac1e3f11b728bff1a3514783bfb86f84fe6bb8ab50978a553"
+  },
+  {
+    "original_relative_path": "work/extract_h19_tax_pdf_dates.py",
+    "git_path": "research/session-20260907/scripts/extract_h19_tax_pdf_dates.py",
+    "bytes": 2254,
+    "sha256": "f4beb86a9337498444813e41f5f78bc177420c02efd1665abfcf567ebc2c591b"
+  },
+  {
+    "original_relative_path": "work/extract_ri_payments.py",
+    "git_path": "research/session-20260907/scripts/extract_ri_payments.py",
+    "bytes": 2607,
+    "sha256": "686f5a41afef816aa5d380022a63f7eae6a16137d8c835f9f7d94c9015d62f3e"
+  },
+  {
+    "original_relative_path": "work/fetch_disclosed_capital.py",
+    "git_path": "research/session-20260907/scripts/fetch_disclosed_capital.py",
+    "bytes": 5865,
+    "sha256": "4c3bc1d5730bdfae38460358d117870cb72b8a1211a73e5bfe6f4f0f25349e46"
+  },
+  {
+    "original_relative_path": "work/fetch_h17_alias_actions.py",
+    "git_path": "research/session-20260907/scripts/fetch_h17_alias_actions.py",
+    "bytes": 1998,
+    "sha256": "f3c1cffe858bd4c63803c9199cf68aed5535d95ba592a9eac8847e7aa2888ee3"
+  },
+  {
+    "original_relative_path": "work/fetch_h17_crosscheck.py",
+    "git_path": "research/session-20260907/scripts/fetch_h17_crosscheck.py",
+    "bytes": 1712,
+    "sha256": "e12f779f6de73084db888a9a35db46b326d589fbdeffd2d329382dfb1fc9d15e"
+  },
+  {
+    "original_relative_path": "work/final_audit_details.py",
+    "git_path": "research/session-20260907/scripts/final_audit_details.py",
+    "bytes": 1267,
+    "sha256": "fc05971814bec1bf57a99473a8ac6a179cd846a62c4b062384b5d50c7959ef6e"
+  },
+  {
+    "original_relative_path": "work/finalize_h17_delivery.py",
+    "git_path": "research/session-20260907/scripts/finalize_h17_delivery.py",
+    "bytes": 1893,
+    "sha256": "0ab83c94c0a2d0c3c5d0da9a582f643d6941bffe9f100498edacb0175fd8d1e9"
+  },
+  {
+    "original_relative_path": "work/finalize_h19_continuous_report.py",
+    "git_path": "research/session-20260907/scripts/finalize_h19_continuous_report.py",
+    "bytes": 10857,
+    "sha256": "ff893fff8ece15ed44a05adc3e004ade311077c0cc12e634b44a6190dc82a546"
+  },
+  {
+    "original_relative_path": "work/find_event_primary_links.py",
+    "git_path": "research/session-20260907/scripts/find_event_primary_links.py",
+    "bytes": 890,
+    "sha256": "22b0c5d4f949d9ef0af7677f8a0847ad145cd7b0470c27760f682316287d35b9"
+  },
+  {
+    "original_relative_path": "work/finish_stocks_final_review.py",
+    "git_path": "research/session-20260907/scripts/finish_stocks_final_review.py",
+    "bytes": 14593,
+    "sha256": "d44c17f1ca5a164bb0db45a6182e80135ac275f4b6d558678ad1bf294a88abc6"
+  },
+  {
+    "original_relative_path": "work/h17-manual.md",
+    "git_path": "research/session-20260907/scripts/h17-manual.md",
+    "bytes": 2963,
+    "sha256": "2cdfb09c80a1f904ae68b1a6a6e19ecdb04f0adece157864187ef1bde2f0390e"
+  },
+  {
+    "original_relative_path": "work/h17_launch_template.py",
+    "git_path": "research/session-20260907/scripts/h17_launch_template.py",
+    "bytes": 1910,
+    "sha256": "cd25fd30a1025ee2812eff1e1495edf6a610844256d92f53976978459070adda"
+  },
+  {
+    "original_relative_path": "work/import_reconciled_cash.py",
+    "git_path": "research/session-20260907/scripts/import_reconciled_cash.py",
+    "bytes": 5540,
+    "sha256": "effbb19eb9964674d83c5ad8c16747841b35d72eff64f0e6d04c1b057a15c21c"
+  },
+  {
+    "original_relative_path": "work/index_h19_ipe.py",
+    "git_path": "research/session-20260907/scripts/index_h19_ipe.py",
+    "bytes": 2599,
+    "sha256": "01938f8d549eb8a3f0528b245d8eea608f000484ae78e9d63b6faf52e31d26a7"
+  },
+  {
+    "original_relative_path": "work/inspect_state.py",
+    "git_path": "research/session-20260907/scripts/inspect_state.py",
+    "bytes": 3382,
+    "sha256": "47583f738713134cd5485e34b5c1aca1627888920ca596f31fff335a023ce049"
+  },
+  {
+    "original_relative_path": "work/inspect_value_accounts.py",
+    "git_path": "research/session-20260907/scripts/inspect_value_accounts.py",
+    "bytes": 794,
+    "sha256": "687544a3b66fca61257dd61d80ea150f55661e88053e6ef3d3f7e9dd0638fd9e"
+  },
+  {
+    "original_relative_path": "work/integrate_repairs.py",
+    "git_path": "research/session-20260907/scripts/integrate_repairs.py",
+    "bytes": 8903,
+    "sha256": "9d73259a4ba49d34ddc7e690b5a9712a47a47cf4a1780d3ad83739a5e9ddcf8e"
+  },
+  {
+    "original_relative_path": "work/locate_h19_payment_candidates.py",
+    "git_path": "research/session-20260907/scripts/locate_h19_payment_candidates.py",
+    "bytes": 4208,
+    "sha256": "8d6126eeaf6a78ed747625f3bcbd7cc93da07c7b3fde3381a5bb4f33b7855344"
+  },
+  {
+    "original_relative_path": "work/measure_coverage.py",
+    "git_path": "research/session-20260907/scripts/measure_coverage.py",
+    "bytes": 852,
+    "sha256": "f1c897575457a89a19c2a51ab3bdcd723beb4ba387a1b7fe3a4e86e2182c8c1a"
+  },
+  {
+    "original_relative_path": "work/merge_h17_secondary_actions.py",
+    "git_path": "research/session-20260907/scripts/merge_h17_secondary_actions.py",
+    "bytes": 3062,
+    "sha256": "d13fb56d4eb293e0d489bf95152cd3f3268e740f77d522b1c6a09177a4b6d775"
+  },
+  {
+    "original_relative_path": "work/package_delivery.py",
+    "git_path": "research/session-20260907/scripts/package_delivery.py",
+    "bytes": 1735,
+    "sha256": "ebf8c49a79a81b852d23a73a456de71c01d37bcfbbc39465a81f63d18085d034"
+  },
+  {
+    "original_relative_path": "work/package_h17_ready.py",
+    "git_path": "research/session-20260907/scripts/package_h17_ready.py",
+    "bytes": 2142,
+    "sha256": "5ec20b8b8f81b6d8712efb3060c64fe7eb41fc3b58789d15fcec3af3c0f28d7c"
+  },
+  {
+    "original_relative_path": "work/package_h19_continuous.py",
+    "git_path": "research/session-20260907/scripts/package_h19_continuous.py",
+    "bytes": 8719,
+    "sha256": "06250e667f6d615d3ecc28c5e28861e47e7e70f00d9e54ee49e4c59f99e489b1"
+  },
+  {
+    "original_relative_path": "work/package_h19_dates_v3.py",
+    "git_path": "research/session-20260907/scripts/package_h19_dates_v3.py",
+    "bytes": 5008,
+    "sha256": "53dd76a2c634adaa958f16b0b2d434391fd55d37bf7378d66f8d80ceab1c3eb6"
+  },
+  {
+    "original_relative_path": "work/package_h19_retail_audit.py",
+    "git_path": "research/session-20260907/scripts/package_h19_retail_audit.py",
+    "bytes": 7996,
+    "sha256": "6aae7373b7d11280ea7a23ee66fa04d13e8da14f446ca0e9b0d26caa245f8a57"
+  },
+  {
+    "original_relative_path": "work/package_profit_validation.py",
+    "git_path": "research/session-20260907/scripts/package_profit_validation.py",
+    "bytes": 6196,
+    "sha256": "ed9b1ae00c86b7d53e9b7c2fdef107b63ab69173646135df43ac8986808d1231"
+  },
+  {
+    "original_relative_path": "work/package_real_integration.py",
+    "git_path": "research/session-20260907/scripts/package_real_integration.py",
+    "bytes": 5673,
+    "sha256": "c5b6a689cbc1da2131fbbb49256bf2631e575261ec83cb1ef20919b04668cd2f"
+  },
+  {
+    "original_relative_path": "work/package_reorganization_research.py",
+    "git_path": "research/session-20260907/scripts/package_reorganization_research.py",
+    "bytes": 6433,
+    "sha256": "d8850841b737e8b1043e385999f22345361f80637f22a5edc1f912e1e4507307"
+  },
+  {
+    "original_relative_path": "work/package_repairs.py",
+    "git_path": "research/session-20260907/scripts/package_repairs.py",
+    "bytes": 5350,
+    "sha256": "b55a1eec18f004831561c275641e8661876a969e85086fd53dc6c15c8437ec2d"
+  },
+  {
+    "original_relative_path": "work/package_source_completion.py",
+    "git_path": "research/session-20260907/scripts/package_source_completion.py",
+    "bytes": 7255,
+    "sha256": "da211dca9e0d82d0937d355728a2addcce6d3999a5b4850c4fa349aeb91ff6b4"
+  },
+  {
+    "original_relative_path": "work/package_value_research.py",
+    "git_path": "research/session-20260907/scripts/package_value_research.py",
+    "bytes": 5423,
+    "sha256": "63c80bb2e51dd50e5b82ecff530e5b662d665760d71d96567ba1671b2c5c31eb"
+  },
+  {
+    "original_relative_path": "work/plan_h19_cash_closure.py",
+    "git_path": "research/session-20260907/scripts/plan_h19_cash_closure.py",
+    "bytes": 3737,
+    "sha256": "1527bfdd824493d44c5153a5b1fde86d4d4217e7e3067e2fd40ac75a5eefbd0c"
+  },
+  {
+    "original_relative_path": "work/prepare_h17_corrected_pack.py",
+    "git_path": "research/session-20260907/scripts/prepare_h17_corrected_pack.py",
+    "bytes": 1773,
+    "sha256": "f7dad1aeda5270eef2fcd53800bbb7dfdd4bf43a073f28ac9d1e1a07f6890eee"
+  },
+  {
+    "original_relative_path": "work/prepare_h17_run_pack.py",
+    "git_path": "research/session-20260907/scripts/prepare_h17_run_pack.py",
+    "bytes": 2314,
+    "sha256": "21fa6432a083ba214ac3561b08201fa52f62725edbb7860e36dec4414cd19115"
+  },
+  {
+    "original_relative_path": "work/prepare_h17_sources.py",
+    "git_path": "research/session-20260907/scripts/prepare_h17_sources.py",
+    "bytes": 4500,
+    "sha256": "22ca5898fb115c0f24c68ede3b99273daac457bf9674fed6cafed5ae373616fc"
+  },
+  {
+    "original_relative_path": "work/prepare_h19_bonus_quotes.py",
+    "git_path": "research/session-20260907/scripts/prepare_h19_bonus_quotes.py",
+    "bytes": 2784,
+    "sha256": "43066afafe361d430a4da0a6235a8fc21f0c38294425f4aff1c61b459f970375"
+  },
+  {
+    "original_relative_path": "work/prepare_h19_complete_sources.py",
+    "git_path": "research/session-20260907/scripts/prepare_h19_complete_sources.py",
+    "bytes": 2269,
+    "sha256": "8f0ece7c1fa7171d54be0f307fc8b0a6d44e7d5a5e7970a1bccabdb57e6947ff"
+  },
+  {
+    "original_relative_path": "work/prepare_h19_continuous_quotes.py",
+    "git_path": "research/session-20260907/scripts/prepare_h19_continuous_quotes.py",
+    "bytes": 5076,
+    "sha256": "88bc39165700c15aa43a89df701bb489995b03325969dee8884502f71a587aa3"
+  },
+  {
+    "original_relative_path": "work/prepare_h19_corporate_sources.py",
+    "git_path": "research/session-20260907/scripts/prepare_h19_corporate_sources.py",
+    "bytes": 2263,
+    "sha256": "e2e8a9facfc045b10d54e93dc810bd751ac28effa169a8e15142603e0e449ac4"
+  },
+  {
+    "original_relative_path": "work/prepare_h19_retail_bundle.py",
+    "git_path": "research/session-20260907/scripts/prepare_h19_retail_bundle.py",
+    "bytes": 4246,
+    "sha256": "83c766c950e5a475150556ce4c1c3d7a0c6ef506c1010b43ba16a9771927eb80"
+  },
+  {
+    "original_relative_path": "work/prepare_h19_successor_corporate_sources.py",
+    "git_path": "research/session-20260907/scripts/prepare_h19_successor_corporate_sources.py",
+    "bytes": 2380,
+    "sha256": "40cee4eb034e87eb549f1c3332989c66460d81a92687f905669ab550986bccba"
+  },
+  {
+    "original_relative_path": "work/prepare_repair_delivery.py",
+    "git_path": "research/session-20260907/scripts/prepare_repair_delivery.py",
+    "bytes": 3185,
+    "sha256": "f70e17da44e851c56a6dfae3bc12a5f59d87800d44d933c7c27eb6505f5eba8d"
+  },
+  {
+    "original_relative_path": "work/prepare_stocks_final_review.py",
+    "git_path": "research/session-20260907/scripts/prepare_stocks_final_review.py",
+    "bytes": 5538,
+    "sha256": "cb8766d89a2360b67726aeb4a07aaa955075144e1309b6417d0c086b6b5cc49b"
+  },
+  {
+    "original_relative_path": "work/prepare_value_measurement_repair.py",
+    "git_path": "research/session-20260907/scripts/prepare_value_measurement_repair.py",
+    "bytes": 5309,
+    "sha256": "96ad00403096533bdbd6fda3dfbe38025ecbdc6c0e64db90bffcd2b6d0f88d08"
+  },
+  {
+    "original_relative_path": "work/preserve_stocks_session.py",
+    "git_path": "research/session-20260907/scripts/preserve_stocks_session.py",
+    "bytes": 9675,
+    "sha256": "b920c875267ecafbae522e6f9b9a6eb1a51768724a414915cecf2b4b65a180c5"
+  },
+  {
+    "original_relative_path": "work/profit_bundle_runner.py",
+    "git_path": "research/session-20260907/scripts/profit_bundle_runner.py",
+    "bytes": 3289,
+    "sha256": "bb11e2e71eb69d8a7915fcb0e6094979e5a3fc3a691b4a16e6fb0e46a63c471e"
+  },
+  {
+    "original_relative_path": "work/read_event_index.py",
+    "git_path": "research/session-20260907/scripts/read_event_index.py",
+    "bytes": 533,
+    "sha256": "54c8408944af83d1bbe071d1808b0538ef2a2a984681bc1b26f4df2bfebd6036"
+  },
+  {
+    "original_relative_path": "work/reconcile_cash_sources.py",
+    "git_path": "research/session-20260907/scripts/reconcile_cash_sources.py",
+    "bytes": 8663,
+    "sha256": "4c38abd52f8ec9929fe9284b293ba12c6794547f72150a17a1c072ebfc43939d"
+  },
+  {
+    "original_relative_path": "work/reconcile_h19_cash_pilot.py",
+    "git_path": "research/session-20260907/scripts/reconcile_h19_cash_pilot.py",
+    "bytes": 7914,
+    "sha256": "1a13d14adac4e9ac82b7da99136568436264a5221a61f74743e9879a2252d131"
+  },
+  {
+    "original_relative_path": "work/reconcile_h19_cash_tables.py",
+    "git_path": "research/session-20260907/scripts/reconcile_h19_cash_tables.py",
+    "bytes": 6023,
+    "sha256": "7637df7f3bf225a838675e29c3b8046f67e1b73e1c05b3cd858ad4f23ef78bed"
+  },
+  {
+    "original_relative_path": "work/reconcile_h19_credit_bulletins.py",
+    "git_path": "research/session-20260907/scripts/reconcile_h19_credit_bulletins.py",
+    "bytes": 5492,
+    "sha256": "2f969d53b807e639735a4dca7b5b01031f66f04c6d70fb13790e8e2da1810ece"
+  },
+  {
+    "original_relative_path": "work/reconcile_h19_notice_credit_dates.py",
+    "git_path": "research/session-20260907/scripts/reconcile_h19_notice_credit_dates.py",
+    "bytes": 4203,
+    "sha256": "43360bfa24f7980863192716297a13fb6eaaf902007f4ec30be4d1e21812b2cc"
+  },
+  {
+    "original_relative_path": "work/record_h19_cash_pilot.py",
+    "git_path": "research/session-20260907/scripts/record_h19_cash_pilot.py",
+    "bytes": 11261,
+    "sha256": "fcf198886a716ebcb5ce19579484375512977f33c1b7cdf2eeeffe2fb5864466"
+  },
+  {
+    "original_relative_path": "work/record_h19_corporate_findings.py",
+    "git_path": "research/session-20260907/scripts/record_h19_corporate_findings.py",
+    "bytes": 4377,
+    "sha256": "958726d3b4ec682a38d39feef574e61034b99d4d5a53e18fe4e8a37dd672e229"
+  },
+  {
+    "original_relative_path": "work/record_h19_dates_v3.py",
+    "git_path": "research/session-20260907/scripts/record_h19_dates_v3.py",
+    "bytes": 2603,
+    "sha256": "dae1d1469c0fe183e61152f2a35b42c7202d6c6b1a4d8392cd89529294523fde"
+  },
+  {
+    "original_relative_path": "work/record_profit_validation.py",
+    "git_path": "research/session-20260907/scripts/record_profit_validation.py",
+    "bytes": 9934,
+    "sha256": "2d91f8b0ab99c37401107d7da14083f09202a6da7737421556e0385b69e9e197"
+  },
+  {
+    "original_relative_path": "work/record_reorganization_results.py",
+    "git_path": "research/session-20260907/scripts/record_reorganization_results.py",
+    "bytes": 11534,
+    "sha256": "130695f5c204534b27e64cc457ab7ecf32e7cd5a5cf673695ab34f7ee92eefa9"
+  },
+  {
+    "original_relative_path": "work/record_value_results.py",
+    "git_path": "research/session-20260907/scripts/record_value_results.py",
+    "bytes": 14308,
+    "sha256": "524fe13c3edeba774fc0a12053543f575fa9c88643df564cb4e9338d168361a7"
+  },
+  {
+    "original_relative_path": "work/register_profit_validation.py",
+    "git_path": "research/session-20260907/scripts/register_profit_validation.py",
+    "bytes": 3262,
+    "sha256": "2bd51ad102ca7f95dd6e2394d7c705940a4dcad25aba92afc415ee203994fca8"
+  },
+  {
+    "original_relative_path": "work/register_value_protocol.py",
+    "git_path": "research/session-20260907/scripts/register_value_protocol.py",
+    "bytes": 7246,
+    "sha256": "3e9ee177803a6810dcecf83fb598b268f6d6d78e5b48f75b427107a29c7b46b1"
+  },
+  {
+    "original_relative_path": "work/register_value_reorganizations.py",
+    "git_path": "research/session-20260907/scripts/register_value_reorganizations.py",
+    "bytes": 2614,
+    "sha256": "c85087c935929d7bda5963210ca913f61da9ee8ae355a41ed7b3371d30d41738"
+  },
+  {
+    "original_relative_path": "work/register_value_repair.py",
+    "git_path": "research/session-20260907/scripts/register_value_repair.py",
+    "bytes": 5367,
+    "sha256": "ae1168185b5d6bed04f7d652926c9ac0216f7816a427e209ed66efeec42c7985"
+  },
+  {
+    "original_relative_path": "work/reorganization_bundle_runner.py",
+    "git_path": "research/session-20260907/scripts/reorganization_bundle_runner.py",
+    "bytes": 2358,
+    "sha256": "3784a7a5bc790ee14204a32410d07bdc9a9c11abadc2891c06ebfc24633f2120"
+  },
+  {
+    "original_relative_path": "work/report_h17_observation.py",
+    "git_path": "research/session-20260907/scripts/report_h17_observation.py",
+    "bytes": 4399,
+    "sha256": "423f1b47212f4622e88a0f21bd983133daac5d464bf523aa21dc55b1e1eaa6f4"
+  },
+  {
+    "original_relative_path": "work/retry_h19_unavailable_notices.py",
+    "git_path": "research/session-20260907/scripts/retry_h19_unavailable_notices.py",
+    "bytes": 562,
+    "sha256": "62bd24b79a5b908374c817dd6c425f039e38aa0a33272954f6b63f065d0c3fa6"
+  },
+  {
+    "original_relative_path": "work/review_h19_tax_montage.py",
+    "git_path": "research/session-20260907/scripts/review_h19_tax_montage.py",
+    "bytes": 1083,
+    "sha256": "53ea22a79019cf729ef82040d7d1a7cbdc34228329aa3c0f91c190313f1eb2d1"
+  },
+  {
+    "original_relative_path": "work/review_prior_families.py",
+    "git_path": "research/session-20260907/scripts/review_prior_families.py",
+    "bytes": 4414,
+    "sha256": "94212024b4be8963a275fe16387c1c049711111676beda05c047181345f01cfc"
+  },
+  {
+    "original_relative_path": "work/run_current_reorganizations.py",
+    "git_path": "research/session-20260907/scripts/run_current_reorganizations.py",
+    "bytes": 1275,
+    "sha256": "4b9aba3285b1e07dcf9d83871b5769530ae3d4655170703b1c906d3c8af47578"
+  },
+  {
+    "original_relative_path": "work/run_profit_validation.py",
+    "git_path": "research/session-20260907/scripts/run_profit_validation.py",
+    "bytes": 3303,
+    "sha256": "f90eb4a2466ee76ef4ddc580b32dee2d134380cf9f46d150e7b843d0642aa600"
+  },
+  {
+    "original_relative_path": "work/smoke_real_wheel.py",
+    "git_path": "research/session-20260907/scripts/smoke_real_wheel.py",
+    "bytes": 921,
+    "sha256": "86fca406fd6d4d57167050682e5bc73474cafd610b34ed570f42077ada189983"
+  },
+  {
+    "original_relative_path": "work/validate_expanded_profit_cash.py",
+    "git_path": "research/session-20260907/scripts/validate_expanded_profit_cash.py",
+    "bytes": 7422,
+    "sha256": "cd4520594b2d0ca67456d0d81e1ca82380bfe3d47bc84740c4105cb4c0e3e2e8"
+  },
+  {
+    "original_relative_path": "work/validate_real_repairs.py",
+    "git_path": "research/session-20260907/scripts/validate_real_repairs.py",
+    "bytes": 1334,
+    "sha256": "da180260a6b840c1679e0c912b98ee0d316d2b3b172a8a5b702c168919790079"
+  },
+  {
+    "original_relative_path": "work/validate_stocks_final_review.py",
+    "git_path": "research/session-20260907/scripts/validate_stocks_final_review.py",
+    "bytes": 5529,
+    "sha256": "1b8ed9cc70113828c184eac383894c6133bd2d67e7b4882a650dadaf2e2447e5"
+  },
+  {
+    "original_relative_path": "work/value_bundle_runner.py",
+    "git_path": "research/session-20260907/scripts/value_bundle_runner.py",
+    "bytes": 5125,
+    "sha256": "af6e063d0a5694670da9a3f28f6a26b58c4d85eadeac8b92cade939d52c3b577"
+  },
+  {
+    "original_relative_path": "work/verify_h17_replay.py",
+    "git_path": "research/session-20260907/scripts/verify_h17_replay.py",
+    "bytes": 1629,
+    "sha256": "bfb25b3e9ae10138bbea81742abe6d02a0615869d1f44f8a067df3d2d0adbca3"
+  },
+  {
+    "original_relative_path": "work/verify_history_copy.py",
+    "git_path": "research/session-20260907/scripts/verify_history_copy.py",
+    "bytes": 1803,
+    "sha256": "b503f9ba76a75a07a7f171b5f6860f0967fbb320960f25698a2246d7b1a3aa3d"
+  },
+  {
+    "original_relative_path": "work/verify_history_protected.py",
+    "git_path": "research/session-20260907/scripts/verify_history_protected.py",
+    "bytes": 1216,
+    "sha256": "7deb16b2b4954b99d6d2d5f88c0c1d21706271623246c11e7e8eb61e9f92fe19"
+  },
+  {
+    "original_relative_path": "work/verify_integrity.py",
+    "git_path": "research/session-20260907/scripts/verify_integrity.py",
+    "bytes": 1188,
+    "sha256": "315bf84e6b20b10a1e25ade81ed6781527bb7f28c4514bb370d128838bed8c79"
+  },
+  {
+    "original_relative_path": "work/verify_real_copy.py",
+    "git_path": "research/session-20260907/scripts/verify_real_copy.py",
+    "bytes": 1836,
+    "sha256": "1334e23c30c2d78aa314bf785f6d518ec2098f4e133b2139a23df65fa4475876"
+  },
+  {
+    "original_relative_path": "work/verify_real_protected.py",
+    "git_path": "research/session-20260907/scripts/verify_real_protected.py",
+    "bytes": 1222,
+    "sha256": "f1f400e12992342b8590beb887f1c6dd8bf07eb9c42df1a1c0f2f5b837c4ef56"
+  },
+  {
+    "original_relative_path": "work/verify_repair_copy.py",
+    "git_path": "research/session-20260907/scripts/verify_repair_copy.py",
+    "bytes": 1745,
+    "sha256": "9916108baf8a85e538cdf1eba9adddda3d607210740d7947ae3f1840cbe47168"
+  },
+  {
+    "original_relative_path": "outputs/audit-details.json",
+    "git_path": "research/session-20260907/deliverables/audit-details.json",
+    "bytes": 802,
+    "sha256": "7a5a0fe28f881f21686ed68db506df2232bdaa5c0ff09140e8c4cbd52f38dc93"
+  },
+  {
+    "original_relative_path": "outputs/b3-acquisition-log.txt",
+    "git_path": "research/session-20260907/deliverables/b3-acquisition-log.txt",
+    "bytes": 21060,
+    "sha256": "841b9cae3fb90814c4d2ef1464d829ab43dc2a7c1055a2566b79a616f4be1282"
+  },
+  {
+    "original_relative_path": "outputs/b3-acquisition-universe.json",
+    "git_path": "research/session-20260907/deliverables/b3-acquisition-universe.json",
+    "bytes": 16363,
+    "sha256": "551393d787e35c5f6ef394c6871b68ee4c966c69ff9c1de3a15c903e48d986a2"
+  },
+  {
+    "original_relative_path": "outputs/b3-historical-acquisition.json",
+    "git_path": "research/session-20260907/deliverables/b3-historical-acquisition.json",
+    "bytes": 42408,
+    "sha256": "3df28b57dabdb3527b43dc70485a727bf7c9fc3e276fcde76fb253c90af897e3"
+  },
+  {
+    "original_relative_path": "outputs/b3-historical-coverage-sample.json",
+    "git_path": "research/session-20260907/deliverables/b3-historical-coverage-sample.json",
+    "bytes": 1177,
+    "sha256": "fe56485aef67c925255395108d641347d3034df832024a8ad7bb08de5414a629"
+  },
+  {
+    "original_relative_path": "outputs/b3-source-exploration.txt",
+    "git_path": "research/session-20260907/deliverables/b3-source-exploration.txt",
+    "bytes": 17924,
+    "sha256": "eaf8a7f6dbdb98714bcbf122f64d787578963403a5c101b35c35a0127e06237c"
+  },
+  {
+    "original_relative_path": "outputs/baseline-tests.txt",
+    "git_path": "research/session-20260907/deliverables/baseline-tests.txt",
+    "bytes": 518,
+    "sha256": "a6aae6cbcb6f7e938daad5efaa663a70e664718f0c171945404e84a8bc4d84f8"
+  },
+  {
+    "original_relative_path": "outputs/cash-reconciliation-log.txt",
+    "git_path": "research/session-20260907/deliverables/cash-reconciliation-log.txt",
+    "bytes": 828,
+    "sha256": "0be9e660a3cb682bdbc3c6a79edfd6959290a6b9314fe5bfd8ed8ad6ef3ba1f4"
+  },
+  {
+    "original_relative_path": "outputs/cash-source-matches.jsonl",
+    "git_path": "research/session-20260907/deliverables/cash-source-matches.jsonl",
+    "bytes": 127555,
+    "sha256": "aeb43e831af3d3d7f011b16e39be70106da606d78aecdb33d9555a56d5a80115"
+  },
+  {
+    "original_relative_path": "outputs/cash-source-reconciliation.json",
+    "git_path": "research/session-20260907/deliverables/cash-source-reconciliation.json",
+    "bytes": 752784,
+    "sha256": "af1af21c901fb98aa13ea0238ce03ffe2c0b89e99e26cc60dea5092f3683f0fe"
+  },
+  {
+    "original_relative_path": "outputs/COMPLEMENTO_STOCKS.md",
+    "git_path": "research/session-20260907/deliverables/COMPLEMENTO_STOCKS.md",
+    "bytes": 7482,
+    "sha256": "d0aa20e869d48cd06fc5710d524dfaf3f0b78fa10f1c5ccf25571ecb17327d5e"
+  },
+  {
+    "original_relative_path": "outputs/CORRECOES_STOCKS.md",
+    "git_path": "research/session-20260907/deliverables/CORRECOES_STOCKS.md",
+    "bytes": 10629,
+    "sha256": "473fc8a0abb9a58a5829bda16b517e418d2833ccf1d4b7be1673f229fe9df8ac"
+  },
+  {
+    "original_relative_path": "outputs/coverage.txt",
+    "git_path": "research/session-20260907/deliverables/coverage.txt",
+    "bytes": 2603,
+    "sha256": "c24524803a885c4562a38379b9ccc47a34022712561a16cdfb757f3e0c9efd14"
+  },
+  {
+    "original_relative_path": "outputs/DECISAO_PESQUISA_STOCKS.json",
+    "git_path": "research/session-20260907/deliverables/DECISAO_PESQUISA_STOCKS.json",
+    "bytes": 4552,
+    "sha256": "62bfa6c04bf69ce8e1287c0a77bf282291e48e50229937c6be923011cd95b07f"
+  },
+  {
+    "original_relative_path": "outputs/delivery-manifest.json",
+    "git_path": "research/session-20260907/deliverables/delivery-manifest.json",
+    "bytes": 2076,
+    "sha256": "ab615ff93b2789797c5104a9bdb268dfde2536f5f16a613b8c0a37aa8bbd91b8"
+  },
+  {
+    "original_relative_path": "outputs/dfp-2023-corrigida.jsonl",
+    "git_path": "research/session-20260907/deliverables/dfp-2023-corrigida.jsonl",
+    "bytes": 289782,
+    "sha256": "bc2fea8a54fc5b18fae144ef615c9a448cdfb2a2f265707f76988da9e6e686d7"
+  },
+  {
+    "original_relative_path": "outputs/dfp-readiness.json",
+    "git_path": "research/session-20260907/deliverables/dfp-readiness.json",
+    "bytes": 8130,
+    "sha256": "b2225f7b5396ed86d5c206fee7f33a310b294cc7b1cb676229e47d00fa48ed27"
+  },
+  {
+    "original_relative_path": "outputs/dirty-tree-tests.txt",
+    "git_path": "research/session-20260907/deliverables/dirty-tree-tests.txt",
+    "bytes": 93743,
+    "sha256": "daf4775f7d37556bad8c0144b0bb6adced0b99487ecd2483bbcce5c204d1644d"
+  },
+  {
+    "original_relative_path": "outputs/ESTADO_FINAL_STOCKS.md",
+    "git_path": "research/session-20260907/deliverables/ESTADO_FINAL_STOCKS.md",
+    "bytes": 9388,
+    "sha256": "76ac4e1a59f1e062f7b4409c628d45708c1e1c846d16094593179ae8dfd48f73"
+  },
+  {
+    "original_relative_path": "outputs/final-tests.txt",
+    "git_path": "research/session-20260907/deliverables/final-tests.txt",
+    "bytes": 518,
+    "sha256": "4a0d0a27e80f9fef0c7dba0b66ecb19fd80f73b4e58cd8c7994a6d401b1912f8"
+  },
+  {
+    "original_relative_path": "outputs/fre-2023-documentos.jsonl",
+    "git_path": "research/session-20260907/deliverables/fre-2023-documentos.jsonl",
+    "bytes": 171037,
+    "sha256": "ec4b3dffc06ed70b90288b1069c7e32a27ebb13ee92f66601aa079f3d239c8e8"
+  },
+  {
+    "original_relative_path": "outputs/h17-build.txt",
+    "git_path": "research/session-20260907/deliverables/h17-build.txt",
+    "bytes": 124,
+    "sha256": "57a378f72b2678bb74ebd8e6ec6bbe8f1f3b78704c11efe48d2b7cea8fa286c0"
+  },
+  {
+    "original_relative_path": "outputs/h17-corrected-full-tests.txt",
+    "git_path": "research/session-20260907/deliverables/h17-corrected-full-tests.txt",
+    "bytes": 600,
+    "sha256": "d2a97d85bf8dfee51709bdac5124ddd90fcc61758d3ae8a6b30199a97e1893e3"
+  },
+  {
+    "original_relative_path": "outputs/h17-corrected-observation.json",
+    "git_path": "research/session-20260907/deliverables/h17-corrected-observation.json",
+    "bytes": 1586691,
+    "sha256": "45bfbc925c62b9561b2c5cea5dc6c65c2c73fa6e5d1b02c5c19f0dae16526135"
+  },
+  {
+    "original_relative_path": "outputs/h17-corrected-run.txt",
+    "git_path": "research/session-20260907/deliverables/h17-corrected-run.txt",
+    "bytes": 3142,
+    "sha256": "320250bcbc8c4a9a817058f9b908ffcc7a3b5c55e737cf04b93ef9e886ce7454"
+  },
+  {
+    "original_relative_path": "outputs/h17-correction-and-integrity.json",
+    "git_path": "research/session-20260907/deliverables/h17-correction-and-integrity.json",
+    "bytes": 1247,
+    "sha256": "11d0f893d3c36171125cef17014dc6872c4e365a0c47952682a96b05d1bd41ad"
+  },
+  {
+    "original_relative_path": "outputs/h17-event-source-acquisition.json",
+    "git_path": "research/session-20260907/deliverables/h17-event-source-acquisition.json",
+    "bytes": 49814,
+    "sha256": "9fa94bc01d0394b2772638f1f80980d6384f9b313b62c8c8fd0e3a9acf1b0fcd"
+  },
+  {
+    "original_relative_path": "outputs/h17-event-source-followup.json",
+    "git_path": "research/session-20260907/deliverables/h17-event-source-followup.json",
+    "bytes": 12412,
+    "sha256": "db5e9ca3f59cc052e64353c24ec303017946eefe83326a5cd84274616f10e0af"
+  },
+  {
+    "original_relative_path": "outputs/h17-final-package-manifest.json",
+    "git_path": "research/session-20260907/deliverables/h17-final-package-manifest.json",
+    "bytes": 492,
+    "sha256": "86e60ca80ee79e90ed735c3c58bfc3e288a5bb9b07327a3cdf054096d01438ef"
+  },
+  {
+    "original_relative_path": "outputs/h17-final-package-observation.json",
+    "git_path": "research/session-20260907/deliverables/h17-final-package-observation.json",
+    "bytes": 1586803,
+    "sha256": "53b8024d531ee69c4b015e715a698323f419040e3c8055d8f18595d6dbf903e4"
+  },
+  {
+    "original_relative_path": "outputs/h17-final-package-run.txt",
+    "git_path": "research/session-20260907/deliverables/h17-final-package-run.txt",
+    "bytes": 3146,
+    "sha256": "5300e21771214a8b039a6af415d4320502f1895dadfe380793e7a86ee66a5564"
+  },
+  {
+    "original_relative_path": "outputs/h17-final-verification.json",
+    "git_path": "research/session-20260907/deliverables/h17-final-verification.json",
+    "bytes": 189,
+    "sha256": "65795c2dd45302d01d4d3aedd2a225dc7f97f67f93b22a9c4547969eb591eb16"
+  },
+  {
+    "original_relative_path": "outputs/h17-first-observation.json",
+    "git_path": "research/session-20260907/deliverables/h17-first-observation.json",
+    "bytes": 1586873,
+    "sha256": "fcd9cb6e30f8b56cc1b09b23f4b663d14c95cb1c4b461603b8396d04114d4e5c"
+  },
+  {
+    "original_relative_path": "outputs/h17-first-run.txt",
+    "git_path": "research/session-20260907/deliverables/h17-first-run.txt",
+    "bytes": 3298,
+    "sha256": "3274426bc6812341f7d2e20f3a3a411b74118e00af386218edd19733ea5e654b"
+  },
+  {
+    "original_relative_path": "outputs/h17-full-tests.txt",
+    "git_path": "research/session-20260907/deliverables/h17-full-tests.txt",
+    "bytes": 600,
+    "sha256": "a9496b5399cd5ecc1a44a5324befd5f3bda7eca1d55d93fcb4512eeb8877ea46"
+  },
+  {
+    "original_relative_path": "outputs/h17-package-manifest.json",
+    "git_path": "research/session-20260907/deliverables/h17-package-manifest.json",
+    "bytes": 526,
+    "sha256": "11347f24c9e3730b72e99942883929ac246a98a37f78b4f90e2ba125165bf1e4"
+  },
+  {
+    "original_relative_path": "outputs/h17-package-replay.txt",
+    "git_path": "research/session-20260907/deliverables/h17-package-replay.txt",
+    "bytes": 3139,
+    "sha256": "973e695c5992818621fe5dfc9ab7b97f7b489d9e0902806acd17b775dd9d9518"
+  },
+  {
+    "original_relative_path": "outputs/h17-replay-observation.json",
+    "git_path": "research/session-20260907/deliverables/h17-replay-observation.json",
+    "bytes": 1586803,
+    "sha256": "55005e28bc32ea72dff4492ff67867148215f9cf1caaf5659b49fbe82ff0ad5d"
+  },
+  {
+    "original_relative_path": "outputs/h17-reproduction-verification.json",
+    "git_path": "research/session-20260907/deliverables/h17-reproduction-verification.json",
+    "bytes": 933,
+    "sha256": "4aef8f3b4ae4179b998bfe4ccd5e9043c513e1edb4bcfb8698e47eb48d7a685e"
+  },
+  {
+    "original_relative_path": "outputs/h17-secondary-action-acquisition.json",
+    "git_path": "research/session-20260907/deliverables/h17-secondary-action-acquisition.json",
+    "bytes": 27309,
+    "sha256": "5cce60acf8e1ce4e4b6b37251b672c8ca19d85d69c2dbd36f0576c6e58d70d50"
+  },
+  {
+    "original_relative_path": "outputs/h17-secondary-alias-acquisition.json",
+    "git_path": "research/session-20260907/deliverables/h17-secondary-alias-acquisition.json",
+    "bytes": 3163,
+    "sha256": "b116bea81395494a84a6ddc489fe81eadd7242d928793f098a3e3aef4eeedb60"
+  },
+  {
+    "original_relative_path": "outputs/h17-unresolved-outcomes.json",
+    "git_path": "research/session-20260907/deliverables/h17-unresolved-outcomes.json",
+    "bytes": 16956,
+    "sha256": "69aecf7d64e6995620aff47d7c01366f54998cf5f4052907aa60bc21a2f4be8a"
+  },
+  {
+    "original_relative_path": "outputs/h17-wheel-smoke.txt",
+    "git_path": "research/session-20260907/deliverables/h17-wheel-smoke.txt",
+    "bytes": 358,
+    "sha256": "61337fe24e1f20b1cc004b712ffa744561791199b040279185ec611b85a9ea89"
+  },
+  {
+    "original_relative_path": "outputs/H17_RESULTADO.md",
+    "git_path": "research/session-20260907/deliverables/H17_RESULTADO.md",
+    "bytes": 5611,
+    "sha256": "75623f7ecce66bd85621ed6cf45e304a32cb93c4360afec0aa94e8f9aa5f1098"
+  },
+  {
+    "original_relative_path": "outputs/h18-h19-first-observation.json",
+    "git_path": "research/session-20260907/deliverables/h18-h19-first-observation.json",
+    "bytes": 7074832,
+    "sha256": "95cb6672432a6a64bcf85728f9b0aa8847f2b87a45bf955655de5418a2ea6769"
+  },
+  {
+    "original_relative_path": "outputs/h18-h19-reorganization-observation.json",
+    "git_path": "research/session-20260907/deliverables/h18-h19-reorganization-observation.json",
+    "bytes": 4185900,
+    "sha256": "c47fcca89d07e2064c1ba6ebc7a1f1dc763473a1364291284dfe6d761d7e9128"
+  },
+  {
+    "original_relative_path": "outputs/h18-h19-repaired-observation.json",
+    "git_path": "research/session-20260907/deliverables/h18-h19-repaired-observation.json",
+    "bytes": 7436964,
+    "sha256": "14cad25849582d466a6b0f5aafe8d3e1a96f70519626a43e436751e584268666"
+  },
+  {
+    "original_relative_path": "outputs/H18_H19_LACUNAS_RESTANTES.json",
+    "git_path": "research/session-20260907/deliverables/H18_H19_LACUNAS_RESTANTES.json",
+    "bytes": 8744,
+    "sha256": "a7107a4a1058cb8a240d208c5a2cd4bbdbeb34f6701d7c2f94b66dfa9a02fe7b"
+  },
+  {
+    "original_relative_path": "outputs/H18_H19_PACOTE_MANIFESTO.json",
+    "git_path": "research/session-20260907/deliverables/H18_H19_PACOTE_MANIFESTO.json",
+    "bytes": 235,
+    "sha256": "abe9ae0cd57a750970fa77c44ca3cd1f9cee476e87c8a2fd222aad6514cf14de"
+  },
+  {
+    "original_relative_path": "outputs/H18_H19_REORGANIZACOES_AUDITORIA.json",
+    "git_path": "research/session-20260907/deliverables/H18_H19_REORGANIZACOES_AUDITORIA.json",
+    "bytes": 1003,
+    "sha256": "80a9a7b74be7442dbf0ca0f22cb1e1f2af560294d22517d80e95f1bb50dd6e48"
+  },
+  {
+    "original_relative_path": "outputs/H18_H19_REORGANIZACOES_REPRODUCAO.json",
+    "git_path": "research/session-20260907/deliverables/H18_H19_REORGANIZACOES_REPRODUCAO.json",
+    "bytes": 382,
+    "sha256": "d8300e4b667ad2fbc07ff224ca1705cb0efe0bfe913c4239d1f61117b9d8c669"
+  },
+  {
+    "original_relative_path": "outputs/H18_H19_REORGANIZACOES_RESULTADO.md",
+    "git_path": "research/session-20260907/deliverables/H18_H19_REORGANIZACOES_RESULTADO.md",
+    "bytes": 6116,
+    "sha256": "52755c5b265cdb210981232ad4030e00495eb3f1e6f5f1218ff4bdacef8a8c6b"
+  },
+  {
+    "original_relative_path": "outputs/H18_H19_REPRODUCAO_VERIFICADA.json",
+    "git_path": "research/session-20260907/deliverables/H18_H19_REPRODUCAO_VERIFICADA.json",
+    "bytes": 632,
+    "sha256": "8d9323e4bc2037aa33fe7ae9a1f03b335c59c0b76b10eb939b63e12557238b4b"
+  },
+  {
+    "original_relative_path": "outputs/H18_H19_RESULTADO_TESTADO.md",
+    "git_path": "research/session-20260907/deliverables/H18_H19_RESULTADO_TESTADO.md",
+    "bytes": 7510,
+    "sha256": "15c567ea747bf46e06c8ef74c30d6da9dd55bdb01c15c491f19e143305f145af"
+  },
+  {
+    "original_relative_path": "outputs/H19_CAIXA_DECISAO.json",
+    "git_path": "research/session-20260907/deliverables/H19_CAIXA_DECISAO.json",
+    "bytes": 2249,
+    "sha256": "26847566d35a314a9bde548f24bad4f17238731f24584ecfc6079508e1cfa75d"
+  },
+  {
+    "original_relative_path": "outputs/H19_CAIXA_EXECUCAO.json",
+    "git_path": "research/session-20260907/deliverables/H19_CAIXA_EXECUCAO.json",
+    "bytes": 886047,
+    "sha256": "bd49da402a74b5fa78fe2c04a13b412ba82d609e0fbc4c508ea3231134766781"
+  },
+  {
+    "original_relative_path": "outputs/H19_CAIXA_EXECUCAO_V2.json",
+    "git_path": "research/session-20260907/deliverables/H19_CAIXA_EXECUCAO_V2.json",
+    "bytes": 885073,
+    "sha256": "457b94faa2e26522e4b1a2c75673a3e50863ad2bff5a47cdb16d07980e0f316f"
+  },
+  {
+    "original_relative_path": "outputs/H19_CAIXA_EXECUCAO_V3.json",
+    "git_path": "research/session-20260907/deliverables/H19_CAIXA_EXECUCAO_V3.json",
+    "bytes": 876802,
+    "sha256": "c8f90daa7d54f74f80d27480372597996f2c7a23f733a2d71f46776ca9b8286e"
+  },
+  {
+    "original_relative_path": "outputs/H19_CAIXA_FILA_DE_VALIDACAO.json",
+    "git_path": "research/session-20260907/deliverables/H19_CAIXA_FILA_DE_VALIDACAO.json",
+    "bytes": 542775,
+    "sha256": "fa5572a86d1be71f1433d59442bcf58f3da753e1ed14fde899f7368e264106eb"
+  },
+  {
+    "original_relative_path": "outputs/H19_CAIXA_PAGAMENTOS_REVISADOS.json",
+    "git_path": "research/session-20260907/deliverables/H19_CAIXA_PAGAMENTOS_REVISADOS.json",
+    "bytes": 875741,
+    "sha256": "586ed043df3c075ea81e61e69970804e41a84e7f0871bcbb395772e64b140a9d"
+  },
+  {
+    "original_relative_path": "outputs/H19_CAIXA_PAGAMENTOS_REVISADOS_V2.json",
+    "git_path": "research/session-20260907/deliverables/H19_CAIXA_PAGAMENTOS_REVISADOS_V2.json",
+    "bytes": 914858,
+    "sha256": "653a72f8fb4202caf44206c95b7d78c0e4db15b594563c7207f2feb90fe98ca2"
+  },
+  {
+    "original_relative_path": "outputs/H19_CAIXA_PAGAMENTOS_REVISADOS_V3.json",
+    "git_path": "research/session-20260907/deliverables/H19_CAIXA_PAGAMENTOS_REVISADOS_V3.json",
+    "bytes": 974158,
+    "sha256": "7dfe6ae00486a9cf8fbd909c41a7c55c1e8d16c4e8cc849796aaeee45eeee6bc"
+  },
+  {
+    "original_relative_path": "outputs/H19_CAIXA_PAGAMENTOS_REVISADOS_V4.json",
+    "git_path": "research/session-20260907/deliverables/H19_CAIXA_PAGAMENTOS_REVISADOS_V4.json",
+    "bytes": 1269077,
+    "sha256": "cc19f3a55c594bd614912b8828b4cc9e1b66aea95345d79df4fac6176ab50681"
+  },
+  {
+    "original_relative_path": "outputs/H19_CAIXA_PAGAMENTOS_REVISADOS_V5.json",
+    "git_path": "research/session-20260907/deliverables/H19_CAIXA_PAGAMENTOS_REVISADOS_V5.json",
+    "bytes": 1312226,
+    "sha256": "ef2dd493ffcf83a3d5af86fdfd764dcf816dba3485f9227c1b2b4cbf6a0dfd3f"
+  },
+  {
+    "original_relative_path": "outputs/H19_CAIXA_PRIMEIRAS_CORRECOES.json",
+    "git_path": "research/session-20260907/deliverables/H19_CAIXA_PRIMEIRAS_CORRECOES.json",
+    "bytes": 26167,
+    "sha256": "e4282eb0155808fd57469704966d7e1718c6560fbe9520a3ef2f420b3c5b7bf2"
+  },
+  {
+    "original_relative_path": "outputs/H19_CAIXA_PROXIMO_TESTE.md",
+    "git_path": "research/session-20260907/deliverables/H19_CAIXA_PROXIMO_TESTE.md",
+    "bytes": 4669,
+    "sha256": "e5d38d8c8513930e7042b7926b81857c64d276fa924b2c9d4d2a3793a635a82e"
+  },
+  {
+    "original_relative_path": "outputs/H19_CAIXA_REPRODUCAO.json",
+    "git_path": "research/session-20260907/deliverables/H19_CAIXA_REPRODUCAO.json",
+    "bytes": 846,
+    "sha256": "d7823d08b9b73ec851764a0f887cb40122044eb9aca52efcb28ebe0bcf59ad93"
+  },
+  {
+    "original_relative_path": "outputs/H19_CAIXA_REPRODUCAO_V2.json",
+    "git_path": "research/session-20260907/deliverables/H19_CAIXA_REPRODUCAO_V2.json",
+    "bytes": 849,
+    "sha256": "9a7f1ace1cf2229da3101f5ff151f62c0a216f8577212a2a86df74187cc1d4ea"
+  },
+  {
+    "original_relative_path": "outputs/H19_CAIXA_RESULTADO.md",
+    "git_path": "research/session-20260907/deliverables/H19_CAIXA_RESULTADO.md",
+    "bytes": 6325,
+    "sha256": "948d7cf3519358b8369b9758f9d86d1689ac66f62a552ee6679ea63c1c12f53d"
+  },
+  {
+    "original_relative_path": "outputs/H19_DATAS_V3_REPRODUCAO.json",
+    "git_path": "research/session-20260907/deliverables/H19_DATAS_V3_REPRODUCAO.json",
+    "bytes": 889,
+    "sha256": "283383c55ad896ed725f74ceeac86a3721d171f0bce50bc6b4984ad870677331"
+  },
+  {
+    "original_relative_path": "outputs/H19_DATAS_V3_RESULTADO.md",
+    "git_path": "research/session-20260907/deliverables/H19_DATAS_V3_RESULTADO.md",
+    "bytes": 4731,
+    "sha256": "7db283f86d0f41fd54394ad37e5139a559804a8bec34f73eca6f8147e6aaf4f7"
+  },
+  {
+    "original_relative_path": "outputs/H19_EVENTOS_SOCIETARIOS_CONFERIDOS.json",
+    "git_path": "research/session-20260907/deliverables/H19_EVENTOS_SOCIETARIOS_CONFERIDOS.json",
+    "bytes": 9341,
+    "sha256": "8a1757de95fd3161bc893f4abcb182d359fc8d545efebd5b445d0a3351898024"
+  },
+  {
+    "original_relative_path": "outputs/H19_EXECUCAO_CONTINUA_AUDITORIA.json",
+    "git_path": "research/session-20260907/deliverables/H19_EXECUCAO_CONTINUA_AUDITORIA.json",
+    "bytes": 611539,
+    "sha256": "db499b94ed77baa83561413ca72626fe4c983b3a0dc2112c34b979ac7e21cc5e"
+  },
+  {
+    "original_relative_path": "outputs/H19_EXECUCAO_CONTINUA_DECISAO.json",
+    "git_path": "research/session-20260907/deliverables/H19_EXECUCAO_CONTINUA_DECISAO.json",
+    "bytes": 3110,
+    "sha256": "9493d59362a0c32bb2d99f6c1bba66bd11b67c4f97567ac344b6ea4a1dcaa690"
+  },
+  {
+    "original_relative_path": "outputs/H19_EXECUCAO_CONTINUA_REPRODUCAO.json",
+    "git_path": "research/session-20260907/deliverables/H19_EXECUCAO_CONTINUA_REPRODUCAO.json",
+    "bytes": 745,
+    "sha256": "3a316e6554a57c55bdf82a5ed3bcf54d07611d3fd3badfa9ea35fcfea9fe5419"
+  },
+  {
+    "original_relative_path": "outputs/H19_EXECUCAO_CONTINUA_RESULTADO.md",
+    "git_path": "research/session-20260907/deliverables/H19_EXECUCAO_CONTINUA_RESULTADO.md",
+    "bytes": 6622,
+    "sha256": "abc4e319c799aa7570fb0ccab3645a67894093f584e4d73d4642b3126291e8ca"
+  },
+  {
+    "original_relative_path": "outputs/H19_PROXIMO_TESTE_VIABILIDADE.json",
+    "git_path": "research/session-20260907/deliverables/H19_PROXIMO_TESTE_VIABILIDADE.json",
+    "bytes": 44780,
+    "sha256": "ddab063822fd5f436609e4ad881413f0cfe3d188280c8fd06f87932a3d0a4dc5"
+  },
+  {
+    "original_relative_path": "outputs/historical-acquisition.json",
+    "git_path": "research/session-20260907/deliverables/historical-acquisition.json",
+    "bytes": 10828,
+    "sha256": "2b433de0c75ff97a97048d6406b97698448bf5243a4052871f99ff21aee2100e"
+  },
+  {
+    "original_relative_path": "outputs/historical-build.txt",
+    "git_path": "research/session-20260907/deliverables/historical-build.txt",
+    "bytes": 124,
+    "sha256": "57a378f72b2678bb74ebd8e6ec6bbe8f1f3b78704c11efe48d2b7cea8fa286c0"
+  },
+  {
+    "original_relative_path": "outputs/historical-coverage.txt",
+    "git_path": "research/session-20260907/deliverables/historical-coverage.txt",
+    "bytes": 4508,
+    "sha256": "c6c8f63f9317c6d795583ef067841d9babbe940b882ff44cdfa7b8071ad9d558"
+  },
+  {
+    "original_relative_path": "outputs/historical-cvm-validation.json",
+    "git_path": "research/session-20260907/deliverables/historical-cvm-validation.json",
+    "bytes": 317016,
+    "sha256": "7952325ee3574647ff7585d05b4fd3b782af818372e7a97dc826258664a8b341"
+  },
+  {
+    "original_relative_path": "outputs/historical-delivery-manifest.json",
+    "git_path": "research/session-20260907/deliverables/historical-delivery-manifest.json",
+    "bytes": 301714,
+    "sha256": "239a2ac8944daed96fc008e35e27ddf6ac8241ced5a3e3289bbf608ff9063e7d"
+  },
+  {
+    "original_relative_path": "outputs/historical-lint.txt",
+    "git_path": "research/session-20260907/deliverables/historical-lint.txt",
+    "bytes": 20,
+    "sha256": "a4443afdcfb6d7363adb285762515ccf7cf50473b1a05c20c1a50f6bed4d26b0"
+  },
+  {
+    "original_relative_path": "outputs/historical-package-checksum.json",
+    "git_path": "research/session-20260907/deliverables/historical-package-checksum.json",
+    "bytes": 331,
+    "sha256": "453389ed09740b9d5a631acd1c213cdc1f0e8646db02225163f3a6e9ab3f049b"
+  },
+  {
+    "original_relative_path": "outputs/historical-package-validation.json",
+    "git_path": "research/session-20260907/deliverables/historical-package-validation.json",
+    "bytes": 184,
+    "sha256": "2e47095ef02bd95fe6fc4b74148cbc377731fb3c6efae9a7fd3aece271360b22"
+  },
+  {
+    "original_relative_path": "outputs/historical-protected-integrity.json",
+    "git_path": "research/session-20260907/deliverables/historical-protected-integrity.json",
+    "bytes": 3727,
+    "sha256": "c14877721a15bf7c2d263c777bef239e9f764880a77e9ce14b1db272a32f1b2e"
+  },
+  {
+    "original_relative_path": "outputs/historical-pyright.txt",
+    "git_path": "research/session-20260907/deliverables/historical-pyright.txt",
+    "bytes": 38,
+    "sha256": "c584b21ee012de391dc2799d5455db619d3fefbb192ab07ea4ba83fb0d704c14"
+  },
+  {
+    "original_relative_path": "outputs/historical-rebuild-log.txt",
+    "git_path": "research/session-20260907/deliverables/historical-rebuild-log.txt",
+    "bytes": 1606,
+    "sha256": "40f8bf983e992cd9b4d1ae44d124970dcc8f2248bdeebf2c4c07caa20679be9e"
+  },
+  {
+    "original_relative_path": "outputs/historical-rebuild-validation.json",
+    "git_path": "research/session-20260907/deliverables/historical-rebuild-validation.json",
+    "bytes": 1068209,
+    "sha256": "09ccf913bf52b388edbd985bea9e0c8ecab4e71e7d292e506e7dbca0e0a2826f"
+  },
+  {
+    "original_relative_path": "outputs/historical-table-integrity.json",
+    "git_path": "research/session-20260907/deliverables/historical-table-integrity.json",
+    "bytes": 5067,
+    "sha256": "910e0ba5350c2c286f54197962861770b3021b99eed8e67ebba8e4ee20f68437"
+  },
+  {
+    "original_relative_path": "outputs/historical-tests-full.txt",
+    "git_path": "research/session-20260907/deliverables/historical-tests-full.txt",
+    "bytes": 600,
+    "sha256": "f1f1bc7770e3bd11ea941ab058fc948a0b9a86be525c5effe498daaa72f3f2bd"
+  },
+  {
+    "original_relative_path": "outputs/historical-wheel-install.txt",
+    "git_path": "research/session-20260907/deliverables/historical-wheel-install.txt",
+    "bytes": 362,
+    "sha256": "a96d1f46d8fe1e1b35b3f60649c783cb5d90c437806a1a991624f1172c0a401f"
+  },
+  {
+    "original_relative_path": "outputs/historical-wheel-smoke.txt",
+    "git_path": "research/session-20260907/deliverables/historical-wheel-smoke.txt",
+    "bytes": 358,
+    "sha256": "cd403a5ef2217d28f929e84814186b787dd2a9d016284702005b02d056ffba48"
+  },
+  {
+    "original_relative_path": "outputs/integrity-verification.json",
+    "git_path": "research/session-20260907/deliverables/integrity-verification.json",
+    "bytes": 3727,
+    "sha256": "c51e2eff6183fabd6a62e3f80feff97cb88fcb286aee3cc66a5d2c53a926c709"
+  },
+  {
+    "original_relative_path": "outputs/PRIMEIRA_ENTREGA_STOCKS.md",
+    "git_path": "research/session-20260907/deliverables/PRIMEIRA_ENTREGA_STOCKS.md",
+    "bytes": 34255,
+    "sha256": "42b9e6fdac299f9fc69a46464888d89a3f7f6a983b3b9e4f9c798cc1407690b1"
+  },
+  {
+    "original_relative_path": "outputs/PROMPT_NOVO_CHAT_STOCKS.md",
+    "git_path": "research/session-20260907/deliverables/PROMPT_NOVO_CHAT_STOCKS.md",
+    "bytes": 7561,
+    "sha256": "861b2fab3980a25ca4a3e0defc1cc020e785733dfb77a1de401e8cfbc3436cb4"
+  },
+  {
+    "original_relative_path": "outputs/real-integration-additions.json",
+    "git_path": "research/session-20260907/deliverables/real-integration-additions.json",
+    "bytes": 465,
+    "sha256": "348484aae327afcc049e684974fe8a239e0c30b38b7cdd86c473235ab48a0ab6"
+  },
+  {
+    "original_relative_path": "outputs/real-integration-attempt1.json",
+    "git_path": "research/session-20260907/deliverables/real-integration-attempt1.json",
+    "bytes": 1026,
+    "sha256": "2a964f899d4d6ef8039c1bab0959dc7a80381cef42d894f42ce7f0787e7dcb2b"
+  },
+  {
+    "original_relative_path": "outputs/real-integration-bonus-input.json",
+    "git_path": "research/session-20260907/deliverables/real-integration-bonus-input.json",
+    "bytes": 1175,
+    "sha256": "e6fe28ebfcabe0e1b0198475568e464d98bbed50f78369bee0bd5278a2834aa3"
+  },
+  {
+    "original_relative_path": "outputs/real-integration-build.txt",
+    "git_path": "research/session-20260907/deliverables/real-integration-build.txt",
+    "bytes": 124,
+    "sha256": "57a378f72b2678bb74ebd8e6ec6bbe8f1f3b78704c11efe48d2b7cea8fa286c0"
+  },
+  {
+    "original_relative_path": "outputs/real-integration-clean-replay.json",
+    "git_path": "research/session-20260907/deliverables/real-integration-clean-replay.json",
+    "bytes": 57651,
+    "sha256": "709dccd4980b1fd5b33df904e08a9c28a57dab61d6c7ad96d1022b0adcac3100"
+  },
+  {
+    "original_relative_path": "outputs/real-integration-coverage.txt",
+    "git_path": "research/session-20260907/deliverables/real-integration-coverage.txt",
+    "bytes": 4775,
+    "sha256": "63f744410bc511826a6f6d5eebf725287807741286838958af7a3f3fc8cd6d74"
+  },
+  {
+    "original_relative_path": "outputs/real-integration-delivery-manifest.json",
+    "git_path": "research/session-20260907/deliverables/real-integration-delivery-manifest.json",
+    "bytes": 55859,
+    "sha256": "b00a2e1c18d6415ff73b12fdcdfecf36f6d2f173b53c204541f36e961c08c787"
+  },
+  {
+    "original_relative_path": "outputs/real-integration-full-tests-v2.txt",
+    "git_path": "research/session-20260907/deliverables/real-integration-full-tests-v2.txt",
+    "bytes": 600,
+    "sha256": "88d7af19150b67c277af0c4621b501c0567bec16e7371772d36b1bb0ec407469"
+  },
+  {
+    "original_relative_path": "outputs/real-integration-full-tests.txt",
+    "git_path": "research/session-20260907/deliverables/real-integration-full-tests.txt",
+    "bytes": 600,
+    "sha256": "a4a2dd055b3098d020d42afbaa4fd2671553ddc1704c4ce6ce65b5ebd1d40f21"
+  },
+  {
+    "original_relative_path": "outputs/real-integration-lint.txt",
+    "git_path": "research/session-20260907/deliverables/real-integration-lint.txt",
+    "bytes": 20,
+    "sha256": "a4443afdcfb6d7363adb285762515ccf7cf50473b1a05c20c1a50f6bed4d26b0"
+  },
+  {
+    "original_relative_path": "outputs/real-integration-package-validation.json",
+    "git_path": "research/session-20260907/deliverables/real-integration-package-validation.json",
+    "bytes": 357,
+    "sha256": "5a688a31a44dee5593fa45f71efc41f9259fd96cb42f05e9b30a2092f091404e"
+  },
+  {
+    "original_relative_path": "outputs/real-integration-protected-integrity.json",
+    "git_path": "research/session-20260907/deliverables/real-integration-protected-integrity.json",
+    "bytes": 3727,
+    "sha256": "60c748430e88426c63f4b28f40a47f6832891aced5172246c6268a71a038cf37"
+  },
+  {
+    "original_relative_path": "outputs/real-integration-pyright.txt",
+    "git_path": "research/session-20260907/deliverables/real-integration-pyright.txt",
+    "bytes": 38,
+    "sha256": "c584b21ee012de391dc2799d5455db619d3fefbb192ab07ea4ba83fb0d704c14"
+  },
+  {
+    "original_relative_path": "outputs/real-integration-reproduction-check.json",
+    "git_path": "research/session-20260907/deliverables/real-integration-reproduction-check.json",
+    "bytes": 1198,
+    "sha256": "b5ff7c30f7e8621f345a4df19f87a7d868787a36018091e3acd958dd79c61d33"
+  },
+  {
+    "original_relative_path": "outputs/real-integration-results.json",
+    "git_path": "research/session-20260907/deliverables/real-integration-results.json",
+    "bytes": 57651,
+    "sha256": "5d1dbf4349018b8930380e9d5f809254672042eb903279301e9f737dadcbeba3"
+  },
+  {
+    "original_relative_path": "outputs/real-integration-table-integrity.json",
+    "git_path": "research/session-20260907/deliverables/real-integration-table-integrity.json",
+    "bytes": 5097,
+    "sha256": "f53b0ceeb8cf67875ed9e18f58a48272e2513e5ae28babe809edeb5521ab6e02"
+  },
+  {
+    "original_relative_path": "outputs/real-integration-wheel-smoke.txt",
+    "git_path": "research/session-20260907/deliverables/real-integration-wheel-smoke.txt",
+    "bytes": 241,
+    "sha256": "b64d56211c81a8c283955848740a2ec11ff697bf09ee469cab00e9368ecf0d35"
+  },
+  {
+    "original_relative_path": "outputs/reconciled-cash-coverage.json",
+    "git_path": "research/session-20260907/deliverables/reconciled-cash-coverage.json",
+    "bytes": 1360,
+    "sha256": "eaef82c9bdfdf193e9353bf7cbe1007f95cc5c55ad172897d9c2dd3791f3b6f1"
+  },
+  {
+    "original_relative_path": "outputs/reconciled-cash-events.csv",
+    "git_path": "research/session-20260907/deliverables/reconciled-cash-events.csv",
+    "bytes": 30271,
+    "sha256": "03b7599f49b01828c81ecb7ca8e8bf2db722a8b88c50ae1fb3d68e8ec990879b"
+  },
+  {
+    "original_relative_path": "outputs/reconciled-cash-import.json",
+    "git_path": "research/session-20260907/deliverables/reconciled-cash-import.json",
+    "bytes": 1289,
+    "sha256": "0255a79b2119f494b86188c5f7d218de5585ed69096a57c0f3c75f7e8e5263fc"
+  },
+  {
+    "original_relative_path": "outputs/REORGANIZACOES_PACOTE_MANIFESTO.json",
+    "git_path": "research/session-20260907/deliverables/REORGANIZACOES_PACOTE_MANIFESTO.json",
+    "bytes": 243,
+    "sha256": "7963072903719fb4a4bcc9f99da9cf424e76e177902082c8a5ef962ce3bf92d6"
+  },
+  {
+    "original_relative_path": "outputs/repair-build.txt",
+    "git_path": "research/session-20260907/deliverables/repair-build.txt",
+    "bytes": 124,
+    "sha256": "57a378f72b2678bb74ebd8e6ec6bbe8f1f3b78704c11efe48d2b7cea8fa286c0"
+  },
+  {
+    "original_relative_path": "outputs/repair-copy-validation.json",
+    "git_path": "research/session-20260907/deliverables/repair-copy-validation.json",
+    "bytes": 1713,
+    "sha256": "2164e86ddd4ec212053fd137b62b510145a3f1d4f662cb3dd7b3dc7058c275bd"
+  },
+  {
+    "original_relative_path": "outputs/repair-coverage.txt",
+    "git_path": "research/session-20260907/deliverables/repair-coverage.txt",
+    "bytes": 4253,
+    "sha256": "61a239384c354cd4ac19bb8938cca54c2db8195208dd81856389bb082a91dd3a"
+  },
+  {
+    "original_relative_path": "outputs/repair-delivery-manifest.json",
+    "git_path": "research/session-20260907/deliverables/repair-delivery-manifest.json",
+    "bytes": 2573,
+    "sha256": "c509ae9a99a1ff2c13b14b29f46053f040f51c17f8791a36e00e3d0bbf5a2fae"
+  },
+  {
+    "original_relative_path": "outputs/repair-historical-integrity.json",
+    "git_path": "research/session-20260907/deliverables/repair-historical-integrity.json",
+    "bytes": 5025,
+    "sha256": "fa29b2592deb4c0693086598e1cb599e764152ee6d783613326049965e8cce74"
+  },
+  {
+    "original_relative_path": "outputs/repair-lint.txt",
+    "git_path": "research/session-20260907/deliverables/repair-lint.txt",
+    "bytes": 20,
+    "sha256": "a4443afdcfb6d7363adb285762515ccf7cf50473b1a05c20c1a50f6bed4d26b0"
+  },
+  {
+    "original_relative_path": "outputs/repair-pyright.txt",
+    "git_path": "research/session-20260907/deliverables/repair-pyright.txt",
+    "bytes": 38,
+    "sha256": "c584b21ee012de391dc2799d5455db619d3fefbb192ab07ea4ba83fb0d704c14"
+  },
+  {
+    "original_relative_path": "outputs/repair-real-validation.json",
+    "git_path": "research/session-20260907/deliverables/repair-real-validation.json",
+    "bytes": 2854,
+    "sha256": "39adcb50aea2b6e225082093351dc5bebedf382b48e0dc1c3a759b160b2916fc"
+  },
+  {
+    "original_relative_path": "outputs/repair-tests-full.txt",
+    "git_path": "research/session-20260907/deliverables/repair-tests-full.txt",
+    "bytes": 519,
+    "sha256": "631958c22746805a509c8a2fd6bbafc701d2e2c1e2dc645e222764d06ec8e565"
+  },
+  {
+    "original_relative_path": "outputs/repair-wheel-smoke.txt",
+    "git_path": "research/session-20260907/deliverables/repair-wheel-smoke.txt",
+    "bytes": 218,
+    "sha256": "6117e1346c49aa5e9c104d08d25adbdb99b5710d0003ad2bdb34cf6bad121ce6"
+  },
+  {
+    "original_relative_path": "outputs/RESEARCH_BUDGET.json",
+    "git_path": "research/session-20260907/deliverables/RESEARCH_BUDGET.json",
+    "bytes": 3956,
+    "sha256": "ccbc0554f44344690cf4c5db211bdb836234977a19dd33e3ec4f000c48bc15a8"
+  },
+  {
+    "original_relative_path": "outputs/REVISAO_H1_H16_APOS_CORRECOES.json",
+    "git_path": "research/session-20260907/deliverables/REVISAO_H1_H16_APOS_CORRECOES.json",
+    "bytes": 20913,
+    "sha256": "3f6fd20369e7a74878966e16fc9df606e7e429cc6d9054a1f133bc590c9787fd"
+  },
+  {
+    "original_relative_path": "outputs/ri-source-extraction-log.txt",
+    "git_path": "research/session-20260907/deliverables/ri-source-extraction-log.txt",
+    "bytes": 15457,
+    "sha256": "0d084bbbc5872c21dcc2c84bd986295705e656010bd7da53e6e16794f546e840"
+  },
+  {
+    "original_relative_path": "outputs/RODAR_H17.py",
+    "git_path": "research/session-20260907/deliverables/RODAR_H17.py",
+    "bytes": 2001,
+    "sha256": "822c6aa5eaa13b834193b400fced2ada808892df2c8b7b04714771b9993904cf"
+  },
+  {
+    "original_relative_path": "outputs/RODAR_PESQUISA_STOCKS.py",
+    "git_path": "research/session-20260907/deliverables/RODAR_PESQUISA_STOCKS.py",
+    "bytes": 1862,
+    "sha256": "fcd6a82f21a8355acffc80b9b2999999e55431adad7626e4bafae3b2b6b1b6c1"
+  },
+  {
+    "original_relative_path": "outputs/RODAR_REORGANIZACOES_STOCKS.py",
+    "git_path": "research/session-20260907/deliverables/RODAR_REORGANIZACOES_STOCKS.py",
+    "bytes": 1714,
+    "sha256": "1b67f6563cf97ca169bf8d1d88d98f8625246fe3019b854d6cf11f72a1967978"
+  },
+  {
+    "original_relative_path": "outputs/RODAR_VALIDACAO_LUCRO_STOCKS.py",
+    "git_path": "research/session-20260907/deliverables/RODAR_VALIDACAO_LUCRO_STOCKS.py",
+    "bytes": 1459,
+    "sha256": "105d0053208f897d6942676798f29f8cc380b249413e80edb4de4650fb79cbd7"
+  },
+  {
+    "original_relative_path": "outputs/source-audit.json",
+    "git_path": "research/session-20260907/deliverables/source-audit.json",
+    "bytes": 5490,
+    "sha256": "dd75a63f8e0e67c722e605e9ef4fa941ff2a8900c1ea71522dcef5d0d8b9b6cd"
+  },
+  {
+    "original_relative_path": "outputs/state-evidence.json",
+    "git_path": "research/session-20260907/deliverables/state-evidence.json",
+    "bytes": 49957,
+    "sha256": "434f36ebcd58ef081ec3788b3725ff86ed449cc1720450d7fe77170347a16dd8"
+  },
+  {
+    "original_relative_path": "outputs/STOCKS_REVISAO_FINAL_DECISAO.json",
+    "git_path": "research/session-20260907/deliverables/STOCKS_REVISAO_FINAL_DECISAO.json",
+    "bytes": 1942,
+    "sha256": "bfb5d5bcdaf01f4485f299007c200bdca6bb8d886a9e1e147980bb3d5ea76dcb"
+  },
+  {
+    "original_relative_path": "outputs/STOCKS_REVISAO_FINAL_EXECUCAO.json",
+    "git_path": "research/session-20260907/deliverables/STOCKS_REVISAO_FINAL_EXECUCAO.json",
+    "bytes": 611625,
+    "sha256": "585c72395fc2fefc2e0bbd90b6756c516e58d0f1e29ada3d6de196f46ea49c27"
+  },
+  {
+    "original_relative_path": "outputs/STOCKS_REVISAO_FINAL_FONTES.json",
+    "git_path": "research/session-20260907/deliverables/STOCKS_REVISAO_FINAL_FONTES.json",
+    "bytes": 3520,
+    "sha256": "c25f6b0ff34e7ad2a4984c28f10c0c54f0d057594488667e1000f6569d8e74a5"
+  },
+  {
+    "original_relative_path": "outputs/STOCKS_REVISAO_FINAL_PRECOS_REPRODUZIDOS.json",
+    "git_path": "research/session-20260907/deliverables/STOCKS_REVISAO_FINAL_PRECOS_REPRODUZIDOS.json",
+    "bytes": 294,
+    "sha256": "defc3fbf53e65c8dfc4ae6aec4510c489f8fd78bd864182d875e6db5bd78fee5"
+  },
+  {
+    "original_relative_path": "outputs/STOCKS_REVISAO_FINAL_REPRODUCAO.json",
+    "git_path": "research/session-20260907/deliverables/STOCKS_REVISAO_FINAL_REPRODUCAO.json",
+    "bytes": 859,
+    "sha256": "354ddc0081ca7d1c4a645d23ebbeecaa823047effc8f3d6ebd92581f22929c79"
+  },
+  {
+    "original_relative_path": "outputs/STOCKS_REVISAO_FINAL_VALIDACAO.json",
+    "git_path": "research/session-20260907/deliverables/STOCKS_REVISAO_FINAL_VALIDACAO.json",
+    "bytes": 3954,
+    "sha256": "ba785f9fc76dda41ba4f00cd87d9be08f94669f025d4c3155c0f686abdf93792"
+  },
+  {
+    "original_relative_path": "outputs/TESTES_REAIS_STOCKS.md",
+    "git_path": "research/session-20260907/deliverables/TESTES_REAIS_STOCKS.md",
+    "bytes": 7031,
+    "sha256": "c4d9fcf7647937228a469d2abe1b9da7141723c4021fbec3670d4024f933db06"
+  },
+  {
+    "original_relative_path": "outputs/trials_v2.before.json",
+    "git_path": "research/session-20260907/deliverables/trials_v2.before.json",
+    "bytes": 16372,
+    "sha256": "41b6ef06b4af8279b06854a2ca47c64504e63d82cde45784d656ab1d82f06d58"
+  },
+  {
+    "original_relative_path": "outputs/VALIDACAO_CUSTO_OPORTUNIDADE_STOCKS.json",
+    "git_path": "research/session-20260907/deliverables/VALIDACAO_CUSTO_OPORTUNIDADE_STOCKS.json",
+    "bytes": 2563,
+    "sha256": "0a9f44901ff270ceeb89122b07565176d921a0201e273993fdd0d493dea4332e"
+  },
+  {
+    "original_relative_path": "outputs/VALIDACAO_FONTES_LUCRO_STOCKS.json",
+    "git_path": "research/session-20260907/deliverables/VALIDACAO_FONTES_LUCRO_STOCKS.json",
+    "bytes": 559907,
+    "sha256": "266ece378bd638ba988e7661058b8bd2cb1b72153f100b65a279b5823c18f5da"
+  },
+  {
+    "original_relative_path": "outputs/VALIDACAO_FRACIONARIO_STOCKS.json",
+    "git_path": "research/session-20260907/deliverables/VALIDACAO_FRACIONARIO_STOCKS.json",
+    "bytes": 1066537,
+    "sha256": "3b39c8a24ac68dec27acd9a2741aebba1671645cfd89d014d5b64b996ee4dfc2"
+  },
+  {
+    "original_relative_path": "outputs/VALIDACAO_LUCRO_AUDITORIA.json",
+    "git_path": "research/session-20260907/deliverables/VALIDACAO_LUCRO_AUDITORIA.json",
+    "bytes": 1231,
+    "sha256": "5a5caf9000e560c399104344cd5c94be88e7b8d49221904b20d241d8e6fb62eb"
+  },
+  {
+    "original_relative_path": "outputs/VALIDACAO_LUCRO_PACOTE_MANIFESTO.json",
+    "git_path": "research/session-20260907/deliverables/VALIDACAO_LUCRO_PACOTE_MANIFESTO.json",
+    "bytes": 337,
+    "sha256": "2433e748dd24a68f319034c5f99768827cdbe3261591d23b5a731625a82c694e"
+  },
+  {
+    "original_relative_path": "outputs/VALIDACAO_LUCRO_REPRODUCAO.json",
+    "git_path": "research/session-20260907/deliverables/VALIDACAO_LUCRO_REPRODUCAO.json",
+    "bytes": 294,
+    "sha256": "defc3fbf53e65c8dfc4ae6aec4510c489f8fd78bd864182d875e6db5bd78fee5"
+  },
+  {
+    "original_relative_path": "outputs/VALIDACAO_LUCRO_STOCKS.json",
+    "git_path": "research/session-20260907/deliverables/VALIDACAO_LUCRO_STOCKS.json",
+    "bytes": 13444872,
+    "sha256": "111407124ebdf1ef190fdac6387b549e979bdd0842686aafbcb09eaa92c673f5"
+  },
+  {
+    "original_relative_path": "outputs/VALIDACAO_LUCRO_STOCKS_RESULTADO.md",
+    "git_path": "research/session-20260907/deliverables/VALIDACAO_LUCRO_STOCKS_RESULTADO.md",
+    "bytes": 7442,
+    "sha256": "d44edf47dd782e13ee207e64f2caf16fd8a9a3c0bd2b2931aca28941d9f14770"
+  },
+  {
+    "original_relative_path": "outputs/VALIDACAO_PROVENTOS_AMPLIADA_STOCKS.json",
+    "git_path": "research/session-20260907/deliverables/VALIDACAO_PROVENTOS_AMPLIADA_STOCKS.json",
+    "bytes": 877274,
+    "sha256": "f402a231e283bcc7ffccce29f1e33322ddfc48dd2b62cb79c5508e0c1fb78a65"
+  },
+  {
+    "original_relative_path": "outputs/VALIDACAO_PROVENTOS_AMPLIADA_STOCKS_V2.json",
+    "git_path": "research/session-20260907/deliverables/VALIDACAO_PROVENTOS_AMPLIADA_STOCKS_V2.json",
+    "bytes": 894496,
+    "sha256": "8dd8979785bb1d1b5c4785f39c2d0af31d4e9cda1dcec9101609391608e13787"
+  },
+  {
+    "original_relative_path": "work/h17-secondary-acquisition.log",
+    "git_path": "research/session-20260907/logs/h17-secondary-acquisition.log",
+    "bytes": 27311,
+    "sha256": "63dd64cb8b8b3d0313c1599495d21023f5bcbb6d7cf176bd366ecf1e3836c4ac"
+  },
+  {
+    "original_relative_path": "work/h17-secondary-alias.log",
+    "git_path": "research/session-20260907/logs/h17-secondary-alias.log",
+    "bytes": 7172,
+    "sha256": "2be1dc78e94a67fb4c8be5f21f017aff555f5c6f4a8c918a3edabb1f40a0f3b5"
+  },
+  {
+    "original_relative_path": "work/h19-all-page-credit-reconciliation.log",
+    "git_path": "research/session-20260907/logs/h19-all-page-credit-reconciliation.log",
+    "bytes": 281,
+    "sha256": "7f284111a0568e8a368c04e9b4ca1b86471a0f2492c363def91dddb491a625fc"
+  },
+  {
+    "original_relative_path": "work/h19-complete-credit-reconciliation.log",
+    "git_path": "research/session-20260907/logs/h19-complete-credit-reconciliation.log",
+    "bytes": 280,
+    "sha256": "f23b913a127817baeb2a1696cc4669fdb4e54a39bd714060d12df429fba89002"
+  },
+  {
+    "original_relative_path": "work/h19-complete-extraction-final.log",
+    "git_path": "research/session-20260907/logs/h19-complete-extraction-final.log",
+    "bytes": 83,
+    "sha256": "368d58c52a4068c9c436cbc52b3c987211b41448a356a1298cba6b37a7c054de"
+  },
+  {
+    "original_relative_path": "work/h19-complete-extraction.log",
+    "git_path": "research/session-20260907/logs/h19-complete-extraction.log",
+    "bytes": 626,
+    "sha256": "baa3c3620414ac756fe4e76c1455a979a1e7b2243d4248e3571f5540e49d4382"
+  },
+  {
+    "original_relative_path": "work/h19-complete-source-acquisition.log",
+    "git_path": "research/session-20260907/logs/h19-complete-source-acquisition.log",
+    "bytes": 65898,
+    "sha256": "9261469e3a876de8d04ddb4f09e74cd44d9f17117b4b724ba662bedf31fb4f0d"
+  },
+  {
+    "original_relative_path": "work/h19-continuous-coverage.log",
+    "git_path": "research/session-20260907/logs/h19-continuous-coverage.log",
+    "bytes": 6759,
+    "sha256": "af7c410d10a73cc30f8a3691dbf063fa1772f64635a0cbe74f0d1aa4bd84ec79"
+  },
+  {
+    "original_relative_path": "work/h19-continuous-external-tests.log",
+    "git_path": "research/session-20260907/logs/h19-continuous-external-tests.log",
+    "bytes": 101,
+    "sha256": "3885dd83370968beb539a7098be8976a63ffe4ccc6019a49d2cc31da4c754c6d"
+  },
+  {
+    "original_relative_path": "work/h19-continuous-lint.log",
+    "git_path": "research/session-20260907/logs/h19-continuous-lint.log",
+    "bytes": 20,
+    "sha256": "a4443afdcfb6d7363adb285762515ccf7cf50473b1a05c20c1a50f6bed4d26b0"
+  },
+  {
+    "original_relative_path": "work/h19-continuous-packaging.log",
+    "git_path": "research/session-20260907/logs/h19-continuous-packaging.log",
+    "bytes": 747,
+    "sha256": "e5ae29a4e8ff78fbeeefaf7e6247a509042b24c158661fa8f44977fe7c78f10a"
+  },
+  {
+    "original_relative_path": "work/h19-continuous-pyright.log",
+    "git_path": "research/session-20260907/logs/h19-continuous-pyright.log",
+    "bytes": 38,
+    "sha256": "c584b21ee012de391dc2799d5455db619d3fefbb192ab07ea4ba83fb0d704c14"
+  },
+  {
+    "original_relative_path": "work/h19-continuous-quotes.log",
+    "git_path": "research/session-20260907/logs/h19-continuous-quotes.log",
+    "bytes": 694,
+    "sha256": "85dba58b8649f2d62df947f2e93ee05b7621981a8edabef2f2b1b80afed78041"
+  },
+  {
+    "original_relative_path": "work/h19-continuous-tests.log",
+    "git_path": "research/session-20260907/logs/h19-continuous-tests.log",
+    "bytes": 681,
+    "sha256": "e67e670738a4cf91700a7000e9c46885d0bfe5b72e156d7a6dd7fc9d8abf4f05"
+  },
+  {
+    "original_relative_path": "work/h19-continuous-wheel.log",
+    "git_path": "research/session-20260907/logs/h19-continuous-wheel.log",
+    "bytes": 124,
+    "sha256": "57a378f72b2678bb74ebd8e6ec6bbe8f1f3b78704c11efe48d2b7cea8fa286c0"
+  },
+  {
+    "original_relative_path": "work/h19-corporate-extraction.log",
+    "git_path": "research/session-20260907/logs/h19-corporate-extraction.log",
+    "bytes": 133,
+    "sha256": "fc140e377d2f005861a2fa78e2f0b6f25610cbd2f8f7f7667fb6891cdbabd4e6"
+  },
+  {
+    "original_relative_path": "work/h19-corporate-source-acquisition.log",
+    "git_path": "research/session-20260907/logs/h19-corporate-source-acquisition.log",
+    "bytes": 10953,
+    "sha256": "a4cdae8db382f21fa0aacc64cfd25479c16a87613da42f47f3f1c0bb1da06e3e"
+  },
+  {
+    "original_relative_path": "work/h19-credit-candidates-acquisition.log",
+    "git_path": "research/session-20260907/logs/h19-credit-candidates-acquisition.log",
+    "bytes": 51511,
+    "sha256": "e8b652a28571a19e7284117ade99e6aa4135494876b341b1605d56a7da5ee64a"
+  },
+  {
+    "original_relative_path": "work/h19-final-primary-acquisition.log",
+    "git_path": "research/session-20260907/logs/h19-final-primary-acquisition.log",
+    "bytes": 173,
+    "sha256": "d03387549aa670e64867b58d989c6b25319cf1280b786d17298fe6d63aadc9a1"
+  },
+  {
+    "original_relative_path": "work/h19-final-primary-extraction.log",
+    "git_path": "research/session-20260907/logs/h19-final-primary-extraction.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "original_relative_path": "work/h19-followthrough-acquisition.log",
+    "git_path": "research/session-20260907/logs/h19-followthrough-acquisition.log",
+    "bytes": 206,
+    "sha256": "96dfceac4a4fe8abc0a9f2d1419d36593a9aa1d445d6a4a0eaf44a45182b2006"
+  },
+  {
+    "original_relative_path": "work/h19-followthrough-acquisition2.log",
+    "git_path": "research/session-20260907/logs/h19-followthrough-acquisition2.log",
+    "bytes": 154,
+    "sha256": "4609e0e0e546311574086fa43bde0df2d878cb41601a845a7ddb9a5dd5798520"
+  },
+  {
+    "original_relative_path": "work/h19-followthrough-acquisition3.log",
+    "git_path": "research/session-20260907/logs/h19-followthrough-acquisition3.log",
+    "bytes": 168,
+    "sha256": "76b0e3be8545e7d3f9fdc827ee0f62ac05e8d6e606caf279a18a9eac1b25c655"
+  },
+  {
+    "original_relative_path": "work/h19-followthrough-acquisition4.log",
+    "git_path": "research/session-20260907/logs/h19-followthrough-acquisition4.log",
+    "bytes": 111,
+    "sha256": "728936ad14c7d0ddd7c93035f636a114426cb1ab3d3e49131548292b6446f29e"
+  },
+  {
+    "original_relative_path": "work/h19-followthrough-acquisition5.log",
+    "git_path": "research/session-20260907/logs/h19-followthrough-acquisition5.log",
+    "bytes": 108,
+    "sha256": "f00dbce4075a365118fb7c592679067e98ecff7580dff4a63561c9fd6ef7bab5"
+  },
+  {
+    "original_relative_path": "work/h19-followthrough-acquisition6.log",
+    "git_path": "research/session-20260907/logs/h19-followthrough-acquisition6.log",
+    "bytes": 86,
+    "sha256": "73f9e6921569a7ce9164c9b17354f68501d3391a639f1ed2ecc6c38f5a6537db"
+  },
+  {
+    "original_relative_path": "work/h19-followthrough-acquisition7.log",
+    "git_path": "research/session-20260907/logs/h19-followthrough-acquisition7.log",
+    "bytes": 58,
+    "sha256": "545988daa02517e18115b396d53e2507a94d68c7e6fde4a9ebd47fd5dd7b360e"
+  },
+  {
+    "original_relative_path": "work/h19-followthrough-extraction.log",
+    "git_path": "research/session-20260907/logs/h19-followthrough-extraction.log",
+    "bytes": 1680,
+    "sha256": "10ff722e96c947c5c6044cdc397b3215f36279258c3c343d00cb3e93aa07720b"
+  },
+  {
+    "original_relative_path": "work/h19-followthrough-extraction2.log",
+    "git_path": "research/session-20260907/logs/h19-followthrough-extraction2.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "original_relative_path": "work/h19-followthrough-extraction3.log",
+    "git_path": "research/session-20260907/logs/h19-followthrough-extraction3.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "original_relative_path": "work/h19-followthrough-extraction5.log",
+    "git_path": "research/session-20260907/logs/h19-followthrough-extraction5.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "original_relative_path": "work/h19-followthrough-extraction7.log",
+    "git_path": "research/session-20260907/logs/h19-followthrough-extraction7.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "original_relative_path": "work/h19-followup-acquisition.log",
+    "git_path": "research/session-20260907/logs/h19-followup-acquisition.log",
+    "bytes": 5640,
+    "sha256": "ed6011da7b89617b529c9910226844915cf77b29568ccf90f47482379da3e10b"
+  },
+  {
+    "original_relative_path": "work/h19-followup-extraction-warnings.log",
+    "git_path": "research/session-20260907/logs/h19-followup-extraction-warnings.log",
+    "bytes": 1488,
+    "sha256": "b7c545c33592595a653b0168586a5d186b4eb8fb45141110869965129c366b1c"
+  },
+  {
+    "original_relative_path": "work/h19-full-credit-calendar-acquisition.log",
+    "git_path": "research/session-20260907/logs/h19-full-credit-calendar-acquisition.log",
+    "bytes": 72128,
+    "sha256": "23867597b019313159f7e5371d84852dce0e1e2e4188d90fe007fdae28aeb502"
+  },
+  {
+    "original_relative_path": "work/h19-full-credit-reconciliation.log",
+    "git_path": "research/session-20260907/logs/h19-full-credit-reconciliation.log",
+    "bytes": 281,
+    "sha256": "85c3e710c98d5c6cacf6257c1a99bfaae6e6da03d09dc0575b1f389387ee1223"
+  },
+  {
+    "original_relative_path": "work/h19-later-acquisition.log",
+    "git_path": "research/session-20260907/logs/h19-later-acquisition.log",
+    "bytes": 1030,
+    "sha256": "bf41e66c6dcd5d70add1ed15c4ea4297c38ad0e4fd7c760da17b5ba7f08cffe6"
+  },
+  {
+    "original_relative_path": "work/h19-later-extraction-warnings.log",
+    "git_path": "research/session-20260907/logs/h19-later-extraction-warnings.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "original_relative_path": "work/h19-legacy-credit-acquisition.log",
+    "git_path": "research/session-20260907/logs/h19-legacy-credit-acquisition.log",
+    "bytes": 18890,
+    "sha256": "51cec49d6ca08f5bc1736d269827b51977f93419af940c789147f33224c816f1"
+  },
+  {
+    "original_relative_path": "work/h19-notice-retry.log",
+    "git_path": "research/session-20260907/logs/h19-notice-retry.log",
+    "bytes": 11435,
+    "sha256": "79fdbae59a9eef63ed66b2ff1f40c284863e51cb7a3b1ef47b979061182dee59"
+  },
+  {
+    "original_relative_path": "work/h19-notices-acquisition.log",
+    "git_path": "research/session-20260907/logs/h19-notices-acquisition.log",
+    "bytes": 8117,
+    "sha256": "f4a3dc14431024533ea9faed7a2fa8cb854ddd0a673b86099306f46cf1c1d41d"
+  },
+  {
+    "original_relative_path": "work/h19-notices-extraction.log",
+    "git_path": "research/session-20260907/logs/h19-notices-extraction.log",
+    "bytes": 91,
+    "sha256": "73909562468a843f1bbb4329035c95172646c2267ee3fd885205189515988e59"
+  },
+  {
+    "original_relative_path": "work/h19-retail-build.log",
+    "git_path": "research/session-20260907/logs/h19-retail-build.log",
+    "bytes": 124,
+    "sha256": "57a378f72b2678bb74ebd8e6ec6bbe8f1f3b78704c11efe48d2b7cea8fa286c0"
+  },
+  {
+    "original_relative_path": "work/h19-retail-coverage.log",
+    "git_path": "research/session-20260907/logs/h19-retail-coverage.log",
+    "bytes": 6169,
+    "sha256": "6b695cd4657fa90484b2ab887b757454cf501bf44b7d867b055f110c02be8be2"
+  },
+  {
+    "original_relative_path": "work/h19-retail-lint.log",
+    "git_path": "research/session-20260907/logs/h19-retail-lint.log",
+    "bytes": 20,
+    "sha256": "a4443afdcfb6d7363adb285762515ccf7cf50473b1a05c20c1a50f6bed4d26b0"
+  },
+  {
+    "original_relative_path": "work/h19-retail-offline-replay.log",
+    "git_path": "research/session-20260907/logs/h19-retail-offline-replay.log",
+    "bytes": 610,
+    "sha256": "6af5d793ec2ac17b5d1678cff64016a4f7b8dcbf123060b1fb725138faedda6e"
+  },
+  {
+    "original_relative_path": "work/h19-retail-pyright.log",
+    "git_path": "research/session-20260907/logs/h19-retail-pyright.log",
+    "bytes": 38,
+    "sha256": "c584b21ee012de391dc2799d5455db619d3fefbb192ab07ea4ba83fb0d704c14"
+  },
+  {
+    "original_relative_path": "work/h19-retail-tests.log",
+    "git_path": "research/session-20260907/logs/h19-retail-tests.log",
+    "bytes": 681,
+    "sha256": "a677b372fc0d7615955cb23d3a208c246134339539ff09ef0b7e540f43b75aa3"
+  },
+  {
+    "original_relative_path": "work/h19-retail-wheel-smoke.log",
+    "git_path": "research/session-20260907/logs/h19-retail-wheel-smoke.log",
+    "bytes": 196,
+    "sha256": "1789b1ab18a69adf2edf5b2bd0adff77cb4aa9914df8ad0c5b3fd5a9a11d9a3b"
+  },
+  {
+    "original_relative_path": "work/h19-retry-acquisition.log",
+    "git_path": "research/session-20260907/logs/h19-retry-acquisition.log",
+    "bytes": 2397,
+    "sha256": "e5a0c5a40583e47f28d18cf8e45abdd7d959ba625592f536ff31b1d36e097b14"
+  },
+  {
+    "original_relative_path": "work/h19-retry-followup-extraction.log",
+    "git_path": "research/session-20260907/logs/h19-retry-followup-extraction.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "original_relative_path": "work/h19-retry-later-extraction.log",
+    "git_path": "research/session-20260907/logs/h19-retry-later-extraction.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "original_relative_path": "work/h19-retry-selected-extraction.log",
+    "git_path": "research/session-20260907/logs/h19-retry-selected-extraction.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "original_relative_path": "work/h19-successor-source-acquisition.log",
+    "git_path": "research/session-20260907/logs/h19-successor-source-acquisition.log",
+    "bytes": 3950,
+    "sha256": "c4e6ef8c8bc8f512a5ecf96d476f397e84d63e50ce5b9ba229df84b23f84a02e"
+  },
+  {
+    "original_relative_path": "work/h19-tax-calendar-acquisition.log",
+    "git_path": "research/session-20260907/logs/h19-tax-calendar-acquisition.log",
+    "bytes": 524,
+    "sha256": "c1878242f2b1cf89ff26e2aa04afa81de3f3fd14e806ace8eb8629a74364318a"
+  },
+  {
+    "original_relative_path": "work/h19-tax-pdf-acquisition.log",
+    "git_path": "research/session-20260907/logs/h19-tax-pdf-acquisition.log",
+    "bytes": 467,
+    "sha256": "2c086596c6bfe5b71a8e30cc1df40f90aa23e45cb23baf7ed963b2f4099ffb41"
+  },
+  {
+    "original_relative_path": "work/h19-tax-pdf-extraction.log",
+    "git_path": "research/session-20260907/logs/h19-tax-pdf-extraction.log",
+    "bytes": 2064,
+    "sha256": "c0f2f8ec529c91cfc147943254f4c8ac4f675be2b2d7518151ff6c00a396c85f"
+  },
+  {
+    "original_relative_path": "work/profit-cash-acquisition.log",
+    "git_path": "research/session-20260907/logs/profit-cash-acquisition.log",
+    "bytes": 11672,
+    "sha256": "50f5c42fb570f5451b49ef06b051011e77ee16cf4d2a213d9f44ffc72da2a165"
+  },
+  {
+    "original_relative_path": "work/profit-fractional-audit.log",
+    "git_path": "research/session-20260907/logs/profit-fractional-audit.log",
+    "bytes": 1522,
+    "sha256": "70738596d4bfbfc9c1f75d6181b1b659e509707bdd2f3e134cee08c9af2ab212"
+  },
+  {
+    "original_relative_path": "work/profit-historical-cash.log",
+    "git_path": "research/session-20260907/logs/profit-historical-cash.log",
+    "bytes": 12441,
+    "sha256": "f11ed3c9af7bd942125285019e6c955e4a9200a94712aa88942bae175a9691ef"
+  },
+  {
+    "original_relative_path": "work/profit-validation-coverage.log",
+    "git_path": "research/session-20260907/logs/profit-validation-coverage.log",
+    "bytes": 6055,
+    "sha256": "be80941d3891e95011eeadfd3c933ec5cdfc89c0112fbc5a18765eaf81ef1602"
+  },
+  {
+    "original_relative_path": "work/profit-validation-observation.log",
+    "git_path": "research/session-20260907/logs/profit-validation-observation.log",
+    "bytes": 7302,
+    "sha256": "34f1d621816d6d9b8efaf50ab89c4a43ee1e8bb84d2d4485efd1a3e261c5f1bc"
+  },
+  {
+    "original_relative_path": "work/profit-validation-tests.log",
+    "git_path": "research/session-20260907/logs/profit-validation-tests.log",
+    "bytes": 681,
+    "sha256": "44d089cd7b803993704e8beb7b7c16da328052475d61b849380ec6227347fb2d"
+  },
+  {
+    "original_relative_path": "work/reorganization-coverage.log",
+    "git_path": "research/session-20260907/logs/reorganization-coverage.log",
+    "bytes": 5926,
+    "sha256": "f79eaf88a94ec3a0bcb4fa7778eaa8087d34251b871c43b41e667d0079705cda"
+  },
+  {
+    "original_relative_path": "work/reorganization-observation.log",
+    "git_path": "research/session-20260907/logs/reorganization-observation.log",
+    "bytes": 6179,
+    "sha256": "2cbbd825acab3b9aeb6b681ceb0c976670c1c6e706a95873f2028c5b63b77517"
+  },
+  {
+    "original_relative_path": "work/reorganization-package-verification.log",
+    "git_path": "research/session-20260907/logs/reorganization-package-verification.log",
+    "bytes": 384,
+    "sha256": "513f51acca994922901a47378f5c0c1a7bbda37a54e4c0427fbd898cf3cadc5d"
+  },
+  {
+    "original_relative_path": "work/reorganization-tests.log",
+    "git_path": "research/session-20260907/logs/reorganization-tests.log",
+    "bytes": 681,
+    "sha256": "7bb2548d7baca7705c688f1427f4f58a10450980c13e391e88954d6869308528"
+  },
+  {
+    "original_relative_path": "work/stocks-final-review-before-fixes.log",
+    "git_path": "research/session-20260907/logs/stocks-final-review-before-fixes.log",
+    "bytes": 13859,
+    "sha256": "629eeb15003f346bbdfd31ffe5412cb3a16443837cdd070258848a57cfb0d54c"
+  },
+  {
+    "original_relative_path": "work/stocks-final-review-coverage.log",
+    "git_path": "research/session-20260907/logs/stocks-final-review-coverage.log",
+    "bytes": 6862,
+    "sha256": "63548f33b0449f834489337542118bc860480a439287928b8d8de4efeb352bab"
+  },
+  {
+    "original_relative_path": "work/stocks-final-review-lint.log",
+    "git_path": "research/session-20260907/logs/stocks-final-review-lint.log",
+    "bytes": 20,
+    "sha256": "a4443afdcfb6d7363adb285762515ccf7cf50473b1a05c20c1a50f6bed4d26b0"
+  },
+  {
+    "original_relative_path": "work/stocks-final-review-pyright.log",
+    "git_path": "research/session-20260907/logs/stocks-final-review-pyright.log",
+    "bytes": 38,
+    "sha256": "c584b21ee012de391dc2799d5455db619d3fefbb192ab07ea4ba83fb0d704c14"
+  },
+  {
+    "original_relative_path": "work/stocks-final-review-real-replay.log",
+    "git_path": "research/session-20260907/logs/stocks-final-review-real-replay.log",
+    "bytes": 645,
+    "sha256": "76be1f29f8f45f37137088601aa821f099e3456a39c17ee74323e3cc657f07ff"
+  },
+  {
+    "original_relative_path": "work/stocks-final-review-standalone-tests.log",
+    "git_path": "research/session-20260907/logs/stocks-final-review-standalone-tests.log",
+    "bytes": 101,
+    "sha256": "39b14624e4ca84c440c04e33f35275d64b19734f18fd73af450f7c8aeaa81530"
+  },
+  {
+    "original_relative_path": "work/stocks-final-review-tests.log",
+    "git_path": "research/session-20260907/logs/stocks-final-review-tests.log",
+    "bytes": 762,
+    "sha256": "0f14eafb0eb4c129e525572ebec528e4787c0b49a463efbbf524505531d3ddb2"
+  },
+  {
+    "original_relative_path": "work/stocks-final-review-v2-actual-readonly-status.log",
+    "git_path": "research/session-20260907/logs/stocks-final-review-v2-actual-readonly-status.log",
+    "bytes": 1435,
+    "sha256": "11b9afff8b847ae92427fe7f4f583dc4d1756ce3be95a086d4ce3c63a6679423"
+  },
+  {
+    "original_relative_path": "work/stocks-final-review-v2-coverage.log",
+    "git_path": "research/session-20260907/logs/stocks-final-review-v2-coverage.log",
+    "bytes": 6862,
+    "sha256": "f622bda3ca8b370b5f25995f6c234825f4d2e8f8146ba49bb3ed63c37a8fb39f"
+  },
+  {
+    "original_relative_path": "work/stocks-final-review-v2-lint.log",
+    "git_path": "research/session-20260907/logs/stocks-final-review-v2-lint.log",
+    "bytes": 20,
+    "sha256": "a4443afdcfb6d7363adb285762515ccf7cf50473b1a05c20c1a50f6bed4d26b0"
+  },
+  {
+    "original_relative_path": "work/stocks-final-review-v2-pyright.log",
+    "git_path": "research/session-20260907/logs/stocks-final-review-v2-pyright.log",
+    "bytes": 38,
+    "sha256": "c584b21ee012de391dc2799d5455db619d3fefbb192ab07ea4ba83fb0d704c14"
+  },
+  {
+    "original_relative_path": "work/stocks-final-review-v2-real-replay.log",
+    "git_path": "research/session-20260907/logs/stocks-final-review-v2-real-replay.log",
+    "bytes": 645,
+    "sha256": "76be1f29f8f45f37137088601aa821f099e3456a39c17ee74323e3cc657f07ff"
+  },
+  {
+    "original_relative_path": "work/stocks-final-review-v2-standalone-tests.log",
+    "git_path": "research/session-20260907/logs/stocks-final-review-v2-standalone-tests.log",
+    "bytes": 101,
+    "sha256": "66839cf8b6628a6888d477d4d3947eaad30ac2f5956a97857b6a1706781ffd12"
+  },
+  {
+    "original_relative_path": "work/stocks-final-review-v2-tests.log",
+    "git_path": "research/session-20260907/logs/stocks-final-review-v2-tests.log",
+    "bytes": 762,
+    "sha256": "6f8df5e5406e84d6275ec759d0d7aa10b4063a454fc8390ade8d3c5bb5e15505"
+  },
+  {
+    "original_relative_path": "work/stocks-final-review-v2-wheel-import.log",
+    "git_path": "research/session-20260907/logs/stocks-final-review-v2-wheel-import.log",
+    "bytes": 164,
+    "sha256": "871f55f1f08147e3380815521123676f9b8dc89dcf89203c982664accba7841d"
+  },
+  {
+    "original_relative_path": "work/stocks-final-review-v2-wheel.log",
+    "git_path": "research/session-20260907/logs/stocks-final-review-v2-wheel.log",
+    "bytes": 124,
+    "sha256": "d86bd18f60c76fe07065049381d1d06fd1ff823655177e13f38f7949c83d5799"
+  },
+  {
+    "original_relative_path": "work/stocks-final-review-wheel-import.log",
+    "git_path": "research/session-20260907/logs/stocks-final-review-wheel-import.log",
+    "bytes": 161,
+    "sha256": "95b01e25a4171757290ccd8d9ef602164bd56869cb045ad142dc46089cef3003"
+  },
+  {
+    "original_relative_path": "work/stocks-final-review-wheel.log",
+    "git_path": "research/session-20260907/logs/stocks-final-review-wheel.log",
+    "bytes": 124,
+    "sha256": "d86bd18f60c76fe07065049381d1d06fd1ff823655177e13f38f7949c83d5799"
+  },
+  {
+    "original_relative_path": "work/stocks-final-review-zip-tests.log",
+    "git_path": "research/session-20260907/logs/stocks-final-review-zip-tests.log",
+    "bytes": 101,
+    "sha256": "39b14624e4ca84c440c04e33f35275d64b19734f18fd73af450f7c8aeaa81530"
+  },
+  {
+    "original_relative_path": "work/value-capital-acquisition.log",
+    "git_path": "research/session-20260907/logs/value-capital-acquisition.log",
+    "bytes": 1653,
+    "sha256": "898c3ed1c58fc928243ad0a1a12991d896f530253d427b9a283df585032c4cf7"
+  },
+  {
+    "original_relative_path": "work/value-coverage.log",
+    "git_path": "research/session-20260907/logs/value-coverage.log",
+    "bytes": 5286,
+    "sha256": "096872e4a3fe3b167911cda23ccd065ebee3561a0f2ed62144068e2bcfc22d96"
+  },
+  {
+    "original_relative_path": "work/value-first-observation.log",
+    "git_path": "research/session-20260907/logs/value-first-observation.log",
+    "bytes": 22199,
+    "sha256": "10ca048a1fca904883d8cbc39125e966fdb01befd573c12b52cb9df357ae16fb"
+  },
+  {
+    "original_relative_path": "work/value-full-tests.log",
+    "git_path": "research/session-20260907/logs/value-full-tests.log",
+    "bytes": 600,
+    "sha256": "633fa6988b7bb21695eba2746b0794bd1e2d45f6d86246641cb155f921260171"
+  },
+  {
+    "original_relative_path": "work/value-measurement-preparation.log",
+    "git_path": "research/session-20260907/logs/value-measurement-preparation.log",
+    "bytes": 1078,
+    "sha256": "328b87925234f69a2d77a83cb4005c7f26351aa403ac3810ce8252c4fc1a827f"
+  },
+  {
+    "original_relative_path": "work/value-package-verification.log",
+    "git_path": "research/session-20260907/logs/value-package-verification.log",
+    "bytes": 634,
+    "sha256": "72291d9ad4d40979207f2bff341955056f989e466d31ecf6cc44c5792d507b9f"
+  },
+  {
+    "original_relative_path": "work/value-repair-coverage.log",
+    "git_path": "research/session-20260907/logs/value-repair-coverage.log",
+    "bytes": 5498,
+    "sha256": "c7c0e8e46fa0e92fb9dbff6bc2f243e6e9ddf2658d8c9e0e5df888617f676206"
+  },
+  {
+    "original_relative_path": "work/value-repair-tests.log",
+    "git_path": "research/session-20260907/logs/value-repair-tests.log",
+    "bytes": 681,
+    "sha256": "c6d53ddca7301847eb398a381721ee25c1df2a3dd7e8188dcb870e066da18287"
+  },
+  {
+    "original_relative_path": "work/value-repaired-observation.log",
+    "git_path": "research/session-20260907/logs/value-repaired-observation.log",
+    "bytes": 21642,
+    "sha256": "169e329faf77630d36fda794135d15c0a0cdcd26d438440037745bbb698da0fa"
+  }
+]

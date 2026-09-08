@@ -1,0 +1,39 @@
+CONFIG_HASHES {"H17": "e6cf9bd7454750c3", "H18": "cbea4d3c98ac3422", "H19": "d96753f2af7b39a6"}
+════════════════════════════════════════════════════════════════════
+CRITÉRIO 2 — cobertura bruta da tabela `fundamentals`
+════════════════════════════════════════════════════════════════════
+  linhas totais: 1579   tickers distintos: 127
+
+  coluna                      não-nulas       %  tickers
+  lucro_liquido                     733   46.4%      124
+  patrimonio_liquido                695   44.0%      119
+  shares_outstanding                846   53.6%      126
+  roe                               677   42.9%      119
+  leverage                          693   43.9%      119
+  net_margin                        712   45.1%      121
+  receita_liquida                   733   46.4%      124
+  accruals                          716   45.3%      123
+
+  ref_date com shares_outstanding: 2018-01-01 .. 2026-12-31
+
+════════════════════════════════════════════════════════════════════
+CRITÉRIOS 3 e 4 — cobertura por rebalance (104 datas, desde 2018-01-01)
+════════════════════════════════════════════════════════════════════
+
+  sinal         mediana    mín    máx  datas c/ 0
+  universo         60.0     60     60           0
+  lucro            56.0      0     57          12
+  acoes            57.0      0     58          12
+  E/P(H18)         49.5      0     53          13
+  B/M(H19)         53.0      0     54          13
+  roe(H7)          53.0      0     54          15
+  lev(H9)          53.0      0     54          15
+  marg(H12)        54.0      0     55          15
+  accr(H17)        56.0      0     57          12
+
+  LEITURA:
+  - critério 3 (as duas pernas juntas): mediana de 49.5 papéis com E/P, contra 56.0 com lucro e 57.0 com ações — a perna mais escassa manda
+  - critério 4 (comparação com hipóteses JÁ rodadas): H18 mediana 49.5 vs. H7 53.0, H9 53.0, H12 54.0
+  - universo point-in-time mediano: 60.0 papéis
+
+  (nenhum valor de sinal foi lido — só contagens; ver a TRAVA no topo)

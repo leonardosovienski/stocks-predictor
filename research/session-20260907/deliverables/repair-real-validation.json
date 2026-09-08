@@ -1,0 +1,86 @@
+{
+  "year": 2023,
+  "source_sha256": "d7ecbeb48b132d9e7480236d410d3587f4bd15efdf738e0b857647e178d3a261",
+  "documents": 475,
+  "currency": "BRL",
+  "unit": "reais",
+  "rejected_documents": [],
+  "financial_field_counts": {
+    "ativo_total": 464,
+    "passivo_total": 464,
+    "patrimonio_liquido": 444,
+    "lucro_liquido": 464,
+    "receita_liquida": 464,
+    "fluxo_caixa_operacional": 447,
+    "roe": 400,
+    "leverage": 442,
+    "net_margin": 457,
+    "accruals": 446
+  },
+  "performance_observed": false,
+  "proof_authorized": false,
+  "parser_version": 2,
+  "derivation_sha256": "404183f959373c485234ac33c18669c5203b24c7ae3054c01f8cc9845f70d3fe",
+  "examples": [
+    {
+      "company": "energisa_s.a.",
+      "cnpj": "00864214000106",
+      "ref_date": "2023-12-31",
+      "document_version": 3,
+      "received_at": "2024-03-15",
+      "available_at": "2024-03-16",
+      "source": "CVM DFP 2023",
+      "source_sha256": "d7ecbeb48b132d9e7480236d410d3587f4bd15efdf738e0b857647e178d3a261",
+      "ativo_total": 68068471000.0,
+      "passivo_total": 68068471000.0,
+      "patrimonio_liquido": 15715696000.0,
+      "lucro_liquido": 2583534000.0,
+      "receita_liquida": 28531858000.0,
+      "fluxo_caixa_operacional": 6682422000.0,
+      "roe": 0.16439195566012477,
+      "leverage": 0.7691193034143518,
+      "net_margin": 0.09054909778395785,
+      "accruals": -0.06021713048321594
+    },
+    {
+      "company": "ambev_s.a.",
+      "cnpj": "07526557000100",
+      "ref_date": "2023-12-31",
+      "document_version": 1,
+      "received_at": "2024-02-29",
+      "available_at": "2024-03-01",
+      "source": "CVM DFP 2023",
+      "source_sha256": "d7ecbeb48b132d9e7480236d410d3587f4bd15efdf738e0b857647e178d3a261",
+      "ativo_total": 132644133000.0,
+      "passivo_total": 132644133000.0,
+      "patrimonio_liquido": 80143802000.0,
+      "lucro_liquido": 14960459000.0,
+      "receita_liquida": 79736856000.0,
+      "fluxo_caixa_operacional": 24711429000.0,
+      "roe": 0.1866701931610382,
+      "leverage": 0.39579836523941847,
+      "net_margin": 0.18762288545713415,
+      "accruals": -0.07351226005601016
+    }
+  ],
+  "fre": {
+    "documents": 455,
+    "eligible_basis": 0,
+    "source_sha256": "995c8c3faa11bb4970e33e423366e6eab6b33c37ae82ec71fb60e54264b96fb7",
+    "bbas": [
+      {
+        "company": "bco_brasil_s.a.",
+        "ref_date": "2023-12-31",
+        "document_id": "137597",
+        "received_at": "2024-05-16",
+        "available_at": "2024-05-17",
+        "shares_outstanding": 5730799931.446085,
+        "basis_date": null,
+        "basis_source": null,
+        "price_basis_source": null,
+        "source": "CVM FRE 2023",
+        "source_sha256": "995c8c3faa11bb4970e33e423366e6eab6b33c37ae82ec71fb60e54264b96fb7"
+      }
+    ]
+  }
+}

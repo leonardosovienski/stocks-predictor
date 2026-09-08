@@ -1,0 +1,81 @@
+Diagnostico H17 concluido. Resultado: INCONCLUSIVE_DATA_QUALITY
+Arquivo: C:\Users\Superleo13\Documents\Codex\2026-09-06\files-pasted-by-the-user-autonomous\outputs\h17-replay-observation.json
+E um diagnostico exploratorio de precos, sem estimativa de lucro executavel.
+{
+  "status": "INCONCLUSIVE_DATA_QUALITY",
+  "overall": {
+    "scheduled_months": 96,
+    "eligible_months": 94,
+    "complete_months": 59,
+    "factor_cells": 5399,
+    "scored_cells": 5352,
+    "coverage": 0.9912946842007779,
+    "unscored_selected_cells": 14,
+    "unscored_other_cells": 33,
+    "available_case_mean_ic": -0.013201372726630294,
+    "complete_case_mean_monthly_spread": -0.0016134122139429671,
+    "complete_case_mean_monthly_quintile_price_return": 0.015082631105678194,
+    "diagnostic_36bp_haircut": 0.011482631105678195,
+    "diagnostic_72bp_haircut": 0.007882631105678195,
+    "missing_reasons": {
+      "INSTRUMENT_IDENTITY_BREAK_OR_MISSING": 21,
+      "MISSING_EXECUTION_ENDPOINT": 26,
+      "UNMODELLED_SUBSCRICAO": 8,
+      "UNRESOLVED_OVERNIGHT_GT_30PCT": 11,
+      "UNMODELLED_INCORPORACAO": 3,
+      "UNMODELLED_CIS_RED_CAP": 4,
+      "UNMODELLED_REST_CAP_ACOES": 1
+    }
+  },
+  "fixed_halves": {
+    "2018_2021": {
+      "scheduled_months": 48,
+      "eligible_months": 46,
+      "complete_months": 29,
+      "factor_cells": 2632,
+      "scored_cells": 2608,
+      "coverage": 0.9908814589665653,
+      "unscored_selected_cells": 5,
+      "unscored_other_cells": 19,
+      "available_case_mean_ic": 0.004590713000513917,
+      "complete_case_mean_monthly_spread": -0.001879908008732005,
+      "complete_case_mean_monthly_quintile_price_return": 0.02487792019713828,
+      "diagnostic_36bp_haircut": 0.02127792019713828,
+      "diagnostic_72bp_haircut": 0.017677920197138278,
+      "missing_reasons": {
+        "INSTRUMENT_IDENTITY_BREAK_OR_MISSING": 8,
+        "MISSING_EXECUTION_ENDPOINT": 13,
+        "UNMODELLED_SUBSCRICAO": 1,
+        "UNRESOLVED_OVERNIGHT_GT_30PCT": 8,
+        "UNMODELLED_INCORPORACAO": 2,
+        "UNMODELLED_CIS_RED_CAP": 3,
+        "UNMODELLED_REST_CAP_ACOES": 1
+      }
+    },
+    "2022_2025": {
+      "scheduled_months": 48,
+      "eligible_months": 48,
+      "complete_months": 30,
+      "factor_cells": 2767,
+      "scored_cells": 2744,
+      "coverage": 0.9916877484640405,
+      "unscored_selected_cells": 9,
+      "unscored_other_cells": 14,
+      "available_case_mean_ic": -0.03025212154847683,
+      "complete_case_mean_monthly_spread": -0.0013557996123135638,
+      "complete_case_mean_monthly_quintile_price_return": 0.005613851650600112,
+      "diagnostic_36bp_haircut": 0.0020138516506001125,
+      "diagnostic_72bp_haircut": -0.0015861483493998874,
+      "missing_reasons": {
+        "INSTRUMENT_IDENTITY_BREAK_OR_MISSING": 13,
+        "MISSING_EXECUTION_ENDPOINT": 13,
+        "UNMODELLED_INCORPORACAO": 1,
+        "UNRESOLVED_OVERNIGHT_GT_30PCT": 3,
+        "UNMODELLED_SUBSCRICAO": 7,
+        "UNMODELLED_CIS_RED_CAP": 1
+      }
+    }
+  },
+  "investable_alpha_claim": false,
+  "executable_profit_estimate": null
+}

@@ -1,0 +1,104 @@
+ri-bbas-payments.pdf pages 3
+                                                             DIVIDENDOS / JUROS SOBRE CAPITAL PR�PRIO (JCP)
+
+
+                                    DATA DO                                       DATA DO             VALOR          VALOR BRUTO POR                                   DATA DE
+      EVENTO           PER�ODO      AN�NCIO       DATA-BASE       DATA-EX      PAGAMENTO        APROVADO (R$)        A��O NA DATA DO        VALOR ATUALIZADO        ATUALIZA��O
+                                                                                                                        AN�NCIO (R$)
+
+JCP (complementar)       2T26      12/08/2026     01/09/2026     02/09/2026      11/09/2026      584.910.838,17        0,10245643978           0,10413811686          12/08/2026
+        JCP              2T26      20/05/2025     01/06/2026     02/06/2026      11/06/2026      340.717.500,00         0,05968401166
+JCP (complementar)        1T26     13/05/2026     01/06/2026     02/06/2026      11/06/2026      465.702.640,04        0,08157785203
+        JCP               1T26     19/02/2026     02/03/2026     03/03/2026      11/03/2026      400.396.500,00         0,07014190105
+JCP (complementar)       4T25      11/02/2026     23/02/2026     24/02/2026     05/03/2026      1.234.746.707,80        0,21630429188          0,21978938776          11/02/2026
+        JCP              4T25      19/11/2025     02/12/2025     03/12/2025      12/12/2025      261.630.000,00        0,04583263233
+        JCP              3T25      12/11/2025     01/12/2025     02/12/2025      11/12/2025      410.587.269,98         0,07192713139
+        JCP              2T25      21/05/2025     02/06/2025     03/06/2025     12/06/2024       516.306.000,00        0,09044686629
+JCP (complementar)        1T25     15/05/2025     02/06/2025     03/06/2025     12/06/2025      1.908.077.362,00       0,33425840109
+        JCP               1T25     26/02/2025     11/03/2025     12/03/2025     21/03/2025       852.492.000,00        0,14935148468
+     Dividendos          4T24      19/02/2025     11/03/2025     12/03/2025     20/0
+ri-engi-payments.xlsx ESA - Holding rows 62
+{'row': 1, 'values': ['ENERGISA S.A. � Hist�rico de Pagamento de Dividendos', None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]}
+{'row': 2, 'values': ['Exerc�cio', 'Ato Societ�rio', 'Descri��o', 'Data de\nAprova��o', 'Data\nRecord', 'Data\nEx-Dividendos', 'Data de\nPagamento', 'Por A��o\nOrdin�ria (R$)', 'Por A��o\nPreferencial (R$)', 'Por Unit (R$)', 'Montante\n(R$ mil)', None, 'Lucro L�quido\n(R$ mil)', 'Payout', None, 'Yield/\nUnit', 'Pre�o da Unit na data da aprova��o (R$)']}
+{'row': 3, 'values': [2007, 'RCA', 'Intercalares', datetime.datetime(2007, 8, 21, 0, 0), datetime.datetime(2007, 8, 23, 0, 0), datetime.datetime(2007, 8, 24, 0, 0), datetime.datetime(2007, 9, 11, 0, 0), 0.3, 0.33, None, 65064, None, None, None, None, None, None]}
+{'row': 4, 'values': [None, 'RCA', 'Complementar ', datetime.datetime(2008, 3, 12, 0, 0), datetime.datetime(2008, 3, 13, 0, 0), datetime.datetime(2008, 3, 14, 0, 0), datetime.datetime(2008, 3, 24, 0, 0), 0.4, 0.44, None, 88363, None, None, None, None, None, None]}
+{'row': 5, 'values': [None, None, 'Total', None, None, None, None, 0.7, 0.77, None, 153427, None, None, None, None, None, None]}
+{'row': 6, 'values': [2008, 'RCA', 'Intercalares', datetime.datetime(2008, 8, 27, 0, 0), datetime.datetime(2008, 9, 4, 0, 0), datetime.datetime(2008, 9, 5, 0, 0), datetime.datetime(2008, 9, 25, 0, 0), 0.26, 0.286, None, 57436, None, None, None, None, None, None]}
+{'row': 7, 'values': [None, None, 'Total', None, None, None, None, 0.26, 0.286, None, 57436, None, None, None, None, None, None]}
+{'row': 8, 'values': [2009, 'RCA', 'Intercalares', datetime.datetime(2009, 10, 22, 0, 0), datetime.datetime(2009, 10, 22, 0, 0), datetime.datetime(2009, 10, 23, 0, 0), datetime.datetime(2009, 10, 29, 0, 0), 0.08, 0.08, None, 87205, None, None, None, None, None, None]}
+{'row': 9, 'values': [None, 'RCA', 'Complementar ', datetime.datetime(2010, 3, 9, 0, 0), datetime.datetime(2010, 3, 11, 0, 0), datetime.datetime(2010, 3, 12, 0, 0), datetime.datetime(2010, 3, 22, 0, 0), 0.033, 0.033, 0.165, 36152, None, None, None, None, 1.5000000000000002, 11]}
+{'row': 10, 'values': [None, None, 'Total', None, None, None, None, 0.113, 0.113, 0.165, 123357, None, 276855, 44.55653681530043, None, None, None]}
+{'row': 11, 'values': [2010, 'RCA', 'Intercalares', datetime.datetime(2010, 9, 15, 0, 0), datetime.datetime(2010, 9, 17, 0, 0), datetime.datetime(2010, 9, 20, 0, 0), datetime.datetime(2010, 9, 28, 0, 0), 0.056, 0.056, 0.28, 60866, None, None, None, None, 2.8000000000000003, 10]}
+{'row': 12, 'values': [None, 'RCA', 'Complementar ', datetime.datetime(2011, 2, 24, 0, 0), datetime.datetime(2011, 3, 2, 0, 0), datetime.datetime(2011, 3, 3, 0, 0), datetime.datetime(2011, 3, 15, 0, 0), 0.033, 0.033, 0.165, 35573, None, None, None, None, 1.746031746031746, 9.45]}
+{'row': 13, 'values': [None, None, 'Total', None, None, None, None, 0.089, 0.089, 0.44500000000000006, 96439, None, 194648, 49.54533311413423, None, None, None]}
+{'row': 14, 'values': [2011, 'RCA', 'Intercalares', datetime.datetime(2011, 8, 10, 0, 0), datetime.datetime(2011, 8, 19, 0, 0), datetime.datetime(2011, 8, 22, 0, 0), datetime.datetime(2011, 9, 2, 0, 0), 0.056, 0.056, 0.28, 60365, None, None, None, None, 2.8282828282828283, 9.9]}
+{'row': 15, 'values': [None, 'RCA', 'Complementar ', datetime.datetime(2012, 3, 8, 0, 0), datetime.datetime(2012, 3, 21, 0, 0), datetime.datetime(2012, 3, 22, 0, 0), datetime.datetime(2012, 4, 4, 0, 0), 0.04, 0.04, 0.2, 43118, None, None, None, None, 1.7391304347826086, 11.5]}
+{'row': 16, 'values': [None, None, 'Total', None, None, None, None, 0.096, 0.096, 0.48000000000000004, 103483, None, 212054, 48.8003055825403, None, None, None]}
+ri-engi-payments.xlsx Controladas rows 545
+{'row': 1, 'values': ['GRUPO ENERGISA � Hist�rico de Pagamento de Dividendos e JCP � Empresas Controladas', None, None, None, None, None, None, None]}
+{'row': 2, 'values': ['Exerc�cio', 'Empresa', 'Descri��o', 'Data de\nPagamento', 'ON (R$)', 'PN (R$)', 'Units (R$)', 'Montante\n(R$ mil)']}
+{'row': 3, 'values': [2004, 'EBO', 'Dividendos', datetime.datetime(2005, 5, 27, 0, 0), 4.1284, 10.0002, '-', 711]}
+{'row': 4, 'values': [2004, 'EMG', 'Dividendos', datetime.datetime(2005, 5, 27, 0, 0), '-', 0.2092, 0.1255, 16723]}
+{'row': 5, 'values': [2004, 'ENF', 'Dividendos', datetime.datetime(2005, 5, 27, 0, 0), 0.0554906, 0.0554906, '-', 5365]}
+{'row': 6, 'values': [2005, 'EBO', 'Dividendos', datetime.datetime(2006, 6, 23, 0, 0), 2.737121, 11.097836, '-', 1080]}
+{'row': 7, 'values': [2005, 'EMG', 'Dividendos', datetime.datetime(2006, 5, 31, 0, 0), '-', 0.2092, 0.1255, 16723]}
+{'row': 8, 'values': [2005, 'ENF', 'Intercalares', datetime.datetime(2005, 12, 21, 0, 0), 0.144, 0.144, '-', 1392]}
+{'row': 9, 'values': [2005, 'ENF', 'Juros sobre Capital Pr�prio', datetime.datetime(2005, 12, 21, 0, 0), 0.365951, 0.365951, '-', 3539]}
+{'row': 10, 'values': [2005, 'ENF', 'Intercalares', datetime.datetime(2005, 12, 21, 0, 0), 0.0365951, 0.0365951, '-', 3358]}
+{'row': 11, 'values': [2005, 'ENF', 'Complementar', datetime.datetime(2006, 4, 28, 0, 0), 0.066868884, 0.066868884, '-', 6466]}
+{'row': 12, 'values': [2005, 'EPB', 'Dividendos', datetime.datetime(2006, 5, 31, 0, 0), 0.022010591, 0.0248085, 0.0248085, 16406]}
+{'row': 13, 'values': [2005, 'ESE', 'Dividendos', datetime.datetime(2006, 5, 31, 0, 0), 120.3912, 637.24, '-', 14608]}
+{'row': 14, 'values': [2006, 'EBO', 'Intercalares', datetime.datetime(2007, 2, 12, 0, 0), 52.20654601, 13.03359005, '-', 11649]}
+{'row': 15, 'values': [2006, 'EMG', 'Intercalares', datetime.datetime(2007, 1, 10, 0, 0), 0.09, 0.09, 0.09, 15730]}
+{'row': 16, 'values': [2006, 'EMG', 'Intercalares', datetime.datetime(2007, 2, 16, 0, 0), 0.1192, 0.1192, 0.1192, 20833]}
+ri-engi-payments.xlsx Rela��o de Empresas rows 96
+{'row': 1, 'values': ['GRUPO ENERGISA � Rela��o de Empresas', None]}
+{'row': 2, 'values': ['Sigla', 'Raz�o Social']}
+{'row': 3, 'values': ['EMR', 'Energisa Minas Rio - Distribuidora de Energia SA']}
+{'row': 4, 'values': ['ESA', 'Energisa SA']}
+{'row': 5, 'values': ['ENF', 'Energisa Nova Friburgo - Distribuidora de Energia SA']}
+{'row': 6, 'values': ['ESE', 'Energisa Sergipe - Distribuidora de Energia SA']}
+{'row': 7, 'values': ['EBO', 'Energisa Borborema - Distribuidora de Energia SA']}
+{'row': 8, 'values': ['EPB', 'Energisa Para�ba - Distribuidora de Energia SA']}
+{'row': 9, 'values': ['REDE ENERGIA', 'Rede Energia Participa��es SA']}
+{'row': 10, 'values': ['DENERGE', 'Denerge Desenvolvimento Energ�tico SA']}
+{'row': 11, 'values': ['ETO', 'Energisa Tocantins - Distribuidora de Energia SA']}
+{'row': 12, 'values': ['EMT', 'Energisa Mato Grosso - Distribuidora de Energia SA']}
+{'row': 13, 'values': ['EMS', 'Energisa Mato Grosso Do Sul - Distribuidora de Energia SA']}
+{'row': 14, 'values': ['ESS', 'Energisa Sul-Sudeste - Distribuidora de Energia SA']}
+{'row': 15, 'values': ['ETE', 'Energisa Transmiss�o de Energia SA ']}
+{'row': 16, 'values': ['ES_GAS', 'COMPANHIA DE G�S DO ESP�RITO SANTO � ES G�S']}
+ri-abev-payments.xlsx Cia de Bebidas rows 70
+{'row': 2, 'values': ['HIST�RICO DOS RENDIMENTOS PAGOS PELA AMBEV (CIA DE BEBIDAS)', None, None, None, None, None, None, None, None, None, None, None]}
+{'row': 4, 'values': ['DATA', 'DATA', 'VLR POR A��O (L�Q)', None, 'MONTANTE', None, 'FORMA DE', None, None, None, None, None]}
+{'row': 5, 'values': ['APROVA��O', 'PAGAMENTO', 'ORD', 'PREF', 'BRUTO', 'L�QUIDO', 'DISTRIBUI��O', None, None, None, None, None]}
+{'row': 7, 'values': [datetime.datetime(2000, 1, 17, 0, 0), datetime.datetime(2000, 3, 23, 0, 0), 0.0093929, 0.0093929, 19729054.97, 19729054.97, 'REDU��O DE CAPITAL', None, None, None, None, None]}
+{'row': 8, 'values': [datetime.datetime(2000, 9, 22, 0, 0), datetime.datetime(2000, 11, 30, 0, 0), 0.011917, 0.011917, 92109068.5, 92109068.5, 'REDU��O DE CAPITAL', None, None, None, None, None]}
+{'row': 9, 'values': [datetime.datetime(2000, 12, 13, 0, 0), datetime.datetime(2001, 2, 20, 0, 0), 0.00374, 0.004114, 180017442.18, 153014825.85, 'JUROS S/ CAP PR�RPIO', None, None, None, None, None]}
+{'row': 10, 'values': [datetime.datetime(2001, 8, 8, 0, 0), datetime.datetime(2001, 9, 17, 0, 0), 0.0028305, 0.0031136, 136683447.63, 116180930.49, 'JUROS S/ CAP PR�RPIO', None, None, None, None, None]}
+{'row': 11, 'values': [datetime.datetime(2001, 12, 20, 0, 0), datetime.datetime(2002, 2, 19, 0, 0), 0.003077, 0.0033847, 147925427.98, 125736613.78, 'JUROS S/ CAP PR�RPIO', None, None, None, None, None]}
+{'row': 12, 'values': [datetime.datetime(2001, 12, 20, 0, 0), datetime.datetime(2002, 2, 19, 0, 0), 0.0012725, 0.0013998, 52000000, 52000000, 'DIVIDENDOS', None, None, None, None, None]}
+{'row': 13, 'values': [datetime.datetime(2002, 9, 26, 0, 0), datetime.datetime(2002, 11, 25, 0, 0), 0.00397, 0.004367, 160955937.7, 160955937.7, 'DIVIDENDOS', None, None, None, None, None]}
+{'row': 14, 'values': [datetime.datetime(2003, 2, 6, 0, 0), datetime.datetime(2003, 2, 28, 0, 0), 0.00843, 0.009273, 341042189.93, 341042189.93, 'DIVIDENDOS', None, None, None, None, None]}
+{'row': 15, 'values': [datetime.datetime(2003, 9, 2, 0, 0), datetime.datetime(2003, 10, 13, 0, 0), 0.0047, 0.00517, 222594391.21, 189205232.53, 'JUROS S/ CAP PR�RPIO', None, None, None, None, None]}
+{'row': 16, 'values': [datetime.datetime(2003, 9, 2, 0, 0), datetime.datetime(2003, 10, 13, 0, 0), 0.0123, 0.01353, 495154119.17, 495154119.17, 'DIVIDENDOS', None, None, None, None, None]}
+{'row': 17, 'values': [datetime.datetime(2004, 2, 27, 0, 0), datetime.datetime(2004, 3, 25, 0, 0), 0.00478, 0.005258, 225450773.84, 191633157.76, 'JUROS S/ CAP PR�RPIO', None, None, None, None, None]}
+{'row': 18, 'values': [datetime.datetime(2004, 2, 27, 0, 0), datetime.datetime(2004, 3, 25, 0, 0), 0.00136, 0.001496, 54523241.54, 54523241.54, 'DIVIDENDOS', None, None, None, None, None]}
+{'row': 19, 'values': [datetime.datetime(2004, 9, 14, 0, 0), datetime.datetime(2004, 10, 8, 0, 0), 0.0034255, 0.0037681, 235257446.76, 199968829.75, 'JUROS S/ CAP PR�RPIO', None, None, None, None, None]}
+ri-abev-payments.xlsx Ambev S.A. rows 42
+{'row': 2, 'values': ['HIST�RICO DOS RENDIMENTOS PAGOS PELA AMBEV S.A.', None, None, None, None, None, None, None, None, None, None, None]}
+{'row': 4, 'values': ['DATA', 'DATA', 'VLR POR A��O ORD', None, 'MONTANTE', None, 'FORMA DE', None, None, None, None, None]}
+{'row': 5, 'values': ['APROVA��O', 'PAGAMENTO', 'BRUTO', 'L�QUIDO', 'BRUTO', 'L�QUIDO', 'DISTRIBUI��O', None, None, None, None, None]}
+{'row': 7, 'values': [datetime.datetime(2014, 1, 6, 0, 0), datetime.datetime(2014, 1, 23, 0, 0), 0.154, 0.1309, 2412164522.31, 2107579293.54, 'JUROS S/ CAP PR�PRIO', None, None, None, None, None]}
+{'row': 8, 'values': [datetime.datetime(2014, 1, 6, 0, 0), datetime.datetime(2014, 1, 23, 0, 0), 0.1, 0.1, 1566340598.9, 1566340598.9, 'DIVIDENDOS', None, None, None, None, None]}
+{'row': 9, 'values': [datetime.datetime(2014, 3, 25, 0, 0), datetime.datetime(2014, 4, 25, 0, 0), 0.13, 0.13, 2036573489.8600001, 2036573489.8600001, 'DIVIDENDOS', None, None, None, None, None]}
+{'row': 10, 'values': [datetime.datetime(2014, 7, 14, 0, 0), datetime.datetime(2014, 8, 28, 0, 0), 0.1, 0.085, 1569242027, 1371616884.58, 'JUROS S/ CAP PR�PRIO', None, None, None, None, None]}
+{'row': 11, 'values': [datetime.datetime(2014, 7, 14, 0, 0), datetime.datetime(2014, 8, 28, 0, 0), 0.06, 0.06, 941545216.1999999, 941545216.1999999, 'DIVIDENDOS', None, None, None, None, None]}
+{'row': 12, 'values': [datetime.datetime(2014, 10, 15, 0, 0), datetime.datetime(2014, 11, 13, 0, 0), 0.22, 0.22, 3454030456.36, 3454030456.36, 'DIVIDENDOS', None, None, None, None, None]}
+{'row': 13, 'values': [datetime.datetime(2014, 12, 22, 0, 0), datetime.datetime(2015, 1, 14, 0, 0), 0.13, 0.1105, 2042586238.55, 1778633970.34, 'JUROS S/ CAP PR�PRIO', None, None, None, None, None]}
+{'row': 14, 'values': [datetime.datetime(2014, 12, 31, 0, 0), datetime.datetime(2015, 1, 30, 0, 0), 0.096, 0.0816, 1508371376.16, 1313390833.17, 'JUROS S/ CAP PR�PRIO', None, None, None, None, None]}
+{'row': 15, 'values': [datetime.datetime(2015, 2, 23, 0, 0), datetime.datetime(2015, 3, 31, 0, 0), 0.09, 0.0765, 1414448428.77, 1231368896.45, 'JUROS S/ CAP PR�PRIO', None, None, None, None, None]}
+{'row': 16, 'values': [datetime.datetime(2015, 5, 13, 0, 0), datetime.datetime(2015, 6, 29, 0, 0), 0.1, 0.085, 1570550571.4, 1367207404.02, 'JUROS S/ CAP PR�PRIO', None, None, None, None, None]}
+{'row': 17, 'values': [datetime.datetime(2015, 8, 28, 0, 0), datetime.datetime(2015, 9, 28, 0, 0), 0.15, 0.15, 2352437898.75, 2352437898.75, 'DIVIDENDOS', None, None, None, None, None]}
+{'row': 18, 'values': [datetime.datetime(2015, 12, 1, 0, 0), datetime.datetime(2015, 12, 30, 0, 0), 0.15, 0.1275, 2352754159.2, 2047823208.0099998, 'JUROS S/ CAP PR�PRIO', None, None, None, None, None]}
+{'row': 19, 'values': [datetime.datetime(2016, 1, 15, 0, 0), datetime.datetime(2016, 2, 29, 0, 0), 0.13, 0.1105, 2039170956.94, 1774556781.6200001, 'JUROS S/ CAP PR�PRIO', None, None, None, None, None]}
