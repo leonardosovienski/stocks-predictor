@@ -97,7 +97,8 @@ def execute_rebalance(book, plan, execution_quotes, cost_rate, *, order_units_re
     identities = {}
     for ticker, isin, tax_class, lot in plan.identities:
         q = execution_quotes[ticker]
-        if q.get("date") != plan.entry_date or q.get("isin") != isin:
+        if (q.get("date") != plan.entry_date or q.get("isin") != isin
+                or q.get("lot", lot) != lot):
             raise ValueError("execution identity or date mismatch, including retained positions")
         identities[ticker] = {"isin": isin, "tax_class": tax_class, "lot": lot}
     staged = deepcopy(book)

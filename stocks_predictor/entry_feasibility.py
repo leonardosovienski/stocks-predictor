@@ -1,5 +1,8 @@
 """Independent empty-book entry simulation shared by registered diagnostics."""
 from decimal import Decimal
+import hashlib
+
+from stocks_predictor.continuous_research import read
 
 from stocks_predictor.retail_cash import RetailBook, integer_targets, iso
 
@@ -62,4 +65,25 @@ def entry_case(capital, cost, plan, quotes, settlement, action_requirements, uni
             'settled_residual_cash_brl': book.cash,
             'unfilled_shares': {t: q-amounts.get(t, 0) for t, q in targets.items() if q != amounts.get(t, 0)},
             'orders': trades}
+
+
+
+def load_unit_reviews(path):
+    """Source review supplies units only, never entitlements or H19 approval."""
+    if path is None:
+        return []
+    rows = read(path)
+    if not rows or len({r['event_id'] for r in rows}) != len(rows):
+        raise ValueError('nonempty unique entry-unit reviews required')
+    for row in rows:
+        if row.get('source_review') is not True or not row.get('sources'):
+            raise ValueError('reviewed entry-unit sources required')
+        for source in row['sources']:
+            raw = (path.parent / source['file']).resolve()
+            if not raw.is_relative_to(path.parent.resolve()):
+                raise ValueError('entry-unit source outside its bundle')
+            if hashlib.sha256(raw.read_bytes()).hexdigest() != source['sha256']:
+                raise ValueError('entry-unit source checksum mismatch')
+        row['sources_verified'] = True
+    return rows
 

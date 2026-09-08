@@ -12,6 +12,7 @@ from stocks_predictor.continuous_research import inspect_inputs, load_quotes, re
 from stocks_predictor.value_profitability import ARMS, accounting_index, prepare_snapshot, rank_snapshot, select_members
 
 PROTOCOL_SHA256 = "521a2cf4d3a5210df9e4c4f9336ec3a9e43b5d96ccb35427820fcf75b9a7e04e"
+ENTRY_ADDENDUM_SHA256 = "717b84e606f11e91de63c83849e1ee9e38a8c7f700571a20207eafcc47e8d0d7"
 
 
 def sha256(path):
@@ -77,7 +78,7 @@ def signal_diagnostics(features, accounting):
     return periods
 
 
-def entry_diagnostics(periods, index, quotes, requirements, spec):
+def entry_diagnostics(periods, index, quotes, requirements, spec, unit_reviews=()):
     # Reuse the same primary quote/lot/settlement machinery as H19's cost-only tool.
     # Import lazily to keep pure signal inspection independent of execution.
     from stocks_predictor.entry_feasibility import entry_case
@@ -102,20 +103,34 @@ def entry_diagnostics(periods, index, quotes, requirements, spec):
                     members = [{"ticker": m["ticker"], "isin": m["isin"], "lot": 100,
                                 "tax_class": "equity"} for m in selected["fresh_entry_members"]]
                     plan = {"asof": asof, "entry": entry, "members": members}
-                    case = entry_case(capital, cost, plan, quotes, index["settlements"][entry], requirements)
+                    case = entry_case(capital, cost, plan, quotes, index["settlements"][entry],
+                                      requirements, unit_reviews)
                     entries.append({**case, "arm": arm, "incumbent_basis": "independent empty book",
                                     "source_certification": "entry feasibility only; incomplete event inventory"})
     return entries
 
 
-def run(features_path, accounting_path, source_dir, execution_dir, protocol_path):
+def run(features_path, accounting_path, source_dir, execution_dir, protocol_path, entry_unit_review=None):
     spec, features, accounting = verify_sources(protocol_path, features_path, accounting_path,
                                                 source_dir, execution_dir)
     _, index, _, _, _, gate, files = inspect_inputs(execution_dir)
     quotes, quote_count = load_quotes(execution_dir, index)
     periods = signal_diagnostics(features, accounting)
     evidence = read(execution_dir / "evidence.json")
-    entries = entry_diagnostics(periods, index, quotes, evidence["required_actions"], spec)
+    unit_reviews = []
+    extra = {}
+    if entry_unit_review is not None:
+        from stocks_predictor.entry_feasibility import load_unit_reviews
+        addendum_path = protocol_path.with_name("2026-09-08-h20-entry-source-addendum.json")
+        if sha256(addendum_path) != ENTRY_ADDENDUM_SHA256:
+            raise ValueError("registered entry source addendum changed")
+        addendum = read(addendum_path)
+        if sha256(entry_unit_review) != addendum["review_sha256"]:
+            raise ValueError("registered entry unit review changed")
+        unit_reviews = load_unit_reviews(entry_unit_review)
+        extra = {"entry_source_addendum_sha256": ENTRY_ADDENDUM_SHA256,
+                 "entry_unit_review_sha256": addendum["review_sha256"]}
+    entries = entry_diagnostics(periods, index, quotes, evidence["required_actions"], spec, unit_reviews)
     summaries = {}
     for arm in ARMS:
         rows = [p["arms"][arm] for p in periods]
@@ -126,7 +141,7 @@ def run(features_path, accounting_path, source_dir, execution_dir, protocol_path
             "planned_removals": sum(len(r["planned_removals"] or []) for r in rows),
             "entry_status_counts": dict(Counter(r["status"] for r in cases)),
             "actual_continuous_turnover": None, "profit": None}
-    return {"status": "COMPLETE_H20_SIGNAL_AND_FEASIBILITY_DIAGNOSTIC_NOT_RETURN_EVIDENCE",
+    return {**extra, "status": "COMPLETE_H20_SIGNAL_AND_FEASIBILITY_DIAGNOSTIC_NOT_RETURN_EVIDENCE",
         "protocol_id": spec["protocol_id"], "protocol_sha256": PROTOCOL_SHA256,
         "registered_inputs": spec["inputs"], "accounting_archives_verified": len(accounting["archive_sha256"]),
         "execution_input_files_verified": files, "execution_quote_records_validated": quote_count,
@@ -150,10 +165,12 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ("features", "accounting", "source-dir", "execution-inputs", "protocol", "output"):
         parser.add_argument("--" + name, type=Path, required=True)
+    parser.add_argument("--entry-unit-review", type=Path)
     args = parser.parse_args(argv)
     if args.output.exists():
         parser.error("observations are append-only; output already exists")
-    result = run(args.features, args.accounting, args.source_dir, args.execution_inputs, args.protocol)
+    result = run(args.features, args.accounting, args.source_dir, args.execution_inputs,
+                 args.protocol, args.entry_unit_review)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with args.output.open("x", encoding="utf-8") as stream:
         json.dump(result, stream, ensure_ascii=False, indent=2, default=str)

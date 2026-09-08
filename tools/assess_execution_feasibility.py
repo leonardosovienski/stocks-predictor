@@ -11,7 +11,7 @@ import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from stocks_predictor.continuous_research import inspect_inputs, load_quotes, read  # noqa: E402
-from stocks_predictor.entry_feasibility import entry_case  # noqa: E402
+from stocks_predictor.entry_feasibility import entry_case, load_unit_reviews  # noqa: E402
 from stocks_predictor.retail_cash import number  # noqa: E402
 
 
@@ -78,26 +78,6 @@ def workload(evidence, cash):
                                                  if r.get('payment_date') and not r.get('available_on')],
             'corporate_requirements': len(evidence['required_actions']),
             'corporate_requirements_by_kind': dict(Counter(r['kind'] for r in evidence['required_actions']))}
-
-
-def load_unit_reviews(path):
-    """Source review supplies units only, never entitlements or H19 approval."""
-    if path is None:
-        return []
-    rows = read(path)
-    if not rows or len({r['event_id'] for r in rows}) != len(rows):
-        raise ValueError('nonempty unique entry-unit reviews required')
-    for row in rows:
-        if row.get('source_review') is not True or not row.get('sources'):
-            raise ValueError('reviewed entry-unit sources required')
-        for source in row['sources']:
-            raw = (path.parent / source['file']).resolve()
-            if not raw.is_relative_to(path.parent.resolve()):
-                raise ValueError('entry-unit source outside its bundle')
-            if hashlib.sha256(raw.read_bytes()).hexdigest() != source['sha256']:
-                raise ValueError('entry-unit source checksum mismatch')
-        row['sources_verified'] = True
-    return rows
 
 
 def assess(inputs, protocol_path, unit_review_path=None):
