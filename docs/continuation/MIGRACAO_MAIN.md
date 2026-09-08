@@ -6,6 +6,13 @@ somente em `origin/main` (até a6300a4) e os helpers ainda fora do Git.
 As duas contribuições ao HANDOFF foram preservadas. Os seis arquivos locais
 de dados não rastreados permanecem no checkout e também no arquivo de dados.
 
+Revisão posterior das branches: somente **main** existe como branch local.
+As duas alternativas locais e as 23 referências de acompanhamento já estavam
+integralmente no histórico da main e foram removidas. O fetch acompanha somente
+main. A pasta antiga de pesquisa continua intacta, em HEAD destacado no 68ce89d.
+As branches no servidor GitHub não foram alteradas, respeitando o pedido de não
+enviar mudanças. A prova está em BRANCH_REVIEW_20260908.json.
+
 Validação concluída: **777 testes**, Ruff e Pyright aprovados. O ZIP tem
 5.355.806.582 bytes (5,36 GB), com 18.583 objetos e 60.023 caminhos de dados.
 Todos os hashes e CRCs foram conferidos; 25 bancos restaurados passaram no

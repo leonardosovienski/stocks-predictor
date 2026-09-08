@@ -1,3 +1,20 @@
+## Branch única local — revisão e limpeza (08/09/2026)
+
+Pedido do operador: revisar as outras branches, aproveitar o que faltasse e
+manter somente main. Foram comparadas as duas branches locais alternativas
+e as 23 alternativas do GitHub, após atualizar as referências. Todas são
+ancestrais da main 2675e9e; nenhum commit estava ausente, portanto nenhuma
+alteração de aplicação ou experimento precisou ser repetido.
+
+As duas branches locais e as 23 referências locais de acompanhamento foram
+removidas. O fetch de origin acompanha apenas main. A pasta de pesquisa foi
+preservada em HEAD destacado no mesmo 68ce89d, sem mudar código nem dados.
+O GitHub permanece inalterado conforme a orientação de não enviar mudanças.
+Inventário e prova por referência: docs/continuation/BRANCH_REVIEW_20260908.json.
+Backup anterior à limpeza: outputs/REVISAO_BRANCHES_20260908/ANTES_DA_LIMPEZA.bundle
+na pasta do chat. A suíte anterior de 777 testes continua aplicável; esta etapa
+altera somente referências Git e documentação, com verificação de integridade Git.
+
 ## Integração local na main e migração separada (08/09/2026)
 
 Pedido explícito do operador: comitar todo o código na main, sem push ao GitHub,
