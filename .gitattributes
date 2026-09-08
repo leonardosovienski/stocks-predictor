@@ -21,3 +21,4 @@ docs/continuation/*.json -text !eol
 # New continuation protocol and reports retain their exact reproducible bytes.
 docs/research/2026-09-08-feasibility-protocol.json -text !eol
 research/session-20260908/** -text !eol
+docs/research/2026-09-08-similar-models.md -text !eol

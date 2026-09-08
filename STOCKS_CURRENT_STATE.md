@@ -1,5 +1,11 @@
 # Estado vigente — continuidade de 08/09/2026 UTC
 
+Revisão adicional de 17 fontes sobre modelos semelhantes concluída:
+[mecanismos, resultados externos e prioridades](docs/research/2026-09-08-similar-models.md).
+Revisão documental, sem novo sinal, backtest ou mudança de veredito. Priorizar
+custo de manutenção e execução, depois viabilidade de valor com rentabilidade;
+PEAD condicionado a fontes e ML adiado. Histórico externo não valida a H19.
+
 **H19 permanece Discovery/inconclusiva; NO_GO operacional. Pausar a reconstrução
 manual extensa até existir uma rota barata de fontes e manutenção.**
 

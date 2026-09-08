@@ -1,0 +1,243 @@
+{
+  "review_id": "STOCKS_SIMILAR_MODELS_SOURCE_REVIEW_20260908",
+  "scope": "external source review only; equity selection and feasibility for BRL 5000-10000",
+  "report_sha256": "64b6cf9899b1c972acea792a0d67db7b2d0b36e5279b51c14ca090bd0a0f7f2a",
+  "sources": [
+    {
+      "id": "AVUV",
+      "title": "Avantis U.S. Small Cap Value ETF — factsheet 2026-06-30",
+      "url": "https://res.avantisinvestors.com/docs/avantis-us-small-cap-value-avuv-etf-fact-sheet.pdf",
+      "evidence_type": "fund_report",
+      "reviewed_via": "web tool: available excerpts and relevant sections; not independent replication",
+      "access_date_utc": "2026-09-08",
+      "access_date_brazil": "2026-09-07",
+      "raw_snapshot": {
+        "path": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\similar-models-20260908\\sources\\avuv.pdf",
+        "bytes": 177271,
+        "sha256": "17acf8426fa117a48ecd0c26faf6b3971edbeb9943f574994b233f09ae323951",
+        "final_url": "https://res.avantisinvestors.com/docs/avantis-us-small-cap-value-avuv-etf-fact-sheet.pdf",
+        "fetched_at_utc": "2026-09-08T01:50:45.298325+00:00",
+        "note": "Independent HTTP preservation; not a second extraction or reproduction of provider results."
+      }
+    },
+    {
+      "id": "DIMENSIONAL",
+      "title": "All Day, Every Day, Multifactor All the Way — 2022-09-21",
+      "url": "https://www.dimensional.com/dk-en/insights/all-day-every-day-multifactor-all-the-way",
+      "evidence_type": "manager_methodology_and_conditional_live_analysis",
+      "reviewed_via": "web tool: available excerpts and relevant sections; not independent replication",
+      "access_date_utc": "2026-09-08",
+      "access_date_brazil": "2026-09-07",
+      "raw_snapshot": null
+    },
+    {
+      "id": "AQR_VALUE_MOMENTUM",
+      "title": "Value and Momentum Everywhere — 2013",
+      "url": "https://www.aqr.com/Insights/Research/Journal-Article/Value-and-Momentum-Everywhere?aqrPDF=1",
+      "evidence_type": "academic_historical",
+      "reviewed_via": "web tool: available excerpts and relevant sections; not independent replication",
+      "access_date_utc": "2026-09-08",
+      "access_date_brazil": "2026-09-07",
+      "raw_snapshot": null
+    },
+    {
+      "id": "AQR_COSTS",
+      "title": "Trading Costs of Asset Pricing Anomalies — 2012",
+      "url": "https://www.aqr.com/Insights/Research/Working-Paper/Trading-Costs-of-Asset-Pricing-Anomalies",
+      "evidence_type": "live_trades_calibrating_simulated_costs",
+      "reviewed_via": "web tool: available excerpts and relevant sections; not independent replication",
+      "access_date_utc": "2026-09-08",
+      "access_date_brazil": "2026-09-07",
+      "raw_snapshot": {
+        "path": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\similar-models-20260908\\sources\\aqr_costs.html",
+        "bytes": 69336,
+        "sha256": "e1374521591fc2335823a6a11058bf06ef736520ffca0ec43d8087f0bcb9a006",
+        "final_url": "https://www.aqr.com/Insights/Research/Working-Paper/Trading-Costs-of-Asset-Pricing-Anomalies",
+        "fetched_at_utc": "2026-09-08T01:50:46.478558+00:00",
+        "note": "Independent HTTP preservation; not a second extraction or reproduction of provider results."
+      }
+    },
+    {
+      "id": "PEAD_ATTENTION",
+      "title": "Driven to Distraction — 2009",
+      "url": "https://bpb-us-e2.wpmucdn.com/sites.uci.edu/dist/c/362/files/2020/07/Driven-to-Distraction-Extraneous-Events-and-Underreaction-to-Earnings-News.pdf",
+      "evidence_type": "academic_historical",
+      "reviewed_via": "web tool: available excerpts and relevant sections; not independent replication",
+      "access_date_utc": "2026-09-08",
+      "access_date_brazil": "2026-09-07",
+      "raw_snapshot": null
+    },
+    {
+      "id": "PEAD_COSTS",
+      "title": "Implications of Transaction Costs for the Post-Earnings Announcement Drift — 2008",
+      "url": "https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1475-679X.2008.00290.x",
+      "evidence_type": "publisher_abstract_reviewed_full_access_limited",
+      "reviewed_via": "web tool: available excerpts and relevant sections; not independent replication",
+      "access_date_utc": "2026-09-08",
+      "access_date_brazil": "2026-09-07",
+      "raw_snapshot": null
+    },
+    {
+      "id": "PEAD_RECENT",
+      "title": "Warp speed price moves — version 2026-01-15",
+      "url": "https://arxiv.org/abs/2601.08962v2",
+      "evidence_type": "author_paper_abstract_reviewed",
+      "reviewed_via": "web tool: available excerpts and relevant sections; not independent replication",
+      "access_date_utc": "2026-09-08",
+      "access_date_brazil": "2026-09-07",
+      "raw_snapshot": null
+    },
+    {
+      "id": "ML_PAPER",
+      "title": "Empirical Asset Pricing via Machine Learning — RFS 2020",
+      "url": "https://dachxiu.chicagobooth.edu/download/ML.pdf",
+      "evidence_type": "academic_historical_temporal_split",
+      "reviewed_via": "web tool: available excerpts and relevant sections; not independent replication",
+      "access_date_utc": "2026-09-08",
+      "access_date_brazil": "2026-09-07",
+      "raw_snapshot": {
+        "path": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\similar-models-20260908\\sources\\ml_paper.pdf",
+        "bytes": 1146229,
+        "sha256": "05e4ef8a1c830c9f33a0f461f07c145f6e6be30fbd7996a09d0672de1413bd61",
+        "final_url": "https://dachxiu.chicagobooth.edu/download/ML.pdf",
+        "fetched_at_utc": "2026-09-08T01:50:47.625102+00:00",
+        "note": "Independent HTTP preservation; not a second extraction or reproduction of provider results."
+      }
+    },
+    {
+      "id": "ML_NBER",
+      "title": "Empirical Asset Pricing via Machine Learning — NBER",
+      "url": "https://www.nber.org/papers/w25398",
+      "evidence_type": "academic_abstract_and_disclosures",
+      "reviewed_via": "web tool: available excerpts and relevant sections; not independent replication",
+      "access_date_utc": "2026-09-08",
+      "access_date_brazil": "2026-09-07",
+      "raw_snapshot": null
+    },
+    {
+      "id": "SA_FEATURES",
+      "title": "Seeking Alpha Premium: List of Features",
+      "url": "https://help.seekingalpha.com/premium/seeking-alpha-premium-feature-list",
+      "evidence_type": "provider_features",
+      "reviewed_via": "web tool: available excerpts and relevant sections; not independent replication",
+      "access_date_utc": "2026-09-08",
+      "access_date_brazil": "2026-09-07",
+      "raw_snapshot": null
+    },
+    {
+      "id": "SA_BACKTEST",
+      "title": "Have Seeking Alpha's Quant Ratings Been Backtested?",
+      "url": "https://help.seekingalpha.com/premium/have-seeking-alphas-quant-ratings-been-back-tested",
+      "evidence_type": "provider_backtest_disclosure",
+      "reviewed_via": "web tool: available excerpts and relevant sections; not independent replication",
+      "access_date_utc": "2026-09-08",
+      "access_date_brazil": "2026-09-07",
+      "raw_snapshot": null
+    },
+    {
+      "id": "SA_SUBSCRIPTIONS",
+      "title": "Seeking Alpha Subscriptions - Cancellation and Refund Policy",
+      "url": "https://help.seekingalpha.com/basic/seeking-alpha-subscriptions-cancellation-and-refund-policy",
+      "evidence_type": "provider_business_model",
+      "reviewed_via": "web tool: available excerpts and relevant sections; not independent replication",
+      "access_date_utc": "2026-09-08",
+      "access_date_brazil": "2026-09-07",
+      "raw_snapshot": null
+    },
+    {
+      "id": "DANELFIN_MODEL",
+      "title": "How Danelfin Works",
+      "url": "https://danelfin.com/how-it-works",
+      "evidence_type": "provider_model_and_backtest_disclosure",
+      "reviewed_via": "web tool: available excerpts and relevant sections; not independent replication",
+      "access_date_utc": "2026-09-08",
+      "access_date_brazil": "2026-09-07",
+      "raw_snapshot": null
+    },
+    {
+      "id": "DANELFIN_PRICING",
+      "title": "Danelfin monthly pricing",
+      "url": "https://danelfin.com/pricing/monthly",
+      "evidence_type": "provider_price_snapshot",
+      "reviewed_via": "web tool: available excerpts and relevant sections; not independent replication",
+      "access_date_utc": "2026-09-08",
+      "access_date_brazil": "2026-09-07",
+      "raw_snapshot": null,
+      "raw_snapshot_error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "id": "DANELFIN_AUDIT",
+      "title": "Does our AI Score Work? — 2026-04-14",
+      "url": "https://blog.danelfin.com/ai-score-audit",
+      "evidence_type": "provider_claim_not_independent_audit",
+      "reviewed_via": "web tool: available excerpts and relevant sections; not independent replication",
+      "access_date_utc": "2026-09-08",
+      "access_date_brazil": "2026-09-07",
+      "raw_snapshot": null
+    },
+    {
+      "id": "NEFIN",
+      "title": "NEFIN methodology",
+      "url": "https://nefin.com.br/resources/NEFIN_methodology.pdf",
+      "evidence_type": "academic_brazil_methodology",
+      "reviewed_via": "web tool: available excerpts and relevant sections; not independent replication",
+      "access_date_utc": "2026-09-08",
+      "access_date_brazil": "2026-09-07",
+      "raw_snapshot": {
+        "path": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\similar-models-20260908\\sources\\nefin.pdf",
+        "bytes": 716196,
+        "sha256": "76fc7b4915c164be2955895132cd550556a1400117678cb7371333e7631ea1d7",
+        "final_url": "https://nefin.com.br/resources/NEFIN_methodology.pdf",
+        "fetched_at_utc": "2026-09-08T01:50:45.385584+00:00",
+        "note": "Independent HTTP preservation; not a second extraction or reproduction of provider results."
+      }
+    },
+    {
+      "id": "SPIVA",
+      "title": "SPIVA Latin America Year-End 2025 — 2026-03-23",
+      "url": "https://www.spglobal.com/spdji/en/spiva/article/spiva-latin-america/",
+      "evidence_type": "index_provider_fund_comparison",
+      "reviewed_via": "web tool: available excerpts and relevant sections; not independent replication",
+      "access_date_utc": "2026-09-08",
+      "access_date_brazil": "2026-09-07",
+      "raw_snapshot": null
+    }
+  ],
+  "exposure": {
+    "new_internal_return_configurations": 0,
+    "new_internal_return_evaluations": 0,
+    "minimum_prior_configurations": 32,
+    "minimum_prior_return_evaluations": 37,
+    "external_performance_observed": [
+      "AVUV reported overlapping horizons ending 2026-06-30",
+      "SPIVA 2025 and decade comparison",
+      "published factor, ML and PEAD findings",
+      "provider marketing performance claims encountered, not treated as audited results"
+    ],
+    "independent_holdout_created": false,
+    "caveat": "External source selection was adaptive and informs research priorities; it is not proof or a preregistered return experiment."
+  },
+  "research_priority": [
+    "cost and maintenance feasibility before marginal rank trades",
+    "point-in-time availability of value plus profitability data",
+    "conditional PEAD source feasibility",
+    "ML deferred"
+  ],
+  "h19_status": "INCONCLUSIVE_NET_PROFIT / OPERATIONAL_NO_GO",
+  "validation": {
+    "arithmetic_checked": true,
+    "runtime_changed": false,
+    "tests_run": false,
+    "reason": "Source review and documentation only; no application behavior changed.",
+    "databases_opened": false,
+    "orders_or_spending": false
+  },
+  "access_limits": [
+    "Seeking Alpha performance detail required JavaScript",
+    "Danelfin audit dashboard not accessible via web reader; vendor announcement reviewed",
+    "Wiley abstract initially accessible, subsequent reopen returned HTTP 403",
+    "NEFIN old /data/risk_factors.html URL returned 404; methodology PDF available",
+    "Search index AVUV snippet was older; report uses opened factsheet dated 2026-06-30",
+    "No independent reconstruction of fund NAV, private model weights, provider profits, or subscriber account returns"
+  ]
+}

@@ -1,3 +1,30 @@
+## Pesquisa de modelos semelhantes (2026-09-08 UTC)
+
+Pedido adicional: pesquisar ideias e modelos semelhantes, por que e como lucram.
+Revisão de 17 fontes primárias: fundos Avantis/Dimensional, estudos AQR de fatores
+e custos, PEAD (incluindo evidência recente contrária), ML de Gu/Kelly/Xiu,
+Seeking Alpha/Danelfin, metodologia NEFIN e SPIVA Brasil. Separados retorno de
+cota, estimativa histórica, alegação comercial e receita de assinatura.
+
+Relatório: docs/research/2026-09-08-similar-models.md. Índice de fontes, limites de
+acesso e script de preservação: research/session-20260908/similar-models. Quatro
+fontes brutas adicionais preservadas em work/similar-models-20260908/sources da
+raiz de pesquisa; download independente da página de preços Danelfin recebeu
+403, embora a leitura web tenha funcionado. Entregas também em
+outputs/similar-models-20260908 da raiz durável.
+
+Prioridades propostas: custo/manutenção de trocas marginais; disponibilidade de
+valor com rentabilidade point-in-time; PEAD condicionado a fontes; ML adiado.
+Não são parâmetros aprovados ou sinais novos. AVUV divulgado não é retorno B3,
+prova causal de alpha ou validação da H19. Seleção externa de fontes foi adaptativa
+e os resultados publicados agora integram a informação já observada.
+
+Nenhuma nova configuração/avaliação interna de retorno: mínimos 32/37 mantidos.
+H19 congelada, INCONCLUSIVE_NET_PROFIT / OPERATIONAL_NO_GO e pausa manual mantidas.
+Contas do relatório verificadas; runtime e bancos não abertos/modificados por
+esta etapa; nenhuma suíte reexecutada por mudança exclusivamente documental.
+Nenhuma ordem, gasto, assinatura, dependência instalada, agente coordenado ou push.
+
 ## Continuidade: viabilidade e contabilidade de frações (2026-09-08 UTC)
 
 Executado protocolo H19_EXECUTION_FEASIBILITY_20260908_1, registrado em 36efca5
