@@ -1,5 +1,14 @@
 # Charter do agente de pesquisa — stocks-predictor
 
+> Integração local na main em 08/09/2026: este charter preserva a análise do
+> remoto anterior à pesquisa deste checkout. Suas contagens (15/16), a frase
+> "H17/H18/H19 não executadas" e a proposta de ligar paper são históricas.
+> O estado vigente está em STOCKS_CURRENT_STATE.md e no início de HANDOFF.md:
+> H1–H20 congeladas, busca administrativa 53/55, lucro null/BLOCKED_MISSING_EVIDENCE.
+> O pedido preservado em docs/continuation/INITIAL_REQUEST.md e as instruções
+> atuais do operador prevalecem; esta integração não autoriza escrever no
+> ledger, abrir pesquisa nova ou executar scripts históricos automaticamente.
+
 **Versão:** 2 (2026-09-07) · **Substitui:** o charter "Autonomous Profit Research
 Agent" apresentado pelo operador em 2026-09-07.
 

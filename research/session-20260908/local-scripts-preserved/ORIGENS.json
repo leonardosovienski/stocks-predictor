@@ -1,0 +1,596 @@
+[
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\acquire_current_credit.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/acquire_current_credit.py",
+    "sha256_original": "f72fc86ddd2ddac03ab175a363d1ed4e53a0cde2a04e3ae20cf3983aa05541f9",
+    "sha256_lf": "f72fc86ddd2ddac03ab175a363d1ed4e53a0cde2a04e3ae20cf3983aa05541f9"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\acquire_deadline_credit_checks.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/acquire_deadline_credit_checks.py",
+    "sha256_original": "c3ae5ae19924ca0e56ef3ed50a36c4b94bc8c600fc595b7aa790792b1eaff786",
+    "sha256_lf": "c3ae5ae19924ca0e56ef3ed50a36c4b94bc8c600fc595b7aa790792b1eaff786"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\acquire_followup13.py",
+    "git_path": "research/session-20260908/source-closure/acquire_followup13.py",
+    "sha256_original": "4fb537e1207cf189df40473e0b7486439de2dd250a4d7c904d32944009d69a63",
+    "sha256_lf": "4fb537e1207cf189df40473e0b7486439de2dd250a4d7c904d32944009d69a63"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\acquire_issuer_originals.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/acquire_issuer_originals.py",
+    "sha256_original": "5b4435141789c02eb3262ba0c1f863899c085a1b6ecbf84fcbd3114ec4891e63",
+    "sha256_lf": "5b4435141789c02eb3262ba0c1f863899c085a1b6ecbf84fcbd3114ec4891e63"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\acquire_issuer_tables.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/acquire_issuer_tables.py",
+    "sha256_original": "dd5a2eb7e79d6bc52d0e4c8eb32728ec88015d8150f1ce49b2e872aca4d176fb",
+    "sha256_lf": "dd5a2eb7e79d6bc52d0e4c8eb32728ec88015d8150f1ce49b2e872aca4d176fb"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\acquire_law_sources.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/acquire_law_sources.py",
+    "sha256_original": "e46061ea0bca987b4a1d99e6d494b6bde5db22144fc97b95fae8afd2d5b91d7b",
+    "sha256_lf": "e46061ea0bca987b4a1d99e6d494b6bde5db22144fc97b95fae8afd2d5b91d7b"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\acquire_overlooked13.py",
+    "git_path": "research/session-20260908/source-closure/acquire_overlooked13.py",
+    "sha256_original": "6903360d9dfa1b820fbf631a74746dccb17ab9fc4a2581346983cc9f0297cb49",
+    "sha256_lf": "6903360d9dfa1b820fbf631a74746dccb17ab9fc4a2581346983cc9f0297cb49"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\acquire_source_closure.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/acquire_source_closure.py",
+    "sha256_original": "c77c3e15e6c10f054ab6d6e5cb03c2fd35cf3443369f38b3975e45e38a3ad8d0",
+    "sha256_lf": "c77c3e15e6c10f054ab6d6e5cb03c2fd35cf3443369f38b3975e45e38a3ad8d0"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\assemble_source_closure.py",
+    "git_path": "research/session-20260908/source-closure/assemble_source_closure13.py",
+    "sha256_original": "9195efc582424c4c6df78ef3e7ab328cf2415e3da5851709df647bfac2ba1806",
+    "sha256_lf": "9195efc582424c4c6df78ef3e7ab328cf2415e3da5851709df647bfac2ba1806"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\audit_vivt_sources.py",
+    "git_path": "research/session-20260908/scripts/audit_vivt_sources.py",
+    "sha256_original": "439bc0bd5dbe6943c6742ca31bad376fec55c98087b8c3b406064cc5821625e7",
+    "sha256_lf": "439bc0bd5dbe6943c6742ca31bad376fec55c98087b8c3b406064cc5821625e7"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\build_cash_review_cards.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/build_cash_review_cards.py",
+    "sha256_original": "29cfd3bc6e6371763db70aab1f26dc88bb9d6b228af9d2c17b13903fc6f58426",
+    "sha256_lf": "29cfd3bc6e6371763db70aab1f26dc88bb9d6b228af9d2c17b13903fc6f58426"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\build_deliverables.py",
+    "git_path": "research/session-20260908/scripts/build_deliverables.py",
+    "sha256_original": "c839c2636e3df74b35085e01c60b5aa49dba01b71882fded772ea632a470c99f",
+    "sha256_lf": "c839c2636e3df74b35085e01c60b5aa49dba01b71882fded772ea632a470c99f"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\build_source_closure10.py",
+    "git_path": "research/session-20260908/source-closure/build_source_closure10.py",
+    "sha256_original": "d785f4207e487260a55cfb7eebc8ad132f44742e0694e5c269ac2780b7a3f5db",
+    "sha256_lf": "d785f4207e487260a55cfb7eebc8ad132f44742e0694e5c269ac2780b7a3f5db"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\build_source_closure11.py",
+    "git_path": "research/session-20260908/source-closure/build_source_closure11.py",
+    "sha256_original": "0e6d7937fb71cc45aa949466a9d7dc9fb8978180b61a7940bcb920a9d55308ff",
+    "sha256_lf": "0e6d7937fb71cc45aa949466a9d7dc9fb8978180b61a7940bcb920a9d55308ff"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\build_source_closure12.py",
+    "git_path": "research/session-20260908/source-closure/build_source_closure12.py",
+    "sha256_original": "b6943a44a280b50b2fa4589d86c69d4b9d15f95ed64f783ce0d00ef911cd130b",
+    "sha256_lf": "b6943a44a280b50b2fa4589d86c69d4b9d15f95ed64f783ce0d00ef911cd130b"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\build_source_closure13.py",
+    "git_path": "research/session-20260908/source-closure/build_source_closure13.py",
+    "sha256_original": "324fed3a2b8bf8ac14fb7b0a5b01dd21c2ee0cd6094eaa0f7fd15ebcfcac4e44",
+    "sha256_lf": "324fed3a2b8bf8ac14fb7b0a5b01dd21c2ee0cd6094eaa0f7fd15ebcfcac4e44"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\build_source_closure2.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/build_source_closure2.py",
+    "sha256_original": "710ce1323b8207268a8335a1f6f1328ee312b3468711ee33096902277c078b7d",
+    "sha256_lf": "710ce1323b8207268a8335a1f6f1328ee312b3468711ee33096902277c078b7d"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\build_source_closure3.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/build_source_closure3.py",
+    "sha256_original": "58184080f7353676f5704641b9893682def8b5b8d29228626bfaeca5312a1d9f",
+    "sha256_lf": "58184080f7353676f5704641b9893682def8b5b8d29228626bfaeca5312a1d9f"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\build_source_closure4.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/build_source_closure4.py",
+    "sha256_original": "ff6962cd2ed3bbf02bfb049d00410d3a3eae41ec66249ff286de2445ceb666ae",
+    "sha256_lf": "ff6962cd2ed3bbf02bfb049d00410d3a3eae41ec66249ff286de2445ceb666ae"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\build_source_closure5.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/build_source_closure5.py",
+    "sha256_original": "7cd9765bbbf4f5d34bcd636f7fa5c013d9310b60efc463b4fd88172f80d81ef2",
+    "sha256_lf": "7cd9765bbbf4f5d34bcd636f7fa5c013d9310b60efc463b4fd88172f80d81ef2"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\build_source_closure6.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/build_source_closure6.py",
+    "sha256_original": "0aaa7b028ed2871ff4dfb11a71f93c974f4ef84003ac2a73129e292d1223d3ed",
+    "sha256_lf": "0aaa7b028ed2871ff4dfb11a71f93c974f4ef84003ac2a73129e292d1223d3ed"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\build_source_closure7.py",
+    "git_path": "research/session-20260908/source-closure/build_source_closure7.py",
+    "sha256_original": "66a2b9f5db8ac30e1903d734f8de6faffd47ce04b25c5c000b0d0ef467ebfd52",
+    "sha256_lf": "66a2b9f5db8ac30e1903d734f8de6faffd47ce04b25c5c000b0d0ef467ebfd52"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\build_source_closure8.py",
+    "git_path": "research/session-20260908/source-closure/build_source_closure8.py",
+    "sha256_original": "78a00e2cf3d5fbfb250d9f0ca7baeda1e598f913112a222df95842e534f3d788",
+    "sha256_lf": "78a00e2cf3d5fbfb250d9f0ca7baeda1e598f913112a222df95842e534f3d788"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\build_source_closure9.py",
+    "git_path": "research/session-20260908/source-closure/build_source_closure9.py",
+    "sha256_original": "e7e767dbaf1cd92dfdd2328f46771fabb14e2f8f7b3c333b848af7d4d2256122",
+    "sha256_lf": "e7e767dbaf1cd92dfdd2328f46771fabb14e2f8f7b3c333b848af7d4d2256122"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\close_first_cash_sources.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/close_first_cash_sources.py",
+    "sha256_original": "bfa3f77a107056828ab3519f183f3b1353eb5ab76a55b4e2910fa17bdf991ef1",
+    "sha256_lf": "bfa3f77a107056828ab3519f183f3b1353eb5ab76a55b4e2910fa17bdf991ef1"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\closure_helpers.py",
+    "git_path": "research/session-20260908/source-closure/closure_helpers.py",
+    "sha256_original": "3f840e621b2c9974c2debd87652565b0aa856c8f238c8ee2cdd468ec07c261c2",
+    "sha256_lf": "3f840e621b2c9974c2debd87652565b0aa856c8f238c8ee2cdd468ec07c261c2"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\compare_h20.py",
+    "git_path": "research/session-20260908/h20-profit-test/compare_h20.py",
+    "sha256_original": "359517909d7d3630d8dadef203cfa5df40ec48c5013d407560806ee341de4cba",
+    "sha256_lf": "359517909d7d3630d8dadef203cfa5df40ec48c5013d407560806ee341de4cba"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\continuation-14\\inspect_local_sources.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/continuation-14/inspect_local_sources.py",
+    "sha256_original": "8436d16c2fe1876d3bff42d3852e986ac87351005db6d249eae836a16bde1fd9",
+    "sha256_lf": "8436d16c2fe1876d3bff42d3852e986ac87351005db6d249eae836a16bde1fd9"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\continuation-14\\package_amendment.ps1",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/continuation-14/package_amendment.ps1",
+    "sha256_original": "a49f33522d68734243b6f2a35757c2f42d6cc4898da63bee7c4d8b87a75a33c6",
+    "sha256_lf": "a49f33522d68734243b6f2a35757c2f42d6cc4898da63bee7c4d8b87a75a33c6"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\continuation-14\\prepare_amendment.ps1",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/continuation-14/prepare_amendment.ps1",
+    "sha256_original": "2952c20154ed5ad9d4b9b55cd2ff9d61cf1b30d33d3d201c31c1fe96758cec89",
+    "sha256_lf": "2952c20154ed5ad9d4b9b55cd2ff9d61cf1b30d33d3d201c31c1fe96758cec89"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\continuation-14\\VALIDAR_REVISAO_14.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/continuation-14/VALIDAR_REVISAO_14.py",
+    "sha256_original": "1bbd08fb71bf3726a2605146d7e13122382cd5d7c8accd114654575096bc2dca",
+    "sha256_lf": "1bbd08fb71bf3726a2605146d7e13122382cd5d7c8accd114654575096bc2dca"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\continue_sources.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/continue_sources.py",
+    "sha256_original": "78b551fc62ef9be96f91eb467331dbc8c7ceedc423e3a6322b64b03316b0a6c1",
+    "sha256_lf": "78b551fc62ef9be96f91eb467331dbc8c7ceedc423e3a6322b64b03316b0a6c1"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\create_source13_fixtures.py",
+    "git_path": "research/session-20260908/source-closure/create_source13_fixtures.py",
+    "sha256_original": "373699f6c19712bef737aa8ca27c379675993faac1fc6709ccb1e71d191ece5c",
+    "sha256_lf": "373699f6c19712bef737aa8ca27c379675993faac1fc6709ccb1e71d191ece5c"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\curated_cash_round2.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/curated_cash_round2.py",
+    "sha256_original": "6af07b9f110198d4c49dad313d19a8979258e856805047bc1b693d933588b740",
+    "sha256_lf": "6af07b9f110198d4c49dad313d19a8979258e856805047bc1b693d933588b740"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\curated_cash_round3.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/curated_cash_round3.py",
+    "sha256_original": "340c4ae1e98dfde4d8d7eaae81ce1e11416af5462354a46044d50e8ea7d726d9",
+    "sha256_lf": "340c4ae1e98dfde4d8d7eaae81ce1e11416af5462354a46044d50e8ea7d726d9"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\curated_cash_round4.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/curated_cash_round4.py",
+    "sha256_original": "b9b2f77fd96b57fca1b2c1ddfd0ac178eba60c3fc431af07fc93519b7a68cf5b",
+    "sha256_lf": "b9b2f77fd96b57fca1b2c1ddfd0ac178eba60c3fc431af07fc93519b7a68cf5b"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\deliver_chat_review.py",
+    "git_path": "research/session-20260908/chat-review/deliver_chat_review.py",
+    "sha256_original": "6b2fc094fe17c6d4be5d3c95ed12ef4b2482f76ab9e07db93d1283c25c07d812",
+    "sha256_lf": "6b2fc094fe17c6d4be5d3c95ed12ef4b2482f76ab9e07db93d1283c25c07d812"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\deliver_h20_profit_test.py",
+    "git_path": "research/session-20260908/h20-profit-test/deliver_h20_profit_test.py",
+    "sha256_original": "b49bc7f277bfe47fdf5e3400939eeabf1eabe8e23eb7a6c7b33a287d6fa5701f",
+    "sha256_lf": "b49bc7f277bfe47fdf5e3400939eeabf1eabe8e23eb7a6c7b33a287d6fa5701f"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\deliver_remediation.py",
+    "git_path": "research/session-20260908/h20-remediation/deliver_remediation.py",
+    "sha256_original": "7b242bc755f23f17dd6783d75d654ee5c9b212377a59833253a47980c1c24f6e",
+    "sha256_lf": "7b242bc755f23f17dd6783d75d654ee5c9b212377a59833253a47980c1c24f6e"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\EXECUTAR_H20.ps1",
+    "git_path": "research/session-20260908/h20-implementation/EXECUTAR_H20.ps1",
+    "sha256_original": "141f22accdce31493036c5d80d8b91a48decc007f1742bafff6135f37f05e2ca",
+    "sha256_lf": "141f22accdce31493036c5d80d8b91a48decc007f1742bafff6135f37f05e2ca"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\extract_law_pages.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/extract_law_pages.py",
+    "sha256_original": "e93df3aa23824296d9aa3e67bf1845bf04f16d81a47301532c74c48a1e49cf32",
+    "sha256_lf": "e93df3aa23824296d9aa3e67bf1845bf04f16d81a47301532c74c48a1e49cf32"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\extract_new_sources.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/extract_new_sources.py",
+    "sha256_original": "e0b2163d990f0c431469fcea4041a7174be752e9d3ee943b738fe2cf50e1d4be",
+    "sha256_lf": "e0b2163d990f0c431469fcea4041a7174be752e9d3ee943b738fe2cf50e1d4be"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\finalize_remediation.py",
+    "git_path": "research/session-20260908/h20-remediation/finalize_remediation.py",
+    "sha256_original": "78ba0e8c3f52159fc25fb8fb6c004f60fbf4ed8ebc2f923c70b5a92d2bbf7444",
+    "sha256_lf": "78ba0e8c3f52159fc25fb8fb6c004f60fbf4ed8ebc2f923c70b5a92d2bbf7444"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\finalize_source_closure12.py",
+    "git_path": "research/session-20260908/source-closure/finalize_source_closure12.py",
+    "sha256_original": "fccb9c700b11d32d47ee4ceacb45161b761f2f819a2c92dca10ed907b99a6aa8",
+    "sha256_lf": "fccb9c700b11d32d47ee4ceacb45161b761f2f819a2c92dca10ed907b99a6aa8"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\finalize_source_closure13.py",
+    "git_path": "research/session-20260908/source-closure/finalize_source_closure13.py",
+    "sha256_original": "013c324921d63e29f5dfb6f25cf650f5d337bc3f269a253f3548dbb41be8a621",
+    "sha256_lf": "013c324921d63e29f5dfb6f25cf650f5d337bc3f269a253f3548dbb41be8a621"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\find_image_notices.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/find_image_notices.py",
+    "sha256_original": "8e647738aa28495412b84b93b902ec5660cf279817f01f90edf7793baabfe307",
+    "sha256_lf": "8e647738aa28495412b84b93b902ec5660cf279817f01f90edf7793baabfe307"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\find_index_records.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/find_index_records.py",
+    "sha256_original": "7ba47f883d64447e07bc08c4c0ff94e720d95edf0e5600a6e3ef376db8e3c4d4",
+    "sha256_lf": "7ba47f883d64447e07bc08c4c0ff94e720d95edf0e5600a6e3ef376db8e3c4d4"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\index_followup13.py",
+    "git_path": "research/session-20260908/source-closure/index_followup13.py",
+    "sha256_original": "83f00dfce8653c4c12f5e8365dd133aab2c8ab89f6e05b38a6fb641e3b2a99e0",
+    "sha256_lf": "83f00dfce8653c4c12f5e8365dd133aab2c8ab89f6e05b38a6fb641e3b2a99e0"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\index_new_cash.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/index_new_cash.py",
+    "sha256_original": "426bf4391565c6ce16b94d4ad053501a83fa8f4a1291727972232d68ced5881d",
+    "sha256_lf": "426bf4391565c6ce16b94d4ad053501a83fa8f4a1291727972232d68ced5881d"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\inspect_credit_matches.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/inspect_credit_matches.py",
+    "sha256_original": "eea589fc049ce5e45176dc2db70e1cc90d8ec9395cbc1e85c8f86f9f195fd69f",
+    "sha256_lf": "eea589fc049ce5e45176dc2db70e1cc90d8ec9395cbc1e85c8f86f9f195fd69f"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\inspect_inventory.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/inspect_inventory.py",
+    "sha256_original": "07a3c0d3d51deb8024b654cf41a1219a841e59c21785c0db10882981f2e84d00",
+    "sha256_lf": "07a3c0d3d51deb8024b654cf41a1219a841e59c21785c0db10882981f2e84d00"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\inspect_source_closure.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/inspect_source_closure.py",
+    "sha256_original": "23a274ce4d0724052fb21fae30ae62d6fb7e57c0829a9d93f9e86782288491ea",
+    "sha256_lf": "23a274ce4d0724052fb21fae30ae62d6fb7e57c0829a9d93f9e86782288491ea"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\law_excerpt.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/law_excerpt.py",
+    "sha256_original": "9f56a572223323c88cea380db08649a8a283a209cbe78e735fc64109c9130f2d",
+    "sha256_lf": "9f56a572223323c88cea380db08649a8a283a209cbe78e735fc64109c9130f2d"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\migration-20260908\\build_export.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/migration-20260908/build_export.py",
+    "sha256_original": "d285a73d86bd20a3a41bce36a20cce7d2fd8bbad1b44d88188b0db0cef112408",
+    "sha256_lf": "d285a73d86bd20a3a41bce36a20cce7d2fd8bbad1b44d88188b0db0cef112408"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\migration-20260908\\check_code_history.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/migration-20260908/check_code_history.py",
+    "sha256_original": "8291399b4427e682aacc15184f05d381d77c5dce22d353f2c300407de6477240",
+    "sha256_lf": "8291399b4427e682aacc15184f05d381d77c5dce22d353f2c300407de6477240"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\migration-20260908\\copy_portable_dependencies.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/migration-20260908/copy_portable_dependencies.py",
+    "sha256_original": "a40422a5a1b93e3e723fc6586969a1bca3dddd5647f3974adba75ec03001bb21",
+    "sha256_lf": "a40422a5a1b93e3e723fc6586969a1bca3dddd5647f3974adba75ec03001bb21"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\migration-20260908\\prepare_main.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/migration-20260908/prepare_main.py",
+    "sha256_original": "40920e0cb238a2c240049ef65124ddf277f875b0f232f5243e3579bc2e387a38",
+    "sha256_lf": "40920e0cb238a2c240049ef65124ddf277f875b0f232f5243e3579bc2e387a38"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\migration-20260908\\preserve_missing_code.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/migration-20260908/preserve_missing_code.py",
+    "sha256_original": "325266d11dce457aa35f1330f03f85e40a63dec60e12d5fa0da740737ed5d53b",
+    "sha256_lf": "325266d11dce457aa35f1330f03f85e40a63dec60e12d5fa0da740737ed5d53b"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\migration-20260908\\test_transfer_guards.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/migration-20260908/test_transfer_guards.py",
+    "sha256_original": "364923652b81b2c44b95e18c43a733d55de09a1954ae8f7447e22e1aa4adf804",
+    "sha256_lf": "364923652b81b2c44b95e18c43a733d55de09a1954ae8f7447e22e1aa4adf804"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\net_candidates.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/net_candidates.py",
+    "sha256_original": "5d9a5539f7184715692504d454f99f972a0ac01aaedb6f035bad25ae49a1efb4",
+    "sha256_lf": "5d9a5539f7184715692504d454f99f972a0ac01aaedb6f035bad25ae49a1efb4"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\package_h20.py",
+    "git_path": "research/session-20260908/h20-implementation/package_h20.py",
+    "sha256_original": "a8321cd991b499c0d410d7a9c7e2db64bb03455fea797189c6d890686679f258",
+    "sha256_lf": "a8321cd991b499c0d410d7a9c7e2db64bb03455fea797189c6d890686679f258"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\package_source_closure12.py",
+    "git_path": "research/session-20260908/source-closure/package_source_closure12.py",
+    "sha256_original": "4ee18e7838087f5f69fe01389433ffacdb5fe6c4cd98854b69d3469c6cb9aa7a",
+    "sha256_lf": "4ee18e7838087f5f69fe01389433ffacdb5fe6c4cd98854b69d3469c6cb9aa7a"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\package_source_closure13.py",
+    "git_path": "research/session-20260908/source-closure/package_source_closure13.py",
+    "sha256_original": "afd17375ad6de5679f62903632cafb262b24a1e379ce94e896639ffa537feb07",
+    "sha256_lf": "afd17375ad6de5679f62903632cafb262b24a1e379ce94e896639ffa537feb07"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\prepare_source_closure13.py",
+    "git_path": "research/session-20260908/source-closure/prepare_source_closure13.py",
+    "sha256_original": "b5c10a24bf21f57aed35f367d9725d574309332aa888d67283a0b7235cc0df79",
+    "sha256_lf": "b5c10a24bf21f57aed35f367d9725d574309332aa888d67283a0b7235cc0df79"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\prepare_source_delivery.py",
+    "git_path": "research/session-20260908/source-closure/prepare_source_delivery.py",
+    "sha256_original": "f26d58becae2697e653948bb8dca94dd6e1b7eabb39b95fe3a654a16105c3fde",
+    "sha256_lf": "f26d58becae2697e653948bb8dca94dd6e1b7eabb39b95fe3a654a16105c3fde"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\preserve_models_research.py",
+    "git_path": "research/session-20260908/similar-models/preserve_models_research.py",
+    "sha256_original": "2603ed7445f1f09ce5db7baf357d6d83c19cb5d834306bdb2b96a27d327db4cc",
+    "sha256_lf": "2603ed7445f1f09ce5db7baf357d6d83c19cb5d834306bdb2b96a27d327db4cc"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\probe_corporate_regressions.py",
+    "git_path": "research/session-20260908/scripts/probe_corporate_regressions.py",
+    "sha256_original": "2bb6a5b04743e2dcaff5e628fec75e420c115f1d48e78df38200b1290233af0f",
+    "sha256_lf": "2bb6a5b04743e2dcaff5e628fec75e420c115f1d48e78df38200b1290233af0f"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\probe_credit_sections.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/probe_credit_sections.py",
+    "sha256_original": "672c0684af933069a8e85b67fbf04e14c6b7c8c030838c625d659c2978e7aa5b",
+    "sha256_lf": "672c0684af933069a8e85b67fbf04e14c6b7c8c030838c625d659c2978e7aa5b"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\propose_cash_facts.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/propose_cash_facts.py",
+    "sha256_original": "43b74522dd0a65c39b1c80644c7f95b6191a4ac757f584041c4d991576e9833f",
+    "sha256_lf": "43b74522dd0a65c39b1c80644c7f95b6191a4ac757f584041c4d991576e9833f"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\qa_first_closure.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/qa_first_closure.py",
+    "sha256_original": "d5875c71029f06b7a968d29e42a887d5a193ce5adfcb386d613edca4cb8c5c93",
+    "sha256_lf": "d5875c71029f06b7a968d29e42a887d5a193ce5adfcb386d613edca4cb8c5c93"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\read_primary.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/read_primary.py",
+    "sha256_original": "07fdb3dc3f105454e5d416ee1e9becf40a8bbaec72471500af2cedd23eb45379",
+    "sha256_lf": "07fdb3dc3f105454e5d416ee1e9becf40a8bbaec72471500af2cedd23eb45379"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\reconcile_current_credit.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/reconcile_current_credit.py",
+    "sha256_original": "4caa0cce0834d6e5af0c3c35abc5b3f466e0f9fbf88997b7c9c11c19bf1fdfd6",
+    "sha256_lf": "4caa0cce0834d6e5af0c3c35abc5b3f466e0f9fbf88997b7c9c11c19bf1fdfd6"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\register_h20_profit_test.py",
+    "git_path": "research/session-20260908/h20-profit-test/register_h20_profit_test.py",
+    "sha256_original": "db3028fa6818f749bc6669f988be6c30d3a235b7575305752a5580a77d9fe5a7",
+    "sha256_lf": "db3028fa6818f749bc6669f988be6c30d3a235b7575305752a5580a77d9fe5a7"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\register_remediation.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/register_remediation.py",
+    "sha256_original": "ece6727d6237eb05391ca5445615746e57cc723c112cf9584b298580795e0e64",
+    "sha256_lf": "ece6727d6237eb05391ca5445615746e57cc723c112cf9584b298580795e0e64"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\register_source_closure.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/register_source_closure.py",
+    "sha256_original": "bbae8cd65201ef252c4361d9595d6a0c7690b8f4ed4709861938dbe22c5969f5",
+    "sha256_lf": "bbae8cd65201ef252c4361d9595d6a0c7690b8f4ed4709861938dbe22c5969f5"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\render_source_pages.py",
+    "git_path": "research/session-20260908/source-closure/render_source_pages.py",
+    "sha256_original": "580ea56d5573d1e6f4736b5d8abe25ba4534a16f585f3786f569824920df4ef3",
+    "sha256_lf": "580ea56d5573d1e6f4736b5d8abe25ba4534a16f585f3786f569824920df4ef3"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\reproduce_h20_checked.py",
+    "git_path": "research/session-20260908/chat-review/reproduce_h20_checked.py",
+    "sha256_original": "09b7dbd3057512f6c3a6a0a456f24f4f9fe98bfa3e5b3f83befc6c3afaae6750",
+    "sha256_lf": "09b7dbd3057512f6c3a6a0a456f24f4f9fe98bfa3e5b3f83befc6c3afaae6750"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\REPRODUZIR_FONTES.py",
+    "git_path": "research/session-20260908/source-closure/REPRODUZIR_FONTES.py",
+    "sha256_original": "c499e8d140e5ace6ff11686ab71be53848007f1445edd9c56e9ba0e3acc31130",
+    "sha256_lf": "c499e8d140e5ace6ff11686ab71be53848007f1445edd9c56e9ba0e3acc31130"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\REPRODUZIR_H20.py",
+    "git_path": "research/session-20260908/h20-implementation/REPRODUZIR_H20.py",
+    "sha256_original": "dc1690aeb004f439a5e495b5e3688a8faaf764f706aafe6fbca6f9dff43e96fb",
+    "sha256_lf": "dc1690aeb004f439a5e495b5e3688a8faaf764f706aafe6fbca6f9dff43e96fb"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\review_related_notices.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/review_related_notices.py",
+    "sha256_original": "6e4cc4f47f7b62576ede6a17d7e4f09323eba958d4cb62aaeef3c6a5892cfdc7",
+    "sha256_lf": "6e4cc4f47f7b62576ede6a17d7e4f09323eba958d4cb62aaeef3c6a5892cfdc7"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\search_issuer_sources.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/search_issuer_sources.py",
+    "sha256_original": "7d998b261c04ef1fe21c121c9f2d0d07a6ba8db93b0412d7b365d24cdbcd019a",
+    "sha256_lf": "7d998b261c04ef1fe21c121c9f2d0d07a6ba8db93b0412d7b365d24cdbcd019a"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\show_cash_cards.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/show_cash_cards.py",
+    "sha256_original": "8a72bd57cfe44ccac9da1fa8c52ea732266bf19f353a6e85fb2e2f3b7e62f6cb",
+    "sha256_lf": "8a72bd57cfe44ccac9da1fa8c52ea732266bf19f353a6e85fb2e2f3b7e62f6cb"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\show_new_cash.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/show_new_cash.py",
+    "sha256_original": "fc76054dd2a954960cec0a6b5f70b411abd6729ae413be4bbb27576cfe5e93fe",
+    "sha256_lf": "fc76054dd2a954960cec0a6b5f70b411abd6729ae413be4bbb27576cfe5e93fe"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\source_utils.py",
+    "git_path": "research/session-20260908/source-closure/source_utils.py",
+    "sha256_original": "e7971da88ad1512ebf61ea356f0ac41c9b7b964468a60676e3ce9432130dc768",
+    "sha256_lf": "e7971da88ad1512ebf61ea356f0ac41c9b7b964468a60676e3ce9432130dc768"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\test_h20_evidence_integrity.py",
+    "git_path": "research/session-20260908/chat-review/test_h20_evidence_integrity.py",
+    "sha256_original": "855957073ee59f83661ee5ff210c53f9706689eb7db71de6dfe9f01cc071fc9b",
+    "sha256_lf": "855957073ee59f83661ee5ff210c53f9706689eb7db71de6dfe9f01cc071fc9b"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\test_h20_profit_comparison.py",
+    "git_path": "research/session-20260908/h20-profit-test/test_h20_profit_comparison.py",
+    "sha256_original": "31cf36b1d8b79c829b2d817776fa20c286c8248b014bd8aa5990a54eb2656f14",
+    "sha256_lf": "31cf36b1d8b79c829b2d817776fa20c286c8248b014bd8aa5990a54eb2656f14"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\test_source_closure13.py",
+    "git_path": "research/session-20260908/source-closure/test_source_closure13.py",
+    "sha256_original": "b809628e621308f302f300163fdc52c9d3d242ad145ec723dd6f04bdd4badb23",
+    "sha256_lf": "b809628e621308f302f300163fdc52c9d3d242ad145ec723dd6f04bdd4badb23"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\triage_corporate.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/triage_corporate.py",
+    "sha256_original": "4d013e97e7a9c8f464f1903050001f62998514a6b520633a680c7fe71512f77c",
+    "sha256_lf": "4d013e97e7a9c8f464f1903050001f62998514a6b520633a680c7fe71512f77c"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\triage_remaining.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/triage_remaining.py",
+    "sha256_original": "cea5ae1b9fa746713052c344a2b574af5ec4a7e1935ae553eddfd8439555dc17",
+    "sha256_lf": "cea5ae1b9fa746713052c344a2b574af5ec4a7e1935ae553eddfd8439555dc17"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\verify_credit_parser.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/verify_credit_parser.py",
+    "sha256_original": "49546d41e5eda01b519e1d00d0124d2ee9b5a55fb367d6943405526009441c0e",
+    "sha256_lf": "49546d41e5eda01b519e1d00d0124d2ee9b5a55fb367d6943405526009441c0e"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\verify_h20_profit_comparison.py",
+    "git_path": "research/session-20260908/h20-profit-test/verify_h20_profit_comparison.py",
+    "sha256_original": "31f76b71d827c2794f767e39c96641b9fde4208cc318c1f9a504ff762f49861c",
+    "sha256_lf": "31f76b71d827c2794f767e39c96641b9fde4208cc318c1f9a504ff762f49861c"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\verify_remediation.py",
+    "git_path": "research/session-20260908/h20-remediation/verify_remediation.py",
+    "sha256_original": "7aaddab85cd50de2802289aa6b0239eac222715876a36bbddb898aedc3b7a5f1",
+    "sha256_lf": "7aaddab85cd50de2802289aa6b0239eac222715876a36bbddb898aedc3b7a5f1"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\verify_revision_attacks.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/verify_revision_attacks.py",
+    "sha256_original": "38e8bb745fa2dc09f8b07afaef872d57b9684268d36a845a7101da0b1e938689",
+    "sha256_lf": "38e8bb745fa2dc09f8b07afaef872d57b9684268d36a845a7101da0b1e938689"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\verify_source_closure12.py",
+    "git_path": "research/session-20260908/source-closure/verify_source_closure12.py",
+    "sha256_original": "70ae6f4946ed151ebabfa91a00158ff0c1bd0289b2138aea4ac74b587bad37ac",
+    "sha256_lf": "70ae6f4946ed151ebabfa91a00158ff0c1bd0289b2138aea4ac74b587bad37ac"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\verify_source_closure13.py",
+    "git_path": "research/session-20260908/source-closure/verify_source_closure13.py",
+    "sha256_original": "49d2f85ddab1556536751fbb0fd69b4041c7a13528378c45fc614c0e11c2fb0a",
+    "sha256_lf": "49d2f85ddab1556536751fbb0fd69b4041c7a13528378c45fc614c0e11c2fb0a"
+  },
+  {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\write_closure_fixtures.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/write_closure_fixtures.py",
+    "sha256_original": "d096cacbdc43c8f6ae7de97bebe5347fe2945697f497cf0532b1d0564294d596",
+    "sha256_lf": "d096cacbdc43c8f6ae7de97bebe5347fe2945697f497cf0532b1d0564294d596"
+  },
+  {
+    "original_path": "E:\\EXPORTACAO_STOCKS_20260908\\CRIACAO_MANIFESTO_ORIGEM.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/full-export/CRIACAO_MANIFESTO_ORIGEM.py",
+    "sha256_original": "7cdc75fa1dc8dd05a01832d8d8536826ed600e5a334753993ecbf0b9d4404ac7",
+    "sha256_lf": "7cdc75fa1dc8dd05a01832d8d8536826ed600e5a334753993ecbf0b9d4404ac7"
+  },
+  {
+    "original_path": "E:\\EXPORTACAO_STOCKS_20260908\\RESTAURAR.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/full-export/RESTAURAR.py",
+    "sha256_original": "1eab7b32a7eb2c9c2771e484917f81297c86a2744759d2a0d489c069a14d3527",
+    "sha256_lf": "1eab7b32a7eb2c9c2771e484917f81297c86a2744759d2a0d489c069a14d3527"
+  },
+  {
+    "original_path": "E:\\EXPORTACAO_STOCKS_20260908\\VERIFICAR_AMBIENTE.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/full-export/VERIFICAR_AMBIENTE.py",
+    "sha256_original": "5c4a8bd3b8497c26e130e6ee57f0f8accee25fe26cd69372bc036ef4842a8a92",
+    "sha256_lf": "5c4a8bd3b8497c26e130e6ee57f0f8accee25fe26cd69372bc036ef4842a8a92"
+  }
+]

@@ -1,3 +1,31 @@
+## Integração local na main e migração separada (08/09/2026)
+
+Pedido explícito do operador: comitar todo o código na main, sem push ao GitHub,
+e retirar código do ZIP de dados. A main incorporou a pesquisa até 68ce89d e
+origin/main até a6300a4, preservando os dois lados do histórico documental.
+A proteção DSR e o módulo economics do remoto foram mantidos. O charter remoto
+recebeu nota de contexto para não confundir suas contagens antigas com 53/55.
+
+Inventariados 1.899 caminhos autorais do snapshot contra 779 blobs históricos;
+dez conteúdos antigos ausentes foram preservados, além dos helpers locais.
+Bibliotecas instaladas permanecem separadas. Os seis arquivos locais de dados
+não rastreados foram preservados, sem adicioná-los ao Git como código.
+
+tools/data_transfer.py cria/verifica/restaura um ZIP deduplicado de dados.
+Pacotes antigos mistos são abertos recursivamente para preservar também dados
+que só existiam dentro deles; código, Git, wheels e bibliotecas ficam fora.
+13 testes sintéticos da transferência passaram; Ruff e Pyright passaram.
+A primeira execução completa durante a integração teve 23 recusas de árvore
+Git suja do Core e 741 testes aprovados; a validação final usa clone limpo.
+Não se alterou a exigência de árvore limpa para fazer testes passarem.
+
+A auditoria 14 foi validada na migração anterior, mas continua separada da
+entrada canônica 13. O lucro permanece null/BLOCKED_MISSING_EVIDENCE, com
+24 datas, 52 líquidos, 28 entradas societárias e 1.248 inventários pendentes.
+H1–H20 e 53/55 preservados; zero novos retornos, ordens ou escritas em bancos
+originais, ledgers ou quarentenas. Procedimento em
+docs/continuation/MIGRACAO_MAIN.md. Resultado final registrado após validação.
+
 ## Complemento de fontes — revisão 13 (08/09/2026 UTC)
 
 Entrada atual: work/source-closure-20260908/execution-inputs-13, manifesto
