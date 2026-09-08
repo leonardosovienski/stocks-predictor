@@ -12,18 +12,35 @@ import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from stocks_predictor.continuous_research import inspect_inputs, load_quotes, read  # noqa: E402
-from stocks_predictor.retail_cash import RetailBook, integer_targets, number  # noqa: E402
+from stocks_predictor.retail_cash import RetailBook, integer_targets, iso, number  # noqa: E402
 
 
-def entry_case(capital, cost, plan, quotes, settlement, action_requirements):
+def entry_case(capital, cost, plan, quotes, settlement, action_requirements, unit_reviews=()):
     """Independent empty book, not a rebalance of previously simulated wealth."""
     result = {'capital_brl': capital, 'one_way_cost_rate': cost, 'signal_date': plan['asof'],
               'entry_date': plan['entry'], 'settlement_date': settlement,
               'target_names': len(plan['members']), 'status': 'BLOCKED',
               'actual_continuous_turnover': None, 'profit': None}
     names = {m['ticker'] for m in plan['members']}
-    boundary = [r['event_id'] for r in action_requirements
-                if r['ticker'] in names and plan['asof'] < r['ex_date'] <= plan['entry']]
+    reviewed = {r['event_id']: r for r in unit_reviews}
+    boundary = []
+    applied = []
+    for r in action_requirements:
+        if r['ticker'] not in names or not plan['asof'] < r['ex_date'] <= plan['entry']:
+            continue
+        review = reviewed.get(r['event_id'], {})
+        if (review.get('kind') == 'BONUS_IN_DIFFERENT_CLASS' and review.get('removes_original') is False
+                and review.get('original_share_units_unchanged') is True
+                and review.get('ticker') == r['ticker'] and review.get('isin') == r['isin']
+                and review.get('ex_date') == r['ex_date'] and review.get('sources_verified') is True
+                and iso(review['terms_known_on']) <= plan['entry']
+                and review.get('delivered_tickers') and r['ticker'] not in review['delivered_tickers']):
+            applied.append(r['event_id'])
+        else:
+            boundary.append(r['event_id'])
+    if applied:
+        result['unit_reviews_applied'] = applied
+        result['bonus_rights_received_by_new_entry'] = 0
     if boundary:
         # No silent inference from a price factor, even in a cheap diagnostic.
         return {**result, 'reason': 'ENTRY_ACTION_REQUIRES_REVIEWED_ORDER_UNITS', 'events': boundary}
@@ -121,22 +138,43 @@ def workload(evidence, cash):
             'corporate_requirements_by_kind': dict(Counter(r['kind'] for r in evidence['required_actions']))}
 
 
-def assess(inputs, protocol_path):
+def load_unit_reviews(path):
+    """Source review supplies units only, never entitlements or H19 approval."""
+    if path is None:
+        return []
+    rows = read(path)
+    if not rows or len({r['event_id'] for r in rows}) != len(rows):
+        raise ValueError('nonempty unique entry-unit reviews required')
+    for row in rows:
+        if row.get('source_review') is not True or not row.get('sources'):
+            raise ValueError('reviewed entry-unit sources required')
+        for source in row['sources']:
+            raw = (path.parent / source['file']).resolve()
+            if not raw.is_relative_to(path.parent.resolve()):
+                raise ValueError('entry-unit source outside its bundle')
+            if hashlib.sha256(raw.read_bytes()).hexdigest() != source['sha256']:
+                raise ValueError('entry-unit source checksum mismatch')
+        row['sources_verified'] = True
+    return rows
+
+
+def assess(inputs, protocol_path, unit_review_path=None):
     spec = read(protocol_path)
     if spec['protocol'] != 'H19_EXECUTION_FEASIBILITY_20260908_1':
         raise ValueError('unknown feasibility protocol')
     _, index, cash, _, _, gate, count = inspect_inputs(inputs)
     quotes, quote_count = load_quotes(inputs, index)
     evidence = read(inputs/'evidence.json')
+    unit_reviews = load_unit_reviews(unit_review_path)
     cases = []
     for portfolio, plans in index['plans'].items():
         for plan in plans[:-1]:
             for capital, cost in product(spec['entry_diagnostic']['capital_brl'],
                                         spec['entry_diagnostic']['one_way_cost_rates']):
                 row = entry_case(capital, cost, plan, quotes, index['settlements'][plan['entry']],
-                                 evidence['required_actions'])
+                                 evidence['required_actions'], unit_reviews)
                 cases.append({'portfolio': portfolio, **row})
-    return {'protocol': spec['protocol'], 'protocol_sha256': hashlib.sha256(protocol_path.read_bytes()).hexdigest(),
+    result = {'protocol': spec['protocol'], 'protocol_sha256': hashlib.sha256(protocol_path.read_bytes()).hexdigest(),
             'input_manifest_sha256': hashlib.sha256((inputs/'SHA256.json').read_bytes()).hexdigest(),
             'status': 'COMPLETE_FEASIBILITY_DIAGNOSTIC_NOT_A_RETURN_BACKTEST',
             'verified_input_files': count, 'validated_quote_records': quote_count,
@@ -153,6 +191,10 @@ def assess(inputs, protocol_path):
                 'Maintenance/reconstruction/edge inputs are scenarios, not preferences or forecasts.',
                 'Overhead scenarios assume zero comparator overhead; subtract its documented overhead if nonzero.',
                 'A positive historical excess return would still need risk matching and independent future evidence.']}
+    if unit_review_path is not None:
+        result['entry_unit_review_sha256'] = hashlib.sha256(unit_review_path.read_bytes()).hexdigest()
+        result['entry_unit_reviews'] = unit_reviews
+    return result
 
 
 def main():
@@ -160,8 +202,9 @@ def main():
     parser.add_argument('--inputs', type=Path, required=True)
     parser.add_argument('--protocol', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--entry-unit-review', type=Path)
     args = parser.parse_args()
-    result = assess(args.inputs, args.protocol)
+    result = assess(args.inputs, args.protocol, args.entry_unit_review)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result, indent=2, ensure_ascii=False, default=str), encoding='utf-8')
     print(json.dumps({k: v for k, v in result.items()

@@ -46,11 +46,12 @@ de negócios e alienações, não só a posição atual: uma perda anterior pode
 o imposto com a mesma quantidade e o mesmo custo atual. Isso vincula o cálculo
 externo revisado à carteira; produzir o hash não constitui aprovação da fonte.
 Imposto fixo em `disposal_tax` também exige esse vínculo e conhecimento do valor
-até a data da ação. Valores futuros precisam de um evento de reconhecimento,+nunca de uma obrigação antecipada escondida.
+até a data da ação. Valores futuros precisam de um evento de reconhecimento,
+nunca de uma obrigação antecipada escondida.
 
 O caso VIVT continua sem aprovação para o replay. O fato relevante de 13/03/2025
-especifica a operação em 15/04/2025; o documento de 19/05/2025 informa resultado
-de leilão descontadas despesas e tributos pessoais a verificar. Ele não fornece
+especifica a operação em 15/04/2025; o documento de 19/05/2025 informa o resultado
+após despesas, com a tributação pessoal ainda a verificar. Ele não fornece
 separadamente todos os campos exigidos acima, nem comprova o crédito individual
 exato na corretora. Não se preenchem bruto, despesas ou retenção com zero.
 
