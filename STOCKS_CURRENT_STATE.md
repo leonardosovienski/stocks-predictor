@@ -1,18 +1,18 @@
 ## Revisão de fontes e pendências (08/09/2026 UTC)
 
-Pedido do operador: resolver também as fontes pendentes. Protocolo0700f82,
+Pedido do operador: resolver também as fontes pendentes. Protocolo 0700f82,
 SHA da8b91a7a263d9870822c58af85b4a47f2c051e932ecb3099fea986ba4456c49,
 anterior à reconstrução. Nenhuma nova avaliação de retorno; 53/55 preservados.
-As versões01–12 permanecem preservadas fora de bancos e ledgers.
+As versões 01–12 permanecem preservadas fora de bancos e ledgers.
 
 Entrada atual: work/source-closure-20260908/execution-inputs-12.
 Manifesto b9dfab5fb2dc67f7fcdd71f52b325a3a1d442917c116f514fd09f11926876f7e.
-788 arquivos verificados;754 arquivos de fonte, dos quais753 publicações/fontes
-primárias e1 reconstrução local derivada.365.198 cotações. Os778 direitos
-originais são preservados em801 linhas de pagamento, com9 cronogramas e32
-parcelas. Datas ausentes:356→37; valores líquidos ausentes:389 registros
-originais→66 linhas derivadas.8 desdobramentos inteiros integrados;28 eventos
-societários ainda exigem termos, entrega ou base fiscal.1.248 intervalos de
+788 arquivos verificados; 754 arquivos de fonte, dos quais 753 publicações/fontes
+primárias e 1 reconstrução local derivada. 365.198 cotações. Os 778 direitos
+originais são preservados em 801 linhas de pagamento, com 9 cronogramas e 32
+parcelas. Datas ausentes: 356→37; valores líquidos ausentes: 389 registros
+originais→66 linhas derivadas. 8 desdobramentos inteiros integrados; 28 eventos
+societários ainda exigem termos, entrega ou base fiscal. 1.248 intervalos de
 inventário permanecem sem certificação integral. Estas contagens se sobrepõem.
 
 Falhas corrigidas nesta revisão: associações entre JCP/dividendos retiradas;
@@ -21,20 +21,23 @@ ligadas ao aviso original; datas TIM corrigidas; tabelas em imagem revisadas;
 fonte derivada não contada como primária. Créditos B3 com aprovação ausente
 agora aparecem em incomplete_rows e exigem fonte adicional para associação;
 não são descartados silenciosamente nem promovidos a dados completos.
-Líquidos de atualização Selic usam prazo documentado e regraPF específica.
-Os líquidos2026 tratados aqui são retenção no pagamento, não imposto mínimo
+Líquidos de atualização Selic usam prazo documentado e regra específica para pessoa física.
+Os líquidos 2026 tratados aqui são retenção no pagamento, não imposto mínimo
 anual pessoal. Capital devolvido, base fiscal e frações continuam dependentes
-do livro e das fontes aplicáveis. SLC2019: data provada, unidades antes/depois
-do desdobramento ainda não reconciliadas. BRDT2020: aviso contém duas
+do livro e das fontes aplicáveis. SLC 2019: data provada, unidades antes/depois
+do desdobramento ainda não reconciliadas. BRDT 2020: aviso contém duas
 atualizações monetárias ausentes no inventário original; lacuna explicitada.
 
-27 testes focados passam; Ruff/Pyright serão registrados com a suíte final.
-A validação completa e a wheel portátil serão anexadas após este commit.
-Usar py -3.13 explícito, sem venv ou instalação. Extrações01–03 usaram3.14;
-as materializações04–12 e os testes finais usam o Python global3.13.
+Validação do código 6e54e5d: 714 testes completos, sem avisos; 145 testes
+na wheel fora do checkout. Ruff e Pyright verdes. Cinco adulterações rejeitadas.
+Pacote de 856 arquivos reproduz a auditoria byte a byte com Python 3.13
+isolado, sem instalação ou rede. Resultados em docs/research/
+2026-09-08-source-closure-results.md e na pasta de pesquisa source-closure.
+Usar py -3.13 explícito, sem venv ou instalação. Extrações 01–03 usaram 3.14;
+as materializações 04–12 e os testes finais usam o Python global 3.13.
 
 Resultado econômico: BLOCKED_MISSING_EVIDENCE; lucro e projeção permanecem
-null. Não houve ordens, custos, agentes, escrita nos bancos ou ajusteH1–H20.
+null. Não houve ordens, custos, agentes, escrita nos bancos ou ajuste H1–H20.
 O protocolo de fontes não libera retornos: ainda é necessária pré-inscrição
 específica vinculada ao hash final das fontes, após completar a evidência.
 Evidências e fila completa: research/session-20260908/source-closure.

@@ -1,0 +1,41 @@
+{
+  "parser": {
+    "status": "EXACT_PARITY_FOR_COMPLETE_ROWS",
+    "complete_rows": 3202,
+    "incomplete_rows_preserved": 3665,
+    "documents": 163,
+    "statuses": {
+      "CREDIT_ROWS_EXTRACTED": 120,
+      "CREDIT_SECTION_MISSING": 6,
+      "INCOMPLETE_CREDIT_ROWS_EXTRACTED": 37
+    }
+  },
+  "adversarial_checks": [
+    {
+      "case": "changed_primary_bytes",
+      "rejected": true,
+      "reason": "input checksum mismatch: primary/00c3001926495657fa305ccab604c43d16774e21b31114e230fc99c85f863cbe-b3-credit-20220711.pdf"
+    },
+    {
+      "case": "lost_entitlement",
+      "rejected": true,
+      "reason": "source revision lost or duplicated an entitlement"
+    },
+    {
+      "case": "changed_gross",
+      "rejected": true,
+      "reason": "single-payment nominal amount changed"
+    },
+    {
+      "case": "cleared_inventory",
+      "rejected": true,
+      "reason": "source revision improperly cleared evidence gaps"
+    },
+    {
+      "case": "derived_labeled_primary",
+      "rejected": true,
+      "reason": "local reconstruction cannot be relabeled as a primary source"
+    }
+  ],
+  "new_historical_return_evaluations": 0
+}

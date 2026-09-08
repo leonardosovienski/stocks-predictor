@@ -1,0 +1,97 @@
+{
+  "tested_commit": "6e54e5d9c5187a9f555c60d67894334cfdb996be",
+  "python": "global3.13",
+  "full_suite": {
+    "passed": 714,
+    "seconds": 116.34,
+    "warnings": 0
+  },
+  "wheel_suite": {
+    "passed": 145,
+    "seconds": 0.75,
+    "installed": false,
+    "checkout_on_import_path": false
+  },
+  "initial_wheel_test_failure": "Legacy tests imported cash_source_audit as a flat module; harness now includes only the extracted wheel package directory. Runtime unchanged; failed log preserved.",
+  "source_validation": {
+    "parser": {
+      "status": "EXACT_PARITY_FOR_COMPLETE_ROWS",
+      "complete_rows": 3202,
+      "incomplete_rows_preserved": 3665,
+      "documents": 163,
+      "statuses": {
+        "CREDIT_ROWS_EXTRACTED": 120,
+        "CREDIT_SECTION_MISSING": 6,
+        "INCOMPLETE_CREDIT_ROWS_EXTRACTED": 37
+      }
+    },
+    "adversarial_checks": [
+      {
+        "case": "changed_primary_bytes",
+        "rejected": true,
+        "reason": "input checksum mismatch: primary/00c3001926495657fa305ccab604c43d16774e21b31114e230fc99c85f863cbe-b3-credit-20220711.pdf"
+      },
+      {
+        "case": "lost_entitlement",
+        "rejected": true,
+        "reason": "source revision lost or duplicated an entitlement"
+      },
+      {
+        "case": "changed_gross",
+        "rejected": true,
+        "reason": "single-payment nominal amount changed"
+      },
+      {
+        "case": "cleared_inventory",
+        "rejected": true,
+        "reason": "source revision improperly cleared evidence gaps"
+      },
+      {
+        "case": "derived_labeled_primary",
+        "rejected": true,
+        "reason": "local reconstruction cannot be relabeled as a primary source"
+      }
+    ],
+    "new_historical_return_evaluations": 0
+  },
+  "portable_package": {
+    "wheel": "stocks_predictor-0.1.0-py3-none-any.whl",
+    "wheel_sha256": "5d6c7cb62bf1abfc724cede0fa19e3cb2ee06ffbd99cced24392135a03e07c1e",
+    "wheel_installed": false,
+    "portable_reproduction": "BYTE_IDENTICAL_WITH_ISOLATED_GLOBAL_PYTHON_3_13",
+    "audit_sha256": "fdaf20300e47ca4b42e1e99cea46ffc80ecf4efaac4f0f80f6f39e917b4d105a",
+    "payloads_verified": 856,
+    "zip_sha256": "dfff98274b9bb30b73e52a216da2c076c2c3daae41610394f9639e761cd93ca4",
+    "zip_bytes": 454287474,
+    "new_historical_return_evaluations": 0
+  },
+  "source_manifest_sha256": "b9dfab5fb2dc67f7fcdd71f52b325a3a1d442917c116f514fd09f11926876f7e",
+  "source_protocol_sha256": "da8b91a7a263d9870822c58af85b4a47f2c051e932ecb3099fea986ba4456c49",
+  "raw_entitlements_preserved": 778,
+  "raw_entitlements_without_net": 64,
+  "source_revision": {
+    "raw_entitlements": 778,
+    "execution_payment_rows": 801,
+    "new_single_payment_dates": 310,
+    "new_complete_schedules": 9,
+    "new_installment_payments": 32,
+    "missing_payment_before": 356,
+    "missing_payment_after": 37,
+    "missing_net_before": 389,
+    "missing_net_after": 66,
+    "approved_integer_splits": 8,
+    "explicit_payment_date_corrections": 2
+  },
+  "profit": null,
+  "future_profit_projection": null,
+  "new_historical_return_evaluations": 0,
+  "administrative_counts": [
+    53,
+    55
+  ],
+  "economic_status": "BLOCKED_MISSING_EVIDENCE",
+  "scientific_independence": false,
+  "real_orders": 0,
+  "paid_services": 0,
+  "new_runtime_dependencies": 0
+}

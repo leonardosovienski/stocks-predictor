@@ -37,3 +37,5 @@ research/session-20260908/h20-remediation/** whitespace=blank-at-eol,blank-at-eo
 research/session-20260908/h20-remediation/full-tests.log -whitespace
 
 docs/research/2026-09-08-source-closure-protocol.json -text !eol
+# Preserve native Windows source-audit logs without flagging CRLF as whitespace.
+research/session-20260908/source-closure/** whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

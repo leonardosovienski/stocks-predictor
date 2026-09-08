@@ -1,0 +1,11 @@
+{
+  "wheel": "stocks_predictor-0.1.0-py3-none-any.whl",
+  "wheel_sha256": "5d6c7cb62bf1abfc724cede0fa19e3cb2ee06ffbd99cced24392135a03e07c1e",
+  "wheel_installed": false,
+  "portable_reproduction": "BYTE_IDENTICAL_WITH_ISOLATED_GLOBAL_PYTHON_3_13",
+  "audit_sha256": "fdaf20300e47ca4b42e1e99cea46ffc80ecf4efaac4f0f80f6f39e917b4d105a",
+  "payloads_verified": 856,
+  "zip_sha256": "dfff98274b9bb30b73e52a216da2c076c2c3daae41610394f9639e761cd93ca4",
+  "zip_bytes": 454287474,
+  "new_historical_return_evaluations": 0
+}
