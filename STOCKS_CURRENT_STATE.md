@@ -1,4 +1,19 @@
-# Estado vigente — continuidade de 08/09/2026 UTC
+# Estado vigente — implementação H20 de 08/09/2026 UTC
+
+H20 implementada: valor com rentabilidade dos acionistas, retenção até 30% do
+ranking e tolerância de 2,5% do capital para ajustes de posições mantidas.
+Três alternativas no mesmo universo; protocolo def8e96 anterior à medição.
+31/32 datas elegíveis, 372/384 entradas simuladas; 12 casos da data de cobertura
+insuficiente permanecem bloqueados. Substituições planejadas 96→70 com tolerância;
+não são giro financeiro ou economia real de uma carteira contínua.
+
+639 testes no runtime 9ecf5eb, 92 na wheel fora do checkout, Ruff e Pyright no
+escopo novo. H20 reproduzida byte a byte; replay H19 e diagnóstico anterior
+preservados. Agora mínimos 35 configurações registradas / 37 avaliações históricas
+de retorno; zero retorno novo. H19 permanece congelada e NO_GO, lucro desconhecido.
+Relatório e uso: [H20](docs/research/2026-09-08-h20-results.md).
+
+# Estado anterior — continuidade de 08/09/2026 UTC
 
 Revisão adicional de 17 fontes sobre modelos semelhantes concluída:
 [mecanismos, resultados externos e prioridades](docs/research/2026-09-08-similar-models.md).

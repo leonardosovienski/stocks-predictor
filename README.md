@@ -1,10 +1,11 @@
 # stocks-predictor
 
-Projeto de pesquisa econômica de ações da B3. Na revisão de 07/09/2026, a linha
-em investigação nesta cópia é **H19 trimestral**, com H18 como controle. H17 foi
-observada e ficou inconclusiva. **Não há lucro líquido validado nem autorização
-técnica para operar.** O executor contínuo exige cobertura de caixa e eventos
-societários ainda incompleta. Testes verdes não demonstram rentabilidade.
+Projeto de pesquisa econômica de ações da B3. A implementação de 08/09/2026 inclui
+**H20: preço, rentabilidade e tolerância para reduzir trocas**, com diagnóstico de
+sinais e compras iniciais. [Uso, resultados e limites](docs/research/2026-09-08-h20-results.md).
+A H19 trimestral continua congelada e inconclusiva. **Não há lucro líquido
+validado nem autorização técnica para operar.** O executor contínuo exige
+cobertura de caixa e eventos ainda incompleta. Testes verdes não demonstram rentabilidade.
 
 As linhas H1–H16 e `predictor-rj` permanecem como histórico científico. Os relatórios
 antigos preservam resultados de suas respectivas versões; não descrevem o estado

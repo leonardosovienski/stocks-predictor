@@ -1,0 +1,32 @@
+{
+  "runtime_commit": "9ecf5eb",
+  "full_suite_passed": 639,
+  "full_suite_seconds": 131.7,
+  "packaged_tests_passed": 92,
+  "new_focused_tests": 26,
+  "ruff": "PASS",
+  "pyright_new_modules": "PASS, four modules",
+  "h20_wheel_byte_identical": true,
+  "h20_observation_sha256": "13acee7062dddbf96c81356588f36806e758ea9e5c6c8f395e7891620b1f6a8f",
+  "h19_regression": {
+    "h19_replay_byte_identical": true,
+    "h19_replay_sha256": "585c72395fc2fefc2e0bbd90b6756c516e58d0f1e29ada3d6de196f46ea49c27",
+    "h19_feasibility_structurally_identical": true,
+    "h19_status": "BLOCKED_MISSING_EVIDENCE",
+    "initial_comparison_note": "Initial direct bytes serialization used LF; prior CLI artifact used Windows CRLF. Parsed objects matched. Native CLI text serialization reproduces original bytes."
+  },
+  "initial_external_harness_failures": [
+    "legacy direct imports required the installed package directory",
+    "imports between tests required a tests package"
+  ],
+  "financial_status": "INCONCLUSIVE_NET_PROFIT / OPERATIONAL_NO_GO",
+  "new_return_evaluations": 0,
+  "registered_configurations_minimum": 35,
+  "historical_return_evaluations_minimum": 37,
+  "database_operations": "No database opened by implementation, diagnostics or packaging; tests use temporary data.",
+  "runtime_dependencies_installed": [],
+  "real_orders": false,
+  "input_archives_verified": 11,
+  "execution_input_files_verified": 31,
+  "execution_quote_records_validated": 365198
+}

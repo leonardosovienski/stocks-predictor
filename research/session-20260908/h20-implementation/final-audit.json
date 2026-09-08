@@ -1,0 +1,16 @@
+{
+  "source_db_sha256": "a8238568980d3303890b04590cfb5c55ab2d24c9271edd86820269336b09679a",
+  "main_db_sha256": "a22739794ba4a43a11544338d4a91e14cb6a0b1f7b132ab460f96d3359f63cf4",
+  "database_hashes_match_previous_preservation": true,
+  "package_reproduction": {
+    "archive": "H20_IMPLEMENTACAO.zip",
+    "sha256": "fa5584c48942f9e856447d0429f1b42ece444a8dba06dbd25724f0a3c8395bab",
+    "payloads_verified": 26,
+    "bytes": 1927628,
+    "runtime_commit": "9ecf5eb",
+    "requires_preserved_sources": true,
+    "reproduction_verified": true,
+    "reproduction_tests_passed": 92,
+    "reproduced_observation_sha256": "13acee7062dddbf96c81356588f36806e758ea9e5c6c8f395e7891620b1f6a8f"
+  }
+}

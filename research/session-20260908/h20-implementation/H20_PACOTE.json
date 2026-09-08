@@ -1,0 +1,11 @@
+{
+  "archive": "H20_IMPLEMENTACAO.zip",
+  "sha256": "fa5584c48942f9e856447d0429f1b42ece444a8dba06dbd25724f0a3c8395bab",
+  "payloads_verified": 26,
+  "bytes": 1927628,
+  "runtime_commit": "9ecf5eb",
+  "requires_preserved_sources": true,
+  "reproduction_verified": true,
+  "reproduction_tests_passed": 92,
+  "reproduced_observation_sha256": "13acee7062dddbf96c81356588f36806e758ea9e5c6c8f395e7891620b1f6a8f"
+}

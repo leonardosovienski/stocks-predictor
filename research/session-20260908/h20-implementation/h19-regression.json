@@ -1,0 +1,7 @@
+{
+  "h19_replay_byte_identical": true,
+  "h19_replay_sha256": "585c72395fc2fefc2e0bbd90b6756c516e58d0f1e29ada3d6de196f46ea49c27",
+  "h19_feasibility_structurally_identical": true,
+  "h19_status": "BLOCKED_MISSING_EVIDENCE",
+  "initial_comparison_note": "Initial direct bytes serialization used LF; prior CLI artifact used Windows CRLF. Parsed objects matched. Native CLI text serialization reproduces original bytes."
+}

@@ -1,3 +1,46 @@
+## Implementação H20 após pesquisa comparativa (2026-09-08 UTC)
+
+Usuário pediu implementar. Protocolo H20_VALUE_PROFITABILITY_BUFFER_1 registrado
+em def8e96 antes dos scores e diagnósticos; código inicial 68c111d, integração
+da revisão CYRE em 9ecf5eb após adendo de fontes 4f1c24c. Não mudou H19.
+
+Módulos novos: value_profitability (fundamentos e seleção), buffered_rebalance
+(plano congelado e execução simulada com RetailBook), h20_research (CLI offline),
+entry_feasibility (rotinas antigas centralizadas sem mudar seus corpos).
+Valor usa a aproximação de capitalização anterior; rentabilidade usa lucro anual
+dos acionistas / patrimônio final positivo. Ranks iguais, negativos mantidos,
+mesmo universo válido para controle, combinação e combinação com tolerância.
+Sem neutralização setorial, aprendizado, previsão de custo-benefício ou score atual.
+
+Retenção: melhores floor(N/5); incumbentes ticker/ISIN dentro de ceil(0.30*N)
+podem permanecer, até o limite de nomes. Ajustes de uma posição selecionada e
+positiva até 0.025 do capital podem ser suprimidos; saídas e novas posições não.
+Plano confere preços do sinal, congela quantidades e fingerprint do livro, exige
+revisão de unidades e rejeita livro alterado na execução, mesmo sem ordens.
+Não liga novos planos ao contrato congelado ou ao gate econômico antigo.
+
+Resultado: 32 datas trimestrais, 1.897 células, 1.234 válidas, 31 datas elegíveis.
+Março/2018 tem 17 nomes e continua bloqueado. Trocas planejadas em 30 transições:
+controle 90, combinação 96, combinação com retenção 70. Não é turnover executado.
+Primeira observação 364/384 entradas concluídas; segunda 372/384 após reutilizar
+fonte CYRE já revisada, sem novos direitos ao comprador na data-ex. As 12 falhas
+restantes pertencem à data insuficiente, sem remoção ou imputação.
+
+639 testes completos passaram em 131,70s, runtime 9ecf5eb; 92 passaram na wheel
+fora do checkout. Ruff e Pyright nos quatro módulos novos passaram. H20
+reproduzida byte a byte pela wheel (SHA 13acee7062dddbf96c81356588f36806e758ea9e5c6c8f395e7891620b1f6a8f).
+H19 replay byte a byte preservado (585c7239...), diagnóstico anterior igual.
+Falhas iniciais do harness externo eram caminhos de imports; comparação inicial
+de replay diferia só LF/CRLF, conteúdos iguais. Logs e duas observações preservados.
+
+Relatório: docs/research/2026-09-08-h20-results.md. Artefatos e reprodução em
+research/session-20260908/h20-implementation; fontes extensas já existentes na
+raiz durável, novas saídas em work/h20-implementation-20260908 e outputs/h20-implementation-20260908.
+As fontes de execução H19 não certificam a trajetória de retenção H20.
+35 configurações registradas, 37 avaliações históricas de retorno; zero retorno
+novo ou holdout. INCONCLUSIVE_NET_PROFIT / OPERATIONAL_NO_GO permanece.
+Nenhuma ordem, gasto, instalação, banco aberto/escrito, agente coordenado ou push.
+
 ## Pesquisa de modelos semelhantes (2026-09-08 UTC)
 
 Pedido adicional: pesquisar ideias e modelos semelhantes, por que e como lucram.

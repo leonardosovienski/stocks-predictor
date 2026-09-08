@@ -1,0 +1,27 @@
+
+=================================== ERRORS ====================================
+_ ERROR collecting .local-research/stocks-session-20260907/work/h20-implementation-20260908/external-tests/test_continuous_research.py _
+ImportError while importing test module 'C:\Users\Superleo13\stocks-predictor-work\.local-research\stocks-session-20260907\work\h20-implementation-20260908\external-tests\test_continuous_research.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+..\..\..\..\..\AppData\Local\Python\pythoncore-3.13-64\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+external-tests\test_continuous_research.py:8: in <module>
+    from tests.test_continuous_cash import dividend, tape
+E   ModuleNotFoundError: No module named 'tests'
+_ ERROR collecting .local-research/stocks-session-20260907/work/h20-implementation-20260908/external-tests/test_corporate_auction_tax.py _
+ImportError while importing test module 'C:\Users\Superleo13\stocks-predictor-work\.local-research\stocks-session-20260907\work\h20-implementation-20260908\external-tests\test_corporate_auction_tax.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+..\..\..\..\..\AppData\Local\Python\pythoncore-3.13-64\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+external-tests\test_corporate_auction_tax.py:11: in <module>
+    from tests.test_continuous_cash import bonus, calendar, sale, tape
+E   ModuleNotFoundError: No module named 'tests'
+=========================== short test summary info ===========================
+ERROR external-tests\test_continuous_research.py
+ERROR external-tests\test_corporate_auction_tax.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 2 errors during collection !!!!!!!!!!!!!!!!!!!
+2 errors in 0.15s
