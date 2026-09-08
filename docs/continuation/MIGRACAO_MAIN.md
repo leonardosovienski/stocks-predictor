@@ -6,6 +6,13 @@ somente em `origin/main` (até a6300a4) e os helpers ainda fora do Git.
 As duas contribuições ao HANDOFF foram preservadas. Os seis arquivos locais
 de dados não rastreados permanecem no checkout e também no arquivo de dados.
 
+Validação concluída: **777 testes**, Ruff e Pyright aprovados. O ZIP tem
+5.355.806.582 bytes (5,36 GB), com 18.583 objetos e 60.023 caminhos de dados.
+Todos os hashes e CRCs foram conferidos; 25 bancos restaurados passaram no
+quick_check e a auditoria 14 reproduziu o hash original usando o código da main.
+Recibo completo em MIGRACAO_VERIFICADA.json. A restauração integral dos caminhos
+ocupa 28,58 GB, além do pacote e do código; recomenda-se pelo menos 36 GB livres.
+
 A entrega atual fica em `E:\STOCKS_MIGRACAO_MAIN_20260908`. Copiar a pasta
 inteira para o outro PC, usando unidade que aceite arquivo maior que 4 GB.
 

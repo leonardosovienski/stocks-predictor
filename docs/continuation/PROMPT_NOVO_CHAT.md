@@ -1,5 +1,13 @@
 # Prompt de continuidade — Stocks Predictor
 
+> Atualização vigente de 08/09/2026: continuar na **main**, integrada localmente
+> sem push por pedido do operador. Ler antes MIGRACAO_MAIN.md e
+> MIGRACAO_VERIFICADA.json. Código e histórico estão em CODIGO_MAIN.bundle;
+> dados em DADOS_STOCKS.zip, restaurados pelo tools/data_transfer.py do Git.
+> Os caminhos da branch fix nas seções abaixo descrevem a preservação anterior.
+> Usar o código do clone main atual e o mapeamento dos dados do guia de migração.
+> Validação: 777 testes; auditoria 14 reproduzida, com lucro ainda desconhecido.
+
 Você vai continuar o stocks-predictor para aumentar a probabilidade de gerar lucro
 real, líquido, futuro e reproduzível no mercado acionário. Quero revisão crítica,
 implementação e execução, com autonomia para mudar o caminho quando houver

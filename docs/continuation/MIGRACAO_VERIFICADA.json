@@ -1,0 +1,172 @@
+{
+  "code_tested_commit": "e2969e4c6c2035726e429507c8187df01067a180",
+  "branch": "main",
+  "pushed": false,
+  "suite": {
+    "passed": 777,
+    "failures": 0,
+    "warnings": 0,
+    "seconds": 83.83,
+    "runtime": "Python 3.13; Core 3.2.0 from copied dependencies; clean clone"
+  },
+  "ruff": "passed",
+  "pyright": "0 errors, 0 warnings",
+  "data_archive": {
+    "archive": "DADOS_STOCKS.zip",
+    "sha256": "83d5aac8e23d72e4deb1331077e08313914375a5dbac4276e5f8ad89da586d23",
+    "bytes": 5355806582,
+    "file_count": 60023,
+    "unique_objects": 18583,
+    "restored_bytes": 28581165056,
+    "unique_bytes": 9034583769
+  },
+  "verification": {
+    "verified_objects": 18583,
+    "data_paths": 60023,
+    "restored_files": 829,
+    "project_code_in_zip": false,
+    "archive_sha256": "83d5aac8e23d72e4deb1331077e08313914375a5dbac4276e5f8ad89da586d23"
+  },
+  "sqlite_databases": [
+    {
+      "path": "project/.local-research/stocks-session-20260907/work/stocks-clean-replay-20260907.db",
+      "sha256": "8f84a743e706573cab9372c21d8c9c186c5afb31c2206821d9c2cf82199bbc64",
+      "quick_check": "ok"
+    },
+    {
+      "path": "project/.local-research/stocks-session-20260907/work/stocks-cvm-2023-repaired-example.db",
+      "sha256": "07197228920e4082954afbc9035509ae74e84be1773195a4c5b71a435481a804",
+      "quick_check": "ok"
+    },
+    {
+      "path": "project/.local-research/stocks-session-20260907/work/stocks-history-2016-2026.db",
+      "sha256": "e21a89c38f2792c826291baa1175da4fe9dfbf626316635a536f7c28b250146a",
+      "quick_check": "ok"
+    },
+    {
+      "path": "project/.local-research/stocks-session-20260907/work/stocks-tested-real-20260907.db",
+      "sha256": "e94633e709392168fc38df9633c5d63b34528a1af75949e9cecd69adf2af8e4a",
+      "quick_check": "ok"
+    },
+    {
+      "path": "project/.local-research/stocks-session-20260907/work/stocks-tested-real-v2-20260907.db",
+      "sha256": "a8238568980d3303890b04590cfb5c55ab2d24c9271edd86820269336b09679a",
+      "quick_check": "ok"
+    },
+    {
+      "path": "project/.local-research/stocks-session-20260907/work/test-only.db",
+      "sha256": "e713af1a867f31c3550e3767c7a9fc6f3963aac2b47b617db2adfe55903da054",
+      "quick_check": "ok"
+    },
+    {
+      "path": "project/.local-research/stocks-session-20260907/work/wheel-real-smoke.db",
+      "sha256": "56c0c7e4d9f342e439ed63d60e031b07ff9de1ebdf5407eea011be19536da66c",
+      "quick_check": "ok"
+    },
+    {
+      "path": "project/.local-research/stocks-session-20260907/work/h17-ready-5096bf505dc7/data/quotes.db",
+      "sha256": "30ce8e91fba9cb0a0c09571be71821c9da2d0aec49d12ec15aab8b26522ffd2c",
+      "quick_check": "ok"
+    },
+    {
+      "path": "project/.local-research/stocks-session-20260907/work/h17-ready-91342ec397f6/data/quotes.db",
+      "sha256": "30ce8e91fba9cb0a0c09571be71821c9da2d0aec49d12ec15aab8b26522ffd2c",
+      "quick_check": "ok"
+    },
+    {
+      "path": "project/.local-research/stocks-session-20260907/work/h17-run-pack/data/quotes.db",
+      "sha256": "30ce8e91fba9cb0a0c09571be71821c9da2d0aec49d12ec15aab8b26522ffd2c",
+      "quick_check": "ok"
+    },
+    {
+      "path": "project/.local-research/stocks-session-20260907/work/h17-run-pack-v2/data/quotes.db",
+      "sha256": "30ce8e91fba9cb0a0c09571be71821c9da2d0aec49d12ec15aab8b26522ffd2c",
+      "quick_check": "ok"
+    },
+    {
+      "path": "project/.local-research/stocks-session-20260907/work/profit-validation-ready-7b3722cd2bf1/baseline/base/quotes.db",
+      "sha256": "0bceedac3936dc4162562ec35e03177c7e71b99e13b66837035d1ccd151f0512",
+      "quick_check": "ok"
+    },
+    {
+      "path": "project/.local-research/stocks-session-20260907/work/profit-validation-ready-7b3722cd2bf1/baseline/successors/successors.db",
+      "sha256": "fa3d464e3e463b66c2aa64d96228aeb5d1fae63514df1d0ddb58233240b52764",
+      "quick_check": "ok"
+    },
+    {
+      "path": "project/.local-research/stocks-session-20260907/work/reorganization-ready-bundle/base/quotes.db",
+      "sha256": "0bceedac3936dc4162562ec35e03177c7e71b99e13b66837035d1ccd151f0512",
+      "quick_check": "ok"
+    },
+    {
+      "path": "project/.local-research/stocks-session-20260907/work/reorganization-ready-bundle/successors/successors.db",
+      "sha256": "fa3d464e3e463b66c2aa64d96228aeb5d1fae63514df1d0ddb58233240b52764",
+      "quick_check": "ok"
+    },
+    {
+      "path": "project/.local-research/stocks-session-20260907/work/reorganization-ready-e5e8b429ca89/base/quotes.db",
+      "sha256": "0bceedac3936dc4162562ec35e03177c7e71b99e13b66837035d1ccd151f0512",
+      "quick_check": "ok"
+    },
+    {
+      "path": "project/.local-research/stocks-session-20260907/work/reorganization-ready-e5e8b429ca89/successors/successors.db",
+      "sha256": "fa3d464e3e463b66c2aa64d96228aeb5d1fae63514df1d0ddb58233240b52764",
+      "quick_check": "ok"
+    },
+    {
+      "path": "project/.local-research/stocks-session-20260907/work/stocks-predictor/data/stocks.db",
+      "sha256": "396f9aa99dfd812af93d7d58db80f0c0179345500555bb0b27297fa81fa6c32f",
+      "quick_check": "ok"
+    },
+    {
+      "path": "project/.local-research/stocks-session-20260907/work/value-measurement-source/quotes.db",
+      "sha256": "0bceedac3936dc4162562ec35e03177c7e71b99e13b66837035d1ccd151f0512",
+      "quick_check": "ok"
+    },
+    {
+      "path": "project/.local-research/stocks-session-20260907/work/value-ready-bundle/original/quotes.db",
+      "sha256": "30ce8e91fba9cb0a0c09571be71821c9da2d0aec49d12ec15aab8b26522ffd2c",
+      "quick_check": "ok"
+    },
+    {
+      "path": "project/.local-research/stocks-session-20260907/work/value-ready-bundle/repaired/quotes.db",
+      "sha256": "0bceedac3936dc4162562ec35e03177c7e71b99e13b66837035d1ccd151f0512",
+      "quick_check": "ok"
+    },
+    {
+      "path": "project/.local-research/stocks-session-20260907/work/value-ready-ce8d1573257f/original/quotes.db",
+      "sha256": "30ce8e91fba9cb0a0c09571be71821c9da2d0aec49d12ec15aab8b26522ffd2c",
+      "quick_check": "ok"
+    },
+    {
+      "path": "project/.local-research/stocks-session-20260907/work/value-ready-ce8d1573257f/repaired/quotes.db",
+      "sha256": "0bceedac3936dc4162562ec35e03177c7e71b99e13b66837035d1ccd151f0512",
+      "quick_check": "ok"
+    },
+    {
+      "path": "project/.local-research/stocks-session-20260907/work/value-successor-source/successors.db",
+      "sha256": "fa3d464e3e463b66c2aa64d96228aeb5d1fae63514df1d0ddb58233240b52764",
+      "quick_check": "ok"
+    },
+    {
+      "path": "project/data/stocks.db",
+      "sha256": "a22739794ba4a43a11544338d4a91e14cb6a0b1f7b132ab460f96d3359f63cf4",
+      "quick_check": "ok"
+    }
+  ],
+  "additional_data_files_restored": 59,
+  "dependencies_files_verified": 7591,
+  "source_audit_14_sha256": "f27461eeef0c86d5df0727dae73b3d1c4b9ed817b2c8423f2d2649c88d6a67a8",
+  "source_audit_status": "BLOCKED_MISSING_EVIDENCE",
+  "new_historical_return_evaluations": 0,
+  "original_untracked_data_files_preserved": [
+    "dfp_2023_companies.txt",
+    "dividend_exploration.txt",
+    "ticker_of_2019.json",
+    "ticker_of_proposto.json",
+    "universo_2018_2026.txt",
+    "universo_snapshots.txt"
+  ],
+  "full_backup_unchanged": "E:\\EXPORTACAO_STOCKS_20260908",
+  "restoration_test_directory": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\migration-20260908\\data-only-restoration-test"
+}

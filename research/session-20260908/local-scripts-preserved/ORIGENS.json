@@ -354,6 +354,12 @@
     "sha256_lf": "364923652b81b2c44b95e18c43a733d55de09a1954ae8f7447e22e1aa4adf804"
   },
   {
+    "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\migration-20260908\\validate_data_only_delivery.py",
+    "git_path": "research/session-20260908/local-scripts-preserved/work/migration-20260908/validate_data_only_delivery.py",
+    "sha256_original": "6204f27c286703265b7c928ee9dabed08c4880084faeddab28235650a43dd376",
+    "sha256_lf": "6204f27c286703265b7c928ee9dabed08c4880084faeddab28235650a43dd376"
+  },
+  {
     "original_path": "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-07\\lei-2\\work\\net_candidates.py",
     "git_path": "research/session-20260908/local-scripts-preserved/work/net_candidates.py",
     "sha256_original": "5d9a5539f7184715692504d454f99f972a0ac01aaedb6f035bad25ae49a1efb4",

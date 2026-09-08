@@ -14,17 +14,25 @@ não rastreados foram preservados, sem adicioná-los ao Git como código.
 tools/data_transfer.py cria/verifica/restaura um ZIP deduplicado de dados.
 Pacotes antigos mistos são abertos recursivamente para preservar também dados
 que só existiam dentro deles; código, Git, wheels e bibliotecas ficam fora.
-13 testes sintéticos da transferência passaram; Ruff e Pyright passaram.
-A primeira execução completa durante a integração teve 23 recusas de árvore
-Git suja do Core e 741 testes aprovados; a validação final usa clone limpo.
-Não se alterou a exigência de árvore limpa para fazer testes passarem.
+Validação final do código e2969e4: 777 testes passaram em 83,83 s, sem avisos,
+incluindo 13 testes sintéticos da transferência. Clone limpo, Python 3.13 e
+Core 3.2.0 das dependências copiadas; Ruff e Pyright passaram. A execução
+inicial em árvore suja teve 23 recusas esperadas do Core. A exigência de
+árvore limpa foi preservada.
+
+ZIP de dados verificado: 5.355.806.582 bytes, 18.583 objetos e 60.023 caminhos
+(incluindo dados extraídos dos antigos pacotes mistos). Todos os hashes e CRCs
+conferem. Restaurados 25 bancos com quick_check ok e a entrada de fontes 14;
+a auditoria com o código da main reproduziu o hash f27461eeef0c86d5df0727dae73b3d1c4b9ed817b2c8423f2d2649c88d6a67a8.
+7.591 arquivos de bibliotecas/fontes web externas conferidos fora do ZIP.
+Recibo: docs/continuation/MIGRACAO_VERIFICADA.json.
 
 A auditoria 14 foi validada na migração anterior, mas continua separada da
 entrada canônica 13. O lucro permanece null/BLOCKED_MISSING_EVIDENCE, com
 24 datas, 52 líquidos, 28 entradas societárias e 1.248 inventários pendentes.
 H1–H20 e 53/55 preservados; zero novos retornos, ordens ou escritas em bancos
 originais, ledgers ou quarentenas. Procedimento em
-docs/continuation/MIGRACAO_MAIN.md. Resultado final registrado após validação.
+docs/continuation/MIGRACAO_MAIN.md. Código entregue em bundle Git separado.
 
 ## Complemento de fontes — revisão 13 (08/09/2026 UTC)
 

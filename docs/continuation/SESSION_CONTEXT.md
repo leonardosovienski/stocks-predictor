@@ -1,5 +1,11 @@
 # Continuidade independente da conversa — 07/09/2026
 
+> Atualização de 08/09/2026: o código vigente foi integrado à **main local**,
+> com 777 testes aprovados, sem push. Começar por MIGRACAO_MAIN.md e
+> MIGRACAO_VERIFICADA.json. O checkout da branch fix citado abaixo é histórico;
+> as raízes preservadas continuam servindo como origem dos dados, não como
+> indicação da branch de código vigente.
+
 O usuário pediu preservar tudo no Git, conferir o prompt e permitir apagar a
 conversa anterior. Este diretório registra contexto operacional e científico;
 não é uma nova hipótese ou promoção econômica. A íntegra do pedido inicial foi
