@@ -1,3 +1,36 @@
+## Continuidade: viabilidade e contabilidade de frações (2026-09-08 UTC)
+
+Executado protocolo H19_EXECUTION_FEASIBILITY_20260908_1, registrado em 36efca5
+antes das medições. 248 compras independentes nas 31 datas, duas carteiras,
+R$5/10 mil e custos de 0,18%/0,36% por lado. Primeira saída 244/248; fonte CYRE
+resolvida separadamente sem mudar seleção ou unidades ON, saída final 248/248.
+Sem retorno novo: mínimos 32 configurações / 37 avaliações históricas mantidos.
+
+Implementada tributação de frações em leilões ordinários pela base fiscal da
+posição e mês de alienação, com retenção do leilão separada. Constantes líquidas
+societárias exigem contexto completo da carteira; imposto futuro desconhecido
+não pode virar passivo antecipado. Três falhas antigas foram reproduzidas e
+rejeitadas atomicamente. Não é um motor fiscal geral nem aprovação das fontes.
+
+Suíte completa: 613 testes no snapshot 0ac04cb. Correção final de compatibilidade
+bebe1f7 (ISIN vinculado ao plano congelado) passou os 3 testes do diagnóstico e
+69 testes fora do checkout. Módulos contábeis sem mudança após a suíte; Ruff,
+Pyright no escopo configurado e cobertura geral de 79%. Replay real e diagnóstico
+final reproduzidos byte a byte; hashes dos bancos preservados.
+
+Resultado econômico continua INCONCLUSIVE_NET_PROFIT / OPERATIONAL_NO_GO:
+356 datas, 389 líquidos, inventário de 1.237 intervalos e 36 registros societários
+sem fechamento. 312 períodos agrupados apenas para planejar aquisição, zero
+certificados novos. Recomendação: PAUSE_MANUAL_BULK_H19_RECONSTRUCTION; H19 não
+foi refutada como sem edge. Cenário de 2h/mês a R$25/h custa R$600/ano e exige
+12/6 pontos percentuais adicionais sobre R$5/10 mil apenas para manutenção.
+Piso de lucro e tolerância de horas do usuário permanecem desconhecidos.
+
+Relatório: docs/research/2026-09-08-feasibility-results.md. Artefatos autorais e
+logs: research/session-20260908. Pacote e relatório também preservados na raiz
+durável, outputs/continuation-20260908. Retomada: docs/continuation/UPDATE_20260908.md.
+Nenhuma ordem, gasto, dependência instalada, novo holdout ou push remoto.
+
 ## Continuidade sem depender deste chat (2026-09-07)
 
 Usuário pediu commitar todo o trabalho, conferir o prompt e permitir apagar a

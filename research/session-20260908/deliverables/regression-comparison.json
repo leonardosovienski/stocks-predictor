@@ -1,0 +1,44 @@
+{
+  "before": {
+    "synthetic": true,
+    "new_historical_return_evaluations": 0,
+    "cases": [
+      {
+        "case": "net_fraction_reused_across_portfolios",
+        "unsafe_input_accepted": true
+      },
+      {
+        "case": "compulsory_tax_reused_across_portfolios",
+        "unsafe_input_accepted": true
+      },
+      {
+        "case": "future_tax_debited_before_it_is_known",
+        "unsafe_input_accepted": true
+      }
+    ]
+  },
+  "after": {
+    "synthetic": true,
+    "new_historical_return_evaluations": 0,
+    "cases": [
+      {
+        "case": "net_fraction_reused_across_portfolios",
+        "unsafe_input_accepted": false,
+        "error": "reviewed net corporate tax must match the portfolio state",
+        "failed_atomically": true
+      },
+      {
+        "case": "compulsory_tax_reused_across_portfolios",
+        "unsafe_input_accepted": false,
+        "error": "reviewed net corporate tax must match the portfolio state",
+        "failed_atomically": true
+      },
+      {
+        "case": "future_tax_debited_before_it_is_known",
+        "unsafe_input_accepted": false,
+        "error": "future disposal tax amount requires a dated recognition event",
+        "failed_atomically": true
+      }
+    ]
+  }
+}

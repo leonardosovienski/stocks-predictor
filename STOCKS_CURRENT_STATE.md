@@ -1,3 +1,22 @@
+# Estado vigente — continuidade de 08/09/2026 UTC
+
+**H19 permanece Discovery/inconclusiva; NO_GO operacional. Pausar a reconstrução
+manual extensa até existir uma rota barata de fontes e manutenção.**
+
+Foi implementada a tributação de leilões ordinários a partir da base fiscal
+individual e corrigida a reutilização de líquidos/impostos entre carteiras.
+248 compras iniciais nas seleções congeladas foram simuladas; não são giro nem
+lucro da carteira contínua. Permanecem 356 datas, 389 líquidos, zero certificados
+para 1.237 intervalos e zero dos 36 registros societários aprovados/integrados.
+
+613 testes na suíte completa (0ac04cb); ajuste final bebe1f7 validado por 3 testes
+do diagnóstico e 69 testes no pacote externo. Replay real idêntico, exit 2,
+lucro null. Nenhum retorno histórico novo; mínimos 32 configurações/37 avaliações.
+Fontes, bancos, ledgers e vereditos anteriores preservados.
+
+[Resultado, cenários econômicos e limites](docs/research/2026-09-08-feasibility-results.md).
+O começo de HANDOFF.md contém a execução atual; os textos abaixo são históricos.
+
 # Estado vigente — revisão final de 07/09/2026
 
 **H19 trimestral está em Discovery; H18 é controle; H17 já foi observada e ficou

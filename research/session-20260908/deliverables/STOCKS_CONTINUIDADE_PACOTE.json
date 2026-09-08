@@ -1,0 +1,12 @@
+{
+  "package": "STOCKS_CONTINUIDADE.zip",
+  "sha256": "2b44d0b627bdd068cb09f964c0671ca3cf49647ef24979d5b1ce1ff2991d6e6f",
+  "bytes": 863124,
+  "verified_payloads": 42,
+  "code_commit": "bebe1f7ea85769a212e0acf12608faa20cbcb9b7",
+  "standalone_reproduction_script_passed_before_documentation_added": true,
+  "external_packaged_tests_passed": 69,
+  "full_economic_history_executed": false,
+  "profit": null,
+  "new_historical_return_evaluations": 0
+}

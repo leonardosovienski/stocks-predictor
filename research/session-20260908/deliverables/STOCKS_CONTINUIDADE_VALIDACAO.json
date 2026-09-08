@@ -1,0 +1,64 @@
+{
+  "full_suite": {
+    "snapshot_commit": "0ac04cb",
+    "passed": 613,
+    "step": "full-tests-final",
+    "exit_code": 0,
+    "elapsed_seconds": 270.23,
+    "log_sha256": "19c4f7cac68c7e7b9325b29593724307d55a5d74e553431908c1537c74c86088"
+  },
+  "final_code_commit": "bebe1f7ea85769a212e0acf12608faa20cbcb9b7",
+  "final_compatibility_fix": "bebe1f7 binds the review to the frozen plan ISIN; ordinary action requirements may omit ISIN.",
+  "validation_after_final_fix": {
+    "targeted_diagnostic_tests_passed": 3,
+    "external_packaged_tests_passed": 69,
+    "package_test_log_sha256": "4da8ad12b62f6d9f8aa483506616501df1483cf50d5bb3c2da5f46f3b85bd26e",
+    "source_audit_passed": true,
+    "three_old_unsafe_cases_rejected_by_final_runtime": true,
+    "full_suite_not_repeated_for_final_two_line_identity_binding_fix": true
+  },
+  "static_checks": [
+    {
+      "step": "lint",
+      "exit_code": 0,
+      "log_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    {
+      "step": "pyright",
+      "exit_code": 0,
+      "log_sha256": "6d88a1b220adb7a3d62092b6e38431f0b3fe8babe9864fab90e5849766260332"
+    },
+    {
+      "step": "coverage",
+      "exit_code": 0,
+      "log_sha256": "b536fe034d6ef3994edb66a4f55501685639027984a458c53fff5e28f7a469a6"
+    }
+  ],
+  "coverage_overall_percent": 79,
+  "pyright_scope": "Configured six modules: three RJ plus retail_cash, continuous_cash, continuous_research; unchanged after their successful check.",
+  "real_replay_exit_code": 2,
+  "real_replay_byte_identical": true,
+  "real_replay_sha256": "585c72395fc2fefc2e0bbd90b6756c516e58d0f1e29ada3d6de196f46ea49c27",
+  "final_feasibility_byte_identical_outside_checkout": true,
+  "final_feasibility_sha256": "f2517827b15f32cee901e21066f252179d2b5d78f3f50389a3a80e51f4a09f9d",
+  "initial_feasibility_sha256_preserved": "55260096e84438da8b1793b5b381be47ee36fbe2ad535066f75302dcc5b34427",
+  "verified_replay_input_files": 31,
+  "validated_quote_records": 365198,
+  "preservation_recheck": {
+    "snapshot_manifest_sha256": "0a3c132455a6aaf523c17fddeb702646174ab4c21f1e87fb387af747faebf9ec",
+    "selected_preserved_files_reverified": 33,
+    "mismatches": 0,
+    "scope": "Inputs plus research database; not a fresh audit of all 36998 preserved files."
+  },
+  "database_hashes_before_and_after": {
+    "C:/Users/Superleo13/stocks-predictor-work/data/stocks.db": "a22739794ba4a43a11544338d4a91e14cb6a0b1f7b132ab460f96d3359f63cf4",
+    "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\stocks-tested-real-v2-20260907.db": "a8238568980d3303890b04590cfb5c55ab2d24c9271edd86820269336b09679a"
+  },
+  "source_module_sha256": {
+    "retail_cash.py": "124766b7a2df7cf65baebdfc493fb7d695a9d95a87502c39f2eeab14b80cddae",
+    "continuous_cash.py": "7b839fb5c44fda0baf87ca931713dc70a9024a46b8fc3b002428853ad950ab00",
+    "continuous_research.py": "16a22550a725a73a0f1a0f50cc26ff99e5fd52b4dac32762c3f918c7142efd83"
+  },
+  "new_historical_return_evaluations": 0,
+  "new_dependencies_installed": false
+}

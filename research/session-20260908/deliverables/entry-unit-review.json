@@ -1,0 +1,25 @@
+[
+  {
+    "event_id": "CYRE3:2026-01-02:BONIFICACAO",
+    "ticker": "CYRE3",
+    "isin": "BRCYREACNOR7",
+    "ex_date": "2026-01-02",
+    "terms_known_on": "2025-12-31",
+    "source_review": true,
+    "kind": "BONUS_IN_DIFFERENT_CLASS",
+    "removes_original": false,
+    "original_share_units_unchanged": true,
+    "delivered_tickers": [
+      "CYRE4"
+    ],
+    "sources": [
+      {
+        "file": "cvm-corporate-0166.pdf",
+        "sha256": "b5db60cd77d8ea1ca3473059a7ae5ff36f7106cd644a4aef007d573fc674ace6",
+        "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1462916&numSequencia=987622&numVersao=1",
+        "locator": "items 2-6; ON count remains 384000000; rights belong to 2025-12-30 ownership"
+      }
+    ],
+    "scope": "Order units in independent empty-book entry only; not full event or personal-tax approval"
+  }
+]

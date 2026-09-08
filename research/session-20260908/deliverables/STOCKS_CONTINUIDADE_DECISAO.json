@@ -1,0 +1,72 @@
+{
+  "created_at_utc": "2026-09-08T01:30:44.712159+00:00",
+  "final_code_commit": "bebe1f7ea85769a212e0acf12608faa20cbcb9b7",
+  "economic_verdict": "INCONCLUSIVE_NET_PROFIT",
+  "operational_decision": "NO_GO",
+  "research_allocation": "PAUSE_MANUAL_BULK_H19_RECONSTRUCTION",
+  "line_rejected_as_no_edge": false,
+  "net_profit_brl": null,
+  "loss_demonstrated": false,
+  "chosen_path_executed": "Bounded entry feasibility and position-dependent ordinary auction accounting",
+  "capital_scenarios_brl": [
+    5000,
+    10000
+  ],
+  "user_minimum_profit_unknown": true,
+  "user_acceptable_maintenance_hours_unknown": true,
+  "evidence": {
+    "entry_snapshots_attempted_final": 248,
+    "entry_snapshots_completed_final": 248,
+    "entry_dates_per_portfolio": 31,
+    "overhead_sensitivity_cells": 432,
+    "economic_replay_status": "BLOCKED_MISSING_EVIDENCE",
+    "payment_dates_missing": 356,
+    "net_cash_amounts_missing": 389,
+    "certified_cash_intervals": 0,
+    "required_cash_intervals": 1237,
+    "required_corporate_records": 36,
+    "approved_integrated_corporate_records": 0,
+    "acquisition_spans_after_planning_merge_only": 312,
+    "ticker_isin_pairs_in_required_intervals": 123,
+    "settlement_session_lags_in_entry_simulations": {
+      "2": 216,
+      "3": 32
+    }
+  },
+  "implementation": {
+    "ordinary_exchange_fraction_tax_from_position_basis": true,
+    "separate_auction_withholding_and_monthly_gain_recognition": true,
+    "already_net_corporate_constants_bound_to_full_book": true,
+    "future_fixed_corporate_tax_rejected": true,
+    "general_reorganization_tax_engine_complete": false,
+    "actual_broker_rounding_and_fills_validated": false
+  },
+  "conditional_economics": {
+    "assumed_incremental_maintenance_hours_per_month": 2,
+    "assumed_hourly_opportunity_cost_brl": 25,
+    "annual_cost_brl": 600,
+    "required_incremental_net_return_only_to_cover_that_cost": {
+      "5000": 0.12,
+      "10000": 0.06
+    },
+    "not_a_user_preference_or_alpha_forecast": true
+  },
+  "search_budget": {
+    "minimum_exposed_return_configurations": 32,
+    "minimum_historical_return_evaluations": 37,
+    "new_return_configurations": 0,
+    "new_historical_return_evaluations": 0,
+    "new_feasibility_protocols": 1,
+    "completed_feasibility_editions": 2,
+    "distinct_entry_snapshot_cases": 248,
+    "initial_edition_completed": 244,
+    "source_resolved_entry_cases": 4,
+    "new_confirmatory_or_prospective_tranches": 0
+  },
+  "resume_condition": "A concrete cheap source-closure route and maintenance economics compatible with the capital; unchanged frozen strategy or a separately registered material new equity mechanism. No automatic scheduling or capital.",
+  "sources_and_databases_preserved": true,
+  "real_orders_submitted": false,
+  "paid_services_purchased": false,
+  "runtime_dependencies_installed": false,
+  "github_push_performed": false
+}

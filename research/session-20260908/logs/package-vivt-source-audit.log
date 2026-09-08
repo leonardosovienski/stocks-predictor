@@ -1,0 +1,65 @@
+{
+  "status": "PHYSICAL_TERMS_VERIFIED_PERSONAL_NET_CASH_NOT_CERTIFIED",
+  "sources": [
+    {
+      "file": "cvm-corporate-0146.pdf",
+      "sha256": "e2a4dd1f7e48cb3118bfba71656602346fd802f22f7e85f72b37827d5cd528b9",
+      "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1346726&numSequencia=871452&numVersao=1",
+      "extracted_text_sha256": "55b32ee0bd56f2fe87eace92d416fa8577e4d4248517e0bd261ac75d97fe7cf5",
+      "source_integrity_and_relevant_terms_verified": true
+    },
+    {
+      "file": "cvm-corporate-0147.pdf",
+      "sha256": "34534ec4018b7fc2fd16398c4bf29dbf5a16def2fe54750c8ffde3aac0f6a61e",
+      "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1379951&numSequencia=904663&numVersao=1",
+      "extracted_text_sha256": "bad81be88e5cdda254e08d8e42300aec5e2cc78729548a71b245c677e877c048",
+      "source_integrity_and_relevant_terms_verified": true
+    },
+    {
+      "file": "cvm-corporate-0148.pdf",
+      "sha256": "bbda4ebde04155efeea92b99820c27f160cd248e3aecac3d435869a36f23a8f6",
+      "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1380678&numSequencia=905390&numVersao=1",
+      "extracted_text_sha256": "fe91d66a4f8afaeec59f65cea8ff003ded20d45e60a1097900f4327a23ffb530",
+      "source_integrity_and_relevant_terms_verified": true
+    }
+  ],
+  "real_action_approved_for_h19": false,
+  "new_historical_return_evaluations": 0,
+  "quantity_example_is_hypothetical_not_the_h19_position": true,
+  "original_quantity": 39,
+  "delivered_whole_shares": 0,
+  "auction_units_after_split": 78,
+  "proceeds_after_auction_fees_before_personal_tax_brl": "2078.07311434242",
+  "hypothetical_original_basis_examples": [
+    {
+      "basis_brl": 1170,
+      "gain_before_personal_income_tax_brl": "908.07311434242",
+      "personal_income_tax_brl": null
+    },
+    {
+      "basis_brl": 1950,
+      "gain_before_personal_income_tax_brl": "128.07311434242",
+      "personal_income_tax_brl": null
+    },
+    {
+      "basis_brl": 2340,
+      "gain_before_personal_income_tax_brl": "-261.92688565758",
+      "personal_income_tax_brl": null
+    }
+  ],
+  "unresolved_source_fields": [
+    "gross auction proceeds before expenses",
+    "auction expenses separately",
+    "actual withholding allocated to this investor",
+    "exact custody credit and cent rounding",
+    "complete portfolio basis and monthly trades/losses for the historical replay"
+  ],
+  "dates": {
+    "quantity_terms_announced": "2025-03-13",
+    "effective_ex_date": "2025-04-15",
+    "auction_announced": "2025-05-16",
+    "auction_and_result_date": "2025-05-19",
+    "announced_payment_deadline_not_individual_credit_certificate": "2025-05-28"
+  },
+  "interpretation": "The issuer reports proceeds after auction expenses. That is insufficient for either gross monthly sales thresholds or personal net income tax. Do not substitute zero for the missing components."
+}
