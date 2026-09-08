@@ -1,0 +1,13 @@
+{
+  "addendum": "H20_EXISTING_CYRE_ENTRY_UNIT_REVIEW_1",
+  "registered_at_utc": "2026-09-08T02:10:20.652178+00:00",
+  "protocol_sha256": "521a2cf4d3a5210df9e4c4f9336ec3a9e43b5d96ccb35427820fcf75b9a7e04e",
+  "review_sha256": "c7c1781097d18f8c92dd456780b839a6adcdb4dedc1fa2737bff5cff5a0ce4b5",
+  "first_observation_sha256": "937c98447d9412fbcd01853f29adf1bc3e34afb901146cebcaca75aad5b64eca",
+  "reason": "First observation conservatively blocked two arms at CYRE January 2026. Reuse the already source-reviewed cross-class bonus from the preceding session; original ON quantities unchanged, no bonus rights for new ex-date buyers.",
+  "source_scope": "Only signal-to-entry original order units in independent empty-book entries. No approval of historical cash, tax, bonus disposal or retained H20 positions.",
+  "method_changes": false,
+  "parameters_changed": false,
+  "new_return_evaluations": 0,
+  "preservation": "Keep observation-01 unchanged and write observation-02 after source integration."
+}
