@@ -1,0 +1,1649 @@
+{
+  "parents": [
+    {
+      "event_id": "BRHAPVACNOR4:2020-01-06:JRS CAP PROPRIO:7",
+      "ticker": "HAPV3",
+      "isin": "BRHAPVACNOR4",
+      "ex_date": "2020-01-06",
+      "action": "JRS CAP PROPRIO",
+      "payment_date": null,
+      "gross_per_share": "0.159688047",
+      "sources": [],
+      "net_per_share": null,
+      "tax_source": null,
+      "source_review": false,
+      "available_on": null,
+      "known_on": null
+    },
+    {
+      "event_id": "BRHAPVACNOR4:2020-04-29:DIVIDENDO:6",
+      "ticker": "HAPV3",
+      "isin": "BRHAPVACNOR4",
+      "ex_date": "2020-04-29",
+      "action": "DIVIDENDO",
+      "payment_date": null,
+      "gross_per_share": "0.016484246",
+      "sources": [],
+      "net_per_share": null,
+      "tax_source": null,
+      "source_review": false,
+      "available_on": null,
+      "known_on": null
+    },
+    {
+      "event_id": "BRCPFEACNOR0:2021-09-01:DIVIDENDO:9",
+      "ticker": "CPFE3",
+      "isin": "BRCPFEACNOR0",
+      "ex_date": "2021-09-01",
+      "action": "DIVIDENDO",
+      "payment_date": null,
+      "gross_per_share": "1.501834847",
+      "sources": [],
+      "net_per_share": null,
+      "tax_source": null,
+      "source_review": false,
+      "available_on": null,
+      "known_on": null
+    },
+    {
+      "event_id": "BRCPFEACNOR0:2023-05-02:DIVIDENDO:5",
+      "ticker": "CPFE3",
+      "isin": "BRCPFEACNOR0",
+      "ex_date": "2023-05-02",
+      "action": "DIVIDENDO",
+      "payment_date": null,
+      "gross_per_share": "1.234365592",
+      "sources": [],
+      "net_per_share": null,
+      "tax_source": null,
+      "source_review": false,
+      "available_on": null,
+      "known_on": null
+    },
+    {
+      "event_id": "BRCPFEACNOR0:2023-08-18:DIVIDENDO:3",
+      "ticker": "CPFE3",
+      "isin": "BRCPFEACNOR0",
+      "ex_date": "2023-08-18",
+      "action": "DIVIDENDO",
+      "payment_date": null,
+      "gross_per_share": "0.78335809",
+      "sources": [],
+      "net_per_share": null,
+      "tax_source": null,
+      "source_review": false,
+      "available_on": null,
+      "known_on": null
+    },
+    {
+      "event_id": "BRCPFEACNOR0:2024-04-29:DIVIDENDO:2",
+      "ticker": "CPFE3",
+      "isin": "BRCPFEACNOR0",
+      "ex_date": "2024-04-29",
+      "action": "DIVIDENDO",
+      "payment_date": null,
+      "gross_per_share": "2.753976596",
+      "sources": [],
+      "net_per_share": null,
+      "tax_source": null,
+      "source_review": false,
+      "available_on": null,
+      "known_on": null
+    },
+    {
+      "event_id": "BRABEVACNOR1:2025-12-19:JRS CAP PROPRIO:1",
+      "ticker": "ABEV3",
+      "isin": "BRABEVACNOR1",
+      "ex_date": "2025-12-19",
+      "action": "JRS CAP PROPRIO",
+      "payment_date": null,
+      "gross_per_share": "0.269",
+      "sources": [],
+      "net_per_share": null,
+      "tax_source": null,
+      "source_review": false,
+      "available_on": null,
+      "known_on": null
+    }
+  ],
+  "schedules": [
+    {
+      "card_index": 115,
+      "parent_event_id": "BRHAPVACNOR4:2020-01-06:JRS CAP PROPRIO:7",
+      "payments": [
+        {
+          "ticker": "HAPV3",
+          "isin": "BRHAPVACNOR4",
+          "ex_date": "2020-01-06",
+          "action": "JRS CAP PROPRIO",
+          "payment_date": "2020-07-24",
+          "known_on": "2020-07-24",
+          "gross_per_share": ".079844024",
+          "net_per_share": "0.06786742040",
+          "sources": [
+            {
+              "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0269.pdf",
+              "sha256": "a65e88c0a40e81e7adc86c8ffa21b24badb77342a265e1b43f96f67b5d694b46",
+              "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=776084&numSequencia=300825&numVersao=2",
+              "pages": [
+                1
+              ],
+              "received_on": "2020-07-14"
+            }
+          ],
+          "tax_source": [
+            {
+              "file": "lei-9249.html",
+              "url": "http://www.planalto.gov.br/ccivil_03/leis/l9249.htm",
+              "sha256": "e6fe901511d531cb1063932c6be6d3c9a189ca964c32e69c194b6c65d2f63a72",
+              "scope": "Lei 9.249/1995 arts.9 paragraph2 (15% historical text) and10 (pre-2026); resident PF scenario"
+            }
+          ],
+          "source_review": true,
+          "net_rule": "RESIDENT_PF_PRE_2026_ORDINARY_DISTRIBUTION",
+          "actual_broker_cent_rounding_not_verified": true
+        },
+        {
+          "ticker": "HAPV3",
+          "isin": "BRHAPVACNOR4",
+          "ex_date": "2020-01-06",
+          "action": "JRS CAP PROPRIO",
+          "payment_date": "2020-09-18",
+          "known_on": "2020-09-18",
+          "gross_per_share": ".079844024",
+          "net_per_share": "0.06786742040",
+          "sources": [
+            {
+              "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0270.pdf",
+              "sha256": "0eae6ea659409cd3787afe2209af52edd0ef05ae8a7717e33eaae2f6ef9ecd6f",
+              "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=790985&numSequencia=315724&numVersao=1",
+              "pages": [
+                1
+              ],
+              "received_on": "2020-09-03"
+            }
+          ],
+          "tax_source": [
+            {
+              "file": "lei-9249.html",
+              "url": "http://www.planalto.gov.br/ccivil_03/leis/l9249.htm",
+              "sha256": "e6fe901511d531cb1063932c6be6d3c9a189ca964c32e69c194b6c65d2f63a72",
+              "scope": "Lei 9.249/1995 arts.9 paragraph2 (15% historical text) and10 (pre-2026); resident PF scenario"
+            }
+          ],
+          "source_review": true,
+          "net_rule": "RESIDENT_PF_PRE_2026_ORDINARY_DISTRIBUTION",
+          "actual_broker_cent_rounding_not_verified": true
+        }
+      ],
+      "source_review": true,
+      "sources": [
+        {
+          "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0269.pdf",
+          "sha256": "a65e88c0a40e81e7adc86c8ffa21b24badb77342a265e1b43f96f67b5d694b46",
+          "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=776084&numSequencia=300825&numVersao=2",
+          "pages": [
+            1
+          ],
+          "received_on": "2020-07-14"
+        },
+        {
+          "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0270.pdf",
+          "sha256": "0eae6ea659409cd3787afe2209af52edd0ef05ae8a7717e33eaae2f6ef9ecd6f",
+          "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=790985&numSequencia=315724&numVersao=1",
+          "pages": [
+            1
+          ],
+          "received_on": "2020-09-03"
+        }
+      ],
+      "published_rounding": {
+        "reviewed": true,
+        "delta": "1E-9",
+        "sources": [
+          {
+            "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0269.pdf",
+            "sha256": "a65e88c0a40e81e7adc86c8ffa21b24badb77342a265e1b43f96f67b5d694b46",
+            "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=776084&numSequencia=300825&numVersao=2",
+            "pages": [
+              1
+            ],
+            "received_on": "2020-07-14"
+          },
+          {
+            "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0270.pdf",
+            "sha256": "0eae6ea659409cd3787afe2209af52edd0ef05ae8a7717e33eaae2f6ef9ecd6f",
+            "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=790985&numSequencia=315724&numVersao=1",
+            "pages": [
+              1
+            ],
+            "received_on": "2020-09-03"
+          }
+        ],
+        "reason": "Sum of separately rounded published installments; original nominal amount preserved in lineage. No balancing cash adjustment."
+      }
+    },
+    {
+      "card_index": 118,
+      "parent_event_id": "BRHAPVACNOR4:2020-04-29:DIVIDENDO:6",
+      "payments": [
+        {
+          "ticker": "HAPV3",
+          "isin": "BRHAPVACNOR4",
+          "ex_date": "2020-04-29",
+          "action": "DIVIDENDO",
+          "payment_date": "2020-07-24",
+          "known_on": "2020-07-24",
+          "gross_per_share": ".008242123",
+          "net_per_share": "0.008242123",
+          "sources": [
+            {
+              "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0269.pdf",
+              "sha256": "a65e88c0a40e81e7adc86c8ffa21b24badb77342a265e1b43f96f67b5d694b46",
+              "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=776084&numSequencia=300825&numVersao=2",
+              "pages": [
+                1
+              ],
+              "received_on": "2020-07-14"
+            }
+          ],
+          "tax_source": [
+            {
+              "file": "lei-9249.html",
+              "url": "http://www.planalto.gov.br/ccivil_03/leis/l9249.htm",
+              "sha256": "e6fe901511d531cb1063932c6be6d3c9a189ca964c32e69c194b6c65d2f63a72",
+              "scope": "Lei 9.249/1995 arts.9 paragraph2 (15% historical text) and10 (pre-2026); resident PF scenario"
+            }
+          ],
+          "source_review": true,
+          "net_rule": "RESIDENT_PF_PRE_2026_ORDINARY_DISTRIBUTION",
+          "actual_broker_cent_rounding_not_verified": true
+        },
+        {
+          "ticker": "HAPV3",
+          "isin": "BRHAPVACNOR4",
+          "ex_date": "2020-04-29",
+          "action": "DIVIDENDO",
+          "payment_date": "2020-09-18",
+          "known_on": "2020-09-18",
+          "gross_per_share": ".008242123",
+          "net_per_share": "0.008242123",
+          "sources": [
+            {
+              "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0270.pdf",
+              "sha256": "0eae6ea659409cd3787afe2209af52edd0ef05ae8a7717e33eaae2f6ef9ecd6f",
+              "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=790985&numSequencia=315724&numVersao=1",
+              "pages": [
+                1
+              ],
+              "received_on": "2020-09-03"
+            }
+          ],
+          "tax_source": [
+            {
+              "file": "lei-9249.html",
+              "url": "http://www.planalto.gov.br/ccivil_03/leis/l9249.htm",
+              "sha256": "e6fe901511d531cb1063932c6be6d3c9a189ca964c32e69c194b6c65d2f63a72",
+              "scope": "Lei 9.249/1995 arts.9 paragraph2 (15% historical text) and10 (pre-2026); resident PF scenario"
+            }
+          ],
+          "source_review": true,
+          "net_rule": "RESIDENT_PF_PRE_2026_ORDINARY_DISTRIBUTION",
+          "actual_broker_cent_rounding_not_verified": true
+        }
+      ],
+      "source_review": true,
+      "sources": [
+        {
+          "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0269.pdf",
+          "sha256": "a65e88c0a40e81e7adc86c8ffa21b24badb77342a265e1b43f96f67b5d694b46",
+          "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=776084&numSequencia=300825&numVersao=2",
+          "pages": [
+            1
+          ],
+          "received_on": "2020-07-14"
+        },
+        {
+          "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0270.pdf",
+          "sha256": "0eae6ea659409cd3787afe2209af52edd0ef05ae8a7717e33eaae2f6ef9ecd6f",
+          "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=790985&numSequencia=315724&numVersao=1",
+          "pages": [
+            1
+          ],
+          "received_on": "2020-09-03"
+        }
+      ],
+      "published_rounding": {
+        "reviewed": true,
+        "delta": "0E-9",
+        "sources": [
+          {
+            "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0269.pdf",
+            "sha256": "a65e88c0a40e81e7adc86c8ffa21b24badb77342a265e1b43f96f67b5d694b46",
+            "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=776084&numSequencia=300825&numVersao=2",
+            "pages": [
+              1
+            ],
+            "received_on": "2020-07-14"
+          },
+          {
+            "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0270.pdf",
+            "sha256": "0eae6ea659409cd3787afe2209af52edd0ef05ae8a7717e33eaae2f6ef9ecd6f",
+            "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=790985&numSequencia=315724&numVersao=1",
+            "pages": [
+              1
+            ],
+            "received_on": "2020-09-03"
+          }
+        ],
+        "reason": "Sum of separately rounded published installments; original nominal amount preserved in lineage. No balancing cash adjustment."
+      }
+    },
+    {
+      "card_index": 142,
+      "parent_event_id": "BRCPFEACNOR0:2021-09-01:DIVIDENDO:9",
+      "payments": [
+        {
+          "ticker": "CPFE3",
+          "isin": "BRCPFEACNOR0",
+          "ex_date": "2021-09-01",
+          "action": "DIVIDENDO",
+          "payment_date": "2021-10-22",
+          "known_on": "2021-10-22",
+          "gross_per_share": ".433931936",
+          "net_per_share": "0.433931936",
+          "sources": [
+            {
+              "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0427.pdf",
+              "sha256": "02ad90af963600e42ed21c38ab17820854336b6e39548404594ba79317116af5",
+              "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=908002&numSequencia=432736&numVersao=1",
+              "pages": [
+                1
+              ],
+              "received_on": "2021-10-18"
+            }
+          ],
+          "tax_source": [
+            {
+              "file": "lei-9249.html",
+              "url": "http://www.planalto.gov.br/ccivil_03/leis/l9249.htm",
+              "sha256": "e6fe901511d531cb1063932c6be6d3c9a189ca964c32e69c194b6c65d2f63a72",
+              "scope": "Lei 9.249/1995 arts.9 paragraph2 (15% historical text) and10 (pre-2026); resident PF scenario"
+            }
+          ],
+          "source_review": true,
+          "net_rule": "RESIDENT_PF_PRE_2026_ORDINARY_DISTRIBUTION",
+          "actual_broker_cent_rounding_not_verified": true
+        },
+        {
+          "ticker": "CPFE3",
+          "isin": "BRCPFEACNOR0",
+          "ex_date": "2021-09-01",
+          "action": "DIVIDENDO",
+          "payment_date": "2021-11-16",
+          "known_on": "2021-11-16",
+          "gross_per_share": ".433931936",
+          "net_per_share": "0.433931936",
+          "sources": [
+            {
+              "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0427.pdf",
+              "sha256": "02ad90af963600e42ed21c38ab17820854336b6e39548404594ba79317116af5",
+              "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=908002&numSequencia=432736&numVersao=1",
+              "pages": [
+                1
+              ],
+              "received_on": "2021-10-18"
+            }
+          ],
+          "tax_source": [
+            {
+              "file": "lei-9249.html",
+              "url": "http://www.planalto.gov.br/ccivil_03/leis/l9249.htm",
+              "sha256": "e6fe901511d531cb1063932c6be6d3c9a189ca964c32e69c194b6c65d2f63a72",
+              "scope": "Lei 9.249/1995 arts.9 paragraph2 (15% historical text) and10 (pre-2026); resident PF scenario"
+            }
+          ],
+          "source_review": true,
+          "net_rule": "RESIDENT_PF_PRE_2026_ORDINARY_DISTRIBUTION",
+          "actual_broker_cent_rounding_not_verified": true
+        },
+        {
+          "ticker": "CPFE3",
+          "isin": "BRCPFEACNOR0",
+          "ex_date": "2021-09-01",
+          "action": "DIVIDENDO",
+          "payment_date": "2021-12-16",
+          "known_on": "2021-12-16",
+          "gross_per_share": ".633970975",
+          "net_per_share": "0.633970975",
+          "sources": [
+            {
+              "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0428.pdf",
+              "sha256": "7783d7daa8d8bf4150ca2f65fd228246b312e8c5517c6e1492132b28e46f73fa",
+              "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=921814&numSequencia=446548&numVersao=1",
+              "pages": [
+                1
+              ],
+              "received_on": "2021-12-02"
+            }
+          ],
+          "tax_source": [
+            {
+              "file": "lei-9249.html",
+              "url": "http://www.planalto.gov.br/ccivil_03/leis/l9249.htm",
+              "sha256": "e6fe901511d531cb1063932c6be6d3c9a189ca964c32e69c194b6c65d2f63a72",
+              "scope": "Lei 9.249/1995 arts.9 paragraph2 (15% historical text) and10 (pre-2026); resident PF scenario"
+            }
+          ],
+          "source_review": true,
+          "net_rule": "RESIDENT_PF_PRE_2026_ORDINARY_DISTRIBUTION",
+          "actual_broker_cent_rounding_not_verified": true
+        }
+      ],
+      "source_review": true,
+      "sources": [
+        {
+          "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0427.pdf",
+          "sha256": "02ad90af963600e42ed21c38ab17820854336b6e39548404594ba79317116af5",
+          "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=908002&numSequencia=432736&numVersao=1",
+          "pages": [
+            1
+          ],
+          "received_on": "2021-10-18"
+        },
+        {
+          "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0427.pdf",
+          "sha256": "02ad90af963600e42ed21c38ab17820854336b6e39548404594ba79317116af5",
+          "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=908002&numSequencia=432736&numVersao=1",
+          "pages": [
+            1
+          ],
+          "received_on": "2021-10-18"
+        },
+        {
+          "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0428.pdf",
+          "sha256": "7783d7daa8d8bf4150ca2f65fd228246b312e8c5517c6e1492132b28e46f73fa",
+          "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=921814&numSequencia=446548&numVersao=1",
+          "pages": [
+            1
+          ],
+          "received_on": "2021-12-02"
+        }
+      ],
+      "published_rounding": {
+        "reviewed": true,
+        "delta": "0E-9",
+        "sources": [
+          {
+            "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0427.pdf",
+            "sha256": "02ad90af963600e42ed21c38ab17820854336b6e39548404594ba79317116af5",
+            "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=908002&numSequencia=432736&numVersao=1",
+            "pages": [
+              1
+            ],
+            "received_on": "2021-10-18"
+          },
+          {
+            "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0427.pdf",
+            "sha256": "02ad90af963600e42ed21c38ab17820854336b6e39548404594ba79317116af5",
+            "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=908002&numSequencia=432736&numVersao=1",
+            "pages": [
+              1
+            ],
+            "received_on": "2021-10-18"
+          },
+          {
+            "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0428.pdf",
+            "sha256": "7783d7daa8d8bf4150ca2f65fd228246b312e8c5517c6e1492132b28e46f73fa",
+            "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=921814&numSequencia=446548&numVersao=1",
+            "pages": [
+              1
+            ],
+            "received_on": "2021-12-02"
+          }
+        ],
+        "reason": "Sum of separately rounded published installments; original nominal amount preserved in lineage. No balancing cash adjustment."
+      }
+    },
+    {
+      "card_index": 196,
+      "parent_event_id": "BRCPFEACNOR0:2023-05-02:DIVIDENDO:5",
+      "payments": [
+        {
+          "ticker": "CPFE3",
+          "isin": "BRCPFEACNOR0",
+          "ex_date": "2023-05-02",
+          "action": "DIVIDENDO",
+          "payment_date": "2023-06-23",
+          "known_on": "2023-06-23",
+          "gross_per_share": ".540074494",
+          "net_per_share": "0.540074494",
+          "sources": [
+            {
+              "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0813.pdf",
+              "sha256": "0b0c932357fc57370beed9b153cbaa02a5d4924e3a54f402c8780abc94f3e2e3",
+              "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1114239&numSequencia=638968&numVersao=1",
+              "pages": [
+                1
+              ],
+              "received_on": "2023-06-16"
+            }
+          ],
+          "tax_source": [
+            {
+              "file": "lei-9249.html",
+              "url": "http://www.planalto.gov.br/ccivil_03/leis/l9249.htm",
+              "sha256": "e6fe901511d531cb1063932c6be6d3c9a189ca964c32e69c194b6c65d2f63a72",
+              "scope": "Lei 9.249/1995 arts.9 paragraph2 (15% historical text) and10 (pre-2026); resident PF scenario"
+            }
+          ],
+          "source_review": true,
+          "net_rule": "RESIDENT_PF_PRE_2026_ORDINARY_DISTRIBUTION",
+          "actual_broker_cent_rounding_not_verified": true
+        },
+        {
+          "ticker": "CPFE3",
+          "isin": "BRCPFEACNOR0",
+          "ex_date": "2023-05-02",
+          "action": "DIVIDENDO",
+          "payment_date": "2023-10-25",
+          "known_on": "2023-10-25",
+          "gross_per_share": ".260359162",
+          "net_per_share": "0.260359162",
+          "sources": [
+            {
+              "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0815.pdf",
+              "sha256": "5eb10e288de36b03ac8ce8c8e19efb262692c56d5bd59239a2290930f09a9578",
+              "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1152447&numSequencia=677173&numVersao=1",
+              "pages": [
+                1
+              ],
+              "received_on": "2023-10-18"
+            }
+          ],
+          "tax_source": [
+            {
+              "file": "lei-9249.html",
+              "url": "http://www.planalto.gov.br/ccivil_03/leis/l9249.htm",
+              "sha256": "e6fe901511d531cb1063932c6be6d3c9a189ca964c32e69c194b6c65d2f63a72",
+              "scope": "Lei 9.249/1995 arts.9 paragraph2 (15% historical text) and10 (pre-2026); resident PF scenario"
+            }
+          ],
+          "source_review": true,
+          "net_rule": "RESIDENT_PF_PRE_2026_ORDINARY_DISTRIBUTION",
+          "actual_broker_cent_rounding_not_verified": true
+        },
+        {
+          "ticker": "CPFE3",
+          "isin": "BRCPFEACNOR0",
+          "ex_date": "2023-05-02",
+          "action": "DIVIDENDO",
+          "payment_date": "2023-11-17",
+          "known_on": "2023-11-17",
+          "gross_per_share": ".433931936",
+          "net_per_share": "0.433931936",
+          "sources": [
+            {
+              "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0817.pdf",
+              "sha256": "8c6eca3f495dcef2895ca382a1de33a53297488e1ad08c2906a7f6f80ba7ce70",
+              "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1160175&numSequencia=684901&numVersao=2",
+              "pages": [
+                1
+              ],
+              "received_on": "2023-11-09"
+            }
+          ],
+          "tax_source": [
+            {
+              "file": "lei-9249.html",
+              "url": "http://www.planalto.gov.br/ccivil_03/leis/l9249.htm",
+              "sha256": "e6fe901511d531cb1063932c6be6d3c9a189ca964c32e69c194b6c65d2f63a72",
+              "scope": "Lei 9.249/1995 arts.9 paragraph2 (15% historical text) and10 (pre-2026); resident PF scenario"
+            }
+          ],
+          "source_review": true,
+          "net_rule": "RESIDENT_PF_PRE_2026_ORDINARY_DISTRIBUTION",
+          "actual_broker_cent_rounding_not_verified": true
+        }
+      ],
+      "source_review": true,
+      "sources": [
+        {
+          "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0813.pdf",
+          "sha256": "0b0c932357fc57370beed9b153cbaa02a5d4924e3a54f402c8780abc94f3e2e3",
+          "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1114239&numSequencia=638968&numVersao=1",
+          "pages": [
+            1
+          ],
+          "received_on": "2023-06-16"
+        },
+        {
+          "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0815.pdf",
+          "sha256": "5eb10e288de36b03ac8ce8c8e19efb262692c56d5bd59239a2290930f09a9578",
+          "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1152447&numSequencia=677173&numVersao=1",
+          "pages": [
+            1
+          ],
+          "received_on": "2023-10-18"
+        },
+        {
+          "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0817.pdf",
+          "sha256": "8c6eca3f495dcef2895ca382a1de33a53297488e1ad08c2906a7f6f80ba7ce70",
+          "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1160175&numSequencia=684901&numVersao=2",
+          "pages": [
+            1
+          ],
+          "received_on": "2023-11-09"
+        }
+      ],
+      "published_rounding": {
+        "reviewed": true,
+        "delta": "0E-9",
+        "sources": [
+          {
+            "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0813.pdf",
+            "sha256": "0b0c932357fc57370beed9b153cbaa02a5d4924e3a54f402c8780abc94f3e2e3",
+            "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1114239&numSequencia=638968&numVersao=1",
+            "pages": [
+              1
+            ],
+            "received_on": "2023-06-16"
+          },
+          {
+            "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0815.pdf",
+            "sha256": "5eb10e288de36b03ac8ce8c8e19efb262692c56d5bd59239a2290930f09a9578",
+            "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1152447&numSequencia=677173&numVersao=1",
+            "pages": [
+              1
+            ],
+            "received_on": "2023-10-18"
+          },
+          {
+            "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0817.pdf",
+            "sha256": "8c6eca3f495dcef2895ca382a1de33a53297488e1ad08c2906a7f6f80ba7ce70",
+            "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1160175&numSequencia=684901&numVersao=2",
+            "pages": [
+              1
+            ],
+            "received_on": "2023-11-09"
+          }
+        ],
+        "reason": "Sum of separately rounded published installments; original nominal amount preserved in lineage. No balancing cash adjustment."
+      }
+    },
+    {
+      "card_index": 211,
+      "parent_event_id": "BRCPFEACNOR0:2023-08-18:DIVIDENDO:3",
+      "payments": [
+        {
+          "ticker": "CPFE3",
+          "isin": "BRCPFEACNOR0",
+          "ex_date": "2023-08-18",
+          "action": "DIVIDENDO",
+          "payment_date": "2023-11-17",
+          "known_on": "2023-11-17",
+          "gross_per_share": ".173572775",
+          "net_per_share": "0.173572775",
+          "sources": [
+            {
+              "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0817.pdf",
+              "sha256": "8c6eca3f495dcef2895ca382a1de33a53297488e1ad08c2906a7f6f80ba7ce70",
+              "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1160175&numSequencia=684901&numVersao=2",
+              "pages": [
+                1
+              ],
+              "received_on": "2023-11-09"
+            }
+          ],
+          "tax_source": [
+            {
+              "file": "lei-9249.html",
+              "url": "http://www.planalto.gov.br/ccivil_03/leis/l9249.htm",
+              "sha256": "e6fe901511d531cb1063932c6be6d3c9a189ca964c32e69c194b6c65d2f63a72",
+              "scope": "Lei 9.249/1995 arts.9 paragraph2 (15% historical text) and10 (pre-2026); resident PF scenario"
+            }
+          ],
+          "source_review": true,
+          "net_rule": "RESIDENT_PF_PRE_2026_ORDINARY_DISTRIBUTION",
+          "actual_broker_cent_rounding_not_verified": true
+        },
+        {
+          "ticker": "CPFE3",
+          "isin": "BRCPFEACNOR0",
+          "ex_date": "2023-08-18",
+          "action": "DIVIDENDO",
+          "payment_date": "2023-11-30",
+          "known_on": "2023-11-30",
+          "gross_per_share": ".147536858",
+          "net_per_share": "0.147536858",
+          "sources": [
+            {
+              "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0818.pdf",
+              "sha256": "0986821b9122cd757db2d80c8f14950d854fb1ad636be0b3b8a45f75751d019c",
+              "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1165763&numSequencia=690489&numVersao=1",
+              "pages": [
+                1
+              ],
+              "received_on": "2023-11-22"
+            }
+          ],
+          "tax_source": [
+            {
+              "file": "lei-9249.html",
+              "url": "http://www.planalto.gov.br/ccivil_03/leis/l9249.htm",
+              "sha256": "e6fe901511d531cb1063932c6be6d3c9a189ca964c32e69c194b6c65d2f63a72",
+              "scope": "Lei 9.249/1995 arts.9 paragraph2 (15% historical text) and10 (pre-2026); resident PF scenario"
+            }
+          ],
+          "source_review": true,
+          "net_rule": "RESIDENT_PF_PRE_2026_ORDINARY_DISTRIBUTION",
+          "actual_broker_cent_rounding_not_verified": true
+        },
+        {
+          "ticker": "CPFE3",
+          "isin": "BRCPFEACNOR0",
+          "ex_date": "2023-08-18",
+          "action": "DIVIDENDO",
+          "payment_date": "2023-12-15",
+          "known_on": "2023-12-15",
+          "gross_per_share": ".303752355",
+          "net_per_share": "0.303752355",
+          "sources": [
+            {
+              "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0819.pdf",
+              "sha256": "63c774b1798b8039d712700dad5e381ff23d0f95459d1d26385c959bb13a17ba",
+              "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1170385&numSequencia=695111&numVersao=1",
+              "pages": [
+                1
+              ],
+              "received_on": "2023-12-07"
+            }
+          ],
+          "tax_source": [
+            {
+              "file": "lei-9249.html",
+              "url": "http://www.planalto.gov.br/ccivil_03/leis/l9249.htm",
+              "sha256": "e6fe901511d531cb1063932c6be6d3c9a189ca964c32e69c194b6c65d2f63a72",
+              "scope": "Lei 9.249/1995 arts.9 paragraph2 (15% historical text) and10 (pre-2026); resident PF scenario"
+            }
+          ],
+          "source_review": true,
+          "net_rule": "RESIDENT_PF_PRE_2026_ORDINARY_DISTRIBUTION",
+          "actual_broker_cent_rounding_not_verified": true
+        },
+        {
+          "ticker": "CPFE3",
+          "isin": "BRCPFEACNOR0",
+          "ex_date": "2023-08-18",
+          "action": "DIVIDENDO",
+          "payment_date": "2023-12-20",
+          "known_on": "2023-12-20",
+          "gross_per_share": ".158496102",
+          "net_per_share": "0.158496102",
+          "sources": [
+            {
+              "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0819.pdf",
+              "sha256": "63c774b1798b8039d712700dad5e381ff23d0f95459d1d26385c959bb13a17ba",
+              "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1170385&numSequencia=695111&numVersao=1",
+              "pages": [
+                1
+              ],
+              "received_on": "2023-12-07"
+            }
+          ],
+          "tax_source": [
+            {
+              "file": "lei-9249.html",
+              "url": "http://www.planalto.gov.br/ccivil_03/leis/l9249.htm",
+              "sha256": "e6fe901511d531cb1063932c6be6d3c9a189ca964c32e69c194b6c65d2f63a72",
+              "scope": "Lei 9.249/1995 arts.9 paragraph2 (15% historical text) and10 (pre-2026); resident PF scenario"
+            }
+          ],
+          "source_review": true,
+          "net_rule": "RESIDENT_PF_PRE_2026_ORDINARY_DISTRIBUTION",
+          "actual_broker_cent_rounding_not_verified": true
+        }
+      ],
+      "source_review": true,
+      "sources": [
+        {
+          "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0817.pdf",
+          "sha256": "8c6eca3f495dcef2895ca382a1de33a53297488e1ad08c2906a7f6f80ba7ce70",
+          "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1160175&numSequencia=684901&numVersao=2",
+          "pages": [
+            1
+          ],
+          "received_on": "2023-11-09"
+        },
+        {
+          "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0818.pdf",
+          "sha256": "0986821b9122cd757db2d80c8f14950d854fb1ad636be0b3b8a45f75751d019c",
+          "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1165763&numSequencia=690489&numVersao=1",
+          "pages": [
+            1
+          ],
+          "received_on": "2023-11-22"
+        },
+        {
+          "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0819.pdf",
+          "sha256": "63c774b1798b8039d712700dad5e381ff23d0f95459d1d26385c959bb13a17ba",
+          "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1170385&numSequencia=695111&numVersao=1",
+          "pages": [
+            1
+          ],
+          "received_on": "2023-12-07"
+        },
+        {
+          "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0819.pdf",
+          "sha256": "63c774b1798b8039d712700dad5e381ff23d0f95459d1d26385c959bb13a17ba",
+          "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1170385&numSequencia=695111&numVersao=1",
+          "pages": [
+            1
+          ],
+          "received_on": "2023-12-07"
+        }
+      ],
+      "published_rounding": {
+        "reviewed": true,
+        "delta": "0E-9",
+        "sources": [
+          {
+            "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0817.pdf",
+            "sha256": "8c6eca3f495dcef2895ca382a1de33a53297488e1ad08c2906a7f6f80ba7ce70",
+            "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1160175&numSequencia=684901&numVersao=2",
+            "pages": [
+              1
+            ],
+            "received_on": "2023-11-09"
+          },
+          {
+            "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0818.pdf",
+            "sha256": "0986821b9122cd757db2d80c8f14950d854fb1ad636be0b3b8a45f75751d019c",
+            "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1165763&numSequencia=690489&numVersao=1",
+            "pages": [
+              1
+            ],
+            "received_on": "2023-11-22"
+          },
+          {
+            "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0819.pdf",
+            "sha256": "63c774b1798b8039d712700dad5e381ff23d0f95459d1d26385c959bb13a17ba",
+            "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1170385&numSequencia=695111&numVersao=1",
+            "pages": [
+              1
+            ],
+            "received_on": "2023-12-07"
+          },
+          {
+            "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0819.pdf",
+            "sha256": "63c774b1798b8039d712700dad5e381ff23d0f95459d1d26385c959bb13a17ba",
+            "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1170385&numSequencia=695111&numVersao=1",
+            "pages": [
+              1
+            ],
+            "received_on": "2023-12-07"
+          }
+        ],
+        "reason": "Sum of separately rounded published installments; original nominal amount preserved in lineage. No balancing cash adjustment."
+      }
+    },
+    {
+      "card_index": 248,
+      "parent_event_id": "BRCPFEACNOR0:2024-04-29:DIVIDENDO:2",
+      "payments": [
+        {
+          "ticker": "CPFE3",
+          "isin": "BRCPFEACNOR0",
+          "ex_date": "2024-04-29",
+          "action": "DIVIDENDO",
+          "payment_date": "2024-05-13",
+          "known_on": "2024-05-13",
+          "gross_per_share": "1.197652144",
+          "net_per_share": "1.197652144",
+          "sources": [
+            {
+              "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0984.pdf",
+              "sha256": "4f470f8d1c1e336ce7e65e86b81986b741b902eb4d12defa19be5439d8ead694",
+              "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1233677&numSequencia=758403&numVersao=1",
+              "pages": [
+                1
+              ],
+              "received_on": "2024-05-07"
+            }
+          ],
+          "tax_source": [
+            {
+              "file": "lei-9249.html",
+              "url": "http://www.planalto.gov.br/ccivil_03/leis/l9249.htm",
+              "sha256": "e6fe901511d531cb1063932c6be6d3c9a189ca964c32e69c194b6c65d2f63a72",
+              "scope": "Lei 9.249/1995 arts.9 paragraph2 (15% historical text) and10 (pre-2026); resident PF scenario"
+            }
+          ],
+          "source_review": true,
+          "net_rule": "RESIDENT_PF_PRE_2026_ORDINARY_DISTRIBUTION",
+          "actual_broker_cent_rounding_not_verified": true
+        },
+        {
+          "ticker": "CPFE3",
+          "isin": "BRCPFEACNOR0",
+          "ex_date": "2024-04-29",
+          "action": "DIVIDENDO",
+          "payment_date": "2024-06-28",
+          "known_on": "2024-06-28",
+          "gross_per_share": ".373181465",
+          "net_per_share": "0.373181465",
+          "sources": [
+            {
+              "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0985.pdf",
+              "sha256": "64a028c133c7a0ddebf248417552efbe64a7ceb73aedeca53f4da41f63fdef2a",
+              "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1252901&numSequencia=777627&numVersao=1",
+              "pages": [
+                1
+              ],
+              "received_on": "2024-06-24"
+            }
+          ],
+          "tax_source": [
+            {
+              "file": "lei-9249.html",
+              "url": "http://www.planalto.gov.br/ccivil_03/leis/l9249.htm",
+              "sha256": "e6fe901511d531cb1063932c6be6d3c9a189ca964c32e69c194b6c65d2f63a72",
+              "scope": "Lei 9.249/1995 arts.9 paragraph2 (15% historical text) and10 (pre-2026); resident PF scenario"
+            }
+          ],
+          "source_review": true,
+          "net_rule": "RESIDENT_PF_PRE_2026_ORDINARY_DISTRIBUTION",
+          "actual_broker_cent_rounding_not_verified": true
+        },
+        {
+          "ticker": "CPFE3",
+          "isin": "BRCPFEACNOR0",
+          "ex_date": "2024-04-29",
+          "action": "DIVIDENDO",
+          "payment_date": "2024-07-26",
+          "known_on": "2024-07-26",
+          "gross_per_share": ".086786387",
+          "net_per_share": "0.086786387",
+          "sources": [
+            {
+              "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0986.pdf",
+              "sha256": "c1379ee82bae99cc1fa5eadff5481476ead354f26863328f154618efe9ee9eef",
+              "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1261200&numSequencia=785926&numVersao=1",
+              "pages": [
+                1
+              ],
+              "received_on": "2024-07-19"
+            }
+          ],
+          "tax_source": [
+            {
+              "file": "lei-9249.html",
+              "url": "http://www.planalto.gov.br/ccivil_03/leis/l9249.htm",
+              "sha256": "e6fe901511d531cb1063932c6be6d3c9a189ca964c32e69c194b6c65d2f63a72",
+              "scope": "Lei 9.249/1995 arts.9 paragraph2 (15% historical text) and10 (pre-2026); resident PF scenario"
+            }
+          ],
+          "source_review": true,
+          "net_rule": "RESIDENT_PF_PRE_2026_ORDINARY_DISTRIBUTION",
+          "actual_broker_cent_rounding_not_verified": true
+        },
+        {
+          "ticker": "CPFE3",
+          "isin": "BRCPFEACNOR0",
+          "ex_date": "2024-04-29",
+          "action": "DIVIDENDO",
+          "payment_date": "2024-08-30",
+          "known_on": "2024-08-30",
+          "gross_per_share": ".173572774",
+          "net_per_share": "0.173572774",
+          "sources": [
+            {
+              "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0987.pdf",
+              "sha256": "98af1ffd8073ba12e40af98bf3baf2bd8af921ea11d3a4d61aa1d695f2be43bb",
+              "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1274858&numSequencia=799584&numVersao=1",
+              "pages": [
+                1
+              ],
+              "received_on": "2024-08-22"
+            }
+          ],
+          "tax_source": [
+            {
+              "file": "lei-9249.html",
+              "url": "http://www.planalto.gov.br/ccivil_03/leis/l9249.htm",
+              "sha256": "e6fe901511d531cb1063932c6be6d3c9a189ca964c32e69c194b6c65d2f63a72",
+              "scope": "Lei 9.249/1995 arts.9 paragraph2 (15% historical text) and10 (pre-2026); resident PF scenario"
+            }
+          ],
+          "source_review": true,
+          "net_rule": "RESIDENT_PF_PRE_2026_ORDINARY_DISTRIBUTION",
+          "actual_broker_cent_rounding_not_verified": true
+        },
+        {
+          "ticker": "CPFE3",
+          "isin": "BRCPFEACNOR0",
+          "ex_date": "2024-04-29",
+          "action": "DIVIDENDO",
+          "payment_date": "2024-09-27",
+          "known_on": "2024-09-27",
+          "gross_per_share": ".303752355",
+          "net_per_share": "0.303752355",
+          "sources": [
+            {
+              "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0988.pdf",
+              "sha256": "2c06cf6d42f63bf6487d9e0e539d368d6f228168bddefc6188225240b4bb38e6",
+              "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1283674&numSequencia=808400&numVersao=1",
+              "pages": [
+                1
+              ],
+              "received_on": "2024-09-19"
+            }
+          ],
+          "tax_source": [
+            {
+              "file": "lei-9249.html",
+              "url": "http://www.planalto.gov.br/ccivil_03/leis/l9249.htm",
+              "sha256": "e6fe901511d531cb1063932c6be6d3c9a189ca964c32e69c194b6c65d2f63a72",
+              "scope": "Lei 9.249/1995 arts.9 paragraph2 (15% historical text) and10 (pre-2026); resident PF scenario"
+            }
+          ],
+          "source_review": true,
+          "net_rule": "RESIDENT_PF_PRE_2026_ORDINARY_DISTRIBUTION",
+          "actual_broker_cent_rounding_not_verified": true
+        },
+        {
+          "ticker": "CPFE3",
+          "isin": "BRCPFEACNOR0",
+          "ex_date": "2024-04-29",
+          "action": "DIVIDENDO",
+          "payment_date": "2024-12-26",
+          "known_on": "2024-12-26",
+          "gross_per_share": ".619031470",
+          "net_per_share": "0.619031470",
+          "sources": [
+            {
+              "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0989.pdf",
+              "sha256": "413b36adfff7eea97a82dab7c437534bf1aeaa57082263c6253a24f1aa42bb3a",
+              "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1315487&numSequencia=840213&numVersao=1",
+              "pages": [
+                1
+              ],
+              "received_on": "2024-12-13"
+            }
+          ],
+          "tax_source": [
+            {
+              "file": "lei-9249.html",
+              "url": "http://www.planalto.gov.br/ccivil_03/leis/l9249.htm",
+              "sha256": "e6fe901511d531cb1063932c6be6d3c9a189ca964c32e69c194b6c65d2f63a72",
+              "scope": "Lei 9.249/1995 arts.9 paragraph2 (15% historical text) and10 (pre-2026); resident PF scenario"
+            }
+          ],
+          "source_review": true,
+          "net_rule": "RESIDENT_PF_PRE_2026_ORDINARY_DISTRIBUTION",
+          "actual_broker_cent_rounding_not_verified": true
+        }
+      ],
+      "source_review": true,
+      "sources": [
+        {
+          "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0984.pdf",
+          "sha256": "4f470f8d1c1e336ce7e65e86b81986b741b902eb4d12defa19be5439d8ead694",
+          "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1233677&numSequencia=758403&numVersao=1",
+          "pages": [
+            1
+          ],
+          "received_on": "2024-05-07"
+        },
+        {
+          "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0985.pdf",
+          "sha256": "64a028c133c7a0ddebf248417552efbe64a7ceb73aedeca53f4da41f63fdef2a",
+          "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1252901&numSequencia=777627&numVersao=1",
+          "pages": [
+            1
+          ],
+          "received_on": "2024-06-24"
+        },
+        {
+          "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0986.pdf",
+          "sha256": "c1379ee82bae99cc1fa5eadff5481476ead354f26863328f154618efe9ee9eef",
+          "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1261200&numSequencia=785926&numVersao=1",
+          "pages": [
+            1
+          ],
+          "received_on": "2024-07-19"
+        },
+        {
+          "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0987.pdf",
+          "sha256": "98af1ffd8073ba12e40af98bf3baf2bd8af921ea11d3a4d61aa1d695f2be43bb",
+          "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1274858&numSequencia=799584&numVersao=1",
+          "pages": [
+            1
+          ],
+          "received_on": "2024-08-22"
+        },
+        {
+          "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0988.pdf",
+          "sha256": "2c06cf6d42f63bf6487d9e0e539d368d6f228168bddefc6188225240b4bb38e6",
+          "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1283674&numSequencia=808400&numVersao=1",
+          "pages": [
+            1
+          ],
+          "received_on": "2024-09-19"
+        },
+        {
+          "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0989.pdf",
+          "sha256": "413b36adfff7eea97a82dab7c437534bf1aeaa57082263c6253a24f1aa42bb3a",
+          "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1315487&numSequencia=840213&numVersao=1",
+          "pages": [
+            1
+          ],
+          "received_on": "2024-12-13"
+        }
+      ],
+      "published_rounding": {
+        "reviewed": true,
+        "delta": "-1E-9",
+        "sources": [
+          {
+            "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0984.pdf",
+            "sha256": "4f470f8d1c1e336ce7e65e86b81986b741b902eb4d12defa19be5439d8ead694",
+            "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1233677&numSequencia=758403&numVersao=1",
+            "pages": [
+              1
+            ],
+            "received_on": "2024-05-07"
+          },
+          {
+            "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0985.pdf",
+            "sha256": "64a028c133c7a0ddebf248417552efbe64a7ceb73aedeca53f4da41f63fdef2a",
+            "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1252901&numSequencia=777627&numVersao=1",
+            "pages": [
+              1
+            ],
+            "received_on": "2024-06-24"
+          },
+          {
+            "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0986.pdf",
+            "sha256": "c1379ee82bae99cc1fa5eadff5481476ead354f26863328f154618efe9ee9eef",
+            "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1261200&numSequencia=785926&numVersao=1",
+            "pages": [
+              1
+            ],
+            "received_on": "2024-07-19"
+          },
+          {
+            "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0987.pdf",
+            "sha256": "98af1ffd8073ba12e40af98bf3baf2bd8af921ea11d3a4d61aa1d695f2be43bb",
+            "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1274858&numSequencia=799584&numVersao=1",
+            "pages": [
+              1
+            ],
+            "received_on": "2024-08-22"
+          },
+          {
+            "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0988.pdf",
+            "sha256": "2c06cf6d42f63bf6487d9e0e539d368d6f228168bddefc6188225240b4bb38e6",
+            "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1283674&numSequencia=808400&numVersao=1",
+            "pages": [
+              1
+            ],
+            "received_on": "2024-09-19"
+          },
+          {
+            "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-0989.pdf",
+            "sha256": "413b36adfff7eea97a82dab7c437534bf1aeaa57082263c6253a24f1aa42bb3a",
+            "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1315487&numSequencia=840213&numVersao=1",
+            "pages": [
+              1
+            ],
+            "received_on": "2024-12-13"
+          }
+        ],
+        "reason": "Sum of separately rounded published installments; original nominal amount preserved in lineage. No balancing cash adjustment."
+      }
+    },
+    {
+      "card_index": 318,
+      "parent_event_id": "BRABEVACNOR1:2025-12-19:JRS CAP PROPRIO:1",
+      "payments": [
+        {
+          "ticker": "ABEV3",
+          "isin": "BRABEVACNOR1",
+          "ex_date": "2025-12-19",
+          "action": "JRS CAP PROPRIO",
+          "payment_date": "2026-04-06",
+          "known_on": "2026-04-06",
+          "gross_per_share": ".075",
+          "sources": [
+            {
+              "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-1482.pdf",
+              "sha256": "f69fc33b3aefdd8303b50d9178925110dbae63479a925c3fde6159a877df7c7a",
+              "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1476800&numSequencia=1001506&numVersao=1",
+              "pages": [
+                1
+              ],
+              "received_on": "2026-02-12"
+            }
+          ],
+          "net_per_share": null,
+          "tax_source": null,
+          "source_review": false,
+          "published_approximate_net_per_share": ".063",
+          "net_pending_reason": "Issuer rounded/estimated net, including first-parcel rate/precision discrepancy; no exact net inferred."
+        },
+        {
+          "ticker": "ABEV3",
+          "isin": "BRABEVACNOR1",
+          "ex_date": "2025-12-19",
+          "action": "JRS CAP PROPRIO",
+          "payment_date": "2026-07-06",
+          "known_on": "2026-07-06",
+          "gross_per_share": ".0755",
+          "sources": [
+            {
+              "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-1484.pdf",
+              "sha256": "fb483b67f7fa897a7f97f8fe5ec870a0752862328c8cec7c3c215a3d56edc649",
+              "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1515656&numSequencia=1040362&numVersao=2",
+              "pages": [
+                1
+              ],
+              "received_on": "2026-05-05"
+            }
+          ],
+          "net_per_share": null,
+          "tax_source": null,
+          "source_review": false,
+          "published_approximate_net_per_share": ".0642",
+          "net_pending_reason": "Issuer rounded/estimated net, including first-parcel rate/precision discrepancy; no exact net inferred."
+        },
+        {
+          "ticker": "ABEV3",
+          "isin": "BRABEVACNOR1",
+          "ex_date": "2025-12-19",
+          "action": "JRS CAP PROPRIO",
+          "payment_date": "2026-10-06",
+          "known_on": "2026-10-06",
+          "gross_per_share": ".1185",
+          "sources": [
+            {
+              "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-1485.pdf",
+              "sha256": "28474d0745369191509ca3e4174b845ece046d1838174d71af7fb432e05b4b39",
+              "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1549509&numSequencia=1074215&numVersao=1",
+              "pages": [
+                1
+              ],
+              "received_on": "2026-07-30"
+            }
+          ],
+          "net_per_share": null,
+          "tax_source": null,
+          "source_review": false,
+          "published_approximate_net_per_share": ".1007",
+          "net_pending_reason": "Issuer rounded/estimated net, including first-parcel rate/precision discrepancy; no exact net inferred."
+        }
+      ],
+      "source_review": true,
+      "sources": [
+        {
+          "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-1482.pdf",
+          "sha256": "f69fc33b3aefdd8303b50d9178925110dbae63479a925c3fde6159a877df7c7a",
+          "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1476800&numSequencia=1001506&numVersao=1",
+          "pages": [
+            1
+          ],
+          "received_on": "2026-02-12"
+        },
+        {
+          "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-1484.pdf",
+          "sha256": "fb483b67f7fa897a7f97f8fe5ec870a0752862328c8cec7c3c215a3d56edc649",
+          "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1515656&numSequencia=1040362&numVersao=2",
+          "pages": [
+            1
+          ],
+          "received_on": "2026-05-05"
+        },
+        {
+          "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-1485.pdf",
+          "sha256": "28474d0745369191509ca3e4174b845ece046d1838174d71af7fb432e05b4b39",
+          "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1549509&numSequencia=1074215&numVersao=1",
+          "pages": [
+            1
+          ],
+          "received_on": "2026-07-30"
+        }
+      ]
+    }
+  ],
+  "corporate_actions": [
+    {
+      "event_id": "TOTS3:2020-05-04:DESDOBRAMENTO",
+      "ticker": "TOTS3",
+      "isin": "BRTOTSACNOR8",
+      "ex_date": "2020-05-04",
+      "terms_known_on": "2020-04-27",
+      "source_review": true,
+      "sources": [
+        {
+          "file": "work\\h19-cash-expanded-source\\cvm-corporate-0031.pdf",
+          "sha256": "741865b495b248d397c051ae290b4a5a2abd337205fc4a9a03abc516ef76e9ff",
+          "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=756672&numSequencia=281426&numVersao=1",
+          "pages": [
+            1
+          ],
+          "received_on": "2020-04-27",
+          "checked_fragments": []
+        }
+      ],
+      "tax_source": [
+        {
+          "file": "work\\source-closure-20260908\\law\\rir-2018.pdf",
+          "sha256": "c4e64c0c20b5e832605cead2b2ba728c22220a97183e66c03e1bc65f67290ea0",
+          "url": "https://www2.camara.leg.br/legin/fed/decret/2018/decreto-9580-22-novembro-2018-787360-anexo-pe.pdf",
+          "pages": [
+            84
+          ],
+          "scope": "RIR/2018 art843 caput and§3II: existing aggregate basis retained; incremental split shares add no cost."
+        }
+      ],
+      "basis_mode": "carry",
+      "removes_original": true,
+      "cash": [],
+      "stocks": [
+        {
+          "ticker": "TOTS3",
+          "isin": "BRTOTSACNOR8",
+          "ratio": "3",
+          "basis_fraction": "1",
+          "credit_date": "2020-05-06",
+          "tradable_on": "2020-05-04",
+          "tax_class": "equity",
+          "fraction_settlement": null
+        }
+      ],
+      "review_scope": "Approved integer forward split; same rights; explicit ex trading and credit dates. No fractions for integer original holdings. Same-day dividends use pre-action holdings."
+    },
+    {
+      "event_id": "RADL3:2020-09-21:DESDOBRAMENTO",
+      "ticker": "RADL3",
+      "isin": "BRRADLACNOR0",
+      "ex_date": "2020-09-21",
+      "terms_known_on": "2020-09-17",
+      "source_review": true,
+      "sources": [
+        {
+          "file": "work\\h19-cash-expanded-source\\cvm-corporate-0039.pdf",
+          "sha256": "b2494cd6ffe13754536b76f2a8d8d975995b0f9ee079c093c86ef5eec10067fb",
+          "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=793899&numSequencia=318638&numVersao=2",
+          "pages": [
+            1
+          ],
+          "received_on": "2020-09-17",
+          "checked_fragments": []
+        }
+      ],
+      "tax_source": [
+        {
+          "file": "work\\source-closure-20260908\\law\\rir-2018.pdf",
+          "sha256": "c4e64c0c20b5e832605cead2b2ba728c22220a97183e66c03e1bc65f67290ea0",
+          "url": "https://www2.camara.leg.br/legin/fed/decret/2018/decreto-9580-22-novembro-2018-787360-anexo-pe.pdf",
+          "pages": [
+            84
+          ],
+          "scope": "RIR/2018 art843 caput and§3II: existing aggregate basis retained; incremental split shares add no cost."
+        }
+      ],
+      "basis_mode": "carry",
+      "removes_original": true,
+      "cash": [],
+      "stocks": [
+        {
+          "ticker": "RADL3",
+          "isin": "BRRADLACNOR0",
+          "ratio": "5",
+          "basis_fraction": "1",
+          "credit_date": "2020-09-23",
+          "tradable_on": "2020-09-21",
+          "tax_class": "equity",
+          "fraction_settlement": null
+        }
+      ],
+      "review_scope": "Approved integer forward split; same rights; explicit ex trading and credit dates. No fractions for integer original holdings. Same-day dividends use pre-action holdings."
+    },
+    {
+      "event_id": "HAPV3:2020-11-25:DESDOBRAMENTO",
+      "ticker": "HAPV3",
+      "isin": "BRHAPVACNOR4",
+      "ex_date": "2020-11-25",
+      "terms_known_on": "2020-11-19",
+      "source_review": true,
+      "sources": [
+        {
+          "file": "work\\h19-cash-expanded-source\\cvm-corporate-0020.pdf",
+          "sha256": "c68162a7f56e55140b986f3b1f246d235f34066f3f7a3a1f164d414681b3f8dd",
+          "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=810112&numSequencia=334850&numVersao=1",
+          "pages": [
+            1
+          ],
+          "received_on": "2020-11-19",
+          "checked_fragments": []
+        }
+      ],
+      "tax_source": [
+        {
+          "file": "work\\source-closure-20260908\\law\\rir-2018.pdf",
+          "sha256": "c4e64c0c20b5e832605cead2b2ba728c22220a97183e66c03e1bc65f67290ea0",
+          "url": "https://www2.camara.leg.br/legin/fed/decret/2018/decreto-9580-22-novembro-2018-787360-anexo-pe.pdf",
+          "pages": [
+            84
+          ],
+          "scope": "RIR/2018 art843 caput and§3II: existing aggregate basis retained; incremental split shares add no cost."
+        }
+      ],
+      "basis_mode": "carry",
+      "removes_original": true,
+      "cash": [],
+      "stocks": [
+        {
+          "ticker": "HAPV3",
+          "isin": "BRHAPVACNOR4",
+          "ratio": "5",
+          "basis_fraction": "1",
+          "credit_date": "2020-11-27",
+          "tradable_on": "2020-11-25",
+          "tax_class": "equity",
+          "fraction_settlement": null
+        }
+      ],
+      "review_scope": "Approved integer forward split; same rights; explicit ex trading and credit dates. No fractions for integer original holdings. Same-day dividends use pre-action holdings."
+    },
+    {
+      "event_id": "CSMG3:2020-11-26:DESDOBRAMENTO",
+      "ticker": "CSMG3",
+      "isin": "BRCSMGACNOR5",
+      "ex_date": "2020-11-26",
+      "terms_known_on": "2020-11-19",
+      "source_review": true,
+      "sources": [
+        {
+          "file": "work\\h19-cash-expanded-source\\cvm-corporate-0022.pdf",
+          "sha256": "d9c57cc7b83e9088e375d0e03102d0fe5f656cb919288dc746685fb2adfb84e0",
+          "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=810079&numSequencia=334817&numVersao=1",
+          "pages": [
+            1
+          ],
+          "received_on": "2020-11-19",
+          "checked_fragments": []
+        }
+      ],
+      "tax_source": [
+        {
+          "file": "work\\source-closure-20260908\\law\\rir-2018.pdf",
+          "sha256": "c4e64c0c20b5e832605cead2b2ba728c22220a97183e66c03e1bc65f67290ea0",
+          "url": "https://www2.camara.leg.br/legin/fed/decret/2018/decreto-9580-22-novembro-2018-787360-anexo-pe.pdf",
+          "pages": [
+            84
+          ],
+          "scope": "RIR/2018 art843 caput and§3II: existing aggregate basis retained; incremental split shares add no cost."
+        }
+      ],
+      "basis_mode": "carry",
+      "removes_original": true,
+      "cash": [],
+      "stocks": [
+        {
+          "ticker": "CSMG3",
+          "isin": "BRCSMGACNOR5",
+          "ratio": "3",
+          "basis_fraction": "1",
+          "credit_date": "2020-11-30",
+          "tradable_on": "2020-11-26",
+          "tax_class": "equity",
+          "fraction_settlement": null
+        }
+      ],
+      "review_scope": "Approved integer forward split; same rights; explicit ex trading and credit dates. No fractions for integer original holdings. Same-day dividends use pre-action holdings."
+    },
+    {
+      "event_id": "ENEV3:2021-03-12:DESDOBRAMENTO",
+      "ticker": "ENEV3",
+      "isin": "BRENEVACNOR8",
+      "ex_date": "2021-03-12",
+      "terms_known_on": "2021-03-12",
+      "source_review": true,
+      "sources": [
+        {
+          "file": "work\\h19-cash-expanded-source\\cvm-corporate-0047.pdf",
+          "sha256": "baf1824f6a55af012783edc53b12cb9619cbd52c357d57fed50baaeada25d7c8",
+          "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=841764&numSequencia=366502&numVersao=2",
+          "pages": [
+            1
+          ],
+          "received_on": "2021-03-12",
+          "checked_fragments": []
+        }
+      ],
+      "tax_source": [
+        {
+          "file": "work\\source-closure-20260908\\law\\rir-2018.pdf",
+          "sha256": "c4e64c0c20b5e832605cead2b2ba728c22220a97183e66c03e1bc65f67290ea0",
+          "url": "https://www2.camara.leg.br/legin/fed/decret/2018/decreto-9580-22-novembro-2018-787360-anexo-pe.pdf",
+          "pages": [
+            84
+          ],
+          "scope": "RIR/2018 art843 caput and§3II: existing aggregate basis retained; incremental split shares add no cost."
+        }
+      ],
+      "basis_mode": "carry",
+      "removes_original": true,
+      "cash": [],
+      "stocks": [
+        {
+          "ticker": "ENEV3",
+          "isin": "BRENEVACNOR8",
+          "ratio": "4",
+          "basis_fraction": "1",
+          "credit_date": "2021-03-16",
+          "tradable_on": "2021-03-12",
+          "tax_class": "equity",
+          "fraction_settlement": null
+        }
+      ],
+      "review_scope": "Approved integer forward split; same rights; explicit ex trading and credit dates. No fractions for integer original holdings. Same-day dividends use pre-action holdings."
+    },
+    {
+      "event_id": "CSAN3:2021-05-06:DESDOBRAMENTO",
+      "ticker": "CSAN3",
+      "isin": "BRCSANACNOR6",
+      "ex_date": "2021-05-06",
+      "terms_known_on": "2021-04-30",
+      "source_review": true,
+      "sources": [
+        {
+          "file": "work\\h19-cash-expanded-source\\cvm-corporate-0073.pdf",
+          "sha256": "30de35b60447a5011c45ba627703c70eb13871d41650525151ce4883b24201f0",
+          "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=861392&numSequencia=386129&numVersao=3",
+          "pages": [
+            1
+          ],
+          "received_on": "2021-04-30",
+          "checked_fragments": []
+        }
+      ],
+      "tax_source": [
+        {
+          "file": "work\\source-closure-20260908\\law\\rir-2018.pdf",
+          "sha256": "c4e64c0c20b5e832605cead2b2ba728c22220a97183e66c03e1bc65f67290ea0",
+          "url": "https://www2.camara.leg.br/legin/fed/decret/2018/decreto-9580-22-novembro-2018-787360-anexo-pe.pdf",
+          "pages": [
+            84
+          ],
+          "scope": "RIR/2018 art843 caput and§3II: existing aggregate basis retained; incremental split shares add no cost."
+        }
+      ],
+      "basis_mode": "carry",
+      "removes_original": true,
+      "cash": [],
+      "stocks": [
+        {
+          "ticker": "CSAN3",
+          "isin": "BRCSANACNOR6",
+          "ratio": "4",
+          "basis_fraction": "1",
+          "credit_date": "2021-05-10",
+          "tradable_on": "2021-05-06",
+          "tax_class": "equity",
+          "fraction_settlement": null
+        }
+      ],
+      "review_scope": "Approved integer forward split; same rights; explicit ex trading and credit dates. No fractions for integer original holdings. Same-day dividends use pre-action holdings."
+    },
+    {
+      "event_id": "PRIO3:2021-05-06:DESDOBRAMENTO",
+      "ticker": "PRIO3",
+      "isin": "BRPRIOACNOR1",
+      "ex_date": "2021-05-06",
+      "terms_known_on": "2021-05-03",
+      "source_review": true,
+      "sources": [
+        {
+          "file": "work\\h19-cash-expanded-source\\cvm-corporate-0064.pdf",
+          "sha256": "6484517a5595958ba8a782cfd157e767aef002adca26deb2014aeaf9aaf01d69",
+          "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=861996&numSequencia=386733&numVersao=2",
+          "pages": [
+            1
+          ],
+          "received_on": "2021-05-03",
+          "checked_fragments": []
+        }
+      ],
+      "tax_source": [
+        {
+          "file": "work\\source-closure-20260908\\law\\rir-2018.pdf",
+          "sha256": "c4e64c0c20b5e832605cead2b2ba728c22220a97183e66c03e1bc65f67290ea0",
+          "url": "https://www2.camara.leg.br/legin/fed/decret/2018/decreto-9580-22-novembro-2018-787360-anexo-pe.pdf",
+          "pages": [
+            84
+          ],
+          "scope": "RIR/2018 art843 caput and§3II: existing aggregate basis retained; incremental split shares add no cost."
+        }
+      ],
+      "basis_mode": "carry",
+      "removes_original": true,
+      "cash": [],
+      "stocks": [
+        {
+          "ticker": "PRIO3",
+          "isin": "BRPRIOACNOR1",
+          "ratio": "5",
+          "basis_fraction": "1",
+          "credit_date": "2021-05-10",
+          "tradable_on": "2021-05-06",
+          "tax_class": "equity",
+          "fraction_settlement": null
+        }
+      ],
+      "review_scope": "Approved integer forward split; same rights; explicit ex trading and credit dates. No fractions for integer original holdings. Same-day dividends use pre-action holdings."
+    }
+  ]
+}

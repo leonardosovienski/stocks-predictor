@@ -1,3 +1,39 @@
+## Reconstrução de fontes em andamento (08/09/2026 UTC)
+
+Pedido reiterado do operador: resolver também as fontes ausentes. Protocolo
+0700f82 anterior à reconstrução; nenhuma nova avaliação de retorno. Versões
+cash-closure-01 a 04 preservadas fora de bancos/ledgers. A revisão retirou duas
+associações provisórias erradas (RADL JCP 2022 e Ambev JCP 2025 tinham recebido
+a data dos dividendos do mesmo documento); a Ambev foi reconstruída em três
+parcelas documentadas, com líquido ainda pendente.
+
+Nova entrada `python -m stocks_predictor.source_closure`: audita a revisão
+aditiva, os documentos primários, a conservação dos direitos e a união H20.
+Os CLIs antigos continuam reproduzindo seus próprios inputs congelados.
+`cash_source_audit` ganhou materialização de parcelas sem pagamento duplicado
+do total original, diferença de arredondamento publicada explícita e parser
+que distingue ausência da seção de crédito de um inventário sem proventos.
+
+Integrados em `work/source-closure-20260908/execution-inputs-04`: 613 arquivos,
+579 fontes primárias e 365.198 cotações verificadas; os 778 direitos originais
+foram preservados em 794 pagamentos derivados, com sete cronogramas/23 parcelas
+e sete desdobramentos inteiros com base fiscal conservada. Datas ausentes:
+356 para 119. Valores líquidos ainda ausentes: 192 pagamentos derivados;
+29 ações corporativas ainda exigem integração. Inventários integrais continuam
+sem certificação. Nenhuma destas pendências foi convertida em zero ou lucro.
+
+37 testes focados passaram no Python global 3.13, incluindo 23 novos; quatro
+ataques em cópias descartáveis foram rejeitados (fonte adulterada, direito
+removido, valor bruto alterado, inventário liberado sem revisão). Parser do
+pacote reproduziu exatamente 3.202 créditos nos 163 novos boletins de 2026.
+Ruff/Pyright passaram; suíte completa será registrada após commit da árvore.
+Extração/reconstrução inicial usou o comando `python` que apontava a 3.14;
+a materialização final e as verificações de projeto usam `py -3.13` explícito.
+Nenhuma dependência instalada. 53/55, hipóteses e observações preservadas.
+
+Esta seção registra avanço real, não fechamento de todas as fontes ou prova
+de lucro futuro. Resultado integrado: BLOCKED_MISSING_EVIDENCE.
+
 ## Correções concluídas da revisão (08/09/2026 UTC)
 
 Protocolo 38cf95f antes da implementação; código 62444c0. H20Policy integrada ao
