@@ -1,3 +1,5 @@
+> Revisão atual: [auditoria crítica do chat](docs/research/2026-09-08-chat-review.md). Para reproduzir H20, usar `research/session-20260908/chat-review/REPRODUZIR_VERIFICADO.ps1`; os executores anteriores permanecem arquivados. Lucro líquido não calculado.
+
 # stocks-predictor
 
 Projeto de pesquisa econômica de ações da B3. A implementação de 08/09/2026 inclui

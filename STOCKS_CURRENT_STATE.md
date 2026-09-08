@@ -1,3 +1,28 @@
+## Revisão crítica de todo o chat (08/09/2026 UTC)
+
+Releitura dos quatro turnos e revisão técnica/metodológica concluída. Contas
+anteriores reproduzidas; lucro líquido continua desconhecido. H20 histórica
+mediu nomes pretendidos com rotação integral hipotética, sem banda de peso,
+livro contínuo ou impostos incrementais integrados ao executor H20.
+“Melhorou” deve ser entendido somente como composição de marcações; vantagem
+recente e incerteza não sustentam projeção líquida. Sequência de implementação
+foi excessiva frente ao gargalo econômico. Não repetir a mesma priorização.
+
+Falha reproduzida: compare_h20 arquivado aceitava --gate sem hash e não conferia
+todos os payloads do manifesto de execução. Arquivo fictício contaminava apenas
+metadados contextuais; lucro principal continuava null. Arquivos legítimos foram
+usados anteriormente, portanto números publicados não mudaram. Nova entrada
+research/session-20260908/chat-review/reproduce_h20_checked.py verifica fontes,
+gate e código antes de medir, novamente ao terminar e exige resultado idêntico.
+Usar REPRODUZIR_VERIFICADO.ps1; executor/pacotes anteriores ficam históricos.
+
+656 testes passaram (639 +11 +6 novos). Resultado H20 aa184580bf5b... byte idêntico;
+gate fictício rejeitado sem saída. Nenhuma nova estratégia/avaliação de retorno,
+ordem, gasto, instalação, agente, banco protegido escrito ou push. 53/55 é a
+contagem administrativa conservadora anterior, não provas independentes.
+Relatório: docs/research/2026-09-08-chat-review.md. Artefatos desta revisão em
+research/session-20260908/chat-review e outputs/chat-review-20260908 da raiz.
+
 ## Teste de desempenho H20 (08/09/2026 UTC)
 
 Pedido: testar se melhorou a projeção de lucro. Protocolo 9286129 anterior ao

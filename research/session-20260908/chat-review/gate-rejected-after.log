@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "C:\Users\Superleo13\Documents\Codex\2026-09-07\lei-2\work\reproduce_h20_checked.py", line 70, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\Superleo13\Documents\Codex\2026-09-07\lei-2\work\reproduce_h20_checked.py", line 61, in main
+    raw = run_checked(args.root, args.gate)
+  File "C:\Users\Superleo13\Documents\Codex\2026-09-07\lei-2\work\reproduce_h20_checked.py", line 39, in run_checked
+    verify_evidence(base, gate)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\Superleo13\Documents\Codex\2026-09-07\lei-2\work\reproduce_h20_checked.py", line 32, in verify_evidence
+    raise ValueError("frozen financial gate changed")
+ValueError: frozen financial gate changed

@@ -1,0 +1,11 @@
+{
+  "probe": "source integrity of supplied gate metadata",
+  "accepted_forged_gate_metadata": {
+    "status": "SYNTHETIC_FORGED_COMPLETE",
+    "profit": 123,
+    "issue_counts": {},
+    "validated_quote_records": 1
+  },
+  "outer_profit_stays_null": true,
+  "historical_selection_or_parameters_changed": false
+}

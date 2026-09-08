@@ -1,0 +1,11 @@
+{
+  "reproduce_h20_checked.py": "09b7dbd3057512f6c3a6a0a456f24f4f9fe98bfa3e5b3f83befc6c3afaae6750",
+  "test_h20_evidence_integrity.py": "855957073ee59f83661ee5ff210c53f9706689eb7db71de6dfe9f01cc071fc9b",
+  "REPRODUZIR_VERIFICADO.ps1": "8ed0f0c7902ac5943f7735cbcb3dcfbc55db988f75e2435f0d4288eccc55b95b",
+  "REVISAO_CRITICA_CHAT_STOCKS.md": "7ed5fc877efef6e99570d6323720a57373e186983ddb8c910221dfb8ad3ff9af",
+  "REVISAO_CHAT_VALIDACAO.json": "8212df3e633f0f9d33bd60c82af186ce37a81cbeb0db2feba319425666152110",
+  "tests.log": "c9fe5dacb1938527003acc2c01ddeef48613251b608410ba69cea715cbcbbf48",
+  "gate-integrity-before.json": "473ebe4024bcb484b8a41a5ffc092aa03834bb7e7d4930291d6818c4e2991640",
+  "checked-reproduction-final.log": "53b6939d8944ebc04d06cd652917381c3526545ce61f59bebbf6e81d35e3523e",
+  "gate-rejected-after.log": "7b8bab9810ad334ac6bb1097dcec3de385139b8a466ff99c8acc449d4905a4e1"
+}

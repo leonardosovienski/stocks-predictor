@@ -1,0 +1,17 @@
+{
+  "status": "REVIEWED_WITH_INTEGRITY_FIX_AND_METHODOLOGICAL_CORRECTIONS",
+  "completed_chat_turns_read": 4,
+  "history_page_complete": true,
+  "concrete_defects_reproduced": 1,
+  "previous_numeric_results_changed": false,
+  "tests_passed": 656,
+  "new_integrity_tests": 6,
+  "new_return_evaluations": 0,
+  "production_strategy_or_tax_runtime_changed": false,
+  "archived_experiments_preserved": true,
+  "h20_byte_identical": true,
+  "h20_sha256": "aa184580bf5ba69b515a20cc40115453396bdefa470ac0f5408c0d3ced15e1a3",
+  "forged_gate_rejected_before_publication": true,
+  "profit": null,
+  "would_repeat_everything_unchanged": false
+}
