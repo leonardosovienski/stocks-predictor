@@ -225,10 +225,16 @@ def run(cfg=None, conn=None, write_report=False, run_id=None):
 def _conclude(verdict, strat, bench, cfg, hypothesis, write_report, run_id, extra=""):
     """Fecho comum das hipóteses H2+: imprime a linha do veredito (com DSR) e,
     se pedido, grava o relatório rotulado. Retorna o verdict inalterado."""
+    import economics
     print(f"walk-forward {hypothesis}: {verdict['n']} pregões | PSR={verdict['psr']} | "
           f"IC95% diff-Sharpe={verdict['sharpe_diff_ci']} | "
-          f"DSR={verdict.get('dsr')} (N={verdict.get('n_trials')}) | "
+          f"DSR={verdict.get('dsr')} (N={verdict.get('n_trials')}, "
+          f"desconto aplicado={verdict.get('deflation_applied')}) | "
           f"{extra}{hypothesis}: {verdict['veredito']}")
+    # Screen econômico READ-ONLY: não participa do veredito, roda depois dele.
+    # Existe porque um NOT_SUPPORTED e um "real mas pequeno demais" levam a
+    # decisões diferentes, e até 2026-09-07 o domínio não distinguia os dois.
+    print(economics.summary_line(strat, cfg))
     if write_report:
         import report
         path = report.write_report(verdict, strat, bench, cfg, run_id=run_id,

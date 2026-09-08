@@ -786,6 +786,118 @@ Validação completa e hashes são registrados no manifesto da entrega.
 
 ---
 
+> ## O laço econômico está aberto, e é ele que impede o lucro (2026-09-07)
+>
+> Revisão do charter de pesquisa pedido pelo operador ("o objetivo do projeto é
+> dar lucro; o prompt faz isso?"). Resposta curta: **não completamente**, e o
+> motivo não é a escolha de hipótese.
+>
+> ### O achado principal
+>
+> O domínio julgou **16 hipóteses, 16 NOT_SUPPORTED**, e tem **zero evidência
+> prospectiva acumulada**: `decisions = 0` no banco canônico. O comando existe e
+> está ligado desde o M6 (`main.py paper <YYYY-MM-DD>`, `paper.record_forward`)
+> e **nunca rodou uma vez**.
+>
+> Isso é decisivo porque o caminho até capital exige
+> `PROSPECTIVE -> PAPER/SHADOW -> REALIZED` antes de qualquer autorização.
+> Enquanto o ledger forward estiver desligado, **nenhuma hipótese nova aproxima
+> este repositório de dinheiro** — e cada mês desligado é um mês de evidência
+> out-of-sample não contaminável perdido para sempre. É a única classe de
+> evidência que nenhum backtest fabrica depois.
+>
+> **PERGUNTA AO OPERADOR (não decidida aqui).** `paper.record_forward` usa
+> `factor.signals` — momentum 12-1, a H1, já julgada NOT_SUPPORTED. Ligar o
+> ledger como está acumula evidência forward sobre a hipótese que já sabemos que
+> falhou. Tornar o ledger parametrizável por hipótese é mudança pequena e
+> aditiva (mesmo padrão de `series_fn`/`use_known_at`); **escolher qual hipótese
+> recebe evidência prospectiva é decisão científica**, e o `CLAUDE.md` manda
+> parar e perguntar. Nada foi alterado em `paper.py`.
+>
+> ### BUG: o DSR podia emitir COMPROVADA sem descontar nada
+>
+> `deflated_sharpe_ratio` degenera em PSR puro quando `E[max SR]` não é
+> estimável (`sr0 = 0`). O `strict=True` do Core 3.2.0 cobre **um** dos dois
+> caminhos — menos de 2 tentativas com sharpe numérico. O outro passava batido:
+>
+>     15 tentativas, TODAS com sharpe IDÊNTICO -> V[SR] = 0 -> sr0 = 0
+>     sr0_estimable: True | strict NÃO levanta | dsr = 0.9966 > 0.95
+>
+> Reproduzido contra o core 3.2.0 real instalado. Um `COMPROVADA` sairia dali
+> indistinguível de um legítimo para quem lê o relatório.
+>
+> Correção em `trials_gate.apply_dsr`: `strict=True` **mais** fail-closed em
+> `deflation_applied`. O veredito passa a exigir IC95% > 0 **E** DSR >= dsr_min
+> **E** desconto efetivamente aplicado. `tests/test_dsr_deflation_guard.py`
+> cobre os dois caminhos e fixa que o ledger real tem 15 sharpes numéricos
+> distintos (logo V[SR] > 0 e nada muda para as julgadas).
+>
+> **Nenhum veredito emitido muda.** Também ligou o diagnóstico que justificou a
+> migração para 3.2.0 e não estava sendo usado: `n_sharpes`,
+> `deflation_applied` e `sharpe_coverage` agora chegam ao veredito e à linha de
+> fecho da rodada.
+>
+> ### O mínimo econômico agora é mecânico — e continua NÃO respondido
+>
+> As 16 hipóteses foram julgadas sem que ninguém declarasse, antes de rodar,
+> qual resultado seria economicamente relevante. Isso tem custo irreversível:
+> cada tentativa registrada sobe a barra da próxima, então hipótese rodada sem
+> valer a pena **encarece todas as seguintes**.
+>
+> Novo `stocks_predictor/economics.py` (READ-ONLY, não altera veredito) + seção
+> `economics` no `config.yaml` (OPERACIONAL, fora de todo lacre — verificado por
+> teste). Enquanto `capital_brl`, `min_annual_net_profit_brl` e
+> `max_acceptable_drawdown` estiverem `NAO_DECLARADO`, o screen devolve
+> `NAO_DECLARADO` e se recusa a dizer se um resultado vale a pena. **De
+> propósito:** um default responderia em silêncio a pergunta que o operador
+> precisa responder por escrito.
+>
+> `economics.required_net_annual_return(cfg)` responde, sem dado nenhum e sem
+> consumir amostra, a pergunta que decide se vale rodar: *que retorno anual
+> líquido isto precisa entregar para pagar a pena?* Distingue
+> `REAL_EDGE_BUT_ECONOMICALLY_TOO_SMALL` de `NO_EDGE` — desfechos diferentes,
+> decisões diferentes.
+>
+> **Preencher esses três campos é a ação de maior retorno por custo do
+> repositório:** custa uma conversa, não consome amostra, não sobe o N do DSR, e
+> pode tornar desnecessário rodar H17/H18/H19.
+>
+> ### Erro factual corrigido
+>
+> `config.yaml` dizia "N=17" em `h17_criteria` e "N=19" em `h19_criteria`. O
+> registro real tem **15** tentativas — a primeira das três a rodar enfrenta
+> N=16, e a ordem decide o N de cada uma. Comentário apenas; nenhum lacre muda
+> (H17 `e6cf9bd7454750c3`, H18 `cbea4d3c98ac3422`, H19 `d96753f2af7b39a6`
+> reconferidos após a edição).
+>
+> ### Charter v2
+>
+> `docs/AGENT_CHARTER.md` — versão corrigida do prompt de pesquisa, com as cinco
+> emendas: laço prospectivo como prioridade, ausência de amostra grátis para
+> "exploração barata", reversibilidade mapeada na superfície de escrita REAL
+> deste repo, mínimo econômico mecanizado, e complexidade de modelo subordinada
+> à hierarquia de informação (§14 vence a escada de modelos da v1).
+>
+> ### Dívidas que continuam declaradas e NÃO corrigidas
+>
+> `execution.price: next_open` e `backtest.purge_embargo_months` seguem
+> `[FROZEN]` e inertes — o segundo fixado por
+> `tests/test_purge_embargo_limitation.py`, que quebra de propósito se alguém
+> implementar purge/embargo de verdade. Implementá-los mudaria o comportamento
+> das 16 julgadas; removê-los dos lacres apagaria registro histórico. Ficam como
+> estão, citados em qualquer claim econômica.
+>
+> ### Estado
+>
+> `trials.json` intacto em 15 tentativas, md5 `98BFC543DE1E80E2EAEC981E876E5A0C`.
+> **H17/H18/H19 continuam NÃO EXECUTADAS.** O atestado vigente segue emitido com
+> core 3.1.0 contra runtime 3.2.0 e expira em 2026-09-11 — precisa ser reemitido
+> com árvore limpa antes de qualquer rodada.
+>
+> Suíte: **403 verdes** (374 + 29 novos).
+
+---
+
 > ## VEREDITO: os 5 critérios da H18 fecharam — VALE RODAR (2026-09-06)
 >
 > Medição final, com as duas pernas point-in-time corretas. Encerra a

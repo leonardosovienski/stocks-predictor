@@ -167,9 +167,16 @@ def apply_dsr(verdict, strat, cfg, trials_path=None, trial_name="h2-lowvol-252",
 
     Atualiza o sharpe realizado da trial no registro (update de trial existente
     — não exige atestado) e COMBINA os critérios pré-registrados: COMPROVADA
-    sse IC95% da diferença de Sharpe > 0, DSR >= dsr_min E `extra_failures`
-    vazio (critérios adicionais da hipótese — ex. drawdown na H4 — avaliados
-    pelo chamador, que passa as razões das falhas)."""
+    sse IC95% da diferença de Sharpe > 0, DSR >= dsr_min, o DESCONTO TER SIDO
+    APLICADO de fato, E `extra_failures` vazio (critérios adicionais da
+    hipótese — ex. drawdown na H4 — avaliados pelo chamador, que passa as
+    razões das falhas).
+
+    A condição do desconto foi acrescentada em 2026-09-07 e não afeta nenhum
+    veredito já emitido (o registro real tem 15 sharpes numéricos distintos,
+    logo V[SR] > 0 e o desconto sempre se aplicou). Ela existe porque um DSR
+    que não descontou nada é PSR com outro nome, e um COMPROVADA saído dali
+    seria indistinguível de um COMPROVADA legítimo para quem lê o relatório."""
     if not strat or verdict.get("psr") is None:
         return verdict  # SEM DADOS / amostra curta: não há o que descontar
     from config import H2_FROZEN_KEYS
@@ -177,19 +184,38 @@ def apply_dsr(verdict, strat, cfg, trials_path=None, trial_name="h2-lowvol-252",
         cfg, trial_name, frozen_keys or H2_FROZEN_KEYS,
         notes or "rodada única (sharpe por-período realizado)",
         sharpe=round(per_period_sharpe(strat), 6), trials_path=trials_path)
-    d = reg.deflated_sharpe(strat)
+    try:
+        d = reg.deflated_sharpe(strat, strict=True)
+    except trials.DeflationNotEstimableError as exc:
+        # Menos de 2 tentativas com sharpe numérico: V[SR] não existe, o desconto
+        # some e o "Deflated" Sharpe é PSR puro. Fail-closed: sem desconto não há
+        # veredito, e o motivo vai por extenso em vez de virar um número bonito.
+        return dict(verdict, dsr=None, sr0=None, n_trials=len(reg.load()),
+                    n_sharpes=None, deflation_applied=False,
+                    veredito=f"não comprovada (desconto do DSR não estimável: {exc})")
     dsr_min = cfg.get(criteria_section, {}).get("dsr_min", 0.95)
     lo = verdict.get("sharpe_diff_ci", (None, None))[0]
     ic_ok = lo is not None and lo > 0
     dsr_ok = d["dsr"] is not None and d["dsr"] >= dsr_min
-    out = dict(verdict, dsr=d["dsr"], sr0=d["sr0"], n_trials=d["n_trials"])
-    if ic_ok and dsr_ok and not extra_failures:
+    # `strict` do Core só cobre "menos de 2 tentativas com sharpe". Com N
+    # tentativas de sharpe IDÊNTICO, V[SR]=0 -> sr0=0 -> o DSR degenera em PSR
+    # puro, `sr0_estimable` continua True e `strict` NÃO levanta. Aqui o
+    # veredito depende do desconto, então a ausência dele é fail-closed.
+    deflation_ok = bool(d["deflation_applied"])
+    out = dict(verdict, dsr=d["dsr"], sr0=d["sr0"], n_trials=d["n_trials"],
+               n_sharpes=d["n_sharpes"], deflation_applied=d["deflation_applied"],
+               sharpe_coverage=d["sharpe_coverage"])
+    if ic_ok and dsr_ok and deflation_ok and not extra_failures:
         out["veredito"] = "COMPROVADA"
     else:
         reasons = []
         if not ic_ok:
             reasons.append("IC cruza 0 / negativo")
-        if not dsr_ok:
+        if not deflation_ok:
+            reasons.append(
+                f"desconto do DSR NÃO aplicado (sr0={d['sr0']}, "
+                f"N={d['n_trials']}, com sharpe={d['n_sharpes']})")
+        elif not dsr_ok:
             reasons.append(f"DSR {d['dsr']:.4f} < {dsr_min}")
         reasons.extend(extra_failures)
         out["veredito"] = "não comprovada (" + "; ".join(reasons) + ")"
