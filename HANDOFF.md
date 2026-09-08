@@ -1,3 +1,35 @@
+## Correções da revisão — integração registrada, validação final em andamento
+
+Protocolo H20_REVIEW_REMEDIATION_1 em 38cf95f, sem novos parâmetros/retornos.
+H20Policy passa a selecionar a partir das posições reais no run_continuous,
+com bandas congeladas no sinal e o mesmo caixa, proventos, eventos e impostos
+reservados antes das compras. O caminho H19 padrão conserva seus resultados.
+buffered_rebalance.execute_rebalance permanece uma primitiva de ordens e agora
+explicita que não apura os novos impostos; usar h20_continuous para livro completo.
+O motor contábil de baixo nível não certifica completude de fontes.
+
+Entrada atual de reprodução: python -m stocks_predictor.h20_checked.
+Ela incorpora a proteção antes restrita ao pacote da revisão na wheel e na suíte
+regular. Scripts e observações antigos ficam arquivados com os hashes originais.
+python -m stocks_predictor.h20_continuous --root RAIZ --output ARQUIVO_NOVO audita
+cobertura histórica; não executa retornos. Exige revisão H20 vinculada aos sinais,
+fontes e intervalos, além das verificações de cada evento, antes de indicar fontes
+completas. Um booleano da H19 não equivale a essa revisão.
+
+Diagnóstico: 31 arquivos/365.198 cotações verificados; 1.217 intervalos de universo
+H20, união conservadora de 1.248 com sucessores conhecidos, zero certificados.
+Persistem 36 eventos societários não integrados e demais lacunas de caixa/fontes.
+Lucro e projeção futura continuam desconhecidos. 53/55 continua contagem
+administrativa, sem novo ensaio histórico. Não expandir hipóteses diante da lacuna.
+
+31 testes novos passaram; Ruff/Pyright passaram; wheel extraída fora do checkout
+passou nos testes focados. Replays H19/H20 e diagnóstico da wheel são byte idênticos;
+quatro livros sintéticos H19 comparados com c1bfa15 também são idênticos. Primeira
+suíte completa: 669 passaram, 18 pararam no bloqueio DirtyWorkingTreeError; esta
+versão será commitada para repetir a suíte sem desativar o bloqueio do Core.
+Saídas em work/h20-remediation-20260908 da raiz durável. Nenhuma instalação,
+fonte protegida alterada, ordem, gasto ou mudança nas regras H1–H20.
+
 ## Revisão crítica de todo o chat (08/09/2026 UTC)
 
 Releitura dos quatro turnos e revisão técnica/metodológica concluída. Contas

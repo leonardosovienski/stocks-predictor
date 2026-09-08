@@ -312,7 +312,8 @@ def _corporate_cash(book, event_id, amount, terms):
 
 
 def run_continuous(capital, cost_rate, plans, quotes, sessions, settlements,
-                   cash_events, actions, tax_calendar, coverage_ready, coverage_issues=()):
+                   cash_events, actions, tax_calendar, coverage_ready, coverage_issues=(), *,
+                   selection_policy=None):
     """Execute every supplied plan on one persistent book through final exit.
 
     The last plan is the explicit liquidation plan (empty members). Signal-day
@@ -358,6 +359,8 @@ def run_continuous(capital, cost_rate, plans, quotes, sessions, settlements,
     tax = OrdinaryTaxLedger(tax_calendar)
     tax.enter(book, book.day[:7])
     targets = {}
+    selected_plans = {}
+    signal_decisions = []
     snapshots = []
     action_log = []
     seen_actions = set()
@@ -386,6 +389,8 @@ def run_continuous(capital, cost_rate, plans, quotes, sessions, settlements,
             tax.refresh(book)
         if day in by_day:
             plan = by_day[day]
+            if selection_policy is not None:
+                plan = selected_plans[plan['asof']]
             target = targets[plan['asof']]
             # A split/conversion between signal and entry changes order units;
             # require an explicit transformed plan instead of silent wrong units.
@@ -426,6 +431,25 @@ def run_continuous(capital, cost_rate, plans, quotes, sessions, settlements,
             snapshots.append(valuation)
             if day in by_signal:
                 plan = by_signal[day]
+                if selection_policy is not None:
+                    available = {m['ticker']: m for m in plan['members']}
+                    symbols = set(available) | set(book.positions)
+                    signal_quotes = {t: deepcopy(quotes[(day, t)]) for t in symbols}
+                    decision = selection_policy(deepcopy(plan), deepcopy(book),
+                        max(0, valuation['liquid_equity']), signal_quotes, settlements[plan['entry']])
+                    members, quantities = decision['members'], decision['targets']
+                    if (len({m['ticker'] for m in members}) != len(members)
+                            or set(quantities) != {m['ticker'] for m in members}
+                            or any(type(q) is not int or q < 0 for q in quantities.values())
+                            or any(m != available.get(m['ticker']) for m in members)
+                            or (plan['members'] and not members)
+                            or (not plan['members'] and quantities)):
+                        raise ValueError('signal policy changed the allowed identities or order contract')
+                    selected_plans[day] = {**plan, 'members': deepcopy(members)}
+                    targets[day] = dict(quantities)
+                    signal_decisions.append({'asof': day, 'entry': plan['entry'], **deepcopy(decision)})
+                    today += timedelta(days=1)
+                    continue
                 prices = {}
                 for m in plan['members']:
                     q = quotes[(day, m['ticker'])]
@@ -446,7 +470,7 @@ def run_continuous(capital, cost_rate, plans, quotes, sessions, settlements,
     clearing = deepcopy(book)
     clearing_day = max([end, *(r['date'] for r in clearing.pending)])
     clearing.advance(clearing_day)
-    return {'full_history_executed': True, 'capital': number(capital), 'cost_rate': number(cost_rate),
+    result = {'full_history_executed': True, 'capital': number(capital), 'cost_rate': number(cost_rate),
             'first_entry': plans[0]['entry'], 'final_exit': end, 'snapshots': snapshots,
             'trades': book.trades, 'corporate_disposals': book.corporate_disposals,
             'tax_assessments': [*tax.assessments, tax.last],
@@ -457,3 +481,8 @@ def run_continuous(capital, cost_rate, plans, quotes, sessions, settlements,
             'profit_excluding_unpaid_receivables': terminal['liquid_equity']-number(capital),
             'profit_including_unpaid_receivables_at_face': (None if terminal['unvalued_claims']
                 else terminal['equity_including_receivables']-number(capital))}
+    if selection_policy is not None:
+        result.update(signal_decisions=signal_decisions,
+            traded_notional_brl=sum((r['gross'] for r in book.trades), Decimal(0)),
+            modeled_trading_cost_brl=sum((r['costs'] for r in book.trades), Decimal(0)))
+    return result

@@ -1,10 +1,13 @@
-> Revisão atual: [auditoria crítica do chat](docs/research/2026-09-08-chat-review.md). Para reproduzir H20, usar `research/session-20260908/chat-review/REPRODUZIR_VERIFICADO.ps1`; os executores anteriores permanecem arquivados. Lucro líquido não calculado.
+> Estado atual: [continuidade das correções](HANDOFF.md) após a [auditoria do chat](docs/research/2026-09-08-chat-review.md). A reprodução protegida agora está na wheel: `py -3.13 -m stocks_predictor.h20_checked --root RAIZ --gate GATE_CONGELADO --output ARQUIVO_NOVO`. Os executores antigos são arquivos históricos. Lucro líquido não calculado.
 
 # stocks-predictor
 
 Projeto de pesquisa econômica de ações da B3. A implementação de 08/09/2026 inclui
 **H20: preço, rentabilidade e tolerância para reduzir trocas**, com diagnóstico de
-sinais e compras iniciais. [Uso, resultados e limites](docs/research/2026-09-08-h20-results.md).
+sinais e compras iniciais. A integração contínua `h20_continuous` acrescenta
+retenção das posições efetivas, banda de peso, proventos e reserva de impostos;
+está validada com livros sintéticos e depende de fontes completas para uso histórico.
+[Resultados anteriores e seus limites](docs/research/2026-09-08-h20-results.md).
 A H19 trimestral continua congelada e inconclusiva. **Não há lucro líquido
 validado nem autorização técnica para operar.** O executor contínuo exige
 cobertura de caixa e eventos ainda incompleta. Testes verdes não demonstram rentabilidade.
