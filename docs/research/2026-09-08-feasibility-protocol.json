@@ -1,0 +1,40 @@
+{
+  "protocol": "H19_EXECUTION_FEASIBILITY_20260908_1",
+  "registered_at_utc": "2026-09-08T00:49:00Z",
+  "phase": "DISCOVERY_MEASUREMENT_REPAIR_NO_NEW_RETURN_CONFIGURATION",
+  "mechanism": "Integer sizing, actual standard/fractional quote availability and ongoing labor costs can prevent a small portfolio from capturing a theoretical selection premium. Corporate auction gains depend on allocated fiscal basis and the investor's monthly sales/losses.",
+  "hypothesis": "Existing data can cheaply quantify entry feasibility and the incremental return needed to pay maintenance, without reconstructing or optimizing historical profits.",
+  "inputs": "Unchanged stocks-final-review-bundle/inputs, verified against its manifest and frozen H19 protocol/selection hashes.",
+  "selection_changes": false,
+  "entry_diagnostic": {
+    "dates": "Every non-liquidation plan in both frozen portfolios; never remove a failed date.",
+    "capital_brl": [5000, 10000],
+    "one_way_cost_rates": [0.0018, 0.0036],
+    "position_state": "Each date is an independent empty cash book. This measures initiation feasibility, not continuous holdings or realized turnover.",
+    "execution": "Signal-day integer targets, next-session standard/fractional opening quotes, original lots and settlement calendar, deterministic ticker ordering, no borrowing.",
+    "corporate_boundary": "Report as blocked if a required action changes order units between signal and entry. A cross-class bonus needs independently documented unchanged original units.",
+    "metrics": ["target_names", "funded_names", "zero_share_targets", "requested_shares", "filled_shares", "standard_and_fractional_tickets", "traded_notional", "modeled_cost", "settled_residual_cash", "settlement_date", "blocked_reason"],
+    "future_returns": "Not calculated or inspected. No exit prices or strategy ranking by historical return."
+  },
+  "annual_economic_scenarios": {
+    "capital_brl": [5000, 10000],
+    "maintenance_hours_per_month": [0, 1, 2, 4],
+    "hourly_opportunity_cost_brl": [0, 25, 50],
+    "fixed_cost_brl_per_year": [0, 120],
+    "net_incremental_return_before_maintenance": [0.01, 0.03, 0.05, 0.10],
+    "future_reconstruction_hours": [0, 20, 80],
+    "amortization_years": 3,
+    "desired_annual_incremental_profit_brl": [0, 500, 1000],
+    "interpretation": "Sensitivity assumptions, not user preferences, forecasts, probability estimates or observed alpha. Incremental returns are after trading costs and portfolio taxes relative to a comparator with the same period, capital and tax scenario; risk equivalence is not established. Research costs already incurred are sunk and excluded."
+  },
+  "implementation_scope": "Support source-reviewed ordinary-exchange auction disposals with fractional quantities, allocated position basis and dated monthly tax recognition. Require explicit position context for already-net corporate cash/tax constants. No automatic legal classification, data approval, database writes or general reorganization-tax engine.",
+  "validation": "Independent arithmetic, two cost bases with identical shares/proceeds, loss carry/exemption threshold, future auction information, delayed payment, atomic failure and paired driver regression. Reproduce the unchanged real blocked replay and compare preserved hashes.",
+  "alternatives": [
+    {"route": "Complete historical H19", "decision": "DEFER_BULK_RECONSTRUCTION", "reason": "Requires uncertified cash inventory and corporate integrations before exploratory net results; no intact holdout demonstrated."},
+    {"route": "Simplify measurement and bound ongoing effort", "decision": "CHOSEN", "reason": "Existing sources suffice for a cheap economic decision and a necessary accounting repair; preserves frozen candidate and evidence."},
+    {"route": "New equity event/earnings hypothesis", "decision": "BACKLOG", "reason": "Potential information-latency mechanism, but no demonstrated fresh PIT advantage or economic edge; a new hypothesis does not remove execution/tax obligations."}
+  ],
+  "stopping_rule": "One fixed feasibility diagnostic and necessary accounting corrections. Do not start a new factor scan, alter historical windows or bulk-fill 356 missing payment dates. If complete source closure remains unavailable, report exact dependencies and the conditional economic hurdle; pause broad historical reconstruction rather than create a positive backtest.",
+  "budget": {"minimum_exposed_configurations_before": 32, "minimum_return_evaluations_before": 37, "new_historical_return_evaluations_authorized": 0, "new_return_configurations": 0, "new_feasibility_protocols": 1, "paid_data_budget_brl": 0},
+  "capital_orders_authorized": false
+}
