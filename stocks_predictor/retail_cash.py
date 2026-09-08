@@ -116,7 +116,7 @@ def integer_targets(capital, close_prices):
     return targets
 
 
-def ordinary_month_tax(trades, prior_loss=0, exemption=20000, rate="0.15"):
+def ordinary_month_tax(trades, prior_loss=0, exemption=20000, rate="0.15", corporate_disposals=()):
     """Research PF scenario, no external trades; ordinary equity/BDR sales only.
 
     Small equity-sale positive gains are exempt; their losses still enter the
@@ -127,11 +127,31 @@ def ordinary_month_tax(trades, prior_loss=0, exemption=20000, rate="0.15"):
     if loss < 0 or limit < 0 or not 0 <= fraction <= 1:
         raise ValueError("invalid tax inputs")
     trades = list(trades)
+    if any(r.get('corporate_disposal') for r in trades):
+        raise ValueError('corporate disposals must use the separate reviewed input')
+    disposals = list(corporate_disposals)
+    ids = set()
+    for row in disposals:
+        event_id = row.get('event_id')
+        if not event_id or event_id in ids:
+            raise ValueError('unique corporate disposal required')
+        ids.add(event_id)
+        if row.get('source_review') is not True or not row.get('sources') or not row.get('tax_source'):
+            raise ValueError('reviewed ordinary corporate disposal required')
+        quantity, gross, costs, basis = map(number, (row['quantity'], row['gross'], row['costs'], row['basis']))
+        if quantity <= 0 or gross <= 0 or not 0 <= costs <= gross or basis < 0:
+            raise ValueError('invalid corporate disposal economics')
+        if number(row['gain']) != gross - costs - basis:
+            raise ValueError('corporate gain must use allocated position basis')
+        # Fractions are tax disposals, never fractional exchange orders or
+        # additional tradable positions. Keep them out of the integer ledger.
+        trades.append({**row, 'quantity': -quantity, 'corporate_disposal': True})
     if len({iso(r["date"])[:7] for r in trades}) > 1:
         raise ValueError("one calendar month required")
     sides = defaultdict(set)
     for row in trades:
-        if type(row["quantity"]) is not int or not row["quantity"] or number(row["gross"]) < 0:
+        if ((type(row["quantity"]) is not int and not row.get('corporate_disposal'))
+                or not row["quantity"] or number(row["gross"]) < 0):
             raise ValueError("invalid trade quantity or gross proceeds")
         if row["tax_class"] not in {"equity", "bdr"}:
             raise ValueError("unreviewed tax treatment")
@@ -164,6 +184,7 @@ class RetailBook:
         self.rights = {}
         self.seen_right_ids = set()
         self.trades = []
+        self.corporate_disposals = []
         self.cash_buffer = Decimal(0)
 
     def advance(self, day):

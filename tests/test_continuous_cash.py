@@ -5,7 +5,7 @@ from decimal import Decimal as D
 
 import pytest
 
-from stocks_predictor.continuous_cash import OrdinaryTaxLedger, apply_action, run_continuous
+from stocks_predictor.continuous_cash import OrdinaryTaxLedger, apply_action, portfolio_fingerprint, run_continuous
 from stocks_predictor.retail_cash import Holding, RetailBook
 
 
@@ -91,6 +91,7 @@ def test_tax_cumulative_withholding_reserve_and_credit_not_double_charged():
     book.trades.append(sale('2020-01-03', '2020-01-07', '20000', '1000'))
     tax.refresh(book)
     assert not book.pending  # IRRF exactly R$1 is waived, equity gain exempt.
+    book.advance('2020-01-06')
     book.trades.append(sale('2020-01-06', '2020-01-08', '10000', '500'))
     tax.refresh(book)
     assert tax.last['tax'] == 225
@@ -119,6 +120,7 @@ def test_bdr_tax_small_darf_accumulates_and_equity_loss_carries_forward():
     tax.refresh(book)
     assert tax.last['darf'] == 12
     assert tax.last['darf_due'] == '2020-03-28'
+    book.advance('2020-02-04')
     book.trades.append(sale('2020-02-04', '2020-02-06', '100', '-90'))
     tax.refresh(book)
     assert tax.last['loss_carry'] == 50
@@ -159,6 +161,7 @@ def test_unreviewed_fraction_rejects_atomically_then_preserves_exact_basis():
         apply_action(book, action)
     assert book.__dict__ == before
     action['stocks'][0]['fraction_settlement'] = {'source_review': True, 'sources': ['synthetic'],
+        'tax_treatment': 'reviewed_portfolio_net', 'portfolio_state_sha256': portfolio_fingerprint(book),
         'net_cash_per_fraction': '22', 'payment_date': '2020-02-03', 'available_on': '2020-02-04',
         'known_on': '2020-02-01'}
     log = apply_action(book, action)
@@ -188,6 +191,7 @@ def test_reverse_split_then_split_must_not_be_cancelled_to_a_noop():
     action = bonus(); action.update(basis_mode='carry', removes_original=True)
     action['stocks'][0].update(ratio='1', rounding_lot=100, basis_fraction='1',
         fraction_settlement={'source_review': True, 'sources': ['synthetic'],
+            'tax_treatment': 'reviewed_portfolio_net', 'portfolio_state_sha256': portfolio_fingerprint(book),
             'net_cash_per_fraction': '15', 'payment_date': '2020-02-03',
             'available_on': '2020-02-04', 'known_on': '2020-02-01'})
     apply_action(book, action)

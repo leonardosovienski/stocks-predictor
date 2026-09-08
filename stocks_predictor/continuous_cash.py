@@ -7,8 +7,11 @@ deliveries and tax dates are supplied; missing inputs stop the replay.
 
 from collections import defaultdict
 from copy import deepcopy
+from dataclasses import asdict
 from datetime import date, timedelta
 from decimal import Decimal, ROUND_DOWN, ROUND_FLOOR
+import hashlib
+import json
 
 from stocks_predictor.retail_cash import Holding, RetailBook, integer_targets, iso, number, ordinary_month_tax
 
@@ -35,6 +38,7 @@ class OrdinaryTaxLedger:
         self.assessments = []
         self.external_credits = []
         self.withheld = defaultdict(Decimal)
+        self.withheld_disposals = set()
         self.last = None
 
     def enter(self, book, month):
@@ -62,8 +66,10 @@ class OrdinaryTaxLedger:
         due = iso(spec['due_date'])
         if due[:7] <= self.month:
             raise ValueError('tax payment must follow assessment month')
-        rows = [r for r in book.trades if r['date'][:7] == self.month]
-        calc = ordinary_month_tax(rows, self.loss)
+        rows = [r for r in book.trades if r['date'][:7] == self.month and r['date'] <= book.day]
+        disposals = [r for r in book.corporate_disposals
+                     if r['date'][:7] == self.month and r['date'] <= book.day]
+        calc = ordinary_month_tax(rows, self.loss, corporate_disposals=disposals)
         sales = [r for r in rows if r['quantity'] < 0]
         raw_irrf = sum((r['gross'] for r in sales), Decimal(0)) * number(spec['irrf_rate'])
         irrf = cents(raw_irrf) if raw_irrf > number(spec['irrf_waiver']) else Decimal(0)
@@ -76,7 +82,16 @@ class OrdinaryTaxLedger:
             when = max(r['settlement_date'] for r in sales)
             book.pending.append({'date': when, 'amount': -increment, 'kind': 'IRRF'})
             self.withheld[self.month] = irrf
-        usable = self.credit + irrf
+        # Auction intermediaries may differ from the trading broker. Use only
+        # their explicitly reviewed withholding, not the broker's threshold.
+        auction_irrf = sum((r['irrf'] for r in disposals), Decimal(0))
+        for row in disposals:
+            if row['event_id'] not in self.withheld_disposals:
+                if row['irrf']:
+                    book.pending.append({'date': row['settlement_date'], 'amount': -row['irrf'],
+                                         'kind': 'CORPORATE_IRRF', 'event_id': row['event_id']})
+                self.withheld_disposals.add(row['event_id'])
+        usable = self.credit + irrf + auction_irrf
         gross_tax = cents(calc['tax'])
         net_tax = max(Decimal(0), gross_tax - usable)
         credit_carry = max(Decimal(0), usable - gross_tax)
@@ -89,6 +104,9 @@ class OrdinaryTaxLedger:
         self.last = {'month': self.month, **calc, 'tax': gross_tax, 'irrf': irrf,
                      'darf': payable, 'darf_due': due, 'credit_carry': credit_carry,
                      'darf_carry': total - payable}
+        if disposals:
+            self.last.update(corporate_irrf=auction_irrf,
+                             corporate_disposal_ids=[r['event_id'] for r in disposals])
         book.cash_buffer = self.last['darf_carry']
 
     @property
@@ -124,9 +142,9 @@ def apply_action(book, action):
     """Apply explicitly reviewed integer deliveries and cash terms atomically.
 
     Supports carry-basis conversions/splits, bonuses with issuer-declared basis,
-    and cash legs with already reviewed net withholding. A taxable compulsory
-    disposition must supply its dated tax cash flow separately; it cannot be
-    silently classified as an exempt exchange trade.
+    and explicitly classified auction gains with position-dependent basis.
+    Other compulsory dispositions require an externally reviewed tax flow bound
+    to the entire portfolio state; this is not a general reorganization tax solver.
     """
     staged = deepcopy(book)
     if action['ex_date'] != book.day or action.get('source_review') is not True:
@@ -186,11 +204,23 @@ def apply_action(book, action):
             terms = leg['fraction_settlement']
             if terms.get('source_review') is not True or not terms.get('sources'):
                 raise ValueError('fraction settlement not reviewed')
-            # Cash is supplied as a NET amount after the explicitly reviewed
-            # disposal tax and auction charges; never use a market-price guess.
-            amount = fraction * number(terms['net_cash_per_fraction'])
-            _corporate_cash(staged, f"{action['event_id']}:fraction:{n}", amount, terms)
-            log.append({'fraction': fraction, 'removed_basis': full_basis-whole_basis, 'net_cash': amount})
+            event_id = f"{action['event_id']}:fraction:{n}"
+            removed_basis = full_basis - whole_basis
+            if terms.get('tax_treatment') == 'ordinary_exchange':
+                disposal = _auction_disposal(book, action, leg, terms, event_id, fraction, removed_basis)
+                staged.corporate_disposals.append(disposal)
+                amount = disposal['gross'] - disposal['costs']
+                _corporate_cash(staged, event_id, amount, terms)
+                log.append({'fraction': fraction, 'removed_basis': removed_basis,
+                            'cash_before_personal_tax': amount, 'disposal_date': disposal['date'],
+                            'known_on': terms['known_on']})
+            elif terms.get('tax_treatment') == 'reviewed_portfolio_net':
+                _require_portfolio_context(book, terms)
+                amount = fraction * number(terms['net_cash_per_fraction'])
+                _corporate_cash(staged, event_id, amount, terms)
+                log.append({'fraction': fraction, 'removed_basis': removed_basis, 'net_cash': amount})
+            else:
+                raise ValueError('explicit fraction tax treatment required; fee-net is not personal-tax-net')
         if whole:
             existing = staged.positions.get(leg['ticker'])
             if existing:
@@ -210,12 +240,60 @@ def apply_action(book, action):
     for tax in action.get('disposal_tax', []):
         if tax.get('source_review') is not True or not tax.get('sources'):
             raise ValueError('disposal tax not reviewed')
+        _require_portfolio_context(book, tax)
+        if iso(tax.get('known_on')) > book.day:
+            raise ValueError('future disposal tax amount requires a dated recognition event')
         amount = quantity * number(tax['tax_per_original'])
         if amount < 0 or iso(tax['payment_date']) <= book.day:
             raise ValueError('invalid disposal tax flow')
         staged.pending.append({'date': tax['payment_date'], 'amount': -amount, 'kind': 'CORPORATE_TAX'})
     book.__dict__.update(staged.__dict__)
     return log
+
+
+def portfolio_fingerprint(book):
+    """Bind externally computed net tax to this book, including its trade history.
+
+    A matching fingerprint is an applicability check, not source approval. It
+    includes previous disposals/loss-producing trades; quantity/basis alone would
+    let two different monthly tax situations share an inappropriate net constant.
+    """
+    state = {**book.__dict__, 'positions': {k: asdict(v) for k, v in book.positions.items()},
+             'seen_right_ids': sorted(book.seen_right_ids)}
+    return hashlib.sha256(json.dumps(state, sort_keys=True, default=str).encode('utf-8')).hexdigest()
+
+
+def _require_portfolio_context(book, terms):
+    if terms.get('portfolio_state_sha256') != portfolio_fingerprint(book):
+        raise ValueError('reviewed net corporate tax must match the portfolio state')
+
+
+def _auction_disposal(book, action, leg, terms, event_id, quantity, basis):
+    """Reviewed ordinary-exchange auction; never infer its legal tax category.
+
+    Gross proceeds, expenses and actual withholding are separate inputs. A
+    result announced only net of fees cannot establish monthly gross sales or
+    personal income tax. Missing gross/withholding therefore remains an error.
+    """
+    if not terms.get('tax_source'):
+        raise ValueError('auction tax classification source required')
+    when, known = iso(terms['disposal_date']), iso(terms['known_on'])
+    available = iso(terms['available_on'])
+    if not book.day <= when <= iso(terms['payment_date']) < available or known > when:
+        raise ValueError('auction needs causal disposal, knowledge and cash dates')
+    gross = quantity * number(terms['gross_cash_per_fraction'])
+    costs = quantity * number(terms['fees_per_fraction'])
+    irrf = quantity * number(terms['irrf_per_fraction'])
+    if gross <= 0 or costs < 0 or irrf < 0 or costs + irrf > gross:
+        raise ValueError('invalid auction gross, expenses or withholding')
+    if any(r['event_id'] == event_id for r in book.corporate_disposals):
+        raise ValueError('duplicate corporate disposal')
+    return {'event_id': event_id, 'ticker': leg['ticker'], 'isin': leg['isin'],
+            'date': when, 'settlement_date': available, 'quantity': quantity,
+            'gross': gross, 'costs': costs, 'basis': basis, 'gain': gross-costs-basis,
+            'irrf': irrf, 'tax_class': leg['tax_class'], 'source_review': True,
+            'sources': terms['sources'], 'tax_source': terms['tax_source'],
+            'originating_action': action['event_id']}
 
 
 def _corporate_cash(book, event_id, amount, terms):
@@ -302,6 +380,10 @@ def run_continuous(capital, cost_rate, plans, quotes, sessions, settlements,
                 raise ValueError('duplicate action')
             seen_actions.add(event['event_id'])
             action_log.append({'event': event['event_id'], 'date': day, 'details': apply_action(book, event)})
+        # Recognize an auction gain on its reviewed disposal date, even when no
+        # strategy trade occurs. Its later payment never becomes early buying power.
+        if any(r['date'] == day for r in book.corporate_disposals):
+            tax.refresh(book)
         if day in by_day:
             plan = by_day[day]
             target = targets[plan['asof']]
@@ -354,6 +436,8 @@ def run_continuous(capital, cost_rate, plans, quotes, sessions, settlements,
         today += timedelta(days=1)
     if book.positions:
         raise ValueError('final liquidation left positions')
+    if any(r['date'] > end for r in book.corporate_disposals):
+        raise ValueError('post-end corporate auction requires an extended reviewed tax horizon')
     tax.refresh(book)
     # Receivables after the endpoint remain claims, never reported as bank cash.
     terminal = mark(book, end, quotes, tax)
@@ -364,7 +448,8 @@ def run_continuous(capital, cost_rate, plans, quotes, sessions, settlements,
     clearing.advance(clearing_day)
     return {'full_history_executed': True, 'capital': number(capital), 'cost_rate': number(cost_rate),
             'first_entry': plans[0]['entry'], 'final_exit': end, 'snapshots': snapshots,
-            'trades': book.trades, 'tax_assessments': [*tax.assessments, tax.last],
+            'trades': book.trades, 'corporate_disposals': book.corporate_disposals,
+            'tax_assessments': [*tax.assessments, tax.last],
             'unused_irrf_for_personal_return': tax.external_credits,
             'corporate_log': action_log, 'remaining_cash_flows': book.pending,
             'last_obligation_date': clearing_day, 'cleared_cash_on_last_obligation_date': clearing.cash,
