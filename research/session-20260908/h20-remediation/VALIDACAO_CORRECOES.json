@@ -1,0 +1,86 @@
+{
+  "ruff": {
+    "exit_code": 0,
+    "expected": 0
+  },
+  "pyright": {
+    "exit_code": 0,
+    "expected": 0
+  },
+  "h19-replay": {
+    "exit_code": 2,
+    "expected": 2
+  },
+  "h20-checked": {
+    "exit_code": 0,
+    "expected": 0
+  },
+  "h20-readiness": {
+    "exit_code": 2,
+    "expected": 2
+  },
+  "h19_original_code_regression": {
+    "exact_synthetic_books": 4,
+    "base_commit": "c1bfa15"
+  },
+  "build-wheel": {
+    "exit_code": 0,
+    "expected": 0
+  },
+  "wheel-import": {
+    "exit_code": 0,
+    "expected": 0
+  },
+  "wheel-tests": {
+    "exit_code": 0,
+    "expected": 0
+  },
+  "wheel-readiness": {
+    "exit_code": 2,
+    "expected": 2
+  },
+  "wheel": {
+    "file": "stocks_predictor-0.1.0-py3-none-any.whl",
+    "sha256": "cc55d63d6e4d27e153d5cf07767e3dd9548ed6a626bb0a1bd8d77f76f00276ce",
+    "installed": false
+  },
+  "byte_identical": {
+    "h19-replay.json": "585c72395fc2fefc2e0bbd90b6756c516e58d0f1e29ada3d6de196f46ea49c27",
+    "h20-checked.json": "aa184580bf5ba69b515a20cc40115453396bdefa470ac0f5408c0d3ced15e1a3",
+    "readiness-02.json": "d936cf6d6ef5f8780ebd23427c31fd21389f4796789e4e320bc062cff8e464e8",
+    "readiness-wheel.json": "d936cf6d6ef5f8780ebd23427c31fd21389f4796789e4e320bc062cff8e464e8"
+  },
+  "new_historical_return_evaluations": 0,
+  "protocol_commit": "38cf95f",
+  "tested_runtime_commit": "62444c0",
+  "full_suite": {
+    "passed": 687,
+    "seconds": 114.87,
+    "warnings": 0,
+    "production_tests": 670,
+    "archived_tests": 17,
+    "new_regular_tests": 31
+  },
+  "extracted_wheel_tests": {
+    "passed": 104,
+    "seconds": 0.59
+  },
+  "initial_full_suite": {
+    "passed": 669,
+    "failed": 18,
+    "cause": "Core requires a clean committed working tree for synthetic trial attestations; repeated after commit without bypassing it. Initial error output also exposed a Windows encoding warning; canonical wrappers set UTF-8."
+  },
+  "scientific_independence": false,
+  "profit": null,
+  "future_profit_projection": null,
+  "final_wheel": {
+    "file": "stocks_predictor-0.1.0-py3-none-any.whl",
+    "sha256": "5b25a2cb92220e30d07ce3e7b7f886e25848beef738720e2a68409f89874eb5c",
+    "unchanged_runtime_files": 51
+  },
+  "powershell_wrappers": {
+    "readiness_exit_code": 2,
+    "reproduction_exit_code": 0,
+    "both_byte_identical": true
+  }
+}

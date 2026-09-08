@@ -1,34 +1,34 @@
-## Correções da revisão — integração registrada, validação final em andamento
+## Correções concluídas da revisão (08/09/2026 UTC)
 
-Protocolo H20_REVIEW_REMEDIATION_1 em 38cf95f, sem novos parâmetros/retornos.
-H20Policy passa a selecionar a partir das posições reais no run_continuous,
-com bandas congeladas no sinal e o mesmo caixa, proventos, eventos e impostos
-reservados antes das compras. O caminho H19 padrão conserva seus resultados.
-buffered_rebalance.execute_rebalance permanece uma primitiva de ordens e agora
-explicita que não apura os novos impostos; usar h20_continuous para livro completo.
-O motor contábil de baixo nível não certifica completude de fontes.
+Protocolo 38cf95f antes da implementação; código 62444c0. H20Policy integrada ao
+run_continuous: posições realmente executadas, bandas no sinal, proventos,
+entregas, leilões e impostos antes das compras. H19 padrão preservada. O auxiliar
+execute_rebalance continua limitado à mecânica de ordens e explicita essa limitação.
+Reprodução oficial: python -m stocks_predictor.h20_checked; proteção na wheel e
+nos testes regulares, sem alterar o medidor/observações arquivados.
 
-Entrada atual de reprodução: python -m stocks_predictor.h20_checked.
-Ela incorpora a proteção antes restrita ao pacote da revisão na wheel e na suíte
-regular. Scripts e observações antigos ficam arquivados com os hashes originais.
-python -m stocks_predictor.h20_continuous --root RAIZ --output ARQUIVO_NOVO audita
-cobertura histórica; não executa retornos. Exige revisão H20 vinculada aos sinais,
-fontes e intervalos, além das verificações de cada evento, antes de indicar fontes
-completas. Um booleano da H19 não equivale a essa revisão.
+687 testes passaram sem avisos (670 regulares +17 arquivados); 31 novos regulares.
+104 testes adicionais na wheel extraída fora do checkout; Ruff/Pyright verdes.
+Primeira suíte parou por árvore sem commit; a repetição limpa passou sem bypass.
+H19 e H20 anterior reproduzidas byte a byte; quatro livros H19 iguais a c1bfa15.
+Conferência pelo mesmo agente, sem independência científica ou novas observações.
 
-Diagnóstico: 31 arquivos/365.198 cotações verificados; 1.217 intervalos de universo
-H20, união conservadora de 1.248 com sucessores conhecidos, zero certificados.
-Persistem 36 eventos societários não integrados e demais lacunas de caixa/fontes.
-Lucro e projeção futura continuam desconhecidos. 53/55 continua contagem
-administrativa, sem novo ensaio histórico. Não expandir hipóteses diante da lacuna.
+Diagnóstico H20 específico: 31 arquivos/365.198 cotações; 1.217 intervalos comuns,
+união conservadora de 1.248, zero inventários completos certificados; 36 eventos
+societários não integrados. Fontes de caixa/datas/valores ainda faltam. Exigir
+revisão H20 vinculada às fontes e intervalos, além do controle de cada evento.
+O motor contábil de baixo nível não certifica fontes. O CLI h20_continuous apenas
+audita prontidão e retorna 2 enquanto bloqueado; não emite retorno histórico.
 
-31 testes novos passaram; Ruff/Pyright passaram; wheel extraída fora do checkout
-passou nos testes focados. Replays H19/H20 e diagnóstico da wheel são byte idênticos;
-quatro livros sintéticos H19 comparados com c1bfa15 também são idênticos. Primeira
-suíte completa: 669 passaram, 18 pararam no bloqueio DirtyWorkingTreeError; esta
-versão será commitada para repetir a suíte sem desativar o bloqueio do Core.
-Saídas em work/h20-remediation-20260908 da raiz durável. Nenhuma instalação,
-fonte protegida alterada, ordem, gasto ou mudança nas regras H1–H20.
+Não transformar marcações ou nomes planejados em lucro ou economia real de custo.
+Lucro/projeção futura desconhecidos, sem holdout intacto; contagem administrativa
+53/55 preservada. Nenhum novo fator, janela, retorno histórico, instalação ou ordem.
+Não expandir hipóteses para contornar fontes ausentes. A próxima etapa econômica
+depende de inventário documentado e revisão de eventos, não de novos parâmetros.
+
+Relatório: docs/research/2026-09-08-h20-remediation-results.md.
+Reprodução e evidências: research/session-20260908/h20-remediation.
+Saídas duráveis: work/h20-remediation-20260908; entrega no outputs do chat.
 
 ## Revisão crítica de todo o chat (08/09/2026 UTC)
 

@@ -1,3 +1,35 @@
+## Correções concluídas da revisão (08/09/2026 UTC)
+
+Protocolo 38cf95f antes da implementação; código 62444c0. H20Policy integrada ao
+run_continuous: posições realmente executadas, bandas no sinal, proventos,
+entregas, leilões e impostos antes das compras. H19 padrão preservada. O auxiliar
+execute_rebalance continua limitado à mecânica de ordens e explicita essa limitação.
+Reprodução oficial: python -m stocks_predictor.h20_checked; proteção na wheel e
+nos testes regulares, sem alterar o medidor/observações arquivados.
+
+687 testes passaram sem avisos (670 regulares +17 arquivados); 31 novos regulares.
+104 testes adicionais na wheel extraída fora do checkout; Ruff/Pyright verdes.
+Primeira suíte parou por árvore sem commit; a repetição limpa passou sem bypass.
+H19 e H20 anterior reproduzidas byte a byte; quatro livros H19 iguais a c1bfa15.
+Conferência pelo mesmo agente, sem independência científica ou novas observações.
+
+Diagnóstico H20 específico: 31 arquivos/365.198 cotações; 1.217 intervalos comuns,
+união conservadora de 1.248, zero inventários completos certificados; 36 eventos
+societários não integrados. Fontes de caixa/datas/valores ainda faltam. Exigir
+revisão H20 vinculada às fontes e intervalos, além do controle de cada evento.
+O motor contábil de baixo nível não certifica fontes. O CLI h20_continuous apenas
+audita prontidão e retorna 2 enquanto bloqueado; não emite retorno histórico.
+
+Não transformar marcações ou nomes planejados em lucro ou economia real de custo.
+Lucro/projeção futura desconhecidos, sem holdout intacto; contagem administrativa
+53/55 preservada. Nenhum novo fator, janela, retorno histórico, instalação ou ordem.
+Não expandir hipóteses para contornar fontes ausentes. A próxima etapa econômica
+depende de inventário documentado e revisão de eventos, não de novos parâmetros.
+
+Relatório: docs/research/2026-09-08-h20-remediation-results.md.
+Reprodução e evidências: research/session-20260908/h20-remediation.
+Saídas duráveis: work/h20-remediation-20260908; entrega no outputs do chat.
+
 ## Revisão crítica de todo o chat (08/09/2026 UTC)
 
 Releitura dos quatro turnos e revisão técnica/metodológica concluída. Contas

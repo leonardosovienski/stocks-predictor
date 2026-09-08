@@ -1,0 +1,923 @@
+{
+  "evidence_kind": "SYNTHETIC_ENGINE_TEST_NOT_HISTORICAL_OR_FUTURE_PROFIT",
+  "explanation": "5000 initial; 10000 sale; 750 tax; 9250 new buys; 62.50 dividend paid after exit; terminal 9312.50.",
+  "result": {
+    "arm": "VALUE_PROFITABILITY_BUFFER",
+    "method": "ACTUAL_HOLDINGS_CONTINUOUS_CASH_TAX",
+    "source_completeness_certified_by_this_engine": false,
+    "future_profit_projection": null,
+    "full_history_executed": true,
+    "capital": "5000",
+    "cost_rate": "0",
+    "first_entry": "2020-01-03",
+    "final_exit": "2020-03-03",
+    "snapshots": [
+      {
+        "date": "2020-01-02",
+        "settled_cash": "5000",
+        "trade_and_tax_pending": "0",
+        "securities": "0",
+        "unpaid_receivables": "0",
+        "unscheduled_tax_liability": "0",
+        "unvalued_claims": 0,
+        "liquid_equity": "5000",
+        "equity_including_receivables": "5000"
+      },
+      {
+        "date": "2020-01-03",
+        "settled_cash": "5000",
+        "trade_and_tax_pending": "-5000",
+        "securities": "5000",
+        "unpaid_receivables": "0",
+        "unscheduled_tax_liability": "0",
+        "unvalued_claims": 0,
+        "liquid_equity": "5000",
+        "equity_including_receivables": "5000"
+      },
+      {
+        "date": "2020-01-06",
+        "settled_cash": "5000",
+        "trade_and_tax_pending": "-5000",
+        "securities": "5000",
+        "unpaid_receivables": "0",
+        "unscheduled_tax_liability": "0",
+        "unvalued_claims": 0,
+        "liquid_equity": "5000",
+        "equity_including_receivables": "5000"
+      },
+      {
+        "date": "2020-01-07",
+        "settled_cash": "0",
+        "trade_and_tax_pending": "0",
+        "securities": "5000",
+        "unpaid_receivables": "0",
+        "unscheduled_tax_liability": "0",
+        "unvalued_claims": 0,
+        "liquid_equity": "5000",
+        "equity_including_receivables": "5000"
+      },
+      {
+        "date": "2020-01-08",
+        "settled_cash": "0",
+        "trade_and_tax_pending": "0",
+        "securities": "5000",
+        "unpaid_receivables": "0",
+        "unscheduled_tax_liability": "0",
+        "unvalued_claims": 0,
+        "liquid_equity": "5000",
+        "equity_including_receivables": "5000"
+      },
+      {
+        "date": "2020-01-09",
+        "settled_cash": "0",
+        "trade_and_tax_pending": "0",
+        "securities": "5000",
+        "unpaid_receivables": "0",
+        "unscheduled_tax_liability": "0",
+        "unvalued_claims": 0,
+        "liquid_equity": "5000",
+        "equity_including_receivables": "5000"
+      },
+      {
+        "date": "2020-01-10",
+        "settled_cash": "0",
+        "trade_and_tax_pending": "0",
+        "securities": "5000",
+        "unpaid_receivables": "0",
+        "unscheduled_tax_liability": "0",
+        "unvalued_claims": 0,
+        "liquid_equity": "5000",
+        "equity_including_receivables": "5000"
+      },
+      {
+        "date": "2020-01-13",
+        "settled_cash": "0",
+        "trade_and_tax_pending": "0",
+        "securities": "5000",
+        "unpaid_receivables": "0",
+        "unscheduled_tax_liability": "0",
+        "unvalued_claims": 0,
+        "liquid_equity": "5000",
+        "equity_including_receivables": "5000"
+      },
+      {
+        "date": "2020-01-14",
+        "settled_cash": "0",
+        "trade_and_tax_pending": "0",
+        "securities": "5000",
+        "unpaid_receivables": "0",
+        "unscheduled_tax_liability": "0",
+        "unvalued_claims": 0,
+        "liquid_equity": "5000",
+        "equity_including_receivables": "5000"
+      },
+      {
+        "date": "2020-01-15",
+        "settled_cash": "0",
+        "trade_and_tax_pending": "0",
+        "securities": "5000",
+        "unpaid_receivables": "62.5",
+        "unscheduled_tax_liability": "0",
+        "unvalued_claims": 0,
+        "liquid_equity": "5000",
+        "equity_including_receivables": "5062.5"
+      },
+      {
+        "date": "2020-01-16",
+        "settled_cash": "0",
+        "trade_and_tax_pending": "0",
+        "securities": "5000",
+        "unpaid_receivables": "62.5",
+        "unscheduled_tax_liability": "0",
+        "unvalued_claims": 0,
+        "liquid_equity": "5000",
+        "equity_including_receivables": "5062.5"
+      },
+      {
+        "date": "2020-01-17",
+        "settled_cash": "0",
+        "trade_and_tax_pending": "0",
+        "securities": "5000",
+        "unpaid_receivables": "62.5",
+        "unscheduled_tax_liability": "0",
+        "unvalued_claims": 0,
+        "liquid_equity": "5000",
+        "equity_including_receivables": "5062.5"
+      },
+      {
+        "date": "2020-01-20",
+        "settled_cash": "0",
+        "trade_and_tax_pending": "0",
+        "securities": "5000",
+        "unpaid_receivables": "62.5",
+        "unscheduled_tax_liability": "0",
+        "unvalued_claims": 0,
+        "liquid_equity": "5000",
+        "equity_including_receivables": "5062.5"
+      },
+      {
+        "date": "2020-01-21",
+        "settled_cash": "0",
+        "trade_and_tax_pending": "0",
+        "securities": "5000",
+        "unpaid_receivables": "62.5",
+        "unscheduled_tax_liability": "0",
+        "unvalued_claims": 0,
+        "liquid_equity": "5000",
+        "equity_including_receivables": "5062.5"
+      },
+      {
+        "date": "2020-01-22",
+        "settled_cash": "0",
+        "trade_and_tax_pending": "0",
+        "securities": "5000",
+        "unpaid_receivables": "62.5",
+        "unscheduled_tax_liability": "0",
+        "unvalued_claims": 0,
+        "liquid_equity": "5000",
+        "equity_including_receivables": "5062.5"
+      },
+      {
+        "date": "2020-01-23",
+        "settled_cash": "0",
+        "trade_and_tax_pending": "0",
+        "securities": "5000",
+        "unpaid_receivables": "62.5",
+        "unscheduled_tax_liability": "0",
+        "unvalued_claims": 0,
+        "liquid_equity": "5000",
+        "equity_including_receivables": "5062.5"
+      },
+      {
+        "date": "2020-01-24",
+        "settled_cash": "0",
+        "trade_and_tax_pending": "0",
+        "securities": "5000",
+        "unpaid_receivables": "62.5",
+        "unscheduled_tax_liability": "0",
+        "unvalued_claims": 0,
+        "liquid_equity": "5000",
+        "equity_including_receivables": "5062.5"
+      },
+      {
+        "date": "2020-01-27",
+        "settled_cash": "0",
+        "trade_and_tax_pending": "0",
+        "securities": "5000",
+        "unpaid_receivables": "62.5",
+        "unscheduled_tax_liability": "0",
+        "unvalued_claims": 0,
+        "liquid_equity": "5000",
+        "equity_including_receivables": "5062.5"
+      },
+      {
+        "date": "2020-01-28",
+        "settled_cash": "0",
+        "trade_and_tax_pending": "0",
+        "securities": "5000",
+        "unpaid_receivables": "62.5",
+        "unscheduled_tax_liability": "0",
+        "unvalued_claims": 0,
+        "liquid_equity": "5000",
+        "equity_including_receivables": "5062.5"
+      },
+      {
+        "date": "2020-01-29",
+        "settled_cash": "0",
+        "trade_and_tax_pending": "0",
+        "securities": "5000",
+        "unpaid_receivables": "62.5",
+        "unscheduled_tax_liability": "0",
+        "unvalued_claims": 0,
+        "liquid_equity": "5000",
+        "equity_including_receivables": "5062.5"
+      },
+      {
+        "date": "2020-01-30",
+        "settled_cash": "0",
+        "trade_and_tax_pending": "0",
+        "securities": "5000",
+        "unpaid_receivables": "62.5",
+        "unscheduled_tax_liability": "0",
+        "unvalued_claims": 0,
+        "liquid_equity": "5000",
+        "equity_including_receivables": "5062.5"
+      },
+      {
+        "date": "2020-01-31",
+        "settled_cash": "0",
+        "trade_and_tax_pending": "0",
+        "securities": "10000",
+        "unpaid_receivables": "62.5",
+        "unscheduled_tax_liability": "0",
+        "unvalued_claims": 0,
+        "liquid_equity": "10000",
+        "equity_including_receivables": "10062.5"
+      },
+      {
+        "date": "2020-02-03",
+        "settled_cash": "0",
+        "trade_and_tax_pending": "0.00",
+        "securities": "9250",
+        "unpaid_receivables": "62.5",
+        "unscheduled_tax_liability": "0.00",
+        "unvalued_claims": 0,
+        "liquid_equity": "9250.00",
+        "equity_including_receivables": "9312.50"
+      },
+      {
+        "date": "2020-02-04",
+        "settled_cash": "0",
+        "trade_and_tax_pending": "0.00",
+        "securities": "9250",
+        "unpaid_receivables": "62.5",
+        "unscheduled_tax_liability": "0.00",
+        "unvalued_claims": 0,
+        "liquid_equity": "9250.00",
+        "equity_including_receivables": "9312.50"
+      },
+      {
+        "date": "2020-02-05",
+        "settled_cash": "750",
+        "trade_and_tax_pending": "-750.00",
+        "securities": "9250",
+        "unpaid_receivables": "62.5",
+        "unscheduled_tax_liability": "0.00",
+        "unvalued_claims": 0,
+        "liquid_equity": "9250.00",
+        "equity_including_receivables": "9312.50"
+      },
+      {
+        "date": "2020-02-06",
+        "settled_cash": "750",
+        "trade_and_tax_pending": "-750.00",
+        "securities": "9250",
+        "unpaid_receivables": "62.5",
+        "unscheduled_tax_liability": "0.00",
+        "unvalued_claims": 0,
+        "liquid_equity": "9250.00",
+        "equity_including_receivables": "9312.50"
+      },
+      {
+        "date": "2020-02-07",
+        "settled_cash": "750",
+        "trade_and_tax_pending": "-750.00",
+        "securities": "9250",
+        "unpaid_receivables": "62.5",
+        "unscheduled_tax_liability": "0.00",
+        "unvalued_claims": 0,
+        "liquid_equity": "9250.00",
+        "equity_including_receivables": "9312.50"
+      },
+      {
+        "date": "2020-02-10",
+        "settled_cash": "750",
+        "trade_and_tax_pending": "-750.00",
+        "securities": "9250",
+        "unpaid_receivables": "62.5",
+        "unscheduled_tax_liability": "0.00",
+        "unvalued_claims": 0,
+        "liquid_equity": "9250.00",
+        "equity_including_receivables": "9312.50"
+      },
+      {
+        "date": "2020-02-11",
+        "settled_cash": "750",
+        "trade_and_tax_pending": "-750.00",
+        "securities": "9250",
+        "unpaid_receivables": "62.5",
+        "unscheduled_tax_liability": "0.00",
+        "unvalued_claims": 0,
+        "liquid_equity": "9250.00",
+        "equity_including_receivables": "9312.50"
+      },
+      {
+        "date": "2020-02-12",
+        "settled_cash": "750",
+        "trade_and_tax_pending": "-750.00",
+        "securities": "9250",
+        "unpaid_receivables": "62.5",
+        "unscheduled_tax_liability": "0.00",
+        "unvalued_claims": 0,
+        "liquid_equity": "9250.00",
+        "equity_including_receivables": "9312.50"
+      },
+      {
+        "date": "2020-02-13",
+        "settled_cash": "750",
+        "trade_and_tax_pending": "-750.00",
+        "securities": "9250",
+        "unpaid_receivables": "62.5",
+        "unscheduled_tax_liability": "0.00",
+        "unvalued_claims": 0,
+        "liquid_equity": "9250.00",
+        "equity_including_receivables": "9312.50"
+      },
+      {
+        "date": "2020-02-14",
+        "settled_cash": "750",
+        "trade_and_tax_pending": "-750.00",
+        "securities": "9250",
+        "unpaid_receivables": "62.5",
+        "unscheduled_tax_liability": "0.00",
+        "unvalued_claims": 0,
+        "liquid_equity": "9250.00",
+        "equity_including_receivables": "9312.50"
+      },
+      {
+        "date": "2020-02-17",
+        "settled_cash": "750",
+        "trade_and_tax_pending": "-750.00",
+        "securities": "9250",
+        "unpaid_receivables": "62.5",
+        "unscheduled_tax_liability": "0.00",
+        "unvalued_claims": 0,
+        "liquid_equity": "9250.00",
+        "equity_including_receivables": "9312.50"
+      },
+      {
+        "date": "2020-02-18",
+        "settled_cash": "750",
+        "trade_and_tax_pending": "-750.00",
+        "securities": "9250",
+        "unpaid_receivables": "62.5",
+        "unscheduled_tax_liability": "0.00",
+        "unvalued_claims": 0,
+        "liquid_equity": "9250.00",
+        "equity_including_receivables": "9312.50"
+      },
+      {
+        "date": "2020-02-19",
+        "settled_cash": "750",
+        "trade_and_tax_pending": "-750.00",
+        "securities": "9250",
+        "unpaid_receivables": "62.5",
+        "unscheduled_tax_liability": "0.00",
+        "unvalued_claims": 0,
+        "liquid_equity": "9250.00",
+        "equity_including_receivables": "9312.50"
+      },
+      {
+        "date": "2020-02-20",
+        "settled_cash": "750",
+        "trade_and_tax_pending": "-750.00",
+        "securities": "9250",
+        "unpaid_receivables": "62.5",
+        "unscheduled_tax_liability": "0.00",
+        "unvalued_claims": 0,
+        "liquid_equity": "9250.00",
+        "equity_including_receivables": "9312.50"
+      },
+      {
+        "date": "2020-02-21",
+        "settled_cash": "750",
+        "trade_and_tax_pending": "-750.00",
+        "securities": "9250",
+        "unpaid_receivables": "62.5",
+        "unscheduled_tax_liability": "0.00",
+        "unvalued_claims": 0,
+        "liquid_equity": "9250.00",
+        "equity_including_receivables": "9312.50"
+      },
+      {
+        "date": "2020-02-24",
+        "settled_cash": "750",
+        "trade_and_tax_pending": "-750.00",
+        "securities": "9250",
+        "unpaid_receivables": "62.5",
+        "unscheduled_tax_liability": "0.00",
+        "unvalued_claims": 0,
+        "liquid_equity": "9250.00",
+        "equity_including_receivables": "9312.50"
+      },
+      {
+        "date": "2020-02-25",
+        "settled_cash": "750",
+        "trade_and_tax_pending": "-750.00",
+        "securities": "9250",
+        "unpaid_receivables": "62.5",
+        "unscheduled_tax_liability": "0.00",
+        "unvalued_claims": 0,
+        "liquid_equity": "9250.00",
+        "equity_including_receivables": "9312.50"
+      },
+      {
+        "date": "2020-02-26",
+        "settled_cash": "750",
+        "trade_and_tax_pending": "-750.00",
+        "securities": "9250",
+        "unpaid_receivables": "62.5",
+        "unscheduled_tax_liability": "0.00",
+        "unvalued_claims": 0,
+        "liquid_equity": "9250.00",
+        "equity_including_receivables": "9312.50"
+      },
+      {
+        "date": "2020-02-27",
+        "settled_cash": "750",
+        "trade_and_tax_pending": "-750.00",
+        "securities": "9250",
+        "unpaid_receivables": "62.5",
+        "unscheduled_tax_liability": "0.00",
+        "unvalued_claims": 0,
+        "liquid_equity": "9250.00",
+        "equity_including_receivables": "9312.50"
+      },
+      {
+        "date": "2020-02-28",
+        "settled_cash": "750",
+        "trade_and_tax_pending": "-750.00",
+        "securities": "9250",
+        "unpaid_receivables": "62.5",
+        "unscheduled_tax_liability": "0.00",
+        "unvalued_claims": 0,
+        "liquid_equity": "9250.00",
+        "equity_including_receivables": "9312.50"
+      },
+      {
+        "date": "2020-03-02",
+        "settled_cash": "812.5",
+        "trade_and_tax_pending": "-750.00",
+        "securities": "9250",
+        "unpaid_receivables": "0",
+        "unscheduled_tax_liability": "0.00",
+        "unvalued_claims": 0,
+        "liquid_equity": "9312.50",
+        "equity_including_receivables": "9312.50"
+      },
+      {
+        "date": "2020-03-03",
+        "settled_cash": "812.5",
+        "trade_and_tax_pending": "8500.00",
+        "securities": "0",
+        "unpaid_receivables": "0",
+        "unscheduled_tax_liability": "0.00",
+        "unvalued_claims": 0,
+        "liquid_equity": "9312.50",
+        "equity_including_receivables": "9312.50"
+      }
+    ],
+    "trades": [
+      {
+        "ticker": "A00",
+        "isin": "ID00",
+        "date": "2020-01-03",
+        "signal_date": "2020-01-02",
+        "settlement_date": "2020-01-07",
+        "quantity": 125,
+        "gross": "1250",
+        "costs": "0",
+        "gain": "0",
+        "tax_class": "bdr"
+      },
+      {
+        "ticker": "A01",
+        "isin": "ID01",
+        "date": "2020-01-03",
+        "signal_date": "2020-01-02",
+        "settlement_date": "2020-01-07",
+        "quantity": 125,
+        "gross": "1250",
+        "costs": "0",
+        "gain": "0",
+        "tax_class": "bdr"
+      },
+      {
+        "ticker": "A02",
+        "isin": "ID02",
+        "date": "2020-01-03",
+        "signal_date": "2020-01-02",
+        "settlement_date": "2020-01-07",
+        "quantity": 125,
+        "gross": "1250",
+        "costs": "0",
+        "gain": "0",
+        "tax_class": "bdr"
+      },
+      {
+        "ticker": "A03",
+        "isin": "ID03",
+        "date": "2020-01-03",
+        "signal_date": "2020-01-02",
+        "settlement_date": "2020-01-07",
+        "quantity": 125,
+        "gross": "1250",
+        "costs": "0",
+        "gain": "0",
+        "tax_class": "bdr"
+      },
+      {
+        "ticker": "A00",
+        "isin": "ID00",
+        "date": "2020-02-03",
+        "signal_date": "2020-01-31",
+        "settlement_date": "2020-02-05",
+        "quantity": -125,
+        "gross": "2500",
+        "costs": "0",
+        "gain": "1250",
+        "tax_class": "bdr"
+      },
+      {
+        "ticker": "A01",
+        "isin": "ID01",
+        "date": "2020-02-03",
+        "signal_date": "2020-01-31",
+        "settlement_date": "2020-02-05",
+        "quantity": -125,
+        "gross": "2500",
+        "costs": "0",
+        "gain": "1250",
+        "tax_class": "bdr"
+      },
+      {
+        "ticker": "A02",
+        "isin": "ID02",
+        "date": "2020-02-03",
+        "signal_date": "2020-01-31",
+        "settlement_date": "2020-02-05",
+        "quantity": -125,
+        "gross": "2500",
+        "costs": "0",
+        "gain": "1250",
+        "tax_class": "bdr"
+      },
+      {
+        "ticker": "A03",
+        "isin": "ID03",
+        "date": "2020-02-03",
+        "signal_date": "2020-01-31",
+        "settlement_date": "2020-02-05",
+        "quantity": -125,
+        "gross": "2500",
+        "costs": "0",
+        "gain": "1250",
+        "tax_class": "bdr"
+      },
+      {
+        "ticker": "A04",
+        "isin": "ID04",
+        "date": "2020-02-03",
+        "signal_date": "2020-01-31",
+        "settlement_date": "2020-02-05",
+        "quantity": 250,
+        "gross": "2500",
+        "costs": "0",
+        "gain": "0",
+        "tax_class": "bdr"
+      },
+      {
+        "ticker": "A05",
+        "isin": "ID05",
+        "date": "2020-02-03",
+        "signal_date": "2020-01-31",
+        "settlement_date": "2020-02-05",
+        "quantity": 250,
+        "gross": "2500",
+        "costs": "0",
+        "gain": "0",
+        "tax_class": "bdr"
+      },
+      {
+        "ticker": "A06",
+        "isin": "ID06",
+        "date": "2020-02-03",
+        "signal_date": "2020-01-31",
+        "settlement_date": "2020-02-05",
+        "quantity": 250,
+        "gross": "2500",
+        "costs": "0",
+        "gain": "0",
+        "tax_class": "bdr"
+      },
+      {
+        "ticker": "A07",
+        "isin": "ID07",
+        "date": "2020-02-03",
+        "signal_date": "2020-01-31",
+        "settlement_date": "2020-02-05",
+        "quantity": 175,
+        "gross": "1750",
+        "costs": "0",
+        "gain": "0",
+        "tax_class": "bdr"
+      },
+      {
+        "ticker": "A04",
+        "isin": "ID04",
+        "date": "2020-03-03",
+        "signal_date": "2020-03-02",
+        "settlement_date": "2020-03-05",
+        "quantity": -250,
+        "gross": "2500",
+        "costs": "0",
+        "gain": "0",
+        "tax_class": "bdr"
+      },
+      {
+        "ticker": "A05",
+        "isin": "ID05",
+        "date": "2020-03-03",
+        "signal_date": "2020-03-02",
+        "settlement_date": "2020-03-05",
+        "quantity": -250,
+        "gross": "2500",
+        "costs": "0",
+        "gain": "0",
+        "tax_class": "bdr"
+      },
+      {
+        "ticker": "A06",
+        "isin": "ID06",
+        "date": "2020-03-03",
+        "signal_date": "2020-03-02",
+        "settlement_date": "2020-03-05",
+        "quantity": -250,
+        "gross": "2500",
+        "costs": "0",
+        "gain": "0",
+        "tax_class": "bdr"
+      },
+      {
+        "ticker": "A07",
+        "isin": "ID07",
+        "date": "2020-03-03",
+        "signal_date": "2020-03-02",
+        "settlement_date": "2020-03-05",
+        "quantity": -175,
+        "gross": "1750",
+        "costs": "0",
+        "gain": "0",
+        "tax_class": "bdr"
+      }
+    ],
+    "corporate_disposals": [],
+    "tax_assessments": [
+      {
+        "month": "2020-01",
+        "equity_sales": "0",
+        "exempt_equity_gain": "0",
+        "taxable_gain": "0",
+        "tax": "0.00",
+        "loss_carry": "0",
+        "irrf": "0",
+        "darf": "0",
+        "darf_due": "2020-02-28",
+        "credit_carry": "0",
+        "darf_carry": "0"
+      },
+      {
+        "month": "2020-02",
+        "equity_sales": "0",
+        "exempt_equity_gain": "0",
+        "taxable_gain": "5000",
+        "tax": "750.00",
+        "loss_carry": "0",
+        "irrf": "0",
+        "darf": "750.00",
+        "darf_due": "2020-03-28",
+        "credit_carry": "0",
+        "darf_carry": "0.00"
+      },
+      {
+        "month": "2020-03",
+        "equity_sales": "0",
+        "exempt_equity_gain": "0",
+        "taxable_gain": "0",
+        "tax": "0.00",
+        "loss_carry": "0",
+        "irrf": "0",
+        "darf": "0",
+        "darf_due": "2020-04-28",
+        "credit_carry": "0",
+        "darf_carry": "0.00"
+      }
+    ],
+    "unused_irrf_for_personal_return": [],
+    "corporate_log": [],
+    "remaining_cash_flows": [
+      {
+        "date": "2020-03-28",
+        "amount": "-750.00",
+        "tag": "DARF:2020-02",
+        "kind": "DARF"
+      },
+      {
+        "date": "2020-03-05",
+        "amount": "2500"
+      },
+      {
+        "date": "2020-03-05",
+        "amount": "2500"
+      },
+      {
+        "date": "2020-03-05",
+        "amount": "2500"
+      },
+      {
+        "date": "2020-03-05",
+        "amount": "1750"
+      }
+    ],
+    "last_obligation_date": "2020-03-28",
+    "cleared_cash_on_last_obligation_date": "9312.50",
+    "unpaid_receivables": {},
+    "terminal": {
+      "date": "2020-03-03",
+      "settled_cash": "812.5",
+      "trade_and_tax_pending": "8500.00",
+      "securities": "0",
+      "unpaid_receivables": "0",
+      "unscheduled_tax_liability": "0.00",
+      "unvalued_claims": 0,
+      "liquid_equity": "9312.50",
+      "equity_including_receivables": "9312.50"
+    },
+    "profit_excluding_unpaid_receivables": "4312.50",
+    "profit_including_unpaid_receivables_at_face": "4312.50",
+    "signal_decisions": [
+      {
+        "asof": "2020-01-02",
+        "entry": "2020-01-03",
+        "arm": "VALUE_PROFITABILITY_BUFFER",
+        "members": [
+          {
+            "ticker": "A00",
+            "isin": "ID00",
+            "lot": 100,
+            "tax_class": "bdr"
+          },
+          {
+            "ticker": "A01",
+            "isin": "ID01",
+            "lot": 100,
+            "tax_class": "bdr"
+          },
+          {
+            "ticker": "A02",
+            "isin": "ID02",
+            "lot": 100,
+            "tax_class": "bdr"
+          },
+          {
+            "ticker": "A03",
+            "isin": "ID03",
+            "lot": 100,
+            "tax_class": "bdr"
+          }
+        ],
+        "targets": {
+          "A00": 125,
+          "A01": 125,
+          "A02": 125,
+          "A03": 125
+        },
+        "original_targets": {
+          "A00": 125,
+          "A01": 125,
+          "A02": 125,
+          "A03": 125
+        },
+        "suppressed": [],
+        "actual_incumbents": {},
+        "sizing_capital_excluding_unpaid_claims": "5000",
+        "weight_band": "0.025"
+      },
+      {
+        "asof": "2020-01-31",
+        "entry": "2020-02-03",
+        "arm": "VALUE_PROFITABILITY_BUFFER",
+        "members": [
+          {
+            "ticker": "A04",
+            "isin": "ID04",
+            "lot": 100,
+            "tax_class": "bdr"
+          },
+          {
+            "ticker": "A05",
+            "isin": "ID05",
+            "lot": 100,
+            "tax_class": "bdr"
+          },
+          {
+            "ticker": "A06",
+            "isin": "ID06",
+            "lot": 100,
+            "tax_class": "bdr"
+          },
+          {
+            "ticker": "A07",
+            "isin": "ID07",
+            "lot": 100,
+            "tax_class": "bdr"
+          }
+        ],
+        "targets": {
+          "A04": 250,
+          "A05": 250,
+          "A06": 250,
+          "A07": 250
+        },
+        "original_targets": {
+          "A04": 250,
+          "A05": 250,
+          "A06": 250,
+          "A07": 250
+        },
+        "suppressed": [],
+        "actual_incumbents": {
+          "A00": {
+            "isin": "ID00",
+            "quantity": 125
+          },
+          "A01": {
+            "isin": "ID01",
+            "quantity": 125
+          },
+          "A02": {
+            "isin": "ID02",
+            "quantity": 125
+          },
+          "A03": {
+            "isin": "ID03",
+            "quantity": 125
+          }
+        },
+        "sizing_capital_excluding_unpaid_claims": "10000",
+        "weight_band": "0.025"
+      },
+      {
+        "asof": "2020-03-02",
+        "entry": "2020-03-03",
+        "arm": "VALUE_PROFITABILITY_BUFFER",
+        "members": [],
+        "targets": {},
+        "original_targets": {},
+        "suppressed": [],
+        "actual_incumbents": {
+          "A04": {
+            "isin": "ID04",
+            "quantity": 250
+          },
+          "A05": {
+            "isin": "ID05",
+            "quantity": 250
+          },
+          "A06": {
+            "isin": "ID06",
+            "quantity": 250
+          },
+          "A07": {
+            "isin": "ID07",
+            "quantity": 175
+          }
+        },
+        "sizing_capital_excluding_unpaid_claims": "9312.50",
+        "weight_band": "0.025"
+      }
+    ],
+    "traded_notional_brl": "33500",
+    "modeled_trading_cost_brl": "0"
+  }
+}

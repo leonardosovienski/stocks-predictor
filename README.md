@@ -1,4 +1,4 @@
-> Estado atual: [continuidade das correções](HANDOFF.md) após a [auditoria do chat](docs/research/2026-09-08-chat-review.md). A reprodução protegida agora está na wheel: `py -3.13 -m stocks_predictor.h20_checked --root RAIZ --gate GATE_CONGELADO --output ARQUIVO_NOVO`. Os executores antigos são arquivos históricos. Lucro líquido não calculado.
+> Estado atual: [correções e validação](docs/research/2026-09-08-h20-remediation-results.md) após a [auditoria do chat](docs/research/2026-09-08-chat-review.md). A reprodução protegida agora está na wheel: `py -3.13 -m stocks_predictor.h20_checked --root RAIZ --gate GATE_CONGELADO --output ARQUIVO_NOVO`. Os executores antigos são arquivos históricos. Lucro líquido não calculado.
 
 # stocks-predictor
 
