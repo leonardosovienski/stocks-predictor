@@ -1,6 +1,8 @@
 # Migração com código na main e dados separados
 
-O operador pediu commit local na `main`, explicitamente **sem push**. A main
+Inicialmente o operador pediu commit local sem push. Depois esclareceu, mostrando
+as 24 branches no GitHub, que queria a limpeza também no servidor. A **main foi
+enviada ao GitHub e as 23 branches alternativas foram excluídas**. A main
 reúne a branch `fix/stocks-cvm-execution-20260907`, os três commits que estavam
 somente em `origin/main` (até a6300a4) e os helpers ainda fora do Git.
 As duas contribuições ao HANDOFF foram preservadas. Os seis arquivos locais
@@ -10,8 +12,9 @@ Revisão posterior das branches: somente **main** existe como branch local.
 As duas alternativas locais e as 23 referências de acompanhamento já estavam
 integralmente no histórico da main e foram removidas. O fetch acompanha somente
 main. A pasta antiga de pesquisa continua intacta, em HEAD destacado no 68ce89d.
-As branches no servidor GitHub não foram alteradas, respeitando o pedido de não
-enviar mudanças. A prova está em BRANCH_REVIEW_20260908.json.
+O servidor GitHub também contém somente main. As provas estão em
+BRANCH_REVIEW_20260908.json (etapa local) e BRANCH_REVIEW_GITHUB_20260908.json
+(etapa remota). A API do GitHub e git ls-remote confirmaram a exclusão.
 
 Validação concluída: **777 testes**, Ruff e Pyright aprovados. O ZIP tem
 5.355.806.582 bytes (5,36 GB), com 18.583 objetos e 60.023 caminhos de dados.
@@ -53,8 +56,9 @@ A saída do último comando deve mostrar **3.2.0** de `research-runtime`.
 A ordem evita usar o Core 3.1.0 que existia nas bibliotecas globais do PC antigo.
 O Python copiado inclui bibliotecas Windows x64/Python 3.13; outro sistema requer
 dependências compatíveis. O executável Python e o Git não fazem parte da cópia.
-O clone deixa `origin` apontando para o bundle offline. Não executar push;
-o repositório remoto continua sem estes commits locais.
+O clone do exemplo deixa `origin` apontando para o bundle offline. Também é
+possível clonar diretamente `https://github.com/leonardosovienski/stocks-predictor.git`,
+cuja main já contém o trabalho consolidado. Os dados continuam na entrega separada.
 
 O restaurador verifica SHA-256, CRC e nomes antes de criar um destino novo;
 confere novamente os arquivos gravados. A restauração integral exige o espaço

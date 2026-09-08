@@ -1,0 +1,138 @@
+{
+  "operation": "Publish consolidated main and remove other GitHub branches",
+  "repository": "https://github.com/leonardosovienski/stocks-predictor",
+  "published_main": "c1830654720348ffbf199c87c730fb8bdb16628b",
+  "previous_main": "a6300a4daf6db3f9e40f25038bdde5e43682c7ca",
+  "github_push_performed": true,
+  "atomic_update": true,
+  "deletion_guards": "Expected SHA for each of the 23 reviewed branch heads",
+  "open_pull_requests_before": 0,
+  "remaining_branches": [
+    "main"
+  ],
+  "removed_branches": [
+    {
+      "reference": "refs/heads/audit/2026-08-24-fixes",
+      "commit": "1b4d63837462f33538dc4f411ce97df5a37a0eff",
+      "contained_in_main": true
+    },
+    {
+      "reference": "refs/heads/claude/analise-3-repos-izpa3s",
+      "commit": "b2323cd581fb2e8c8bca2d20a568e1cfd2ac534d",
+      "contained_in_main": true
+    },
+    {
+      "reference": "refs/heads/claude/analise-proximidade-lucro-yko50v",
+      "commit": "a8739e89cac4f5ff912c8b258380c325be206fc8",
+      "contained_in_main": true
+    },
+    {
+      "reference": "refs/heads/claude/auditoria-projetos-esr8na",
+      "commit": "6a7c859fd7235638a606f77f7492d2bee7363c4f",
+      "contained_in_main": true
+    },
+    {
+      "reference": "refs/heads/claude/bugs-logic-errors-orxv8f",
+      "commit": "bb7c4d7893313afe8e72321a52160900bbc12300",
+      "contained_in_main": true
+    },
+    {
+      "reference": "refs/heads/claude/dfp-fundamentals-ingest",
+      "commit": "728e9f327a1f1ff033335a48207e39800c15169d",
+      "contained_in_main": true
+    },
+    {
+      "reference": "refs/heads/claude/h6-h8-preregistro",
+      "commit": "35cae7513263efa06a3a7078ccdbd4d4abca3c23",
+      "contained_in_main": true
+    },
+    {
+      "reference": "refs/heads/claude/new-session-6q11qh",
+      "commit": "8a931bbaff8793b7e404658cb25357a515275ca5",
+      "contained_in_main": true
+    },
+    {
+      "reference": "refs/heads/claude/oi-49vz5p",
+      "commit": "593334ce48edc56a6dccbc062d46b86ed614fec1",
+      "contained_in_main": true
+    },
+    {
+      "reference": "refs/heads/claude/oi-49vz5p-followup",
+      "commit": "b1ab8ad525c6022c4a159b78f3a9b1d206d1207e",
+      "contained_in_main": true
+    },
+    {
+      "reference": "refs/heads/claude/oi-49vz5p-gaps",
+      "commit": "efec4e69b4a6c6ed548ba0fe126690c9c0acf27f",
+      "contained_in_main": true
+    },
+    {
+      "reference": "refs/heads/claude/oi-49vz5p-pit-test",
+      "commit": "5e9faa823decdf8919536ddbea095b8e37c28784",
+      "contained_in_main": true
+    },
+    {
+      "reference": "refs/heads/claude/oi-49vz5p-readme",
+      "commit": "d1b0d896fdcd18ae5095d2b92d25255ba4af02b9",
+      "contained_in_main": true
+    },
+    {
+      "reference": "refs/heads/claude/oi-49vz5p-tests",
+      "commit": "4312d3424652802353cce2eaec7bb88ab4dc25fe",
+      "contained_in_main": true
+    },
+    {
+      "reference": "refs/heads/claude/stocks-predictor-b3-audit-9j761c",
+      "commit": "27075e58ac6b86d430419bb03e57005d759b67bb",
+      "contained_in_main": true
+    },
+    {
+      "reference": "refs/heads/claude/stocks-profit-test-jpzhpg",
+      "commit": "f84c2c371a8b8fa55446b64f23ba5b52437f75b1",
+      "contained_in_main": true
+    },
+    {
+      "reference": "refs/heads/docs/final-reconciliation-2026-08-24",
+      "commit": "8d03d688d37758bbb7a89cfd0daec7ab1c775a7f",
+      "contained_in_main": true
+    },
+    {
+      "reference": "refs/heads/feat/rj-rally-domain",
+      "commit": "5b4a54bbfcdc5fbc8385c27ec36bbb123c458e55",
+      "contained_in_main": true
+    },
+    {
+      "reference": "refs/heads/feature/rj-tooling-2026-08-24",
+      "commit": "917e53e719002464e67c35b96b60d2d4a821b9c7",
+      "contained_in_main": true
+    },
+    {
+      "reference": "refs/heads/fix/pyright-info-trigger",
+      "commit": "4b9d8ae2c580b1eb2a410c5ec5286793f079653d",
+      "contained_in_main": true
+    },
+    {
+      "reference": "refs/heads/fix/stocks-cvm-execution-20260907",
+      "commit": "f0f8fdf46ff294cbd2236b265f006e00d441d060",
+      "contained_in_main": true
+    },
+    {
+      "reference": "refs/heads/modernize/stocks-core-ops",
+      "commit": "bd3d90b780e9ffdd4d5bf9ae52e1c9edbc7cfcd0",
+      "contained_in_main": true
+    },
+    {
+      "reference": "refs/heads/p1/ecosystem-plugin-v1",
+      "commit": "9fa0651c63eb143aab54f92fcf3beee0f8a20161",
+      "contained_in_main": true
+    }
+  ],
+  "missing_commits": 0,
+  "application_code_changed_during_cleanup": false,
+  "data_changed": false,
+  "verification": [
+    "git ls-remote --heads origin: only refs/heads/main",
+    "GitHub branches API: only main",
+    "main and origin/main: identical"
+  ]
+}

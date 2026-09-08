@@ -1,7 +1,8 @@
 # Prompt de continuidade — Stocks Predictor
 
 > Atualização vigente de 08/09/2026: continuar na **main**, integrada localmente
-> sem push por pedido do operador. Ler antes MIGRACAO_MAIN.md e
+> e enviada ao GitHub após esclarecimento do operador; as outras branches foram
+> excluídas nos dois lugares. Ler antes MIGRACAO_MAIN.md e
 > MIGRACAO_VERIFICADA.json. Código e histórico estão em CODIGO_MAIN.bundle;
 > dados em DADOS_STOCKS.zip, restaurados pelo tools/data_transfer.py do Git.
 > Os caminhos da branch fix nas seções abaixo descrevem a preservação anterior.

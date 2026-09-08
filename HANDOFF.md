@@ -1,3 +1,17 @@
+## Branch única também no GitHub (08/09/2026)
+
+O operador esclareceu o escopo mostrando o GitHub com 24 branches após a
+limpeza local. A main consolidada c183065 foi enviada e as outras 23 branches
+remotas foram excluídas em uma atualização atômica. Cada exclusão exigiu o
+mesmo SHA revisado, evitando excluir trabalho novo concorrente. Todas eram
+ancestrais da main; nenhuma alteração útil ficou fora. Não havia PRs abertas.
+
+Verificação posterior por git ls-remote e API do GitHub: somente main; estado
+local e remoto sincronizado. A restrição anterior de não enviar alterações
+descreve a etapa anterior e foi substituída por este esclarecimento de escopo.
+Recibo: docs/continuation/BRANCH_REVIEW_GITHUB_20260908.json. Nenhum código de
+aplicação, dado, banco, ledger ou parâmetro científico mudou nesta limpeza.
+
 ## Branch única local — revisão e limpeza (08/09/2026)
 
 Pedido do operador: revisar as outras branches, aproveitar o que faltasse e

@@ -1,7 +1,7 @@
 # Continuidade independente da conversa — 07/09/2026
 
-> Atualização de 08/09/2026: o código vigente foi integrado à **main local**,
-> com 777 testes aprovados, sem push. Começar por MIGRACAO_MAIN.md e
+> Atualização de 08/09/2026: o código vigente está na **main local e no GitHub**,
+> com 777 testes aprovados. Só main permanece em ambos. Começar por MIGRACAO_MAIN.md e
 > MIGRACAO_VERIFICADA.json. O checkout da branch fix citado abaixo é histórico;
 > as raízes preservadas continuam servindo como origem dos dados, não como
 > indicação da branch de código vigente.
