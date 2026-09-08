@@ -30,8 +30,10 @@ Nenhuma ordem, instalação, serviço pago, agente adicional ou escrita em
 banco, ledger ou quarentena. Nenhuma nova dependência de runtime.
 
 Validação 13: auditoria 12 idêntica com código novo, auditoria 13 reproduzida;
-11 adulterações rejeitadas. Suíte completa e wheel serão registradas após
-o commit de código; não confundir essa validação de fontes com lucro.
+11 adulterações rejeitadas. Código d2edbea: 735 testes completos
+e 166 testes na wheel extraída, sem instalação; Ruff/Pyright verdes. Pacote
+de 1485 arquivos reproduz a auditoria byte a byte. Resultados em
+docs/research/2026-09-08-source-closure-results.md. Não confundir fontes com lucro.
 
 ## Revisão de fontes e pendências (08/09/2026 UTC)
 

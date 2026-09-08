@@ -1,0 +1,125 @@
+{
+  "tested_commit": "d2edbea804623a412b3ff3fe90c8b7638074b885",
+  "python": "global3.13",
+  "full_suite": {
+    "passed": 735,
+    "seconds": 115.28,
+    "warnings": 0
+  },
+  "wheel_suite": {
+    "passed": 166,
+    "seconds": 0.87,
+    "installed": false,
+    "checkout_on_import_path": false
+  },
+  "ruff": "PASSED",
+  "pyright": "0 errors, 0 warnings",
+  "source_validation": {
+    "parent_12_audit": "IDENTICAL_WITH_UPDATED_CODE",
+    "current_13_audit": "REPRODUCED",
+    "candidate_queue": "174_IDENTICAL_WITH_TESTED_SELECTOR",
+    "adversarial_checks": [
+      {
+        "case": "changed_primary_bytes",
+        "rejected": true,
+        "reason": "input checksum mismatch: primary/00c3001926495657fa305ccab604c43d16774e21b31114e230fc99c85f863cbe-b3-credit-20220711.pdf"
+      },
+      {
+        "case": "lost_entitlement",
+        "rejected": true,
+        "reason": "source revision lost or duplicated an entitlement"
+      },
+      {
+        "case": "changed_gross",
+        "rejected": true,
+        "reason": "single-payment nominal amount changed"
+      },
+      {
+        "case": "cleared_inventory",
+        "rejected": true,
+        "reason": "source revision improperly cleared evidence gaps"
+      },
+      {
+        "case": "derived_labeled_primary",
+        "rejected": true,
+        "reason": "local reconstruction cannot be relabeled as a primary source"
+      },
+      {
+        "case": "duplicate_reintroduced",
+        "rejected": true,
+        "reason": "source revision lost or duplicated an entitlement"
+      },
+      {
+        "case": "duplicate_proof_removed",
+        "rejected": true,
+        "reason": "source revision lost or duplicated an entitlement"
+      },
+      {
+        "case": "unreviewed_duplicate",
+        "rejected": true,
+        "reason": "explicit single-distribution issuer review required"
+      },
+      {
+        "case": "forged_raw_locator",
+        "rejected": true,
+        "reason": "raw B3 rows are not identical"
+      },
+      {
+        "case": "unbound_issuer",
+        "rejected": true,
+        "reason": "bound issuer documents required for duplicate review"
+      },
+      {
+        "case": "aliases_removed",
+        "rejected": true,
+        "reason": "execution duplicate aliases differ from reviewed lineage"
+      }
+    ],
+    "new_historical_return_evaluations": 0
+  },
+  "portable_package": {
+    "tested_commit": "d2edbea804623a412b3ff3fe90c8b7638074b885",
+    "wheel": "stocks_predictor-0.1.0-py3-none-any.whl",
+    "wheel_sha256": "271660f763bb1c9d60823d38365866836f4db92cca1358432ae767e493bfeaef",
+    "wheel_modules_matched_to_checkout": 52,
+    "wheel_installed": false,
+    "portable_reproduction": "BYTE_IDENTICAL_WITH_ISOLATED_GLOBAL_PYTHON_3_13",
+    "audit_sha256": "bc0f3f30210c0524c2d94516e48f14b2efadd0839d1bebc3beb0a046010579f8",
+    "payloads_verified": 1485,
+    "zip_sha256": "ef3dc22b280ec89180b995495bc6013f059482695d3ebd63c92ef496bddb4fb4",
+    "zip_bytes": 564066398,
+    "new_historical_return_evaluations": 0
+  },
+  "source_manifest_sha256": "7c24e093f7a148c3f375fff9fbd23db62f049ba8012e49e6ba7b4413e27a372b",
+  "source_protocol_sha256": "da8b91a7a263d9870822c58af85b4a47f2c051e932ecb3099fea986ba4456c49",
+  "source_revision": {
+    "raw_entitlements": 778,
+    "execution_payment_rows": 800,
+    "new_single_payment_dates": 322,
+    "new_complete_schedules": 9,
+    "new_installment_payments": 32,
+    "missing_payment_before": 356,
+    "missing_payment_after": 24,
+    "missing_net_before": 389,
+    "missing_net_after": 54,
+    "approved_integer_splits": 8,
+    "explicit_payment_date_corrections": 2,
+    "raw_records_coalesced": 1,
+    "unique_declared_entitlements": 777,
+    "reviewed_duplicate_groups": 1,
+    "unresolved_structured_date_candidates": 14
+  },
+  "original_records_without_net": 52,
+  "profit": null,
+  "future_profit_projection": null,
+  "new_historical_return_evaluations": 0,
+  "administrative_counts": [
+    53,
+    55
+  ],
+  "economic_status": "BLOCKED_MISSING_EVIDENCE",
+  "scientific_independence": false,
+  "real_orders": 0,
+  "paid_services": 0,
+  "new_runtime_dependencies": 0
+}

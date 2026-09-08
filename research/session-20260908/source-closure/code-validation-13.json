@@ -1,0 +1,22 @@
+{
+  "tested_commit": "d2edbea804623a412b3ff3fe90c8b7638074b885",
+  "commands": [
+    {
+      "log": "full-tests-13.log",
+      "returncode": 0
+    },
+    {
+      "log": "ruff-13.log",
+      "returncode": 0
+    },
+    {
+      "log": "pyright-13.log",
+      "returncode": 0
+    },
+    {
+      "log": "wheel-build-13.log",
+      "returncode": 0
+    }
+  ],
+  "new_historical_return_evaluations": 0
+}
