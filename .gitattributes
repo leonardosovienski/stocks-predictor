@@ -26,3 +26,6 @@ docs/research/2026-09-08-h20-implementation-protocol.json -text !eol
 docs/research/2026-09-08-h20-entry-source-addendum.json -text !eol
 # Native Windows observations retain CRLF for byte-level reproduction.
 research/session-20260908/h20-implementation/** whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+docs/research/2026-09-08-h20-profit-test-protocol.json -text !eol
+research/session-20260908/h20-profit-test/** whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
