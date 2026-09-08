@@ -1,0 +1,11 @@
+{
+  "status": "EXACT_PARITY",
+  "counts": {
+    "CREDIT_ROWS_EXTRACTED": 120,
+    "CREDIT_SECTION_MISSING": 6,
+    "NO_RECOGNIZED_CREDIT_ROWS": 37
+  },
+  "credit_rows": 3202,
+  "documents": 163,
+  "new_return_evaluations": 0
+}

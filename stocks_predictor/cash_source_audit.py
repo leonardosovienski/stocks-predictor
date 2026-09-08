@@ -26,9 +26,9 @@ def parse_b3_credit_pages(pages, bulletin_date):
     expression = re.compile(
         r"\b(BR[A-Z0-9]{10})\s+(?:\d+\s+)?"
         r"(DIVIDENDO|RENDIMENTO|JUROS\s+SOBRE\s+CAPITAL\s+PROPRIO)\s+"
-        r"(\d{2}/\d{2}/\d{4})\s+([\d.,]+)\s+(\d{2}/\d{2}/\d{4})"
+        r"(\d{2}/\d{2}/\d{4}|-)\s+([\d.,]+)\s+(\d{2}/\d{2}/\d{4})"
     )
-    rows, rejected = [], []
+    rows, incomplete, rejected = [], [], []
     heading = active = False
     for page in pages:
         text = " ".join(unicodedata.normalize("NFKD", page["text"])
@@ -44,20 +44,29 @@ def parse_b3_credit_pages(pages, bulletin_date):
             text, active = text[:end.start()], False
         for match in expression.finditer(text):
             try:
-                approval, payment = br_date(match[3]), br_date(match[5])
+                approval = None if match[3] == '-' else br_date(match[3])
+                payment = br_date(match[5])
                 gross = br_decimal(match[4])
-                if payment != bulletin_date or approval > payment or gross <= 0:
+                if payment != bulletin_date or (approval is not None and approval > payment) or gross <= 0:
                     raise ValueError("credit chronology or amount differs from bulletin")
             except ValueError as exc:
                 rejected.append({"page": page["page"], "excerpt": match[0], "reason": str(exc)})
                 continue
-            rows.append({"isin": match[1],
+            row = {"isin": match[1],
                 "action": "JRS CAP PROPRIO" if match[2].startswith("JUROS") else match[2],
                 "approval_date": approval, "payment_date": payment,
-                "gross_per_share": str(gross), "page": page["page"], "source_excerpt": match[0]})
+                "gross_per_share": str(gross), "page": page["page"], "source_excerpt": match[0]}
+            if approval is None:
+                # These credits exist but cannot establish a declaration match
+                # without a second source. Preserve them outside the joinable rows.
+                incomplete.append({**row, "missing_fields": ["approval_date"],
+                                   "requires_separate_issuer_identity_review": True})
+            else:
+                rows.append(row)
     status = ("CREDIT_SECTION_MISSING" if not heading else
-              "CREDIT_ROWS_EXTRACTED" if rows else "NO_RECOGNIZED_CREDIT_ROWS")
-    return {"status": status, "rows": rows, "rejected": rejected,
+              "CREDIT_ROWS_EXTRACTED" if rows else
+              "INCOMPLETE_CREDIT_ROWS_EXTRACTED" if incomplete else "NO_RECOGNIZED_CREDIT_ROWS")
+    return {"status": status, "rows": rows, "incomplete_rows": incomplete, "rejected": rejected,
             "complete_cash_inventory": False, "net_amount_inferred": False}
 
 

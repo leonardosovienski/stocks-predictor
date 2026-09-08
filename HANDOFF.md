@@ -1,38 +1,43 @@
-## Reconstrução de fontes em andamento (08/09/2026 UTC)
+## Revisão de fontes e pendências (08/09/2026 UTC)
 
-Pedido reiterado do operador: resolver também as fontes ausentes. Protocolo
-0700f82 anterior à reconstrução; nenhuma nova avaliação de retorno. Versões
-cash-closure-01 a 04 preservadas fora de bancos/ledgers. A revisão retirou duas
-associações provisórias erradas (RADL JCP 2022 e Ambev JCP 2025 tinham recebido
-a data dos dividendos do mesmo documento); a Ambev foi reconstruída em três
-parcelas documentadas, com líquido ainda pendente.
+Pedido do operador: resolver também as fontes pendentes. Protocolo0700f82,
+SHA da8b91a7a263d9870822c58af85b4a47f2c051e932ecb3099fea986ba4456c49,
+anterior à reconstrução. Nenhuma nova avaliação de retorno; 53/55 preservados.
+As versões01–12 permanecem preservadas fora de bancos e ledgers.
 
-Nova entrada `python -m stocks_predictor.source_closure`: audita a revisão
-aditiva, os documentos primários, a conservação dos direitos e a união H20.
-Os CLIs antigos continuam reproduzindo seus próprios inputs congelados.
-`cash_source_audit` ganhou materialização de parcelas sem pagamento duplicado
-do total original, diferença de arredondamento publicada explícita e parser
-que distingue ausência da seção de crédito de um inventário sem proventos.
+Entrada atual: work/source-closure-20260908/execution-inputs-12.
+Manifesto b9dfab5fb2dc67f7fcdd71f52b325a3a1d442917c116f514fd09f11926876f7e.
+788 arquivos verificados;754 arquivos de fonte, dos quais753 publicações/fontes
+primárias e1 reconstrução local derivada.365.198 cotações. Os778 direitos
+originais são preservados em801 linhas de pagamento, com9 cronogramas e32
+parcelas. Datas ausentes:356→37; valores líquidos ausentes:389 registros
+originais→66 linhas derivadas.8 desdobramentos inteiros integrados;28 eventos
+societários ainda exigem termos, entrega ou base fiscal.1.248 intervalos de
+inventário permanecem sem certificação integral. Estas contagens se sobrepõem.
 
-Integrados em `work/source-closure-20260908/execution-inputs-04`: 613 arquivos,
-579 fontes primárias e 365.198 cotações verificadas; os 778 direitos originais
-foram preservados em 794 pagamentos derivados, com sete cronogramas/23 parcelas
-e sete desdobramentos inteiros com base fiscal conservada. Datas ausentes:
-356 para 119. Valores líquidos ainda ausentes: 192 pagamentos derivados;
-29 ações corporativas ainda exigem integração. Inventários integrais continuam
-sem certificação. Nenhuma destas pendências foi convertida em zero ou lucro.
+Falhas corrigidas nesta revisão: associações entre JCP/dividendos retiradas;
+reconciliação de parcelas sem pagar o total original duas vezes; retificações
+ligadas ao aviso original; datas TIM corrigidas; tabelas em imagem revisadas;
+fonte derivada não contada como primária. Créditos B3 com aprovação ausente
+agora aparecem em incomplete_rows e exigem fonte adicional para associação;
+não são descartados silenciosamente nem promovidos a dados completos.
+Líquidos de atualização Selic usam prazo documentado e regraPF específica.
+Os líquidos2026 tratados aqui são retenção no pagamento, não imposto mínimo
+anual pessoal. Capital devolvido, base fiscal e frações continuam dependentes
+do livro e das fontes aplicáveis. SLC2019: data provada, unidades antes/depois
+do desdobramento ainda não reconciliadas. BRDT2020: aviso contém duas
+atualizações monetárias ausentes no inventário original; lacuna explicitada.
 
-37 testes focados passaram no Python global 3.13, incluindo 23 novos; quatro
-ataques em cópias descartáveis foram rejeitados (fonte adulterada, direito
-removido, valor bruto alterado, inventário liberado sem revisão). Parser do
-pacote reproduziu exatamente 3.202 créditos nos 163 novos boletins de 2026.
-Ruff/Pyright passaram; suíte completa será registrada após commit da árvore.
-Extração/reconstrução inicial usou o comando `python` que apontava a 3.14;
-a materialização final e as verificações de projeto usam `py -3.13` explícito.
-Nenhuma dependência instalada. 53/55, hipóteses e observações preservadas.
+27 testes focados passam; Ruff/Pyright serão registrados com a suíte final.
+A validação completa e a wheel portátil serão anexadas após este commit.
+Usar py -3.13 explícito, sem venv ou instalação. Extrações01–03 usaram3.14;
+as materializações04–12 e os testes finais usam o Python global3.13.
 
-Esta seção registra avanço real, não fechamento de todas as fontes ou prova
-de lucro futuro. Resultado integrado: BLOCKED_MISSING_EVIDENCE.
+Resultado econômico: BLOCKED_MISSING_EVIDENCE; lucro e projeção permanecem
+null. Não houve ordens, custos, agentes, escrita nos bancos ou ajusteH1–H20.
+O protocolo de fontes não libera retornos: ainda é necessária pré-inscrição
+específica vinculada ao hash final das fontes, após completar a evidência.
+Evidências e fila completa: research/session-20260908/source-closure.
 
 ## Correções concluídas da revisão (08/09/2026 UTC)
 

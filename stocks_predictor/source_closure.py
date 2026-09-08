@@ -15,6 +15,25 @@ from stocks_predictor.h20_continuous import SIGNALS_SHA, make_plans
 from stocks_predictor.h20_checked import MANIFEST_SHA
 
 SOURCE_PROTOCOL_SHA = 'da8b91a7a263d9870822c58af85b4a47f2c051e932ecb3099fea986ba4456c49'
+# This preserved local report is an intermediate reconstruction, not an issuer,
+# regulator or exchange publication. Its checksum never establishes primacy.
+DERIVED_REVIEW_SHAS = {'e4282eb0155808fd57469704966d7e1718c6560fbe9520a3ef2f420b3c5b7bf2'}
+
+
+def source_counts(catalog):
+    counts = Counter()
+    for row in catalog.values():
+        expected = 'DERIVED_LOCAL_REVIEW' if row['sha256'] in DERIVED_REVIEW_SHAS else 'PRIMARY_SOURCE_RECORD'
+        kind = row.get('source_kind', expected)
+        if kind not in {'PRIMARY_SOURCE_RECORD', 'DERIVED_LOCAL_REVIEW', 'UNCLASSIFIED'}:
+            raise ValueError('unknown source classification')
+        if row['sha256'] in DERIVED_REVIEW_SHAS and kind != expected:
+            raise ValueError('local reconstruction cannot be relabeled as a primary source')
+        counts[kind] += 1
+    return {'verified_source_files': len(catalog),
+            'verified_primary_files': counts['PRIMARY_SOURCE_RECORD'],
+            'verified_derived_review_files': counts['DERIVED_LOCAL_REVIEW'],
+            'unclassified_source_files': counts['UNCLASSIFIED']}
 
 
 def digest(path):
@@ -52,6 +71,7 @@ def audit(base, revised, signals_path, protocol_path):
     catalog = read(revised / 'primary-catalog.json')
     if any(after.get(k) != v['sha256'] for k, v in catalog.items()):
         raise ValueError('primary source absent from input manifest')
+    source_inventory = source_counts(catalog)
 
     def check_sources(value):
         if isinstance(value, list):
@@ -114,7 +134,7 @@ def audit(base, revised, signals_path, protocol_path):
     return {'status': 'BLOCKED_MISSING_EVIDENCE', 'profit': None, 'future_profit_projection': None,
         'new_historical_return_evaluations': 0, 'administrative_counts': [53, 55],
         'source_manifest_sha256': source_manifest, 'verified_input_files': files,
-        'verified_primary_files': len(catalog), 'validated_quote_records': quote_count,
+        **source_inventory, 'validated_quote_records': quote_count,
         'raw_entitlements_preserved': len(raw), 'execution_payment_rows': len(cash),
         'complete_installment_schedules': len(lines), 'corporate_actions_integrated': len(actions),
         'missing_payment_dates': sum(not r['payment_date'] for r in cash),

@@ -10,6 +10,7 @@ import pytest
 from stocks_predictor.cash_source_audit import expand_reviewed_installments, parse_b3_credit_pages
 from stocks_predictor.continuous_cash import apply_action
 from stocks_predictor.retail_cash import Holding, RetailBook
+from stocks_predictor.source_closure import DERIVED_REVIEW_SHAS, source_counts
 
 FIXTURES = Path(__file__).parent / 'fixtures/source_closure'
 
@@ -33,14 +34,28 @@ def test_actual_installments_preserve_parents_and_never_pay_aggregate_twice():
     f = fixture(); before = deepcopy(f)
     rows, lineage = expand_reviewed_installments(f['parents'], f['schedules'], sessions())
     assert f == before
-    assert len(rows) == 23 and len(lineage) == 7
+    assert len(rows) == 32 and len(lineage) == 9
     assert not {r['event_id'] for r in rows} & {r['event_id'] for r in f['parents']}
     cpfe = [r for r in rows if r['ticker'] == 'CPFE3' and r['ex_date'] == '2023-05-02']
     assert [(r['payment_date'], D(r['gross_per_share'])) for r in cpfe] == [
         ('2023-06-23', D('.540074494')), ('2023-10-25', D('.260359162')),
         ('2023-11-17', D('.433931936'))]
     assert sum(D(r['gross_per_share']) for r in cpfe) == D('1.234365592')
-    assert sum(D(r['published_rounding_delta']) != 0 for r in lineage) == 2
+    assert sum(D(r['published_rounding_delta']) != 0 for r in lineage) == 4
+
+
+def test_cpfl_image_table_and_br_distribuidora_principal_have_distinct_payment_schedules():
+    f = fixture()
+    rows, _ = expand_reviewed_installments(f['parents'], f['schedules'], sessions())
+    cpfl = [r for r in rows if r['ticker'] == 'CPFE3' and r['ex_date'] == '2025-04-30']
+    assert [r['payment_date'] for r in cpfl] == [
+        '2025-06-25', '2025-07-25', '2025-08-25', '2025-09-25',
+        '2025-10-27', '2025-11-19', '2025-12-15']
+    assert sum(D(r['gross_per_share']) for r in cpfl) == D('2.794176751')
+    br = [r for r in rows if r['ticker'] == 'BRDT3']
+    assert [(r['payment_date'], D(r['gross_per_share'])) for r in br] == [
+        ('2020-09-01', D('.0428003741')), ('2020-09-30', D('.45835939570'))]
+    assert all(r['action'] == 'DIVIDENDO' and r['gross_per_share'] == r['net_per_share'] for r in br)
 
 
 def test_jcp_does_not_inherit_dividend_date_or_unverified_net():
@@ -116,3 +131,26 @@ def test_b3_wrong_report_date_and_duplicate_pages_never_certify_income():
     assert not result['rows'] and result['rejected']
     with pytest.raises(ValueError, match='unique chronological'):
         parse_b3_credit_pages(case['pages'] * 2, case['day'])
+
+
+def test_hashed_local_reconstruction_is_not_counted_as_primary_evidence():
+    local = {'sha256': next(iter(DERIVED_REVIEW_SHAS))}
+    catalog = {'local.json': local, 'issuer.pdf': {'sha256': 'a' * 64},
+               'unknown.json': {'sha256': 'b' * 64, 'source_kind': 'UNCLASSIFIED'}}
+    assert source_counts(catalog) == {'verified_source_files': 3, 'verified_primary_files': 1,
+        'verified_derived_review_files': 1, 'unclassified_source_files': 1}
+    local['source_kind'] = 'PRIMARY_SOURCE_RECORD'
+    with pytest.raises(ValueError, match='cannot be relabeled'):
+        source_counts(catalog)
+
+
+def test_published_credit_with_missing_approval_is_preserved_outside_joinable_rows():
+    case = json.loads((FIXTURES / 'b3-credit-pages.json').read_text(encoding='utf-8'))[3]
+    result = parse_b3_credit_pages(case['pages'], case['day'])
+    assert not [r for r in result['rows'] if r['isin'] == 'BRVIVAACNOR0']
+    vivara = [r for r in result['incomplete_rows'] if r['isin'] == 'BRVIVAACNOR0']
+    assert len(vivara) == 1
+    assert vivara[0]['approval_date'] is None and vivara[0]['payment_date'] == '2025-12-30'
+    assert D(vivara[0]['gross_per_share']) == D('.69765914173')
+    assert vivara[0]['requires_separate_issuer_identity_review']
+    assert not result['complete_cash_inventory'] and not result['net_amount_inferred']

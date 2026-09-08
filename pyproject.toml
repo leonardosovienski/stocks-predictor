@@ -46,7 +46,7 @@ pythonVersion = "3.13"
 typeCheckingMode = "basic"
 # Escopo RJ original mais contabilidade, execução contínua e integração H20.
 # Isto verifica código, sem alterar parâmetros científicos congelados.
-include = ["stocks_predictor/rj_episodes.py", "stocks_predictor/rj_families.py", "stocks_predictor/rj_judge.py", "stocks_predictor/retail_cash.py", "stocks_predictor/continuous_cash.py", "stocks_predictor/continuous_research.py", "stocks_predictor/h20_continuous.py", "stocks_predictor/h20_checked.py", "stocks_predictor/buffered_rebalance.py"]
+include = ["stocks_predictor/rj_episodes.py", "stocks_predictor/rj_families.py", "stocks_predictor/rj_judge.py", "stocks_predictor/retail_cash.py", "stocks_predictor/continuous_cash.py", "stocks_predictor/continuous_research.py", "stocks_predictor/h20_continuous.py", "stocks_predictor/h20_checked.py", "stocks_predictor/buffered_rebalance.py", "stocks_predictor/cash_source_audit.py", "stocks_predictor/source_closure.py"]
 # O código RJ usa dicionários heterogêneos deliberadamente. Os três erros
 # iniciais de argument type são dívida de anotação, não falhas funcionais; o
 # restante do basic type-check continua ativo nesta etapa.
