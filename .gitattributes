@@ -35,3 +35,5 @@ docs/research/2026-09-08-h20-remediation-protocol.json -text !eol
 research/session-20260908/h20-remediation/** whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 # Keep raw pytest failure output byte-identical, including captured indentation.
 research/session-20260908/h20-remediation/full-tests.log -whitespace
+
+docs/research/2026-09-08-source-closure-protocol.json -text !eol
