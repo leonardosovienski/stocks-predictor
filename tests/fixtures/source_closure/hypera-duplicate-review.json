@@ -1,0 +1,422 @@
+{
+  "events": [
+    {
+      "event_id": "BRHYPEACNOR0:2024-02-02:JRS CAP PROPRIO:15",
+      "ticker": "HYPE3",
+      "isin": "BRHYPEACNOR0",
+      "ex_date": "2024-02-02",
+      "action": "JRS CAP PROPRIO",
+      "payment_date": null,
+      "gross_per_share": "0.09725",
+      "sources": [],
+      "net_per_share": null,
+      "tax_source": null,
+      "source_review": false,
+      "available_on": null,
+      "known_on": null
+    },
+    {
+      "event_id": "BRHYPEACNOR0:2024-02-02:JRS CAP PROPRIO:16",
+      "ticker": "HYPE3",
+      "isin": "BRHYPEACNOR0",
+      "ex_date": "2024-02-02",
+      "action": "JRS CAP PROPRIO",
+      "payment_date": null,
+      "gross_per_share": "0.09725",
+      "sources": [],
+      "net_per_share": null,
+      "tax_source": null,
+      "source_review": false,
+      "available_on": null,
+      "known_on": null
+    }
+  ],
+  "reviews": [
+    {
+      "canonical_event_id": "BRHYPEACNOR0:2024-02-02:JRS CAP PROPRIO:15",
+      "duplicate_event_ids": [
+        "BRHYPEACNOR0:2024-02-02:JRS CAP PROPRIO:16"
+      ],
+      "source_review": true,
+      "issuer_distribution_count": 1,
+      "identity": {
+        "ticker": "HYPE3",
+        "isin": "BRHYPEACNOR0",
+        "action": "JRS CAP PROPRIO",
+        "ex_date": "2024-02-02",
+        "approval_date": "2024-01-29",
+        "last_cum": "2024-02-01",
+        "gross_per_share": "0.09725"
+      },
+      "raw_records": [
+        {
+          "event_id": "BRHYPEACNOR0:2024-02-02:JRS CAP PROPRIO:15",
+          "source": {
+            "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\source-acquisition\\b3-cvm21431-cash-1.json",
+            "sha256": "583fadf1b5d5239bf5595e326d4c12e8a7151abbed65558ce53986983a8c593c",
+            "url": "https://sistemaswebb3-listados.b3.com.br/listedCompaniesProxy/CompanyCall/GetListedCashDividends/eyJ0cmFkaW5nTmFtZSI6IkhZUEVSQSIsImxhbmd1YWdlIjoicHQtYnIiLCJwYWdlTnVtYmVyIjoxLCJwYWdlU2l6ZSI6MjB9",
+            "row": 15
+          }
+        },
+        {
+          "event_id": "BRHYPEACNOR0:2024-02-02:JRS CAP PROPRIO:16",
+          "source": {
+            "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\source-acquisition\\b3-cvm21431-cash-1.json",
+            "sha256": "583fadf1b5d5239bf5595e326d4c12e8a7151abbed65558ce53986983a8c593c",
+            "url": "https://sistemaswebb3-listados.b3.com.br/listedCompaniesProxy/CompanyCall/GetListedCashDividends/eyJ0cmFkaW5nTmFtZSI6IkhZUEVSQSIsImxhbmd1YWdlIjoicHQtYnIiLCJwYWdlTnVtYmVyIjoxLCJwYWdlU2l6ZSI6MjB9",
+            "row": 16
+          }
+        }
+      ],
+      "issuer_sources": [
+        {
+          "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-1009.pdf",
+          "sha256": "82046216d050f5719fd40e776e9bbb7fd8e54ec4b4ef54fb19f970592ae95386",
+          "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1187277&numSequencia=712003&numVersao=1",
+          "pages": [
+            1
+          ]
+        },
+        {
+          "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\h19-cash-expanded-source\\cvm-complete-1247.pdf",
+          "sha256": "b1ba726d5eb4768f8e1bb950efb47f47f7e56819980e4c8b782a8edc54fa9ad0",
+          "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1456254&numSequencia=980966&numVersao=1",
+          "pages": [
+            1
+          ]
+        },
+        {
+          "file": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\source-closure-20260908\\new-primary\\issuer-13-cvm-1456495.pdf",
+          "sha256": "15f3ad15b5884b9d17bdd21597c00d97ad2718f97d8551f4a3eeeba4a922686c",
+          "url": "https://www.rad.cvm.gov.br/ENET/frmDownloadDocumento.aspx?Tela=ext&descTipo=IPE&CodigoInstituicao=1&numProtocolo=1456495&numSequencia=981207&numVersao=3",
+          "pages": [
+            1
+          ],
+          "cvm_version": 3,
+          "received_on": "2025-12-11"
+        }
+      ],
+      "reason": "B3 rows 15/16 are identical. Issuer January 29 declaration specifies ONE R$0.09725 distribution, total R$61,552,784.82; version3 and December11 notice bind it to December17/2025. Do not apply this review to Iguatemi records: those represent distinct documented installments.",
+      "raw_records_preserved": true,
+      "review_as_of": "2026-09-08"
+    }
+  ],
+  "original_b3": {
+    "page": {
+      "pageNumber": 1,
+      "pageSize": 20,
+      "totalRecords": 52,
+      "totalPages": 3
+    },
+    "results": [
+      {
+        "typeStock": "ON",
+        "dateApproval": "23/06/2026",
+        "valueCash": "0,26304",
+        "ratio": "1",
+        "corporateAction": "JRS CAP PROPRIO",
+        "lastDatePriorEx": "26/06/2026",
+        "dateClosingPricePriorExDate": "26/06/2026",
+        "closingPricePriorExDate": "21,57",
+        "quotedPerShares": "1",
+        "corporateActionPrice": "1,219471",
+        "lastDateTimePriorEx": "2026-06-26T00:00:00"
+      },
+      {
+        "typeStock": "ON",
+        "dateApproval": "26/03/2026",
+        "valueCash": "0,26304",
+        "ratio": "1",
+        "corporateAction": "JRS CAP PROPRIO",
+        "lastDatePriorEx": "31/03/2026",
+        "dateClosingPricePriorExDate": "31/03/2026",
+        "closingPricePriorExDate": "23,28",
+        "quotedPerShares": "1",
+        "corporateActionPrice": "1,129897",
+        "lastDateTimePriorEx": "2026-03-31T00:00:00"
+      },
+      {
+        "typeStock": "ON",
+        "dateApproval": "11/12/2025",
+        "valueCash": "0,2925",
+        "ratio": "1",
+        "corporateAction": "JRS CAP PROPRIO",
+        "lastDatePriorEx": "26/12/2025",
+        "dateClosingPricePriorExDate": "26/12/2025",
+        "closingPricePriorExDate": "23,36",
+        "quotedPerShares": "1",
+        "corporateActionPrice": "1,252140",
+        "lastDateTimePriorEx": "2025-12-26T00:00:00"
+      },
+      {
+        "typeStock": "ON",
+        "dateApproval": "23/09/2025",
+        "valueCash": "0,2925",
+        "ratio": "1",
+        "corporateAction": "JRS CAP PROPRIO",
+        "lastDatePriorEx": "26/09/2025",
+        "dateClosingPricePriorExDate": "26/09/2025",
+        "closingPricePriorExDate": "23,14",
+        "quotedPerShares": "1",
+        "corporateActionPrice": "1,264045",
+        "lastDateTimePriorEx": "2025-09-26T00:00:00"
+      },
+      {
+        "typeStock": "ON",
+        "dateApproval": "17/06/2025",
+        "valueCash": "0,2925",
+        "ratio": "1",
+        "corporateAction": "JRS CAP PROPRIO",
+        "lastDatePriorEx": "26/06/2025",
+        "dateClosingPricePriorExDate": "26/06/2025",
+        "closingPricePriorExDate": "27,38",
+        "quotedPerShares": "1",
+        "corporateActionPrice": "1,068298",
+        "lastDateTimePriorEx": "2025-06-26T00:00:00"
+      },
+      {
+        "typeStock": "ON",
+        "dateApproval": "20/03/2025",
+        "valueCash": "0,2925",
+        "ratio": "1",
+        "corporateAction": "JRS CAP PROPRIO",
+        "lastDatePriorEx": "27/03/2025",
+        "dateClosingPricePriorExDate": "27/03/2025",
+        "closingPricePriorExDate": "19,73",
+        "quotedPerShares": "1",
+        "corporateActionPrice": "1,482514",
+        "lastDateTimePriorEx": "2025-03-27T00:00:00"
+      },
+      {
+        "typeStock": "ON",
+        "dateApproval": "23/12/2024",
+        "valueCash": "0,1217",
+        "ratio": "1",
+        "corporateAction": "DIVIDENDO",
+        "lastDatePriorEx": "27/12/2024",
+        "dateClosingPricePriorExDate": "27/12/2024",
+        "closingPricePriorExDate": "18,03",
+        "quotedPerShares": "1",
+        "corporateActionPrice": "0,674986",
+        "lastDateTimePriorEx": "2024-12-27T00:00:00"
+      },
+      {
+        "typeStock": "ON",
+        "dateApproval": "23/12/2024",
+        "valueCash": "0,16911",
+        "ratio": "1",
+        "corporateAction": "JRS CAP PROPRIO",
+        "lastDatePriorEx": "27/12/2024",
+        "dateClosingPricePriorExDate": "27/12/2024",
+        "closingPricePriorExDate": "18,03",
+        "quotedPerShares": "1",
+        "corporateActionPrice": "0,937937",
+        "lastDateTimePriorEx": "2024-12-27T00:00:00"
+      },
+      {
+        "typeStock": "ON",
+        "dateApproval": "18/09/2024",
+        "valueCash": "0,19534",
+        "ratio": "1",
+        "corporateAction": "JRS CAP PROPRIO",
+        "lastDatePriorEx": "23/09/2024",
+        "dateClosingPricePriorExDate": "23/09/2024",
+        "closingPricePriorExDate": "27,10",
+        "quotedPerShares": "1",
+        "corporateActionPrice": "0,720812",
+        "lastDateTimePriorEx": "2024-09-23T00:00:00"
+      },
+      {
+        "typeStock": "ON",
+        "dateApproval": "19/07/2024",
+        "valueCash": "0,09767",
+        "ratio": "1",
+        "corporateAction": "JRS CAP PROPRIO",
+        "lastDatePriorEx": "24/07/2024",
+        "dateClosingPricePriorExDate": "24/07/2024",
+        "closingPricePriorExDate": "28,00",
+        "quotedPerShares": "1",
+        "corporateActionPrice": "0,348821",
+        "lastDateTimePriorEx": "2024-07-24T00:00:00"
+      },
+      {
+        "typeStock": "ON",
+        "dateApproval": "18/06/2024",
+        "valueCash": "0,09767",
+        "ratio": "1",
+        "corporateAction": "JRS CAP PROPRIO",
+        "lastDatePriorEx": "21/06/2024",
+        "dateClosingPricePriorExDate": "21/06/2024",
+        "closingPricePriorExDate": "29,05",
+        "quotedPerShares": "1",
+        "corporateActionPrice": "0,336213",
+        "lastDateTimePriorEx": "2024-06-21T00:00:00"
+      },
+      {
+        "typeStock": "ON",
+        "dateApproval": "20/05/2024",
+        "valueCash": "0,09735",
+        "ratio": "1",
+        "corporateAction": "JRS CAP PROPRIO",
+        "lastDatePriorEx": "23/05/2024",
+        "dateClosingPricePriorExDate": "23/05/2024",
+        "closingPricePriorExDate": "30,09",
+        "quotedPerShares": "1",
+        "corporateActionPrice": "0,323529",
+        "lastDateTimePriorEx": "2024-05-23T00:00:00"
+      },
+      {
+        "typeStock": "ON",
+        "dateApproval": "18/04/2024",
+        "valueCash": "0,09724",
+        "ratio": "1",
+        "corporateAction": "JRS CAP PROPRIO",
+        "lastDatePriorEx": "23/04/2024",
+        "dateClosingPricePriorExDate": "23/04/2024",
+        "closingPricePriorExDate": "29,09",
+        "quotedPerShares": "1",
+        "corporateActionPrice": "0,334273",
+        "lastDateTimePriorEx": "2024-04-23T00:00:00"
+      },
+      {
+        "typeStock": "ON",
+        "dateApproval": "13/03/2024",
+        "valueCash": "0,09722",
+        "ratio": "1",
+        "corporateAction": "JRS CAP PROPRIO",
+        "lastDatePriorEx": "21/03/2024",
+        "dateClosingPricePriorExDate": "21/03/2024",
+        "closingPricePriorExDate": "34,80",
+        "quotedPerShares": "1",
+        "corporateActionPrice": "0,279368",
+        "lastDateTimePriorEx": "2024-03-21T00:00:00"
+      },
+      {
+        "typeStock": "ON",
+        "dateApproval": "19/02/2024",
+        "valueCash": "0,09725",
+        "ratio": "1",
+        "corporateAction": "JRS CAP PROPRIO",
+        "lastDatePriorEx": "22/02/2024",
+        "dateClosingPricePriorExDate": "22/02/2024",
+        "closingPricePriorExDate": "33,73",
+        "quotedPerShares": "1",
+        "corporateActionPrice": "0,288319",
+        "lastDateTimePriorEx": "2024-02-22T00:00:00"
+      },
+      {
+        "typeStock": "ON",
+        "dateApproval": "29/01/2024",
+        "valueCash": "0,09725",
+        "ratio": "1",
+        "corporateAction": "JRS CAP PROPRIO",
+        "lastDatePriorEx": "01/02/2024",
+        "dateClosingPricePriorExDate": "01/02/2024",
+        "closingPricePriorExDate": "31,97",
+        "quotedPerShares": "1",
+        "corporateActionPrice": "0,304191",
+        "lastDateTimePriorEx": "2024-02-01T00:00:00"
+      },
+      {
+        "typeStock": "ON",
+        "dateApproval": "29/01/2024",
+        "valueCash": "0,09725",
+        "ratio": "1",
+        "corporateAction": "JRS CAP PROPRIO",
+        "lastDatePriorEx": "01/02/2024",
+        "dateClosingPricePriorExDate": "01/02/2024",
+        "closingPricePriorExDate": "31,97",
+        "quotedPerShares": "1",
+        "corporateActionPrice": "0,304191",
+        "lastDateTimePriorEx": "2024-02-01T00:00:00"
+      },
+      {
+        "typeStock": "ON",
+        "dateApproval": "14/12/2023",
+        "valueCash": "0,30774",
+        "ratio": "1",
+        "corporateAction": "JRS CAP PROPRIO",
+        "lastDatePriorEx": "26/12/2023",
+        "dateClosingPricePriorExDate": "26/12/2023",
+        "closingPricePriorExDate": "35,97",
+        "quotedPerShares": "1",
+        "corporateActionPrice": "0,855546",
+        "lastDateTimePriorEx": "2023-12-26T00:00:00"
+      },
+      {
+        "typeStock": "ON",
+        "dateApproval": "22/09/2023",
+        "valueCash": "0,30786",
+        "ratio": "1",
+        "corporateAction": "JRS CAP PROPRIO",
+        "lastDatePriorEx": "27/09/2023",
+        "dateClosingPricePriorExDate": "27/09/2023",
+        "closingPricePriorExDate": "36,57",
+        "quotedPerShares": "1",
+        "corporateActionPrice": "0,841838",
+        "lastDateTimePriorEx": "2023-09-27T00:00:00"
+      },
+      {
+        "typeStock": "ON",
+        "dateApproval": "23/06/2023",
+        "valueCash": "0,30793",
+        "ratio": "1",
+        "corporateAction": "JRS CAP PROPRIO",
+        "lastDatePriorEx": "03/07/2023",
+        "dateClosingPricePriorExDate": "03/07/2023",
+        "closingPricePriorExDate": "46,53",
+        "quotedPerShares": "1",
+        "corporateActionPrice": "0,661788",
+        "lastDateTimePriorEx": "2023-07-03T00:00:00"
+      }
+    ]
+  },
+  "original_sha256": "583fadf1b5d5239bf5595e326d4c12e8a7151abbed65558ce53986983a8c593c",
+  "distinct_installments": [
+    {
+      "event_id": "BRIGTAACNOR5:2019-04-22:DIVIDENDO:4",
+      "ticker": "IGTA3",
+      "isin": "BRIGTAACNOR5",
+      "ex_date": "2019-04-22",
+      "action": "DIVIDENDO",
+      "payment_date": null,
+      "gross_per_share": "0.21276029",
+      "sources": [],
+      "net_per_share": null,
+      "tax_source": null,
+      "source_review": false,
+      "available_on": null,
+      "known_on": null
+    },
+    {
+      "event_id": "BRIGTAACNOR5:2019-04-22:DIVIDENDO:5",
+      "ticker": "IGTA3",
+      "isin": "BRIGTAACNOR5",
+      "ex_date": "2019-04-22",
+      "action": "DIVIDENDO",
+      "payment_date": null,
+      "gross_per_share": "0.21276029",
+      "sources": [],
+      "net_per_share": null,
+      "tax_source": null,
+      "source_review": false,
+      "available_on": null,
+      "known_on": null
+    },
+    {
+      "event_id": "BRIGTAACNOR5:2019-04-22:DIVIDENDO:6",
+      "ticker": "IGTA3",
+      "isin": "BRIGTAACNOR5",
+      "ex_date": "2019-04-22",
+      "action": "DIVIDENDO",
+      "payment_date": null,
+      "gross_per_share": "0.21276029",
+      "sources": [],
+      "net_per_share": null,
+      "tax_source": null,
+      "source_review": false,
+      "available_on": null,
+      "known_on": null
+    }
+  ]
+}

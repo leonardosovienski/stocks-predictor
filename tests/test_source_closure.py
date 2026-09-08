@@ -7,7 +7,10 @@ from pathlib import Path
 
 import pytest
 
-from stocks_predictor.cash_source_audit import expand_reviewed_installments, parse_b3_credit_pages
+from stocks_predictor.cash_source_audit import (
+    coalesce_reviewed_cash_duplicates, expand_reviewed_installments,
+    parse_b3_credit_pages, select_cvm_followup_filings,
+)
 from stocks_predictor.continuous_cash import apply_action
 from stocks_predictor.retail_cash import Holding, RetailBook
 from stocks_predictor.source_closure import DERIVED_REVIEW_SHAS, source_counts
@@ -154,3 +157,98 @@ def test_published_credit_with_missing_approval_is_preserved_outside_joinable_ro
     assert D(vivara[0]['gross_per_share']) == D('.69765914173')
     assert vivara[0]['requires_separate_issuer_identity_review']
     assert not result['complete_cash_inventory'] and not result['net_amount_inferred']
+
+
+def duplicate_fixture():
+    return json.loads((FIXTURES / 'hypera-duplicate-review.json').read_text(encoding='utf-8'))
+
+
+def coalesce(f):
+    return coalesce_reviewed_cash_duplicates(f['events'], f['reviews'],
+        lambda s: f['original_b3']['results'][s['row']], sessions())
+
+
+def test_real_hypera_repeated_raw_rows_map_to_one_payment_without_mutating_sources():
+    f = duplicate_fixture(); before = deepcopy(f)
+    result = coalesce(f)
+    assert len(result) == 1 and f == before
+    assert result[0]['event_id'] == f['events'][0]['event_id']
+    assert result[0]['duplicate_raw_event_ids'] == [f['events'][1]['event_id']]
+    assert sum(D(r['gross_per_share']) * 100 for r in result) == D('9.72500')
+    assert result[0]['payment_date'] is None  # Deduplication never invents a date/net.
+
+
+def test_identical_iguatemi_installment_records_are_not_automatically_deduplicated():
+    f = duplicate_fixture(); events = f['distinct_installments']
+    result = coalesce_reviewed_cash_duplicates(events, [], lambda _: pytest.fail('unexpected source read'), sessions())
+    assert result == events and len(result) == 3
+    assert sum(D(r['gross_per_share']) for r in result) == D('.63828087')
+
+
+@pytest.mark.parametrize('mutation', ['unreviewed', 'missing_issuer', 'two_distributions',
+    'same_raw_row', 'changed_raw_row', 'wrong_approval', 'wrong_cum', 'wrong_isin',
+    'wrong_gross', 'wrong_ex', 'overlapping', 'conflicting_payment', 'missing_raw_id',
+    'invented_duplicate', 'installment_parent', 'unbound_issuer', 'negative_raw_row'])
+def test_unproven_or_conflicting_duplicate_reviews_are_rejected(mutation):
+    f = duplicate_fixture(); r = f['reviews'][0]
+    if mutation == 'unreviewed':
+        r['source_review'] = False
+    elif mutation == 'missing_issuer':
+        r['issuer_sources'] = []
+    elif mutation == 'two_distributions':
+        r['issuer_distribution_count'] = 2
+    elif mutation == 'same_raw_row':
+        r['raw_records'][1]['source']['row'] = r['raw_records'][0]['source']['row']
+    elif mutation == 'changed_raw_row':
+        f['original_b3']['results'][16]['dateApproval'] = '19/02/2024'
+    elif mutation == 'wrong_approval':
+        r['identity']['approval_date'] = '2024-02-19'
+    elif mutation == 'wrong_cum':
+        r['identity']['last_cum'] = '2024-02-22'
+    elif mutation == 'wrong_isin':
+        r['identity']['isin'] = 'BRWRONG00000'
+    elif mutation == 'wrong_gross':
+        r['identity']['gross_per_share'] = '.19450'
+    elif mutation == 'wrong_ex':
+        r['identity']['ex_date'] = '2024-02-23'
+    elif mutation == 'overlapping':
+        f['reviews'].append(deepcopy(r))
+    elif mutation == 'conflicting_payment':
+        f['events'][1]['payment_date'] = '2025-12-18'
+    elif mutation == 'missing_raw_id':
+        r['raw_records'].pop()
+    elif mutation == 'invented_duplicate':
+        r['duplicate_event_ids'] = ['does-not-exist']
+    elif mutation == 'unbound_issuer':
+        r['issuer_sources'] = [{'note': 'trust this'}]
+    elif mutation == 'negative_raw_row':
+        r['raw_records'][0]['source']['row'] = -1
+    else:
+        f['events'][0]['parent_event_id'] = 'aggregate'
+    with pytest.raises(ValueError):
+        coalesce(f)
+
+
+def test_real_cvm_blank_subjects_initial_approval_and_all_revisions_are_kept():
+    rows = json.loads((FIXTURES / 'overlooked-cvm-index.json').read_text(encoding='utf-8'))
+    before = deepcopy(rows)
+    starts = {int(r['Codigo_CVM']): '2022-01-01' for r in rows}
+    result = select_cvm_followup_filings(rows, starts, '2026-09-08')
+    assert rows == before and len(result) == 9
+    protocols = {r['Link_Download'].split('numProtocolo=')[1].split('&')[0] for r in result}
+    assert protocols == {'1167175', '1167313', '1135094', '1135615', '1145284',
+                         '1074059', '1037840', '1456495', '1187993'}
+    initial = next(r for r in result if 'numProtocolo=1187993&' in r['Link_Download'])
+    assert initial['Data_Referencia'] == '2024-01-29'  # Approval precedes ex February2.
+    blank = next(r for r in result if 'numProtocolo=1167175&' in r['Link_Download'])
+    assert not blank['Assunto'].strip()
+    assert all('payment_date' not in r and 'source_review' not in r for r in result)
+
+
+def test_cvm_window_excludes_future_filings_but_preserves_prior_versions():
+    rows = json.loads((FIXTURES / 'overlooked-cvm-index.json').read_text(encoding='utf-8'))
+    early = select_cvm_followup_filings(rows, {21431: '2024-01-29'}, '2024-02-02')
+    assert len(early) == 1 and 'numProtocolo=1187993&' in early[0]['Link_Download']
+    assert not select_cvm_followup_filings(rows, {21431: '2024-02-02'}, '2024-02-02')
+    with pytest.raises(ValueError, match='approval window'):
+        select_cvm_followup_filings(rows, {21431: '2024-02-03'}, '2024-02-02')

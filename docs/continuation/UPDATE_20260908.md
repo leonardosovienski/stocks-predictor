@@ -1,3 +1,38 @@
+## Complemento de fontes — revisão 13 (08/09/2026 UTC)
+
+Entrada atual: work/source-closure-20260908/execution-inputs-13, manifesto
+7c24e093f7a148c3f375fff9fbd23db62f049ba8012e49e6ba7b4413e27a372b.
+12 datas preenchidas; uma duplicata Hypera conciliada com documentos da
+companhia. As 778 linhas brutas permanecem preservadas: representam 777
+direitos distintos, materializados em 800 pagamentos com 9 cronogramas.
+Datas ausentes 37→24; líquidos ausentes 66→54 linhas derivadas.
+14 datas de formulários continuam apenas como candidatas: prazo máximo ou
+cronograma agregado superado não é confirmação de recebimento.
+
+O seletor de documentos inclui Relatório Proventos e avisos sem assunto,
+começa na aprovação e limita também a data de envio: uma retificação tardia
+não existia na data original do evento. 174 candidatos mantidos, todas as
+versões preservadas. Deduplicação exige registros B3 idênticos e revisão
+explícita de uma única distribuição na companhia; parcelas Iguatemi não
+são eliminadas automaticamente. Não houve ajuste de parâmetros ou retornos.
+
+827 arquivos de entrada, 791 fontes primárias e 1 reconstrução derivada;
+365.198 cotações. Correção do relatório anterior: a cobertura de cotações
+termina em 01/04/2026, mas a lista de pregões vai até 27/08/2026.
+O PDF parcial Hapvida ITR não serve como prova; o prospecto integral contém
+a confirmação do pagamento GNDI. Alguns relatórios CVM têm preenchimento
+NUL após EOF: os bytes originais foram preservados, sem truncar ou editar.
+
+Continuam 28 entradas societárias e 1.248 intervalos sem inventário completo
+certificado. Lucro e projeção continuam null/BLOCKED_MISSING_EVIDENCE.
+Protocolo de fontes e H1–H20 preservados; 53/55; zero novos retornos.
+Nenhuma ordem, instalação, serviço pago, agente adicional ou escrita em
+banco, ledger ou quarentena. Nenhuma nova dependência de runtime.
+
+Validação 13: auditoria 12 idêntica com código novo, auditoria 13 reproduzida;
+11 adulterações rejeitadas. Suíte completa e wheel serão registradas após
+o commit de código; não confundir essa validação de fontes com lucro.
+
 ## Revisão de fontes e pendências (08/09/2026 UTC)
 
 Pedido do operador: resolver também as fontes pendentes. Protocolo 0700f82,

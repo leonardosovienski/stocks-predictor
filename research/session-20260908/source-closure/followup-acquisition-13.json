@@ -1,0 +1,58 @@
+[
+  {
+    "kind": "pdf",
+    "name": "13-iguatemi-dfp2019",
+    "file": "issuer-13-iguatemi-dfp2019.pdf",
+    "status": "DOWNLOADED",
+    "bytes": 1062152
+  },
+  {
+    "kind": "pdf",
+    "name": "13-radl-agm2021-doe",
+    "file": "issuer-13-radl-agm2021-doe.pdf",
+    "status": "DOWNLOADED",
+    "bytes": 294565
+  },
+  {
+    "kind": "pdf",
+    "name": "13-totvs-agm2020",
+    "file": "issuer-13-totvs-agm2020.pdf",
+    "status": "DOWNLOADED",
+    "bytes": 486663
+  },
+  {
+    "kind": "pdf",
+    "name": "13-hapvida-agm2022",
+    "file": "issuer-13-hapvida-agm2022.pdf",
+    "status": "DOWNLOADED",
+    "bytes": 726633
+  },
+  {
+    "kind": "pdf",
+    "name": "13-hapvida-itr1t2022",
+    "file": "issuer-13-hapvida-itr1t2022.pdf",
+    "status": "DOWNLOADED",
+    "bytes": 2097152
+  },
+  {
+    "kind": "pdf",
+    "name": "13-radl-agm2023",
+    "file": "issuer-13-radl-agm2023.pdf",
+    "status": "DOWNLOADED",
+    "bytes": 385988
+  },
+  {
+    "kind": "html",
+    "name": "13-totvs-history",
+    "file": "issuer-13-totvs-history.html",
+    "rows": 52,
+    "sha256": "8f827b930492d3fc8219242a7f7a8fce05d630dd0ae2318c9935837adb4fb4d6"
+  },
+  {
+    "kind": "html",
+    "name": "13-renner-history",
+    "file": "issuer-13-renner-history.html",
+    "rows": 115,
+    "sha256": "4d19f620daa9d7a66a9e75960bc7bfa7f4df3ca03440cbe241345310ac62e92a"
+  }
+]

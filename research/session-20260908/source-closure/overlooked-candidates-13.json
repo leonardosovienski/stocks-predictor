@@ -1,0 +1,525 @@
+[
+  {
+    "card": 68,
+    "ticker": "IGTA3",
+    "gross": "0.21276029",
+    "ex_date": "2019-04-22",
+    "matches": []
+  },
+  {
+    "card": 69,
+    "ticker": "IGTA3",
+    "gross": "0.21276029",
+    "ex_date": "2019-04-22",
+    "matches": []
+  },
+  {
+    "card": 70,
+    "ticker": "IGTA3",
+    "gross": "0.21276029",
+    "ex_date": "2019-04-22",
+    "matches": []
+  },
+  {
+    "card": 117,
+    "ticker": "TOTS3",
+    "gross": "0.13014413",
+    "ex_date": "2020-04-28",
+    "matches": []
+  },
+  {
+    "card": 121,
+    "ticker": "RADL3",
+    "gross": "0.148540028",
+    "ex_date": "2020-06-26",
+    "matches": []
+  },
+  {
+    "card": 126,
+    "ticker": "RADL3",
+    "gross": "0.030314292",
+    "ex_date": "2020-09-25",
+    "matches": []
+  },
+  {
+    "card": 131,
+    "ticker": "RADL3",
+    "gross": "0.028494338",
+    "ex_date": "2020-12-17",
+    "matches": []
+  },
+  {
+    "card": 135,
+    "ticker": "IGTA3",
+    "gross": "0.142033448",
+    "ex_date": "2021-04-23",
+    "matches": []
+  },
+  {
+    "card": 146,
+    "ticker": "HAPV3",
+    "gross": "0.01176510469",
+    "ex_date": "2021-09-28",
+    "matches": []
+  },
+  {
+    "card": 158,
+    "ticker": "GNDI3",
+    "gross": "1.613026961",
+    "ex_date": "2022-02-14",
+    "matches": []
+  },
+  {
+    "card": 171,
+    "ticker": "RADL3",
+    "gross": "0.05461993",
+    "ex_date": "2022-12-08",
+    "matches": []
+  },
+  {
+    "card": 172,
+    "ticker": "RADL3",
+    "gross": "0.0497649084",
+    "ex_date": "2022-10-06",
+    "matches": []
+  },
+  {
+    "card": 177,
+    "ticker": "LREN3",
+    "gross": "0.182327",
+    "ex_date": "2023-03-22",
+    "matches": []
+  },
+  {
+    "card": 192,
+    "ticker": "RECV3",
+    "gross": "0.4441383944",
+    "ex_date": "2023-04-27",
+    "matches": []
+  },
+  {
+    "card": 202,
+    "ticker": "RADL3",
+    "gross": "0.047923965",
+    "ex_date": "2023-04-25",
+    "matches": [
+      {
+        "file": "issuer-13-cvm-1088636.pdf",
+        "page": 1,
+        "reference": "2023-04-19",
+        "received": "2023-04-24",
+        "version": "1",
+        "text": "Provento\r\nDenominação Social Protocolo IPE\r\nRaia Drogasil S.A. 19/04/2023 005258IPE190420230104503511-73 Aviso aos \r\nAcionistas Outros avisos\r\nAto Societário Outros\r\nAGO/E\r\nData Aprovação Ultimo dia de negociação com Direitos\r\n19/04/2023 24/04/2023\r\nProtocolo Provento Versão Data Envio\r\n1087841 1 19/04/2023\r\nCódigo ISIN Valor Bruto \r\n(R$/Unidade)\r\nPeríodo \r\nBase\r\nExecício \r\nSocial\r\nHaverá \r\nAtualização\r\nForma de \r\nPagamento\r\nData \r\nPagamento\r\nBRRADLACN\r\nOR0\r\n0,0479239650\r\n0\r\nAnual 2022 Não A Vista 31/05/2023\r\nParcelamento\r\nDia de Pagamento das Parcelas Valor Bruto (R$/Unidade)"
+      }
+    ]
+  },
+  {
+    "card": 209,
+    "ticker": "YDUQ3",
+    "gross": "0.274930192",
+    "ex_date": "2023-08-21",
+    "matches": [
+      {
+        "file": "issuer-13-cvm-1167175.pdf",
+        "page": 1,
+        "reference": "2023-11-28",
+        "received": "2023-11-28",
+        "version": "1",
+        "text": "1\r\nYDUQS PARTICIPAÇÕES S.A.\r\nCompanhia Aberta\r\nCNPJ n.º 08.807.432/0001-10\r\nNIRE 33.300.282.050 – Código CVM n.º 02101-6\r\nAVISO AOS ACIONISTAS \r\nPagamento de Dividendos\r\nYDUQS PARTICIPAÇÕES S.A. (“Companhia”) comunica aos acionistas e ao mercado \r\nem geral que será realizado em 5 de dezembro de 2023 o pagamento à vista dos dividendos\r\nrelativos ao exercício social em curso, que tiveram sua distribuição antecipada aprovada na \r\nreunião do Conselho de Administração da Companhia de 9 de agosto de 2023. O montante\r\ntotal a ser pago será de R$ 80.000.000,00 (oitenta milhões de reais), equivalente a \r\naproximadamente R$ 0,274930192 por ação ordinária de emissão da Companhia.\r\nFarão jus aos dividendos os acionistas que eram titulares de ações ordinárias da Companhia \r\nna data-base de 18 de agosto de 2023, inclusive. A partir de 21 de agosto de 2023, inclusive, \r\nas ações da Companhia foram negociadas ex-dividendos.\r\nDe acordo com a legislação vigente, os proventos não requeridos no prazo de 3 (três) anos, \r\na contar da data em que tenham sido postos à disposição dos acionistas, prescreverão e serão \r\nrevertidos em favor da Companhia.\r\nPara maiores informações, os acionistas poderão se dirigir a qualquer agência do Banco Itaú \r\nou ligar para 3003-9285 (capitais e regiões metropolitanas) ou para 0800 720 9285 (demais \r\nlocalidades), das 9h às 18h, em dias úteis.\r\nRio de Janeiro, 28 de novembro 2023.\r\nRossano Marques\r\nDiretor Financeiro e de Relações com Investidores"
+      },
+      {
+        "file": "issuer-13-cvm-1167313.pdf",
+        "page": 1,
+        "reference": "2023-11-28",
+        "received": "2023-11-29",
+        "version": "4",
+        "text": "Provento\r\nDenominação Social Protocolo IPE\r\nYDUQS PARTICIPACOES S.A. 28/11/2023 021016IPE281120230104525813-06 Aviso aos \r\nAcionistas Outros avisos\r\nAto Societário Outros\r\nRCA\r\nData Aprovação Ultimo dia de negociação com Direitos\r\n09/08/2023 18/08/2023\r\nProtocolo Provento Versão Data Envio\r\n1167175 4 29/11/2023\r\nCódigo ISIN Valor Bruto \r\n(R$/Unidade)\r\nPeríodo \r\nBase\r\nExecício \r\nSocial\r\nHaverá \r\nAtualização\r\nForma de \r\nPagamento\r\nData \r\nPagamento\r\nBRYDUQAC\r\nNOR3\r\n0,2749301920\r\n0\r\nAnual 2023 Não A Vista 05/12/2023\r\nParcelamento\r\nDia de Pagamento das Parcelas Valor Bruto (R$/Unidade)"
+      }
+    ]
+  },
+  {
+    "card": 212,
+    "ticker": "RENT3",
+    "gross": "0.406579138",
+    "ex_date": "2023-09-28",
+    "matches": []
+  },
+  {
+    "card": 227,
+    "ticker": "HYPE3",
+    "gross": "0.09725",
+    "ex_date": "2024-02-02",
+    "matches": [
+      {
+        "file": "issuer-13-cvm-1456500.pdf",
+        "page": 1,
+        "reference": "2024-02-19",
+        "received": "2025-12-12",
+        "version": "2",
+        "text": "Provento\r\nDenominação Social Protocolo IPE\r\nHYPERA S.A. 19/02/2024 021431IPE190220240104534111-13 Reunião da \r\nAdministração Conselho de Administração Ata\r\nAto Societário Outros\r\nRCA\r\nData Aprovação Ultimo dia de negociação com Direitos\r\n19/02/2024 22/02/2024\r\nProtocolo Provento Versão Data Envio\r\n1196303 2 11/12/2025\r\nCódigo ISIN Valor Bruto \r\n(R$/Unidade)\r\nPeríodo \r\nBase\r\nExecício \r\nSocial\r\nHaverá \r\nAtualização\r\nForma de \r\nPagamento\r\nData \r\nPagamento\r\nBRHYPEAC\r\nNOR0\r\n0,0972500000\r\n0\r\nMensal 2024 Não A Vista 17/12/2025\r\nParcelamento\r\nDia de Pagamento das Parcelas Valor Bruto (R$/Unidade)"
+      }
+    ]
+  },
+  {
+    "card": 228,
+    "ticker": "HYPE3",
+    "gross": "0.09725",
+    "ex_date": "2024-02-02",
+    "matches": [
+      {
+        "file": "issuer-13-cvm-1456500.pdf",
+        "page": 1,
+        "reference": "2024-02-19",
+        "received": "2025-12-12",
+        "version": "2",
+        "text": "Provento\r\nDenominação Social Protocolo IPE\r\nHYPERA S.A. 19/02/2024 021431IPE190220240104534111-13 Reunião da \r\nAdministração Conselho de Administração Ata\r\nAto Societário Outros\r\nRCA\r\nData Aprovação Ultimo dia de negociação com Direitos\r\n19/02/2024 22/02/2024\r\nProtocolo Provento Versão Data Envio\r\n1196303 2 11/12/2025\r\nCódigo ISIN Valor Bruto \r\n(R$/Unidade)\r\nPeríodo \r\nBase\r\nExecício \r\nSocial\r\nHaverá \r\nAtualização\r\nForma de \r\nPagamento\r\nData \r\nPagamento\r\nBRHYPEAC\r\nNOR0\r\n0,0972500000\r\n0\r\nMensal 2024 Não A Vista 17/12/2025\r\nParcelamento\r\nDia de Pagamento das Parcelas Valor Bruto (R$/Unidade)"
+      }
+    ]
+  },
+  {
+    "card": 233,
+    "ticker": "RECV3",
+    "gross": "0.05928343241",
+    "ex_date": "2024-04-25",
+    "matches": [
+      {
+        "file": "issuer-13-cvm-1225281.pdf",
+        "page": 1,
+        "reference": "2024-04-24",
+        "received": "2024-04-24",
+        "version": "1",
+        "text": "Provento\r\nDenominação Social Protocolo IPE\r\nPETRORECÔNCAVO S.A. 24/04/2024 025780IPE240420240104540610-56 Assembleia \r\n AGO/E Ata\r\nAto Societário Outros\r\nAGO/E\r\nData Aprovação Ultimo dia de negociação com Direitos\r\n24/04/2024 24/04/2024\r\nProtocolo Provento Versão Data Envio\r\n1225271 1 24/04/2024\r\nCódigo ISIN Valor Bruto \r\n(R$/Unidade)\r\nPeríodo \r\nBase\r\nExecício \r\nSocial\r\nHaverá \r\nAtualização\r\nForma de \r\nPagamento\r\nData \r\nPagamento\r\nBRRECVAC\r\nNOR3\r\n0,0592834324\r\n1\r\nComplementa\r\nr\r\n2023 Não A Vista 15/05/2024\r\nParcelamento\r\nDia de Pagamento das Parcelas Valor Bruto (R$/Unidade)"
+      }
+    ]
+  },
+  {
+    "card": 255,
+    "ticker": "RADL3",
+    "gross": "0.049150927",
+    "ex_date": "2024-04-18",
+    "matches": [
+      {
+        "file": "issuer-13-cvm-1222941.pdf",
+        "page": 1,
+        "reference": "2024-04-17",
+        "received": "2024-04-17",
+        "version": "1",
+        "text": "Provento\r\nDenominação Social Protocolo IPE\r\nRaia Drogasil S.A. 17/04/2024 005258IPE170420240104539911-24 Aviso aos \r\nAcionistas Outros avisos\r\nAto Societário Outros\r\nAGO\r\nData Aprovação Ultimo dia de negociação com Direitos\r\n17/04/2024 17/04/2024\r\nProtocolo Provento Versão Data Envio\r\n1222926 1 17/04/2024\r\nCódigo ISIN Valor Bruto \r\n(R$/Unidade)\r\nPeríodo \r\nBase\r\nExecício \r\nSocial\r\nHaverá \r\nAtualização\r\nForma de \r\nPagamento\r\nData \r\nPagamento\r\nBRRADLACN\r\nOR0\r\n0,0491509270\r\n0\r\nAnual 2023 Não A Vista 31/05/2024\r\nParcelamento\r\nDia de Pagamento das Parcelas Valor Bruto (R$/Unidade)"
+      }
+    ]
+  },
+  {
+    "card": 262,
+    "ticker": "PSSA3",
+    "gross": "0.4098231569",
+    "ex_date": "2024-09-30",
+    "matches": []
+  },
+  {
+    "card": 279,
+    "ticker": "HYPE3",
+    "gross": "0.2925",
+    "ex_date": "2025-03-28",
+    "matches": [
+      {
+        "file": "issuer-13-cvm-1349869.pdf",
+        "page": 1,
+        "reference": "2025-03-20",
+        "received": "2025-03-21",
+        "version": "1",
+        "text": "Provento\r\nDenominação Social Protocolo IPE\r\nHYPERA S.A. 20/03/2025 021431IPE200320250104573611-55 Aviso aos \r\nAcionistas Outros avisos\r\nAto Societário Outros\r\nRCA\r\nData Aprovação Ultimo dia de negociação com Direitos\r\n20/03/2025 27/03/2025\r\nProtocolo Provento Versão Data Envio\r\n1349432 1 20/03/2025\r\nCódigo ISIN Valor Bruto \r\n(R$/Unidade)\r\nPeríodo \r\nBase\r\nExecício \r\nSocial\r\nHaverá \r\nAtualização\r\nForma de \r\nPagamento\r\nData \r\nPagamento\r\nBRHYPEAC\r\nNOR0\r\n0,2925000000\r\n0\r\n1º Trimestre 2025 Não A Vista\r\nParcelamento\r\nDia de Pagamento das Parcelas Valor Bruto (R$/Unidade)"
+      },
+      {
+        "file": "issuer-13-cvm-1391685.pdf",
+        "page": 1,
+        "reference": "2025-06-17",
+        "received": "2025-06-18",
+        "version": "1",
+        "text": "Provento\r\nDenominação Social Protocolo IPE\r\nHYPERA S.A. 17/06/2025 021431IPE170620250174382795-48 Aviso aos \r\nAcionistas Outros avisos\r\nAto Societário Outros\r\nRCA\r\nData Aprovação Ultimo dia de negociação com Direitos\r\n17/06/2025 26/06/2025\r\nProtocolo Provento Versão Data Envio\r\n1391488 1 17/06/2025\r\nCódigo ISIN Valor Bruto \r\n(R$/Unidade)\r\nPeríodo \r\nBase\r\nExecício \r\nSocial\r\nHaverá \r\nAtualização\r\nForma de \r\nPagamento\r\nData \r\nPagamento\r\nBRHYPEAC\r\nNOR0\r\n0,2925000000\r\n0\r\n2º Trimestre 2025 Não A Vista\r\nParcelamento\r\nDia de Pagamento das Parcelas Valor Bruto (R$/Unidade)"
+      },
+      {
+        "file": "issuer-13-cvm-1426205.pdf",
+        "page": 1,
+        "reference": "2025-09-23",
+        "received": "2025-09-24",
+        "version": "1",
+        "text": "Provento\r\nDenominação Social Protocolo IPE\r\nHYPERA S.A. 23/09/2025 021431IPE230920250154928682-86 Aviso aos \r\nAcionistas Outros avisos\r\nAto Societário Outros\r\nRCA\r\nData Aprovação Ultimo dia de negociação com Direitos\r\n23/09/2025 26/09/2025\r\nProtocolo Provento Versão Data Envio\r\n1426015 1 23/09/2025\r\nCódigo ISIN Valor Bruto \r\n(R$/Unidade)\r\nPeríodo \r\nBase\r\nExecício \r\nSocial\r\nHaverá \r\nAtualização\r\nForma de \r\nPagamento\r\nData \r\nPagamento\r\nBRHYPEAC\r\nNOR0\r\n0,2925000000\r\n0\r\n3º Trimestre 2025 Não A Vista\r\nParcelamento\r\nDia de Pagamento das Parcelas Valor Bruto (R$/Unidade)"
+      },
+      {
+        "file": "issuer-13-cvm-1456523.pdf",
+        "page": 1,
+        "reference": "2025-12-11",
+        "received": "2025-12-12",
+        "version": "2",
+        "text": "Provento\r\nDenominação Social Protocolo IPE\r\nHYPERA S.A. 11/12/2025 021431IPE111220250111435474-49 Aviso aos \r\nAcionistas Outros avisos\r\nAto Societário Outros\r\nRCA\r\nData Aprovação Ultimo dia de negociação com Direitos\r\n11/12/2025 26/12/2025\r\nProtocolo Provento Versão Data Envio\r\n1456254 2 12/12/2025\r\nCódigo ISIN Valor Bruto \r\n(R$/Unidade)\r\nPeríodo \r\nBase\r\nExecício \r\nSocial\r\nHaverá \r\nAtualização\r\nForma de \r\nPagamento\r\nData \r\nPagamento\r\nBRHYPEAC\r\nNOR0\r\n0,2925000000\r\n0\r\n4º Trimestre 2025 Não A Vista\r\nParcelamento\r\nDia de Pagamento das Parcelas Valor Bruto (R$/Unidade)"
+      }
+    ]
+  },
+  {
+    "card": 283,
+    "ticker": "PSSA3",
+    "gross": "0.4327368133",
+    "ex_date": "2025-03-31",
+    "matches": [
+      {
+        "file": "issuer-13-cvm-1352378.pdf",
+        "page": 1,
+        "reference": "2025-03-26",
+        "received": "2025-03-27",
+        "version": "1",
+        "text": "Provento\r\nDenominação Social Protocolo IPE\r\nPORTO SEGURO S.A. 26/03/2025 016659IPE260320250104574214-26 Aviso aos \r\nAcionistas Outros avisos\r\nAto Societário Outros\r\nRCA\r\nData Aprovação Ultimo dia de negociação com Direitos\r\n25/03/2025 28/03/2025\r\nProtocolo Provento Versão Data Envio\r\n1352298 1 26/03/2025\r\nCódigo ISIN Valor Bruto \r\n(R$/Unidade)\r\nPeríodo \r\nBase\r\nExecício \r\nSocial\r\nHaverá \r\nAtualização\r\nForma de \r\nPagamento\r\nData \r\nPagamento\r\nBRPSSAACN\r\nOR7\r\n0,4327368133\r\n0\r\n1º Trimestre 2025 Não A Vista\r\nParcelamento\r\nDia de Pagamento das Parcelas Valor Bruto (R$/Unidade)"
+      },
+      {
+        "file": "issuer-13-cvm-1502854.pdf",
+        "page": 1,
+        "reference": "2025-03-26",
+        "received": "2026-04-09",
+        "version": "3",
+        "text": "Provento\r\nDenominação Social Protocolo IPE\r\nPORTO SEGURO S.A. 26/03/2025 016659IPE260320250104574214-26 Aviso aos \r\nAcionistas Outros avisos\r\nAto Societário Outros\r\nRCA\r\nData Aprovação Ultimo dia de negociação com Direitos\r\n25/03/2025 28/03/2025\r\nProtocolo Provento Versão Data Envio\r\n1352298 3 08/04/2026\r\nCódigo ISIN Valor Bruto \r\n(R$/Unidade)\r\nPeríodo \r\nBase\r\nExecício \r\nSocial\r\nHaverá \r\nAtualização\r\nForma de \r\nPagamento\r\nData \r\nPagamento\r\nBRPSSAACN\r\nOR7\r\n0,4327368133\r\n0\r\n1º Trimestre 2025 Não A Vista 10/04/2026\r\nParcelamento\r\nDia de Pagamento das Parcelas Valor Bruto (R$/Unidade)"
+      }
+    ]
+  },
+  {
+    "card": 284,
+    "ticker": "HYPE3",
+    "gross": "0.2925",
+    "ex_date": "2025-06-27",
+    "matches": [
+      {
+        "file": "issuer-13-cvm-1349869.pdf",
+        "page": 1,
+        "reference": "2025-03-20",
+        "received": "2025-03-21",
+        "version": "1",
+        "text": "Provento\r\nDenominação Social Protocolo IPE\r\nHYPERA S.A. 20/03/2025 021431IPE200320250104573611-55 Aviso aos \r\nAcionistas Outros avisos\r\nAto Societário Outros\r\nRCA\r\nData Aprovação Ultimo dia de negociação com Direitos\r\n20/03/2025 27/03/2025\r\nProtocolo Provento Versão Data Envio\r\n1349432 1 20/03/2025\r\nCódigo ISIN Valor Bruto \r\n(R$/Unidade)\r\nPeríodo \r\nBase\r\nExecício \r\nSocial\r\nHaverá \r\nAtualização\r\nForma de \r\nPagamento\r\nData \r\nPagamento\r\nBRHYPEAC\r\nNOR0\r\n0,2925000000\r\n0\r\n1º Trimestre 2025 Não A Vista\r\nParcelamento\r\nDia de Pagamento das Parcelas Valor Bruto (R$/Unidade)"
+      },
+      {
+        "file": "issuer-13-cvm-1391685.pdf",
+        "page": 1,
+        "reference": "2025-06-17",
+        "received": "2025-06-18",
+        "version": "1",
+        "text": "Provento\r\nDenominação Social Protocolo IPE\r\nHYPERA S.A. 17/06/2025 021431IPE170620250174382795-48 Aviso aos \r\nAcionistas Outros avisos\r\nAto Societário Outros\r\nRCA\r\nData Aprovação Ultimo dia de negociação com Direitos\r\n17/06/2025 26/06/2025\r\nProtocolo Provento Versão Data Envio\r\n1391488 1 17/06/2025\r\nCódigo ISIN Valor Bruto \r\n(R$/Unidade)\r\nPeríodo \r\nBase\r\nExecício \r\nSocial\r\nHaverá \r\nAtualização\r\nForma de \r\nPagamento\r\nData \r\nPagamento\r\nBRHYPEAC\r\nNOR0\r\n0,2925000000\r\n0\r\n2º Trimestre 2025 Não A Vista\r\nParcelamento\r\nDia de Pagamento das Parcelas Valor Bruto (R$/Unidade)"
+      },
+      {
+        "file": "issuer-13-cvm-1426205.pdf",
+        "page": 1,
+        "reference": "2025-09-23",
+        "received": "2025-09-24",
+        "version": "1",
+        "text": "Provento\r\nDenominação Social Protocolo IPE\r\nHYPERA S.A. 23/09/2025 021431IPE230920250154928682-86 Aviso aos \r\nAcionistas Outros avisos\r\nAto Societário Outros\r\nRCA\r\nData Aprovação Ultimo dia de negociação com Direitos\r\n23/09/2025 26/09/2025\r\nProtocolo Provento Versão Data Envio\r\n1426015 1 23/09/2025\r\nCódigo ISIN Valor Bruto \r\n(R$/Unidade)\r\nPeríodo \r\nBase\r\nExecício \r\nSocial\r\nHaverá \r\nAtualização\r\nForma de \r\nPagamento\r\nData \r\nPagamento\r\nBRHYPEAC\r\nNOR0\r\n0,2925000000\r\n0\r\n3º Trimestre 2025 Não A Vista\r\nParcelamento\r\nDia de Pagamento das Parcelas Valor Bruto (R$/Unidade)"
+      },
+      {
+        "file": "issuer-13-cvm-1456523.pdf",
+        "page": 1,
+        "reference": "2025-12-11",
+        "received": "2025-12-12",
+        "version": "2",
+        "text": "Provento\r\nDenominação Social Protocolo IPE\r\nHYPERA S.A. 11/12/2025 021431IPE111220250111435474-49 Aviso aos \r\nAcionistas Outros avisos\r\nAto Societário Outros\r\nRCA\r\nData Aprovação Ultimo dia de negociação com Direitos\r\n11/12/2025 26/12/2025\r\nProtocolo Provento Versão Data Envio\r\n1456254 2 12/12/2025\r\nCódigo ISIN Valor Bruto \r\n(R$/Unidade)\r\nPeríodo \r\nBase\r\nExecício \r\nSocial\r\nHaverá \r\nAtualização\r\nForma de \r\nPagamento\r\nData \r\nPagamento\r\nBRHYPEAC\r\nNOR0\r\n0,2925000000\r\n0\r\n4º Trimestre 2025 Não A Vista\r\nParcelamento\r\nDia de Pagamento das Parcelas Valor Bruto (R$/Unidade)"
+      }
+    ]
+  },
+  {
+    "card": 295,
+    "ticker": "HYPE3",
+    "gross": "0.2925",
+    "ex_date": "2025-09-29",
+    "matches": [
+      {
+        "file": "issuer-13-cvm-1349869.pdf",
+        "page": 1,
+        "reference": "2025-03-20",
+        "received": "2025-03-21",
+        "version": "1",
+        "text": "Provento\r\nDenominação Social Protocolo IPE\r\nHYPERA S.A. 20/03/2025 021431IPE200320250104573611-55 Aviso aos \r\nAcionistas Outros avisos\r\nAto Societário Outros\r\nRCA\r\nData Aprovação Ultimo dia de negociação com Direitos\r\n20/03/2025 27/03/2025\r\nProtocolo Provento Versão Data Envio\r\n1349432 1 20/03/2025\r\nCódigo ISIN Valor Bruto \r\n(R$/Unidade)\r\nPeríodo \r\nBase\r\nExecício \r\nSocial\r\nHaverá \r\nAtualização\r\nForma de \r\nPagamento\r\nData \r\nPagamento\r\nBRHYPEAC\r\nNOR0\r\n0,2925000000\r\n0\r\n1º Trimestre 2025 Não A Vista\r\nParcelamento\r\nDia de Pagamento das Parcelas Valor Bruto (R$/Unidade)"
+      },
+      {
+        "file": "issuer-13-cvm-1391685.pdf",
+        "page": 1,
+        "reference": "2025-06-17",
+        "received": "2025-06-18",
+        "version": "1",
+        "text": "Provento\r\nDenominação Social Protocolo IPE\r\nHYPERA S.A. 17/06/2025 021431IPE170620250174382795-48 Aviso aos \r\nAcionistas Outros avisos\r\nAto Societário Outros\r\nRCA\r\nData Aprovação Ultimo dia de negociação com Direitos\r\n17/06/2025 26/06/2025\r\nProtocolo Provento Versão Data Envio\r\n1391488 1 17/06/2025\r\nCódigo ISIN Valor Bruto \r\n(R$/Unidade)\r\nPeríodo \r\nBase\r\nExecício \r\nSocial\r\nHaverá \r\nAtualização\r\nForma de \r\nPagamento\r\nData \r\nPagamento\r\nBRHYPEAC\r\nNOR0\r\n0,2925000000\r\n0\r\n2º Trimestre 2025 Não A Vista\r\nParcelamento\r\nDia de Pagamento das Parcelas Valor Bruto (R$/Unidade)"
+      },
+      {
+        "file": "issuer-13-cvm-1426205.pdf",
+        "page": 1,
+        "reference": "2025-09-23",
+        "received": "2025-09-24",
+        "version": "1",
+        "text": "Provento\r\nDenominação Social Protocolo IPE\r\nHYPERA S.A. 23/09/2025 021431IPE230920250154928682-86 Aviso aos \r\nAcionistas Outros avisos\r\nAto Societário Outros\r\nRCA\r\nData Aprovação Ultimo dia de negociação com Direitos\r\n23/09/2025 26/09/2025\r\nProtocolo Provento Versão Data Envio\r\n1426015 1 23/09/2025\r\nCódigo ISIN Valor Bruto \r\n(R$/Unidade)\r\nPeríodo \r\nBase\r\nExecício \r\nSocial\r\nHaverá \r\nAtualização\r\nForma de \r\nPagamento\r\nData \r\nPagamento\r\nBRHYPEAC\r\nNOR0\r\n0,2925000000\r\n0\r\n3º Trimestre 2025 Não A Vista\r\nParcelamento\r\nDia de Pagamento das Parcelas Valor Bruto (R$/Unidade)"
+      },
+      {
+        "file": "issuer-13-cvm-1456523.pdf",
+        "page": 1,
+        "reference": "2025-12-11",
+        "received": "2025-12-12",
+        "version": "2",
+        "text": "Provento\r\nDenominação Social Protocolo IPE\r\nHYPERA S.A. 11/12/2025 021431IPE111220250111435474-49 Aviso aos \r\nAcionistas Outros avisos\r\nAto Societário Outros\r\nRCA\r\nData Aprovação Ultimo dia de negociação com Direitos\r\n11/12/2025 26/12/2025\r\nProtocolo Provento Versão Data Envio\r\n1456254 2 12/12/2025\r\nCódigo ISIN Valor Bruto \r\n(R$/Unidade)\r\nPeríodo \r\nBase\r\nExecício \r\nSocial\r\nHaverá \r\nAtualização\r\nForma de \r\nPagamento\r\nData \r\nPagamento\r\nBRHYPEAC\r\nNOR0\r\n0,2925000000\r\n0\r\n4º Trimestre 2025 Não A Vista\r\nParcelamento\r\nDia de Pagamento das Parcelas Valor Bruto (R$/Unidade)"
+      }
+    ]
+  },
+  {
+    "card": 300,
+    "ticker": "MULT3",
+    "gross": "0.24559842645",
+    "ex_date": "2025-09-29",
+    "matches": []
+  },
+  {
+    "card": 307,
+    "ticker": "HYPE3",
+    "gross": "0.2925",
+    "ex_date": "2025-12-29",
+    "matches": [
+      {
+        "file": "issuer-13-cvm-1349869.pdf",
+        "page": 1,
+        "reference": "2025-03-20",
+        "received": "2025-03-21",
+        "version": "1",
+        "text": "Provento\r\nDenominação Social Protocolo IPE\r\nHYPERA S.A. 20/03/2025 021431IPE200320250104573611-55 Aviso aos \r\nAcionistas Outros avisos\r\nAto Societário Outros\r\nRCA\r\nData Aprovação Ultimo dia de negociação com Direitos\r\n20/03/2025 27/03/2025\r\nProtocolo Provento Versão Data Envio\r\n1349432 1 20/03/2025\r\nCódigo ISIN Valor Bruto \r\n(R$/Unidade)\r\nPeríodo \r\nBase\r\nExecício \r\nSocial\r\nHaverá \r\nAtualização\r\nForma de \r\nPagamento\r\nData \r\nPagamento\r\nBRHYPEAC\r\nNOR0\r\n0,2925000000\r\n0\r\n1º Trimestre 2025 Não A Vista\r\nParcelamento\r\nDia de Pagamento das Parcelas Valor Bruto (R$/Unidade)"
+      },
+      {
+        "file": "issuer-13-cvm-1391685.pdf",
+        "page": 1,
+        "reference": "2025-06-17",
+        "received": "2025-06-18",
+        "version": "1",
+        "text": "Provento\r\nDenominação Social Protocolo IPE\r\nHYPERA S.A. 17/06/2025 021431IPE170620250174382795-48 Aviso aos \r\nAcionistas Outros avisos\r\nAto Societário Outros\r\nRCA\r\nData Aprovação Ultimo dia de negociação com Direitos\r\n17/06/2025 26/06/2025\r\nProtocolo Provento Versão Data Envio\r\n1391488 1 17/06/2025\r\nCódigo ISIN Valor Bruto \r\n(R$/Unidade)\r\nPeríodo \r\nBase\r\nExecício \r\nSocial\r\nHaverá \r\nAtualização\r\nForma de \r\nPagamento\r\nData \r\nPagamento\r\nBRHYPEAC\r\nNOR0\r\n0,2925000000\r\n0\r\n2º Trimestre 2025 Não A Vista\r\nParcelamento\r\nDia de Pagamento das Parcelas Valor Bruto (R$/Unidade)"
+      },
+      {
+        "file": "issuer-13-cvm-1426205.pdf",
+        "page": 1,
+        "reference": "2025-09-23",
+        "received": "2025-09-24",
+        "version": "1",
+        "text": "Provento\r\nDenominação Social Protocolo IPE\r\nHYPERA S.A. 23/09/2025 021431IPE230920250154928682-86 Aviso aos \r\nAcionistas Outros avisos\r\nAto Societário Outros\r\nRCA\r\nData Aprovação Ultimo dia de negociação com Direitos\r\n23/09/2025 26/09/2025\r\nProtocolo Provento Versão Data Envio\r\n1426015 1 23/09/2025\r\nCódigo ISIN Valor Bruto \r\n(R$/Unidade)\r\nPeríodo \r\nBase\r\nExecício \r\nSocial\r\nHaverá \r\nAtualização\r\nForma de \r\nPagamento\r\nData \r\nPagamento\r\nBRHYPEAC\r\nNOR0\r\n0,2925000000\r\n0\r\n3º Trimestre 2025 Não A Vista\r\nParcelamento\r\nDia de Pagamento das Parcelas Valor Bruto (R$/Unidade)"
+      },
+      {
+        "file": "issuer-13-cvm-1456523.pdf",
+        "page": 1,
+        "reference": "2025-12-11",
+        "received": "2025-12-12",
+        "version": "2",
+        "text": "Provento\r\nDenominação Social Protocolo IPE\r\nHYPERA S.A. 11/12/2025 021431IPE111220250111435474-49 Aviso aos \r\nAcionistas Outros avisos\r\nAto Societário Outros\r\nRCA\r\nData Aprovação Ultimo dia de negociação com Direitos\r\n11/12/2025 26/12/2025\r\nProtocolo Provento Versão Data Envio\r\n1456254 2 12/12/2025\r\nCódigo ISIN Valor Bruto \r\n(R$/Unidade)\r\nPeríodo \r\nBase\r\nExecício \r\nSocial\r\nHaverá \r\nAtualização\r\nForma de \r\nPagamento\r\nData \r\nPagamento\r\nBRHYPEAC\r\nNOR0\r\n0,2925000000\r\n0\r\n4º Trimestre 2025 Não A Vista\r\nParcelamento\r\nDia de Pagamento das Parcelas Valor Bruto (R$/Unidade)"
+      }
+    ]
+  },
+  {
+    "card": 320,
+    "ticker": "MULT3",
+    "gross": "0.30654243276",
+    "ex_date": "2025-12-30",
+    "matches": [
+      {
+        "file": "issuer-13-cvm-1461005.pdf",
+        "page": 1,
+        "reference": "2025-12-22",
+        "received": "2025-12-23",
+        "version": "1",
+        "text": "Provento\r\nDenominação Social Protocolo IPE\r\nMULTIPLAN - EMPREEND \r\nIMOBILIARIOS S.A.\r\n22/12/2025 020982IPE221220250155224160-86 Reunião da \r\nAdministração Conselho de Administração Ata\r\nAto Societário Outros\r\nRCA\r\nData Aprovação Ultimo dia de negociação com Direitos\r\n22/12/2025 29/12/2025\r\nProtocolo Provento Versão Data Envio\r\n1460441 1 22/12/2025\r\nCódigo ISIN Valor Bruto \r\n(R$/Unidade)\r\nPeríodo \r\nBase\r\nExecício \r\nSocial\r\nHaverá \r\nAtualização\r\nForma de \r\nPagamento\r\nData \r\nPagamento\r\nBRMULTACN\r\nOR5\r\n0,3065424327\r\n6\r\n4º Trimestre 2025 Não A Vista 30/12/2026\r\nParcelamento\r\nDia de Pagamento das Parcelas Valor Bruto (R$/Unidade)"
+      }
+    ]
+  },
+  {
+    "card": 326,
+    "ticker": "RDOR3",
+    "gross": "0.95171731666",
+    "ex_date": "2025-12-19",
+    "matches": []
+  },
+  {
+    "card": 339,
+    "ticker": "HYPE3",
+    "gross": "0.26304",
+    "ex_date": "2026-04-01",
+    "matches": [
+      {
+        "file": "issuer-13-cvm-1498839.pdf",
+        "page": 1,
+        "reference": "2026-03-26",
+        "received": "2026-03-31",
+        "version": "1",
+        "text": "Provento\r\nDenominação Social Protocolo IPE\r\nHYPERA S.A. 26/03/2026 021431IPE260320260183788872-98 Reunião da \r\nAdministração Conselho de Administração Ata\r\nAto Societário Outros\r\nRCA\r\nData Aprovação Ultimo dia de negociação com Direitos\r\n26/03/2026 31/03/2026\r\nProtocolo Provento Versão Data Envio\r\n1495820 1 26/03/2026\r\nCódigo ISIN Valor Bruto \r\n(R$/Unidade)\r\nPeríodo \r\nBase\r\nExecício \r\nSocial\r\nHaverá \r\nAtualização\r\nForma de \r\nPagamento\r\nData \r\nPagamento\r\nBRHYPEAC\r\nNOR0\r\n0,2630400000\r\n0\r\n1º Trimestre 2026 Não A Vista 31/12/2027\r\nParcelamento\r\nDia de Pagamento das Parcelas Valor Bruto (R$/Unidade)"
+      },
+      {
+        "file": "issuer-13-cvm-1538299.pdf",
+        "page": 1,
+        "reference": "2026-06-23",
+        "received": "2026-06-25",
+        "version": "2",
+        "text": "Provento\r\nDenominação Social Protocolo IPE\r\nHYPERA S.A. 23/06/2026 021431IPE230620260172570150-21 Reunião da \r\nAdministração Conselho de Administração Sumário das \r\nDecisões\r\nAto Societário Outros\r\nRCA\r\nData Aprovação Ultimo dia de negociação com Direitos\r\n23/06/2026 26/06/2026\r\nProtocolo Provento Versão Data Envio\r\n1537632 2 25/06/2026\r\nCódigo ISIN Valor Bruto \r\n(R$/Unidade)\r\nPeríodo \r\nBase\r\nExecício \r\nSocial\r\nHaverá \r\nAtualização\r\nForma de \r\nPagamento\r\nData \r\nPagamento\r\nBRHYPEAC\r\nNOR0\r\n0,2630400000\r\n0\r\n2º Trimestre 2026 Não A Vista 31/12/2027\r\nParcelamento\r\nDia de Pagamento das Parcelas Valor Bruto (R$/Unidade)"
+      }
+    ]
+  },
+  {
+    "card": 342,
+    "ticker": "VIVT3",
+    "gross": "0.06258593142",
+    "ex_date": "2026-03-26",
+    "matches": [
+      {
+        "file": "issuer-13-cvm-1490656.pdf",
+        "page": 1,
+        "reference": "2026-03-13",
+        "received": "2026-03-16",
+        "version": "1",
+        "text": "Provento\r\nDenominação Social Protocolo IPE\r\nTELEFÔNICA BRASIL S.A 13/03/2026 017671IPE130320260166511088-02 Reunião da \r\nAdministração Conselho de Administração Ata\r\nAto Societário Outros\r\nRCA\r\nData Aprovação Ultimo dia de negociação com Direitos\r\n13/03/2026 25/03/2026\r\nProtocolo Provento Versão Data Envio\r\n1490332 1 13/03/2026\r\nCódigo ISIN Valor Bruto \r\n(R$/Unidade)\r\nPeríodo \r\nBase\r\nExecício \r\nSocial\r\nHaverá \r\nAtualização\r\nForma de \r\nPagamento\r\nData \r\nPagamento\r\nBRVIVTACN\r\nOR0\r\n0,0625859314\r\n2\r\n1º Trimestre 2026 Não A Vista 30/04/2027\r\nParcelamento\r\nDia de Pagamento das Parcelas Valor Bruto (R$/Unidade)"
+      }
+    ]
+  },
+  {
+    "card": 343,
+    "ticker": "VIVT3",
+    "gross": "0.10170213856",
+    "ex_date": "2026-02-24",
+    "matches": []
+  },
+  {
+    "card": 344,
+    "ticker": "PSSA3",
+    "gross": "0.88610135766",
+    "ex_date": "2026-04-01",
+    "matches": []
+  },
+  {
+    "card": 345,
+    "ticker": "PSSA3",
+    "gross": "0.54231784082",
+    "ex_date": "2026-03-31",
+    "matches": [
+      {
+        "file": "issuer-13-cvm-1497966.pdf",
+        "page": 1,
+        "reference": "2026-03-30",
+        "received": "2026-03-30",
+        "version": "3",
+        "text": "Provento\r\nDenominação Social Protocolo IPE\r\nPORTO SEGURO S.A. 30/03/2026 016659IPE300320260111095494-40 Aviso aos \r\nAcionistas Outros avisos\r\nAto Societário Outros\r\nRCA\r\nData Aprovação Ultimo dia de negociação com Direitos\r\n25/03/2026 30/03/2026\r\nProtocolo Provento Versão Data Envio\r\n1497952 3 30/03/2026\r\nCódigo ISIN Valor Bruto \r\n(R$/Unidade)\r\nPeríodo \r\nBase\r\nExecício \r\nSocial\r\nHaverá \r\nAtualização\r\nForma de \r\nPagamento\r\nData \r\nPagamento\r\nBRPSSAACN\r\nOR7\r\n0,5423178408\r\n2\r\n1º Trimestre 2026 Não A Vista 31/12/2027\r\nParcelamento\r\nDia de Pagamento das Parcelas Valor Bruto (R$/Unidade)"
+      }
+    ]
+  },
+  {
+    "card": 346,
+    "ticker": "MULT3",
+    "gross": "0.28547668289",
+    "ex_date": "2026-03-31",
+    "matches": [
+      {
+        "file": "issuer-13-cvm-1496627.pdf",
+        "page": 1,
+        "reference": "2026-03-25",
+        "received": "2026-03-27",
+        "version": "1",
+        "text": "Provento\r\nDenominação Social Protocolo IPE\r\nMULTIPLAN - EMPREEND \r\nIMOBILIARIOS S.A.\r\n25/03/2026 020982IPE250320260101541323-67 Reunião da \r\nAdministração Conselho de Administração Ata\r\nAto Societário Outros\r\nRCA\r\nData Aprovação Ultimo dia de negociação com Direitos\r\n25/03/2026 30/03/2026\r\nProtocolo Provento Versão Data Envio\r\n1495193 1 25/03/2026\r\nCódigo ISIN Valor Bruto \r\n(R$/Unidade)\r\nPeríodo \r\nBase\r\nExecício \r\nSocial\r\nHaverá \r\nAtualização\r\nForma de \r\nPagamento\r\nData \r\nPagamento\r\nBRMULTACN\r\nOR5\r\n0,2854766828\r\n9\r\n1º Trimestre 2026 Não A Vista 31/03/2027\r\nParcelamento\r\nDia de Pagamento das Parcelas Valor Bruto (R$/Unidade)"
+      }
+    ]
+  },
+  {
+    "card": 353,
+    "ticker": "CURY3",
+    "gross": "0.4544752263",
+    "ex_date": "2026-02-05",
+    "matches": []
+  }
+]

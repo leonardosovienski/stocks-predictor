@@ -10,6 +10,7 @@ import hashlib
 import json
 from pathlib import Path
 
+from stocks_predictor.cash_source_audit import coalesce_reviewed_cash_duplicates
 from stocks_predictor.continuous_research import inspect_inputs, load_quotes, read, verify_manifest
 from stocks_predictor.h20_continuous import SIGNALS_SHA, make_plans
 from stocks_predictor.h20_checked import MANIFEST_SHA
@@ -88,6 +89,19 @@ def audit(base, revised, signals_path, protocol_path):
     _, index, cash, actions, tax, gate, files = inspect_inputs(revised)
     check_sources([cash, actions, tax, read(revised / 'source-lineage.json')])
     raw = {r['event_id']: r for r in read(base / 'cash-events.json')}
+    duplicate_reviews = read(revised / 'duplicate-lineage.json') if 'duplicate-lineage.json' in after else []
+    check_sources(duplicate_reviews)
+
+    def read_raw_row(ref):
+        key = ref['verified_primary_file']
+        if catalog[key]['source_kind'] != 'PRIMARY_SOURCE_RECORD' or type(ref['row']) is not int or ref['row'] < 0:
+            raise ValueError('duplicate lineage needs original primary rows')
+        return read(revised / key)['results'][ref['row']]
+
+    unique_raw = coalesce_reviewed_cash_duplicates(list(raw.values()), duplicate_reviews, read_raw_row,
+                                                   index['sessions'])
+    coalesced = {r['event_id']: r for r in unique_raw}
+    duplicate_ids = set(raw) - set(coalesced)
     lines = read(revised / 'source-lineage.json')
     parents = {r['parent_event_id']: r for r in lines}
     if len(parents) != len(lines):
@@ -95,8 +109,9 @@ def audit(base, revised, signals_path, protocol_path):
     child_ids = [eid for line in lines for eid in line['child_event_ids']]
     actual = {r['event_id']: r for r in cash}
     if (len(actual) != len(cash) or len(child_ids) != len(set(child_ids))
-            or not set(parents) <= set(raw) or set(raw) & set(child_ids)
-            or set(actual) != (set(raw) - set(parents)) | set(child_ids)):
+            or not set(parents) <= set(coalesced) or set(raw) & set(child_ids)
+            or any(r['canonical_event_id'] in parents for r in duplicate_reviews)
+            or set(actual) != (set(coalesced) - set(parents)) | set(child_ids)):
         raise ValueError('source revision lost or duplicated an entitlement')
     for event_id, row in actual.items():
         original = raw[row['parent_event_id']] if event_id in child_ids else raw[event_id]
@@ -105,6 +120,8 @@ def audit(base, revised, signals_path, protocol_path):
             raise ValueError('revised cash identity changed')
         if event_id not in child_ids and Decimal(row['gross_per_share']) != Decimal(original['gross_per_share']):
             raise ValueError('single-payment nominal amount changed')
+        if row.get('duplicate_raw_event_ids') != coalesced.get(event_id, {}).get('duplicate_raw_event_ids'):
+            raise ValueError('execution duplicate aliases differ from reviewed lineage')
     for parent_id, line in parents.items():
         parts = [actual[eid] for eid in line['child_event_ids']]
         total = sum(Decimal(r['gross_per_share']) for r in parts)
@@ -131,11 +148,15 @@ def audit(base, revised, signals_path, protocol_path):
     verify_manifest(revised)
     if digest(revised / 'SHA256.json') != source_manifest:
         raise ValueError('source revision changed during audit')
+    duplicate_counts = ({'reviewed_duplicate_groups': len(duplicate_reviews),
+        'raw_records_coalesced': len(duplicate_ids), 'unique_declared_entitlements': len(coalesced)}
+        if duplicate_reviews else {})
     return {'status': 'BLOCKED_MISSING_EVIDENCE', 'profit': None, 'future_profit_projection': None,
         'new_historical_return_evaluations': 0, 'administrative_counts': [53, 55],
         'source_manifest_sha256': source_manifest, 'verified_input_files': files,
         **source_inventory, 'validated_quote_records': quote_count,
         'raw_entitlements_preserved': len(raw), 'execution_payment_rows': len(cash),
+        **duplicate_counts,
         'complete_installment_schedules': len(lines), 'corporate_actions_integrated': len(actions),
         'missing_payment_dates': sum(not r['payment_date'] for r in cash),
         'missing_net_values': sum(r.get('net_per_share') is None for r in cash),

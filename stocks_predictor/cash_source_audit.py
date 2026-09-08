@@ -12,6 +12,107 @@ import re
 import unicodedata
 
 
+def select_cvm_followup_filings(rows, issuers, as_of):
+    """Keep overlooked categories from approval onwards, including revisions.
+
+    ``issuers`` maps CVM codes to the earliest unresolved approval date.
+    Selection is a candidate queue; it establishes neither payment nor net.
+    """
+    if date.fromisoformat(as_of).isoformat() != as_of:
+        raise ValueError('invalid CVM as-of date')
+    for start in issuers.values():
+        if date.fromisoformat(start).isoformat() != start or start > as_of:
+            raise ValueError('invalid issuer approval window')
+    result = []
+    for row in rows:
+        code = int(row['Codigo_CVM'])
+        if code not in issuers:
+            continue
+        reference = row['Data_Referencia']
+        delivered = row['Data_Entrega']
+        if date.fromisoformat(reference).isoformat() != reference:
+            raise ValueError('invalid CVM reference date')
+        if date.fromisoformat(delivered).isoformat() != delivered:
+            raise ValueError('invalid CVM delivery date')
+        category = ' '.join(unicodedata.normalize('NFKD', row['Categoria'])
+                            .encode('ascii', 'ignore').decode().lower().split())
+        if (issuers[code] <= reference <= as_of and delivered <= as_of
+                and (category == 'relatorio proventos'
+                     or (category == 'aviso aos acionistas' and not row['Assunto'].strip()))):
+            result.append(deepcopy(row))
+    return result
+
+
+def coalesce_reviewed_cash_duplicates(events, reviews, read_raw_row, sessions):
+    """Map reviewed duplicate raw records to one declared right, without deletion.
+
+    Identical amounts alone are insufficient: real installment records can be
+    identical too. Require an explicit issuer review of ONE distribution and
+    byte-bound original B3 rows. The source audit supplies the verified reader.
+    """
+    original = {r['event_id']: r for r in events}
+    if len(original) != len(events):
+        raise ValueError('duplicate cash event identifier')
+    consumed, removed, aliases = set(), set(), {}
+    for review in reviews:
+        canonical = review['canonical_event_id']
+        duplicates = review['duplicate_event_ids']
+        ids = [canonical, *duplicates]
+        if (not duplicates or len(set(ids)) != len(ids) or consumed.intersection(ids)
+                or not set(ids) <= set(original)):
+            raise ValueError('invalid or overlapping duplicate lineage')
+        if (review.get('source_review') is not True
+                or type(review.get('issuer_distribution_count')) is not int
+                or review['issuer_distribution_count'] != 1
+                or not review.get('issuer_sources') or not review.get('reason')):
+            raise ValueError('explicit single-distribution issuer review required')
+        if any(not s.get('file') or not re.fullmatch(r'[0-9a-f]{64}', s.get('sha256', ''))
+               or not s.get('url') for s in review['issuer_sources']):
+            raise ValueError('bound issuer documents required for duplicate review')
+        references = review['raw_records']
+        if any(type(r['source'].get('row')) is not int or r['source']['row'] < 0
+               or not r['source'].get('file')
+               or not re.fullmatch(r'[0-9a-f]{64}', r['source'].get('sha256', '')) for r in references):
+            raise ValueError('bound original row references required')
+        if (len(references) != len(ids)
+                or {r['event_id'] for r in references} != set(ids)
+                or len({(r['source']['sha256'], r['source']['row']) for r in references}) != len(ids)):
+            raise ValueError('distinct original raw rows required')
+        rows = [read_raw_row(r['source']) for r in references]
+        if any(row != rows[0] for row in rows[1:]):
+            raise ValueError('raw B3 rows are not identical')
+        normalized = normalize_b3_history(rows[0], sessions)
+        identity = review['identity']
+        for key in ('approval_date', 'last_cum', 'ex_date', 'action'):
+            if identity[key] != normalized[key]:
+                raise ValueError('issuer and B3 duplicate identities differ')
+        if (normalized['security_class'] != 'ON'
+                or Decimal(identity['gross_per_share']) != Decimal(normalized['value_per_share'])):
+            raise ValueError('duplicate nominal or security class differs')
+        for event_id in ids:
+            row = original[event_id]
+            if (row.get('parent_event_id') or row.get('duplicate_raw_event_ids')
+                    or any(row[k] != identity[k] for k in ('ticker', 'isin', 'ex_date', 'action'))
+                    or Decimal(row['gross_per_share']) != Decimal(identity['gross_per_share'])):
+                raise ValueError('duplicate review belongs to another entitlement')
+            # Never discard a conflicting already-resolved payment or tax flow.
+            if any(row.get(k) != original[canonical].get(k) for k in
+                   ('payment_date', 'net_per_share', 'known_on', 'available_on', 'source_review', 'tax_source')):
+                raise ValueError('conflicting resolved duplicate records require supersession review')
+        consumed.update(ids)
+        removed.update(duplicates)
+        aliases[canonical] = list(duplicates)
+    result = []
+    for row in events:
+        if row['event_id'] in removed:
+            continue
+        item = deepcopy(row)
+        if row['event_id'] in aliases:
+            item['duplicate_raw_event_ids'] = aliases[row['event_id']]
+        result.append(item)
+    return result
+
+
 def parse_b3_credit_pages(pages, bulletin_date):
     """Extract supported B3 credit rows, never infer an empty income inventory.
 

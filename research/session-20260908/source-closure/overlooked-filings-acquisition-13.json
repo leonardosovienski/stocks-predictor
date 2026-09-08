@@ -1,0 +1,1415 @@
+[
+  {
+    "file": "issuer-13-cvm-902612.html",
+    "ticker": "TOTS3",
+    "reference": "2021-09-21",
+    "category": "Aviso aos Acionistas",
+    "bytes": 4259,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": null
+  },
+  {
+    "file": "issuer-13-cvm-922736.pdf",
+    "ticker": "RADL3",
+    "reference": "2021-12-03",
+    "category": "Aviso aos Acionistas",
+    "bytes": 135616,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": true
+  },
+  {
+    "file": "issuer-13-cvm-925998.pdf",
+    "ticker": "RADL3",
+    "reference": "2021-12-03",
+    "category": "Aviso aos Acionistas",
+    "bytes": 135465,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": true
+  },
+  {
+    "file": "issuer-13-cvm-1044727.pdf",
+    "ticker": "TOTS3",
+    "reference": "2022-12-26",
+    "category": "Relatório Proventos",
+    "bytes": 2048,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": true
+  },
+  {
+    "file": "issuer-13-cvm-963607.pdf",
+    "ticker": "RADL3",
+    "reference": "2022-03-30",
+    "category": "Aviso aos Acionistas",
+    "bytes": 167734,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": true
+  },
+  {
+    "file": "issuer-13-cvm-1037840.pdf",
+    "ticker": "RADL3",
+    "reference": "2022-12-02",
+    "category": "Relatório Proventos",
+    "bytes": 139482,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1109892.pdf",
+    "ticker": "RECV3",
+    "reference": "2023-05-25",
+    "category": "Aviso aos Acionistas",
+    "bytes": 228700,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": true
+  },
+  {
+    "file": "issuer-13-cvm-1133718.pdf",
+    "ticker": "RECV3",
+    "reference": "2023-08-04",
+    "category": "Aviso aos Acionistas",
+    "bytes": 203444,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": true
+  },
+  {
+    "file": "issuer-13-cvm-1148981.pdf",
+    "ticker": "RECV3",
+    "reference": "2023-09-28",
+    "category": "Aviso aos Acionistas",
+    "bytes": 230701,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": true
+  },
+  {
+    "file": "issuer-13-cvm-1178859.html",
+    "ticker": "RECV3",
+    "reference": "2023-12-21",
+    "category": "Aviso aos Acionistas",
+    "bytes": 4260,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": null
+  },
+  {
+    "file": "issuer-13-cvm-1168945.pdf",
+    "ticker": "RECV3",
+    "reference": "2023-11-30",
+    "category": "Relatório Proventos",
+    "bytes": 136878,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1113918.pdf",
+    "ticker": "HAPV3",
+    "reference": "2023-06-15",
+    "category": "Aviso aos Acionistas",
+    "bytes": 137862,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": true
+  },
+  {
+    "file": "issuer-13-cvm-1143906.pdf",
+    "ticker": "HAPV3",
+    "reference": "2023-09-18",
+    "category": "Aviso aos Acionistas",
+    "bytes": 116703,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": true
+  },
+  {
+    "file": "issuer-13-cvm-1167175.pdf",
+    "ticker": "YDUQ3",
+    "reference": "2023-11-28",
+    "category": "Aviso aos Acionistas",
+    "bytes": 115352,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": true
+  },
+  {
+    "file": "issuer-13-cvm-1167313.pdf",
+    "ticker": "YDUQ3",
+    "reference": "2023-11-28",
+    "category": "Relatório Proventos",
+    "bytes": 136926,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1176014.pdf",
+    "ticker": "RENT3",
+    "reference": "2023-12-20",
+    "category": "Aviso aos Acionistas",
+    "bytes": 364457,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": true
+  },
+  {
+    "file": "issuer-13-cvm-1176455.pdf",
+    "ticker": "RENT3",
+    "reference": "2023-12-20",
+    "category": "Relatório Proventos",
+    "bytes": 101938,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1125034.pdf",
+    "ticker": "TOTS3",
+    "reference": "2023-07-24",
+    "category": "Relatório Proventos",
+    "bytes": 136892,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1168339.html",
+    "ticker": "TOTS3",
+    "reference": "2023-11-29",
+    "category": "Relatório Proventos",
+    "bytes": 4260,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": null
+  },
+  {
+    "file": "issuer-13-cvm-1080861.html",
+    "ticker": "RADL3",
+    "reference": "2023-03-30",
+    "category": "Relatório Proventos",
+    "bytes": 4262,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": null
+  },
+  {
+    "file": "issuer-13-cvm-1088636.pdf",
+    "ticker": "RADL3",
+    "reference": "2023-04-19",
+    "category": "Relatório Proventos",
+    "bytes": 136892,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1118537.pdf",
+    "ticker": "RADL3",
+    "reference": "2023-06-30",
+    "category": "Relatório Proventos",
+    "bytes": 136904,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1147346.pdf",
+    "ticker": "RADL3",
+    "reference": "2023-09-29",
+    "category": "Relatório Proventos",
+    "bytes": 136916,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1168871.pdf",
+    "ticker": "RADL3",
+    "reference": "2023-12-01",
+    "category": "Relatório Proventos",
+    "bytes": 136904,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1175212.pdf",
+    "ticker": "RADL3",
+    "reference": "2023-12-15",
+    "category": "Relatório Proventos",
+    "bytes": 101882,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1116189.pdf",
+    "ticker": "LREN3",
+    "reference": "2023-06-22",
+    "category": "Relatório Proventos",
+    "bytes": 136870,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1145282.html",
+    "ticker": "LREN3",
+    "reference": "2023-09-21",
+    "category": "Relatório Proventos",
+    "bytes": 4262,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": null
+  },
+  {
+    "file": "issuer-13-cvm-1145286.pdf",
+    "ticker": "LREN3",
+    "reference": "2023-06-22",
+    "category": "Relatório Proventos",
+    "bytes": 136906,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1174314.html",
+    "ticker": "LREN3",
+    "reference": "2023-12-15",
+    "category": "Relatório Proventos",
+    "bytes": 4261,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": null
+  },
+  {
+    "file": "issuer-13-cvm-1174315.pdf",
+    "ticker": "LREN3",
+    "reference": "2023-09-21",
+    "category": "Relatório Proventos",
+    "bytes": 101908,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1319582.pdf",
+    "ticker": "PSSA3",
+    "reference": "2024-12-24",
+    "category": "Relatório Proventos",
+    "bytes": 423304,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1196339.html",
+    "ticker": "HYPE3",
+    "reference": "2024-02-19",
+    "category": "Relatório Proventos",
+    "bytes": 4261,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": null
+  },
+  {
+    "file": "issuer-13-cvm-1207466.pdf",
+    "ticker": "HYPE3",
+    "reference": "2024-03-13",
+    "category": "Relatório Proventos",
+    "bytes": 101840,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1223658.pdf",
+    "ticker": "HYPE3",
+    "reference": "2024-04-18",
+    "category": "Relatório Proventos",
+    "bytes": 101840,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1241276.pdf",
+    "ticker": "HYPE3",
+    "reference": "2024-05-20",
+    "category": "Relatório Proventos",
+    "bytes": 101840,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1251712.pdf",
+    "ticker": "HYPE3",
+    "reference": "2024-06-18",
+    "category": "Relatório Proventos",
+    "bytes": 101838,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1262065.html",
+    "ticker": "HYPE3",
+    "reference": "2024-07-19",
+    "category": "Relatório Proventos",
+    "bytes": 4260,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": null
+  },
+  {
+    "file": "issuer-13-cvm-1283595.pdf",
+    "ticker": "HYPE3",
+    "reference": "2024-09-18",
+    "category": "Relatório Proventos",
+    "bytes": 211072,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1319567.pdf",
+    "ticker": "HYPE3",
+    "reference": "2024-12-23",
+    "category": "Relatório Proventos",
+    "bytes": 212000,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1233958.pdf",
+    "ticker": "RECV3",
+    "reference": "2024-04-29",
+    "category": "Aviso aos Acionistas",
+    "bytes": 173027,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": true
+  },
+  {
+    "file": "issuer-13-cvm-1243901.pdf",
+    "ticker": "RECV3",
+    "reference": "2024-05-29",
+    "category": "Aviso aos Acionistas",
+    "bytes": 199008,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": true
+  },
+  {
+    "file": "issuer-13-cvm-1256880.pdf",
+    "ticker": "RECV3",
+    "reference": "2024-06-27",
+    "category": "Aviso aos Acionistas",
+    "bytes": 175338,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": true
+  },
+  {
+    "file": "issuer-13-cvm-1225281.pdf",
+    "ticker": "RECV3",
+    "reference": "2024-04-24",
+    "category": "Relatório Proventos",
+    "bytes": 101906,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1245784.pdf",
+    "ticker": "RECV3",
+    "reference": "2024-05-29",
+    "category": "Relatório Proventos",
+    "bytes": 101934,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1302278.pdf",
+    "ticker": "RECV3",
+    "reference": "2024-11-07",
+    "category": "Relatório Proventos",
+    "bytes": 426960,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1227281.pdf",
+    "ticker": "YDUQ3",
+    "reference": "2024-04-26",
+    "category": "Relatório Proventos",
+    "bytes": 101880,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1240258.html",
+    "ticker": "YDUQ3",
+    "reference": "2024-05-17",
+    "category": "Relatório Proventos",
+    "bytes": 4260,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": null
+  },
+  {
+    "file": "issuer-13-cvm-1242857.html",
+    "ticker": "YDUQ3",
+    "reference": "2024-05-17",
+    "category": "Relatório Proventos",
+    "bytes": 4260,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": null
+  },
+  {
+    "file": "issuer-13-cvm-1252683.pdf",
+    "ticker": "RENT3",
+    "reference": "2024-06-21",
+    "category": "Aviso aos Acionistas",
+    "bytes": 478999,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": true
+  },
+  {
+    "file": "issuer-13-cvm-1213252.pdf",
+    "ticker": "RENT3",
+    "reference": "2024-03-26",
+    "category": "Relatório Proventos",
+    "bytes": 101936,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1253306.pdf",
+    "ticker": "RENT3",
+    "reference": "2024-06-21",
+    "category": "Relatório Proventos",
+    "bytes": 101930,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1284772.pdf",
+    "ticker": "RENT3",
+    "reference": "2024-09-20",
+    "category": "Relatório Proventos",
+    "bytes": 426088,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1315900.pdf",
+    "ticker": "RENT3",
+    "reference": "2024-12-12",
+    "category": "Relatório Proventos",
+    "bytes": 426344,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1266054.pdf",
+    "ticker": "TOTS3",
+    "reference": "2024-08-01",
+    "category": "Relatório Proventos",
+    "bytes": 211560,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": true
+  },
+  {
+    "file": "issuer-13-cvm-1309026.pdf",
+    "ticker": "TOTS3",
+    "reference": "2024-11-25",
+    "category": "Relatório Proventos",
+    "bytes": 211576,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": true
+  },
+  {
+    "file": "issuer-13-cvm-1216124.pdf",
+    "ticker": "RADL3",
+    "reference": "2024-03-28",
+    "category": "Relatório Proventos",
+    "bytes": 101892,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1222941.pdf",
+    "ticker": "RADL3",
+    "reference": "2024-04-17",
+    "category": "Relatório Proventos",
+    "bytes": 101870,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1255360.pdf",
+    "ticker": "RADL3",
+    "reference": "2024-06-28",
+    "category": "Relatório Proventos",
+    "bytes": 101894,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1286509.pdf",
+    "ticker": "RADL3",
+    "reference": "2024-09-30",
+    "category": "Relatório Proventos",
+    "bytes": 425528,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1309703.pdf",
+    "ticker": "RADL3",
+    "reference": "2024-11-29",
+    "category": "Relatório Proventos",
+    "bytes": 423440,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1208001.pdf",
+    "ticker": "LREN3",
+    "reference": "2024-03-14",
+    "category": "Relatório Proventos",
+    "bytes": 101894,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1252338.pdf",
+    "ticker": "LREN3",
+    "reference": "2024-06-20",
+    "category": "Relatório Proventos",
+    "bytes": 101896,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1284397.html",
+    "ticker": "LREN3",
+    "reference": "2024-09-19",
+    "category": "Relatório Proventos",
+    "bytes": 4261,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": null
+  },
+  {
+    "file": "issuer-13-cvm-1318054.pdf",
+    "ticker": "LREN3",
+    "reference": "2024-12-19",
+    "category": "Relatório Proventos",
+    "bytes": 423448,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1322267.pdf",
+    "ticker": "PSSA3",
+    "reference": "2025-01-06",
+    "category": "Relatório Proventos",
+    "bytes": 423368,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1352378.pdf",
+    "ticker": "PSSA3",
+    "reference": "2025-03-26",
+    "category": "Relatório Proventos",
+    "bytes": 423352,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1356620.pdf",
+    "ticker": "PSSA3",
+    "reference": "2025-04-01",
+    "category": "Relatório Proventos",
+    "bytes": 423456,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1393394.pdf",
+    "ticker": "PSSA3",
+    "reference": "2025-06-23",
+    "category": "Relatório Proventos",
+    "bytes": 426048,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1426052.pdf",
+    "ticker": "PSSA3",
+    "reference": "2025-09-22",
+    "category": "Relatório Proventos",
+    "bytes": 426072,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1448797.pdf",
+    "ticker": "PSSA3",
+    "reference": "2025-03-28",
+    "category": "Relatório Proventos",
+    "bytes": 211880,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1460304.html",
+    "ticker": "PSSA3",
+    "reference": "2025-12-19",
+    "category": "Relatório Proventos",
+    "bytes": 4261,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": null
+  },
+  {
+    "file": "issuer-13-cvm-1461576.pdf",
+    "ticker": "PSSA3",
+    "reference": "2025-12-19",
+    "category": "Relatório Proventos",
+    "bytes": 426192,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1349869.pdf",
+    "ticker": "HYPE3",
+    "reference": "2025-03-20",
+    "category": "Relatório Proventos",
+    "bytes": 423256,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1391685.pdf",
+    "ticker": "HYPE3",
+    "reference": "2025-06-17",
+    "category": "Relatório Proventos",
+    "bytes": 423256,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1426205.pdf",
+    "ticker": "HYPE3",
+    "reference": "2025-09-23",
+    "category": "Relatório Proventos",
+    "bytes": 423264,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1456500.pdf",
+    "ticker": "HYPE3",
+    "reference": "2024-02-19",
+    "category": "Relatório Proventos",
+    "bytes": 425568,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1456501.pdf",
+    "ticker": "HYPE3",
+    "reference": "2024-03-13",
+    "category": "Relatório Proventos",
+    "bytes": 211140,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1456504.pdf",
+    "ticker": "HYPE3",
+    "reference": "2024-04-18",
+    "category": "Relatório Proventos",
+    "bytes": 211140,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1456505.pdf",
+    "ticker": "HYPE3",
+    "reference": "2024-05-20",
+    "category": "Relatório Proventos",
+    "bytes": 211140,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1456506.html",
+    "ticker": "HYPE3",
+    "reference": "2024-06-18",
+    "category": "Relatório Proventos",
+    "bytes": 4260,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": null
+  },
+  {
+    "file": "issuer-13-cvm-1456507.pdf",
+    "ticker": "HYPE3",
+    "reference": "2024-07-19",
+    "category": "Relatório Proventos",
+    "bytes": 211136,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1456508.pdf",
+    "ticker": "HYPE3",
+    "reference": "2024-09-18",
+    "category": "Relatório Proventos",
+    "bytes": 211144,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1456509.pdf",
+    "ticker": "HYPE3",
+    "reference": "2024-12-23",
+    "category": "Relatório Proventos",
+    "bytes": 212108,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1456523.pdf",
+    "ticker": "HYPE3",
+    "reference": "2025-12-11",
+    "category": "Relatório Proventos",
+    "bytes": 423272,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1332951.pdf",
+    "ticker": "RECV3",
+    "reference": "2025-01-30",
+    "category": "Aviso aos Acionistas",
+    "bytes": 208302,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": true
+  },
+  {
+    "file": "issuer-13-cvm-1374909.pdf",
+    "ticker": "RECV3",
+    "reference": "2025-05-08",
+    "category": "Relatório Proventos",
+    "bytes": 426832,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1462539.pdf",
+    "ticker": "RECV3",
+    "reference": "2025-12-18",
+    "category": "Relatório Proventos",
+    "bytes": 212764,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": true
+  },
+  {
+    "file": "issuer-13-cvm-1461005.pdf",
+    "ticker": "MULT3",
+    "reference": "2025-12-22",
+    "category": "Relatório Proventos",
+    "bytes": 426304,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1366516.html",
+    "ticker": "YDUQ3",
+    "reference": "2025-04-28",
+    "category": "Relatório Proventos",
+    "bytes": 4262,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": null
+  },
+  {
+    "file": "issuer-13-cvm-1460122.pdf",
+    "ticker": "YDUQ3",
+    "reference": "2025-12-19",
+    "category": "Relatório Proventos",
+    "bytes": 425760,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1350490.pdf",
+    "ticker": "RENT3",
+    "reference": "2025-03-21",
+    "category": "Relatório Proventos",
+    "bytes": 426264,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1393846.html",
+    "ticker": "RENT3",
+    "reference": "2025-06-24",
+    "category": "Relatório Proventos",
+    "bytes": 4260,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": null
+  },
+  {
+    "file": "issuer-13-cvm-1426172.pdf",
+    "ticker": "RENT3",
+    "reference": "2025-09-22",
+    "category": "Relatório Proventos",
+    "bytes": 426224,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1457320.pdf",
+    "ticker": "RENT3",
+    "reference": "2025-12-12",
+    "category": "Relatório Proventos",
+    "bytes": 426224,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1348571.html",
+    "ticker": "TOTS3",
+    "reference": "2025-03-18",
+    "category": "Relatório Proventos",
+    "bytes": 4262,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": null
+  },
+  {
+    "file": "issuer-13-cvm-1391620.pdf",
+    "ticker": "TOTS3",
+    "reference": "2025-06-16",
+    "category": "Relatório Proventos",
+    "bytes": 423240,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1424587.pdf",
+    "ticker": "TOTS3",
+    "reference": "2025-09-17",
+    "category": "Relatório Proventos",
+    "bytes": 423360,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1456013.pdf",
+    "ticker": "TOTS3",
+    "reference": "2025-12-10",
+    "category": "Relatório Proventos",
+    "bytes": 423320,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1356332.pdf",
+    "ticker": "RADL3",
+    "reference": "2025-03-31",
+    "category": "Relatório Proventos",
+    "bytes": 423424,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1363809.html",
+    "ticker": "RADL3",
+    "reference": "2025-04-22",
+    "category": "Relatório Proventos",
+    "bytes": 4263,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": null
+  },
+  {
+    "file": "issuer-13-cvm-1396882.html",
+    "ticker": "RADL3",
+    "reference": "2025-06-30",
+    "category": "Relatório Proventos",
+    "bytes": 4263,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": null
+  },
+  {
+    "file": "issuer-13-cvm-1428330.pdf",
+    "ticker": "RADL3",
+    "reference": "2025-09-30",
+    "category": "Relatório Proventos",
+    "bytes": 423448,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1451356.pdf",
+    "ticker": "RADL3",
+    "reference": "2025-11-28",
+    "category": "Relatório Proventos",
+    "bytes": 428264,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1401724.pdf",
+    "ticker": "LREN3",
+    "reference": "2025-07-17",
+    "category": "Aviso aos Acionistas",
+    "bytes": 145564,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": true
+  },
+  {
+    "file": "issuer-13-cvm-1416022.pdf",
+    "ticker": "LREN3",
+    "reference": "2025-08-21",
+    "category": "Aviso aos Acionistas",
+    "bytes": 145308,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": true
+  },
+  {
+    "file": "issuer-13-cvm-1349785.pdf",
+    "ticker": "LREN3",
+    "reference": "2025-03-20",
+    "category": "Relatório Proventos",
+    "bytes": 423424,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1395215.pdf",
+    "ticker": "LREN3",
+    "reference": "2025-06-27",
+    "category": "Relatório Proventos",
+    "bytes": 426320,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1396586.pdf",
+    "ticker": "LREN3",
+    "reference": "2025-06-27",
+    "category": "Relatório Proventos",
+    "bytes": 426128,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1424786.pdf",
+    "ticker": "LREN3",
+    "reference": "2025-09-18",
+    "category": "Relatório Proventos",
+    "bytes": 426192,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1453863.pdf",
+    "ticker": "LREN3",
+    "reference": "2025-12-08",
+    "category": "Relatório Proventos",
+    "bytes": 426232,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1495470.html",
+    "ticker": "PSSA3",
+    "reference": "2026-03-25",
+    "category": "Relatório Proventos",
+    "bytes": 4264,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": null
+  },
+  {
+    "file": "issuer-13-cvm-1497966.pdf",
+    "ticker": "PSSA3",
+    "reference": "2026-03-30",
+    "category": "Relatório Proventos",
+    "bytes": 423472,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1500044.html",
+    "ticker": "PSSA3",
+    "reference": "2025-03-26",
+    "category": "Relatório Proventos",
+    "bytes": 4264,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": null
+  },
+  {
+    "file": "issuer-13-cvm-1500046.pdf",
+    "ticker": "PSSA3",
+    "reference": "2025-06-23",
+    "category": "Relatório Proventos",
+    "bytes": 426184,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1500048.pdf",
+    "ticker": "PSSA3",
+    "reference": "2025-12-19",
+    "category": "Relatório Proventos",
+    "bytes": 426168,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1502854.pdf",
+    "ticker": "PSSA3",
+    "reference": "2025-03-26",
+    "category": "Relatório Proventos",
+    "bytes": 423480,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1502855.pdf",
+    "ticker": "PSSA3",
+    "reference": "2025-06-23",
+    "category": "Relatório Proventos",
+    "bytes": 426184,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1502856.pdf",
+    "ticker": "PSSA3",
+    "reference": "2025-09-22",
+    "category": "Relatório Proventos",
+    "bytes": 426080,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1502857.pdf",
+    "ticker": "PSSA3",
+    "reference": "2025-12-19",
+    "category": "Relatório Proventos",
+    "bytes": 426168,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1536484.html",
+    "ticker": "PSSA3",
+    "reference": "2026-06-17",
+    "category": "Relatório Proventos",
+    "bytes": 4263,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": null
+  },
+  {
+    "file": "issuer-13-cvm-1490656.pdf",
+    "ticker": "VIVT3",
+    "reference": "2026-03-13",
+    "category": "Relatório Proventos",
+    "bytes": 426880,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1493690.pdf",
+    "ticker": "VIVT3",
+    "reference": "2026-03-12",
+    "category": "Relatório Proventos",
+    "bytes": 211900,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": true
+  },
+  {
+    "file": "issuer-13-cvm-1505626.pdf",
+    "ticker": "VIVT3",
+    "reference": "2026-04-15",
+    "category": "Relatório Proventos",
+    "bytes": 427120,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1523507.pdf",
+    "ticker": "VIVT3",
+    "reference": "2026-05-15",
+    "category": "Relatório Proventos",
+    "bytes": 427024,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1535706.pdf",
+    "ticker": "VIVT3",
+    "reference": "2026-06-15",
+    "category": "Relatório Proventos",
+    "bytes": 427160,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1546338.html",
+    "ticker": "VIVT3",
+    "reference": "2026-07-16",
+    "category": "Relatório Proventos",
+    "bytes": 4263,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": null
+  },
+  {
+    "file": "issuer-13-cvm-1558547.pdf",
+    "ticker": "VIVT3",
+    "reference": "2026-08-14",
+    "category": "Relatório Proventos",
+    "bytes": 259528,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1472751.html",
+    "ticker": "HYPE3",
+    "reference": "2026-02-03",
+    "category": "Aviso aos Acionistas",
+    "bytes": 4261,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": null
+  },
+  {
+    "file": "issuer-13-cvm-1473208.pdf",
+    "ticker": "HYPE3",
+    "reference": "2026-02-03",
+    "category": "Aviso aos Acionistas",
+    "bytes": 318947,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": true
+  },
+  {
+    "file": "issuer-13-cvm-1498839.pdf",
+    "ticker": "HYPE3",
+    "reference": "2026-03-26",
+    "category": "Relatório Proventos",
+    "bytes": 426176,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1538299.pdf",
+    "ticker": "HYPE3",
+    "reference": "2026-06-23",
+    "category": "Relatório Proventos",
+    "bytes": 426808,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1529623.html",
+    "ticker": "RECV3",
+    "reference": "2026-05-27",
+    "category": "Aviso aos Acionistas",
+    "bytes": 4261,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": null
+  },
+  {
+    "file": "issuer-13-cvm-1519689.html",
+    "ticker": "RECV3",
+    "reference": "2026-05-07",
+    "category": "Relatório Proventos",
+    "bytes": 4262,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": null
+  },
+  {
+    "file": "issuer-13-cvm-1523755.pdf",
+    "ticker": "RECV3",
+    "reference": "2026-05-07",
+    "category": "Relatório Proventos",
+    "bytes": 426816,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1525612.pdf",
+    "ticker": "RECV3",
+    "reference": "2026-05-21",
+    "category": "Relatório Proventos",
+    "bytes": 424776,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1554230.pdf",
+    "ticker": "RECV3",
+    "reference": "2026-08-06",
+    "category": "Relatório Proventos",
+    "bytes": 259392,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1494959.pdf",
+    "ticker": "RDOR3",
+    "reference": "2026-03-23",
+    "category": "Relatório Proventos",
+    "bytes": 427096,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1537876.html",
+    "ticker": "RDOR3",
+    "reference": "2026-06-22",
+    "category": "Relatório Proventos",
+    "bytes": 4261,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": null
+  },
+  {
+    "file": "issuer-13-cvm-1538704.pdf",
+    "ticker": "RDOR3",
+    "reference": "2026-06-22",
+    "category": "Relatório Proventos",
+    "bytes": 427008,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1492688.html",
+    "ticker": "MULT3",
+    "reference": "2026-03-13",
+    "category": "Relatório Proventos",
+    "bytes": 4260,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": null
+  },
+  {
+    "file": "issuer-13-cvm-1496627.pdf",
+    "ticker": "MULT3",
+    "reference": "2026-03-25",
+    "category": "Relatório Proventos",
+    "bytes": 426528,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1537366.html",
+    "ticker": "MULT3",
+    "reference": "2026-06-19",
+    "category": "Relatório Proventos",
+    "bytes": 4263,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": null
+  },
+  {
+    "file": "issuer-13-cvm-1538948.pdf",
+    "ticker": "MULT3",
+    "reference": "2026-06-25",
+    "category": "Relatório Proventos",
+    "bytes": 426416,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1491456.pdf",
+    "ticker": "CURY3",
+    "reference": "2026-03-17",
+    "category": "Aviso aos Acionistas",
+    "bytes": 195248,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": true
+  },
+  {
+    "file": "issuer-13-cvm-1521266.pdf",
+    "ticker": "CURY3",
+    "reference": "2026-05-11",
+    "category": "Relatório Proventos",
+    "bytes": 426144,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1556856.pdf",
+    "ticker": "CURY3",
+    "reference": "2026-08-10",
+    "category": "Relatório Proventos",
+    "bytes": 426264,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1466748.pdf",
+    "ticker": "YDUQ3",
+    "reference": "2026-01-12",
+    "category": "Relatório Proventos",
+    "bytes": 211216,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1495469.pdf",
+    "ticker": "RENT3",
+    "reference": "2026-03-24",
+    "category": "Relatório Proventos",
+    "bytes": 428200,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1497894.pdf",
+    "ticker": "RENT3",
+    "reference": "2026-03-24",
+    "category": "Relatório Proventos",
+    "bytes": 428200,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1538301.pdf",
+    "ticker": "RENT3",
+    "reference": "2026-06-23",
+    "category": "Relatório Proventos",
+    "bytes": 428304,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1494411.html",
+    "ticker": "TOTS3",
+    "reference": "2026-03-20",
+    "category": "Relatório Proventos",
+    "bytes": 4261,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": null
+  },
+  {
+    "file": "issuer-13-cvm-1533694.pdf",
+    "ticker": "TOTS3",
+    "reference": "2026-06-09",
+    "category": "Relatório Proventos",
+    "bytes": 423232,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1500997.pdf",
+    "ticker": "RADL3",
+    "reference": "2026-03-31",
+    "category": "Relatório Proventos",
+    "bytes": 423432,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1525410.html",
+    "ticker": "RADL3",
+    "reference": "2025-09-30",
+    "category": "Relatório Proventos",
+    "bytes": 4261,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": null
+  },
+  {
+    "file": "issuer-13-cvm-1540314.pdf",
+    "ticker": "RADL3",
+    "reference": "2026-06-30",
+    "category": "Relatório Proventos",
+    "bytes": 425392,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1493267.pdf",
+    "ticker": "LREN3",
+    "reference": "2026-03-19",
+    "category": "Relatório Proventos",
+    "bytes": 426168,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1536501.pdf",
+    "ticker": "LREN3",
+    "reference": "2026-06-18",
+    "category": "Relatório Proventos",
+    "bytes": 426080,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  }
+]

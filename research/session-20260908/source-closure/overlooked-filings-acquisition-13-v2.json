@@ -1,0 +1,783 @@
+[
+  {
+    "number": "902612",
+    "status": "EXISTS"
+  },
+  {
+    "number": "922736",
+    "status": "EXISTS"
+  },
+  {
+    "number": "925998",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1044727",
+    "status": "EXISTS"
+  },
+  {
+    "number": "963607",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1037840",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1109892",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1133718",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1148981",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1178859",
+    "status": "EXISTS"
+  },
+  {
+    "file": "issuer-13-cvm-1090357.pdf",
+    "ticker": "RECV3",
+    "reference": "2023-04-26",
+    "category": "Relatório Proventos",
+    "bytes": 136878,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "number": "1168945",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1113918",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1143906",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1167175",
+    "status": "EXISTS"
+  },
+  {
+    "file": "issuer-13-cvm-1135094.pdf",
+    "ticker": "YDUQ3",
+    "reference": "2023-08-11",
+    "category": "Relatório Proventos",
+    "bytes": 136910,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1135615.pdf",
+    "ticker": "YDUQ3",
+    "reference": "2023-08-18",
+    "category": "Relatório Proventos",
+    "bytes": 136918,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "number": "1167313",
+    "status": "EXISTS"
+  },
+  {
+    "file": "issuer-13-cvm-1145498.pdf",
+    "ticker": "RENT3",
+    "reference": "2023-09-22",
+    "category": "Aviso aos Acionistas",
+    "bytes": 360474,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": true
+  },
+  {
+    "number": "1176014",
+    "status": "EXISTS"
+  },
+  {
+    "file": "issuer-13-cvm-1145721.pdf",
+    "ticker": "RENT3",
+    "reference": "2023-09-22",
+    "category": "Relatório Proventos",
+    "bytes": 136914,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1146494.html",
+    "ticker": "RENT3",
+    "reference": "2023-09-27",
+    "category": "Relatório Proventos",
+    "bytes": 4262,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": null
+  },
+  {
+    "number": "1176455",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1125034",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1168339",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1080861",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1088636",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1118537",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1147346",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1168871",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1175212",
+    "status": "EXISTS"
+  },
+  {
+    "file": "issuer-13-cvm-1074059.pdf",
+    "ticker": "LREN3",
+    "reference": "2023-03-16",
+    "category": "Relatório Proventos",
+    "bytes": 136876,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "number": "1116189",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1145282",
+    "status": "EXISTS"
+  },
+  {
+    "file": "issuer-13-cvm-1145284.pdf",
+    "ticker": "LREN3",
+    "reference": "2023-03-16",
+    "category": "Relatório Proventos",
+    "bytes": 136908,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "number": "1145286",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1174314",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1174315",
+    "status": "EXISTS"
+  },
+  {
+    "file": "issuer-13-cvm-1285118.pdf",
+    "ticker": "PSSA3",
+    "reference": "2024-09-24",
+    "category": "Relatório Proventos",
+    "bytes": 423296,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "number": "1319582",
+    "status": "EXISTS"
+  },
+  {
+    "file": "issuer-13-cvm-1187993.pdf",
+    "ticker": "HYPE3",
+    "reference": "2024-01-29",
+    "category": "Relatório Proventos",
+    "bytes": 101872,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "number": "1196339",
+    "status": "EXISTS"
+  },
+  {
+    "file": "issuer-13-cvm-1196588.pdf",
+    "ticker": "HYPE3",
+    "reference": "2024-01-29",
+    "category": "Relatório Proventos",
+    "bytes": 101844,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "number": "1207466",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1223658",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1241276",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1251712",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1262065",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1283595",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1319567",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1233958",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1243901",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1256880",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1225281",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1245784",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1302278",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1227281",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1240258",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1242857",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1252683",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1213252",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1253306",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1284772",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1315900",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1266054",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1309026",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1216124",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1222941",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1255360",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1286509",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1309703",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1208001",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1252338",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1284397",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1318054",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1322267",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1352378",
+    "status": "EXISTS"
+  },
+  {
+    "file": "issuer-13-cvm-1356619.html",
+    "ticker": "PSSA3",
+    "reference": "2024-09-24",
+    "category": "Relatório Proventos",
+    "bytes": 4261,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": null
+  },
+  {
+    "number": "1356620",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1393394",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1426052",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1448797",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1460304",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1461576",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1349869",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1391685",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1426205",
+    "status": "EXISTS"
+  },
+  {
+    "file": "issuer-13-cvm-1456495.pdf",
+    "ticker": "HYPE3",
+    "reference": "2024-01-29",
+    "category": "Relatório Proventos",
+    "bytes": 211140,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "number": "1456500",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1456501",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1456504",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1456505",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1456506",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1456507",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1456508",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1456509",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1456523",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1332951",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1374909",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1462539",
+    "status": "EXISTS"
+  },
+  {
+    "file": "issuer-13-cvm-1457814.pdf",
+    "ticker": "RDOR3",
+    "reference": "2025-12-12",
+    "category": "Relatório Proventos",
+    "bytes": 430720,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "file": "issuer-13-cvm-1426141.pdf",
+    "ticker": "MULT3",
+    "reference": "2025-09-23",
+    "category": "Relatório Proventos",
+    "bytes": 426448,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "number": "1461005",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1366516",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1460122",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1350490",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1393846",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1426172",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1457320",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1348571",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1391620",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1424587",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1456013",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1356332",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1363809",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1396882",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1428330",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1451356",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1401724",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1416022",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1349785",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1395215",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1396586",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1424786",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1453863",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1495470",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1497966",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1500044",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1500046",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1500048",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1502854",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1502855",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1502856",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1502857",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1536484",
+    "status": "EXISTS"
+  },
+  {
+    "file": "issuer-13-cvm-1480277.pdf",
+    "ticker": "VIVT3",
+    "reference": "2026-02-12",
+    "category": "Relatório Proventos",
+    "bytes": 426744,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "number": "1490656",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1493690",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1505626",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1523507",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1535706",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1546338",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1558547",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1472751",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1473208",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1498839",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1538299",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1529623",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1519689",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1523755",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1525612",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1554230",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1494959",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1537876",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1538704",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1492688",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1496627",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1537366",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1538948",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1491456",
+    "status": "EXISTS"
+  },
+  {
+    "file": "issuer-13-cvm-1471585.pdf",
+    "ticker": "CURY3",
+    "reference": "2026-01-30",
+    "category": "Relatório Proventos",
+    "bytes": 425848,
+    "status": "DOWNLOADED",
+    "pdf_eof_present": false
+  },
+  {
+    "number": "1521266",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1556856",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1466748",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1495469",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1497894",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1538301",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1494411",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1533694",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1500997",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1525410",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1540314",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1493267",
+    "status": "EXISTS"
+  },
+  {
+    "number": "1536501",
+    "status": "EXISTS"
+  }
+]
