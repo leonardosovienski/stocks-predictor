@@ -1,0 +1,2 @@
+{"status": "HISTORICAL_MARK_COMPARISON_ONLY_NET_PROFIT_INCONCLUSIVE", "modes": {"open": {"BLOCKED": 1, "COMPLETE_MARK_DIAGNOSTIC_NOT_NET_PROFIT": 31}, "close": {"BLOCKED": 1, "COMPLETE_MARK_DIAGNOSTIC_NOT_NET_PROFIT": 31}, "worst": {"BLOCKED": 1, "COMPLETE_MARK_DIAGNOSTIC_NOT_NET_PROFIT": 31}}, "source_files": 1448, "output_sha256": "aa184580bf5ba69b515a20cc40115453396bdefa470ac0f5408c0d3ced15e1a3"}
+Reproduzido byte a byte. Lucro líquido permanece desconhecido.

@@ -1,0 +1,60 @@
+{
+  "answer": "A composição histórica simulada melhorou, mas a projeção de lucro líquido continua não calculável e a melhora incremental é inconclusiva.",
+  "profit": null,
+  "future_profit_projection": null,
+  "decision": "INCONCLUSIVE_NET_PROFIT / OPERATIONAL_NO_GO",
+  "eligible_quarters": 31,
+  "blocked_signal_dates": [
+    "2018-03-29"
+  ],
+  "start": "2018-07-02",
+  "end": "2026-04-01",
+  "base_annualized_mark_change": {
+    "VALUE_COMMON_UNIVERSE": 0.11000690925042456,
+    "VALUE_PROFITABILITY": 0.14018012192880214,
+    "VALUE_PROFITABILITY_BUFFER": 0.14576812957653296
+  },
+  "adverse_double_cost_annualized_mark_change": {
+    "VALUE_COMMON_UNIVERSE": 0.020536785956606796,
+    "VALUE_PROFITABILITY": 0.04739107015405142,
+    "VALUE_PROFITABILITY_BUFFER": 0.05248803908675215
+  },
+  "base_buffer_minus_control": {
+    "left": "VALUE_PROFITABILITY_BUFFER",
+    "right": "VALUE_COMMON_UNIVERSE",
+    "paired_periods": 31,
+    "expected_periods": 31,
+    "mean_quarter_difference": 0.0019820257047688072,
+    "positive_difference_quarters": 16,
+    "fixed_halves": [
+      {
+        "expected_periods": 15,
+        "available_periods": 15,
+        "mean_quarter_difference": 0.007703380858076686
+      },
+      {
+        "expected_periods": 16,
+        "available_periods": 16,
+        "mean_quarter_difference": -0.003381744751457329
+      }
+    ],
+    "descriptive_unadjusted_bootstrap_95pct": [
+      -0.036270229906572714,
+      0.039388367504472284
+    ],
+    "bootstrap_contiguous": true,
+    "mean_quarter_difference_after_assumed_cost": 0.001974903232681397,
+    "descriptive_bootstrap_95pct_after_assumed_cost": [
+      -0.03613989168770302,
+      0.039246824159477174
+    ]
+  },
+  "not_net_profit_or_total_return": true,
+  "buffer_is_planned_membership_only": true,
+  "new_observed_diagnostic_scenarios": 18,
+  "minimum_configurations": 53,
+  "minimum_return_evaluations": 55,
+  "full_suite_passed": 639,
+  "new_measurement_tests_passed": 11,
+  "observation_sha256": "aa184580bf5ba69b515a20cc40115453396bdefa470ac0f5408c0d3ced15e1a3"
+}

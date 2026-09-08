@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "verified_files": 1448,
+  "independent_cells": 9732,
+  "all_12_scenarios_and_bootstrap_intervals_identical": true,
+  "original_4_cohorts_reproduced": true,
+  "ordinary_cash_net_profit_or_real_orders_verified": false,
+  "does_not_add_independent_evidence": true
+}

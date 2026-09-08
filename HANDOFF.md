@@ -1,3 +1,36 @@
+## Teste de desempenho H20 (08/09/2026 UTC)
+
+Pedido: testar se melhorou a projeção de lucro. Protocolo 9286129 anterior ao
+cruzamento com retornos; medidor 2488171. 31 trimestres de 2018-07-02 a 2026-04-01,
+três seleções congeladas, três preços e dois custos, sem tuning. 29/03/2018 retida
+como bloqueada por cobertura; nenhuma data elegível removida pelo desempenho.
+
+Diagnóstico de marcações com rotação integral hipotética, sem caixa ordinário,
+impostos ou manutenção: anualização na abertura/custo base 11,00% controle comum,
+14,02% valor/rentabilidade, 14,58% retenção. Adverso/custo dobrado 2,05%, 4,74%, 5,25%.
+Retenção é a sequência pretendida, sem execução contínua da banda de peso de 2,5%.
+Economia real de turnover não foi inferida. Lucro/projeção futura permanecem null.
+
+Diferença média retenção-controle na abertura +0,197 pp/trimestre; IC descritivo
+95% [-3,61; +3,92] pp, sem ajuste por seleção. Segunda metade -0,34 pp/trimestre
+brutos; vantagem recente também negativa nos outros preços. Drawdown adverso
+com custo dobrado -48,24%. Melhora composta aparente, incremento inconclusivo.
+
+639 testes completos +11 testes da medição. Reprodução de 1.448 arquivos,
+9.732 células e 12 cenários anteriores, conferência independente de 465 médias,
+30 trajetórias e 54 pares. Nova observação byte idêntica aa184580bf5b...;
+replay financeiro antigo idêntico e bloqueado. Zero inventários integrais de
+caixa disponíveis para os 231 intervalos trimestrais de cada seleção H20.
+Runtime de produção inalterado, extratos históricos lidos com mode=ro e hashes
+verificados; bancos principais, ledgers, quarentenas e fontes preservados.
+
+18 cenários adicionais registrados/observados, contagem conservadora mínima
+53 configurações/55 avaliações históricas; sem holdout ou Proof. Não promover
+H20 ou ajustar parâmetros. INCONCLUSIVE_NET_PROFIT / OPERATIONAL_NO_GO mantido.
+Relatório: docs/research/2026-09-08-h20-profit-test-results.md. Arquivo reproduzível
+em research/session-20260908/h20-profit-test; saídas também na raiz durável,
+outputs/h20-profit-test-20260908. Nenhuma ordem, gasto, agente, instalação ou push.
+
 ## Implementação H20 após pesquisa comparativa (2026-09-08 UTC)
 
 Usuário pediu implementar. Protocolo H20_VALUE_PROFITABILITY_BUFFER_1 registrado

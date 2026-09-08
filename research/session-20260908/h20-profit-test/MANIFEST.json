@@ -1,0 +1,26 @@
+{
+  "files": {
+    "H20_TESTE_DECISAO.json": "734b0ae373ce14d301e8ba76401f97216458a68b008b965b7b19ca2272d306b9",
+    "H20_TESTE_LUCRO.md": "26d3fc53a6a70c4ffbb9cdf6671cd6faf38de003cdcdb9d003507c9bde836f47",
+    "H20_TESTE_RESULTADOS.json": "aa184580bf5ba69b515a20cc40115453396bdefa470ac0f5408c0d3ced15e1a3",
+    "H20_TESTE_VALIDACAO.json": "6ed3409a88fd73a44e4b70bb6eca0e2d0164ae8282e318fde4e64cb5678c3e67",
+    "REPRODUZIR_TESTE.ps1": "6e21aeaffbc93f6f9b328bf66222955d1f56d7ce455da36534f6a6eeb931710d",
+    "compare_h20.py": "359517909d7d3630d8dadef203cfa5df40ec48c5013d407560806ee341de4cba",
+    "comparison-run.log": "dec405abd2513d40e006e607dbee74ebc9fb4338296bb0b6496be4c0582a25dd",
+    "comparison-tests.log": "9862afa462936d773ba5fd8c8ff372842b0d066047857ca65da3a73c70373c1f",
+    "deliver_h20_profit_test.py": "b49bc7f277bfe47fdf5e3400939eeabf1eabe8e23eb7a6c7b33a287d6fa5701f",
+    "full-suite.log": "c06f2cc77243fb625d38236699460bcb41e4fa31b59960ec35ca376d210b3229",
+    "h19-gate-replay.json": "585c72395fc2fefc2e0bbd90b6756c516e58d0f1e29ada3d6de196f46ea49c27",
+    "h19-gate.log": "76be1f29f8f45f37137088601aa821f099e3456a39c17ee74323e3cc657f07ff",
+    "independent-verification.json": "17879318192cf50cce43c764fffe1ce9c1deea9749feda1f610e5176c6302df9",
+    "protocol.json": "a914124230bea0e416542e90279d86a24997f475b1da5ebc98bfa718850e5c98",
+    "register_h20_profit_test.py": "db3028fa6818f749bc6669f988be6c30d3a235b7575305752a5580a77d9fe5a7",
+    "reproduction-run.log": "dec405abd2513d40e006e607dbee74ebc9fb4338296bb0b6496be4c0582a25dd",
+    "source-reproduction.log": "9d8192de5a039d5017dc46965fc12c4b9e5aa213aa431891247ec1f6e44571ef",
+    "test_h20_profit_comparison.py": "31cf36b1d8b79c829b2d817776fa20c286c8248b014bd8aa5990a54eb2656f14",
+    "verify_h20_profit_comparison.py": "31f76b71d827c2794f767e39c96641b9fde4208cc318c1f9a504ff762f49861c"
+  },
+  "observation_sha256": "aa184580bf5ba69b515a20cc40115453396bdefa470ac0f5408c0d3ced15e1a3",
+  "requires_preserved_sources": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907",
+  "profit": null
+}

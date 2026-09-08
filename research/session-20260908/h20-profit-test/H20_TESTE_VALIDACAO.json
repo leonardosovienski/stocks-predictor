@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "independent_cross_section_mean_checks": 465,
+  "independent_compounding_annualization_drawdown_checks": 30,
+  "independent_paired_mean_and_fixed_halves_checks": 54,
+  "source_reproduction": {
+    "status": "PASS",
+    "verified_files": 1448,
+    "independent_cells": 9732,
+    "all_12_scenarios_and_bootstrap_intervals_identical": true,
+    "original_4_cohorts_reproduced": true,
+    "ordinary_cash_net_profit_or_real_orders_verified": false,
+    "does_not_add_independent_evidence": true
+  },
+  "h19_gate_byte_identical": true,
+  "h19_gate_sha256": "585c72395fc2fefc2e0bbd90b6756c516e58d0f1e29ada3d6de196f46ea49c27",
+  "observation_sha256": "aa184580bf5ba69b515a20cc40115453396bdefa470ac0f5408c0d3ced15e1a3",
+  "full_suite": "639 passed in 71.85s",
+  "measurement_tests": "11 passed in 0.05s",
+  "production_runtime_changed": false,
+  "database_access": "Only frozen source reproduction opens archived quote extracts with SQLite mode=ro. Raw package hashes were verified before and after. Production databases, ledgers and quarantines are untouched.",
+  "profit": null,
+  "future_profit_projection": null,
+  "h20_comparison_byte_identical": true,
+  "measured_code_commit": "2488171",
+  "preregistration_commit": "9286129",
+  "registered_before_observation": true
+}
