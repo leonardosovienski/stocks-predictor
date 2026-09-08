@@ -2236,5 +2236,35 @@
     "git_path": "research/session-20260907/logs/value-repaired-observation.log",
     "bytes": 21642,
     "sha256": "169e329faf77630d36fda794135d15c0a0cdcd26d438440037745bbb698da0fa"
+  },
+  {
+    "original_relative_path": "work/verify_stocks_preservation.py",
+    "git_path": "research/session-20260907/scripts/verify_stocks_preservation.py",
+    "bytes": 14852,
+    "sha256": "346ccb1cf98ed82bf7663eab90703b9b23b047fce61531da786fed4cdd1d3410"
+  },
+  {
+    "original_relative_path": "outputs/STOCKS_CONTINUIDADE_IMPORT.log",
+    "git_path": "research/session-20260907/logs/STOCKS_CONTINUIDADE_IMPORT.log",
+    "bytes": 155,
+    "sha256": "2eb9f167895d079dc546e6e84ef0e01698b210fdba8ed232088e61aab375aead"
+  },
+  {
+    "original_relative_path": "outputs/STOCKS_CONTINUIDADE_TESTS.log",
+    "git_path": "research/session-20260907/logs/STOCKS_CONTINUIDADE_TESTS.log",
+    "bytes": 101,
+    "sha256": "4e87e309bfccc0cd112b50d42f23283445f69ba88f6ef2d20046f778f31289ba"
+  },
+  {
+    "original_relative_path": "outputs/STOCKS_CONTINUIDADE_REPLAY.log",
+    "git_path": "research/session-20260907/logs/STOCKS_CONTINUIDADE_REPLAY.log",
+    "bytes": 645,
+    "sha256": "76be1f29f8f45f37137088601aa821f099e3456a39c17ee74323e3cc657f07ff"
+  },
+  {
+    "original_relative_path": "outputs/STOCKS_CONTINUIDADE_REPLAY.json",
+    "git_path": "research/session-20260907/deliverables/STOCKS_CONTINUIDADE_REPLAY.json",
+    "bytes": 611625,
+    "sha256": "585c72395fc2fefc2e0bbd90b6756c516e58d0f1e29ada3d6de196f46ea49c27"
   }
 ]

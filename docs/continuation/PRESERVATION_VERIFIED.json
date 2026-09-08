@@ -1,0 +1,55 @@
+{
+  "status": "VERIFIED_INDEPENDENT_LOCAL_CONTINUATION",
+  "created_at_utc": "2026-09-08T00:39:46.950738+00:00",
+  "durable_root": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907",
+  "durable_checkout": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\stocks-predictor",
+  "branch": "fix/stocks-cvm-execution-20260907",
+  "snapshot_commit": "ec96f06183559a93d61a32711c4c72a73bce7d29",
+  "validated_runtime_commit": "741d237388405970127492a4eff81ab1e5c755a1",
+  "runtime_changes_since_592_test_validation": false,
+  "copied_files": 36998,
+  "copied_bytes": 13537433659,
+  "snapshot_manifest_sha256": "0a3c132455a6aaf523c17fddeb702646174ab4c21f1e87fb387af747faebf9ec",
+  "authored_files_exact_git_bytes_verified": 378,
+  "relocated_tests_passed": 48,
+  "independent_import_path": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\stocks-final-review-bundle\\stocks_predictor\\continuous_research.py",
+  "steps": [
+    {
+      "step": "import",
+      "cwd": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\stocks-final-review-bundle",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "log": "STOCKS_CONTINUIDADE_IMPORT.log",
+      "log_sha256": "2eb9f167895d079dc546e6e84ef0e01698b210fdba8ed232088e61aab375aead"
+    },
+    {
+      "step": "tests",
+      "cwd": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\stocks-final-review-bundle",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "log": "STOCKS_CONTINUIDADE_TESTS.log",
+      "log_sha256": "4e87e309bfccc0cd112b50d42f23283445f69ba88f6ef2d20046f778f31289ba"
+    },
+    {
+      "step": "replay",
+      "cwd": "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\stocks-final-review-bundle",
+      "exit_code": 2,
+      "expected_exit_code": 2,
+      "log": "STOCKS_CONTINUIDADE_REPLAY.log",
+      "log_sha256": "76be1f29f8f45f37137088601aa821f099e3456a39c17ee74323e3cc657f07ff"
+    }
+  ],
+  "replay_sha256": "585c72395fc2fefc2e0bbd90b6756c516e58d0f1e29ada3d6de196f46ea49c27",
+  "replay_matches_prior_result": true,
+  "replay_status": "BLOCKED_MISSING_EVIDENCE",
+  "profit": null,
+  "new_historical_return_evaluations": 0,
+  "database_hashes_preserved": {
+    "C:\\Users\\Superleo13\\stocks-predictor-work\\data\\stocks.db": "a22739794ba4a43a11544338d4a91e14cb6a0b1f7b132ab460f96d3359f63cf4",
+    "C:\\Users\\Superleo13\\Documents\\Codex\\2026-09-06\\files-pasted-by-the-user-autonomous\\work\\stocks-tested-real-v2-20260907.db": "a8238568980d3303890b04590cfb5c55ab2d24c9271edd86820269336b09679a",
+    "C:\\Users\\Superleo13\\stocks-predictor-work\\.local-research\\stocks-session-20260907\\work\\stocks-tested-real-v2-20260907.db": "a8238568980d3303890b04590cfb5c55ab2d24c9271edd86820269336b09679a"
+  },
+  "github_push_performed": false,
+  "scope": "Local preservation outside the chat folder; not off-device backup or GitHub upload.",
+  "preservation_commit": "The Git commit containing this receipt; inspect git log -1 -- docs/continuation/PRESERVATION_VERIFIED.json"
+}

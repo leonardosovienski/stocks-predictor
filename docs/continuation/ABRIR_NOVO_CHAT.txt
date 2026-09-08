@@ -1,0 +1,4 @@
+Continue a pesquisa stocks-predictor. Leia e execute o prompt completo em:
+C:\Users\Superleo13\stocks-predictor-work\.local-research\stocks-session-20260907\work\stocks-predictor\docs\continuation\PROMPT_NOVO_CHAT.md
+
+O contexto, recibo de preservação e caminhos estão no mesmo diretório docs/continuation. Use esse checkout e a raiz preservada; não é necessário recuperar o chat anterior.
