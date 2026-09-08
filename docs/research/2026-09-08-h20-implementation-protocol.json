@@ -1,0 +1,81 @@
+{
+  "protocol_id": "H20_VALUE_PROFITABILITY_BUFFER_1",
+  "registered_at_utc": "2026-09-08T01:57:35.763843+00:00",
+  "phase": "IMPLEMENTATION_AND_SIGNAL_FEASIBILITY_ONLY",
+  "base_commit": "693af06",
+  "hypothesis": "Profitability may distinguish cheap viable companies from cheap weak businesses; retaining eligible near-cutoff holdings and tolerating small weight drift may reduce turnover costs while sacrificing some signal precision.",
+  "source_research": "docs/research/2026-09-08-similar-models.md",
+  "inputs": {
+    "features": {
+      "filename": "value-prepared-features.json",
+      "sha256": "587f66898971822a3d1dfb96872caaaee6ea42bee4c178ef44837e94f6f637f9"
+    },
+    "accounting": {
+      "filename": "accounting-v2.json",
+      "sha256": "f049dd9f9b8b9f011007af0f63934929edb6aca5c9f0cbb3de3b21c66ed225a6"
+    },
+    "execution_manifest": {
+      "filename": "SHA256.json",
+      "sha256": "7edf2f20546e9dee910e4f2d1aa6a4a748efcc07dfd2b2a04b393f41a644b6e7"
+    }
+  },
+  "historical_data_already_exposed": true,
+  "new_scores_or_policy_results_observed_before_registration": false,
+  "period": "All quarter-end snapshots March 2018 through December 2025, retaining insufficient and invalid dates explicitly; no exits or returns computed.",
+  "features": {
+    "value": "positive parent book equity / previously prepared disclosed-capital price proxy",
+    "profitability": "annual parent earnings / positive end-of-year parent book equity; closing-equity ROE proxy, not operating profitability or average-equity ROE",
+    "negative_earnings": "retained and ranked, not imputed or filtered",
+    "source_checks": "Exact CNPJ, ref_date, version, document_id, receipt+1 calendar day, archive hashes and annual duration 330-400 days. Verify both source numerators against prepared H18/H19 ratios. Retain inherited 550-day staleness limit and universe gates; not a complete original-publication audit.",
+    "score": "Descending average ranks (midranks for exact ties) of value and profitability, equally weighted; final tie by ticker. No fitted weights, clipping, winsorization or sector exclusion."
+  },
+  "arms": [
+    "VALUE_COMMON_UNIVERSE",
+    "VALUE_PROFITABILITY",
+    "VALUE_PROFITABILITY_BUFFER"
+  ],
+  "selection": {
+    "minimum_names": 20,
+    "target_fraction": "0.20",
+    "retain_fraction": "0.30",
+    "target_count": "floor(N/5)",
+    "buffer": "Keep at most target_count actual incumbent ticker+ISIN pairs in best ceil(0.30*N), strongest first; fill vacant slots by score. Exits for absent/ineligible identity remain mandatory.",
+    "universe": "Identical valid joint value/profitability universe across all three arms; missing source/zero or negative equity remains explicit excluded, never zero."
+  },
+  "orders": {
+    "capital_brl": [
+      5000,
+      10000
+    ],
+    "one_way_cost_rates": [
+      "0.0018",
+      "0.0036"
+    ],
+    "rounding": "existing integer_targets using signal close",
+    "weight_band": "0.025 of supplied signal-date sizing capital, absolute target/current notional difference; same positive selected holdings only; exits and new names never suppressed. Reject identity/date gaps even for suppressed trades.",
+    "causality": "Freeze targets and current holdings at signal; reject stale book before execution and unchecked corporate boundary. Existing RetailBook handles standard/fractional orders, funding, settlements and fiscal basis.",
+    "interpretation": "Rank and weight bands are uncalibrated implementation choices, not forecasts that a trade will or will not pay its full tax cost. No claimed optimality."
+  },
+  "diagnostics": [
+    "feature/source coverage",
+    "per-arm planned membership changes (not executed turnover)",
+    "entry-only integer execution on available primary quotes for every eligible arm/date/capital/cost",
+    "blocked dates and reasons",
+    "synthetic paired-book costs, funding, risk drift and forced exits"
+  ],
+  "evidence_boundary": "Existing H19 evidence does not certify new holdings or retention intervals. Full historical net profit stays null; never feed H20 plans into the frozen H19 contract or set its coverage gate true.",
+  "stopping_rule": "One frozen set of three arms and two bands. No return scan or parameter rescue. Source gaps block cases without filling defaults. Run mechanical and input diagnostics, report all arms; further net-return evaluation requires a new protocol covering new intervals and independent/prospective validation.",
+  "acceptance": "Mechanically causal deterministic scores; equal comparison universe; mandatory exits; fewer trades in independently computed synthetic marginal-adjustment case; no negative funded cash; old H19 replay unchanged. Historical cost/coverage figures may be favorable or unfavorable and do not determine parameter changes.",
+  "search_accounting": {
+    "minimum_prior_configurations": 32,
+    "new_registered_configurations": 3,
+    "minimum_configurations_after": 35,
+    "minimum_prior_return_evaluations": 37,
+    "new_return_evaluations": 0,
+    "intact_holdout_claim": false
+  },
+  "real_orders": false,
+  "paid_data_budget_brl": 0,
+  "databases_read_or_write_required": false,
+  "runtime_dependencies_added": []
+}
