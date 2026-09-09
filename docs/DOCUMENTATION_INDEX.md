@@ -1,5 +1,13 @@
 # Índice documental — revisão de 09/09/2026
 
+Complemento posterior no mesmo dia:
+[fontes/custos H21](research/2026-09-09-h21-source-closure.md) e
+[reprodução da atualização](../research/session-20260909/source_closure/README.md).
+São dois Markdown novos, além do inventário inicial e deste índice.
+README, AGENTS, estado atual, HANDOFF e prompt de continuidade receberam o
+estado dessa rodada; históricos e documentos congelados continuam preservados.
+O recibo final fica em `C:\STOCKS\outputs\ENTREGA_FONTES_H21_20260909.json`.
+
 A revisão inventariou e varreu os **94 Markdown existentes em C:\STOCKS**:
 caminhos, referências locais, estado da pesquisa, runtime, contagens de testes
 e instruções conflitantes. Este índice é um arquivo novo, além dos 94 iniciais.

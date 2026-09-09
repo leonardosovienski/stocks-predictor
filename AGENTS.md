@@ -1,6 +1,6 @@
 # Stocks — instruções vigentes para implementação
 
-Atualizado em 09/09/2026 após a rodada H21 e a centralização local.
+Atualizado em 09/09/2026 após H21, centralização local e revisão de fontes.
 
 ## Mandato e leitura
 
@@ -51,7 +51,11 @@ quando o chamador habilita `use_known_at`. Não migrar silenciosamente hipótese
 antigas para outra política de `known_at`, nem reemitir lacres por conveniência.
 
 H21 é inconclusiva para lucro líquido executável e candidata a validação adicional.
-O próximo passo é inventário de eventos do ETF e despesas/execução. O plano futuro
+O [complemento de fontes](docs/research/2026-09-09-h21-source-closure.md) atualizou
+preços até 08/09, documentou custos e delimitou eventos. Preferência: XP;
+não inferir elegibilidade, capital, horizonte ou limite de perda. Consultar
+as entradas operacionais e o inventário antes de repetir aquisições.
+O próximo passo é fechar a cobertura restante de eventos e despesas/execução. O plano futuro
 já está registrado; não está rodando. H20 está estacionada para reconstrução ampla.
 Não ativar comandos legados de ingestão, backtest ou paper automaticamente.
 

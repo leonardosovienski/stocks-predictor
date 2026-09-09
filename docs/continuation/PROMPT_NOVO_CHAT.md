@@ -25,8 +25,15 @@ lucro executável/futuro. Faltam eventos do ETF e despesas reais documentadas.
 H20 permanece inconclusiva e estacionada para reconstrução ampla.
 Não há comparação líquida H21–H20 ou holdout intacto demonstrados.
 
-Próximo trabalho: completar eventos BOVA11 e direitos/obrigações após a venda,
-apurar despesas/execução e reconciliar mantendo parâmetros.
+A revisão `docs/research/2026-09-09-h21-source-closure.md` já atualizou a fonte
+para 2.159 preços até 08/09, com sobreposição conferida e sem recalcular H21.
+Consulte seus JSON de entradas operacionais e inventário: XP é a preferência,
+Rico alternativa condicional; conta, capital, horizonte e tolerância são desconhecidos.
+Regulamentos/demonstrações apoiam inventário parcial; não declarar ausência integral
+de eventos nem incorporação executada pela presença do assunto num aviso.
+Próximo trabalho: fechar a cobertura histórica restante de eventos/direitos e
+custos efetivos. As aquisições desta rodada estão encerradas, com duas revisões;
+não repetir coleta ou criar variantes sem novo orçamento/procedimento.
 O plano `docs/research/2026-09-09-h21-forward-plan.json` já está registrado,
 para os pregões especificados de 10/09/2026–10/09/2027.
 Zero observações futuras e nenhum monitor. Nova rodada exige orçamento finito

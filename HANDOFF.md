@@ -1,3 +1,31 @@
+## Continuidade após fontes/custos — 09/09/2026
+
+O usuário informou XP como preferência, com abertura a alternativa.
+Foi concluída uma rodada documental, sem nova valorização:
+[relatório](docs/research/2026-09-09-h21-source-closure.md),
+[entradas](docs/research/2026-09-09-h21-operational-inputs.json) e
+[inventário](docs/research/2026-09-09-h21-source-inventory.json).
+
+Preços BOVA11 atualizados em fonte separada: 2.159 registros até 08/09,
+109 adicionais e 62 sobrepostos sem diferenças. ZIP truncado rejeitado,
+recomposto por intervalo/ETag e validado por hash/CRC. Duas revisões de
+normalização; a segunda só adicionou proveniência. Livro H21 preservado.
+
+Custos públicos B3 e corretoras delimitados; XP efetiva depende da conta,
+Rico informa ETF digital zero com adicionais. Registros B3 precisam de fundo990
+e classe19674 e consultas anuais. Assembleia sobre incorporação não instalada;
+não converter proposta em execução nem lista vazia em inventário completo.
+Faltam documentos históricos contínuos, despesas efetivas e dados pessoais.
+Campos não certificados seguem null; nenhuma aprovação econômica foi emitida.
+
+Tudo local em `C:\STOCKS`. Fontes/recibos:
+`work\h21-source-closure-20260909`; entrega/CI por SHA:
+`outputs\ENTREGA_FONTES_H21_20260909.json`.
+Próxima coleta exige novo orçamento; rodada atual fechada. Plano futuro preservado
+sem execução. Os blocos abaixo são históricos.
+
+---
+
 ## Revisão dos Markdown e raiz única — 09/09/2026
 
 Inventário inicial: 94 Markdown, incluindo documentos locais fora do Git.

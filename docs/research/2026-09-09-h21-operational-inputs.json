@@ -1,0 +1,309 @@
+{
+  "schema_version": 1,
+  "kind": "DOCUMENTED_RESEARCH_INPUTS_NOT_BROKER_EXECUTION_CONFIGURATION",
+  "reviewed_at_utc": "2026-09-09T20:11:20.380794+00:00",
+  "source_information_cutoff": "2026-09-08",
+  "temporal_scope_note": "Protocol cutoff for quotes and dated events. Live broker pages and current B3 metadata were observed on 2026-09-09; their availability as of 2026-09-08 is not certified.",
+  "broker_terms_observed_on": "2026-09-09",
+  "broker_terms_historical_effective_from": null,
+  "personal_profile": {
+    "broker_preference": "XP",
+    "alternatives_allowed": true,
+    "compared_alternative": "Rico",
+    "horizon": null,
+    "maximum_acceptable_loss": null,
+    "actual_capital_brl": null,
+    "account_channel": null,
+    "has_assessor": null,
+    "other_custodied_assets_brl": null,
+    "capital_5000_10000_are_scenarios": true
+  },
+  "instrument": {
+    "ticker": "BOVA11",
+    "isin": "BRBOVACTF003",
+    "cnpj": "10406511000161",
+    "b3_fund_id": 990,
+    "b3_class_id": 19674,
+    "current_secondary_trading_lot": 1,
+    "original_h21_lot": 10,
+    "historical_lot_change_effective_date": null,
+    "original_lot_preserved": true
+  },
+  "broker_comparison": {
+    "xp": {
+      "url": "https://www.xpi.com.br/custos-operacionais/",
+      "evidence_kind": "PUBLIC_BROWSER_OBSERVATION_AND_WEB_TEXT_NOT_RAW_HTML",
+      "secondary_bova11_brokerage_brl": null,
+      "conditional_listed_funds_selfservice_brokerage_brl": "0.00",
+      "condition": "Page Fundos Listados: independent client without adviser; ETF mapping and account eligibility not certified.",
+      "own_exchange_custody_brl": "0.00",
+      "operational_surcharge_percent": "5.9",
+      "surcharge_base": "Brokerage, emoluments and settlement fee; mapping of current CCP/transfer nomenclature to actual note remains to reconcile.",
+      "primary_creation_redemption_only": {
+        "percent": "0.04",
+        "fixed_brl_per_request": "276.09",
+        "applies_to_secondary_trade": false
+      },
+      "taxes_percent": {
+        "ISS": "5",
+        "PIS": "0.65",
+        "COFINS": "4"
+      },
+      "full_cost_certified": false
+    },
+    "rico": {
+      "url": "https://www.rico.com.vc/custos/",
+      "evidence_kind": "PUBLIC_BROWSER_OBSERVATION_AND_WEB_TEXT_NOT_RAW_HTML",
+      "explicit_etf_selfservice_brokerage_brl": "0.00",
+      "condition": "Orders placed by client on digital platforms; desk/assessor conditions excluded.",
+      "etf_zero_requires_rlp_in_observed_row": false,
+      "operational_surcharge_percent": "5.9",
+      "surcharge_base": "Brokerage, emoluments and settlement fee; note-level mapping remains to reconcile.",
+      "taxes_percent": {
+        "ISS": "5",
+        "PIS": "0.65",
+        "COFINS": "4"
+      },
+      "taxes_method": "gross-up on brokerage and operating fees per published page",
+      "same_xp_group": true,
+      "full_cost_certified": false
+    },
+    "decision": "Keep XP preference. Rico is a conditional fee alternative if actual XP ETF brokerage is positive; no general superiority or switch concluded."
+  },
+  "exchange_costs": {
+    "schedule": "B3 equities V5.0",
+    "effective_from": "2026-09-01",
+    "valid_until": null,
+    "scope": "Regular non-day-trade BOVA11, first monthly investor ADTV bracket through BRL 3 million; no incentive enrollment assumed.",
+    "units": "Percent of financial volume PER SIDE; not fraction, not round trip, and not full transaction cost.",
+    "continuous": {
+      "negotiation_percent": "0.00500",
+      "ccp_percent": "0.02240",
+      "transfer_percent": "0.00260",
+      "b3_total_percent": "0.03000"
+    },
+    "opening_closing_auction": {
+      "negotiation_percent": "0.00700",
+      "ccp_percent": "0.02240",
+      "transfer_percent": "0.00260",
+      "b3_total_percent": "0.03200"
+    },
+    "transfer_basis": "Current spot page 0.00260%; annual market-wide non-day ADTV mechanism, not account ADTV.",
+    "rounding": "V5 section1.4: consolidate at stated precision, allocate by price/phase proportions, daily fee-type totals truncated to cents; no order-level approximation promoted as exact.",
+    "retroactive_application_to_2018_prohibited": true,
+    "historical_fee_schedule_complete": false,
+    "custody": {
+      "exemption_if_aggregate_brl_below": "26471.77",
+      "aggregation": "All accounts of same investor document at same custodian",
+      "progressive_first_bracket_annual_percent": "0.0500",
+      "first_bracket_ceiling_brl": "115000.00",
+      "actual_account_exemption_confirmed": false,
+      "actual_cost_brl": null
+    },
+    "retail_relationship_program_20260908": "Futures only; no BOVA11 spot discount applied."
+  },
+  "execution_unknowns": [
+    "Actual spread/slippage and opening auction fills",
+    "Broker note fee bases and rounding",
+    "Current XP ETF category/eligibility",
+    "Historical fee schedules for original book",
+    "User tax offsets/other operations and post-sale rights"
+  ],
+  "fund_internal_costs": {
+    "current_global_fee_annual_percent": "0.10",
+    "source": "fs_2026 note10",
+    "treatment": "Already charged inside fund NAV; do not subtract again from observed ETF prices as a second management charge."
+  },
+  "events": {
+    "full_interval_certified": false,
+    "cash_events": null,
+    "unit_adjustment_events": null,
+    "post_sale_rights_certified": false,
+    "empty_b3_event_response": "No cash/stock/subscription entries returned; response has no explicit historical retention window and is insufficient to certify absence.",
+    "policy": "FS2026 note14 incorporates results in NAV; fund portfolio dividends are not additional investor cash distributions.",
+    "amortization_permission": "Legacy article34 and current6.6 permit proportional cash amortization without reducing units. Current6.7 also permits compulsory redemption; permissions do not prove occurrences.",
+    "financial_statement_evidence": [
+      {
+        "source": "fs_2018",
+        "intervals": [
+          "2017-12-04/2018-03-31",
+          "2017-04-01/2017-12-01",
+          "year ended 2017-03-31"
+        ],
+        "result": "No separate amortization line in evolution table; creations/redemptions are primary-market fund flows, not forced changes to each secondary holder."
+      },
+      {
+        "source": "fs_2026",
+        "intervals": [
+          "2025-04-01/2026-03-31",
+          "comparative 2024-04-01/2025-03-31"
+        ],
+        "result": "No separate amortization line in evolution table; note8 permits it. Limited documentary support, not full historical absence certificate."
+      }
+    ],
+    "merger": {
+      "proposal_document_date": "2025-11-24",
+      "proposed_absorbed_fund_cnpj": "11455378000104",
+      "final_notice_body_date": "2026-01-21",
+      "meeting_date": "2026-01-08",
+      "result": "MEETING_NOT_INSTALLED_NO_WRITTEN_VOTES",
+      "executed_merger_proven": false,
+      "applied_unit_adjustment": null
+    },
+    "known_regulatory_changes": [
+      {
+        "effective_date": "2025-04-23",
+        "kind": "CVM175 adaptation"
+      },
+      {
+        "effective_date": "2026-03-04",
+        "kind": "ANBIMA fee transparency"
+      },
+      {
+        "effective_date": "2026-05-21",
+        "kind": "Maximum custody fee disclosure"
+      }
+    ],
+    "unresolved": [
+      "Continuous annual originals April2018-March2024",
+      "Fund/class filings not all read in full",
+      "April2026-cutoff actual cash/rights coverage",
+      "Historical lot effective date",
+      "Rights after original sale"
+    ]
+  },
+  "source_discrepancies": [
+    "Legacy regulation labeled 20May2024 on issuer page has 30Aug2021 in PDF; body date retained.",
+    "Third merger decision label 23Dec2025 differs from actual21Jan2026 PDF and FNET delivery21Jan2026.",
+    "November2025 incorporation call contains internally inconsistent 2025 effective/third-call dates; no silent correction or execution date inferred.",
+    "CVM pre-July2018 catalog returns2017/2018 only due publication-system migration; not absence of later reports.",
+    "Multiyear B3 filing query returned empty while correct annual scope returns known filings; those empty responses rejected."
+  ],
+  "source_review_notes": "FS2026 signed/approved29May2026; issuer availability14Aug2026. Publication/reference/acquisition dates are distinct. Marketing tables and FS performance were incidentally observed; no intact holdout.",
+  "ready_for_full_net_backtest": false,
+  "executable_full_net_profit": null,
+  "expected_future_profit": null,
+  "new_economic_variants": 0,
+  "new_economic_valuations": 0,
+  "original_h21_book_changed": false,
+  "sources": {
+    "calendar": {
+      "file": "b3-calendar-2026.html",
+      "sha256": "24d156661f91bb6bf3d8556cfdf3cdaff7a798b2822f4917f7defb3254178ceb",
+      "url": "https://www.b3.com.br/pt_br/noticias/calendario-de-negociacao-da-b3-confira-o-funcionamento-da-bolsa-em-2026.htm",
+      "pages_pdf_1_based": null
+    },
+    "quotes": {
+      "file": "COTAHIST_A2026.complete.ZIP",
+      "sha256": "b352157a252a9a31aed1be3a3f55d043785517d652f65ac715892cf2ddaa839a",
+      "url": "https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2026.ZIP",
+      "pages_pdf_1_based": null
+    },
+    "b3_current_fees": {
+      "file": "b3-fees-v5.pdf",
+      "sha256": "301060b405201cba77f638b35fc198b203eed97c66032603989d8fb8aaee4e46",
+      "url": "https://b3.com.br/data/files/5C/A6/C9/20/75F30A105BF9020AAC094EA8/Tarifacao_Equities_V5.0_PT.pdf",
+      "pages_pdf_1_based": [
+        9,
+        11,
+        19,
+        20,
+        33
+      ]
+    },
+    "b3_previous_fees": {
+      "file": "b3-equities-fees-v4.pdf",
+      "sha256": "b161e3f1d9c97747272c613b88a6c3c632d5dbf3004f9c1ea426f4330a4a4cb2",
+      "url": "https://www.b3.com.br/data/files/A2/01/CA/FE/3BB4B9105B12E5A9AC094EA8/Tarifacao_Equities_V4.0_PT.pdf",
+      "pages_pdf_1_based": null
+    },
+    "b3_current_spot": {
+      "file": "b3-fees-spot.html",
+      "sha256": "b5b97ec6c8f9feb40a045a530b8f640a5def0b1df9ca833e4c52554b864e22be",
+      "url": "https://www.b3.com.br/pt_br/produtos-e-servicos/tarifas/listados-a-vista-e-derivativos/renda-variavel/tarifas-de-acoes-e-fundos-de-investimento/a-vista/",
+      "pages_pdf_1_based": null
+    },
+    "b3_current_lot_and_events": {
+      "file": "b3-bova-events.json",
+      "sha256": "f71ddb54d7e37a25e041c535696a1f770fe46971953b6c4c824b8303a68420fa",
+      "url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetEventsCorporateActions/eyJsYW5ndWFnZSI6InB0LWJyIiwiaWRDRU0iOiJCT1ZBIn0=",
+      "pages_pdf_1_based": null
+    },
+    "b3_fund_classes": {
+      "file": "b3-bova-classes.json",
+      "sha256": "0f9b182c3dbd873365221a59b5969d7554719c0bbf39a1e156d7bea9e7a63aa1",
+      "url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetListClassFund/eyJsYW5ndWFnZSI6InB0LWJyIiwiaWRGTkVUIjoiOTkwIiwiaWRDRU0iOiJCT1ZBIiwidHlwZUZ1bmQiOiJFVEYifQ==",
+      "pages_pdf_1_based": null
+    },
+    "fs_2018": {
+      "file": "bova-fs-2018.pdf",
+      "sha256": "f88d52b52bf04d3b91156e6da914eb121fb5c83a4771b51c69518cc33ec258dd",
+      "url": "https://documentos-fundos.b3.com.br/documents/d/guest/BOVA_2018-06-12T12-49-36-740-pdf",
+      "pages_pdf_1_based": [
+        7
+      ]
+    },
+    "fs_2026": {
+      "file": "bova-fs-2026-retry.pdf",
+      "sha256": "a87749d1f6740441392e6e8e9c4c085f193d8d432bf7eb57a6be7a53b7d39c92",
+      "url": "https://www.blackrock.com/br/literature/annual-financial-statements/ishares-bova11-brl-demonstrativos-financeiros-2026-ptbr.pdf",
+      "pages_pdf_1_based": [
+        9,
+        16,
+        18,
+        20
+      ]
+    },
+    "rules_2021": {
+      "file": "bova-regulamento-legacy.pdf",
+      "sha256": "5e443e84da4e7ad964e3b7e7855cee289f51b0d2587bbeef33aa16ad2a14cf05",
+      "url": "https://www.blackrock.com/br/literature/bylaws/ishares-bova11-brl-regulamento-ptbr.pdf",
+      "pages_pdf_1_based": [
+        28
+      ]
+    },
+    "rules_2026": {
+      "file": "bova-regulamento-2026.pdf",
+      "sha256": "9b25038063be31b2f7159c93d8a8031df87c3696dac855b2718040141548b665",
+      "url": "https://www.blackrock.com/br/literature/bylaws/ishares-bova11-brl-regulamento-2026-ptbr.pdf",
+      "pages_pdf_1_based": [
+        19
+      ]
+    },
+    "proposed_merger": {
+      "file": "bova-merger-notice-retry.pdf",
+      "sha256": "2d45ef6a7804bb8b932ae2a6762424ddb95cbd02dcd3ffb4e49cf52a07cab5f1",
+      "url": "https://www.blackrock.com/br/literature/shareholder-letters/ishares-bova11-brl-convocacao-agc-incorporacao-ptbr.pdf",
+      "pages_pdf_1_based": [
+        1,
+        2
+      ]
+    },
+    "merger_decision": {
+      "file": "bova-merger-decisions-3-retry.pdf",
+      "sha256": "acccae93ae4c1ef84bd4f5c50208d151681cf12da72e4a7acfb49f28aa8dd002",
+      "url": "https://www.blackrock.com/br/literature/shareholder-letters/ishares-bova11-brl-sumariodecisoesmerger3-ptbr.pdf",
+      "pages_pdf_1_based": [
+        1
+      ]
+    },
+    "cvm_legacy_catalog": {
+      "file": "cvm-bova-fs-query.html",
+      "sha256": "d3ccd82bcd57d2dfce743d3134b4c7a645521948c69dedce08cf5f40e9249a1d",
+      "url": "https://cvmweb.cvm.gov.br/SWB/Sistemas/SCW/CPublica/DemContabeis/CPublicaDemContabeis.aspx",
+      "pages_pdf_1_based": null
+    },
+    "b3_archived_statements": {
+      "file": "b3-bova-audited-docs.json",
+      "sha256": "b7535d61f6a39f6f36e802dbd4ab00c803a12e380b6c6d8b9a5e2da6525ef9c5",
+      "url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetListDocsFunds",
+      "pages_pdf_1_based": null
+    },
+    "b3_retail_program": {
+      "file": "b3-retail-program.pdf",
+      "sha256": "6e6321355e692e79813f1ce84e71a9e57056980acf82a611a74bd50cae07e548",
+      "url": "https://b3.com.br/data/files/DB/A4/00/A7/C9940A105BF9020AAC094EA8/OC%20038-2026%20PRE%20PROGRAMA%20DE%20INCENTIVO%20PF_PT.pdf",
+      "pages_pdf_1_based": null
+    }
+  }
+}
