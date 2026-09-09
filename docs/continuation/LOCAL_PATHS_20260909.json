@@ -1,0 +1,22 @@
+{
+  "code_checkout": "C:\\STOCKS\\stocks-predictor",
+  "code_branch": "main",
+  "offline_bundle": "C:\\STOCKS\\CODIGO_MAIN.bundle",
+  "bundle_and_initial_remote_main_commit": "99f8751c03084d724e59dd53f5f63221fe220e9b",
+  "archive": "C:\\STOCKS\\DADOS_STOCKS.zip",
+  "archive_sha256": "83d5aac8e23d72e4deb1331077e08313914375a5dbac4276e5f8ad89da586d23",
+  "original_split_parts": ["C:\\STOCKS\\DADOS_STOCKS.zip.001", "C:\\STOCKS\\DADOS_STOCKS.zip.002"],
+  "restored_sources": "C:\\STOCKS\\work\\h21\\raw",
+  "restored_scope": "Nine original COTAHIST ZIPs 2018-2026, 505826391 bytes. No DB opened/restored and no full 60023-file restoration claim.",
+  "source_receipt": "C:\\STOCKS\\work\\h21\\raw\\receipt.json",
+  "h21_inputs": "C:\\STOCKS\\work\\h21\\inputs",
+  "h21_result_v1": "C:\\STOCKS\\work\\h21\\result-01.json",
+  "h21_independent_accounting": "C:\\STOCKS\\work\\h21\\independent-accounting-01.json",
+  "public_source_captures": "C:\\STOCKS\\work\\h21\\public",
+  "auxiliary_python": "C:\\Users\\leona\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+  "auxiliary_python_version": "3.12.14",
+  "production_python_local": null,
+  "production_core_local": null,
+  "historical_sources": "PATHS.json remains historical; H20 source manifest revision13 7c24e093f7a148c3f375fff9fbd23db62f049ba8012e49e6ba7b4413e27a372b was not used or promoted to revision14. H21 uses the data-transfer archive and nine original quote-object hashes.",
+  "migration_note": "Supplied join script resides in FONTES_WEB_ORIGINAIS but searches parts in its own folder. Initial attempt failed before reading parts. Auxiliary join at actual root verified both part hashes, full stream hash and reconstructed-file hash without changing originals."
+}

@@ -3,7 +3,8 @@
 ## Mandato vigente de 09/09/2026
 
 O usuário autorizou novas pesquisas e mudanças técnicas pelo mandato
-`STOCKS_PREDICTOR_PROMPT_FINAL_20260909.md`, executado em `C:\STOCKS`.
+[`docs/continuation/MANDATO_20260909.md`](docs/continuation/MANDATO_20260909.md),
+executado em `C:\STOCKS`.
 Priorizar validade da medição e decisão econômica; registrar hipóteses novas
 antes de observar desempenho. As restrições antigas de arquitetura, ordem de
 marcos e escopo não impedem esse trabalho. Não alterar protocolos/vereditos

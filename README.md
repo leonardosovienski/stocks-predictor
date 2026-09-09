@@ -1,4 +1,4 @@
-> Estado atual: [correções e validação](docs/research/2026-09-08-h20-remediation-results.md) após a [auditoria do chat](docs/research/2026-09-08-chat-review.md). A reprodução protegida agora está na wheel: `py -3.13 -m stocks_predictor.h20_checked --root RAIZ --gate GATE_CONGELADO --output ARQUIVO_NOVO`. Os executores antigos são arquivos históricos. Lucro líquido não calculado.
+> Estado atual (09/09/2026): [H21 — exposição simples, contas e limites](docs/research/2026-09-09-h21-results.md). Rodada BOVA11 executada com ganhos históricos condicionais; eventos do ETF e despesas ainda impedem lucro executável integral ou previsão. H20 está estacionada para reconstrução ampla, com protocolos preservados. [Reproduzir H21](research/session-20260909/h21/README.md). O replay histórico protegido H20 continua em `python -m stocks_predictor.h20_checked`.
 
 # stocks-predictor
 
