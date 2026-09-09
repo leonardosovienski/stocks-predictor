@@ -1,3 +1,29 @@
+## Revisão dos Markdown e raiz única — 09/09/2026
+
+Inventário inicial: 94 Markdown, incluindo documentos locais fora do Git.
+Corrigidas divergências de AGENTS/CLAUDE, README, continuidade e migração.
+Relatórios, fontes originais e documentos congelados permanecem preservados.
+Classificação: [docs/DOCUMENTATION_INDEX.md](docs/DOCUMENTATION_INDEX.md).
+
+Base H21 integrada: `4a85d4317657ac5ddaffcacf889b6341cf9c4b0a`, PR69, CI184:
+782 testes regulares, Linux/Python 3.13.15/Core 3.2.0, 78% cobertura,
+Ruff/Pyright/build/gitleaks e wheel externa aprovados. Esta revisão é documental;
+não altera código, parâmetros, fontes, bancos, trials ou resultados.
+Recibo e SHA posteriores: `C:\STOCKS\work\markdown-review-20260909`.
+
+Código: `C:\STOCKS\stocks-predictor`; relatórios: `C:\STOCKS\outputs`;
+pesquisa/logs: `C:\STOCKS\work`; prompt original em `instructions` da raiz.
+A centralização conferiu sete arquivos por hash e removeu as origens externas.
+Mapa atual: `C:\STOCKS\LOCALIZACAO_PROJETO.json`; `PATHS.json` é histórico.
+
+H21 continua inconclusiva para lucro executável; H20 estacionada para
+reconstrução ampla. O plano prospectivo já existe, sem execução. Próximo passo:
+eventos do ETF, custos reais e reconciliação. A finalização H21 excedeu
+17:38 UTC; o recibo registra o atraso, sem novas variantes.
+As entradas seguintes preservam o histórico de cada data.
+
+---
+
 ## Rodada econômica H21 em C:\STOCKS (09/09/2026)
 
 Mandato novo em docs/continuation/MANDATO_20260909.md. Checkout a partir do bundle

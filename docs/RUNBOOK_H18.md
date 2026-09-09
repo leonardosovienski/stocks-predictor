@@ -1,3 +1,17 @@
+# Runbook histórico H18/H19 — contexto em 09/09/2026
+
+O roteiro abaixo descreve ambiente e medições de 04–06/09/2026.
+H17–H19 tiveram observações posteriores; “nunca rodaram” ou “sem execução”
+são afirmações daquela data. Caminhos, instalações e ordem de rodadas abaixo
+não são instruções atuais.
+
+Retome por [AGENTS](../AGENTS.md), [estado atual](../STOCKS_CURRENT_STATE.md)
+e [H21](../research/session-20260909/h21/README.md).
+Raiz `C:\STOCKS`; não criar venv ou instalar Core neste Windows.
+Este runbook não autoriza reabrir H18/H19 ou escrever nos bancos.
+
+---
+
 # Runbook — do zero até medir os critérios da H18/H19
 
 > **Atualização 2026-09-06:** a cobertura foi reproduzida, mas não prova

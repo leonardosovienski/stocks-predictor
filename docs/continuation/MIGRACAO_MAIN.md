@@ -1,3 +1,18 @@
+# Migração neste computador — 09/09/2026
+
+Raiz `C:\STOCKS`; código em `C:\STOCKS\stocks-predictor`, main.
+ZIP já reunido e hashes conferidos; nove COTAHIST recuperados seletivamente.
+Bancos permanecem no arquivo preservado. Não houve restauração integral ou
+instalação de bibliotecas de produção aqui. Use
+[mapa local](LOCAL_PATHS_20260909.json) e [estado](../../STOCKS_CURRENT_STATE.md).
+
+O guia abaixo é o registro da exportação de 08/09/2026. Os 777 testes, 25 bancos,
+`E:\...`, `C:\Stocks\codigo`, `DEPENDENCIAS` e instalações pertencem ao computador
+anterior. Não reaplicar como roteiro atual, recriar checkout ou trocar caminhos
+em fontes/recibos originais. A cópia do guia em FONTES_WEB_ORIGINAIS é imutável.
+
+---
+
 # Migração com código na main e dados separados
 
 Inicialmente o operador pediu commit local sem push. Depois esclareceu, mostrando

@@ -1,3 +1,50 @@
+## Estado vigente após a centralização — 09/09/2026
+
+Raiz única: `C:\STOCKS`; checkout: `C:\STOCKS\stocks-predictor`, main.
+Entregas: `C:\STOCKS\outputs`; pesquisa/logs: `C:\STOCKS\work`; prompt original:
+`C:\STOCKS\instructions\STOCKS_PREDICTOR_PROMPT_FINAL_20260909.md`.
+Seis entregas e o prompt foram movidos com SHA-256 conferido; a pasta anterior
+da tarefa ficou sem arquivos do projeto. Mapas: `C:\STOCKS\LOCALIZACAO_PROJETO.json`
+e [LOCAL_PATHS_20260909.json](docs/continuation/LOCAL_PATHS_20260909.json).
+
+A rodada H21 foi integrada pelo [PR69](https://github.com/leonardosovienski/stocks-predictor/pull/69),
+commit `4a85d4317657ac5ddaffcacf889b6341cf9c4b0a`.
+A [CI184 desse SHA](https://github.com/leonardosovienski/stocks-predictor/actions/runs/34386092297)
+passou 782 testes regulares, Ruff, Pyright, build, gitleaks e wheel fora do checkout;
+Linux, Python 3.13.15/Core 3.2.0, cobertura 78%. Os 17 testes arquivados não foram
+executados. Revisões documentais posteriores não são nova medição econômica.
+
+Somente nove COTAHIST foram recuperados da migração; bancos não foram abertos
+ou integralmente restaurados. Python auxiliar local: 3.12.14; produção
+3.13/Core/pytest indisponível localmente. Nenhuma instalação Windows foi feita.
+
+H21: uma história exploratória BOVA11 de 2018-01-02 a 2026-04-01,
+quatro especificações e oito valorizações de capital, com 2.050 cotações.
+Ganho condicional R$5.515,48–5.618,39 no cenário R$5 mil e
+R$11.950,19–12.173,17 no cenário R$10 mil; drawdown máximo 43,46–46,31%.
+Custos/imposto modelados não resolvem despesas reais e inventário de eventos
+do ETF. Lucro executável integral e previsão permanecem desconhecidos (`null`).
+H21 é candidata a validação adicional; reconstrução ampla H20 estacionada.
+Não há comparação líquida H21–H20 nem holdout intacto demonstrados.
+57/59 são mínimos administrativos, não provas independentes.
+
+O [plano prospectivo](docs/research/2026-09-09-h21-forward-plan.json) já está
+registrado, para o primeiro pregão a partir de 10/09/2026 até o primeiro a partir
+de 10/09/2027. Zero observações futuras e nenhum processo ativo.
+Próximo trabalho: inventariar eventos do ETF e direitos após a venda, apurar
+despesas/execução, reconciliar sem tuning e seguir o plano quando houver dados.
+O pré-registro do plano não está pendente.
+
+O experimento terminou às 16:50:16 UTC. A finalização excedeu o prazo registrado
+de 17:38 UTC e foi conferida após 18:02 UTC; atraso declarado, sem novas variantes.
+Recibo: `C:\STOCKS\outputs\ENTREGA_STOCKS_H21.json`.
+
+Os blocos abaixo são registros datados. “Atual”, “nunca rodou”, contagens e
+caminhos externos neles se referem à respectiva versão.
+[Índice documental](docs/DOCUMENTATION_INDEX.md): orientação vigente e acervo.
+
+---
+
 ## Estado vigente — rodada H21 de 09/09/2026
 
 Código agora em `C:\STOCKS\stocks-predictor`. Mapa local:

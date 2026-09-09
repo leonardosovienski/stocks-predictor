@@ -5,7 +5,10 @@
   "bundle_and_initial_remote_main_commit": "99f8751c03084d724e59dd53f5f63221fe220e9b",
   "archive": "C:\\STOCKS\\DADOS_STOCKS.zip",
   "archive_sha256": "83d5aac8e23d72e4deb1331077e08313914375a5dbac4276e5f8ad89da586d23",
-  "original_split_parts": ["C:\\STOCKS\\DADOS_STOCKS.zip.001", "C:\\STOCKS\\DADOS_STOCKS.zip.002"],
+  "original_split_parts": [
+    "C:\\STOCKS\\DADOS_STOCKS.zip.001",
+    "C:\\STOCKS\\DADOS_STOCKS.zip.002"
+  ],
   "restored_sources": "C:\\STOCKS\\work\\h21\\raw",
   "restored_scope": "Nine original COTAHIST ZIPs 2018-2026, 505826391 bytes. No DB opened/restored and no full 60023-file restoration claim.",
   "source_receipt": "C:\\STOCKS\\work\\h21\\raw\\receipt.json",
@@ -18,5 +21,11 @@
   "production_python_local": null,
   "production_core_local": null,
   "historical_sources": "PATHS.json remains historical; H20 source manifest revision13 7c24e093f7a148c3f375fff9fbd23db62f049ba8012e49e6ba7b4413e27a372b was not used or promoted to revision14. H21 uses the data-transfer archive and nine original quote-object hashes.",
-  "migration_note": "Supplied join script resides in FONTES_WEB_ORIGINAIS but searches parts in its own folder. Initial attempt failed before reading parts. Auxiliary join at actual root verified both part hashes, full stream hash and reconstructed-file hash without changing originals."
+  "migration_note": "Supplied join script resides in FONTES_WEB_ORIGINAIS but searches parts in its own folder. Initial attempt failed before reading parts. Auxiliary join at actual root verified both part hashes, full stream hash and reconstructed-file hash without changing originals.",
+  "local_project_root": "C:\\STOCKS",
+  "deliverables": "C:\\STOCKS\\outputs",
+  "original_mandate_current_path": "C:\\STOCKS\\instructions\\STOCKS_PREDICTOR_PROMPT_FINAL_20260909.md",
+  "local_location_registry": "C:\\STOCKS\\LOCALIZACAO_PROJETO.json",
+  "relocation_receipt": "C:\\STOCKS\\work\\centralizacao-20260909\\movimentacoes.json",
+  "path_policy": "All new local project files remain under C:\\STOCKS. Sealed historical paths remain provenance; installed Codex runtime and GitHub are environment/remote resources."
 }
