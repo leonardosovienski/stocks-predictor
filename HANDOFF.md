@@ -1,3 +1,39 @@
+## Rodada econômica H21 em C:\STOCKS (09/09/2026)
+
+Mandato novo em docs/continuation/MANDATO_20260909.md. Checkout a partir do bundle
+99f8751, igual à main remota inicial; nenhuma alteração local anterior. ZIP dividido
+reunido com hashes originais; nove COTAHIST restaurados, nenhum banco aberto.
+Mapa efetivo: docs/continuation/LOCAL_PATHS_20260909.json. Python local auxiliar
+3.12.14, sem Python 3.13/Core/pytest de produção; nada instalado ou contornado.
+
+H21 registrada em 62161fb antes dos preços; medidor fbc2a2b. Uma compra/venda
+BOVA11, 2018-01-02 a 2026-04-01, lotes de dez, custos 18/36 bp por lado,
+abertura/pior abertura-fechamento, IR15% sem isenção ETF. 2.050 cotações;
+quatro especificações/oito valores de capital compartilham uma única história.
+R$5 mil: ganho condicional R$5.515,48–5.618,39; R$10 mil: R$11.950,19–12.173,17.
+Quedas máximas 43,46–46,31%; não é renda futura nem lucro executável certificado.
+Faltam inventário dos eventos do próprio ETF e despesas adicionais documentadas.
+Página de reinvestimento não elimina amortizações permitidas no regulamento.
+
+H21: evidência inconclusiva para lucro integral, candidata à validação adicional;
+continuar apenas eventos/custos/execução. H20: estacionar reconstrução ampla,
+sem mudar sua evidência inconclusiva ou seus lacres. Nenhuma comparação líquida
+H21–H20 válida. Mínimos administrativos 53/55 anteriores +4 =57/59, não provas
+independentes. Journal append-only em docs/research/2026-09-09-h21-observations.jsonl.
+
+Corrigido economics: anualização histórica sai em campo próprio; previsão null.
+Três regressões falharam antes e passaram depois. Smoke wheel muda realmente de
+diretório e verifica origem de imports em modo isolado. 19 testes locais do livro,
+três de rótulos e oito livros/16.400 pontos conferidos em centavos por outro cálculo
+do mesmo agente. Suíte canônica/CI e estado integrado: recibo da rodada e PR69.
+
+Relatório: docs/research/2026-09-09-h21-results.md. Reprodução:
+research/session-20260909/h21/README.md. Resultado original 39a940514b5fdcbb...
+Próximo passo: inventário completo de eventos BOVA11 no intervalo, incluindo
+direitos posteriores à saída, e custos operacionais reais do cenário; depois,
+reconciliar sem tuning e pré-registrar observação futura. Nada roda em segundo
+plano. Nenhuma ordem, assinatura de revisão humana, agente ou automação recorrente.
+
 ## Branch única também no GitHub (08/09/2026)
 
 O operador esclareceu o escopo mostrando o GitHub com 24 branches após a

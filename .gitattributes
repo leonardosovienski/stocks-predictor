@@ -39,3 +39,7 @@ research/session-20260908/h20-remediation/full-tests.log -whitespace
 docs/research/2026-09-08-source-closure-protocol.json -text !eol
 # Preserve native Windows source-audit logs without flagging CRLF as whitespace.
 research/session-20260908/source-closure/** whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Keep newly registered H21 artifact bytes stable on Windows and Linux.
+docs/research/2026-09-09-h21-* text eol=lf
+research/session-20260909/h21/* text eol=lf

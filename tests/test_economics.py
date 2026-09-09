@@ -119,8 +119,9 @@ def test_edge_real_mas_pequeno_demais_e_desfecho_proprio():
     cfg = _cfg(capital=100_000.0, minimo=50_000.0, dd=0.50)
     estado, motivo, detalhe = economics.classify(economics.screen([0.0001] * 252), cfg)
     assert estado == economics.ABAIXO_DO_MINIMO
-    assert "lucro anual esperado" in motivo
-    assert 0 < detalhe["expected_annual_profit_brl"] < 50_000.0
+    assert "equivalente histórico anualizado" in motivo
+    assert detalhe["expected_annual_profit_brl"] is None
+    assert 0 < detalhe["historical_annualized_profit_equivalent_brl"] < 50_000.0
 
 
 def test_drawdown_acima_do_aceitavel_reprova_mesmo_com_lucro():
@@ -154,7 +155,8 @@ def test_summary_line_nunca_derruba_a_rodada():
 
 def test_summary_line_mostra_dinheiro_quando_ha_capital():
     linha = economics.summary_line([0.001] * 252, _cfg(200_000.0, 10_000.0, 0.5))
-    assert "lucro anual esperado R$" in linha
+    assert "equivalente histórico anualizado R$" in linha
+    assert "não é previsão" in linha
     assert economics.ACIMA_DO_MINIMO in linha
 
 

@@ -1,3 +1,24 @@
+## Estado vigente — rodada H21 de 09/09/2026
+
+Código agora em `C:\STOCKS\stocks-predictor`. Mapa local:
+`docs/continuation/LOCAL_PATHS_20260909.json`. O mandato atual autoriza nova pesquisa
+e está preservado em `docs/continuation/MANDATO_20260909.md`; os estados abaixo
+continuam históricos, interpretados pela data.
+
+**H21 BOVA11:** uma rodada exploratória executada, quatro cenários de preço/custo,
+oito valorizações em R$5/10 mil, 2.050 cotações reais. Ganhos históricos condicionais
+positivos; quedas máximas de 43–46%. Lucro executável integral e previsão continuam
+`null`: faltam inventário completo dos eventos do ETF e despesas adicionais.
+H21 é candidata à validação adicional, não aprovada para operar.
+H20 permanece inconclusiva e fica estacionada para reconstrução ampla nesta rodada.
+H1–H20/lacres preservados. Nenhum capital real, monitor ou paper ativado.
+
+Relatório: [H21 e decisão econômica](docs/research/2026-09-09-h21-results.md).
+Reprodução: `research/session-20260909/h21/README.md`. `economics.py` agora distingue
+equivalente histórico anualizado de previsão; CI wheel verifica isolamento real.
+Python auxiliar local 3.12.14 não é validação do contrato de produção 3.13;
+ver recibo de CI/PR69 para checks do estado integrado.
+
 ## Complemento de fontes — revisão 13 (08/09/2026 UTC)
 
 Entrada atual: work/source-closure-20260908/execution-inputs-13, manifesto
