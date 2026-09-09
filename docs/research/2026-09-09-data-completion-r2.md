@@ -44,6 +44,9 @@ Ele contém 1.149.872 linhas de cotações brutas, 1.784 códigos de instrumento
 1.784 ações. Ajustes, fundamentos e 2.227 linhas de quarentena foram preservados.
 Versões reparadas e de pesquisa continuam separadas; três bancos pequenos são
 fixtures/smokes, identificados no catálogo. Não foi escolhida uma versão por retorno.
+Nos bancos que possuem `fundamentals_pit`, essa tabela está vazia. Restaurar
+fundamentos não estabelece, por si só, histórico point-in-time para modelos de fatores;
+essa frente não é necessária à exposição simples BOVA11 nem foi reaberta na R2.
 Datas de pagamentos futuros existentes nos bancos não significam caixa recebido.
 
 Fontes 13 e 14:
