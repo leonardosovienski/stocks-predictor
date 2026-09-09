@@ -1,5 +1,26 @@
 # predictor-stocks — instruções para o implementador
 
+## Mandato vigente de 09/09/2026
+
+O usuário autorizou novas pesquisas e mudanças técnicas pelo mandato
+`STOCKS_PREDICTOR_PROMPT_FINAL_20260909.md`, executado em `C:\STOCKS`.
+Priorizar validade da medição e decisão econômica; registrar hipóteses novas
+antes de observar desempenho. As restrições antigas de arquitetura, ordem de
+marcos e escopo não impedem esse trabalho. Não alterar protocolos/vereditos
+congelados, assinar revisão humana, operar capital ou ativar automações.
+Preservar originais e alterações do usuário; trabalhar sem outros agentes.
+
+No Windows, não criar venv nem instalar Core via pip. Verificar o runtime real:
+este computador dispõe inicialmente apenas do Python 3.12.14 empacotado no
+Codex, fora do PATH. Ele pode executar ferramentas auxiliares stdlib compatíveis;
+isso não valida o contrato do pacote (`>=3.13,<3.15`) nem a suíte canônica.
+Não instalar/alterar runtime global ou contornar EDR para satisfazer checks.
+Linux CI continua permitido conforme `.github/workflows/ci.yml`.
+
+As regras abaixo preservam contexto histórico e valem onde não conflitarem
+com esse mandato. Fonte de verdade do Core atual: wheel oficial 3.2.0,
+`pyproject.toml`/`uv.lock`; `vendor/` é histórico e não runtime normal.
+
 **Antes de escrever qualquer linha: ler [docs/DESIGN.md](docs/DESIGN.md) INTEIRO e
 [HANDOFF.md](HANDOFF.md) (estado atual, decisões, próximos passos).**
 
