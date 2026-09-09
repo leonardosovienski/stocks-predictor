@@ -1,0 +1,49 @@
+{
+  "protocol_id": "H21_SOURCE_CLOSURE_20260909_V1",
+  "kind": "SOURCE_AND_OPERATIONAL_INPUT_VALIDATION_NOT_A_RETURN_TRIAL",
+  "registered_at_utc": "2026-09-09 18:57:46 UTC",
+  "base_commit": "7f7148e903c3ad01e91f2c1f34c8a57460b0862b",
+  "user_request": "arruma isso — resolver lacunas de eventos BOVA11, custos/execução e atualização de fontes; preferências pessoais solicitadas em paralelo.",
+  "hypothesis": "A evidência pública e documentos já disponíveis podem resolver ou delimitar a premissa de cotas constantes/pagamentos do ETF e substituir premissas genéricas por componentes de custo documentados.",
+  "fixed_instrument": {
+    "ticker": "BOVA11",
+    "isin": "BRBOVACTF003"
+  },
+  "historical_book_period": [
+    "2018-01-02",
+    "2026-04-01"
+  ],
+  "source_information_cutoff": "2026-09-08",
+  "quotes_scope": "Atualizar dados brutos até 2026-09-08, último dia completo anterior à solicitação intradiária em 09/09. Separar e comparar sobreposição com o arquivo preservado, sem selecionar datas por desempenho e sem calcular retornos.",
+  "event_scope": "Documentos de exercício 2017/18 até 2026 e versões regulatórias/avisos, cobrindo direitos, pagamentos, amortizações, splits, reorganizações e obrigações após venda disponíveis até o cutoff; separar eventos do próprio ETF de proventos das ações da carteira.",
+  "sources": [
+    "BlackRock/administrador do fundo",
+    "B3 COTAHIST/calendários/tarifas e cadastro/divulgação ETF",
+    "CVM/FNET publicações do fundo",
+    "Tarifas públicas da corretora se informada; caso contrário componentes públicos B3 e corretora explicitamente pendente"
+  ],
+  "preobserved_data": "Toda a história H21 foi usada na exploração. Consulta anterior de documentação expôs NAV 08/09/2026 e tabelas históricas/retornos de marketing; anotado em C:/STOCKS/work/information-gaps-20260909/source-check.json. Não há holdout intacto.",
+  "capital": "R$5000/R$10000 apenas cenários; capital pessoal não confirmado.",
+  "work_budget": {
+    "max_acquisition_requests": 80,
+    "max_bulk_download_bytes": 800000000,
+    "max_source_normalization_revisions": 2,
+    "economic_price_cost_variants": 0,
+    "new_economic_valuations": 0,
+    "data_work_stop_utc": "2026-09-09T20:20:00Z",
+    "delivery_deadline_utc": "2026-09-09T20:50:00Z"
+  },
+  "acceptance": [
+    "Fontes originais preservadas com URL, aquisição UTC, hash, tamanho e status; falhas também registradas.",
+    "Série recente extraída com identidade, fator, calendário e sobreposição auditados; original não sobrescrito; nenhum retorno calculado.",
+    "Inventário de eventos baseado em fontes que cubram o intervalo; lista vazia de busca não prova ausência.",
+    "Custos divididos entre tarifa documentada, aproximação de execução e desconhecido; custo zero requer evidência aplicável.",
+    "Preferências pessoais desconhecidas não preenchidas pelo agente; nenhum comando de negociação/agendamento."
+  ],
+  "stopping": "Encerrar coleta no prazo ou com decisão sustentada sobre cada lacuna; recursos públicos acessíveis devem ser tentados antes de declarar bloqueio. Reservar finalização/CI. Validação futura não pode ser produzida retroativamente.",
+  "preservation": {
+    "original_h21_result_sha256": "39a940514b5fdcbb577c496f996ddd324c8107436852ab67da352401bb8870d2",
+    "original_h21_protocol_sha256": "5721d7405af2f398448be3966eeb832deda06f7aa936e5244059ae7ca86797fb",
+    "protected_banks_and_ledgers_untouched": true
+  }
+}
