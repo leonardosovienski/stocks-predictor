@@ -1,0 +1,38 @@
+{
+  "id": "DATA_COMPLETION_20260909_R2",
+  "kind": "SOURCE_RECOVERY_AND_READINESS_NO_ECONOMIC_TRIAL",
+  "user_request": "arruma oq falta disso — retomar fontes, custos e disponibilidade dos bancos",
+  "base_commit": "c45c6e1aba148190ee1bd99da87f7a719af3b1b0",
+  "objectives": [
+    "Restaurar os bancos/fontes canônicos necessários a partir do arquivo íntegro, em destinos separados, com hashes e validação somente leitura.",
+    "Recuperar originais históricos de eventos/demonstrações BOVA11 e tarifas aplicáveis; buscar alternativas oficiais para acessos que falharam.",
+    "Validar contratos, disponibilidade e cobertura dos dados para tornar as pendências operacionais verificáveis, sem marcar ausência desconhecida como zero."
+  ],
+  "information_cutoff": "2026-09-08",
+  "live_metadata_policy": "Aquisições e metadados ao vivo são observados em09/09; não são informação conhecida retroativamente. Manter referência/publicação/aquisição separadas.",
+  "preserved_economic_scope": "H21 BOVA11,2018-01-02/2026-04-01; H20 estacionada. Não calcular retornos nem reabrir hipóteses econômicas.",
+  "preobserved": "Toda a história H21 é exploratória; tabelas de marketing e demonstrações já foram observadas. Nenhum holdout intacto.",
+  "budget": {
+    "public_source_acquisition_jobs": 140,
+    "public_search_or_browser_actions": 80,
+    "new_source_download_bytes": 1000000000,
+    "selected_archive_restore_bytes": 6000000000,
+    "database_normalization_revisions": 2,
+    "event_cost_normalization_revisions": 2,
+    "economic_variants": 0,
+    "new_economic_valuations": 0,
+    "data_work_stop_utc": "2026-09-09T22:40:00Z",
+    "delivery_deadline_utc": "2026-09-09T23:10:00Z"
+  },
+  "request_accounting": "Contabilizar trabalhos de aquisição e ações de descoberta separadamente; redirecionamentos/recursos internos do navegador não são um limite verificável de todoHTTP. Três consultas iniciais amplas e três filtradas de descoberta foram feitas nesta retomada antes deste registro, sem cálculo de desempenho.",
+  "acceptance": [
+    "Nenhuma restauração sobrescreve fonte/banco protegido; selecionar identidade canônica por proveniência, não por maior retorno ou maior completude.",
+    "Banco é lido somente em modo somente-leitura; integridade e cobertura aferidas separadamente.",
+    "Evento certificado requer fonte/intervalo/identidade efetiva, anúncio/direito/pagamento, ou evidência de ausência proporcional à conclusão.",
+    "Custos sem condição aplicável permanecem desconhecidos; nenhuma autenticação de corretora ou envio de ordens.",
+    "Novos documentos e inventários refletem prontidão por domínio e não usam CI como certificado de dados."
+  ],
+  "stopping": "Encerrar cada frente quando resolvida ou após esgotar rotas públicas/locais pertinentes no orçamento. Dados pessoais e preenchimentos reais de ordens não podem ser inventados. Registrar exatamente o restante e a evidência das tentativas.",
+  "local_root": "C:/STOCKS",
+  "work_root": "C:/STOCKS/work/data-completion-r2-20260909"
+}
