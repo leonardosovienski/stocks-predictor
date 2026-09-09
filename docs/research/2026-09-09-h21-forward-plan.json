@@ -1,0 +1,27 @@
+{
+  "protocol_id": "H21_FORWARD_OBSERVATION_PLAN_V1",
+  "status": "PREREGISTERED_PLAN_ONLY_NOT_RUNNING",
+  "authorization_boundary": "Public-source observation and simulation only. No orders, brokerage authentication, recurring jobs, paid services or capital authorization.",
+  "registration_context": "Registered after H21 historical exposure, before any target-period quote. Git commit timestamp is the authoritative registration time.",
+  "hypothesis": "Keep the same broad-equity investment mechanism; observe future costs, event completeness, money outcomes and market risk without retuning the historical result.",
+  "instrument": {"ticker": "BOVA11", "isin": "BRBOVACTF003", "currency": "BRL"},
+  "entry": "First B3 trading session on or after 2026-09-10, fixed before seeing that session's quotes. Public daily COTAHIST acquisition can occur after publication; acquisition time is not the investment signal.",
+  "exit": "First B3 trading session on or after 2027-09-10. No exit chosen from returns; missing data remain blocked, not a favorable date substitution.",
+  "position": "Same largest affordable multiple-of-ten convention as historical H21, even though current market minimum is one unit. This preserves the tested rule; any change to one-unit sizing requires a separate prospective version before that version's data. No leverage, contributions or alternative ETF selection.",
+  "capital_brl_scenarios": [5000, 10000],
+  "price_modes": ["open", "worst_open_close"],
+  "one_way_cost_rate_scenarios": [0.0018, 0.0036],
+  "source_obligations": [
+    "Save original B3 daily/annual quote publications and SHA256; confirm identity, quote factor, scheduled market sessions and settlement calendar.",
+    "Preserve ETF announcements and versions as published. Reconcile ex/right/payment/amortization/split or liquidation events and post-sale obligations; no declaration of zero events merely from absent jumps.",
+    "Acquire actual public brokerage/B3 tariff terms when an operational scenario is specified, preserving availability and effective dates. Keep modeled rates separately.",
+    "Maintain simulated positions, cash, unsettled receivables, cost basis and total tax reserve; no reuse of unsettled cash.",
+    "Timestamp source collection and any manual review; never label model/agent review human or independent."
+  ],
+  "planned_checkpoints": "First 20 B3 sessions: mechanics, source completeness and cost feasibility only, no parameter selection from P&L. At the fixed one-year endpoint: all four specifications/eight valuations, accumulated BRL profit, costs, drawdown and matched dates. One year is one dependent observation, not proof of a persistent risk premium or individual suitability.",
+  "comparison": "Nominal initial capital and a separately labeled gross BCB Selic reference. H20 incremental benefit remains unmeasured unless a separately registered comparable book is available.",
+  "unknowns": "Personal capital, loss tolerance, horizon, fixed charges, construction and maintenance effort remain unknown. No zero-default or income forecast.",
+  "stopping": "At each bounded manual checkpoint, stop on complete report or demonstrated missing inputs. No switch of ETF, cost/price variant or endpoint to recover losses. No automatic GO from a favorable snapshot.",
+  "trial_accounting": "Zero forward observations have occurred. This document adds no historical performance evaluation and does not supply independent evidence by itself.",
+  "next_manual_action": "After the first scheduled session's data become public, capture its source and an ETF-event baseline into a new dated directory; record actual publication/retrieval times. Do not claim a live position or an operating monitor."
+}

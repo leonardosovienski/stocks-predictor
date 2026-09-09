@@ -1,0 +1,33 @@
+{
+  "round": "H21_BOVA11_BUY_HOLD_FEASIBILITY_V1",
+  "local_runtime": {"version": "3.12.14", "scope": "stdlib auxiliary research and targeted tests", "canonical_pytest_attempt": "No module named pytest; Python 3.13/Core absent locally; no installation performed"},
+  "local_checks": {"etf_unittest": 19, "economics_regression_unittest": 3, "regression_before_change": "2 failures and 1 error", "regression_after_change": "3 passed", "independent_integer_books": 8, "independent_daily_equity_points": 16400, "economic_reproduction": "all 8 complete outcomes unchanged after Decimal typing correction", "original_quote_objects_rehashed": 9, "selic_logarithmic_reproduction": "2.015202488988927"},
+  "ci_first_pass": {
+    "head_sha": "80ff455cd9b41bed68d090d97d8d4186be410a9f",
+    "base_sha": "99f8751c03084d724e59dd53f5f63221fe220e9b",
+    "tested_merge_sha": "538d61a6bba87a85490a06f3bf961c2004a6854e",
+    "run_id": 34379658428,
+    "url": "https://github.com/leonardosovienski/stocks-predictor/actions/runs/34379658428",
+    "status": "PASS",
+    "python": "3.13.15",
+    "core": "3.2.0",
+    "regular_tests": 782,
+    "pytest_seconds": 241.72,
+    "coverage_percent": 78,
+    "ruff": "PASS",
+    "pyright": "PASS in scope then configured",
+    "build": "PASS",
+    "gitleaks": "PASS",
+    "wheel_smoke": "PASS: cwd outside checkout and isolated Python; stocks/Core origins beneath /tmp/stocks-wheel/lib/python3.13/site-packages"
+  },
+  "expanded_type_check_attempt": {"head_sha": "2a68574f3b84cb00289955cfe0ae9a971454f714", "run_id": 34380476566, "status": "FAILED_PYRIGHT", "finding": "Decimal divided by inferred Decimal|float in volume mean; fixed with explicit Decimal(0) start, without suppressing the check", "corrected_code_commit": "9e00b7c552a6574d54da2ec559de32a5bb6fbac3"},
+  "final_integration_record": "PR69 retains checks for every subsequent exact SHA. The final local delivery receipt records integrated SHA and checks after completion; the first pass above must not be presented as validation of an untested later state.",
+  "pr": "https://github.com/leonardosovienski/stocks-predictor/pull/69",
+  "archived_tests": "17 historical archived tests from the old delivery were not run in this round; excluded from regular 782 count",
+  "source_reacquisition": {"url": "https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2018.ZIP", "bytes": 19488404, "sha256": "9d66136179d9822476c6035000167aecf2665f4396619e4d74c0011745a0c507", "identical_to_archived_object": true},
+  "original_result_sha256": "39a940514b5fdcbb577c496f996ddd324c8107436852ab67da352401bb8870d2",
+  "independent_review": false,
+  "orders": 0,
+  "new_recurring_automations": 0,
+  "agents_coordinated": 0
+}
