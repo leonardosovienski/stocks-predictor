@@ -8,6 +8,12 @@ concluir lucro líquido executável ou prever lucro futuro.
 [Resultados](docs/research/2026-09-09-h21-results.md) e
 [reprodução H21](research/session-20260909/h21/README.md).
 
+Na [revisão de fontes de 09/09](docs/research/2026-09-09-h21-source-closure.md),
+foram conferidas 2.159 cotações até 08/09/2026, sem recalcular H21.
+XP é a preferência informada; condições de custo e alternativa Rico estão
+documentadas. A cobertura histórica de eventos e despesas integrais segue parcial,
+com campos desconhecidos explícitos nas entradas operacionais.
+
 H20 tem implementação de retenção, bandas, proventos e reserva de impostos;
 sua reconstrução ampla está estacionada, com incremento inconclusivo.
 H19 e avaliações anteriores preservam seus protocolos e limites.

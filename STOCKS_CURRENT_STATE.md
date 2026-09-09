@@ -1,4 +1,31 @@
-## Estado vigente após a centralização — 09/09/2026
+## Estado vigente após a revisão de fontes — 09/09/2026
+
+Raiz local única: `C:\STOCKS`. O
+[complemento documental](docs/research/2026-09-09-h21-source-closure.md) conferiu
+171 pregões de 2026 até 08/09, acrescentando 109 à fonte preservada:
+2.159 registros, 62 sobrepostos idênticos. Nenhum retorno novo ou alteração H21.
+
+XP é a preferência informada; Rico é alternativa condicional de corretagem.
+Custos B3 por fase, adicionais das corretoras e custódia estão documentados.
+Conta/canal, capital real, horizonte e tolerância de perda permanecem desconhecidos.
+Eventos do ETF têm inventário parcial com regulamentos e demonstrações recuperados;
+a proposta de incorporação examinada não teve assembleia instalada.
+Cobertura histórica contínua e custo integral ainda impedem certificação líquida.
+
+Fontes, falhas, duas normalizações e validações:
+`C:\STOCKS\work\h21-source-closure-20260909`.
+[Entradas operacionais](docs/research/2026-09-09-h21-operational-inputs.json) e
+[inventário](docs/research/2026-09-09-h21-source-inventory.json) separam fatos,
+condições e desconhecidos. Recibo da integração/CI desta revisão:
+`C:\STOCKS\outputs\ENTREGA_FONTES_H21_20260909.json`.
+Não há monitor ativo, operação ou observação futura.
+
+Os blocos seguintes descrevem estados anteriores pela data. A revisão de fontes
+acrescentou aquisições públicas; não ampliou a restauração dos bancos de migração.
+
+---
+
+## Estado após a centralização — 09/09/2026
 
 Raiz única: `C:\STOCKS`; checkout: `C:\STOCKS\stocks-predictor`, main.
 Entregas: `C:\STOCKS\outputs`; pesquisa/logs: `C:\STOCKS\work`; prompt original:
