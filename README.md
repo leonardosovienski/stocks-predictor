@@ -1,16 +1,17 @@
-> Estado atual (09/09/2026): [H21 — exposição simples, contas e limites](docs/research/2026-09-09-h21-results.md). Rodada BOVA11 executada com ganhos históricos condicionais; eventos do ETF e despesas ainda impedem lucro executável integral ou previsão. H20 está estacionada para reconstrução ampla, com protocolos preservados. [Reproduzir H21](research/session-20260909/h21/README.md). O replay histórico protegido H20 continua em `python -m stocks_predictor.h20_checked`.
 
 # stocks-predictor
 
-Projeto de pesquisa econômica de ações da B3. A implementação de 08/09/2026 inclui
-**H20: preço, rentabilidade e tolerância para reduzir trocas**, com diagnóstico de
-sinais e compras iniciais. A integração contínua `h20_continuous` acrescenta
-retenção das posições efetivas, banda de peso, proventos e reserva de impostos;
-está validada com livros sintéticos e depende de fontes completas para uso histórico.
-[Resultados anteriores e seus limites](docs/research/2026-09-08-h20-results.md).
-A H19 trimestral continua congelada e inconclusiva. **Não há lucro líquido
-validado nem autorização técnica para operar.** O executor contínuo exige
-cobertura de caixa e eventos ainda incompleta. Testes verdes não demonstram rentabilidade.
+Projeto de pesquisa econômica de ações da B3. A linha ativa de validação é
+**H21 — exposição simples via BOVA11**, medida em uma história exploratória
+com resultado condicional. Eventos do ETF e despesas reais ainda impedem
+concluir lucro líquido executável ou prever lucro futuro.
+[Resultados](docs/research/2026-09-09-h21-results.md) e
+[reprodução H21](research/session-20260909/h21/README.md).
+
+H20 tem implementação de retenção, bandas, proventos e reserva de impostos;
+sua reconstrução ampla está estacionada, com incremento inconclusivo.
+H19 e avaliações anteriores preservam seus protocolos e limites.
+Não há autorização para operar capital ou ativar o paper legado.
 
 As linhas H1–H16 e `predictor-rj` permanecem como histórico científico. Os relatórios
 antigos preservam resultados de suas respectivas versões; não descrevem o estado
@@ -21,6 +22,21 @@ técnico atual e [docs/RJ_DESIGN.md](docs/RJ_DESIGN.md) para o protocolo RJ.
 [docs/DESIGN.md](docs/DESIGN.md) e [HANDOFF.md](HANDOFF.md) preservam o domínio e a
 continuidade histórica e devem ser interpretados pela data.
 
+## Localização e documentação
+
+Raiz local única: `C:\STOCKS`; código em `stocks-predictor`,
+pesquisa/logs em `work`, entregas em `outputs`, prompt original em `instructions`.
+ZIP de migração reunido; só nove COTAHIST recuperados, sem restauração integral
+dos bancos. [Mapa](docs/continuation/LOCAL_PATHS_20260909.json) e
+[índice completo dos Markdown](docs/DOCUMENTATION_INDEX.md).
+
+H21 integrada pelo [PR69](https://github.com/leonardosovienski/stocks-predictor/pull/69),
+SHA `4a85d4317657ac5ddaffcacf889b6341cf9c4b0a`.
+A [CI184 desse SHA](https://github.com/leonardosovienski/stocks-predictor/actions/runs/34386092297)
+passou 782 testes regulares, cobertura 78%; 17 testes arquivados não executados.
+Revisões documentais posteriores não são novos experimentos.
+Relatórios e caminhos antigos preservam proveniência datada.
+
 ## Estado técnico
 
 - Python: `>=3.13,<3.15`;
@@ -29,7 +45,7 @@ continuidade histórica e devem ser interpretados pela data.
 - Ops: não é dependência declarada deste domínio no estado atual;
 - `vendor/predictor_core/` é preservado como artefato histórico de integridade e não é
   a dependência-alvo da arquitetura moderna;
-- CI: Python 3.13, Ruff, Pyright nos módulos RJ/H19 declarados, pytest+coverage, build/wheel smoke e
+- CI: Python 3.13, Ruff, Pyright no escopo de `pyproject.toml` (inclui H20, fontes, H21 e economics), pytest+coverage, build/wheel smoke e
   gitleaks.
 
 A migração de infraestrutura não altera thresholds, famílias, universo, janelas,
@@ -50,7 +66,14 @@ pré-registra famílias e aplica correção por múltiplos testes. O estado cien
 corrente continua sendo o documentado em `STOCKS_CURRENT_STATE.md`/`RJ_DESIGN`; modernizar
 packaging, Core/Ops ou CI não constitui evidência de hipótese.
 
-```powershell
+Os comandos `uv` desta seção são para Linux CI ou outro ambiente autorizado
+com produção disponível. **Não executar instalações/venv no Windows atual.**
+Aqui, Python 3.12.14 do Codex atende somente aos
+[auxiliares stdlib H21](research/session-20260909/h21/README.md).
+Python 3.13/Core/pytest não estão disponíveis localmente. Comandos RJ abaixo são
+referência histórica; não iniciar automaticamente pesquisa ou ingestão.
+
+```bash
 uv sync --all-extras --python 3.13
 uv run pytest -q
 uv run pyright
@@ -60,14 +83,14 @@ uv build
 
 Os testes específicos da mecânica RJ podem ser executados com:
 
-```powershell
+```bash
 uv run pytest tests/test_rj_smoke_synthetic.py tests/test_rj_power_gate.py -q
 ```
 
 Ferramentas da linha RJ (contribuição 2026-08-24 — nenhum parâmetro
 [RJ-FROZEN] alterado; são aditivas ao protocolo):
 
-```powershell
+```bash
 # poder prospectivo: dado o N do universo, qual o menor efeito detectável?
 uv run python stocks_predictor/rj_power.py --n-companies 20 30 40 --effects 0.5 1.0 1.5 2.0 --fast
 
@@ -122,7 +145,7 @@ config.yaml              parâmetros do domínio cross-sectional histórico
 config_rj.yaml           parâmetros congelados da linha RJ
 docs/DESIGN.md           protocolo histórico de fatores
 docs/RJ_DESIGN.md        protocolo canônico da linha RJ
-stocks_predictor/                     implementação dos dois domínios
+stocks_predictor/        implementação das linhas de pesquisa e simulação em ações
 vendor/predictor_core/   snapshot legado preservado; não editar
 tests/                   gates automatizados
 data/                    dados locais/SQLite fora do Git
@@ -151,27 +174,25 @@ documentado e versionado; nada disto vive só no chat que gerou:
 | Prova em código de que o runtime não resolve para o vendor congelado | [`tests/test_core_import_path.py`](tests/test_core_import_path.py) | `predictor_core` sempre resolve para o pacote instalado, não `vendor/` |
 | Prova em código de survivorship/PIT (delisting + listagem tardia) | [`tests/test_universe.py`](tests/test_universe.py) | Inclui `test_excludes_delisted_ticker_stale_before_window` e `test_newly_listed_ticker_does_not_appear_before_its_ipo_date` |
 | Classificação do `vendor/predictor_core/` | `RESEARCH_FREEZE.md` §5 | `ARCHIVE_FOR_REPRODUCTION`, guard ativo em `tests/conftest.py` |
-| Classificação do `poc_leak.py` | [`poc_leak.py`](poc_leak.py), `RESEARCH_FREEZE.md` §6 | `HISTORICAL_POC`, não reproduzível contra o Core 3.0.0 atual |
+| Classificação do `poc_leak.py` | [`poc_leak.py`](poc_leak.py), `RESEARCH_FREEZE.md` §6 | `HISTORICAL_POC`, não reproduzível contra o Core 3.0.0 da época do fechamento |
 | Fechamento da linha RJ (`ARCHIVED`) | `RESEARCH_FREEZE.md` §9, [`docs/RJ_DESIGN.md`](docs/RJ_DESIGN.md), [`docs/audit/kimi_2026-08-24/`](docs/audit/kimi_2026-08-24/) | Zero dados reais coletados; protocolo preservado, sem ingestão nova |
 | Localização/backup do banco operacional real (`stocks.db`) | `RESEARCH_FREEZE.md` §1 | Caminho na máquina local, contagens por tabela, hash SHA-256 do backup offsite |
 | Regra para reabrir qualquer fator ou a linha RJ | `RESEARCH_FREEZE.md` §11 (`reopen_policy`) | Exige 6 campos preenchidos (resultado anterior, motivo do fechamento, nova informação, etc.) — nunca decisão em silêncio |
 
 **Verificação de que está tudo no Git remoto:** todo o conteúdo acima chegou à branch
 `main` do GitHub via pull requests já mergeados
-([#18](../../pull/18), [#19](../../pull/19), [#20](../../pull/20), [#21](../../pull/21),
-[#22](../../pull/22)). Para confirmar localmente a qualquer momento:
+([#18](https://github.com/leonardosovienski/stocks-predictor/pull/18), [#19](https://github.com/leonardosovienski/stocks-predictor/pull/19), [#20](https://github.com/leonardosovienski/stocks-predictor/pull/20), [#21](https://github.com/leonardosovienski/stocks-predictor/pull/21),
+[#22](https://github.com/leonardosovienski/stocks-predictor/pull/22)). Para confirmar localmente a qualquer momento:
 
 ```powershell
 git fetch origin main
-git log origin/main --oneline -10   # deve mostrar os merges dos PRs #18-#22
+git log origin/main --oneline -10   # mostra os commits mais recentes
 git show origin/main:RESEARCH_FREEZE.md | Select-Object -First 5   # confirma que existe na main remota
-uv run pytest -q                    # suíte completa, incluindo os testes novos do congelamento
 ```
 
-A suíte completa passa 100% sobre o `origin/main`. **A contagem canônica é a da
-última execução do CI na `main`, não um número escrito aqui:** eram 252 testes quando
-esta linha foi escrita e são 374 em 2026-09-06. Número de teste em README envelhece a
-cada PR; o CI não.
+A validação confirmada da base H21 está vinculada ao SHA e à CI184 acima.
+Para qualquer HEAD posterior, conferir a execução correspondente antes de declarar
+a suíte aprovada. Contagens de versões antigas são histórico, não checks do HEAD.
 
 ## Fronteira econômica
 

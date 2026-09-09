@@ -1,3 +1,16 @@
+# Localização e validação da reprodução — 09/09/2026
+
+Destinos locais sempre em `C:\STOCKS`. Fontes e primeira medição permanecem em
+`C:\STOCKS\work\h21`; relatórios/recibos em `C:\STOCKS\outputs`, movidos com
+SHA-256 conferido. O runtime Codex abaixo é ferramenta instalada, não conteúdo
+a mover. Não gravar saídas na antiga pasta da tarefa.
+
+[Estado atual](../../../STOCKS_CURRENT_STATE.md): CI184 aprovada do commit H21
+`4a85d43` e plano prospectivo já registrado, sem execução.
+Reprodução idêntica não é evidência nova. Usar destinos novos; preservar lacres.
+
+---
+
 # Reproduzir H21
 
 Leia `docs/research/2026-09-09-h21-results.md` antes de interpretar valores.

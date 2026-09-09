@@ -1,3 +1,23 @@
+# Charter histórico — orientação vigente em 09/09/2026
+
+O mandato operacional é [MANDATO_20260909](continuation/MANDATO_20260909.md),
+com [AGENTS](../AGENTS.md) e [estado atual](../STOCKS_CURRENT_STATE.md).
+O charter abaixo é registro histórico, não prompt ativo.
+
+Estão superadas suas prioridades de ligar paper, impedir novas hipóteses,
+exigir capital declarado antes de cenários, usar caminhos do outro computador
+e tratar H17/H18/H19 como nunca observadas. Pesquisa nova é autorizada com
+protocolo próprio, orçamento finito e fontes preservadas. O padrão é uma hipótese
+principal e no máximo uma alternativa ativa, conforme o mandato atual.
+
+R$5/10 mil são cenários; H21 é inconclusiva para lucro executável e H20 fica
+estacionada para reconstrução ampla. Plano futuro H21 registrado, não ativo.
+Anualização histórica usa campo próprio; `expected_annual_profit_brl` é `null`.
+Nada autoriza operação financeira, cobranças, agentes ou automações recorrentes.
+Contagens e conclusões abaixo pertencem à respectiva versão histórica.
+
+---
+
 # Charter do agente de pesquisa — stocks-predictor
 
 > Integração local na main em 08/09/2026: este charter preserva a análise do

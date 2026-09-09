@@ -1,3 +1,19 @@
+# Contexto vigente e histórico — 09/09/2026
+
+Use [PROMPT_NOVO_CHAT](PROMPT_NOVO_CHAT.md), [mandato](MANDATO_20260909.md)
+e [estado atual](../../STOCKS_CURRENT_STATE.md).
+Raiz `C:\STOCKS`; código em `C:\STOCKS\stocks-predictor`, main;
+entregas em `C:\STOCKS\outputs`. [Mapa local](LOCAL_PATHS_20260909.json).
+
+O texto de 07–08/09 abaixo é histórico. Capital informado, branch fix ativa,
+raízes em Superleo13, dependências locais e ausência de push ali descritos
+não são fatos deste computador. R$5/10 mil são cenários. Base H21 integrada:
+`4a85d43`, 782 testes regulares na CI184. Somente nove COTAHIST recuperados;
+bancos não restaurados integralmente. H21 inconclusiva para lucro executável,
+com plano prospectivo já registrado, sem execução.
+
+---
+
 # Continuidade independente da conversa — 07/09/2026
 
 > Atualização de 08/09/2026: o código vigente está na **main local e no GitHub**,
