@@ -8,8 +8,11 @@ entregas em `C:\STOCKS\outputs`. [Mapa local](LOCAL_PATHS_20260909.json).
 O texto de 07–08/09 abaixo é histórico. Capital informado, branch fix ativa,
 raízes em Superleo13, dependências locais e ausência de push ali descritos
 não são fatos deste computador. R$5/10 mil são cenários. Base H21 integrada:
-`4a85d43`, 782 testes regulares na CI184. Somente nove COTAHIST recuperados;
-bancos não restaurados integralmente. H21 inconclusiva para lucro executável,
+`4a85d43`, 782 testes regulares na CI184. A R2 posterior recuperou os 12 bancos
+únicos e fontes 13/14, além dos nove COTAHIST anteriores. Consultar o
+[catálogo R2](../research/2026-09-09-data-readiness.json) e seu
+[relatório](../research/2026-09-09-data-completion-r2.md); não ativar bancos automaticamente.
+Prontidão integral ainda parcial. H21 inconclusiva para lucro executável,
 com plano prospectivo já registrado, sem execução.
 
 ---

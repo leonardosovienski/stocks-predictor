@@ -1,9 +1,10 @@
 # Migração neste computador — 09/09/2026
 
 Raiz `C:\STOCKS`; código em `C:\STOCKS\stocks-predictor`, main.
-ZIP já reunido e hashes conferidos; nove COTAHIST recuperados seletivamente.
-Bancos permanecem no arquivo preservado. Não houve restauração integral ou
-instalação de bibliotecas de produção aqui. Use
+ZIP já reunido e hashes conferidos; nove COTAHIST e os 12 bancos únicos foram
+recuperados seletivamente. Fontes 13/14 estão disponíveis em `data\recovery-r2`;
+catálogo atual em `C:\STOCKS\data\CATALOG.json`. A árvore inteira de 60.023 caminhos
+não foi materializada. Não houve instalação de bibliotecas de produção aqui. Use
 [mapa local](LOCAL_PATHS_20260909.json) e [estado](../../STOCKS_CURRENT_STATE.md).
 
 O guia abaixo é o registro da exportação de 08/09/2026. Os 777 testes, 25 bancos,

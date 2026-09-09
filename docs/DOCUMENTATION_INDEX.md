@@ -1,6 +1,19 @@
 # Índice documental — revisão de 09/09/2026
 
-Complemento posterior no mesmo dia:
+Complemento mais recente no mesmo dia, R2:
+[dados/fontes](research/2026-09-09-data-completion-r2.md),
+[catálogo de prontidão](research/2026-09-09-data-readiness.json),
+[eventos](research/2026-09-09-bova-event-review-r2.json),
+[entradas operacionais](research/2026-09-09-operational-inputs-r2.json) e
+[inventário das aquisições](research/2026-09-09-source-inventory-r2.json), além da
+[recuperação/auditoria](../research/session-20260909/data_completion/README.md).
+Os 12 bancos únicos e as fontes 13/14 já foram recuperados, sem ativação operacional.
+Na raiz local, `data/README.md` explica `data/CATALOG.json`; os Markdown originais
+dos pacotes recuperados preservam seu contexto histórico. As contagens abaixo são
+do inventário inicial, não do acervo ampliado. Recibo R2:
+`C:\STOCKS\outputs\ENTREGA_DADOS_FONTES_R2_20260909.json`.
+
+Complemento anterior no mesmo dia, R1:
 [fontes/custos H21](research/2026-09-09-h21-source-closure.md) e
 [reprodução da atualização](../research/session-20260909/source_closure/README.md).
 São dois Markdown novos, além do inventário inicial e deste índice.
@@ -21,7 +34,9 @@ Não é nova auditoria científica ou recertificação de afirmações históric
    [prompt de continuidade atualizado](continuation/PROMPT_NOVO_CHAT.md).
 4. [Relatório H21 com complemento final](research/2026-09-09-h21-results.md) e
    [reprodução H21](../research/session-20260909/h21/README.md).
-5. [Mapa local](continuation/LOCAL_PATHS_20260909.json).
+5. [Relatório e pendências R2](research/2026-09-09-data-completion-r2.md),
+   [catálogo](research/2026-09-09-data-readiness.json) e
+   [mapa local](continuation/LOCAL_PATHS_20260909.json).
 
 A raiz local única é `C:\STOCKS`; código em `stocks-predictor`, pesquisa/logs em
 `work`, entregas em `outputs`. Não usar antigos destinos em Superleo13 ou no chat.

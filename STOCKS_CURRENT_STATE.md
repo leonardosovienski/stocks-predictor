@@ -1,4 +1,39 @@
-## Estado vigente após a revisão de fontes — 09/09/2026
+## Estado vigente após recuperação de dados R2 — 09/09/2026
+
+Os 37 caminhos de banco da migração correspondem a 12 bancos únicos, agora
+recuperados em `C:\STOCKS\data\recovery-r2`, com hashes e integridade conferidos.
+O catálogo `C:\STOCKS\data\CATALOG.json` separa referência original, reparos,
+versões históricas e fixtures. Não houve ativação de banco ou ingestão.
+Fontes 13 e 14 estão disponíveis separadamente; auditoria 13 reproduzida exatamente.
+A 14 conserva 52 valores líquidos e 24 datas ausentes, 28 entradas societárias
+pendentes e 0/1.248 intervalos integrais certificados; contagens sobrepostas.
+
+[Relatório R2](docs/research/2026-09-09-data-completion-r2.md),
+[prontidão](docs/research/2026-09-09-data-readiness.json),
+[eventos](docs/research/2026-09-09-bova-event-review-r2.json) e
+[custos/entradas](docs/research/2026-09-09-operational-inputs-r2.json).
+Demonstrações e comparativos agora cobrem os exercícios de 2018 a março de 2026.
+Avisos cancelados e identidade incorreta foram segregados; proposta de incorporação
+não foi convertida em evento executado. Tarifa B3 de 2021 foi recuperada.
+
+Prontidão integral continua parcial: eventos/direitos contínuos, tarifa de entrada
+de 2018, despesas efetivas e execução permanecem sem certificação completa.
+XP é preferida, com canal/assessor, capital, horizonte e perda aceitável desconhecidos.
+H21 original e 2.159 cotações R1 até 08/09 estão intactas; zero retornos recalculados.
+H20 estacionada; nenhum monitor, autenticação de corretora ou ordem.
+
+R2: 121 aquisições finalizadas, 50 PDFs analisados, uma normalização de eventos/custos.
+Nove testes locais do recuperador passaram no Python auxiliar 3.12.14. Atestados
+de produção dependem da CI Linux no SHA exato; integração e resultado final em
+`C:\STOCKS\outputs\ENTREGA_DADOS_FONTES_R2_20260909.json`.
+Coleta encerrada; retomada exige orçamento próprio e consulta ao catálogo.
+
+Os blocos seguintes são históricos; referências a bancos ainda não recuperados
+descrevem o estado anterior à R2.
+
+---
+
+## Estado após a revisão de fontes R1 — 09/09/2026
 
 Raiz local única: `C:\STOCKS`. O
 [complemento documental](docs/research/2026-09-09-h21-source-closure.md) conferiu
