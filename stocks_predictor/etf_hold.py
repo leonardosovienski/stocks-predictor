@@ -135,7 +135,7 @@ def simulate(records, sessions, *, capital, rate, mode, entry_signal, exit_signa
     early = sum((v for d, v in deltas if d < "2022-01-01"), Decimal(0))
     late = sum((v for d, v in deltas if d >= "2022-01-01"), Decimal(0))
     volumes = [number(r["volume_fin"]) for r in records]
-    last20 = sum(volumes[-21:-1]) / len(volumes[-21:-1]) if len(volumes) > 1 else None
+    last20 = sum(volumes[-21:-1], Decimal(0)) / len(volumes[-21:-1]) if len(volumes) > 1 else None
     return {
         "capital_brl": float(capital), "mode": mode, "one_way_cost_rate": float(rate),
         "entry": entry, "exit": exit_date, "holding_calendar_days": days, "holding_years": years,

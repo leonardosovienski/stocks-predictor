@@ -71,3 +71,8 @@ fontes citadas e hashes, sem presumir licença para redistribuir dados brutos.
 Os testes da suíte geral, lint, Pyright, build e wheel real são os da execução CI
 registrada no recibo da rodada. Os testes stdlib acima são apenas a validação local
 do novo livro e dos rótulos econômicos.
+
+Para conferir os resultados já existentes com o código corrente, sem registrar
+nova observação, execute `reproduce_check.py C:\STOCKS\work\h21 ARQUIVO_NOVO.json`.
+Ele exige o lacre V1, compara os oito resultados completos, confere novamente os
+nove ZIPs e calcula a Selic por soma de logaritmos, um caminho aritmético diferente.
