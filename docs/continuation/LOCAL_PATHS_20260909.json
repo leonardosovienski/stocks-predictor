@@ -10,7 +10,7 @@
     "C:\\STOCKS\\DADOS_STOCKS.zip.002"
   ],
   "restored_sources": "C:\\STOCKS\\work\\h21\\raw",
-  "restored_scope": "Nine original COTAHIST ZIPs 2018-2026, 505826391 bytes. No DB opened/restored and no full 60023-file restoration claim.",
+  "restored_scope": "Nine original COTAHIST ZIPs retained; R2 recovered all 12 unique databases mapped from 37 archived paths and separate source13/source14 bundles. The entire 60023-path archive tree was not materialized.",
   "source_receipt": "C:\\STOCKS\\work\\h21\\raw\\receipt.json",
   "h21_inputs": "C:\\STOCKS\\work\\h21\\inputs",
   "h21_result_v1": "C:\\STOCKS\\work\\h21\\result-01.json",
@@ -20,12 +20,20 @@
   "auxiliary_python_version": "3.12.14",
   "production_python_local": null,
   "production_core_local": null,
-  "historical_sources": "PATHS.json remains historical; H20 source manifest revision13 7c24e093f7a148c3f375fff9fbd23db62f049ba8012e49e6ba7b4413e27a372b was not used or promoted to revision14. H21 uses the data-transfer archive and nine original quote-object hashes.",
+  "historical_sources": "PATHS.json remains historical. Source13 manifest 7c24e093f7a148c3f375fff9fbd23db62f049ba8012e49e6ba7b4413e27a372b was reproduced exactly; source14 manifest 3b36e2416e44f2b0a30e88d4306e00cdc74a7302c6e9b0e33950a893ea169bda is materialized separately and does not silently replace source13. No new economic evaluation.",
   "migration_note": "Supplied join script resides in FONTES_WEB_ORIGINAIS but searches parts in its own folder. Initial attempt failed before reading parts. Auxiliary join at actual root verified both part hashes, full stream hash and reconstructed-file hash without changing originals.",
   "local_project_root": "C:\\STOCKS",
   "deliverables": "C:\\STOCKS\\outputs",
   "original_mandate_current_path": "C:\\STOCKS\\instructions\\STOCKS_PREDICTOR_PROMPT_FINAL_20260909.md",
   "local_location_registry": "C:\\STOCKS\\LOCALIZACAO_PROJETO.json",
   "relocation_receipt": "C:\\STOCKS\\work\\centralizacao-20260909\\movimentacoes.json",
-  "path_policy": "All new local project files remain under C:\\STOCKS. Sealed historical paths remain provenance; installed Codex runtime and GitHub are environment/remote resources."
+  "path_policy": "All new local project files remain under C:\\STOCKS. Sealed historical paths remain provenance; installed Codex runtime and GitHub are environment/remote resources.",
+  "data_catalog": "C:\\STOCKS\\data\\CATALOG.json",
+  "recovered_databases_and_sources": "C:\\STOCKS\\data\\recovery-r2",
+  "recovered_object_catalog": "C:\\STOCKS\\data\\recovery-r2\\catalog.json",
+  "source_round_r2": "C:\\STOCKS\\work\\data-completion-r2-20260909",
+  "source_round_r2_report": "docs/research/2026-09-09-data-completion-r2.md",
+  "source_round_r2_receipt": "C:\\STOCKS\\outputs\\ENTREGA_DADOS_FONTES_R2_20260909.json",
+  "all_economic_data_ready": false,
+  "updated_at_utc": "2026-09-09T21:43:13.700345+00:00"
 }

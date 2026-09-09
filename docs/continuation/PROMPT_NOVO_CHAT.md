@@ -27,12 +27,16 @@ Não há comparação líquida H21–H20 ou holdout intacto demonstrados.
 
 A revisão `docs/research/2026-09-09-h21-source-closure.md` já atualizou a fonte
 para 2.159 preços até 08/09, com sobreposição conferida e sem recalcular H21.
-Consulte seus JSON de entradas operacionais e inventário: XP é a preferência,
+O complemento mais recente é `docs/research/2026-09-09-data-completion-r2.md`;
+consulte os JSON R2 de prontidão, eventos e entradas operacionais. XP é a preferência,
 Rico alternativa condicional; conta, capital, horizonte e tolerância são desconhecidos.
-Regulamentos/demonstrações apoiam inventário parcial; não declarar ausência integral
+R2 recuperou demonstrações/comparativos que cobrem 2018 a março de 2026 e tarifa B3
+vigente a partir de fevereiro de 2021. Esses dados apoiam inventário parcial; não declarar ausência integral
 de eventos nem incorporação executada pela presença do assunto num aviso.
 Próximo trabalho: fechar a cobertura histórica restante de eventos/direitos e
-custos efetivos. As aquisições desta rodada estão encerradas, com duas revisões;
+custos efetivos, incluindo entrada de 2018 e condição de assessor/canal XP.
+R1 encerrou 77 aquisições/duas normalizações; R2 encerrou 121 aquisições/uma normalização
+de eventos e custos. Consultar os diários e registrar novo orçamento;
 não repetir coleta ou criar variantes sem novo orçamento/procedimento.
 O plano `docs/research/2026-09-09-h21-forward-plan.json` já está registrado,
 para os pregões especificados de 10/09/2026–10/09/2027.
@@ -47,8 +51,13 @@ ou nova variante. Recibos entregues estão em `C:\STOCKS\outputs`.
 
 Windows atual: Python 3.12.14 auxiliar do Codex. Não criar venv, instalar
 Core/dependências ou alterar runtime/EDR. Suíte canônica em Linux CI.
-Só nove COTAHIST foram recuperados; bancos preservados no arquivo de migração.
-Não afirmar restauração completa ou importar bancos por padrão.
+Nove COTAHIST e todos os 12 bancos únicos foram recuperados seletivamente.
+Catálogo: `C:\STOCKS\data\CATALOG.json`; dados em `data\recovery-r2`.
+Fontes 13 e 14 estão em diretórios separados; auditoria 13 reproduzida exatamente,
+14 com 52 líquidos/24 datas/28 entradas societárias pendentes e 0/1.248 intervalos
+integrais certificados. H20 não foi reaberta. Não materializar toda a árvore de
+60.023 caminhos, ativar banco ou importar por padrão. Nove regressões locais R2;
+CI e SHA final: `C:\STOCKS\outputs\ENTREGA_DADOS_FONTES_R2_20260909.json`.
 
 Trabalhe sozinho. Autonomia cobre pesquisa, correções, commits/push/integração
 verificados, conforme mandato; não cobre ordens, corretoras, capital, novas

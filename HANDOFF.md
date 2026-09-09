@@ -1,4 +1,32 @@
-## Continuidade após fontes/custos — 09/09/2026
+## Continuidade após recuperação de bancos/fontes R2 — 09/09/2026
+
+Próxima leitura: [relatório R2](docs/research/2026-09-09-data-completion-r2.md),
+[catálogo](docs/research/2026-09-09-data-readiness.json) e
+[comandos](research/session-20260909/data_completion/README.md).
+Tudo local em `C:\STOCKS`; bancos/fontes em `data\recovery-r2`; fontes públicas,
+falhas e normalização em `work\data-completion-r2-20260909`.
+
+Recuperados os 12 bancos únicos, correspondentes a 37 caminhos; todos íntegros,
+hashes preservados. Banco original e versões reparadas não foram mesclados.
+Fonte 13 reproduzida exatamente; composição 14 separada com 52 líquidos e 24 datas
+ausentes, 28 entradas societárias pendentes, 0/1.248 intervalos integrais certificados.
+Não confundir integridade física com completude de retorno total.
+
+Demonstrações e comparativos BOVA11 cobrem os exercícios de 2018 a março de 2026;
+39 avisos identificados, com cancelados/CNPJ incorreto rejeitados e uma AGO sem corpo.
+Recuperada tarifa B3 de 2021; despesas de 2018 e conta XP continuam parcialmente
+desconhecidas. Pergunta sobre canal/assessor XP permanece sem resposta.
+Não presumir custo zero ou inventário completo de eventos. Consultar entradas R2.
+
+H21 e fontes R1 preservadas, sem novo retorno. H20 estacionada. 121 aquisições
+encerradas; nove regressões locais do recuperador passaram. Recibo final com SHA,
+CI Linux e verificação local: `outputs\ENTREGA_DADOS_FONTES_R2_20260909.json`.
+Nova coleta/avaliação exige orçamento próprio. Nenhuma automação ou operação ativa.
+Os blocos abaixo preservam as etapas anteriores, inclusive a disponibilidade antiga.
+
+---
+
+## Continuidade após fontes/custos R1 — 09/09/2026
 
 O usuário informou XP como preferência, com abertura a alternativa.
 Foi concluída uma rodada documental, sem nova valorização:

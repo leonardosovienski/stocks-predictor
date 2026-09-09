@@ -1,6 +1,6 @@
 # Stocks — instruções vigentes para implementação
 
-Atualizado em 09/09/2026 após H21, centralização local e revisão de fontes.
+Atualizado em 09/09/2026 após H21, centralização local e complemento de dados R2.
 
 ## Mandato e leitura
 
@@ -51,8 +51,12 @@ quando o chamador habilita `use_known_at`. Não migrar silenciosamente hipótese
 antigas para outra política de `known_at`, nem reemitir lacres por conveniência.
 
 H21 é inconclusiva para lucro líquido executável e candidata a validação adicional.
-O [complemento de fontes](docs/research/2026-09-09-h21-source-closure.md) atualizou
-preços até 08/09, documentou custos e delimitou eventos. Preferência: XP;
+O [complemento R2](docs/research/2026-09-09-data-completion-r2.md) recuperou os
+12 bancos e fontes 13/14; sua integridade não é completude econômica. Usar
+`C:\STOCKS\data\CATALOG.json` e a [reprodução](research/session-20260909/data_completion/README.md).
+R1 atualizou preços BOVA11 até 08/09; R2 ampliou demonstrações e tarifas históricas.
+Rodadas de coleta encerradas; consultar os inventários antes de novo orçamento.
+Preferência: XP;
 não inferir elegibilidade, capital, horizonte ou limite de perda. Consultar
 as entradas operacionais e o inventário antes de repetir aquisições.
 O próximo passo é fechar a cobertura restante de eventos e despesas/execução. O plano futuro

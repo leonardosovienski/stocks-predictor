@@ -43,3 +43,9 @@ research/session-20260908/source-closure/** whitespace=blank-at-eol,blank-at-eof
 # Keep newly registered H21 artifact bytes stable on Windows and Linux.
 docs/research/2026-09-09-h21-* text eol=lf
 research/session-20260909/h21/* text eol=lf
+
+# R2 snapshots match the locally hashed normalized evidence byte for byte.
+docs/research/2026-09-09-data-readiness.json -text !eol whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+docs/research/2026-09-09-bova-event-review-r2.json -text !eol whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+docs/research/2026-09-09-operational-inputs-r2.json -text !eol whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+docs/research/2026-09-09-source-inventory-r2.json -text !eol whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

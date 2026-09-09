@@ -1,0 +1,804 @@
+{
+  "schema_version": 1,
+  "observed_at_utc": "2026-09-09T21:29:49.322535+00:00",
+  "local_project_root": "C:\\STOCKS",
+  "all_data_ready": false,
+  "ready_components": [
+    "All12 unique archived SQLite databases restored, hashes and integrity verified",
+    "Source13 and additive source14 datasets available and source audits reproduced",
+    "BOVA11 quote source:2159 observations through2026-09-08 (R1 unchanged)",
+    "Annual BOVA11 evolution tables cover fiscal periods2018 throughMarch2026 with original documents and comparatives"
+  ],
+  "migration": {
+    "archive": "C:\\STOCKS\\DADOS_STOCKS.zip",
+    "archive_sha256": "83d5aac8e23d72e4deb1331077e08313914375a5dbac4276e5f8ad89da586d23",
+    "database_paths": 37,
+    "unique_databases": 12,
+    "restored_unique_objects": 1392,
+    "recovery_total_bytes_including_copies_and_catalog": 4317717293,
+    "catalog_path": "C:\\STOCKS\\data\\recovery-r2\\catalog.json",
+    "catalog_sha256": "50095e579d83f52038a7719d43fa1ddc2f0daaf4e921a6f38f3b24910445e498",
+    "full_60023_path_tree_materialized": false
+  },
+  "databases": [
+    {
+      "sha256": "30ce8e91fba9cb0a0c09571be71821c9da2d0aec49d12ec15aab8b26522ffd2c",
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\30ce8e91fba9cb0a0c09571be71821c9da2d0aec49d12ec15aab8b26522ffd2c",
+      "original_aliases": [
+        "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/STOCKS_H18_H19_TESTADOS.zip.contents/original/quotes.db",
+        "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/stocks-h17-pronto-final.zip.contents/data/quotes.db",
+        "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/stocks-h17-pronto.zip.contents/data/quotes.db",
+        "project/.local-research/stocks-session-20260907/work/h17-ready-5096bf505dc7/data/quotes.db",
+        "project/.local-research/stocks-session-20260907/work/h17-ready-91342ec397f6/data/quotes.db",
+        "project/.local-research/stocks-session-20260907/work/h17-run-pack/data/quotes.db",
+        "project/.local-research/stocks-session-20260907/work/h17-run-pack-v2/data/quotes.db",
+        "project/.local-research/stocks-session-20260907/work/value-ready-bundle/original/quotes.db",
+        "project/.local-research/stocks-session-20260907/work/value-ready-ce8d1573257f/original/quotes.db"
+      ],
+      "role": "PRESERVED_RESEARCH_VERSION",
+      "integrity_status": "PASS",
+      "sqlite_open_policy": "mode=ro&immutable=1; all archived transaction journals were empty",
+      "tables": {
+        "prices_raw": {
+          "rows": 387101,
+          "date_ranges": {
+            "date": {
+              "min": "2016-01-04",
+              "max": "2026-08-27",
+              "distinct": 2647
+            }
+          },
+          "distinct_tickers": 195
+        }
+      },
+      "production_activation": false,
+      "economic_completeness_certified": false
+    },
+    {
+      "sha256": "0bceedac3936dc4162562ec35e03177c7e71b99e13b66837035d1ccd151f0512",
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\0bceedac3936dc4162562ec35e03177c7e71b99e13b66837035d1ccd151f0512",
+      "original_aliases": [
+        "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/STOCKS_H18_H19_TESTADOS.zip.contents/repaired/quotes.db",
+        "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/STOCKS_REORGANIZACOES_TESTADAS.zip.contents/base/quotes.db",
+        "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/STOCKS_VALIDACAO_LUCRO_TESTADA.zip.contents/baseline/base/quotes.db",
+        "project/.local-research/stocks-session-20260907/work/profit-validation-ready-7b3722cd2bf1/baseline/base/quotes.db",
+        "project/.local-research/stocks-session-20260907/work/reorganization-ready-bundle/base/quotes.db",
+        "project/.local-research/stocks-session-20260907/work/reorganization-ready-e5e8b429ca89/base/quotes.db",
+        "project/.local-research/stocks-session-20260907/work/value-measurement-source/quotes.db",
+        "project/.local-research/stocks-session-20260907/work/value-ready-bundle/repaired/quotes.db",
+        "project/.local-research/stocks-session-20260907/work/value-ready-ce8d1573257f/repaired/quotes.db"
+      ],
+      "role": "PRESERVED_RESEARCH_VERSION",
+      "integrity_status": "PASS",
+      "sqlite_open_policy": "mode=ro&immutable=1; all archived transaction journals were empty",
+      "tables": {
+        "prices_raw": {
+          "rows": 391824,
+          "date_ranges": {
+            "date": {
+              "min": "2016-01-04",
+              "max": "2026-08-27",
+              "distinct": 2647
+            }
+          },
+          "distinct_tickers": 196
+        }
+      },
+      "production_activation": false,
+      "economic_completeness_certified": false
+    },
+    {
+      "sha256": "fa3d464e3e463b66c2aa64d96228aeb5d1fae63514df1d0ddb58233240b52764",
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\fa3d464e3e463b66c2aa64d96228aeb5d1fae63514df1d0ddb58233240b52764",
+      "original_aliases": [
+        "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/STOCKS_REORGANIZACOES_TESTADAS.zip.contents/successors/successors.db",
+        "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/STOCKS_VALIDACAO_LUCRO_TESTADA.zip.contents/baseline/successors/successors.db",
+        "project/.local-research/stocks-session-20260907/work/profit-validation-ready-7b3722cd2bf1/baseline/successors/successors.db",
+        "project/.local-research/stocks-session-20260907/work/reorganization-ready-bundle/successors/successors.db",
+        "project/.local-research/stocks-session-20260907/work/reorganization-ready-e5e8b429ca89/successors/successors.db",
+        "project/.local-research/stocks-session-20260907/work/value-successor-source/successors.db"
+      ],
+      "role": "PRESERVED_RESEARCH_VERSION",
+      "integrity_status": "PASS",
+      "sqlite_open_policy": "mode=ro&immutable=1; all archived transaction journals were empty",
+      "tables": {
+        "prices_raw": {
+          "rows": 13465,
+          "date_ranges": {
+            "date": {
+              "min": "2016-01-04",
+              "max": "2026-08-27",
+              "distinct": 2647
+            }
+          },
+          "distinct_tickers": 11
+        }
+      },
+      "production_activation": false,
+      "economic_completeness_certified": false
+    },
+    {
+      "sha256": "e21a89c38f2792c826291baa1175da4fe9dfbf626316635a536f7c28b250146a",
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\e21a89c38f2792c826291baa1175da4fe9dfbf626316635a536f7c28b250146a",
+      "original_aliases": [
+        "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/stocks-complemento-fontes.zip.contents/data/stocks-history-2016-2026.db",
+        "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/stocks-testes-reais.zip.contents/work/stocks-history-2016-2026.db",
+        "project/.local-research/stocks-session-20260907/work/stocks-history-2016-2026.db"
+      ],
+      "role": "PRESERVED_RESEARCH_VERSION",
+      "integrity_status": "PASS",
+      "sqlite_open_policy": "mode=ro&immutable=1; all archived transaction journals were empty",
+      "tables": {
+        "adjustments": {
+          "rows": 43,
+          "date_ranges": {
+            "ex_date": {
+              "min": "2016-06-13",
+              "max": "2026-04-29",
+              "distinct": 40
+            }
+          },
+          "distinct_tickers": 36
+        },
+        "cash_event_coverage": {
+          "rows": 4,
+          "distinct_tickers": 4
+        },
+        "cash_events": {
+          "rows": 95,
+          "date_ranges": {
+            "ex_date": {
+              "min": "2016-02-01",
+              "max": "2026-08-12",
+              "distinct": 44
+            },
+            "payment_date": {
+              "min": "2016-02-29",
+              "max": "2026-10-06",
+              "distinct": 48
+            }
+          },
+          "distinct_tickers": 4
+        },
+        "fundamentals": {
+          "rows": 1579,
+          "distinct_tickers": 127
+        },
+        "fundamentals_pit": {
+          "rows": 0,
+          "distinct_tickers": 0
+        },
+        "prices_raw": {
+          "rows": 1149872,
+          "date_ranges": {
+            "date": {
+              "min": "2016-01-04",
+              "max": "2026-08-27",
+              "distinct": 2647
+            }
+          },
+          "distinct_tickers": 1784
+        },
+        "quarantine": {
+          "rows": 2227,
+          "date_ranges": {
+            "date": {
+              "min": "2016-01-06",
+              "max": "2026-08-27",
+              "distinct": 1208
+            }
+          },
+          "distinct_tickers": 799
+        }
+      },
+      "production_activation": false,
+      "economic_completeness_certified": false
+    },
+    {
+      "sha256": "07197228920e4082954afbc9035509ae74e84be1773195a4c5b71a435481a804",
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\07197228920e4082954afbc9035509ae74e84be1773195a4c5b71a435481a804",
+      "original_aliases": [
+        "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/stocks-correcoes.zip.contents/demonstracao/stocks-cvm-2023-repaired-example.db",
+        "project/.local-research/stocks-session-20260907/work/stocks-cvm-2023-repaired-example.db"
+      ],
+      "role": "REPAIRED_EXAMPLE_NOT_CANONICAL",
+      "integrity_status": "PASS",
+      "sqlite_open_policy": "mode=ro&immutable=1; all archived transaction journals were empty",
+      "tables": {
+        "adjustments": {
+          "rows": 43,
+          "date_ranges": {
+            "ex_date": {
+              "min": "2016-06-13",
+              "max": "2026-04-29",
+              "distinct": 40
+            }
+          },
+          "distinct_tickers": 36
+        },
+        "cash_event_coverage": {
+          "rows": 0,
+          "distinct_tickers": 0
+        },
+        "cash_events": {
+          "rows": 0,
+          "date_ranges": {
+            "ex_date": {
+              "min": null,
+              "max": null,
+              "distinct": 0
+            },
+            "payment_date": {
+              "min": null,
+              "max": null,
+              "distinct": 0
+            }
+          },
+          "distinct_tickers": 0
+        },
+        "fundamentals": {
+          "rows": 1579,
+          "distinct_tickers": 127
+        },
+        "fundamentals_pit": {
+          "rows": 3,
+          "distinct_tickers": 3
+        },
+        "prices_raw": {
+          "rows": 1149872,
+          "date_ranges": {
+            "date": {
+              "min": "2016-01-04",
+              "max": "2026-08-27",
+              "distinct": 2647
+            }
+          },
+          "distinct_tickers": 1784
+        },
+        "quarantine": {
+          "rows": 2227,
+          "date_ranges": {
+            "date": {
+              "min": "2016-01-06",
+              "max": "2026-08-27",
+              "distinct": 1208
+            }
+          },
+          "distinct_tickers": 799
+        }
+      },
+      "production_activation": false,
+      "economic_completeness_certified": false
+    },
+    {
+      "sha256": "a8238568980d3303890b04590cfb5c55ab2d24c9271edd86820269336b09679a",
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\a8238568980d3303890b04590cfb5c55ab2d24c9271edd86820269336b09679a",
+      "original_aliases": [
+        "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/stocks-testes-reais.zip.contents/work/stocks-tested-real-v2-20260907.db",
+        "project/.local-research/stocks-session-20260907/work/stocks-tested-real-v2-20260907.db"
+      ],
+      "role": "PRESERVED_RESEARCH_VERSION",
+      "integrity_status": "PASS",
+      "sqlite_open_policy": "mode=ro&immutable=1; all archived transaction journals were empty",
+      "tables": {
+        "adjustments": {
+          "rows": 43,
+          "date_ranges": {
+            "ex_date": {
+              "min": "2016-06-13",
+              "max": "2026-04-29",
+              "distinct": 40
+            }
+          },
+          "distinct_tickers": 36
+        },
+        "cash_event_coverage": {
+          "rows": 4,
+          "distinct_tickers": 4
+        },
+        "cash_events": {
+          "rows": 95,
+          "date_ranges": {
+            "ex_date": {
+              "min": "2016-02-01",
+              "max": "2026-08-12",
+              "distinct": 44
+            },
+            "payment_date": {
+              "min": "2016-02-29",
+              "max": "2026-10-06",
+              "distinct": 48
+            }
+          },
+          "distinct_tickers": 4
+        },
+        "fundamentals": {
+          "rows": 1579,
+          "distinct_tickers": 127
+        },
+        "fundamentals_pit": {
+          "rows": 0,
+          "distinct_tickers": 0
+        },
+        "prices_raw": {
+          "rows": 1149872,
+          "date_ranges": {
+            "date": {
+              "min": "2016-01-04",
+              "max": "2026-08-27",
+              "distinct": 2647
+            }
+          },
+          "distinct_tickers": 1784
+        },
+        "quarantine": {
+          "rows": 2227,
+          "date_ranges": {
+            "date": {
+              "min": "2016-01-06",
+              "max": "2026-08-27",
+              "distinct": 1208
+            }
+          },
+          "distinct_tickers": 799
+        }
+      },
+      "production_activation": false,
+      "economic_completeness_certified": false
+    },
+    {
+      "sha256": "8f84a743e706573cab9372c21d8c9c186c5afb31c2206821d9c2cf82199bbc64",
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\8f84a743e706573cab9372c21d8c9c186c5afb31c2206821d9c2cf82199bbc64",
+      "original_aliases": [
+        "project/.local-research/stocks-session-20260907/work/stocks-clean-replay-20260907.db"
+      ],
+      "role": "PRESERVED_RESEARCH_VERSION",
+      "integrity_status": "PASS",
+      "sqlite_open_policy": "mode=ro&immutable=1; all archived transaction journals were empty",
+      "tables": {
+        "adjustments": {
+          "rows": 43,
+          "date_ranges": {
+            "ex_date": {
+              "min": "2016-06-13",
+              "max": "2026-04-29",
+              "distinct": 40
+            }
+          },
+          "distinct_tickers": 36
+        },
+        "cash_event_coverage": {
+          "rows": 4,
+          "distinct_tickers": 4
+        },
+        "cash_events": {
+          "rows": 95,
+          "date_ranges": {
+            "ex_date": {
+              "min": "2016-02-01",
+              "max": "2026-08-12",
+              "distinct": 44
+            },
+            "payment_date": {
+              "min": "2016-02-29",
+              "max": "2026-10-06",
+              "distinct": 48
+            }
+          },
+          "distinct_tickers": 4
+        },
+        "fundamentals": {
+          "rows": 1579,
+          "distinct_tickers": 127
+        },
+        "fundamentals_pit": {
+          "rows": 0,
+          "distinct_tickers": 0
+        },
+        "prices_raw": {
+          "rows": 1149872,
+          "date_ranges": {
+            "date": {
+              "min": "2016-01-04",
+              "max": "2026-08-27",
+              "distinct": 2647
+            }
+          },
+          "distinct_tickers": 1784
+        },
+        "quarantine": {
+          "rows": 2227,
+          "date_ranges": {
+            "date": {
+              "min": "2016-01-06",
+              "max": "2026-08-27",
+              "distinct": 1208
+            }
+          },
+          "distinct_tickers": 799
+        }
+      },
+      "production_activation": false,
+      "economic_completeness_certified": false
+    },
+    {
+      "sha256": "e94633e709392168fc38df9633c5d63b34528a1af75949e9cecd69adf2af8e4a",
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\e94633e709392168fc38df9633c5d63b34528a1af75949e9cecd69adf2af8e4a",
+      "original_aliases": [
+        "project/.local-research/stocks-session-20260907/work/stocks-tested-real-20260907.db"
+      ],
+      "role": "PRESERVED_RESEARCH_VERSION",
+      "integrity_status": "PASS",
+      "sqlite_open_policy": "mode=ro&immutable=1; all archived transaction journals were empty",
+      "tables": {
+        "adjustments": {
+          "rows": 43,
+          "date_ranges": {
+            "ex_date": {
+              "min": "2016-06-13",
+              "max": "2026-04-29",
+              "distinct": 40
+            }
+          },
+          "distinct_tickers": 36
+        },
+        "cash_event_coverage": {
+          "rows": 4,
+          "distinct_tickers": 4
+        },
+        "cash_events": {
+          "rows": 95,
+          "date_ranges": {
+            "ex_date": {
+              "min": "2016-02-01",
+              "max": "2026-08-12",
+              "distinct": 44
+            },
+            "payment_date": {
+              "min": "2016-02-29",
+              "max": "2026-10-06",
+              "distinct": 48
+            }
+          },
+          "distinct_tickers": 4
+        },
+        "fundamentals": {
+          "rows": 1579,
+          "distinct_tickers": 127
+        },
+        "fundamentals_pit": {
+          "rows": 0,
+          "distinct_tickers": 0
+        },
+        "prices_raw": {
+          "rows": 1149872,
+          "date_ranges": {
+            "date": {
+              "min": "2016-01-04",
+              "max": "2026-08-27",
+              "distinct": 2647
+            }
+          },
+          "distinct_tickers": 1784
+        },
+        "quarantine": {
+          "rows": 2227,
+          "date_ranges": {
+            "date": {
+              "min": "2016-01-06",
+              "max": "2026-08-27",
+              "distinct": 1208
+            }
+          },
+          "distinct_tickers": 799
+        }
+      },
+      "production_activation": false,
+      "economic_completeness_certified": false
+    },
+    {
+      "sha256": "e713af1a867f31c3550e3767c7a9fc6f3963aac2b47b617db2adfe55903da054",
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\e713af1a867f31c3550e3767c7a9fc6f3963aac2b47b617db2adfe55903da054",
+      "original_aliases": [
+        "project/.local-research/stocks-session-20260907/work/test-only.db"
+      ],
+      "role": "SMOKE_OR_TEST_FIXTURE_NOT_MARKET_DATA",
+      "integrity_status": "PASS",
+      "sqlite_open_policy": "mode=ro&immutable=1; all archived transaction journals were empty",
+      "tables": {
+        "adjustments": {
+          "rows": 0,
+          "date_ranges": {
+            "ex_date": {
+              "min": null,
+              "max": null,
+              "distinct": 0
+            }
+          },
+          "distinct_tickers": 0
+        },
+        "fundamentals": {
+          "rows": 0,
+          "distinct_tickers": 0
+        },
+        "prices_raw": {
+          "rows": 0,
+          "date_ranges": {
+            "date": {
+              "min": null,
+              "max": null,
+              "distinct": 0
+            }
+          },
+          "distinct_tickers": 0
+        },
+        "quarantine": {
+          "rows": 0,
+          "date_ranges": {
+            "date": {
+              "min": null,
+              "max": null,
+              "distinct": 0
+            }
+          },
+          "distinct_tickers": 0
+        }
+      },
+      "production_activation": false,
+      "economic_completeness_certified": false
+    },
+    {
+      "sha256": "56c0c7e4d9f342e439ed63d60e031b07ff9de1ebdf5407eea011be19536da66c",
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\56c0c7e4d9f342e439ed63d60e031b07ff9de1ebdf5407eea011be19536da66c",
+      "original_aliases": [
+        "project/.local-research/stocks-session-20260907/work/wheel-real-smoke.db"
+      ],
+      "role": "SMOKE_OR_TEST_FIXTURE_NOT_MARKET_DATA",
+      "integrity_status": "PASS",
+      "sqlite_open_policy": "mode=ro&immutable=1; all archived transaction journals were empty",
+      "tables": {
+        "adjustments": {
+          "rows": 0,
+          "date_ranges": {
+            "ex_date": {
+              "min": null,
+              "max": null,
+              "distinct": 0
+            }
+          },
+          "distinct_tickers": 0
+        },
+        "cash_event_coverage": {
+          "rows": 0,
+          "distinct_tickers": 0
+        },
+        "cash_events": {
+          "rows": 0,
+          "date_ranges": {
+            "ex_date": {
+              "min": null,
+              "max": null,
+              "distinct": 0
+            },
+            "payment_date": {
+              "min": null,
+              "max": null,
+              "distinct": 0
+            }
+          },
+          "distinct_tickers": 0
+        },
+        "fundamentals": {
+          "rows": 0,
+          "distinct_tickers": 0
+        },
+        "fundamentals_pit": {
+          "rows": 0,
+          "distinct_tickers": 0
+        },
+        "prices_raw": {
+          "rows": 0,
+          "date_ranges": {
+            "date": {
+              "min": null,
+              "max": null,
+              "distinct": 0
+            }
+          },
+          "distinct_tickers": 0
+        },
+        "quarantine": {
+          "rows": 0,
+          "date_ranges": {
+            "date": {
+              "min": null,
+              "max": null,
+              "distinct": 0
+            }
+          },
+          "distinct_tickers": 0
+        }
+      },
+      "production_activation": false,
+      "economic_completeness_certified": false
+    },
+    {
+      "sha256": "396f9aa99dfd812af93d7d58db80f0c0179345500555bb0b27297fa81fa6c32f",
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\396f9aa99dfd812af93d7d58db80f0c0179345500555bb0b27297fa81fa6c32f",
+      "original_aliases": [
+        "project/.local-research/stocks-session-20260907/work/stocks-predictor/data/stocks.db"
+      ],
+      "role": "SMOKE_OR_TEST_FIXTURE_NOT_MARKET_DATA",
+      "integrity_status": "PASS",
+      "sqlite_open_policy": "mode=ro&immutable=1; all archived transaction journals were empty",
+      "tables": {
+        "adjustments": {
+          "rows": 0,
+          "date_ranges": {
+            "ex_date": {
+              "min": null,
+              "max": null,
+              "distinct": 0
+            }
+          },
+          "distinct_tickers": 0
+        },
+        "cash_event_coverage": {
+          "rows": 0,
+          "distinct_tickers": 0
+        },
+        "cash_events": {
+          "rows": 0,
+          "date_ranges": {
+            "ex_date": {
+              "min": null,
+              "max": null,
+              "distinct": 0
+            },
+            "payment_date": {
+              "min": null,
+              "max": null,
+              "distinct": 0
+            }
+          },
+          "distinct_tickers": 0
+        },
+        "fundamentals": {
+          "rows": 0,
+          "distinct_tickers": 0
+        },
+        "fundamentals_pit": {
+          "rows": 0,
+          "distinct_tickers": 0
+        },
+        "prices_raw": {
+          "rows": 0,
+          "date_ranges": {
+            "date": {
+              "min": null,
+              "max": null,
+              "distinct": 0
+            }
+          },
+          "distinct_tickers": 0
+        },
+        "quarantine": {
+          "rows": 0,
+          "date_ranges": {
+            "date": {
+              "min": null,
+              "max": null,
+              "distinct": 0
+            }
+          },
+          "distinct_tickers": 0
+        }
+      },
+      "production_activation": false,
+      "economic_completeness_certified": false
+    },
+    {
+      "sha256": "a22739794ba4a43a11544338d4a91e14cb6a0b1f7b132ab460f96d3359f63cf4",
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\a22739794ba4a43a11544338d4a91e14cb6a0b1f7b132ab460f96d3359f63cf4",
+      "original_aliases": [
+        "project/data/stocks.db"
+      ],
+      "role": "ORIGINAL_PROJECT_DATABASE_READ_ONLY_REFERENCE",
+      "integrity_status": "PASS",
+      "sqlite_open_policy": "mode=ro&immutable=1; all archived transaction journals were empty",
+      "tables": {
+        "adjustments": {
+          "rows": 43,
+          "date_ranges": {
+            "ex_date": {
+              "min": "2016-06-13",
+              "max": "2026-04-29",
+              "distinct": 40
+            }
+          },
+          "distinct_tickers": 36
+        },
+        "fundamentals": {
+          "rows": 1579,
+          "distinct_tickers": 127
+        },
+        "prices_raw": {
+          "rows": 1149872,
+          "date_ranges": {
+            "date": {
+              "min": "2016-01-04",
+              "max": "2026-08-27",
+              "distinct": 2647
+            }
+          },
+          "distinct_tickers": 1784
+        },
+        "quarantine": {
+          "rows": 2227,
+          "date_ranges": {
+            "date": {
+              "min": "2016-01-06",
+              "max": "2026-08-27",
+              "distinct": 1208
+            }
+          },
+          "distinct_tickers": 799
+        }
+      },
+      "production_activation": false,
+      "economic_completeness_certified": false
+    }
+  ],
+  "sources13_14": {
+    "canonical13": "C:\\STOCKS\\data\\recovery-r2\\bundles\\source13\\inputs",
+    "additive14": "C:\\STOCKS\\data\\recovery-r2\\source14-inputs",
+    "canonical13_not_silently_replaced": true,
+    "revision13_exact_audit_reproduction": true,
+    "revision14_missing_payment_dates": 24,
+    "revision14_missing_net_payment_values": 52,
+    "corporate_event_inputs_pending": 28,
+    "required_intervals": 1248,
+    "fully_certified_intervals": 0,
+    "counts_overlap": true,
+    "line": "H20 broad reconstruction remains parked",
+    "audit_path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\reproduced-source-audits.json",
+    "audit_sha256": "27323eb4f0247b1ddfa77d6cdc655a8c8ea903e453072524ce630cb89a9625a3"
+  },
+  "bova_quotes": {
+    "path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\normalized-v2\\quotes-2018-20260908.json",
+    "sha256": "813a21aa335a84fb4288f125613dd3aab40b30d1c32a53e4e96c065431bc7adb",
+    "records": 2159,
+    "through": "2026-09-08",
+    "source_round": "R1 unchanged",
+    "new_economic_valuations": 0
+  },
+  "bova_event_review": "docs/research/2026-09-09-bova-event-review-r2.json",
+  "operational_inputs": "docs/research/2026-09-09-operational-inputs-r2.json",
+  "remaining_external_or_research_dependencies": [
+    "Continuous ETF event/right reconciliation after2026-03-31",
+    "Historical entry-date brokerage/B3 fees and actual broker fee bases/rounding",
+    "XP account channel/adviser status and personal investment constraints",
+    "Actual fills/spread/slippage require observed execution; no orders authorized",
+    "Broad-stock history source gaps remain quantified under source14"
+  ],
+  "economic_returns_recalculated": false,
+  "original_economic_inputs_modified": false,
+  "orders_or_broker_authentication": false,
+  "acquisition_summary": {
+    "jobs": 121,
+    "downloaded": 83,
+    "failed": 38,
+    "downloaded_bytes": 16252830,
+    "retained_partial_bytes": 221421,
+    "pdfs_parsed": 50,
+    "journal_path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\acquisition.jsonl",
+    "journal_sha256": "314298fdb4b7169ebc126350f4cae7406761216b81cccd83ad2212d003d54b48"
+  },
+  "validation": {
+    "local_auxiliary_python": "3.12.14",
+    "database_recovery_regressions_passed": 9,
+    "production_ci": "Record exact commit/run in final delivery receipt; not inferred from local tests"
+  },
+  "normalization_revision": 1,
+  "frozen_hypotheses_preserved": true
+}
