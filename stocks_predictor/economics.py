@@ -159,9 +159,13 @@ def classify(scr, cfg):
     m = declared_minimum(cfg)
     faltando = [k for k, v in m.items() if v is None]
     capital = m["capital_brl"]
-    lucro_esperado = capital * scr["net_annual_return"] if capital is not None else None
+    equivalente_historico = capital * scr["net_annual_return"] if capital is not None else None
     detalhe = {
-        "expected_annual_profit_brl": lucro_esperado,
+        # Preserve the old key without preserving its unsupported forecast claim.
+        "expected_annual_profit_brl": None,
+        "historical_annualized_profit_equivalent_brl": equivalente_historico,
+        "forecast_status": "NOT_ESTIMATED",
+        "profit_scope": "Historical annualized backtest equivalent before unmodeled expenses; not a forecast",
         "required_net_annual_return": required_net_annual_return(cfg),
         **m,
     }
@@ -171,9 +175,9 @@ def classify(scr, cfg):
                 + ", ".join(faltando),
                 detalhe)
     falhas = []
-    if lucro_esperado is not None and lucro_esperado < m["min_annual_net_profit_brl"]:
+    if equivalente_historico is not None and equivalente_historico < m["min_annual_net_profit_brl"]:
         falhas.append(
-            f"lucro anual esperado R$ {lucro_esperado:,.0f} < mínimo "
+            f"equivalente histórico anualizado R$ {equivalente_historico:,.0f} < mínimo "
             f"R$ {m['min_annual_net_profit_brl']:,.0f}")
     if scr["max_drawdown"] > m["max_acceptable_drawdown"]:
         falhas.append(
@@ -195,9 +199,10 @@ def summary_line(strat, cfg, periods_per_year=PERIODS_PER_YEAR):
         estado, motivo, detalhe = classify(scr, cfg)
         if scr is None:
             return f"economia: {estado} ({motivo})"
-        lucro = detalhe.get("expected_annual_profit_brl")
-        dinheiro = f" | lucro anual esperado R$ {lucro:,.0f}" if lucro is not None else ""
-        return (f"economia: retorno líquido anual {scr['net_annual_return']:.2%} | "
+        lucro = detalhe.get("historical_annualized_profit_equivalent_brl")
+        dinheiro = f" | equivalente histórico anualizado R$ {lucro:,.0f}" if lucro is not None else ""
+        return (f"economia: retorno histórico anualizado líquido de custos modelados "
+                f"{scr['net_annual_return']:.2%} (não é previsão) | "
                 f"vol {scr['annual_vol']:.2%} | maxDD {scr['max_drawdown']:.2%}"
                 f"{dinheiro} | {estado} ({motivo})")
     except Exception as exc:  # pragma: no cover - guarda de última instância

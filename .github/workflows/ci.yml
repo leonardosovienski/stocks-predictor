@@ -39,7 +39,25 @@ jobs:
           uv venv /tmp/stocks-wheel --python 3.13 --seed
           /tmp/stocks-wheel/bin/pip install dist/*.whl \
             "predictor-core @ https://github.com/leonardosovienski/core-predictor/releases/download/v3.2.0/predictor_core-3.2.0-py3-none-any.whl"
-          /tmp/stocks-wheel/bin/python -c "import predictor_core, stocks_predictor.rj_episodes, stocks_predictor.rj_judge"
+          mkdir -p "$RUNNER_TEMP/stocks-wheel-smoke"
+          cd "$RUNNER_TEMP/stocks-wheel-smoke"
+          /tmp/stocks-wheel/bin/python -I - <<'PY'
+          import os
+          from pathlib import Path
+          import sys
+          import predictor_core
+          import stocks_predictor
+          import stocks_predictor.rj_episodes
+          import stocks_predictor.rj_judge
+          import stocks_predictor.etf_hold
+          checkout = Path(os.environ["GITHUB_WORKSPACE"]).resolve()
+          assert not Path.cwd().resolve().is_relative_to(checkout)
+          for module in (predictor_core, stocks_predictor, stocks_predictor.etf_hold):
+              origin = Path(module.__file__).resolve()
+              assert origin.is_relative_to(Path(sys.prefix).resolve()), origin
+              assert not origin.is_relative_to(checkout), origin
+              print(module.__name__, origin)
+          PY
 
   secrets:
     runs-on: ubuntu-latest
