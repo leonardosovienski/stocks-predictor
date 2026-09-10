@@ -1,0 +1,170 @@
+{
+  "observed_at": "2026-09-10T14:05:39.236598+00:00",
+  "captures": [
+    {
+      "url": "https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2017.ZIP",
+      "requested_at_utc": "2026-09-10T13:47:57.335326+00:00",
+      "status": 200,
+      "final_url": "https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2017.ZIP",
+      "content_type": "application/x-zip-compressed",
+      "bytes": 16527191,
+      "sha256": "af6aaa85187c1d58ec6565522644066da573a7dc5b579c1d4c906ae95a2dea86",
+      "signature": "504b030414000000",
+      "path": "C:\\STOCKS\\work\\profit-validation-r5-20260910\\raw\\COTAHIST_A2017.ZIP",
+      "completed_at_utc": "2026-09-10T13:48:02.695829+00:00"
+    },
+    {
+      "url": "https://mebfaber.com/wp-content/uploads/2016/05/SSRN-id962461.pdf",
+      "requested_at_utc": "2026-09-10T13:48:02.700323+00:00",
+      "status": 200,
+      "final_url": "https://mebfaber.com/wp-content/uploads/2016/05/SSRN-id962461.pdf",
+      "content_type": "application/pdf",
+      "bytes": 945897,
+      "sha256": "f2dabb6d31b18901cb64a0f57cea86f32f514570dcb5840fbeaa4877f24bdd3f",
+      "signature": "255044462d312e34",
+      "path": "C:\\STOCKS\\work\\profit-validation-r5-20260910\\raw\\faber-tactical.pdf",
+      "completed_at_utc": "2026-09-10T13:48:05.304918+00:00"
+    },
+    {
+      "url": "https://fnet.bmfbovespa.com.br/fnet/publico/downloadDocumento?id=941503",
+      "requested_at_utc": "2026-09-10T13:48:05.782343+00:00",
+      "status": 200,
+      "final_url": "https://fnet.bmfbovespa.com.br/fnet/publico/downloadDocumento?id=941503",
+      "content_type": "application/pdf; charset=UTF-8",
+      "bytes": 137332,
+      "sha256": "5e923fe622c9058985f4056d5d17242b427398086e3f76cd1bc995b5b05c35ab",
+      "signature": "255044462d312e37",
+      "path": "C:\\STOCKS\\work\\profit-validation-r5-20260910\\raw\\fnet-ago2025.pdf",
+      "completed_at_utc": "2026-09-10T13:48:06.037452+00:00"
+    },
+    {
+      "url": "https://fnet.bmfbovespa.com.br/fnet/publico/downloadDocumento?id=672335",
+      "requested_at_utc": "2026-09-10T13:48:05.310547+00:00",
+      "status": 200,
+      "final_url": "https://fnet.bmfbovespa.com.br/fnet/publico/downloadDocumento?id=672335",
+      "content_type": "application/pdf; charset=UTF-8",
+      "bytes": 703017,
+      "sha256": "e860ab0c37f56fe1699880f08344a5bf71066b2e30c381f62658a8e351238c43",
+      "signature": "255044462d312e36",
+      "path": "C:\\STOCKS\\work\\profit-validation-r5-20260910\\raw\\fnet-fs2024.pdf",
+      "completed_at_utc": "2026-09-10T13:48:05.755224+00:00"
+    },
+    {
+      "url": "https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda/pagamento/renda-variavel/bolsa-de-valores-1/isencoes",
+      "requested_at_utc": "2026-09-10T13:48:08.371218+00:00",
+      "status": 200,
+      "final_url": "https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda/pagamento/renda-variavel/bolsa-de-valores-1/isencoes",
+      "content_type": "text/html;charset=utf-8",
+      "bytes": 185992,
+      "sha256": "e2fe155b04e498400c54e87744803d8651ecc5107164329e8b950051ec24affd",
+      "signature": "3c21444f43545950",
+      "path": "C:\\STOCKS\\work\\profit-validation-r5-20260910\\raw\\receita-exemption.html",
+      "completed_at_utc": "2026-09-10T13:48:08.735206+00:00"
+    },
+    {
+      "url": "https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda/pagamento/renda-variavel/bolsa-de-valores-1/bolsa-de-valores",
+      "requested_at_utc": "2026-09-10T13:48:06.452483+00:00",
+      "status": 200,
+      "final_url": "https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda/pagamento/renda-variavel/bolsa-de-valores-1/bolsa-de-valores",
+      "content_type": "text/html;charset=utf-8",
+      "bytes": 210213,
+      "sha256": "0483af1f2902f60b5d3a5da09289082bb10db437f3054e2d29520a7ea6cbfe4a",
+      "signature": "3c21444f43545950",
+      "path": "C:\\STOCKS\\work\\profit-validation-r5-20260910\\raw\\receita-tax.html",
+      "completed_at_utc": "2026-09-10T13:48:08.369190+00:00"
+    },
+    {
+      "url": "https://www.rico.com.vc/custos/",
+      "requested_at_utc": "2026-09-10T13:48:06.061776+00:00",
+      "error": "HTTP Error 403: Forbidden",
+      "completed_at_utc": "2026-09-10T13:48:06.239652+00:00"
+    },
+    {
+      "url": "https://www.xpi.com.br/custos-operacionais/",
+      "requested_at_utc": "2026-09-10T13:48:06.245099+00:00",
+      "error": "HTTP Error 403: Forbidden",
+      "completed_at_utc": "2026-09-10T13:48:06.447403+00:00"
+    }
+  ],
+  "scope": "Additive R5 review; prior R1/R2 observations retain their dates and original bytes.",
+  "findings": [
+    {
+      "source": "fnet-fs2024.pdf",
+      "pages_read": [
+        2,
+        9,
+        12,
+        13,
+        19,
+        22
+      ],
+      "pages_visually_reviewed": [
+        9
+      ],
+      "periods": [
+        "2022-04-01",
+        "2024-03-31"
+      ],
+      "finding": "Original annual financial statements recovered. The evolution table shows unit creations and redemptions and internal portfolio dividends; no separate amortization line. Page19 describes results incorporated into NAV. Permission for amortization exists; permission does not establish occurrence. Covers the previous standalone-FY2024 source gap, not the entire event ledger."
+    },
+    {
+      "source": "fnet-ago2025.pdf",
+      "pages_read": [
+        1
+      ],
+      "pages_visually_reviewed": [
+        1
+      ],
+      "finding": "CNPJ10406511000161, notice dated2025-07-03. The2025-06-27 meeting was not installed because no electronic votes arrived; the unmodified FY2025 financials were automatically approved. No distribution, split, or completed merger is announced in this notice."
+    },
+    {
+      "source": "faber-tactical.pdf",
+      "pages_read": [
+        19,
+        20,
+        21,
+        22,
+        23,
+        35,
+        36
+      ],
+      "finding": "External monthly ten-month rule identified; source uses same-close execution, total returns and T-bill cash, excluding taxes/commission/slippage. H22 adaptations were already explicit in its protocol."
+    }
+  ],
+  "notice_catalog_update": {
+    "previous_total": 39,
+    "original_fnet_bodies_now": 36,
+    "official_equivalent_bodies": 3,
+    "previous_missing_941503": "RECOVERED_AND_READ",
+    "catalog_completeness_certified": false
+  },
+  "event_gate": {
+    "status": "PARTIAL",
+    "cash_events_assumed_in_simulation": 0,
+    "unit_events_assumed_in_simulation": 0,
+    "meaning": "Conditional assumption, not certified absence",
+    "remaining": [
+      "Continuous event reconciliation through2026-09-08 and later settlement/rights",
+      "Independent completeness of issuer/FNET catalog",
+      "2017 warmup period event coverage"
+    ]
+  },
+  "cost_gate": {
+    "status": "PARTIAL",
+    "actual_broker_invoices_available": false,
+    "scenarios": "reference and adverse are fixed protocol assumptions, not estimated full historical invoice schedules or upper bounds",
+    "remaining": [
+      "Account/channel/assessor-specific XP terms and historical invoices",
+      "Historical fees/taxes, including withheld tax credits timing",
+      "User time and construction cost; actual total capital and acceptable loss"
+    ]
+  },
+  "tax_sources": [
+    "https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda/pagamento/renda-variavel/bolsa-de-valores-1/bolsa-de-valores",
+    "https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda/pagamento/renda-variavel/bolsa-de-valores-1/isencoes",
+    "https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda/pagamento/renda-variavel/bolsa-de-valores-1/compensacoes",
+    "https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda/pagamento/renda-variavel/bolsa-de-valores-1/retencoes"
+  ],
+  "cost_web_review": "Rico current page shows zero ETF brokerage for self-directed digital channel; not proof of past invoices or universal eligibility. Raw Rico/XP capture403 preserved, prior web observations not mislabeled as raw captures.",
+  "readiness": "Historical conditional simulation only. No full executable or forward profit certificate."
+}

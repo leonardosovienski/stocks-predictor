@@ -32,6 +32,9 @@ def main():
     if registered != path.read_bytes():
         raise ValueError("Protocol bytes changed since registration")
     protocol = json.loads(registered)
+    receipt = json.loads((ROOT / "docs/research/2026-09-10-r5/inputs-receipt.json").read_text(encoding="utf-8"))
+    if sha(work / "inputs.json") != receipt["input_sha256"]:
+        raise ValueError("Prepared input identity mismatch")
     inputs = json.loads((work / "inputs.json").read_text(encoding="utf-8"))
     identity = {"started_at": datetime.now(timezone.utc).isoformat(), "protocol_sha256": sha(path),
                 "inputs_sha256": sha(work / "inputs.json"), "python": platform.python_version(),
