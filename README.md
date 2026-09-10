@@ -1,6 +1,17 @@
 
 # stocks-predictor
 
+**Engenharia R4 — 10/09/2026 UTC:** [correções, benchmark e recibos](docs/engineering/2026-09-10-r4/README.md),
+[integração e checks do PR75](https://github.com/leonardosovienski/stocks-predictor/pull/75).
+Carga incremental e atômica, proteção contra conflitos de fontes, validação de
+entradas, diagnóstico offline e CI em Python 3.13/3.14. Os registros da auditoria
+abaixo mantêm sua data e seus resultados.
+
+Diagnóstico sem instalar dependências: `python main.py doctor` ou
+`python -m stocks_predictor.diagnostics`. `--check` sinaliza ambiente incompatível
+por código de saída 1. `--db caminho` inspeciona explicitamente um SQLite existente
+em modo de leitura, sem migrações; sem essa opção nenhum banco é aberto.
+
 **Auditoria integral executada — 10/09/2026 UTC:**
 [relatório e conclusão econômica](docs/audit/2026-09-10-integral/README.md),
 [registro de claims, achados, dados e prontidão](docs/audit/2026-09-10-integral/registry.json)
@@ -66,7 +77,7 @@ Relatórios e caminhos antigos preservam proveniência datada.
 - Ops: não é dependência declarada deste domínio no estado atual;
 - `vendor/predictor_core/` é preservado como artefato histórico de integridade e não é
   a dependência-alvo da arquitetura moderna;
-- CI: Python 3.13, Ruff, Pyright no escopo de `pyproject.toml` (inclui H20, fontes, H21 e economics), pytest+coverage, build/wheel smoke e
+- CI: Python 3.13/3.14, lock verificado, Ruff, Pyright no escopo de `pyproject.toml` (inclui H20, fontes, H21, economics, ingestão e diagnóstico), pytest+coverage com mínimo de 77%, build/wheel smoke e
   gitleaks.
 
 A migração de infraestrutura não altera thresholds, famílias, universo, janelas,

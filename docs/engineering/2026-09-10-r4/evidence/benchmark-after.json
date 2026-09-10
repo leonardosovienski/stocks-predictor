@@ -1,0 +1,32 @@
+{
+  "revision": "working-tree",
+  "source_sha256": "e1228fa9901d22a0f5d65813bf61d5a5e53b85e8cf556045efc86a004f289a59",
+  "records": 100000,
+  "spot_fraction": 0.05,
+  "repeats": [
+    {
+      "seconds_with_tracemalloc": 4.584723799998756,
+      "peak_python_bytes": 832052,
+      "inserted": 5000,
+      "input_sha256": "669521986a1cbd1a051998ff861dbc19064132d46125ccde0be6e8d241096d0b",
+      "stored_rows_sha256": "f29ea3a5d0c3081e377fafa20be968c3e22c7114df47fd254787bfaba050b91d"
+    },
+    {
+      "seconds_with_tracemalloc": 4.538058600002842,
+      "peak_python_bytes": 377772,
+      "inserted": 5000,
+      "input_sha256": "669521986a1cbd1a051998ff861dbc19064132d46125ccde0be6e8d241096d0b",
+      "stored_rows_sha256": "f29ea3a5d0c3081e377fafa20be968c3e22c7114df47fd254787bfaba050b91d"
+    },
+    {
+      "seconds_with_tracemalloc": 4.5539552999980515,
+      "peak_python_bytes": 377636,
+      "inserted": 5000,
+      "input_sha256": "669521986a1cbd1a051998ff861dbc19064132d46125ccde0be6e8d241096d0b",
+      "stored_rows_sha256": "f29ea3a5d0c3081e377fafa20be968c3e22c7114df47fd254787bfaba050b91d"
+    }
+  ],
+  "median_seconds_with_tracemalloc": 4.5539552999980515,
+  "median_peak_python_bytes": 377772,
+  "scope": "Synthetic fixed input; Python heap excludes SQLite native memory; tracing affects timing."
+}

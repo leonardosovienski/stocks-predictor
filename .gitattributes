@@ -54,3 +54,6 @@ docs/research/2026-09-09-source-inventory-r2.json -text !eol whitespace=blank-at
 docs/audit/2026-09-10-integral/evidence/** -text !eol -whitespace
 docs/audit/2026-09-10-integral/*.json text eol=lf
 docs/audit/2026-09-10-integral/*.md text eol=lf
+
+# R4 observations preserve native evidence bytes independently of checkout OS.
+docs/engineering/2026-09-10-r4/evidence/** -text !eol -whitespace

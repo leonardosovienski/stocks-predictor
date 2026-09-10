@@ -1,0 +1,26 @@
+{
+  "python": {
+    "version": "3.12.14",
+    "executable": "C:\\Users\\leona\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+    "supported": false,
+    "required": ">=3.13,<3.15"
+  },
+  "sqlite_version": "3.53.1",
+  "dependencies": {
+    "predictor-core": {
+      "version": null,
+      "metadata_compatible": false,
+      "status": "missing"
+    },
+    "PyYAML": {
+      "version": null,
+      "metadata_compatible": false,
+      "status": "missing"
+    }
+  },
+  "runtime_metadata_compatible": false,
+  "database": {
+    "status": "not_requested"
+  },
+  "scope": "Offline metadata and optional SQLite quick_check; no dependency import, migration, or operational certification."
+}

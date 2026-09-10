@@ -1,3 +1,16 @@
+## Engenharia R4 posterior à auditoria — 10/09/2026 UTC
+
+Pedido executado nesta rodada: corrigir erros e melhorar infraestrutura e uso de
+memória. [Relatório e reprodução](docs/engineering/2026-09-10-r4/README.md) e
+[PR75 com os checks por SHA](https://github.com/leonardosovienski/stocks-predictor/pull/75).
+Ingestão e snapshots protegem a transação em falhas, inclusive bloqueio no commit;
+entradas inválidas falham antes do escritor; diagnóstico offline funciona sem Core.
+A CI cobre as duas versões de Python declaradas, verifica lock e piso de cobertura.
+Conclusões econômicas, fontes originais e protocolos permanecem no estado da R3.
+Os blocos seguintes são históricos.
+
+---
+
 ## Estado após auditoria integral — 10/09/2026 UTC
 
 A auditoria solicitada foi executada. Ponto de entrada: [relatório A–R](docs/audit/2026-09-10-integral/README.md), [registro canônico](docs/audit/2026-09-10-integral/registry.json) e [reprodução](research/session-20260910/integral/README.md). Integração e último check: [PR74](https://github.com/leonardosovienski/stocks-predictor/pull/74).

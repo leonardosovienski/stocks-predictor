@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "economic_outcomes_identical": 8,
+  "daily_points_identical": 16400,
+  "original_quote_objects_rehashed": 9,
+  "selic_independent_log_compounding_factor": 2.015202488988927,
+  "new_hypotheses": 0,
+  "new_independent_evidence": 0,
+  "original_result_sha256": "39a940514b5fdcbb577c496f996ddd324c8107436852ab67da352401bb8870d2"
+}

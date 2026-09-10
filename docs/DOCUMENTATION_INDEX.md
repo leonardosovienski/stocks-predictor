@@ -1,3 +1,13 @@
+# Índice documental — engenharia R4 de 10/09/2026 UTC
+
+Leitura de engenharia atual: [relatório, mudanças e reprodução](engineering/2026-09-10-r4/README.md),
+[manifesto dos recibos](engineering/2026-09-10-r4/manifest.json) e
+[PR75](https://github.com/leonardosovienski/stocks-predictor/pull/75).
+A auditoria R3 abaixo permanece a referência econômica e documental, com a data
+da sua execução. R4 não reabre hipóteses nem coleta de mercado.
+
+---
+
 # Índice documental — auditoria integral de10/09/2026 UTC
 
 Leitura corrente: [relatório A–R](audit/2026-09-10-integral/README.md), [registro canônico](audit/2026-09-10-integral/registry.json), [reprodução](../research/session-20260910/integral/README.md). O registro vincula claims,16achados/lacunas,24frentes, dados, decisões, execuções e sete usos. I01–I09 corrigidos; I10–I16 delimitam as dependências. H21 condicional e H20 amplo estacionado. PR74 registra integração e CI final.

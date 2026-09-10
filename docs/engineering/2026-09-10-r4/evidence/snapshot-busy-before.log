@@ -1,0 +1,14 @@
+test_busy_snapshot_commit_rolls_back_owned_transaction (tests.test_input_contracts.InputContractTests.test_busy_snapshot_commit_rolls_back_owned_transaction) ... FAIL
+
+======================================================================
+FAIL: test_busy_snapshot_commit_rolls_back_owned_transaction (tests.test_input_contracts.InputContractTests.test_busy_snapshot_commit_rolls_back_owned_transaction)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\STOCKS\stocks-predictor\tests\test_input_contracts.py", line 48, in test_busy_snapshot_commit_rolls_back_owned_transaction
+    self.assertFalse(writer.in_transaction)
+AssertionError: True is not false
+
+----------------------------------------------------------------------
+Ran 1 test in 0.047s
+
+FAILED (failures=1)

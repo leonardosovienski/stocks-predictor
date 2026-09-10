@@ -1,0 +1,123 @@
+{
+  "observed_at_utc": "2026-09-10T02:38:32.659059+00:00",
+  "base": "0e9c48a87ff67bbd8d71fe5b9156799ba9bd8807",
+  "head": "ee3f38119865a9400f11a5e6901a91a6ac7895de",
+  "checks": [
+    {
+      "file": "stdlib-final.log",
+      "command": [
+        "C:\\Users\\leona\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "tests.test_ingestion_integrity",
+        "tests.test_input_contracts",
+        "tests.test_diagnostics",
+        "tests.test_audit_integrity",
+        "tests.test_etf_hold",
+        "-v"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "sha256": "7d710ff9f29a7fa94b8433ae8abece844a53ad37d445a070de44d0c46d6e7938"
+    },
+    {
+      "file": "doctor-windows.json",
+      "command": [
+        "C:\\Users\\leona\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "main.py",
+        "doctor",
+        "--check"
+      ],
+      "exit_code": 1,
+      "expected_exit_code": 1,
+      "sha256": "a4a86aee44abced89f790bd6365e73c8925650de762b0f921fd57e5158085748"
+    },
+    {
+      "file": "audit-artifact-check.json",
+      "command": [
+        "C:\\Users\\leona\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "research/session-20260910/integral/verify_audit.py"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "sha256": "5751b7e6a06f153b913704caa2015f5ccef960812b7ca637218ffa191ecef9a6"
+    }
+  ],
+  "databases": [
+    {
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\30ce8e91fba9cb0a0c09571be71821c9da2d0aec49d12ec15aab8b26522ffd2c",
+      "expected_sha256": "30ce8e91fba9cb0a0c09571be71821c9da2d0aec49d12ec15aab8b26522ffd2c",
+      "observed_sha256": "30ce8e91fba9cb0a0c09571be71821c9da2d0aec49d12ec15aab8b26522ffd2c"
+    },
+    {
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\0bceedac3936dc4162562ec35e03177c7e71b99e13b66837035d1ccd151f0512",
+      "expected_sha256": "0bceedac3936dc4162562ec35e03177c7e71b99e13b66837035d1ccd151f0512",
+      "observed_sha256": "0bceedac3936dc4162562ec35e03177c7e71b99e13b66837035d1ccd151f0512"
+    },
+    {
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\fa3d464e3e463b66c2aa64d96228aeb5d1fae63514df1d0ddb58233240b52764",
+      "expected_sha256": "fa3d464e3e463b66c2aa64d96228aeb5d1fae63514df1d0ddb58233240b52764",
+      "observed_sha256": "fa3d464e3e463b66c2aa64d96228aeb5d1fae63514df1d0ddb58233240b52764"
+    },
+    {
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\e21a89c38f2792c826291baa1175da4fe9dfbf626316635a536f7c28b250146a",
+      "expected_sha256": "e21a89c38f2792c826291baa1175da4fe9dfbf626316635a536f7c28b250146a",
+      "observed_sha256": "e21a89c38f2792c826291baa1175da4fe9dfbf626316635a536f7c28b250146a"
+    },
+    {
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\07197228920e4082954afbc9035509ae74e84be1773195a4c5b71a435481a804",
+      "expected_sha256": "07197228920e4082954afbc9035509ae74e84be1773195a4c5b71a435481a804",
+      "observed_sha256": "07197228920e4082954afbc9035509ae74e84be1773195a4c5b71a435481a804"
+    },
+    {
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\a8238568980d3303890b04590cfb5c55ab2d24c9271edd86820269336b09679a",
+      "expected_sha256": "a8238568980d3303890b04590cfb5c55ab2d24c9271edd86820269336b09679a",
+      "observed_sha256": "a8238568980d3303890b04590cfb5c55ab2d24c9271edd86820269336b09679a"
+    },
+    {
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\8f84a743e706573cab9372c21d8c9c186c5afb31c2206821d9c2cf82199bbc64",
+      "expected_sha256": "8f84a743e706573cab9372c21d8c9c186c5afb31c2206821d9c2cf82199bbc64",
+      "observed_sha256": "8f84a743e706573cab9372c21d8c9c186c5afb31c2206821d9c2cf82199bbc64"
+    },
+    {
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\e94633e709392168fc38df9633c5d63b34528a1af75949e9cecd69adf2af8e4a",
+      "expected_sha256": "e94633e709392168fc38df9633c5d63b34528a1af75949e9cecd69adf2af8e4a",
+      "observed_sha256": "e94633e709392168fc38df9633c5d63b34528a1af75949e9cecd69adf2af8e4a"
+    },
+    {
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\e713af1a867f31c3550e3767c7a9fc6f3963aac2b47b617db2adfe55903da054",
+      "expected_sha256": "e713af1a867f31c3550e3767c7a9fc6f3963aac2b47b617db2adfe55903da054",
+      "observed_sha256": "e713af1a867f31c3550e3767c7a9fc6f3963aac2b47b617db2adfe55903da054"
+    },
+    {
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\56c0c7e4d9f342e439ed63d60e031b07ff9de1ebdf5407eea011be19536da66c",
+      "expected_sha256": "56c0c7e4d9f342e439ed63d60e031b07ff9de1ebdf5407eea011be19536da66c",
+      "observed_sha256": "56c0c7e4d9f342e439ed63d60e031b07ff9de1ebdf5407eea011be19536da66c"
+    },
+    {
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\396f9aa99dfd812af93d7d58db80f0c0179345500555bb0b27297fa81fa6c32f",
+      "expected_sha256": "396f9aa99dfd812af93d7d58db80f0c0179345500555bb0b27297fa81fa6c32f",
+      "observed_sha256": "396f9aa99dfd812af93d7d58db80f0c0179345500555bb0b27297fa81fa6c32f"
+    },
+    {
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\a22739794ba4a43a11544338d4a91e14cb6a0b1f7b132ab460f96d3359f63cf4",
+      "expected_sha256": "a22739794ba4a43a11544338d4a91e14cb6a0b1f7b132ab460f96d3359f63cf4",
+      "observed_sha256": "a22739794ba4a43a11544338d4a91e14cb6a0b1f7b132ab460f96d3359f63cf4"
+    }
+  ],
+  "protected_git_paths": [
+    "vendor",
+    "research/session-20260907",
+    "research/session-20260908",
+    "research/session-20260909",
+    "research/session-20260910/integral",
+    "docs/audit/2026-09-10-integral",
+    "docs/research",
+    "config.yaml"
+  ],
+  "protected_paths_changed": [],
+  "operational_database_exists": false
+}

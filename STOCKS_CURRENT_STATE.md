@@ -1,3 +1,17 @@
+## Engenharia R4 posterior à auditoria — 10/09/2026 UTC
+
+[Relatório vigente de engenharia](docs/engineering/2026-09-10-r4/README.md) e
+[integração/checks do PR75](https://github.com/leonardosovienski/stocks-predictor/pull/75).
+Carga COTAHIST por lotes, contagem efetiva, conflitos de identidade rejeitados,
+rollback de falhas e respeito à transação do chamador. Validação canônica de datas
+e contagens, conexão fechada em falha de migração e diagnóstico sem dependências.
+CI: Python 3.13/3.14, lock obrigatório, tipos de argumentos verificados,
+cobertura mínima de 77%, timeouts e evidência retida por 14 dias.
+Memória e regressões são medidas no relatório; não constituem nova evidência de lucro.
+Os estados anteriores abaixo preservam suas respectivas datas.
+
+---
+
 ## Estado após auditoria integral — 10/09/2026 UTC
 
 A auditoria solicitada foi executada. Ponto de entrada: [relatório A–R](docs/audit/2026-09-10-integral/README.md), [registro canônico](docs/audit/2026-09-10-integral/registry.json) e [reprodução](research/session-20260910/integral/README.md). Integração e último check: [PR74](https://github.com/leonardosovienski/stocks-predictor/pull/74).
