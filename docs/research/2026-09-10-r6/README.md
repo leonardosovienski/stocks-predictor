@@ -25,6 +25,8 @@ Não foram inventados conteúdos ou reemitidos hashes. O primeiro levantamento l
 A busca de versões uniformes não resolveu os dois últimos arquivos; a busca por
 trechos com quebras diferentes resolveu. As tentativas e transformações constam
 dos [recibos](manifest.json). Os cinco objetos autorais acompanham o repositório.
+O recibo numérico completo está comprimido sem perdas; a CI verifica também o hash
+dos bytes descomprimidos contra o manifesto anterior preservado em `manifest-v1.json`.
 
 O ZIP externo histórico não foi recriado byte por byte. Seu conteúdo selado está
 integralmente restaurado em

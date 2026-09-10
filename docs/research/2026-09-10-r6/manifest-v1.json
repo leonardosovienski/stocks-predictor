@@ -2,6 +2,7 @@
   "docs/research/2026-09-10-r6/evidence/acquisitions.json": "1c5df27236d8f25dfc18be5a5de80161b182a86e346e5f9f1eb4790c03acbbe8",
   "docs/research/2026-09-10-r6/evidence/archive-recovery.json": "cb54c954858d1ca35ff6ca34602bbd01f7f3ab250dc96dc40d3345cb45523ccb",
   "docs/research/2026-09-10-r6/evidence/git-recovery.json": "d7493ddc32cf50a761606dc448ebd531060611378f3f6ad5311c407d2d1678e1",
+  "docs/research/2026-09-10-r6/evidence/h20-complete-numeric-reconciliation.json": "76d470fb8a7b5c540b7d869d3e169cbee4c58a2a9e54e9576e9d583d58ca643a",
   "docs/research/2026-09-10-r6/evidence/h20-restoration.json": "20b75794e6798f49c95a6dbea6fcd982e973e1df7cb436c55440bab4252d4619",
   "docs/research/2026-09-10-r6/evidence/mixed-recovery.json": "9c5d1bff337f39340ba512688cfd9101be916c335b4cb63eab40826b80fcb9e1",
   "docs/research/2026-09-10-r6/evidence/newline-run-recovery.json": "c55be2310427372985af509b2562f168d6564c3f2063ba10df6f6439cebfd916",
@@ -12,7 +13,5 @@
   "research/session-20260910/gap_resolution/exact_objects/1b305395c835a206c9a2f153eea8fd4f85a43d3f172f284c63524e95f619a230": "1b305395c835a206c9a2f153eea8fd4f85a43d3f172f284c63524e95f619a230",
   "research/session-20260910/gap_resolution/exact_objects/1cb585bac0c331d166460ae4cbd8b7c2279d7dbdb7cb059e565d6e90ef7850ef": "1cb585bac0c331d166460ae4cbd8b7c2279d7dbdb7cb059e565d6e90ef7850ef",
   "research/session-20260910/gap_resolution/exact_objects/a8d05b848653b1ce0d81b8a3040f2f3a121387d221de8ade74a82afe5411c681": "a8d05b848653b1ce0d81b8a3040f2f3a121387d221de8ade74a82afe5411c681",
-  "research/session-20260910/gap_resolution/exact_objects/f50bd2aa0ae3e78cb509ad9d158f8fcaacd6e90123a42eb2c7d180a50078cb40": "f50bd2aa0ae3e78cb509ad9d158f8fcaacd6e90123a42eb2c7d180a50078cb40",
-  "docs/research/2026-09-10-r6/evidence/h20-complete-numeric-reconciliation.json.gz": "686270be070e0d4ce2e017d5688cc471a0e510c6b2e78973be1633ca28fcc72f",
-  "docs/research/2026-09-10-r6/manifest-v1.json": "c732b5d0174fb10f6c2ec73c275c6057d2464a91ab6c4b02fe48697ecf3c87df"
+  "research/session-20260910/gap_resolution/exact_objects/f50bd2aa0ae3e78cb509ad9d158f8fcaacd6e90123a42eb2c7d180a50078cb40": "f50bd2aa0ae3e78cb509ad9d158f8fcaacd6e90123a42eb2c7d180a50078cb40"
 }
