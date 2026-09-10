@@ -1,0 +1,872 @@
+{
+  "population": 55,
+  "coverage": "100% AST/file identity inventory, risk-based semantic inspection; not a claim of exhaustive line review",
+  "modules": [
+    {
+      "path": "main.py",
+      "sha256": "72d7dd3b25abd234e258c49983233c89b79add05ebc100e07b61feb1b05ff98c",
+      "lines": 352,
+      "definitions": [
+        "_db_path",
+        "_conn",
+        "status",
+        "cmd_ingest",
+        "cmd_adjust",
+        "cmd_universe",
+        "cmd_backtest",
+        "cmd_attest_power",
+        "cmd_backtest_h2",
+        "cmd_backtest_h4",
+        "cmd_backtest_h5",
+        "cmd_backtest_hn",
+        "cmd_paper",
+        "_anchor",
+        "cmd_splits_review",
+        "cmd_splits_import",
+        "cmd_analyst",
+        "main"
+      ]
+    },
+    {
+      "path": "stocks_predictor/__init__.py",
+      "sha256": "782ec98063df39ce0d974377eca9246af3c9906281dc837d0de2333109b80595",
+      "lines": 5,
+      "definitions": []
+    },
+    {
+      "path": "stocks_predictor/adjust.py",
+      "sha256": "910f3a40febeaa55afc0d6abe593dd07af788668d48cd5231bff02db2b84a1c7",
+      "lines": 337,
+      "definitions": [
+        "overnight_returns",
+        "detect_jumps",
+        "infer_split_factor",
+        "adjusted_closes",
+        "scan_and_quarantine",
+        "require_scanned",
+        "adjusted_series",
+        "list_split_candidates",
+        "export_candidates_csv",
+        "import_approved_adjustments",
+        "dividend_factor",
+        "legacy_total_return_series",
+        "total_return_series"
+      ]
+    },
+    {
+      "path": "stocks_predictor/analyst.py",
+      "sha256": "73ecee7d88bf8f77033510239e51abf2be6bde6d7c10a7577e01d928fccc43b0",
+      "lines": 122,
+      "definitions": [
+        "_fmt_ptbr",
+        "gather",
+        "build_brief",
+        "write_brief",
+        "main"
+      ]
+    },
+    {
+      "path": "stocks_predictor/backtest.py",
+      "sha256": "64d446c0aab670edd340d6a4c4463450aae6a3d07ae6e6e9769de557569cb02c",
+      "lines": 736,
+      "definitions": [
+        "_daily_returns",
+        "legacy_walk_forward",
+        "judge",
+        "run",
+        "_conclude",
+        "_max_dd",
+        "_h4_extra_criteria",
+        "_run_hypothesis",
+        "_finalize_hypothesis",
+        "run_h2",
+        "run_h4",
+        "run_h5",
+        "run_h6",
+        "run_h8",
+        "run_h7",
+        "run_h9",
+        "run_h10",
+        "run_h11",
+        "run_h12",
+        "run_h13",
+        "run_h14",
+        "run_h15",
+        "run_h17",
+        "run_h18",
+        "run_h19",
+        "_turn_of_month_days",
+        "run_h16",
+        "walk_forward",
+        "_load",
+        "per_period",
+        "diff_sharpe",
+        "_pf",
+        "_pf",
+        "_load"
+      ]
+    },
+    {
+      "path": "stocks_predictor/buffered_rebalance.py",
+      "sha256": "66ff3940575b47a778651a53e90f2f46f560895c2ab512b8efc2c278bfe57a39",
+      "lines": 125,
+      "definitions": [
+        "book_digest",
+        "FrozenRebalance",
+        "freeze_rebalance",
+        "execute_rebalance"
+      ]
+    },
+    {
+      "path": "stocks_predictor/cash_events.py",
+      "sha256": "a20d9680d84bf5fffe380ec812ed155d107b6452157f85791c081a69801e8de7",
+      "lines": 124,
+      "definitions": [
+        "import_verified_events",
+        "require_coverage",
+        "total_return_series"
+      ]
+    },
+    {
+      "path": "stocks_predictor/cash_source_audit.py",
+      "sha256": "6a7d99130c1c21f63413ccfa1846a7a7d4e4658830d66d5d3155e1b010b77b78",
+      "lines": 384,
+      "definitions": [
+        "select_cvm_followup_filings",
+        "coalesce_reviewed_cash_duplicates",
+        "parse_b3_credit_pages",
+        "expand_reviewed_installments",
+        "br_decimal",
+        "br_date",
+        "next_exchange_session",
+        "normalize_b3_history",
+        "validate_payment",
+        "match_payment",
+        "match_installments"
+      ]
+    },
+    {
+      "path": "stocks_predictor/config.py",
+      "sha256": "e8d540a06a3561af8b210be518852f5d9c32b95d3c5c0f2b3532d17825aaa4ee",
+      "lines": 545,
+      "definitions": [
+        "_strip_comment",
+        "_parse_scalar",
+        "parse_simple_yaml",
+        "load_config",
+        "config_hash",
+        "_frozen_hash",
+        "frozen_config_hash",
+        "h2_frozen_config_hash",
+        "h4_frozen_config_hash",
+        "h5_frozen_config_hash",
+        "h6_frozen_config_hash",
+        "h8_frozen_config_hash",
+        "h7_frozen_config_hash",
+        "h9_frozen_config_hash",
+        "h10_frozen_config_hash",
+        "h11_frozen_config_hash",
+        "h12_frozen_config_hash",
+        "h13_frozen_config_hash",
+        "h14_frozen_config_hash",
+        "h15_frozen_config_hash",
+        "h16_frozen_config_hash",
+        "h17_frozen_config_hash",
+        "h18_frozen_config_hash",
+        "h19_frozen_config_hash"
+      ]
+    },
+    {
+      "path": "stocks_predictor/continuous_cash.py",
+      "sha256": "cac6c98839728f4fe7d86d4898b9f806e957db6ac84723c77dfbd3fe95c65dd4",
+      "lines": 488,
+      "definitions": [
+        "cents",
+        "OrdinaryTaxLedger",
+        "mark",
+        "apply_action",
+        "portfolio_fingerprint",
+        "_require_portfolio_context",
+        "_auction_disposal",
+        "_corporate_cash",
+        "run_continuous",
+        "__init__",
+        "enter",
+        "refresh",
+        "unscheduled_liability"
+      ]
+    },
+    {
+      "path": "stocks_predictor/continuous_research.py",
+      "sha256": "16a22550a725a73a0f1a0f50cc26ff99e5fd52b4dac32762c3f918c7142efd83",
+      "lines": 242,
+      "definitions": [
+        "validate_contract",
+        "read",
+        "verify_manifest",
+        "load_quotes",
+        "inspect_inputs",
+        "execute",
+        "main"
+      ]
+    },
+    {
+      "path": "stocks_predictor/cotahist.py",
+      "sha256": "9f8245812cee6c33e1ec58d859badc8f59d7c0da051ddec182442dc5b19b31fb",
+      "lines": 193,
+      "definitions": [
+        "parse_line",
+        "_pack",
+        "synthetic_cotahist",
+        "is_avista",
+        "parse_lines",
+        "load_prices",
+        "put",
+        "cents"
+      ]
+    },
+    {
+      "path": "stocks_predictor/cvm_pit.py",
+      "sha256": "ad0fcd503f80894143366848b439eb8c23d6e27dfb79d884e7e7160b2a8c5f90",
+      "lines": 491,
+      "definitions": [
+        "iso_date",
+        "receipt_dates",
+        "monetary_reais",
+        "zip_rows",
+        "digits",
+        "dfp_key",
+        "dfp_received_dates",
+        "statement_rows",
+        "derive_dfp",
+        "append_rows",
+        "ingest_dfp",
+        "derive_fre_shares",
+        "ingest_fre_shares",
+        "fundamental_values",
+        "shares_on_price_base",
+        "value_signals",
+        "summary",
+        "pick",
+        "ratio"
+      ]
+    },
+    {
+      "path": "stocks_predictor/db.py",
+      "sha256": "dceb09aed44641d21032850b3814df20c6c25ca18959498d61305f9fd015fd7f",
+      "lines": 447,
+      "definitions": [
+        "price_expr",
+        "get_connection",
+        "get_readonly_connection",
+        "get_code_version",
+        "new_run"
+      ]
+    },
+    {
+      "path": "stocks_predictor/disclosed_accounting.py",
+      "sha256": "87a0efabf01a942954abe93e0033fbe5e0debae236bf31d004e3a3321f61d81d",
+      "lines": 33,
+      "definitions": [
+        "normalized",
+        "owner_accounts"
+      ]
+    },
+    {
+      "path": "stocks_predictor/discovery_h17.py",
+      "sha256": "bcb0fb01e922b3fca5f821cb59e9f8843555245bbff464975d685a652e1fa6cc",
+      "lines": 302,
+      "definitions": [
+        "digest",
+        "read_json",
+        "ranks",
+        "spearman",
+        "identity_at",
+        "adjustment_map",
+        "score_outcome",
+        "build_cross_sections",
+        "summarize",
+        "run",
+        "main",
+        "subset_stats"
+      ]
+    },
+    {
+      "path": "stocks_predictor/discovery_reorganizations.py",
+      "sha256": "8c9e3d87ebab22f136e496cdf9b46d1ce0429ecd8de7fd5c9fe5da13c606fe65",
+      "lines": 260,
+      "definitions": [
+        "validate_terms",
+        "score",
+        "merged_market",
+        "run",
+        "main",
+        "segment",
+        "follow"
+      ]
+    },
+    {
+      "path": "stocks_predictor/discovery_value.py",
+      "sha256": "ac9096efeff26f2d5672e0d08437f07aec779135da22017146baeb98b74e9347",
+      "lines": 330,
+      "definitions": [
+        "document_key",
+        "index_unique",
+        "group_events",
+        "value_feature",
+        "prepare_features",
+        "feature_coverage",
+        "period_statistics",
+        "observe",
+        "summarize",
+        "load_market",
+        "run",
+        "main",
+        "unavailable",
+        "mean",
+        "subset"
+      ]
+    },
+    {
+      "path": "stocks_predictor/discovery_value_repair.py",
+      "sha256": "6c44d04b6f8cfede0f8e5ba00401528e83139ed9d0e7350b4ba98384df316453",
+      "lines": 120,
+      "definitions": [
+        "score",
+        "run",
+        "main"
+      ]
+    },
+    {
+      "path": "stocks_predictor/document_panel.py",
+      "sha256": "a8590fe6d3f9efb6586e502ef88cf6311cbee09ce892f305c05deaeccf59dc03",
+      "lines": 120,
+      "definitions": [
+        "fundamentals_asof",
+        "_CapitalCells",
+        "capital_from_viewer",
+        "__init__",
+        "handle_starttag",
+        "handle_data",
+        "handle_endtag"
+      ]
+    },
+    {
+      "path": "stocks_predictor/economic_gate.py",
+      "sha256": "289c04fc6b021aa92c452ff2a823fa068704bb250cee7c25fcc27e2dc07c8da8",
+      "lines": 103,
+      "definitions": [
+        "EdgeEstimate",
+        "RebalanceDecision",
+        "estimate_edge",
+        "decide_rebalance",
+        "EconomicRebalanceGate",
+        "__init__",
+        "matured_gross_edges",
+        "decide",
+        "observe"
+      ]
+    },
+    {
+      "path": "stocks_predictor/economics.py",
+      "sha256": "fa1778ac2e9274f00b5e882a0b30f08e4412d97236550735164665ae103d0098",
+      "lines": 209,
+      "definitions": [
+        "_declared",
+        "declared_minimum",
+        "required_net_annual_return",
+        "max_drawdown",
+        "screen",
+        "classify",
+        "summary_line"
+      ]
+    },
+    {
+      "path": "stocks_predictor/ecosystem_plugin.py",
+      "sha256": "704a6e41dcc5b1d4145cdc58622239fbe4322e8a0c705710e1c2e42b5d8c2d64",
+      "lines": 46,
+      "definitions": [
+        "StocksPredictorPlugin",
+        "health",
+        "capabilities"
+      ]
+    },
+    {
+      "path": "stocks_predictor/entry_feasibility.py",
+      "sha256": "0a4aafcdea65541eca50ada7cdb30b1d1c592f8c9a7d86034530296053482651",
+      "lines": 89,
+      "definitions": [
+        "entry_case",
+        "load_unit_reviews"
+      ]
+    },
+    {
+      "path": "stocks_predictor/etf_hold.py",
+      "sha256": "c254225e605593efddb9dddeaf1e5a0287f57a19df742a3a414f0b7a4095e9b6",
+      "lines": 218,
+      "definitions": [
+        "number",
+        "cents",
+        "settlement",
+        "validate_quotes",
+        "simulate",
+        "selic_reference"
+      ]
+    },
+    {
+      "path": "stocks_predictor/execution.py",
+      "sha256": "fd867494a27f54e0c64e4fbe2a48f87e5c22669e3c1115a4830ce74770aa9348",
+      "lines": 88,
+      "definitions": [
+        "next_open_after",
+        "roundtrip_cost",
+        "one_way_cost",
+        "calculate_turnover_cost",
+        "equal_weight_turnover_cost",
+        "weighted_turnover_cost",
+        "net_return"
+      ]
+    },
+    {
+      "path": "stocks_predictor/factor.py",
+      "sha256": "3b5213855dd3b9169b72463df94f061ebe25333a306a2f77582728235856603d",
+      "lines": 441,
+      "definitions": [
+        "_idx_le",
+        "momentum_12_1",
+        "signals",
+        "realized_vol",
+        "vol_signals",
+        "_fundamental_signals",
+        "roe_signals",
+        "leverage_signals",
+        "net_margin_signals",
+        "revenue_growth_signals",
+        "near_52w_high",
+        "near_52w_high_signals",
+        "volume_surge_signals",
+        "legacy_accruals_signals",
+        "_price_at",
+        "legacy__value_signals",
+        "legacy__shares_with_ref_date",
+        "legacy__shares_on_price_base",
+        "legacy_earnings_yield_signals",
+        "legacy_book_to_market_signals",
+        "accruals_signals",
+        "earnings_yield_signals",
+        "book_to_market_signals",
+        "_shares_on_price_base"
+      ]
+    },
+    {
+      "path": "stocks_predictor/h20_checked.py",
+      "sha256": "fc806cfe39de17918662d8b189e4d235b098e94985e81ce0a656e750f0d2859d",
+      "lines": 72,
+      "definitions": [
+        "digest",
+        "verify_evidence",
+        "run_checked",
+        "main"
+      ]
+    },
+    {
+      "path": "stocks_predictor/h20_continuous.py",
+      "sha256": "569d57957e4ac4d0bdf2d6c7b38686c59d7f968e5d0f8e95c73122ad4810b095",
+      "lines": 203,
+      "definitions": [
+        "H20Policy",
+        "run_h20_book",
+        "make_plans",
+        "canonical_digest",
+        "validate_source_review",
+        "historical_readiness",
+        "main",
+        "__init__",
+        "__call__"
+      ]
+    },
+    {
+      "path": "stocks_predictor/h20_research.py",
+      "sha256": "23e3a7763a3121fcbe72f80fd9c2d48a8f8400513193197de2b7aa02e843ed28",
+      "lines": 183,
+      "definitions": [
+        "sha256",
+        "verify_sources",
+        "signal_diagnostics",
+        "entry_diagnostics",
+        "run",
+        "main"
+      ]
+    },
+    {
+      "path": "stocks_predictor/ingest_cotahist.py",
+      "sha256": "a896663b82ef089ba4b72ed60bef37bee9c0f12415b4e3bf8deac8049c7e0a5c",
+      "lines": 53,
+      "definitions": [
+        "download_cotahist",
+        "_pick_cotahist_txt",
+        "parse_cotahist"
+      ]
+    },
+    {
+      "path": "stocks_predictor/ingest_cvm.py",
+      "sha256": "5f6e3b3473dfc60247cf17f213106eac39f553e7526ce6e5826dbe17668e4a58",
+      "lines": 1116,
+      "definitions": [
+        "_norm",
+        "_find_col",
+        "download_zip",
+        "_open_zip_csv",
+        "parse_ipe_rows",
+        "_open_fre_distribuicao_capital_main",
+        "parse_fre_float_rows",
+        "parse_fre_received_dates",
+        "_known_at_dfp",
+        "legacy_parse_dfp_received_dates",
+        "parse_received_dates",
+        "_pct",
+        "_derive_total_shares",
+        "legacy_parse_dfp_statement_rows",
+        "_pick_account",
+        "compute_fundamentals",
+        "legacy_ingest_dfp_year",
+        "_to_float",
+        "parse_fre_dividend_rows",
+        "parse_fre_capital_total_rows",
+        "legacy_ingest_fre_dividends_year",
+        "ingest_ipe_year",
+        "build_ticker_map",
+        "load_free_float",
+        "legacy_ingest_fre_shares_year",
+        "_pit_module",
+        "parse_dfp_statement_rows",
+        "parse_dfp_received_dates",
+        "ingest_dfp_year",
+        "ingest_fre_shares_year",
+        "ingest_fre_dividends_year",
+        "num"
+      ]
+    },
+    {
+      "path": "stocks_predictor/ingest_rj_universe.py",
+      "sha256": "209da4863c556c9dec2ad19180ca6e4fdf1ff3d2982527bef41d5d5d2009c1a5",
+      "lines": 180,
+      "definitions": [
+        "fetch_url",
+        "_TableTextParser",
+        "parse_b3_rj_list_html",
+        "snapshot_hash",
+        "save_snapshot",
+        "diff_snapshots",
+        "propose_universe_rows",
+        "ingest_b3_snapshot",
+        "__init__",
+        "handle_starttag",
+        "handle_data",
+        "handle_endtag"
+      ]
+    },
+    {
+      "path": "stocks_predictor/paper.py",
+      "sha256": "70bcd0f5e344390e23e009fe8ea84f5b2d384ad9bd36177535a7dbb9aff79626",
+      "lines": 169,
+      "definitions": [
+        "validate_forward_context",
+        "record_forward",
+        "legacy_record_forward",
+        "_record_eval",
+        "settle_executions",
+        "settle_exits",
+        "main"
+      ]
+    },
+    {
+      "path": "stocks_predictor/portfolio.py",
+      "sha256": "8e5639ffb1e17e463fcead1f0fd4d71d032647db8f8de518fc34edcfbb0efb37",
+      "lines": 87,
+      "definitions": [
+        "inverse_vol_weights",
+        "double_filter",
+        "momentum_lowvol_double_filter",
+        "roe_lowlev_double_filter",
+        "select_portfolio"
+      ]
+    },
+    {
+      "path": "stocks_predictor/profit_validation.py",
+      "sha256": "47e04d5720c4dc67e987ffc80802ade82ab288c3c83abc312850b661cd210763",
+      "lines": 170,
+      "definitions": [
+        "entitlement_book",
+        "compound_path",
+        "summarize_audit_periods",
+        "audit_trials"
+      ]
+    },
+    {
+      "path": "stocks_predictor/report.py",
+      "sha256": "6c3cf22724c84002344a3aca550916b0355e259da4da8342d52aa38d2c467ffc",
+      "lines": 304,
+      "definitions": [
+        "_num",
+        "_equity_curve",
+        "summarize_series",
+        "_fmt",
+        "build_markdown",
+        "write_report"
+      ]
+    },
+    {
+      "path": "stocks_predictor/retail_cash.py",
+      "sha256": "124766b7a2df7cf65baebdfc493fb7d695a9d95a87502c39f2eeab14b80cddae",
+      "lines": 392,
+      "definitions": [
+        "number",
+        "iso",
+        "Holding",
+        "trade_value",
+        "integer_targets",
+        "ordinary_month_tax",
+        "RetailBook",
+        "execution_readiness",
+        "normalize_deliveries",
+        "consume_delivery",
+        "available_quantity",
+        "__init__",
+        "advance",
+        "fundable",
+        "entitlement",
+        "order",
+        "rebalance",
+        "_rebalance",
+        "deliver_conversion",
+        "usable"
+      ]
+    },
+    {
+      "path": "stocks_predictor/returns.py",
+      "sha256": "d243bc94f5b6d67f2b15150adfe4370224bfca45face9b791409fb90424c4eec",
+      "lines": 26,
+      "definitions": [
+        "month_end_dates",
+        "monthly_returns",
+        "returns_matrix"
+      ]
+    },
+    {
+      "path": "stocks_predictor/rj_coda.py",
+      "sha256": "7ef5b31b9a986be78f1523523e903d2aaa947fb17cb2fd83df5af30851869630",
+      "lines": 96,
+      "definitions": [
+        "impute_zeros",
+        "clr",
+        "clr_matrix"
+      ]
+    },
+    {
+      "path": "stocks_predictor/rj_episodes.py",
+      "sha256": "be3d3f22dd10ea8f01728cc314a0c0c6f99471732a3a36288287a69f52d251ff",
+      "lines": 189,
+      "definitions": [
+        "find_local_trough",
+        "point_in_time_candidates",
+        "select_primary_episode",
+        "select_secondary_episodes",
+        "first_rally_after_trough",
+        "classify_episode"
+      ]
+    },
+    {
+      "path": "stocks_predictor/rj_families.py",
+      "sha256": "0b1eebfa636b5dca39c2203824c95281758925190a224116a4e6e889727a1c98",
+      "lines": 230,
+      "definitions": [
+        "_closes_upto",
+        "drawdown",
+        "liquidity",
+        "volume_dynamics",
+        "volume_dynamics_antecedent",
+        "rj_stage",
+        "ownership",
+        "momentum_volatility",
+        "time_since_rj",
+        "info_trigger"
+      ]
+    },
+    {
+      "path": "stocks_predictor/rj_families_next.py",
+      "sha256": "049f74a66376ee50bc9b1346a9285c48273fd35bd01fef1cca8498926b273cb0",
+      "lines": 171,
+      "definitions": [
+        "_returns_before",
+        "max_lottery",
+        "equity_issuance",
+        "retail_migration",
+        "altman_z",
+        "chs_nimta"
+      ]
+    },
+    {
+      "path": "stocks_predictor/rj_judge.py",
+      "sha256": "0308d6c14c971570c58f70b47e85cba400f13eb8eeb950345169351c6e0ca1c6",
+      "lines": 241,
+      "definitions": [
+        "_mean_diff",
+        "permutation_pvalue_from_count",
+        "_permutation_test",
+        "validate_primary_units",
+        "permutation_pvalue",
+        "family_verdict",
+        "_cramers_v",
+        "categorical_family_verdict",
+        "apply_fdr",
+        "leave_one_company_out",
+        "run_all_families",
+        "stat"
+      ]
+    },
+    {
+      "path": "stocks_predictor/rj_judge_robust.py",
+      "sha256": "1e28ee26e0f9a52dca93cb5db531035b89eb97fa2e11aa435c6ba2ab17a3c644",
+      "lines": 133,
+      "definitions": [
+        "_t_stat",
+        "romano_wolf_stepdown",
+        "robustness_report",
+        "apply_oos_haircut"
+      ]
+    },
+    {
+      "path": "stocks_predictor/rj_outcomes.py",
+      "sha256": "3e153b9504c2e12388a8f0b9b0d289cc608ed099c9e6bfdedd8718bc5c7d147c",
+      "lines": 111,
+      "definitions": [
+        "market_adjusted_rally",
+        "walk_forward_splits",
+        "walk_forward_evaluate"
+      ]
+    },
+    {
+      "path": "stocks_predictor/rj_pipeline.py",
+      "sha256": "2ad14495ce5af63cc1abc32a8b2193b9ffa7e59d1354b4bd23084fa0c0a82a3b",
+      "lines": 423,
+      "definitions": [
+        "_load_price_series",
+        "_load_volumes",
+        "_load_events",
+        "_pre_rj_high",
+        "build_episodes",
+        "compute_family_scores",
+        "persist_run",
+        "run_pipeline",
+        "load_free_float_csv",
+        "main"
+      ]
+    },
+    {
+      "path": "stocks_predictor/rj_power.py",
+      "sha256": "222e6064f8f2af24483d0f890d9a56f4a2b10542b7f546833787fd781d619cae",
+      "lines": 137,
+      "definitions": [
+        "simulate_power",
+        "power_grid",
+        "minimum_detectable_effect",
+        "format_grid",
+        "main"
+      ]
+    },
+    {
+      "path": "stocks_predictor/simulation.py",
+      "sha256": "a58cef56caf0e0ac2f555713094c4b6e265ce24164b4bbebbca37226a6d5bad7",
+      "lines": 405,
+      "definitions": [
+        "load_bars",
+        "split_events",
+        "point_in_time_series",
+        "price_adjustment_events",
+        "simulate_portfolio",
+        "walk_forward",
+        "mark"
+      ]
+    },
+    {
+      "path": "stocks_predictor/source_closure.py",
+      "sha256": "a3ab2e8aa6461f7ec0822117566643aa29a2ef5db281c27fa42ae59d999fac62",
+      "lines": 185,
+      "definitions": [
+        "source_counts",
+        "digest",
+        "without_local_references",
+        "audit",
+        "main",
+        "check_sources",
+        "read_raw_row"
+      ]
+    },
+    {
+      "path": "stocks_predictor/source_history.py",
+      "sha256": "30adbd37d3d1a516b74e5538f215853e648f53d3daa232e3ba8a3c1c8aa1e1cd",
+      "lines": 201,
+      "definitions": [
+        "document_metadata",
+        "match_document",
+        "derive_fca_securities",
+        "security_links_asof",
+        "share_integer",
+        "derive_reported_capital"
+      ]
+    },
+    {
+      "path": "stocks_predictor/stock_events.py",
+      "sha256": "2879139f85ca0213649cfdd8899ac8ebeebae6248f3d0c7a167be4a1d6eb6879",
+      "lines": 38,
+      "definitions": [
+        "import_bonus_events",
+        "bonus_events"
+      ]
+    },
+    {
+      "path": "stocks_predictor/trials_gate.py",
+      "sha256": "491ed0b1d8bdd2c560a45373835114eb9e5fc5365e257bb80b37c6a03e3b2667",
+      "lines": 222,
+      "definitions": [
+        "trials_path_from",
+        "_judge_verdict",
+        "edge_pair",
+        "noise_pair",
+        "attest",
+        "_params_from",
+        "_attested_fingerprint",
+        "register_baseline_trials",
+        "per_period_sharpe",
+        "register_hypothesis",
+        "apply_dsr"
+      ]
+    },
+    {
+      "path": "stocks_predictor/universe.py",
+      "sha256": "01ac675046f2bb94f064d90476c1a807d230ea9cae5abd34a873a1f39b025342",
+      "lines": 123,
+      "definitions": [
+        "_median",
+        "rank_universe",
+        "select_universe",
+        "legacy_select_universe",
+        "materialize_snapshot"
+      ]
+    },
+    {
+      "path": "stocks_predictor/value_profitability.py",
+      "sha256": "b78279121c5e06b713fe6a1a96d3e5769559ed871c15b21bebc4854f751477b2",
+      "lines": 152,
+      "definitions": [
+        "accounting_index",
+        "_close",
+        "prepare_snapshot",
+        "_midranks",
+        "rank_snapshot",
+        "select_members"
+      ]
+    }
+  ]
+}

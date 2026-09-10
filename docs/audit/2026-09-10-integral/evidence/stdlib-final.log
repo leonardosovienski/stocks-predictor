@@ -1,0 +1,60 @@
+test_invalid_external_edge_estimate_is_rejected (tests.test_audit_integrity.EconomicInputTests.test_invalid_external_edge_estimate_is_rejected) ... ok
+test_missing_observations_are_not_silently_removed (tests.test_audit_integrity.EconomicInputTests.test_missing_observations_are_not_silently_removed) ... ok
+test_nonfinite_costs_and_hurdles_cannot_produce_a_decision (tests.test_audit_integrity.EconomicInputTests.test_nonfinite_costs_and_hurdles_cannot_produce_a_decision) ... ok
+test_nonfinite_policy_is_rejected (tests.test_audit_integrity.EconomicInputTests.test_nonfinite_policy_is_rejected) ... ok
+test_impossible_calendar_date_rejected (tests.test_audit_integrity.QuoteContractTests.test_impossible_calendar_date_rejected) ... ok
+test_malformed_quote_is_counted_without_losing_valid_neighbor (tests.test_audit_integrity.QuoteContractTests.test_malformed_quote_is_counted_without_losing_valid_neighbor) ... ok
+test_nonpositive_quote_basis_rejected (tests.test_audit_integrity.QuoteContractTests.test_nonpositive_quote_basis_rejected) ... ok
+test_truncated_and_oversized_quotes_rejected (tests.test_audit_integrity.QuoteContractTests.test_truncated_and_oversized_quotes_rejected) ... ok
+test_empty_snapshot_fails_without_partial_rows (tests.test_audit_integrity.UniverseEvidenceTests.test_empty_snapshot_fails_without_partial_rows) ... ok
+test_future_resolution_cannot_reopen_past_universe (tests.test_audit_integrity.UniverseEvidenceTests.test_future_resolution_cannot_reopen_past_universe) ... ok
+test_identical_snapshot_is_idempotent (tests.test_audit_integrity.UniverseEvidenceTests.test_identical_snapshot_is_idempotent) ... ok
+test_legacy_replay_keeps_latest_resolution_policy_explicitly (tests.test_audit_integrity.UniverseEvidenceTests.test_legacy_replay_keeps_latest_resolution_policy_explicitly) ... ok
+test_resolution_before_cutoff_reopens_instrument (tests.test_audit_integrity.UniverseEvidenceTests.test_resolution_before_cutoff_reopens_instrument) ... ok
+test_same_day_resolution_is_outside_strict_before_cutoff (tests.test_audit_integrity.UniverseEvidenceTests.test_same_day_resolution_is_outside_strict_before_cutoff) ... ok
+test_same_members_with_changed_evidence_cannot_rewrite_snapshot (tests.test_audit_integrity.UniverseEvidenceTests.test_same_members_with_changed_evidence_cannot_rewrite_snapshot) ... ok
+test_snapshot_conflict_fails_without_appending_members (tests.test_audit_integrity.UniverseEvidenceTests.test_snapshot_conflict_fails_without_appending_members) ... ok
+test_snapshot_does_not_commit_callers_transaction (tests.test_audit_integrity.UniverseEvidenceTests.test_snapshot_does_not_commit_callers_transaction) ... ok
+test_unknown_source_does_not_become_primary_by_default (tests.test_audit_integrity.UniverseEvidenceTests.test_unknown_source_does_not_become_primary_by_default) ... ok
+test_bad_ohlc_and_nonfinite_are_rejected (tests.test_etf_hold.EtfBookTests.test_bad_ohlc_and_nonfinite_are_rejected) ... ok
+test_calendar_attribution_and_drawdown_reconcile (tests.test_etf_hold.EtfBookTests.test_calendar_attribution_and_drawdown_reconcile) ... ok
+test_d2_calendar_after_rule_change (tests.test_etf_hold.EtfBookTests.test_d2_calendar_after_rule_change) ... ok
+test_decision_on_execution_day_is_rejected (tests.test_etf_hold.EtfBookTests.test_decision_on_execution_day_is_rejected) ... ok
+test_duplicate_and_unsorted_quotes_rejected (tests.test_etf_hold.EtfBookTests.test_duplicate_and_unsorted_quotes_rejected) ... ok
+test_empty_and_no_affordable_lot_rejected (tests.test_etf_hold.EtfBookTests.test_empty_and_no_affordable_lot_rejected) ... ok
+test_exit_close_cannot_enter_open_sale_curve (tests.test_etf_hold.EtfBookTests.test_exit_close_cannot_enter_open_sale_curve) ... ok
+test_expenses_and_forecast_stay_unknown (tests.test_etf_hold.EtfBookTests.test_expenses_and_forecast_stay_unknown) ... ok
+test_future_exit_price_cannot_change_entry_quantity (tests.test_etf_hold.EtfBookTests.test_future_exit_price_cannot_change_entry_quantity) ... ok
+test_integer_lot_reserves_costs_and_separates_principal (tests.test_etf_hold.EtfBookTests.test_integer_lot_reserves_costs_and_separates_principal) ... ok
+test_missing_internal_price_is_not_skipped (tests.test_etf_hold.EtfBookTests.test_missing_internal_price_is_not_skipped) ... ok
+test_money_rounding_half_up (tests.test_etf_hold.EtfBookTests.test_money_rounding_half_up) ... ok
+test_no_tax_on_loss_or_invented_loss_credit (tests.test_etf_hold.EtfBookTests.test_no_tax_on_loss_or_invented_loss_credit) ... ok
+test_rate_and_capital_validation (tests.test_etf_hold.EtfBookTests.test_rate_and_capital_validation) ... ok
+test_selic_percent_daily_not_annual (tests.test_etf_hold.EtfBookTests.test_selic_percent_daily_not_annual) ... ok
+test_tax_applies_below_20000_etf_sale (tests.test_etf_hold.EtfBookTests.test_tax_applies_below_20000_etf_sale) ... ok
+test_unsettled_sale_not_available_and_d3_calendar (tests.test_etf_hold.EtfBookTests.test_unsettled_sale_not_available_and_d3_calendar) ... ok
+test_worst_mode_sizes_at_adverse_buy_and_sells_at_adverse_exit (tests.test_etf_hold.EtfBookTests.test_worst_mode_sizes_at_adverse_buy_and_sells_at_adverse_exit) ... ok
+test_wrong_identity_or_price_basis_is_rejected (tests.test_etf_hold.EtfBookTests.test_wrong_identity_or_price_basis_is_rejected) ... ok
+test_classification_keeps_historical_minimum_comparison (tests.test_economics_labels.EconomicEvidenceLabels.test_classification_keeps_historical_minimum_comparison) ... ok
+test_no_forecast_value_from_historical_returns (tests.test_economics_labels.EconomicEvidenceLabels.test_no_forecast_value_from_historical_returns) ... ok
+test_summary_explicitly_historical (tests.test_economics_labels.EconomicEvidenceLabels.test_summary_explicitly_historical) ... ok
+test_bad_archive_digest_writes_nothing (tests.test_data_bank.DataBankTests.test_bad_archive_digest_writes_nothing) ... ok
+test_bad_object_digest_never_emits_catalog (tests.test_data_bank.DataBankTests.test_bad_object_digest_never_emits_catalog) ... {"stage": "restoration_started", "unique_objects": 1, "planned_bytes": 8192}
+ok
+test_budget_rejected_before_writing (tests.test_data_bank.DataBankTests.test_budget_rejected_before_writing) ... ok
+test_deduplicates_aliases_and_keeps_bundle_independent (tests.test_data_bank.DataBankTests.test_deduplicates_aliases_and_keeps_bundle_independent) ... {"stage": "restoration_started", "unique_objects": 2, "planned_bytes": 8226}
+{"database": "f33a8e1903e2", "status": "INTEGRITY_PASS"}
+ok
+test_existing_destination_is_preserved (tests.test_data_bank.DataBankTests.test_existing_destination_is_preserved) ... ok
+test_nonempty_wal_prevents_false_integrity_certificate (tests.test_data_bank.DataBankTests.test_nonempty_wal_prevents_false_integrity_certificate) ... {"stage": "restoration_started", "unique_objects": 2, "planned_bytes": 8217}
+{"database": "f33a8e1903e2", "status": "REQUIRES_JOURNAL_AWARE_NORMALIZATION"}
+ok
+test_path_traversal_rejected_before_writing (tests.test_data_bank.DataBankTests.test_path_traversal_rejected_before_writing) ... ok
+test_read_only_inspection_leaves_no_journals_and_closes_file (tests.test_data_bank.DataBankTests.test_read_only_inspection_leaves_no_journals_and_closes_file) ... ok
+test_valid_hash_of_invalid_sqlite_never_emits_catalog (tests.test_data_bank.DataBankTests.test_valid_hash_of_invalid_sqlite_never_emits_catalog) ... {"stage": "restoration_started", "unique_objects": 1, "planned_bytes": 21}
+ok
+
+----------------------------------------------------------------------
+Ran 49 tests in 0.730s
+
+OK

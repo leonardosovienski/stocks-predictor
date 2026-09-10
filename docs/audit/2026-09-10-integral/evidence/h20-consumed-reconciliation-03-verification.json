@@ -1,0 +1,63 @@
+{
+  "status": "PASS_CONSUMED_INPUT_RECONCILIATION",
+  "input_hashes": {
+    "validation-manifest.json": "51eed47cc7985a9d8f0be7ca14527871caeba2d9f8cacfb10d4abf423cb7f7fa",
+    "baseline/base/quotes.db": "0bceedac3936dc4162562ec35e03177c7e71b99e13b66837035d1ccd151f0512",
+    "baseline/successors/successors.db": "fa3d464e3e463b66c2aa64d96228aeb5d1fae63514df1d0ddb58233240b52764",
+    "baseline/base/events.json": "65b44124d0d1317b18b2d67c2dac379f567fdaa1149916fa792dd9f462173c52",
+    "baseline/terms/reorganizations.json": "8f1e5bc4652092d19eb83ab93ccf8f06112de7a3f5a001a308869feff896ee3a",
+    "baseline/observations/h18-h19-reorganization-observation.json": "c47fcca89d07e2064c1ba6ebc7a1f1dc763473a1364291284dfe6d761d7e9128",
+    "results/VALIDACAO_LUCRO_STOCKS.json": "111407124ebdf1ef190fdac6387b549e979bdd0842686aafbcb09eaa92c673f5",
+    "baseline/base/identity/identity-2016.jsonl": "a3202c9c019d70fa65707f51a9afe1f3a5cd94b7ce4490abc066bc0c02a0f17a",
+    "baseline/base/identity/identity-2017.jsonl": "568f6ef2d7d79f4ceb34ff8980e0838c87ce71fa2a970358180107bda72fa087",
+    "baseline/base/identity/identity-2018.jsonl": "8879f6636f544a4f3ef86c2f31f5f29d158aa80fed88ebe6dba5bb9824fbd1e0",
+    "baseline/base/identity/identity-2019.jsonl": "a36d13cf747b0fb8facc87cdd302cd1200fb5c6480b65477441d7a1765a4bcfd",
+    "baseline/base/identity/identity-2020.jsonl": "f6ec157730bc9aa485f4ab1b16b231575b150fcbc3000c1986b225e4bb034022",
+    "baseline/base/identity/identity-2021.jsonl": "2ed2c5beac73b63a7dbffc9077c1043190343c36be3b341da37dbf9200921cd1",
+    "baseline/base/identity/identity-2022.jsonl": "22cb5233fbeb2fd444e2844bdf06ee6a1ad3cdb4e6ee42e6b32bc1c4df8ba53c",
+    "baseline/base/identity/identity-2023.jsonl": "dd640e15d59489240451c3fdba10b7d44102e1a092fcfbbe2e125a77195b918b",
+    "baseline/base/identity/identity-2024.jsonl": "2c617de9593527d0e9e402e2d24e3fce9330f2abc2845375c9bd823abdaf57fb",
+    "baseline/base/identity/identity-2025.jsonl": "d3edbaec213d70700d48cc68a397a0b99ef3273d470f6cb4d82eb42d9cbfae07",
+    "baseline/base/identity/identity-2026.jsonl": "898bb44edcb2ea4b6ad8d76a5024b72ba7a598636fa47cee73012485d0f6b7b7",
+    "baseline/successors/identity/identity-2016.jsonl": "46bdbe4c982711376e2b65c1a12d25720fde22da101ca85ecb97f7816778cbd3",
+    "baseline/successors/identity/identity-2017.jsonl": "b3bec1a4bde5f8087ec4682ceda91ce40e1c9ea8c1bfcde4da33991f5defce8f",
+    "baseline/successors/identity/identity-2018.jsonl": "1cfc9b97a5eade9e5a1d2e7482b037fae2acfe83660e2a19c50a6ba57b96619f",
+    "baseline/successors/identity/identity-2019.jsonl": "aaf65f7525bd20c4f2891413f0c3eeeae66364349af93780e0fa187fec1b271e",
+    "baseline/successors/identity/identity-2020.jsonl": "8fbb70220224000fead6138dd716d22bae1a49b279971527fd9edc050f773e57",
+    "baseline/successors/identity/identity-2021.jsonl": "5be5aefcc43260fa0e189022f573b53586c26e8bcde8a3962b2a9f5303100c1e",
+    "baseline/successors/identity/identity-2022.jsonl": "338975b1a67a9b3792ac592a959616f22962bfd5b11ee38bcb447f518c012f24",
+    "baseline/successors/identity/identity-2023.jsonl": "908060122b1652c397bff6fbc3eb6d24532c719ce2b3bb5d62b136f64bf8e987",
+    "baseline/successors/identity/identity-2024.jsonl": "53ca06101438edcf7638c589e296757a6c1cf8fce799acb503e2f97e88d7482b",
+    "baseline/successors/identity/identity-2025.jsonl": "68dbc294a3d6ed68bf24bb20c9fcfe44a3a4c0ca96e750ddf40ac0f5a2f8c36e",
+    "baseline/successors/identity/identity-2026.jsonl": "e1f27b2448999bdef021e38d66fb31f747bac3e7e183c71cf2e5504ac54b7306",
+    "h20-signals.json": "13acee7062dddbf96c81356588f36806e758ea9e5c6c8f395e7891620b1f6a8f"
+  },
+  "underlying_entitlement_cells": 9732,
+  "underlying_scenarios_numerically_reconciled": 12,
+  "h20_strategy_scenarios_numerically_reconciled": 18,
+  "numeric_absolute_and_relative_tolerance": 2e-12,
+  "rounding_differences": [
+    {
+      "path": "/trials/3/modes/worst/summary/synthetic_strategy_after_flat_72bp/annualized_geometric_return",
+      "actual": 0.019184819669155084,
+      "expected": 0.019184819669154862,
+      "absolute_error": 2.220446049250313e-16
+    }
+  ],
+  "independent_cross_section_means": 465,
+  "independent_paths": 30,
+  "independent_paired_means_and_halves": 54,
+  "bootstrap_interval_comparisons": 54,
+  "original_result_sha256": "aa184580bf5ba69b515a20cc40115453396bdefa470ac0f5408c0d3ced15e1a3",
+  "code_hashes": {
+    "research\\session-20260910\\integral\\reconcile_h20.py": "dc50b14aba1e152dffc64d79bc549f1e1115289e4a8084d64538315dbefde3a8",
+    "research\\session-20260908\\h20-profit-test\\compare_h20.py": "359517909d7d3630d8dadef203cfa5df40ec48c5013d407560806ee341de4cba",
+    "stocks_predictor\\profit_validation.py": "47e04d5720c4dc67e987ffc80802ade82ab288c3c83abc312850b661cd210763",
+    "vendor\\predictor_core\\measurement\\bootstrap.py": "19edcae4624402636dbfa7e5f2facfc2d10f34f9090f38aaa8ccb7de7ee6dcd8"
+  },
+  "full_original_package_verified": false,
+  "new_hypotheses": 0,
+  "new_independent_market_evidence": 0,
+  "executable_profit": null,
+  "limitation": "Reconciles consumed quotes, terms and frozen selections; omitted package files remain external dependencies for the original whole-package verifier. No original-publication or event-completeness certificate."
+}

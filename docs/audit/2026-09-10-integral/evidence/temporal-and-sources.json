@@ -1,0 +1,264 @@
+{
+  "universe_samples": [
+    {
+      "asof": "2018-03-29",
+      "legacy_count": 60,
+      "strict_count": 60,
+      "strict_removed": [
+        "FLRY3",
+        "MDIA3",
+        "RENT3"
+      ],
+      "strict_added": [
+        "BRSR6",
+        "CSMG3",
+        "SEER3"
+      ]
+    },
+    {
+      "asof": "2020-03-31",
+      "legacy_count": 60,
+      "strict_count": 60,
+      "strict_removed": [
+        "EQTL3",
+        "FLRY3",
+        "MULT3",
+        "RENT3",
+        "UGPA3"
+      ],
+      "strict_added": [
+        "ALPA4",
+        "CESP6",
+        "CSMG3",
+        "ECOR3",
+        "PSSA3"
+      ]
+    },
+    {
+      "asof": "2023-12-28",
+      "legacy_count": 60,
+      "strict_count": 60,
+      "strict_removed": [
+        "ASAI3",
+        "B3SA3",
+        "BPAC11",
+        "CPLE6",
+        "CSAN3",
+        "ENEV3",
+        "EQTL3",
+        "IGTI11",
+        "MULT3",
+        "RADL3",
+        "RENT3",
+        "SLCE3",
+        "TOTS3",
+        "TRPL4",
+        "UGPA3",
+        "WEGE3"
+      ],
+      "strict_added": [
+        "ALPA4",
+        "AURE3",
+        "CMIN3",
+        "CXSE3",
+        "DIRR3",
+        "DXCO3",
+        "ECOR3",
+        "EZTC3",
+        "GGPS3",
+        "GMAT3",
+        "HBSA3",
+        "MOVI3",
+        "POMO4",
+        "SANB11",
+        "SMFT3",
+        "STBP3"
+      ]
+    },
+    {
+      "asof": "2026-04-01",
+      "legacy_count": 60,
+      "strict_count": 60,
+      "strict_removed": [
+        "ASAI3",
+        "B3SA3",
+        "BBAS3",
+        "BPAC11",
+        "CPLE3",
+        "CSAN3",
+        "CSMG3",
+        "DIRR3",
+        "ENEV3",
+        "EQTL3",
+        "FLRY3",
+        "IGTI11",
+        "MULT3",
+        "PSSA3",
+        "RADL3",
+        "RENT3",
+        "SAPR11",
+        "TOTS3",
+        "UGPA3",
+        "VIVT3",
+        "WEGE3"
+      ],
+      "strict_added": [
+        "ALPA4",
+        "ALUP11",
+        "AURE3",
+        "BRSR6",
+        "CBAV3",
+        "CMIN3",
+        "ECOR3",
+        "EZTC3",
+        "GMAT3",
+        "INTB3",
+        "JHSF3",
+        "MDNE3",
+        "MOVI3",
+        "ODPV3",
+        "ORVR3",
+        "PGMN3",
+        "PLPL3",
+        "RAPT4",
+        "RECV3",
+        "SBFG3",
+        "YDUQ3"
+      ]
+    },
+    {
+      "asof": "2026-08-27",
+      "legacy_count": 60,
+      "strict_count": 60,
+      "strict_removed": [
+        "ASAI3",
+        "B3SA3",
+        "BBAS3",
+        "BPAC11",
+        "CPLE3",
+        "CSAN3",
+        "CSMG3",
+        "DIRR3",
+        "ENEV3",
+        "EQTL3",
+        "IGTI11",
+        "MULT3",
+        "PSSA3",
+        "RADL3",
+        "RENT3",
+        "SAPR11",
+        "SBSP3",
+        "TOTS3",
+        "UGPA3",
+        "VIVT3",
+        "WEGE3"
+      ],
+      "strict_added": [
+        "ABCB4",
+        "ALPA4",
+        "ALUP11",
+        "AURE3",
+        "BRSR6",
+        "CBAV3",
+        "CMIN3",
+        "ECOR3",
+        "EZTC3",
+        "GGPS3",
+        "GMAT3",
+        "INTB3",
+        "MDNE3",
+        "PGMN3",
+        "PLPL3",
+        "RAPT4",
+        "RECV3",
+        "SBFG3",
+        "TTEN3",
+        "TUPY3",
+        "YDUQ3"
+      ]
+    },
+    {
+      "asof": "2026-08-29",
+      "legacy_count": 60,
+      "strict_count": 60,
+      "strict_removed": [],
+      "strict_added": []
+    }
+  ],
+  "universe_sample_scope": "Six fixed diagnostic dates, no return evaluation; other dates not generalized.",
+  "h20_signal_periods": 32,
+  "all_signal_fields_exact": true,
+  "h20_feature_snapshots": 96,
+  "feature_cells": 5628,
+  "eligible_cells": 3671,
+  "feature_exclusions": {
+    "MEDIAN_DAILY_VOLUME_BELOW_1M_BRL": 41,
+    "NOT_SINGLE_ORDINARY_SHARE_CLASS": 1598,
+    "NO_PUBLIC_FINANCIAL_FILING": 105,
+    "NO_VALID_EXACT_DOCUMENT_CAPITAL": 32,
+    "PAST_UNRESOLVED_OVERNIGHT_GT_30PCT": 33,
+    "REPORTED_CAPITAL_OLDER_THAN_550_DAYS": 86,
+    "NO_NEARBY_FISCAL_DATE_INSTRUMENT": 11,
+    "PAST_UNMODELLED_CAPITAL_EVENT": 51
+  },
+  "accounting_rows": 750,
+  "unique_accounting_keys": 750,
+  "raw_accounting_archives_rehashed": [
+    {
+      "name": "dfp_cia_aberta_2016.zip",
+      "sha256": "772f06a73c5fe80534b61365ea5d03f9d8fcce21b87823bd5c9d48699bcf71d5",
+      "bytes": 9832691
+    },
+    {
+      "name": "dfp_cia_aberta_2017.zip",
+      "sha256": "1ff8185d61759e49b406c55c5d0b593587c2e76e9032c95f836f7fea02fc9d58",
+      "bytes": 10150935
+    },
+    {
+      "name": "dfp_cia_aberta_2018.zip",
+      "sha256": "280dcf5acd7bdb529acc186c9a1195092a1e06cf1e33ddcdca0b11c31261296f",
+      "bytes": 10237924
+    },
+    {
+      "name": "dfp_cia_aberta_2019.zip",
+      "sha256": "bc82a1162b44686e8953b521e3424a5938b6661ff4655f832db4ea9488296a0d",
+      "bytes": 11185526
+    },
+    {
+      "name": "dfp_cia_aberta_2020.zip",
+      "sha256": "8fb97d1887aed1e1e2d85e54cb133baf9f65b9f46f60fa8720f09c1f7a74362e",
+      "bytes": 12637854
+    },
+    {
+      "name": "dfp_cia_aberta_2021.zip",
+      "sha256": "64b8693b709538a0357c5179ae02231cb380d0000956ee57a873a21d4efda2e4",
+      "bytes": 13283026
+    },
+    {
+      "name": "dfp_cia_aberta_2022.zip",
+      "sha256": "ecc4bb053d3a530a2aa34102c3a6482ef80fa9c7c6e680abd02cf3c5d81c3c88",
+      "bytes": 13448891
+    },
+    {
+      "name": "dfp_cia_aberta_2023.zip",
+      "sha256": "d7ecbeb48b132d9e7480236d410d3587f4bd15efdf738e0b857647e178d3a261",
+      "bytes": 13563384
+    },
+    {
+      "name": "dfp_cia_aberta_2024.zip",
+      "sha256": "87e647faf66a1cb5abd9573716fea305b27ceb4573ceb4e83574dfc1429a522a",
+      "bytes": 13396366
+    },
+    {
+      "name": "dfp_cia_aberta_2025.zip",
+      "sha256": "de8b7be1cdae032a402ab33916015c74fdc30f0bc64be3f38a4b5dd1d43f6d79",
+      "bytes": 12753312
+    },
+    {
+      "name": "dfp_cia_aberta_2026.zip",
+      "sha256": "eae4de33f122af8590cd25ecc4a8abda81ba3b044c9b375663afa310ba67e083",
+      "bytes": 217658
+    }
+  ],
+  "temporal_guard": "Exact receipt/document/version and receipt+1 day; reconstructed identities and stale-capital proxies still limit full PIT claims."
+}

@@ -1,0 +1,168 @@
+{
+  "databases": [
+    {
+      "sha256": "30ce8e91fba9cb0a0c09571be71821c9da2d0aec49d12ec15aab8b26522ffd2c",
+      "role": "PRESERVED_RESEARCH_VERSION"
+    },
+    {
+      "sha256": "0bceedac3936dc4162562ec35e03177c7e71b99e13b66837035d1ccd151f0512",
+      "role": "PRESERVED_RESEARCH_VERSION"
+    },
+    {
+      "sha256": "fa3d464e3e463b66c2aa64d96228aeb5d1fae63514df1d0ddb58233240b52764",
+      "role": "PRESERVED_RESEARCH_VERSION"
+    },
+    {
+      "sha256": "e21a89c38f2792c826291baa1175da4fe9dfbf626316635a536f7c28b250146a",
+      "role": "PRESERVED_RESEARCH_VERSION",
+      "resolved_quarantines": [
+        43,
+        "2026-08-28 02:25:58",
+        "2026-08-28 02:25:58"
+      ],
+      "snapshots": [
+        [
+          "2026-08-27",
+          60,
+          60
+        ]
+      ]
+    },
+    {
+      "sha256": "07197228920e4082954afbc9035509ae74e84be1773195a4c5b71a435481a804",
+      "role": "REPAIRED_EXAMPLE_NOT_CANONICAL",
+      "resolved_quarantines": [
+        43,
+        "2026-08-28 02:25:58",
+        "2026-08-28 02:25:58"
+      ],
+      "snapshots": [
+        [
+          "2026-08-27",
+          60,
+          60
+        ]
+      ]
+    },
+    {
+      "sha256": "a8238568980d3303890b04590cfb5c55ab2d24c9271edd86820269336b09679a",
+      "role": "PRESERVED_RESEARCH_VERSION",
+      "resolved_quarantines": [
+        43,
+        "2026-08-28 02:25:58",
+        "2026-08-28 02:25:58"
+      ],
+      "snapshots": [
+        [
+          "2026-08-27",
+          60,
+          60
+        ]
+      ]
+    },
+    {
+      "sha256": "8f84a743e706573cab9372c21d8c9c186c5afb31c2206821d9c2cf82199bbc64",
+      "role": "PRESERVED_RESEARCH_VERSION",
+      "resolved_quarantines": [
+        43,
+        "2026-08-28 02:25:58",
+        "2026-08-28 02:25:58"
+      ],
+      "snapshots": [
+        [
+          "2026-08-27",
+          60,
+          60
+        ]
+      ]
+    },
+    {
+      "sha256": "e94633e709392168fc38df9633c5d63b34528a1af75949e9cecd69adf2af8e4a",
+      "role": "PRESERVED_RESEARCH_VERSION",
+      "resolved_quarantines": [
+        43,
+        "2026-08-28 02:25:58",
+        "2026-08-28 02:25:58"
+      ],
+      "snapshots": [
+        [
+          "2026-08-27",
+          60,
+          60
+        ]
+      ]
+    },
+    {
+      "sha256": "e713af1a867f31c3550e3767c7a9fc6f3963aac2b47b617db2adfe55903da054",
+      "role": "SMOKE_OR_TEST_FIXTURE_NOT_MARKET_DATA",
+      "resolved_quarantines": [
+        0,
+        null,
+        null
+      ],
+      "snapshots": []
+    },
+    {
+      "sha256": "56c0c7e4d9f342e439ed63d60e031b07ff9de1ebdf5407eea011be19536da66c",
+      "role": "SMOKE_OR_TEST_FIXTURE_NOT_MARKET_DATA",
+      "resolved_quarantines": [
+        0,
+        null,
+        null
+      ],
+      "snapshots": []
+    },
+    {
+      "sha256": "396f9aa99dfd812af93d7d58db80f0c0179345500555bb0b27297fa81fa6c32f",
+      "role": "SMOKE_OR_TEST_FIXTURE_NOT_MARKET_DATA",
+      "resolved_quarantines": [
+        0,
+        null,
+        null
+      ],
+      "snapshots": []
+    },
+    {
+      "sha256": "a22739794ba4a43a11544338d4a91e14cb6a0b1f7b132ab460f96d3359f63cf4",
+      "role": "ORIGINAL_PROJECT_DATABASE_READ_ONLY_REFERENCE",
+      "resolved_quarantines": [
+        43,
+        "2026-08-28 02:25:58",
+        "2026-08-28 02:25:58"
+      ],
+      "snapshots": [
+        [
+          "2026-08-27",
+          60,
+          60
+        ]
+      ]
+    }
+  ],
+  "parser_accepted_invalid_calendar_date": "2024-02-31",
+  "parser_accepted_truncated_width": 217,
+  "future_resolution_in_past_universe": [
+    "BBBB3",
+    "AAAA3"
+  ],
+  "snapshot_first": [
+    "BBBB3"
+  ],
+  "snapshot_rerun": [
+    "AAAA3"
+  ],
+  "snapshot_persisted": [
+    [
+      "2024-01-05",
+      "BBBB3",
+      200.0,
+      1
+    ],
+    [
+      "2024-01-05",
+      "AAAA3",
+      500.0,
+      1
+    ]
+  ]
+}

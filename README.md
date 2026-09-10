@@ -1,12 +1,16 @@
 
 # stocks-predictor
 
-**Próxima tarefa:** [auditoria técnica integral, crítica e executável](docs/continuation/PROMPT_AUDITORIA_INTEGRAL_20260909.md).
-O mandato completo foi consolidado com o usuário; sua execução ainda está pendente.
-Ele amplia a revisão para lógica, arquitetura, dados, fontes, pressupostos e
-finalidade econômica, sem obrigação de preservar a linha H21.
-[Artefatos da sessão e cobertura da publicação](research/session-20260909/publication/README.md).
-Os registros abaixo descrevem os resultados existentes, sujeitos à nova auditoria.
+**Auditoria integral executada — 10/09/2026 UTC:**
+[relatório e conclusão econômica](docs/audit/2026-09-10-integral/README.md),
+[registro de claims, achados, dados e prontidão](docs/audit/2026-09-10-integral/registry.json)
+e [comandos de reprodução](research/session-20260910/integral/README.md).
+Foram examinadas as 24 frentes, corrigidos contratos de integridade/tempo/estatística
+e reproduzidos os oito livros H21. H20 teve reconciliação econômica delimitada;
+seu pacote integral ainda tem cinco objetos ausentes. CI197: 815 testes aprovados.
+H21 permanece condicional, H20 amplo estacionado e operação real não apta.
+Integração e último SHA testado: [PR74](https://github.com/leonardosovienski/stocks-predictor/pull/74).
+Os resultados anteriores abaixo preservam suas respectivas janelas e limitações.
 
 Projeto de pesquisa econômica de ações da B3. A linha ativa de validação é
 **H21 — exposição simples via BOVA11**, medida em uma história exploratória

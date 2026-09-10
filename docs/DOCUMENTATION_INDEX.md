@@ -1,3 +1,11 @@
+# Índice documental — auditoria integral de10/09/2026 UTC
+
+Leitura corrente: [relatório A–R](audit/2026-09-10-integral/README.md), [registro canônico](audit/2026-09-10-integral/registry.json), [reprodução](../research/session-20260910/integral/README.md). O registro vincula claims,16achados/lacunas,24frentes, dados, decisões, execuções e sete usos. I01–I09 corrigidos; I10–I16 delimitam as dependências. H21 condicional e H20 amplo estacionado. PR74 registra integração e CI final.
+
+Os índices abaixo preservam a história anterior à execução da auditoria.
+
+---
+
 # Índice documental — revisão de 09/09/2026
 
 Continuidade mais recente: [prompt completo da auditoria integral](continuation/PROMPT_AUDITORIA_INTEGRAL_20260909.md)

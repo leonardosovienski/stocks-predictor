@@ -1,0 +1,112 @@
+{
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "audit_kind": "SOURCE_COMPLETENESS_ONLY",
+  "production_environment_certificate": false,
+  "audits": {
+    "13": {
+      "status": "BLOCKED_MISSING_EVIDENCE",
+      "profit": null,
+      "future_profit_projection": null,
+      "new_historical_return_evaluations": 0,
+      "administrative_counts": [
+        53,
+        55
+      ],
+      "source_manifest_sha256": "7c24e093f7a148c3f375fff9fbd23db62f049ba8012e49e6ba7b4413e27a372b",
+      "verified_input_files": 827,
+      "verified_source_files": 792,
+      "verified_primary_files": 791,
+      "verified_derived_review_files": 1,
+      "unclassified_source_files": 0,
+      "validated_quote_records": 365198,
+      "raw_entitlements_preserved": 778,
+      "execution_payment_rows": 800,
+      "reviewed_duplicate_groups": 1,
+      "raw_records_coalesced": 1,
+      "unique_declared_entitlements": 777,
+      "complete_installment_schedules": 9,
+      "corporate_actions_integrated": 8,
+      "missing_payment_dates": 24,
+      "missing_net_values": 54,
+      "conservative_required_intervals": 1248,
+      "unavailable_signal_dates": [
+        {
+          "asof": "2018-03-29",
+          "reason": "INSUFFICIENT_FEATURE_COVERAGE"
+        }
+      ],
+      "issue_counts": {
+        "CASH_COVERAGE": 1237,
+        "CASH_EVENT_FIELD": 242,
+        "CASH_CHRONOLOGY": 32,
+        "EXECUTION_CHECK": 3,
+        "CORPORATE_TAX_AND_DELIVERY": 12,
+        "ORDINARY_STOCK_ACTION_DELIVERY_AND_BASIS": 16,
+        "JBS_HISTORY_TRUNCATED": 1,
+        "CORPORATE_SECURITY_CLASS": 2,
+        "FRACTION_TAX_DEPENDS_ON_PORTFOLIO": 1,
+        "SUCCESSOR_CASH_INVENTORY": 1,
+        "BROKER_CASH_ROUNDING": 1,
+        "CASH_KNOWLEDGE_DATE": 24,
+        "CORPORATE_EVENT_INPUT": 28,
+        "H20_ADDITIONAL_CASH_INTERVAL": 11,
+        "H20_CONTINUOUS_SOURCE_ATTESTATION_MISSING": 1
+      },
+      "issue_detail_count": 1612
+    },
+    "14": {
+      "status": "BLOCKED_MISSING_EVIDENCE",
+      "profit": null,
+      "future_profit_projection": null,
+      "new_historical_return_evaluations": 0,
+      "administrative_counts": [
+        53,
+        55
+      ],
+      "source_manifest_sha256": "3b36e2416e44f2b0a30e88d4306e00cdc74a7302c6e9b0e33950a893ea169bda",
+      "verified_input_files": 827,
+      "verified_source_files": 792,
+      "verified_primary_files": 791,
+      "verified_derived_review_files": 1,
+      "unclassified_source_files": 0,
+      "validated_quote_records": 365198,
+      "raw_entitlements_preserved": 778,
+      "execution_payment_rows": 800,
+      "reviewed_duplicate_groups": 1,
+      "raw_records_coalesced": 1,
+      "unique_declared_entitlements": 777,
+      "complete_installment_schedules": 9,
+      "corporate_actions_integrated": 8,
+      "missing_payment_dates": 24,
+      "missing_net_values": 52,
+      "conservative_required_intervals": 1248,
+      "unavailable_signal_dates": [
+        {
+          "asof": "2018-03-29",
+          "reason": "INSUFFICIENT_FEATURE_COVERAGE"
+        }
+      ],
+      "issue_counts": {
+        "CASH_COVERAGE": 1237,
+        "CASH_EVENT_FIELD": 236,
+        "CASH_CHRONOLOGY": 32,
+        "EXECUTION_CHECK": 3,
+        "CORPORATE_TAX_AND_DELIVERY": 12,
+        "ORDINARY_STOCK_ACTION_DELIVERY_AND_BASIS": 16,
+        "JBS_HISTORY_TRUNCATED": 1,
+        "CORPORATE_SECURITY_CLASS": 2,
+        "FRACTION_TAX_DEPENDS_ON_PORTFOLIO": 1,
+        "SUCCESSOR_CASH_INVENTORY": 1,
+        "BROKER_CASH_ROUNDING": 1,
+        "CASH_KNOWLEDGE_DATE": 24,
+        "CORPORATE_EVENT_INPUT": 28,
+        "H20_ADDITIONAL_CASH_INTERVAL": 11,
+        "H20_CONTINUOUS_SOURCE_ATTESTATION_MISSING": 1
+      },
+      "issue_detail_count": 1606
+    }
+  },
+  "representation": "Compact authorial audit result: issue detail lists omitted; full original remains at source_path.",
+  "source_path": "C:\\STOCKS\\work\\audit-integral-20260910\\source-audits-after.json",
+  "source_sha256": "27323eb4f0247b1ddfa77d6cdc655a8c8ea903e453072524ce630cb89a9625a3"
+}

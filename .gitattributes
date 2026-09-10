@@ -49,3 +49,8 @@ docs/research/2026-09-09-data-readiness.json -text !eol whitespace=blank-at-eol,
 docs/research/2026-09-09-bova-event-review-r2.json -text !eol whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 docs/research/2026-09-09-operational-inputs-r2.json -text !eol whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 docs/research/2026-09-09-source-inventory-r2.json -text !eol whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Audit receipts preserve the exact observed bytes, including historical log whitespace.
+docs/audit/2026-09-10-integral/evidence/** -text !eol -whitespace
+docs/audit/2026-09-10-integral/*.json text eol=lf
+docs/audit/2026-09-10-integral/*.md text eol=lf

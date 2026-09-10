@@ -1,3 +1,15 @@
+## Estado após auditoria integral — 10/09/2026 UTC
+
+A auditoria solicitada foi executada. Ponto de entrada: [relatório A–R](docs/audit/2026-09-10-integral/README.md), [registro canônico](docs/audit/2026-09-10-integral/registry.json) e [reprodução](research/session-20260910/integral/README.md). Integração e último check: [PR74](https://github.com/leonardosovienski/stocks-predictor/pull/74).
+
+24 frentes examinadas; defeitos de parser, tempo, snapshot, origem documental, paper e inferência corrigidos. CI197:815 testes, seis subtestes,78% de cobertura reportada, build/wheel e segredos aprovados. Oito livros H21 e16.400 pontos reproduzidos; H20 consumido reconciliado, pacote integral bloqueado por cinco objetos. Os12 bancos e lacres verificados permanecem intactos; banco operacional não ativado.
+
+H21 permanece lucro histórico condicional e prioridade de validação por simplicidade/custo de evidência; superioridade, lucro integral/futuro e adequação pessoal não demonstrados. H20 amplo estacionado. O reparo de exemplo tem três linhas fundamentals_pit, corrigindo a generalização anterior de que todas eram vazias; não constitui painel amplo. Pendências únicas:I10–I16, todas com condição objetiva. Nenhuma automação, ordem ou instalação Windows foi realizada.
+
+Os blocos abaixo são históricos, com suas datas e escopos originais.
+
+---
+
 ## Estado da continuidade — auditoria integral preparada em 09/09/2026
 
 O usuário solicitou uma revisão ampla do projeto e consolidou o

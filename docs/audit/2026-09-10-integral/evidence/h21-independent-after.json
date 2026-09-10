@@ -1,0 +1,64 @@
+{
+  "status": "PASS",
+  "method": "Independent integer-cent implementation by the same agent, not external review",
+  "result_sha256": "c3a8debcfb808b03bf004165849010f02de72e01eac0d0b9eee5f99ab032dd9e",
+  "original_lines_sha256": "95a0f8c69954911c7c8e332af846b830989ccbe3d2f7e6ed1bdff014213e6eb3",
+  "checks": [
+    {
+      "capital": 5000.0,
+      "mode": "open",
+      "bps": 18,
+      "profit_brl": 5618.39,
+      "daily_points_verified": 2050
+    },
+    {
+      "capital": 5000.0,
+      "mode": "open",
+      "bps": 36,
+      "profit_brl": 5594.65,
+      "daily_points_verified": 2050
+    },
+    {
+      "capital": 5000.0,
+      "mode": "worst_open_close",
+      "bps": 18,
+      "profit_brl": 5539.28,
+      "daily_points_verified": 2050
+    },
+    {
+      "capital": 5000.0,
+      "mode": "worst_open_close",
+      "bps": 36,
+      "profit_brl": 5515.48,
+      "daily_points_verified": 2050
+    },
+    {
+      "capital": 10000.0,
+      "mode": "open",
+      "bps": 18,
+      "profit_brl": 12173.17,
+      "daily_points_verified": 2050
+    },
+    {
+      "capital": 10000.0,
+      "mode": "open",
+      "bps": 36,
+      "profit_brl": 12121.73,
+      "daily_points_verified": 2050
+    },
+    {
+      "capital": 10000.0,
+      "mode": "worst_open_close",
+      "bps": 18,
+      "profit_brl": 12001.77,
+      "daily_points_verified": 2050
+    },
+    {
+      "capital": 10000.0,
+      "mode": "worst_open_close",
+      "bps": 36,
+      "profit_brl": 11950.19,
+      "daily_points_verified": 2050
+    }
+  ]
+}

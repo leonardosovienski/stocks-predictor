@@ -1,0 +1,72 @@
+[
+  {
+    "revision": "564f9f7",
+    "code_hashes": {
+      "stocks_predictor/rj_judge.py": "b9c1aeda59fb2e7b1335207a3389e18b27f8da81dfc7da72f3ce93c7dc0ba75f",
+      "stocks_predictor/rj_judge_robust.py": "a37eb9277546942ec16281e77edb3f462055f87baa08106a96cca41370aed166"
+    },
+    "cases": [
+      {
+        "case": "duplicate_issuer",
+        "rejected": false,
+        "result": 0.2727272727272727
+      },
+      {
+        "case": "unmatched_samples",
+        "rejected": false,
+        "result": {
+          "drawdown": {
+            "t_obs": -3.6742346141747673,
+            "p_romanowolf": 0.36363636363636365,
+            "significant_romanowolf": false
+          },
+          "liquidity": {
+            "t_obs": -3.6742346141747673,
+            "p_romanowolf": 0.36363636363636365,
+            "significant_romanowolf": false
+          }
+        }
+      },
+      {
+        "case": "conflicting_labels",
+        "rejected": false,
+        "result": {
+          "drawdown": {
+            "t_obs": -3.6742346141747673,
+            "p_romanowolf": 0.18181818181818182,
+            "significant_romanowolf": false
+          },
+          "liquidity": {
+            "t_obs": 3.6742346141747673,
+            "p_romanowolf": 0.18181818181818182,
+            "significant_romanowolf": false
+          }
+        }
+      }
+    ]
+  },
+  {
+    "revision": "working_tree",
+    "code_hashes": {
+      "stocks_predictor/rj_judge.py": "0308d6c14c971570c58f70b47e85cba400f13eb8eeb950345169351c6e0ca1c6",
+      "stocks_predictor/rj_judge_robust.py": "1e28ee26e0f9a52dca93cb5db531035b89eb97fa2e11aa435c6ba2ab17a3c644"
+    },
+    "cases": [
+      {
+        "case": "duplicate_issuer",
+        "rejected": true,
+        "error": "primary RJ inference requires one observation per company"
+      },
+      {
+        "case": "unmatched_samples",
+        "rejected": true,
+        "error": "joint maxT requires identical ordered companies and labels across families"
+      },
+      {
+        "case": "conflicting_labels",
+        "rejected": true,
+        "error": "joint maxT requires identical ordered companies and labels across families"
+      }
+    ]
+  }
+]

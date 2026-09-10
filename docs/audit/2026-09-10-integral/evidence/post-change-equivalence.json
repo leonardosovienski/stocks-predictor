@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "economic_fields_exact": {
+    "protocol_id": true,
+    "n_quote_dates": true,
+    "evidence_state": true,
+    "fully_net_executable_profit_brl": true,
+    "expected_future_profit_brl": true,
+    "gross_selic_reference": true,
+    "outcomes": true
+  },
+  "quote_file_bytes_exact": true,
+  "raw_lines_bytes_exact": true,
+  "source_13_14_audits_exact": true,
+  "new_independent_evidence": 0,
+  "outcomes": 8,
+  "daily_points": 16400
+}
