@@ -1,0 +1,68 @@
+{
+  "status": "PASS",
+  "checked_at": "2026-09-10T19:50:54.825821+00:00",
+  "catalog_sha256": "cd43a87d22cfd8c64af55a81d785ce218a336e4541b9310ec2f18a727d71b0f6",
+  "databases": [
+    {
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\30ce8e91fba9cb0a0c09571be71821c9da2d0aec49d12ec15aab8b26522ffd2c",
+      "sha256": "30ce8e91fba9cb0a0c09571be71821c9da2d0aec49d12ec15aab8b26522ffd2c",
+      "bytes": 38662144
+    },
+    {
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\0bceedac3936dc4162562ec35e03177c7e71b99e13b66837035d1ccd151f0512",
+      "sha256": "0bceedac3936dc4162562ec35e03177c7e71b99e13b66837035d1ccd151f0512",
+      "bytes": 38957056
+    },
+    {
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\fa3d464e3e463b66c2aa64d96228aeb5d1fae63514df1d0ddb58233240b52764",
+      "sha256": "fa3d464e3e463b66c2aa64d96228aeb5d1fae63514df1d0ddb58233240b52764",
+      "bytes": 1323008
+    },
+    {
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\e21a89c38f2792c826291baa1175da4fe9dfbf626316635a536f7c28b250146a",
+      "sha256": "e21a89c38f2792c826291baa1175da4fe9dfbf626316635a536f7c28b250146a",
+      "bytes": 288522240
+    },
+    {
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\07197228920e4082954afbc9035509ae74e84be1773195a4c5b71a435481a804",
+      "sha256": "07197228920e4082954afbc9035509ae74e84be1773195a4c5b71a435481a804",
+      "bytes": 257216512
+    },
+    {
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\a8238568980d3303890b04590cfb5c55ab2d24c9271edd86820269336b09679a",
+      "sha256": "a8238568980d3303890b04590cfb5c55ab2d24c9271edd86820269336b09679a",
+      "bytes": 288530432
+    },
+    {
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\8f84a743e706573cab9372c21d8c9c186c5afb31c2206821d9c2cf82199bbc64",
+      "sha256": "8f84a743e706573cab9372c21d8c9c186c5afb31c2206821d9c2cf82199bbc64",
+      "bytes": 288530432
+    },
+    {
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\e94633e709392168fc38df9633c5d63b34528a1af75949e9cecd69adf2af8e4a",
+      "sha256": "e94633e709392168fc38df9633c5d63b34528a1af75949e9cecd69adf2af8e4a",
+      "bytes": 288530432
+    },
+    {
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\e713af1a867f31c3550e3767c7a9fc6f3963aac2b47b617db2adfe55903da054",
+      "sha256": "e713af1a867f31c3550e3767c7a9fc6f3963aac2b47b617db2adfe55903da054",
+      "bytes": 155648
+    },
+    {
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\56c0c7e4d9f342e439ed63d60e031b07ff9de1ebdf5407eea011be19536da66c",
+      "sha256": "56c0c7e4d9f342e439ed63d60e031b07ff9de1ebdf5407eea011be19536da66c",
+      "bytes": 229376
+    },
+    {
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\396f9aa99dfd812af93d7d58db80f0c0179345500555bb0b27297fa81fa6c32f",
+      "sha256": "396f9aa99dfd812af93d7d58db80f0c0179345500555bb0b27297fa81fa6c32f",
+      "bytes": 229376
+    },
+    {
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\a22739794ba4a43a11544338d4a91e14cb6a0b1f7b132ab460f96d3359f63cf4",
+      "sha256": "a22739794ba4a43a11544338d4a91e14cb6a0b1f7b132ab460f96d3359f63cf4",
+      "bytes": 257163264
+    }
+  ],
+  "scope": "Read-only byte identity with recovered catalog; no migration or rewrite."
+}

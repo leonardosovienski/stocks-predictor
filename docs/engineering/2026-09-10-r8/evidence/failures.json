@@ -28,7 +28,7 @@
       "test_failure": "New migration regression compared Core sqlite3.Row with tuple; integrity value itself was ok. Normalize row values and exercise initial-schema upgrade through all 15 migrations.",
       "scanner_failure": "Two file SHA-256 values classified as generic-api-key because filenames contain secrets/api. Independently verified as file hashes. Exact two historical fingerprints excluded; current manifest separates path/digest. Scanner and rules remain active.",
       "python314": "890 passed, 1 failed, 63 subtests; 17 archived tests passed.",
-      "status": "CORRECTED_PENDING_CI"
+      "status": "CORRECTED_CI224_PASS"
     }
   ]
 }

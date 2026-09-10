@@ -27,8 +27,27 @@ do pacote, testes e ferramentas, workflow, lock, identidade real e ciclo de recu
 Isso permite evolução sem atribuir testes antigos ao código novo.
 
 Falhas encontradas durante esta rodada ficam em `evidence/failures.json`.
-A aprovação de CI e a entrega são registradas depois dos checks do commit final.
-Estado nesta edição: implementação e validações locais executadas; CI em andamento.
+[CI224 aprovada](https://github.com/leonardosovienski/stocks-predictor/actions/runs/34522721727)
+no código `c7f61ed5befda706da4c9a9cd53ff12b61a1d89b`: 891 testes ativos,
+17 arquivados e 63 subtests em cada Python. Cobertura geral: 80% no 3.13 e 79%
+no 3.14; armazenamento operacional 92%, CLI 89%. Não representa cobertura total.
+Lint/tipos, scanner, integridade histórica, builds idênticos e ciclo do wheel
+instalado passaram nas duas versões. Recibo: [ci224.json](evidence/ci224.json).
+O [PR79](https://github.com/leonardosovienski/stocks-predictor/pull/79) registra
+o SHA final, seu check e a integração; alterações documentais posteriores são
+novamente verificadas por CI antes da integração.
+
+| Validação | Carga | Replay | Backup | Restauração | Pico RSS da carga |
+|---|---:|---:|---:|---:|---:|
+| Windows auxiliar, 250.000 sintéticos | 9,31 s | 8,75 s | 9,30 s | 4,28 s | 29,76 MiB |
+| Windows auxiliar, 55.986 reais | 43,20 s | 29,83 s | 1,00 s | 0,88 s | 29,67 MiB |
+| Linux CI/Python 3.14, 250.000 sintéticos | 3,56 s | 3,95 s | 2,33 s | 2,27 s | 30,64 MiB |
+
+São medições pontuais de processos novos, não promessa de SLA. As duas cargas
+locais foram executadas simultaneamente e disputaram recursos do host. ZIP
+sintético usa compressão da plataforma: conteúdo lógico determinístico, bytes
+comprimidos potencialmente distintos entre versões de zlib. Cada recibo guarda
+o hash dos bytes realmente usados. Os 12 bancos históricos mantiveram seus hashes.
 
 Permanecem fora de uma conclusão de infraestrutura universal: infraestrutura
 distribuída, negociação ao vivo, hardware/energia e recuperação de perda completa
