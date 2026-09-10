@@ -1,3 +1,11 @@
+## Índice vigente R7 — 10/09/2026 UTC
+
+[Relatório](audit/2026-09-10-r7/README.md), [consolidado](audit/2026-09-10-r7/CONSOLIDADO.md),
+[registro atual](audit/2026-09-10-r7/current.json), [reprodução](audit/2026-09-10-r7/REPRODUCTION.md),
+[revisão das fontes](audit/2026-09-10-r7/SOURCE_REVIEW.md),
+[condições de uso](audit/2026-09-10-r7/SOURCE_RIGHTS.md).
+Os registros históricos abaixo são preservados com suas datas.
+
 ## Dados R6 — 10/09/2026 UTC
 
 [Relatório vigente](research/2026-09-10-r6/README.md),

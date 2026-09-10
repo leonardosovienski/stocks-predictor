@@ -483,7 +483,7 @@ def test_robustness_report_none_bh_gives_none_concordant(monkeypatch):
     """bh_sig=None (família fora do FDR/sem p-valor) não é False — concordant
     deve ser None (não aplicável), não 'discorda'."""
     import rj_judge_robust as robust
-    monkeypatch.setattr(robust, "romano_wolf_stepdown",
+    monkeypatch.setattr(robust, "joint_max_t",
                         lambda u, n_perm, seed, alpha: {
                             "drawdown": {"t_obs": 2.0, "p_romanowolf": 0.01,
                                          "significant_romanowolf": True}})

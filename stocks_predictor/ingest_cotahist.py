@@ -13,7 +13,7 @@ import db
 
 def download_cotahist(year: int, dest_dir: str):
     """Baixa COTAHIST_AXXXX.ZIP da B3 via o net unificado do predictor_core. Rede limpa."""
-    from predictor_core.net import download_file
+    from predictor_core.kernel.net import download_file
     url = f"https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A{year}.ZIP"
     return download_file(url, Path(dest_dir) / f"COTAHIST_A{year}.ZIP")
 

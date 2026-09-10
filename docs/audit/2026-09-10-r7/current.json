@@ -1,0 +1,1509 @@
+{
+  "id": "CONSOLIDADO-AUDITORIA-R7-V3",
+  "baseline_path": "docs/audit/2026-09-10-r7/baseline-v2.json",
+  "baseline_sha256": "2caa9f9b4c5d3b9a71a863a3c9e00c7c8321283c1fd8e22e6f22531d952c5c39",
+  "profit_certified": false,
+  "capital_enabled": false,
+  "new_return_evaluations": 0,
+  "items": {
+    "I01": {
+      "state": "RESOLVED_SCOPE",
+      "result": "Exigir 245 colunas, data real e fator positivo; contar falha sem perder vizinho válido.",
+      "remaining": "",
+      "acceptance": "Regressões passam e 2050 entradas H21 permanecem idênticas.",
+      "evidence": [
+        "docs/audit/2026-09-10-integral/registry.json",
+        "docs/research/2026-09-10-r6/README.md"
+      ]
+    },
+    "I02": {
+      "state": "RESOLVED_SCOPE",
+      "result": "Seleção padrão considera resolved_at estritamente anterior; reprodutores históricos usam função legacy explícita.",
+      "remaining": "",
+      "acceptance": "Testes antes/depois e sondagem real; nenhum resultado congelado reescrito.",
+      "evidence": [
+        "docs/audit/2026-09-10-integral/registry.json",
+        "docs/research/2026-09-10-r6/README.md"
+      ]
+    },
+    "I03": {
+      "state": "RESOLVED_SCOPE",
+      "result": "Savepoint, comparação completa, erro em conflito/vazio; preservação da transação e idempotência.",
+      "remaining": "",
+      "acceptance": "Testes de composição, volume, rollback e repetição aprovados.",
+      "evidence": [
+        "docs/audit/2026-09-10-integral/registry.json",
+        "docs/research/2026-09-10-r6/README.md"
+      ]
+    },
+    "I04": {
+      "state": "RESOLVED_SCOPE",
+      "result": "UNCLASSIFIED por omissão; fixture de fonte primária declara seu tipo.",
+      "remaining": "",
+      "acceptance": "Regressão e auditorias reais 13/14 idênticas; CI195 falha preservada.",
+      "evidence": [
+        "docs/audit/2026-09-10-integral/registry.json",
+        "docs/research/2026-09-10-r6/README.md"
+      ]
+    },
+    "I05": {
+      "state": "RESOLVED_SCOPE",
+      "result": "Data UTC corrente e max(price.date) no corte; API legacy explícita; worker não agenda nem grava.",
+      "remaining": "",
+      "acceptance": "Três regressões de data/futuro e fixtures legadas; nenhuma observação gerada.",
+      "evidence": [
+        "docs/audit/2026-09-10-integral/registry.json",
+        "docs/research/2026-09-10-r6/README.md"
+      ]
+    },
+    "I06": {
+      "state": "RESOLVED_SCOPE",
+      "result": "CLI e plugin indicam H21 condicional; pontos de entrada atualizados.",
+      "remaining": "",
+      "acceptance": "Suíte e inspeção do diff; ambiente Windows sem instalação.",
+      "evidence": [
+        "docs/audit/2026-09-10-integral/registry.json",
+        "docs/research/2026-09-10-r6/README.md"
+      ]
+    },
+    "I07": {
+      "state": "RESOLVED_SCOPE",
+      "result": "Rejeitar não finitos, políticas e estimativas inválidas; explicitar pressupostos e maturidade externa.",
+      "remaining": "",
+      "acceptance": "Quatro métodos falharam antes e passaram depois.",
+      "evidence": [
+        "docs/audit/2026-09-10-integral/registry.json",
+        "docs/research/2026-09-10-r6/README.md"
+      ]
+    },
+    "I08": {
+      "state": "RESOLVED_SCOPE",
+      "result": "Guardas na inferência, secundária repetida marcada bloqueada mantendo episódios; max-T exige unidades/grupos idênticos.",
+      "remaining": "",
+      "acceptance": "Três casos antes/depois e teste integrado primário/secondary; CI196 documenta a integração inicialmente faltante.",
+      "evidence": [
+        "docs/audit/2026-09-10-integral/registry.json",
+        "docs/research/2026-09-10-r6/README.md"
+      ]
+    },
+    "I09": {
+      "state": "RESOLVED_SCOPE",
+      "result": "Construído reconcile_h20.py, valida hashes das entradas, 9732 células, 18 cenários e aritmética separada.",
+      "remaining": "",
+      "acceptance": "PASS com uma diferença 2.22e-16 documentada; verificador original não alterado.",
+      "evidence": [
+        "docs/audit/2026-09-10-integral/registry.json",
+        "docs/research/2026-09-10-r6/README.md"
+      ]
+    },
+    "I10": {
+      "state": "OPEN_DATA",
+      "result": "Faltam publicação/versão historicamente disponível e identidade CNPJ/ISIN/ticker por intervalo. O conserto de resolved_at cobre uma fronteira; não certifica todo o painel. Fixtures e três linhas PIT de exemplo não substituem dados de mercado.",
+      "remaining": "Delimitar ativos/períodos necessários; reconciliar versões e identidades, com revisão interna dos documentos existentes e aquisição das fontes ausentes.",
+      "acceptance": "Fontes temporais completas, identidade por intervalo e protocolo novo registrados antes de qualquer nova inferência.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "I11": {
+      "state": "OPEN_DATA",
+      "result": "Os documentos FNET672335 e FNET941503 foram recuperados em R5; NÃO continuam faltando. Há política de reinvestimento e demonstrações adicionais, mas não inventário contínuo certificado de todos os eventos/direitos até liquidação, incluindo aquecimento de 2017.",
+      "remaining": "Fechar cobertura por intervalo e tipo de evento, distinguir fluxo interno do fundo de caixa/unidades do cotista e incorporar somente fatos pertinentes ao livro.",
+      "acceptance": "Obter documento correto, validar CNPJ/conteúdo e completar intervalo com evidência primária; reprocessar ledger somente se houver fato pertinente.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "I12": {
+      "state": "OPEN_PERSONAL",
+      "result": "Capital de R$5.000 confirmado. Modelo de custos preparado sem zeros implícitos; prazo, taxas pessoais, residência e esforço/custo do projeto não confirmados.",
+      "remaining": "Obter informações indispensáveis da pessoa/conta e calcular cenários completos sem inventar custos iguais a zero; preparar modelos não depende de login.",
+      "acceptance": "Dados de conta e orçamento total verificáveis; simulação prospectiva com despesas e limites declarados.",
+      "evidence": [
+        "stocks_predictor/research_profile.py",
+        "docs/audit/2026-09-10-r7/evidence/personal-profile.json"
+      ]
+    },
+    "I13": {
+      "state": "OPEN_DATA",
+      "result": "A tarifa da entrada em 2018 e a cadeia inteira de custos da conta não foram certificadas. R2 e R6 acrescentaram fontes de transição de 2021, sem substituir tabela aplicável, base de cobrança e arredondamentos de cada operação.",
+      "remaining": "Reconstituir vigências, canal, custódia, corretagem e regras de centavos somente no intervalo que sustenta a conclusão pretendida.",
+      "acceptance": "Documentos com cadeia de vigência e tarifa da conta nas duas operações; conferir centavos com nota ou regra completa.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "I14": {
+      "state": "OPEN_DATA",
+      "result": "Revisão 15: 22 datas e 50 líquidos ausentes; 28 entradas societárias pendentes; inventário completo de 1.248 intervalos não certificado. Há também cronologia, JBS, sucessores/PN, frações, base fiscal e checagens de execução em aberto.",
+      "remaining": "Tratar os eventos e intervalos individualizados neste consolidado; resolver conteúdo, unidade, cronologia e fiscalidade, depois integrar e reconciliar em nova versão.",
+      "acceptance": "Fechar entidades por evento/intervalo com fonte primária, reconciliação e orçamento novo justificado economicamente.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "I15": {
+      "state": "RESOLVED_SCOPE",
+      "result": "I15 tem os 1.448 arquivos recuperados, sem promover igualdade estrita de floats.",
+      "remaining": "",
+      "acceptance": "Recuperar os cinco SHA exatos de backup/autor original e executar verificador original em ambiente compatível.",
+      "evidence": [
+        "docs/audit/2026-09-10-integral/registry.json",
+        "docs/research/2026-09-10-r6/README.md"
+      ]
+    },
+    "I16": {
+      "state": "OPEN_TIME",
+      "result": "Não existem observações prospectivas suficientes, fills ou resultado real certificado. O plano futuro não é sua execução; relógio local e replay não são atestado externo.",
+      "remaining": "Conservar critérios prospectivos, registrar dados contemporâneos quando os pré-requisitos forem atendidos e houver autorização para o uso correspondente.",
+      "acceptance": "Observações futuras contemporâneas e verificáveis, sem alterar critérios conforme desempenho; conciliação de execução se depois autorizada.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "R4-01": {
+      "state": "RESOLVED_SCOPE",
+      "result": "Iteração contínua, filtro imediato e lotes de até 1.000 registros",
+      "remaining": "",
+      "acceptance": "Benchmark antes/depois com hashes iguais",
+      "evidence": [
+        "docs/engineering/2026-09-10-r4/README.md",
+        "docs/audit/2026-09-10-r7/evidence/ci-history.json"
+      ]
+    },
+    "R4-02": {
+      "state": "RESOLVED_SCOPE",
+      "result": "Retorna apenas inserções efetivas; replay idêntico retorna zero",
+      "remaining": "",
+      "acceptance": "`test_idempotent_replay_reports_zero_new_rows`, duplicatas no mesmo lote",
+      "evidence": [
+        "docs/engineering/2026-09-10-r4/README.md",
+        "docs/audit/2026-09-10-r7/evidence/ci-history.json"
+      ]
+    },
+    "R4-03": {
+      "state": "RESOLVED_SCOPE",
+      "result": "Comparação das 12 colunas; conflito de `(date,ticker,source_file)` desfaz a carga",
+      "remaining": "",
+      "acceptance": "Conflitos no lote, entre lotes e contra dado persistido",
+      "evidence": [
+        "docs/engineering/2026-09-10-r4/README.md",
+        "docs/audit/2026-09-10-r7/evidence/ci-history.json"
+      ]
+    },
+    "R4-04": {
+      "state": "RESOLVED_SCOPE",
+      "result": "Savepoint preserva a transação externa; falha de fluxo, restrição ou commit desfaz a carga",
+      "remaining": "",
+      "acceptance": "Fluxo interrompido depois de 1.500 registros, CHECK e commit bloqueado",
+      "evidence": [
+        "docs/engineering/2026-09-10-r4/README.md",
+        "docs/audit/2026-09-10-r7/evidence/ci-history.json"
+      ]
+    },
+    "R4-05": {
+      "state": "RESOLVED_SCOPE",
+      "result": "Rollback completo quando a transação pertence ao snapshot",
+      "remaining": "",
+      "acceptance": "Teste com dois clientes SQLite e bloqueio real",
+      "evidence": [
+        "docs/engineering/2026-09-10-r4/README.md",
+        "docs/audit/2026-09-10-r7/evidence/ci-history.json"
+      ]
+    },
+    "R4-06": {
+      "state": "RESOLVED_SCOPE",
+      "result": "Datas canônicas e calendário válido; contagens inteiras positivas; validação antecipada",
+      "remaining": "",
+      "acceptance": "Testes de entradas e escritor não chamado",
+      "evidence": [
+        "docs/engineering/2026-09-10-r4/README.md",
+        "docs/audit/2026-09-10-r7/evidence/ci-history.json"
+      ]
+    },
+    "R4-07": {
+      "state": "RESOLVED_SCOPE",
+      "result": "Validação do contêiner antes do escritor; fechamento em falha de migração",
+      "remaining": "",
+      "acceptance": "Testes de arquivo ausente, ZIP ambíguo e conexão fechada",
+      "evidence": [
+        "docs/engineering/2026-09-10-r4/README.md",
+        "docs/audit/2026-09-10-r7/evidence/ci-history.json"
+      ]
+    },
+    "R4-08": {
+      "state": "RESOLVED_SCOPE",
+      "result": "Novo `doctor` stdlib com JSON, metadados e SQLite opcional",
+      "remaining": "",
+      "acceptance": "Windows sem Core; banco ausente não criado; banco de teste inalterado",
+      "evidence": [
+        "docs/engineering/2026-09-10-r4/README.md",
+        "docs/audit/2026-09-10-r7/evidence/ci-history.json"
+      ]
+    },
+    "R4-09": {
+      "state": "RESOLVED_SCOPE",
+      "result": "Lock obrigatório na instalação; duas versões; piso 77%; timeout, concorrência e artefatos",
+      "remaining": "",
+      "acceptance": "Workflow e execuções vinculadas abaixo",
+      "evidence": [
+        "docs/engineering/2026-09-10-r4/README.md",
+        "docs/audit/2026-09-10-r7/evidence/ci-history.json"
+      ]
+    },
+    "R4-10": {
+      "state": "RESOLVED_SCOPE",
+      "result": "Diagnóstico habilitado; perdas monetárias aceitam Decimal; adaptador bootstrap atende contrato float",
+      "remaining": "",
+      "acceptance": "Pyright e igualdade do IC com o descarte histórico de amostras",
+      "evidence": [
+        "docs/engineering/2026-09-10-r4/README.md",
+        "docs/audit/2026-09-10-r7/evidence/ci-history.json"
+      ]
+    },
+    "R5-01": {
+      "state": "RESOLVED_SCOPE",
+      "result": "Filtro de preparação corrigido antes da primeira medição; 2.405 preços confrontados com ZIPs.",
+      "remaining": "",
+      "acceptance": "Evidência suficiente para a afirmação e o escopo declarado; não certificar além deles.",
+      "evidence": [
+        "docs/research/2026-09-10-r5/README.md",
+        "docs/audit/2026-09-10-r7/evidence/ci-history.json"
+      ]
+    },
+    "R5-02": {
+      "state": "RESOLVED_SCOPE",
+      "result": "Rejeição/conferência corrigida antes da primeira medição; regressões e replay de 30.226 observações.",
+      "remaining": "",
+      "acceptance": "Evidência suficiente para a afirmação e o escopo declarado; não certificar além deles.",
+      "evidence": [
+        "docs/research/2026-09-10-r5/README.md",
+        "docs/audit/2026-09-10-r7/evidence/ci-history.json"
+      ]
+    },
+    "L01": {
+      "state": "RETAINED_RESULT",
+      "result": "Não existe holdout intacto nas histórias já consultadas; janelas R5 sobrepostas e replays não são amostras independentes.",
+      "remaining": "",
+      "acceptance": "Evidência suficiente para a afirmação e o escopo declarado; não certificar além deles.",
+      "evidence": [
+        "docs/audit/2026-09-10-integral/README.md",
+        "docs/research/2026-09-10-r5/README.md"
+      ]
+    },
+    "L02": {
+      "state": "RETAINED_RESULT",
+      "result": "H1/H2/H4–H16 têm vereditos históricos NOT_SUPPORTED condicionais; H3 não foi executada. Não são prova de impossibilidade universal de lucro, nem resultados sob o universo corrigido.",
+      "remaining": "",
+      "acceptance": "Evidência suficiente para a afirmação e o escopo declarado; não certificar além deles.",
+      "evidence": [
+        "docs/audit/2026-09-10-integral/README.md",
+        "docs/research/2026-09-10-r5/README.md"
+      ]
+    },
+    "L03": {
+      "state": "RETAINED_RESULT",
+      "result": "Os intervalos examinados incluem zero e o custo da reconstrução ampla não foi justificado por benefício incremental. Arquivos agora completos não resolvem esse resultado nem a fonte de caixa.",
+      "remaining": "",
+      "acceptance": "Evidência suficiente para a afirmação e o escopo declarado; não certificar além deles.",
+      "evidence": [
+        "docs/audit/2026-09-10-integral/README.md",
+        "docs/research/2026-09-10-r5/README.md"
+      ]
+    },
+    "L04": {
+      "state": "RETAINED_RESULT",
+      "result": "Nos 11 pares calculáveis H22 perdeu para comprar e manter. Foram 24 avaliações previstas, 22 reconciliadas e duas inviáveis; o pequeno ganho de um recorte não satisfaz o protocolo.",
+      "remaining": "",
+      "acceptance": "Evidência suficiente para a afirmação e o escopo declarado; não certificar além deles.",
+      "evidence": [
+        "docs/audit/2026-09-10-integral/README.md",
+        "docs/research/2026-09-10-r5/README.md"
+      ]
+    },
+    "L05": {
+      "state": "OPEN_DATA",
+      "result": "Lucro histórico permanece condicional; nenhum lucro pessoal/futuro foi certificado.",
+      "remaining": "Fechar fontes materiais, custos pessoais e observação futura; não selecionar retrospectivamente um resultado positivo.",
+      "acceptance": "Evidência suficiente para a afirmação e o escopo declarado; não certificar além deles.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md",
+        "docs/audit/2026-09-10-r7/evidence/personal-profile.json"
+      ]
+    },
+    "L06": {
+      "state": "RETAINED_RESULT",
+      "result": "Abertura/fechamento são aproximações diárias. Não houve ordens nem fills observados.",
+      "remaining": "",
+      "acceptance": "Evidência suficiente para a afirmação e o escopo declarado; não certificar além deles.",
+      "evidence": [
+        "docs/research/2026-09-10-r5/README.md"
+      ]
+    },
+    "L07": {
+      "state": "OPEN_PERSONAL",
+      "result": "Tributos modelados continuam separados da escrituração da pessoa.",
+      "remaining": "Situação fiscal, outras operações e registros efetivos necessários ao caixa pessoal.",
+      "acceptance": "Evidência suficiente para a afirmação e o escopo declarado; não certificar além deles.",
+      "evidence": [
+        "stocks_predictor/research_profile.py",
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "L08": {
+      "state": "CONDITIONAL_NOT_TRIGGERED",
+      "result": "Especificação de comparação equivalente preparada; não houve nova medição econômica R7.",
+      "remaining": "Aplicar somente sob protocolo próprio e fontes/custos suficientes. Não alterar H21/H22 congelados.",
+      "acceptance": "Evidência suficiente para a afirmação e o escopo declarado; não certificar além deles.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/REPRODUCTION.md"
+      ]
+    },
+    "L09": {
+      "state": "RETAINED_RESULT",
+      "result": "H21 chegou a 45,82% de drawdown e 629 observações abaixo do pico no cenário indicado. Na janela integral R5 R$10 mil/referência, H22 teve 45,46% contra 44,35% de comprar e manter. São janelas/premissas diferentes e não validam tolerância pessoal a perdas.",
+      "remaining": "",
+      "acceptance": "Evidência suficiente para a afirmação e o escopo declarado; não certificar além deles.",
+      "evidence": [
+        "docs/audit/2026-09-10-integral/README.md",
+        "docs/research/2026-09-10-r5/README.md"
+      ]
+    },
+    "L10": {
+      "state": "IMPLEMENTED_LIMITED",
+      "result": "API datada rejeita evidência imatura, futura ou duplicada e exige observação anterior ao corte.",
+      "remaining": "Chamador ainda precisa comprovar datas, unidades e independência; API antiga preservada.",
+      "acceptance": "Evidência suficiente para a afirmação e o escopo declarado; não certificar além deles.",
+      "evidence": [
+        "stocks_predictor/temporal_evidence.py",
+        "tests/test_versioned_sources.py",
+        "docs/audit/2026-09-10-r7/evidence/ci-history.json"
+      ]
+    },
+    "L11": {
+      "state": "RESOLVED_SCOPE",
+      "result": "Nome canônico joint_max_t corresponde ao algoritmo; alias antigo preserva parâmetros/saídas. LOCO continua descrito como influência.",
+      "remaining": "",
+      "acceptance": "Evidência suficiente para a afirmação e o escopo declarado; não certificar além deles.",
+      "evidence": [
+        "stocks_predictor/rj_judge_robust.py",
+        "tests/test_rj_audit_2026_08_24.py",
+        "docs/audit/2026-09-10-r7/evidence/ci-history.json"
+      ]
+    },
+    "L12": {
+      "state": "RETAINED_RESULT",
+      "result": "O caminho com empresas repetidas está bloqueado para inferência e conserva episódios descritivos. O bloqueio corrigiu uso indevido; não construiu um estimador substituto válido para essa linha.",
+      "remaining": "",
+      "acceptance": "Evidência suficiente para a afirmação e o escopo declarado; não certificar além deles.",
+      "evidence": [
+        "docs/audit/2026-09-10-integral/README.md",
+        "docs/research/2026-09-10-r5/README.md"
+      ]
+    },
+    "L13": {
+      "state": "RETAINED_RESULT",
+      "result": "Pesos diários fixos, preços sem todos os fluxos, faltantes e embargo estimado limitam interpretações antigas. APIs legacy preservam a reprodução e não recebem certificação PIT retroativa pela correção do padrão.",
+      "remaining": "",
+      "acceptance": "Evidência suficiente para a afirmação e o escopo declarado; não certificar além deles.",
+      "evidence": [
+        "docs/audit/2026-09-10-integral/README.md",
+        "docs/research/2026-09-10-r5/README.md"
+      ]
+    },
+    "L14": {
+      "state": "OPEN_DATA",
+      "result": "Novo estágio isolado de 55.986 preços/408 tickers chega a 09/09/2026 a partir do ZIP R6. Bancos, cortes históricos e calendário antigo preservados.",
+      "remaining": "Calendário independente por ano e intervalos faltantes do universo exigem fonte aplicável; estágio não é identidade PIT nem atualização automática dos backtests.",
+      "acceptance": "Evidência suficiente para a afirmação e o escopo declarado; não certificar além deles.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md",
+        "docs/audit/2026-09-10-r7/evidence/real-versioned-ingestion.json"
+      ]
+    },
+    "L15": {
+      "state": "IMPLEMENTED_LIMITED",
+      "result": "Segunda leitura dirigida e renderização da página material SLCE registradas com autoria do mesmo assistente.",
+      "remaining": "Não existe revisor independente nem certificação de leitura integral de todos os documentos.",
+      "acceptance": "Evidência suficiente para a afirmação e o escopo declarado; não certificar além deles.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "L16": {
+      "state": "IMPLEMENTED_LIMITED",
+      "result": "Tipagem de todo o pacote, testes materiais e revisão dos módulos alterados ampliaram a cobertura.",
+      "remaining": "Isso não é prova de revisão linha a linha de todos os arquivos e combinações históricas.",
+      "acceptance": "Evidência suficiente para a afirmação e o escopo declarado; não certificar além deles.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/evidence/ci-history.json",
+        "stocks_predictor/source_catalog.py",
+        "stocks_predictor/temporal_evidence.py",
+        "stocks_predictor/research_profile.py"
+      ]
+    },
+    "L17": {
+      "state": "RESOLVED_SCOPE",
+      "result": "Os 17 testes arquivados identificados foram reexecutados e incluídos na CI; passaram.",
+      "remaining": "",
+      "acceptance": "Evidência suficiente para a afirmação e o escopo declarado; não certificar além deles.",
+      "evidence": [
+        ".github/workflows/ci.yml",
+        "docs/audit/2026-09-10-r7/evidence/ci-history.json"
+      ]
+    },
+    "L18": {
+      "state": "RETAINED_RESULT",
+      "result": "Comparador original estrito preservado com diferença 2,22e-16; replay separado usa a tolerância previamente fixada, sem reescrever o programa histórico.",
+      "remaining": "",
+      "acceptance": "Evidência suficiente para a afirmação e o escopo declarado; não certificar além deles.",
+      "evidence": [
+        "docs/research/2026-09-10-r6/README.md"
+      ]
+    },
+    "L19": {
+      "state": "RETAINED_RESULT",
+      "result": "Windows usa Python 3.12 auxiliar sem instalação. Produção foi verificada na CI Linux 3.13/3.14.",
+      "remaining": "",
+      "acceptance": "Evidência suficiente para a afirmação e o escopo declarado; não certificar além deles.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/evidence/ci-history.json"
+      ]
+    },
+    "L20": {
+      "state": "IMPLEMENTED_LIMITED",
+      "result": "Pyright agora cobre todo o pacote; Ruff F/E9; 877 testes ativos na CI220 e cobertura de ramos 79%.",
+      "remaining": "Cobertura não é 100% nem prova universal. Mantido piso de 77%, sem supressões para aprovar.",
+      "acceptance": "Evidência suficiente para a afirmação e o escopo declarado; não certificar além deles.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/evidence/ci-history.json",
+        "pyproject.toml"
+      ]
+    },
+    "L21": {
+      "state": "IMPLEMENTED_LIMITED",
+      "result": "Actions por SHA, ferramentas por versão/hash, instalação pelo lock, builds duplos idênticos e smoke externo aprovados.",
+      "remaining": "Imagem de runner e patches das versões de Python ainda podem mudar. Não é identidade demonstrada entre todos os SOs/ambientes.",
+      "acceptance": "Evidência suficiente para a afirmação e o escopo declarado; não certificar além deles.",
+      "evidence": [
+        "tools/reproducible_build.py",
+        "tools/build-requirements.txt",
+        ".github/workflows/ci.yml",
+        "docs/audit/2026-09-10-r7/evidence/ci-history.json"
+      ]
+    },
+    "L22": {
+      "state": "IMPLEMENTED_LIMITED",
+      "result": "Dois extratos reais e três repetições por revisão: linhas idênticas; pico RSS menor em cerca de 40% e 26%. Um tempo ficou cerca de 8% pior.",
+      "remaining": "Pico inclui Python/SQLite; sem atribuição por alocador, ensaio concorrente ou garantia de capacidade de produção.",
+      "acceptance": "Evidência suficiente para a afirmação e o escopo declarado; não certificar além deles.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/evidence/real-ingestion-benchmark.json",
+        "tools/benchmark_real_ingestion.py"
+      ]
+    },
+    "L23": {
+      "state": "IMPLEMENTED_LIMITED",
+      "result": "Nova ingestão opt-in identifica conteúdo/versão, rejeita conflito e linhas de preço malformadas, e mantém catálogo+preços atômicos.",
+      "remaining": "Origens legadas não foram migradas; disponibilidade histórica e completude integral não são inferidas de hash.",
+      "acceptance": "Evidência suficiente para a afirmação e o escopo declarado; não certificar além deles.",
+      "evidence": [
+        "stocks_predictor/source_catalog.py",
+        "tests/test_versioned_sources.py",
+        "docs/audit/2026-09-10-r7/evidence/ci-history.json"
+      ]
+    },
+    "L24": {
+      "state": "IMPLEMENTED_LIMITED",
+      "result": "Um comando reconstruiu Fonte15 do delta real de seis arquivos mais manifesto, conferindo 830 arquivos.",
+      "remaining": "Clone ainda não contém bases externas; replays históricos preservam seus caminhos/contratos próprios.",
+      "acceptance": "Evidência suficiente para a afirmação e o escopo declarado; não certificar além deles.",
+      "evidence": [
+        "tools/materialize_source_revision.py",
+        "docs/audit/2026-09-10-r7/evidence/source15-materialized.receipt.json"
+      ]
+    },
+    "L25": {
+      "state": "IMPLEMENTED_LIMITED",
+      "result": "Matriz registra os 794 documentos: dois bancos IPE com ODbL identificada e 792 conteúdos sem direitos individuais certificados.",
+      "remaining": "Termos por item/uso e vigência histórica continuam pendentes. Página HTTP200 de erro não foi aceita como termos B3.",
+      "acceptance": "Evidência suficiente para a afirmação e o escopo declarado; não certificar além deles.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/source-rights.json",
+        "docs/audit/2026-09-10-r7/evidence/acquisitions.json"
+      ]
+    },
+    "M01": {
+      "state": "OPEN_DATA",
+      "result": "Revisão dirigida, inventário individual e tentativas negativas registrados; nenhum líquido foi imputado.",
+      "remaining": "Faltam provas de pagamento/tributo/unidade e reconciliação dos 50 líquidos, 22 datas e 28 registros societários, conforme registro individual.",
+      "acceptance": "Cobertura material fechada e ledger reconciliado, sem tratar ausência de busca como zero.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md",
+        "docs/audit/2026-09-10-r7/evidence/acquisitions.json"
+      ]
+    },
+    "M03": {
+      "state": "OPEN_DATA",
+      "result": "Revisão dirigida, inventário individual e tentativas negativas registrados; nenhum líquido foi imputado.",
+      "remaining": "Faltam provas de pagamento/tributo/unidade e reconciliação dos 50 líquidos, 22 datas e 28 registros societários, conforme registro individual.",
+      "acceptance": "Entitlement, quantidade, base fiscal, data e valor fecham com fontes aplicáveis; nulos não viram zero.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md",
+        "docs/audit/2026-09-10-r7/evidence/acquisitions.json"
+      ]
+    },
+    "M02": {
+      "state": "IMPLEMENTED_LIMITED",
+      "result": "Contratos datados e identidade de conteúdo foram implementados e testados.",
+      "remaining": "Painel CNPJ/ISIN/ticker por intervalo e publicação histórica de cada sinal continuam sem fontes suficientes.",
+      "acceptance": "Entrada posterior ao corte é rejeitada e cada sinal tem trilha verificável de disponibilidade.",
+      "evidence": [
+        "stocks_predictor/source_catalog.py",
+        "stocks_predictor/temporal_evidence.py",
+        "tests/test_versioned_sources.py",
+        "docs/audit/2026-09-10-r7/evidence/ci-history.json"
+      ]
+    },
+    "M04": {
+      "state": "IMPLEMENTED_LIMITED",
+      "result": "Cenário R$5.000 com taxas, custos fixos, assessoria, implantação e tempo de manutenção explicitamente desconhecidos.",
+      "remaining": "Preencher dados reais para avaliar lucro pessoal; perda tolerada não garante rentabilidade.",
+      "acceptance": "Cenário pessoal identificável; despesas desconhecidas continuam explícitas e margem de lucro é avaliada.",
+      "evidence": [
+        "stocks_predictor/research_profile.py",
+        "docs/audit/2026-09-10-r7/evidence/personal-profile.json",
+        "tests/test_research_controls.py"
+      ]
+    },
+    "M05": {
+      "state": "CONDITIONAL_NOT_TRIGGERED",
+      "result": "Procedimento para comparar caixa final líquido e poder de compra definido na reprodução; zero novas avaliações R7.",
+      "remaining": "Nova hipótese requer registro anterior aos retornos, benchmark investível com datas/custos equivalentes e inflação oficial; não foi executada medição sem esses insumos.",
+      "acceptance": "Critério de lucro, vantagem e complexidade separado; não reusar história conhecida como holdout.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/REPRODUCTION.md"
+      ]
+    },
+    "M06": {
+      "state": "IMPLEMENTED_LIMITED",
+      "result": "Prontidão prospectiva vinculada ao SHA do plano existente e coletor com recibos UTC, preservando zero observações.",
+      "remaining": "Aguardar publicação da primeira sessão e transcorrer janela até a primeira sessão em/após 10/09/2027; não retrodatá-la.",
+      "acceptance": "Evidência posterior ao registro e janela transcorrida; nenhuma observação retrodatada.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/evidence/forward-readiness.json",
+        "docs/research/2026-09-09-h21-forward-plan.json"
+      ]
+    },
+    "M07": {
+      "state": "RESOLVED_SCOPE",
+      "result": "Tipagem expandida de 18 arquivos a todo o pacote e Ruff F/E9, sem ignores novos.",
+      "remaining": "",
+      "acceptance": "Erros novos efetivamente detectados, sem supressões para obter aprovação e sem reformatar todo o arquivo histórico.",
+      "evidence": [
+        "pyproject.toml",
+        "docs/audit/2026-09-10-r7/evidence/ci-history.json"
+      ]
+    },
+    "M08": {
+      "state": "RESOLVED_SCOPE",
+      "result": "Regressões materiais de transação, conteúdo, datas, custos e materialização; 17 testes de evidência arquivados adicionados.",
+      "remaining": "",
+      "acceptance": "Testes falham diante do defeito material e passam após correção; cobertura não é o único critério.",
+      "evidence": [
+        "tests/test_versioned_sources.py",
+        "tests/test_research_controls.py",
+        "docs/audit/2026-09-10-r7/evidence/ci-history.json"
+      ]
+    },
+    "M09": {
+      "state": "RESOLVED_SCOPE",
+      "result": "Cadeia declarada por hashes e distribuição idêntica duas vezes na CI, com import fora do checkout.",
+      "remaining": "",
+      "acceptance": "Mesma cadeia reproduzida em ambiente limpo com versões/hashes registrados; medir diferença de artefato quando pertinente.",
+      "evidence": [
+        "tools/reproducible_build.py",
+        "tools/build-requirements.txt",
+        "docs/audit/2026-09-10-r7/evidence/ci-history.json"
+      ]
+    },
+    "M10": {
+      "state": "IMPLEMENTED_LIMITED",
+      "result": "Dois extratos reais e três repetições por revisão: linhas idênticas; pico RSS menor em cerca de 40% e 26%. Um tempo ficou cerca de 8% pior.",
+      "remaining": "Pico inclui Python/SQLite; sem atribuição por alocador, ensaio concorrente ou garantia de capacidade de produção.",
+      "acceptance": "Resultados/linhas idênticos e custo de CPU/memória comparado em ambiente e carga identificados.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/evidence/real-ingestion-benchmark.json"
+      ]
+    },
+    "M11": {
+      "state": "RESOLVED_SCOPE",
+      "result": "API de origem versionada testada também no ZIP real de 2026: 55.986 linhas, 408 tickers, replay com zero inserções e SQLite íntegro; nova versão exigida para conteúdo diferente.",
+      "remaining": "",
+      "acceptance": "Mesma versão idempotente; mudança de conteúdo exige nova origem verificável e não sobrescreve a anterior.",
+      "evidence": [
+        "stocks_predictor/source_catalog.py",
+        "tests/test_versioned_sources.py",
+        "docs/audit/2026-09-10-r7/evidence/ci-history.json",
+        "docs/audit/2026-09-10-r7/evidence/real-versioned-ingestion.json",
+        "docs/audit/2026-09-10-r7/evidence/real-ingestion-code.json",
+        "research/session-20260910/completion/real_ingestion.py"
+      ]
+    },
+    "M12": {
+      "state": "IMPLEMENTED_LIMITED",
+      "result": "Um comando reconstruiu Fonte15 do delta real de seis arquivos mais manifesto, conferindo 830 arquivos.",
+      "remaining": "Clone ainda não contém bases externas; replays históricos preservam seus caminhos/contratos próprios.",
+      "acceptance": "Destinos novos; mesmos hashes/campos materiais; nenhuma alteração do lacre ou programa original para forçar PASS.",
+      "evidence": [
+        "tools/materialize_source_revision.py",
+        "docs/audit/2026-09-10-r7/evidence/source15-materialized.receipt.json",
+        "tests/test_research_controls.py"
+      ]
+    },
+    "M13": {
+      "state": "IMPLEMENTED_LIMITED",
+      "result": "Segunda leitura dirigida e renderização da página material SLCE registradas com autoria do mesmo assistente.",
+      "remaining": "Não existe revisor independente nem certificação de leitura integral de todos os documentos.",
+      "acceptance": "Achados materiais concordantes ou divergências resolvidas; autoria da revisão explicitada.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "M14": {
+      "state": "IMPLEMENTED_LIMITED",
+      "result": "Matriz registra os 794 documentos: dois bancos IPE com ODbL identificada e 792 conteúdos sem direitos individuais certificados.",
+      "remaining": "Termos por item/uso e vigência histórica continuam pendentes. Página HTTP200 de erro não foi aceita como termos B3.",
+      "acceptance": "Cada uso material tem fundamento ou limitação explícita; não inferir permissão só por URL pública ou arquivo recuperado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/source-rights.json",
+        "docs/audit/2026-09-10-r7/SOURCE_RIGHTS.md"
+      ]
+    },
+    "M15": {
+      "state": "RESOLVED_SCOPE",
+      "result": "Registro atual único verifica populações, estados, evidências por SHA e documento gerado; achados históricos permanecem separados.",
+      "remaining": "",
+      "acceptance": "I15 não reaparece como arquivo ausente; números e versões não se contradizem; uma próxima pessoa encontra ação e aceite. Este consolidado faz a reunião inicial, não automatiza a manutenção.",
+      "evidence": [
+        "tools/audit_registry.py",
+        "tests/test_audit_registry.py"
+      ]
+    },
+    "M16": {
+      "state": "RESOLVED_SCOPE",
+      "result": "Runtime mantém somente PyYAML/Core declarados; novas funções usam stdlib. Imports internos do Core foram tornados explícitos, sem nova plataforma ou dependência de runtime.",
+      "remaining": "",
+      "acceptance": "Menor custo de manutenção preservando resultados e interfaces necessários; nenhum arquivo histórico apagado.",
+      "evidence": [
+        "pyproject.toml",
+        "stocks_predictor/config.py",
+        "stocks_predictor/ingest_cotahist.py",
+        "docs/audit/2026-09-10-r7/evidence/ci-history.json"
+      ]
+    },
+    "CHAT-01": {
+      "state": "RESOLVED_SCOPE",
+      "result": "Descrição do PR75 atualizada com CI203, SHA documental final e commit de merge verificados.",
+      "remaining": "",
+      "acceptance": "Descrição sem linguagem prospectiva para integração já concluída, com links dos checks finais e SHAs correspondentes.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/evidence/pr75-closure-and-actions.json"
+      ]
+    },
+    "CHAT-02": {
+      "state": "RESOLVED_SCOPE",
+      "result": "Complemento de leitura preservado na base V2; interpretação correta mantida.",
+      "remaining": "",
+      "acceptance": "Evidência suficiente para a afirmação e o escopo declarado; não certificar além deles.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/baseline-v2.json"
+      ]
+    },
+    "CHAT-03": {
+      "state": "RESOLVED_SCOPE",
+      "result": "Complemento de leitura preservado na base V2; interpretação correta mantida.",
+      "remaining": "",
+      "acceptance": "Evidência suficiente para a afirmação e o escopo declarado; não certificar além deles.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/baseline-v2.json"
+      ]
+    },
+    "CHAT-04": {
+      "state": "RESOLVED_SCOPE",
+      "result": "Complemento de leitura preservado na base V2; interpretação correta mantida.",
+      "remaining": "",
+      "acceptance": "Evidência suficiente para a afirmação e o escopo declarado; não certificar além deles.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/baseline-v2.json"
+      ]
+    },
+    "CHAT-05": {
+      "state": "RESOLVED_SCOPE",
+      "result": "Complemento de leitura preservado na base V2; interpretação correta mantida.",
+      "remaining": "",
+      "acceptance": "Evidência suficiente para a afirmação e o escopo declarado; não certificar além deles.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/baseline-v2.json"
+      ]
+    },
+    "CHAT-06": {
+      "state": "RESOLVED_SCOPE",
+      "result": "Complemento de leitura preservado na base V2; interpretação correta mantida.",
+      "remaining": "",
+      "acceptance": "Evidência suficiente para a afirmação e o escopo declarado; não certificar além deles.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/baseline-v2.json"
+      ]
+    }
+  },
+  "cash_records": {
+    "BRSLCEACNOR2:2019-05-02:DIVIDENDO:12": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "quantidade e unidade pré/pós-split conciliadas sem duplicar ajuste; valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "BRBBSEACNOR5:2020-01-10:REST CAP DIN:21": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "BRRADLACNOR0:2020-09-25:JRS CAP PROPRIO:33": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "comprovação da data efetiva de pagamento; prazo máximo não substitui data; data do fato gerador crédito/pagamento e alíquota aplicável; evitar taxa única automática; valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "BRRADLACNOR0:2020-12-17:JRS CAP PROPRIO:32": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "comprovação da data efetiva de pagamento; prazo máximo não substitui data; data do fato gerador crédito/pagamento e alíquota aplicável; evitar taxa única automática; valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "BRIGTAACNOR5:2021-04-23:DIVIDENDO:1": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "comprovação da data efetiva de pagamento; prazo máximo não substitui data; valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "BRRADLACNOR0:2022-12-08:JRS CAP PROPRIO:21": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "comprovação da data efetiva de pagamento; prazo máximo não substitui data; data do fato gerador crédito/pagamento e alíquota aplicável; evitar taxa única automática; valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "BRRADLACNOR0:2022-10-06:JRS CAP PROPRIO:23": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "comprovação da data efetiva de pagamento; prazo máximo não substitui data; data do fato gerador crédito/pagamento e alíquota aplicável; evitar taxa única automática; valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "BRRECVACNOR3:2023-04-27:DIVIDENDO:10": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "comprovação da data efetiva de pagamento; prazo máximo não substitui data; valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "BRRADLACNOR0:2023-04-25:DIVIDENDO:19": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "comprovação da data efetiva de pagamento; prazo máximo não substitui data; valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "BRCXSEACNOR7:2024-04-29:RENDIMENTO:13": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "BRPSSAACNOR7:2024-09-30:JRS CAP PROPRIO:10": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "comprovação da data efetiva de pagamento; prazo máximo não substitui data; data do fato gerador crédito/pagamento e alíquota aplicável; evitar taxa única automática; valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "BRHYPEACNOR0:2025-03-28:JRS CAP PROPRIO:5": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "comprovação da data efetiva de pagamento; prazo máximo não substitui data; data do fato gerador crédito/pagamento e alíquota aplicável; evitar taxa única automática; valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "BRVIVTACNOR0:2025-02-28:REST CAP DIN:18": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "BRVBBRACNOR1:2025-03-24:JRS CAP PROPRIO:4": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "data do fato gerador crédito/pagamento e alíquota aplicável; evitar taxa única automática; valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "BRPSSAACNOR7:2025-03-31:JRS CAP PROPRIO:6": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "data do fato gerador crédito/pagamento e alíquota aplicável; evitar taxa única automática; valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "BRHYPEACNOR0:2025-06-27:JRS CAP PROPRIO:4": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "comprovação da data efetiva de pagamento; prazo máximo não substitui data; data do fato gerador crédito/pagamento e alíquota aplicável; evitar taxa única automática; valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "BRPSSAACNOR7:2025-06-27:JRS CAP PROPRIO:5": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "data do fato gerador crédito/pagamento e alíquota aplicável; evitar taxa única automática; valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "BRHYPEACNOR0:2025-09-29:JRS CAP PROPRIO:3": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "comprovação da data efetiva de pagamento; prazo máximo não substitui data; data do fato gerador crédito/pagamento e alíquota aplicável; evitar taxa única automática; valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "BRMULTACNOR5:2025-09-29:JRS CAP PROPRIO:3": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "comprovação da data efetiva de pagamento; prazo máximo não substitui data; data do fato gerador crédito/pagamento e alíquota aplicável; evitar taxa única automática; valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "BRPSSAACNOR7:2025-09-26:JRS CAP PROPRIO:4": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "data do fato gerador crédito/pagamento e alíquota aplicável; evitar taxa única automática; valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "BRYDUQACNOR3:2025-12-29:DIVIDENDO:0": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "BRVALEACNOR0:2025-12-12:JRS CAP PROPRIO:4": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "data do fato gerador crédito/pagamento e alíquota aplicável; evitar taxa única automática; valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "BRHYPEACNOR0:2025-12-29:JRS CAP PROPRIO:2": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "comprovação da data efetiva de pagamento; prazo máximo não substitui data; data do fato gerador crédito/pagamento e alíquota aplicável; evitar taxa única automática; valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "BRMOVIACNOR0:2025-12-22:JRS CAP PROPRIO:0": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "pagamento ainda futuro; conservar obrigação sem alegar recebimento; data do fato gerador crédito/pagamento e alíquota aplicável; evitar taxa única automática; valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "BRVBBRACNOR1:2025-11-26:JRS CAP PROPRIO:2": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "pagamento ainda futuro; conservar obrigação sem alegar recebimento; data do fato gerador crédito/pagamento e alíquota aplicável; evitar taxa única automática; valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "BRLRENACNOR1:2025-12-12:JRS CAP PROPRIO:2": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "data do fato gerador crédito/pagamento e alíquota aplicável; evitar taxa única automática; valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "BRABEVACNOR1:2025-12-19:JRS CAP PROPRIO:1:payment:1": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "data do fato gerador crédito/pagamento e alíquota aplicável; evitar taxa única automática; valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "BRABEVACNOR1:2025-12-19:JRS CAP PROPRIO:1:payment:2": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "data do fato gerador crédito/pagamento e alíquota aplicável; evitar taxa única automática; valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "BRABEVACNOR1:2025-12-19:JRS CAP PROPRIO:1:payment:3": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "pagamento ainda futuro; conservar obrigação sem alegar recebimento; data do fato gerador crédito/pagamento e alíquota aplicável; evitar taxa única automática; valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "BRPSSAACNOR7:2025-12-29:JRS CAP PROPRIO:3": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "data do fato gerador crédito/pagamento e alíquota aplicável; evitar taxa única automática; valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "BRMULTACNOR5:2025-12-30:JRS CAP PROPRIO:2": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "comprovação da data efetiva de pagamento; prazo máximo não substitui data; data do fato gerador crédito/pagamento e alíquota aplicável; evitar taxa única automática; valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "BRSMFTACNOR1:2025-12-08:JRS CAP PROPRIO:2": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "data do fato gerador crédito/pagamento e alíquota aplicável; evitar taxa única automática; valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "BRRDORACNOR8:2025-12-19:DIVIDENDO:3": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "comprovação da data efetiva de pagamento; prazo máximo não substitui data; valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "BRRADLACNOR0:2025-12-08:JRS CAP PROPRIO:4": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "data do fato gerador crédito/pagamento e alíquota aplicável; evitar taxa única automática; valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "BRRADLACNOR0:2025-10-06:JRS CAP PROPRIO:5": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "data do fato gerador crédito/pagamento e alíquota aplicável; evitar taxa única automática; valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "BRRENTACNOR4:2025-12-18:JRS CAP PROPRIO:2": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "data do fato gerador crédito/pagamento e alíquota aplicável; evitar taxa única automática; valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "BRTIMSACNOR5:2025-12-23:JRS CAP PROPRIO:2": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "data do fato gerador crédito/pagamento e alíquota aplicável; evitar taxa única automática; valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "BRALOSACNOR5:2026-02-20:DIVIDENDO:6": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "BRALOSACNOR5:2026-01-22:DIVIDENDO:7": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "BRHYPEACNOR0:2026-04-01:JRS CAP PROPRIO:1": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "comprovação da data efetiva de pagamento; prazo máximo não substitui data; data do fato gerador crédito/pagamento e alíquota aplicável; evitar taxa única automática; valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "BRVBBRACNOR1:2026-03-27:JRS CAP PROPRIO:1": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "pagamento ainda futuro; conservar obrigação sem alegar recebimento; data do fato gerador crédito/pagamento e alíquota aplicável; evitar taxa única automática; valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "BRVIVTACNOR0:2026-03-26:JRS CAP PROPRIO:6": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "comprovação da data efetiva de pagamento; prazo máximo não substitui data; data do fato gerador crédito/pagamento e alíquota aplicável; evitar taxa única automática; valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "BRVIVTACNOR0:2026-02-24:JRS CAP PROPRIO:7": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "comprovação da data efetiva de pagamento; prazo máximo não substitui data; data do fato gerador crédito/pagamento e alíquota aplicável; evitar taxa única automática; valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "BRCSMGACNOR5:2026-03-09:DIVIDENDO:2": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "BRPSSAACNOR7:2026-04-01:DIVIDENDO:1": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "comprovação da data efetiva de pagamento; prazo máximo não substitui data; valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "BRPSSAACNOR7:2026-03-31:JRS CAP PROPRIO:2": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "comprovação da data efetiva de pagamento; prazo máximo não substitui data; data do fato gerador crédito/pagamento e alíquota aplicável; evitar taxa única automática; valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "BRMULTACNOR5:2026-03-31:JRS CAP PROPRIO:1": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "comprovação da data efetiva de pagamento; prazo máximo não substitui data; data do fato gerador crédito/pagamento e alíquota aplicável; evitar taxa única automática; valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "BRCXSEACNOR7:2026-01-05:DIVIDENDO:2": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "BRBBSEACNOR5:2026-02-13:DIVIDENDO:1": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "BRCURYACNOR3:2026-02-05:DIVIDENDO:2": {
+      "state": "OPEN_DATA",
+      "result": "Registro original preservado com líquido nulo; não é zero nem ausência de direito.",
+      "remaining": "comprovação da data efetiva de pagamento; prazo máximo não substitui data; valor líquido, enquadramento fiscal e arredondamento aplicáveis comprovados.",
+      "acceptance": "Fonte primária e unidade/data/tributo reconciliados em nova versão, com ledger material verificado.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    }
+  },
+  "corporate_records": {
+    "CA-01:FIBR3:2019-01-04": {
+      "state": "OPEN_DATA",
+      "result": "Registro societário preservado na posição 1 da base V2.",
+      "remaining": "reviewed fiscal basis/disposal treatment; integer delivery and fractional-entitlement settlement",
+      "acceptance": "Fechar entrega inteira/fracionária, custo fiscal e eventos de sucessores com fontes aplicáveis.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "CA-02:ALSC3:2019-08-06": {
+      "state": "OPEN_DATA",
+      "result": "Registro societário preservado na posição 2 da base V2.",
+      "remaining": "reviewed fiscal basis/disposal treatment; integer delivery and fractional-entitlement settlement",
+      "acceptance": "Fechar entrega inteira/fracionária, custo fiscal e eventos de sucessores com fontes aplicáveis.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "CA-03:TIMP3:2020-10-13": {
+      "state": "OPEN_DATA",
+      "result": "Registro societário preservado na posição 3 da base V2.",
+      "remaining": "reviewed fiscal basis/disposal treatment; integer delivery and fractional-entitlement settlement",
+      "acceptance": "Fechar entrega inteira/fracionária, custo fiscal e eventos de sucessores com fontes aplicáveis.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "CA-04:GNDI3:2022-02-14": {
+      "state": "OPEN_DATA",
+      "result": "Registro societário preservado na posição 4 da base V2.",
+      "remaining": "reviewed fiscal basis/disposal treatment; integer delivery and fractional-entitlement settlement",
+      "acceptance": "Fechar entrega inteira/fracionária, custo fiscal e eventos de sucessores com fontes aplicáveis.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "CA-05:LCAM3:2022-07-04": {
+      "state": "OPEN_DATA",
+      "result": "Registro societário preservado na posição 5 da base V2.",
+      "remaining": "reviewed fiscal basis/disposal treatment; integer delivery and fractional-entitlement settlement",
+      "acceptance": "Fechar entrega inteira/fracionária, custo fiscal e eventos de sucessores com fontes aplicáveis.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "CA-06:BRML3:2023-01-09": {
+      "state": "OPEN_DATA",
+      "result": "Registro societário preservado na posição 6 da base V2.",
+      "remaining": "reviewed fiscal basis/disposal treatment; integer delivery and fractional-entitlement settlement",
+      "acceptance": "Fechar entrega inteira/fracionária, custo fiscal e eventos de sucessores com fontes aplicáveis.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "CA-07:SOMA3:2024-08-01": {
+      "state": "OPEN_DATA",
+      "result": "Registro societário preservado na posição 7 da base V2.",
+      "remaining": "reviewed fiscal basis/disposal treatment; integer delivery and fractional-entitlement settlement",
+      "acceptance": "Fechar entrega inteira/fracionária, custo fiscal e eventos de sucessores com fontes aplicáveis.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "CA-08:VAMO3:2024-12-16": {
+      "state": "OPEN_DATA",
+      "result": "Registro societário preservado na posição 8 da base V2.",
+      "remaining": "reviewed fiscal basis/disposal treatment; integer delivery and fractional-entitlement settlement",
+      "acceptance": "Fechar entrega inteira/fracionária, custo fiscal e eventos de sucessores com fontes aplicáveis.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "CA-09:CRFB3:2025-06-02": {
+      "state": "OPEN_DATA",
+      "result": "Registro societário preservado na posição 9 da base V2.",
+      "remaining": "reviewed fiscal basis/disposal treatment; integer delivery and fractional-entitlement settlement",
+      "acceptance": "Fechar entrega inteira/fracionária, custo fiscal e eventos de sucessores com fontes aplicáveis.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "CA-10:CCRO3:2025-05-02": {
+      "state": "OPEN_DATA",
+      "result": "Registro societário preservado na posição 10 da base V2.",
+      "remaining": "reviewed fiscal basis/disposal treatment; integer delivery and fractional-entitlement settlement",
+      "acceptance": "Fechar entrega inteira/fracionária, custo fiscal e eventos de sucessores com fontes aplicáveis.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "CA-11:JBSS3:2025-06-09": {
+      "state": "OPEN_DATA",
+      "result": "Registro societário preservado na posição 11 da base V2.",
+      "remaining": "reviewed fiscal basis/disposal treatment; integer delivery and fractional-entitlement settlement",
+      "acceptance": "Fechar entrega inteira/fracionária, custo fiscal e eventos de sucessores com fontes aplicáveis.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "CA-12:NTCO3:2025-07-02": {
+      "state": "OPEN_DATA",
+      "result": "Registro societário preservado na posição 12 da base V2.",
+      "remaining": "reviewed fiscal basis/disposal treatment; integer delivery and fractional-entitlement settlement",
+      "acceptance": "Fechar entrega inteira/fracionária, custo fiscal e eventos de sucessores com fontes aplicáveis.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "CA-13:TEND3:2019-03-26": {
+      "state": "OPEN_DATA",
+      "result": "Registro societário preservado na posição 13 da base V2.",
+      "remaining": "Fechar datas de entrega, frações e base fiscal documentadas.",
+      "acceptance": "Fechar entrega inteira/fracionária, custo fiscal e eventos de sucessores com fontes aplicáveis.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "CA-14:NATU3:2019-09-18": {
+      "state": "OPEN_DATA",
+      "result": "Registro societário preservado na posição 14 da base V2.",
+      "remaining": "Fechar datas de entrega, frações e base fiscal documentadas.",
+      "acceptance": "Fechar entrega inteira/fracionária, custo fiscal e eventos de sucessores com fontes aplicáveis.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "CA-15:LIGT3:2021-06-28": {
+      "state": "OPEN_DATA",
+      "result": "Registro societário preservado na posição 15 da base V2.",
+      "remaining": "Fechar datas de entrega, frações e base fiscal documentadas.",
+      "acceptance": "Fechar entrega inteira/fracionária, custo fiscal e eventos de sucessores com fontes aplicáveis.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "CA-16:LIGT3:2021-06-28": {
+      "state": "OPEN_DATA",
+      "result": "Registro societário preservado na posição 16 da base V2.",
+      "remaining": "Fechar datas de entrega, frações e base fiscal documentadas.",
+      "acceptance": "Fechar entrega inteira/fracionária, custo fiscal e eventos de sucessores com fontes aplicáveis.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "CA-17:PSSA3:2021-10-21": {
+      "state": "OPEN_DATA",
+      "result": "Registro societário preservado na posição 17 da base V2.",
+      "remaining": "Fechar datas de entrega, frações e base fiscal documentadas.",
+      "acceptance": "Fechar entrega inteira/fracionária, custo fiscal e eventos de sucessores com fontes aplicáveis.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "CA-18:LREN3:2024-12-12": {
+      "state": "OPEN_DATA",
+      "result": "Registro societário preservado na posição 18 da base V2.",
+      "remaining": "Fechar datas de entrega, frações e base fiscal documentadas.",
+      "acceptance": "Fechar entrega inteira/fracionária, custo fiscal e eventos de sucessores com fontes aplicáveis.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "CA-19:VIVT3:2025-04-15": {
+      "state": "OPEN_DATA",
+      "result": "Registro societário preservado na posição 19 da base V2.",
+      "remaining": "Fechar datas de entrega, frações e base fiscal documentadas.",
+      "acceptance": "Fechar entrega inteira/fracionária, custo fiscal e eventos de sucessores com fontes aplicáveis.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "CA-20:VIVT3:2025-04-15": {
+      "state": "OPEN_DATA",
+      "result": "Registro societário preservado na posição 20 da base V2.",
+      "remaining": "Fechar datas de entrega, frações e base fiscal documentadas.",
+      "acceptance": "Fechar entrega inteira/fracionária, custo fiscal e eventos de sucessores com fontes aplicáveis.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "CA-21:HAPV3:2025-06-06": {
+      "state": "OPEN_DATA",
+      "result": "Registro societário preservado na posição 21 da base V2.",
+      "remaining": "Fechar datas de entrega, frações e base fiscal documentadas.",
+      "acceptance": "Fechar entrega inteira/fracionária, custo fiscal e eventos de sucessores com fontes aplicáveis.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "CA-22:VBBR3:2025-11-26": {
+      "state": "OPEN_DATA",
+      "result": "Registro societário preservado na posição 22 da base V2.",
+      "remaining": "Fechar datas de entrega, frações e base fiscal documentadas.",
+      "acceptance": "Fechar entrega inteira/fracionária, custo fiscal e eventos de sucessores com fontes aplicáveis.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "CA-23:EGIE3:2025-11-27": {
+      "state": "OPEN_DATA",
+      "result": "Registro societário preservado na posição 23 da base V2.",
+      "remaining": "Fechar datas de entrega, frações e base fiscal documentadas.",
+      "acceptance": "Fechar entrega inteira/fracionária, custo fiscal e eventos de sucessores com fontes aplicáveis.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "CA-24:RADL3:2025-12-23": {
+      "state": "OPEN_DATA",
+      "result": "Registro societário preservado na posição 24 da base V2.",
+      "remaining": "Fechar datas de entrega, frações e base fiscal documentadas.",
+      "acceptance": "Fechar entrega inteira/fracionária, custo fiscal e eventos de sucessores com fontes aplicáveis.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "CA-25:COGN3:2025-12-26": {
+      "state": "OPEN_DATA",
+      "result": "Registro societário preservado na posição 25 da base V2.",
+      "remaining": "Fechar datas de entrega, frações e base fiscal documentadas.",
+      "acceptance": "Fechar entrega inteira/fracionária, custo fiscal e eventos de sucessores com fontes aplicáveis.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "CA-26:MGLU3:2025-12-30": {
+      "state": "OPEN_DATA",
+      "result": "Registro societário preservado na posição 26 da base V2.",
+      "remaining": "Fechar datas de entrega, frações e base fiscal documentadas.",
+      "acceptance": "Fechar entrega inteira/fracionária, custo fiscal e eventos de sucessores com fontes aplicáveis.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "CA-27:RENT3:2025-12-30": {
+      "state": "OPEN_DATA",
+      "result": "Registro societário preservado na posição 27 da base V2.",
+      "remaining": "Fechar datas de entrega, frações e base fiscal documentadas.",
+      "acceptance": "Fechar entrega inteira/fracionária, custo fiscal e eventos de sucessores com fontes aplicáveis.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    },
+    "CA-28:CYRE3:2026-01-02": {
+      "state": "OPEN_DATA",
+      "result": "Registro societário preservado na posição 28 da base V2.",
+      "remaining": "Fechar datas de entrega, frações e base fiscal documentadas.",
+      "acceptance": "Fechar entrega inteira/fracionária, custo fiscal e eventos de sucessores com fontes aplicáveis.",
+      "evidence": [
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+      ]
+    }
+  },
+  "source_issue_state": "OPEN_DATA_REVISION15_UNCHANGED",
+  "evidence_files": {
+    ".github/workflows/ci.yml": "e069bb75a28bd7addb8c6e9644736695b3e17918514e6062e169d02fe32f8c1c",
+    "docs/audit/2026-09-10-integral/README.md": "9d7ae3d19399f87663d14829aefa165c599ff89c55e45f574d66ac11a52fd6fa",
+    "docs/audit/2026-09-10-integral/registry.json": "0dc48afc64c361140fdb413cc80c0e0bb7abdecf0975624b45e37dd505d3e685",
+    "docs/audit/2026-09-10-r7/REPRODUCTION.md": "b6d0093cc31e733ac1d8dfbcb639c1c5444c31050958785da1c3e597eac0087d",
+    "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md": "eb7460bcd1828e4116ac045c84b6b3e6c8b76c18019c6f08f882c6f629c90018",
+    "docs/audit/2026-09-10-r7/SOURCE_RIGHTS.md": "029b761d38ee7944443ebeda7bff151514add4563fa77c9af660aca31416e508",
+    "docs/audit/2026-09-10-r7/baseline-v2.json": "2caa9f9b4c5d3b9a71a863a3c9e00c7c8321283c1fd8e22e6f22531d952c5c39",
+    "docs/audit/2026-09-10-r7/evidence/acquisitions.json": "6ba52f6f04dd766ad7e737bd00f263aafd04ab9796b6f98ae581d363b8d4e1b5",
+    "docs/audit/2026-09-10-r7/evidence/ci-history.json": "715d6d0cb639ee440c3609e99a8181f0b307c593c257ae5a84b475f54f1b562a",
+    "docs/audit/2026-09-10-r7/evidence/forward-readiness.json": "1adb8e44e8f4fac31470f1832fc49cb77b06301af3d9e99e0ae232a026774ad8",
+    "docs/audit/2026-09-10-r7/evidence/personal-profile.json": "1b950ee707aab8f60fe3cbbd17313c7f7d68fd425c019ea9fe88cbdc5e5c4908",
+    "docs/audit/2026-09-10-r7/evidence/pr75-closure-and-actions.json": "3900a3308ba55d09f32a6134c062f47f20dd9e765eb21112098b70a64627315e",
+    "docs/audit/2026-09-10-r7/evidence/real-ingestion-benchmark.json": "72ed6e67805b01108ffa6eb1459993403b7e2f273aa7e2893da6d1847e9be6de",
+    "docs/audit/2026-09-10-r7/evidence/real-ingestion-code.json": "2ea1a855f6f7d425c7a5c768aa594345a7dd14a4afd0afef10844bbaba1f75dd",
+    "docs/audit/2026-09-10-r7/evidence/real-versioned-ingestion.json": "634436908be81af7d7dcc2b9f3cdf8e0b296da78d57f68b2540f619a9a59bf3e",
+    "docs/audit/2026-09-10-r7/evidence/source15-materialized.receipt.json": "601901fea48a0690da6970a13af09e70f58242af9fdda930ac3042135e760f8a",
+    "docs/audit/2026-09-10-r7/source-rights.json": "3b849ce5cbb2b22d67bd765a06d68df53616eee4e231d1035d33098c46f42d47",
+    "docs/engineering/2026-09-10-r4/README.md": "dbbb97f8dec8bf1f0bed2e09d980f224d81270e989d718d8312a096aea8b183f",
+    "docs/research/2026-09-09-h21-forward-plan.json": "9f39f68a5f1887aabd7d2dcba6681374a0bf4d44d5482c91cfb43d6e190a659c",
+    "docs/research/2026-09-10-r5/README.md": "617ec0e6f8806f66fd34c0a06b4bb003e87dd02504b4a75370790ff2473802f9",
+    "docs/research/2026-09-10-r6/README.md": "b2878c1c40dc361a2c854c5b2d2b55568d8b2e7b00f689ca0c41e1dbd50e0c10",
+    "pyproject.toml": "7497d28bc7fa91492c0716632efa4412c837e22ae11910515ec84e2b35352532",
+    "research/session-20260910/completion/real_ingestion.py": "3e7235665a2a79cb397bb57b779e7312633bcc3c01daa348faadc66cd1f24565",
+    "stocks_predictor/config.py": "1cf9eb82c9f3be725f376ed0b2ed2ca71a69677ea7fe13bcfa989da474a38d23",
+    "stocks_predictor/ingest_cotahist.py": "40316fceaf8a8b43725203f4497b2cf817d09543d44ab77ddbf85ca6d0a0ab33",
+    "stocks_predictor/research_profile.py": "f8ef1353ac6701ef3eb24d92e3974bc95c745133e0597a9266308069d9ef1cfb",
+    "stocks_predictor/rj_judge_robust.py": "4a24eba1c18430030f4d20c81d5750b48a38225288ca090f8e9ddf1fa615b2b1",
+    "stocks_predictor/source_catalog.py": "115c3f9e9b7f3fda83612dd7f2dba775da16f65afa16ca717bdc7647baeb2f36",
+    "stocks_predictor/temporal_evidence.py": "8ec0cf50328b63e17b0fb2697d38de3d86054f8ea36b9d17f9a23d86c197a309",
+    "tests/test_audit_registry.py": "edc4198d63eefee618d246398d6f798ed65d7e5f4732beaa6b0575d89943c532",
+    "tests/test_research_controls.py": "a66185f7a36beea92bf947bc87d4a87601f3ce2d10bdeeeb0f758e20e9fee8bc",
+    "tests/test_rj_audit_2026_08_24.py": "29699d75185cc0605b6e3b36e5c5d4dab3797938a7af0b57c4ebe54121f85986",
+    "tests/test_versioned_sources.py": "409807fa46234d4c22ba82c68f16cfbb1941e491cc51c3701da04da6d627f49f",
+    "tools/audit_registry.py": "7908f0cae25b61dddc3fa543207ee4435f85733e600ff22aa5daf26fc6e24872",
+    "tools/benchmark_real_ingestion.py": "67b09d7a6b3702212cd46b3d6207fee253e8286f0c481bf3c35927537f3fa85f",
+    "tools/build-requirements.txt": "429d47a82b885479ddabb8e96aa60d58a8672487e2a3a28faeaeb6fd54109f4f",
+    "tools/materialize_source_revision.py": "889f1f324b52812cafabadd7d3d99117184758aef0fd4e587fb42fbaaba9d9f5",
+    "tools/reproducible_build.py": "e03d807e8366fd1a095f4905b5f9429330557a935459176a1205f30f17b3225c",
+    "docs/audit/2026-09-10-r7/evidence/preservation.json": "f68c3642f159067fcfabdddecc0ddbc8b18ebd5d3a24830f552adfc135698b64",
+    "docs/audit/2026-09-10-r7/evidence/ci220.json": "05d49263057903386f79d1da22db6710b1a406405e91888033a7f56a95e5f473"
+  }
+}

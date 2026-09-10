@@ -1,0 +1,6 @@
+{
+  "script_sha256": "3e7235665a2a79cb397bb57b779e7312633bcc3c01daa348faadc66cd1f24565",
+  "source_catalog_sha256": "115c3f9e9b7f3fda83612dd7f2dba775da16f65afa16ca717bdc7647baeb2f36",
+  "real_receipt_sha256": "634436908be81af7d7dcc2b9f3cdf8e0b296da78d57f68b2540f619a9a59bf3e",
+  "scope": "Script and library bytes preserved after the successful real source run; no return evaluation."
+}

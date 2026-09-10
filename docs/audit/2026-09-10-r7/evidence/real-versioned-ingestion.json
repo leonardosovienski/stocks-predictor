@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "completed_at_utc": "2026-09-10T18:47:49.063378+00:00",
+  "source_acquisition_receipt_sha256": "615addd092facaab893d8d4af4fed7aec0d0a4425de4856c6c4e2f7eefe75056",
+  "source_sha256": "34b774681cbd201ef197fb98af8d431e4d7302e801f58b66e54036d2935dc4f4",
+  "source_url": "https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2026.ZIP",
+  "source_id": "sha256:d9805da2fa6557cd63ed4a10219487fcfc4f7350e97fd5cac8e57c17093f1596",
+  "source_observed_at": "2026-09-10T15:20:27.036342+00:00",
+  "first_inserted": 55986,
+  "replay_inserted": 0,
+  "stored_rows": 55986,
+  "distinct_tickers": 408,
+  "date_min": "2026-01-02",
+  "date_max": "2026-09-09",
+  "rows_sha256": "6d47c43ec60afbbd5731176453b9d4617854619ce71578abbfd73278c2d53bbf",
+  "database_sha256": "1b456db2ae3469fd6a926b5e83eba087790527304766953ce2a0938fed740180",
+  "seconds_including_both_ingestions_and_validation": 67.13473790000717,
+  "scope": "New raw-source staging DB, spot BDI02/market010 only. Not the full project schema, not all instruments, not a point-in-time identity/calendar/event audit; no historical banks changed.",
+  "new_return_evaluations": 0,
+  "capital_enabled": false
+}

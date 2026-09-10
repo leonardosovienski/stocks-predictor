@@ -1,3 +1,8 @@
+**Execução R7 — 10/09/2026:** [relatório e registro único](docs/audit/2026-09-10-r7/README.md).
+Origem versionada, evidência datada, perfil R$5.000, tipagem de todo o pacote,
+build controlado e materialização de 830 arquivos. [Consolidado atual](docs/audit/2026-09-10-r7/CONSOLIDADO.md).
+50 líquidos/22 datas e dependências de fontes, custos e tempo ainda abertos; lucro não certificado.
+
 **Dados R6 — 10/09/2026:** [recuperação e correções](docs/research/2026-09-10-r6/README.md).
 Os cinco arquivos ausentes foram recuperados; 1.448/1.448 passaram no verificador
 original. Preços BOVA até 09/09; revisão 15 reduz datas/líquidos ausentes para 22/50.

@@ -6,7 +6,7 @@ import pathlib
 import sqlite3
 import subprocess
 
-from predictor_core import infra
+from predictor_core.kernel import infra
 
 DB_DEFAULT = pathlib.Path(__file__).parent.parent / "data" / "stocks.db"
 # override p/ isolar testes/experimentos do banco de produção (mesmo padrão do

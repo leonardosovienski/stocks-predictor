@@ -1,0 +1,133 @@
+{
+  "runs": [
+    {
+      "ci_number": 214,
+      "run_id": 34509653540,
+      "head": "2fab220313fa39d71e29499bfabb2d8fb85dfafb",
+      "result": "FAIL",
+      "reason": "YAML plain scalar contained colon-space; zero jobs. Fixed with multiline run.",
+      "url": "https://github.com/leonardosovienski/stocks-predictor/actions/runs/34509653540"
+    },
+    {
+      "ci_number": 215,
+      "run_id": 34509875005,
+      "head": "7c754da5627622b4ef8c05148798170542b43b4a",
+      "result": "FAIL",
+      "reason": "18 full-package Pyright errors; canonical Core imports and optional value contracts corrected.",
+      "url": "https://github.com/leonardosovienski/stocks-predictor/actions/runs/34509875005",
+      "local_full_log_name": "ci215.log",
+      "local_full_log_sha256": "6ee89dbba5f331d0a04bff14660b8086bfda7ef7e0dae179374d1154d5a048b9",
+      "relevant_log_lines": [
+        "2026-09-10T17:42:53.9502865Z All checks passed!",
+        "2026-09-10T17:42:59.7518711Z   /home/runner/work/stocks-predictor/stocks-predictor/stocks_predictor/backtest.py:204:55 - error: Argument of type \"(window: Unknown) -> (float | None)\" cannot be assigned to parameter \"statistic\" of type \"(list[Unknown]) -> float\" in function \"bootstrap_ci\"",
+        "2026-09-10T17:42:59.7525398Z   /home/runner/work/stocks-predictor/stocks-predictor/stocks_predictor/config.py:92:18 - error: \"config_hash\" is not a known attribute of module \"predictor_core.infra\" (reportAttributeAccessIssue)",
+        "2026-09-10T17:42:59.7527378Z   /home/runner/work/stocks-predictor/stocks-predictor/stocks_predictor/config.py:118:18 - error: \"config_hash\" is not a known attribute of module \"predictor_core.infra\" (reportAttributeAccessIssue)",
+        "2026-09-10T17:42:59.7530656Z   /home/runner/work/stocks-predictor/stocks-predictor/stocks_predictor/db.py:399:18 - error: \"connect\" is not a known attribute of module \"predictor_core.infra\" (reportAttributeAccessIssue)",
+        "2026-09-10T17:42:59.7533434Z   /home/runner/work/stocks-predictor/stocks-predictor/stocks_predictor/db.py:401:15 - error: \"run_migrations\" is not a known attribute of module \"predictor_core.infra\" (reportAttributeAccessIssue)",
+        "2026-09-10T17:42:59.7535639Z   /home/runner/work/stocks-predictor/stocks-predictor/stocks_predictor/db.py:438:22 - error: \"config_hash\" is not a known attribute of module \"predictor_core.infra\" (reportAttributeAccessIssue)",
+        "2026-09-10T17:42:59.7537740Z   /home/runner/work/stocks-predictor/stocks-predictor/stocks_predictor/discovery_h17.py:187:55 - error: Operator \"-\" not supported for \"None\" (reportOptionalOperand)",
+        "2026-09-10T17:42:59.7539655Z   /home/runner/work/stocks-predictor/stocks-predictor/stocks_predictor/discovery_reorganizations.py:162:26 - error: Object of type \"None\" is not subscriptable (reportOptionalSubscript)",
+        "2026-09-10T17:42:59.7541785Z   /home/runner/work/stocks-predictor/stocks-predictor/stocks_predictor/ingest_cotahist.py:16:36 - error: \"download_file\" is unknown import symbol (reportAttributeAccessIssue)",
+        "2026-09-10T17:42:59.7544629Z   /home/runner/work/stocks-predictor/stocks-predictor/stocks_predictor/ingest_cvm.py:395:20 - error: Argument of type \"dict_values[str, int | None]\" cannot be assigned to parameter \"iterable\" of type \"Iterable[SupportsRichComparisonT@max]\" in function \"max\"",
+        "2026-09-10T17:42:59.7552779Z   /home/runner/work/stocks-predictor/stocks-predictor/stocks_predictor/ingest_cvm.py:397:39 - error: No overloads for \"__getitem__\" match the provided arguments (reportCallIssue)",
+        "2026-09-10T17:42:59.7555283Z   /home/runner/work/stocks-predictor/stocks-predictor/stocks_predictor/ingest_cvm.py:397:39 - error: Argument of type \"int | None\" cannot be assigned to parameter \"s\" of type \"slice[SupportsIndex | None, SupportsIndex | None, SupportsIndex | None]\" in function \"__getitem__\"",
+        "2026-09-10T17:42:59.7561142Z   /home/runner/work/stocks-predictor/stocks-predictor/stocks_predictor/ingest_cvm.py:398:19 - error: No overloads for \"__getitem__\" match the provided arguments (reportCallIssue)",
+        "2026-09-10T17:42:59.7563641Z   /home/runner/work/stocks-predictor/stocks-predictor/stocks_predictor/ingest_cvm.py:398:19 - error: Argument of type \"int | None\" cannot be assigned to parameter \"s\" of type \"slice[SupportsIndex | None, SupportsIndex | None, SupportsIndex | None]\" in function \"__getitem__\"",
+        "2026-09-10T17:42:59.7569650Z   /home/runner/work/stocks-predictor/stocks-predictor/stocks_predictor/ingest_cvm.py:399:21 - error: No overloads for \"__getitem__\" match the provided arguments (reportCallIssue)",
+        "2026-09-10T17:42:59.7572173Z   /home/runner/work/stocks-predictor/stocks-predictor/stocks_predictor/ingest_cvm.py:399:21 - error: Argument of type \"int | None\" cannot be assigned to parameter \"s\" of type \"slice[SupportsIndex | None, SupportsIndex | None, SupportsIndex | None]\" in function \"__getitem__\"",
+        "2026-09-10T17:42:59.7590802Z   /home/runner/work/stocks-predictor/stocks-predictor/stocks_predictor/ingest_cvm.py:976:13 - error: Argument of type \"None\" cannot be assigned to parameter \"value\" of type \"str\" in function \"__setitem__\"",
+        "2026-09-10T17:42:59.7595062Z   /home/runner/work/stocks-predictor/stocks-predictor/stocks_predictor/report.py:299:9 - error: \"emit_event\" is not a known attribute of module \"predictor_core.obs\" (reportAttributeAccessIssue)"
+      ]
+    },
+    {
+      "ci_number": 216,
+      "run_id": 34510345916,
+      "head": "bab8e492347e6fb2eaa79f7cd9fcb425b3030322",
+      "result": "FAIL",
+      "reason": "1 active failure/867 passed; a test mocked the old RJ name. Updated mock to actual called function. 17 archive tests passed.",
+      "url": "https://github.com/leonardosovienski/stocks-predictor/actions/runs/34510345916",
+      "local_full_log_name": "ci216.log",
+      "local_full_log_sha256": "fc68f93cef7f3468a1d1cbf7448b3d77dfaa8c119eec3d130dbd76ae1f242650",
+      "relevant_log_lines": [
+        "2026-09-10T17:47:41.4129975Z All checks passed!",
+        "2026-09-10T17:47:49.2276983Z 0 errors, 0 warnings, 0 informations",
+        "2026-09-10T17:47:54.2805898Z 17 passed in 0.30s",
+        "2026-09-10T17:50:19.0650787Z FAILED tests/test_rj_audit_2026_08_24.py::test_robustness_report_none_bh_gives_none_concordant - KeyError: 'drawdown'",
+        "2026-09-10T17:50:19.0651570Z 1 failed, 867 passed, 35 subtests passed in 144.03s (0:02:24)"
+      ]
+    },
+    {
+      "ci_number": 217,
+      "run_id": 34510973287,
+      "head": "e9f6c9f1003828180655662af2f81076fddf2f70",
+      "result": "FAIL",
+      "reason": "873 active and 17 archive tests passed. Build verifier counted uv .gitignore as a third distribution; both real distribution hashes were identical.",
+      "url": "https://github.com/leonardosovienski/stocks-predictor/actions/runs/34510973287",
+      "local_full_log_name": "ci217.log",
+      "local_full_log_sha256": "401644f3fcaddca102dde476538c564f8dac994ce6abcd2605539ebabda15c5b",
+      "relevant_log_lines": [
+        "2026-09-10T17:53:49.0007084Z All checks passed!",
+        "2026-09-10T17:53:55.1177383Z 0 errors, 0 warnings, 0 informations",
+        "2026-09-10T17:54:00.3824407Z 17 passed in 0.27s",
+        "2026-09-10T17:55:51.5897213Z 873 passed, 44 subtests passed in 110.17s (0:01:50)",
+        "2026-09-10T17:55:53.1671305Z TOTAL                                            6840   1219   2954    518    79%",
+        "2026-09-10T17:56:02.6715537Z ValueError: non-reproducible distributions: [{'stocks_predictor-0.1.0-py3-none-any.whl': 'd5e0eb795b96401d3f7be387cbd2b543466688480d3f0e8e0c6847290ac44125', 'stocks_predictor-0.1.0.tar.gz': '5d3f67e747ac89fdb801c1c19421a0b2910a89970e816dfba030eb690700fff2', '.gitignore': '684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1'}, {'stocks_predictor-0.1.0-py3-none-any.whl': 'd5e0eb795b96401d3f7be387cbd2b543466688480d3f0e8e0c6847290ac44125', 'stocks_predictor-0.1.0.tar.gz': '5d3f67e747ac89fdb801c1c19421a0b2910a89970e816dfba030eb690700fff2', '.gitignore': '684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1'}]"
+      ]
+    },
+    {
+      "ci_number": 218,
+      "run_id": 34511987289,
+      "head": "0f22de2b1929e6aeee1448713b9d2a272f77e757",
+      "result": "PASS",
+      "reason": "Both Python jobs and secrets passed; 873 active + 17 archive tests, 79 percent branch coverage, full-package Pyright, twice-identical distributions and wheel smoke outside checkout.",
+      "url": "https://github.com/leonardosovienski/stocks-predictor/actions/runs/34511987289",
+      "local_full_log_name": "ci218-python314.log",
+      "local_full_log_sha256": "bee5a0c15667ca715908c587e400937397320d917a353783f34ed1d1bc84b214",
+      "relevant_log_lines": [
+        "2026-09-10T18:03:48.5187028Z All checks passed!",
+        "2026-09-10T18:03:53.2200402Z 0 errors, 0 warnings, 0 informations",
+        "2026-09-10T18:03:55.2454250Z 17 passed in 0.20s",
+        "2026-09-10T18:05:23.5688460Z 873 passed, 44 subtests passed in 87.64s (0:01:27)",
+        "2026-09-10T18:05:25.1250237Z TOTAL                                            6840   1219   2954    518    79%",
+        "2026-09-10T18:05:34.1279562Z     \"stocks_predictor-0.1.0-py3-none-any.whl\": \"ae723555e306ccbb8b1522be4c63941448591b67e21f926272b09b96ce59905b\",",
+        "2026-09-10T18:05:34.1280393Z     \"stocks_predictor-0.1.0.tar.gz\": \"854b8bfc7bf481b41e8ca464a7225360d248d17166ecae63ca4fc99f83b2e615\""
+      ]
+    },
+    {
+      "ci_number": 219,
+      "run_id": 34513974276,
+      "head": "f8faf96f623f9a1d412e2627dd7638081c9bec8f",
+      "result": "FAIL",
+      "reason": "New exact evidence guard caught CRLF working-file hash for build-requirements.txt versus LF Git checkout. Source file normalized before reissuing receipt; guard unchanged. Static checks and 17 archive tests passed; active tests did not run.",
+      "url": "https://github.com/leonardosovienski/stocks-predictor/actions/runs/34513974276",
+      "local_full_log_name": "ci219.log",
+      "local_full_log_sha256": "ddd281d1a70e1f17e78490ee1421ac21fefa63b5d654aba712cf47bd0f23badd",
+      "relevant_log_lines": [
+        "2026-09-10T18:23:11.0239691Z All checks passed!",
+        "2026-09-10T18:23:15.3214163Z 0 errors, 0 warnings, 0 informations",
+        "2026-09-10T18:23:18.1521146Z 17 passed in 0.19s",
+        "2026-09-10T18:23:18.2568989Z ValueError: evidence changed: tools/build-requirements.txt"
+      ]
+    },
+    {
+      "ci_number": 220,
+      "run_id": 34514230223,
+      "head": "09bcd66fff9060426ac597f22f53af2a55c7e49a",
+      "result": "PASS",
+      "reason": "Both Python jobs and secrets passed; 877 active + 17 archive tests, 49 subtests on Python3.14, 79 percent branch coverage, full-package types, registry, identical builds and external wheel smoke.",
+      "url": "https://github.com/leonardosovienski/stocks-predictor/actions/runs/34514230223",
+      "local_full_log_name": "ci220-python314.log",
+      "local_full_log_sha256": "973adcee1c60599e199cebcf4bff2c05e5d4833ef52e692984cc61a4c26cef30",
+      "relevant_log_lines": [
+        "2026-09-10T18:25:38.3985510Z All checks passed!",
+        "2026-09-10T18:25:44.7804681Z 0 errors, 0 warnings, 0 informations",
+        "2026-09-10T18:25:47.2100759Z 17 passed in 0.25s",
+        "2026-09-10T18:27:31.1156284Z 877 passed, 49 subtests passed in 102.88s (0:01:42)",
+        "2026-09-10T18:27:33.0000522Z TOTAL                                            6846   1219   2956    518    79%",
+        "2026-09-10T18:27:43.7483744Z     \"stocks_predictor-0.1.0-py3-none-any.whl\": \"e28215f7209e8da5b081394f385c7df6c4e2afa61cd92340c6f15059ba2c102a\",",
+        "2026-09-10T18:27:43.7485168Z     \"stocks_predictor-0.1.0.tar.gz\": \"ad65e5baa7e2b68eb4afc3dde29602873a379bdd825c013b5c643d214c8fb488\""
+      ]
+    }
+  ],
+  "history_preserved": true
+}

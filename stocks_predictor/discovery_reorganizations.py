@@ -155,7 +155,7 @@ def score(member, entry, exit_day, bars, identities, events, legacy, reviews, te
     initial = bars.get(ticker, {}).get(entry)
     if initial is None:
         reasons.append("MISSING_EXECUTION_ENDPOINT:"+ticker)
-    if reasons:
+    if reasons or initial is None:
         value = None
     else:
         terminal = sum(s["opening_value_brl"] for s in stock_marks) + sum(c["total_brl"] for c in cash_marks)

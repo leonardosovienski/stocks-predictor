@@ -16,19 +16,19 @@ concurrency:
 jobs:
   quality:
     name: Quality / Python ${{ matrix.python }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
     strategy:
       fail-fast: false
       matrix:
         python: ["3.13", "3.14"]
     steps:
-      - uses: actions/checkout@v7
-      - uses: astral-sh/setup-uv@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78 # v7
         with:
           version: "0.12.1"
           enable-cache: true
-      - uses: actions/setup-python@v7
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
         with:
           python-version: ${{ matrix.python }}
       - name: Install project and dev dependencies
@@ -36,13 +36,19 @@ jobs:
       - name: Offline runtime metadata check
         run: uv run --no-sync python main.py doctor --check
       - name: Ruff
-        run: uv run --no-sync ruff check stocks_predictor tests main.py tools/data_bank.py tools/benchmark_ingestion.py research/session-20260909/data_completion research/session-20260910/integral research/session-20260910/profit_validation research/session-20260910/gap_resolution
+        run: uv run --no-sync ruff check stocks_predictor tests main.py tools/data_bank.py tools/benchmark_ingestion.py tools/benchmark_real_ingestion.py tools/materialize_source_revision.py tools/reproducible_build.py tools/audit_registry.py research/session-20260909/data_completion research/session-20260910/integral research/session-20260910/profit_validation research/session-20260910/gap_resolution
       - name: Pyright
         run: uv run --no-sync pyright --pythonversion ${{ matrix.python }}
       - name: Audit receipt identities
         run: uv run --no-sync python research/session-20260910/integral/verify_audit.py
       - name: Recovered package and R6 evidence identities
         run: uv run --no-sync python research/session-20260910/gap_resolution/verify.py
+      - name: Archived evidence regressions
+        env:
+          PYTHONPATH: stocks_predictor:research/session-20260908/chat-review:research/session-20260908/h20-profit-test
+        run: uv run --no-sync pytest -q --import-mode=importlib research/session-20260908/chat-review/test_h20_evidence_integrity.py research/session-20260908/h20-profit-test/test_h20_profit_comparison.py
+      - name: Consolidated R7 inventory and evidence
+        run: uv run --no-sync python tools/audit_registry.py
       - name: Tests
         run: uv run --no-sync coverage run -m pytest -q --durations=15 --junitxml=test-results.xml
       - name: Coverage report
@@ -51,7 +57,7 @@ jobs:
           uv run --no-sync coverage report
       - name: Retain test evidence
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: quality-python-${{ matrix.python }}
           path: |
@@ -59,13 +65,25 @@ jobs:
             coverage.json
           retention-days: 14
           if-no-files-found: ignore
-      - name: Build wheel
-        run: uv build
+      - name: Install build tools from hashes
+        run: |
+          uv pip install --python .venv/bin/python --require-hashes --no-deps --only-binary :all: -r tools/build-requirements.txt
+      - name: Build identical distributions twice
+        run: uv run --no-sync python tools/reproducible_build.py
+      - name: Retain distribution evidence
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: distributions-python-${{ matrix.python }}
+          path: |
+            dist/*
+            build-receipt.json
+          retention-days: 30
       - name: Wheel smoke outside checkout
         run: |
-          uv venv /tmp/stocks-wheel --python ${{ matrix.python }} --seed
-          /tmp/stocks-wheel/bin/pip install dist/*.whl \
-            "predictor-core @ https://github.com/leonardosovienski/core-predictor/releases/download/v3.2.0/predictor_core-3.2.0-py3-none-any.whl"
+          uv export --locked --no-dev --no-emit-project --format requirements-txt --output-file "$RUNNER_TEMP/stocks-runtime.txt"
+          uv venv /tmp/stocks-wheel --python ${{ matrix.python }}
+          uv pip install --python /tmp/stocks-wheel/bin/python --require-hashes --no-deps -r "$RUNNER_TEMP/stocks-runtime.txt"
+          uv pip install --python /tmp/stocks-wheel/bin/python --no-deps dist/*.whl
           mkdir -p "$RUNNER_TEMP/stocks-wheel-smoke"
           cd "$RUNNER_TEMP/stocks-wheel-smoke"
           /tmp/stocks-wheel/bin/python -I - <<'PY'
@@ -87,12 +105,12 @@ jobs:
           PY
 
   secrets:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           fetch-depth: 0
-      - uses: gitleaks/gitleaks-action@v3
+      - uses: gitleaks/gitleaks-action@e0c47f4f8be36e29cdc102c57e68cb5cbf0e8d1e # v3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
