@@ -1469,7 +1469,7 @@
     "docs/audit/2026-09-10-r7/SOURCE_RIGHTS.md": "029b761d38ee7944443ebeda7bff151514add4563fa77c9af660aca31416e508",
     "docs/audit/2026-09-10-r7/baseline-v2.json": "2caa9f9b4c5d3b9a71a863a3c9e00c7c8321283c1fd8e22e6f22531d952c5c39",
     "docs/audit/2026-09-10-r7/evidence/acquisitions.json": "6ba52f6f04dd766ad7e737bd00f263aafd04ab9796b6f98ae581d363b8d4e1b5",
-    "docs/audit/2026-09-10-r7/evidence/ci-history.json": "884712980038e4e61149bd15954b071de6d109f6e95341007fa58597e03aac94",
+    "docs/audit/2026-09-10-r7/evidence/ci-history.json": "b1c4954f040d5059176fadce0903303177d4730c70bbd40aeeee99d155aa17f1",
     "docs/audit/2026-09-10-r7/evidence/forward-readiness.json": "1adb8e44e8f4fac31470f1832fc49cb77b06301af3d9e99e0ae232a026774ad8",
     "docs/audit/2026-09-10-r7/evidence/personal-profile.json": "1b950ee707aab8f60fe3cbbd17313c7f7d68fd425c019ea9fe88cbdc5e5c4908",
     "docs/audit/2026-09-10-r7/evidence/pr75-closure-and-actions.json": "3900a3308ba55d09f32a6134c062f47f20dd9e765eb21112098b70a64627315e",
@@ -1493,7 +1493,7 @@
     "tests/test_versioned_sources.py": "409807fa46234d4c22ba82c68f16cfbb1941e491cc51c3701da04da6d627f49f",
     "tools/audit_registry.py": "7908f0cae25b61dddc3fa543207ee4435f85733e600ff22aa5daf26fc6e24872",
     "tools/benchmark_real_ingestion.py": "67b09d7a6b3702212cd46b3d6207fee253e8286f0c481bf3c35927537f3fa85f",
-    "tools/build-requirements.txt": "b0b3e16cb5cdbc97d59f2bf0c1653475b5046c8abb994200ad756b9539073ec1",
+    "tools/build-requirements.txt": "429d47a82b885479ddabb8e96aa60d58a8672487e2a3a28faeaeb6fd54109f4f",
     "tools/materialize_source_revision.py": "889f1f324b52812cafabadd7d3d99117184758aef0fd4e587fb42fbaaba9d9f5",
     "tools/reproducible_build.py": "e03d807e8366fd1a095f4905b5f9429330557a935459176a1205f30f17b3225c"
   }

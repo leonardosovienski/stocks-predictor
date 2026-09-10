@@ -92,6 +92,22 @@
         "2026-09-10T18:05:34.1279562Z     \"stocks_predictor-0.1.0-py3-none-any.whl\": \"ae723555e306ccbb8b1522be4c63941448591b67e21f926272b09b96ce59905b\",",
         "2026-09-10T18:05:34.1280393Z     \"stocks_predictor-0.1.0.tar.gz\": \"854b8bfc7bf481b41e8ca464a7225360d248d17166ecae63ca4fc99f83b2e615\""
       ]
+    },
+    {
+      "ci_number": 219,
+      "run_id": 34513974276,
+      "head": "f8faf96f623f9a1d412e2627dd7638081c9bec8f",
+      "result": "FAIL",
+      "reason": "New exact evidence guard caught CRLF working-file hash for build-requirements.txt versus LF Git checkout. Source file normalized before reissuing receipt; guard unchanged. Static checks and 17 archive tests passed; active tests did not run.",
+      "url": "https://github.com/leonardosovienski/stocks-predictor/actions/runs/34513974276",
+      "local_full_log_name": "ci219.log",
+      "local_full_log_sha256": "ddd281d1a70e1f17e78490ee1421ac21fefa63b5d654aba712cf47bd0f23badd",
+      "relevant_log_lines": [
+        "2026-09-10T18:23:11.0239691Z All checks passed!",
+        "2026-09-10T18:23:15.3214163Z 0 errors, 0 warnings, 0 informations",
+        "2026-09-10T18:23:18.1521146Z 17 passed in 0.19s",
+        "2026-09-10T18:23:18.2568989Z ValueError: evidence changed: tools/build-requirements.txt"
+      ]
     }
   ],
   "history_preserved": true
