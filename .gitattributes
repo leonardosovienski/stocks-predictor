@@ -70,3 +70,5 @@ research/session-20260910/gap_resolution/exact_objects/** -text !eol -whitespace
 pyproject.toml text eol=lf
 docs/audit/2026-09-10-r7/*.json text eol=lf
 docs/audit/2026-09-10-r7/evidence/** -text !eol -whitespace
+docs/engineering/2026-09-10-r8/evidence/** -text !eol -whitespace
+docs/engineering/2026-09-10-r8/evidence.json text eol=lf

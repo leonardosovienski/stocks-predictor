@@ -1,4 +1,5 @@
 """Schema e migração idempotente do predictor-stocks."""
+from contextlib import closing
 import datetime
 import json
 import os
@@ -395,6 +396,9 @@ def price_expr(col: str) -> str:
 def get_connection(db_path: pathlib.Path | str | None = None,
                    busy_timeout_ms: int = 5000) -> sqlite3.Connection:
     path = pathlib.Path(db_path or os.getenv(DB_PATH_ENV) or DB_DEFAULT)
+    if path.is_file():
+        with closing(sqlite3.connect(path.resolve().as_uri() + '?mode=ro', uri=True)) as probe:
+            _reject_managed_store(probe)
     path.parent.mkdir(parents=True, exist_ok=True)
     conn = infra.connect(path, busy_timeout_ms=busy_timeout_ms)
     try:
@@ -411,8 +415,20 @@ def get_readonly_connection(db_path: pathlib.Path | str | None = None) -> sqlite
     if not path.is_file():
         raise FileNotFoundError(f"Banco de leitura ausente: {path}")
     conn = sqlite3.connect(path.as_uri() + '?mode=ro', uri=True)
-    conn.execute('PRAGMA query_only=ON')
+    try:
+        _reject_managed_store(conn)
+        conn.execute('PRAGMA query_only=ON')
+    except BaseException:
+        conn.close()
+        raise
     return conn
+
+
+def _reject_managed_store(conn: sqlite3.Connection) -> None:
+    # Separate physical source versions must not enter legacy queries that blend
+    # all source_file values. Check before Core migrations or writer PRAGMAs.
+    if conn.execute('PRAGMA application_id').fetchone()[0] == 0x53544B50:
+        raise ValueError('managed research store requires python -m stocks_predictor; legacy access refused')
 
 
 def get_code_version() -> str:

@@ -327,7 +327,13 @@ def cmd_doctor(args) -> int:
     return diagnose(args)
 
 
+def cmd_ops(args) -> int:
+    from stocks_predictor.operations import main as operate
+    return operate(args)
+
+
 _COMMANDS = {
+    "ops": cmd_ops,
     "doctor": cmd_doctor,
     "status": lambda a: status(),
     "ingest": cmd_ingest,

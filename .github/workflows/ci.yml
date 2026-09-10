@@ -24,6 +24,8 @@ jobs:
         python: ["3.13", "3.14"]
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          fetch-depth: 0 # Historical R7 code receipts remain anchored to their original commit.
       - uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78 # v7
         with:
           version: "0.12.1"
@@ -36,7 +38,7 @@ jobs:
       - name: Offline runtime metadata check
         run: uv run --no-sync python main.py doctor --check
       - name: Ruff
-        run: uv run --no-sync ruff check stocks_predictor tests main.py tools/data_bank.py tools/benchmark_ingestion.py tools/benchmark_real_ingestion.py tools/materialize_source_revision.py tools/reproducible_build.py tools/audit_registry.py research/session-20260909/data_completion research/session-20260910/integral research/session-20260910/profit_validation research/session-20260910/gap_resolution
+        run: uv run --no-sync ruff check stocks_predictor tests main.py tools/data_bank.py tools/benchmark_ingestion.py tools/benchmark_real_ingestion.py tools/materialize_source_revision.py tools/reproducible_build.py tools/audit_registry.py tools/operational_validation.py tools/verify_operational_evidence.py research/session-20260909/data_completion research/session-20260910/integral research/session-20260910/profit_validation research/session-20260910/gap_resolution
       - name: Pyright
         run: uv run --no-sync pyright --pythonversion ${{ matrix.python }}
       - name: Audit receipt identities
@@ -49,6 +51,8 @@ jobs:
         run: uv run --no-sync pytest -q --import-mode=importlib research/session-20260908/chat-review/test_h20_evidence_integrity.py research/session-20260908/h20-profit-test/test_h20_profit_comparison.py
       - name: Consolidated R7 inventory and evidence
         run: uv run --no-sync python tools/audit_registry.py
+      - name: Current R8 operational evidence identities
+        run: uv run --no-sync python tools/verify_operational_evidence.py
       - name: Tests
         run: uv run --no-sync coverage run -m pytest -q --durations=15 --junitxml=test-results.xml
       - name: Coverage report
@@ -85,7 +89,10 @@ jobs:
           uv pip install --python /tmp/stocks-wheel/bin/python --require-hashes --no-deps -r "$RUNNER_TEMP/stocks-runtime.txt"
           uv pip install --python /tmp/stocks-wheel/bin/python --no-deps dist/*.whl
           mkdir -p "$RUNNER_TEMP/stocks-wheel-smoke"
+          cp tools/operational_validation.py "$RUNNER_TEMP/stocks-wheel-smoke/operational_validation.py"
           cd "$RUNNER_TEMP/stocks-wheel-smoke"
+          /tmp/stocks-wheel/bin/python -I -m stocks_predictor doctor --check
+          /tmp/stocks-wheel/bin/python -I operational_validation.py --installed --output "$RUNNER_TEMP/stocks-wheel-smoke/load" --rows 250000
           /tmp/stocks-wheel/bin/python -I - <<'PY'
           import os
           from pathlib import Path
@@ -103,6 +110,14 @@ jobs:
               assert not origin.is_relative_to(checkout), origin
               print(module.__name__, origin)
           PY
+      - name: Retain installed operational evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: operations-python-${{ matrix.python }}
+          path: ${{ runner.temp }}/stocks-wheel-smoke/load/validation.json
+          retention-days: 30
+          if-no-files-found: ignore
 
   secrets:
     runs-on: ubuntu-24.04

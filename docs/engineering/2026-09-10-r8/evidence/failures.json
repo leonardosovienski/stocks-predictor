@@ -1,0 +1,34 @@
+{
+  "attempts": [
+    {
+      "id": "LOCAL-01",
+      "tests": 11,
+      "errors": 3,
+      "skipped": 1,
+      "failures": [
+        "Two snapshot tests failed with Windows OSError Errno 9: fsync on a read-only file descriptor.",
+        "WAL fixture lacked an active read transaction; expected -wal file was absent."
+      ],
+      "correction": "Open owned snapshot r+b before fsync; hold an explicit reader transaction in the WAL regression.",
+      "status": "CORRECTED_LOCAL_02"
+    },
+    {
+      "id": "LOCAL-02",
+      "tests": 23,
+      "errors": 0,
+      "skipped": 1,
+      "scope": "Windows auxiliary Python 3.12 stdlib. Core-dependent guard test deferred to Linux CI, not counted as locally validated.",
+      "log": "local-tests.log",
+      "status": "PASS_WITH_EXPLICIT_CORE_SKIP"
+    },
+    {
+      "id": "CI223",
+      "run_id": 34522336322,
+      "head": "d57ffa65d8c8a68b70fec87a07744cffa864cb27",
+      "test_failure": "New migration regression compared Core sqlite3.Row with tuple; integrity value itself was ok. Normalize row values and exercise initial-schema upgrade through all 15 migrations.",
+      "scanner_failure": "Two file SHA-256 values classified as generic-api-key because filenames contain secrets/api. Independently verified as file hashes. Exact two historical fingerprints excluded; current manifest separates path/digest. Scanner and rules remain active.",
+      "python314": "890 passed, 1 failed, 63 subtests; 17 archived tests passed.",
+      "status": "CORRECTED_CI224_PASS"
+    }
+  ]
+}
