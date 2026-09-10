@@ -1,0 +1,398 @@
+{
+  "status": "PASS",
+  "merge_sha": "0742bfc6fc1f33edabf00aaea73b54435f415bfa",
+  "final_head_ci": {
+    "run_number": 229,
+    "run_id": 34525826337,
+    "head": "a259c5a62f916f53b387ffb604ec2060ecda218e",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/leonardosovienski/stocks-predictor/actions/runs/34525826337"
+  },
+  "main_ci": {
+    "run_number": 230,
+    "run_id": 34526489586,
+    "head": "0742bfc6fc1f33edabf00aaea73b54435f415bfa",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/leonardosovienski/stocks-predictor/actions/runs/34526489586"
+  },
+  "ci_history": [
+    {
+      "run_number": 223,
+      "run_id": 34522336322,
+      "head": "d57ffa65d8c8a68b70fec87a07744cffa864cb27",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "url": "https://github.com/leonardosovienski/stocks-predictor/actions/runs/34522336322"
+    },
+    {
+      "run_number": 224,
+      "run_id": 34522721727,
+      "head": "c7f61ed5befda706da4c9a9cd53ff12b61a1d89b",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/leonardosovienski/stocks-predictor/actions/runs/34522721727"
+    },
+    {
+      "run_number": 225,
+      "run_id": 34523540480,
+      "head": "d50fda2de37200703c11a355eae5c828e79602e9",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/leonardosovienski/stocks-predictor/actions/runs/34523540480"
+    },
+    {
+      "run_number": 226,
+      "run_id": 34524041295,
+      "head": "404f335a584e62856b5cae1140c4713cd37d2495",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/leonardosovienski/stocks-predictor/actions/runs/34524041295"
+    },
+    {
+      "run_number": 227,
+      "run_id": 34524947643,
+      "head": "ecde07e830e01eae3bbb82e33bb4abd63330102f",
+      "status": "completed",
+      "conclusion": "failure",
+      "url": "https://github.com/leonardosovienski/stocks-predictor/actions/runs/34524947643"
+    },
+    {
+      "run_number": 228,
+      "run_id": 34525565173,
+      "head": "43982624f28ed6d7dc31b3cf1e4bda5d7ddee4bc",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "url": "https://github.com/leonardosovienski/stocks-predictor/actions/runs/34525565173"
+    },
+    {
+      "run_number": 229,
+      "run_id": 34525826337,
+      "head": "a259c5a62f916f53b387ffb604ec2060ecda218e",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/leonardosovienski/stocks-predictor/actions/runs/34525826337"
+    },
+    {
+      "run_number": 230,
+      "run_id": 34526489586,
+      "head": "0742bfc6fc1f33edabf00aaea73b54435f415bfa",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/leonardosovienski/stocks-predictor/actions/runs/34526489586"
+    }
+  ],
+  "distribution_artifact": {
+    "id": 10171846590,
+    "name": "distributions-python-3.14",
+    "digest": "sha256:1c9a7ef99017ed7862147684a71c557d3bb9fde2105aafe7a8d87beb8838b00b",
+    "local_file": "ci230-distributions-python-3.14.zip"
+  },
+  "quality_and_operations_artifacts": [
+    {
+      "id": 10171937842,
+      "name": "operations-python-3.13",
+      "digest": "sha256:b06f0d9a237d955553abb4e76e8123ef33907aba8ec4a61e01de7df8a5bd81f9",
+      "local_file": "ci230-operations-python-3.13.zip"
+    },
+    {
+      "id": 10171915932,
+      "name": "quality-python-3.13",
+      "digest": "sha256:1b5c8dd103cd766da65ba2b322b00d545053955073ad90f64b3c6b59156384b9",
+      "local_file": "ci230-quality-python-3.13.zip"
+    },
+    {
+      "id": 10171859617,
+      "name": "operations-python-3.14",
+      "digest": "sha256:1873d5e60a00a417903aa9cc5fd73dfb148c087a594c454010ac7f1c069bf727",
+      "local_file": "ci230-operations-python-3.14.zip"
+    },
+    {
+      "id": 10171838860,
+      "name": "quality-python-3.14",
+      "digest": "sha256:5fa74d431d6a10cef824b16526d878723dd9f0fcb0fab42b6d0a608749ea743e",
+      "local_file": "ci230-quality-python-3.14.zip"
+    },
+    {
+      "id": 10171754399,
+      "name": "complete-tree-secrets",
+      "digest": "sha256:b376d25ec99c5147c4a58734789cc92b0921dcb3d25a18adb6fa85eedddd41b7",
+      "local_file": "ci230-complete-tree-secrets.zip"
+    }
+  ],
+  "main_jobs": [
+    {
+      "id": 103036548328,
+      "name": "secrets",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run gitleaks/gitleaks-action@e0c47f4f8be36e29cdc102c57e68cb5cbf0e8d1e",
+          "conclusion": "success"
+        },
+        {
+          "name": "Scan the complete tracked tree including merged code",
+          "conclusion": "success"
+        },
+        {
+          "name": "Prove an exempted file still detects a synthetic token",
+          "conclusion": "success"
+        },
+        {
+          "name": "Retain complete tree scan",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 103036548784,
+      "name": "Quality / Python 3.13",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install project and dev dependencies",
+          "conclusion": "success"
+        },
+        {
+          "name": "Offline runtime metadata check",
+          "conclusion": "success"
+        },
+        {
+          "name": "Ruff",
+          "conclusion": "success"
+        },
+        {
+          "name": "Pyright",
+          "conclusion": "success"
+        },
+        {
+          "name": "Audit receipt identities",
+          "conclusion": "success"
+        },
+        {
+          "name": "Recovered package and R6 evidence identities",
+          "conclusion": "success"
+        },
+        {
+          "name": "Archived evidence regressions",
+          "conclusion": "success"
+        },
+        {
+          "name": "Consolidated R7 inventory and evidence",
+          "conclusion": "success"
+        },
+        {
+          "name": "Current R8 operational evidence identities",
+          "conclusion": "success"
+        },
+        {
+          "name": "Tests",
+          "conclusion": "success"
+        },
+        {
+          "name": "Coverage report",
+          "conclusion": "success"
+        },
+        {
+          "name": "Retain test evidence",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install build tools from hashes",
+          "conclusion": "success"
+        },
+        {
+          "name": "Build identical distributions twice",
+          "conclusion": "success"
+        },
+        {
+          "name": "Retain distribution evidence",
+          "conclusion": "success"
+        },
+        {
+          "name": "Wheel smoke outside checkout",
+          "conclusion": "success"
+        },
+        {
+          "name": "Retain installed operational evidence",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 103036548859,
+      "name": "Quality / Python 3.14",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install project and dev dependencies",
+          "conclusion": "success"
+        },
+        {
+          "name": "Offline runtime metadata check",
+          "conclusion": "success"
+        },
+        {
+          "name": "Ruff",
+          "conclusion": "success"
+        },
+        {
+          "name": "Pyright",
+          "conclusion": "success"
+        },
+        {
+          "name": "Audit receipt identities",
+          "conclusion": "success"
+        },
+        {
+          "name": "Recovered package and R6 evidence identities",
+          "conclusion": "success"
+        },
+        {
+          "name": "Archived evidence regressions",
+          "conclusion": "success"
+        },
+        {
+          "name": "Consolidated R7 inventory and evidence",
+          "conclusion": "success"
+        },
+        {
+          "name": "Current R8 operational evidence identities",
+          "conclusion": "success"
+        },
+        {
+          "name": "Tests",
+          "conclusion": "success"
+        },
+        {
+          "name": "Coverage report",
+          "conclusion": "success"
+        },
+        {
+          "name": "Retain test evidence",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install build tools from hashes",
+          "conclusion": "success"
+        },
+        {
+          "name": "Build identical distributions twice",
+          "conclusion": "success"
+        },
+        {
+          "name": "Retain distribution evidence",
+          "conclusion": "success"
+        },
+        {
+          "name": "Wheel smoke outside checkout",
+          "conclusion": "success"
+        },
+        {
+          "name": "Retain installed operational evidence",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "scanner": {
+    "complete_tree_files": 1538,
+    "complete_tree_bytes": 148855849,
+    "unresolved_findings": 0,
+    "synthetic_control_detected": true,
+    "historical_push_scan_empty": true,
+    "empty_scan_is_not_used_as_tree_validation": true
+  },
+  "resolved_attempts": [
+    "LOCAL-01",
+    "CI223",
+    "CI226-SCANNER-SCOPE",
+    "CI227-FULL-TREE",
+    "CI228-EXACT-DIGEST"
+  ],
+  "engineering_scope_complete": true,
+  "all_initial_request_items_closed": false,
+  "capital_enabled": false,
+  "profit_certified": false
+}

@@ -1,0 +1,51 @@
+{
+  "status": "PASS",
+  "observed_at_utc": "2026-09-10T21:05:18.039490+00:00",
+  "base_revision": "0742bfc6fc1f33edabf00aaea73b54435f415bfa",
+  "commands": [
+    {
+      "command": [
+        "python",
+        "research/session-20260910/integral/verify_audit.py"
+      ],
+      "exit_code": 0,
+      "log": "check-1.log"
+    },
+    {
+      "command": [
+        "python",
+        "research/session-20260910/gap_resolution/verify.py"
+      ],
+      "exit_code": 0,
+      "log": "check-2.log"
+    },
+    {
+      "command": [
+        "python",
+        "tools/audit_registry.py"
+      ],
+      "exit_code": 0,
+      "log": "check-3.log"
+    },
+    {
+      "command": [
+        "python",
+        "tools/verify_operational_evidence.py"
+      ],
+      "exit_code": 0,
+      "log": "check-4.log"
+    },
+    {
+      "command": [
+        "python",
+        "research/session-20260910/final_review/verify.py",
+        "--local"
+      ],
+      "exit_code": 0,
+      "log": "check-5.log"
+    }
+  ],
+  "local_links_checked": 17,
+  "all_initial_request_items_closed": false,
+  "profit_certified": false
+}

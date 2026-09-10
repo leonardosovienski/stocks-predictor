@@ -6,11 +6,11 @@
   "current_code_sha256_lf": [
     {
       "path": ".gitattributes",
-      "sha256": "5235796e38fad4c6a2d6a59fe848ec849ca0c869acf9f55d00a17644328a8c2e"
+      "sha256": "1fb5c1490dcfb6104a14e07cf7c0ae1f4baadb3adbc73e3ddb8703f88d28125a"
     },
     {
       "path": ".github/workflows/ci.yml",
-      "sha256": "9474019f5204afafedacfe81bfa00c28c93323c3601e2037f9a74551cd75cb3c"
+      "sha256": "84baeabb38eea1f0eed3eca48214a4d9a075e042d4945bec3944b0d056d05a63"
     },
     {
       "path": ".gitleaks.toml",

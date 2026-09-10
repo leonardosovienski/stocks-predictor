@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "code_evidence_revision": "c259ff64771a6c560ddb4aadac6bf81301c3066a",
+  "items": 75,
+  "cash_records": 50,
+  "corporate_records": 28,
+  "source_issue_occurrences": 1590,
+  "states": {
+    "RESOLVED_SCOPE": 36,
+    "OPEN_DATA": 8,
+    "OPEN_PERSONAL": 2,
+    "OPEN_TIME": 1,
+    "RETAINED_RESULT": 10,
+    "CONDITIONAL_NOT_TRIGGERED": 2,
+    "IMPLEMENTED_LIMITED": 16
+  },
+  "scope": "Inventory and evidence identity, not universal correctness or profit certification."
+}
