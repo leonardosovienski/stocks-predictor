@@ -10,10 +10,10 @@ bootstrap não-paramétrico (`measurement.bootstrap.bootstrap_ci`, scheme=
 reportar 1 achado sem descontar quantas foram testadas) via FDR de
 Benjamini-Hochberg entre as 8 famílias em vez de DSR.
 
-Unidade de reamostragem: EMPRESA (cluster_key=ticker), não episódio. Na
-análise primária (1 episódio/empresa) isso degenera em iid — mas protege
-automaticamente a análise secundária, se/quando episódios múltiplos da mesma
-empresa entrarem no mesmo teste (protocolo "empresa -> episódios").
+O IC usa cluster_key=ticker. A permutação implementada exige uma observação
+por empresa, como na análise primária congelada. O bootstrap por cluster não
+torna uma permutação de episódios independentes válida: amostras repetidas
+agora falham antes do julgamento. Uma análise secundária exige método próprio.
 """
 import random
 import statistics
@@ -44,6 +44,7 @@ def _permutation_test(units, stat_fn, compare_ge, n_perm: int, seed: int) -> flo
     """Motor comum de permutação de rótulo: embaralha `grupo` n_perm vezes,
     recomputa `stat_fn` na réplica e conta quantas vezes `compare_ge(réplica,
     observado)` é verdadeiro. `stat_fn(units) -> float | None`."""
+    validate_primary_units(units)
     obs = stat_fn(units)
     if obs is None:
         return None
@@ -59,6 +60,13 @@ def _permutation_test(units, stat_fn, compare_ge, n_perm: int, seed: int) -> flo
         if d is not None and compare_ge(d, obs):
             n_ge += 1
     return permutation_pvalue_from_count(n_ge, n_perm)
+
+
+def validate_primary_units(units):
+    """The frozen permutation is defined for one observation per company."""
+    tickers = [u[0] for u in units]
+    if len(set(tickers)) != len(tickers):
+        raise ValueError("primary RJ inference requires one observation per company")
 
 
 def permutation_pvalue(units, n_perm: int = 10000, seed: int = 42) -> float | None:
@@ -78,6 +86,7 @@ def family_verdict(units, direction_expected: str, cfg: dict) -> dict:
     partir de p<0.5 não é indício de nada — reporta só effect/CI/p aqui;
     `apply_fdr` decide `significant_after_fdr`, o único veredito binário
     que importa depois de descontar as 8 tentativas."""
+    validate_primary_units(units)
     b = cfg["judge"]
     obs = _mean_diff(units)
     if obs is None or len(units) < 4:
@@ -133,6 +142,7 @@ def categorical_family_verdict(units, cfg: dict) -> dict:
     separada para famílias em `families.CATEGORICAL_FAMILIES` (hoje só
     rj_stage). direction_match sempre None: associação categórica não tem
     "sinal" a bater com direção esperada."""
+    validate_primary_units(units)
     if len(units) < 4:
         return {"n": len(units), "effect": None, "ci": (None, None),
                 "p_value": None, "direction_match": None}

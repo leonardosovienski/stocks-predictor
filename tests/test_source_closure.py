@@ -138,7 +138,7 @@ def test_b3_wrong_report_date_and_duplicate_pages_never_certify_income():
 
 def test_hashed_local_reconstruction_is_not_counted_as_primary_evidence():
     local = {'sha256': next(iter(DERIVED_REVIEW_SHAS))}
-    catalog = {'local.json': local, 'issuer.pdf': {'sha256': 'a' * 64},
+    catalog = {'local.json': local, 'issuer.pdf': {'sha256': 'a' * 64, 'source_kind': 'PRIMARY_SOURCE_RECORD'},
                'unknown.json': {'sha256': 'b' * 64, 'source_kind': 'UNCLASSIFIED'}}
     assert source_counts(catalog) == {'verified_source_files': 3, 'verified_primary_files': 1,
         'verified_derived_review_files': 1, 'unclassified_source_files': 1}

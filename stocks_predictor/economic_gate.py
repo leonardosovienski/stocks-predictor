@@ -1,4 +1,10 @@
-"""Opt-in economic gate for future, pre-registered stock hypotheses."""
+"""Opt-in arithmetic gate for future, pre-registered stock hypotheses.
+
+The normal standard-error bound assumes suitable independent observations; it
+does not correct serial dependence, adaptive search or selection bias. Callers
+must attest maturity and chronology: this primitive has no date information.
+It is not wired to a live strategy and never enables capital.
+"""
 from dataclasses import dataclass
 import math
 import statistics
@@ -25,24 +31,33 @@ class RebalanceDecision:
 
 def estimate_edge(observations, *, minimum_observations=12, z_score=1.96):
     """Estimate a conservative edge from already-matured period observations."""
-    if minimum_observations < 2 or z_score < 0:
+    if type(minimum_observations) is not int or minimum_observations < 2 or not math.isfinite(z_score) or z_score < 0:
         raise ValueError("minimum_observations deve ser >= 2 e z_score >= 0")
-    xs = [fx for x in observations if math.isfinite(fx := float(x))]
+    xs = [float(x) for x in observations]
+    if any(not math.isfinite(x) for x in xs):
+        raise ValueError("observations must be finite; missing outcomes cannot be silently dropped")
     if len(xs) < minimum_observations:
         return None
     mean = statistics.mean(xs)
     standard_error = statistics.stdev(xs) / math.sqrt(len(xs)) if len(xs) > 1 else 0.0
-    return EdgeEstimate(mean, mean - z_score * standard_error, len(xs))
+    lower = mean - z_score * standard_error
+    if not math.isfinite(mean) or not math.isfinite(lower):
+        raise ValueError("nonfinite edge estimate")
+    return EdgeEstimate(mean, lower, len(xs))
 
 
 def decide_rebalance(estimate, turnover_cost, *, minimum_net_edge=0.0):
     """Rebalance only when the lower edge pays turnover cost plus the hurdle."""
-    if turnover_cost < 0 or minimum_net_edge < 0:
+    if any(not math.isfinite(x) or x < 0 for x in (turnover_cost, minimum_net_edge)):
         raise ValueError("turnover_cost e minimum_net_edge devem ser >= 0")
     if estimate is None:
         return RebalanceDecision(
             "HOLD", None, None, turnover_cost, None, 0,
             "amostra madura insuficiente")
+    if (any(not math.isfinite(x) for x in (estimate.mean_gross_edge, estimate.lower_gross_edge))
+            or estimate.lower_gross_edge > estimate.mean_gross_edge
+            or type(estimate.observations) is not int or estimate.observations < 2):
+        raise ValueError("invalid supplied edge estimate")
     conservative_net = estimate.lower_gross_edge - turnover_cost
     action = "REBALANCE" if conservative_net > minimum_net_edge else "HOLD"
     reason = ("edge conservador paga custo e hurdle" if action == "REBALANCE"
@@ -53,11 +68,12 @@ def decide_rebalance(estimate, turnover_cost, *, minimum_net_edge=0.0):
 
 
 class EconomicRebalanceGate:
-    """Stateful prequential gate whose decisions cannot see the current period."""
+    """Uses previously supplied outcomes; the caller must enforce their maturity."""
 
     def __init__(self, *, minimum_observations=12, z_score=1.96,
                  minimum_net_edge=0.0):
-        if minimum_observations < 2 or z_score < 0 or minimum_net_edge < 0:
+        if (type(minimum_observations) is not int or minimum_observations < 2
+                or any(not math.isfinite(x) or x < 0 for x in (z_score, minimum_net_edge))):
             raise ValueError("política econômica inválida")
         self.minimum_observations = minimum_observations
         self.z_score = z_score

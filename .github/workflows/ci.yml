@@ -25,7 +25,7 @@ jobs:
       - name: Install project and dev dependencies
         run: uv sync --all-extras --python 3.13
       - name: Ruff
-        run: uv run ruff check stocks_predictor tests main.py tools/data_bank.py research/session-20260909/data_completion
+        run: uv run ruff check stocks_predictor tests main.py tools/data_bank.py research/session-20260909/data_completion research/session-20260910/integral
       - name: Pyright
         run: uv run pyright
       - name: Tests

@@ -2,7 +2,7 @@
 import sqlite3
 import unittest
 
-from stocks_predictor import cotahist, universe
+from stocks_predictor import cotahist, economic_gate, universe
 from stocks_predictor.source_closure import source_counts
 
 
@@ -27,6 +27,27 @@ class QuoteContractTests(unittest.TestCase):
         records, bad = cotahist.parse_lines([self.line, self.line[:2] + '20240231' + self.line[10:]])
         self.assertEqual((len(records), bad), (1, 1))
         self.assertEqual(records[0]['date'], '2024-01-02')
+
+
+class EconomicInputTests(unittest.TestCase):
+    def test_missing_observations_are_not_silently_removed(self):
+        with self.assertRaises(ValueError):
+            economic_gate.estimate_edge([0.01, float('nan'), 0.02], minimum_observations=2)
+
+    def test_nonfinite_costs_and_hurdles_cannot_produce_a_decision(self):
+        for value in [float('nan'), float('inf')]:
+            with self.subTest(value=value), self.assertRaises(ValueError):
+                economic_gate.decide_rebalance(None, value)
+            with self.subTest(hurdle=value), self.assertRaises(ValueError):
+                economic_gate.decide_rebalance(None, 0.01, minimum_net_edge=value)
+
+    def test_nonfinite_policy_is_rejected(self):
+        with self.assertRaises(ValueError):
+            economic_gate.EconomicRebalanceGate(z_score=float('nan'))
+
+    def test_invalid_external_edge_estimate_is_rejected(self):
+        with self.assertRaises(ValueError):
+            economic_gate.decide_rebalance(economic_gate.EdgeEstimate(0.01, float('inf'), 12), 0.01)
 
 
 class UniverseEvidenceTests(unittest.TestCase):

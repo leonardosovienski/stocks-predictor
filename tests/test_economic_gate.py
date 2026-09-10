@@ -21,7 +21,7 @@ def test_conservative_edge_must_pay_turnover_and_hurdle():
     assert trade.capital_enabled is False
 
 
-def test_decision_is_prequential_and_cannot_see_current_outcome():
+def test_decision_uses_only_previously_supplied_observations():
     gate = economic_gate.EconomicRebalanceGate(minimum_observations=2, z_score=0.0)
     gate.observe(0.01)
     before = gate.decide(0.001)
