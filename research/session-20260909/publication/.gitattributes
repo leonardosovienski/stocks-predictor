@@ -1,1 +1,3 @@
-local/** -text
+local/** -text !eol
+MANIFEST.json -text !eol
+VALIDATION.json -text !eol

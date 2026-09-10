@@ -119,7 +119,7 @@ def main() -> None:
         'files': records,
     }
     write(PUB / 'MANIFEST.json', json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
-    write(PUB / '.gitattributes', 'local/** -text\n')
+    write(PUB / '.gitattributes', 'local/** -text !eol\nMANIFEST.json -text !eol\nVALIDATION.json -text !eol\n')
     shutil.copyfile(Path(__file__), PUB / 'prepare_publication.py')
     print(json.dumps({'counts': dict(counts), 'snapshot_bytes': sum(r['bytes'] for r in records if r['status'] == 'PUBLISHED_SNAPSHOT'), 'local_only_bytes': sum(r['bytes'] for r in records if r['status'] == 'LOCAL_ONLY'), 'manifest': str(PUB / 'MANIFEST.json')}, ensure_ascii=False), flush=True)
 

@@ -85,7 +85,7 @@ def main() -> None:
         'economic_results_recalculated': False,
         'all_local_data_bytes_uploaded': False,
     }
-    (PACKAGE / 'VALIDATION.json').write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    (PACKAGE / 'VALIDATION.json').write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n', encoding='utf-8', newline='')
     print(json.dumps(result, ensure_ascii=False))
 
 

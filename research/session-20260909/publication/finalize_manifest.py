@@ -45,7 +45,7 @@ def main():
             repaired.append(row['local_relative_path'])
     manifest['counts'] = dict(collections.Counter(row['status'] for row in manifest['files']))
     manifest['current_entry_points_updated_after_inventory'] = ['COMECE_AQUI.md']
-    manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n', encoding='utf-8', newline='')
     shutil.copyfile(Path(__file__), PUB / 'finalize_manifest.py')
     print(json.dumps({'resolved_paths': repaired, 'counts': manifest['counts']}))
 
