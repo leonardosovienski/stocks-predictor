@@ -94,9 +94,9 @@ def status() -> int:
     else:
         print("\ntrials (DSR)     : registro ainda não criado (rode attest-power)")
 
-    print("\npesquisa         : H19 trimestral em Discovery; H18 controle; H17 inconclusiva.")
+    print("\npesquisa         : H21 BOVA11 condicional; H20 estacionada; ver STOCKS_CURRENT_STATE.md.")
     print("economia         : lucro líquido não validado; NO_GO para operar (ver HANDOFF).")
-    print("testes           : py -3.13 -m pytest -q")
+    print("testes           : CI Linux Python 3.13/Core 3.2; Windows atual somente auxiliares stdlib.")
     return 0
 
 
@@ -251,7 +251,7 @@ def cmd_backtest_hn(args) -> int:
 
 
 def cmd_paper(args) -> int:
-    """M6 — registra a carteira forward (anti-tautologia) e liquida execuções."""
+    """M6 legacy paper: locally guarded observation, not certified forward proof."""
     import db
     import paper
     if not args:
@@ -259,6 +259,7 @@ def cmd_paper(args) -> int:
         return 1
     cfg, conn = _conn()
     with closing(conn):
+        paper.validate_forward_context(conn, args[0])
         # runs.config_hash tem que ser o hash do CONFIG REAL (cfg), igual a
         # todo outro comando (cmd_backtest etc.) — passar um dict embrulhado
         # com {"command", "asof", "config": cfg} fazia o hash gravado nunca

@@ -25,7 +25,9 @@ def source_counts(catalog):
     counts = Counter()
     for row in catalog.values():
         expected = 'DERIVED_LOCAL_REVIEW' if row['sha256'] in DERIVED_REVIEW_SHAS else 'PRIMARY_SOURCE_RECORD'
-        kind = row.get('source_kind', expected)
+        # A checksum identifies bytes; it does not establish source primacy.
+        kind = row.get('source_kind', 'DERIVED_LOCAL_REVIEW'
+                       if row['sha256'] in DERIVED_REVIEW_SHAS else 'UNCLASSIFIED')
         if kind not in {'PRIMARY_SOURCE_RECORD', 'DERIVED_LOCAL_REVIEW', 'UNCLASSIFIED'}:
             raise ValueError('unknown source classification')
         if row['sha256'] in DERIVED_REVIEW_SHAS and kind != expected:

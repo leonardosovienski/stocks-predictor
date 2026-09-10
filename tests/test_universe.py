@@ -69,7 +69,7 @@ def test_resolved_quarantine_does_not_exclude(tmp_path):
     _ins(conn, "AAAA3", d, [1000.0] * 20)
     _ins(conn, "FFFF3", d, [5000.0] * 20)
     conn.execute("INSERT INTO quarantine(ticker,date,reason,resolved_at) "
-                 "VALUES('FFFF3','2023-01-05','split','2023-02-01')")
+                 "VALUES('FFFF3','2023-01-05','split','2023-01-06')")
     conn.commit()
     uni = universe.select_universe(conn, d[10], top_n=5, lookback=5, min_history=8)
     assert "FFFF3" in uni, "quarentena já resolvida não deveria excluir"

@@ -118,7 +118,7 @@ def legacy_walk_forward(conn, cfg, signal_fn=None, take="top", portfolio_fn=None
     prev_port: set = set()
     prev_w: dict = {}
     for t, t1 in zip(rebal, rebal[1:]):
-        uni = universe.select_universe(conn, t, top_n=top_n, lookback=liq_lb, min_history=min_hist)
+        uni = universe.legacy_select_universe(conn, t, top_n=top_n, lookback=liq_lb, min_history=min_hist)
         if not uni:
             continue
         for tk in uni:
@@ -704,7 +704,7 @@ def run_h16(cfg=None, conn=None, write_report=False, run_id=None, trials_path=No
         # asof = fim-de-mês, universo só vê dado < asof).
         while next_rebal_idx < len(month_ends) and month_ends[next_rebal_idx] <= day:
             asof = month_ends[next_rebal_idx]
-            current = universe.select_universe(conn, asof, top_n, liq_lb, min_hist)
+            current = universe.legacy_select_universe(conn, asof, top_n, liq_lb, min_hist)
             next_rebal_idx += 1
         if not current:
             continue
