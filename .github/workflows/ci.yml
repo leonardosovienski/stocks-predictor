@@ -129,3 +129,21 @@ jobs:
       - uses: gitleaks/gitleaks-action@e0c47f4f8be36e29cdc102c57e68cb5cbf0e8d1e # v3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITLEAKS_VERSION: "8.24.3"
+          GITLEAKS_ENABLE_COMMENTS: "false"
+      - name: Scan the complete tracked tree including merged code
+        run: |
+          mkdir "$RUNNER_TEMP/stocks-secret-scan"
+          git archive HEAD | tar -x -C "$RUNNER_TEMP/stocks-secret-scan"
+          count=$(git ls-files | wc -l)
+          test "$count" -gt 0
+          echo "Scanning the complete tracked tree: $count files at $(git rev-parse HEAD)"
+          /tmp/gitleaks-8.24.3/gitleaks detect --no-git --source "$RUNNER_TEMP/stocks-secret-scan" --redact --exit-code=2 --report-format=sarif --report-path="$RUNNER_TEMP/stocks-current-tree.sarif"
+      - name: Retain complete tree scan
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: complete-tree-secrets
+          path: ${{ runner.temp }}/stocks-current-tree.sarif
+          retention-days: 30
+          if-no-files-found: error

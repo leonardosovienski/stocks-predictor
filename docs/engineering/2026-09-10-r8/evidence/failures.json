@@ -29,6 +29,14 @@
       "scanner_failure": "Two file SHA-256 values classified as generic-api-key because filenames contain secrets/api. Independently verified as file hashes. Exact two historical fingerprints excluded; current manifest separates path/digest. Scanner and rules remain active.",
       "python314": "890 passed, 1 failed, 63 subtests; 17 archived tests passed.",
       "status": "CORRECTED_CI224_PASS"
+    },
+    {
+      "id": "CI226-SCANNER-SCOPE",
+      "run_id": 34524041295,
+      "head": "404f335a584e62856b5cae1140c4713cd37d2495",
+      "finding": "The upstream action push command used --no-merges --first-parent and reported 0 commits scanned after merge. PR225 scanned the change, but the main job was not an independent nonempty scan.",
+      "correction": "Keep historical commit scan and add a separate scan of every tracked file from git archive HEAD, with nonzero tracked-file count and retained SARIF. Pin existing scanner version 8.24.3 and disable automatic PR comments.",
+      "status": "CORRECTED_PENDING_COMPLETE_TREE_CI"
     }
   ]
 }

@@ -10,7 +10,7 @@
     },
     {
       "path": ".github/workflows/ci.yml",
-      "sha256": "18b23c00b46e1a90c28c1f81dd12c457d7b8f68f1c6d5dbb003d3a1e0f844b43"
+      "sha256": "9fefce7480b2d85a815ce35b4b2f94914baab2352df163530f35e19986f5bc1a"
     },
     {
       "path": ".gitleaksignore",
@@ -745,7 +745,7 @@
     "docs/engineering/2026-09-10-r8/evidence/ci224-build-python314.json": "9586814517a7b7346415ba38ed89b2b8fc372eaafae64c6c0a622de3324e7e1f",
     "docs/engineering/2026-09-10-r8/evidence/ci224-installed-python314.json": "158b8ebd5089a203a230e504ca0214f9c1cb3b619ee75d455cc5774d88f4aa80",
     "docs/engineering/2026-09-10-r8/evidence/ci224.json": "e49839201b1007f84197728cd8a8387c8060c3e2277ec69fe05e0ef5d237d86b",
-    "docs/engineering/2026-09-10-r8/evidence/failures.json": "03f71649e984183e8c21d3ee7dd3c068a54f027fa1e382abdf438fab915cab77",
+    "docs/engineering/2026-09-10-r8/evidence/failures.json": "313bcc1002f81413f61d223366858598e96de1b9c2585672f528a7a332cad03a",
     "docs/engineering/2026-09-10-r8/evidence/local-tests-03.log": "ddf2ed982a0d95758c8e3933891814c7f5ddbafa129d9e1ea724c02071943b4b",
     "docs/engineering/2026-09-10-r8/evidence/local-tests.log": "e4282fe30f65f16b83bea6a76690a7192bfe51703ae607037d23ec1bc71ac1ee",
     "docs/engineering/2026-09-10-r8/evidence/preservation.json": "4a62c8857b6c897f6cf0f386532af24d3645a173ae3f41f89f2d51a50dfad855",
