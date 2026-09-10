@@ -199,7 +199,9 @@ def judge(strat, bench, cfg):
 
     def diff_sharpe(window):
         d = sharpe([x[0] for x in window], 252) - sharpe([x[1] for x in window], 252)
-        return d if math.isfinite(d) else None
+        # Core discards both None and nonfinite statistics. Match its float
+        # contract without changing which resamples enter the historical CI.
+        return d if math.isfinite(d) else float('nan')
 
     lo, hi, _ = bootstrap_ci(list(zip(strat, bench)), diff_sharpe, scheme=scheme,
                              block_length=block, n_boot=n_boot, confidence=conf, seed=seed)

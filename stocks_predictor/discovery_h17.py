@@ -184,7 +184,8 @@ def build_cross_sections(snapshots, dates, bars, identities, panel):
                         "scored_names": len(scored), "available_case_ic": ic,
                         "complete_case_quintile_price_return": selected_mean,
                         "complete_case_universe_price_return": benchmark_mean,
-                        "complete_case_price_spread": selected_mean-benchmark_mean if complete else None,
+                        "complete_case_price_spread": (selected_mean-benchmark_mean
+                                                       if selected_mean is not None and benchmark_mean is not None else None),
                         "members": members})
     return results
 

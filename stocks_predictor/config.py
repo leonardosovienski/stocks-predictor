@@ -11,7 +11,7 @@ Atualização (2026-08-24): o portão foi aberto para o domínio RJ — `config_
 """
 import pathlib
 
-from predictor_core import infra
+from predictor_core.kernel import infra
 
 CONFIG_DEFAULT = pathlib.Path(__file__).parent.parent / "config.yaml"
 

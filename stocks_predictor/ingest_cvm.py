@@ -391,12 +391,15 @@ def legacy_parse_dfp_received_dates(zbytes: bytes, year: int) -> dict[tuple[str,
                             "(cabecalho=%s) — known_at ficará NULL", year, header)
             return {}
         out: dict[tuple[str, str], str] = {}
+        # The guard above has rejected missing required columns. Keep the
+        # narrowed mapping explicit rather than suppressing optional indexing.
+        columns = {key: value for key, value in idx.items() if value is not None}
         for row in rows:
-            if max(idx.values()) >= len(row):
+            if max(columns.values()) >= len(row):
                 continue
-            cnpj = "".join(c for c in row[idx["cnpj"]] if c.isdigit())
-            ref = row[idx["ref_date"]].strip()[:10]
-            receb = row[idx["received_at"]].strip()[:10]
+            cnpj = "".join(c for c in row[columns["cnpj"]] if c.isdigit())
+            ref = row[columns["ref_date"]].strip()[:10]
+            receb = row[columns["received_at"]].strip()[:10]
             if not (cnpj and ref and receb):
                 continue
             key = (cnpj, ref)
@@ -969,7 +972,7 @@ def build_ticker_map(cvm_names: list[str],
     pareamento automático novo deve passar pela mesma aprovação humana de
     `source`+`approved_by` que rege ajustes e eventos — um ticker errado aqui
     contamina todos os eventos da empresa."""
-    out = dict(known or {})
+    out: dict[str, str | None] = dict(known or {})
     for name in cvm_names:
         key = _norm(name)
         if key not in out:
