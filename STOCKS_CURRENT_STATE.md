@@ -1,3 +1,12 @@
+## Estado R6 — 10/09/2026 UTC
+
+[Relatório vigente de dados](docs/research/2026-09-10-r6/README.md): I15 resolvido
+quanto aos cinco arquivos; todos os 1.448 arquivos passaram no verificador original.
+Fonte BOVA até 09/09/2026, 171 registros anteriores iguais. Fonte 15: 22 datas/50
+líquidos pendentes, após incorporar dois pagamentos documentados. Inventário de
+eventos/PIT/custos ainda parcial; sem lucro executável/futuro demonstrado ou ordens.
+Os estados abaixo são registros históricos, não substituem esta atualização.
+
 ## Pesquisa econômica R5 — 10/09/2026 UTC
 
 O usuário reabriu a pesquisa em busca de lucro validado, com liberdade sobre hipóteses

@@ -1,0 +1,12 @@
+{
+  "discovery_value.py": {
+    "versions": 1,
+    "candidate_hashes": 2,
+    "recovered": null
+  },
+  "discovery_reorganizations.py": {
+    "versions": 1,
+    "candidate_hashes": 2,
+    "recovered": null
+  }
+}

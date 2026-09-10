@@ -1,0 +1,182 @@
+[
+  {
+    "url": "https://www.b3.com.br/pt_br/noticias/tarifacao.htm",
+    "requested_at_utc": "2026-09-10T15:20:27.105270+00:00",
+    "status": 200,
+    "final_url": "https://www.b3.com.br/pt_br/noticias/tarifacao.htm",
+    "content_type": "text/html; charset=UTF-8",
+    "bytes": 63333,
+    "sha256": "84fdf1c368e78458b36e17c8edeb12f1e7f7ccff052b4c4814d3acabc5d59f7d",
+    "signature": "3c21444f43545950",
+    "path": "C:\\STOCKS\\work\\gap-resolution-r6-20260910\\raw\\b3-tariffs-2020.html",
+    "completed_at_utc": "2026-09-10T15:20:27.442692+00:00"
+  },
+  {
+    "url": "https://www.blackrock.com/br/literature/continuous-disclosure-and-important-information/ishares-bova11-brl-informacoes-adicionais-ptbr.pdf",
+    "requested_at_utc": "2026-09-10T15:20:30.452097+00:00",
+    "status": 200,
+    "final_url": "https://www.blackrock.com/br/literature/continuous-disclosure-and-important-information/ishares-bova11-brl-informacoes-adicionais-ptbr.pdf",
+    "content_type": "application/pdf;charset=UTF-8",
+    "bytes": 684455,
+    "sha256": "4eb3c86309a0055f1a8ca45fea4bcdfabf3d7ab2df9a48552343508d06fd7696",
+    "signature": "255044462d312e37",
+    "path": "C:\\STOCKS\\work\\gap-resolution-r6-20260910\\raw\\bova-distribution-policy.pdf",
+    "completed_at_utc": "2026-09-10T15:20:31.106506+00:00"
+  },
+  {
+    "url": "https://www.blackrock.com/br/products/251816/ishares-ibovespa-fundo-de-ndice-fund",
+    "requested_at_utc": "2026-09-10T15:20:27.957205+00:00",
+    "status": 200,
+    "final_url": "https://www.blackrock.com/br/products/251816/ishares-ibovespa-fundo-de-ndice-fund",
+    "content_type": "text/html;charset=UTF-8",
+    "bytes": 946629,
+    "sha256": "33d750f53c5f74949f71359bfe9ea2e9a904709ba49cfca141cba1522200d36a",
+    "signature": "3c21444f43545950",
+    "path": "C:\\STOCKS\\work\\gap-resolution-r6-20260910\\raw\\bova-product.html",
+    "completed_at_utc": "2026-09-10T15:20:30.448959+00:00"
+  },
+  {
+    "url": "https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2026.ZIP",
+    "requested_at_utc": "2026-09-10T15:19:59.621566+00:00",
+    "status": 200,
+    "final_url": "https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2026.ZIP",
+    "content_type": "application/x-zip-compressed",
+    "bytes": 79798375,
+    "sha256": "34b774681cbd201ef197fb98af8d431e4d7302e801f58b66e54036d2935dc4f4",
+    "signature": "504b030414000808",
+    "path": "C:\\STOCKS\\work\\gap-resolution-r6-20260910\\raw\\COTAHIST_A2026.ZIP",
+    "completed_at_utc": "2026-09-10T15:20:27.036342+00:00"
+  },
+  {
+    "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp224.htm",
+    "requested_at_utc": "2026-09-10T15:20:27.444710+00:00",
+    "error": "Remote end closed connection without response",
+    "completed_at_utc": "2026-09-10T15:20:27.722052+00:00"
+  },
+  {
+    "url": "https://www.planalto.gov.br/ccivil_03/leis/l9249.htm",
+    "requested_at_utc": "2026-09-10T15:20:27.724591+00:00",
+    "error": "Remote end closed connection without response",
+    "completed_at_utc": "2026-09-10T15:20:27.954572+00:00"
+  },
+  {
+    "url": "https://www2.camara.leg.br/legin/fed/leicom/2025/leicomplementar-224-26-dezembro-2025-798608-publicacaooriginal-177629-pl.html",
+    "requested_at_utc": "2026-09-10T15:26:10.971784+00:00",
+    "status": 200,
+    "final_url": "https://www2.camara.leg.br/legin/fed/leicom/2025/leicomplementar-224-26-dezembro-2025-798608-publicacaooriginal-177629-pl.html",
+    "content_type": "text/html; charset=UTF-8",
+    "bytes": 73896,
+    "sha256": "c2dd46a2617a289ae7ad28d88a0018d130590a6a72e13caa79532d1a196056b3",
+    "signature": "3c21444f43545950",
+    "path": "C:\\STOCKS\\work\\gap-resolution-r6-20260910\\raw-02\\lc224-original.html",
+    "completed_at_utc": "2026-09-10T15:26:11.533076+00:00"
+  },
+  {
+    "url": "https://ri.rd.com.br/Download.aspx?Arquivo=Es0bnDmZWjYZQMWftiHJew%3D%3D&linguagem=pt",
+    "requested_at_utc": "2026-09-10T15:26:12.099631+00:00",
+    "error": "HTTP Error 403: Forbidden",
+    "completed_at_utc": "2026-09-10T15:26:12.303862+00:00"
+  },
+  {
+    "url": "https://ri.petroreconcavo.com.br/Download.aspx?Arquivo=EjH8NxFCQc31VtfsTyjTVQ%3D%3D",
+    "requested_at_utc": "2026-09-10T15:26:11.535098+00:00",
+    "error": "HTTP Error 403: Forbidden",
+    "completed_at_utc": "2026-09-10T15:26:12.097564+00:00"
+  },
+  {
+    "url": "https://arquivos.b3.com.br/bdi/download/bdi/2021-05-31/BDI_04-1_20210531.pdf",
+    "requested_at_utc": "2026-09-10T15:29:14.031324+00:00",
+    "error": "HTTP Error 500: Internal Server Error",
+    "completed_at_utc": "2026-09-10T15:29:14.880842+00:00"
+  },
+  {
+    "url": "https://arquivos.b3.com.br/bdi/download/bdi/2023-05-05/BDI_04-1_20230505.pdf",
+    "requested_at_utc": "2026-09-10T15:29:15.398219+00:00",
+    "error": "HTTP Error 500: Internal Server Error",
+    "completed_at_utc": "2026-09-10T15:29:16.007094+00:00"
+  },
+  {
+    "url": "https://arquivos.b3.com.br/bdi/download/bdi/2023-05-31/BDI_04-1_20230531.pdf",
+    "requested_at_utc": "2026-09-10T15:29:14.886751+00:00",
+    "error": "HTTP Error 500: Internal Server Error",
+    "completed_at_utc": "2026-09-10T15:29:15.393552+00:00"
+  },
+  {
+    "url": "https://arquivos.b3.com.br/bdi/download/bdi/2024-05-15/BDI_04-1_20240515.pdf",
+    "requested_at_utc": "2026-09-10T15:29:16.012688+00:00",
+    "error": "HTTP Error 500: Internal Server Error",
+    "completed_at_utc": "2026-09-10T15:29:16.383579+00:00"
+  },
+  {
+    "url": "https://arquivos.b3.com.br/bdi/download/bdi/2024-05-31/BDI_04-1_20240531.pdf",
+    "requested_at_utc": "2026-09-10T15:29:16.389464+00:00",
+    "error": "HTTP Error 500: Internal Server Error",
+    "completed_at_utc": "2026-09-10T15:29:16.708713+00:00"
+  },
+  {
+    "url": "https://www.blackrock.com/br/products/251816/ishares-ibovespa-fundo-de-ndice-fund/1506433276996.ajax?fileType=xls",
+    "requested_at_utc": "2026-09-10T15:29:16.710747+00:00",
+    "status": 200,
+    "final_url": "https://www.blackrock.com/br/products/251816/ishares-ibovespa-fundo-de-ndice-fund/1506433276996.ajax?fileType=xls",
+    "content_type": "application/vnd.ms-excel;charset=UTF-8",
+    "bytes": 173762,
+    "sha256": "bfec3205c1685de54ce40f0c552427f6f4374f603df858fdb2ce23a6ef029a3b",
+    "signature": "efbbbfefbbbf4461",
+    "path": "C:\\STOCKS\\work\\gap-resolution-r6-20260910\\raw-03\\bova-data-export.xls",
+    "completed_at_utc": "2026-09-10T15:29:18.026872+00:00"
+  },
+  {
+    "url": "https://arquivos.b3.com.br/bdi/download/bdi/2021-05-31/BDI_05_20210531.pdf",
+    "requested_at_utc": "2026-09-10T15:33:48.243359+00:00",
+    "error": "HTTP Error 500: Internal Server Error",
+    "completed_at_utc": "2026-09-10T15:33:48.768579+00:00"
+  },
+  {
+    "url": "https://arquivos.b3.com.br/bdi/download/bdi/2023-05-05/BDI_05_20230505.pdf",
+    "requested_at_utc": "2026-09-10T15:33:49.382084+00:00",
+    "status": 200,
+    "final_url": "https://arquivos.b3.com.br/bdi/download/bdi/2023-05-05/BDI_05_20230505.pdf",
+    "content_type": "application/pdf",
+    "bytes": 73846,
+    "sha256": "f9059622174d9c0eb7fdebc0bedbeb265a7e5a9d7bf5f4ccc454fd836ce7cb97",
+    "signature": "255044462d312e33",
+    "path": "C:\\STOCKS\\work\\gap-resolution-r6-20260910\\raw-04\\bdi-2023-05-05-ch05.pdf",
+    "completed_at_utc": "2026-09-10T15:33:49.713291+00:00"
+  },
+  {
+    "url": "https://arquivos.b3.com.br/bdi/download/bdi/2023-05-31/BDI_05_20230531.pdf",
+    "requested_at_utc": "2026-09-10T15:33:48.771582+00:00",
+    "status": 200,
+    "final_url": "https://arquivos.b3.com.br/bdi/download/bdi/2023-05-31/BDI_05_20230531.pdf",
+    "content_type": "application/pdf",
+    "bytes": 73576,
+    "sha256": "f4f028a6a0a5b606897a43e88420e363a112625f45e924bfa730f3314ad7d8c4",
+    "signature": "255044462d312e33",
+    "path": "C:\\STOCKS\\work\\gap-resolution-r6-20260910\\raw-04\\bdi-2023-05-31-ch05.pdf",
+    "completed_at_utc": "2026-09-10T15:33:49.375792+00:00"
+  },
+  {
+    "url": "https://arquivos.b3.com.br/bdi/download/bdi/2024-05-15/BDI_05_20240515.pdf",
+    "requested_at_utc": "2026-09-10T15:33:49.719508+00:00",
+    "status": 200,
+    "final_url": "https://arquivos.b3.com.br/bdi/download/bdi/2024-05-15/BDI_05_20240515.pdf",
+    "content_type": "application/pdf",
+    "bytes": 804999,
+    "sha256": "294e9456a56ca7923875515c91ae362862a24108138f09b2467eb9445776720b",
+    "signature": "255044462d312e33",
+    "path": "C:\\STOCKS\\work\\gap-resolution-r6-20260910\\raw-04\\bdi-2024-05-15-ch05.pdf",
+    "completed_at_utc": "2026-09-10T15:33:50.856547+00:00"
+  },
+  {
+    "url": "https://arquivos.b3.com.br/bdi/download/bdi/2024-05-31/BDI_05_20240531.pdf",
+    "requested_at_utc": "2026-09-10T15:33:50.859724+00:00",
+    "status": 200,
+    "final_url": "https://arquivos.b3.com.br/bdi/download/bdi/2024-05-31/BDI_05_20240531.pdf",
+    "content_type": "application/pdf",
+    "bytes": 761551,
+    "sha256": "9afdb7a78f0f41259daa2f85f70725e5fa52484e534a5ebd907edc7853f9f6bf",
+    "signature": "255044462d312e33",
+    "path": "C:\\STOCKS\\work\\gap-resolution-r6-20260910\\raw-04\\bdi-2024-05-31-ch05.pdf",
+    "completed_at_utc": "2026-09-10T15:33:52.041529+00:00"
+  }
+]

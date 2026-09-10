@@ -1,0 +1,17 @@
+{
+  "docs/research/2026-09-10-r6/evidence/acquisitions.json": "1c5df27236d8f25dfc18be5a5de80161b182a86e346e5f9f1eb4790c03acbbe8",
+  "docs/research/2026-09-10-r6/evidence/archive-recovery.json": "cb54c954858d1ca35ff6ca34602bbd01f7f3ab250dc96dc40d3345cb45523ccb",
+  "docs/research/2026-09-10-r6/evidence/git-recovery.json": "d7493ddc32cf50a761606dc448ebd531060611378f3f6ad5311c407d2d1678e1",
+  "docs/research/2026-09-10-r6/evidence/h20-complete-numeric-reconciliation.json": "76d470fb8a7b5c540b7d869d3e169cbee4c58a2a9e54e9576e9d583d58ca643a",
+  "docs/research/2026-09-10-r6/evidence/h20-restoration.json": "20b75794e6798f49c95a6dbea6fcd982e973e1df7cb436c55440bab4252d4619",
+  "docs/research/2026-09-10-r6/evidence/mixed-recovery.json": "9c5d1bff337f39340ba512688cfd9101be916c335b4cb63eab40826b80fcb9e1",
+  "docs/research/2026-09-10-r6/evidence/newline-run-recovery.json": "c55be2310427372985af509b2562f168d6564c3f2063ba10df6f6439cebfd916",
+  "docs/research/2026-09-10-r6/evidence/quote-refresh.json": "5ce87a8bc13bb1c9fcb7e28743e6ba04cfecdd6409319eaf8e60dbcd08f524f5",
+  "docs/research/2026-09-10-r6/evidence/source15-audit.json": "5a86f23735f560fc79193375cdee5b3ec4ac5d97293a998df448720eed510c3a",
+  "docs/research/2026-09-10-r6/evidence/source15-changes.json": "df08851358db4494b2336bada1670652b0f6c398a536f7448f7433ecc01790b9",
+  "research/session-20260910/gap_resolution/exact_objects/0fa6d8c3c4c5b1cec8023ddc3b3b913631d95cb551f16d7f14e8ae564d492c69": "0fa6d8c3c4c5b1cec8023ddc3b3b913631d95cb551f16d7f14e8ae564d492c69",
+  "research/session-20260910/gap_resolution/exact_objects/1b305395c835a206c9a2f153eea8fd4f85a43d3f172f284c63524e95f619a230": "1b305395c835a206c9a2f153eea8fd4f85a43d3f172f284c63524e95f619a230",
+  "research/session-20260910/gap_resolution/exact_objects/1cb585bac0c331d166460ae4cbd8b7c2279d7dbdb7cb059e565d6e90ef7850ef": "1cb585bac0c331d166460ae4cbd8b7c2279d7dbdb7cb059e565d6e90ef7850ef",
+  "research/session-20260910/gap_resolution/exact_objects/a8d05b848653b1ce0d81b8a3040f2f3a121387d221de8ade74a82afe5411c681": "a8d05b848653b1ce0d81b8a3040f2f3a121387d221de8ade74a82afe5411c681",
+  "research/session-20260910/gap_resolution/exact_objects/f50bd2aa0ae3e78cb509ad9d158f8fcaacd6e90123a42eb2c7d180a50078cb40": "f50bd2aa0ae3e78cb509ad9d158f8fcaacd6e90123a42eb2c7d180a50078cb40"
+}

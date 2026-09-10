@@ -1,3 +1,11 @@
+## Dados R6 — 10/09/2026 UTC
+
+[Relatório vigente](research/2026-09-10-r6/README.md),
+[recibos](research/2026-09-10-r6/manifest.json) e
+[reprodução](../research/session-20260910/gap_resolution/README.md).
+Cinco objetos recuperados; 1.448 arquivos verificados; fonte de preços até 09/09;
+fonte 15 com duas datas e dois líquidos corrigidos. Demais lacunas permanecem explícitas.
+
 ## Pesquisa econômica R5 — 10/09/2026 UTC
 
 O usuário reabriu a pesquisa em busca de lucro validado, com liberdade sobre hipóteses

@@ -1,5 +1,15 @@
 # Stocks — instruções vigentes para implementação
 
+## Correções de dados R6 — 10/09/2026 UTC
+
+[R6](docs/research/2026-09-10-r6/README.md) recuperou os cinco objetos ausentes:
+verificador original com 1.448/1.448 arquivos aprovados. I15 resolvido quanto aos
+arquivos; o comparador numérico estrito conserva uma diferença de float de 2,22e-16.
+Fonte BOVA atualizada até 09/09, sem mudar o corte R5. Revisão 15: 22 datas e 50
+líquidos pendentes após dois pagamentos B3 reconciliados; disponibilidade histórica
+continua sem certificação ampla. Usar o manifesto R6 e preservar revisões 13/14.
+As demais pendências I10–I14/I16 e o objetivo econômico continuam abertos.
+
 Atualizado em 10/09/2026 UTC após a auditoria integral AUDIT-R3.
 
 ## Pesquisa econômica R5 — 10/09/2026 UTC
