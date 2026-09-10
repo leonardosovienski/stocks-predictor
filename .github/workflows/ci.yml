@@ -36,7 +36,7 @@ jobs:
       - name: Offline runtime metadata check
         run: uv run --no-sync python main.py doctor --check
       - name: Ruff
-        run: uv run --no-sync ruff check stocks_predictor tests main.py tools/data_bank.py tools/benchmark_ingestion.py research/session-20260909/data_completion research/session-20260910/integral research/session-20260910/profit_validation research/session-20260910/gap_resolution
+        run: uv run --no-sync ruff check stocks_predictor tests main.py tools/data_bank.py tools/benchmark_ingestion.py tools/benchmark_real_ingestion.py tools/materialize_source_revision.py tools/reproducible_build.py research/session-20260909/data_completion research/session-20260910/integral research/session-20260910/profit_validation research/session-20260910/gap_resolution
       - name: Pyright
         run: uv run --no-sync pyright --pythonversion ${{ matrix.python }}
       - name: Audit receipt identities

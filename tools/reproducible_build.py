@@ -10,6 +10,15 @@ import tempfile
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def distribution_hashes(directory):
+    wheels = list(directory.glob('*.whl'))
+    sources = list(directory.glob('*.tar.gz'))
+    if len(wheels) != 1 or len(sources) != 1:
+        raise ValueError('expected exactly one wheel and one source distribution')
+    # uv also writes a .gitignore. It is not a Python distribution.
+    return {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in wheels + sources}
+
+
 def main():
     if subprocess.check_output(['git', 'status', '--porcelain'], cwd=ROOT).strip():
         raise ValueError('build requires a clean committed checkout')
@@ -25,9 +34,8 @@ def main():
         for dest in (first, second):
             subprocess.run(['uv', 'build', '--no-build-isolation', '--offline', '--out-dir', str(dest)],
                            cwd=ROOT, env=env, check=True)
-            outputs.append({p.name: hashlib.sha256(p.read_bytes()).hexdigest()
-                            for p in dest.iterdir() if p.is_file()})
-        if outputs[0] != outputs[1] or len(outputs[0]) != 2:
+            outputs.append(distribution_hashes(dest))
+        if outputs[0] != outputs[1]:
             raise ValueError(f'non-reproducible distributions: {outputs}')
     receipt = {'status': 'PASS', 'head': sha, 'source_date_epoch': epoch,
                'python': sys.version, 'distributions': outputs[0],
