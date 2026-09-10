@@ -48,6 +48,15 @@
       "classification": "Five historical SHA-256 fields and the exact H1_FROZEN_KEYS/H2_FROZEN_KEYS import. Three manifest digests match Git blobs at tested commit 5c09c7b8; vendored hash independently recomputed. Source-document SHA is recorded as source evidence, not an authentication value.",
       "correction": "Rule-specific AND allowlists requiring the exact file and complete exact line; retain default rules. Negative-control scan must detect a generated synthetic token added only to an exported copy of the file with the import exception.",
       "status": "CORRECTED_PENDING_CI"
+    },
+    {
+      "id": "CI228-EXACT-DIGEST",
+      "run_id": 34525565173,
+      "head": "43982624f28ed6d7dc31b3cf1e4bda5d7ddee4bc",
+      "findings": 1,
+      "finding": "Five exact-line exceptions matched; source-document digest exception still flagged at H18/H19 record line 8036.",
+      "correction": "Match the exact extracted digest AND exact evidence file. Preserved manifest identifies capital-71348.html, 8883 bytes, with this SHA-256. No arbitrary digest or file-wide exception.",
+      "status": "CORRECTED_PENDING_CI"
     }
   ]
 }

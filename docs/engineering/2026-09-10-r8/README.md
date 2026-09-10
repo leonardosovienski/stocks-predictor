@@ -48,7 +48,7 @@ SHA da integração final desta correção. A versão existente do scanner é fi
 [código/documentação fixados](https://github.com/gitleaks/gitleaks-action/tree/e0c47f4f8be36e29cdc102c57e68cb5cbf0e8d1e).
 O primeiro scan completo examinou 1.537 arquivos/148,85 MB e sinalizou cinco hashes
 históricos e um import Python. A configuração mantém as regras padrão e exige
-caminho exato E linha exata para essas seis exceções; os arquivos históricos não
+caminho exato E conteúdo literal (linha ou digest) para essas seis exceções; os arquivos históricos não
 foram editados. Uma prova adicional injeta um token sintético somente na cópia
 temporária do arquivo com exceção e exige que o scanner o detecte.
 

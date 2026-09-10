@@ -21,8 +21,8 @@ regexes = [
 description = "Observed source-document digest in preserved H18/H19 evidence, not an API credential"
 condition = "AND"
 paths = ['''(^|/)research/session-20260907/deliverables/h18-h19-repaired-observation\.json$''']
-regexTarget = "line"
-regexes = ['''^\s*"capital_source_sha256": "a82bb93e250267b1d10014026832a8c2ea60f80abaeaa9424e88d21d9797b3b1",?\s*$''']
+regexTarget = "secret"
+regexes = ['''^a82bb93e250267b1d10014026832a8c2ea60f80abaeaa9424e88d21d9797b3b1$''']
 
 [[rules.allowlists]]
 description = "Exact Python import, not a secret value"
