@@ -1,0 +1,15 @@
+{
+  "id": "b3-fees-v5-page",
+  "url": "https://b3.com.br/pt_br/produtos-e-servicos/tarifas/listados-a-vista-e-derivativos/lista-de-documentos/tarifacao-de-produtos-de-renda-variavel/",
+  "purpose": "Official current v5 tariff download",
+  "started_at_utc": "2026-09-09T19:31:43.347497+00:00",
+  "path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\raw\\b3-fees-v5-page.html",
+  "status": "downloaded",
+  "curl_exit_code": 0,
+  "http_status": 200,
+  "final_url": "https://b3.com.br/pt_br/produtos-e-servicos/tarifas/listados-a-vista-e-derivativos/lista-de-documentos/tarifacao-de-produtos-de-renda-variavel/",
+  "content_type": "text/html; charset=UTF-8",
+  "bytes": 47312,
+  "sha256": "0ec416f668174b73f33eaaf9341b5ce663aa1face5c97d3b1d0281d94db2ac3d",
+  "completed_at_utc": "2026-09-09T19:31:44.844818+00:00"
+}

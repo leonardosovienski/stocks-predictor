@@ -1,0 +1,15 @@
+{
+  "id": "fnet-1201439",
+  "url": "https://fnet.bmfbovespa.com.br/fnet/publico/downloadDocumento?id=1201439",
+  "purpose": "Full body BOVA11 official notice; preserve cancelled records",
+  "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-1201439.pdf",
+  "started_at_utc": "2026-09-09T21:08:03.748928+00:00",
+  "status": "downloaded",
+  "curl_exit_code": 0,
+  "http_status": 200,
+  "final_url": "https://fnet.bmfbovespa.com.br/fnet/publico/downloadDocumento?id=1201439",
+  "content_type": "application/pdf; charset=UTF-8",
+  "bytes": 248275,
+  "sha256": "9b25038063be31b2f7159c93d8a8031df87c3696dac855b2718040141548b665",
+  "completed_at_utc": "2026-09-09T21:08:04.405579+00:00"
+}

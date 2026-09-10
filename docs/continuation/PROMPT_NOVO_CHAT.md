@@ -1,4 +1,10 @@
-# Prompt vigente de continuidade — 09/09/2026
+# Prompt anterior de continuidade — 09/09/2026
+
+Este texto foi superado como prioridade operacional pelo
+[mandato de auditoria integral](PROMPT_AUDITORIA_INTEGRAL_20260909.md).
+A fila H21 abaixo é contexto histórico. Preservar resultados e protocolos,
+reavaliando decisões e necessidades conforme o novo pedido. A auditoria ampla
+foi preparada, mas ainda não executada nesta sessão.
 
 Continue stocks-predictor na raiz local única `C:\STOCKS`.
 Use `C:\STOCKS\stocks-predictor`, main; confira HEAD, remoto, worktrees e

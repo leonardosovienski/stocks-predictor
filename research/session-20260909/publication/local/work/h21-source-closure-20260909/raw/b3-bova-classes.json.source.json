@@ -1,0 +1,15 @@
+{
+  "id": "b3-bova-classes",
+  "url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetListClassFund/eyJsYW5ndWFnZSI6InB0LWJyIiwiaWRGTkVUIjoiOTkwIiwiaWRDRU0iOiJCT1ZBIiwidHlwZUZ1bmQiOiJFVEYifQ==",
+  "purpose": "Verify fund/class identity and narrower official document catalog",
+  "started_at_utc": "2026-09-09T19:33:26.435123+00:00",
+  "path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\raw\\b3-bova-classes.json",
+  "status": "downloaded",
+  "curl_exit_code": 0,
+  "http_status": 200,
+  "final_url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetListClassFund/eyJsYW5ndWFnZSI6InB0LWJyIiwiaWRGTkVUIjoiOTkwIiwiaWRDRU0iOiJCT1ZBIiwidHlwZUZ1bmQiOiJFVEYifQ==",
+  "content_type": "application/json",
+  "bytes": 285,
+  "sha256": "0f9b182c3dbd873365221a59b5969d7554719c0bbf39a1e156d7bea9e7a63aa1",
+  "completed_at_utc": "2026-09-09T19:33:26.806875+00:00"
+}

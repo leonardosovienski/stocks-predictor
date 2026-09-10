@@ -1,0 +1,16 @@
+{
+  "id": "ishares-fs2024-mirror",
+  "url": "https://www.ishares.com/br/literature/annual-financial-statements/ishares-bova11-brl-demonstrativos-financeiros-2024-ptbr.pdf",
+  "purpose": "Issuer alternative official literature hostname; original BlackRock URL404",
+  "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\ishares-fs2024.pdf",
+  "started_at_utc": "2026-09-09T20:49:44.101868+00:00",
+  "status": "failed",
+  "curl_exit_code": 0,
+  "http_status": 200,
+  "final_url": "https://www.blackrock.com/corporate/global-directory#ishares",
+  "content_type": "text/html; charset=utf-8",
+  "error_type": "ValueError",
+  "error": "Not PDF",
+  "partial_bytes": 215958,
+  "completed_at_utc": "2026-09-09T20:49:45.653790+00:00"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "fnet-view-retry-1045450",
+  "url": "https://fnet.bmfbovespa.com.br/fnet/publico/exibirDocumento?id=1045450&",
+  "purpose": "Alternative original public viewer after direct download timeout",
+  "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-view-retry-1045450.pdf",
+  "started_at_utc": "2026-09-09T21:13:47.847547+00:00",
+  "status": "failed",
+  "curl_exit_code": 28,
+  "http_status": 0,
+  "final_url": "https://fnet.bmfbovespa.com.br/fnet/publico/exibirDocumento?id=1045450&",
+  "content_type": null,
+  "error_type": "RuntimeError",
+  "error": "curl: (28) Operation timed out after 35012 milliseconds with 0 bytes received\r\n",
+  "completed_at_utc": "2026-09-09T21:14:22.926584+00:00"
+}

@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "verified_at_utc": "2026-09-09T18:13:29.5642243Z",
+  "local_project_root": "C:\\STOCKS",
+  "code_checkout": "C:\\STOCKS\\stocks-predictor",
+  "local_branch": "main",
+  "code_commit": "7f7148e903c3ad01e91f2c1f34c8a57460b0862b",
+  "git_working_tree_clean": true,
+  "git_worktrees": [
+    "worktree C:/STOCKS/stocks-predictor",
+    "HEAD 7f7148e903c3ad01e91f2c1f34c8a57460b0862b",
+    "branch refs/heads/main",
+    ""
+  ],
+  "git_external_object_alternates_present": false,
+  "git_remote": "https://github.com/leonardosovienski/stocks-predictor",
+  "outputs": "C:\\STOCKS\\outputs",
+  "research_and_temporary_files": "C:\\STOCKS\\work",
+  "original_mandate": "C:\\STOCKS\\instructions\\STOCKS_PREDICTOR_PROMPT_FINAL_20260909.md",
+  "canonical_versioned_mandate": "C:\\STOCKS\\stocks-predictor\\docs\\continuation\\MANDATO_20260909.md",
+  "immutable_source_archives": [
+    "C:\\STOCKS\\DADOS_STOCKS.zip.001",
+    "C:\\STOCKS\\DADOS_STOCKS.zip.002",
+    "C:\\STOCKS\\DADOS_STOCKS.zip"
+  ],
+  "original_data_restoration_state": "Full migration archive retained; nine quote ZIPs selectively restored. Databases remain preserved in archive.",
+  "files_under_root_at_inventory": 1132,
+  "bytes_under_root_at_inventory": 11399460797.0,
+  "reparse_points_under_root": 0,
+  "moved_files": 7,
+  "moved_files_sha256_verified": true,
+  "all_moved_sources_absent": true,
+  "previous_codex_task_directory_files_remaining": 0,
+  "external_user_folder_scan": [
+    {
+      "root": "C:\\Users\\leona\\Documents",
+      "enumerated_files": 86581,
+      "matching_project_paths": [],
+      "enumeration_succeeded": true
+    },
+    {
+      "root": "C:\\Users\\leona\\Downloads",
+      "enumerated_files": 11,
+      "matching_project_paths": [],
+      "enumeration_succeeded": true
+    },
+    {
+      "root": "C:\\Users\\leona\\Desktop",
+      "enumerated_files": 1,
+      "matching_project_paths": [],
+      "enumeration_succeeded": true
+    }
+  ],
+  "relocation_journal": "C:\\STOCKS\\work\\centralizacao-20260909\\movimentacoes.json",
+  "historical_path_policy": "Old receipts, protocols, source manifests and migration guides retain their original bytes and path provenance. Resolve the seven relocated paths through relocation_journal; do not rewrite sealed evidence.",
+  "environment_dependencies_external": [
+    "Installed Codex application/runtime and its internal history/cache",
+    "Git and OS tooling",
+    "Authorized GitHub remote and CI"
+  ],
+  "verification_scope": "Known project locations, original mandate, current task directory, recursive filename/path scan of Documents, Downloads and Desktop; repository worktrees/object location and absence of reparse points under C:\\STOCKS. No claim of forensic inspection of every disk, other computers, backups or internal application history.",
+  "code_commit_before_documentation_update": "4a85d4317657ac5ddaffcacf889b6341cf9c4b0a",
+  "updated_at_utc": "2026-09-09T18:42:01.4681983Z",
+  "documentation_index": "C:\\STOCKS\\stocks-predictor\\docs\\DOCUMENTATION_INDEX.md",
+  "markdown_review_receipt": "C:\\STOCKS\\outputs\\REVISAO_MDS_20260909.json"
+}

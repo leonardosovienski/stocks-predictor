@@ -1,0 +1,52 @@
+{
+  "protected_hashes": {
+    "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-09-h21-protocol.json": "5721d7405af2f398448be3966eeb832deda06f7aa936e5244059ae7ca86797fb",
+    "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-09-h21-source-closure-protocol.json": "6ec703ba840d9badd2e20514d36fe2f63ccedf92a0a7d52cf597bcaae57fb4ef",
+    "C:\\STOCKS\\stocks-predictor\\docs\\continuation\\MANDATO_20260909.md": "d63db21471620a6a4a83671e1acebda1d7ff0be04a96652d5f0d658997cc73cc",
+    "C:\\STOCKS\\instructions\\STOCKS_PREDICTOR_PROMPT_FINAL_20260909.md": "d63db21471620a6a4a83671e1acebda1d7ff0be04a96652d5f0d658997cc73cc",
+    "C:\\STOCKS\\work\\h21\\result-01.json": "39a940514b5fdcbb577c496f996ddd324c8107436852ab67da352401bb8870d2",
+    "C:\\STOCKS\\work\\h21\\inputs\\quotes.json": "445a24c3098deb3da6f3bdd7b3d92ca48e24e6b4f9fdc38fb52b7705c2467d94"
+  },
+  "markdown_files_checked": [
+    "AGENTS.md",
+    "README.md",
+    "HANDOFF.md",
+    "STOCKS_CURRENT_STATE.md",
+    "docs/DOCUMENTATION_INDEX.md",
+    "docs/continuation/PROMPT_NOVO_CHAT.md",
+    "docs/research/2026-09-09-h21-source-closure.md",
+    "research/session-20260909/source_closure/README.md"
+  ],
+  "valid_local_links": 53,
+  "local_source_checks": {
+    "checks": [
+      {
+        "check": "hash-mismatch",
+        "result": "PASS_REJECTED",
+        "exception": "ValueError",
+        "detail": "Source hash differs from captured bytes"
+      },
+      {
+        "check": "truncated-transport",
+        "result": "PASS_REJECTED",
+        "exception": "BadZipFile",
+        "detail": "File is not a zip file"
+      },
+      {
+        "check": "false-july-closure",
+        "result": "PASS_REJECTED",
+        "exception": "ValueError",
+        "detail": "Calendar coverage mismatch: missing=[], unexpected=['2026-07-09']"
+      },
+      {
+        "check": "v2-only-provenance-no-price-change",
+        "result": "PASS",
+        "records": 2159
+      }
+    ],
+    "economic_valuations": 0
+  },
+  "operational_profile_unknowns_preserved": true,
+  "json_and_python_syntax": "PASS",
+  "git_diff_check": "PASS"
+}

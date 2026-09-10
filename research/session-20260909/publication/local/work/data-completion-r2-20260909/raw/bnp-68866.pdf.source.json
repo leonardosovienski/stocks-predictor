@@ -1,0 +1,15 @@
+{
+  "id": "bnp-68866",
+  "url": "https://brasil.bnpparibas/app/uploads/sites/7/2024/06/fato-relevante-ishares-ibovespa-fundo-de-indice.pdf",
+  "purpose": "BOVA11 official administrator evidence",
+  "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\bnp-68866.pdf",
+  "started_at_utc": "2026-09-09T21:00:37.921004+00:00",
+  "status": "downloaded",
+  "curl_exit_code": 0,
+  "http_status": 200,
+  "final_url": "https://brasil.bnpparibas/app/uploads/sites/7/2024/06/fato-relevante-ishares-ibovespa-fundo-de-indice.pdf",
+  "content_type": "application/pdf",
+  "bytes": 86451,
+  "sha256": "1440639905e94e8f5c7c7b8c9dc1b6bd85b3a50a74a9761ed8196cb7e1243e42",
+  "completed_at_utc": "2026-09-09T21:00:38.643007+00:00"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "b3-fees-spot",
+  "url": "https://www.b3.com.br/pt_br/produtos-e-servicos/tarifas/listados-a-vista-e-derivativos/renda-variavel/tarifas-de-acoes-e-fundos-de-investimento/a-vista/",
+  "purpose": "Current public spot fee reference",
+  "started_at_utc": "2026-09-09T18:59:43.026431+00:00",
+  "path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\raw\\b3-fees-spot.html",
+  "status": "downloaded",
+  "final_url": "https://www.b3.com.br/pt_br/produtos-e-servicos/tarifas/listados-a-vista-e-derivativos/renda-variavel/tarifas-de-acoes-e-fundos-de-investimento/a-vista/",
+  "http_status": 200,
+  "content_type": "text/html; charset=UTF-8",
+  "last_modified": "Mon, 18 May 2026 17:58:54 GMT",
+  "bytes": 58332,
+  "sha256": "b5b97ec6c8f9feb40a045a530b8f640a5def0b1df9ca833e4c52554b864e22be",
+  "completed_at_utc": "2026-09-09T18:59:44.142847+00:00"
+}

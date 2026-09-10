@@ -1,0 +1,15 @@
+{
+  "id": "b3-reports-990-2024-2",
+  "url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetReportsRelevants/eyJsYW5ndWFnZSI6InB0LWJyIiwiaWRGTkVUIjoiOTkwIiwidHlwZUZ1bmQiOiJFVEYiLCJkYXRlSW5pdGlhbCI6IjIwMjQtMDEtMDEiLCJkYXRlRmluYWwiOiIyMDI0LTEyLTMxIiwicGFnZU51bWJlciI6MSwicGFnZVNpemUiOjYwLCJjYXRlZ29yeSI6IjIifQ==",
+  "purpose": "Complete published yearly BOVA11 document categories",
+  "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\b3-reports-990-2024-2.json",
+  "started_at_utc": "2026-09-09T21:04:06.861960+00:00",
+  "status": "downloaded",
+  "curl_exit_code": 0,
+  "http_status": 200,
+  "final_url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetReportsRelevants/eyJsYW5ndWFnZSI6InB0LWJyIiwiaWRGTkVUIjoiOTkwIiwidHlwZUZ1bmQiOiJFVEYiLCJkYXRlSW5pdGlhbCI6IjIwMjQtMDEtMDEiLCJkYXRlRmluYWwiOiIyMDI0LTEyLTMxIiwicGFnZU51bWJlciI6MSwicGFnZVNpemUiOjYwLCJjYXRlZ29yeSI6IjIifQ==",
+  "content_type": "application/json",
+  "bytes": 1560,
+  "sha256": "26665581b247cd55a76f5cc4c56b786218a02eff22879b53a9a2945db55ad07f",
+  "completed_at_utc": "2026-09-09T21:04:07.455981+00:00"
+}

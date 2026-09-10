@@ -1,0 +1,148 @@
+{
+  "schema_version": 1,
+  "recorded_at_utc": "2026-09-09 18:05:03 UTC",
+  "status": "RODADA_CONCLUIDA_COM_RESULTADO_HISTORICO_CONDICIONAL",
+  "mandate_path": "C:/Users/leona/Downloads/STOCKS_PREDICTOR_PROMPT_FINAL_20260909.md",
+  "mandate_sha256": "d63db21471620a6a4a83671e1acebda1d7ff0be04a96652d5f0d658997cc73cc",
+  "checkout": "C:/STOCKS/stocks-predictor",
+  "integration": {
+    "branch": "main",
+    "initial_main": "99f8751c03084d724e59dd53f5f63221fe220e9b",
+    "reviewed_head": "2bbf9997a96d1eb1396e28481e135fc51d05d9e5",
+    "final_local_and_remote_main": "4a85d4317657ac5ddaffcacf889b6341cf9c4b0a",
+    "working_tree_clean": true,
+    "integrated_tree_matches_reviewed_head": true,
+    "pr": "https://github.com/leonardosovienski/stocks-predictor/pull/69",
+    "merge_performed_by_this_agent": false,
+    "merged_at_utc": "2026-09-09T17:57:37Z",
+    "temporary_branch_removed_after_sha_and_ancestry_check": "research/h21-20260909",
+    "force_push_used": false
+  },
+  "final_ci": {
+    "url": "https://github.com/leonardosovienski/stocks-predictor/actions/runs/34386092297",
+    "run_number": 184,
+    "head_sha": "4a85d4317657ac5ddaffcacf889b6341cf9c4b0a",
+    "quality_job_id": 102582608126,
+    "secrets_job_id": 102582608580,
+    "quality_conclusion": "success",
+    "secrets_conclusion": "success",
+    "checks": [
+      "782 regular tests passed in 245.39s",
+      "Ruff passed",
+      "Pyright: 0 errors, 0 warnings",
+      "build passed",
+      "wheel smoke passed in actual directory outside checkout using isolated interpreter",
+      "gitleaks passed"
+    ],
+    "coverage_percent": 78,
+    "python": "3.13.15",
+    "core": "3.2.0",
+    "os": "Linux",
+    "import_origin_prefix": "/tmp/stocks-wheel/lib/python3.13/site-packages",
+    "archived_tests_run": 0,
+    "archived_tests_excluded_count": 17
+  },
+  "local_checks": {
+    "runtime": "Bundled Codex Python 3.12.14, stdlib auxiliary research only",
+    "etf_tests_passed": 19,
+    "economics_regressions_passed": 3,
+    "economics_regressions_before_fix": "2 failures and 1 error",
+    "full_local_suite": "NOT RUN SUCCESSFULLY: pytest unavailable",
+    "independent_calculation_by_same_agent": true,
+    "external_independent_audit": false,
+    "books_reconciled": 8,
+    "daily_points_reconciled": 16400,
+    "reproduction_identical": true,
+    "nine_raw_zip_hashes_rechecked": true
+  },
+  "time_budget": {
+    "deadline_registered_utc": "2026-09-09T17:38:00Z",
+    "economic_measurement_started_utc": "2026-09-09T16:50:15.321979Z",
+    "economic_measurement_completed_utc": "2026-09-09T16:50:16.124201Z",
+    "finalization_completed_utc": "2026-09-09 18:05:03 UTC",
+    "deadline_exceeded": true,
+    "explanation_pt": "A finalização/documentação e a validação da integração excederam o prazo. Não houve extensão prospectiva do orçamento; o atraso está declarado. Nenhuma variante econômica adicional foi aberta."
+  },
+  "research": {
+    "hypothesis": "H21",
+    "historical_window": [
+      "2018-01-02",
+      "2026-04-01"
+    ],
+    "calendar_days": 3011,
+    "price_days": 2050,
+    "raw_records_scanned": 17227093,
+    "variants": 4,
+    "capital_valuations": 8,
+    "independent_histories": 1,
+    "capital_scenarios_not_user_wealth_brl": [
+      5000,
+      10000
+    ],
+    "evidence_state": "Inconclusiva para lucro líquido executável; candidata à validação adicional do resultado histórico condicional",
+    "conditional_historical_gain_brl": {
+      "5000": [
+        5515.48,
+        5618.39
+      ],
+      "10000": [
+        11950.19,
+        12173.17
+      ]
+    },
+    "max_peak_to_trough_drawdown_range": [
+      0.4346107834,
+      0.4630759957
+    ],
+    "executable_net_profit_brl": null,
+    "expected_future_profit_brl": null,
+    "cost_assumption_per_side": [
+      0.0018,
+      0.0036
+    ],
+    "modeled_tax_rate": 0.15,
+    "event_inventory_complete": false,
+    "operating_expenses_known": false,
+    "intact_holdout": false,
+    "work_decision": "Validação direcionada da H21; reconstrução ampla da H20 estacionada",
+    "next_step": "Completar e documentar inventário de eventos do BOVA11 para 2018-01-02 a 2026-04-01, inclusive direitos após a venda; apurar corretagem, custódia e despesas/tempo; reconciliar o livro sem alterar parâmetros. Plano prospectivo registrado, não iniciado.",
+    "future_observations": 0
+  },
+  "preservation": {
+    "historical_frozen_H1_H20_unchanged": true,
+    "original_split_archives_unchanged": true,
+    "databases_opened_or_restored": false,
+    "selectively_recovered_source_zip_count": 9,
+    "selected_source_bytes": 505826391,
+    "original_result_sha256": "39a940514b5fdcbb577c496f996ddd324c8107436852ab67da352401bb8870d2",
+    "protocol_sha256": "5721d7405af2f398448be3966eeb832deda06f7aa936e5244059ae7ca86797fb",
+    "reconstructed_archive_sha256": "83d5aac8e23d72e4deb1331077e08313914375a5dbac4276e5f8ad89da586d23",
+    "quotes_sha256": "445a24c3098deb3da6f3bdd7b3d92ca48e24e6b4f9fdc38fb52b7705c2467d94",
+    "bcb_series11_sha256": "82d23198927eedeef2193e6fb69f788c68cacf44f163d03ccad6636c34c3dcfd"
+  },
+  "reproduction": {
+    "instructions": "C:/STOCKS/stocks-predictor/research/session-20260909/h21/README.md",
+    "local_paths": "C:/STOCKS/stocks-predictor/docs/continuation/LOCAL_PATHS_20260909.json",
+    "original_result": "C:/STOCKS/work/h21/result-01.json",
+    "quote_inputs": "C:/STOCKS/work/h21/inputs/quotes.json",
+    "sources": "C:/STOCKS/work/h21/raw",
+    "source_manifest": "C:/STOCKS/work/MANIFESTO_DADOS.json"
+  },
+  "actions_not_taken": {
+    "trades": true,
+    "brokerage_authentication": true,
+    "money_movement": true,
+    "paid_services": true,
+    "recurring_automation": true,
+    "windows_dependency_installation": true,
+    "agents": true
+  },
+  "delivered_files_sha256": {
+    "RELATORIO_STOCKS_H21.md": "471a62a6ac3389cc26bef10180575f411415e7efdbf494d599a1bc6c480802c5",
+    "RESULTADO_STOCKS_H21.json": "39a940514b5fdcbb577c496f996ddd324c8107436852ab67da352401bb8870d2",
+    "CONFERENCIA_STOCKS_H21.json": "8fd7f22095b5572a8244c8580ad145c2c36066f3c1ce4243a9d24baee517140a",
+    "REPRODUCAO_STOCKS_H21.json": "562577dd2100395fe03c9e277895b52e4f138152ad1b2ac9b2375b28d3fdbbbb",
+    "CI_MAIN_STOCKS_H21.txt": "231c8f86168433001ee377afc2c8ebdc102dc691f032f138428c17975c6526fb"
+  }
+}
+

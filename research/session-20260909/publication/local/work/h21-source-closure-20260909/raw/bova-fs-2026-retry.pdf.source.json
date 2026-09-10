@@ -1,0 +1,15 @@
+{
+  "id": "blackrock-fs-2026-retry",
+  "url": "https://www.blackrock.com/br/literature/annual-financial-statements/ishares-bova11-brl-demonstrativos-financeiros-2026-ptbr.pdf",
+  "purpose": "Retry incomplete transfer via existing urllib capture with external55sec deadline",
+  "started_at_utc": "2026-09-09T20:00:01.652392+00:00",
+  "path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\raw\\bova-fs-2026-retry.pdf",
+  "status": "downloaded",
+  "final_url": "https://www.blackrock.com/br/literature/annual-financial-statements/ishares-bova11-brl-demonstrativos-financeiros-2026-ptbr.pdf",
+  "http_status": 200,
+  "content_type": "application/pdf;charset=UTF-8",
+  "last_modified": "Fri, 14 Aug 2026 15:37:39 GMT",
+  "bytes": 782411,
+  "sha256": "a87749d1f6740441392e6e8e9c4c085f193d8d432bf7eb57a6be7a53b7d39c92",
+  "completed_at_utc": "2026-09-09T20:00:03.250897+00:00"
+}

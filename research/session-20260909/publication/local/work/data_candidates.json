@@ -1,0 +1,2018 @@
+[
+  {
+    "path": "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/STOCKS_H18_H19_TESTADOS.zip.contents/original/quotes.db",
+    "size": 38662144,
+    "sha256": "30ce8e91fba9cb0a0c09571be71821c9da2d0aec49d12ec15aab8b26522ffd2c",
+    "mtime_ns": 0,
+    "origin": "project/.local-research/stocks-session-20260907/outputs/STOCKS_H18_H19_TESTADOS.zip!original/quotes.db"
+  },
+  {
+    "path": "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/STOCKS_H18_H19_TESTADOS.zip.contents/repaired/quotes.db",
+    "size": 38957056,
+    "sha256": "0bceedac3936dc4162562ec35e03177c7e71b99e13b66837035d1ccd151f0512",
+    "mtime_ns": 0,
+    "origin": "project/.local-research/stocks-session-20260907/outputs/STOCKS_H18_H19_TESTADOS.zip!repaired/quotes.db"
+  },
+  {
+    "path": "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/STOCKS_REORGANIZACOES_TESTADAS.zip.contents/base/quotes.db",
+    "size": 38957056,
+    "sha256": "0bceedac3936dc4162562ec35e03177c7e71b99e13b66837035d1ccd151f0512",
+    "mtime_ns": 0,
+    "origin": "project/.local-research/stocks-session-20260907/outputs/STOCKS_REORGANIZACOES_TESTADAS.zip!base/quotes.db"
+  },
+  {
+    "path": "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/STOCKS_REORGANIZACOES_TESTADAS.zip.contents/successors/successors.db",
+    "size": 1323008,
+    "sha256": "fa3d464e3e463b66c2aa64d96228aeb5d1fae63514df1d0ddb58233240b52764",
+    "mtime_ns": 0,
+    "origin": "project/.local-research/stocks-session-20260907/outputs/STOCKS_REORGANIZACOES_TESTADAS.zip!successors/successors.db"
+  },
+  {
+    "path": "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/STOCKS_REVISAO_FINAL.zip.contents/inputs/quotes-2018.cotahist.txt",
+    "size": 5259726,
+    "sha256": "8fad0b7a46aa5bc583d34c7aff5c0eebd209637b2c54d94b10b3bc7bfe3fb0ab",
+    "mtime_ns": 0,
+    "origin": "project/.local-research/stocks-session-20260907/outputs/STOCKS_REVISAO_FINAL.zip!inputs/quotes-2018.cotahist.txt"
+  },
+  {
+    "path": "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/STOCKS_REVISAO_FINAL.zip.contents/inputs/quotes-2019.cotahist.txt",
+    "size": 10717482,
+    "sha256": "5068264eba965725b7db24c12d4db0c553d4f4eb6a1d2d6aa43e54dbf2d13e03",
+    "mtime_ns": 0,
+    "origin": "project/.local-research/stocks-session-20260907/outputs/STOCKS_REVISAO_FINAL.zip!inputs/quotes-2019.cotahist.txt"
+  },
+  {
+    "path": "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/STOCKS_REVISAO_FINAL.zip.contents/inputs/quotes-2020.cotahist.txt",
+    "size": 11581188,
+    "sha256": "d9d0ebf88122561d9b0514f13703e36b3193cf0151816cc82afb8b7c14587996",
+    "mtime_ns": 0,
+    "origin": "project/.local-research/stocks-session-20260907/outputs/STOCKS_REVISAO_FINAL.zip!inputs/quotes-2020.cotahist.txt"
+  },
+  {
+    "path": "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/STOCKS_REVISAO_FINAL.zip.contents/inputs/quotes-2021.cotahist.txt",
+    "size": 12509592,
+    "sha256": "de09c82c4b2c138c750b43ff5d65134bc1915c58281df34a61a8b0e98c634713",
+    "mtime_ns": 0,
+    "origin": "project/.local-research/stocks-session-20260907/outputs/STOCKS_REVISAO_FINAL.zip!inputs/quotes-2021.cotahist.txt"
+  },
+  {
+    "path": "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/STOCKS_REVISAO_FINAL.zip.contents/inputs/quotes-2022.cotahist.txt",
+    "size": 12448338,
+    "sha256": "d4351c52a877c6b504280ef1a90b3001a1d068e012957a34fc4c16c651c252c6",
+    "mtime_ns": 0,
+    "origin": "project/.local-research/stocks-session-20260907/outputs/STOCKS_REVISAO_FINAL.zip!inputs/quotes-2022.cotahist.txt"
+  },
+  {
+    "path": "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/STOCKS_REVISAO_FINAL.zip.contents/inputs/quotes-2023.cotahist.txt",
+    "size": 11814888,
+    "sha256": "0ae5e60f5d804e8a4dc60268655d17f543142f1be735d451ff3864161e318e03",
+    "mtime_ns": 0,
+    "origin": "project/.local-research/stocks-session-20260907/outputs/STOCKS_REVISAO_FINAL.zip!inputs/quotes-2023.cotahist.txt"
+  },
+  {
+    "path": "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/STOCKS_REVISAO_FINAL.zip.contents/inputs/quotes-2024.cotahist.txt",
+    "size": 11591520,
+    "sha256": "181e7f2e53b72810797d4cf20d4e5ca83a44024d281d480ec3b35f1d461464da",
+    "mtime_ns": 0,
+    "origin": "project/.local-research/stocks-session-20260907/outputs/STOCKS_REVISAO_FINAL.zip!inputs/quotes-2024.cotahist.txt"
+  },
+  {
+    "path": "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/STOCKS_REVISAO_FINAL.zip.contents/inputs/quotes-2025.cotahist.txt",
+    "size": 11215386,
+    "sha256": "a2fbea0bbfd3e25e46ee226b4aa373ff5fa80acbea726f97ddcf53af767aed76",
+    "mtime_ns": 0,
+    "origin": "project/.local-research/stocks-session-20260907/outputs/STOCKS_REVISAO_FINAL.zip!inputs/quotes-2025.cotahist.txt"
+  },
+  {
+    "path": "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/STOCKS_REVISAO_FINAL.zip.contents/inputs/quotes-2026.cotahist.txt",
+    "size": 2639088,
+    "sha256": "e7caad400b40a484c92d211f5ba9ff5b884ae886b4ae7a1ac40f423ba0a7210c",
+    "mtime_ns": 0,
+    "origin": "project/.local-research/stocks-session-20260907/outputs/STOCKS_REVISAO_FINAL.zip!inputs/quotes-2026.cotahist.txt"
+  },
+  {
+    "path": "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/STOCKS_REVISAO_FINAL.zip.contents/inputs/quotes-bonus-pn.cotahist.txt",
+    "size": 61500,
+    "sha256": "129d3f14b7889d420b64e32aee2591edbb86e1ec6166dff17fadc83d15d90d57",
+    "mtime_ns": 0,
+    "origin": "project/.local-research/stocks-session-20260907/outputs/STOCKS_REVISAO_FINAL.zip!inputs/quotes-bonus-pn.cotahist.txt"
+  },
+  {
+    "path": "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/STOCKS_VALIDACAO_LUCRO_TESTADA.zip.contents/baseline/base/quotes.db",
+    "size": 38957056,
+    "sha256": "0bceedac3936dc4162562ec35e03177c7e71b99e13b66837035d1ccd151f0512",
+    "mtime_ns": 0,
+    "origin": "project/.local-research/stocks-session-20260907/outputs/STOCKS_VALIDACAO_LUCRO_TESTADA.zip!baseline/base/quotes.db"
+  },
+  {
+    "path": "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/STOCKS_VALIDACAO_LUCRO_TESTADA.zip.contents/baseline/successors/successors.db",
+    "size": 1323008,
+    "sha256": "fa3d464e3e463b66c2aa64d96228aeb5d1fae63514df1d0ddb58233240b52764",
+    "mtime_ns": 0,
+    "origin": "project/.local-research/stocks-session-20260907/outputs/STOCKS_VALIDACAO_LUCRO_TESTADA.zip!baseline/successors/successors.db"
+  },
+  {
+    "path": "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/stocks-complemento-fontes.zip.contents/data/stocks-history-2016-2026.db",
+    "size": 288522240,
+    "sha256": "e21a89c38f2792c826291baa1175da4fe9dfbf626316635a536f7c28b250146a",
+    "mtime_ns": 0,
+    "origin": "project/.local-research/stocks-session-20260907/outputs/stocks-complemento-fontes.zip!data/stocks-history-2016-2026.db"
+  },
+  {
+    "path": "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/stocks-correcoes.zip.contents/demonstracao/stocks-cvm-2023-repaired-example.db",
+    "size": 257216512,
+    "sha256": "07197228920e4082954afbc9035509ae74e84be1773195a4c5b71a435481a804",
+    "mtime_ns": 0,
+    "origin": "project/.local-research/stocks-session-20260907/outputs/stocks-correcoes.zip!demonstracao/stocks-cvm-2023-repaired-example.db"
+  },
+  {
+    "path": "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/stocks-h17-pronto-final.zip.contents/data/quotes.db",
+    "size": 38662144,
+    "sha256": "30ce8e91fba9cb0a0c09571be71821c9da2d0aec49d12ec15aab8b26522ffd2c",
+    "mtime_ns": 0,
+    "origin": "project/.local-research/stocks-session-20260907/outputs/stocks-h17-pronto-final.zip!data/quotes.db"
+  },
+  {
+    "path": "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/stocks-h17-pronto.zip.contents/data/quotes.db",
+    "size": 38662144,
+    "sha256": "30ce8e91fba9cb0a0c09571be71821c9da2d0aec49d12ec15aab8b26522ffd2c",
+    "mtime_ns": 0,
+    "origin": "project/.local-research/stocks-session-20260907/outputs/stocks-h17-pronto.zip!data/quotes.db"
+  },
+  {
+    "path": "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/stocks-testes-reais.zip.contents/work/stocks-history-2016-2026.db",
+    "size": 288522240,
+    "sha256": "e21a89c38f2792c826291baa1175da4fe9dfbf626316635a536f7c28b250146a",
+    "mtime_ns": 0,
+    "origin": "project/.local-research/stocks-session-20260907/outputs/stocks-testes-reais.zip!work/stocks-history-2016-2026.db"
+  },
+  {
+    "path": "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/stocks-testes-reais.zip.contents/work/stocks-tested-real-v2-20260907.db",
+    "size": 288530432,
+    "sha256": "a8238568980d3303890b04590cfb5c55ab2d24c9271edd86820269336b09679a",
+    "mtime_ns": 0,
+    "origin": "project/.local-research/stocks-session-20260907/outputs/stocks-testes-reais.zip!work/stocks-tested-real-v2-20260907.db"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/stocks-clean-replay-20260907.db",
+    "size": 288530432,
+    "sha256": "8f84a743e706573cab9372c21d8c9c186c5afb31c2206821d9c2cf82199bbc64",
+    "mtime_ns": 1788755787395253500,
+    "origin": "project/.local-research/stocks-session-20260907/work/stocks-clean-replay-20260907.db"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/stocks-cvm-2023-repaired-example.db",
+    "size": 257216512,
+    "sha256": "07197228920e4082954afbc9035509ae74e84be1773195a4c5b71a435481a804",
+    "mtime_ns": 1788750233782990200,
+    "origin": "project/.local-research/stocks-session-20260907/work/stocks-cvm-2023-repaired-example.db"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/stocks-history-2016-2026.db",
+    "size": 288522240,
+    "sha256": "e21a89c38f2792c826291baa1175da4fe9dfbf626316635a536f7c28b250146a",
+    "mtime_ns": 1788752545845022400,
+    "origin": "project/.local-research/stocks-session-20260907/work/stocks-history-2016-2026.db"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/stocks-tested-real-20260907.db",
+    "size": 288530432,
+    "sha256": "e94633e709392168fc38df9633c5d63b34528a1af75949e9cecd69adf2af8e4a",
+    "mtime_ns": 1788754906869595900,
+    "origin": "project/.local-research/stocks-session-20260907/work/stocks-tested-real-20260907.db"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/stocks-tested-real-v2-20260907.db",
+    "size": 288530432,
+    "sha256": "a8238568980d3303890b04590cfb5c55ab2d24c9271edd86820269336b09679a",
+    "mtime_ns": 1788755199981794900,
+    "origin": "project/.local-research/stocks-session-20260907/work/stocks-tested-real-v2-20260907.db"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/test-only.db",
+    "size": 155648,
+    "sha256": "e713af1a867f31c3550e3767c7a9fc6f3963aac2b47b617db2adfe55903da054",
+    "mtime_ns": 1788746970072603800,
+    "origin": "project/.local-research/stocks-session-20260907/work/test-only.db"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/wheel-real-smoke.db",
+    "size": 229376,
+    "sha256": "56c0c7e4d9f342e439ed63d60e031b07ff9de1ebdf5407eea011be19536da66c",
+    "mtime_ns": 1788755408386223900,
+    "origin": "project/.local-research/stocks-session-20260907/work/wheel-real-smoke.db"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/h17-ready-5096bf505dc7/data/quotes.db",
+    "size": 38662144,
+    "sha256": "30ce8e91fba9cb0a0c09571be71821c9da2d0aec49d12ec15aab8b26522ffd2c",
+    "mtime_ns": 1788759800715089200,
+    "origin": "project/.local-research/stocks-session-20260907/work/h17-ready-5096bf505dc7/data/quotes.db"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/h17-ready-91342ec397f6/data/quotes.db",
+    "size": 38662144,
+    "sha256": "30ce8e91fba9cb0a0c09571be71821c9da2d0aec49d12ec15aab8b26522ffd2c",
+    "mtime_ns": 1788759650395261600,
+    "origin": "project/.local-research/stocks-session-20260907/work/h17-ready-91342ec397f6/data/quotes.db"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/h17-run-pack/data/quotes.db",
+    "size": 38662144,
+    "sha256": "30ce8e91fba9cb0a0c09571be71821c9da2d0aec49d12ec15aab8b26522ffd2c",
+    "mtime_ns": 1788758533640330400,
+    "origin": "project/.local-research/stocks-session-20260907/work/h17-run-pack/data/quotes.db"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/h17-run-pack-v2/data/quotes.db",
+    "size": 38662144,
+    "sha256": "30ce8e91fba9cb0a0c09571be71821c9da2d0aec49d12ec15aab8b26522ffd2c",
+    "mtime_ns": 1788758533640330400,
+    "origin": "project/.local-research/stocks-session-20260907/work/h17-run-pack-v2/data/quotes.db"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/h19-continuous-inputs/quotes-2018.cotahist.txt",
+    "size": 5259726,
+    "sha256": "8fad0b7a46aa5bc583d34c7aff5c0eebd209637b2c54d94b10b3bc7bfe3fb0ab",
+    "mtime_ns": 1788816940354108200,
+    "origin": "project/.local-research/stocks-session-20260907/work/h19-continuous-inputs/quotes-2018.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/h19-continuous-inputs/quotes-2019.cotahist.txt",
+    "size": 10717482,
+    "sha256": "5068264eba965725b7db24c12d4db0c553d4f4eb6a1d2d6aa43e54dbf2d13e03",
+    "mtime_ns": 1788816941576828300,
+    "origin": "project/.local-research/stocks-session-20260907/work/h19-continuous-inputs/quotes-2019.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/h19-continuous-inputs/quotes-2020.cotahist.txt",
+    "size": 11581188,
+    "sha256": "d9d0ebf88122561d9b0514f13703e36b3193cf0151816cc82afb8b7c14587996",
+    "mtime_ns": 1788816943323244700,
+    "origin": "project/.local-research/stocks-session-20260907/work/h19-continuous-inputs/quotes-2020.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/h19-continuous-inputs/quotes-2021.cotahist.txt",
+    "size": 12509592,
+    "sha256": "de09c82c4b2c138c750b43ff5d65134bc1915c58281df34a61a8b0e98c634713",
+    "mtime_ns": 1788816945619565400,
+    "origin": "project/.local-research/stocks-session-20260907/work/h19-continuous-inputs/quotes-2021.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/h19-continuous-inputs/quotes-2022.cotahist.txt",
+    "size": 12448338,
+    "sha256": "d4351c52a877c6b504280ef1a90b3001a1d068e012957a34fc4c16c651c252c6",
+    "mtime_ns": 1788816948965424200,
+    "origin": "project/.local-research/stocks-session-20260907/work/h19-continuous-inputs/quotes-2022.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/h19-continuous-inputs/quotes-2023.cotahist.txt",
+    "size": 11814888,
+    "sha256": "0ae5e60f5d804e8a4dc60268655d17f543142f1be735d451ff3864161e318e03",
+    "mtime_ns": 1788816954178257100,
+    "origin": "project/.local-research/stocks-session-20260907/work/h19-continuous-inputs/quotes-2023.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/h19-continuous-inputs/quotes-2024.cotahist.txt",
+    "size": 11591520,
+    "sha256": "181e7f2e53b72810797d4cf20d4e5ca83a44024d281d480ec3b35f1d461464da",
+    "mtime_ns": 1788816959989647600,
+    "origin": "project/.local-research/stocks-session-20260907/work/h19-continuous-inputs/quotes-2024.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/h19-continuous-inputs/quotes-2025.cotahist.txt",
+    "size": 11215386,
+    "sha256": "a2fbea0bbfd3e25e46ee226b4aa373ff5fa80acbea726f97ddcf53af767aed76",
+    "mtime_ns": 1788816966692137300,
+    "origin": "project/.local-research/stocks-session-20260907/work/h19-continuous-inputs/quotes-2025.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/h19-continuous-inputs/quotes-2026.cotahist.txt",
+    "size": 2639088,
+    "sha256": "e7caad400b40a484c92d211f5ba9ff5b884ae886b4ae7a1ac40f423ba0a7210c",
+    "mtime_ns": 1788816971843545500,
+    "origin": "project/.local-research/stocks-session-20260907/work/h19-continuous-inputs/quotes-2026.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/h19-continuous-inputs/quotes-bonus-pn.cotahist.txt",
+    "size": 61500,
+    "sha256": "129d3f14b7889d420b64e32aee2591edbb86e1ec6166dff17fadc83d15d90d57",
+    "mtime_ns": 1788819999215973500,
+    "origin": "project/.local-research/stocks-session-20260907/work/h19-continuous-inputs/quotes-bonus-pn.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/profit-validation-ready-7b3722cd2bf1/baseline/base/quotes.db",
+    "size": 38957056,
+    "sha256": "0bceedac3936dc4162562ec35e03177c7e71b99e13b66837035d1ccd151f0512",
+    "mtime_ns": 1788806209395678400,
+    "origin": "project/.local-research/stocks-session-20260907/work/profit-validation-ready-7b3722cd2bf1/baseline/base/quotes.db"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/profit-validation-ready-7b3722cd2bf1/baseline/successors/successors.db",
+    "size": 1323008,
+    "sha256": "fa3d464e3e463b66c2aa64d96228aeb5d1fae63514df1d0ddb58233240b52764",
+    "mtime_ns": 1788806209462455700,
+    "origin": "project/.local-research/stocks-session-20260907/work/profit-validation-ready-7b3722cd2bf1/baseline/successors/successors.db"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/reorganization-ready-bundle/base/quotes.db",
+    "size": 38957056,
+    "sha256": "0bceedac3936dc4162562ec35e03177c7e71b99e13b66837035d1ccd151f0512",
+    "mtime_ns": 1788762575483605500,
+    "origin": "project/.local-research/stocks-session-20260907/work/reorganization-ready-bundle/base/quotes.db"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/reorganization-ready-bundle/successors/successors.db",
+    "size": 1323008,
+    "sha256": "fa3d464e3e463b66c2aa64d96228aeb5d1fae63514df1d0ddb58233240b52764",
+    "mtime_ns": 1788802570108200900,
+    "origin": "project/.local-research/stocks-session-20260907/work/reorganization-ready-bundle/successors/successors.db"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/reorganization-ready-e5e8b429ca89/base/quotes.db",
+    "size": 38957056,
+    "sha256": "0bceedac3936dc4162562ec35e03177c7e71b99e13b66837035d1ccd151f0512",
+    "mtime_ns": 1788804183188870300,
+    "origin": "project/.local-research/stocks-session-20260907/work/reorganization-ready-e5e8b429ca89/base/quotes.db"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/reorganization-ready-e5e8b429ca89/successors/successors.db",
+    "size": 1323008,
+    "sha256": "fa3d464e3e463b66c2aa64d96228aeb5d1fae63514df1d0ddb58233240b52764",
+    "mtime_ns": 1788804183254650100,
+    "origin": "project/.local-research/stocks-session-20260907/work/reorganization-ready-e5e8b429ca89/successors/successors.db"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-04/quotes-2018.cotahist.txt",
+    "size": 5259726,
+    "sha256": "8fad0b7a46aa5bc583d34c7aff5c0eebd209637b2c54d94b10b3bc7bfe3fb0ab",
+    "mtime_ns": 1788816940354108200,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-04/quotes-2018.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-04/quotes-2019.cotahist.txt",
+    "size": 10717482,
+    "sha256": "5068264eba965725b7db24c12d4db0c553d4f4eb6a1d2d6aa43e54dbf2d13e03",
+    "mtime_ns": 1788816941576828300,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-04/quotes-2019.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-04/quotes-2020.cotahist.txt",
+    "size": 11581188,
+    "sha256": "d9d0ebf88122561d9b0514f13703e36b3193cf0151816cc82afb8b7c14587996",
+    "mtime_ns": 1788816943323244700,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-04/quotes-2020.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-04/quotes-2021.cotahist.txt",
+    "size": 12509592,
+    "sha256": "de09c82c4b2c138c750b43ff5d65134bc1915c58281df34a61a8b0e98c634713",
+    "mtime_ns": 1788816945619565400,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-04/quotes-2021.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-04/quotes-2022.cotahist.txt",
+    "size": 12448338,
+    "sha256": "d4351c52a877c6b504280ef1a90b3001a1d068e012957a34fc4c16c651c252c6",
+    "mtime_ns": 1788816948965424200,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-04/quotes-2022.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-04/quotes-2023.cotahist.txt",
+    "size": 11814888,
+    "sha256": "0ae5e60f5d804e8a4dc60268655d17f543142f1be735d451ff3864161e318e03",
+    "mtime_ns": 1788816954178257100,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-04/quotes-2023.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-04/quotes-2024.cotahist.txt",
+    "size": 11591520,
+    "sha256": "181e7f2e53b72810797d4cf20d4e5ca83a44024d281d480ec3b35f1d461464da",
+    "mtime_ns": 1788816959989647600,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-04/quotes-2024.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-04/quotes-2025.cotahist.txt",
+    "size": 11215386,
+    "sha256": "a2fbea0bbfd3e25e46ee226b4aa373ff5fa80acbea726f97ddcf53af767aed76",
+    "mtime_ns": 1788816966692137300,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-04/quotes-2025.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-04/quotes-2026.cotahist.txt",
+    "size": 2639088,
+    "sha256": "e7caad400b40a484c92d211f5ba9ff5b884ae886b4ae7a1ac40f423ba0a7210c",
+    "mtime_ns": 1788816971843545500,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-04/quotes-2026.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-04/quotes-bonus-pn.cotahist.txt",
+    "size": 61500,
+    "sha256": "129d3f14b7889d420b64e32aee2591edbb86e1ec6166dff17fadc83d15d90d57",
+    "mtime_ns": 1788819999215973500,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-04/quotes-bonus-pn.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-05/quotes-2018.cotahist.txt",
+    "size": 5259726,
+    "sha256": "8fad0b7a46aa5bc583d34c7aff5c0eebd209637b2c54d94b10b3bc7bfe3fb0ab",
+    "mtime_ns": 1788816940354108200,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-05/quotes-2018.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-05/quotes-2019.cotahist.txt",
+    "size": 10717482,
+    "sha256": "5068264eba965725b7db24c12d4db0c553d4f4eb6a1d2d6aa43e54dbf2d13e03",
+    "mtime_ns": 1788816941576828300,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-05/quotes-2019.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-05/quotes-2020.cotahist.txt",
+    "size": 11581188,
+    "sha256": "d9d0ebf88122561d9b0514f13703e36b3193cf0151816cc82afb8b7c14587996",
+    "mtime_ns": 1788816943323244700,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-05/quotes-2020.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-05/quotes-2021.cotahist.txt",
+    "size": 12509592,
+    "sha256": "de09c82c4b2c138c750b43ff5d65134bc1915c58281df34a61a8b0e98c634713",
+    "mtime_ns": 1788816945619565400,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-05/quotes-2021.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-05/quotes-2022.cotahist.txt",
+    "size": 12448338,
+    "sha256": "d4351c52a877c6b504280ef1a90b3001a1d068e012957a34fc4c16c651c252c6",
+    "mtime_ns": 1788816948965424200,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-05/quotes-2022.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-05/quotes-2023.cotahist.txt",
+    "size": 11814888,
+    "sha256": "0ae5e60f5d804e8a4dc60268655d17f543142f1be735d451ff3864161e318e03",
+    "mtime_ns": 1788816954178257100,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-05/quotes-2023.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-05/quotes-2024.cotahist.txt",
+    "size": 11591520,
+    "sha256": "181e7f2e53b72810797d4cf20d4e5ca83a44024d281d480ec3b35f1d461464da",
+    "mtime_ns": 1788816959989647600,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-05/quotes-2024.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-05/quotes-2025.cotahist.txt",
+    "size": 11215386,
+    "sha256": "a2fbea0bbfd3e25e46ee226b4aa373ff5fa80acbea726f97ddcf53af767aed76",
+    "mtime_ns": 1788816966692137300,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-05/quotes-2025.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-05/quotes-2026.cotahist.txt",
+    "size": 2639088,
+    "sha256": "e7caad400b40a484c92d211f5ba9ff5b884ae886b4ae7a1ac40f423ba0a7210c",
+    "mtime_ns": 1788816971843545500,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-05/quotes-2026.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-05/quotes-bonus-pn.cotahist.txt",
+    "size": 61500,
+    "sha256": "129d3f14b7889d420b64e32aee2591edbb86e1ec6166dff17fadc83d15d90d57",
+    "mtime_ns": 1788819999215973500,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-05/quotes-bonus-pn.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-06/quotes-2018.cotahist.txt",
+    "size": 5259726,
+    "sha256": "8fad0b7a46aa5bc583d34c7aff5c0eebd209637b2c54d94b10b3bc7bfe3fb0ab",
+    "mtime_ns": 1788816940354108200,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-06/quotes-2018.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-06/quotes-2019.cotahist.txt",
+    "size": 10717482,
+    "sha256": "5068264eba965725b7db24c12d4db0c553d4f4eb6a1d2d6aa43e54dbf2d13e03",
+    "mtime_ns": 1788816941576828300,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-06/quotes-2019.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-06/quotes-2020.cotahist.txt",
+    "size": 11581188,
+    "sha256": "d9d0ebf88122561d9b0514f13703e36b3193cf0151816cc82afb8b7c14587996",
+    "mtime_ns": 1788816943323244700,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-06/quotes-2020.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-06/quotes-2021.cotahist.txt",
+    "size": 12509592,
+    "sha256": "de09c82c4b2c138c750b43ff5d65134bc1915c58281df34a61a8b0e98c634713",
+    "mtime_ns": 1788816945619565400,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-06/quotes-2021.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-06/quotes-2022.cotahist.txt",
+    "size": 12448338,
+    "sha256": "d4351c52a877c6b504280ef1a90b3001a1d068e012957a34fc4c16c651c252c6",
+    "mtime_ns": 1788816948965424200,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-06/quotes-2022.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-06/quotes-2023.cotahist.txt",
+    "size": 11814888,
+    "sha256": "0ae5e60f5d804e8a4dc60268655d17f543142f1be735d451ff3864161e318e03",
+    "mtime_ns": 1788816954178257100,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-06/quotes-2023.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-06/quotes-2024.cotahist.txt",
+    "size": 11591520,
+    "sha256": "181e7f2e53b72810797d4cf20d4e5ca83a44024d281d480ec3b35f1d461464da",
+    "mtime_ns": 1788816959989647600,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-06/quotes-2024.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-06/quotes-2025.cotahist.txt",
+    "size": 11215386,
+    "sha256": "a2fbea0bbfd3e25e46ee226b4aa373ff5fa80acbea726f97ddcf53af767aed76",
+    "mtime_ns": 1788816966692137300,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-06/quotes-2025.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-06/quotes-2026.cotahist.txt",
+    "size": 2639088,
+    "sha256": "e7caad400b40a484c92d211f5ba9ff5b884ae886b4ae7a1ac40f423ba0a7210c",
+    "mtime_ns": 1788816971843545500,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-06/quotes-2026.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-06/quotes-bonus-pn.cotahist.txt",
+    "size": 61500,
+    "sha256": "129d3f14b7889d420b64e32aee2591edbb86e1ec6166dff17fadc83d15d90d57",
+    "mtime_ns": 1788819999215973500,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-06/quotes-bonus-pn.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-07/quotes-2018.cotahist.txt",
+    "size": 5259726,
+    "sha256": "8fad0b7a46aa5bc583d34c7aff5c0eebd209637b2c54d94b10b3bc7bfe3fb0ab",
+    "mtime_ns": 1788816940354108200,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-07/quotes-2018.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-07/quotes-2019.cotahist.txt",
+    "size": 10717482,
+    "sha256": "5068264eba965725b7db24c12d4db0c553d4f4eb6a1d2d6aa43e54dbf2d13e03",
+    "mtime_ns": 1788816941576828300,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-07/quotes-2019.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-07/quotes-2020.cotahist.txt",
+    "size": 11581188,
+    "sha256": "d9d0ebf88122561d9b0514f13703e36b3193cf0151816cc82afb8b7c14587996",
+    "mtime_ns": 1788816943323244700,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-07/quotes-2020.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-07/quotes-2021.cotahist.txt",
+    "size": 12509592,
+    "sha256": "de09c82c4b2c138c750b43ff5d65134bc1915c58281df34a61a8b0e98c634713",
+    "mtime_ns": 1788816945619565400,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-07/quotes-2021.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-07/quotes-2022.cotahist.txt",
+    "size": 12448338,
+    "sha256": "d4351c52a877c6b504280ef1a90b3001a1d068e012957a34fc4c16c651c252c6",
+    "mtime_ns": 1788816948965424200,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-07/quotes-2022.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-07/quotes-2023.cotahist.txt",
+    "size": 11814888,
+    "sha256": "0ae5e60f5d804e8a4dc60268655d17f543142f1be735d451ff3864161e318e03",
+    "mtime_ns": 1788816954178257100,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-07/quotes-2023.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-07/quotes-2024.cotahist.txt",
+    "size": 11591520,
+    "sha256": "181e7f2e53b72810797d4cf20d4e5ca83a44024d281d480ec3b35f1d461464da",
+    "mtime_ns": 1788816959989647600,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-07/quotes-2024.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-07/quotes-2025.cotahist.txt",
+    "size": 11215386,
+    "sha256": "a2fbea0bbfd3e25e46ee226b4aa373ff5fa80acbea726f97ddcf53af767aed76",
+    "mtime_ns": 1788816966692137300,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-07/quotes-2025.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-07/quotes-2026.cotahist.txt",
+    "size": 2639088,
+    "sha256": "e7caad400b40a484c92d211f5ba9ff5b884ae886b4ae7a1ac40f423ba0a7210c",
+    "mtime_ns": 1788816971843545500,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-07/quotes-2026.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-07/quotes-bonus-pn.cotahist.txt",
+    "size": 61500,
+    "sha256": "129d3f14b7889d420b64e32aee2591edbb86e1ec6166dff17fadc83d15d90d57",
+    "mtime_ns": 1788819999215973500,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-07/quotes-bonus-pn.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-08/quotes-2018.cotahist.txt",
+    "size": 5259726,
+    "sha256": "8fad0b7a46aa5bc583d34c7aff5c0eebd209637b2c54d94b10b3bc7bfe3fb0ab",
+    "mtime_ns": 1788816940354108200,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-08/quotes-2018.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-08/quotes-2019.cotahist.txt",
+    "size": 10717482,
+    "sha256": "5068264eba965725b7db24c12d4db0c553d4f4eb6a1d2d6aa43e54dbf2d13e03",
+    "mtime_ns": 1788816941576828300,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-08/quotes-2019.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-08/quotes-2020.cotahist.txt",
+    "size": 11581188,
+    "sha256": "d9d0ebf88122561d9b0514f13703e36b3193cf0151816cc82afb8b7c14587996",
+    "mtime_ns": 1788816943323244700,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-08/quotes-2020.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-08/quotes-2021.cotahist.txt",
+    "size": 12509592,
+    "sha256": "de09c82c4b2c138c750b43ff5d65134bc1915c58281df34a61a8b0e98c634713",
+    "mtime_ns": 1788816945619565400,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-08/quotes-2021.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-08/quotes-2022.cotahist.txt",
+    "size": 12448338,
+    "sha256": "d4351c52a877c6b504280ef1a90b3001a1d068e012957a34fc4c16c651c252c6",
+    "mtime_ns": 1788816948965424200,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-08/quotes-2022.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-08/quotes-2023.cotahist.txt",
+    "size": 11814888,
+    "sha256": "0ae5e60f5d804e8a4dc60268655d17f543142f1be735d451ff3864161e318e03",
+    "mtime_ns": 1788816954178257100,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-08/quotes-2023.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-08/quotes-2024.cotahist.txt",
+    "size": 11591520,
+    "sha256": "181e7f2e53b72810797d4cf20d4e5ca83a44024d281d480ec3b35f1d461464da",
+    "mtime_ns": 1788816959989647600,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-08/quotes-2024.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-08/quotes-2025.cotahist.txt",
+    "size": 11215386,
+    "sha256": "a2fbea0bbfd3e25e46ee226b4aa373ff5fa80acbea726f97ddcf53af767aed76",
+    "mtime_ns": 1788816966692137300,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-08/quotes-2025.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-08/quotes-2026.cotahist.txt",
+    "size": 2639088,
+    "sha256": "e7caad400b40a484c92d211f5ba9ff5b884ae886b4ae7a1ac40f423ba0a7210c",
+    "mtime_ns": 1788816971843545500,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-08/quotes-2026.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-08/quotes-bonus-pn.cotahist.txt",
+    "size": 61500,
+    "sha256": "129d3f14b7889d420b64e32aee2591edbb86e1ec6166dff17fadc83d15d90d57",
+    "mtime_ns": 1788819999215973500,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-08/quotes-bonus-pn.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-10/quotes-2018.cotahist.txt",
+    "size": 5259726,
+    "sha256": "8fad0b7a46aa5bc583d34c7aff5c0eebd209637b2c54d94b10b3bc7bfe3fb0ab",
+    "mtime_ns": 1788816940354108200,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-10/quotes-2018.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-10/quotes-2019.cotahist.txt",
+    "size": 10717482,
+    "sha256": "5068264eba965725b7db24c12d4db0c553d4f4eb6a1d2d6aa43e54dbf2d13e03",
+    "mtime_ns": 1788816941576828300,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-10/quotes-2019.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-10/quotes-2020.cotahist.txt",
+    "size": 11581188,
+    "sha256": "d9d0ebf88122561d9b0514f13703e36b3193cf0151816cc82afb8b7c14587996",
+    "mtime_ns": 1788816943323244700,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-10/quotes-2020.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-10/quotes-2021.cotahist.txt",
+    "size": 12509592,
+    "sha256": "de09c82c4b2c138c750b43ff5d65134bc1915c58281df34a61a8b0e98c634713",
+    "mtime_ns": 1788816945619565400,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-10/quotes-2021.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-10/quotes-2022.cotahist.txt",
+    "size": 12448338,
+    "sha256": "d4351c52a877c6b504280ef1a90b3001a1d068e012957a34fc4c16c651c252c6",
+    "mtime_ns": 1788816948965424200,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-10/quotes-2022.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-10/quotes-2023.cotahist.txt",
+    "size": 11814888,
+    "sha256": "0ae5e60f5d804e8a4dc60268655d17f543142f1be735d451ff3864161e318e03",
+    "mtime_ns": 1788816954178257100,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-10/quotes-2023.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-10/quotes-2024.cotahist.txt",
+    "size": 11591520,
+    "sha256": "181e7f2e53b72810797d4cf20d4e5ca83a44024d281d480ec3b35f1d461464da",
+    "mtime_ns": 1788816959989647600,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-10/quotes-2024.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-10/quotes-2025.cotahist.txt",
+    "size": 11215386,
+    "sha256": "a2fbea0bbfd3e25e46ee226b4aa373ff5fa80acbea726f97ddcf53af767aed76",
+    "mtime_ns": 1788816966692137300,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-10/quotes-2025.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-10/quotes-2026.cotahist.txt",
+    "size": 2639088,
+    "sha256": "e7caad400b40a484c92d211f5ba9ff5b884ae886b4ae7a1ac40f423ba0a7210c",
+    "mtime_ns": 1788816971843545500,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-10/quotes-2026.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-10/quotes-bonus-pn.cotahist.txt",
+    "size": 61500,
+    "sha256": "129d3f14b7889d420b64e32aee2591edbb86e1ec6166dff17fadc83d15d90d57",
+    "mtime_ns": 1788819999215973500,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-10/quotes-bonus-pn.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-12/quotes-2018.cotahist.txt",
+    "size": 5259726,
+    "sha256": "8fad0b7a46aa5bc583d34c7aff5c0eebd209637b2c54d94b10b3bc7bfe3fb0ab",
+    "mtime_ns": 1788816940354108200,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-12/quotes-2018.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-12/quotes-2019.cotahist.txt",
+    "size": 10717482,
+    "sha256": "5068264eba965725b7db24c12d4db0c553d4f4eb6a1d2d6aa43e54dbf2d13e03",
+    "mtime_ns": 1788816941576828300,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-12/quotes-2019.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-12/quotes-2020.cotahist.txt",
+    "size": 11581188,
+    "sha256": "d9d0ebf88122561d9b0514f13703e36b3193cf0151816cc82afb8b7c14587996",
+    "mtime_ns": 1788816943323244700,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-12/quotes-2020.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-12/quotes-2021.cotahist.txt",
+    "size": 12509592,
+    "sha256": "de09c82c4b2c138c750b43ff5d65134bc1915c58281df34a61a8b0e98c634713",
+    "mtime_ns": 1788816945619565400,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-12/quotes-2021.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-12/quotes-2022.cotahist.txt",
+    "size": 12448338,
+    "sha256": "d4351c52a877c6b504280ef1a90b3001a1d068e012957a34fc4c16c651c252c6",
+    "mtime_ns": 1788816948965424200,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-12/quotes-2022.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-12/quotes-2023.cotahist.txt",
+    "size": 11814888,
+    "sha256": "0ae5e60f5d804e8a4dc60268655d17f543142f1be735d451ff3864161e318e03",
+    "mtime_ns": 1788816954178257100,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-12/quotes-2023.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-12/quotes-2024.cotahist.txt",
+    "size": 11591520,
+    "sha256": "181e7f2e53b72810797d4cf20d4e5ca83a44024d281d480ec3b35f1d461464da",
+    "mtime_ns": 1788816959989647600,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-12/quotes-2024.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-12/quotes-2025.cotahist.txt",
+    "size": 11215386,
+    "sha256": "a2fbea0bbfd3e25e46ee226b4aa373ff5fa80acbea726f97ddcf53af767aed76",
+    "mtime_ns": 1788816966692137300,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-12/quotes-2025.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-12/quotes-2026.cotahist.txt",
+    "size": 2639088,
+    "sha256": "e7caad400b40a484c92d211f5ba9ff5b884ae886b4ae7a1ac40f423ba0a7210c",
+    "mtime_ns": 1788816971843545500,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-12/quotes-2026.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-12/quotes-bonus-pn.cotahist.txt",
+    "size": 61500,
+    "sha256": "129d3f14b7889d420b64e32aee2591edbb86e1ec6166dff17fadc83d15d90d57",
+    "mtime_ns": 1788819999215973500,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-12/quotes-bonus-pn.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-13/quotes-2018.cotahist.txt",
+    "size": 5259726,
+    "sha256": "8fad0b7a46aa5bc583d34c7aff5c0eebd209637b2c54d94b10b3bc7bfe3fb0ab",
+    "mtime_ns": 1788816940354108200,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-13/quotes-2018.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-13/quotes-2019.cotahist.txt",
+    "size": 10717482,
+    "sha256": "5068264eba965725b7db24c12d4db0c553d4f4eb6a1d2d6aa43e54dbf2d13e03",
+    "mtime_ns": 1788816941576828300,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-13/quotes-2019.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-13/quotes-2020.cotahist.txt",
+    "size": 11581188,
+    "sha256": "d9d0ebf88122561d9b0514f13703e36b3193cf0151816cc82afb8b7c14587996",
+    "mtime_ns": 1788816943323244700,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-13/quotes-2020.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-13/quotes-2021.cotahist.txt",
+    "size": 12509592,
+    "sha256": "de09c82c4b2c138c750b43ff5d65134bc1915c58281df34a61a8b0e98c634713",
+    "mtime_ns": 1788816945619565400,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-13/quotes-2021.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-13/quotes-2022.cotahist.txt",
+    "size": 12448338,
+    "sha256": "d4351c52a877c6b504280ef1a90b3001a1d068e012957a34fc4c16c651c252c6",
+    "mtime_ns": 1788816948965424200,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-13/quotes-2022.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-13/quotes-2023.cotahist.txt",
+    "size": 11814888,
+    "sha256": "0ae5e60f5d804e8a4dc60268655d17f543142f1be735d451ff3864161e318e03",
+    "mtime_ns": 1788816954178257100,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-13/quotes-2023.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-13/quotes-2024.cotahist.txt",
+    "size": 11591520,
+    "sha256": "181e7f2e53b72810797d4cf20d4e5ca83a44024d281d480ec3b35f1d461464da",
+    "mtime_ns": 1788816959989647600,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-13/quotes-2024.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-13/quotes-2025.cotahist.txt",
+    "size": 11215386,
+    "sha256": "a2fbea0bbfd3e25e46ee226b4aa373ff5fa80acbea726f97ddcf53af767aed76",
+    "mtime_ns": 1788816966692137300,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-13/quotes-2025.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-13/quotes-2026.cotahist.txt",
+    "size": 2639088,
+    "sha256": "e7caad400b40a484c92d211f5ba9ff5b884ae886b4ae7a1ac40f423ba0a7210c",
+    "mtime_ns": 1788816971843545500,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-13/quotes-2026.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-13/quotes-bonus-pn.cotahist.txt",
+    "size": 61500,
+    "sha256": "129d3f14b7889d420b64e32aee2591edbb86e1ec6166dff17fadc83d15d90d57",
+    "mtime_ns": 1788819999215973500,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/execution-inputs-13/quotes-bonus-pn.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-12/baseline/quotes-2018.cotahist.txt",
+    "size": 5259726,
+    "sha256": "8fad0b7a46aa5bc583d34c7aff5c0eebd209637b2c54d94b10b3bc7bfe3fb0ab",
+    "mtime_ns": 1788816940354108200,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-12/baseline/quotes-2018.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-12/baseline/quotes-2019.cotahist.txt",
+    "size": 10717482,
+    "sha256": "5068264eba965725b7db24c12d4db0c553d4f4eb6a1d2d6aa43e54dbf2d13e03",
+    "mtime_ns": 1788816941576828300,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-12/baseline/quotes-2019.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-12/baseline/quotes-2020.cotahist.txt",
+    "size": 11581188,
+    "sha256": "d9d0ebf88122561d9b0514f13703e36b3193cf0151816cc82afb8b7c14587996",
+    "mtime_ns": 1788816943323244700,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-12/baseline/quotes-2020.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-12/baseline/quotes-2021.cotahist.txt",
+    "size": 12509592,
+    "sha256": "de09c82c4b2c138c750b43ff5d65134bc1915c58281df34a61a8b0e98c634713",
+    "mtime_ns": 1788816945619565400,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-12/baseline/quotes-2021.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-12/baseline/quotes-2022.cotahist.txt",
+    "size": 12448338,
+    "sha256": "d4351c52a877c6b504280ef1a90b3001a1d068e012957a34fc4c16c651c252c6",
+    "mtime_ns": 1788816948965424200,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-12/baseline/quotes-2022.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-12/baseline/quotes-2023.cotahist.txt",
+    "size": 11814888,
+    "sha256": "0ae5e60f5d804e8a4dc60268655d17f543142f1be735d451ff3864161e318e03",
+    "mtime_ns": 1788816954178257100,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-12/baseline/quotes-2023.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-12/baseline/quotes-2024.cotahist.txt",
+    "size": 11591520,
+    "sha256": "181e7f2e53b72810797d4cf20d4e5ca83a44024d281d480ec3b35f1d461464da",
+    "mtime_ns": 1788816959989647600,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-12/baseline/quotes-2024.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-12/baseline/quotes-2025.cotahist.txt",
+    "size": 11215386,
+    "sha256": "a2fbea0bbfd3e25e46ee226b4aa373ff5fa80acbea726f97ddcf53af767aed76",
+    "mtime_ns": 1788816966692137300,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-12/baseline/quotes-2025.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-12/baseline/quotes-2026.cotahist.txt",
+    "size": 2639088,
+    "sha256": "e7caad400b40a484c92d211f5ba9ff5b884ae886b4ae7a1ac40f423ba0a7210c",
+    "mtime_ns": 1788816971843545500,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-12/baseline/quotes-2026.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-12/baseline/quotes-bonus-pn.cotahist.txt",
+    "size": 61500,
+    "sha256": "129d3f14b7889d420b64e32aee2591edbb86e1ec6166dff17fadc83d15d90d57",
+    "mtime_ns": 1788819999215973500,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-12/baseline/quotes-bonus-pn.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-12/inputs/quotes-2018.cotahist.txt",
+    "size": 5259726,
+    "sha256": "8fad0b7a46aa5bc583d34c7aff5c0eebd209637b2c54d94b10b3bc7bfe3fb0ab",
+    "mtime_ns": 1788816940354108200,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-12/inputs/quotes-2018.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-12/inputs/quotes-2019.cotahist.txt",
+    "size": 10717482,
+    "sha256": "5068264eba965725b7db24c12d4db0c553d4f4eb6a1d2d6aa43e54dbf2d13e03",
+    "mtime_ns": 1788816941576828300,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-12/inputs/quotes-2019.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-12/inputs/quotes-2020.cotahist.txt",
+    "size": 11581188,
+    "sha256": "d9d0ebf88122561d9b0514f13703e36b3193cf0151816cc82afb8b7c14587996",
+    "mtime_ns": 1788816943323244700,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-12/inputs/quotes-2020.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-12/inputs/quotes-2021.cotahist.txt",
+    "size": 12509592,
+    "sha256": "de09c82c4b2c138c750b43ff5d65134bc1915c58281df34a61a8b0e98c634713",
+    "mtime_ns": 1788816945619565400,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-12/inputs/quotes-2021.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-12/inputs/quotes-2022.cotahist.txt",
+    "size": 12448338,
+    "sha256": "d4351c52a877c6b504280ef1a90b3001a1d068e012957a34fc4c16c651c252c6",
+    "mtime_ns": 1788816948965424200,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-12/inputs/quotes-2022.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-12/inputs/quotes-2023.cotahist.txt",
+    "size": 11814888,
+    "sha256": "0ae5e60f5d804e8a4dc60268655d17f543142f1be735d451ff3864161e318e03",
+    "mtime_ns": 1788816954178257100,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-12/inputs/quotes-2023.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-12/inputs/quotes-2024.cotahist.txt",
+    "size": 11591520,
+    "sha256": "181e7f2e53b72810797d4cf20d4e5ca83a44024d281d480ec3b35f1d461464da",
+    "mtime_ns": 1788816959989647600,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-12/inputs/quotes-2024.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-12/inputs/quotes-2025.cotahist.txt",
+    "size": 11215386,
+    "sha256": "a2fbea0bbfd3e25e46ee226b4aa373ff5fa80acbea726f97ddcf53af767aed76",
+    "mtime_ns": 1788816966692137300,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-12/inputs/quotes-2025.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-12/inputs/quotes-2026.cotahist.txt",
+    "size": 2639088,
+    "sha256": "e7caad400b40a484c92d211f5ba9ff5b884ae886b4ae7a1ac40f423ba0a7210c",
+    "mtime_ns": 1788816971843545500,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-12/inputs/quotes-2026.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-12/inputs/quotes-bonus-pn.cotahist.txt",
+    "size": 61500,
+    "sha256": "129d3f14b7889d420b64e32aee2591edbb86e1ec6166dff17fadc83d15d90d57",
+    "mtime_ns": 1788819999215973500,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-12/inputs/quotes-bonus-pn.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-13/baseline/quotes-2018.cotahist.txt",
+    "size": 5259726,
+    "sha256": "8fad0b7a46aa5bc583d34c7aff5c0eebd209637b2c54d94b10b3bc7bfe3fb0ab",
+    "mtime_ns": 1788816940354108200,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-13/baseline/quotes-2018.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-13/baseline/quotes-2019.cotahist.txt",
+    "size": 10717482,
+    "sha256": "5068264eba965725b7db24c12d4db0c553d4f4eb6a1d2d6aa43e54dbf2d13e03",
+    "mtime_ns": 1788816941576828300,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-13/baseline/quotes-2019.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-13/baseline/quotes-2020.cotahist.txt",
+    "size": 11581188,
+    "sha256": "d9d0ebf88122561d9b0514f13703e36b3193cf0151816cc82afb8b7c14587996",
+    "mtime_ns": 1788816943323244700,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-13/baseline/quotes-2020.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-13/baseline/quotes-2021.cotahist.txt",
+    "size": 12509592,
+    "sha256": "de09c82c4b2c138c750b43ff5d65134bc1915c58281df34a61a8b0e98c634713",
+    "mtime_ns": 1788816945619565400,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-13/baseline/quotes-2021.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-13/baseline/quotes-2022.cotahist.txt",
+    "size": 12448338,
+    "sha256": "d4351c52a877c6b504280ef1a90b3001a1d068e012957a34fc4c16c651c252c6",
+    "mtime_ns": 1788816948965424200,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-13/baseline/quotes-2022.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-13/baseline/quotes-2023.cotahist.txt",
+    "size": 11814888,
+    "sha256": "0ae5e60f5d804e8a4dc60268655d17f543142f1be735d451ff3864161e318e03",
+    "mtime_ns": 1788816954178257100,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-13/baseline/quotes-2023.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-13/baseline/quotes-2024.cotahist.txt",
+    "size": 11591520,
+    "sha256": "181e7f2e53b72810797d4cf20d4e5ca83a44024d281d480ec3b35f1d461464da",
+    "mtime_ns": 1788816959989647600,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-13/baseline/quotes-2024.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-13/baseline/quotes-2025.cotahist.txt",
+    "size": 11215386,
+    "sha256": "a2fbea0bbfd3e25e46ee226b4aa373ff5fa80acbea726f97ddcf53af767aed76",
+    "mtime_ns": 1788816966692137300,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-13/baseline/quotes-2025.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-13/baseline/quotes-2026.cotahist.txt",
+    "size": 2639088,
+    "sha256": "e7caad400b40a484c92d211f5ba9ff5b884ae886b4ae7a1ac40f423ba0a7210c",
+    "mtime_ns": 1788816971843545500,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-13/baseline/quotes-2026.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-13/baseline/quotes-bonus-pn.cotahist.txt",
+    "size": 61500,
+    "sha256": "129d3f14b7889d420b64e32aee2591edbb86e1ec6166dff17fadc83d15d90d57",
+    "mtime_ns": 1788819999215973500,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-13/baseline/quotes-bonus-pn.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-13/inputs/quotes-2018.cotahist.txt",
+    "size": 5259726,
+    "sha256": "8fad0b7a46aa5bc583d34c7aff5c0eebd209637b2c54d94b10b3bc7bfe3fb0ab",
+    "mtime_ns": 1788816940354108200,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-13/inputs/quotes-2018.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-13/inputs/quotes-2019.cotahist.txt",
+    "size": 10717482,
+    "sha256": "5068264eba965725b7db24c12d4db0c553d4f4eb6a1d2d6aa43e54dbf2d13e03",
+    "mtime_ns": 1788816941576828300,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-13/inputs/quotes-2019.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-13/inputs/quotes-2020.cotahist.txt",
+    "size": 11581188,
+    "sha256": "d9d0ebf88122561d9b0514f13703e36b3193cf0151816cc82afb8b7c14587996",
+    "mtime_ns": 1788816943323244700,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-13/inputs/quotes-2020.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-13/inputs/quotes-2021.cotahist.txt",
+    "size": 12509592,
+    "sha256": "de09c82c4b2c138c750b43ff5d65134bc1915c58281df34a61a8b0e98c634713",
+    "mtime_ns": 1788816945619565400,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-13/inputs/quotes-2021.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-13/inputs/quotes-2022.cotahist.txt",
+    "size": 12448338,
+    "sha256": "d4351c52a877c6b504280ef1a90b3001a1d068e012957a34fc4c16c651c252c6",
+    "mtime_ns": 1788816948965424200,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-13/inputs/quotes-2022.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-13/inputs/quotes-2023.cotahist.txt",
+    "size": 11814888,
+    "sha256": "0ae5e60f5d804e8a4dc60268655d17f543142f1be735d451ff3864161e318e03",
+    "mtime_ns": 1788816954178257100,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-13/inputs/quotes-2023.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-13/inputs/quotes-2024.cotahist.txt",
+    "size": 11591520,
+    "sha256": "181e7f2e53b72810797d4cf20d4e5ca83a44024d281d480ec3b35f1d461464da",
+    "mtime_ns": 1788816959989647600,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-13/inputs/quotes-2024.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-13/inputs/quotes-2025.cotahist.txt",
+    "size": 11215386,
+    "sha256": "a2fbea0bbfd3e25e46ee226b4aa373ff5fa80acbea726f97ddcf53af767aed76",
+    "mtime_ns": 1788816966692137300,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-13/inputs/quotes-2025.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-13/inputs/quotes-2026.cotahist.txt",
+    "size": 2639088,
+    "sha256": "e7caad400b40a484c92d211f5ba9ff5b884ae886b4ae7a1ac40f423ba0a7210c",
+    "mtime_ns": 1788816971843545500,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-13/inputs/quotes-2026.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-13/inputs/quotes-bonus-pn.cotahist.txt",
+    "size": 61500,
+    "sha256": "129d3f14b7889d420b64e32aee2591edbb86e1ec6166dff17fadc83d15d90d57",
+    "mtime_ns": 1788819999215973500,
+    "origin": "project/.local-research/stocks-session-20260907/work/source-closure-20260908/portable-audit-13/inputs/quotes-bonus-pn.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/stocks-final-review-bundle/inputs/quotes-2018.cotahist.txt",
+    "size": 5259726,
+    "sha256": "8fad0b7a46aa5bc583d34c7aff5c0eebd209637b2c54d94b10b3bc7bfe3fb0ab",
+    "mtime_ns": 1788816940354108200,
+    "origin": "project/.local-research/stocks-session-20260907/work/stocks-final-review-bundle/inputs/quotes-2018.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/stocks-final-review-bundle/inputs/quotes-2019.cotahist.txt",
+    "size": 10717482,
+    "sha256": "5068264eba965725b7db24c12d4db0c553d4f4eb6a1d2d6aa43e54dbf2d13e03",
+    "mtime_ns": 1788816941576828300,
+    "origin": "project/.local-research/stocks-session-20260907/work/stocks-final-review-bundle/inputs/quotes-2019.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/stocks-final-review-bundle/inputs/quotes-2020.cotahist.txt",
+    "size": 11581188,
+    "sha256": "d9d0ebf88122561d9b0514f13703e36b3193cf0151816cc82afb8b7c14587996",
+    "mtime_ns": 1788816943323244700,
+    "origin": "project/.local-research/stocks-session-20260907/work/stocks-final-review-bundle/inputs/quotes-2020.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/stocks-final-review-bundle/inputs/quotes-2021.cotahist.txt",
+    "size": 12509592,
+    "sha256": "de09c82c4b2c138c750b43ff5d65134bc1915c58281df34a61a8b0e98c634713",
+    "mtime_ns": 1788816945619565400,
+    "origin": "project/.local-research/stocks-session-20260907/work/stocks-final-review-bundle/inputs/quotes-2021.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/stocks-final-review-bundle/inputs/quotes-2022.cotahist.txt",
+    "size": 12448338,
+    "sha256": "d4351c52a877c6b504280ef1a90b3001a1d068e012957a34fc4c16c651c252c6",
+    "mtime_ns": 1788816948965424200,
+    "origin": "project/.local-research/stocks-session-20260907/work/stocks-final-review-bundle/inputs/quotes-2022.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/stocks-final-review-bundle/inputs/quotes-2023.cotahist.txt",
+    "size": 11814888,
+    "sha256": "0ae5e60f5d804e8a4dc60268655d17f543142f1be735d451ff3864161e318e03",
+    "mtime_ns": 1788816954178257100,
+    "origin": "project/.local-research/stocks-session-20260907/work/stocks-final-review-bundle/inputs/quotes-2023.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/stocks-final-review-bundle/inputs/quotes-2024.cotahist.txt",
+    "size": 11591520,
+    "sha256": "181e7f2e53b72810797d4cf20d4e5ca83a44024d281d480ec3b35f1d461464da",
+    "mtime_ns": 1788816959989647600,
+    "origin": "project/.local-research/stocks-session-20260907/work/stocks-final-review-bundle/inputs/quotes-2024.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/stocks-final-review-bundle/inputs/quotes-2025.cotahist.txt",
+    "size": 11215386,
+    "sha256": "a2fbea0bbfd3e25e46ee226b4aa373ff5fa80acbea726f97ddcf53af767aed76",
+    "mtime_ns": 1788816966692137300,
+    "origin": "project/.local-research/stocks-session-20260907/work/stocks-final-review-bundle/inputs/quotes-2025.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/stocks-final-review-bundle/inputs/quotes-2026.cotahist.txt",
+    "size": 2639088,
+    "sha256": "e7caad400b40a484c92d211f5ba9ff5b884ae886b4ae7a1ac40f423ba0a7210c",
+    "mtime_ns": 1788816971843545500,
+    "origin": "project/.local-research/stocks-session-20260907/work/stocks-final-review-bundle/inputs/quotes-2026.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/stocks-final-review-bundle/inputs/quotes-bonus-pn.cotahist.txt",
+    "size": 61500,
+    "sha256": "129d3f14b7889d420b64e32aee2591edbb86e1ec6166dff17fadc83d15d90d57",
+    "mtime_ns": 1788819999215973500,
+    "origin": "project/.local-research/stocks-session-20260907/work/stocks-final-review-bundle/inputs/quotes-bonus-pn.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/stocks-final-review-reproduced-98c7576c918b/inputs/quotes-2018.cotahist.txt",
+    "size": 5259726,
+    "sha256": "8fad0b7a46aa5bc583d34c7aff5c0eebd209637b2c54d94b10b3bc7bfe3fb0ab",
+    "mtime_ns": 1788823056806682100,
+    "origin": "project/.local-research/stocks-session-20260907/work/stocks-final-review-reproduced-98c7576c918b/inputs/quotes-2018.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/stocks-final-review-reproduced-98c7576c918b/inputs/quotes-2019.cotahist.txt",
+    "size": 10717482,
+    "sha256": "5068264eba965725b7db24c12d4db0c553d4f4eb6a1d2d6aa43e54dbf2d13e03",
+    "mtime_ns": 1788823056845551700,
+    "origin": "project/.local-research/stocks-session-20260907/work/stocks-final-review-reproduced-98c7576c918b/inputs/quotes-2019.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/stocks-final-review-reproduced-98c7576c918b/inputs/quotes-2020.cotahist.txt",
+    "size": 11581188,
+    "sha256": "d9d0ebf88122561d9b0514f13703e36b3193cf0151816cc82afb8b7c14587996",
+    "mtime_ns": 1788823056894388400,
+    "origin": "project/.local-research/stocks-session-20260907/work/stocks-final-review-reproduced-98c7576c918b/inputs/quotes-2020.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/stocks-final-review-reproduced-98c7576c918b/inputs/quotes-2021.cotahist.txt",
+    "size": 12509592,
+    "sha256": "de09c82c4b2c138c750b43ff5d65134bc1915c58281df34a61a8b0e98c634713",
+    "mtime_ns": 1788823056947211800,
+    "origin": "project/.local-research/stocks-session-20260907/work/stocks-final-review-reproduced-98c7576c918b/inputs/quotes-2021.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/stocks-final-review-reproduced-98c7576c918b/inputs/quotes-2022.cotahist.txt",
+    "size": 12448338,
+    "sha256": "d4351c52a877c6b504280ef1a90b3001a1d068e012957a34fc4c16c651c252c6",
+    "mtime_ns": 1788823057015488000,
+    "origin": "project/.local-research/stocks-session-20260907/work/stocks-final-review-reproduced-98c7576c918b/inputs/quotes-2022.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/stocks-final-review-reproduced-98c7576c918b/inputs/quotes-2023.cotahist.txt",
+    "size": 11814888,
+    "sha256": "0ae5e60f5d804e8a4dc60268655d17f543142f1be735d451ff3864161e318e03",
+    "mtime_ns": 1788823057071301200,
+    "origin": "project/.local-research/stocks-session-20260907/work/stocks-final-review-reproduced-98c7576c918b/inputs/quotes-2023.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/stocks-final-review-reproduced-98c7576c918b/inputs/quotes-2024.cotahist.txt",
+    "size": 11591520,
+    "sha256": "181e7f2e53b72810797d4cf20d4e5ca83a44024d281d480ec3b35f1d461464da",
+    "mtime_ns": 1788823057122132800,
+    "origin": "project/.local-research/stocks-session-20260907/work/stocks-final-review-reproduced-98c7576c918b/inputs/quotes-2024.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/stocks-final-review-reproduced-98c7576c918b/inputs/quotes-2025.cotahist.txt",
+    "size": 11215386,
+    "sha256": "a2fbea0bbfd3e25e46ee226b4aa373ff5fa80acbea726f97ddcf53af767aed76",
+    "mtime_ns": 1788823057169972800,
+    "origin": "project/.local-research/stocks-session-20260907/work/stocks-final-review-reproduced-98c7576c918b/inputs/quotes-2025.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/stocks-final-review-reproduced-98c7576c918b/inputs/quotes-2026.cotahist.txt",
+    "size": 2639088,
+    "sha256": "e7caad400b40a484c92d211f5ba9ff5b884ae886b4ae7a1ac40f423ba0a7210c",
+    "mtime_ns": 1788823057191899400,
+    "origin": "project/.local-research/stocks-session-20260907/work/stocks-final-review-reproduced-98c7576c918b/inputs/quotes-2026.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/stocks-final-review-reproduced-98c7576c918b/inputs/quotes-bonus-pn.cotahist.txt",
+    "size": 61500,
+    "sha256": "129d3f14b7889d420b64e32aee2591edbb86e1ec6166dff17fadc83d15d90d57",
+    "mtime_ns": 1788823057196882800,
+    "origin": "project/.local-research/stocks-session-20260907/work/stocks-final-review-reproduced-98c7576c918b/inputs/quotes-bonus-pn.cotahist.txt"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/stocks-predictor/data/stocks.db",
+    "size": 229376,
+    "sha256": "396f9aa99dfd812af93d7d58db80f0c0179345500555bb0b27297fa81fa6c32f",
+    "mtime_ns": 1788754901213877900,
+    "origin": "project/.local-research/stocks-session-20260907/work/stocks-predictor/data/stocks.db"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/value-measurement-source/quotes.db",
+    "size": 38957056,
+    "sha256": "0bceedac3936dc4162562ec35e03177c7e71b99e13b66837035d1ccd151f0512",
+    "mtime_ns": 1788762575483605500,
+    "origin": "project/.local-research/stocks-session-20260907/work/value-measurement-source/quotes.db"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/value-ready-bundle/original/quotes.db",
+    "size": 38662144,
+    "sha256": "30ce8e91fba9cb0a0c09571be71821c9da2d0aec49d12ec15aab8b26522ffd2c",
+    "mtime_ns": 1788758533640330400,
+    "origin": "project/.local-research/stocks-session-20260907/work/value-ready-bundle/original/quotes.db"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/value-ready-bundle/repaired/quotes.db",
+    "size": 38957056,
+    "sha256": "0bceedac3936dc4162562ec35e03177c7e71b99e13b66837035d1ccd151f0512",
+    "mtime_ns": 1788762575483605500,
+    "origin": "project/.local-research/stocks-session-20260907/work/value-ready-bundle/repaired/quotes.db"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/value-ready-ce8d1573257f/original/quotes.db",
+    "size": 38662144,
+    "sha256": "30ce8e91fba9cb0a0c09571be71821c9da2d0aec49d12ec15aab8b26522ffd2c",
+    "mtime_ns": 1788800761589288800,
+    "origin": "project/.local-research/stocks-session-20260907/work/value-ready-ce8d1573257f/original/quotes.db"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/value-ready-ce8d1573257f/repaired/quotes.db",
+    "size": 38957056,
+    "sha256": "0bceedac3936dc4162562ec35e03177c7e71b99e13b66837035d1ccd151f0512",
+    "mtime_ns": 1788800762021103500,
+    "origin": "project/.local-research/stocks-session-20260907/work/value-ready-ce8d1573257f/repaired/quotes.db"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/value-successor-source/successors.db",
+    "size": 1323008,
+    "sha256": "fa3d464e3e463b66c2aa64d96228aeb5d1fae63514df1d0ddb58233240b52764",
+    "mtime_ns": 1788802570108200900,
+    "origin": "project/.local-research/stocks-session-20260907/work/value-successor-source/successors.db"
+  },
+  {
+    "path": "project/data/COTAHIST_A2016.ZIP",
+    "size": 15715361,
+    "sha256": "ffc82a9b973cb5901e68dc11bea1bbc9bf0a2c46749e0efe5a7a89229bc0d81f",
+    "mtime_ns": 1787881173590741500,
+    "origin": "project/data/COTAHIST_A2016.ZIP"
+  },
+  {
+    "path": "project/data/COTAHIST_A2017.ZIP",
+    "size": 16527191,
+    "sha256": "af6aaa85187c1d58ec6565522644066da573a7dc5b579c1d4c906ae95a2dea86",
+    "mtime_ns": 1787881188136551200,
+    "origin": "project/data/COTAHIST_A2017.ZIP"
+  },
+  {
+    "path": "project/data/COTAHIST_A2018.ZIP",
+    "size": 19488404,
+    "sha256": "9d66136179d9822476c6035000167aecf2665f4396619e4d74c0011745a0c507",
+    "mtime_ns": 1787881191984849200,
+    "origin": "project/data/COTAHIST_A2018.ZIP"
+  },
+  {
+    "path": "project/data/COTAHIST_A2019.ZIP",
+    "size": 26650371,
+    "sha256": "5170d3f8f079c3306424b36c2fae9b467391f8fa37d16d389f487b4c5c28edb9",
+    "mtime_ns": 1787881199151135800,
+    "origin": "project/data/COTAHIST_A2019.ZIP"
+  },
+  {
+    "path": "project/data/COTAHIST_A2020.ZIP",
+    "size": 37181542,
+    "sha256": "86442168939b9da7b3cc1ec1662c333ee5ab4c75f2be1865b5bf55ba4c52168f",
+    "mtime_ns": 1787881210281883400,
+    "origin": "project/data/COTAHIST_A2020.ZIP"
+  },
+  {
+    "path": "project/data/COTAHIST_A2021.ZIP",
+    "size": 49678679,
+    "sha256": "b0d4aed17d609c7ba615a23320c2fd513b580a251ae7d884a5015ef8a3fe4705",
+    "mtime_ns": 1787881220628810000,
+    "origin": "project/data/COTAHIST_A2021.ZIP"
+  },
+  {
+    "path": "project/data/COTAHIST_A2022.ZIP",
+    "size": 58597842,
+    "sha256": "a4f9015b755f797d9c08b0d13f19dbfab18a6c75f379c0271a1cf1b5f6323cd8",
+    "mtime_ns": 1787881229438538500,
+    "origin": "project/data/COTAHIST_A2022.ZIP"
+  },
+  {
+    "path": "project/data/COTAHIST_A2023.ZIP",
+    "size": 70216090,
+    "sha256": "ad1603788d78aaa1de806498572277f1d9443f88ae116452751b5800cb23523e",
+    "mtime_ns": 1787881236488655800,
+    "origin": "project/data/COTAHIST_A2023.ZIP"
+  },
+  {
+    "path": "project/data/COTAHIST_A2024.ZIP",
+    "size": 79261198,
+    "sha256": "96a003d10fab0fa2ace0c64cdc2b892b4c111adf9da8e538aa0b28437bd2a172",
+    "mtime_ns": 1787881246728701000,
+    "origin": "project/data/COTAHIST_A2024.ZIP"
+  },
+  {
+    "path": "project/data/COTAHIST_A2025.ZIP",
+    "size": 89056788,
+    "sha256": "6cc0ad851c8f605ca30418acac48be81f1767f6ed05b4f563772d06ae448047d",
+    "mtime_ns": 1787881257412321400,
+    "origin": "project/data/COTAHIST_A2025.ZIP"
+  },
+  {
+    "path": "project/data/COTAHIST_A2026.ZIP",
+    "size": 75695477,
+    "sha256": "2e118470d04c2cd2637c857561fbf59e19533a650aa29d71cd16d44110008ca0",
+    "mtime_ns": 1787881265506865300,
+    "origin": "project/data/COTAHIST_A2026.ZIP"
+  },
+  {
+    "path": "project/data/stocks.db",
+    "size": 257163264,
+    "sha256": "a22739794ba4a43a11544338d4a91e14cb6a0b1f7b132ab460f96d3359f63cf4",
+    "mtime_ns": 1788713332439024600,
+    "origin": "project/data/stocks.db"
+  },
+  {
+    "path": "unpacked-archives/session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_12.zip.contents/baseline/quotes-2018.cotahist.txt",
+    "size": 5259726,
+    "sha256": "8fad0b7a46aa5bc583d34c7aff5c0eebd209637b2c54d94b10b3bc7bfe3fb0ab",
+    "mtime_ns": 0,
+    "origin": "session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_12.zip!baseline/quotes-2018.cotahist.txt"
+  },
+  {
+    "path": "unpacked-archives/session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_12.zip.contents/baseline/quotes-2019.cotahist.txt",
+    "size": 10717482,
+    "sha256": "5068264eba965725b7db24c12d4db0c553d4f4eb6a1d2d6aa43e54dbf2d13e03",
+    "mtime_ns": 0,
+    "origin": "session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_12.zip!baseline/quotes-2019.cotahist.txt"
+  },
+  {
+    "path": "unpacked-archives/session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_12.zip.contents/baseline/quotes-2020.cotahist.txt",
+    "size": 11581188,
+    "sha256": "d9d0ebf88122561d9b0514f13703e36b3193cf0151816cc82afb8b7c14587996",
+    "mtime_ns": 0,
+    "origin": "session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_12.zip!baseline/quotes-2020.cotahist.txt"
+  },
+  {
+    "path": "unpacked-archives/session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_12.zip.contents/baseline/quotes-2021.cotahist.txt",
+    "size": 12509592,
+    "sha256": "de09c82c4b2c138c750b43ff5d65134bc1915c58281df34a61a8b0e98c634713",
+    "mtime_ns": 0,
+    "origin": "session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_12.zip!baseline/quotes-2021.cotahist.txt"
+  },
+  {
+    "path": "unpacked-archives/session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_12.zip.contents/baseline/quotes-2022.cotahist.txt",
+    "size": 12448338,
+    "sha256": "d4351c52a877c6b504280ef1a90b3001a1d068e012957a34fc4c16c651c252c6",
+    "mtime_ns": 0,
+    "origin": "session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_12.zip!baseline/quotes-2022.cotahist.txt"
+  },
+  {
+    "path": "unpacked-archives/session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_12.zip.contents/baseline/quotes-2023.cotahist.txt",
+    "size": 11814888,
+    "sha256": "0ae5e60f5d804e8a4dc60268655d17f543142f1be735d451ff3864161e318e03",
+    "mtime_ns": 0,
+    "origin": "session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_12.zip!baseline/quotes-2023.cotahist.txt"
+  },
+  {
+    "path": "unpacked-archives/session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_12.zip.contents/baseline/quotes-2024.cotahist.txt",
+    "size": 11591520,
+    "sha256": "181e7f2e53b72810797d4cf20d4e5ca83a44024d281d480ec3b35f1d461464da",
+    "mtime_ns": 0,
+    "origin": "session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_12.zip!baseline/quotes-2024.cotahist.txt"
+  },
+  {
+    "path": "unpacked-archives/session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_12.zip.contents/baseline/quotes-2025.cotahist.txt",
+    "size": 11215386,
+    "sha256": "a2fbea0bbfd3e25e46ee226b4aa373ff5fa80acbea726f97ddcf53af767aed76",
+    "mtime_ns": 0,
+    "origin": "session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_12.zip!baseline/quotes-2025.cotahist.txt"
+  },
+  {
+    "path": "unpacked-archives/session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_12.zip.contents/baseline/quotes-2026.cotahist.txt",
+    "size": 2639088,
+    "sha256": "e7caad400b40a484c92d211f5ba9ff5b884ae886b4ae7a1ac40f423ba0a7210c",
+    "mtime_ns": 0,
+    "origin": "session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_12.zip!baseline/quotes-2026.cotahist.txt"
+  },
+  {
+    "path": "unpacked-archives/session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_12.zip.contents/baseline/quotes-bonus-pn.cotahist.txt",
+    "size": 61500,
+    "sha256": "129d3f14b7889d420b64e32aee2591edbb86e1ec6166dff17fadc83d15d90d57",
+    "mtime_ns": 0,
+    "origin": "session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_12.zip!baseline/quotes-bonus-pn.cotahist.txt"
+  },
+  {
+    "path": "unpacked-archives/session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_12.zip.contents/inputs/quotes-2018.cotahist.txt",
+    "size": 5259726,
+    "sha256": "8fad0b7a46aa5bc583d34c7aff5c0eebd209637b2c54d94b10b3bc7bfe3fb0ab",
+    "mtime_ns": 0,
+    "origin": "session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_12.zip!inputs/quotes-2018.cotahist.txt"
+  },
+  {
+    "path": "unpacked-archives/session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_12.zip.contents/inputs/quotes-2019.cotahist.txt",
+    "size": 10717482,
+    "sha256": "5068264eba965725b7db24c12d4db0c553d4f4eb6a1d2d6aa43e54dbf2d13e03",
+    "mtime_ns": 0,
+    "origin": "session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_12.zip!inputs/quotes-2019.cotahist.txt"
+  },
+  {
+    "path": "unpacked-archives/session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_12.zip.contents/inputs/quotes-2020.cotahist.txt",
+    "size": 11581188,
+    "sha256": "d9d0ebf88122561d9b0514f13703e36b3193cf0151816cc82afb8b7c14587996",
+    "mtime_ns": 0,
+    "origin": "session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_12.zip!inputs/quotes-2020.cotahist.txt"
+  },
+  {
+    "path": "unpacked-archives/session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_12.zip.contents/inputs/quotes-2021.cotahist.txt",
+    "size": 12509592,
+    "sha256": "de09c82c4b2c138c750b43ff5d65134bc1915c58281df34a61a8b0e98c634713",
+    "mtime_ns": 0,
+    "origin": "session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_12.zip!inputs/quotes-2021.cotahist.txt"
+  },
+  {
+    "path": "unpacked-archives/session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_12.zip.contents/inputs/quotes-2022.cotahist.txt",
+    "size": 12448338,
+    "sha256": "d4351c52a877c6b504280ef1a90b3001a1d068e012957a34fc4c16c651c252c6",
+    "mtime_ns": 0,
+    "origin": "session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_12.zip!inputs/quotes-2022.cotahist.txt"
+  },
+  {
+    "path": "unpacked-archives/session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_12.zip.contents/inputs/quotes-2023.cotahist.txt",
+    "size": 11814888,
+    "sha256": "0ae5e60f5d804e8a4dc60268655d17f543142f1be735d451ff3864161e318e03",
+    "mtime_ns": 0,
+    "origin": "session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_12.zip!inputs/quotes-2023.cotahist.txt"
+  },
+  {
+    "path": "unpacked-archives/session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_12.zip.contents/inputs/quotes-2024.cotahist.txt",
+    "size": 11591520,
+    "sha256": "181e7f2e53b72810797d4cf20d4e5ca83a44024d281d480ec3b35f1d461464da",
+    "mtime_ns": 0,
+    "origin": "session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_12.zip!inputs/quotes-2024.cotahist.txt"
+  },
+  {
+    "path": "unpacked-archives/session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_12.zip.contents/inputs/quotes-2025.cotahist.txt",
+    "size": 11215386,
+    "sha256": "a2fbea0bbfd3e25e46ee226b4aa373ff5fa80acbea726f97ddcf53af767aed76",
+    "mtime_ns": 0,
+    "origin": "session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_12.zip!inputs/quotes-2025.cotahist.txt"
+  },
+  {
+    "path": "unpacked-archives/session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_12.zip.contents/inputs/quotes-2026.cotahist.txt",
+    "size": 2639088,
+    "sha256": "e7caad400b40a484c92d211f5ba9ff5b884ae886b4ae7a1ac40f423ba0a7210c",
+    "mtime_ns": 0,
+    "origin": "session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_12.zip!inputs/quotes-2026.cotahist.txt"
+  },
+  {
+    "path": "unpacked-archives/session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_12.zip.contents/inputs/quotes-bonus-pn.cotahist.txt",
+    "size": 61500,
+    "sha256": "129d3f14b7889d420b64e32aee2591edbb86e1ec6166dff17fadc83d15d90d57",
+    "mtime_ns": 0,
+    "origin": "session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_12.zip!inputs/quotes-bonus-pn.cotahist.txt"
+  },
+  {
+    "path": "unpacked-archives/session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_13.zip.contents/baseline/quotes-2018.cotahist.txt",
+    "size": 5259726,
+    "sha256": "8fad0b7a46aa5bc583d34c7aff5c0eebd209637b2c54d94b10b3bc7bfe3fb0ab",
+    "mtime_ns": 0,
+    "origin": "session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_13.zip!baseline/quotes-2018.cotahist.txt"
+  },
+  {
+    "path": "unpacked-archives/session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_13.zip.contents/baseline/quotes-2019.cotahist.txt",
+    "size": 10717482,
+    "sha256": "5068264eba965725b7db24c12d4db0c553d4f4eb6a1d2d6aa43e54dbf2d13e03",
+    "mtime_ns": 0,
+    "origin": "session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_13.zip!baseline/quotes-2019.cotahist.txt"
+  },
+  {
+    "path": "unpacked-archives/session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_13.zip.contents/baseline/quotes-2020.cotahist.txt",
+    "size": 11581188,
+    "sha256": "d9d0ebf88122561d9b0514f13703e36b3193cf0151816cc82afb8b7c14587996",
+    "mtime_ns": 0,
+    "origin": "session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_13.zip!baseline/quotes-2020.cotahist.txt"
+  },
+  {
+    "path": "unpacked-archives/session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_13.zip.contents/baseline/quotes-2021.cotahist.txt",
+    "size": 12509592,
+    "sha256": "de09c82c4b2c138c750b43ff5d65134bc1915c58281df34a61a8b0e98c634713",
+    "mtime_ns": 0,
+    "origin": "session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_13.zip!baseline/quotes-2021.cotahist.txt"
+  },
+  {
+    "path": "unpacked-archives/session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_13.zip.contents/baseline/quotes-2022.cotahist.txt",
+    "size": 12448338,
+    "sha256": "d4351c52a877c6b504280ef1a90b3001a1d068e012957a34fc4c16c651c252c6",
+    "mtime_ns": 0,
+    "origin": "session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_13.zip!baseline/quotes-2022.cotahist.txt"
+  },
+  {
+    "path": "unpacked-archives/session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_13.zip.contents/baseline/quotes-2023.cotahist.txt",
+    "size": 11814888,
+    "sha256": "0ae5e60f5d804e8a4dc60268655d17f543142f1be735d451ff3864161e318e03",
+    "mtime_ns": 0,
+    "origin": "session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_13.zip!baseline/quotes-2023.cotahist.txt"
+  },
+  {
+    "path": "unpacked-archives/session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_13.zip.contents/baseline/quotes-2024.cotahist.txt",
+    "size": 11591520,
+    "sha256": "181e7f2e53b72810797d4cf20d4e5ca83a44024d281d480ec3b35f1d461464da",
+    "mtime_ns": 0,
+    "origin": "session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_13.zip!baseline/quotes-2024.cotahist.txt"
+  },
+  {
+    "path": "unpacked-archives/session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_13.zip.contents/baseline/quotes-2025.cotahist.txt",
+    "size": 11215386,
+    "sha256": "a2fbea0bbfd3e25e46ee226b4aa373ff5fa80acbea726f97ddcf53af767aed76",
+    "mtime_ns": 0,
+    "origin": "session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_13.zip!baseline/quotes-2025.cotahist.txt"
+  },
+  {
+    "path": "unpacked-archives/session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_13.zip.contents/baseline/quotes-2026.cotahist.txt",
+    "size": 2639088,
+    "sha256": "e7caad400b40a484c92d211f5ba9ff5b884ae886b4ae7a1ac40f423ba0a7210c",
+    "mtime_ns": 0,
+    "origin": "session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_13.zip!baseline/quotes-2026.cotahist.txt"
+  },
+  {
+    "path": "unpacked-archives/session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_13.zip.contents/baseline/quotes-bonus-pn.cotahist.txt",
+    "size": 61500,
+    "sha256": "129d3f14b7889d420b64e32aee2591edbb86e1ec6166dff17fadc83d15d90d57",
+    "mtime_ns": 0,
+    "origin": "session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_13.zip!baseline/quotes-bonus-pn.cotahist.txt"
+  },
+  {
+    "path": "unpacked-archives/session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_13.zip.contents/inputs/quotes-2018.cotahist.txt",
+    "size": 5259726,
+    "sha256": "8fad0b7a46aa5bc583d34c7aff5c0eebd209637b2c54d94b10b3bc7bfe3fb0ab",
+    "mtime_ns": 0,
+    "origin": "session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_13.zip!inputs/quotes-2018.cotahist.txt"
+  },
+  {
+    "path": "unpacked-archives/session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_13.zip.contents/inputs/quotes-2019.cotahist.txt",
+    "size": 10717482,
+    "sha256": "5068264eba965725b7db24c12d4db0c553d4f4eb6a1d2d6aa43e54dbf2d13e03",
+    "mtime_ns": 0,
+    "origin": "session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_13.zip!inputs/quotes-2019.cotahist.txt"
+  },
+  {
+    "path": "unpacked-archives/session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_13.zip.contents/inputs/quotes-2020.cotahist.txt",
+    "size": 11581188,
+    "sha256": "d9d0ebf88122561d9b0514f13703e36b3193cf0151816cc82afb8b7c14587996",
+    "mtime_ns": 0,
+    "origin": "session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_13.zip!inputs/quotes-2020.cotahist.txt"
+  },
+  {
+    "path": "unpacked-archives/session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_13.zip.contents/inputs/quotes-2021.cotahist.txt",
+    "size": 12509592,
+    "sha256": "de09c82c4b2c138c750b43ff5d65134bc1915c58281df34a61a8b0e98c634713",
+    "mtime_ns": 0,
+    "origin": "session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_13.zip!inputs/quotes-2021.cotahist.txt"
+  },
+  {
+    "path": "unpacked-archives/session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_13.zip.contents/inputs/quotes-2022.cotahist.txt",
+    "size": 12448338,
+    "sha256": "d4351c52a877c6b504280ef1a90b3001a1d068e012957a34fc4c16c651c252c6",
+    "mtime_ns": 0,
+    "origin": "session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_13.zip!inputs/quotes-2022.cotahist.txt"
+  },
+  {
+    "path": "unpacked-archives/session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_13.zip.contents/inputs/quotes-2023.cotahist.txt",
+    "size": 11814888,
+    "sha256": "0ae5e60f5d804e8a4dc60268655d17f543142f1be735d451ff3864161e318e03",
+    "mtime_ns": 0,
+    "origin": "session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_13.zip!inputs/quotes-2023.cotahist.txt"
+  },
+  {
+    "path": "unpacked-archives/session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_13.zip.contents/inputs/quotes-2024.cotahist.txt",
+    "size": 11591520,
+    "sha256": "181e7f2e53b72810797d4cf20d4e5ca83a44024d281d480ec3b35f1d461464da",
+    "mtime_ns": 0,
+    "origin": "session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_13.zip!inputs/quotes-2024.cotahist.txt"
+  },
+  {
+    "path": "unpacked-archives/session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_13.zip.contents/inputs/quotes-2025.cotahist.txt",
+    "size": 11215386,
+    "sha256": "a2fbea0bbfd3e25e46ee226b4aa373ff5fa80acbea726f97ddcf53af767aed76",
+    "mtime_ns": 0,
+    "origin": "session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_13.zip!inputs/quotes-2025.cotahist.txt"
+  },
+  {
+    "path": "unpacked-archives/session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_13.zip.contents/inputs/quotes-2026.cotahist.txt",
+    "size": 2639088,
+    "sha256": "e7caad400b40a484c92d211f5ba9ff5b884ae886b4ae7a1ac40f423ba0a7210c",
+    "mtime_ns": 0,
+    "origin": "session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_13.zip!inputs/quotes-2026.cotahist.txt"
+  },
+  {
+    "path": "unpacked-archives/session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_13.zip.contents/inputs/quotes-bonus-pn.cotahist.txt",
+    "size": 61500,
+    "sha256": "129d3f14b7889d420b64e32aee2591edbb86e1ec6166dff17fadc83d15d90d57",
+    "mtime_ns": 0,
+    "origin": "session/outputs/AUDITORIA_STOCKS_REPRODUZIVEL_13.zip!inputs/quotes-bonus-pn.cotahist.txt"
+  },
+  {
+    "path": "session/work/continuation-14/baseline-13/baseline/quotes-2018.cotahist.txt",
+    "size": 5259726,
+    "sha256": "8fad0b7a46aa5bc583d34c7aff5c0eebd209637b2c54d94b10b3bc7bfe3fb0ab",
+    "mtime_ns": 1788816940000000000,
+    "origin": "session/work/continuation-14/baseline-13/baseline/quotes-2018.cotahist.txt"
+  },
+  {
+    "path": "session/work/continuation-14/baseline-13/baseline/quotes-2019.cotahist.txt",
+    "size": 10717482,
+    "sha256": "5068264eba965725b7db24c12d4db0c553d4f4eb6a1d2d6aa43e54dbf2d13e03",
+    "mtime_ns": 1788816940000000000,
+    "origin": "session/work/continuation-14/baseline-13/baseline/quotes-2019.cotahist.txt"
+  },
+  {
+    "path": "session/work/continuation-14/baseline-13/baseline/quotes-2020.cotahist.txt",
+    "size": 11581188,
+    "sha256": "d9d0ebf88122561d9b0514f13703e36b3193cf0151816cc82afb8b7c14587996",
+    "mtime_ns": 1788816942000000000,
+    "origin": "session/work/continuation-14/baseline-13/baseline/quotes-2020.cotahist.txt"
+  },
+  {
+    "path": "session/work/continuation-14/baseline-13/baseline/quotes-2021.cotahist.txt",
+    "size": 12509592,
+    "sha256": "de09c82c4b2c138c750b43ff5d65134bc1915c58281df34a61a8b0e98c634713",
+    "mtime_ns": 1788816944000000000,
+    "origin": "session/work/continuation-14/baseline-13/baseline/quotes-2021.cotahist.txt"
+  },
+  {
+    "path": "session/work/continuation-14/baseline-13/baseline/quotes-2022.cotahist.txt",
+    "size": 12448338,
+    "sha256": "d4351c52a877c6b504280ef1a90b3001a1d068e012957a34fc4c16c651c252c6",
+    "mtime_ns": 1788816948000000000,
+    "origin": "session/work/continuation-14/baseline-13/baseline/quotes-2022.cotahist.txt"
+  },
+  {
+    "path": "session/work/continuation-14/baseline-13/baseline/quotes-2023.cotahist.txt",
+    "size": 11814888,
+    "sha256": "0ae5e60f5d804e8a4dc60268655d17f543142f1be735d451ff3864161e318e03",
+    "mtime_ns": 1788816954000000000,
+    "origin": "session/work/continuation-14/baseline-13/baseline/quotes-2023.cotahist.txt"
+  },
+  {
+    "path": "session/work/continuation-14/baseline-13/baseline/quotes-2024.cotahist.txt",
+    "size": 11591520,
+    "sha256": "181e7f2e53b72810797d4cf20d4e5ca83a44024d281d480ec3b35f1d461464da",
+    "mtime_ns": 1788816958000000000,
+    "origin": "session/work/continuation-14/baseline-13/baseline/quotes-2024.cotahist.txt"
+  },
+  {
+    "path": "session/work/continuation-14/baseline-13/baseline/quotes-2025.cotahist.txt",
+    "size": 11215386,
+    "sha256": "a2fbea0bbfd3e25e46ee226b4aa373ff5fa80acbea726f97ddcf53af767aed76",
+    "mtime_ns": 1788816966000000000,
+    "origin": "session/work/continuation-14/baseline-13/baseline/quotes-2025.cotahist.txt"
+  },
+  {
+    "path": "session/work/continuation-14/baseline-13/baseline/quotes-2026.cotahist.txt",
+    "size": 2639088,
+    "sha256": "e7caad400b40a484c92d211f5ba9ff5b884ae886b4ae7a1ac40f423ba0a7210c",
+    "mtime_ns": 1788816970000000000,
+    "origin": "session/work/continuation-14/baseline-13/baseline/quotes-2026.cotahist.txt"
+  },
+  {
+    "path": "session/work/continuation-14/baseline-13/baseline/quotes-bonus-pn.cotahist.txt",
+    "size": 61500,
+    "sha256": "129d3f14b7889d420b64e32aee2591edbb86e1ec6166dff17fadc83d15d90d57",
+    "mtime_ns": 1788819998000000000,
+    "origin": "session/work/continuation-14/baseline-13/baseline/quotes-bonus-pn.cotahist.txt"
+  },
+  {
+    "path": "session/work/continuation-14/baseline-13/inputs/quotes-2018.cotahist.txt",
+    "size": 5259726,
+    "sha256": "8fad0b7a46aa5bc583d34c7aff5c0eebd209637b2c54d94b10b3bc7bfe3fb0ab",
+    "mtime_ns": 1788816940000000000,
+    "origin": "session/work/continuation-14/baseline-13/inputs/quotes-2018.cotahist.txt"
+  },
+  {
+    "path": "session/work/continuation-14/baseline-13/inputs/quotes-2019.cotahist.txt",
+    "size": 10717482,
+    "sha256": "5068264eba965725b7db24c12d4db0c553d4f4eb6a1d2d6aa43e54dbf2d13e03",
+    "mtime_ns": 1788816940000000000,
+    "origin": "session/work/continuation-14/baseline-13/inputs/quotes-2019.cotahist.txt"
+  },
+  {
+    "path": "session/work/continuation-14/baseline-13/inputs/quotes-2020.cotahist.txt",
+    "size": 11581188,
+    "sha256": "d9d0ebf88122561d9b0514f13703e36b3193cf0151816cc82afb8b7c14587996",
+    "mtime_ns": 1788816942000000000,
+    "origin": "session/work/continuation-14/baseline-13/inputs/quotes-2020.cotahist.txt"
+  },
+  {
+    "path": "session/work/continuation-14/baseline-13/inputs/quotes-2021.cotahist.txt",
+    "size": 12509592,
+    "sha256": "de09c82c4b2c138c750b43ff5d65134bc1915c58281df34a61a8b0e98c634713",
+    "mtime_ns": 1788816944000000000,
+    "origin": "session/work/continuation-14/baseline-13/inputs/quotes-2021.cotahist.txt"
+  },
+  {
+    "path": "session/work/continuation-14/baseline-13/inputs/quotes-2022.cotahist.txt",
+    "size": 12448338,
+    "sha256": "d4351c52a877c6b504280ef1a90b3001a1d068e012957a34fc4c16c651c252c6",
+    "mtime_ns": 1788816948000000000,
+    "origin": "session/work/continuation-14/baseline-13/inputs/quotes-2022.cotahist.txt"
+  },
+  {
+    "path": "session/work/continuation-14/baseline-13/inputs/quotes-2023.cotahist.txt",
+    "size": 11814888,
+    "sha256": "0ae5e60f5d804e8a4dc60268655d17f543142f1be735d451ff3864161e318e03",
+    "mtime_ns": 1788816954000000000,
+    "origin": "session/work/continuation-14/baseline-13/inputs/quotes-2023.cotahist.txt"
+  },
+  {
+    "path": "session/work/continuation-14/baseline-13/inputs/quotes-2024.cotahist.txt",
+    "size": 11591520,
+    "sha256": "181e7f2e53b72810797d4cf20d4e5ca83a44024d281d480ec3b35f1d461464da",
+    "mtime_ns": 1788816958000000000,
+    "origin": "session/work/continuation-14/baseline-13/inputs/quotes-2024.cotahist.txt"
+  },
+  {
+    "path": "session/work/continuation-14/baseline-13/inputs/quotes-2025.cotahist.txt",
+    "size": 11215386,
+    "sha256": "a2fbea0bbfd3e25e46ee226b4aa373ff5fa80acbea726f97ddcf53af767aed76",
+    "mtime_ns": 1788816966000000000,
+    "origin": "session/work/continuation-14/baseline-13/inputs/quotes-2025.cotahist.txt"
+  },
+  {
+    "path": "session/work/continuation-14/baseline-13/inputs/quotes-2026.cotahist.txt",
+    "size": 2639088,
+    "sha256": "e7caad400b40a484c92d211f5ba9ff5b884ae886b4ae7a1ac40f423ba0a7210c",
+    "mtime_ns": 1788816970000000000,
+    "origin": "session/work/continuation-14/baseline-13/inputs/quotes-2026.cotahist.txt"
+  },
+  {
+    "path": "session/work/continuation-14/baseline-13/inputs/quotes-bonus-pn.cotahist.txt",
+    "size": 61500,
+    "sha256": "129d3f14b7889d420b64e32aee2591edbb86e1ec6166dff17fadc83d15d90d57",
+    "mtime_ns": 1788819998000000000,
+    "origin": "session/work/continuation-14/baseline-13/inputs/quotes-bonus-pn.cotahist.txt"
+  },
+  {
+    "path": "session/work/continuation-14/inputs-14-awaiting-python-validation/quotes-2018.cotahist.txt",
+    "size": 5259726,
+    "sha256": "8fad0b7a46aa5bc583d34c7aff5c0eebd209637b2c54d94b10b3bc7bfe3fb0ab",
+    "mtime_ns": 1788816940000000000,
+    "origin": "session/work/continuation-14/inputs-14-awaiting-python-validation/quotes-2018.cotahist.txt"
+  },
+  {
+    "path": "session/work/continuation-14/inputs-14-awaiting-python-validation/quotes-2019.cotahist.txt",
+    "size": 10717482,
+    "sha256": "5068264eba965725b7db24c12d4db0c553d4f4eb6a1d2d6aa43e54dbf2d13e03",
+    "mtime_ns": 1788816940000000000,
+    "origin": "session/work/continuation-14/inputs-14-awaiting-python-validation/quotes-2019.cotahist.txt"
+  },
+  {
+    "path": "session/work/continuation-14/inputs-14-awaiting-python-validation/quotes-2020.cotahist.txt",
+    "size": 11581188,
+    "sha256": "d9d0ebf88122561d9b0514f13703e36b3193cf0151816cc82afb8b7c14587996",
+    "mtime_ns": 1788816942000000000,
+    "origin": "session/work/continuation-14/inputs-14-awaiting-python-validation/quotes-2020.cotahist.txt"
+  },
+  {
+    "path": "session/work/continuation-14/inputs-14-awaiting-python-validation/quotes-2021.cotahist.txt",
+    "size": 12509592,
+    "sha256": "de09c82c4b2c138c750b43ff5d65134bc1915c58281df34a61a8b0e98c634713",
+    "mtime_ns": 1788816944000000000,
+    "origin": "session/work/continuation-14/inputs-14-awaiting-python-validation/quotes-2021.cotahist.txt"
+  },
+  {
+    "path": "session/work/continuation-14/inputs-14-awaiting-python-validation/quotes-2022.cotahist.txt",
+    "size": 12448338,
+    "sha256": "d4351c52a877c6b504280ef1a90b3001a1d068e012957a34fc4c16c651c252c6",
+    "mtime_ns": 1788816948000000000,
+    "origin": "session/work/continuation-14/inputs-14-awaiting-python-validation/quotes-2022.cotahist.txt"
+  },
+  {
+    "path": "session/work/continuation-14/inputs-14-awaiting-python-validation/quotes-2023.cotahist.txt",
+    "size": 11814888,
+    "sha256": "0ae5e60f5d804e8a4dc60268655d17f543142f1be735d451ff3864161e318e03",
+    "mtime_ns": 1788816954000000000,
+    "origin": "session/work/continuation-14/inputs-14-awaiting-python-validation/quotes-2023.cotahist.txt"
+  },
+  {
+    "path": "session/work/continuation-14/inputs-14-awaiting-python-validation/quotes-2024.cotahist.txt",
+    "size": 11591520,
+    "sha256": "181e7f2e53b72810797d4cf20d4e5ca83a44024d281d480ec3b35f1d461464da",
+    "mtime_ns": 1788816958000000000,
+    "origin": "session/work/continuation-14/inputs-14-awaiting-python-validation/quotes-2024.cotahist.txt"
+  },
+  {
+    "path": "session/work/continuation-14/inputs-14-awaiting-python-validation/quotes-2025.cotahist.txt",
+    "size": 11215386,
+    "sha256": "a2fbea0bbfd3e25e46ee226b4aa373ff5fa80acbea726f97ddcf53af767aed76",
+    "mtime_ns": 1788816966000000000,
+    "origin": "session/work/continuation-14/inputs-14-awaiting-python-validation/quotes-2025.cotahist.txt"
+  },
+  {
+    "path": "session/work/continuation-14/inputs-14-awaiting-python-validation/quotes-2026.cotahist.txt",
+    "size": 2639088,
+    "sha256": "e7caad400b40a484c92d211f5ba9ff5b884ae886b4ae7a1ac40f423ba0a7210c",
+    "mtime_ns": 1788816970000000000,
+    "origin": "session/work/continuation-14/inputs-14-awaiting-python-validation/quotes-2026.cotahist.txt"
+  },
+  {
+    "path": "session/work/continuation-14/inputs-14-awaiting-python-validation/quotes-bonus-pn.cotahist.txt",
+    "size": 61500,
+    "sha256": "129d3f14b7889d420b64e32aee2591edbb86e1ec6166dff17fadc83d15d90d57",
+    "mtime_ns": 1788819998000000000,
+    "origin": "session/work/continuation-14/inputs-14-awaiting-python-validation/quotes-bonus-pn.cotahist.txt"
+  },
+  {
+    "path": "session/work/migration-20260908/validation-14/inputs/quotes-2018.cotahist.txt",
+    "size": 5259726,
+    "sha256": "8fad0b7a46aa5bc583d34c7aff5c0eebd209637b2c54d94b10b3bc7bfe3fb0ab",
+    "mtime_ns": 1788816940000000000,
+    "origin": "session/work/migration-20260908/validation-14/inputs/quotes-2018.cotahist.txt"
+  },
+  {
+    "path": "session/work/migration-20260908/validation-14/inputs/quotes-2019.cotahist.txt",
+    "size": 10717482,
+    "sha256": "5068264eba965725b7db24c12d4db0c553d4f4eb6a1d2d6aa43e54dbf2d13e03",
+    "mtime_ns": 1788816940000000000,
+    "origin": "session/work/migration-20260908/validation-14/inputs/quotes-2019.cotahist.txt"
+  },
+  {
+    "path": "session/work/migration-20260908/validation-14/inputs/quotes-2020.cotahist.txt",
+    "size": 11581188,
+    "sha256": "d9d0ebf88122561d9b0514f13703e36b3193cf0151816cc82afb8b7c14587996",
+    "mtime_ns": 1788816942000000000,
+    "origin": "session/work/migration-20260908/validation-14/inputs/quotes-2020.cotahist.txt"
+  },
+  {
+    "path": "session/work/migration-20260908/validation-14/inputs/quotes-2021.cotahist.txt",
+    "size": 12509592,
+    "sha256": "de09c82c4b2c138c750b43ff5d65134bc1915c58281df34a61a8b0e98c634713",
+    "mtime_ns": 1788816944000000000,
+    "origin": "session/work/migration-20260908/validation-14/inputs/quotes-2021.cotahist.txt"
+  },
+  {
+    "path": "session/work/migration-20260908/validation-14/inputs/quotes-2022.cotahist.txt",
+    "size": 12448338,
+    "sha256": "d4351c52a877c6b504280ef1a90b3001a1d068e012957a34fc4c16c651c252c6",
+    "mtime_ns": 1788816948000000000,
+    "origin": "session/work/migration-20260908/validation-14/inputs/quotes-2022.cotahist.txt"
+  },
+  {
+    "path": "session/work/migration-20260908/validation-14/inputs/quotes-2023.cotahist.txt",
+    "size": 11814888,
+    "sha256": "0ae5e60f5d804e8a4dc60268655d17f543142f1be735d451ff3864161e318e03",
+    "mtime_ns": 1788816954000000000,
+    "origin": "session/work/migration-20260908/validation-14/inputs/quotes-2023.cotahist.txt"
+  },
+  {
+    "path": "session/work/migration-20260908/validation-14/inputs/quotes-2024.cotahist.txt",
+    "size": 11591520,
+    "sha256": "181e7f2e53b72810797d4cf20d4e5ca83a44024d281d480ec3b35f1d461464da",
+    "mtime_ns": 1788816958000000000,
+    "origin": "session/work/migration-20260908/validation-14/inputs/quotes-2024.cotahist.txt"
+  },
+  {
+    "path": "session/work/migration-20260908/validation-14/inputs/quotes-2025.cotahist.txt",
+    "size": 11215386,
+    "sha256": "a2fbea0bbfd3e25e46ee226b4aa373ff5fa80acbea726f97ddcf53af767aed76",
+    "mtime_ns": 1788816966000000000,
+    "origin": "session/work/migration-20260908/validation-14/inputs/quotes-2025.cotahist.txt"
+  },
+  {
+    "path": "session/work/migration-20260908/validation-14/inputs/quotes-2026.cotahist.txt",
+    "size": 2639088,
+    "sha256": "e7caad400b40a484c92d211f5ba9ff5b884ae886b4ae7a1ac40f423ba0a7210c",
+    "mtime_ns": 1788816970000000000,
+    "origin": "session/work/migration-20260908/validation-14/inputs/quotes-2026.cotahist.txt"
+  },
+  {
+    "path": "session/work/migration-20260908/validation-14/inputs/quotes-bonus-pn.cotahist.txt",
+    "size": 61500,
+    "sha256": "129d3f14b7889d420b64e32aee2591edbb86e1ec6166dff17fadc83d15d90d57",
+    "mtime_ns": 1788819998000000000,
+    "origin": "session/work/migration-20260908/validation-14/inputs/quotes-bonus-pn.cotahist.txt"
+  }
+]

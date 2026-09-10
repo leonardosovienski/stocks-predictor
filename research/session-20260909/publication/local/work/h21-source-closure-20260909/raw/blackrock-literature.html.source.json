@@ -1,0 +1,15 @@
+{
+  "id": "blackrock-literature",
+  "url": "https://www.blackrock.com/br/products/251816/ishares-ibovespa-fundo-de-ndice-fund/1506433277012.ajax",
+  "purpose": "Fund document catalog, known embedded component URL",
+  "started_at_utc": "2026-09-09T18:59:43.755652+00:00",
+  "path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\raw\\blackrock-literature.html",
+  "status": "downloaded",
+  "final_url": "https://www.blackrock.com/br/products/251816/ishares-ibovespa-fundo-de-ndice-fund/1506433277012.ajax",
+  "http_status": 200,
+  "content_type": "text/html;charset=UTF-8",
+  "last_modified": null,
+  "bytes": 782,
+  "sha256": "87a1121a76d6ec74f1f0401685391d960531a3d878ca46b177cb271524777a8d",
+  "completed_at_utc": "2026-09-09T18:59:44.437362+00:00"
+}

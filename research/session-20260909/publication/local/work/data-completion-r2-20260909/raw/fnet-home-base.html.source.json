@@ -1,0 +1,15 @@
+{
+  "id": "fnet-home-base",
+  "url": "https://fnet.bmfbovespa.com.br/fnet/publico/abrirGerenciadorDocumentosCVM",
+  "purpose": "Public filing search bootstrap without prefilter",
+  "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-home-base.html",
+  "started_at_utc": "2026-09-09T21:04:08.166853+00:00",
+  "status": "failed",
+  "curl_exit_code": 28,
+  "http_status": 0,
+  "final_url": "https://fnet.bmfbovespa.com.br/fnet/publico/abrirGerenciadorDocumentosCVM",
+  "content_type": null,
+  "error_type": "RuntimeError",
+  "error": "curl: (28) Operation timed out after 35001 milliseconds with 0 bytes received\r\n",
+  "completed_at_utc": "2026-09-09T21:04:43.265497+00:00"
+}

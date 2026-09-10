@@ -1,0 +1,28 @@
+{
+  "checks": [
+    {
+      "check": "hash-mismatch",
+      "result": "PASS_REJECTED",
+      "exception": "ValueError",
+      "detail": "Source hash differs from captured bytes"
+    },
+    {
+      "check": "truncated-transport",
+      "result": "PASS_REJECTED",
+      "exception": "BadZipFile",
+      "detail": "File is not a zip file"
+    },
+    {
+      "check": "false-july-closure",
+      "result": "PASS_REJECTED",
+      "exception": "ValueError",
+      "detail": "Calendar coverage mismatch: missing=[], unexpected=['2026-07-09']"
+    },
+    {
+      "check": "v2-only-provenance-no-price-change",
+      "result": "PASS",
+      "records": 2159
+    }
+  ],
+  "economic_valuations": 0
+}

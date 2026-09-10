@@ -1,0 +1,33 @@
+test_classification_keeps_historical_minimum_comparison (test_economics_labels.EconomicEvidenceLabels.test_classification_keeps_historical_minimum_comparison) ... ERROR
+test_no_forecast_value_from_historical_returns (test_economics_labels.EconomicEvidenceLabels.test_no_forecast_value_from_historical_returns) ... FAIL
+test_summary_explicitly_historical (test_economics_labels.EconomicEvidenceLabels.test_summary_explicitly_historical) ... FAIL
+
+======================================================================
+ERROR: test_classification_keeps_historical_minimum_comparison (test_economics_labels.EconomicEvidenceLabels.test_classification_keeps_historical_minimum_comparison)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\STOCKS\stocks-predictor\tests\test_economics_labels.py", line 26, in test_classification_keeps_historical_minimum_comparison
+    self.assertEqual(detail["forecast_status"], "NOT_ESTIMATED")
+                     ~~~~~~^^^^^^^^^^^^^^^^^^^
+KeyError: 'forecast_status'
+
+======================================================================
+FAIL: test_no_forecast_value_from_historical_returns (test_economics_labels.EconomicEvidenceLabels.test_no_forecast_value_from_historical_returns)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\STOCKS\stocks-predictor\tests\test_economics_labels.py", line 14, in test_no_forecast_value_from_historical_returns
+    self.assertIsNone(detail["expected_annual_profit_brl"])
+AssertionError: 2864.340443761524 is not None
+
+======================================================================
+FAIL: test_summary_explicitly_historical (test_economics_labels.EconomicEvidenceLabels.test_summary_explicitly_historical)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\STOCKS\stocks-predictor\tests\test_economics_labels.py", line 19, in test_summary_explicitly_historical
+    self.assertNotIn("lucro anual esperado", line)
+AssertionError: 'lucro anual esperado' unexpectedly found in 'economia: retorno l�quido anual 28.64% | vol 0.00% | maxDD 0.00% | lucro anual esperado R$ 2,864 | ECONOMICAMENTE_RELEVANTE (passa o m�nimo declarado � em BACKTEST l�quido de custos MODELADOS; n�o � evid�ncia deployable nem autoriza��o de capital)'
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.004s
+
+FAILED (failures=2, errors=1)

@@ -1,0 +1,15 @@
+{
+  "id": "b3-bova-detail",
+  "url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetDetailFund/eyJsYW5ndWFnZSI6InB0LWJyIiwiaWRGTkVUIjoiOTkwIiwiaWRDRU0iOiJCT1ZBIiwidHlwZUZ1bmQiOiJFVEYifQ==",
+  "purpose": "BOVA11 public regulatory document discovery; no returns",
+  "started_at_utc": "2026-09-09T19:32:14.458283+00:00",
+  "path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\raw\\b3-bova-detail.json",
+  "status": "downloaded",
+  "curl_exit_code": 0,
+  "http_status": 200,
+  "final_url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetDetailFund/eyJsYW5ndWFnZSI6InB0LWJyIiwiaWRGTkVUIjoiOTkwIiwiaWRDRU0iOiJCT1ZBIiwidHlwZUZ1bmQiOiJFVEYifQ==",
+  "content_type": "application/json",
+  "bytes": 33778,
+  "sha256": "17a0c42ee069a103da2f4566f9750dfe858cac6b81e07628469ffc00386cb602",
+  "completed_at_utc": "2026-09-09T19:32:15.910135+00:00"
+}

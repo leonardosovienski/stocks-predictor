@@ -1,3 +1,25 @@
+## Continuidade para auditoria integral — 09/09/2026
+
+O próximo trabalho solicitado é a
+[auditoria integral consolidada](docs/continuation/PROMPT_AUDITORIA_INTEGRAL_20260909.md),
+com 24 frentes, objetivo de lucro líquido executável, revisão das decisões e
+correções proporcionais. O usuário pediu publicar tudo que foi produzido antes
+de encerrar esta tarefa. A auditoria foi preparada, não executada.
+
+O [pacote da sessão](research/session-20260909/publication/README.md) reúne
+artefatos autorais antes apenas locais, recibos, scripts, catálogos e hashes.
+Seu manifesto distingue arquivos publicados de bancos/fontes brutas ainda
+somente em `C:\STOCKS`. Um clone do GitHub não constitui backup integral desses dados.
+
+Leia o novo mandato, confira Git/HEAD/remoto e reconstrua o estado antes de agir.
+H21 e a antiga fila de completar eventos/custos são contexto, não limite de escopo.
+Nenhum retorno econômico foi recalculado nesta consolidação; nenhuma operação,
+automação ou alteração do ambiente Windows foi iniciada.
+
+Os blocos abaixo preservam o histórico das entregas anteriores.
+
+---
+
 ## Continuidade após recuperação de bancos/fontes R2 — 09/09/2026
 
 Próxima leitura: [relatório R2](docs/research/2026-09-09-data-completion-r2.md),

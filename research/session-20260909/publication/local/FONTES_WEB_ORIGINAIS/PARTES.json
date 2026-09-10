@@ -1,0 +1,20 @@
+﻿{
+    "format":  "stocks-split-v1",
+    "archive":  "DADOS_STOCKS.zip",
+    "bytes":  5355806582,
+    "sha256":  "83d5aac8e23d72e4deb1331077e08313914375a5dbac4276e5f8ad89da586d23",
+    "max_part_bytes":  3000000000,
+    "parts":  [
+                  {
+                      "name":  "DADOS_STOCKS.zip.001",
+                      "bytes":  2677903291,
+                      "sha256":  "491c459d349c48491d3408425c489b0b4201ed2fe548a634a900a4f234bf033a"
+                  },
+                  {
+                      "name":  "DADOS_STOCKS.zip.002",
+                      "bytes":  2677903291,
+                      "sha256":  "bc1fe2f84b6e943d403ee5c90dd17fc67e5e29e68ee23d49bf307562886ec00e"
+                  }
+              ],
+    "support_files_verified":  7604
+}

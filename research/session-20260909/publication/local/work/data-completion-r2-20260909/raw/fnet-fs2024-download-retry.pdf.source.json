@@ -1,0 +1,15 @@
+{
+  "id": "fnet-fs2024-download-retry",
+  "url": "https://fnet.bmfbovespa.com.br/fnet/publico/downloadDocumento?id=672335",
+  "purpose": "Recover full FY2024 original listed in official catalogue",
+  "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-fs2024-download-retry.pdf",
+  "started_at_utc": "2026-09-09T21:16:47.773262+00:00",
+  "status": "failed",
+  "curl_exit_code": 28,
+  "http_status": 0,
+  "final_url": "https://fnet.bmfbovespa.com.br/fnet/publico/downloadDocumento?id=672335",
+  "content_type": null,
+  "error_type": "RuntimeError",
+  "error": "curl: (28) Operation timed out after 35004 milliseconds with 0 bytes received\r\n",
+  "completed_at_utc": "2026-09-09T21:17:22.891264+00:00"
+}

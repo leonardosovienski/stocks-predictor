@@ -1,0 +1,15 @@
+{
+  "id": "bova-catalog-discovery",
+  "url": "https://analisedefiis.com.br/ativo/BOVA11/relatorios",
+  "purpose": "Discovery only; original documents required",
+  "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\bova-catalog-discovery.html",
+  "started_at_utc": "2026-09-09T21:06:37.281117+00:00",
+  "status": "downloaded",
+  "curl_exit_code": 0,
+  "http_status": 200,
+  "final_url": "https://analisedefiis.com.br/ativo/BOVA11/relatorios",
+  "content_type": "text/html; charset=utf-8",
+  "bytes": 2269463,
+  "sha256": "1aeae25466fdd1d333a0dd75cdb47755fe6e8a7a7bc71bdfbd93f59c158976a7",
+  "completed_at_utc": "2026-09-09T21:06:47.448651+00:00"
+}

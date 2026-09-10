@@ -1,0 +1,15 @@
+{
+  "id": "b3-funds-main",
+  "url": "https://sistemaswebb3-listados.b3.com.br/fundsListedPage/main-R7MJDCZE.js",
+  "purpose": "Derive official ETF lookup endpoints",
+  "started_at_utc": "2026-09-09T19:24:11.082275+00:00",
+  "path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\raw\\b3-funds-main.js",
+  "status": "downloaded",
+  "curl_exit_code": 0,
+  "http_status": 200,
+  "final_url": "https://sistemaswebb3-listados.b3.com.br/fundsListedPage/main-R7MJDCZE.js",
+  "content_type": "application/javascript",
+  "bytes": 171120,
+  "sha256": "b46d92c13175218150fde89ff385c4b1d13a411ea0869b97d9d2ad1585c9d555",
+  "completed_at_utc": "2026-09-09T19:24:11.624178+00:00"
+}

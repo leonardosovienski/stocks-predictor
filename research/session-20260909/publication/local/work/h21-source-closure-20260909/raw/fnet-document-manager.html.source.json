@@ -1,0 +1,11 @@
+{
+  "id": "fnet-document-manager",
+  "url": "https://fnet.bmfbovespa.com.br/fnet/publico/abrirGerenciadorDocumentosCVM?cnpjFundo=10406511000161",
+  "purpose": "Official fund-specific regulatory document archive",
+  "started_at_utc": "2026-09-09T19:01:00.792588+00:00",
+  "path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\raw\\fnet-document-manager.html",
+  "status": "failed",
+  "error_type": "TimeoutError",
+  "error": "The read operation timed out",
+  "completed_at_utc": "2026-09-09T19:01:41.493030+00:00"
+}

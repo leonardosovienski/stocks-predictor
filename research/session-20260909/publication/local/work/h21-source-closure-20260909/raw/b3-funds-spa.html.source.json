@@ -1,0 +1,15 @@
+{
+  "id": "b3-funds-spa",
+  "url": "https://sistemaswebb3-listados.b3.com.br/fundsListedPage/ETF",
+  "purpose": "Official ETF registration and corporate action documents discovery",
+  "started_at_utc": "2026-09-09T19:23:14.312464+00:00",
+  "path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\raw\\b3-funds-spa.html",
+  "status": "downloaded",
+  "curl_exit_code": 0,
+  "http_status": 200,
+  "final_url": "https://sistemaswebb3-listados.b3.com.br/fundsListedPage/ETF",
+  "content_type": "text/html",
+  "bytes": 7365,
+  "sha256": "c32fe7a7ce5da5c634308aa12e7f926d6bf924108f94ef1b4d3f11f7cfa123ef",
+  "completed_at_utc": "2026-09-09T19:23:14.954391+00:00"
+}

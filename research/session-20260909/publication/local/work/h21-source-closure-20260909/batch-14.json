@@ -1,0 +1,14 @@
+[
+  {
+    "id": "b3-funds-config",
+    "filename": "b3-funds-config.json",
+    "url": "https://sistemaswebb3-listados.b3.com.br/fundsListedPage/assets/funds.json",
+    "purpose": "Official other-document category configuration"
+  },
+  {
+    "id": "b3-bova-other-categories",
+    "filename": "b3-bova-other-categories.json",
+    "url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetCategoriesDoctoFunds/eyJsYW5ndWFnZSI6InB0LWJyIiwiaWRDRU0iOiJCT1ZBIiwidHlwZUZ1bmQiOiJFVEYifQ==",
+    "purpose": "Audit statement document categories"
+  }
+]

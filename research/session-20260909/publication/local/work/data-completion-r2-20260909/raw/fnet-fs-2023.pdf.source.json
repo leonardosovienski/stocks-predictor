@@ -1,0 +1,15 @@
+{
+  "id": "fnet-fs-2023",
+  "url": "https://fnet.bmfbovespa.com.br/fnet/publico/exibirDocumento?id=471199&",
+  "purpose": "Original annual BOVA11 statement; ID from official public catalogue",
+  "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-fs-2023.pdf",
+  "started_at_utc": "2026-09-09T21:13:00.862259+00:00",
+  "status": "downloaded",
+  "curl_exit_code": 0,
+  "http_status": 200,
+  "final_url": "https://fnet.bmfbovespa.com.br/fnet/publico/exibirDocumento?id=471199&",
+  "content_type": "application/pdf; charset=UTF-8",
+  "bytes": 583468,
+  "sha256": "1241cf219b40bab965c981d3c21c1b29dc74497be83f9259ec22eb34e24d056c",
+  "completed_at_utc": "2026-09-09T21:13:02.538489+00:00"
+}

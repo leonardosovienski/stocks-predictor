@@ -1,0 +1,26 @@
+[
+  {
+    "id": "blackrock-fs-2024",
+    "filename": "bova-financials-2024.pdf",
+    "url": "https://www.blackrock.com/br/literature/annual-financial-statements/ishares-bova11-brl-demonstrativos-financeiros-2024-ptbr.pdf",
+    "purpose": "Audited investor-event notes 2023-2024"
+  },
+  {
+    "id": "fnet-document-manager",
+    "filename": "fnet-document-manager.html",
+    "url": "https://fnet.bmfbovespa.com.br/fnet/publico/abrirGerenciadorDocumentosCVM?cnpjFundo=10406511000161",
+    "purpose": "Official fund-specific regulatory document archive"
+  },
+  {
+    "id": "b3-listed-etfs",
+    "filename": "b3-listed-etfs.html",
+    "url": "https://www.b3.com.br/pt_br/produtos-e-servicos/negociacao/renda-variavel/etf/renda-variavel/etfs-listados/",
+    "purpose": "Official ETF registry and fund documents"
+  },
+  {
+    "id": "blackrock-library",
+    "filename": "blackrock-library.html",
+    "url": "https://www.blackrock.com/br/library",
+    "purpose": "Issuer public literature catalog"
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "id": "b3-funds-common",
+  "url": "https://sistemaswebb3-listados.b3.com.br/fundsListedPage/chunk-52FOSNDI.js",
+  "purpose": "Public ETF data service definition",
+  "started_at_utc": "2026-09-09T19:25:56.318332+00:00",
+  "path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\raw\\b3-funds-common.js",
+  "status": "downloaded",
+  "curl_exit_code": 0,
+  "http_status": 200,
+  "final_url": "https://sistemaswebb3-listados.b3.com.br/fundsListedPage/chunk-52FOSNDI.js",
+  "content_type": "application/javascript",
+  "bytes": 988902,
+  "sha256": "048b20d5e71b7733c403bdf593fe54d988a401090212460757b01ef40d575418",
+  "completed_at_utc": "2026-09-09T19:25:58.195388+00:00"
+}

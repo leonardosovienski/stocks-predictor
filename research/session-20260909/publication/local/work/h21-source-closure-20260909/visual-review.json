@@ -1,0 +1,57 @@
+{
+  "reviewed_at_utc": "2026-09-09T20:11:20.380794+00:00",
+  "method": "pypdf extraction plus pdftoppm visual inspection",
+  "font_render_warnings": "Poppler Symbol/ArialUnicode font warnings retained; reviewed table numbers and relevant paragraphs readable.",
+  "pages": [
+    {
+      "path": "visual-qa/b3-custody-33.png",
+      "sha256": "8eedbd540caf1b0f0f7994480da5f731c59c0ac023e68d1ff90a8c5aa1b319d5"
+    },
+    {
+      "path": "visual-qa/b3-v5-08.png",
+      "sha256": "4a4b28f1d07a38c0199e1b193a9098f662d3da0655448840b323e217dae13399"
+    },
+    {
+      "path": "visual-qa/b3-v5-09.png",
+      "sha256": "7767c913399e26cde480031de2992c1b45f7e416f0d5b9052c8d0afc818af10d"
+    },
+    {
+      "path": "visual-qa/b3-v5-10.png",
+      "sha256": "80f9100a6b482e1fa5530743f8ff551bf1d4dfe5711a1c7e1eecd6737309268a"
+    },
+    {
+      "path": "visual-qa/b3-v5-p11.png",
+      "sha256": "2fe568fbaf6604db80f9b4162e31dfc19cca0d4a58724a6bec3adbd2b0a90a20"
+    },
+    {
+      "path": "visual-qa/bova-fs-2026-retry-p18.png",
+      "sha256": "d1bd5ce22b6521b9f343e2f29f0989f557860dc3b131dbe419f7d45fab6a765a"
+    },
+    {
+      "path": "visual-qa/bova-fs-2026-retry-p20.png",
+      "sha256": "3129c1b32eb4dff655e4b53e9befe613e3bc1e050eee09918c8f44c06f727150"
+    },
+    {
+      "path": "visual-qa/bova-fs-2026-retry-p9.png",
+      "sha256": "7c301686c1449beb9fa51aa587f3851831b22a8393dbf6a6e3b8ac3ab04e7ad2"
+    },
+    {
+      "path": "visual-qa/bova-regulamento-2026-p19.png",
+      "sha256": "7ab7797f57d237e4522ca4025628b20d69edda8445d128c16ab6f06c78c01014"
+    },
+    {
+      "path": "visual-qa/bova-regulamento-legacy-p28.png",
+      "sha256": "f84b5bc8a828f96ba1283925730d2d21fbc07fc20b0ab55a8da6636443b32c1c"
+    },
+    {
+      "path": "visual-qa/bova2018-07.png",
+      "sha256": "6009d31c521a601d7878488028f5b8f0044108b3b895ba0a2e4e91d523ff16d6"
+    }
+  ],
+  "unsupported_claims_rejected": [
+    "Empty event response proves no events",
+    "Merger subject means completed merger",
+    "Primary ETF creation fee applies to ordinary purchase",
+    "Brokerage zero means total cost zero"
+  ]
+}

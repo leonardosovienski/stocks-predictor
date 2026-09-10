@@ -1,0 +1,6 @@
+[
+ {"id":"bnp-bova-fs2020","filename":"bnp-bova-fs2020.pdf","url":"https://brasil.bnpparibas/app/uploads/sites/7/2021/06/c01-00013-df-ishares-ibovespa-fundo-de-indice.pdf","purpose":"Administrator original statements March2020 comparative2019"},
+ {"id":"bnp-media-ibovespa","filename":"bnp-media-ibovespa.json","url":"https://brasil.bnpparibas/wp-json/wp/v2/media?search=ibovespa&per_page=100","purpose":"Discover historical official administrator statements through public media catalog"},
+ {"id":"fnet-direct-small-ipv4","filename":"fnet-1089109.pdf","url":"https://fnet.bmfbovespa.com.br/fnet/publico/downloadDocumento?id=1089109","ipv4":true,"purpose":"Retest public FNET download via IPv4 using known filing ID"},
+ {"id":"ishares-fs2024-mirror","filename":"ishares-fs2024.pdf","url":"https://www.ishares.com/br/literature/annual-financial-statements/ishares-bova11-brl-demonstrativos-financeiros-2024-ptbr.pdf","purpose":"Issuer alternative official literature hostname; original BlackRock URL404"}
+]

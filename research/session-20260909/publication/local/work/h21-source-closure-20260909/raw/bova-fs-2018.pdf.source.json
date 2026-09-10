@@ -1,0 +1,15 @@
+{
+  "id": "b3-bova-fs-2018",
+  "url": "https://documentos-fundos.b3.com.br/documents/d/guest/BOVA_2018-06-12T12-49-36-740-pdf",
+  "purpose": "Full audited financial statement March2018 includes prior year comparison",
+  "started_at_utc": "2026-09-09T19:39:18.470887+00:00",
+  "path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\raw\\bova-fs-2018.pdf",
+  "status": "downloaded",
+  "curl_exit_code": 0,
+  "http_status": 200,
+  "final_url": "https://documentos-fundos.b3.com.br/documents/d/guest/BOVA_2018-06-12T12-49-36-740-pdf",
+  "content_type": "application/pdf",
+  "bytes": 439070,
+  "sha256": "f88d52b52bf04d3b91156e6da914eb121fb5c83a4771b51c69518cc33ec258dd",
+  "completed_at_utc": "2026-09-09T19:39:28.437792+00:00"
+}

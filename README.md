@@ -1,6 +1,13 @@
 
 # stocks-predictor
 
+**Próxima tarefa:** [auditoria técnica integral, crítica e executável](docs/continuation/PROMPT_AUDITORIA_INTEGRAL_20260909.md).
+O mandato completo foi consolidado com o usuário; sua execução ainda está pendente.
+Ele amplia a revisão para lógica, arquitetura, dados, fontes, pressupostos e
+finalidade econômica, sem obrigação de preservar a linha H21.
+[Artefatos da sessão e cobertura da publicação](research/session-20260909/publication/README.md).
+Os registros abaixo descrevem os resultados existentes, sujeitos à nova auditoria.
+
 Projeto de pesquisa econômica de ações da B3. A linha ativa de validação é
 **H21 — exposição simples via BOVA11**, medida em uma história exploratória
 com resultado condicional. Eventos do ETF e despesas reais ainda impedem

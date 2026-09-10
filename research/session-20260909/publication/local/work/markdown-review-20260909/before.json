@@ -1,0 +1,472 @@
+[
+  {
+    "path": "C:\\STOCKS\\AGENTS.md",
+    "bytes": 1610,
+    "sha256": "5cfb1e436ee3b6e84299d4e02e448ebef14847f8c447c8ff3d91a3b764970e58"
+  },
+  {
+    "path": "C:\\STOCKS\\COMECE_AQUI.md",
+    "bytes": 1730,
+    "sha256": "202edf730b8a9ead10817cb255c4e83bb63a70dd2f3955dcc94d104c8372814e"
+  },
+  {
+    "path": "C:\\STOCKS\\instructions\\STOCKS_PREDICTOR_PROMPT_FINAL_20260909.md",
+    "bytes": 18772,
+    "sha256": "d63db21471620a6a4a83671e1acebda1d7ff0be04a96652d5f0d658997cc73cc"
+  },
+  {
+    "path": "C:\\STOCKS\\FONTES_WEB_ORIGINAIS\\PROMPT_CONTINUAR.md",
+    "bytes": 8194,
+    "sha256": "1437a3e58bde82d419ebf99cd7191291b6f29be57c2b9325c004cf78878700fe"
+  },
+  {
+    "path": "C:\\STOCKS\\FONTES_WEB_ORIGINAIS\\LEIA_PRIMEIRO.md",
+    "bytes": 6042,
+    "sha256": "150aa02efbaecaeb80fe7219b8173a5cead6101eaf99d1a33cab2a525743e558"
+  },
+  {
+    "path": "C:\\STOCKS\\FONTES_WEB_ORIGINAIS\\INICIAR_NO_NOTEBOOK.md",
+    "bytes": 4187,
+    "sha256": "2e0ae2806de946e74c1b0481f128d6a98b0caca551645d418cb14cac791d7362"
+  },
+  {
+    "path": "C:\\STOCKS\\outputs\\RELATORIO_STOCKS_H21.md",
+    "bytes": 17950,
+    "sha256": "471a62a6ac3389cc26bef10180575f411415e7efdbf494d599a1bc6c480802c5"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\HANDOFF.md",
+    "bytes": 261323,
+    "sha256": "356443b111ea5e0cd4eceb2b8edae7599924932bdcafc887ac3a12c56defae94"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\AGENTS.md",
+    "bytes": 3641,
+    "sha256": "f3dd4d8fadda4c5fe2e9a5e4bb41d9723a10d4ec4ecf5935d5d4bc3e4dd65d3e"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\CLAUDE.md",
+    "bytes": 5009,
+    "sha256": "01458675f0813490237b1083d7dbf4ecd1687f9c49a1509309181762a50b9c50"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\README.md",
+    "bytes": 12107,
+    "sha256": "a6c63a49694226b6ae87ab521ee539bd803707da3c1c4e27c75cacfc92f1c7e7"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\docs\\RUNBOOK_H18.md",
+    "bytes": 12679,
+    "sha256": "75c127ead8a3c4106fcd02bdfc114e428ba8a316686e8d076c1a209b01969b52"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\docs\\RJ_DESIGN.md",
+    "bytes": 8826,
+    "sha256": "1a9d6d05080adb37d6e62263212017cfbec7c3dcfb05100f5fe22d37e3d1a2cb"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\docs\\AGENT_CHARTER.md",
+    "bytes": 17994,
+    "sha256": "c1d440bd0a383a4fcac227cb5dfde93b11e5e31926dcfa5e5b77dedb9596f9d9"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\docs\\DESIGN.md",
+    "bytes": 23497,
+    "sha256": "a6d16928cb762e9f97b56fd45bd1e2444edd4920c023f89063c60174bcbe9f16"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\STOCKS_CURRENT_STATE.md",
+    "bytes": 25598,
+    "sha256": "b4da467e564f59c8dca8aa138a318ff159ef79896cc1e20ed2f224759846312c"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\RESEARCH_FREEZE.md",
+    "bytes": 50849,
+    "sha256": "a6b9e923d243b486d52d8c97ed64a758cc40df29c19699bdb220e79115cf39ba"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\docs\\continuation\\UPDATE_20260908.md",
+    "bytes": 15408,
+    "sha256": "b19222b845fbf1a2059faf47ddd2568f9a93d40a5126c33fa2f226d0884f9040"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\docs\\continuation\\SESSION_CONTEXT.md",
+    "bytes": 7767,
+    "sha256": "2a2564163f1615f532d94eb4d0fcb0b1d2114eae1236ddf6cd1f7d5f51b0529e"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\docs\\continuation\\PROMPT_NOVO_CHAT.md",
+    "bytes": 8194,
+    "sha256": "1437a3e58bde82d419ebf99cd7191291b6f29be57c2b9325c004cf78878700fe"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\docs\\continuation\\PRESERVATION_VERIFIED.md",
+    "bytes": 1779,
+    "sha256": "52ea930eb9d18446b0e97b78f54a3e41b3e9a59970208f008571314a214cb1ff"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\docs\\continuation\\MIGRACAO_MAIN.md",
+    "bytes": 6042,
+    "sha256": "150aa02efbaecaeb80fe7219b8173a5cead6101eaf99d1a33cab2a525743e558"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\docs\\continuation\\MANDATO_20260909.md",
+    "bytes": 18772,
+    "sha256": "d63db21471620a6a4a83671e1acebda1d7ff0be04a96652d5f0d658997cc73cc"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\docs\\continuation\\INITIAL_REQUEST.md",
+    "bytes": 34842,
+    "sha256": "86edfed4153a4549502161f421e4a21e56434b45da3e5b8ef25eec27728bc133"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\docs\\auditoria_2026-09-04.md",
+    "bytes": 25972,
+    "sha256": "d7951ad2f8da7968894dc71823fb57c78d87bf0b0d9ee897935a9231313891cf"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\docs\\audit\\kimi_2026-08-24\\RELATORIO_AUDITORIA_RJ.md",
+    "bytes": 11131,
+    "sha256": "84cff634c676ab26346f1d9f346d51db1cd4fc6ccb5f93a7d3e370f295e165f6"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\docs\\audit\\kimi_2026-08-24\\plan.md",
+    "bytes": 1400,
+    "sha256": "0a46ebbf70d42b4ccfcd3ca3205d823fba4cf559817f1d6fd0e401e9fca075f1"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-06-readiness.md",
+    "bytes": 32418,
+    "sha256": "8393225e7d140e0b509942f533a40e5757231f4ce77efaec46b8676ebb1f1c43"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-07-final-review.md",
+    "bytes": 7603,
+    "sha256": "969009ca0f9023cda6f665866a05734d02db2d79c5e0b4334f442b24462500ec"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-07-h17-first-observation.md",
+    "bytes": 2091,
+    "sha256": "0075a2418a3ce6d7455c6aed4ac1b8b23d08f93e7964d427940dcf257ad43fdb"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\reports\\h11_verdict_adhoc.md",
+    "bytes": 1754,
+    "sha256": "48baecfa53161e2f4b07ab781c51a4e5ebfc14d4e1aee81f01cfac6459f45d17"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\reports\\h10_verdict_adhoc.md",
+    "bytes": 1639,
+    "sha256": "fcd696570e6a01948533f8b533d1880b74d60bbff65a6fc1c5fe0a60204b964e"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\reports\\h9_verdict_adhoc.md",
+    "bytes": 1723,
+    "sha256": "9d446a1ebe945e69be7b98ab1f8f34b0603db89fc04b29b7b92b1ecc129b068a"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\reports\\h8_verdict_adhoc.md",
+    "bytes": 1491,
+    "sha256": "8f7ce81e7cf43c93b0abdd383375f40c5070175485b3c4160fb4876fb19054b7"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\reports\\h7_verdict_adhoc.md",
+    "bytes": 1907,
+    "sha256": "439e523311c077844da8a94a282f595913a41c1dc8c8ea360ef2b66779f2c6c6"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\reports\\h6_verdict_adhoc.md",
+    "bytes": 1427,
+    "sha256": "d5150e068695708ff2ab0a25c62d52c7cba886e83985b2c9a9864fc3ccce863f"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\reports\\h5_verdict_20260718T202628182793-427444.md",
+    "bytes": 1377,
+    "sha256": "eb130e30d0c4b986eaab19af21ff76daaeedec656ad2886ca156d0f3dfadb135"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\reports\\h4_verdict_20260718T201214322046-5e3833.md",
+    "bytes": 1494,
+    "sha256": "4d18822deb44d96107a72f9a93ecacd2c30eab9a8f912cc84029f38b48ba638f"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\reports\\h2_verdict_20260716T221541856778-ac106e.md",
+    "bytes": 1341,
+    "sha256": "1f587c35dd0f9de721ee05f59c89341043d7bfea5a695e612ea793606ff80e45"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\reports\\h1_verdict_20260712T091903477689-41cc24.md",
+    "bytes": 1112,
+    "sha256": "8401589c6a0ef6358da52b0b0ce33b2c4cab64653e3e4aa2525f971f3aae5f1a"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\reports\\h16_verdict_adhoc.md",
+    "bytes": 1554,
+    "sha256": "ba805faa014dd15d589f81b236f76ad0d386dfa432173688e856b943230dfc8b"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\reports\\h15_verdict_adhoc.md",
+    "bytes": 1438,
+    "sha256": "1690671bcf51ded65ae5b25ecb464d3d5636057504252ff3ad0d15981ef62e06"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\reports\\h14_verdict_adhoc.md",
+    "bytes": 1397,
+    "sha256": "dec14b1b5a92abc9d5e2779e8f505fc96fc76f676bd442c7374f22c041b661a6"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\reports\\h13_verdict_adhoc.md",
+    "bytes": 1829,
+    "sha256": "367a4bbf067fa7d02e6d9cfee676e662fbfafa9fe71a7b205a9d67bf8c564ff3"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\reports\\h12_verdict_adhoc.md",
+    "bytes": 1569,
+    "sha256": "53604c2bd609fd158f6559cea0a6bc6c8cb6a70d82728e9641c5a2943d3ef2bd"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\research\\session-20260909\\h21\\README.md",
+    "bytes": 5052,
+    "sha256": "7a7253f20c525db7ae8359edddd692c864628c2d97637c77e13fe464d57ee3f0"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-07-h19-continuous-results.md",
+    "bytes": 6569,
+    "sha256": "259786fbfab08f6f4519d10a5dbb953841105d3a200ba2a83528710f43a5d4a1"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-07-h19-cash-pilot.md",
+    "bytes": 4628,
+    "sha256": "f8f59bbd01d67274878b72ecb07e72ff5368d9125af71191f0afb4cfe8f75acf"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-07-h17-registration.md",
+    "bytes": 2802,
+    "sha256": "2e00fea8d443dae8debf68cf2c6a683a261dc7e06c9eacf1c45e32c52d6f3fe0"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-07-h19-retail-results.md",
+    "bytes": 6325,
+    "sha256": "948d7cf3519358b8369b9758f9d86d1689ac66f62a552ee6679ea63c1c12f53d"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-07-h19-dates-v3-results.md",
+    "bytes": 4731,
+    "sha256": "7db283f86d0f41fd54394ad37e5139a559804a8bec34f73eca6f8147e6aaf4f7"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-07-profit-validation-results.md",
+    "bytes": 7193,
+    "sha256": "9b3a86d879df9ff1afd7aebc47aa2c5fe0c3b8ed74b8bb20ab2b438b9285e044"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-07-reorganization-results.md",
+    "bytes": 5781,
+    "sha256": "c9af1ac0b2044fefcaf29cc3e085bfc965415c774ec760a58b33b46dcb0b254b"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-07-real-integration-results.md",
+    "bytes": 6589,
+    "sha256": "97d0dd2e399217725db8c774f4d1d7d7b961a822f7ea2e0284b3047e6acc2be5"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-07-repairs.md",
+    "bytes": 10488,
+    "sha256": "ba14859b300d8354095ec89a1b8c73af2a694991abd9cf4298fadd36fc1e8049"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-07-source-completion.md",
+    "bytes": 6471,
+    "sha256": "e6cf79a260e240d2527d5303b5b676244d2c7a2f08845a5a9a48890be73fdbd7"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-08-feasibility-results.md",
+    "bytes": 10159,
+    "sha256": "e7ce76a3445069d880681eb5d4b52511ddc6abc4b750ae4e7d0b44d43b2254a9"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-08-h20-results.md",
+    "bytes": 8308,
+    "sha256": "04870795eb8a24d96321a692856e8fbb90eb8da5abdd806b2de35a74d8fb86b8"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-08-entry-unit-source-addendum.md",
+    "bytes": 1567,
+    "sha256": "8305ea1f931f8521f9d86303ce81fda73279bb7d029f6c22c2316361fae9dd56"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-08-h20-remediation-results.md",
+    "bytes": 6701,
+    "sha256": "5addcd8b70d17ed0320b46a306b995eecf7785127deda14288a33027051b3033"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-08-continuation-state.md",
+    "bytes": 3582,
+    "sha256": "b4bcf073bdfa39ebd044c76eac4b799696341e11f064e0ce50ea7414aecd803e"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-08-h20-profit-test-results.md",
+    "bytes": 8321,
+    "sha256": "26d3fc53a6a70c4ffbb9cdf6671cd6faf38de003cdcdb9d003507c9bde836f47"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-08-similar-models.md",
+    "bytes": 13695,
+    "sha256": "64b6cf9899b1c972acea792a0d67db7b2d0b36e5279b51c14ca090bd0a0f7f2a"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-08-source-closure-results.md",
+    "bytes": 6843,
+    "sha256": "16820337c46dfd0f47ac1928910b3ae09ce29170d171da9542b9280cb24dbe32"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-08-chat-review.md",
+    "bytes": 9791,
+    "sha256": "7ed5fc877efef6e99570d6323720a57373e186983ddb8c910221dfb8ad3ff9af"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-08-auction-accounting.md",
+    "bytes": 4183,
+    "sha256": "5a66042e62019bea48769938e8a8d95971773ced14333573bf8f80ca02a03dde"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-07-value-results.md",
+    "bytes": 7455,
+    "sha256": "f3cdc172b1a088912637693974a588b7509bdd80c0f1242252c577254f5f65da"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-09-h21-results.md",
+    "bytes": 16240,
+    "sha256": "db1ff776fcdd0fe6ef862e8f24c6ab2637133b42dcc15dc4aff932acf2c1a66f"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\research\\session-20260908\\h20-remediation\\CORRECOES_STOCKS.md",
+    "bytes": 6701,
+    "sha256": "5addcd8b70d17ed0320b46a306b995eecf7785127deda14288a33027051b3033"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\research\\session-20260908\\h20-remediation\\COMO_REPRODUZIR.md",
+    "bytes": 2034,
+    "sha256": "626a3d2473f3226090681e7ecfd3c6f8142e9b6f7a1b333d782dcba52aa365bd"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\research\\session-20260908\\source-closure\\RESULTADO_FONTES_13.md",
+    "bytes": 6843,
+    "sha256": "16820337c46dfd0f47ac1928910b3ae09ce29170d171da9542b9280cb24dbe32"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\research\\session-20260908\\source-closure\\RESULTADO_FONTES_12.md",
+    "bytes": 7155,
+    "sha256": "11af5deba13f62313441872ff773092622227b48b5517a6c96dad6c4d22f78c2"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\research\\session-20260908\\h20-profit-test\\H20_TESTE_LUCRO.md",
+    "bytes": 8321,
+    "sha256": "26d3fc53a6a70c4ffbb9cdf6671cd6faf38de003cdcdb9d003507c9bde836f47"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\research\\session-20260907\\scripts\\h17-manual.md",
+    "bytes": 2963,
+    "sha256": "2cdfb09c80a1f904ae68b1a6a6e19ecdb04f0adece157864187ef1bde2f0390e"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\research\\session-20260907\\README.md",
+    "bytes": 528,
+    "sha256": "5e55f920ac223db0f408491542d77614a4d525405afb1fe4be2185b6acce2bcf"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\research\\session-20260908\\chat-review\\REVISAO_CRITICA_CHAT_STOCKS.md",
+    "bytes": 9791,
+    "sha256": "7ed5fc877efef6e99570d6323720a57373e186983ddb8c910221dfb8ad3ff9af"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\research\\session-20260908\\h20-implementation\\H20_IMPLEMENTACAO.md",
+    "bytes": 8308,
+    "sha256": "04870795eb8a24d96321a692856e8fbb90eb8da5abdd806b2de35a74d8fb86b8"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\research\\session-20260908\\deliverables\\RELATORIO_STOCKS_CONTINUIDADE.md",
+    "bytes": 10314,
+    "sha256": "70a06d61c1ff87aacf46cd94c1f889cc4b850ad65c58ff2b51ce535f63621e30"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\research\\session-20260908\\historical-code-preserved\\README.md",
+    "bytes": 495,
+    "sha256": "e68505e9be7a267067b7d3242e7e9a3f9b820cfcaa03daf721335e7a0bc64a8e"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\research\\session-20260908\\local-scripts-preserved\\README.md",
+    "bytes": 654,
+    "sha256": "25fc9007b9fdb96ac147f91d097fd819020d04c4fecd0ec049192f20803c2f90"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\research\\session-20260907\\deliverables\\COMPLEMENTO_STOCKS.md",
+    "bytes": 7482,
+    "sha256": "d0aa20e869d48cd06fc5710d524dfaf3f0b78fa10f1c5ccf25571ecb17327d5e"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\research\\session-20260907\\deliverables\\CORRECOES_STOCKS.md",
+    "bytes": 10629,
+    "sha256": "473fc8a0abb9a58a5829bda16b517e418d2833ccf1d4b7be1673f229fe9df8ac"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\research\\session-20260907\\deliverables\\ESTADO_FINAL_STOCKS.md",
+    "bytes": 9388,
+    "sha256": "76ac4e1a59f1e062f7b4409c628d45708c1e1c846d16094593179ae8dfd48f73"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\research\\session-20260907\\deliverables\\VALIDACAO_LUCRO_STOCKS_RESULTADO.md",
+    "bytes": 7442,
+    "sha256": "d44edf47dd782e13ee207e64f2caf16fd8a9a3c0bd2b2931aca28941d9f14770"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\research\\session-20260907\\deliverables\\TESTES_REAIS_STOCKS.md",
+    "bytes": 7031,
+    "sha256": "c4d9fcf7647937228a469d2abe1b9da7141723c4021fbec3670d4024f933db06"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\research\\session-20260907\\deliverables\\PROMPT_NOVO_CHAT_STOCKS.md",
+    "bytes": 7561,
+    "sha256": "861b2fab3980a25ca4a3e0defc1cc020e785733dfb77a1de401e8cfbc3436cb4"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\research\\session-20260907\\deliverables\\PRIMEIRA_ENTREGA_STOCKS.md",
+    "bytes": 34255,
+    "sha256": "42b9e6fdac299f9fc69a46464888d89a3f7f6a983b3b9e4f9c798cc1407690b1"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\research\\session-20260907\\deliverables\\H19_EXECUCAO_CONTINUA_RESULTADO.md",
+    "bytes": 6622,
+    "sha256": "abc4e319c799aa7570fb0ccab3645a67894093f584e4d73d4642b3126291e8ca"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\research\\session-20260907\\deliverables\\H19_DATAS_V3_RESULTADO.md",
+    "bytes": 4731,
+    "sha256": "7db283f86d0f41fd54394ad37e5139a559804a8bec34f73eca6f8147e6aaf4f7"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\research\\session-20260907\\deliverables\\H19_CAIXA_RESULTADO.md",
+    "bytes": 6325,
+    "sha256": "948d7cf3519358b8369b9758f9d86d1689ac66f62a552ee6679ea63c1c12f53d"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\research\\session-20260907\\deliverables\\H19_CAIXA_PROXIMO_TESTE.md",
+    "bytes": 4669,
+    "sha256": "e5d38d8c8513930e7042b7926b81857c64d276fa924b2c9d4d2a3793a635a82e"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\research\\session-20260907\\deliverables\\H18_H19_RESULTADO_TESTADO.md",
+    "bytes": 7510,
+    "sha256": "15c567ea747bf46e06c8ef74c30d6da9dd55bdb01c15c491f19e143305f145af"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\research\\session-20260907\\deliverables\\H18_H19_REORGANIZACOES_RESULTADO.md",
+    "bytes": 6116,
+    "sha256": "52755c5b265cdb210981232ad4030e00495eb3f1e6f5f1218ff4bdacef8a8c6b"
+  },
+  {
+    "path": "C:\\STOCKS\\stocks-predictor\\research\\session-20260907\\deliverables\\H17_RESULTADO.md",
+    "bytes": 5611,
+    "sha256": "75623f7ecce66bd85621ed6cf45e304a32cb93c4360afec0aa94e8f9aa5f1098"
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "id": "b3-listed-etfs",
+  "url": "https://www.b3.com.br/pt_br/produtos-e-servicos/negociacao/renda-variavel/etf/renda-variavel/etfs-listados/",
+  "purpose": "Official ETF registry and fund documents",
+  "started_at_utc": "2026-09-09T19:01:00.792588+00:00",
+  "path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\raw\\b3-listed-etfs.html",
+  "status": "downloaded",
+  "final_url": "https://www.b3.com.br/pt_br/produtos-e-servicos/negociacao/renda-variavel/etf/renda-variavel/etfs-listados/",
+  "http_status": 200,
+  "content_type": "text/html; charset=UTF-8",
+  "last_modified": "Thu, 03 Sep 2026 06:18:10 GMT",
+  "bytes": 44711,
+  "sha256": "7c3350375b2b27b3a91486a6629353075dc482a4b4d3391a177c9b95d0286316",
+  "completed_at_utc": "2026-09-09T19:01:02.838067+00:00"
+}

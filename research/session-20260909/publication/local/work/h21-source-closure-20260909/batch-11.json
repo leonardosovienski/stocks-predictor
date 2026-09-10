@@ -1,0 +1,14 @@
+[
+  {
+    "id": "b3-bova-classes",
+    "filename": "b3-bova-classes.json",
+    "url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetListClassFund/eyJsYW5ndWFnZSI6InB0LWJyIiwiaWRGTkVUIjoiOTkwIiwiaWRDRU0iOiJCT1ZBIiwidHlwZUZ1bmQiOiJFVEYifQ==",
+    "purpose": "Verify fund/class identity and narrower official document catalog"
+  },
+  {
+    "id": "b3-bova-categories-2026",
+    "filename": "b3-bova-categories-2026.json",
+    "url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetCategories/eyJsYW5ndWFnZSI6InB0LWJyIiwiaWRGTkVUIjoiOTkwIiwidHlwZUZ1bmQiOiJFVEYiLCJkYXRlSW5pdGlhbCI6IjIwMjYtMDEtMDEiLCJkYXRlRmluYWwiOiIyMDI2LTA5LTA4IiwicGFnZU51bWJlciI6MSwicGFnZVNpemUiOjIwfQ==",
+    "purpose": "Verify fund/class identity and narrower official document catalog"
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "id": "blackrock-merger-notice",
+  "url": "https://www.blackrock.com/br/literature/shareholder-letters/ishares-bova11-brl-convocacao-agc-incorporacao-ptbr.pdf",
+  "purpose": "Merger proposal treatment of existing investors, costs and cash flows",
+  "started_at_utc": "2026-09-09T19:42:52.687040+00:00",
+  "path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\raw\\bova-merger-notice.pdf",
+  "status": "failed",
+  "curl_exit_code": 28,
+  "http_status": 0,
+  "final_url": "https://www.blackrock.com/br/literature/shareholder-letters/ishares-bova11-brl-convocacao-agc-incorporacao-ptbr.pdf",
+  "content_type": null,
+  "error_type": "RuntimeError",
+  "error": "curl: (28) Connection timed out after 12001 milliseconds\r\n",
+  "completed_at_utc": "2026-09-09T19:43:04.823611+00:00"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "blackrock-fs-2024",
+  "url": "https://www.blackrock.com/br/literature/annual-financial-statements/ishares-bova11-brl-demonstrativos-financeiros-2024-ptbr.pdf",
+  "purpose": "Audited investor-event notes 2023-2024",
+  "started_at_utc": "2026-09-09T19:01:00.792588+00:00",
+  "path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\raw\\bova-financials-2024.pdf",
+  "status": "failed",
+  "error_type": "HTTPError",
+  "error": "HTTP Error 404: Not Found",
+  "http_status": 404,
+  "completed_at_utc": "2026-09-09T19:01:02.647623+00:00"
+}

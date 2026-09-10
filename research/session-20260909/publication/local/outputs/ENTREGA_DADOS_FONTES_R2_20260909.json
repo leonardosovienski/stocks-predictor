@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "delivered_at_utc": "2026-09-09T21:59:17.478271+00:00",
+  "round": "DATA_COMPLETION_20260909_R2",
+  "round_completed_with_explicit_remaining_dependencies": true,
+  "all_project_data_economically_ready": false,
+  "local_root": "C:\\STOCKS",
+  "checkout": "C:\\STOCKS\\stocks-predictor",
+  "branch": "main",
+  "git_clean": true,
+  "single_worktree": true,
+  "temporary_branch_removed": true,
+  "base_sha": "c45c6e1aba148190ee1bd99da87f7a719af3b1b0",
+  "reviewed_head_sha": "58154bd38ad373723fb2ae5a97f8bee1afbc8077",
+  "merge_sha": "7de0ea9ad5e9c34e695c49a2c720561cad283685",
+  "merge_tree_equals_reviewed_tree": true,
+  "pull_request": "https://github.com/leonardosovienski/stocks-predictor/pull/72",
+  "report": "https://github.com/leonardosovienski/stocks-predictor/blob/7de0ea9ad5e9c34e695c49a2c720561cad283685/docs/research/2026-09-09-data-completion-r2.md",
+  "pr_ci": "https://github.com/leonardosovienski/stocks-predictor/actions/runs/34408835431",
+  "main_ci": "https://github.com/leonardosovienski/stocks-predictor/actions/runs/34409360376",
+  "main_ci_tests": 791,
+  "coverage_percent": 78,
+  "archived_tests_not_run": 17,
+  "local_auxiliary_tests": 9,
+  "local_auxiliary_python": "3.12.14",
+  "production_validation": "Linux GitHub CI, Python 3.13.15/Core 3.2.0",
+  "databases": {
+    "unique": 12,
+    "original_path_aliases": 37,
+    "integrity_pass": 12,
+    "sources13_14_separate": true,
+    "activated_for_production": false
+  },
+  "public_acquisitions": {
+    "jobs": 121,
+    "downloaded": 83,
+    "failed": 38,
+    "downloaded_bytes": 16252830,
+    "retained_partial_bytes": 221421,
+    "pdfs_parsed": 50,
+    "journal_path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\acquisition.jsonl",
+    "journal_sha256": "314298fdb4b7169ebc126350f4cae7406761216b81cccd83ad2212d003d54b48"
+  },
+  "data_normalization_revisions": {
+    "source14_composition": 1,
+    "events_and_costs": 1
+  },
+  "new_economic_variants": 0,
+  "new_economic_valuations": 0,
+  "h21_original_preserved": true,
+  "source_round_r1_preserved": true,
+  "all_new_authored_local_files_inside_root": true,
+  "prior_codex_directory_files": 0,
+  "no_reparse_points_in_project": true,
+  "full_external_folder_scan_repeated": false,
+  "full_external_scan_reference": "LOCALIZACAO_PROJETO.json verified_at_utc (original dated scan)",
+  "orders_broker_authentication_paid_services_or_recurring_jobs": false,
+  "remaining": [
+    "Continuous ETF event/right reconciliation after2026-03-31",
+    "Historical entry-date brokerage/B3 fees and actual broker fee bases/rounding",
+    "XP account channel/adviser status and personal investment constraints",
+    "Actual fills/spread/slippage require observed execution; no orders authorized",
+    "Broad-stock history source gaps remain quantified under source14"
+  ],
+  "broad_source14_gaps": {
+    "canonical13": "C:\\STOCKS\\data\\recovery-r2\\bundles\\source13\\inputs",
+    "additive14": "C:\\STOCKS\\data\\recovery-r2\\source14-inputs",
+    "canonical13_not_silently_replaced": true,
+    "revision13_exact_audit_reproduction": true,
+    "revision14_missing_payment_dates": 24,
+    "revision14_missing_net_payment_values": 52,
+    "corporate_event_inputs_pending": 28,
+    "required_intervals": 1248,
+    "fully_certified_intervals": 0,
+    "counts_overlap": true,
+    "line": "H20 broad reconstruction remains parked",
+    "audit_path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\reproduced-source-audits.json",
+    "audit_sha256": "27323eb4f0247b1ddfa77d6cdc655a8c8ea903e453072524ce630cb89a9625a3"
+  },
+  "user_profile_pending": "XP preferred; channel/adviser status, capital, horizon and loss tolerance unknown",
+  "artifacts": {
+    "C:\\STOCKS\\work\\data-completion-r2-20260909\\acquisition.jsonl": {
+      "sha256": "314298fdb4b7169ebc126350f4cae7406761216b81cccd83ad2212d003d54b48",
+      "bytes": 142392
+    },
+    "C:\\STOCKS\\work\\data-completion-r2-20260909\\normalize_readiness.py": {
+      "sha256": "832da503ab25e97b8c0235782d6a87590a4263837385d6b4e93dea77faf2d1be",
+      "bytes": 14078
+    },
+    "C:\\STOCKS\\work\\data-completion-r2-20260909\\acquire.py": {
+      "sha256": "bc719832a8cf28f420777ba17b386cbcc202435bfcd6aa0173807348b8325900",
+      "bytes": 3954
+    },
+    "C:\\STOCKS\\work\\data-completion-r2-20260909\\normalized-v1\\SHA256.json": {
+      "sha256": "5b94826ffb32a7520665dbd3b4adf667f425f596b3ed28801d129ee6e2bcbbb3",
+      "bytes": 385
+    },
+    "C:\\STOCKS\\work\\data-completion-r2-20260909\\reproduced-source-audits.json": {
+      "sha256": "27323eb4f0247b1ddfa77d6cdc655a8c8ea903e453072524ce630cb89a9625a3",
+      "bytes": 626226
+    },
+    "C:\\STOCKS\\work\\data-completion-r2-20260909\\readiness-verification.json": {
+      "sha256": "006094e9d3d515c72f5c3c3671af5790adcb60176c9901e75ec19fc3df87f8ff",
+      "bytes": 15585
+    },
+    "C:\\STOCKS\\work\\data-completion-r2-20260909\\ci-pr-final.json": {
+      "sha256": "4a2f594441f77bd3c57034ec987fa5795f0a4ea6431987ad9b878f6cdcafb7d4",
+      "bytes": 24850
+    },
+    "C:\\STOCKS\\work\\data-completion-r2-20260909\\ci-pr-quality.log": {
+      "sha256": "cd24ab554a1b6e7cc912626d52134e73cf393894534f37f21102683ad08b2efd",
+      "bytes": 44110
+    },
+    "C:\\STOCKS\\work\\data-completion-r2-20260909\\ci-main-final.json": {
+      "sha256": "9d9c8173cd708571371a0f03d4c6a6513676cf455ef3e1f95ec5848f8ca7f89b",
+      "bytes": 24043
+    },
+    "C:\\STOCKS\\work\\data-completion-r2-20260909\\ci-main-quality.log": {
+      "sha256": "12d4dd5d1f4f12a4e944f2f4b590d9a7755072b2413a8956cc357b0a3adea88c",
+      "bytes": 43327
+    },
+    "C:\\STOCKS\\data\\CATALOG.json": {
+      "sha256": "cd43a87d22cfd8c64af55a81d785ce218a336e4541b9310ec2f18a727d71b0f6",
+      "bytes": 28052
+    },
+    "C:\\STOCKS\\data\\recovery-r2\\catalog.json": {
+      "sha256": "50095e579d83f52038a7719d43fa1ddc2f0daaf4e921a6f38f3b24910445e498",
+      "bytes": 725682
+    },
+    "C:\\STOCKS\\LOCALIZACAO_PROJETO.json": {
+      "sha256": "ec9041af3b3fbfe28d5cd4d5c44407162354e798b6d5df8711258caf06ca9911",
+      "bytes": 4171
+    },
+    "C:\\STOCKS\\data\\README.md": {
+      "sha256": "be487795823e9f2dd3b67be9f4e7bd0d90f3ff71103bdfe1fe0e69b5409b5214",
+      "bytes": 1259
+    },
+    "C:\\STOCKS\\COMECE_AQUI.md": {
+      "sha256": "bdda9ce4c4fc9e8d293a3c2a312d53f55d60a70e820cb67f91d893ac2a278527",
+      "bytes": 2932
+    },
+    "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-09-data-completion-r2.md": {
+      "sha256": "837d3ef1378c3fc477d2e99bc6444fafd95b0a8862635c9ce76f16ef70e85a62",
+      "bytes": 11347
+    }
+  }
+}

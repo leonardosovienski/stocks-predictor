@@ -1,0 +1,15 @@
+{
+  "id": "bnp-media-ibovespa",
+  "url": "https://brasil.bnpparibas/wp-json/wp/v2/media?search=ibovespa&per_page=100",
+  "purpose": "Discover historical official administrator statements through public media catalog",
+  "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\bnp-media-ibovespa.json",
+  "started_at_utc": "2026-09-09T20:49:43.484861+00:00",
+  "status": "downloaded",
+  "curl_exit_code": 0,
+  "http_status": 200,
+  "final_url": "https://brasil.bnpparibas/wp-json/wp/v2/media?search=ibovespa&per_page=100",
+  "content_type": "application/json; charset=UTF-8",
+  "bytes": 166683,
+  "sha256": "2450201f8abb1165b751f7640bd3afdf52efe8fe32408b3b0c71a198cb57813e",
+  "completed_at_utc": "2026-09-09T20:49:45.976135+00:00"
+}

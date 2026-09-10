@@ -1,0 +1,37 @@
+# Stocks em duas partes de menos de 3 GB
+
+Copie esta pasta inteira para o outro PC. Os dados estao em dois arquivos:
+
+- `DADOS_STOCKS.zip.001`: primeira metade.
+- `DADOS_STOCKS.zip.002`: segunda metade.
+
+Copie tambem todos os arquivos pequenos e subpastas: eles contem dependencias,
+guias, verificacoes e a copia offline do codigo. Nenhum dado foi retirado.
+Cada parte tem aproximadamente 2,68 GB. O total da pasta e aproximadamente 5,45 GB.
+As partes nao sao ZIPs independentes: elas precisam ser reunidas.
+
+## No outro PC
+
+1. Guarde a pasta em `C:\Stocks\STOCKS_MIGRACAO_MAIN_20260908`.
+2. Reserve pelo menos **42 GB livres antes de copiar**, para manter as partes,
+   criar o ZIP reunido e restaurar todos os dados. A reuniao deve ocorrer em
+   disco NTFS/exFAT, pois o ZIP reunido ultrapassa 4 GB.
+3. No Windows PowerShell, execute:
+
+```powershell
+& 'C:\Stocks\STOCKS_MIGRACAO_MAIN_20260908\JUNTAR_DADOS.ps1'
+```
+
+O script confere o SHA-256 de cada parte e do ZIP completo, e nao sobrescreve
+arquivos existentes. Em caso de falha, um arquivo `.reunindo` pode permanecer;
+ele nao e uma restauracao concluida. Nao altere as politicas de execucao do PC:
+se o Windows bloquear o script, peca ao Codex local para executar a reuniao
+com as ferramentas permitidas e verificar os hashes de `PARTES.json`.
+
+4. Apos a mensagem de sucesso, siga `INICIAR_NO_NOTEBOOK.md` e `LEIA_PRIMEIRO.md`.
+   O ZIP usa deduplicacao: a restauracao deve usar `tools/data_transfer.py`,
+   conforme o guia, para reconstruir os caminhos e conferir os dados.
+
+O codigo continua na main do GitHub e tambem em `CODIGO_MAIN.bundle` separado
+do arquivo de dados. Os resultados de testes do PC antigo sao historicos;
+a validacao no outro PC continua necessaria.

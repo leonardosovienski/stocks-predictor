@@ -1,0 +1,15 @@
+{
+  "id": "fnet-view-retry-51831",
+  "url": "https://fnet.bmfbovespa.com.br/fnet/publico/exibirDocumento?id=51831&",
+  "purpose": "Alternative original public viewer after direct download timeout",
+  "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-view-retry-51831.pdf",
+  "started_at_utc": "2026-09-09T21:14:27.825226+00:00",
+  "status": "downloaded",
+  "curl_exit_code": 0,
+  "http_status": 200,
+  "final_url": "https://fnet.bmfbovespa.com.br/fnet/publico/exibirDocumento?id=51831&",
+  "content_type": "application/pdf; charset=UTF-8",
+  "bytes": 230583,
+  "sha256": "d959e0d14696d89e9069f292722baf96da424db50c70cf911b87e85e06401bba",
+  "completed_at_utc": "2026-09-09T21:14:28.740677+00:00"
+}

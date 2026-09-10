@@ -1,0 +1,8 @@
+test_classification_keeps_historical_minimum_comparison (test_economics_labels.EconomicEvidenceLabels.test_classification_keeps_historical_minimum_comparison) ... ok
+test_no_forecast_value_from_historical_returns (test_economics_labels.EconomicEvidenceLabels.test_no_forecast_value_from_historical_returns) ... ok
+test_summary_explicitly_historical (test_economics_labels.EconomicEvidenceLabels.test_summary_explicitly_historical) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.002s
+
+OK

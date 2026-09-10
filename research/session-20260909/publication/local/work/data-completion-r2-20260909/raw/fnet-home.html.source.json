@@ -1,0 +1,15 @@
+{
+  "id": "fnet-home-v4",
+  "url": "https://fnet.bmfbovespa.com.br/fnet/publico/abrirGerenciadorDocumentosCVM?cnpjFundo=10406511000161",
+  "purpose": "Discover official BOVA11 filing catalogue",
+  "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-home.html",
+  "started_at_utc": "2026-09-09T21:00:38.647956+00:00",
+  "status": "failed",
+  "curl_exit_code": 28,
+  "http_status": 0,
+  "final_url": "https://fnet.bmfbovespa.com.br/fnet/publico/abrirGerenciadorDocumentosCVM?cnpjFundo=10406511000161",
+  "content_type": null,
+  "error_type": "RuntimeError",
+  "error": "curl: (28) Operation timed out after 35005 milliseconds with 0 bytes received\r\n",
+  "completed_at_utc": "2026-09-09T21:01:13.739787+00:00"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "b3-tariff-2020-news",
+  "url": "https://www.b3.com.br/pt_br/noticias/tarifacao.htm",
+  "purpose": "Historical official tariff transition evidence",
+  "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\b3-tariff-2020-news.html",
+  "started_at_utc": "2026-09-09T21:06:37.281117+00:00",
+  "status": "downloaded",
+  "curl_exit_code": 0,
+  "http_status": 200,
+  "final_url": "https://www.b3.com.br/pt_br/noticias/tarifacao.htm",
+  "content_type": "text/html; charset=UTF-8",
+  "bytes": 63333,
+  "sha256": "629fc8985f9e711cc01d57f986bfd2a7610014fb45ffd7431c5654e9fcea68cd",
+  "completed_at_utc": "2026-09-09T21:06:38.524277+00:00"
+}

@@ -1,0 +1,16 @@
+{
+  "id": "blackrock-fs-2026",
+  "url": "https://www.blackrock.com/br/literature/annual-financial-statements/ishares-bova11-brl-demonstrativos-financeiros-2026-ptbr.pdf",
+  "purpose": "Latest audited statements and comparative2025; issuer literature link observed in browser",
+  "started_at_utc": "2026-09-09T19:42:07.576196+00:00",
+  "path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\raw\\bova-fs-2026.pdf",
+  "status": "failed",
+  "curl_exit_code": 28,
+  "http_status": 200,
+  "final_url": "https://www.blackrock.com/br/literature/annual-financial-statements/ishares-bova11-brl-demonstrativos-financeiros-2026-ptbr.pdf",
+  "content_type": "application/pdf;charset=UTF-8",
+  "error_type": "RuntimeError",
+  "error": "curl: (28) Operation timed out after 45018 milliseconds with 24576 out of 782411 bytes received\r\n",
+  "partial_bytes": 24576,
+  "completed_at_utc": "2026-09-09T19:42:52.711308+00:00"
+}

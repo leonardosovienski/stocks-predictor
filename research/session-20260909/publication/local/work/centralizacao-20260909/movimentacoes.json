@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "updated_at_utc": "2026-09-09T18:11:46.5900891Z",
+  "authorized_root": "C:\\STOCKS",
+  "method": "Copy exact bytes, verify SHA-256 at both locations, remove only the individually verified original file.",
+  "moves": [
+    {
+      "source": "C:\\Users\\leona\\Documents\\Codex\\2026-09-09\\crie-uma-imagem-de-2\\outputs\\CI_MAIN_STOCKS_H21.txt",
+      "destination": "C:\\STOCKS\\outputs\\CI_MAIN_STOCKS_H21.txt",
+      "sha256": "231c8f86168433001ee377afc2c8ebdc102dc691f032f138428c17975c6526fb",
+      "bytes": 1909,
+      "status": "moved_and_verified"
+    },
+    {
+      "source": "C:\\Users\\leona\\Documents\\Codex\\2026-09-09\\crie-uma-imagem-de-2\\outputs\\CONFERENCIA_STOCKS_H21.json",
+      "destination": "C:\\STOCKS\\outputs\\CONFERENCIA_STOCKS_H21.json",
+      "sha256": "8fd7f22095b5572a8244c8580ad145c2c36066f3c1ce4243a9d24baee517140a",
+      "bytes": 1573,
+      "status": "moved_and_verified"
+    },
+    {
+      "source": "C:\\Users\\leona\\Documents\\Codex\\2026-09-09\\crie-uma-imagem-de-2\\outputs\\ENTREGA_STOCKS_H21.json",
+      "destination": "C:\\STOCKS\\outputs\\ENTREGA_STOCKS_H21.json",
+      "sha256": "3421628595718ee94355fa07d9166c4a51c95c7730e0f10c42153aba5353eea2",
+      "bytes": 6298,
+      "status": "moved_and_verified"
+    },
+    {
+      "source": "C:\\Users\\leona\\Documents\\Codex\\2026-09-09\\crie-uma-imagem-de-2\\outputs\\RELATORIO_STOCKS_H21.md",
+      "destination": "C:\\STOCKS\\outputs\\RELATORIO_STOCKS_H21.md",
+      "sha256": "471a62a6ac3389cc26bef10180575f411415e7efdbf494d599a1bc6c480802c5",
+      "bytes": 17950,
+      "status": "moved_and_verified"
+    },
+    {
+      "source": "C:\\Users\\leona\\Documents\\Codex\\2026-09-09\\crie-uma-imagem-de-2\\outputs\\REPRODUCAO_STOCKS_H21.json",
+      "destination": "C:\\STOCKS\\outputs\\REPRODUCAO_STOCKS_H21.json",
+      "sha256": "562577dd2100395fe03c9e277895b52e4f138152ad1b2ac9b2375b28d3fdbbbb",
+      "bytes": 361,
+      "status": "moved_and_verified"
+    },
+    {
+      "source": "C:\\Users\\leona\\Documents\\Codex\\2026-09-09\\crie-uma-imagem-de-2\\outputs\\RESULTADO_STOCKS_H21.json",
+      "destination": "C:\\STOCKS\\outputs\\RESULTADO_STOCKS_H21.json",
+      "sha256": "39a940514b5fdcbb577c496f996ddd324c8107436852ab67da352401bb8870d2",
+      "bytes": 2217511,
+      "status": "moved_and_verified"
+    },
+    {
+      "source": "C:\\Users\\leona\\Downloads\\STOCKS_PREDICTOR_PROMPT_FINAL_20260909.md",
+      "destination": "C:\\STOCKS\\instructions\\STOCKS_PREDICTOR_PROMPT_FINAL_20260909.md",
+      "sha256": "d63db21471620a6a4a83671e1acebda1d7ff0be04a96652d5f0d658997cc73cc",
+      "bytes": 18772,
+      "status": "moved_and_verified"
+    }
+  ]
+}

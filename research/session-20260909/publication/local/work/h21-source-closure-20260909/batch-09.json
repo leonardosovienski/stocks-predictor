@@ -1,0 +1,14 @@
+[
+  {
+    "id": "b3-bova-detail",
+    "filename": "b3-bova-detail.json",
+    "url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetDetailFund/eyJsYW5ndWFnZSI6InB0LWJyIiwiaWRGTkVUIjoiOTkwIiwiaWRDRU0iOiJCT1ZBIiwidHlwZUZ1bmQiOiJFVEYifQ==",
+    "purpose": "BOVA11 public regulatory document discovery; no returns"
+  },
+  {
+    "id": "b3-bova-categories",
+    "filename": "b3-bova-categories.json",
+    "url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetCategories/eyJsYW5ndWFnZSI6InB0LWJyIiwiaWRGTkVUIjoiOTkwIiwiaWRDRU0iOiJCT1ZBIiwidHlwZUZ1bmQiOiJFVEYiLCJkYXRlSW5pdGlhbCI6IjIwMTctMDEtMDEiLCJkYXRlRmluYWwiOiIyMDI2LTA5LTA4IiwicGFnZU51bWJlciI6MSwicGFnZVNpemUiOjIwfQ==",
+    "purpose": "BOVA11 public regulatory document discovery; no returns"
+  }
+]

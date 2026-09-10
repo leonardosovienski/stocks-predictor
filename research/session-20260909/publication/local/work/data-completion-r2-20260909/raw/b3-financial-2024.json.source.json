@@ -1,0 +1,15 @@
+{
+  "id": "b3-financial-2024",
+  "url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetStructuredReports/eyJsYW5ndWFnZSI6InB0LWJyIiwiaWRGTkVUIjoiOTkwIiwidHlwZUZ1bmQiOiJFVEYiLCJkYXRlSW5pdGlhbCI6IjIwMjQtMDEtMDEiLCJkYXRlRmluYWwiOiIyMDI0LTEyLTMxIiwicGFnZU51bWJlciI6MSwicGFnZVNpemUiOjYwLCJ0eXBlIjozMH0=",
+  "purpose": "Annual financial statements: type30 discovered in official FNET UI",
+  "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\b3-financial-2024.json",
+  "started_at_utc": "2026-09-09T21:12:06.209571+00:00",
+  "status": "downloaded",
+  "curl_exit_code": 0,
+  "http_status": 200,
+  "final_url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetStructuredReports/eyJsYW5ndWFnZSI6InB0LWJyIiwiaWRGTkVUIjoiOTkwIiwidHlwZUZ1bmQiOiJFVEYiLCJkYXRlSW5pdGlhbCI6IjIwMjQtMDEtMDEiLCJkYXRlRmluYWwiOiIyMDI0LTEyLTMxIiwicGFnZU51bWJlciI6MSwicGFnZVNpemUiOjYwLCJ0eXBlIjozMH0=",
+  "content_type": "application/json",
+  "bytes": 84,
+  "sha256": "3d77142fb48d364b437f87e5e55a89f3b00146260e039e16a6438a8f73d217a1",
+  "completed_at_utc": "2026-09-09T21:12:07.947173+00:00"
+}

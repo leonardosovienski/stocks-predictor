@@ -1,0 +1,20 @@
+[
+  {
+    "id": "blackrock-fs-2026-retry",
+    "filename": "bova-fs-2026-retry.pdf",
+    "url": "https://www.blackrock.com/br/literature/annual-financial-statements/ishares-bova11-brl-demonstrativos-financeiros-2026-ptbr.pdf",
+    "purpose": "Retry incomplete transfer via existing urllib capture with external55sec deadline"
+  },
+  {
+    "id": "blackrock-merger-decisions-3-retry",
+    "filename": "bova-merger-decisions-3-retry.pdf",
+    "url": "https://www.blackrock.com/br/literature/shareholder-letters/ishares-bova11-brl-sumariodecisoesmerger3-ptbr.pdf",
+    "purpose": "Full one-page Jan21 notice; previous failure retained"
+  },
+  {
+    "id": "blackrock-merger-notice-retry",
+    "filename": "bova-merger-notice-retry.pdf",
+    "url": "https://www.blackrock.com/br/literature/shareholder-letters/ishares-bova11-brl-convocacao-agc-incorporacao-ptbr.pdf",
+    "purpose": "Proposed incorporation original document, do not infer execution"
+  }
+]
