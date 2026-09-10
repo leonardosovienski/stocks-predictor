@@ -8,6 +8,8 @@ def cents(value):
 
 
 def verify(result, inputs, spec):
+    if not __debug__:
+        raise RuntimeError("Verification requires assertions enabled; do not use Python -O")
     if result["status"] == "INFEASIBLE_EXPENSE_RESERVE":
         assert result["required_expense_reserve"] > result["capital"]
         return {"status": "EXPECTED_INFEASIBLE"}

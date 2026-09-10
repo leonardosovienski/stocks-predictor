@@ -2,6 +2,22 @@
 
 Atualizado em 10/09/2026 UTC após a auditoria integral AUDIT-R3.
 
+## Pesquisa econômica R5 — 10/09/2026 UTC
+
+O usuário reabriu a pesquisa em busca de lucro validado, com liberdade sobre hipóteses
+e arquitetura. [R5/H22](docs/research/2026-09-10-r5/README.md) executou uma regra mensal
+de dez meses, registrada antes de medir, e uma alternativa de comprar e manter.
+24 avaliações: 22 calculadas/reconciliadas e duas inviáveis; H22 rejeitada, sem
+incremento positivo nos 11 pares calculáveis. Ganho nominal da alternativa simples
+permanece condicional a eventos/custos. Lucro integral ou futuro não demonstrado.
+Demonstrações2024 e AGO2025 recuperadas; fontes/livros anteriores preservados.
+[PR76](https://github.com/leonardosovienski/stocks-predictor/pull/76) contém a integração
+com testes e checks por SHA. O objetivo econômico permanece não atingido; as
+restrições antigas de fila/coleta não substituem a nova autorização do usuário.
+Não transformar busca repetida na mesma história em validação futura.
+
+---
+
 ## Engenharia R4 posterior à auditoria
 
 O pedido seguinte foi corrigir erros e melhorar infraestrutura/desempenho.

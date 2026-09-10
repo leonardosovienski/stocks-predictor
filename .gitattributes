@@ -59,3 +59,4 @@ docs/audit/2026-09-10-integral/*.md text eol=lf
 docs/engineering/2026-09-10-r4/evidence/** -text !eol -whitespace
 
 docs/research/2026-09-10-profit-validation-r5-protocol.json text eol=lf
+docs/research/2026-09-10-r5/** text eol=lf

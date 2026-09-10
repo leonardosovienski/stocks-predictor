@@ -1,0 +1,31 @@
+{
+  "run_id": 34486825764,
+  "url": "https://github.com/leonardosovienski/stocks-predictor/actions/runs/34486825764",
+  "head": "b248a53c1707bd4f364277a51bf16d7071d817c9",
+  "status": "success",
+  "jobs": [
+    {
+      "id": 102903591120,
+      "name": "Quality / Python 3.14",
+      "conclusion": "success"
+    },
+    {
+      "id": 102903591560,
+      "name": "secrets",
+      "conclusion": "success"
+    },
+    {
+      "id": 102903591587,
+      "name": "Quality / Python 3.13",
+      "conclusion": "success"
+    }
+  ],
+  "tests_per_python": 859,
+  "subtests_per_python": 29,
+  "coverage_percent": 79,
+  "pyright": "0 errors, 0 warnings",
+  "ruff": "PASS",
+  "wheel_build_and_external_smoke": "PASS",
+  "lock_and_offline_metadata": "PASS",
+  "scope": "Initial economic execution commit; later delivery commits require their own CI. No financial validation claim."
+}

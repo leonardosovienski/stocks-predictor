@@ -44,6 +44,7 @@ def main():
         stream.write(json.dumps({"kind": "START", **identity}) + "\n")
         stream.flush()
         windows = [protocol["windows"]["full"], *protocol["windows"]["fixed_temporal_diagnostics"]]
+        failed = 0
         for start, end in windows:
             for spec in protocol["specifications"]:
                 costs = Costs(Decimal(str(spec["one_way_variable_cost"])),
@@ -60,12 +61,15 @@ def main():
                             row["verification"] = verify(result, inputs, spec)
                         except Exception as exc:
                             row["error"] = f"{type(exc).__name__}: {exc}"
+                            failed += 1
                         stream.write(json.dumps(row) + "\n")
                         stream.flush()
                         print(json.dumps({**{k: v for k, v in row.items() if k != "result"},
                             "summary": {k: v for k, v in row.get("result", {}).items()
                                         if k not in {"curve", "ledger", "tax_ledger", "year_profit"}}}), flush=True)
         stream.write(json.dumps({"kind": "END", "ended_at": datetime.now(timezone.utc).isoformat()}) + "\n")
+    if failed:
+        raise SystemExit(f"{failed} failed valuations; inspect preserved attempt")
 
 
 if __name__ == "__main__":
