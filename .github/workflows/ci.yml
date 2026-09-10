@@ -129,3 +129,47 @@ jobs:
       - uses: gitleaks/gitleaks-action@e0c47f4f8be36e29cdc102c57e68cb5cbf0e8d1e # v3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITLEAKS_VERSION: "8.24.3"
+          GITLEAKS_ENABLE_COMMENTS: "false"
+      - name: Scan the complete tracked tree including merged code
+        run: |
+          mkdir "$RUNNER_TEMP/stocks-secret-scan"
+          git archive HEAD | tar -x -C "$RUNNER_TEMP/stocks-secret-scan"
+          count=$(git ls-files | wc -l)
+          test "$count" -gt 0
+          echo "Scanning the complete tracked tree: $count files at $(git rev-parse HEAD)"
+          /tmp/gitleaks-8.24.3/gitleaks detect --no-git --config .gitleaks.toml --source "$RUNNER_TEMP/stocks-secret-scan" --redact --exit-code=2 --report-format=sarif --report-path="$RUNNER_TEMP/stocks-current-tree.sarif"
+      - name: Prove an exempted file still detects a synthetic token
+        run: |
+          python3 - <<'PY'
+          import os
+          from pathlib import Path
+          import secrets
+          target = Path(os.environ['RUNNER_TEMP']) / 'stocks-secret-scan/stocks_predictor/trials_gate.py'
+          with target.open('a', encoding='utf-8') as stream:
+              stream.write('\napi_key = "' + secrets.token_urlsafe(32) + '"\n')
+          PY
+          set +e
+          /tmp/gitleaks-8.24.3/gitleaks detect --no-git --config .gitleaks.toml --source "$RUNNER_TEMP/stocks-secret-scan" --redact --exit-code=2 --report-format=sarif --report-path="$RUNNER_TEMP/stocks-scan-control.sarif"
+          result=$?
+          set -e
+          test "$result" -eq 2
+          python3 - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          report = json.loads((Path(os.environ['RUNNER_TEMP']) / 'stocks-scan-control.sarif').read_text())
+          findings = report['runs'][0]['results']
+          assert any(item['ruleId'] == 'generic-api-key' and item['locations'][0]['physicalLocation']['artifactLocation']['uri'].endswith('/stocks_predictor/trials_gate.py') for item in findings)
+          print('PASS: a synthetic credential is detected in the file with an exact import exception')
+          PY
+      - name: Retain complete tree scan
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: complete-tree-secrets
+          path: |
+            ${{ runner.temp }}/stocks-current-tree.sarif
+            ${{ runner.temp }}/stocks-scan-control.sarif
+          retention-days: 30
+          if-no-files-found: error

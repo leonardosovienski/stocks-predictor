@@ -1,0 +1,39 @@
+title = "Stocks: default rules with exact historical false-positive evidence"
+
+[extend]
+useDefault = true
+
+[[rules]]
+id = "generic-api-key"
+
+[[rules.allowlists]]
+description = "Three historical file digests independently matched to commit 5c09c7b8"
+condition = "AND"
+paths = ['''(^|/)research/session-20260907/deliverables/real-integration-delivery-manifest\.json$''']
+regexTarget = "line"
+regexes = [
+  '''^\s*"tests/test_secrets_telemetry\.py": "d86eb6564d8c61384f3e2516ac6f8fda9c51bc33f4ae3f3915626f01d6b12849",?\s*$''',
+  '''^\s*"tools/explore_b3_dividends_api\.py": "66fb18c41f36ecfd40569b4c6634d1608303622c630a1febd495d8b24df88894",?\s*$''',
+  '''^\s*"vendor/predictor_core/testing/secrets\.py": "768e979f3d9be68078a75df6c759957fe8e3c6efaf50d7468434a999bf2a5a1f",?\s*$''',
+]
+
+[[rules.allowlists]]
+description = "Observed source-document digest in preserved H18/H19 evidence, not an API credential"
+condition = "AND"
+paths = ['''(^|/)research/session-20260907/deliverables/h18-h19-repaired-observation\.json$''']
+regexTarget = "secret"
+regexes = ['''^a82bb93e250267b1d10014026832a8c2ea60f80abaeaa9424e88d21d9797b3b1$''']
+
+[[rules.allowlists]]
+description = "Exact Python import, not a secret value"
+condition = "AND"
+paths = ['''(^|/)stocks_predictor/trials_gate\.py$''']
+regexTarget = "line"
+regexes = ['''^\s*from config import H1_FROZEN_KEYS, H2_FROZEN_KEYS\s*$''']
+
+[[rules.allowlists]]
+description = "Vendored historical file digest independently recomputed"
+condition = "AND"
+paths = ['''(^|/)vendor/predictor_core/CORE_MANIFEST\.json$''']
+regexTarget = "line"
+regexes = ['''^\s*"testing/secrets\.py": "768e979f3d9be68078a75df6c759957fe8e3c6efaf50d7468434a999bf2a5a1f",?\s*$''']

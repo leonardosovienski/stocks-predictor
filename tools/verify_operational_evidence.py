@@ -5,7 +5,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 REGISTRY = 'docs/engineering/2026-09-10-r8/evidence.json'
-EXTRA = {'.github/workflows/ci.yml', '.gitleaksignore', '.gitattributes',
+EXTRA = {'.github/workflows/ci.yml', '.gitleaksignore', '.gitleaks.toml', '.gitattributes',
          'main.py', 'pyproject.toml', 'uv.lock', 'tools/build-requirements.txt'}
 
 

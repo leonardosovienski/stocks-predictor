@@ -37,6 +37,21 @@ O [PR79](https://github.com/leonardosovienski/stocks-predictor/pull/79) registra
 o SHA final, seu check e a integração; alterações documentais posteriores são
 novamente verificadas por CI antes da integração.
 
+Na conferência de main/CI226, a action de segredos informou zero commits examinados
+após o merge: seu filtro `--no-merges --first-parent` não constitui uma varredura
+independente da árvore integrada. O PR havia sido examinado. O complemento
+[PR80](https://github.com/leonardosovienski/stocks-predictor/pull/80) mantém essa
+checagem histórica e adiciona `git archive HEAD` + Gitleaks sobre todos os arquivos
+versionados, com população não vazia e SARIF retido. O PR80 registra os checks e
+SHA da integração final desta correção. A versão existente do scanner é fixada em
+8.24.3 e comentários automáticos são desativados. Referência da action:
+[código/documentação fixados](https://github.com/gitleaks/gitleaks-action/tree/e0c47f4f8be36e29cdc102c57e68cb5cbf0e8d1e).
+O primeiro scan completo examinou 1.537 arquivos/148,85 MB e sinalizou cinco hashes
+históricos e um import Python. A configuração mantém as regras padrão e exige
+caminho exato E conteúdo literal (linha ou digest) para essas seis exceções; os arquivos históricos não
+foram editados. Uma prova adicional injeta um token sintético somente na cópia
+temporária do arquivo com exceção e exige que o scanner o detecte.
+
 | Validação | Carga | Replay | Backup | Restauração | Pico RSS da carga |
 |---|---:|---:|---:|---:|---:|
 | Windows auxiliar, 250.000 sintéticos | 9,31 s | 8,75 s | 9,30 s | 4,28 s | 29,76 MiB |
