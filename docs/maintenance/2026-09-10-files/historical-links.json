@@ -1,0 +1,657 @@
+{
+  "schema_version": 1,
+  "source_manifest": "research/session-20260909/publication/MANIFEST.json",
+  "scope": "Explicit navigation mappings only; preserved historical bytes are not rewritten or declared current.",
+  "documents": [
+    {
+      "path": "research/session-20260909/publication/local/COMECE_AQUI.md",
+      "sha256": "c4e9787035a96abfa4695fb14c20bb5518047821d56ad7984b16d2c3fb6ed64f"
+    },
+    {
+      "path": "research/session-20260909/publication/local/data/README.md",
+      "sha256": "be487795823e9f2dd3b67be9f4e7bd0d90f3ff71103bdfe1fe0e69b5409b5214"
+    },
+    {
+      "path": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/AGENTS.md",
+      "sha256": "5738af781d68bacc7980292a3f92bc7281b2b165b3bb4b2ba7c1376e51215302"
+    },
+    {
+      "path": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/COMECE_AQUI.md",
+      "sha256": "a8607d3e2dbcc194ff0e8b5b2ab22edf5420242b425bedaa40b115075b1ce858"
+    },
+    {
+      "path": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/HANDOFF.md",
+      "sha256": "ee8ac5b114aaea788c00b6a77fc330aacf653e75a656837a0808950cd348d5d6"
+    },
+    {
+      "path": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/README.md",
+      "sha256": "548b49b1f5eceea2cff2665c9dcfe42eee82743b4a39bf65f6256266d767c408"
+    },
+    {
+      "path": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/STOCKS_CURRENT_STATE.md",
+      "sha256": "d776fe98f72c27d189e5a0e58673cb3d1fd0881f3eae72ad54ad47ab01df7817"
+    },
+    {
+      "path": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/docs__DOCUMENTATION_INDEX.md",
+      "sha256": "85be32319f244c3abad77f8d1ac11369e8d87abd8c2e8a1c07ba33b02bf82c92"
+    }
+  ],
+  "links": [
+    {
+      "document": "research/session-20260909/publication/local/COMECE_AQUI.md",
+      "line": 1,
+      "target": "stocks-predictor/docs/continuation/PROMPT_AUDITORIA_INTEGRAL_20260909.md",
+      "original_context_path": "COMECE_AQUI.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "docs/continuation/PROMPT_AUDITORIA_INTEGRAL_20260909.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/COMECE_AQUI.md",
+      "line": 1,
+      "target": "stocks-predictor/research/session-20260909/publication/README.md",
+      "original_context_path": "COMECE_AQUI.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "research/session-20260909/publication/README.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/COMECE_AQUI.md",
+      "line": 24,
+      "target": "stocks-predictor/README.md",
+      "original_context_path": "COMECE_AQUI.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "README.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/COMECE_AQUI.md",
+      "line": 25,
+      "target": "stocks-predictor/STOCKS_CURRENT_STATE.md",
+      "original_context_path": "COMECE_AQUI.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "STOCKS_CURRENT_STATE.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/COMECE_AQUI.md",
+      "line": 26,
+      "target": "stocks-predictor/docs/DOCUMENTATION_INDEX.md",
+      "original_context_path": "COMECE_AQUI.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "docs/DOCUMENTATION_INDEX.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/COMECE_AQUI.md",
+      "line": 30,
+      "target": "data/CATALOG.json",
+      "original_context_path": "COMECE_AQUI.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "docs/research/2026-09-09-data-readiness.json"
+    },
+    {
+      "document": "research/session-20260909/publication/local/COMECE_AQUI.md",
+      "line": 39,
+      "target": "stocks-predictor/docs/research/2026-09-09-h21-source-closure.md",
+      "original_context_path": "COMECE_AQUI.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "docs/research/2026-09-09-h21-source-closure.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/COMECE_AQUI.md",
+      "line": 46,
+      "target": "stocks-predictor/docs/research/2026-09-09-data-completion-r2.md",
+      "original_context_path": "COMECE_AQUI.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "docs/research/2026-09-09-data-completion-r2.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/COMECE_AQUI.md",
+      "line": 58,
+      "target": "stocks-predictor/AGENTS.md",
+      "original_context_path": "COMECE_AQUI.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "AGENTS.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/data/README.md",
+      "line": 3,
+      "target": "CATALOG.json",
+      "original_context_path": "data/README.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "docs/research/2026-09-09-data-readiness.json"
+    },
+    {
+      "document": "research/session-20260909/publication/local/data/README.md",
+      "line": 4,
+      "target": "../stocks-predictor/docs/research/2026-09-09-data-completion-r2.md",
+      "original_context_path": "data/README.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "docs/research/2026-09-09-data-completion-r2.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/data/README.md",
+      "line": 20,
+      "target": "../stocks-predictor/research/session-20260909/data_completion/README.md",
+      "original_context_path": "data/README.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "research/session-20260909/data_completion/README.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/AGENTS.md",
+      "line": 7,
+      "target": "docs/continuation/MANDATO_20260909.md",
+      "original_context_path": "stocks-predictor/AGENTS.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "docs/continuation/MANDATO_20260909.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/AGENTS.md",
+      "line": 14,
+      "target": "docs/DOCUMENTATION_INDEX.md",
+      "original_context_path": "stocks-predictor/AGENTS.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "docs/DOCUMENTATION_INDEX.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/AGENTS.md",
+      "line": 15,
+      "target": "docs/DESIGN.md",
+      "original_context_path": "stocks-predictor/AGENTS.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "docs/DESIGN.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/AGENTS.md",
+      "line": 26,
+      "target": "docs/continuation/LOCAL_PATHS_20260909.json",
+      "original_context_path": "stocks-predictor/AGENTS.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "docs/continuation/LOCAL_PATHS_20260909.json"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/AGENTS.md",
+      "line": 69,
+      "target": "research/session-20260909/h21/README.md",
+      "original_context_path": "stocks-predictor/AGENTS.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "research/session-20260909/h21/README.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/COMECE_AQUI.md",
+      "line": 14,
+      "target": "stocks-predictor/README.md",
+      "original_context_path": "COMECE_AQUI.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "README.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/COMECE_AQUI.md",
+      "line": 15,
+      "target": "stocks-predictor/STOCKS_CURRENT_STATE.md",
+      "original_context_path": "COMECE_AQUI.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "STOCKS_CURRENT_STATE.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/COMECE_AQUI.md",
+      "line": 16,
+      "target": "stocks-predictor/docs/DOCUMENTATION_INDEX.md",
+      "original_context_path": "COMECE_AQUI.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "docs/DOCUMENTATION_INDEX.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/COMECE_AQUI.md",
+      "line": 24,
+      "target": "outputs/RELATORIO_STOCKS_H21.md",
+      "original_context_path": "COMECE_AQUI.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "research/session-20260909/publication/local/outputs/RELATORIO_STOCKS_H21.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/COMECE_AQUI.md",
+      "line": 34,
+      "target": "stocks-predictor/AGENTS.md",
+      "original_context_path": "COMECE_AQUI.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "AGENTS.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/HANDOFF.md",
+      "line": 6,
+      "target": "docs/DOCUMENTATION_INDEX.md",
+      "original_context_path": "stocks-predictor/HANDOFF.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "docs/DOCUMENTATION_INDEX.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/HANDOFF.md",
+      "line": 791,
+      "target": "docs/research/2026-09-07-h17-first-observation.md",
+      "original_context_path": "stocks-predictor/HANDOFF.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "docs/research/2026-09-07-h17-first-observation.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/HANDOFF.md",
+      "line": 799,
+      "target": "docs/research/2026-09-07-h17-registration.md",
+      "original_context_path": "stocks-predictor/HANDOFF.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "docs/research/2026-09-07-h17-registration.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/HANDOFF.md",
+      "line": 818,
+      "target": "docs/research/2026-09-07-real-integration-results.md",
+      "original_context_path": "stocks-predictor/HANDOFF.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "docs/research/2026-09-07-real-integration-results.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/HANDOFF.md",
+      "line": 863,
+      "target": "docs/research/2026-09-07-source-completion.md",
+      "original_context_path": "stocks-predictor/HANDOFF.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "docs/research/2026-09-07-source-completion.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/HANDOFF.md",
+      "line": 879,
+      "target": "docs/research/2026-09-07-repairs.md",
+      "original_context_path": "stocks-predictor/HANDOFF.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "docs/research/2026-09-07-repairs.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/HANDOFF.md",
+      "line": 896,
+      "target": "docs/research/2026-09-06-readiness.md",
+      "original_context_path": "stocks-predictor/HANDOFF.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "docs/research/2026-09-06-readiness.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/HANDOFF.md",
+      "line": 2372,
+      "target": "reports/h6_verdict_adhoc.md",
+      "original_context_path": "stocks-predictor/HANDOFF.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "reports/h6_verdict_adhoc.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/HANDOFF.md",
+      "line": 2388,
+      "target": "reports/h8_verdict_adhoc.md",
+      "original_context_path": "stocks-predictor/HANDOFF.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "reports/h8_verdict_adhoc.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/HANDOFF.md",
+      "line": 2508,
+      "target": "docs/RJ_DESIGN.md",
+      "original_context_path": "stocks-predictor/HANDOFF.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "docs/RJ_DESIGN.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/HANDOFF.md",
+      "line": 2704,
+      "target": "reports/h5_verdict_20260718T202628182793-427444.md",
+      "original_context_path": "stocks-predictor/HANDOFF.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "reports/h5_verdict_20260718T202628182793-427444.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/HANDOFF.md",
+      "line": 2828,
+      "target": "reports/h4_verdict_20260718T201214322046-5e3833.md",
+      "original_context_path": "stocks-predictor/HANDOFF.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "reports/h4_verdict_20260718T201214322046-5e3833.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/HANDOFF.md",
+      "line": 2914,
+      "target": "reports/h2_verdict_20260716T221541856778-ac106e.md",
+      "original_context_path": "stocks-predictor/HANDOFF.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "reports/h2_verdict_20260716T221541856778-ac106e.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/HANDOFF.md",
+      "line": 2953,
+      "target": "reports/h1_verdict_20260712T091903477689-41cc24.md",
+      "original_context_path": "stocks-predictor/HANDOFF.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "reports/h1_verdict_20260712T091903477689-41cc24.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/HANDOFF.md",
+      "line": 3203,
+      "target": "reports/splits_candidates.csv",
+      "original_context_path": "stocks-predictor/HANDOFF.md",
+      "resolution": "UNPRESERVED_HISTORICAL_DERIVATIVE",
+      "reason": "Old untracked split-review candidate export; not required for current research-store operations, original not recovered."
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/HANDOFF.md",
+      "line": 3421,
+      "target": "RESEARCH_FREEZE.md",
+      "original_context_path": "stocks-predictor/HANDOFF.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "RESEARCH_FREEZE.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/README.md",
+      "line": 8,
+      "target": "docs/research/2026-09-09-h21-results.md",
+      "original_context_path": "stocks-predictor/README.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "docs/research/2026-09-09-h21-results.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/README.md",
+      "line": 9,
+      "target": "research/session-20260909/h21/README.md",
+      "original_context_path": "stocks-predictor/README.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "research/session-20260909/h21/README.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/README.md",
+      "line": 21,
+      "target": "docs/RJ_DESIGN.md",
+      "original_context_path": "stocks-predictor/README.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "docs/RJ_DESIGN.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/README.md",
+      "line": 22,
+      "target": "docs/DESIGN.md",
+      "original_context_path": "stocks-predictor/README.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "docs/DESIGN.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/README.md",
+      "line": 30,
+      "target": "docs/continuation/LOCAL_PATHS_20260909.json",
+      "original_context_path": "stocks-predictor/README.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "docs/continuation/LOCAL_PATHS_20260909.json"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/README.md",
+      "line": 31,
+      "target": "docs/DOCUMENTATION_INDEX.md",
+      "original_context_path": "stocks-predictor/README.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "docs/DOCUMENTATION_INDEX.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/README.md",
+      "line": 72,
+      "target": "research/session-20260909/h21/README.md",
+      "original_context_path": "stocks-predictor/README.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "research/session-20260909/h21/README.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/README.md",
+      "line": 167,
+      "target": "RESEARCH_FREEZE.md",
+      "original_context_path": "stocks-predictor/README.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "RESEARCH_FREEZE.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/README.md",
+      "line": 168,
+      "target": "reports/",
+      "original_context_path": "stocks-predictor/README.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "reports"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/README.md",
+      "line": 169,
+      "target": "trials.json",
+      "original_context_path": "stocks-predictor/README.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "trials.json"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/README.md",
+      "line": 170,
+      "target": "trials_v2.json",
+      "original_context_path": "stocks-predictor/README.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "trials_v2.json"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/README.md",
+      "line": 171,
+      "target": "tools/migrate_trials_schema.py",
+      "original_context_path": "stocks-predictor/README.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "tools/migrate_trials_schema.py"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/README.md",
+      "line": 173,
+      "target": "tests/test_purge_embargo_limitation.py",
+      "original_context_path": "stocks-predictor/README.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "tests/test_purge_embargo_limitation.py"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/README.md",
+      "line": 174,
+      "target": "tests/test_core_import_path.py",
+      "original_context_path": "stocks-predictor/README.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "tests/test_core_import_path.py"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/README.md",
+      "line": 175,
+      "target": "tests/test_universe.py",
+      "original_context_path": "stocks-predictor/README.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "tests/test_universe.py"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/README.md",
+      "line": 177,
+      "target": "poc_leak.py",
+      "original_context_path": "stocks-predictor/README.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "poc_leak.py"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/README.md",
+      "line": 178,
+      "target": "docs/RJ_DESIGN.md",
+      "original_context_path": "stocks-predictor/README.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "docs/RJ_DESIGN.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/README.md",
+      "line": 178,
+      "target": "docs/audit/kimi_2026-08-24/",
+      "original_context_path": "stocks-predictor/README.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "docs/audit/kimi_2026-08-24"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/STOCKS_CURRENT_STATE.md",
+      "line": 8,
+      "target": "docs/continuation/LOCAL_PATHS_20260909.json",
+      "original_context_path": "stocks-predictor/STOCKS_CURRENT_STATE.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "docs/continuation/LOCAL_PATHS_20260909.json"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/STOCKS_CURRENT_STATE.md",
+      "line": 31,
+      "target": "docs/research/2026-09-09-h21-forward-plan.json",
+      "original_context_path": "stocks-predictor/STOCKS_CURRENT_STATE.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "docs/research/2026-09-09-h21-forward-plan.json"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/STOCKS_CURRENT_STATE.md",
+      "line": 44,
+      "target": "docs/DOCUMENTATION_INDEX.md",
+      "original_context_path": "stocks-predictor/STOCKS_CURRENT_STATE.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "docs/DOCUMENTATION_INDEX.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/STOCKS_CURRENT_STATE.md",
+      "line": 63,
+      "target": "docs/research/2026-09-09-h21-results.md",
+      "original_context_path": "stocks-predictor/STOCKS_CURRENT_STATE.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "docs/research/2026-09-09-h21-results.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/STOCKS_CURRENT_STATE.md",
+      "line": 253,
+      "target": "docs/research/2026-09-08-h20-results.md",
+      "original_context_path": "stocks-predictor/STOCKS_CURRENT_STATE.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "docs/research/2026-09-08-h20-results.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/STOCKS_CURRENT_STATE.md",
+      "line": 258,
+      "target": "docs/research/2026-09-08-similar-models.md",
+      "original_context_path": "stocks-predictor/STOCKS_CURRENT_STATE.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "docs/research/2026-09-08-similar-models.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/STOCKS_CURRENT_STATE.md",
+      "line": 277,
+      "target": "docs/research/2026-09-08-feasibility-results.md",
+      "original_context_path": "stocks-predictor/STOCKS_CURRENT_STATE.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "docs/research/2026-09-08-feasibility-results.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/STOCKS_CURRENT_STATE.md",
+      "line": 292,
+      "target": "docs/research/2026-09-07-final-review.md",
+      "original_context_path": "stocks-predictor/STOCKS_CURRENT_STATE.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "docs/research/2026-09-07-final-review.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/STOCKS_CURRENT_STATE.md",
+      "line": 322,
+      "target": "docs/research/2026-09-07-real-integration-results.md",
+      "original_context_path": "stocks-predictor/STOCKS_CURRENT_STATE.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "docs/research/2026-09-07-real-integration-results.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/STOCKS_CURRENT_STATE.md",
+      "line": 335,
+      "target": "docs/research/2026-09-07-source-completion.md",
+      "original_context_path": "stocks-predictor/STOCKS_CURRENT_STATE.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "docs/research/2026-09-07-source-completion.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/STOCKS_CURRENT_STATE.md",
+      "line": 351,
+      "target": "docs/research/2026-09-07-repairs.md",
+      "original_context_path": "stocks-predictor/STOCKS_CURRENT_STATE.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "docs/research/2026-09-07-repairs.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/STOCKS_CURRENT_STATE.md",
+      "line": 360,
+      "target": "docs/research/2026-09-06-readiness.md",
+      "original_context_path": "stocks-predictor/STOCKS_CURRENT_STATE.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "docs/research/2026-09-06-readiness.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/docs__DOCUMENTATION_INDEX.md",
+      "line": 10,
+      "target": "../AGENTS.md",
+      "original_context_path": "stocks-predictor/docs/DOCUMENTATION_INDEX.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "AGENTS.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/docs__DOCUMENTATION_INDEX.md",
+      "line": 10,
+      "target": "../README.md",
+      "original_context_path": "stocks-predictor/docs/DOCUMENTATION_INDEX.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "README.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/docs__DOCUMENTATION_INDEX.md",
+      "line": 11,
+      "target": "../STOCKS_CURRENT_STATE.md",
+      "original_context_path": "stocks-predictor/docs/DOCUMENTATION_INDEX.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "STOCKS_CURRENT_STATE.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/docs__DOCUMENTATION_INDEX.md",
+      "line": 11,
+      "target": "../HANDOFF.md",
+      "original_context_path": "stocks-predictor/docs/DOCUMENTATION_INDEX.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "HANDOFF.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/docs__DOCUMENTATION_INDEX.md",
+      "line": 12,
+      "target": "continuation/MANDATO_20260909.md",
+      "original_context_path": "stocks-predictor/docs/DOCUMENTATION_INDEX.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "docs/continuation/MANDATO_20260909.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/docs__DOCUMENTATION_INDEX.md",
+      "line": 13,
+      "target": "continuation/PROMPT_NOVO_CHAT.md",
+      "original_context_path": "stocks-predictor/docs/DOCUMENTATION_INDEX.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "docs/continuation/PROMPT_NOVO_CHAT.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/docs__DOCUMENTATION_INDEX.md",
+      "line": 14,
+      "target": "research/2026-09-09-h21-results.md",
+      "original_context_path": "stocks-predictor/docs/DOCUMENTATION_INDEX.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "docs/research/2026-09-09-h21-results.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/docs__DOCUMENTATION_INDEX.md",
+      "line": 15,
+      "target": "../research/session-20260909/h21/README.md",
+      "original_context_path": "stocks-predictor/docs/DOCUMENTATION_INDEX.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "research/session-20260909/h21/README.md"
+    },
+    {
+      "document": "research/session-20260909/publication/local/work/h21-source-closure-20260909/docs-before/docs__DOCUMENTATION_INDEX.md",
+      "line": 16,
+      "target": "continuation/LOCAL_PATHS_20260909.json",
+      "original_context_path": "stocks-predictor/docs/DOCUMENTATION_INDEX.md",
+      "resolution": "TRACKED_CONTEXT_MAPPING",
+      "repository_path": "docs/continuation/LOCAL_PATHS_20260909.json"
+    }
+  ]
+}
