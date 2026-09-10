@@ -37,6 +37,17 @@
       "finding": "The upstream action push command used --no-merges --first-parent and reported 0 commits scanned after merge. PR225 scanned the change, but the main job was not an independent nonempty scan.",
       "correction": "Keep historical commit scan and add a separate scan of every tracked file from git archive HEAD, with nonzero tracked-file count and retained SARIF. Pin existing scanner version 8.24.3 and disable automatic PR comments.",
       "status": "CORRECTED_PENDING_COMPLETE_TREE_CI"
+    },
+    {
+      "id": "CI227-FULL-TREE",
+      "run_id": 34524947643,
+      "head": "ecde07e830e01eae3bbb82e33bb4abd63330102f",
+      "files": 1537,
+      "bytes_scanned": 148852518,
+      "findings": 6,
+      "classification": "Five historical SHA-256 fields and the exact H1_FROZEN_KEYS/H2_FROZEN_KEYS import. Three manifest digests match Git blobs at tested commit 5c09c7b8; vendored hash independently recomputed. Source-document SHA is recorded as source evidence, not an authentication value.",
+      "correction": "Rule-specific AND allowlists requiring the exact file and complete exact line; retain default rules. Negative-control scan must detect a generated synthetic token added only to an exported copy of the file with the import exception.",
+      "status": "CORRECTED_PENDING_CI"
     }
   ]
 }
