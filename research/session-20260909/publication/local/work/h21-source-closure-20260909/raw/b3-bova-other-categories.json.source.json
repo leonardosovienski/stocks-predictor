@@ -1,0 +1,15 @@
+{
+  "id": "b3-bova-other-categories",
+  "url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetCategoriesDoctoFunds/eyJsYW5ndWFnZSI6InB0LWJyIiwiaWRDRU0iOiJCT1ZBIiwidHlwZUZ1bmQiOiJFVEYifQ==",
+  "purpose": "Audit statement document categories",
+  "started_at_utc": "2026-09-09T19:36:07.095933+00:00",
+  "path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\raw\\b3-bova-other-categories.json",
+  "status": "downloaded",
+  "curl_exit_code": 0,
+  "http_status": 200,
+  "final_url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetCategoriesDoctoFunds/eyJsYW5ndWFnZSI6InB0LWJyIiwiaWRDRU0iOiJCT1ZBIiwidHlwZUZ1bmQiOiJFVEYifQ==",
+  "content_type": "application/json",
+  "bytes": 484,
+  "sha256": "5f6f884f08f9045baf1c7f11c7d40b6753a340b6f84dd8272e608f019c910355",
+  "completed_at_utc": "2026-09-09T19:36:07.501140+00:00"
+}

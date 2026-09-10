@@ -1,0 +1,15 @@
+{
+  "id": "rico-costs",
+  "url": "https://www.rico.com.vc/custos/",
+  "purpose": "One alternative broker: retail ETF fees",
+  "started_at_utc": "2026-09-09T19:23:14.310437+00:00",
+  "path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\raw\\rico-costs.html",
+  "status": "failed",
+  "curl_exit_code": 22,
+  "http_status": 403,
+  "final_url": "https://www.rico.com.vc/custos/",
+  "content_type": "text/html",
+  "error_type": "RuntimeError",
+  "error": "curl: (22) The requested URL returned error: 403\r\n",
+  "completed_at_utc": "2026-09-09T19:23:14.619387+00:00"
+}

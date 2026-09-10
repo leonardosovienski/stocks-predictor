@@ -1,0 +1,15 @@
+{
+  "id": "blackrock-merger-notice-retry",
+  "url": "https://www.blackrock.com/br/literature/shareholder-letters/ishares-bova11-brl-convocacao-agc-incorporacao-ptbr.pdf",
+  "purpose": "Proposed incorporation original document, do not infer execution",
+  "started_at_utc": "2026-09-09T20:00:01.652392+00:00",
+  "path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\raw\\bova-merger-notice-retry.pdf",
+  "status": "downloaded",
+  "final_url": "https://www.blackrock.com/br/literature/shareholder-letters/ishares-bova11-brl-convocacao-agc-incorporacao-ptbr.pdf",
+  "http_status": 200,
+  "content_type": "application/pdf;charset=UTF-8",
+  "last_modified": "Mon, 24 Nov 2025 16:28:39 GMT",
+  "bytes": 213731,
+  "sha256": "2d45ef6a7804bb8b932ae2a6762424ddb95cbd02dcd3ffb4e49cf52a07cab5f1",
+  "completed_at_utc": "2026-09-09T20:00:02.795034+00:00"
+}

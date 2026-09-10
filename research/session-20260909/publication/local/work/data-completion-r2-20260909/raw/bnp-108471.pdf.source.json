@@ -1,0 +1,15 @@
+{
+  "id": "bnp-108471",
+  "url": "https://brasil.bnpparibas/app/uploads/sites/7/2026/09/relatorio-de-informacoes-ao-investidor-ishares-ibovespa.pdf",
+  "purpose": "BOVA11 official administrator evidence",
+  "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\bnp-108471.pdf",
+  "started_at_utc": "2026-09-09T21:00:36.041491+00:00",
+  "status": "downloaded",
+  "curl_exit_code": 0,
+  "http_status": 200,
+  "final_url": "https://brasil.bnpparibas/app/uploads/sites/7/2026/09/relatorio-de-informacoes-ao-investidor-ishares-ibovespa.pdf",
+  "content_type": "application/pdf",
+  "bytes": 63676,
+  "sha256": "c3f9b4f043517e8d1a79ac4dee07514879cd8abc629a0a5557eed0e5c754621d",
+  "completed_at_utc": "2026-09-09T21:00:37.916998+00:00"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "b3-bova-filings-all",
+  "url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetReportsRelevants/eyJsYW5ndWFnZSI6InB0LWJyIiwiaWRGTkVUIjoiOTkwIiwidHlwZUZ1bmQiOiJFVEYiLCJkYXRlSW5pdGlhbCI6IjIwMTgtMDEtMDEiLCJkYXRlRmluYWwiOiIyMDI2LTA5LTA4IiwicGFnZU51bWJlciI6MSwicGFnZVNpemUiOjEyMCwiY2F0ZWdvcnkiOjB9",
+  "purpose": "Read-only fund filings with explicit full date range and pagination counts",
+  "started_at_utc": "2026-09-09T19:35:30.997875+00:00",
+  "path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\raw\\b3-bova-filings-all.json",
+  "status": "downloaded",
+  "curl_exit_code": 0,
+  "http_status": 200,
+  "final_url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetReportsRelevants/eyJsYW5ndWFnZSI6InB0LWJyIiwiaWRGTkVUIjoiOTkwIiwidHlwZUZ1bmQiOiJFVEYiLCJkYXRlSW5pdGlhbCI6IjIwMTgtMDEtMDEiLCJkYXRlRmluYWwiOiIyMDI2LTA5LTA4IiwicGFnZU51bWJlciI6MSwicGFnZVNpemUiOjEyMCwiY2F0ZWdvcnkiOjB9",
+  "content_type": "application/json",
+  "bytes": 85,
+  "sha256": "420b1d65d2f16949a60710187a020c7d68cac20ce47892d0d03f3287a59ad5d5",
+  "completed_at_utc": "2026-09-09T19:35:31.511410+00:00"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "blackrock-library",
+  "url": "https://www.blackrock.com/br/library",
+  "purpose": "Issuer public literature catalog",
+  "started_at_utc": "2026-09-09T19:01:02.657879+00:00",
+  "path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\raw\\blackrock-library.html",
+  "status": "downloaded",
+  "final_url": "https://www.blackrock.com/br/library",
+  "http_status": 200,
+  "content_type": "text/html;charset=UTF-8",
+  "last_modified": null,
+  "bytes": 68518,
+  "sha256": "a8b14c8b95685aed79d017bcb17b98083b992a1b119fb407b164ae81b7c346eb",
+  "completed_at_utc": "2026-09-09T19:01:04.300575+00:00"
+}

@@ -1,0 +1,16 @@
+{
+  "id": "blackrock-annual-2026",
+  "url": "https://www.blackrock.com/br/literature/annual-report/ishares-bova11-brl-relatorio-anual-2026-ptbr.pdf",
+  "purpose": "Annual investor-level event reconciliation; no economic valuation",
+  "started_at_utc": "2026-09-09T19:42:07.576196+00:00",
+  "path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\raw\\bova-annual-2026.pdf",
+  "status": "failed",
+  "curl_exit_code": 28,
+  "http_status": 200,
+  "final_url": "https://www.blackrock.com/br/literature/annual-report/ishares-bova11-brl-relatorio-anual-2026-ptbr.pdf",
+  "content_type": "application/pdf;charset=UTF-8",
+  "error_type": "RuntimeError",
+  "error": "curl: (28) Operation timed out after 45009 milliseconds with 336 out of 15463214 bytes received\r\n",
+  "partial_bytes": 336,
+  "completed_at_utc": "2026-09-09T19:42:52.678035+00:00"
+}

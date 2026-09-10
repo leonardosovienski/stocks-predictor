@@ -1,0 +1,26 @@
+{
+  "id": "b3-bova-audited-docs",
+  "url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetListDocsFunds",
+  "purpose": "Official B3 archive of audited financial statements",
+  "started_at_utc": "2026-09-09T19:37:51.459828+00:00",
+  "path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\raw\\b3-bova-audited-docs.json",
+  "status": "downloaded",
+  "json_body": {
+    "language": "pt-br",
+    "idCEM": "BOVA",
+    "typeFund": "ETF",
+    "category": "DemonstrativosFinanceirosERelatorios",
+    "dateInitial": "2017-01-01",
+    "dateFinal": "2026-09-08",
+    "pageNumber": 1,
+    "pageSize": 60,
+    "keyword": ""
+  },
+  "curl_exit_code": 0,
+  "http_status": 200,
+  "final_url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetListDocsFunds",
+  "content_type": "application/json",
+  "bytes": 1010,
+  "sha256": "b7535d61f6a39f6f36e802dbd4ab00c803a12e380b6c6d8b9a5e2da6525ef9c5",
+  "completed_at_utc": "2026-09-09T19:37:58.202790+00:00"
+}

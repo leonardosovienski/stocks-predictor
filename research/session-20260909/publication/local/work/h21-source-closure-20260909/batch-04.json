@@ -1,0 +1,26 @@
+[
+  {
+    "id": "b3-funds-main",
+    "filename": "b3-funds-main.js",
+    "url": "https://sistemaswebb3-listados.b3.com.br/fundsListedPage/main-R7MJDCZE.js",
+    "purpose": "Derive official ETF lookup endpoints"
+  },
+  {
+    "id": "b3-calendar-2026",
+    "filename": "b3-calendar-2026.html",
+    "url": "https://www.b3.com.br/pt_br/noticias/calendario-de-negociacao-da-b3-confira-o-funcionamento-da-bolsa-em-2026.htm",
+    "purpose": "Independent 2026 equity trading calendar"
+  },
+  {
+    "id": "cvm-legacy-fs-form",
+    "filename": "cvm-legacy-fs-form.html",
+    "url": "https://cvmweb.cvm.gov.br/SWB/Sistemas/SCW/CPublica/DemContabeis/CPublicaDemContabeis.aspx",
+    "purpose": "Find audited ETF financial statements before July 2018"
+  },
+  {
+    "id": "b3-fee-new-program",
+    "filename": "b3-circulars-2026.html",
+    "url": "https://b3.com.br/pt_br/regulacao/oficios-e-comunicados/oficios-e-comunicados/",
+    "purpose": "Check new September2026 retail tariff program and operative circular"
+  }
+]

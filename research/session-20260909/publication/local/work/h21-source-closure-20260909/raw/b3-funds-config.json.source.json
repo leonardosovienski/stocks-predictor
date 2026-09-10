@@ -1,0 +1,15 @@
+{
+  "id": "b3-funds-config",
+  "url": "https://sistemaswebb3-listados.b3.com.br/fundsListedPage/assets/funds.json",
+  "purpose": "Official other-document category configuration",
+  "started_at_utc": "2026-09-09T19:36:07.095933+00:00",
+  "path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\raw\\b3-funds-config.json",
+  "status": "downloaded",
+  "curl_exit_code": 0,
+  "http_status": 200,
+  "final_url": "https://sistemaswebb3-listados.b3.com.br/fundsListedPage/assets/funds.json",
+  "content_type": "application/json",
+  "bytes": 4600,
+  "sha256": "1106f4b6a2ca95d75d2bbb566375e6291a7fa6bf150454ddab154377bd1508bc",
+  "completed_at_utc": "2026-09-09T19:36:07.395014+00:00"
+}

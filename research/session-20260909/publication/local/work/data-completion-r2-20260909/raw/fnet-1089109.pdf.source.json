@@ -1,0 +1,15 @@
+{
+  "id": "fnet-direct-small-ipv4",
+  "url": "https://fnet.bmfbovespa.com.br/fnet/publico/downloadDocumento?id=1089109",
+  "purpose": "Retest public FNET download via IPv4 using known filing ID",
+  "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-1089109.pdf",
+  "started_at_utc": "2026-09-09T20:49:43.484861+00:00",
+  "status": "downloaded",
+  "curl_exit_code": 0,
+  "http_status": 200,
+  "final_url": "https://fnet.bmfbovespa.com.br/fnet/publico/downloadDocumento?id=1089109",
+  "content_type": "application/pdf; charset=UTF-8",
+  "bytes": 170487,
+  "sha256": "acccae93ae4c1ef84bd4f5c50208d151681cf12da72e4a7acfb49f28aa8dd002",
+  "completed_at_utc": "2026-09-09T20:49:44.097862+00:00"
+}

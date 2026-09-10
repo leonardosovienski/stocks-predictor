@@ -1,0 +1,15 @@
+{
+  "tests_passed": 782,
+  "test_seconds": 245.21,
+  "python": "3.13.15",
+  "predictor_core": "3.2.0",
+  "coverage_percent": 78,
+  "archived_tests_not_executed": 17,
+  "wheel_import_evidence": [
+    "2026-09-09T20:30:09.9142840Z predictor_core /tmp/stocks-wheel/lib/python3.13/site-packages/predictor_core/__init__.py",
+    "2026-09-09T20:30:09.9144081Z stocks_predictor /tmp/stocks-wheel/lib/python3.13/site-packages/stocks_predictor/__init__.py",
+    "2026-09-09T20:30:09.9145547Z stocks_predictor.etf_hold /tmp/stocks-wheel/lib/python3.13/site-packages/stocks_predictor/etf_hold.py"
+  ],
+  "run_id": 34400963491,
+  "commit": "c45c6e1aba148190ee1bd99da87f7a719af3b1b0"
+}

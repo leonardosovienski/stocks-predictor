@@ -1,0 +1,15 @@
+{
+  "id": "b3-bova-categories-2026",
+  "url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetCategories/eyJsYW5ndWFnZSI6InB0LWJyIiwiaWRGTkVUIjoiOTkwIiwidHlwZUZ1bmQiOiJFVEYiLCJkYXRlSW5pdGlhbCI6IjIwMjYtMDEtMDEiLCJkYXRlRmluYWwiOiIyMDI2LTA5LTA4IiwicGFnZU51bWJlciI6MSwicGFnZVNpemUiOjIwfQ==",
+  "purpose": "Verify fund/class identity and narrower official document catalog",
+  "started_at_utc": "2026-09-09T19:33:26.438339+00:00",
+  "path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\raw\\b3-bova-categories-2026.json",
+  "status": "downloaded",
+  "curl_exit_code": 0,
+  "http_status": 200,
+  "final_url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetCategories/eyJsYW5ndWFnZSI6InB0LWJyIiwiaWRGTkVUIjoiOTkwIiwidHlwZUZ1bmQiOiJFVEYiLCJkYXRlSW5pdGlhbCI6IjIwMjYtMDEtMDEiLCJkYXRlRmluYWwiOiIyMDI2LTA5LTA4IiwicGFnZU51bWJlciI6MSwicGFnZVNpemUiOjIwfQ==",
+  "content_type": "application/json",
+  "bytes": 71,
+  "sha256": "efa9ff7ce968983a9ba6b19da10489f575698955738e39a3ea37e8178a9f335a",
+  "completed_at_utc": "2026-09-09T19:33:26.806875+00:00"
+}

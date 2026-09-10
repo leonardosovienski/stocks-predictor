@@ -1,0 +1,15 @@
+{
+  "id": "b3-bova-categories-2018",
+  "url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetCategories/eyJsYW5ndWFnZSI6InB0LWJyIiwiaWRGTkVUIjoiOTkwIiwidHlwZUZ1bmQiOiJFVEYiLCJkYXRlSW5pdGlhbCI6IjIwMTgtMDEtMDEiLCJkYXRlRmluYWwiOiIyMDE4LTEyLTMxIiwicGFnZU51bWJlciI6MSwicGFnZVNpemUiOjIwfQ==",
+  "purpose": "BOVA official fund/class filings and investor-level corporate action inventory",
+  "started_at_utc": "2026-09-09T19:34:20.514690+00:00",
+  "path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\raw\\b3-bova-categories-2018.json",
+  "status": "downloaded",
+  "curl_exit_code": 0,
+  "http_status": 200,
+  "final_url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetCategories/eyJsYW5ndWFnZSI6InB0LWJyIiwiaWRGTkVUIjoiOTkwIiwidHlwZUZ1bmQiOiJFVEYiLCJkYXRlSW5pdGlhbCI6IjIwMTgtMDEtMDEiLCJkYXRlRmluYWwiOiIyMDE4LTEyLTMxIiwicGFnZU51bWJlciI6MSwicGFnZVNpemUiOjIwfQ==",
+  "content_type": "application/json",
+  "bytes": 139,
+  "sha256": "95a22343001600ce55f15cfb2789244ea6cd19c146b26ea0d97bc3ebdb4788e8",
+  "completed_at_utc": "2026-09-09T19:34:20.879806+00:00"
+}

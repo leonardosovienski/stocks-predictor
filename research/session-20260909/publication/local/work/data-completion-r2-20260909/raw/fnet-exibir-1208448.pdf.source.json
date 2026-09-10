@@ -1,0 +1,15 @@
+{
+  "id": "fnet-exibir-1208448",
+  "url": "https://fnet.bmfbovespa.com.br/fnet/publico/exibirDocumento?id=1208448&",
+  "purpose": "Alternative public PDF viewer route",
+  "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-exibir-1208448.pdf",
+  "started_at_utc": "2026-09-09T21:10:31.895653+00:00",
+  "status": "failed",
+  "curl_exit_code": 28,
+  "http_status": 0,
+  "final_url": "https://fnet.bmfbovespa.com.br/fnet/publico/exibirDocumento?id=1208448&",
+  "content_type": null,
+  "error_type": "RuntimeError",
+  "error": "curl: (28) Operation timed out after 35013 milliseconds with 0 bytes received\r\n",
+  "completed_at_utc": "2026-09-09T21:11:07.016443+00:00"
+}

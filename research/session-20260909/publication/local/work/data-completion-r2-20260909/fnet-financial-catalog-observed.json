@@ -1,0 +1,96 @@
+{
+  "kind": "PUBLIC_BROWSER_OBSERVATION_NOT_RAW_RESPONSE",
+  "observed_at_utc": "2026-09-09T21:12:56.961612+00:00",
+  "url": "https://fnet.bmfbovespa.com.br/fnet/publico/abrirGerenciadorDocumentosCVM",
+  "filters": {
+    "cnpj": "10406511000161",
+    "delivery_from": "2018-01-01",
+    "delivery_through": "2026-09-09",
+    "category": "Informes Periódicos",
+    "type": "Demonstrações Financeiras",
+    "status": "Todos"
+  },
+  "record_count": 8,
+  "rows": [
+    {
+      "year": 2019,
+      "id": 50245,
+      "reference_date": "2019-03-31",
+      "delivery_display": "30/05/2019 17:23",
+      "status": "Ativo",
+      "version": 1,
+      "scope": "Fundo",
+      "download_url": "https://fnet.bmfbovespa.com.br/fnet/publico/downloadDocumento?id=50245"
+    },
+    {
+      "year": 2020,
+      "id": 103269,
+      "reference_date": "2020-03-31",
+      "delivery_display": "29/06/2020 18:29",
+      "status": "Ativo",
+      "version": 1,
+      "scope": "Fundo",
+      "download_url": "https://fnet.bmfbovespa.com.br/fnet/publico/downloadDocumento?id=103269"
+    },
+    {
+      "year": 2021,
+      "id": 179946,
+      "reference_date": "2021-03-31",
+      "delivery_display": "28/05/2021 19:19",
+      "status": "Ativo",
+      "version": 1,
+      "scope": "Fundo",
+      "download_url": "https://fnet.bmfbovespa.com.br/fnet/publico/downloadDocumento?id=179946"
+    },
+    {
+      "year": 2022,
+      "id": 310114,
+      "reference_date": "2022-03-31",
+      "delivery_display": "30/05/2022 21:22",
+      "status": "Ativo",
+      "version": 1,
+      "scope": "Fundo",
+      "download_url": "https://fnet.bmfbovespa.com.br/fnet/publico/downloadDocumento?id=310114"
+    },
+    {
+      "year": 2023,
+      "id": 471199,
+      "reference_date": "2023-03-31",
+      "delivery_display": "30/05/2023 16:12",
+      "status": "Ativo",
+      "version": 1,
+      "scope": "Fundo",
+      "download_url": "https://fnet.bmfbovespa.com.br/fnet/publico/downloadDocumento?id=471199"
+    },
+    {
+      "year": 2024,
+      "id": 672335,
+      "reference_date": "2024-03-31",
+      "delivery_display": "30/05/2024 21:36",
+      "status": "Ativo",
+      "version": 1,
+      "scope": "Fundo",
+      "download_url": "https://fnet.bmfbovespa.com.br/fnet/publico/downloadDocumento?id=672335"
+    },
+    {
+      "year": 2025,
+      "id": 915706,
+      "reference_date": "2025-03-31",
+      "delivery_display": "30/05/2025 20:41",
+      "status": "Ativo",
+      "version": 1,
+      "scope": "Fundo",
+      "download_url": "https://fnet.bmfbovespa.com.br/fnet/publico/downloadDocumento?id=915706"
+    },
+    {
+      "year": 2026,
+      "id": 1208448,
+      "reference_date": "2026-03-31",
+      "delivery_display": "29/05/2026 20:37",
+      "status": "Ativo",
+      "version": 1,
+      "scope": "Classe",
+      "download_url": "https://fnet.bmfbovespa.com.br/fnet/publico/downloadDocumento?id=1208448"
+    }
+  ]
+}

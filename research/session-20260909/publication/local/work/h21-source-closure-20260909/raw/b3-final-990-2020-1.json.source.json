@@ -1,0 +1,15 @@
+{
+  "id": "b3-final-990-2020-1",
+  "url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetReportsRelevants/eyJsYW5ndWFnZSI6InB0LWJyIiwiaWRGTkVUIjoiOTkwIiwidHlwZUZ1bmQiOiJFVEYiLCJkYXRlSW5pdGlhbCI6IjIwMjAtMDEtMDEiLCJkYXRlRmluYWwiOiIyMDIwLTEyLTMxIiwicGFnZU51bWJlciI6MSwicGFnZVNpemUiOjYwLCJjYXRlZ29yeSI6IjEifQ==",
+  "purpose": "Correct single-calendar-year documentary scope; no performance calculation",
+  "started_at_utc": "2026-09-09T20:06:50.592922+00:00",
+  "path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\raw\\b3-final-990-2020-1.json",
+  "status": "downloaded",
+  "curl_exit_code": 0,
+  "http_status": 200,
+  "final_url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetReportsRelevants/eyJsYW5ndWFnZSI6InB0LWJyIiwiaWRGTkVUIjoiOTkwIiwidHlwZUZ1bmQiOiJFVEYiLCJkYXRlSW5pdGlhbCI6IjIwMjAtMDEtMDEiLCJkYXRlRmluYWwiOiIyMDIwLTEyLTMxIiwicGFnZU51bWJlciI6MSwicGFnZVNpemUiOjYwLCJjYXRlZ29yeSI6IjEifQ==",
+  "content_type": "application/json",
+  "bytes": 1045,
+  "sha256": "fd293fe863753186b4727aaa49e821e5316a0cba27f512a1bba77df5b276f5c2",
+  "completed_at_utc": "2026-09-09T20:06:51.439031+00:00"
+}

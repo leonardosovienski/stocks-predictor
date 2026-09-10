@@ -1,0 +1,405 @@
+[
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\b3-fees-177-2020.pdf",
+    "pages": 8,
+    "evolution_pages": [],
+    "amortization_pages": [],
+    "identity": false
+  },
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\bnp-102385.pdf",
+    "pages": 1,
+    "evolution_pages": [],
+    "amortization_pages": [],
+    "identity": true
+  },
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\bnp-102637.pdf",
+    "pages": 1,
+    "evolution_pages": [],
+    "amortization_pages": [],
+    "identity": true
+  },
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\bnp-108471.pdf",
+    "pages": 2,
+    "evolution_pages": [],
+    "amortization_pages": [],
+    "identity": true
+  },
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\bnp-44079.pdf",
+    "pages": 18,
+    "evolution_pages": [
+      2,
+      7,
+      10,
+      14,
+      15
+    ],
+    "amortization_pages": [],
+    "identity": true
+  },
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\bnp-59113.pdf",
+    "pages": 1,
+    "evolution_pages": [],
+    "amortization_pages": [],
+    "identity": true
+  },
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\bnp-68866.pdf",
+    "pages": 1,
+    "evolution_pages": [],
+    "amortization_pages": [],
+    "identity": true
+  },
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\bnp-bova-fs2020.pdf",
+    "pages": 24,
+    "evolution_pages": [
+      13,
+      14,
+      19,
+      20
+    ],
+    "amortization_pages": [],
+    "identity": true
+  },
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-105601.pdf",
+    "pages": 2,
+    "evolution_pages": [],
+    "amortization_pages": [],
+    "identity": true
+  },
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-1089109.pdf",
+    "pages": 1,
+    "evolution_pages": [],
+    "amortization_pages": [],
+    "identity": true
+  },
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-1142927.pdf",
+    "pages": 1,
+    "evolution_pages": [],
+    "amortization_pages": [],
+    "identity": true
+  },
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-1201438.pdf",
+    "pages": 1,
+    "evolution_pages": [],
+    "amortization_pages": [],
+    "identity": true
+  },
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-1201439.pdf",
+    "pages": 22,
+    "evolution_pages": [],
+    "amortization_pages": [
+      19,
+      21
+    ],
+    "identity": true
+  },
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-1214074.pdf",
+    "pages": 2,
+    "evolution_pages": [],
+    "amortization_pages": [],
+    "identity": true
+  },
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-1224076.pdf",
+    "pages": 1,
+    "evolution_pages": [],
+    "amortization_pages": [],
+    "identity": true
+  },
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-209794.pdf",
+    "pages": 1,
+    "evolution_pages": [],
+    "amortization_pages": [],
+    "identity": true
+  },
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-209795.pdf",
+    "pages": 39,
+    "evolution_pages": [],
+    "amortization_pages": [
+      2,
+      28
+    ],
+    "identity": false
+  },
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-483971.pdf",
+    "pages": 1,
+    "evolution_pages": [],
+    "amortization_pages": [],
+    "identity": false
+  },
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-50621.pdf",
+    "pages": 1,
+    "evolution_pages": [],
+    "amortization_pages": [],
+    "identity": true
+  },
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-52022.pdf",
+    "pages": 40,
+    "evolution_pages": [],
+    "amortization_pages": [
+      2,
+      29
+    ],
+    "identity": false
+  },
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-53173.pdf",
+    "pages": 1,
+    "evolution_pages": [],
+    "amortization_pages": [],
+    "identity": true
+  },
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-677127.pdf",
+    "pages": 2,
+    "evolution_pages": [],
+    "amortization_pages": [],
+    "identity": true
+  },
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-688726.pdf",
+    "pages": 1,
+    "evolution_pages": [],
+    "amortization_pages": [],
+    "identity": true
+  },
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-884268.pdf",
+    "pages": 22,
+    "evolution_pages": [],
+    "amortization_pages": [
+      19,
+      21
+    ],
+    "identity": true
+  },
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-exibir-29114.pdf",
+    "pages": 2,
+    "evolution_pages": [],
+    "amortization_pages": [],
+    "identity": false
+  },
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-fs-2019.pdf",
+    "pages": 23,
+    "evolution_pages": [
+      9,
+      13,
+      18
+    ],
+    "amortization_pages": [],
+    "identity": true
+  },
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-fs-2020.pdf",
+    "pages": 24,
+    "evolution_pages": [
+      13,
+      14,
+      19,
+      20
+    ],
+    "amortization_pages": [],
+    "identity": true
+  },
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-fs-2021.pdf",
+    "pages": 25,
+    "evolution_pages": [
+      14,
+      19,
+      20
+    ],
+    "amortization_pages": [],
+    "identity": true
+  },
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-fs-2022.pdf",
+    "pages": 23,
+    "evolution_pages": [
+      13,
+      14,
+      19
+    ],
+    "amortization_pages": [],
+    "identity": true
+  },
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-fs-2023.pdf",
+    "pages": 22,
+    "evolution_pages": [
+      12,
+      13,
+      17,
+      18
+    ],
+    "amortization_pages": [],
+    "identity": true
+  },
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-fs-2025.pdf",
+    "pages": 24,
+    "evolution_pages": [
+      10,
+      13
+    ],
+    "amortization_pages": [
+      16
+    ],
+    "identity": true
+  },
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-view-retry-109287.pdf",
+    "pages": 1,
+    "evolution_pages": [],
+    "amortization_pages": [],
+    "identity": true
+  },
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-view-retry-1142893.pdf",
+    "pages": 22,
+    "evolution_pages": [],
+    "amortization_pages": [
+      19,
+      21
+    ],
+    "identity": true
+  },
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-view-retry-1142930.pdf",
+    "pages": 1,
+    "evolution_pages": [],
+    "amortization_pages": [],
+    "identity": true
+  },
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-view-retry-1226221.pdf",
+    "pages": 1,
+    "evolution_pages": [],
+    "amortization_pages": [],
+    "identity": true
+  },
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-view-retry-197171.pdf",
+    "pages": 2,
+    "evolution_pages": [],
+    "amortization_pages": [],
+    "identity": true
+  },
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-view-retry-202773.pdf",
+    "pages": 1,
+    "evolution_pages": [],
+    "amortization_pages": [],
+    "identity": true
+  },
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-view-retry-209714.pdf",
+    "pages": 1,
+    "evolution_pages": [],
+    "amortization_pages": [],
+    "identity": true
+  },
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-view-retry-29114.pdf",
+    "pages": 2,
+    "evolution_pages": [],
+    "amortization_pages": [],
+    "identity": false
+  },
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-view-retry-325171.pdf",
+    "pages": 2,
+    "evolution_pages": [],
+    "amortization_pages": [],
+    "identity": true
+  },
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-view-retry-331687.pdf",
+    "pages": 1,
+    "evolution_pages": [],
+    "amortization_pages": [],
+    "identity": true
+  },
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-view-retry-475554.pdf",
+    "pages": 2,
+    "evolution_pages": [],
+    "amortization_pages": [],
+    "identity": true
+  },
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-view-retry-484004.pdf",
+    "pages": 1,
+    "evolution_pages": [],
+    "amortization_pages": [],
+    "identity": true
+  },
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-view-retry-50513.pdf",
+    "pages": 1,
+    "evolution_pages": [],
+    "amortization_pages": [],
+    "identity": true
+  },
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-view-retry-51831.pdf",
+    "pages": 1,
+    "evolution_pages": [],
+    "amortization_pages": [],
+    "identity": true
+  },
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-view-retry-51839.pdf",
+    "pages": 2,
+    "evolution_pages": [],
+    "amortization_pages": [],
+    "identity": true
+  },
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-view-retry-676102.pdf",
+    "pages": 2,
+    "evolution_pages": [],
+    "amortization_pages": [],
+    "identity": true
+  },
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-view-retry-884266.pdf",
+    "pages": 3,
+    "evolution_pages": [],
+    "amortization_pages": [],
+    "identity": true
+  },
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-view-retry-908980.pdf",
+    "pages": 1,
+    "evolution_pages": [],
+    "amortization_pages": [],
+    "identity": true
+  },
+  {
+    "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-view-retry-917131.pdf",
+    "pages": 2,
+    "evolution_pages": [],
+    "amortization_pages": [],
+    "identity": true
+  }
+]

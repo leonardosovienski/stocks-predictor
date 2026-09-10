@@ -1,0 +1,15 @@
+{
+  "id": "bnp-102637",
+  "url": "https://brasil.bnpparibas/app/uploads/sites/7/2025/12/sumario-decisoes-2convocacao-etf-ishares-ibovespa-incorporador-.pdf",
+  "purpose": "BOVA11 official administrator evidence",
+  "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\bnp-102637.pdf",
+  "started_at_utc": "2026-09-09T21:00:36.041491+00:00",
+  "status": "downloaded",
+  "curl_exit_code": 0,
+  "http_status": 200,
+  "final_url": "https://brasil.bnpparibas/app/uploads/sites/7/2025/12/sumario-decisoes-2convocacao-etf-ishares-ibovespa-incorporador-.pdf",
+  "content_type": "application/pdf",
+  "bytes": 169400,
+  "sha256": "a8536a34ec16169feb1cc1d08479a3122ddc7b0a02acc8a7234d7336e9597b71",
+  "completed_at_utc": "2026-09-09T21:00:38.135821+00:00"
+}

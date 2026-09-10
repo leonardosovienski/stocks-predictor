@@ -1,0 +1,15 @@
+{
+  "id": "bnp-bova-fs2020",
+  "url": "https://brasil.bnpparibas/app/uploads/sites/7/2021/06/c01-00013-df-ishares-ibovespa-fundo-de-indice.pdf",
+  "purpose": "Administrator original statements March2020 comparative2019",
+  "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\bnp-bova-fs2020.pdf",
+  "started_at_utc": "2026-09-09T20:49:43.484861+00:00",
+  "status": "downloaded",
+  "curl_exit_code": 0,
+  "http_status": 200,
+  "final_url": "https://brasil.bnpparibas/app/uploads/sites/7/2021/06/c01-00013-df-ishares-ibovespa-fundo-de-indice.pdf",
+  "content_type": "application/pdf",
+  "bytes": 231017,
+  "sha256": "99cab825b5a9678f9de8684f712067e4c31bf8013b83aca610dd23c7b54e7812",
+  "completed_at_utc": "2026-09-09T20:49:45.539830+00:00"
+}

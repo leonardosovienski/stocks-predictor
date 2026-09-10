@@ -1,0 +1,44 @@
+[
+  {
+    "id": "b3-final-19674-2025-categories",
+    "filename": "b3-final-19674-2025-categories.json",
+    "url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetCategories/eyJsYW5ndWFnZSI6InB0LWJyIiwiaWRGTkVUIjoiMTk2NzQiLCJ0eXBlRnVuZCI6IkVURiIsImRhdGVJbml0aWFsIjoiMjAyNS0wMS0wMSIsImRhdGVGaW5hbCI6IjIwMjUtMTItMzEiLCJwYWdlTnVtYmVyIjoxLCJwYWdlU2l6ZSI6NjB9",
+    "purpose": "Correct single-calendar-year documentary scope; no performance calculation"
+  },
+  {
+    "id": "b3-final-19674-2026-2",
+    "filename": "b3-final-19674-2026-2.json",
+    "url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetReportsRelevants/eyJsYW5ndWFnZSI6InB0LWJyIiwiaWRGTkVUIjoiMTk2NzQiLCJ0eXBlRnVuZCI6IkVURiIsImRhdGVJbml0aWFsIjoiMjAyNi0wMS0wMSIsImRhdGVGaW5hbCI6IjIwMjYtMDktMDgiLCJwYWdlTnVtYmVyIjoxLCJwYWdlU2l6ZSI6NjAsImNhdGVnb3J5IjoiMiJ9",
+    "purpose": "Correct single-calendar-year documentary scope; no performance calculation"
+  },
+  {
+    "id": "b3-final-19674-2026-3",
+    "filename": "b3-final-19674-2026-3.json",
+    "url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetReportsRelevants/eyJsYW5ndWFnZSI6InB0LWJyIiwiaWRGTkVUIjoiMTk2NzQiLCJ0eXBlRnVuZCI6IkVURiIsImRhdGVJbml0aWFsIjoiMjAyNi0wMS0wMSIsImRhdGVGaW5hbCI6IjIwMjYtMDktMDgiLCJwYWdlTnVtYmVyIjoxLCJwYWdlU2l6ZSI6NjAsImNhdGVnb3J5IjoiMyJ9",
+    "purpose": "Correct single-calendar-year documentary scope; no performance calculation"
+  },
+  {
+    "id": "b3-final-19674-2026-11",
+    "filename": "b3-final-19674-2026-11.json",
+    "url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetReportsRelevants/eyJsYW5ndWFnZSI6InB0LWJyIiwiaWRGTkVUIjoiMTk2NzQiLCJ0eXBlRnVuZCI6IkVURiIsImRhdGVJbml0aWFsIjoiMjAyNi0wMS0wMSIsImRhdGVGaW5hbCI6IjIwMjYtMDktMDgiLCJwYWdlTnVtYmVyIjoxLCJwYWdlU2l6ZSI6NjAsImNhdGVnb3J5IjoiMTEifQ==",
+    "purpose": "Correct single-calendar-year documentary scope; no performance calculation"
+  },
+  {
+    "id": "b3-final-990-2019-1",
+    "filename": "b3-final-990-2019-1.json",
+    "url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetReportsRelevants/eyJsYW5ndWFnZSI6InB0LWJyIiwiaWRGTkVUIjoiOTkwIiwidHlwZUZ1bmQiOiJFVEYiLCJkYXRlSW5pdGlhbCI6IjIwMTktMDEtMDEiLCJkYXRlRmluYWwiOiIyMDE5LTEyLTMxIiwicGFnZU51bWJlciI6MSwicGFnZVNpemUiOjYwLCJjYXRlZ29yeSI6IjEifQ==",
+    "purpose": "Correct single-calendar-year documentary scope; no performance calculation"
+  },
+  {
+    "id": "b3-final-990-2020-1",
+    "filename": "b3-final-990-2020-1.json",
+    "url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetReportsRelevants/eyJsYW5ndWFnZSI6InB0LWJyIiwiaWRGTkVUIjoiOTkwIiwidHlwZUZ1bmQiOiJFVEYiLCJkYXRlSW5pdGlhbCI6IjIwMjAtMDEtMDEiLCJkYXRlRmluYWwiOiIyMDIwLTEyLTMxIiwicGFnZU51bWJlciI6MSwicGFnZVNpemUiOjYwLCJjYXRlZ29yeSI6IjEifQ==",
+    "purpose": "Correct single-calendar-year documentary scope; no performance calculation"
+  },
+  {
+    "id": "b3-final-990-2021-1",
+    "filename": "b3-final-990-2021-1.json",
+    "url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetReportsRelevants/eyJsYW5ndWFnZSI6InB0LWJyIiwiaWRGTkVUIjoiOTkwIiwidHlwZUZ1bmQiOiJFVEYiLCJkYXRlSW5pdGlhbCI6IjIwMjEtMDEtMDEiLCJkYXRlRmluYWwiOiIyMDIxLTEyLTMxIiwicGFnZU51bWJlciI6MSwicGFnZVNpemUiOjYwLCJjYXRlZ29yeSI6IjEifQ==",
+    "purpose": "Correct single-calendar-year documentary scope; no performance calculation"
+  }
+]

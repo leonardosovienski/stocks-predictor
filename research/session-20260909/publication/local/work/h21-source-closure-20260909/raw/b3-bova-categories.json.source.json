@@ -1,0 +1,15 @@
+{
+  "id": "b3-bova-categories",
+  "url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetCategories/eyJsYW5ndWFnZSI6InB0LWJyIiwiaWRGTkVUIjoiOTkwIiwiaWRDRU0iOiJCT1ZBIiwidHlwZUZ1bmQiOiJFVEYiLCJkYXRlSW5pdGlhbCI6IjIwMTctMDEtMDEiLCJkYXRlRmluYWwiOiIyMDI2LTA5LTA4IiwicGFnZU51bWJlciI6MSwicGFnZVNpemUiOjIwfQ==",
+  "purpose": "BOVA11 public regulatory document discovery; no returns",
+  "started_at_utc": "2026-09-09T19:32:14.458283+00:00",
+  "path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\raw\\b3-bova-categories.json",
+  "status": "downloaded",
+  "curl_exit_code": 0,
+  "http_status": 200,
+  "final_url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetCategories/eyJsYW5ndWFnZSI6InB0LWJyIiwiaWRGTkVUIjoiOTkwIiwiaWRDRU0iOiJCT1ZBIiwidHlwZUZ1bmQiOiJFVEYiLCJkYXRlSW5pdGlhbCI6IjIwMTctMDEtMDEiLCJkYXRlRmluYWwiOiIyMDI2LTA5LTA4IiwicGFnZU51bWJlciI6MSwicGFnZVNpemUiOjIwfQ==",
+  "content_type": "application/json",
+  "bytes": 0,
+  "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "completed_at_utc": "2026-09-09T19:32:14.856616+00:00"
+}

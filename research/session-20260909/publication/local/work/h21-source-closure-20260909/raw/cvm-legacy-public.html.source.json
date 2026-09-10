@@ -1,0 +1,15 @@
+{
+  "id": "cvm-legacy-public",
+  "url": "https://cvmweb.cvm.gov.br/SWB/Sistemas/SCW/CPublica/CPublica.asp?SemFrames=True",
+  "purpose": "Pre-July2018 ETF publications archive",
+  "started_at_utc": "2026-09-09T19:23:14.636406+00:00",
+  "path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\raw\\cvm-legacy-public.html",
+  "status": "downloaded",
+  "curl_exit_code": 0,
+  "http_status": 200,
+  "final_url": "https://cvmweb.cvm.gov.br/SWB/Sistemas/SCW/CPublica/CPublica.asp?SemFrames=True",
+  "content_type": "text/html",
+  "bytes": 9310,
+  "sha256": "7197aff9136a5646c0006fa6060cd6779590e7b7019c7b77761afc6a0e124462",
+  "completed_at_utc": "2026-09-09T19:23:16.654228+00:00"
+}

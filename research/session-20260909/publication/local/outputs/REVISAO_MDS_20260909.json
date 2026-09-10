@@ -1,0 +1,72 @@
+{
+  "status": "CONCLUIDA_MAIN_INTEGRADA_E_CI_APROVADA",
+  "created_at_utc": "2026-09-09T18:36:29.5590749Z",
+  "root": "C:\\STOCKS",
+  "base_commit": "4a85d4317657ac5ddaffcacf889b6341cf9c4b0a",
+  "documentation_commit": "0602b50bb0b47b27a86e2bc15e0b57aee6be01ba",
+  "pull_request": "https://github.com/leonardosovienski/stocks-predictor/pull/70",
+  "initial_markdown_files": 94,
+  "modified_initial_markdown_files": 13,
+  "new_documentation_index": "C:\\STOCKS\\stocks-predictor\\docs\\DOCUMENTATION_INDEX.md",
+  "current_markdown_files": 95,
+  "supporting_map_updated": "C:\\STOCKS\\stocks-predictor\\docs\\continuation\\LOCAL_PATHS_20260909.json",
+  "current_local_links_checked": 64,
+  "broken_current_local_links": [],
+  "historical_missing_link_targets": [
+    {
+      "document": "stocks-predictor\\HANDOFF.md",
+      "target": "reports/splits_candidates.csv"
+    }
+  ],
+  "protected_originals_and_historical_files_verified": 80,
+  "unexpected_protected_changes": [],
+  "source_code_configuration_and_protocols_unchanged": true,
+  "original_economic_delivery_hashes_verified": true,
+  "markdown_diff_check_passed": true,
+  "project_files_in_previous_codex_task_directory": 0,
+  "full_inventory": "C:\\STOCKS\\work\\markdown-review-20260909\\audit.json",
+  "prior_file_snapshots": "C:\\STOCKS\\work\\markdown-review-20260909\\originals",
+  "change_scope": "Documentacao atual e localizacao; nenhuma nova medicao economica, teste de estrategia, instalacao ou automacao.",
+  "merged_commit": "7f7148e903c3ad01e91f2c1f34c8a57460b0862b",
+  "integrated_tree_matches_reviewed_head": true,
+  "main_clean_and_synced": true,
+  "temporary_branch_removed_after_verification": true,
+  "pr_ci": {
+    "run_id": 34389905979,
+    "run_number": 185,
+    "status": "success",
+    "tests_passed": 782,
+    "coverage_percent": 78,
+    "tested_merge": "8aee320ef094bfddb3adf88c6c3a27d37b74fb69",
+    "python": "3.13.15",
+    "core": "3.2.0",
+    "checks": [
+      "Ruff",
+      "Pyright",
+      "pytest",
+      "coverage",
+      "build",
+      "wheel outside checkout",
+      "gitleaks"
+    ]
+  },
+  "main_ci_url": "https://github.com/leonardosovienski/stocks-predictor/actions/runs/34390449052",
+  "completed_at_utc": "2026-09-09T18:45:50.3675038Z",
+  "main_ci": {
+    "run_id": 34390449052,
+    "run_number": 186,
+    "head": "7f7148e903c3ad01e91f2c1f34c8a57460b0862b",
+    "quality": "success",
+    "secrets": "success",
+    "tests_passed": 782,
+    "coverage_percent": 78,
+    "python": "3.13.15",
+    "core": "3.2.0",
+    "archived_tests_excluded": 17,
+    "wheel_imports_under": "/tmp/stocks-wheel/lib/python3.13/site-packages",
+    "evidence": "C:\\STOCKS\\work\\markdown-review-20260909\\ci-main-evidence.json"
+  },
+  "index_sha256": "85be32319f244c3abad77f8d1ac11369e8d87abd8c2e8a1c07ba33b02bf82c92",
+  "audit_sha256": "18ff9c801c6b21603e060ba86923254170c3882da10117ed4104f1e067a54232",
+  "historical_missing_csv_in_migration_manifest": false
+}

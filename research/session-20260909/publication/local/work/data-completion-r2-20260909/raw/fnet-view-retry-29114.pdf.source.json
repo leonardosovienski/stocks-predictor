@@ -1,0 +1,15 @@
+{
+  "id": "fnet-view-retry-29114",
+  "url": "https://fnet.bmfbovespa.com.br/fnet/publico/exibirDocumento?id=29114&",
+  "purpose": "Alternative original public viewer after direct download timeout",
+  "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-view-retry-29114.pdf",
+  "started_at_utc": "2026-09-09T21:14:23.046591+00:00",
+  "status": "downloaded",
+  "curl_exit_code": 0,
+  "http_status": 200,
+  "final_url": "https://fnet.bmfbovespa.com.br/fnet/publico/exibirDocumento?id=29114&",
+  "content_type": "application/pdf; charset=UTF-8",
+  "bytes": 69368,
+  "sha256": "e3e623a8d834007ff8a8aace6c7de28951096c7d6dc04d1624ef0c60b1e93f65",
+  "completed_at_utc": "2026-09-09T21:14:25.427053+00:00"
+}

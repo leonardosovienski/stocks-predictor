@@ -1,0 +1,15 @@
+{
+  "id": "b3-final-19674-2025-categories",
+  "url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetCategories/eyJsYW5ndWFnZSI6InB0LWJyIiwiaWRGTkVUIjoiMTk2NzQiLCJ0eXBlRnVuZCI6IkVURiIsImRhdGVJbml0aWFsIjoiMjAyNS0wMS0wMSIsImRhdGVGaW5hbCI6IjIwMjUtMTItMzEiLCJwYWdlTnVtYmVyIjoxLCJwYWdlU2l6ZSI6NjB9",
+  "purpose": "Correct single-calendar-year documentary scope; no performance calculation",
+  "started_at_utc": "2026-09-09T20:06:49.414477+00:00",
+  "path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\raw\\b3-final-19674-2025-categories.json",
+  "status": "downloaded",
+  "curl_exit_code": 0,
+  "http_status": 200,
+  "final_url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetCategories/eyJsYW5ndWFnZSI6InB0LWJyIiwiaWRGTkVUIjoiMTk2NzQiLCJ0eXBlRnVuZCI6IkVURiIsImRhdGVJbml0aWFsIjoiMjAyNS0wMS0wMSIsImRhdGVGaW5hbCI6IjIwMjUtMTItMzEiLCJwYWdlTnVtYmVyIjoxLCJwYWdlU2l6ZSI6NjB9",
+  "content_type": "application/json",
+  "bytes": 284,
+  "sha256": "59fc7824d99b6f89d41c36f4d3787b552dbf5e76c82c105ab0298e44464c2780",
+  "completed_at_utc": "2026-09-09T20:06:50.549204+00:00"
+}

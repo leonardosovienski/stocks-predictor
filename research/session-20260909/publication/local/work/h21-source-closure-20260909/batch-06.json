@@ -1,0 +1,11 @@
+[
+  {
+    "id": "b3-cotahist-2026-tail",
+    "filename": "COTAHIST_A2026.tail.bin",
+    "url": "https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2026.ZIP",
+    "range": "71736503-74185997",
+    "if_range": "\"3ad8b333ef3fdd1:0\"",
+    "max_bytes": 2500000,
+    "purpose": "Recover exact missing tail after full source HEAD length74185998 and same modification date; preserve original truncated download"
+  }
+]

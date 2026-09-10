@@ -1,0 +1,34 @@
+{
+  "source_records_scanned": 2725181,
+  "zip_member_crc": 3319695779,
+  "zip_member_crc_checked_by_full_read": true,
+  "selected_2026": 171,
+  "first": "2026-01-02",
+  "last": "2026-09-08",
+  "combined_count": 2159,
+  "added_since_original": 109,
+  "overlap_count": 62,
+  "revised_parsed_dates": [],
+  "revised_original_line_dates": [],
+  "missing_calendar_dates": [],
+  "unexpected_calendar_dates": [],
+  "market_sessions_match": true,
+  "calendar_scope": "Official published 2026 calendar plus source-observed trading days",
+  "economic_valuations": 0,
+  "original_book_changed": false,
+  "events_certified": false,
+  "files": {
+    "BOVA11-2026.original-lines.txt": {
+      "bytes": 42237,
+      "sha256": "42e2d503006b3e50c75129011202dd428130b1e78fd857e9ac66da137d1327bf"
+    },
+    "quotes-2018-20260908.json": {
+      "bytes": 764909,
+      "sha256": "813a21aa335a84fb4288f125613dd3aab40b30d1c32a53e4e96c065431bc7adb"
+    },
+    "quotes-2026.json": {
+      "bytes": 61254,
+      "sha256": "e15b736d301b31bab72677682d044d5f03b933104ef05cd75ba6cbc70c030cd2"
+    }
+  }
+}

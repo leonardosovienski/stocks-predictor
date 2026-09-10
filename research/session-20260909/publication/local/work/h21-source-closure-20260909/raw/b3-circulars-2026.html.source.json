@@ -1,0 +1,15 @@
+{
+  "id": "b3-fee-new-program",
+  "url": "https://b3.com.br/pt_br/regulacao/oficios-e-comunicados/oficios-e-comunicados/",
+  "purpose": "Check new September2026 retail tariff program and operative circular",
+  "started_at_utc": "2026-09-09T19:24:11.630821+00:00",
+  "path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\raw\\b3-circulars-2026.html",
+  "status": "downloaded",
+  "curl_exit_code": 0,
+  "http_status": 200,
+  "final_url": "https://b3.com.br/pt_br/regulacao/oficios-e-comunicados/oficios-e-comunicados/",
+  "content_type": "text/html;charset=UTF-8",
+  "bytes": 73039,
+  "sha256": "fb960b10be36374833e92cb9462f8f2bf0ca2c6adf4093b5ae78fffdac746236",
+  "completed_at_utc": "2026-09-09T19:24:14.549750+00:00"
+}

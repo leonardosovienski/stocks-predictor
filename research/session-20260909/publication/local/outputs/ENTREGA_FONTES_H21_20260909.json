@@ -1,0 +1,335 @@
+{
+  "kind": "SOURCE_REVIEW_DELIVERY_NOT_ECONOMIC_APPROVAL",
+  "delivered_at_utc": "2026-09-09T20:30:55.172489+00:00",
+  "root": "C:\\STOCKS",
+  "branch": "main",
+  "commit": "c45c6e1aba148190ee1bd99da87f7a719af3b1b0",
+  "git_working_tree_clean": true,
+  "pr_url": "https://github.com/leonardosovienski/stocks-predictor/pull/71",
+  "report_url": "https://github.com/leonardosovienski/stocks-predictor/blob/c45c6e1aba148190ee1bd99da87f7a719af3b1b0/docs/research/2026-09-09-h21-source-closure.md",
+  "report_local_path": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-09-h21-source-closure.md",
+  "reviewed_head": "1bb3d23ffcb8cbdf1c9ef60215889dc3d745d9ff",
+  "ci": {
+    "run_id": 34400963491,
+    "run_number": 188,
+    "url": "https://github.com/leonardosovienski/stocks-predictor/actions/runs/34400963491",
+    "head_sha": "c45c6e1aba148190ee1bd99da87f7a719af3b1b0",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "name": "secrets",
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@v7",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run gitleaks/gitleaks-action@v3",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/checkout@v7",
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "conclusion": "success"
+          }
+        ]
+      },
+      {
+        "name": "Quality / Python 3.13",
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@v7",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run astral-sh/setup-uv@v7",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/setup-python@v7",
+            "conclusion": "success"
+          },
+          {
+            "name": "Install project and dev dependencies",
+            "conclusion": "success"
+          },
+          {
+            "name": "Ruff",
+            "conclusion": "success"
+          },
+          {
+            "name": "Pyright",
+            "conclusion": "success"
+          },
+          {
+            "name": "Tests",
+            "conclusion": "success"
+          },
+          {
+            "name": "Coverage report",
+            "conclusion": "success"
+          },
+          {
+            "name": "Build wheel",
+            "conclusion": "success"
+          },
+          {
+            "name": "Wheel smoke outside checkout",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/setup-python@v7",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run astral-sh/setup-uv@v7",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/checkout@v7",
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "conclusion": "success"
+          }
+        ]
+      }
+    ],
+    "scope": "Canonical Linux CI; research helper independently validated locally.",
+    "verified_summary": {
+      "tests_passed": 782,
+      "test_seconds": 245.21,
+      "python": "3.13.15",
+      "predictor_core": "3.2.0",
+      "coverage_percent": 78,
+      "archived_tests_not_executed": 17,
+      "wheel_import_evidence": [
+        "2026-09-09T20:30:09.9142840Z predictor_core /tmp/stocks-wheel/lib/python3.13/site-packages/predictor_core/__init__.py",
+        "2026-09-09T20:30:09.9144081Z stocks_predictor /tmp/stocks-wheel/lib/python3.13/site-packages/stocks_predictor/__init__.py",
+        "2026-09-09T20:30:09.9145547Z stocks_predictor.etf_hold /tmp/stocks-wheel/lib/python3.13/site-packages/stocks_predictor/etf_hold.py"
+      ],
+      "run_id": 34400963491,
+      "commit": "c45c6e1aba148190ee1bd99da87f7a719af3b1b0"
+    },
+    "quality_log_sha256": "9d6d5c6664e986c353ee93affc2df49513f2a89d2d1fe63e018940ec280eed39"
+  },
+  "local_validation": {
+    "protected_hashes": {
+      "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-09-h21-protocol.json": "5721d7405af2f398448be3966eeb832deda06f7aa936e5244059ae7ca86797fb",
+      "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-09-h21-source-closure-protocol.json": "6ec703ba840d9badd2e20514d36fe2f63ccedf92a0a7d52cf597bcaae57fb4ef",
+      "C:\\STOCKS\\stocks-predictor\\docs\\continuation\\MANDATO_20260909.md": "d63db21471620a6a4a83671e1acebda1d7ff0be04a96652d5f0d658997cc73cc",
+      "C:\\STOCKS\\instructions\\STOCKS_PREDICTOR_PROMPT_FINAL_20260909.md": "d63db21471620a6a4a83671e1acebda1d7ff0be04a96652d5f0d658997cc73cc",
+      "C:\\STOCKS\\work\\h21\\result-01.json": "39a940514b5fdcbb577c496f996ddd324c8107436852ab67da352401bb8870d2",
+      "C:\\STOCKS\\work\\h21\\inputs\\quotes.json": "445a24c3098deb3da6f3bdd7b3d92ca48e24e6b4f9fdc38fb52b7705c2467d94"
+    },
+    "markdown_files_checked": [
+      "AGENTS.md",
+      "README.md",
+      "HANDOFF.md",
+      "STOCKS_CURRENT_STATE.md",
+      "docs/DOCUMENTATION_INDEX.md",
+      "docs/continuation/PROMPT_NOVO_CHAT.md",
+      "docs/research/2026-09-09-h21-source-closure.md",
+      "research/session-20260909/source_closure/README.md"
+    ],
+    "valid_local_links": 53,
+    "local_source_checks": {
+      "checks": [
+        {
+          "check": "hash-mismatch",
+          "result": "PASS_REJECTED",
+          "exception": "ValueError",
+          "detail": "Source hash differs from captured bytes"
+        },
+        {
+          "check": "truncated-transport",
+          "result": "PASS_REJECTED",
+          "exception": "BadZipFile",
+          "detail": "File is not a zip file"
+        },
+        {
+          "check": "false-july-closure",
+          "result": "PASS_REJECTED",
+          "exception": "ValueError",
+          "detail": "Calendar coverage mismatch: missing=[], unexpected=['2026-07-09']"
+        },
+        {
+          "check": "v2-only-provenance-no-price-change",
+          "result": "PASS",
+          "records": 2159
+        }
+      ],
+      "economic_valuations": 0
+    },
+    "operational_profile_unknowns_preserved": true,
+    "json_and_python_syntax": "PASS",
+    "git_diff_check": "PASS"
+  },
+  "source_reconciliation": {
+    "source_records_scanned": 2725181,
+    "zip_member_crc": 3319695779,
+    "zip_member_crc_checked_by_full_read": true,
+    "selected_2026": 171,
+    "first": "2026-01-02",
+    "last": "2026-09-08",
+    "combined_count": 2159,
+    "added_since_original": 109,
+    "overlap_count": 62,
+    "revised_parsed_dates": [],
+    "revised_original_line_dates": [],
+    "missing_calendar_dates": [],
+    "unexpected_calendar_dates": [],
+    "market_sessions_match": true,
+    "calendar_scope": "Official published 2026 calendar plus source-observed trading days",
+    "economic_valuations": 0,
+    "original_book_changed": false,
+    "events_certified": false,
+    "files": {
+      "BOVA11-2026.original-lines.txt": {
+        "bytes": 42237,
+        "sha256": "42e2d503006b3e50c75129011202dd428130b1e78fd857e9ac66da137d1327bf"
+      },
+      "quotes-2018-20260908.json": {
+        "bytes": 764909,
+        "sha256": "813a21aa335a84fb4288f125613dd3aab40b30d1c32a53e4e96c065431bc7adb"
+      },
+      "quotes-2026.json": {
+        "bytes": 61254,
+        "sha256": "e15b736d301b31bab72677682d044d5f03b933104ef05cd75ba6cbc70c030cd2"
+      }
+    }
+  },
+  "raw_sources": "C:\\STOCKS\\work\\h21-source-closure-20260909\\raw",
+  "original_deliveries_unchanged": [
+    {
+      "path": "C:\\STOCKS\\outputs\\CI_MAIN_STOCKS_H21.txt",
+      "sha256": "231c8f86168433001ee377afc2c8ebdc102dc691f032f138428c17975c6526fb",
+      "status": "unchanged"
+    },
+    {
+      "path": "C:\\STOCKS\\outputs\\CONFERENCIA_STOCKS_H21.json",
+      "sha256": "8fd7f22095b5572a8244c8580ad145c2c36066f3c1ce4243a9d24baee517140a",
+      "status": "unchanged"
+    },
+    {
+      "path": "C:\\STOCKS\\outputs\\ENTREGA_STOCKS_H21.json",
+      "sha256": "3421628595718ee94355fa07d9166c4a51c95c7730e0f10c42153aba5353eea2",
+      "status": "unchanged"
+    },
+    {
+      "path": "C:\\STOCKS\\outputs\\RELATORIO_STOCKS_H21.md",
+      "sha256": "471a62a6ac3389cc26bef10180575f411415e7efdbf494d599a1bc6c480802c5",
+      "status": "unchanged"
+    },
+    {
+      "path": "C:\\STOCKS\\outputs\\REPRODUCAO_STOCKS_H21.json",
+      "sha256": "562577dd2100395fe03c9e277895b52e4f138152ad1b2ac9b2375b28d3fdbbbb",
+      "status": "unchanged"
+    },
+    {
+      "path": "C:\\STOCKS\\outputs\\RESULTADO_STOCKS_H21.json",
+      "sha256": "39a940514b5fdcbb577c496f996ddd324c8107436852ab67da352401bb8870d2",
+      "status": "unchanged"
+    },
+    {
+      "path": "C:\\STOCKS\\instructions\\STOCKS_PREDICTOR_PROMPT_FINAL_20260909.md",
+      "sha256": "d63db21471620a6a4a83671e1acebda1d7ff0be04a96652d5f0d658997cc73cc",
+      "status": "unchanged"
+    }
+  ],
+  "files": {
+    "docs/research/2026-09-09-h21-source-closure.md": {
+      "local_sha256": "f9f5f0f5dd4e7bb4afc01aa5ed013132a5570678adeb13bd6d213d4e926f1b8f",
+      "committed_bytes_sha256": "f9f5f0f5dd4e7bb4afc01aa5ed013132a5570678adeb13bd6d213d4e926f1b8f",
+      "git_blob": "7e16e4e0d0d3d70f639126c51670091c912584ce"
+    },
+    "docs/research/2026-09-09-h21-operational-inputs.json": {
+      "local_sha256": "61eda550177a90d86adb582917bf79e8845e30a182940ae5bd1e78b866b8b22f",
+      "committed_bytes_sha256": "0ac5369faf4559634db4e74ffd6c0d1369b668471eecbf683cf47f309dfaf796",
+      "git_blob": "9709321b8c5b639b407c183255cbf49f09ff02bc"
+    },
+    "docs/research/2026-09-09-h21-source-inventory.json": {
+      "local_sha256": "b2378a68ec907f9957ad94f12c5c0cc8b5ca3527050fb3000c9fa73c931be581",
+      "committed_bytes_sha256": "8d922dfbb866f14a8c75842df029662c9364bf1912df373fdddba6ce81d5f2c2",
+      "git_blob": "9e4c8286da893c66e8c69feb55ff146ca6095300"
+    },
+    "docs/research/2026-09-09-h21-source-closure-protocol.json": {
+      "local_sha256": "6ec703ba840d9badd2e20514d36fe2f63ccedf92a0a7d52cf597bcaae57fb4ef",
+      "committed_bytes_sha256": "6ec703ba840d9badd2e20514d36fe2f63ccedf92a0a7d52cf597bcaae57fb4ef",
+      "git_blob": "86083be02ee80d4ec6d375f3ad1bdb4e09dd4182"
+    },
+    "research/session-20260909/source_closure/reconcile_quotes.py": {
+      "local_sha256": "41ce9da6638e5ba1ae6bf03e5a9e40e75f9fd9c078557db67b530e1d91cfea9d",
+      "committed_bytes_sha256": "41ce9da6638e5ba1ae6bf03e5a9e40e75f9fd9c078557db67b530e1d91cfea9d",
+      "git_blob": "e10a199cc43fd370c27b55eb9f15096293819d5f"
+    }
+  },
+  "local_vs_committed_hash_policy": "Git normalizes text line endings; distinct hashes retained. Original registered protocol bytes separately preserved in work.",
+  "registered_protocol_original_path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\protocol-registered.original.json",
+  "registered_protocol_original_sha256": "6ec703ba840d9badd2e20514d36fe2f63ccedf92a0a7d52cf597bcaae57fb4ef",
+  "personal_profile": {
+    "broker_preference": "XP",
+    "alternatives_allowed": true,
+    "compared_alternative": "Rico",
+    "horizon": null,
+    "maximum_acceptable_loss": null,
+    "actual_capital_brl": null,
+    "account_channel": null,
+    "has_assessor": null,
+    "other_custodied_assets_brl": null,
+    "capital_5000_10000_are_scenarios": true
+  },
+  "remaining_gaps": [
+    "Continuous annual originals April2018-March2024",
+    "Fund/class filings not all read in full",
+    "April2026-cutoff actual cash/rights coverage",
+    "Historical lot effective date",
+    "Rights after original sale",
+    "Actual spread/slippage and opening auction fills",
+    "Broker note fee bases and rounding",
+    "Current XP ETF category/eligibility",
+    "Historical fee schedules for original book",
+    "User tax offsets/other operations and post-sale rights"
+  ],
+  "events_certified": false,
+  "full_net_cost_certified": false,
+  "expected_future_profit": null,
+  "new_economic_valuations": 0,
+  "new_orders": 0,
+  "recurring_jobs_started": 0,
+  "migration_archive": {
+    "path": "C:\\STOCKS\\DADOS_STOCKS.zip",
+    "bytes": 5355806582,
+    "hash_recomputed_this_round": false,
+    "not_written_this_round": true
+  },
+  "centralization": {
+    "previous_task_directory_files": 0,
+    "reparse_points_under_root": 0,
+    "all_new_authored_project_files_within_root": true,
+    "scope": "Rechecked original task directory and root reparse points; prior external folder scan remains dated in location map. App/runtime caches and authorized GitHub remain external environment resources."
+  },
+  "budgets": {
+    "data_closed_at_utc": "2026-09-09T20:11:20.380794+00:00",
+    "delivery_deadline_utc": "2026-09-09T20:50:00Z",
+    "delivered_before_deadline": true,
+    "direct_acquisition_attempts": 77,
+    "request_counter_excludes_browser_search_redirects": true,
+    "retained_transport_bytes": 82716664,
+    "normalization_revisions": 2
+  }
+}

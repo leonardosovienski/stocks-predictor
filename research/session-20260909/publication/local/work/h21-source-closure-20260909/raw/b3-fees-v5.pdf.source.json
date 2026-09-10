@@ -1,0 +1,15 @@
+{
+  "id": "b3-fees-v5",
+  "url": "https://b3.com.br/data/files/5C/A6/C9/20/75F30A105BF9020AAC094EA8/Tarifacao_Equities_V5.0_PT.pdf",
+  "purpose": "Current V5 tariff version; verify ordinary retail versus HFT changes",
+  "started_at_utc": "2026-09-09T19:32:53.649308+00:00",
+  "path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\raw\\b3-fees-v5.pdf",
+  "status": "downloaded",
+  "curl_exit_code": 0,
+  "http_status": 200,
+  "final_url": "https://b3.com.br/data/files/5C/A6/C9/20/75F30A105BF9020AAC094EA8/Tarifacao_Equities_V5.0_PT.pdf",
+  "content_type": "application/pdf",
+  "bytes": 706725,
+  "sha256": "301060b405201cba77f638b35fc198b203eed97c66032603989d8fb8aaee4e46",
+  "completed_at_utc": "2026-09-09T19:32:54.382779+00:00"
+}

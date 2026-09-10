@@ -1,5 +1,11 @@
 # Índice documental — revisão de 09/09/2026
 
+Continuidade mais recente: [prompt completo da auditoria integral](continuation/PROMPT_AUDITORIA_INTEGRAL_20260909.md)
+e [pacote de publicação da sessão](../research/session-20260909/publication/README.md).
+A auditoria foi preparada, mas não executada. O pacote publica artefatos autorais
+que antes estavam apenas na raiz local e registra separadamente os dados brutos
+não publicados. As contagens e descrições abaixo preservam suas datas e escopos.
+
 Complemento mais recente no mesmo dia, R2:
 [dados/fontes](research/2026-09-09-data-completion-r2.md),
 [catálogo de prontidão](research/2026-09-09-data-readiness.json),
@@ -30,8 +36,9 @@ Não é nova auditoria científica ou recertificação de afirmações históric
 
 1. [AGENTS](../AGENTS.md) e [README](../README.md).
 2. Início de [STOCKS_CURRENT_STATE](../STOCKS_CURRENT_STATE.md) e [HANDOFF](../HANDOFF.md).
-3. [Mandato original vigente](continuation/MANDATO_20260909.md) e
-   [prompt de continuidade atualizado](continuation/PROMPT_NOVO_CHAT.md).
+3. [Mandato integral da próxima auditoria](continuation/PROMPT_AUDITORIA_INTEGRAL_20260909.md),
+   [mandato econômico original](continuation/MANDATO_20260909.md) e
+   [prompt anterior como contexto histórico](continuation/PROMPT_NOVO_CHAT.md).
 4. [Relatório H21 com complemento final](research/2026-09-09-h21-results.md) e
    [reprodução H21](../research/session-20260909/h21/README.md).
 5. [Relatório e pendências R2](research/2026-09-09-data-completion-r2.md),

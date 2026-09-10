@@ -1,0 +1,26 @@
+[
+  {
+    "id": "b3-funds-common",
+    "filename": "b3-funds-common.js",
+    "url": "https://sistemaswebb3-listados.b3.com.br/fundsListedPage/chunk-52FOSNDI.js",
+    "purpose": "Public ETF data service definition"
+  },
+  {
+    "id": "b3-funds-detail",
+    "filename": "b3-funds-detail.js",
+    "url": "https://sistemaswebb3-listados.b3.com.br/fundsListedPage/chunk-5HJM6SED.js",
+    "purpose": "ETF financial statements and corporate event API discovery"
+  },
+  {
+    "id": "b3-fee-circular-v5",
+    "filename": "b3-fee-circular-v5.pdf",
+    "url": "https://b3.com.br/data/files/1D/A4/5A/0A/AFA30A105BF9020AAC094EA8/OC%20037-2026%20PRE%20NOVA%20VERSAO%20DO%20DOCUMENTO%20TARIFACAO%20DE%20PRODUTOS%20DE%20RENDA%20VARIAVEL_PT.pdf",
+    "purpose": "September2026 fee version update"
+  },
+  {
+    "id": "b3-retail-program",
+    "filename": "b3-retail-program.pdf",
+    "url": "https://b3.com.br/data/files/DB/A4/00/A7/C9940A105BF9020AAC094EA8/OC%20038-2026%20PRE%20PROGRAMA%20DE%20INCENTIVO%20PF_PT.pdf",
+    "purpose": "New retail fee eligibility"
+  }
+]

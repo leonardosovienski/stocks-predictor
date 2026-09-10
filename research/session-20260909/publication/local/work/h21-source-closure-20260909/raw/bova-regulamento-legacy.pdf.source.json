@@ -1,0 +1,15 @@
+{
+  "id": "blackrock-reg-legacy",
+  "url": "https://www.blackrock.com/br/literature/bylaws/ishares-bova11-brl-regulamento-ptbr.pdf",
+  "purpose": "Historical distribution/amortization rules",
+  "started_at_utc": "2026-09-09T18:59:37.191817+00:00",
+  "path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\raw\\bova-regulamento-legacy.pdf",
+  "status": "downloaded",
+  "final_url": "https://www.blackrock.com/br/literature/bylaws/ishares-bova11-brl-regulamento-ptbr.pdf",
+  "http_status": 200,
+  "content_type": "application/pdf;charset=UTF-8",
+  "last_modified": "Mon, 20 May 2024 18:22:43 GMT",
+  "bytes": 708465,
+  "sha256": "5e443e84da4e7ad964e3b7e7855cee289f51b0d2587bbeef33aa16ad2a14cf05",
+  "completed_at_utc": "2026-09-09T18:59:43.023429+00:00"
+}

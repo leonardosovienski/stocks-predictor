@@ -1,0 +1,15 @@
+{
+  "id": "fnet-209795",
+  "url": "https://fnet.bmfbovespa.com.br/fnet/publico/downloadDocumento?id=209795",
+  "purpose": "Full body BOVA11 official notice; preserve cancelled records",
+  "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-209795.pdf",
+  "started_at_utc": "2026-09-09T21:07:23.529271+00:00",
+  "status": "downloaded",
+  "curl_exit_code": 0,
+  "http_status": 200,
+  "final_url": "https://fnet.bmfbovespa.com.br/fnet/publico/downloadDocumento?id=209795",
+  "content_type": "application/pdf; charset=UTF-8",
+  "bytes": 708465,
+  "sha256": "5e443e84da4e7ad964e3b7e7855cee289f51b0d2587bbeef33aa16ad2a14cf05",
+  "completed_at_utc": "2026-09-09T21:07:27.275241+00:00"
+}

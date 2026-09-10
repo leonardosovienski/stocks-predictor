@@ -1,0 +1,50 @@
+{
+  "kind": "AUTHORED_OBSERVATION_RECEIPT_NOT_ORIGINAL_HTML",
+  "recorded_at_utc": "2026-09-09T20:11:20.380794+00:00",
+  "browsing_date": "2026-09-09",
+  "brokers": {
+    "xp": {
+      "url": "https://www.xpi.com.br/custos-operacionais/",
+      "evidence_kind": "PUBLIC_BROWSER_OBSERVATION_AND_WEB_TEXT_NOT_RAW_HTML",
+      "secondary_bova11_brokerage_brl": null,
+      "conditional_listed_funds_selfservice_brokerage_brl": "0.00",
+      "condition": "Page Fundos Listados: independent client without adviser; ETF mapping and account eligibility not certified.",
+      "own_exchange_custody_brl": "0.00",
+      "operational_surcharge_percent": "5.9",
+      "surcharge_base": "Brokerage, emoluments and settlement fee; mapping of current CCP/transfer nomenclature to actual note remains to reconcile.",
+      "primary_creation_redemption_only": {
+        "percent": "0.04",
+        "fixed_brl_per_request": "276.09",
+        "applies_to_secondary_trade": false
+      },
+      "taxes_percent": {
+        "ISS": "5",
+        "PIS": "0.65",
+        "COFINS": "4"
+      },
+      "full_cost_certified": false
+    },
+    "rico": {
+      "url": "https://www.rico.com.vc/custos/",
+      "evidence_kind": "PUBLIC_BROWSER_OBSERVATION_AND_WEB_TEXT_NOT_RAW_HTML",
+      "explicit_etf_selfservice_brokerage_brl": "0.00",
+      "condition": "Orders placed by client on digital platforms; desk/assessor conditions excluded.",
+      "etf_zero_requires_rlp_in_observed_row": false,
+      "operational_surcharge_percent": "5.9",
+      "surcharge_base": "Brokerage, emoluments and settlement fee; note-level mapping remains to reconcile.",
+      "taxes_percent": {
+        "ISS": "5",
+        "PIS": "0.65",
+        "COFINS": "4"
+      },
+      "taxes_method": "gross-up on brokerage and operating fees per published page",
+      "same_xp_group": true,
+      "full_cost_certified": false
+    },
+    "decision": "Keep XP preference. Rico is a conditional fee alternative if actual XP ETF brokerage is positive; no general superiority or switch concluded."
+  },
+  "access": "Public pages only; direct curl403 but ordinary browser usable; no broker login, messages, orders, or enrollment.",
+  "methodological_note": "No machine-preserved original broker HTML. Observed UI used to disambiguate tabs flattened in web extraction.",
+  "incidental_performance_exposure": true,
+  "holdout_intact": false
+}

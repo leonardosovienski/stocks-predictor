@@ -1,0 +1,15 @@
+{
+  "id": "fnet-fs-2022",
+  "url": "https://fnet.bmfbovespa.com.br/fnet/publico/exibirDocumento?id=310114&",
+  "purpose": "Original annual BOVA11 statement; ID from official public catalogue",
+  "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-fs-2022.pdf",
+  "started_at_utc": "2026-09-09T21:13:00.237291+00:00",
+  "status": "downloaded",
+  "curl_exit_code": 0,
+  "http_status": 200,
+  "final_url": "https://fnet.bmfbovespa.com.br/fnet/publico/exibirDocumento?id=310114&",
+  "content_type": "application/pdf; charset=UTF-8",
+  "bytes": 660750,
+  "sha256": "0c6d70312164f8cde14296ae6a62b260b785d93dab77f3d98b781830cdf50771",
+  "completed_at_utc": "2026-09-09T21:13:01.789675+00:00"
+}

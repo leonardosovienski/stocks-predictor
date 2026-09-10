@@ -1,0 +1,15 @@
+{
+  "id": "blackrock-merger-decisions-3-retry",
+  "url": "https://www.blackrock.com/br/literature/shareholder-letters/ishares-bova11-brl-sumariodecisoesmerger3-ptbr.pdf",
+  "purpose": "Full one-page Jan21 notice; previous failure retained",
+  "started_at_utc": "2026-09-09T20:00:01.652392+00:00",
+  "path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\raw\\bova-merger-decisions-3-retry.pdf",
+  "status": "downloaded",
+  "final_url": "https://www.blackrock.com/br/literature/shareholder-letters/ishares-bova11-brl-sumariodecisoesmerger3-ptbr.pdf",
+  "http_status": 200,
+  "content_type": "application/pdf;charset=UTF-8",
+  "last_modified": "Thu, 22 Jan 2026 14:29:15 GMT",
+  "bytes": 170487,
+  "sha256": "acccae93ae4c1ef84bd4f5c50208d151681cf12da72e4a7acfb49f28aa8dd002",
+  "completed_at_utc": "2026-09-09T20:00:02.794002+00:00"
+}

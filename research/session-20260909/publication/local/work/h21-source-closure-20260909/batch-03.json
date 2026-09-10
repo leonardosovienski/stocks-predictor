@@ -1,0 +1,32 @@
+[
+  {
+    "id": "xp-costs",
+    "filename": "xp-costs.html",
+    "url": "https://www.xpi.com.br/custos-operacionais/",
+    "purpose": "XP retail ETF brokerage, eligibility and surcharges"
+  },
+  {
+    "id": "rico-costs",
+    "filename": "rico-costs.html",
+    "url": "https://www.rico.com.vc/custos/",
+    "purpose": "One alternative broker: retail ETF fees"
+  },
+  {
+    "id": "b3-funds-spa",
+    "filename": "b3-funds-spa.html",
+    "url": "https://sistemaswebb3-listados.b3.com.br/fundsListedPage/ETF",
+    "purpose": "Official ETF registration and corporate action documents discovery"
+  },
+  {
+    "id": "fnet-unfiltered",
+    "filename": "fnet-unfiltered.html",
+    "url": "https://fnet.bmfbovespa.com.br/fnet/publico/abrirGerenciadorDocumentosCVM",
+    "purpose": "Public fund documents catalog discovery without query"
+  },
+  {
+    "id": "cvm-legacy-public",
+    "filename": "cvm-legacy-public.html",
+    "url": "https://cvmweb.cvm.gov.br/SWB/Sistemas/SCW/CPublica/CPublica.asp?SemFrames=True",
+    "purpose": "Pre-July2018 ETF publications archive"
+  }
+]

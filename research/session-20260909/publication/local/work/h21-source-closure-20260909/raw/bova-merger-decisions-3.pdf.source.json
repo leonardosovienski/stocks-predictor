@@ -1,0 +1,15 @@
+{
+  "id": "blackrock-merger-decisions-3",
+  "url": "https://www.blackrock.com/br/literature/shareholder-letters/ishares-bova11-brl-sumariodecisoesmerger3-ptbr.pdf",
+  "purpose": "Final third-call merger decisions",
+  "started_at_utc": "2026-09-09T19:42:52.685040+00:00",
+  "path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\raw\\bova-merger-decisions-3.pdf",
+  "status": "failed",
+  "curl_exit_code": 28,
+  "http_status": 0,
+  "final_url": "https://www.blackrock.com/br/literature/shareholder-letters/ishares-bova11-brl-sumariodecisoesmerger3-ptbr.pdf",
+  "content_type": null,
+  "error_type": "RuntimeError",
+  "error": "curl: (28) Connection timed out after 12003 milliseconds\r\n",
+  "completed_at_utc": "2026-09-09T19:43:04.824629+00:00"
+}

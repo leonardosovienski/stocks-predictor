@@ -1,0 +1,15 @@
+{
+  "id": "b3-bova-report-2018",
+  "url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetReportsRelevants/eyJsYW5ndWFnZSI6InB0LWJyIiwiaWRGTkVUIjoiOTkwIiwidHlwZUZ1bmQiOiJFVEYiLCJjYXRlZ29yeSI6NywiZGF0ZUluaXRpYWwiOiIyMDE4LTAxLTAxIiwiZGF0ZUZpbmFsIjoiMjAxOC0xMi0zMSIsInBhZ2VOdW1iZXIiOjEsInBhZ2VTaXplIjoyMH0=",
+  "purpose": "Annual date filter consistent with official UI; verify 2018 report",
+  "started_at_utc": "2026-09-09T19:37:51.459828+00:00",
+  "path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\raw\\b3-bova-report-2018.json",
+  "status": "downloaded",
+  "curl_exit_code": 0,
+  "http_status": 200,
+  "final_url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetReportsRelevants/eyJsYW5ndWFnZSI6InB0LWJyIiwiaWRGTkVUIjoiOTkwIiwidHlwZUZ1bmQiOiJFVEYiLCJjYXRlZ29yeSI6NywiZGF0ZUluaXRpYWwiOiIyMDE4LTAxLTAxIiwiZGF0ZUZpbmFsIjoiMjAxOC0xMi0zMSIsInBhZ2VOdW1iZXIiOjEsInBhZ2VTaXplIjoyMH0=",
+  "content_type": "application/json",
+  "bytes": 562,
+  "sha256": "ec53082d0e62cc4eec346a0e312241889368ab6137c746ce0651ea296341218a",
+  "completed_at_utc": "2026-09-09T19:37:58.237671+00:00"
+}

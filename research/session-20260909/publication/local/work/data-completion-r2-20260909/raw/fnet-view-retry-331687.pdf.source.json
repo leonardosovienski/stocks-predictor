@@ -1,0 +1,15 @@
+{
+  "id": "fnet-view-retry-331687",
+  "url": "https://fnet.bmfbovespa.com.br/fnet/publico/exibirDocumento?id=331687&",
+  "purpose": "Alternative original public viewer after direct download timeout",
+  "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-view-retry-331687.pdf",
+  "started_at_utc": "2026-09-09T21:14:25.431089+00:00",
+  "status": "downloaded",
+  "curl_exit_code": 0,
+  "http_status": 200,
+  "final_url": "https://fnet.bmfbovespa.com.br/fnet/publico/exibirDocumento?id=331687&",
+  "content_type": "application/pdf; charset=UTF-8",
+  "bytes": 192384,
+  "sha256": "bef4c4d54ea795d572954e7864aed2d2c0aaa42b4e0d894487d0e2f3f6ebee72",
+  "completed_at_utc": "2026-09-09T21:14:26.140782+00:00"
+}

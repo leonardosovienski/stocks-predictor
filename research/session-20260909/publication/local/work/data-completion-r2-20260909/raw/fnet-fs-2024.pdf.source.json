@@ -1,0 +1,15 @@
+{
+  "id": "fnet-fs-2024",
+  "url": "https://fnet.bmfbovespa.com.br/fnet/publico/exibirDocumento?id=672335&",
+  "purpose": "Original annual BOVA11 statement; ID from official public catalogue",
+  "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-fs-2024.pdf",
+  "started_at_utc": "2026-09-09T21:13:01.323584+00:00",
+  "status": "failed",
+  "curl_exit_code": 28,
+  "http_status": 0,
+  "final_url": "https://fnet.bmfbovespa.com.br/fnet/publico/exibirDocumento?id=672335&",
+  "content_type": null,
+  "error_type": "RuntimeError",
+  "error": "curl: (28) Operation timed out after 35002 milliseconds with 0 bytes received\r\n",
+  "completed_at_utc": "2026-09-09T21:13:36.400640+00:00"
+}

@@ -1,6 +1,17 @@
 # Stocks — instruções vigentes para implementação
 
-Atualizado em 09/09/2026 após H21, centralização local e complemento de dados R2.
+Atualizado em 09/09/2026 após H21, centralização, R2 e preparação da auditoria integral.
+
+## Próxima tarefa: auditoria integral
+
+O usuário preparou e revisou o
+[mandato completo de auditoria](docs/continuation/PROMPT_AUDITORIA_INTEGRAL_20260909.md).
+Ele substitui como prioridade a fila limitada a eventos/custos H21. Reexaminar
+objetivo econômico, decisões, lógica, arquitetura, dados e claims; corrigir e
+validar o necessário. A auditoria ainda não foi executada: a última ação foi
+consolidar e publicar a continuidade e os artefatos autorais da sessão.
+Consultar o [pacote de publicação](research/session-20260909/publication/README.md)
+para hashes, recibos e distinção entre arquivos versionados e dados apenas locais.
 
 ## Mandato e leitura
 
@@ -59,8 +70,10 @@ Rodadas de coleta encerradas; consultar os inventários antes de novo orçamento
 Preferência: XP;
 não inferir elegibilidade, capital, horizonte ou limite de perda. Consultar
 as entradas operacionais e o inventário antes de repetir aquisições.
-O próximo passo é fechar a cobertura restante de eventos e despesas/execução. O plano futuro
-já está registrado; não está rodando. H20 está estacionada para reconstrução ampla.
+A fila anterior era fechar eventos e despesas/execução. A próxima tarefa é a
+auditoria integral indicada acima, que deve reavaliar essa prioridade. O plano
+prospectivo H21 já está registrado, sem execução. H20 permanece estacionada
+como estado histórico a reavaliar.
 Não ativar comandos legados de ingestão, backtest ou paper automaticamente.
 
 ## Engenharia e validação

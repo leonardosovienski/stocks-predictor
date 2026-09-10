@@ -1,0 +1,15 @@
+{
+  "id": "blackrock-reg-2026",
+  "url": "https://www.blackrock.com/br/literature/bylaws/ishares-bova11-brl-regulamento-2026-ptbr.pdf",
+  "purpose": "Current class structure and investor event rules",
+  "started_at_utc": "2026-09-09T18:59:37.191817+00:00",
+  "path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\raw\\bova-regulamento-2026.pdf",
+  "status": "downloaded",
+  "final_url": "https://www.blackrock.com/br/literature/bylaws/ishares-bova11-brl-regulamento-2026-ptbr.pdf",
+  "http_status": 200,
+  "content_type": "application/pdf;charset=UTF-8",
+  "last_modified": "Tue, 19 May 2026 19:20:37 GMT",
+  "bytes": 248275,
+  "sha256": "9b25038063be31b2f7159c93d8a8031df87c3696dac855b2718040141548b665",
+  "completed_at_utc": "2026-09-09T18:59:40.542072+00:00"
+}

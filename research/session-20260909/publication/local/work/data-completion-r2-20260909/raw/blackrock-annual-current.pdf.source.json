@@ -1,0 +1,15 @@
+{
+  "id": "blackrock-annual-current",
+  "url": "https://www.blackrock.com/br/literature/annual-report/ishares-bova11-brl-relatrio-anual-ptbr.pdf",
+  "purpose": "Official fund annual reporting evidence",
+  "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\blackrock-annual-current.pdf",
+  "started_at_utc": "2026-09-09T21:06:37.281117+00:00",
+  "status": "failed",
+  "curl_exit_code": 22,
+  "http_status": 404,
+  "final_url": "https://www.blackrock.com/br/literature/annual-report/ishares-bova11-brl-relatrio-anual-ptbr.pdf",
+  "content_type": "text/html;charset=UTF-8",
+  "error_type": "RuntimeError",
+  "error": "curl: (22) The requested URL returned error: 404\r\n",
+  "completed_at_utc": "2026-09-09T21:06:37.965891+00:00"
+}

@@ -1,0 +1,22 @@
+{
+  "id": "b3-cotahist-2026-complete",
+  "kind": "EXACT_RANGE_REASSEMBLY",
+  "url": "https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2026.ZIP",
+  "sha256": "b352157a252a9a31aed1be3a3f55d043785517d652f65ac715892cf2ddaa839a",
+  "bytes": 74185998,
+  "parts": [
+    {
+      "path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\raw\\COTAHIST_A2026.latest.ZIP",
+      "sha256": "55052b118e9472c85d9bb20e37aefa9812c5045f4f54ac99cbc84d4626b07084"
+    },
+    {
+      "path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\raw\\COTAHIST_A2026.tail.bin",
+      "sha256": "a8331db87dc0d18396bb9426a664ec47d3e1d559c5e16cbc856bf32cedd32128"
+    }
+  ],
+  "completed_at_utc": "2026-09-09T19:29:45.029258+00:00",
+  "etag": "\"3ad8b333ef3fdd1:0\"",
+  "source_last_modified": "2026-09-09T00:07:28Z",
+  "crc_status": "pending_full_member_read",
+  "initial_download_status": "transport completed but truncated; ZIP failed validation; no prices accepted"
+}

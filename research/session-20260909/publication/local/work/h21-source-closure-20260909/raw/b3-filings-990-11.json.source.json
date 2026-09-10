@@ -1,0 +1,15 @@
+{
+  "id": "b3-filings-990-11",
+  "url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetReportsRelevants/eyJsYW5ndWFnZSI6InB0LWJyIiwiaWRGTkVUIjoiOTkwIiwidHlwZUZ1bmQiOiJFVEYiLCJjYXRlZ29yeSI6MTEsImRhdGVJbml0aWFsIjoiMjAxOC0wMS0wMSIsImRhdGVGaW5hbCI6IjIwMjYtMDktMDgiLCJwYWdlTnVtYmVyIjoxLCJwYWdlU2l6ZSI6MTIwfQ==",
+  "purpose": "All documented categories across 2018-2026; check count against per-year inventory",
+  "started_at_utc": "2026-09-09T19:36:46.751014+00:00",
+  "path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\raw\\b3-filings-990-11.json",
+  "status": "downloaded",
+  "curl_exit_code": 0,
+  "http_status": 200,
+  "final_url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetReportsRelevants/eyJsYW5ndWFnZSI6InB0LWJyIiwiaWRGTkVUIjoiOTkwIiwidHlwZUZ1bmQiOiJFVEYiLCJjYXRlZ29yeSI6MTEsImRhdGVJbml0aWFsIjoiMjAxOC0wMS0wMSIsImRhdGVGaW5hbCI6IjIwMjYtMDktMDgiLCJwYWdlTnVtYmVyIjoxLCJwYWdlU2l6ZSI6MTIwfQ==",
+  "content_type": "application/json",
+  "bytes": 85,
+  "sha256": "420b1d65d2f16949a60710187a020c7d68cac20ce47892d0d03f3287a59ad5d5",
+  "completed_at_utc": "2026-09-09T19:36:47.174645+00:00"
+}

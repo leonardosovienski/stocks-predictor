@@ -1,0 +1,26 @@
+[
+  {
+    "id": "b3-bova-filings-all",
+    "filename": "b3-bova-filings-all.json",
+    "url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetReportsRelevants/eyJsYW5ndWFnZSI6InB0LWJyIiwiaWRGTkVUIjoiOTkwIiwidHlwZUZ1bmQiOiJFVEYiLCJkYXRlSW5pdGlhbCI6IjIwMTgtMDEtMDEiLCJkYXRlRmluYWwiOiIyMDI2LTA5LTA4IiwicGFnZU51bWJlciI6MSwicGFnZVNpemUiOjEyMCwiY2F0ZWdvcnkiOjB9",
+    "purpose": "Read-only fund filings with explicit full date range and pagination counts"
+  },
+  {
+    "id": "b3-bova-class-filings-all",
+    "filename": "b3-bova-class-filings-all.json",
+    "url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetReportsRelevants/eyJsYW5ndWFnZSI6InB0LWJyIiwiaWRGTkVUIjoiMTk2NzQiLCJ0eXBlRnVuZCI6IkVURiIsImRhdGVJbml0aWFsIjoiMjAxOC0wMS0wMSIsImRhdGVGaW5hbCI6IjIwMjYtMDktMDgiLCJwYWdlTnVtYmVyIjoxLCJwYWdlU2l6ZSI6MTIwLCJjYXRlZ29yeSI6MH0=",
+    "purpose": "Read-only fund filings with explicit full date range and pagination counts"
+  },
+  {
+    "id": "b3-bova-report-types",
+    "filename": "b3-bova-report-types.json",
+    "url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetTypesReport/eyJsYW5ndWFnZSI6InB0LWJyIiwiaWRGTkVUIjoiOTkwIiwidHlwZUZ1bmQiOiJFVEYiLCJkYXRlSW5pdGlhbCI6IjIwMjUtMDEtMDEiLCJkYXRlRmluYWwiOiIyMDI1LTEyLTMxIiwicGFnZU51bWJlciI6MSwicGFnZVNpemUiOjEyMH0=",
+    "purpose": "Read-only fund filings with explicit full date range and pagination counts"
+  },
+  {
+    "id": "b3-bova-class-report-types",
+    "filename": "b3-bova-class-report-types.json",
+    "url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetTypesReport/eyJsYW5ndWFnZSI6InB0LWJyIiwiaWRGTkVUIjoiMTk2NzQiLCJ0eXBlRnVuZCI6IkVURiIsImRhdGVJbml0aWFsIjoiMjAyNi0wMS0wMSIsImRhdGVGaW5hbCI6IjIwMjYtMDktMDgiLCJwYWdlTnVtYmVyIjoxLCJwYWdlU2l6ZSI6MTIwfQ==",
+    "purpose": "Read-only fund filings with explicit full date range and pagination counts"
+  }
+]

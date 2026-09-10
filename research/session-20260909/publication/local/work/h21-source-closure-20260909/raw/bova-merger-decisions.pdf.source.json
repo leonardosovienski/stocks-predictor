@@ -1,0 +1,16 @@
+{
+  "id": "blackrock-merger-decisions",
+  "url": "https://www.blackrock.com/br/literature/shareholder-letters/ishares-bova11-brl-sumariodecisoesmerger-ptbr.pdf",
+  "purpose": "BRAX11 incorporation into BOVA11; distinguish effect on existing BOVA holders",
+  "started_at_utc": "2026-09-09T19:42:07.576196+00:00",
+  "path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\raw\\bova-merger-decisions.pdf",
+  "status": "failed",
+  "curl_exit_code": 28,
+  "http_status": 200,
+  "final_url": "https://www.blackrock.com/br/literature/shareholder-letters/ishares-bova11-brl-sumariodecisoesmerger-ptbr.pdf",
+  "content_type": "application/pdf;charset=UTF-8",
+  "error_type": "RuntimeError",
+  "error": "curl: (28) Operation timed out after 45005 milliseconds with 109336 out of 169400 bytes received\r\n",
+  "partial_bytes": 109336,
+  "completed_at_utc": "2026-09-09T19:42:52.683040+00:00"
+}

@@ -1,0 +1,261 @@
+[
+  {
+    "path": "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/STOCKS_H18_H19_TESTADOS.zip.contents/original/quotes.db",
+    "size": 38662144,
+    "sha256": "30ce8e91fba9cb0a0c09571be71821c9da2d0aec49d12ec15aab8b26522ffd2c",
+    "mtime_ns": 0,
+    "origin": "project/.local-research/stocks-session-20260907/outputs/STOCKS_H18_H19_TESTADOS.zip!original/quotes.db"
+  },
+  {
+    "path": "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/STOCKS_H18_H19_TESTADOS.zip.contents/repaired/quotes.db",
+    "size": 38957056,
+    "sha256": "0bceedac3936dc4162562ec35e03177c7e71b99e13b66837035d1ccd151f0512",
+    "mtime_ns": 0,
+    "origin": "project/.local-research/stocks-session-20260907/outputs/STOCKS_H18_H19_TESTADOS.zip!repaired/quotes.db"
+  },
+  {
+    "path": "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/STOCKS_REORGANIZACOES_TESTADAS.zip.contents/base/quotes.db",
+    "size": 38957056,
+    "sha256": "0bceedac3936dc4162562ec35e03177c7e71b99e13b66837035d1ccd151f0512",
+    "mtime_ns": 0,
+    "origin": "project/.local-research/stocks-session-20260907/outputs/STOCKS_REORGANIZACOES_TESTADAS.zip!base/quotes.db"
+  },
+  {
+    "path": "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/STOCKS_REORGANIZACOES_TESTADAS.zip.contents/successors/successors.db",
+    "size": 1323008,
+    "sha256": "fa3d464e3e463b66c2aa64d96228aeb5d1fae63514df1d0ddb58233240b52764",
+    "mtime_ns": 0,
+    "origin": "project/.local-research/stocks-session-20260907/outputs/STOCKS_REORGANIZACOES_TESTADAS.zip!successors/successors.db"
+  },
+  {
+    "path": "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/STOCKS_VALIDACAO_LUCRO_TESTADA.zip.contents/baseline/base/quotes.db",
+    "size": 38957056,
+    "sha256": "0bceedac3936dc4162562ec35e03177c7e71b99e13b66837035d1ccd151f0512",
+    "mtime_ns": 0,
+    "origin": "project/.local-research/stocks-session-20260907/outputs/STOCKS_VALIDACAO_LUCRO_TESTADA.zip!baseline/base/quotes.db"
+  },
+  {
+    "path": "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/STOCKS_VALIDACAO_LUCRO_TESTADA.zip.contents/baseline/successors/successors.db",
+    "size": 1323008,
+    "sha256": "fa3d464e3e463b66c2aa64d96228aeb5d1fae63514df1d0ddb58233240b52764",
+    "mtime_ns": 0,
+    "origin": "project/.local-research/stocks-session-20260907/outputs/STOCKS_VALIDACAO_LUCRO_TESTADA.zip!baseline/successors/successors.db"
+  },
+  {
+    "path": "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/stocks-complemento-fontes.zip.contents/data/stocks-history-2016-2026.db",
+    "size": 288522240,
+    "sha256": "e21a89c38f2792c826291baa1175da4fe9dfbf626316635a536f7c28b250146a",
+    "mtime_ns": 0,
+    "origin": "project/.local-research/stocks-session-20260907/outputs/stocks-complemento-fontes.zip!data/stocks-history-2016-2026.db"
+  },
+  {
+    "path": "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/stocks-correcoes.zip.contents/demonstracao/stocks-cvm-2023-repaired-example.db",
+    "size": 257216512,
+    "sha256": "07197228920e4082954afbc9035509ae74e84be1773195a4c5b71a435481a804",
+    "mtime_ns": 0,
+    "origin": "project/.local-research/stocks-session-20260907/outputs/stocks-correcoes.zip!demonstracao/stocks-cvm-2023-repaired-example.db"
+  },
+  {
+    "path": "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/stocks-h17-pronto-final.zip.contents/data/quotes.db",
+    "size": 38662144,
+    "sha256": "30ce8e91fba9cb0a0c09571be71821c9da2d0aec49d12ec15aab8b26522ffd2c",
+    "mtime_ns": 0,
+    "origin": "project/.local-research/stocks-session-20260907/outputs/stocks-h17-pronto-final.zip!data/quotes.db"
+  },
+  {
+    "path": "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/stocks-h17-pronto.zip.contents/data/quotes.db",
+    "size": 38662144,
+    "sha256": "30ce8e91fba9cb0a0c09571be71821c9da2d0aec49d12ec15aab8b26522ffd2c",
+    "mtime_ns": 0,
+    "origin": "project/.local-research/stocks-session-20260907/outputs/stocks-h17-pronto.zip!data/quotes.db"
+  },
+  {
+    "path": "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/stocks-testes-reais.zip.contents/work/stocks-history-2016-2026.db",
+    "size": 288522240,
+    "sha256": "e21a89c38f2792c826291baa1175da4fe9dfbf626316635a536f7c28b250146a",
+    "mtime_ns": 0,
+    "origin": "project/.local-research/stocks-session-20260907/outputs/stocks-testes-reais.zip!work/stocks-history-2016-2026.db"
+  },
+  {
+    "path": "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/stocks-testes-reais.zip.contents/work/stocks-tested-real-v2-20260907.db",
+    "size": 288530432,
+    "sha256": "a8238568980d3303890b04590cfb5c55ab2d24c9271edd86820269336b09679a",
+    "mtime_ns": 0,
+    "origin": "project/.local-research/stocks-session-20260907/outputs/stocks-testes-reais.zip!work/stocks-tested-real-v2-20260907.db"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/stocks-clean-replay-20260907.db",
+    "size": 288530432,
+    "sha256": "8f84a743e706573cab9372c21d8c9c186c5afb31c2206821d9c2cf82199bbc64",
+    "mtime_ns": 1788755787395253500,
+    "origin": "project/.local-research/stocks-session-20260907/work/stocks-clean-replay-20260907.db"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/stocks-cvm-2023-repaired-example.db",
+    "size": 257216512,
+    "sha256": "07197228920e4082954afbc9035509ae74e84be1773195a4c5b71a435481a804",
+    "mtime_ns": 1788750233782990200,
+    "origin": "project/.local-research/stocks-session-20260907/work/stocks-cvm-2023-repaired-example.db"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/stocks-history-2016-2026.db",
+    "size": 288522240,
+    "sha256": "e21a89c38f2792c826291baa1175da4fe9dfbf626316635a536f7c28b250146a",
+    "mtime_ns": 1788752545845022400,
+    "origin": "project/.local-research/stocks-session-20260907/work/stocks-history-2016-2026.db"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/stocks-tested-real-20260907.db",
+    "size": 288530432,
+    "sha256": "e94633e709392168fc38df9633c5d63b34528a1af75949e9cecd69adf2af8e4a",
+    "mtime_ns": 1788754906869595900,
+    "origin": "project/.local-research/stocks-session-20260907/work/stocks-tested-real-20260907.db"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/stocks-tested-real-v2-20260907.db",
+    "size": 288530432,
+    "sha256": "a8238568980d3303890b04590cfb5c55ab2d24c9271edd86820269336b09679a",
+    "mtime_ns": 1788755199981794900,
+    "origin": "project/.local-research/stocks-session-20260907/work/stocks-tested-real-v2-20260907.db"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/test-only.db",
+    "size": 155648,
+    "sha256": "e713af1a867f31c3550e3767c7a9fc6f3963aac2b47b617db2adfe55903da054",
+    "mtime_ns": 1788746970072603800,
+    "origin": "project/.local-research/stocks-session-20260907/work/test-only.db"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/wheel-real-smoke.db",
+    "size": 229376,
+    "sha256": "56c0c7e4d9f342e439ed63d60e031b07ff9de1ebdf5407eea011be19536da66c",
+    "mtime_ns": 1788755408386223900,
+    "origin": "project/.local-research/stocks-session-20260907/work/wheel-real-smoke.db"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/h17-ready-5096bf505dc7/data/quotes.db",
+    "size": 38662144,
+    "sha256": "30ce8e91fba9cb0a0c09571be71821c9da2d0aec49d12ec15aab8b26522ffd2c",
+    "mtime_ns": 1788759800715089200,
+    "origin": "project/.local-research/stocks-session-20260907/work/h17-ready-5096bf505dc7/data/quotes.db"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/h17-ready-91342ec397f6/data/quotes.db",
+    "size": 38662144,
+    "sha256": "30ce8e91fba9cb0a0c09571be71821c9da2d0aec49d12ec15aab8b26522ffd2c",
+    "mtime_ns": 1788759650395261600,
+    "origin": "project/.local-research/stocks-session-20260907/work/h17-ready-91342ec397f6/data/quotes.db"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/h17-run-pack/data/quotes.db",
+    "size": 38662144,
+    "sha256": "30ce8e91fba9cb0a0c09571be71821c9da2d0aec49d12ec15aab8b26522ffd2c",
+    "mtime_ns": 1788758533640330400,
+    "origin": "project/.local-research/stocks-session-20260907/work/h17-run-pack/data/quotes.db"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/h17-run-pack-v2/data/quotes.db",
+    "size": 38662144,
+    "sha256": "30ce8e91fba9cb0a0c09571be71821c9da2d0aec49d12ec15aab8b26522ffd2c",
+    "mtime_ns": 1788758533640330400,
+    "origin": "project/.local-research/stocks-session-20260907/work/h17-run-pack-v2/data/quotes.db"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/profit-validation-ready-7b3722cd2bf1/baseline/base/quotes.db",
+    "size": 38957056,
+    "sha256": "0bceedac3936dc4162562ec35e03177c7e71b99e13b66837035d1ccd151f0512",
+    "mtime_ns": 1788806209395678400,
+    "origin": "project/.local-research/stocks-session-20260907/work/profit-validation-ready-7b3722cd2bf1/baseline/base/quotes.db"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/profit-validation-ready-7b3722cd2bf1/baseline/successors/successors.db",
+    "size": 1323008,
+    "sha256": "fa3d464e3e463b66c2aa64d96228aeb5d1fae63514df1d0ddb58233240b52764",
+    "mtime_ns": 1788806209462455700,
+    "origin": "project/.local-research/stocks-session-20260907/work/profit-validation-ready-7b3722cd2bf1/baseline/successors/successors.db"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/reorganization-ready-bundle/base/quotes.db",
+    "size": 38957056,
+    "sha256": "0bceedac3936dc4162562ec35e03177c7e71b99e13b66837035d1ccd151f0512",
+    "mtime_ns": 1788762575483605500,
+    "origin": "project/.local-research/stocks-session-20260907/work/reorganization-ready-bundle/base/quotes.db"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/reorganization-ready-bundle/successors/successors.db",
+    "size": 1323008,
+    "sha256": "fa3d464e3e463b66c2aa64d96228aeb5d1fae63514df1d0ddb58233240b52764",
+    "mtime_ns": 1788802570108200900,
+    "origin": "project/.local-research/stocks-session-20260907/work/reorganization-ready-bundle/successors/successors.db"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/reorganization-ready-e5e8b429ca89/base/quotes.db",
+    "size": 38957056,
+    "sha256": "0bceedac3936dc4162562ec35e03177c7e71b99e13b66837035d1ccd151f0512",
+    "mtime_ns": 1788804183188870300,
+    "origin": "project/.local-research/stocks-session-20260907/work/reorganization-ready-e5e8b429ca89/base/quotes.db"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/reorganization-ready-e5e8b429ca89/successors/successors.db",
+    "size": 1323008,
+    "sha256": "fa3d464e3e463b66c2aa64d96228aeb5d1fae63514df1d0ddb58233240b52764",
+    "mtime_ns": 1788804183254650100,
+    "origin": "project/.local-research/stocks-session-20260907/work/reorganization-ready-e5e8b429ca89/successors/successors.db"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/stocks-predictor/data/stocks.db",
+    "size": 229376,
+    "sha256": "396f9aa99dfd812af93d7d58db80f0c0179345500555bb0b27297fa81fa6c32f",
+    "mtime_ns": 1788754901213877900,
+    "origin": "project/.local-research/stocks-session-20260907/work/stocks-predictor/data/stocks.db"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/value-measurement-source/quotes.db",
+    "size": 38957056,
+    "sha256": "0bceedac3936dc4162562ec35e03177c7e71b99e13b66837035d1ccd151f0512",
+    "mtime_ns": 1788762575483605500,
+    "origin": "project/.local-research/stocks-session-20260907/work/value-measurement-source/quotes.db"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/value-ready-bundle/original/quotes.db",
+    "size": 38662144,
+    "sha256": "30ce8e91fba9cb0a0c09571be71821c9da2d0aec49d12ec15aab8b26522ffd2c",
+    "mtime_ns": 1788758533640330400,
+    "origin": "project/.local-research/stocks-session-20260907/work/value-ready-bundle/original/quotes.db"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/value-ready-bundle/repaired/quotes.db",
+    "size": 38957056,
+    "sha256": "0bceedac3936dc4162562ec35e03177c7e71b99e13b66837035d1ccd151f0512",
+    "mtime_ns": 1788762575483605500,
+    "origin": "project/.local-research/stocks-session-20260907/work/value-ready-bundle/repaired/quotes.db"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/value-ready-ce8d1573257f/original/quotes.db",
+    "size": 38662144,
+    "sha256": "30ce8e91fba9cb0a0c09571be71821c9da2d0aec49d12ec15aab8b26522ffd2c",
+    "mtime_ns": 1788800761589288800,
+    "origin": "project/.local-research/stocks-session-20260907/work/value-ready-ce8d1573257f/original/quotes.db"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/value-ready-ce8d1573257f/repaired/quotes.db",
+    "size": 38957056,
+    "sha256": "0bceedac3936dc4162562ec35e03177c7e71b99e13b66837035d1ccd151f0512",
+    "mtime_ns": 1788800762021103500,
+    "origin": "project/.local-research/stocks-session-20260907/work/value-ready-ce8d1573257f/repaired/quotes.db"
+  },
+  {
+    "path": "project/.local-research/stocks-session-20260907/work/value-successor-source/successors.db",
+    "size": 1323008,
+    "sha256": "fa3d464e3e463b66c2aa64d96228aeb5d1fae63514df1d0ddb58233240b52764",
+    "mtime_ns": 1788802570108200900,
+    "origin": "project/.local-research/stocks-session-20260907/work/value-successor-source/successors.db"
+  },
+  {
+    "path": "project/data/stocks.db",
+    "size": 257163264,
+    "sha256": "a22739794ba4a43a11544338d4a91e14cb6a0b1f7b132ab460f96d3359f63cf4",
+    "mtime_ns": 1788713332439024600,
+    "origin": "project/data/stocks.db"
+  }
+]

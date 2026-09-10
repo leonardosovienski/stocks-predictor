@@ -1,0 +1,346 @@
+{
+  "verified_at_utc": "2026-09-09T21:45:18.897907+00:00",
+  "status": "PASS",
+  "protected_files": {
+    "C:\\STOCKS\\DADOS_STOCKS.zip": "83d5aac8e23d72e4deb1331077e08313914375a5dbac4276e5f8ad89da586d23",
+    "C:\\STOCKS\\work\\h21\\result-01.json": "39a940514b5fdcbb577c496f996ddd324c8107436852ab67da352401bb8870d2",
+    "C:\\STOCKS\\work\\h21\\inputs\\quotes.json": "445a24c3098deb3da6f3bdd7b3d92ca48e24e6b4f9fdc38fb52b7705c2467d94",
+    "C:\\STOCKS\\work\\h21\\inputs\\BOVA11.original-lines.txt": "95a0f8c69954911c7c8e332af846b830989ccbe3d2f7e6ed1bdff014213e6eb3",
+    "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-09-h21-protocol.json": "5721d7405af2f398448be3966eeb832deda06f7aa936e5244059ae7ca86797fb",
+    "C:\\STOCKS\\stocks-predictor\\docs\\continuation\\MANDATO_20260909.md": "d63db21471620a6a4a83671e1acebda1d7ff0be04a96652d5f0d658997cc73cc",
+    "C:\\STOCKS\\work\\h21-source-closure-20260909\\normalized-v2\\quotes-2018-20260908.json": "813a21aa335a84fb4288f125613dd3aab40b30d1c32a53e4e96c065431bc7adb",
+    "C:\\STOCKS\\outputs\\CI_MAIN_STOCKS_H21.txt": "231c8f86168433001ee377afc2c8ebdc102dc691f032f138428c17975c6526fb",
+    "C:\\STOCKS\\outputs\\CONFERENCIA_STOCKS_H21.json": "8fd7f22095b5572a8244c8580ad145c2c36066f3c1ce4243a9d24baee517140a",
+    "C:\\STOCKS\\outputs\\ENTREGA_STOCKS_H21.json": "3421628595718ee94355fa07d9166c4a51c95c7730e0f10c42153aba5353eea2",
+    "C:\\STOCKS\\outputs\\RELATORIO_STOCKS_H21.md": "471a62a6ac3389cc26bef10180575f411415e7efdbf494d599a1bc6c480802c5",
+    "C:\\STOCKS\\outputs\\REPRODUCAO_STOCKS_H21.json": "562577dd2100395fe03c9e277895b52e4f138152ad1b2ac9b2375b28d3fdbbbb",
+    "C:\\STOCKS\\outputs\\RESULTADO_STOCKS_H21.json": "39a940514b5fdcbb577c496f996ddd324c8107436852ab67da352401bb8870d2",
+    "C:\\STOCKS\\instructions\\STOCKS_PREDICTOR_PROMPT_FINAL_20260909.md": "d63db21471620a6a4a83671e1acebda1d7ff0be04a96652d5f0d658997cc73cc"
+  },
+  "snapshots_match_local_and_repository_bytes": {
+    "bova-event-review.json": "93e577b97974b85e8930b0d3526d02588763571743128ef6b50775e85d43c6b9",
+    "operational-inputs.json": "e42cce52401ac3b08caaff0cef06d89cb91ec27f179c7a64c3ce703cd0a95900",
+    "readiness.json": "cd43a87d22cfd8c64af55a81d785ce218a336e4541b9310ec2f18a727d71b0f6",
+    "source-inventory.json": "fb7763b253793cf7e0f4092289075c7b9958c7493e10b506da1c7073a2891f82"
+  },
+  "active_markdown_files_checked": 13,
+  "active_local_links_checked": 77,
+  "active_local_links": [
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\AGENTS.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\docs\\continuation\\MANDATO_20260909.md"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\AGENTS.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\README.md"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\AGENTS.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\HANDOFF.md"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\AGENTS.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\STOCKS_CURRENT_STATE.md"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\AGENTS.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\docs\\DOCUMENTATION_INDEX.md"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\AGENTS.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\docs\\DESIGN.md"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\AGENTS.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\docs\\continuation\\LOCAL_PATHS_20260909.json"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\AGENTS.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-09-data-completion-r2.md"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\AGENTS.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\research\\session-20260909\\data_completion\\README.md"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\AGENTS.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\research\\session-20260909\\h21\\README.md"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\README.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-09-h21-results.md"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\README.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\research\\session-20260909\\h21\\README.md"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\README.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-09-data-completion-r2.md"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\README.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-09-data-readiness.json"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\README.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\HANDOFF.md"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\README.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\STOCKS_CURRENT_STATE.md"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\README.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\docs\\RJ_DESIGN.md"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\README.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\docs\\DESIGN.md"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\README.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\HANDOFF.md"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\README.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\docs\\continuation\\LOCAL_PATHS_20260909.json"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\README.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\docs\\DOCUMENTATION_INDEX.md"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\HANDOFF.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-09-data-completion-r2.md"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\HANDOFF.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-09-data-readiness.json"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\HANDOFF.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\research\\session-20260909\\data_completion\\README.md"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\STOCKS_CURRENT_STATE.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-09-data-completion-r2.md"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\STOCKS_CURRENT_STATE.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-09-data-readiness.json"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\STOCKS_CURRENT_STATE.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-09-bova-event-review-r2.json"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\STOCKS_CURRENT_STATE.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-09-operational-inputs-r2.json"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\docs\\DOCUMENTATION_INDEX.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-09-data-completion-r2.md"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\docs\\DOCUMENTATION_INDEX.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-09-data-readiness.json"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\docs\\DOCUMENTATION_INDEX.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-09-bova-event-review-r2.json"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\docs\\DOCUMENTATION_INDEX.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-09-operational-inputs-r2.json"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\docs\\DOCUMENTATION_INDEX.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-09-source-inventory-r2.json"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\docs\\DOCUMENTATION_INDEX.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\research\\session-20260909\\data_completion\\README.md"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\docs\\DOCUMENTATION_INDEX.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-09-h21-source-closure.md"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\docs\\DOCUMENTATION_INDEX.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\research\\session-20260909\\source_closure\\README.md"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\docs\\DOCUMENTATION_INDEX.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\AGENTS.md"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\docs\\DOCUMENTATION_INDEX.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\README.md"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\docs\\DOCUMENTATION_INDEX.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\STOCKS_CURRENT_STATE.md"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\docs\\DOCUMENTATION_INDEX.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\HANDOFF.md"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\docs\\DOCUMENTATION_INDEX.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\docs\\continuation\\MANDATO_20260909.md"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\docs\\DOCUMENTATION_INDEX.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\docs\\continuation\\PROMPT_NOVO_CHAT.md"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\docs\\DOCUMENTATION_INDEX.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-09-h21-results.md"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\docs\\DOCUMENTATION_INDEX.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\research\\session-20260909\\h21\\README.md"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\docs\\DOCUMENTATION_INDEX.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-09-data-completion-r2.md"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\docs\\DOCUMENTATION_INDEX.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-09-data-readiness.json"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\docs\\DOCUMENTATION_INDEX.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\docs\\continuation\\LOCAL_PATHS_20260909.json"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\docs\\continuation\\MIGRACAO_MAIN.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\docs\\continuation\\LOCAL_PATHS_20260909.json"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\docs\\continuation\\MIGRACAO_MAIN.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\STOCKS_CURRENT_STATE.md"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\docs\\continuation\\SESSION_CONTEXT.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\docs\\continuation\\PROMPT_NOVO_CHAT.md"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\docs\\continuation\\SESSION_CONTEXT.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\docs\\continuation\\MANDATO_20260909.md"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\docs\\continuation\\SESSION_CONTEXT.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\STOCKS_CURRENT_STATE.md"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\docs\\continuation\\SESSION_CONTEXT.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\docs\\continuation\\LOCAL_PATHS_20260909.json"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\docs\\continuation\\SESSION_CONTEXT.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-09-data-readiness.json"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\docs\\continuation\\SESSION_CONTEXT.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-09-data-completion-r2.md"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-09-data-completion-r2.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-09-data-readiness.json"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-09-data-completion-r2.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-09-h21-source-closure.md"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-09-data-completion-r2.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-09-bova-event-review-r2.json"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-09-data-completion-r2.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-09-operational-inputs-r2.json"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-09-data-completion-r2.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-09-data-completion-r2-protocol.json"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-09-data-completion-r2.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-09-source-inventory-r2.json"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-09-data-completion-r2.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\research\\session-20260909\\data_completion\\README.md"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\research\\session-20260909\\data_completion\\README.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-09-data-completion-r2.md"
+    },
+    {
+      "file": "C:\\STOCKS\\stocks-predictor\\research\\session-20260909\\data_completion\\README.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-09-data-readiness.json"
+    },
+    {
+      "file": "C:\\STOCKS\\COMECE_AQUI.md",
+      "target": "C:\\STOCKS\\AGENTS.md"
+    },
+    {
+      "file": "C:\\STOCKS\\COMECE_AQUI.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\README.md"
+    },
+    {
+      "file": "C:\\STOCKS\\COMECE_AQUI.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\STOCKS_CURRENT_STATE.md"
+    },
+    {
+      "file": "C:\\STOCKS\\COMECE_AQUI.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\docs\\DOCUMENTATION_INDEX.md"
+    },
+    {
+      "file": "C:\\STOCKS\\COMECE_AQUI.md",
+      "target": "C:\\STOCKS\\data\\README.md"
+    },
+    {
+      "file": "C:\\STOCKS\\COMECE_AQUI.md",
+      "target": "C:\\STOCKS\\data\\CATALOG.json"
+    },
+    {
+      "file": "C:\\STOCKS\\COMECE_AQUI.md",
+      "target": "C:\\STOCKS\\outputs\\RELATORIO_STOCKS_H21.md"
+    },
+    {
+      "file": "C:\\STOCKS\\COMECE_AQUI.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-09-h21-source-closure.md"
+    },
+    {
+      "file": "C:\\STOCKS\\COMECE_AQUI.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-09-data-completion-r2.md"
+    },
+    {
+      "file": "C:\\STOCKS\\COMECE_AQUI.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\AGENTS.md"
+    },
+    {
+      "file": "C:\\STOCKS\\data\\README.md",
+      "target": "C:\\STOCKS\\data\\CATALOG.json"
+    },
+    {
+      "file": "C:\\STOCKS\\data\\README.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-09-data-completion-r2.md"
+    },
+    {
+      "file": "C:\\STOCKS\\data\\README.md",
+      "target": "C:\\STOCKS\\stocks-predictor\\research\\session-20260909\\data_completion\\README.md"
+    }
+  ],
+  "files_under_root": 5645,
+  "bytes_under_root": 15901610919,
+  "reparse_points": [],
+  "prior_codex_directory_files": 0,
+  "external_user_folder_full_scan_repeated": false,
+  "previous_full_scan_reference": "C:\\STOCKS\\LOCALIZACAO_PROJETO.json",
+  "git_head_at_verification": "ab8db7f691e68b780eab9e9e2c66107855320782",
+  "new_economic_valuations": 0
+}

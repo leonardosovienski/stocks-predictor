@@ -1,4 +1,23 @@
-## Estado vigente após recuperação de dados R2 — 09/09/2026
+## Estado da continuidade — auditoria integral preparada em 09/09/2026
+
+O usuário solicitou uma revisão ampla do projeto e consolidou o
+[prompt integral de auditoria](docs/continuation/PROMPT_AUDITORIA_INTEGRAL_20260909.md).
+Essa auditoria ainda não foi executada. A publicação desta continuidade preserva
+os resultados anteriores e reúne os registros autorais da sessão no
+[pacote de publicação](research/session-20260909/publication/README.md).
+
+Qualificações para a próxima revisão: os 12 bancos recuperados incluem referência,
+versões de pesquisa, reparo e fixtures; integridade não significa suficiência.
+Os 50 PDFs passaram por processamento estrutural e exame dos conteúdos pertinentes,
+sem certificação de auditoria financeira integral dos 50 documentos. R2 não
+recalculou resultados econômicos. Testes aprovados não demonstram lucro executável.
+
+Os estados e números abaixo pertencem às rodadas indicadas e devem ser reconfirmados.
+A antiga fila H21 foi substituída como prioridade pelo mandato integral.
+
+---
+
+## Estado após recuperação de dados R2 — 09/09/2026
 
 Os 37 caminhos de banco da migração correspondem a 12 bancos únicos, agora
 recuperados em `C:\STOCKS\data\recovery-r2`, com hashes e integridade conferidos.

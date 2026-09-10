@@ -1,0 +1,15 @@
+{
+  "id": "b3-cotahist-2026",
+  "url": "https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2026.ZIP",
+  "purpose": "Quotes through preregistered cutoff, no return calculation",
+  "started_at_utc": "2026-09-09T18:59:37.191817+00:00",
+  "path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\raw\\COTAHIST_A2026.latest.ZIP",
+  "status": "downloaded",
+  "final_url": "https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2026.ZIP",
+  "http_status": 200,
+  "content_type": "application/x-zip-compressed",
+  "last_modified": "Wed, 09 Sep 2026 00:07:28 GMT",
+  "bytes": 71736503,
+  "sha256": "55052b118e9472c85d9bb20e37aefa9812c5045f4f54ac99cbc84d4626b07084",
+  "completed_at_utc": "2026-09-09T19:15:56.964926+00:00"
+}

@@ -1,0 +1,45 @@
+[
+  {
+    "id": "b3-cotahist-2026",
+    "filename": "COTAHIST_A2026.latest.ZIP",
+    "url": "https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2026.ZIP",
+    "purpose": "Quotes through preregistered cutoff, no return calculation",
+    "max_bytes": 240000000
+  },
+  {
+    "id": "blackrock-reg-2026",
+    "filename": "bova-regulamento-2026.pdf",
+    "url": "https://www.blackrock.com/br/literature/bylaws/ishares-bova11-brl-regulamento-2026-ptbr.pdf",
+    "purpose": "Current class structure and investor event rules"
+  },
+  {
+    "id": "blackrock-reg-legacy",
+    "filename": "bova-regulamento-legacy.pdf",
+    "url": "https://www.blackrock.com/br/literature/bylaws/ishares-bova11-brl-regulamento-ptbr.pdf",
+    "purpose": "Historical distribution/amortization rules"
+  },
+  {
+    "id": "blackrock-fs-2025",
+    "filename": "bova-financials-2025.pdf",
+    "url": "https://www.blackrock.com/br/literature/annual-financial-statements/ishares-bova11-brl-demonstrativos-financeiros-2025-ptbr.pdf",
+    "purpose": "Audited financial statements and share events 2024-2025"
+  },
+  {
+    "id": "b3-fees-v4",
+    "filename": "b3-equities-fees-v4.pdf",
+    "url": "https://www.b3.com.br/data/files/A2/01/CA/FE/3BB4B9105B12E5A9AC094EA8/Tarifacao_Equities_V4.0_PT.pdf",
+    "purpose": "Published transaction fee components and applicability"
+  },
+  {
+    "id": "b3-fees-spot",
+    "filename": "b3-fees-spot.html",
+    "url": "https://www.b3.com.br/pt_br/produtos-e-servicos/tarifas/listados-a-vista-e-derivativos/renda-variavel/tarifas-de-acoes-e-fundos-de-investimento/a-vista/",
+    "purpose": "Current public spot fee reference"
+  },
+  {
+    "id": "blackrock-literature",
+    "filename": "blackrock-literature.html",
+    "url": "https://www.blackrock.com/br/products/251816/ishares-ibovespa-fundo-de-ndice-fund/1506433277012.ajax",
+    "purpose": "Fund document catalog, known embedded component URL"
+  }
+]

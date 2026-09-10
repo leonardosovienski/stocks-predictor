@@ -1,0 +1,15 @@
+{
+  "id": "fnet-catalog-script",
+  "url": "https://fnet.bmfbovespa.com.br/fnet/resources/js/paginas/publico/gerenciador-documentos-cvm.js",
+  "purpose": "Public catalogue request schema discovered from DOM",
+  "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-catalog-script.js",
+  "started_at_utc": "2026-09-09T21:14:32.873477+00:00",
+  "status": "downloaded",
+  "curl_exit_code": 0,
+  "http_status": 200,
+  "final_url": "https://fnet.bmfbovespa.com.br/fnet/resources/js/paginas/publico/gerenciador-documentos-cvm.js",
+  "content_type": "application/javascript; charset=UTF-8",
+  "bytes": 21888,
+  "sha256": "770c567bef268bba2f5dab8705ed2169cf6592edb91148a799a8318231032490",
+  "completed_at_utc": "2026-09-09T21:14:33.584758+00:00"
+}

@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "manifest_sha256": "68133e8745e844d1925b465dd936edfbcbd87052066ab80c44fb416fb39fc8f9",
+  "prompt_sha256": "dddd76c31a69aa4e51efde3047ba8017e826dd67b7ffdfbfe642f53983637395",
+  "prompt_fronts": 24,
+  "inventory_counts": {
+    "PUBLISHED_SNAPSHOT": 365,
+    "LOCAL_ONLY": 4128,
+    "PUBLISHED_IDENTICAL_CONTENT": 21
+  },
+  "python_files_syntax_checked_not_executed": 32,
+  "entry_point_local_links_checked": 39,
+  "targeted_secret_pattern_findings": [],
+  "targeted_scan_is_not_exhaustive_secret_audit": true,
+  "production_checks": "Separate Linux GitHub Actions; no production dependencies installed locally",
+  "economic_results_recalculated": false,
+  "all_local_data_bytes_uploaded": false
+}

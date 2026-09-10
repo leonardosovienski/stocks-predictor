@@ -1,0 +1,15 @@
+{
+  "id": "b3-bova-events",
+  "url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetEventsCorporateActions/eyJsYW5ndWFnZSI6InB0LWJyIiwiaWRDRU0iOiJCT1ZBIn0=",
+  "purpose": "BOVA official fund/class filings and investor-level corporate action inventory",
+  "started_at_utc": "2026-09-09T19:34:20.514690+00:00",
+  "path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\raw\\b3-bova-events.json",
+  "status": "downloaded",
+  "curl_exit_code": 0,
+  "http_status": 200,
+  "final_url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetEventsCorporateActions/eyJsYW5ndWFnZSI6InB0LWJyIiwiaWRDRU0iOiJCT1ZBIn0=",
+  "content_type": "application/json",
+  "bytes": 250,
+  "sha256": "f71ddb54d7e37a25e041c535696a1f770fe46971953b6c4c824b8303a68420fa",
+  "completed_at_utc": "2026-09-09T19:34:21.152127+00:00"
+}

@@ -1,0 +1,7 @@
+{
+  "url": "https://api.bcb.gov.br/dados/serie/bcdata.sgs.11/dados?formato=json&dataInicial=02/01/2018&dataFinal=31/03/2026",
+  "final_url": "https://api.bcb.gov.br/dados/serie/bcdata.sgs.11/dados?formato=json&dataInicial=02/01/2018&dataFinal=31/03/2026",
+  "content_type": "application/json; charset=utf-8",
+  "bytes": 84912,
+  "sha256": "82d23198927eedeef2193e6fb69f788c68cacf44f163d03ccad6636c34c3dcfd"
+}

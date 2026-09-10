@@ -1,0 +1,20 @@
+test_bad_archive_digest_writes_nothing (tests.test_data_bank.DataBankTests.test_bad_archive_digest_writes_nothing) ... ok
+{"stage": "restoration_started", "unique_objects": 1, "planned_bytes": 8192}
+test_bad_object_digest_never_emits_catalog (tests.test_data_bank.DataBankTests.test_bad_object_digest_never_emits_catalog) ... ok
+test_budget_rejected_before_writing (tests.test_data_bank.DataBankTests.test_budget_rejected_before_writing) ... ok
+{"stage": "restoration_started", "unique_objects": 2, "planned_bytes": 8226}
+{"database": "f33a8e1903e2", "status": "INTEGRITY_PASS"}
+test_deduplicates_aliases_and_keeps_bundle_independent (tests.test_data_bank.DataBankTests.test_deduplicates_aliases_and_keeps_bundle_independent) ... ok
+test_existing_destination_is_preserved (tests.test_data_bank.DataBankTests.test_existing_destination_is_preserved) ... ok
+{"stage": "restoration_started", "unique_objects": 2, "planned_bytes": 8217}
+{"database": "f33a8e1903e2", "status": "REQUIRES_JOURNAL_AWARE_NORMALIZATION"}
+test_nonempty_wal_prevents_false_integrity_certificate (tests.test_data_bank.DataBankTests.test_nonempty_wal_prevents_false_integrity_certificate) ... ok
+test_path_traversal_rejected_before_writing (tests.test_data_bank.DataBankTests.test_path_traversal_rejected_before_writing) ... ok
+test_read_only_inspection_leaves_no_journals_and_closes_file (tests.test_data_bank.DataBankTests.test_read_only_inspection_leaves_no_journals_and_closes_file) ... ok
+{"stage": "restoration_started", "unique_objects": 1, "planned_bytes": 21}
+test_valid_hash_of_invalid_sqlite_never_emits_catalog (tests.test_data_bank.DataBankTests.test_valid_hash_of_invalid_sqlite_never_emits_catalog) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.406s
+
+OK

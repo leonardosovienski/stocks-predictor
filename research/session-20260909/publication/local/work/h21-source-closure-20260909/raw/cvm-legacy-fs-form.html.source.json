@@ -1,0 +1,15 @@
+{
+  "id": "cvm-legacy-fs-form",
+  "url": "https://cvmweb.cvm.gov.br/SWB/Sistemas/SCW/CPublica/DemContabeis/CPublicaDemContabeis.aspx",
+  "purpose": "Find audited ETF financial statements before July 2018",
+  "started_at_utc": "2026-09-09T19:24:11.083271+00:00",
+  "path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\raw\\cvm-legacy-fs-form.html",
+  "status": "downloaded",
+  "curl_exit_code": 0,
+  "http_status": 200,
+  "final_url": "https://cvmweb.cvm.gov.br/SWB/Sistemas/SCW/CPublica/DemContabeis/CPublicaDemContabeis.aspx",
+  "content_type": "text/html; charset=iso-8859-15",
+  "bytes": 16105,
+  "sha256": "431d7742a0189fc08e8ea0c9c9e9b4a183a80035c1cdb2292f6d9f1a19e306de",
+  "completed_at_utc": "2026-09-09T19:24:11.712451+00:00"
+}

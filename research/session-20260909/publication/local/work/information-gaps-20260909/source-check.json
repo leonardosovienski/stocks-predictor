@@ -1,0 +1,30 @@
+{
+  "recorded_at_utc": "2026-09-09 18:48:31 UTC",
+  "purpose": "Responder à pergunta do usuário sobre lacunas de dados e fontes; consulta de contexto, sem nova medição econômica.",
+  "sources_checked": [
+    {
+      "url": "https://www.blackrock.com/br/products/251816/ishares-ibovespa-fundo-de-ndice-fund",
+      "status": "Página pública acessível; inclui documentos, NAV e resultados históricos de marketing."
+    },
+    {
+      "url": "https://www.blackrock.com/br/literature/annual-financial-statements/ishares-bova11-brl-demonstrativos-financeiros-2025-ptbr.pdf",
+      "status": "Encontrado em busca; abertura direta falhou. Conteúdo integral não validado."
+    },
+    {
+      "url": "https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/historico/mercado-a-vista/series-historicas/",
+      "status": "Página pública consultada; nenhum arquivo novo de preços adquirido."
+    }
+  ],
+  "incidental_performance_exposure": "A abertura da página de produto para localizar documentação expôs NAV em 08/09/2026 e tabelas históricas/retornos do fundo, inclusive períodos após o encerramento do livro H21. Uma busca também mostrou trecho de cotação de 28/08/2026 de terceiro, não usado como fonte de medição. Não tratar esses trechos como holdout intacto ou como desempenho da implementação.",
+  "protocol_parameters_changed": false,
+  "new_economic_measurement": false,
+  "independent_evidence_created": false,
+  "forward_observations": 0,
+  "active_gaps": [
+    "Inventário documentado de eventos do ETF e efeitos no cotista",
+    "Despesas reais e evidência de execução",
+    "Atualização separada de fontes recentes e futura observação conforme plano",
+    "Capital/horizonte/tolerância a perdas pessoais ainda desconhecidos"
+  ],
+  "financial_or_recurring_actions": false
+}

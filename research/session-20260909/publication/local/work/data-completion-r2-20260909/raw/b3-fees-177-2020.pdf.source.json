@@ -1,0 +1,15 @@
+{
+  "id": "b3-fees-177-2020",
+  "url": "https://www.b3.com.br/data/files/68/50/2D/3E/99E4671059300467AC094EA8/OC%20177-2020%20PRE%20_Modelo_Intermediario_%28PT%29.pdf",
+  "purpose": "Primary official tariff / fund statement evidence",
+  "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\b3-fees-177-2020.pdf",
+  "started_at_utc": "2026-09-09T21:07:48.392653+00:00",
+  "status": "downloaded",
+  "curl_exit_code": 0,
+  "http_status": 200,
+  "final_url": "https://www.b3.com.br/data/files/68/50/2D/3E/99E4671059300467AC094EA8/OC%20177-2020%20PRE%20_Modelo_Intermediario_%28PT%29.pdf",
+  "content_type": "application/pdf",
+  "bytes": 300424,
+  "sha256": "feaeb7f95bc537dfd8c7cff5c07e926e77f6c33c00a8cca7fcc2531a1c5392c2",
+  "completed_at_utc": "2026-09-09T21:07:49.064268+00:00"
+}

@@ -1,0 +1,37 @@
+[
+  {
+    "path": "C:\\STOCKS\\outputs\\CI_MAIN_STOCKS_H21.txt",
+    "sha256": "231c8f86168433001ee377afc2c8ebdc102dc691f032f138428c17975c6526fb",
+    "status": "unchanged"
+  },
+  {
+    "path": "C:\\STOCKS\\outputs\\CONFERENCIA_STOCKS_H21.json",
+    "sha256": "8fd7f22095b5572a8244c8580ad145c2c36066f3c1ce4243a9d24baee517140a",
+    "status": "unchanged"
+  },
+  {
+    "path": "C:\\STOCKS\\outputs\\ENTREGA_STOCKS_H21.json",
+    "sha256": "3421628595718ee94355fa07d9166c4a51c95c7730e0f10c42153aba5353eea2",
+    "status": "unchanged"
+  },
+  {
+    "path": "C:\\STOCKS\\outputs\\RELATORIO_STOCKS_H21.md",
+    "sha256": "471a62a6ac3389cc26bef10180575f411415e7efdbf494d599a1bc6c480802c5",
+    "status": "unchanged"
+  },
+  {
+    "path": "C:\\STOCKS\\outputs\\REPRODUCAO_STOCKS_H21.json",
+    "sha256": "562577dd2100395fe03c9e277895b52e4f138152ad1b2ac9b2375b28d3fdbbbb",
+    "status": "unchanged"
+  },
+  {
+    "path": "C:\\STOCKS\\outputs\\RESULTADO_STOCKS_H21.json",
+    "sha256": "39a940514b5fdcbb577c496f996ddd324c8107436852ab67da352401bb8870d2",
+    "status": "unchanged"
+  },
+  {
+    "path": "C:\\STOCKS\\instructions\\STOCKS_PREDICTOR_PROMPT_FINAL_20260909.md",
+    "sha256": "d63db21471620a6a4a83671e1acebda1d7ff0be04a96652d5f0d658997cc73cc",
+    "status": "unchanged"
+  }
+]

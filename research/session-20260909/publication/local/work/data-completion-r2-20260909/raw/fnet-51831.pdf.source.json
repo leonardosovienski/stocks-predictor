@@ -1,0 +1,15 @@
+{
+  "id": "fnet-51831",
+  "url": "https://fnet.bmfbovespa.com.br/fnet/publico/downloadDocumento?id=51831",
+  "purpose": "Full body BOVA11 official notice; preserve cancelled records",
+  "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-51831.pdf",
+  "started_at_utc": "2026-09-09T21:08:36.714863+00:00",
+  "status": "failed",
+  "curl_exit_code": 28,
+  "http_status": 0,
+  "final_url": "https://fnet.bmfbovespa.com.br/fnet/publico/downloadDocumento?id=51831",
+  "content_type": null,
+  "error_type": "RuntimeError",
+  "error": "curl: (28) Operation timed out after 35011 milliseconds with 0 bytes received\r\n",
+  "completed_at_utc": "2026-09-09T21:09:11.790647+00:00"
+}

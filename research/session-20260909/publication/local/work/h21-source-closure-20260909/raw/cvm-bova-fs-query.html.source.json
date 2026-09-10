@@ -1,0 +1,16 @@
+{
+  "id": "cvm-bova-fs-query",
+  "url": "https://cvmweb.cvm.gov.br/SWB/Sistemas/SCW/CPublica/DemContabeis/CPublicaDemContabeis.aspx",
+  "purpose": "Public CVM audit statement lookup by fund CNPJ,2017-cutoff; no user financial data",
+  "started_at_utc": "2026-09-09T19:39:18.470887+00:00",
+  "path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\raw\\cvm-bova-fs-query.html",
+  "status": "downloaded",
+  "public_form_body_sha256": "b048922cb192423321a47a44b0c82c9945e997508fb5f2ed82d8d24d686ff1bc",
+  "curl_exit_code": 0,
+  "http_status": 200,
+  "final_url": "https://cvmweb.cvm.gov.br/SWB/Sistemas/SCW/CPublica/DemContabeis/CPublicaDemContabeis.aspx?CNPJNome=10406511000161&DT_REF_INI=1/1/2017&DT_REF_FIM=8/9/2026",
+  "content_type": "text/html; charset=iso-8859-15",
+  "bytes": 18454,
+  "sha256": "d3ccd82bcd57d2dfce743d3134b4c7a645521948c69dedce08cf5f40e9249a1d",
+  "completed_at_utc": "2026-09-09T19:39:27.916723+00:00"
+}

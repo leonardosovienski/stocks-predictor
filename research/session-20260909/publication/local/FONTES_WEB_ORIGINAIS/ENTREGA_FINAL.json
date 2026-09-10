@@ -1,0 +1,44 @@
+{
+  "main_commit": "99f8751c03084d724e59dd53f5f63221fe220e9b",
+  "branch": "main",
+  "push_performed": true,
+  "code_bundle": {
+    "name": "CODIGO_MAIN.bundle",
+    "bytes": 10212616,
+    "sha256": "4bad0cca26907dd762551c0441fa6d13965cfb6dc90a4d1eca5f706ec471e57b",
+    "clone_test": "passed",
+    "git_fsck": "passed"
+  },
+  "data": {
+    "archive": "DADOS_STOCKS.zip",
+    "sha256": "83d5aac8e23d72e4deb1331077e08313914375a5dbac4276e5f8ad89da586d23",
+    "bytes": 5355806582,
+    "file_count": 60023,
+    "unique_objects": 18583,
+    "restored_bytes": 28581165056,
+    "unique_bytes": 9034583769
+  },
+  "tests_passed": 777,
+  "sqlite_databases_verified": 25,
+  "source_audit_14_reproduced": true,
+  "directory": "E:\\STOCKS_MIGRACAO_MAIN_20260908",
+  "branch_cleanup": {
+    "remaining_local_branches": [
+      "main"
+    ],
+    "reviewed_alternatives": 25,
+    "missing_commits": 0,
+    "removed_local_branches": 2,
+    "removed_remote_tracking_refs": 23,
+    "github_changed": true,
+    "fetch_only_main": true,
+    "removed_github_branches": 23,
+    "remaining_github_branches": [
+      "main"
+    ]
+  },
+  "github_repository": "https://github.com/leonardosovienski/stocks-predictor",
+  "github_branches": [
+    "main"
+  ]
+}

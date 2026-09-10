@@ -1,0 +1,15 @@
+{
+  "id": "b3-funds-detail",
+  "url": "https://sistemaswebb3-listados.b3.com.br/fundsListedPage/chunk-5HJM6SED.js",
+  "purpose": "ETF financial statements and corporate event API discovery",
+  "started_at_utc": "2026-09-09T19:25:56.319341+00:00",
+  "path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\raw\\b3-funds-detail.js",
+  "status": "downloaded",
+  "curl_exit_code": 0,
+  "http_status": 200,
+  "final_url": "https://sistemaswebb3-listados.b3.com.br/fundsListedPage/chunk-5HJM6SED.js",
+  "content_type": "application/javascript",
+  "bytes": 65964,
+  "sha256": "b7eab4ddc2eddb6fd7b9747d6abf730dfaaefef478d39b4113502acde37418c2",
+  "completed_at_utc": "2026-09-09T19:25:56.975030+00:00"
+}

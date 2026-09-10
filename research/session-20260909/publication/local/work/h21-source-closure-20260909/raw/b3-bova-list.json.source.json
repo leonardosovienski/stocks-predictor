@@ -1,0 +1,15 @@
+{
+  "id": "b3-bova-list",
+  "url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetListFunds/eyJsYW5ndWFnZSI6InB0LWJyIiwidHlwZUZ1bmQiOiJFVEYiLCJwYWdlTnVtYmVyIjoxLCJwYWdlU2l6ZSI6MjAsImtleXdvcmQiOiJCT1ZBIn0=",
+  "purpose": "Official BOVA fund identifiers for complete document catalog",
+  "started_at_utc": "2026-09-09T19:31:08.936102+00:00",
+  "path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\raw\\b3-bova-list.json",
+  "status": "downloaded",
+  "curl_exit_code": 0,
+  "http_status": 200,
+  "final_url": "https://sistemaswebb3-listados.b3.com.br/fundsListedProxy/Search/GetListFunds/eyJsYW5ndWFnZSI6InB0LWJyIiwidHlwZUZ1bmQiOiJFVEYiLCJwYWdlTnVtYmVyIjoxLCJwYWdlU2l6ZSI6MjAsImtleXdvcmQiOiJCT1ZBIn0=",
+  "content_type": "application/json",
+  "bytes": 232,
+  "sha256": "f4a9e6999cec5f4d2539b003eb1aaf1c0335e21c17e014a262efc43ac0ed4bdc",
+  "completed_at_utc": "2026-09-09T19:31:09.873945+00:00"
+}
