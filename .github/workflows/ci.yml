@@ -9,10 +9,19 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.run_id }}
+  cancel-in-progress: true
+
 jobs:
   quality:
-    name: Quality / Python 3.13
+    name: Quality / Python ${{ matrix.python }}
     runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.13", "3.14"]
     steps:
       - uses: actions/checkout@v7
       - uses: astral-sh/setup-uv@v7
@@ -21,24 +30,38 @@ jobs:
           enable-cache: true
       - uses: actions/setup-python@v7
         with:
-          python-version: "3.13"
+          python-version: ${{ matrix.python }}
       - name: Install project and dev dependencies
-        run: uv sync --all-extras --python 3.13
+        run: uv sync --locked --all-extras --python ${{ matrix.python }}
+      - name: Offline runtime metadata check
+        run: uv run --no-sync python main.py doctor --check
       - name: Ruff
-        run: uv run ruff check stocks_predictor tests main.py tools/data_bank.py research/session-20260909/data_completion research/session-20260910/integral
+        run: uv run --no-sync ruff check stocks_predictor tests main.py tools/data_bank.py tools/benchmark_ingestion.py research/session-20260909/data_completion research/session-20260910/integral
       - name: Pyright
-        run: uv run pyright
+        run: uv run --no-sync pyright --pythonversion ${{ matrix.python }}
       - name: Audit receipt identities
-        run: uv run python research/session-20260910/integral/verify_audit.py
+        run: uv run --no-sync python research/session-20260910/integral/verify_audit.py
       - name: Tests
-        run: uv run coverage run -m pytest -q
+        run: uv run --no-sync coverage run -m pytest -q --durations=15 --junitxml=test-results.xml
       - name: Coverage report
-        run: uv run coverage report --fail-under=0
+        run: |
+          uv run --no-sync coverage json -o coverage.json
+          uv run --no-sync coverage report
+      - name: Retain test evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quality-python-${{ matrix.python }}
+          path: |
+            test-results.xml
+            coverage.json
+          retention-days: 14
+          if-no-files-found: ignore
       - name: Build wheel
-        run: uv build
+        run: uv build --locked
       - name: Wheel smoke outside checkout
         run: |
-          uv venv /tmp/stocks-wheel --python 3.13 --seed
+          uv venv /tmp/stocks-wheel --python ${{ matrix.python }} --seed
           /tmp/stocks-wheel/bin/pip install dist/*.whl \
             "predictor-core @ https://github.com/leonardosovienski/core-predictor/releases/download/v3.2.0/predictor_core-3.2.0-py3-none-any.whl"
           mkdir -p "$RUNNER_TEMP/stocks-wheel-smoke"
@@ -63,6 +86,7 @@ jobs:
 
   secrets:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v7
         with:

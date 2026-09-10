@@ -6,6 +6,7 @@ Recent-window activity filters stale instruments; it does not prove a listing
 status. Four-character prefix deduplication is a historical issuer heuristic,
 not a CNPJ/ISIN identity map. Event-complete research needs its separate evidence.
 """
+from stocks_predictor.validation import iso_day, positive_integer
 
 # COTAHIST TPMERC '010' = mercado À VISTA. Defesa em camada de LEITURA: o ingest já
 # filtra (cotahist.avista_only), mas um banco carregado com avista_only=False traria
@@ -31,6 +32,9 @@ def rank_universe(conn, asof, lookback=126, min_history=252, *, legacy_resolutio
     the quarantine had already been cleared in a past decision. Frozen legacy
     runners explicitly retain their latest-resolution reconstruction policy.
     """
+    iso_day(asof, 'asof')
+    positive_integer(lookback, 'lookback')
+    positive_integer(min_history, 'min_history')
     resolution = "resolved_at IS NULL" if legacy_resolution_state else "(resolved_at IS NULL OR resolved_at >= ?)"
     params = (asof,) if legacy_resolution_state else (asof, asof)
     quarantined = {r[0] for r in conn.execute(
@@ -83,11 +87,13 @@ def rank_universe(conn, asof, lookback=126, min_history=252, *, legacy_resolutio
 
 
 def select_universe(conn, asof, top_n=60, lookback=126, min_history=252):
+    positive_integer(top_n, 'top_n')
     return [t for t, _ in rank_universe(conn, asof, lookback, min_history)[:top_n]]
 
 
 def legacy_select_universe(conn, asof, top_n=60, lookback=126, min_history=252):
     """Frozen reconstruction: latest quarantine state, NOT a strict temporal claim."""
+    positive_integer(top_n, 'top_n')
     return [t for t, _ in rank_universe(conn, asof, lookback, min_history,
                                       legacy_resolution_state=True)[:top_n]]
 
@@ -100,6 +106,7 @@ def materialize_snapshot(conn, asof, top_n=60, lookback=126, min_history=252):
     and never return a computed composition different from the persisted evidence.
     Savepoint rollback preserves any transaction already owned by the caller.
     """
+    positive_integer(top_n, 'top_n')
     conn.execute("SAVEPOINT stocks_universe_snapshot")
     try:
         ranked = rank_universe(conn, asof, lookback, min_history)[:top_n]

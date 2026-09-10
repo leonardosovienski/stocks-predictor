@@ -6,6 +6,7 @@ independent holdout, actual fills, or a tamper-proof observation timestamp.
 Historical fixtures use an explicitly named replay API. No scheduler is started.
 """
 import datetime
+from stocks_predictor.validation import iso_day
 
 import adjust
 import db
@@ -17,11 +18,16 @@ from execution import next_open_after
 from returns import month_end_dates
 
 
+def validate_forward_date(asof):
+    """Validate before a CLI opens or migrates any database."""
+    iso_day(asof, 'asof')
+    if asof != datetime.datetime.now(datetime.timezone.utc).date().isoformat():
+        raise ValueError("forward recording requires today's UTC date; historical replay is separate")
+
+
 def validate_forward_context(conn, asof):
     """Fail before writes if this cannot be a new observation on the UTC day."""
-    day = datetime.date.fromisoformat(asof)
-    if day.isoformat() != asof or day != datetime.datetime.now(datetime.timezone.utc).date():
-        raise ValueError("forward recording requires today's UTC date; historical replay is separate")
+    validate_forward_date(asof)
     latest = conn.execute("SELECT MAX(date) FROM prices_raw").fetchone()[0]
     if latest is not None and latest > asof:
         raise ValueError("forward recording cannot use a database containing future prices")

@@ -46,11 +46,8 @@ pythonVersion = "3.13"
 typeCheckingMode = "basic"
 # Escopo RJ original mais contabilidade, execução contínua e integração H20.
 # Isto verifica código, sem alterar parâmetros científicos congelados.
-include = ["stocks_predictor/rj_episodes.py", "stocks_predictor/rj_families.py", "stocks_predictor/rj_judge.py", "stocks_predictor/retail_cash.py", "stocks_predictor/continuous_cash.py", "stocks_predictor/continuous_research.py", "stocks_predictor/h20_continuous.py", "stocks_predictor/h20_checked.py", "stocks_predictor/buffered_rebalance.py", "stocks_predictor/cash_source_audit.py", "stocks_predictor/source_closure.py", "stocks_predictor/etf_hold.py", "stocks_predictor/economics.py"]
-# O código RJ usa dicionários heterogêneos deliberadamente. Os três erros
-# iniciais de argument type são dívida de anotação, não falhas funcionais; o
-# restante do basic type-check continua ativo nesta etapa.
-reportArgumentType = "none"
+include = ["stocks_predictor/rj_episodes.py", "stocks_predictor/rj_families.py", "stocks_predictor/rj_judge.py", "stocks_predictor/retail_cash.py", "stocks_predictor/continuous_cash.py", "stocks_predictor/continuous_research.py", "stocks_predictor/h20_continuous.py", "stocks_predictor/h20_checked.py", "stocks_predictor/buffered_rebalance.py", "stocks_predictor/cash_source_audit.py", "stocks_predictor/source_closure.py", "stocks_predictor/etf_hold.py", "stocks_predictor/economics.py", "stocks_predictor/cotahist.py", "stocks_predictor/universe.py", "stocks_predictor/validation.py", "stocks_predictor/diagnostics.py"]
+reportArgumentType = "error"
 
 [tool.coverage.run]
 source = ["stocks_predictor"]
@@ -58,6 +55,7 @@ branch = true
 
 [tool.coverage.report]
 show_missing = true
+fail_under = 77
 
 [tool.uv.sources]
 predictor-core = { url = "https://github.com/leonardosovienski/core-predictor/releases/download/v3.2.0/predictor_core-3.2.0-py3-none-any.whl" }

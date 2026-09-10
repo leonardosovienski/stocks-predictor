@@ -1,6 +1,7 @@
 """stocks-predictor — ponto de entrada legado do domínio cross-sectional.
 
 Uso:
+    python main.py doctor [--check] [--db caminho] # diagnóstico offline sem Core
     python main.py                          # status do projeto (somente leitura)
     python main.py ingest <COTAHIST.ZIP>    # M1: parse posicional -> prices_raw
     python main.py adjust                    # M2: detector de saltos -> quarentena
@@ -128,6 +129,8 @@ def cmd_universe(args) -> int:
     if not args:
         print("uso: python main.py universe <asof YYYY-MM-DD>")
         return 1
+    from stocks_predictor.validation import iso_day
+    iso_day(args[0], 'asof')
     cfg, conn = _conn()
     with closing(conn):
         u = cfg["universe"]
@@ -257,6 +260,7 @@ def cmd_paper(args) -> int:
     if not args:
         print("uso: python main.py paper <asof YYYY-MM-DD>")
         return 1
+    paper.validate_forward_date(args[0])
     cfg, conn = _conn()
     with closing(conn):
         paper.validate_forward_context(conn, args[0])
@@ -318,7 +322,13 @@ def cmd_analyst(args) -> int:
     return 0
 
 
+def cmd_doctor(args) -> int:
+    from stocks_predictor.diagnostics import main as diagnose
+    return diagnose(args)
+
+
 _COMMANDS = {
+    "doctor": cmd_doctor,
     "status": lambda a: status(),
     "ingest": cmd_ingest,
     "adjust": cmd_adjust,
