@@ -1,5 +1,5 @@
 [build-system]
-requires = ["hatchling>=1.27,<2"]
+requires = ["hatchling==1.32.0"]
 build-backend = "hatchling.build"
 
 [project]
@@ -39,14 +39,15 @@ line-length = 110
 [tool.ruff.lint]
 # A adoção do Ruff começa pelos erros objetivos de código (F*). Reformatar
 # o acervo histórico inteiro não faz parte desta migração de infraestrutura.
-select = ["F"]
+select = ["F", "E9"]
 
 [tool.pyright]
 pythonVersion = "3.13"
 typeCheckingMode = "basic"
 # Escopo RJ original mais contabilidade, execução contínua e integração H20.
 # Isto verifica código, sem alterar parâmetros científicos congelados.
-include = ["stocks_predictor/rj_episodes.py", "stocks_predictor/rj_families.py", "stocks_predictor/rj_judge.py", "stocks_predictor/retail_cash.py", "stocks_predictor/continuous_cash.py", "stocks_predictor/continuous_research.py", "stocks_predictor/h20_continuous.py", "stocks_predictor/h20_checked.py", "stocks_predictor/buffered_rebalance.py", "stocks_predictor/cash_source_audit.py", "stocks_predictor/source_closure.py", "stocks_predictor/etf_hold.py", "stocks_predictor/monthly_etf.py", "stocks_predictor/economics.py", "stocks_predictor/cotahist.py", "stocks_predictor/universe.py", "stocks_predictor/validation.py", "stocks_predictor/diagnostics.py"]
+include = ["stocks_predictor"]
+extraPaths = ["stocks_predictor"]
 reportArgumentType = "error"
 
 [tool.coverage.run]

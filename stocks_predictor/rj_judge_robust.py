@@ -3,11 +3,11 @@
 Duas adições, ambas ROBUSTEZ (não substituem o julgamento oficial, que é o
 Benjamini-Hochberg congelado em config_rj.yaml):
 
-1. `romano_wolf_stepdown`: correção de múltiplos testes por permutação
+1. `joint_max_t`: correção single-step por permutação
    CONJUNTA dos rótulos entre as famílias — controla FWER e calibra o cutoff
    na correlação real entre as estatísticas (a família de métodos que
    Harvey-Liu defendem para a "factor zoo": cutoffs data-driven em vez de
-   fórmula universal). Se BH e Romano-Wolf concordam, o veredito é mais
+   fórmula universal). Se BH e max-T concordam, o veredito é mais
    forte; se divergem, o relatório diz isso explicitamente.
 
 2. `apply_oos_haircut`: atenuação out-of-sample de ~36% documentada por
@@ -35,16 +35,17 @@ def _t_stat(units) -> float | None:
     return (m1 - m0) / se if se > 0 else None
 
 
-def romano_wolf_stepdown(units_by_family: dict, n_perm: int = 5000,
+def joint_max_t(units_by_family: dict, n_perm: int = 5000,
                          seed: int = 42,
                          alpha: float = 0.10) -> dict:
-    """P-valores ajustados Romano-Wolf sobre as famílias PREDITIVAS com dado.
+    """P-valores ajustados max-T single-step nas famílias preditivas com dado.
 
     A cada permutação, embaralha os rótulos de TODAS as famílias com a MESMA
     permutação (preserva a correlação cruzada entre estatísticas — é ela que
     o BH ignora) e guarda o max|t| da permutação. p_ajustado de cada família
-    = fração de permutações cujo max|t| >= |t_obs| (versão single-step;
-    stepdown estrito refinaria ainda mais, com ganho marginal aqui).
+    = (1 + contagem max|t| >= |t_obs|)/(1 + n_perm). Não implementa stepdown.
+    Chaves históricas p_romanowolf/significant_romanowolf são mantidas para
+    compatibilidade; não mudam o algoritmo nem certificam outro método.
     """
     names = [n for n in families.PREDICTIVE_FAMILIES
              if units_by_family.get(n) and n not in families.CATEGORICAL_FAMILIES]
@@ -100,13 +101,19 @@ def romano_wolf_stepdown(units_by_family: dict, n_perm: int = 5000,
             for n in t_obs}
 
 
+def romano_wolf_stepdown(units_by_family: dict, n_perm: int = 5000,
+                         seed: int = 42, alpha: float = 0.10) -> dict:
+    """Alias histórico de joint_max_t; não é um algoritmo stepdown."""
+    return joint_max_t(units_by_family, n_perm=n_perm, seed=seed, alpha=alpha)
+
+
 def robustness_report(units_by_family: dict, verdicts_bh: dict,
                       n_perm: int = 5000, seed: int = 42,
                       alpha: float = 0.10) -> dict:
-    """Cruzamento BH x Romano-Wolf por família. O campo `concordant` é o
+    """Cruzamento BH x max-T single-step por família. O campo `concordant` é o
     resumo que importa: False em qualquer família significativa = o veredito
     depende do método de correção e deve ser reportado como frágil."""
-    rw = romano_wolf_stepdown(units_by_family, n_perm=n_perm, seed=seed,
+    rw = joint_max_t(units_by_family, n_perm=n_perm, seed=seed,
                               alpha=alpha)
     report = {}
     for name, rw_res in rw.items():
