@@ -39,6 +39,11 @@ com a tolerância de **2e-12 já registrada na R3**. O resultado original de fal
 preservado; a aprovação de integridade dos arquivos não é aprovação daquele
 comparador numérico estrito. Não há nova evidência econômica independente.
 
+O comando portátil R6 também foi executado do início, verificando o manifesto
+original e reproduzindo a base antes dos 12 cenários. Aprovou as mesmas 9.732
+células. Os controles negativos recusaram manifesto adulterado, saída existente e
+saída dentro do pacote preservado; [recibo](evidence/portable-replay-validation.json).
+
 ## Dados, fontes e datas
 
 A captura oficial anual de preços tem SHA256

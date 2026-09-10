@@ -17,6 +17,19 @@ Verificar integralmente o pacote restaurado com seu programa original:
 python C:/STOCKS/work/gap-resolution-r6-20260910/h20-complete-package/rodar_validacao.py --verify-only --output-dir C:/STOCKS/work/unused-verification-output
 ```
 
+Reprodução portátil completa, com código congelado e tolerância R3, sem depender
+de uma execução anterior ou dos caminhos da máquina original:
+
+```powershell
+python research/session-20260910/gap_resolution/replay_complete.py --package C:/STOCKS/work/gap-resolution-r6-20260910/h20-complete-package --output-dir C:/STOCKS/work/novo-replay-h20
+```
+
+O comando verifica o hash do próprio manifesto original antes de ler seus arquivos,
+recusa saída existente ou dentro do pacote e grava a comparação em uma pasta nova.
+Execução completa e os três controles de recusa foram verificados em Python
+3.12.14; o recibo está no manifesto R6. O auxiliar usa somente a biblioteca padrão
+e o código congelado do pacote.
+
 Comandos que produziram a rodada, na ordem de dependência:
 
 1. `recover_h20.py` procura blobs Git e variantes uniformes; recebe uma pasta nova.
@@ -28,7 +41,7 @@ Comandos que produziram a rodada, na ordem de dependência:
 6. `rodar_validacao.py` sem `--verify-only` reproduz as coortes, mas o comparador
    numérico estrito falha em uma diferença de 2,22e-16 no Windows auxiliar.
 7. `replay_complete.py` usa o código congelado recuperado e a tolerância R3 já
-   declarada. Exige o `baseline-reproduced.json` da etapa anterior. Não muda o
+   declarada. Sua versão portátil reproduz também a base numa pasta nova. Não muda o
    verificador original e não acrescenta evidência econômica independente.
 8. `acquire.py PLAN OUTPUT` captura os planos JSON registrados. Cada captura tem
    recibo próprio, incluindo falhas. `refresh_quotes.py` verifica sobreposição e
@@ -39,7 +52,9 @@ Comandos que produziram a rodada, na ordem de dependência:
 10. `build_source15.py` verifica e copia a revisão 14, incorpora dois créditos
     documentados e executa a auditoria canônica. A nova revisão não substitui os
     bytes das revisões anteriores nem certifica disponibilidade histórica.
-11. `publish_evidence.py` copia os recibos e objetos autorais para o Git.
+11. `publish_evidence.py` publica o conjunto inicial de recibos e objetos autorais.
+    Os recibos adicionais de coleta, CI, preservação e replay portátil foram
+    incorporados ao manifesto por comandos registrados na execução e commits R6.
 
 As ferramentas recusam saídas existentes quando criam uma rodada completa. Para
 repetir, selecionar novos destinos nos scripts fixos antes da execução e registrar
