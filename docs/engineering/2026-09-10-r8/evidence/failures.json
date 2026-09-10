@@ -1,0 +1,25 @@
+{
+  "attempts": [
+    {
+      "id": "LOCAL-01",
+      "tests": 11,
+      "errors": 3,
+      "skipped": 1,
+      "failures": [
+        "Two snapshot tests failed with Windows OSError Errno 9: fsync on a read-only file descriptor.",
+        "WAL fixture lacked an active read transaction; expected -wal file was absent."
+      ],
+      "correction": "Open owned snapshot r+b before fsync; hold an explicit reader transaction in the WAL regression.",
+      "status": "CORRECTED_LOCAL_02"
+    },
+    {
+      "id": "LOCAL-02",
+      "tests": 23,
+      "errors": 0,
+      "skipped": 1,
+      "scope": "Windows auxiliary Python 3.12 stdlib. Core-dependent guard test deferred to Linux CI, not counted as locally validated.",
+      "log": "local-tests.log",
+      "status": "PASS_WITH_EXPLICIT_CORE_SKIP"
+    }
+  ]
+}

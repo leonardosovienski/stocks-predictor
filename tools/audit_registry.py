@@ -4,9 +4,11 @@ from collections import Counter
 import hashlib
 import json
 from pathlib import Path
+import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT = ROOT / 'docs/audit/2026-09-10-r7/current.json'
+R7_REVISION = 'c259ff64771a6c560ddb4aadac6bf81301c3066a'
 GROUPS = {'original_issues': 16, 'r4_corrections': 10, 'r5_pre_measurement_corrections': 2,
           'limits': 25, 'improvements': 16, 'chat_items': 6}
 STATES = {'RESOLVED_SCOPE', 'IMPLEMENTED_LIMITED', 'OPEN_DATA', 'OPEN_PERSONAL',
@@ -65,7 +67,17 @@ def verify(current, root=ROOT):
                 if reference not in current['evidence_files']:
                     raise ValueError('unregistered evidence: ' + reference)
     for name, expected in current['evidence_files'].items():
-        if digest(located(root, name)) != expected:
+        path = located(root, name)
+        # R7 code receipts describe R7. Preserve their meaning while allowing new
+        # implementations. Historical documents, raw evidence and protocols still
+        # must match their receipts in the current working tree.
+        if name.startswith(('stocks_predictor/', 'tests/', 'tools/', '.github/')) or name == 'pyproject.toml':
+            blob = subprocess.run(['git', 'show', R7_REVISION + ':' + name], cwd=root,
+                                  capture_output=True, check=True, timeout=30).stdout
+            actual = hashlib.sha256(blob).hexdigest()
+        else:
+            actual = digest(path)
+        if actual != expected:
             raise ValueError('evidence changed: ' + name)
     rights = json.loads((baseline_path.parent / 'source-rights.json').read_text(encoding='utf-8'))
     if (len(rights['records']) != 794 or len({row['file'] for row in rights['records']}) != 794
@@ -75,7 +87,8 @@ def verify(current, root=ROOT):
         raise ValueError('this engineering registry cannot certify profit or enable capital')
     if current['items']['I15']['state'] != 'RESOLVED_SCOPE':
         raise ValueError('I15 files were recovered; do not resurrect the historical file blocker')
-    return {'status': 'PASS', 'items': len(required), 'cash_records': len(cash_ids),
+    return {'status': 'PASS', 'code_evidence_revision': R7_REVISION,
+            'items': len(required), 'cash_records': len(cash_ids),
             'corporate_records': 28, 'source_issue_occurrences': len(issues),
             'states': dict(Counter(row['state'] for row in current['items'].values())),
             'scope': 'Inventory and evidence identity, not universal correctness or profit certification.'}

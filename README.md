@@ -1,3 +1,12 @@
+## Operação R8 — 10/09/2026 UTC
+
+[Relatório operacional](docs/engineering/2026-09-10-r8/README.md) e
+[runbook](docs/engineering/2026-09-10-r8/RUNBOOK.md).
+Entrada instalada: `python -m stocks_predictor`; no checkout: `python main.py ops`.
+Banco gerido separado, ingestão por hash, inspeção por versão, backup e restauração.
+O escopo é pesquisa local em lote; fontes/custos/observação futura ainda pendentes.
+R7 mantém o inventário econômico e os recibos históricos. Os blocos abaixo são datados.
+
 **Execução R7 — 10/09/2026:** [relatório e registro único](docs/audit/2026-09-10-r7/README.md).
 Origem versionada, evidência datada, perfil R$5.000, tipagem de todo o pacote,
 build controlado e materialização de 830 arquivos. [Consolidado atual](docs/audit/2026-09-10-r7/CONSOLIDADO.md).

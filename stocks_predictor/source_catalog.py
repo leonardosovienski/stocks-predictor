@@ -8,6 +8,7 @@ from datetime import datetime, timezone
 import hashlib
 import json
 from pathlib import Path
+import re
 import sqlite3
 import tempfile
 import zipfile
@@ -47,7 +48,7 @@ def strict_lines(lines: Iterable[bytes]) -> Iterable[str]:
 def ingest_version(
     conn: sqlite3.Connection, archive: Path, *, publisher: str, dataset: str,
     version: str, source_url: str, observed_at: str, scratch_dir: Path,
-    avista_only: bool = True,
+    avista_only: bool = True, expected_sha256: str | None = None,
 ) -> dict:
     """Snapshot and hash bytes before parsing; catalog and prices share one transaction.
 
@@ -61,6 +62,8 @@ def ingest_version(
     observed_at = utc_timestamp(observed_at)
     if type(avista_only) is not bool:
         raise ValueError('avista_only must be boolean')
+    if expected_sha256 is not None and not re.fullmatch('[0-9a-f]{64}', expected_sha256):
+        raise ValueError('expected_sha256 must be a lowercase SHA-256')
     policy = 'cotahist-strict-v1/' + ('spot-02-010' if avista_only else 'all-markets')
     # Explicit scratch location prevents modifying a source tree or the global runtime.
     with tempfile.TemporaryFile(dir=scratch_dir) as snapshot:
@@ -70,6 +73,8 @@ def ingest_version(
                 digest.update(chunk)
                 snapshot.write(chunk)
         content_sha = digest.hexdigest()
+        if expected_sha256 is not None and content_sha != expected_sha256:
+            raise ValueError('source snapshot differs from expected SHA-256')
         identity = json.dumps([publisher, dataset, version, policy, content_sha], separators=(',', ':'))
         source_id = 'sha256:' + hashlib.sha256(identity.encode('utf-8')).hexdigest()
         snapshot.seek(0)
