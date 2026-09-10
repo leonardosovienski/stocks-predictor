@@ -397,7 +397,11 @@ def get_connection(db_path: pathlib.Path | str | None = None,
     path = pathlib.Path(db_path or os.getenv(DB_PATH_ENV) or DB_DEFAULT)
     path.parent.mkdir(parents=True, exist_ok=True)
     conn = infra.connect(path, busy_timeout_ms=busy_timeout_ms)
-    infra.run_migrations(conn, MIGRATIONS)
+    try:
+        infra.run_migrations(conn, MIGRATIONS)
+    except BaseException:
+        conn.close()
+        raise
     return conn
 
 

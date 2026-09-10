@@ -1,0 +1,75 @@
+test_changed_source_content_is_rejected_without_overwrite (tests.test_ingestion_integrity.IngestionIntegrityTests.test_changed_source_content_is_rejected_without_overwrite) ... FAIL
+test_conflicting_duplicates_inside_one_batch_are_rejected (tests.test_ingestion_integrity.IngestionIntegrityTests.test_conflicting_duplicates_inside_one_batch_are_rejected) ... FAIL
+test_constraint_failure_rolls_back_all_new_rows_and_preserves_caller (tests.test_ingestion_integrity.IngestionIntegrityTests.test_constraint_failure_rolls_back_all_new_rows_and_preserves_caller) ... FAIL
+test_duplicates_in_one_source_report_actual_insertions (tests.test_ingestion_integrity.IngestionIntegrityTests.test_duplicates_in_one_source_report_actual_insertions) ... FAIL
+test_idempotent_replay_reports_zero_new_rows (tests.test_ingestion_integrity.IngestionIntegrityTests.test_idempotent_replay_reports_zero_new_rows) ... FAIL
+test_late_stream_failure_leaves_no_partial_ingestion (tests.test_ingestion_integrity.IngestionIntegrityTests.test_late_stream_failure_leaves_no_partial_ingestion) ... ok
+test_malformed_neighbor_keeps_valid_row_and_warning (tests.test_ingestion_integrity.IngestionIntegrityTests.test_malformed_neighbor_keeps_valid_row_and_warning) ... ok
+test_only_nonspot_records_are_valid_but_filtered (tests.test_ingestion_integrity.IngestionIntegrityTests.test_only_nonspot_records_are_valid_but_filtered) ... ok
+test_source_identity_is_required (tests.test_ingestion_integrity.IngestionIntegrityTests.test_source_identity_is_required) ... FAIL
+test_success_keeps_callers_transaction_uncommitted (tests.test_ingestion_integrity.IngestionIntegrityTests.test_success_keeps_callers_transaction_uncommitted) ... FAIL
+
+======================================================================
+FAIL: test_changed_source_content_is_rejected_without_overwrite (tests.test_ingestion_integrity.IngestionIntegrityTests.test_changed_source_content_is_rejected_without_overwrite)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\STOCKS\stocks-predictor\tests\test_ingestion_integrity.py", line 42, in test_changed_source_content_is_rejected_without_overwrite
+    with self.assertRaisesRegex(ValueError, 'conflict'):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_conflicting_duplicates_inside_one_batch_are_rejected (tests.test_ingestion_integrity.IngestionIntegrityTests.test_conflicting_duplicates_inside_one_batch_are_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\STOCKS\stocks-predictor\tests\test_ingestion_integrity.py", line 47, in test_conflicting_duplicates_inside_one_batch_are_rejected
+    with self.assertRaisesRegex(ValueError, 'conflict'):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_constraint_failure_rolls_back_all_new_rows_and_preserves_caller (tests.test_ingestion_integrity.IngestionIntegrityTests.test_constraint_failure_rolls_back_all_new_rows_and_preserves_caller)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\STOCKS\stocks-predictor\tests\test_ingestion_integrity.py", line 60, in test_constraint_failure_rolls_back_all_new_rows_and_preserves_caller
+    with self.assertRaises(sqlite3.IntegrityError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: IntegrityError not raised
+
+======================================================================
+FAIL: test_duplicates_in_one_source_report_actual_insertions (tests.test_ingestion_integrity.IngestionIntegrityTests.test_duplicates_in_one_source_report_actual_insertions)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\STOCKS\stocks-predictor\tests\test_ingestion_integrity.py", line 38, in test_duplicates_in_one_source_report_actual_insertions
+    self.assertEqual(self.load([line(), line()]), 1)
+AssertionError: 2 != 1
+
+======================================================================
+FAIL: test_idempotent_replay_reports_zero_new_rows (tests.test_ingestion_integrity.IngestionIntegrityTests.test_idempotent_replay_reports_zero_new_rows)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\STOCKS\stocks-predictor\tests\test_ingestion_integrity.py", line 35, in test_idempotent_replay_reports_zero_new_rows
+    self.assertEqual(self.load([line()]), 0)
+AssertionError: 1 != 0
+
+======================================================================
+FAIL: test_source_identity_is_required (tests.test_ingestion_integrity.IngestionIntegrityTests.test_source_identity_is_required)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\STOCKS\stocks-predictor\tests\test_ingestion_integrity.py", line 77, in test_source_identity_is_required
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_success_keeps_callers_transaction_uncommitted (tests.test_ingestion_integrity.IngestionIntegrityTests.test_success_keeps_callers_transaction_uncommitted)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\STOCKS\stocks-predictor\tests\test_ingestion_integrity.py", line 55, in test_success_keeps_callers_transaction_uncommitted
+    self.assertEqual(self.conn.execute('SELECT count(*) FROM unrelated').fetchone()[0], 0)
+AssertionError: 1 != 0
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.093s
+
+FAILED (failures=7)

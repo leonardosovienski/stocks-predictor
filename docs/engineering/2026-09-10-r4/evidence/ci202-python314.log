@@ -1,0 +1,597 @@
+﻿2026-09-10T03:11:13.7863872Z Current runner version: '2.337.0'
+2026-09-10T03:11:13.7890870Z ##[group]Runner Image Provisioner
+2026-09-10T03:11:13.7891829Z Hosted Compute Agent
+2026-09-10T03:11:13.7892505Z Version: 20260828.587
+2026-09-10T03:11:13.7893244Z Commit: abac92662cab4cc7352de4f9f9d2e2419aad9c29
+2026-09-10T03:11:13.7894039Z Build Date: 2026-08-28T16:44:25Z
+2026-09-10T03:11:13.7894892Z Worker ID: {ade4cecd-ae7d-4a6a-8b05-870255909064}
+2026-09-10T03:11:13.7895704Z Azure Region: northcentralus
+2026-09-10T03:11:13.7896366Z ##[endgroup]
+2026-09-10T03:11:13.7897824Z ##[group]Operating System
+2026-09-10T03:11:13.7898489Z Ubuntu
+2026-09-10T03:11:13.7899041Z 24.04.4
+2026-09-10T03:11:13.7899924Z LTS
+2026-09-10T03:11:13.7900487Z ##[endgroup]
+2026-09-10T03:11:13.7901112Z ##[group]Runner Image
+2026-09-10T03:11:13.7901782Z Image: ubuntu-24.04
+2026-09-10T03:11:13.7902462Z Version: 20260831.293.1
+2026-09-10T03:11:13.7903830Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260831.293/images/ubuntu/Ubuntu2404-Readme.md
+2026-09-10T03:11:13.7905461Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260831.293
+2026-09-10T03:11:13.7906511Z ##[endgroup]
+2026-09-10T03:11:13.7907766Z ##[group]GITHUB_TOKEN Permissions
+2026-09-10T03:11:13.7909999Z Contents: read
+2026-09-10T03:11:13.7910642Z Metadata: read
+2026-09-10T03:11:13.7911364Z ##[endgroup]
+2026-09-10T03:11:13.7913584Z Secret source: Actions
+2026-09-10T03:11:13.7914760Z Cache mode: write
+2026-09-10T03:11:13.7915570Z Prepare workflow directory
+2026-09-10T03:11:13.8271878Z Prepare all required actions
+2026-09-10T03:11:13.8323538Z Getting action download info
+2026-09-10T03:11:14.0934946Z Download action repository 'actions/checkout@v7' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+2026-09-10T03:11:14.2205640Z Download action repository 'astral-sh/setup-uv@v7' (SHA:37802adc94f370d6bfd71619e3f0bf239e1f3b78)
+2026-09-10T03:11:14.6174830Z Download action repository 'actions/setup-python@v7' (SHA:5fda3b95a4ea91299a34e894583c3862153e4b97)
+2026-09-10T03:11:14.6980890Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-09-10T03:11:14.9243234Z Complete job name: Quality / Python 3.14
+2026-09-10T03:11:15.0120789Z ##[group]Run actions/checkout@v7
+2026-09-10T03:11:15.0121904Z with:
+2026-09-10T03:11:15.0122727Z   repository: leonardosovienski/stocks-predictor
+2026-09-10T03:11:15.0127621Z   token: ***
+2026-09-10T03:11:15.0128247Z   ssh-strict: true
+2026-09-10T03:11:15.0128974Z   ssh-user: git
+2026-09-10T03:11:15.0129768Z   persist-credentials: true
+2026-09-10T03:11:15.0130543Z   clean: true
+2026-09-10T03:11:15.0131170Z   sparse-checkout-cone-mode: true
+2026-09-10T03:11:15.0131895Z   fetch-depth: 1
+2026-09-10T03:11:15.0132573Z   fetch-tags: false
+2026-09-10T03:11:15.0133216Z   show-progress: true
+2026-09-10T03:11:15.0133877Z   lfs: false
+2026-09-10T03:11:15.0134485Z   submodules: false
+2026-09-10T03:11:15.0135136Z   set-safe-directory: true
+2026-09-10T03:11:15.0135866Z   allow-unsafe-pr-checkout: false
+2026-09-10T03:11:15.0136883Z ##[endgroup]
+2026-09-10T03:11:15.1308267Z Syncing repository: leonardosovienski/stocks-predictor
+2026-09-10T03:11:15.1311404Z ##[group]Getting Git version info
+2026-09-10T03:11:15.1312885Z Working directory is '/home/runner/work/stocks-predictor/stocks-predictor'
+2026-09-10T03:11:15.1314863Z [command]/usr/bin/git version
+2026-09-10T03:11:15.1315739Z git version 2.55.0
+2026-09-10T03:11:15.1318409Z ##[endgroup]
+2026-09-10T03:11:15.1325431Z Temporarily overriding HOME='/home/runner/work/_temp/3c92411a-fb0b-483e-b6b6-5987f399723b' before making global git config changes
+2026-09-10T03:11:15.1327945Z Adding repository directory to the temporary git global config as a safe directory
+2026-09-10T03:11:15.1330419Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/stocks-predictor/stocks-predictor
+2026-09-10T03:11:15.1366089Z Deleting the contents of '/home/runner/work/stocks-predictor/stocks-predictor'
+2026-09-10T03:11:15.1370651Z ##[group]Determining repository object format
+2026-09-10T03:11:15.1373158Z ##[endgroup]
+2026-09-10T03:11:15.1374751Z ##[group]Initializing the repository
+2026-09-10T03:11:15.1377798Z [command]/usr/bin/git init /home/runner/work/stocks-predictor/stocks-predictor
+2026-09-10T03:11:15.1461703Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-09-10T03:11:15.1463916Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-09-10T03:11:15.1466096Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-09-10T03:11:15.1467496Z hint: call:
+2026-09-10T03:11:15.1468262Z hint:
+2026-09-10T03:11:15.1469207Z hint: 	git config --global init.defaultBranch <name>
+2026-09-10T03:11:15.1470771Z hint:
+2026-09-10T03:11:15.1471837Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-09-10T03:11:15.1473800Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-09-10T03:11:15.1475336Z hint:
+2026-09-10T03:11:15.1476101Z hint: 	git branch -m <name>
+2026-09-10T03:11:15.1477003Z hint:
+2026-09-10T03:11:15.1478147Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-09-10T03:11:15.1480400Z Initialized empty Git repository in /home/runner/work/stocks-predictor/stocks-predictor/.git/
+2026-09-10T03:11:15.1482907Z [command]/usr/bin/git remote add origin https://github.com/leonardosovienski/stocks-predictor
+2026-09-10T03:11:15.1532508Z ##[endgroup]
+2026-09-10T03:11:15.1534028Z ##[group]Disabling automatic garbage collection
+2026-09-10T03:11:15.1536116Z [command]/usr/bin/git config --local gc.auto 0
+2026-09-10T03:11:15.1572716Z ##[endgroup]
+2026-09-10T03:11:15.1574053Z ##[group]Setting up auth
+2026-09-10T03:11:15.1575441Z Removing SSH command configuration
+2026-09-10T03:11:15.1581081Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-09-10T03:11:15.1625041Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-09-10T03:11:15.1985515Z Removing HTTP extra header
+2026-09-10T03:11:15.1992388Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-09-10T03:11:15.2037857Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-09-10T03:11:15.2293936Z Removing includeIf entries pointing to credentials config files
+2026-09-10T03:11:15.2295735Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-09-10T03:11:15.2340981Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-09-10T03:11:15.2595571Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-0e6cfec1-d0f3-44ba-b2f0-ddea64ed18d1.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-09-10T03:11:15.2640651Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/stocks-predictor/stocks-predictor/.git.path /home/runner/work/_temp/git-credentials-0e6cfec1-d0f3-44ba-b2f0-ddea64ed18d1.config
+2026-09-10T03:11:15.2676754Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/stocks-predictor/stocks-predictor/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-0e6cfec1-d0f3-44ba-b2f0-ddea64ed18d1.config
+2026-09-10T03:11:15.2716836Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-0e6cfec1-d0f3-44ba-b2f0-ddea64ed18d1.config
+2026-09-10T03:11:15.2756186Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-0e6cfec1-d0f3-44ba-b2f0-ddea64ed18d1.config
+2026-09-10T03:11:15.2791105Z ##[endgroup]
+2026-09-10T03:11:15.2792506Z ##[group]Fetching the repository
+2026-09-10T03:11:15.2800079Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +b933c293dc883c25da5bfc9c0ca0d1ce8ce689d5:refs/remotes/pull/75/merge
+2026-09-10T03:11:17.5461970Z From https://github.com/leonardosovienski/stocks-predictor
+2026-09-10T03:11:17.5462997Z  * [new ref]         b933c293dc883c25da5bfc9c0ca0d1ce8ce689d5 -> pull/75/merge
+2026-09-10T03:11:17.5472371Z ##[endgroup]
+2026-09-10T03:11:17.5473150Z ##[group]Determining the checkout info
+2026-09-10T03:11:17.5473924Z ##[endgroup]
+2026-09-10T03:11:17.5474566Z [command]/usr/bin/git sparse-checkout disable
+2026-09-10T03:11:17.5527669Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-09-10T03:11:17.5564236Z ##[group]Checking out the ref
+2026-09-10T03:11:17.5569115Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/75/merge
+2026-09-10T03:11:17.8835219Z Note: switching to 'refs/remotes/pull/75/merge'.
+2026-09-10T03:11:17.8835719Z 
+2026-09-10T03:11:17.8836089Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-09-10T03:11:17.8836879Z changes and commit them, and you can discard any commits you make in this
+2026-09-10T03:11:17.8837645Z state without impacting any branches by switching back to a branch.
+2026-09-10T03:11:17.8838394Z 
+2026-09-10T03:11:17.8839029Z If you want to create a new branch to retain commits you create, you may
+2026-09-10T03:11:17.8842357Z do so (now or later) by using -c with the switch command. Example:
+2026-09-10T03:11:17.8843327Z 
+2026-09-10T03:11:17.8843628Z   git switch -c <new-branch-name>
+2026-09-10T03:11:17.8844005Z 
+2026-09-10T03:11:17.8844217Z Or undo this operation with:
+2026-09-10T03:11:17.8844499Z 
+2026-09-10T03:11:17.8844656Z   git switch -
+2026-09-10T03:11:17.8844916Z 
+2026-09-10T03:11:17.8845273Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-09-10T03:11:17.8845814Z 
+2026-09-10T03:11:17.8846409Z HEAD is now at b933c29 Merge 78d83fa78f5c9f2bf6ab137cc34c4b2b59190b86 into 0e9c48a87ff67bbd8d71fe5b9156799ba9bd8807
+2026-09-10T03:11:17.8864496Z ##[endgroup]
+2026-09-10T03:11:17.8926437Z [command]/usr/bin/git log -1 --format=%H
+2026-09-10T03:11:17.8962123Z b933c293dc883c25da5bfc9c0ca0d1ce8ce689d5
+2026-09-10T03:11:17.9248688Z ##[group]Run astral-sh/setup-uv@v7
+2026-09-10T03:11:17.9249011Z with:
+2026-09-10T03:11:17.9249229Z   version: 0.12.1
+2026-09-10T03:11:17.9249747Z   enable-cache: true
+2026-09-10T03:11:17.9250004Z   activate-environment: false
+2026-09-10T03:11:17.9250399Z   working-directory: /home/runner/work/stocks-predictor/stocks-predictor
+2026-09-10T03:11:17.9253602Z   github-token: ***
+2026-09-10T03:11:17.9254226Z   cache-dependency-glob: **/*requirements*.txt
+**/*requirements*.in
+**/*constraints*.txt
+**/*constraints*.in
+**/pyproject.toml
+**/uv.lock
+**/*.py.lock
+
+2026-09-10T03:11:17.9254832Z   restore-cache: true
+2026-09-10T03:11:17.9255068Z   save-cache: true
+2026-09-10T03:11:17.9255289Z   prune-cache: true
+2026-09-10T03:11:17.9255510Z   cache-python: false
+2026-09-10T03:11:17.9255773Z   ignore-nothing-to-cache: false
+2026-09-10T03:11:17.9256060Z   ignore-empty-workdir: false
+2026-09-10T03:11:17.9256330Z   add-problem-matchers: true
+2026-09-10T03:11:17.9256637Z   resolution-strategy: highest
+2026-09-10T03:11:17.9256894Z ##[endgroup]
+2026-09-10T03:11:18.0973404Z Fetching version data from https://raw.githubusercontent.com/astral-sh/versions/main/v1/uv.ndjson ...
+2026-09-10T03:11:18.1645523Z Downloading uv from "https://releases.astral.sh/github/uv/releases/download/0.12.1/uv-x86_64-unknown-linux-gnu.tar.gz" ...
+2026-09-10T03:11:18.3410385Z [command]/usr/bin/tar xz --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/70e4d5ec-86cc-4e99-bc92-87901efbe5df -f /home/runner/work/_temp/e54eeee8-7669-4db6-98bb-e4be3b262744
+2026-09-10T03:11:18.8040735Z Added /home/runner/.local/bin to the path
+2026-09-10T03:11:18.8048507Z Added /opt/hostedtoolcache/uv/0.12.1/x86_64 to the path
+2026-09-10T03:11:18.8049259Z Set UV_PYTHON_INSTALL_DIR to /home/runner/work/_temp/uv-python-dir
+2026-09-10T03:11:18.8050487Z Added /home/runner/work/_temp/uv-python-dir to the path
+2026-09-10T03:11:18.8076857Z Set UV_CACHE_DIR to /home/runner/work/_temp/setup-uv-cache
+2026-09-10T03:11:18.8077522Z Successfully installed uv version 0.12.1
+2026-09-10T03:11:18.9210369Z Searching files using cache dependency glob: /home/runner/work/stocks-predictor/stocks-predictor/**/*requirements*.txt,/home/runner/work/stocks-predictor/stocks-predictor/**/*requirements*.in,/home/runner/work/stocks-predictor/stocks-predictor/**/*constraints*.txt,/home/runner/work/stocks-predictor/stocks-predictor/**/*constraints*.in,/home/runner/work/stocks-predictor/stocks-predictor/**/pyproject.toml,/home/runner/work/stocks-predictor/stocks-predictor/**/uv.lock,/home/runner/work/stocks-predictor/stocks-predictor/**/*.py.lock
+2026-09-10T03:11:18.9622132Z /home/runner/work/stocks-predictor/stocks-predictor/pyproject.toml
+2026-09-10T03:11:18.9660246Z /home/runner/work/stocks-predictor/stocks-predictor/requirements.txt
+2026-09-10T03:11:19.0837972Z /home/runner/work/stocks-predictor/stocks-predictor/uv.lock
+2026-09-10T03:11:19.0893081Z Found 3 files to hash.
+2026-09-10T03:11:19.0973963Z Trying to restore cache from GitHub Actions cache with key: setup-uv-2-x86_64-unknown-linux-gnu-ubuntu-24.04-unknown-pruned-59edb7dc31a0008208010cda3c60d6c07f1f5cae31611801c4f9d86ba7e501e6
+2026-09-10T03:11:19.1900308Z No GitHub Actions cache found for key: setup-uv-2-x86_64-unknown-linux-gnu-ubuntu-24.04-unknown-pruned-59edb7dc31a0008208010cda3c60d6c07f1f5cae31611801c4f9d86ba7e501e6
+2026-09-10T03:11:19.2614470Z ##[group]Run actions/setup-python@v7
+2026-09-10T03:11:19.2614769Z with:
+2026-09-10T03:11:19.2614985Z   python-version: 3.14
+2026-09-10T03:11:19.2615225Z   check-latest: false
+2026-09-10T03:11:19.2618220Z   token: ***
+2026-09-10T03:11:19.2618449Z   update-environment: true
+2026-09-10T03:11:19.2618709Z   allow-prereleases: false
+2026-09-10T03:11:19.2618947Z   freethreaded: false
+2026-09-10T03:11:19.2619169Z env:
+2026-09-10T03:11:19.2619677Z   UV_PYTHON_INSTALL_DIR: /home/runner/work/_temp/uv-python-dir
+2026-09-10T03:11:19.2620094Z   UV_CACHE_DIR: /home/runner/work/_temp/setup-uv-cache
+2026-09-10T03:11:19.2620416Z ##[endgroup]
+2026-09-10T03:11:19.3807479Z ##[group]Installed versions
+2026-09-10T03:11:19.3884022Z Successfully set up CPython (3.14.7)
+2026-09-10T03:11:19.3884797Z ##[endgroup]
+2026-09-10T03:11:19.4047926Z ##[group]Run uv sync --locked --all-extras --python 3.14
+2026-09-10T03:11:19.4048435Z [36;1muv sync --locked --all-extras --python 3.14[0m
+2026-09-10T03:11:19.4191829Z shell: /usr/bin/bash -e {0}
+2026-09-10T03:11:19.4192485Z env:
+2026-09-10T03:11:19.4192941Z   UV_PYTHON_INSTALL_DIR: /home/runner/work/_temp/uv-python-dir
+2026-09-10T03:11:19.4193599Z   UV_CACHE_DIR: /home/runner/work/_temp/setup-uv-cache
+2026-09-10T03:11:19.4194228Z   pythonLocation: /opt/hostedtoolcache/Python/3.14.7/x64
+2026-09-10T03:11:19.4194906Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.14.7/x64/lib/pkgconfig
+2026-09-10T03:11:19.4195657Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.7/x64
+2026-09-10T03:11:19.4196315Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.7/x64
+2026-09-10T03:11:19.4196706Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.7/x64
+2026-09-10T03:11:19.4197091Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.14.7/x64/lib
+2026-09-10T03:11:19.4197492Z ##[endgroup]
+2026-09-10T03:11:20.0968430Z Using CPython 3.14.7 interpreter at: /opt/hostedtoolcache/Python/3.14.7/x64/bin/python3.14
+2026-09-10T03:11:20.0969323Z Creating virtual environment at: .venv
+2026-09-10T03:11:20.3420999Z Resolved 16 packages in 243ms
+2026-09-10T03:11:20.3477613Z    Building stocks-predictor @ file:///home/runner/work/stocks-predictor/stocks-predictor
+2026-09-10T03:11:20.3572824Z Downloading pygments (1.2MiB)
+2026-09-10T03:11:20.3618343Z Downloading ruff (9.8MiB)
+2026-09-10T03:11:20.3620038Z Downloading pyright (5.9MiB)
+2026-09-10T03:11:20.5407653Z  Downloaded ruff
+2026-09-10T03:11:20.5836303Z  Downloaded pygments
+2026-09-10T03:11:21.1501576Z  Downloaded pyright
+2026-09-10T03:11:21.4305249Z       Built stocks-predictor @ file:///home/runner/work/stocks-predictor/stocks-predictor
+2026-09-10T03:11:21.4314408Z Prepared 14 packages in 1.08s
+2026-09-10T03:11:21.6222549Z Installed 15 packages in 190ms
+2026-09-10T03:11:21.6223101Z  + build==1.6.0
+2026-09-10T03:11:21.6223443Z  + coverage==7.16.0
+2026-09-10T03:11:21.6223819Z  + iniconfig==2.3.0
+2026-09-10T03:11:21.6224142Z  + nodeenv==1.10.0
+2026-09-10T03:11:21.6224478Z  + packaging==26.3
+2026-09-10T03:11:21.6224793Z  + pluggy==1.6.0
+2026-09-10T03:11:21.6227804Z  + predictor-core==3.2.0 (from https://github.com/leonardosovienski/core-predictor/releases/download/v3.2.0/predictor_core-3.2.0-py3-none-any.whl)
+2026-09-10T03:11:21.6228846Z  + pygments==2.21.0
+2026-09-10T03:11:21.6229188Z  + pyproject-hooks==1.2.0
+2026-09-10T03:11:21.6229748Z  + pyright==1.1.411
+2026-09-10T03:11:21.6230080Z  + pytest==9.1.1
+2026-09-10T03:11:21.6230389Z  + pyyaml==6.0.3
+2026-09-10T03:11:21.6230695Z  + ruff==0.16.5
+2026-09-10T03:11:21.6231291Z  + stocks-predictor==0.1.0 (from file:///home/runner/work/stocks-predictor/stocks-predictor)
+2026-09-10T03:11:21.6232077Z  + typing-extensions==4.16.0
+2026-09-10T03:11:21.6359809Z ##[group]Run uv run --no-sync python main.py doctor --check
+2026-09-10T03:11:21.6360442Z [36;1muv run --no-sync python main.py doctor --check[0m
+2026-09-10T03:11:21.6401707Z shell: /usr/bin/bash -e {0}
+2026-09-10T03:11:21.6401978Z env:
+2026-09-10T03:11:21.6402273Z   UV_PYTHON_INSTALL_DIR: /home/runner/work/_temp/uv-python-dir
+2026-09-10T03:11:21.6402687Z   UV_CACHE_DIR: /home/runner/work/_temp/setup-uv-cache
+2026-09-10T03:11:21.6403079Z   pythonLocation: /opt/hostedtoolcache/Python/3.14.7/x64
+2026-09-10T03:11:21.6403504Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.14.7/x64/lib/pkgconfig
+2026-09-10T03:11:21.6403933Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.7/x64
+2026-09-10T03:11:21.6404310Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.7/x64
+2026-09-10T03:11:21.6404690Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.7/x64
+2026-09-10T03:11:21.6405081Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.14.7/x64/lib
+2026-09-10T03:11:21.6405446Z ##[endgroup]
+2026-09-10T03:11:22.4345509Z {
+2026-09-10T03:11:22.4345905Z   "python": {
+2026-09-10T03:11:22.4346277Z     "version": "3.14.7",
+2026-09-10T03:11:22.4346868Z     "executable": "/home/runner/work/stocks-predictor/stocks-predictor/.venv/bin/python3",
+2026-09-10T03:11:22.4347344Z     "supported": true,
+2026-09-10T03:11:22.4347589Z     "required": ">=3.13,<3.15"
+2026-09-10T03:11:22.4347829Z   },
+2026-09-10T03:11:22.4348033Z   "sqlite_version": "3.45.1",
+2026-09-10T03:11:22.4348283Z   "dependencies": {
+2026-09-10T03:11:22.4348510Z     "predictor-core": {
+2026-09-10T03:11:22.4348741Z       "version": "3.2.0",
+2026-09-10T03:11:22.4349005Z       "metadata_compatible": true,
+2026-09-10T03:11:22.4349289Z       "status": "compatible_stable_release"
+2026-09-10T03:11:22.4349723Z     },
+2026-09-10T03:11:22.4349914Z     "PyYAML": {
+2026-09-10T03:11:22.4350127Z       "version": "6.0.3",
+2026-09-10T03:11:22.4350401Z       "metadata_compatible": true,
+2026-09-10T03:11:22.4350682Z       "status": "compatible_stable_release"
+2026-09-10T03:11:22.4350956Z     }
+2026-09-10T03:11:22.4351144Z   },
+2026-09-10T03:11:22.4351351Z   "runtime_metadata_compatible": true,
+2026-09-10T03:11:22.4351617Z   "database": {
+2026-09-10T03:11:22.4351838Z     "status": "not_requested"
+2026-09-10T03:11:22.4352075Z   },
+2026-09-10T03:11:22.4352556Z   "scope": "Offline metadata and optional SQLite quick_check; no dependency import, migration, or operational certification."
+2026-09-10T03:11:22.4353089Z }
+2026-09-10T03:11:22.4506373Z ##[group]Run uv run --no-sync ruff check stocks_predictor tests main.py tools/data_bank.py tools/benchmark_ingestion.py research/session-20260909/data_completion research/session-20260910/integral
+2026-09-10T03:11:22.4507679Z [36;1muv run --no-sync ruff check stocks_predictor tests main.py tools/data_bank.py tools/benchmark_ingestion.py research/session-20260909/data_completion research/session-20260910/integral[0m
+2026-09-10T03:11:22.4548523Z shell: /usr/bin/bash -e {0}
+2026-09-10T03:11:22.4548781Z env:
+2026-09-10T03:11:22.4549066Z   UV_PYTHON_INSTALL_DIR: /home/runner/work/_temp/uv-python-dir
+2026-09-10T03:11:22.4549668Z   UV_CACHE_DIR: /home/runner/work/_temp/setup-uv-cache
+2026-09-10T03:11:22.4550052Z   pythonLocation: /opt/hostedtoolcache/Python/3.14.7/x64
+2026-09-10T03:11:22.4550477Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.14.7/x64/lib/pkgconfig
+2026-09-10T03:11:22.4550898Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.7/x64
+2026-09-10T03:11:22.4551311Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.7/x64
+2026-09-10T03:11:22.4551678Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.7/x64
+2026-09-10T03:11:22.4552050Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.14.7/x64/lib
+2026-09-10T03:11:22.4552377Z ##[endgroup]
+2026-09-10T03:11:22.5138469Z All checks passed!
+2026-09-10T03:11:22.5189176Z ##[group]Run uv run --no-sync pyright --pythonversion 3.14
+2026-09-10T03:11:22.5189915Z [36;1muv run --no-sync pyright --pythonversion 3.14[0m
+2026-09-10T03:11:22.5230333Z shell: /usr/bin/bash -e {0}
+2026-09-10T03:11:22.5230603Z env:
+2026-09-10T03:11:22.5230889Z   UV_PYTHON_INSTALL_DIR: /home/runner/work/_temp/uv-python-dir
+2026-09-10T03:11:22.5231307Z   UV_CACHE_DIR: /home/runner/work/_temp/setup-uv-cache
+2026-09-10T03:11:22.5231692Z   pythonLocation: /opt/hostedtoolcache/Python/3.14.7/x64
+2026-09-10T03:11:22.5232270Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.14.7/x64/lib/pkgconfig
+2026-09-10T03:11:22.5232935Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.7/x64
+2026-09-10T03:11:22.5233324Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.7/x64
+2026-09-10T03:11:22.5233708Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.7/x64
+2026-09-10T03:11:22.5234094Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.14.7/x64/lib
+2026-09-10T03:11:22.5234423Z ##[endgroup]
+2026-09-10T03:11:25.5808192Z 0 errors, 0 warnings, 0 informations
+2026-09-10T03:11:25.6042928Z WARNING: there is a new pyright version available (v1.1.411 -> v1.1.413).
+2026-09-10T03:11:25.6043813Z Please install the new version or set PYRIGHT_PYTHON_FORCE_VERSION to `latest`
+2026-09-10T03:11:25.6044307Z 
+2026-09-10T03:11:25.6238746Z ##[group]Run uv run --no-sync python research/session-20260910/integral/verify_audit.py
+2026-09-10T03:11:25.6239351Z [36;1muv run --no-sync python research/session-20260910/integral/verify_audit.py[0m
+2026-09-10T03:11:25.6280955Z shell: /usr/bin/bash -e {0}
+2026-09-10T03:11:25.6281223Z env:
+2026-09-10T03:11:25.6281523Z   UV_PYTHON_INSTALL_DIR: /home/runner/work/_temp/uv-python-dir
+2026-09-10T03:11:25.6281951Z   UV_CACHE_DIR: /home/runner/work/_temp/setup-uv-cache
+2026-09-10T03:11:25.6282343Z   pythonLocation: /opt/hostedtoolcache/Python/3.14.7/x64
+2026-09-10T03:11:25.6282793Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.14.7/x64/lib/pkgconfig
+2026-09-10T03:11:25.6283222Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.7/x64
+2026-09-10T03:11:25.6283626Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.7/x64
+2026-09-10T03:11:25.6284014Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.7/x64
+2026-09-10T03:11:25.6284429Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.14.7/x64/lib
+2026-09-10T03:11:25.6284753Z ##[endgroup]
+2026-09-10T03:11:25.7070836Z {
+2026-09-10T03:11:25.7071284Z   "status": "PASS_ARTIFACT_INTEGRITY_ONLY",
+2026-09-10T03:11:25.7072018Z   "registry_sha256": "0dc48afc64c361140fdb413cc80c0e0bb7abdecf0975624b45e37dd505d3e685",
+2026-09-10T03:11:25.7072665Z   "counts": {
+2026-09-10T03:11:25.7072940Z     "evidence": 31,
+2026-09-10T03:11:25.7073230Z     "claims": 22,
+2026-09-10T03:11:25.7073539Z     "issues": 16,
+2026-09-10T03:11:25.7073825Z     "decisions": 7,
+2026-09-10T03:11:25.7074121Z     "fronts": 24,
+2026-09-10T03:11:25.7074424Z     "datasets": 7,
+2026-09-10T03:11:25.7074698Z     "uses": 7,
+2026-09-10T03:11:25.7074952Z     "runs": 19
+2026-09-10T03:11:25.7075217Z   },
+2026-09-10T03:11:25.7075826Z   "limitation": "Hashes and references are verified, not economic truth or external completeness."
+2026-09-10T03:11:25.7076932Z }
+2026-09-10T03:11:25.7192111Z ##[group]Run uv run --no-sync coverage run -m pytest -q --durations=15 --junitxml=test-results.xml
+2026-09-10T03:11:25.7192814Z [36;1muv run --no-sync coverage run -m pytest -q --durations=15 --junitxml=test-results.xml[0m
+2026-09-10T03:11:25.7232992Z shell: /usr/bin/bash -e {0}
+2026-09-10T03:11:25.7233255Z env:
+2026-09-10T03:11:25.7233539Z   UV_PYTHON_INSTALL_DIR: /home/runner/work/_temp/uv-python-dir
+2026-09-10T03:11:25.7233939Z   UV_CACHE_DIR: /home/runner/work/_temp/setup-uv-cache
+2026-09-10T03:11:25.7234313Z   pythonLocation: /opt/hostedtoolcache/Python/3.14.7/x64
+2026-09-10T03:11:25.7234731Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.14.7/x64/lib/pkgconfig
+2026-09-10T03:11:25.7235148Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.7/x64
+2026-09-10T03:11:25.7235527Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.7/x64
+2026-09-10T03:11:25.7235925Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.7/x64
+2026-09-10T03:11:25.7236341Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.14.7/x64/lib
+2026-09-10T03:11:25.7236661Z ##[endgroup]
+2026-09-10T03:11:32.0771322Z .................................................................. [  7%]
+2026-09-10T03:11:44.3476529Z ........................................................................ [ 16%]
+2026-09-10T03:11:44.5835763Z ................................................................... [ 24%]
+2026-09-10T03:11:45.8990031Z ........................................................................ [ 32%]
+2026-09-10T03:12:11.9960705Z ........................................................................ [ 41%]
+2026-09-10T03:12:16.1281327Z ........................................................................ [ 49%]
+2026-09-10T03:12:19.4140124Z ........................................................................ [ 58%]
+2026-09-10T03:12:26.6565812Z .......................................................... [ 65%]
+2026-09-10T03:12:30.4742733Z ........................................................................ [ 73%]
+2026-09-10T03:12:30.8852491Z ........................................................................ [ 82%]
+2026-09-10T03:13:05.5634110Z ........................................................................ [ 90%]
+2026-09-10T03:13:08.0852954Z ........................................................................ [ 99%]
+2026-09-10T03:13:08.4203039Z ........                                                                 [100%]
+2026-09-10T03:13:08.4203630Z ============================= slowest 15 durations =============================
+2026-09-10T03:13:08.4205439Z 21.25s call     tests/test_h11_total_return.py::test_run_h11_does_not_mutate_shared_config
+2026-09-10T03:13:08.4206469Z 11.52s call     tests/test_config.py::test_main_backtest_h_dispatcher_runs
+2026-09-10T03:13:08.4207314Z 10.71s call     tests/test_rj_power_gate.py::test_specificity_false_positive_rate_near_nominal
+2026-09-10T03:13:08.4207940Z 8.04s call     tests/test_rj_power_gate.py::test_sensitivity_detects_planted_effect
+2026-09-10T03:13:08.4208528Z 7.83s call     tests/test_rj_smoke_synthetic.py::test_judge_run_all_families_end_to_end
+2026-09-10T03:13:08.4209043Z 4.20s call     tests/test_rj_power.py::test_power_is_monotone_in_effect_size
+2026-09-10T03:13:08.4209763Z 2.58s call     tests/test_rj_power.py::test_simulate_power_is_deterministic
+2026-09-10T03:13:08.4210279Z 2.30s call     tests/test_h11_total_return.py::test_run_h11_smoke
+2026-09-10T03:13:08.4210807Z 1.61s call     tests/test_m0_genesis.py::test_stats_block_bootstrap_wider_than_iid_for_autocorrelated
+2026-09-10T03:13:08.4211430Z 1.10s call     tests/test_stats_pedagio.py::test_paired_resampling_preserves_cross_correlation
+2026-09-10T03:13:08.4211922Z 0.90s call     tests/test_h15_volume_surge.py::test_run_h15_smoke
+2026-09-10T03:13:08.4212316Z 0.84s call     tests/test_h8_double_filter.py::test_run_h8_smoke
+2026-09-10T03:13:08.4212690Z 0.83s call     tests/test_h2_gate.py::test_run_h2_smoke
+2026-09-10T03:13:08.4213673Z 0.83s call     tests/test_h4_sizing.py::test_run_h4_smoke
+2026-09-10T03:13:08.4214058Z 0.80s call     tests/test_h6_momentum6.py::test_run_h6_smoke
+2026-09-10T03:13:08.4214421Z 847 passed, 25 subtests passed in 100.45s (0:01:40)
+2026-09-10T03:13:08.6086917Z ##[group]Run uv run --no-sync coverage json -o coverage.json
+2026-09-10T03:13:08.6087523Z [36;1muv run --no-sync coverage json -o coverage.json[0m
+2026-09-10T03:13:08.6087968Z [36;1muv run --no-sync coverage report[0m
+2026-09-10T03:13:08.6143531Z shell: /usr/bin/bash -e {0}
+2026-09-10T03:13:08.6143815Z env:
+2026-09-10T03:13:08.6144120Z   UV_PYTHON_INSTALL_DIR: /home/runner/work/_temp/uv-python-dir
+2026-09-10T03:13:08.6144536Z   UV_CACHE_DIR: /home/runner/work/_temp/setup-uv-cache
+2026-09-10T03:13:08.6144932Z   pythonLocation: /opt/hostedtoolcache/Python/3.14.7/x64
+2026-09-10T03:13:08.6145375Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.14.7/x64/lib/pkgconfig
+2026-09-10T03:13:08.6145804Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.7/x64
+2026-09-10T03:13:08.6146203Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.7/x64
+2026-09-10T03:13:08.6146592Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.7/x64
+2026-09-10T03:13:08.6147014Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.14.7/x64/lib
+2026-09-10T03:13:08.6147349Z ##[endgroup]
+2026-09-10T03:13:09.6268181Z Wrote JSON report to coverage.json
+2026-09-10T03:13:10.4237303Z Name                                            Stmts   Miss Branch BrPart  Cover   Missing
+2026-09-10T03:13:10.4238195Z -------------------------------------------------------------------------------------------
+2026-09-10T03:13:10.4239029Z stocks_predictor/__init__.py                        0      0      0      0   100%
+2026-09-10T03:13:10.4240306Z stocks_predictor/adjust.py                        149     15     68     13    86%   30-31, 51->50, 66, 85, 87, 143->exit, 172-174, 201, 259->267, 302, 319-322, 325, 334
+2026-09-10T03:13:10.4241368Z stocks_predictor/analyst.py                        55     32     14      4    42%   33-57, 80, 84-87, 93-96, 105-109, 113-118, 122
+2026-09-10T03:13:10.4242162Z stocks_predictor/backtest.py                      328     18     64     13    92%   123, 130-131, 141-142, 162, 171, 188, 191, 219-221, 239-242, 261->265, 263->265, 685, 728-729
+2026-09-10T03:13:10.4242881Z stocks_predictor/buffered_rebalance.py             76      6     34      6    89%   42, 44, 51, 60, 63, 101
+2026-09-10T03:13:10.4243509Z stocks_predictor/cash_events.py                    85     12     38     10    82%   13, 30, 35, 41, 47, 65-68, 83, 84->86, 86->78, 99, 105
+2026-09-10T03:13:10.4244302Z stocks_predictor/cash_source_audit.py             242     24    146     22    88%   22, 34, 36, 55, 123, 182, 185, 194, 197, 208, 222, 226, 233, 248, 258-259, 261, 274, 297, 301, 323, 331, 363, 366
+2026-09-10T03:13:10.4245032Z stocks_predictor/config.py                        120      6     30      5    93%   37, 68, 71-72, 78, 117
+2026-09-10T03:13:10.4246019Z stocks_predictor/continuous_cash.py               356     42    198     45    84%   49, 55-56, 62, 65, 68, 78, 123, 126, 151, 153, 160, 162, 169, 171, 174, 181, 187, 193, 195, 201, 206, 224->178, 228, 230->233, 239, 242, 248, 290, 301, 303, 307, 308->exit, 326, 328, 330, 333, 338, 347, 355, 376, 379->373, 383, 407, 457, 462
+2026-09-10T03:13:10.4247219Z stocks_predictor/continuous_research.py           177     32    100     26    78%   32, 34, 36, 40, 44, 48, 51, 53, 57, 60, 67, 73, 77, 98, 122, 124, 129, 132, 138, 147, 157, 166, 169, 174, 176-180, 207-208, 242
+2026-09-10T03:13:10.4247962Z stocks_predictor/cotahist.py                      140      0     50      2    99%   141->132, 229->232
+2026-09-10T03:13:10.4248888Z stocks_predictor/cvm_pit.py                       305     45    136     36    81%   44, 74, 78, 82, 94, 97, 107, 109-111, 114, 135, 139, 142, 145, 159, 175, 178, 196, 253, 282, 287, 289->285, 307-310, 320, 328, 336, 341->343, 350, 365, 376, 381->379, 394-397, 402, 418, 430, 438, 445, 464, 471->452, 477-479
+2026-09-10T03:13:10.4250338Z stocks_predictor/db.py                             44      3      4      1    92%   427-429
+2026-09-10T03:13:10.4250855Z stocks_predictor/diagnostics.py                    45      1      4      1    96%   73
+2026-09-10T03:13:10.4251661Z stocks_predictor/disclosed_accounting.py           19      1      8      3    85%   16->20, 19, 23->30
+2026-09-10T03:13:10.4252470Z stocks_predictor/discovery_h17.py                 230     85    118     18    58%   24-25, 29, 48, 69, 75, 78, 89-91, 109-110, 124, 131, 133, 135-136, 149, 154->144, 156, 162-163, 168, 219-228, 238-289, 293-298, 302
+2026-09-10T03:13:10.4253408Z stocks_predictor/discovery_reorganizations.py     197     86    116     14    54%   30, 32, 37, 41, 51, 81-82, 90, 101, 110, 121-122, 129, 140, 164, 171-182, 187-247, 251-255, 260
+2026-09-10T03:13:10.4254406Z stocks_predictor/discovery_value.py               239    114    116     22    51%   32-38, 44, 46, 48-49, 63, 65, 70, 76, 78, 83, 91, 99, 102, 105, 113, 125, 130, 137, 149-158, 162-163, 175, 199, 204-205, 210, 222-255, 261-281, 285-317, 321-325, 330
+2026-09-10T03:13:10.4255358Z stocks_predictor/discovery_value_repair.py         93     52     44      6    42%   22, 26, 29-30, 32->31, 52, 57-107, 111-115, 120
+2026-09-10T03:13:10.4256002Z stocks_predictor/document_panel.py                 82      5     44      5    92%   45, 52, 105, 109, 111
+2026-09-10T03:13:10.4256562Z stocks_predictor/economic_gate.py                  55      3     18      2    93%   35, 45, 86
+2026-09-10T03:13:10.4257074Z stocks_predictor/economics.py                      78      0     30      0   100%
+2026-09-10T03:13:10.4257562Z stocks_predictor/ecosystem_plugin.py                9      0      0      0   100%
+2026-09-10T03:13:10.4258104Z stocks_predictor/entry_feasibility.py              58      8     28      6    84%   23, 47, 54-55, 74, 77, 80, 84
+2026-09-10T03:13:10.4258732Z stocks_predictor/etf_hold.py                      135     15     62     11    87%   28, 34, 47, 67, 85-87, 90-92, 105, 131, 203, 206, 209
+2026-09-10T03:13:10.4259308Z stocks_predictor/execution.py                      31      1      8      1    95%   86
+2026-09-10T03:13:10.4260066Z stocks_predictor/factor.py                        165     10     78     13    91%   15, 38, 53->51, 77->75, 97, 193, 203->201, 233, 283, 326, 329, 380, 388
+2026-09-10T03:13:10.4260698Z stocks_predictor/h20_checked.py                    53     26     18      2    46%   30, 40-53, 57-66, 72
+2026-09-10T03:13:10.4261286Z stocks_predictor/h20_continuous.py                121     43     42      5    67%   34, 90, 93, 97, 133-172, 187-199, 203
+2026-09-10T03:13:10.4261901Z stocks_predictor/h20_research.py                  117     76     46      4    30%   26-42, 49, 54, 84-110, 114-144, 165-179, 183
+2026-09-10T03:13:10.4262485Z stocks_predictor/ingest_cotahist.py                28      5      8      2    81%   16-18, 31, 38
+2026-09-10T03:13:10.4263482Z stocks_predictor/ingest_cvm.py                    471     41    206     37    88%   144-146, 197, 202-203, 207->212, 224, 253, 296, 319, 359, 387, 390-392, 396, 401, 442, 445-447, 451, 453->449, 469-470, 499, 527, 532, 542, 565, 568, 698->696, 704, 819, 825, 851, 856, 859, 863->844, 911, 917, 939, 992, 995, 1024, 1040
+2026-09-10T03:13:10.4264470Z stocks_predictor/ingest_rj_universe.py             80      4     26      2    94%   48-50, 103->102, 180
+2026-09-10T03:13:10.4265041Z stocks_predictor/paper.py                          87      5     22      5    91%   84->91, 136, 137->143, 146, 170-171, 175
+2026-09-10T03:13:10.4265567Z stocks_predictor/portfolio.py                      33      1      8      1    95%   82
+2026-09-10T03:13:10.4266136Z stocks_predictor/profit_validation.py             115     59     60      7    45%   17, 38, 42, 49, 61, 72, 78, 86-108, 133-169
+2026-09-10T03:13:10.4266719Z stocks_predictor/report.py                         56      3     12      2    93%   243-244, 283
+2026-09-10T03:13:10.4267535Z stocks_predictor/retail_cash.py                   308     35    164     35    85%   27, 45, 48->51, 69, 81, 94, 99, 108, 114, 129, 132, 138, 141, 144, 146, 156, 181, 194, 214, 230, 233, 236, 251, 254, 257, 259, 262, 308, 318->313, 336, 339, 349, 374, 379, 384-386
+2026-09-10T03:13:10.4268539Z stocks_predictor/returns.py                        15      0      6      1    95%   18->17
+2026-09-10T03:13:10.4269172Z stocks_predictor/rj_coda.py                        40      2     18      2    93%   34, 83
+2026-09-10T03:13:10.4269776Z stocks_predictor/rj_episodes.py                    56      4     30      4    91%   53, 78, 109, 128
+2026-09-10T03:13:10.4270437Z stocks_predictor/rj_families.py                   109     19     46     16    77%   35, 45, 48, 64, 69, 82, 86, 89, 103, 105, 107, 129, 135-136, 137->127, 154, 158, 189-190, 227
+2026-09-10T03:13:10.4271133Z stocks_predictor/rj_families_next.py               73      7     28      6    87%   32, 36->35, 49, 72, 78-79, 124, 169
+2026-09-10T03:13:10.4271707Z stocks_predictor/rj_judge.py                      123      3     46      4    96%   50, 126, 136->134, 213
+2026-09-10T03:13:10.4272260Z stocks_predictor/rj_judge_robust.py                61      4     24      4    91%   30, 59, 86-87, 89->77
+2026-09-10T03:13:10.4272795Z stocks_predictor/rj_outcomes.py                    44      5     24      4    84%   28, 33, 39, 97-100
+2026-09-10T03:13:10.4273345Z stocks_predictor/rj_pipeline.py                   155     32     48      2    82%   90, 377-379, 383-419, 423
+2026-09-10T03:13:10.4273873Z stocks_predictor/rj_power.py                       67     26     24      1    64%   75, 100-133, 137
+2026-09-10T03:13:10.4274820Z stocks_predictor/simulation.py                    269     44    156     37    79%   29, 32, 34, 48, 61-62, 70, 75, 103, 105, 107, 109, 111, 114, 128, 146-155, 159, 161->156, 164->156, 169, 203->212, 213, 243-244, 250, 254, 270->218, 279, 285, 289->293, 311-314, 350, 352, 353->358, 373-374, 380, 382, 390-391, 393
+2026-09-10T03:13:10.4275809Z stocks_predictor/source_closure.py                133    106     64      2    17%   32, 43-44, 48-52, 56-156, 170-181, 185
+2026-09-10T03:13:10.4276442Z stocks_predictor/source_history.py                 88     14     32      8    82%   32, 34, 43, 87-93, 130, 133-134, 136, 171, 174-184
+2026-09-10T03:13:10.4277029Z stocks_predictor/stock_events.py                   25      4     10      4    77%   8, 21, 23, 26
+2026-09-10T03:13:10.4277553Z stocks_predictor/trials_gate.py                    87      2     14      1    97%   106-107, 218->220
+2026-09-10T03:13:10.4278085Z stocks_predictor/universe.py                       70      1     26      2    97%   21, 133->136
+2026-09-10T03:13:10.4278594Z stocks_predictor/validation.py                     15      0      6      0   100%
+2026-09-10T03:13:10.4279175Z stocks_predictor/value_profitability.py           112      9     54      9    89%   19, 34, 39-40, 68, 84, 117, 133, 135, 143->147
+2026-09-10T03:13:10.4279876Z -------------------------------------------------------------------------------------------
+2026-09-10T03:13:10.4280308Z TOTAL                                            6524   1196   2824    494    79%
+2026-09-10T03:13:10.4483580Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-09-10T03:13:10.4484918Z ##[group]Run actions/upload-artifact@v4
+2026-09-10T03:13:10.4485206Z with:
+2026-09-10T03:13:10.4485423Z   name: quality-python-3.14
+2026-09-10T03:13:10.4485705Z   path: test-results.xml
+coverage.json
+
+2026-09-10T03:13:10.4486094Z   retention-days: 14
+2026-09-10T03:13:10.4486363Z   if-no-files-found: ignore
+2026-09-10T03:13:10.4486621Z   compression-level: 6
+2026-09-10T03:13:10.4486858Z   overwrite: false
+2026-09-10T03:13:10.4487092Z   include-hidden-files: false
+2026-09-10T03:13:10.4487338Z env:
+2026-09-10T03:13:10.4487620Z   UV_PYTHON_INSTALL_DIR: /home/runner/work/_temp/uv-python-dir
+2026-09-10T03:13:10.4488065Z   UV_CACHE_DIR: /home/runner/work/_temp/setup-uv-cache
+2026-09-10T03:13:10.4488676Z   pythonLocation: /opt/hostedtoolcache/Python/3.14.7/x64
+2026-09-10T03:13:10.4489119Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.14.7/x64/lib/pkgconfig
+2026-09-10T03:13:10.4489776Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.7/x64
+2026-09-10T03:13:10.4490164Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.7/x64
+2026-09-10T03:13:10.4490543Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.7/x64
+2026-09-10T03:13:10.4490950Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.14.7/x64/lib
+2026-09-10T03:13:10.4491289Z ##[endgroup]
+2026-09-10T03:13:10.6192010Z (node:2503) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-09-10T03:13:10.6192919Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-09-10T03:13:10.6244919Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2026-09-10T03:13:10.6248068Z The least common ancestor is /home/runner/work/stocks-predictor/stocks-predictor. This will be the root directory of the artifact
+2026-09-10T03:13:10.6249578Z With the provided path, there will be 2 files uploaded
+2026-09-10T03:13:10.6252901Z Artifact name is valid!
+2026-09-10T03:13:10.6261274Z Root directory input is valid!
+2026-09-10T03:13:10.8624325Z Beginning upload of artifact content to blob storage
+2026-09-10T03:13:10.8958783Z (node:2503) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-09-10T03:13:11.0247248Z Uploaded bytes 66263
+2026-09-10T03:13:11.0568668Z Finished uploading artifact content to blob storage!
+2026-09-10T03:13:11.0570101Z SHA256 digest of uploaded artifact zip is 685d320cbf1d910a8cc8dbfce6c5afa231c28e0a00f6e2dc431397f90af515d4
+2026-09-10T03:13:11.0571051Z Finalizing artifact upload
+2026-09-10T03:13:11.2726861Z Artifact quality-python-3.14.zip successfully finalized. Artifact ID 10134973379
+2026-09-10T03:13:11.2728058Z Artifact quality-python-3.14 has been successfully uploaded! Final size is 66263 bytes. Artifact ID is 10134973379
+2026-09-10T03:13:11.2735586Z Artifact download URL: https://github.com/leonardosovienski/stocks-predictor/actions/runs/34432353530/artifacts/10134973379
+2026-09-10T03:13:11.2866775Z ##[group]Run uv build
+2026-09-10T03:13:11.2867072Z [36;1muv build[0m
+2026-09-10T03:13:11.2908653Z shell: /usr/bin/bash -e {0}
+2026-09-10T03:13:11.2908939Z env:
+2026-09-10T03:13:11.2909264Z   UV_PYTHON_INSTALL_DIR: /home/runner/work/_temp/uv-python-dir
+2026-09-10T03:13:11.2909907Z   UV_CACHE_DIR: /home/runner/work/_temp/setup-uv-cache
+2026-09-10T03:13:11.2910302Z   pythonLocation: /opt/hostedtoolcache/Python/3.14.7/x64
+2026-09-10T03:13:11.2910753Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.14.7/x64/lib/pkgconfig
+2026-09-10T03:13:11.2911204Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.7/x64
+2026-09-10T03:13:11.2911634Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.7/x64
+2026-09-10T03:13:11.2912030Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.7/x64
+2026-09-10T03:13:11.2912424Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.14.7/x64/lib
+2026-09-10T03:13:11.2912763Z ##[endgroup]
+2026-09-10T03:13:11.3091599Z Building source distribution...
+2026-09-10T03:13:16.5113715Z Building wheel from source distribution...
+2026-09-10T03:13:16.9571759Z Successfully built dist/stocks_predictor-0.1.0.tar.gz
+2026-09-10T03:13:16.9572824Z Successfully built dist/stocks_predictor-0.1.0-py3-none-any.whl
+2026-09-10T03:13:16.9645386Z ##[group]Run uv venv /tmp/stocks-wheel --python 3.14 --seed
+2026-09-10T03:13:16.9646140Z [36;1muv venv /tmp/stocks-wheel --python 3.14 --seed[0m
+2026-09-10T03:13:16.9646775Z [36;1m/tmp/stocks-wheel/bin/pip install dist/*.whl \[0m
+2026-09-10T03:13:16.9647956Z [36;1m  "predictor-core @ https://github.com/leonardosovienski/core-predictor/releases/download/v3.2.0/predictor_core-3.2.0-py3-none-any.whl"[0m
+2026-09-10T03:13:16.9649365Z [36;1mmkdir -p "$RUNNER_TEMP/stocks-wheel-smoke"[0m
+2026-09-10T03:13:16.9650334Z [36;1mcd "$RUNNER_TEMP/stocks-wheel-smoke"[0m
+2026-09-10T03:13:16.9650882Z [36;1m/tmp/stocks-wheel/bin/python -I - <<'PY'[0m
+2026-09-10T03:13:16.9651379Z [36;1mimport os[0m
+2026-09-10T03:13:16.9651762Z [36;1mfrom pathlib import Path[0m
+2026-09-10T03:13:16.9652204Z [36;1mimport sys[0m
+2026-09-10T03:13:16.9652578Z [36;1mimport predictor_core[0m
+2026-09-10T03:13:16.9653014Z [36;1mimport stocks_predictor[0m
+2026-09-10T03:13:16.9653540Z [36;1mimport stocks_predictor.rj_episodes[0m
+2026-09-10T03:13:16.9654063Z [36;1mimport stocks_predictor.rj_judge[0m
+2026-09-10T03:13:16.9654571Z [36;1mimport stocks_predictor.etf_hold[0m
+2026-09-10T03:13:16.9655172Z [36;1mcheckout = Path(os.environ["GITHUB_WORKSPACE"]).resolve()[0m
+2026-09-10T03:13:16.9656088Z [36;1massert not Path.cwd().resolve().is_relative_to(checkout)[0m
+2026-09-10T03:13:16.9656899Z [36;1mfor module in (predictor_core, stocks_predictor, stocks_predictor.etf_hold):[0m
+2026-09-10T03:13:16.9657684Z [36;1m    origin = Path(module.__file__).resolve()[0m
+2026-09-10T03:13:16.9658384Z [36;1m    assert origin.is_relative_to(Path(sys.prefix).resolve()), origin[0m
+2026-09-10T03:13:16.9659133Z [36;1m    assert not origin.is_relative_to(checkout), origin[0m
+2026-09-10T03:13:16.9659938Z [36;1m    print(module.__name__, origin)[0m
+2026-09-10T03:13:16.9660411Z [36;1mPY[0m
+2026-09-10T03:13:16.9716601Z shell: /usr/bin/bash -e {0}
+2026-09-10T03:13:16.9717021Z env:
+2026-09-10T03:13:16.9717485Z   UV_PYTHON_INSTALL_DIR: /home/runner/work/_temp/uv-python-dir
+2026-09-10T03:13:16.9718169Z   UV_CACHE_DIR: /home/runner/work/_temp/setup-uv-cache
+2026-09-10T03:13:16.9718782Z   pythonLocation: /opt/hostedtoolcache/Python/3.14.7/x64
+2026-09-10T03:13:16.9719750Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.14.7/x64/lib/pkgconfig
+2026-09-10T03:13:16.9720471Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.7/x64
+2026-09-10T03:13:16.9721129Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.7/x64
+2026-09-10T03:13:16.9721773Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.14.7/x64
+2026-09-10T03:13:16.9722416Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.14.7/x64/lib
+2026-09-10T03:13:16.9722966Z ##[endgroup]
+2026-09-10T03:13:17.0039927Z Using CPython 3.14.7 interpreter at: /opt/hostedtoolcache/Python/3.14.7/x64/bin/python3.14
+2026-09-10T03:13:17.0040637Z Creating virtual environment with seed packages at: /tmp/stocks-wheel
+2026-09-10T03:13:17.1535855Z  + pip==26.2.1
+2026-09-10T03:13:17.1536446Z Activate with: /tmp/stocks-wheel/bin/activate
+2026-09-10T03:13:18.5264203Z Processing ./dist/stocks_predictor-0.1.0-py3-none-any.whl
+2026-09-10T03:13:18.5343596Z Collecting predictor-core @ https://github.com/leonardosovienski/core-predictor/releases/download/v3.2.0/predictor_core-3.2.0-py3-none-any.whl
+2026-09-10T03:13:18.8741510Z   Downloading predictor_core-3.2.0-py3-none-any.whl (83 kB)
+2026-09-10T03:13:18.9811396Z Collecting pyyaml<7,>=6.0 (from stocks-predictor==0.1.0)
+2026-09-10T03:13:19.0307914Z   Downloading pyyaml-6.0.3-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+2026-09-10T03:13:19.0386265Z Downloading pyyaml-6.0.3-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (794 kB)
+2026-09-10T03:13:19.0740649Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 794.2/794.2 kB 67.0 MB/s  0:00:00
+2026-09-10T03:13:19.1812127Z Installing collected packages: pyyaml, predictor-core, stocks-predictor
+2026-09-10T03:13:19.5035355Z 
+2026-09-10T03:13:19.5048205Z Successfully installed predictor-core-3.2.0 pyyaml-6.0.3 stocks-predictor-0.1.0
+2026-09-10T03:13:19.7226784Z predictor_core /tmp/stocks-wheel/lib/python3.14/site-packages/predictor_core/__init__.py
+2026-09-10T03:13:19.7227509Z stocks_predictor /tmp/stocks-wheel/lib/python3.14/site-packages/stocks_predictor/__init__.py
+2026-09-10T03:13:19.7228211Z stocks_predictor.etf_hold /tmp/stocks-wheel/lib/python3.14/site-packages/stocks_predictor/etf_hold.py
+2026-09-10T03:13:19.7517382Z Post job cleanup.
+2026-09-10T03:13:19.8860628Z Post job cleanup.
+2026-09-10T03:13:20.0099069Z UV_CACHE_DIR is already set to /home/runner/work/_temp/setup-uv-cache
+2026-09-10T03:13:20.0105093Z UV_PYTHON_INSTALL_DIR is already set to /home/runner/work/_temp/uv-python-dir
+2026-09-10T03:13:20.0116262Z Pruning cache...
+2026-09-10T03:13:20.0132969Z [command]/opt/hostedtoolcache/uv/0.12.1/x86_64/uv cache prune --ci --force
+2026-09-10T03:13:20.0323265Z Pruning cache at: /home/runner/work/_temp/setup-uv-cache
+2026-09-10T03:13:20.1794984Z Removed 6784 files (58.9MiB)
+2026-09-10T03:13:20.1823361Z Including uv cache path: /home/runner/work/_temp/setup-uv-cache
+2026-09-10T03:13:20.1963186Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/stocks-predictor/stocks-predictor --files-from manifest.txt --use-compress-program zstdmt
+2026-09-10T03:13:20.5258249Z Sent 119452 of 119452 (100.0%), 0.5 MBs/sec
+2026-09-10T03:13:20.6452860Z uv cache saved with key: setup-uv-2-x86_64-unknown-linux-gnu-ubuntu-24.04-unknown-pruned-59edb7dc31a0008208010cda3c60d6c07f1f5cae31611801c4f9d86ba7e501e6
+2026-09-10T03:13:20.7143555Z Post job cleanup.
+2026-09-10T03:13:20.8082276Z [command]/usr/bin/git version
+2026-09-10T03:13:20.8126441Z git version 2.55.0
+2026-09-10T03:13:20.8162416Z Temporarily overriding HOME='/home/runner/work/_temp/dc10886f-70fd-4f96-a397-a66bb649fdf7' before making global git config changes
+2026-09-10T03:13:20.8163780Z Adding repository directory to the temporary git global config as a safe directory
+2026-09-10T03:13:20.8167930Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/stocks-predictor/stocks-predictor
+2026-09-10T03:13:20.8208923Z Removing SSH command configuration
+2026-09-10T03:13:20.8216723Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-09-10T03:13:20.8260961Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-09-10T03:13:20.8545448Z Removing HTTP extra header
+2026-09-10T03:13:20.8551959Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-09-10T03:13:20.8599269Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-09-10T03:13:20.8906348Z Removing includeIf entries pointing to credentials config files
+2026-09-10T03:13:20.8918406Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-09-10T03:13:20.8955632Z includeif.gitdir:/home/runner/work/stocks-predictor/stocks-predictor/.git.path
+2026-09-10T03:13:20.8957020Z includeif.gitdir:/home/runner/work/stocks-predictor/stocks-predictor/.git/worktrees/*.path
+2026-09-10T03:13:20.8958086Z includeif.gitdir:/github/workspace/.git.path
+2026-09-10T03:13:20.8958901Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-09-10T03:13:20.8967150Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/stocks-predictor/stocks-predictor/.git.path
+2026-09-10T03:13:20.9002367Z /home/runner/work/_temp/git-credentials-0e6cfec1-d0f3-44ba-b2f0-ddea64ed18d1.config
+2026-09-10T03:13:20.9015803Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/stocks-predictor/stocks-predictor/.git.path \/home\/runner\/work\/_temp\/git\-credentials\-0e6cfec1\-d0f3\-44ba\-b2f0\-ddea64ed18d1\.config
+2026-09-10T03:13:20.9082104Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/stocks-predictor/stocks-predictor/.git/worktrees/*.path
+2026-09-10T03:13:20.9117458Z /home/runner/work/_temp/git-credentials-0e6cfec1-d0f3-44ba-b2f0-ddea64ed18d1.config
+2026-09-10T03:13:20.9127826Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/stocks-predictor/stocks-predictor/.git/worktrees/*.path \/home\/runner\/work\/_temp\/git\-credentials\-0e6cfec1\-d0f3\-44ba\-b2f0\-ddea64ed18d1\.config
+2026-09-10T03:13:20.9173839Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-09-10T03:13:20.9204780Z /github/runner_temp/git-credentials-0e6cfec1-d0f3-44ba-b2f0-ddea64ed18d1.config
+2026-09-10T03:13:20.9212824Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-0e6cfec1\-d0f3\-44ba\-b2f0\-ddea64ed18d1\.config
+2026-09-10T03:13:20.9252674Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-09-10T03:13:20.9282536Z /github/runner_temp/git-credentials-0e6cfec1-d0f3-44ba-b2f0-ddea64ed18d1.config
+2026-09-10T03:13:20.9290426Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-0e6cfec1\-d0f3\-44ba\-b2f0\-ddea64ed18d1\.config
+2026-09-10T03:13:20.9333351Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-09-10T03:13:20.9586311Z Removing credentials config '/home/runner/work/_temp/git-credentials-0e6cfec1-d0f3-44ba-b2f0-ddea64ed18d1.config'
+2026-09-10T03:13:20.9742834Z Cleaning up orphan processes
+2026-09-10T03:13:21.0046413Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+

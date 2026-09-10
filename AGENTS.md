@@ -2,6 +2,19 @@
 
 Atualizado em 10/09/2026 UTC após a auditoria integral AUDIT-R3.
 
+## Engenharia R4 posterior à auditoria
+
+O pedido seguinte foi corrigir erros e melhorar infraestrutura/desempenho.
+Ler o [relatório R4](docs/engineering/2026-09-10-r4/README.md) e
+[PR75](https://github.com/leonardosovienski/stocks-predictor/pull/75) para os checks
+e integração desta rodada. A auditoria R3 permanece um registro datado.
+Ingestão agora informa inserções efetivas, rejeita conteúdo divergente sob a mesma
+identidade e preserva transações do chamador. Não adaptar fontes para contornar isso.
+`python main.py doctor` funciona sem Core e sem abrir banco por padrão;
+`--check` retorna 1 quando o ambiente não atende ao contrato de metadados.
+A CI verifica Python 3.13/3.14, lock e cobertura mínima de 77%; não remover esses
+controles para acomodar falhas. Diagnóstico de ambiente não certifica operação.
+
 ## Continuidade após auditoria integral
 
 O usuário preparou e revisou o
@@ -76,10 +89,9 @@ Rodadas de coleta encerradas; consultar os inventários antes de novo orçamento
 Preferência: XP;
 não inferir elegibilidade, capital, horizonte ou limite de perda. Consultar
 as entradas operacionais e o inventário antes de repetir aquisições.
-A fila anterior era fechar eventos e despesas/execução. A próxima tarefa é a
-auditoria integral indicada acima, que deve reavaliar essa prioridade. O plano
-prospectivo H21 já está registrado, sem execução. H20 permanece estacionada
-como estado histórico a reavaliar.
+A auditoria indicada acima já foi executada; as condições de retomada estão em
+I10–I16. O plano prospectivo H21 está registrado, sem execução. H20 amplo
+permanece estacionado. A rodada R4 trata da engenharia posterior à auditoria.
 Não ativar comandos legados de ingestão, backtest ou paper automaticamente.
 
 ## Engenharia e validação

@@ -116,7 +116,8 @@ def integer_targets(capital, close_prices):
     return targets
 
 
-def ordinary_month_tax(trades, prior_loss=0, exemption=20000, rate="0.15", corporate_disposals=()):
+def ordinary_month_tax(trades, prior_loss: Decimal | int | float | str = 0,
+                       exemption=20000, rate="0.15", corporate_disposals=()):
     """Research PF scenario, no external trades; ordinary equity/BDR sales only.
 
     Small equity-sale positive gains are exempt; their losses still enter the

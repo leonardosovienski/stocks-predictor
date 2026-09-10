@@ -1,0 +1,14 @@
+test_busy_commit_leaves_no_pending_ingestion (tests.test_ingestion_integrity.IngestionIntegrityTests.test_busy_commit_leaves_no_pending_ingestion) ... FAIL
+
+======================================================================
+FAIL: test_busy_commit_leaves_no_pending_ingestion (tests.test_ingestion_integrity.IngestionIntegrityTests.test_busy_commit_leaves_no_pending_ingestion)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\STOCKS\stocks-predictor\tests\test_ingestion_integrity.py", line 101, in test_busy_commit_leaves_no_pending_ingestion
+    self.assertFalse(writer.in_transaction)
+AssertionError: True is not false
+
+----------------------------------------------------------------------
+Ran 1 test in 0.039s
+
+FAILED (failures=1)

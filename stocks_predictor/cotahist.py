@@ -127,6 +127,26 @@ def is_avista(rec) -> bool:
     return rec["market_type"] == AVISTA_MARKET and rec["bdi_code"] == AVISTA_BDI
 
 
+def _iter_parsed_records(lines, stats):
+    """Stream valid records; the terminal checks require consuming the iterator."""
+    for line in lines:
+        if line[F_TIPREG] != "01":
+            continue
+        stats['quotes'] += 1
+        try:
+            rec = parse_line(line)
+        except (ValueError, IndexError):
+            stats['malformed'] += 1
+            continue
+        if rec is not None:
+            yield rec
+    if not stats['quotes']:
+        raise ValueError("0 linhas de registro tipo 01 na fonte — arquivo errado, vazio ou layout mudou")
+    if stats['malformed'] == stats['quotes']:
+        raise ValueError(f"{stats['malformed']} linhas malformadas em {stats['quotes']} "
+                         "linhas de cotação — arquivo inteiro ilegível, revisar layout/fonte")
+
+
 def parse_lines(lines):
     """Parseia linhas posicionais tolerando falhas INDIVIDUAIS: uma linha
     malformada (campos numéricos quebrados etc.) é PULADA e contada — não
@@ -137,57 +157,79 @@ def parse_lines(lines):
     Retorna (records, n_malformed). Se TODAS as linhas de cotação forem
     malformadas, levanta ValueError — aí o problema é o arquivo/layout, não
     uma linha podre, e aceitar "zero registros" seria silêncio."""
-    recs, n_bad, n_quote = [], 0, 0
-    for line in lines:
-        raw = line.rstrip("\r\n")
-        if raw[F_TIPREG] != "01":
-            continue
-        n_quote += 1
-        try:
-            rec = parse_line(line)
-        except (ValueError, IndexError):
-            n_bad += 1
-            continue
-        if rec is not None:
-            recs.append(rec)
-    if n_quote and n_bad == n_quote:
-        raise ValueError(
-            f"{n_bad} linhas malformadas em {n_quote} linhas de cotação — "
-            "arquivo inteiro ilegível, revisar layout/fonte")
-    if n_quote == 0:
-        # ZERO registros tipo 01 em toda a fonte — fonte errada (ex.: .TXT
-        # não-COTAHIST dentro do zip, layout mudou, arquivo vazio) NUNCA é
-        # "sem cotações para carregar": load_prices/parse_cotahist
-        # retornariam 0 silenciosamente, sem log e sem exceção (achado de
-        # varredura 2026-09-04). Fail-loud aqui é o único lugar que sabe a
-        # diferença entre "0 linhas boas" e "0 linhas, ponto".
-        raise ValueError(
-            "0 linhas de registro tipo 01 na fonte — arquivo errado, vazio "
-            "ou layout mudou, revisar antes de aceitar 'zero cotações'")
-    return recs, n_bad
+    stats = {'quotes': 0, 'malformed': 0}
+    recs = list(_iter_parsed_records(lines, stats))
+    return recs, stats['malformed']
+
+
+_PRICE_COLUMNS = ('date', 'ticker', 'bdi_code', 'market_type', 'open', 'high',
+                  'low', 'close', 'volume_fin', 'qty', 'quote_factor', 'source_file')
+_LOAD_BATCH_SIZE = 1000
+
+
+def _insert_price_batch(conn, rows):
+    """Insert new identities; identical replays are harmless, changed ones fail."""
+    unique = {}
+    for row in rows:
+        key = (row[0], row[1], row[-1])
+        if key in unique and unique[key] != row:
+            raise ValueError(f"source content conflict for {key!r}")
+        unique[key] = row
+    columns = ','.join(_PRICE_COLUMNS)
+    cursor = conn.executemany(
+        f"INSERT INTO prices_raw({columns}) VALUES (?,?,?,?,?,?,?,?,?,?,?,?) "
+        "ON CONFLICT(date,ticker,source_file) DO NOTHING", unique.values())
+    if cursor.rowcount != len(unique):
+        # Only replayed batches need comparison; bounded groups also work with
+        # SQLite's historical 999-variable limit. No per-row query on new data.
+        keys = list(unique)
+        for start in range(0, len(keys), 250):
+            group = keys[start:start + 250]
+            placeholders = ','.join('(?,?,?)' for _ in group)
+            params = [value for key in group for value in key]
+            for stored in conn.execute(
+                    f"SELECT {columns} FROM prices_raw WHERE "
+                    f"(date,ticker,source_file) IN ({placeholders})", params):
+                row = tuple(stored)
+                key = (row[0], row[1], row[-1])
+                if row != unique[key]:
+                    raise ValueError(f"source content conflict for {key!r}")
+    return cursor.rowcount
 
 
 def load_prices(conn, lines, source_file: str, avista_only: bool = True) -> int:
-    """Parseia linhas (de arquivo ou sintéticas) e carrega em prices_raw. Idempotente
-    via UNIQUE(date,ticker,source_file). Por padrão filtra à-vista lote-padrão (a H1 só
-    negocia ação à-vista). Retorna nº de registros carregados.
+    """Stream at most one batch, returning the number of genuinely new rows.
 
-    Linhas malformadas são puladas, contadas e logadas com o nome do arquivo
-    (ver `parse_lines`) — nunca derrubam a carga nem passam em silêncio."""
-    recs, n_bad = parse_lines(lines)
-    if n_bad:
-        logger.warning("%s: %d linhas malformadas puladas no parse",
-                       source_file, n_bad)
-    rows = []
-    for rec in recs:
-        if avista_only and not is_avista(rec):
-            continue
-        rows.append((rec["date"], rec["ticker"], rec["bdi_code"], rec["market_type"],
-                     rec["open"], rec["high"], rec["low"], rec["close"],
-                     rec["volume_fin"], rec["qty"], rec["quote_factor"], source_file))
-    conn.executemany(
-        "INSERT OR IGNORE INTO prices_raw(date,ticker,bdi_code,market_type,open,high,"
-        "low,close,volume_fin,qty,quote_factor,source_file) "
-        "VALUES (?,?,?,?,?,?,?,?,?,?,?,?)", rows)
-    conn.commit()
-    return len(rows)
+    A same-identity content conflict, database error or truncated input rolls back
+    the entire load. A caller-owned transaction is never committed. Malformed
+    individual records retain the documented skip/count policy of parse_lines.
+    """
+    if not isinstance(source_file, str) or not source_file.strip():
+        raise ValueError("source_file must identify the source")
+    stats = {'quotes': 0, 'malformed': 0}
+    rows, inserted = [], 0
+    caller_transaction = conn.in_transaction
+    conn.execute("SAVEPOINT stocks_price_load")
+    try:
+        for rec in _iter_parsed_records(lines, stats):
+            if avista_only and not is_avista(rec):
+                continue
+            rows.append(tuple(rec[key] for key in _PRICE_COLUMNS[:-1]) + (source_file,))
+            if len(rows) >= _LOAD_BATCH_SIZE:
+                inserted += _insert_price_batch(conn, rows)
+                rows.clear()
+        if rows:
+            inserted += _insert_price_batch(conn, rows)
+        conn.execute("RELEASE stocks_price_load")
+    except BaseException:
+        if not caller_transaction:
+            # A failed outer RELEASE (e.g. SQLITE_BUSY at commit) still owns
+            # locks even after ROLLBACK TO. Roll back the owned transaction.
+            conn.rollback()
+        elif conn.in_transaction:
+            conn.execute("ROLLBACK TO stocks_price_load")
+            conn.execute("RELEASE stocks_price_load")
+        raise
+    if stats['malformed']:
+        logger.warning("%s: %d linhas malformadas puladas no parse", source_file, stats['malformed'])
+    return inserted

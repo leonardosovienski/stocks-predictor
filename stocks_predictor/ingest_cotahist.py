@@ -4,6 +4,7 @@ A lógica de formato (parser, gerador sintético, carga) vive em `cotahist.py`. 
 orquestração: baixar (separado) e processar (offline), como manda o DESIGN.
 """
 import zipfile
+from contextlib import closing
 from pathlib import Path
 
 import cotahist
@@ -42,12 +43,10 @@ def _pick_cotahist_txt(names: list[str]) -> str:
 
 def parse_cotahist(zip_path: str, db_path: str | None = None) -> int:
     """Parse posicional do TXT dentro do ZIP → prices_raw. Encoding CP1252/latin-1."""
-    conn = db.get_connection(db_path)
-    try:
-        with zipfile.ZipFile(zip_path) as z:
-            name = _pick_cotahist_txt(z.namelist())
-            with z.open(name) as f:
+    # Reject missing, corrupt or ambiguous archives before opening a writer.
+    with zipfile.ZipFile(zip_path) as z:
+        name = _pick_cotahist_txt(z.namelist())
+        with z.open(name) as f:
+            with closing(db.get_connection(db_path)) as conn:
                 lines = (b.decode("latin-1") for b in f)
                 return cotahist.load_prices(conn, lines, source_file=Path(zip_path).name)
-    finally:
-        conn.close()

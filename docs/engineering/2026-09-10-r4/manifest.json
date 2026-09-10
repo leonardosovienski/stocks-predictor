@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-09-10T03:46:10.820020+00:00",
+  "base_sha": "0e9c48a87ff67bbd8d71fe5b9156799ba9bd8807",
+  "engineering_sha": "78d83fa78f5c9f2bf6ab137cc34c4b2b59190b86",
+  "ci_runs": [
+    34429998494,
+    34430178230,
+    34432353530
+  ],
+  "files": [
+    {
+      "path": "evidence/audit-artifact-check.json",
+      "bytes": 398,
+      "sha256": "5751b7e6a06f153b913704caa2015f5ccef960812b7ca637218ffa191ecef9a6"
+    },
+    {
+      "path": "evidence/benchmark-after-final.json",
+      "bytes": 1343,
+      "sha256": "b9ec6b5dd90d728d9ba0b9302f06151ff0a5066d3edbd62bc7e0d87f1c9bc418"
+    },
+    {
+      "path": "evidence/benchmark-after.json",
+      "bytes": 1345,
+      "sha256": "d4a232d8230e93bf08b4b5a30962fc986842ab77fc2ddeabcb3526fadaa9fcc8"
+    },
+    {
+      "path": "evidence/benchmark-before.json",
+      "bytes": 1379,
+      "sha256": "afbe3c2fb83f526a503cc54ba26a5caf4465f4ea6d231a3fdc826297c32c235a"
+    },
+    {
+      "path": "evidence/benchmark-comparison.json",
+      "bytes": 158,
+      "sha256": "9b4bf52ac6d90503ad5d698189f1bf508e61d7aca9d55ad2833737823f6c2581"
+    },
+    {
+      "path": "evidence/busy-before.log",
+      "bytes": 822,
+      "sha256": "59020e469367756bf9c8ea7ac0bcf85253d98ae42ff46497b10fd3a9ed84c1b2"
+    },
+    {
+      "path": "evidence/ci200-python313.log",
+      "bytes": 31114,
+      "sha256": "ab38bd296cae96f5d6d8aa19f68d44dde6342ae8d615fe7b1811922662927c86"
+    },
+    {
+      "path": "evidence/ci201-python313.log",
+      "bytes": 49529,
+      "sha256": "a9d8a916343ce3190c0bd3b92df2344a5249f391915e1fbc384bce8f1fdabfd9"
+    },
+    {
+      "path": "evidence/ci201-python314.log",
+      "bytes": 49427,
+      "sha256": "9caf89389fda23b95148501767d8fe8bb747596616eb8d2c06661c00630887d2"
+    },
+    {
+      "path": "evidence/ci202-python313.log",
+      "bytes": 55371,
+      "sha256": "8e5e709d2705af08de0c22dcccefaf05728c2acb67541b9fd6ad851855607309"
+    },
+    {
+      "path": "evidence/ci202-python314.log",
+      "bytes": 55045,
+      "sha256": "f5eac8cae524390493a936d4937c2f58393b2b70a0fe39f77c7e3620be437282"
+    },
+    {
+      "path": "evidence/ci202-summary.json",
+      "bytes": 7420,
+      "sha256": "b0c3d1692cbf2cdfd13bfdb4163660589abb5432dbeca1ecffeddc81cf6f5542"
+    },
+    {
+      "path": "evidence/doctor-windows.json",
+      "bytes": 718,
+      "sha256": "a4a86aee44abced89f790bd6365e73c8925650de762b0f921fd57e5158085748"
+    },
+    {
+      "path": "evidence/h21-replay.json",
+      "bytes": 361,
+      "sha256": "562577dd2100395fe03c9e277895b52e4f138152ad1b2ac9b2375b28d3fdbbbb"
+    },
+    {
+      "path": "evidence/ingestion-before.log",
+      "bytes": 6088,
+      "sha256": "e97fb21079502aeda4fa62159a7812e9937705a04f249d8c033f2d06072186b4"
+    },
+    {
+      "path": "evidence/local-validation.json",
+      "bytes": 5744,
+      "sha256": "a06bbea3584c0413f6164eab066b2e64614849ac8c8713ded4c598ffea8aaed2"
+    },
+    {
+      "path": "evidence/scope.md",
+      "bytes": 1677,
+      "sha256": "32233c933ebb8ba6034364207a86dbe1c73a7310d692dce887498ea4ce58ea1a"
+    },
+    {
+      "path": "evidence/snapshot-busy-before.log",
+      "bytes": 849,
+      "sha256": "bfa6931ba995e7630c62dba8a6d06f02f389faeb0cea56dad0f440778013971b"
+    },
+    {
+      "path": "evidence/stdlib-final.log",
+      "bytes": 8652,
+      "sha256": "7d710ff9f29a7fa94b8433ae8abece844a53ad37d445a070de44d0c46d6e7938"
+    },
+    {
+      "path": "evidence/stdlib-post-snapshot.log",
+      "bytes": 8817,
+      "sha256": "3f388f8c13b3353304b86eaee827b19079473e9b661ddac3066486aa753b5c9a"
+    }
+  ],
+  "scope": "Archived observations, not economic certification. Final documentation head and main checks are recorded on PR75."
+}
