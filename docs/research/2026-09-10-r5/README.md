@@ -146,6 +146,10 @@ Ruff, Pyright, lock, metadados, build/wheel fora do checkout e segredos.
 commit; não é contada como nova evidência nem falha econômica. O PR registra os
 checks adicionais da entrega final.
 
+A [segunda execução](reproduction.json), após endurecer as recusas do runner,
+reproduziu exatamente os 24 casos, ordens, impostos e 30.226 observações. Apenas
+metadados de horário/commit diferem. Não foi contada como nova evidência econômica.
+
 Decisões: rejeitar H22 neste registro; preservar o ganho nominal condicional da
 exposição simples; não promover uma variante escolhida depois dos resultados.
 Nenhuma das janelas é holdout intacto. Os 24 casos, incluindo negativos e inviáveis,
