@@ -1,0 +1,24 @@
+{
+  "tested_head": "ec11a435d4afb864a67aa23159b37d0ac9bc27c5",
+  "run_id": 34498020049,
+  "url": "https://github.com/leonardosovienski/stocks-predictor/actions/runs/34498020049",
+  "status": "completed",
+  "conclusion": "success",
+  "python": [
+    "3.13",
+    "3.14"
+  ],
+  "tests_per_python": 859,
+  "subtests_per_python": 29,
+  "coverage_percent": 79,
+  "checks": [
+    "Ruff",
+    "Pyright",
+    "locked dependencies",
+    "R3 identities",
+    "R6 identities",
+    "tests",
+    "wheel outside checkout",
+    "secrets"
+  ]
+}

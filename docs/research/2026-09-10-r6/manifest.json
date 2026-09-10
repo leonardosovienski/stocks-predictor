@@ -14,5 +14,8 @@
   "research/session-20260910/gap_resolution/exact_objects/a8d05b848653b1ce0d81b8a3040f2f3a121387d221de8ade74a82afe5411c681": "a8d05b848653b1ce0d81b8a3040f2f3a121387d221de8ade74a82afe5411c681",
   "research/session-20260910/gap_resolution/exact_objects/f50bd2aa0ae3e78cb509ad9d158f8fcaacd6e90123a42eb2c7d180a50078cb40": "f50bd2aa0ae3e78cb509ad9d158f8fcaacd6e90123a42eb2c7d180a50078cb40",
   "docs/research/2026-09-10-r6/evidence/h20-complete-numeric-reconciliation.json.gz": "686270be070e0d4ce2e017d5688cc471a0e510c6b2e78973be1633ca28fcc72f",
-  "docs/research/2026-09-10-r6/manifest-v1.json": "c732b5d0174fb10f6c2ec73c275c6057d2464a91ab6c4b02fe48697ecf3c87df"
+  "docs/research/2026-09-10-r6/manifest-v1.json": "c732b5d0174fb10f6c2ec73c275c6057d2464a91ab6c4b02fe48697ecf3c87df",
+  "docs/research/2026-09-10-r6/evidence/acquisitions-extra.json": "b63b7cddaec931f1120c003390a7d53c96819c2dd48ab7b2119d8a01cfe36e44",
+  "docs/research/2026-09-10-r6/evidence/ci-pr-initial.json": "bf323f1a24924526fca3f882ba772d5b14c0587ee8089e1d5830f7ee98b4bd11",
+  "docs/research/2026-09-10-r6/evidence/preservation-final.json": "209753735e3c629044994f64d0de6a8e9051dbff4baadb7b80a798e5ed1c9fce"
 }

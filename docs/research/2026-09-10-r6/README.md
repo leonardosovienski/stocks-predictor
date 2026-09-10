@@ -113,4 +113,14 @@ trabalho documental recuperável e informação que precisa de fonte externa/fut
 [Scripts e comandos](../../../research/session-20260910/gap_resolution/README.md),
 [protocolo](protocol.json), [manifesto](manifest.json) e recibos em `evidence/`.
 O verificador R6 entrou na CI, junto dos checks existentes em Python 3.13/3.14.
-O resultado dos checks e o SHA integrado serão registrados no PR desta rodada.
+A [CI do primeiro conjunto de correções](https://github.com/leonardosovienski/stocks-predictor/actions/runs/34498020049)
+aprovou 859 testes e 29 subtestes em cada Python, cobertura 79%, Ruff, Pyright,
+lock, identidades R3/R6, build, wheel fora do checkout e segredos, em `ec11a435…`.
+Os 12 bancos e 20 recibos R4 foram novamente conferidos por hash, sem diferenças.
+[PR77](https://github.com/leonardosovienski/stocks-predictor/pull/77) registra os
+checks finais e o SHA integrado.
+
+Foram preservadas 27 tentativas de captura nesta rodada. A verificação adicional
+dos capítulos antigos 02/04/06 encontrou indicadores/renda fixa ou falhas de
+acesso; não resolveu as datas restantes. Não foram usados esses PDFs para atestar
+crédito de dividendos ou ausência de eventos.
