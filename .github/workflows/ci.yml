@@ -64,7 +64,8 @@ jobs:
           retention-days: 14
           if-no-files-found: ignore
       - name: Install build tools from hashes
-        run: uv pip install --python .venv/bin/python --require-hashes --no-deps --only-binary :all: -r tools/build-requirements.txt
+        run: |
+          uv pip install --python .venv/bin/python --require-hashes --no-deps --only-binary :all: -r tools/build-requirements.txt
       - name: Build identical distributions twice
         run: uv run --no-sync python tools/reproducible_build.py
       - name: Retain distribution evidence
