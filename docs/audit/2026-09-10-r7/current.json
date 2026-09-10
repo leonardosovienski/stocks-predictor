@@ -413,11 +413,12 @@
     },
     "L14": {
       "state": "OPEN_DATA",
-      "result": "Cortes históricos foram preservados. R7 não estendeu cotações nem substituiu calendário observado por calendário universal.",
-      "remaining": "Calendário independente por ano e intervalos faltantes do universo exigem fonte aplicável.",
+      "result": "Novo estágio isolado de 55.986 preços/408 tickers chega a 09/09/2026 a partir do ZIP R6. Bancos, cortes históricos e calendário antigo preservados.",
+      "remaining": "Calendário independente por ano e intervalos faltantes do universo exigem fonte aplicável; estágio não é identidade PIT nem atualização automática dos backtests.",
       "acceptance": "Evidência suficiente para a afirmação e o escopo declarado; não certificar além deles.",
       "evidence": [
-        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md"
+        "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md",
+        "docs/audit/2026-09-10-r7/evidence/real-versioned-ingestion.json"
       ]
     },
     "L15": {
@@ -471,7 +472,7 @@
     },
     "L20": {
       "state": "IMPLEMENTED_LIMITED",
-      "result": "Pyright agora cobre todo o pacote; Ruff F/E9; 873 testes ativos na CI218 e cobertura de ramos 79%.",
+      "result": "Pyright agora cobre todo o pacote; Ruff F/E9; 877 testes ativos na CI220 e cobertura de ramos 79%.",
       "remaining": "Cobertura não é 100% nem prova universal. Mantido piso de 77%, sem supressões para aprovar.",
       "acceptance": "Evidência suficiente para a afirmação e o escopo declarado; não certificar além deles.",
       "evidence": [
@@ -637,13 +638,16 @@
     },
     "M11": {
       "state": "RESOLVED_SCOPE",
-      "result": "API explícita de origem versionada satisfaz idempotência, nova versão para novo conteúdo e preservação de versões anteriores.",
+      "result": "API de origem versionada testada também no ZIP real de 2026: 55.986 linhas, 408 tickers, replay com zero inserções e SQLite íntegro; nova versão exigida para conteúdo diferente.",
       "remaining": "",
       "acceptance": "Mesma versão idempotente; mudança de conteúdo exige nova origem verificável e não sobrescreve a anterior.",
       "evidence": [
         "stocks_predictor/source_catalog.py",
         "tests/test_versioned_sources.py",
-        "docs/audit/2026-09-10-r7/evidence/ci-history.json"
+        "docs/audit/2026-09-10-r7/evidence/ci-history.json",
+        "docs/audit/2026-09-10-r7/evidence/real-versioned-ingestion.json",
+        "docs/audit/2026-09-10-r7/evidence/real-ingestion-code.json",
+        "research/session-20260910/completion/real_ingestion.py"
       ]
     },
     "M12": {
@@ -1464,16 +1468,18 @@
     ".github/workflows/ci.yml": "e069bb75a28bd7addb8c6e9644736695b3e17918514e6062e169d02fe32f8c1c",
     "docs/audit/2026-09-10-integral/README.md": "9d7ae3d19399f87663d14829aefa165c599ff89c55e45f574d66ac11a52fd6fa",
     "docs/audit/2026-09-10-integral/registry.json": "0dc48afc64c361140fdb413cc80c0e0bb7abdecf0975624b45e37dd505d3e685",
-    "docs/audit/2026-09-10-r7/REPRODUCTION.md": "79ff6a1352c4d16a6edec6fdf032bba678e1bcb83b08dea5a5bebae14e4c125a",
-    "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md": "2756bf985fc3f0a3993566834e02136d40018becfe77377e1851049a0d541c8d",
+    "docs/audit/2026-09-10-r7/REPRODUCTION.md": "b6d0093cc31e733ac1d8dfbcb639c1c5444c31050958785da1c3e597eac0087d",
+    "docs/audit/2026-09-10-r7/SOURCE_REVIEW.md": "eb7460bcd1828e4116ac045c84b6b3e6c8b76c18019c6f08f882c6f629c90018",
     "docs/audit/2026-09-10-r7/SOURCE_RIGHTS.md": "029b761d38ee7944443ebeda7bff151514add4563fa77c9af660aca31416e508",
     "docs/audit/2026-09-10-r7/baseline-v2.json": "2caa9f9b4c5d3b9a71a863a3c9e00c7c8321283c1fd8e22e6f22531d952c5c39",
     "docs/audit/2026-09-10-r7/evidence/acquisitions.json": "6ba52f6f04dd766ad7e737bd00f263aafd04ab9796b6f98ae581d363b8d4e1b5",
-    "docs/audit/2026-09-10-r7/evidence/ci-history.json": "b1c4954f040d5059176fadce0903303177d4730c70bbd40aeeee99d155aa17f1",
+    "docs/audit/2026-09-10-r7/evidence/ci-history.json": "715d6d0cb639ee440c3609e99a8181f0b307c593c257ae5a84b475f54f1b562a",
     "docs/audit/2026-09-10-r7/evidence/forward-readiness.json": "1adb8e44e8f4fac31470f1832fc49cb77b06301af3d9e99e0ae232a026774ad8",
     "docs/audit/2026-09-10-r7/evidence/personal-profile.json": "1b950ee707aab8f60fe3cbbd17313c7f7d68fd425c019ea9fe88cbdc5e5c4908",
     "docs/audit/2026-09-10-r7/evidence/pr75-closure-and-actions.json": "3900a3308ba55d09f32a6134c062f47f20dd9e765eb21112098b70a64627315e",
     "docs/audit/2026-09-10-r7/evidence/real-ingestion-benchmark.json": "72ed6e67805b01108ffa6eb1459993403b7e2f273aa7e2893da6d1847e9be6de",
+    "docs/audit/2026-09-10-r7/evidence/real-ingestion-code.json": "2ea1a855f6f7d425c7a5c768aa594345a7dd14a4afd0afef10844bbaba1f75dd",
+    "docs/audit/2026-09-10-r7/evidence/real-versioned-ingestion.json": "634436908be81af7d7dcc2b9f3cdf8e0b296da78d57f68b2540f619a9a59bf3e",
     "docs/audit/2026-09-10-r7/evidence/source15-materialized.receipt.json": "601901fea48a0690da6970a13af09e70f58242af9fdda930ac3042135e760f8a",
     "docs/audit/2026-09-10-r7/source-rights.json": "3b849ce5cbb2b22d67bd765a06d68df53616eee4e231d1035d33098c46f42d47",
     "docs/engineering/2026-09-10-r4/README.md": "dbbb97f8dec8bf1f0bed2e09d980f224d81270e989d718d8312a096aea8b183f",
@@ -1481,6 +1487,7 @@
     "docs/research/2026-09-10-r5/README.md": "617ec0e6f8806f66fd34c0a06b4bb003e87dd02504b4a75370790ff2473802f9",
     "docs/research/2026-09-10-r6/README.md": "b2878c1c40dc361a2c854c5b2d2b55568d8b2e7b00f689ca0c41e1dbd50e0c10",
     "pyproject.toml": "7497d28bc7fa91492c0716632efa4412c837e22ae11910515ec84e2b35352532",
+    "research/session-20260910/completion/real_ingestion.py": "3e7235665a2a79cb397bb57b779e7312633bcc3c01daa348faadc66cd1f24565",
     "stocks_predictor/config.py": "1cf9eb82c9f3be725f376ed0b2ed2ca71a69677ea7fe13bcfa989da474a38d23",
     "stocks_predictor/ingest_cotahist.py": "40316fceaf8a8b43725203f4497b2cf817d09543d44ab77ddbf85ca6d0a0ab33",
     "stocks_predictor/research_profile.py": "f8ef1353ac6701ef3eb24d92e3974bc95c745133e0597a9266308069d9ef1cfb",
@@ -1495,6 +1502,8 @@
     "tools/benchmark_real_ingestion.py": "67b09d7a6b3702212cd46b3d6207fee253e8286f0c481bf3c35927537f3fa85f",
     "tools/build-requirements.txt": "429d47a82b885479ddabb8e96aa60d58a8672487e2a3a28faeaeb6fd54109f4f",
     "tools/materialize_source_revision.py": "889f1f324b52812cafabadd7d3d99117184758aef0fd4e587fb42fbaaba9d9f5",
-    "tools/reproducible_build.py": "e03d807e8366fd1a095f4905b5f9429330557a935459176a1205f30f17b3225c"
+    "tools/reproducible_build.py": "e03d807e8366fd1a095f4905b5f9429330557a935459176a1205f30f17b3225c",
+    "docs/audit/2026-09-10-r7/evidence/preservation.json": "f68c3642f159067fcfabdddecc0ddbc8b18ebd5d3a24830f552adfc135698b64",
+    "docs/audit/2026-09-10-r7/evidence/ci220.json": "05d49263057903386f79d1da22db6710b1a406405e91888033a7f56a95e5f473"
   }
 }

@@ -108,6 +108,25 @@
         "2026-09-10T18:23:18.1521146Z 17 passed in 0.19s",
         "2026-09-10T18:23:18.2568989Z ValueError: evidence changed: tools/build-requirements.txt"
       ]
+    },
+    {
+      "ci_number": 220,
+      "run_id": 34514230223,
+      "head": "09bcd66fff9060426ac597f22f53af2a55c7e49a",
+      "result": "PASS",
+      "reason": "Both Python jobs and secrets passed; 877 active + 17 archive tests, 49 subtests on Python3.14, 79 percent branch coverage, full-package types, registry, identical builds and external wheel smoke.",
+      "url": "https://github.com/leonardosovienski/stocks-predictor/actions/runs/34514230223",
+      "local_full_log_name": "ci220-python314.log",
+      "local_full_log_sha256": "973adcee1c60599e199cebcf4bff2c05e5d4833ef52e692984cc61a4c26cef30",
+      "relevant_log_lines": [
+        "2026-09-10T18:25:38.3985510Z All checks passed!",
+        "2026-09-10T18:25:44.7804681Z 0 errors, 0 warnings, 0 informations",
+        "2026-09-10T18:25:47.2100759Z 17 passed in 0.25s",
+        "2026-09-10T18:27:31.1156284Z 877 passed, 49 subtests passed in 102.88s (0:01:42)",
+        "2026-09-10T18:27:33.0000522Z TOTAL                                            6846   1219   2956    518    79%",
+        "2026-09-10T18:27:43.7483744Z     \"stocks_predictor-0.1.0-py3-none-any.whl\": \"e28215f7209e8da5b081394f385c7df6c4e2afa61cd92340c6f15059ba2c102a\",",
+        "2026-09-10T18:27:43.7485168Z     \"stocks_predictor-0.1.0.tar.gz\": \"ad65e5baa7e2b68eb4afc3dde29602873a379bdd825c013b5c643d214c8fb488\""
+      ]
     }
   ],
   "history_preserved": true

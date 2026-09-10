@@ -56,6 +56,18 @@ descreve a observação informada pelo chamador, não uma publicação históric
 certificada por terceiro. A demonstração executável está em
 `tests/test_versioned_sources.py` e usa bancos novos.
 
+O ensaio real também está parametrizado:
+
+```text
+python research/session-20260910/completion/real_ingestion.py --repo C:/STOCKS/stocks-predictor --archive C:/STOCKS/work/gap-resolution-r6-20260910/raw/COTAHIST_A2026.ZIP --receipt C:/STOCKS/work/gap-resolution-r6-20260910/raw/COTAHIST_A2026.ZIP.receipt.json --output C:/STOCKS/work/real-ingestion-replay-new
+```
+
+O script cria somente o contrato de preços e catálogo em banco novo de estágio,
+não o schema completo do projeto. Confere hash da aquisição, carrega e repete,
+exige replay com zero inserções e confere integridade/identidade das linhas.
+Foram armazenados 55.986 preços de 408 tickers com o filtro BDI02/mercado010;
+o ZIP original tem SHA `34b774681cbd201ef197fb98af8d431e4d7302e801f58b66e54036d2935dc4f4`.
+
 `stocks_predictor.temporal_evidence.estimate_asof` aceita resultados datados,
 com decisão anterior à maturidade, maturidade até a observação e observação
 estritamente anterior ao corte. A guarda não demonstra independência estatística

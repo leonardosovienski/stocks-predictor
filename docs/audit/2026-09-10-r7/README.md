@@ -43,11 +43,20 @@ como se fossem defeitos independentes.
 | Materializador | 830 arquivos da Fonte15 reconstruídos do delta de seis arquivos e Fonte14 | Necessita os dados externos identificados pelos manifestos |
 | Registro único | Confere populações, identidades, evidências e documento gerado; recusa fechamento sem prova | Identidade não substitui revisão semântica da suficiência |
 
-A CI218 passou nas duas versões de Python: **873 testes ativos, 17 arquivados,
-44 subtestes no Python3.14, Pyright sem erros e cobertura de ramos 79%**.
-Após essa execução foram acrescentadas regressões do registro, build auxiliar e
-custo do trabalho; 18 testes stdlib locais passaram. O PR registra o check do
-head final, inclusive dessas adições, sem atribuir a CI218 a um código posterior.
+A [CI220](https://github.com/leonardosovienski/stocks-predictor/actions/runs/34514230223)
+passou nas duas versões de Python: **877 testes ativos, 17 arquivados, 49 subtestes
+no Python3.14, Pyright sem erros e cobertura de ramos 79%**, incluindo as regressões
+do registro, build auxiliar e custo do trabalho. Os 18 testes stdlib novos também
+passaram localmente. O PR registra o check do head documental final; a CI220
+corresponde ao commit `09bcd66fff9060426ac597f22f53af2a55c7e49a`.
+
+Além dos testes sintéticos, a API de ingestão versionada foi aplicada ao ZIP B3
+de 2026 já adquirido: **55.986 preços de 408 tickers entre 02/01 e 09/09/2026**,
+em um banco novo de conferência. Replay com zero inserções e integridade SQLite
+aprovada, conforme [recibo](evidence/real-versioned-ingestion.json). O filtro é
+BDI02/mercado010; não contém todos os instrumentos nem substitui os bancos ou
+protocolos históricos. Os [12 bancos anteriores e o V2](evidence/preservation.json)
+mantiveram seus hashes.
 
 ## Desempenho observado
 

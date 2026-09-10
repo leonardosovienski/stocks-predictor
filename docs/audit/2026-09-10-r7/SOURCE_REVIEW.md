@@ -6,11 +6,17 @@ dirigidas para pagamentos faltantes e termos dos conjuntos efetivamente usados.
 O conjunto de 794 documentos não foi lido integralmente de ponta a ponta nesta
 rodada. Hash, extração e pesquisa de texto têm alcances diferentes de leitura.
 
-**Resultado de dados econômicos: nenhuma alteração admitida na Fonte15.**
+**Resultado dos eventos econômicos: nenhuma alteração admitida na Fonte15.**
 Permanecem 50 líquidos ausentes, dos quais 22 também têm data de pagamento ausente;
 28 registros societários e 1.590 ocorrências sobrepostas de 15 classes. Essas
 contagens não representam 1.590 defeitos independentes. O consolidado mantém os
 registros individuais e todos os intervalos, inclusive resultados negativos.
+
+Separadamente, a nova ingestão foi exercitada no ZIP original B3 de 2026, já
+adquirido em R6, criando um estágio de 55.986 preços/408 tickers até 09/09/2026.
+O [recibo](evidence/real-versioned-ingestion.json) identifica fonte, observação,
+replay, linhas e banco. Essa cópia de conferência não atualiza os bancos legados,
+não inclui todos os instrumentos e não certifica eventos/calendário/identidade PIT.
 
 ## Decisões materiais
 

@@ -1,0 +1,747 @@
+{
+  "run": {
+    "id": 34514230223,
+    "name": "CI Pipeline",
+    "node_id": "WFR_kwLOTAqQH88AAAAICTVbzw",
+    "head_branch": "fix/completion-r7-20260910",
+    "head_sha": "09bcd66fff9060426ac597f22f53af2a55c7e49a",
+    "path": ".github/workflows/ci.yml",
+    "display_title": "Executar pendências de engenharia, fontes e rastreabilidade da auditoria",
+    "run_number": 220,
+    "event": "pull_request",
+    "status": "completed",
+    "conclusion": "success",
+    "workflow_id": 322668749,
+    "check_suite_id": 93500312337,
+    "check_suite_node_id": "CS_kwDOTAqQH88AAAAVxQ2LEQ",
+    "url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/actions/runs/34514230223",
+    "html_url": "https://github.com/leonardosovienski/stocks-predictor/actions/runs/34514230223",
+    "pull_requests": [
+      {
+        "url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/pulls/78",
+        "id": 4498440481,
+        "number": 78,
+        "head": {
+          "ref": "fix/completion-r7-20260910",
+          "sha": "09bcd66fff9060426ac597f22f53af2a55c7e49a",
+          "repo": {
+            "id": 1275760671,
+            "url": "https://api.github.com/repos/leonardosovienski/stocks-predictor",
+            "name": "stocks-predictor"
+          }
+        },
+        "base": {
+          "ref": "main",
+          "sha": "0e2c79185d9f62ba69af028b1b601649d6b5f257",
+          "repo": {
+            "id": 1275760671,
+            "url": "https://api.github.com/repos/leonardosovienski/stocks-predictor",
+            "name": "stocks-predictor"
+          }
+        }
+      }
+    ],
+    "created_at": "2026-09-10T18:25:26Z",
+    "updated_at": "2026-09-10T18:30:17Z",
+    "actor": {
+      "login": "leonardosovienski",
+      "id": 86319239,
+      "node_id": "MDQ6VXNlcjg2MzE5MjM5",
+      "avatar_url": "https://avatars.githubusercontent.com/u/86319239?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/leonardosovienski",
+      "html_url": "https://github.com/leonardosovienski",
+      "followers_url": "https://api.github.com/users/leonardosovienski/followers",
+      "following_url": "https://api.github.com/users/leonardosovienski/following{/other_user}",
+      "gists_url": "https://api.github.com/users/leonardosovienski/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/leonardosovienski/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/leonardosovienski/subscriptions",
+      "organizations_url": "https://api.github.com/users/leonardosovienski/orgs",
+      "repos_url": "https://api.github.com/users/leonardosovienski/repos",
+      "events_url": "https://api.github.com/users/leonardosovienski/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/leonardosovienski/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "run_attempt": 1,
+    "referenced_workflows": [],
+    "run_started_at": "2026-09-10T18:25:26Z",
+    "triggering_actor": {
+      "login": "leonardosovienski",
+      "id": 86319239,
+      "node_id": "MDQ6VXNlcjg2MzE5MjM5",
+      "avatar_url": "https://avatars.githubusercontent.com/u/86319239?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/leonardosovienski",
+      "html_url": "https://github.com/leonardosovienski",
+      "followers_url": "https://api.github.com/users/leonardosovienski/followers",
+      "following_url": "https://api.github.com/users/leonardosovienski/following{/other_user}",
+      "gists_url": "https://api.github.com/users/leonardosovienski/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/leonardosovienski/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/leonardosovienski/subscriptions",
+      "organizations_url": "https://api.github.com/users/leonardosovienski/orgs",
+      "repos_url": "https://api.github.com/users/leonardosovienski/repos",
+      "events_url": "https://api.github.com/users/leonardosovienski/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/leonardosovienski/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "jobs_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/actions/runs/34514230223/jobs",
+    "logs_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/actions/runs/34514230223/logs",
+    "check_suite_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/check-suites/93500312337",
+    "artifacts_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/actions/runs/34514230223/artifacts",
+    "cancel_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/actions/runs/34514230223/cancel",
+    "rerun_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/actions/runs/34514230223/rerun",
+    "previous_attempt_url": null,
+    "workflow_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/actions/workflows/322668749",
+    "head_commit": {
+      "id": "09bcd66fff9060426ac597f22f53af2a55c7e49a",
+      "tree_id": "bec99bc899a346391cb27452a406c06d2c6e7c88",
+      "message": "Record cross-platform evidence guard and correct LF source receipt",
+      "timestamp": "2026-09-10T18:25:17Z",
+      "author": {
+        "name": "leonardosovienski",
+        "email": "leonardo.sovienski@gmail.com"
+      },
+      "committer": {
+        "name": "leonardosovienski",
+        "email": "leonardo.sovienski@gmail.com"
+      }
+    },
+    "repository": {
+      "id": 1275760671,
+      "node_id": "R_kgDOTAqQHw",
+      "name": "stocks-predictor",
+      "full_name": "leonardosovienski/stocks-predictor",
+      "private": false,
+      "owner": {
+        "login": "leonardosovienski",
+        "id": 86319239,
+        "node_id": "MDQ6VXNlcjg2MzE5MjM5",
+        "avatar_url": "https://avatars.githubusercontent.com/u/86319239?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/leonardosovienski",
+        "html_url": "https://github.com/leonardosovienski",
+        "followers_url": "https://api.github.com/users/leonardosovienski/followers",
+        "following_url": "https://api.github.com/users/leonardosovienski/following{/other_user}",
+        "gists_url": "https://api.github.com/users/leonardosovienski/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/leonardosovienski/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/leonardosovienski/subscriptions",
+        "organizations_url": "https://api.github.com/users/leonardosovienski/orgs",
+        "repos_url": "https://api.github.com/users/leonardosovienski/repos",
+        "events_url": "https://api.github.com/users/leonardosovienski/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/leonardosovienski/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/leonardosovienski/stocks-predictor",
+      "description": null,
+      "fork": false,
+      "url": "https://api.github.com/repos/leonardosovienski/stocks-predictor",
+      "forks_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/forks",
+      "keys_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/keys{/key_id}",
+      "collaborators_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/collaborators{/collaborator}",
+      "teams_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/teams",
+      "hooks_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/hooks",
+      "issue_events_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/issues/events{/number}",
+      "events_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/events",
+      "assignees_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/assignees{/user}",
+      "branches_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/branches{/branch}",
+      "tags_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/tags",
+      "blobs_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/git/blobs{/sha}",
+      "git_tags_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/git/tags{/sha}",
+      "git_refs_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/git/refs{/sha}",
+      "trees_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/git/trees{/sha}",
+      "statuses_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/statuses/{sha}",
+      "languages_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/languages",
+      "stargazers_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/stargazers",
+      "contributors_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/contributors",
+      "subscribers_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/subscribers",
+      "subscription_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/subscription",
+      "commits_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/commits{/sha}",
+      "git_commits_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/git/commits{/sha}",
+      "comments_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/comments{/number}",
+      "issue_comment_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/issues/comments{/number}",
+      "contents_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/contents/{+path}",
+      "compare_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/compare/{base}...{head}",
+      "merges_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/merges",
+      "archive_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/{archive_format}{/ref}",
+      "downloads_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/downloads",
+      "issues_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/issues{/number}",
+      "pulls_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/pulls{/number}",
+      "milestones_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/milestones{/number}",
+      "notifications_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/notifications{?since,all,participating}",
+      "labels_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/labels{/name}",
+      "releases_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/releases{/id}",
+      "deployments_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/deployments"
+    },
+    "head_repository": {
+      "id": 1275760671,
+      "node_id": "R_kgDOTAqQHw",
+      "name": "stocks-predictor",
+      "full_name": "leonardosovienski/stocks-predictor",
+      "private": false,
+      "owner": {
+        "login": "leonardosovienski",
+        "id": 86319239,
+        "node_id": "MDQ6VXNlcjg2MzE5MjM5",
+        "avatar_url": "https://avatars.githubusercontent.com/u/86319239?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/leonardosovienski",
+        "html_url": "https://github.com/leonardosovienski",
+        "followers_url": "https://api.github.com/users/leonardosovienski/followers",
+        "following_url": "https://api.github.com/users/leonardosovienski/following{/other_user}",
+        "gists_url": "https://api.github.com/users/leonardosovienski/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/leonardosovienski/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/leonardosovienski/subscriptions",
+        "organizations_url": "https://api.github.com/users/leonardosovienski/orgs",
+        "repos_url": "https://api.github.com/users/leonardosovienski/repos",
+        "events_url": "https://api.github.com/users/leonardosovienski/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/leonardosovienski/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/leonardosovienski/stocks-predictor",
+      "description": null,
+      "fork": false,
+      "url": "https://api.github.com/repos/leonardosovienski/stocks-predictor",
+      "forks_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/forks",
+      "keys_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/keys{/key_id}",
+      "collaborators_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/collaborators{/collaborator}",
+      "teams_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/teams",
+      "hooks_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/hooks",
+      "issue_events_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/issues/events{/number}",
+      "events_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/events",
+      "assignees_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/assignees{/user}",
+      "branches_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/branches{/branch}",
+      "tags_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/tags",
+      "blobs_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/git/blobs{/sha}",
+      "git_tags_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/git/tags{/sha}",
+      "git_refs_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/git/refs{/sha}",
+      "trees_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/git/trees{/sha}",
+      "statuses_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/statuses/{sha}",
+      "languages_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/languages",
+      "stargazers_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/stargazers",
+      "contributors_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/contributors",
+      "subscribers_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/subscribers",
+      "subscription_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/subscription",
+      "commits_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/commits{/sha}",
+      "git_commits_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/git/commits{/sha}",
+      "comments_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/comments{/number}",
+      "issue_comment_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/issues/comments{/number}",
+      "contents_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/contents/{+path}",
+      "compare_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/compare/{base}...{head}",
+      "merges_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/merges",
+      "archive_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/{archive_format}{/ref}",
+      "downloads_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/downloads",
+      "issues_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/issues{/number}",
+      "pulls_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/pulls{/number}",
+      "milestones_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/milestones{/number}",
+      "notifications_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/notifications{?since,all,participating}",
+      "labels_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/labels{/name}",
+      "releases_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/releases{/id}",
+      "deployments_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/deployments"
+    }
+  },
+  "jobs": {
+    "total_count": 3,
+    "jobs": [
+      {
+        "id": 102995554922,
+        "run_id": 34514230223,
+        "workflow_name": "CI Pipeline",
+        "head_branch": "fix/completion-r7-20260910",
+        "run_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/actions/runs/34514230223",
+        "run_attempt": 1,
+        "node_id": "CR_kwDOTAqQH88AAAAX-wNyag",
+        "head_sha": "09bcd66fff9060426ac597f22f53af2a55c7e49a",
+        "url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/actions/jobs/102995554922",
+        "html_url": "https://github.com/leonardosovienski/stocks-predictor/actions/runs/34514230223/job/102995554922",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-09-10T18:25:26Z",
+        "started_at": "2026-09-10T18:25:29Z",
+        "completed_at": "2026-09-10T18:25:39Z",
+        "name": "secrets",
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1,
+            "started_at": "2026-09-10T18:25:30Z",
+            "completed_at": "2026-09-10T18:25:31Z"
+          },
+          {
+            "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2,
+            "started_at": "2026-09-10T18:25:31Z",
+            "completed_at": "2026-09-10T18:25:34Z"
+          },
+          {
+            "name": "Run gitleaks/gitleaks-action@e0c47f4f8be36e29cdc102c57e68cb5cbf0e8d1e",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3,
+            "started_at": "2026-09-10T18:25:34Z",
+            "completed_at": "2026-09-10T18:25:36Z"
+          },
+          {
+            "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6,
+            "started_at": "2026-09-10T18:25:36Z",
+            "completed_at": "2026-09-10T18:25:37Z"
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7,
+            "started_at": "2026-09-10T18:25:37Z",
+            "completed_at": "2026-09-10T18:25:37Z"
+          }
+        ],
+        "check_run_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/check-runs/102995554922",
+        "labels": [
+          "ubuntu-24.04"
+        ],
+        "runner_id": 1000007354,
+        "runner_name": "GitHub Actions 1000007354",
+        "runner_group_id": 0,
+        "runner_group_name": "GitHub Actions"
+      },
+      {
+        "id": 102995555260,
+        "run_id": 34514230223,
+        "workflow_name": "CI Pipeline",
+        "head_branch": "fix/completion-r7-20260910",
+        "run_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/actions/runs/34514230223",
+        "run_attempt": 1,
+        "node_id": "CR_kwDOTAqQH88AAAAX-wNzvA",
+        "head_sha": "09bcd66fff9060426ac597f22f53af2a55c7e49a",
+        "url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/actions/jobs/102995555260",
+        "html_url": "https://github.com/leonardosovienski/stocks-predictor/actions/runs/34514230223/job/102995555260",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-09-10T18:25:27Z",
+        "started_at": "2026-09-10T18:25:30Z",
+        "completed_at": "2026-09-10T18:30:15Z",
+        "name": "Quality / Python 3.13",
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1,
+            "started_at": "2026-09-10T18:25:31Z",
+            "completed_at": "2026-09-10T18:25:32Z"
+          },
+          {
+            "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2,
+            "started_at": "2026-09-10T18:25:32Z",
+            "completed_at": "2026-09-10T18:25:36Z"
+          },
+          {
+            "name": "Run astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3,
+            "started_at": "2026-09-10T18:25:36Z",
+            "completed_at": "2026-09-10T18:25:38Z"
+          },
+          {
+            "name": "Run actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4,
+            "started_at": "2026-09-10T18:25:38Z",
+            "completed_at": "2026-09-10T18:25:38Z"
+          },
+          {
+            "name": "Install project and dev dependencies",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5,
+            "started_at": "2026-09-10T18:25:38Z",
+            "completed_at": "2026-09-10T18:25:39Z"
+          },
+          {
+            "name": "Offline runtime metadata check",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6,
+            "started_at": "2026-09-10T18:25:39Z",
+            "completed_at": "2026-09-10T18:25:40Z"
+          },
+          {
+            "name": "Ruff",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7,
+            "started_at": "2026-09-10T18:25:40Z",
+            "completed_at": "2026-09-10T18:25:40Z"
+          },
+          {
+            "name": "Pyright",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8,
+            "started_at": "2026-09-10T18:25:40Z",
+            "completed_at": "2026-09-10T18:25:46Z"
+          },
+          {
+            "name": "Audit receipt identities",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9,
+            "started_at": "2026-09-10T18:25:46Z",
+            "completed_at": "2026-09-10T18:25:46Z"
+          },
+          {
+            "name": "Recovered package and R6 evidence identities",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10,
+            "started_at": "2026-09-10T18:25:46Z",
+            "completed_at": "2026-09-10T18:25:46Z"
+          },
+          {
+            "name": "Archived evidence regressions",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11,
+            "started_at": "2026-09-10T18:25:46Z",
+            "completed_at": "2026-09-10T18:25:46Z"
+          },
+          {
+            "name": "Consolidated R7 inventory and evidence",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12,
+            "started_at": "2026-09-10T18:25:46Z",
+            "completed_at": "2026-09-10T18:25:47Z"
+          },
+          {
+            "name": "Tests",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13,
+            "started_at": "2026-09-10T18:25:47Z",
+            "completed_at": "2026-09-10T18:29:55Z"
+          },
+          {
+            "name": "Coverage report",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 14,
+            "started_at": "2026-09-10T18:29:55Z",
+            "completed_at": "2026-09-10T18:29:57Z"
+          },
+          {
+            "name": "Retain test evidence",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15,
+            "started_at": "2026-09-10T18:29:57Z",
+            "completed_at": "2026-09-10T18:29:58Z"
+          },
+          {
+            "name": "Install build tools from hashes",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 16,
+            "started_at": "2026-09-10T18:29:58Z",
+            "completed_at": "2026-09-10T18:29:58Z"
+          },
+          {
+            "name": "Build identical distributions twice",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 17,
+            "started_at": "2026-09-10T18:29:58Z",
+            "completed_at": "2026-09-10T18:30:08Z"
+          },
+          {
+            "name": "Retain distribution evidence",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 18,
+            "started_at": "2026-09-10T18:30:08Z",
+            "completed_at": "2026-09-10T18:30:10Z"
+          },
+          {
+            "name": "Wheel smoke outside checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 19,
+            "started_at": "2026-09-10T18:30:10Z",
+            "completed_at": "2026-09-10T18:30:11Z"
+          },
+          {
+            "name": "Post Run actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 36,
+            "started_at": "2026-09-10T18:30:11Z",
+            "completed_at": "2026-09-10T18:30:12Z"
+          },
+          {
+            "name": "Post Run astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 37,
+            "started_at": "2026-09-10T18:30:12Z",
+            "completed_at": "2026-09-10T18:30:12Z"
+          },
+          {
+            "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 38,
+            "started_at": "2026-09-10T18:30:12Z",
+            "completed_at": "2026-09-10T18:30:12Z"
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 39,
+            "started_at": "2026-09-10T18:30:12Z",
+            "completed_at": "2026-09-10T18:30:12Z"
+          }
+        ],
+        "check_run_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/check-runs/102995555260",
+        "labels": [
+          "ubuntu-24.04"
+        ],
+        "runner_id": 1000007355,
+        "runner_name": "GitHub Actions 1000007355",
+        "runner_group_id": 0,
+        "runner_group_name": "GitHub Actions"
+      },
+      {
+        "id": 102995555305,
+        "run_id": 34514230223,
+        "workflow_name": "CI Pipeline",
+        "head_branch": "fix/completion-r7-20260910",
+        "run_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/actions/runs/34514230223",
+        "run_attempt": 1,
+        "node_id": "CR_kwDOTAqQH88AAAAX-wNz6Q",
+        "head_sha": "09bcd66fff9060426ac597f22f53af2a55c7e49a",
+        "url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/actions/jobs/102995555305",
+        "html_url": "https://github.com/leonardosovienski/stocks-predictor/actions/runs/34514230223/job/102995555305",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-09-10T18:25:27Z",
+        "started_at": "2026-09-10T18:25:29Z",
+        "completed_at": "2026-09-10T18:27:47Z",
+        "name": "Quality / Python 3.14",
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1,
+            "started_at": "2026-09-10T18:25:30Z",
+            "completed_at": "2026-09-10T18:25:31Z"
+          },
+          {
+            "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2,
+            "started_at": "2026-09-10T18:25:31Z",
+            "completed_at": "2026-09-10T18:25:34Z"
+          },
+          {
+            "name": "Run astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3,
+            "started_at": "2026-09-10T18:25:34Z",
+            "completed_at": "2026-09-10T18:25:35Z"
+          },
+          {
+            "name": "Run actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4,
+            "started_at": "2026-09-10T18:25:35Z",
+            "completed_at": "2026-09-10T18:25:36Z"
+          },
+          {
+            "name": "Install project and dev dependencies",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5,
+            "started_at": "2026-09-10T18:25:36Z",
+            "completed_at": "2026-09-10T18:25:38Z"
+          },
+          {
+            "name": "Offline runtime metadata check",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6,
+            "started_at": "2026-09-10T18:25:38Z",
+            "completed_at": "2026-09-10T18:25:38Z"
+          },
+          {
+            "name": "Ruff",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7,
+            "started_at": "2026-09-10T18:25:38Z",
+            "completed_at": "2026-09-10T18:25:38Z"
+          },
+          {
+            "name": "Pyright",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8,
+            "started_at": "2026-09-10T18:25:38Z",
+            "completed_at": "2026-09-10T18:25:44Z"
+          },
+          {
+            "name": "Audit receipt identities",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9,
+            "started_at": "2026-09-10T18:25:44Z",
+            "completed_at": "2026-09-10T18:25:44Z"
+          },
+          {
+            "name": "Recovered package and R6 evidence identities",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10,
+            "started_at": "2026-09-10T18:25:44Z",
+            "completed_at": "2026-09-10T18:25:45Z"
+          },
+          {
+            "name": "Archived evidence regressions",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11,
+            "started_at": "2026-09-10T18:25:45Z",
+            "completed_at": "2026-09-10T18:25:47Z"
+          },
+          {
+            "name": "Consolidated R7 inventory and evidence",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12,
+            "started_at": "2026-09-10T18:25:47Z",
+            "completed_at": "2026-09-10T18:25:47Z"
+          },
+          {
+            "name": "Tests",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13,
+            "started_at": "2026-09-10T18:25:47Z",
+            "completed_at": "2026-09-10T18:27:31Z"
+          },
+          {
+            "name": "Coverage report",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 14,
+            "started_at": "2026-09-10T18:27:31Z",
+            "completed_at": "2026-09-10T18:27:33Z"
+          },
+          {
+            "name": "Retain test evidence",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15,
+            "started_at": "2026-09-10T18:27:33Z",
+            "completed_at": "2026-09-10T18:27:33Z"
+          },
+          {
+            "name": "Install build tools from hashes",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 16,
+            "started_at": "2026-09-10T18:27:33Z",
+            "completed_at": "2026-09-10T18:27:33Z"
+          },
+          {
+            "name": "Build identical distributions twice",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 17,
+            "started_at": "2026-09-10T18:27:33Z",
+            "completed_at": "2026-09-10T18:27:43Z"
+          },
+          {
+            "name": "Retain distribution evidence",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 18,
+            "started_at": "2026-09-10T18:27:43Z",
+            "completed_at": "2026-09-10T18:27:45Z"
+          },
+          {
+            "name": "Wheel smoke outside checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 19,
+            "started_at": "2026-09-10T18:27:45Z",
+            "completed_at": "2026-09-10T18:27:45Z"
+          },
+          {
+            "name": "Post Run actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 36,
+            "started_at": "2026-09-10T18:27:45Z",
+            "completed_at": "2026-09-10T18:27:45Z"
+          },
+          {
+            "name": "Post Run astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 37,
+            "started_at": "2026-09-10T18:27:45Z",
+            "completed_at": "2026-09-10T18:27:46Z"
+          },
+          {
+            "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 38,
+            "started_at": "2026-09-10T18:27:46Z",
+            "completed_at": "2026-09-10T18:27:46Z"
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 39,
+            "started_at": "2026-09-10T18:27:46Z",
+            "completed_at": "2026-09-10T18:27:46Z"
+          }
+        ],
+        "check_run_url": "https://api.github.com/repos/leonardosovienski/stocks-predictor/check-runs/102995555305",
+        "labels": [
+          "ubuntu-24.04"
+        ],
+        "runner_id": 1000007356,
+        "runner_name": "GitHub Actions 1000007356",
+        "runner_group_id": 0,
+        "runner_group_name": "GitHub Actions"
+      }
+    ]
+  }
+}
