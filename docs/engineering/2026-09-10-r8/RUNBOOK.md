@@ -99,6 +99,9 @@ ficam em `tests/test_operational_store.py`. `tools/audit_registry.py` mantém c�
 R7 no commit c259ff64771a6c560ddb4aadac6bf81301c3066a e verifica os documentos
 históricos no disco. `tools/verify_operational_evidence.py` verifica o código atual,
 a identidade da fonte real e o ciclo completo de carga/replay/backup/restauração.
+O job de segredos examina também a árvore completa de `git archive HEAD`, incluindo
+commits de merge, e retém o SARIF. Um scan histórico com zero commits não substitui
+essa etapa; conferir o número de arquivos e a conclusão de ambas no log.
 
 Referências: [backup SQLite](https://www.sqlite.org/backup.html),
 [regras de WAL](https://www.sqlite.org/wal.html),
