@@ -1,0 +1,68 @@
+[
+  {
+    "url": "https://arquivos.b3.com.br/bdi/download/bdi/2023-05-05/BDI_04_20230505.pdf",
+    "requested_at_utc": "2026-09-10T15:56:23.220461+00:00",
+    "status": 200,
+    "final_url": "https://arquivos.b3.com.br/bdi/download/bdi/2023-05-05/BDI_04_20230505.pdf",
+    "content_type": "application/pdf",
+    "bytes": 465860,
+    "sha256": "b0645094ccc850915bea527761d804818cc2587ab7a61bc2992a53ddd1a1b52c",
+    "signature": "255044462d312e33",
+    "path": "C:\\STOCKS\\work\\gap-resolution-r6-20260910\\raw-05\\bdi-2023-05-05-ch04.pdf",
+    "completed_at_utc": "2026-09-10T15:56:24.187367+00:00"
+  },
+  {
+    "url": "https://arquivos.b3.com.br/bdi/download/bdi/2023-05-05/BDI_06_20230505.pdf",
+    "requested_at_utc": "2026-09-10T15:56:24.190750+00:00",
+    "error": "HTTP Error 500: Internal Server Error",
+    "completed_at_utc": "2026-09-10T15:56:24.607136+00:00"
+  },
+  {
+    "url": "https://arquivos.b3.com.br/bdi/download/bdi/2023-05-31/BDI_04_20230531.pdf",
+    "requested_at_utc": "2026-09-10T15:56:21.186693+00:00",
+    "status": 200,
+    "final_url": "https://arquivos.b3.com.br/bdi/download/bdi/2023-05-31/BDI_04_20230531.pdf",
+    "content_type": "application/pdf",
+    "bytes": 526778,
+    "sha256": "c00cb0db545cdde7600aa59718e3ffabc50ac45082a898a03cdf4f260ab1257d",
+    "signature": "255044462d312e33",
+    "path": "C:\\STOCKS\\work\\gap-resolution-r6-20260910\\raw-05\\bdi-2023-05-31-ch04.pdf",
+    "completed_at_utc": "2026-09-10T15:56:22.671376+00:00"
+  },
+  {
+    "url": "https://arquivos.b3.com.br/bdi/download/bdi/2023-05-31/BDI_06_20230531.pdf",
+    "requested_at_utc": "2026-09-10T15:56:22.673431+00:00",
+    "error": "HTTP Error 500: Internal Server Error",
+    "completed_at_utc": "2026-09-10T15:56:23.220461+00:00"
+  },
+  {
+    "url": "https://arquivos.b3.com.br/bdi/download/bdi/2021-05-31/BDI_02_20210531.pdf",
+    "requested_at_utc": "2026-09-10T15:58:19.849924+00:00",
+    "error": "HTTP Error 500: Internal Server Error",
+    "completed_at_utc": "2026-09-10T15:58:20.213042+00:00"
+  },
+  {
+    "url": "https://arquivos.b3.com.br/bdi/download/bdi/2023-05-05/BDI_02_20230505.pdf",
+    "requested_at_utc": "2026-09-10T15:58:19.290561+00:00",
+    "status": 200,
+    "final_url": "https://arquivos.b3.com.br/bdi/download/bdi/2023-05-05/BDI_02_20230505.pdf",
+    "content_type": "application/pdf",
+    "bytes": 90518,
+    "sha256": "52916bad350b6b7f31209765d116f59c77a1e578c9de4fb80809780d625c12b3",
+    "signature": "255044462d312e33",
+    "path": "C:\\STOCKS\\work\\gap-resolution-r6-20260910\\raw-06\\bdi-2023-05-05-ch02.pdf",
+    "completed_at_utc": "2026-09-10T15:58:19.841438+00:00"
+  },
+  {
+    "url": "https://arquivos.b3.com.br/bdi/download/bdi/2023-05-31/BDI_02_20230531.pdf",
+    "requested_at_utc": "2026-09-10T15:58:18.519748+00:00",
+    "status": 200,
+    "final_url": "https://arquivos.b3.com.br/bdi/download/bdi/2023-05-31/BDI_02_20230531.pdf",
+    "content_type": "application/pdf",
+    "bytes": 119439,
+    "sha256": "5fdd6ac7af9d88c7a969317eb8d2c20c2669f194541eda5dd763a231af7206af",
+    "signature": "255044462d312e33",
+    "path": "C:\\STOCKS\\work\\gap-resolution-r6-20260910\\raw-06\\bdi-2023-05-31-ch02.pdf",
+    "completed_at_utc": "2026-09-10T15:58:19.286374+00:00"
+  }
+]

@@ -1,3 +1,13 @@
+## Correções de dados R6 — 10/09/2026 UTC
+
+[R6](docs/research/2026-09-10-r6/README.md): cinco objetos H20 recuperados com hashes
+originais e 1.448 arquivos verificados. Replay com código congelado reconciliado
+pela tolerância R3; comparador estrito conserva diferença única de 2,22e-16.
+Cotações até 09/09; fonte 15 com dois dividendos antes sem data reconciliados:
+22 datas/50 líquidos ainda ausentes. I15 documental resolvido; demais dependências
+e lucro executável/futuro continuam abertos. Fontes e resultados antigos preservados.
+Reprodução e recibos estão vinculados no relatório R6.
+
 ## Pesquisa econômica R5 — 10/09/2026 UTC
 
 O usuário reabriu a pesquisa em busca de lucro validado, com liberdade sobre hipóteses

@@ -1,0 +1,50 @@
+{
+  "command_arguments": [
+    "--package",
+    "C:\\STOCKS\\work\\gap-resolution-r6-20260910\\h20-complete-package",
+    "--output-dir",
+    "C:\\STOCKS\\work\\gap-resolution-r6-20260910\\portable-replay"
+  ],
+  "helper_sha256": "808f7d99a7af7959115145d84c2b4388afa4f9d1fbff07d86b140616f0ab3ecb",
+  "result_sha256": "ac8cc2c6cde4f766ffe1c6118613d536a49b4355bb8cb24821e7baa070a42a53",
+  "report": {
+    "status": "PASS_WITH_PREVIOUSLY_DECLARED_FLOAT_TOLERANCE",
+    "verified_package_files": 1448,
+    "strict_values_identical": false,
+    "tolerance_reference": "research/session-20260910/integral/reconcile_h20.py",
+    "absolute_and_relative_tolerance": 2e-12,
+    "baseline_differences": [],
+    "floating_differences": [
+      {
+        "path": "/trials/3/modes/worst/summary/synthetic_strategy_after_flat_72bp/annualized_geometric_return",
+        "actual": 0.019184819669155084,
+        "expected": 0.019184819669154862,
+        "absolute_error": 2.220446049250313e-16
+      }
+    ],
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "independent_cells": 9732,
+    "new_independent_economic_evidence": false,
+    "profit_certified": false
+  },
+  "negative_controls": [
+    {
+      "case": "tampered_manifest",
+      "exit_code": 1,
+      "expected_rejection": "Original manifest seal differs",
+      "passed": true
+    },
+    {
+      "case": "existing_output",
+      "exit_code": 1,
+      "expected_rejection": "Output must be new and outside the preserved package",
+      "passed": true
+    },
+    {
+      "case": "output_inside_package",
+      "exit_code": 1,
+      "expected_rejection": "Output must be new and outside the preserved package",
+      "passed": true
+    }
+  ]
+}

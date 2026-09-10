@@ -1,0 +1,22 @@
+{
+  "parent_manifest_sha256": "3b36e2416e44f2b0a30e88d4306e00cdc74a7302c6e9b0e33950a893ea169bda",
+  "manifest_sha256": "1c6410bebc9627d6dea8ae6ac4a9034823786fa47c48c26a8632c529c8560c46",
+  "changes": [
+    {
+      "event_id": "BRRECVACNOR3:2024-04-25:DIVIDENDO:8",
+      "payment_date": "2024-05-15",
+      "net_per_share": "0.05928343241",
+      "primary_sha256": "294e9456a56ca7923875515c91ae362862a24108138f09b2467eb9445776720b",
+      "page": 9,
+      "historical_pit_certified": false
+    },
+    {
+      "event_id": "BRRADLACNOR0:2024-04-18:DIVIDENDO:13",
+      "payment_date": "2024-05-31",
+      "net_per_share": "0.049150927",
+      "primary_sha256": "9afdb7a78f0f41259daa2f85f70725e5fa52484e534a5ebd907edc7853f9f6bf",
+      "page": 5,
+      "historical_pit_certified": false
+    }
+  ]
+}

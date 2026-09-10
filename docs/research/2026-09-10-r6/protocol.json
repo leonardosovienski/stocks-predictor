@@ -1,0 +1,11 @@
+{
+  "id": "DATA-GAP-R6",
+  "registered_on": "2026-09-10",
+  "base_commit": "a83e9550b46a6171a480dadacb16322a818f6312",
+  "purpose": "Resolve recoverable I10-I16 source, date and sealed-package gaps; preserve frozen research and report external dependencies precisely.",
+  "new_return_evaluations": 0,
+  "scope": ["exact H20 byte recovery", "fresh official price capture and overlap verification", "cash event missing-field reconciliation", "BOVA event coverage", "dated fee and tax sources", "causal source readiness"],
+  "budgets": {"public_urls": 60, "attempts_per_route": 2, "download_bytes": 350000000, "git_blob_bytes": 200000000, "archive_variants": 40},
+  "acceptance": ["Original SHA256 required for sealed recovery", "Do not treat download date as historical publication", "No inference of event absence from failed or empty search", "Derived tax values require dated rule and investor scope", "Keep all original database and receipt bytes"],
+  "excluded_actions": ["live trading", "broker authentication", "paid services", "recurring jobs", "backdating prospective observations", "changing frozen economic protocols"]
+}

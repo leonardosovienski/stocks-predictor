@@ -1,3 +1,9 @@
+**Dados R6 — 10/09/2026:** [recuperação e correções](docs/research/2026-09-10-r6/README.md).
+Os cinco arquivos ausentes foram recuperados; 1.448/1.448 passaram no verificador
+original. Preços BOVA até 09/09; revisão 15 reduz datas/líquidos ausentes para 22/50.
+Fontes econômicas ainda parciais; lucro executável/futuro não demonstrado.
+Os relatos abaixo mantêm as datas e limitações de suas respectivas rodadas.
+
 ## Pesquisa econômica R5 — 10/09/2026 UTC
 
 O usuário reabriu a pesquisa em busca de lucro validado, com liberdade sobre hipóteses

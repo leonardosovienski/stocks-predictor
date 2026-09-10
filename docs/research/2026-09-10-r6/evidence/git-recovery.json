@@ -1,0 +1,32 @@
+{
+  "scope": "All locally stored Git blobs <=10MB, including unreachable objects; exact SHA256 only",
+  "git_blobs": 2444,
+  "git_bytes": 164812417,
+  "candidate_hashes": 12220,
+  "recovered": {
+    "a8d05b848653b1ce0d81b8a3040f2f3a121387d221de8ade74a82afe5411c681": {
+      "git_blob": "bad46b9b26639fe691ffaf92625f5390d2a4a1b8",
+      "transform": "crlf",
+      "package_path": "baseline/code/stocks_predictor/discovery_value_repair.py",
+      "bytes": 6928
+    }
+  },
+  "remaining": [
+    {
+      "sha256": "1cb585bac0c331d166460ae4cbd8b7c2279d7dbdb7cb059e565d6e90ef7850ef",
+      "package_path": "baseline/audit/repository-f9987faa06d5.zip"
+    },
+    {
+      "sha256": "0fa6d8c3c4c5b1cec8023ddc3b3b913631d95cb551f16d7f14e8ae564d492c69",
+      "package_path": "baseline/code/stocks_predictor/discovery_reorganizations.py"
+    },
+    {
+      "sha256": "f50bd2aa0ae3e78cb509ad9d158f8fcaacd6e90123a42eb2c7d180a50078cb40",
+      "package_path": "baseline/code/stocks_predictor/discovery_value.py"
+    },
+    {
+      "sha256": "1b305395c835a206c9a2f153eea8fd4f85a43d3f172f284c63524e95f619a230",
+      "package_path": "audit/repository.zip"
+    }
+  ]
+}
