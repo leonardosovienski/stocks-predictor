@@ -107,6 +107,10 @@ def materialize_snapshot(conn, asof, top_n=60, lookback=126, min_history=252):
     Savepoint rollback preserves any transaction already owned by the caller.
     """
     positive_integer(top_n, 'top_n')
+    iso_day(asof, 'asof')
+    positive_integer(lookback, 'lookback')
+    positive_integer(min_history, 'min_history')
+    caller_transaction = conn.in_transaction
     conn.execute("SAVEPOINT stocks_universe_snapshot")
     try:
         ranked = rank_universe(conn, asof, lookback, min_history)[:top_n]
@@ -122,9 +126,12 @@ def materialize_snapshot(conn, asof, top_n=60, lookback=126, min_history=252):
             conn.executemany(
                 "INSERT INTO universe_snapshots(asof_date,ticker,median_vol,rank) VALUES(?,?,?,?)",
                 [(asof, *row) for row in expected])
-    except BaseException:
-        conn.execute("ROLLBACK TO stocks_universe_snapshot")
         conn.execute("RELEASE stocks_universe_snapshot")
+    except BaseException:
+        if not caller_transaction:
+            conn.rollback()
+        elif conn.in_transaction:
+            conn.execute("ROLLBACK TO stocks_universe_snapshot")
+            conn.execute("RELEASE stocks_universe_snapshot")
         raise
-    conn.execute("RELEASE stocks_universe_snapshot")
     return [t for t, _ in ranked]

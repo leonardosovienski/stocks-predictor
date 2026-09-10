@@ -58,7 +58,7 @@ jobs:
           retention-days: 14
           if-no-files-found: ignore
       - name: Build wheel
-        run: uv build --locked
+        run: uv build
       - name: Wheel smoke outside checkout
         run: |
           uv venv /tmp/stocks-wheel --python ${{ matrix.python }} --seed
