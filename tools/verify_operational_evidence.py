@@ -5,7 +5,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 REGISTRY = 'docs/engineering/2026-09-10-r8/evidence.json'
-EXTRA = {'.github/workflows/ci.yml', 'main.py', 'pyproject.toml', 'uv.lock', 'tools/build-requirements.txt'}
+EXTRA = {'.github/workflows/ci.yml', '.gitleaksignore', '.gitattributes',
+         'main.py', 'pyproject.toml', 'uv.lock', 'tools/build-requirements.txt'}
 
 
 def code_paths(root):
@@ -29,9 +30,10 @@ def checked_path(root, name):
 
 def verify(root=ROOT):
     record = json.loads((root / REGISTRY).read_text(encoding='utf-8'))
-    if set(record['current_code_sha256_lf']) != code_paths(root):
+    code_hashes = {row['path']: row['sha256'] for row in record['current_code_sha256_lf']}
+    if len(code_hashes) != len(record['current_code_sha256_lf']) or set(code_hashes) != code_paths(root):
         raise ValueError('current code population differs from operational evidence')
-    for name, expected in record['current_code_sha256_lf'].items():
+    for name, expected in code_hashes.items():
         if canonical_sha(checked_path(root, name)) != expected:
             raise ValueError('current operational code changed: ' + name)
     for name, expected in record['historical_and_run_sha256'].items():
@@ -53,7 +55,7 @@ def verify(root=ROOT):
     if capacity['status'] != 'PASS' or capacity['rows'] != 250000:
         raise ValueError('finite capacity acceptance failed')
     for run in (real, capacity):
-        expected_package = {Path(name).name: sha for name, sha in record['current_code_sha256_lf'].items()
+        expected_package = {Path(name).name: sha for name, sha in code_hashes.items()
                             if name.startswith('stocks_predictor/') and len(Path(name).parts) == 2}
         if run['package_code_sha256_lf'] != expected_package:
             raise ValueError('operational run used a different package revision')

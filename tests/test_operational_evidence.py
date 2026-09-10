@@ -17,7 +17,7 @@ class OperationalEvidenceTests(unittest.TestCase):
             root = Path(folder)
             path = root / 'code.py'
             path.write_text('before\n', encoding='utf-8')
-            record = {'current_code_sha256_lf': {'code.py': evidence.canonical_sha(path)}}
+            record = {'current_code_sha256_lf': [{'path': 'code.py', 'sha256': evidence.canonical_sha(path)}]}
             registry = root / evidence.REGISTRY
             registry.parent.mkdir(parents=True)
             registry.write_text(json.dumps(record), encoding='utf-8')
