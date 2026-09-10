@@ -542,7 +542,7 @@
     },
     {
       "path": "tests/test_project_files.py",
-      "sha256": "5c96c2fd1a012f9bc655dcf3a9f45e27094c5c0033b4a590a9602eec2adaf425"
+      "sha256": "4f0446bc5a9c01fd4dc45503f1adc6edeb18f6cbc3ff829a68218f5e24fc60d5"
     },
     {
       "path": "tests/test_purge_embargo_limitation.py",
@@ -674,7 +674,7 @@
     },
     {
       "path": "tools/check_project_files.py",
-      "sha256": "3dbb4d78c25b5d4590625b822853632161021f1d223ad8ac5e63734afaf9b4c6"
+      "sha256": "d18ea0c0b43a47192be87f20189cc7a61eb008ffb225fa317cb517cfc893b33f"
     },
     {
       "path": "tools/cobertura_h18.py",

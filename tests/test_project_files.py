@@ -31,5 +31,6 @@ class ProjectFilesTests(unittest.TestCase):
             list(markdown_links('[guide][missing]'))
 
     def test_directories_must_have_tracked_children(self):
+        self.assertEqual(destination('docs/guide.md', '../', {'README.md'})[0], 'TRACKED')
         self.assertEqual(destination('README.md', 'reports/', {'reports/example.md'})[0], 'TRACKED')
         self.assertEqual(destination('README.md', 'reports/', {'README.md'})[0], 'MISSING_OR_CASE_MISMATCH')

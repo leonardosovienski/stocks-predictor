@@ -71,7 +71,7 @@ def destination(document, target, files):
     path = posixpath.normpath(posixpath.join(posixpath.dirname(document), relative)) if relative else document
     if path.startswith('../') or path.startswith('/'):
         return 'OUTSIDE_REPOSITORY', path
-    if path in files or any(name.startswith(path.rstrip('/') + '/') for name in files):
+    if (path == '.' and files) or path in files or any(name.startswith(path.rstrip('/') + '/') for name in files):
         return 'TRACKED', path
     return 'MISSING_OR_CASE_MISMATCH', path
 
@@ -156,7 +156,7 @@ def verify(root=ROOT, write_index=False):
     if used != set(exceptions):
         raise ValueError('historical exception population changed')
     return {'status': 'PASS', 'tracked_files': len(files), 'markdown_files': len(documents),
-            'local_links': links, 'historical_context_links': len(used), 'external_links_not_requested': external,
+            'local_links': links, 'historical_context_links': len(used), 'external_links_not_checked': external,
             'unresolved_current_links': 0, 'scope': 'Tracked files and supported Markdown link destinations; not economic completeness.'}
 
 
