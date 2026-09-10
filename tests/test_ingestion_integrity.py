@@ -1,5 +1,7 @@
 """Non-circular failure cases for streaming source ingestion (stdlib runnable)."""
 import sqlite3
+from pathlib import Path
+import tempfile
 import unittest
 
 from stocks_predictor import cotahist
@@ -76,6 +78,31 @@ class IngestionIntegrityTests(unittest.TestCase):
     def test_source_identity_is_required(self):
         with self.assertRaises(ValueError):
             cotahist.load_prices(self.conn, [line()], '   ')
+
+    def test_conflicting_duplicate_across_batches_rolls_back_every_batch(self):
+        records = [line(f'T{i:06}') for i in range(1500)]
+        records.append(line('T000000', close=11))
+        with self.assertRaisesRegex(ValueError, 'conflict'):
+            self.load(records)
+        self.assertEqual(self.conn.execute('SELECT count(*) FROM prices_raw').fetchone()[0], 0)
+        self.assertFalse(self.conn.in_transaction)
+
+    def test_busy_commit_leaves_no_pending_ingestion(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / 'locked.db'
+            writer = sqlite3.connect(path, timeout=0)
+            self.conn.backup(writer)
+            reader = sqlite3.connect(path, timeout=0)
+            try:
+                reader.execute('BEGIN')
+                reader.execute('SELECT * FROM prices_raw').fetchall()
+                with self.assertRaises(sqlite3.OperationalError):
+                    cotahist.load_prices(writer, [line()], 'source.txt')
+                self.assertFalse(writer.in_transaction)
+                self.assertEqual(writer.execute('SELECT count(*) FROM prices_raw').fetchone()[0], 0)
+            finally:
+                reader.close()
+                writer.close()
 
     def test_malformed_neighbor_keeps_valid_row_and_warning(self):
         with self.assertLogs(cotahist.logger, level='WARNING'):

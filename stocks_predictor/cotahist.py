@@ -208,6 +208,7 @@ def load_prices(conn, lines, source_file: str, avista_only: bool = True) -> int:
         raise ValueError("source_file must identify the source")
     stats = {'quotes': 0, 'malformed': 0}
     rows, inserted = [], 0
+    caller_transaction = conn.in_transaction
     conn.execute("SAVEPOINT stocks_price_load")
     try:
         for rec in _iter_parsed_records(lines, stats):
@@ -219,11 +220,16 @@ def load_prices(conn, lines, source_file: str, avista_only: bool = True) -> int:
                 rows.clear()
         if rows:
             inserted += _insert_price_batch(conn, rows)
-    except BaseException:
-        conn.execute("ROLLBACK TO stocks_price_load")
         conn.execute("RELEASE stocks_price_load")
+    except BaseException:
+        if not caller_transaction:
+            # A failed outer RELEASE (e.g. SQLITE_BUSY at commit) still owns
+            # locks even after ROLLBACK TO. Roll back the owned transaction.
+            conn.rollback()
+        elif conn.in_transaction:
+            conn.execute("ROLLBACK TO stocks_price_load")
+            conn.execute("RELEASE stocks_price_load")
         raise
-    conn.execute("RELEASE stocks_price_load")
     if stats['malformed']:
         logger.warning("%s: %d linhas malformadas puladas no parse", source_file, stats['malformed'])
     return inserted

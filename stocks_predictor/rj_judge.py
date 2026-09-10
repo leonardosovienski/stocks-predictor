@@ -93,8 +93,11 @@ def family_verdict(units, direction_expected: str, cfg: dict) -> dict:
         return {"n": len(units), "effect": None, "ci": (None, None),
                 "p_value": None, "direction_match": None}
 
-    def stat(resampled):
-        return _mean_diff(resampled)
+    def stat(resampled) -> float:
+        difference = _mean_diff(resampled)
+        # Core 3.2 discards both None and nonfinite samples. Use its annotated
+        # float contract without changing which resamples enter the interval.
+        return float('nan') if difference is None else float(difference)
 
     lo, hi, _ = bootstrap_ci(
         units, stat, scheme=b["bootstrap_scheme"],
