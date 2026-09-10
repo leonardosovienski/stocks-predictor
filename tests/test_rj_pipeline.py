@@ -98,6 +98,11 @@ def test_pipeline_end_to_end_on_synthetic_db(tmp_path, cfg):
     assert report["universe_size"] == 2
     assert report["excluded"] == {}
     assert report["n_primary_analyzed"] >= 1
+    assert report["n_secondary_check"] > report["universe_size"]
+    assert report["verdicts_secondary_check"] is None
+    assert report["secondary_inference_status"] == (
+        "blocked_repeated_company_requires_cluster_permutation")
+    assert report["verdicts"]  # primary inference still completes
     for ep in report["episodes"]:
         assert ep["outcome_primary_window"] in (
             "rally", "no_rally_observed", "censored")

@@ -297,9 +297,9 @@ def run_pipeline(conn: sqlite3.Connection, cfg: dict, asof: str,
     verdicts = judge.run_all_families(units_by_family, cfg)
 
     # checagem secundária (config: secondary_episodes_as_separate_check):
-    # todos os episódios (primário+secundários) na janela SECUNDÁRIA (252
-    # pregões), julgados como verificação separada — nunca somados ao
-    # veredito primário nem ao FDR oficial; robustez, não hipótese.
+    # Todos os episódios permanecem no relatório, mas a permutação congelada
+    # só suporta uma observação por empresa. Repetições não recebem p-valores
+    # nem um selo de robustez; não alteramos o protocolo primário para acomodá-las.
     secondary_eps = [ep for ep in built["episodes"]
                      if ep["secondary"]["censored"] == 0
                      and ep["secondary"]["outcome"] != "invalid_data"]
@@ -313,8 +313,17 @@ def run_pipeline(conn: sqlite3.Connection, cfg: dict, asof: str,
                 units_secondary[name].append((ep["ticker"], val, group))
             else:
                 units_secondary[name].append((ep["ticker"], float(val), group))
-    verdicts_secondary = (judge.run_all_families(units_secondary, cfg)
-                          if secondary_eps else None)
+    secondary_tickers = [ep["ticker"] for ep in secondary_eps]
+    secondary_repeated = len(set(secondary_tickers)) != len(secondary_tickers)
+    if secondary_repeated:
+        verdicts_secondary = None
+        secondary_status = "blocked_repeated_company_requires_cluster_permutation"
+    elif secondary_eps:
+        verdicts_secondary = judge.run_all_families(units_secondary, cfg)
+        secondary_status = "computed_one_observation_per_company"
+    else:
+        verdicts_secondary = None
+        secondary_status = "no_eligible_episodes"
 
     n_universe = conn.execute(
         "SELECT COUNT(*) FROM rj_universe WHERE approved_by IS NOT NULL"
@@ -348,6 +357,7 @@ def run_pipeline(conn: sqlite3.Connection, cfg: dict, asof: str,
         "missing_scores_by_family": missing,
         "verdicts": verdicts,
         "verdicts_secondary_check": verdicts_secondary,
+        "secondary_inference_status": secondary_status,
         "n_secondary_check": len(secondary_eps),
         "episodes": [
             {"ticker": ep["ticker"], "trough_date": ep["trough_date"],

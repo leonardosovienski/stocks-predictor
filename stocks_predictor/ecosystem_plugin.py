@@ -1,6 +1,6 @@
 """Adapter mínimo do Stocks para o registry do ecosystem-predictor.
 
-A linha H19 ainda está em pesquisa. O adapter não transforma testes em prontidão,
+A linha H21 ainda está em pesquisa condicional. O adapter não transforma testes em prontidão,
 não cria sinal econômico e não autoriza capital.
 """
 
@@ -18,7 +18,7 @@ class StocksPredictorPlugin:
             "version": "0.1.0",
             "details": {
                 "mode": "research",
-                "active_line": "H19_QUARTERLY_DISCOVERY",
+                "active_line": "H21_BOVA11_CONDITIONAL_RESEARCH",
                 "adapter": "plugin-v1",
             },
         }
@@ -35,9 +35,9 @@ class StocksPredictorPlugin:
             "capital_permission": "FORBIDDEN",
             "extra": {
                 "mode": "research",
-                "active_line": "H19_QUARTERLY_DISCOVERY",
+                "active_line": "H21_BOVA11_CONDITIONAL_RESEARCH",
                 "net_historical_replay_complete": False,
-                "historical_lines_preserved": ["H1-H18", "predictor-rj"],
+                "historical_lines_preserved": ["H1-H20", "predictor-rj"],
                 "source_of_scientific_truth": "STOCKS_CURRENT_STATE.md",
             },
         }

@@ -1,0 +1,3106 @@
+[
+  {
+    "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\30ce8e91fba9cb0a0c09571be71821c9da2d0aec49d12ec15aab8b26522ffd2c",
+    "role": "PRESERVED_RESEARCH_VERSION",
+    "sha256": "30ce8e91fba9cb0a0c09571be71821c9da2d0aec49d12ec15aab8b26522ffd2c",
+    "catalog_hash_matches": true,
+    "aliases": [
+      "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/STOCKS_H18_H19_TESTADOS.zip.contents/original/quotes.db",
+      "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/stocks-h17-pronto-final.zip.contents/data/quotes.db",
+      "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/stocks-h17-pronto.zip.contents/data/quotes.db",
+      "project/.local-research/stocks-session-20260907/work/h17-ready-5096bf505dc7/data/quotes.db",
+      "project/.local-research/stocks-session-20260907/work/h17-ready-91342ec397f6/data/quotes.db",
+      "project/.local-research/stocks-session-20260907/work/h17-run-pack/data/quotes.db",
+      "project/.local-research/stocks-session-20260907/work/h17-run-pack-v2/data/quotes.db",
+      "project/.local-research/stocks-session-20260907/work/value-ready-bundle/original/quotes.db",
+      "project/.local-research/stocks-session-20260907/work/value-ready-ce8d1573257f/original/quotes.db"
+    ],
+    "integrity": [
+      "ok"
+    ],
+    "foreign_key_violations": [],
+    "tables": {
+      "prices_raw": {
+        "rows": 387101,
+        "columns": [
+          "date",
+          "ticker",
+          "market_type",
+          "open",
+          "close",
+          "quote_factor",
+          "volume_fin",
+          "source_file"
+        ],
+        "date": [
+          "2016-01-04",
+          "2026-08-27"
+        ]
+      }
+    },
+    "hash_unchanged_after_read": true
+  },
+  {
+    "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\0bceedac3936dc4162562ec35e03177c7e71b99e13b66837035d1ccd151f0512",
+    "role": "PRESERVED_RESEARCH_VERSION",
+    "sha256": "0bceedac3936dc4162562ec35e03177c7e71b99e13b66837035d1ccd151f0512",
+    "catalog_hash_matches": true,
+    "aliases": [
+      "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/STOCKS_H18_H19_TESTADOS.zip.contents/repaired/quotes.db",
+      "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/STOCKS_REORGANIZACOES_TESTADAS.zip.contents/base/quotes.db",
+      "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/STOCKS_VALIDACAO_LUCRO_TESTADA.zip.contents/baseline/base/quotes.db",
+      "project/.local-research/stocks-session-20260907/work/profit-validation-ready-7b3722cd2bf1/baseline/base/quotes.db",
+      "project/.local-research/stocks-session-20260907/work/reorganization-ready-bundle/base/quotes.db",
+      "project/.local-research/stocks-session-20260907/work/reorganization-ready-e5e8b429ca89/base/quotes.db",
+      "project/.local-research/stocks-session-20260907/work/value-measurement-source/quotes.db",
+      "project/.local-research/stocks-session-20260907/work/value-ready-bundle/repaired/quotes.db",
+      "project/.local-research/stocks-session-20260907/work/value-ready-ce8d1573257f/repaired/quotes.db"
+    ],
+    "integrity": [
+      "ok"
+    ],
+    "foreign_key_violations": [],
+    "tables": {
+      "prices_raw": {
+        "rows": 391824,
+        "columns": [
+          "date",
+          "ticker",
+          "market_type",
+          "open",
+          "close",
+          "quote_factor",
+          "volume_fin",
+          "source_file"
+        ],
+        "date": [
+          "2016-01-04",
+          "2026-08-27"
+        ]
+      }
+    },
+    "hash_unchanged_after_read": true
+  },
+  {
+    "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\fa3d464e3e463b66c2aa64d96228aeb5d1fae63514df1d0ddb58233240b52764",
+    "role": "PRESERVED_RESEARCH_VERSION",
+    "sha256": "fa3d464e3e463b66c2aa64d96228aeb5d1fae63514df1d0ddb58233240b52764",
+    "catalog_hash_matches": true,
+    "aliases": [
+      "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/STOCKS_REORGANIZACOES_TESTADAS.zip.contents/successors/successors.db",
+      "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/STOCKS_VALIDACAO_LUCRO_TESTADA.zip.contents/baseline/successors/successors.db",
+      "project/.local-research/stocks-session-20260907/work/profit-validation-ready-7b3722cd2bf1/baseline/successors/successors.db",
+      "project/.local-research/stocks-session-20260907/work/reorganization-ready-bundle/successors/successors.db",
+      "project/.local-research/stocks-session-20260907/work/reorganization-ready-e5e8b429ca89/successors/successors.db",
+      "project/.local-research/stocks-session-20260907/work/value-successor-source/successors.db"
+    ],
+    "integrity": [
+      "ok"
+    ],
+    "foreign_key_violations": [],
+    "tables": {
+      "prices_raw": {
+        "rows": 13465,
+        "columns": [
+          "date",
+          "ticker",
+          "market_type",
+          "open",
+          "close",
+          "quote_factor",
+          "volume_fin",
+          "source_file"
+        ],
+        "date": [
+          "2016-01-04",
+          "2026-08-27"
+        ]
+      }
+    },
+    "hash_unchanged_after_read": true
+  },
+  {
+    "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\e21a89c38f2792c826291baa1175da4fe9dfbf626316635a536f7c28b250146a",
+    "role": "PRESERVED_RESEARCH_VERSION",
+    "sha256": "e21a89c38f2792c826291baa1175da4fe9dfbf626316635a536f7c28b250146a",
+    "catalog_hash_matches": true,
+    "aliases": [
+      "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/stocks-complemento-fontes.zip.contents/data/stocks-history-2016-2026.db",
+      "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/stocks-testes-reais.zip.contents/work/stocks-history-2016-2026.db",
+      "project/.local-research/stocks-session-20260907/work/stocks-history-2016-2026.db"
+    ],
+    "integrity": [
+      "ok"
+    ],
+    "foreign_key_violations": [],
+    "tables": {
+      "_migrations": {
+        "rows": 14,
+        "columns": [
+          "name",
+          "applied_at"
+        ]
+      },
+      "prices_raw": {
+        "rows": 1149872,
+        "columns": [
+          "id",
+          "date",
+          "ticker",
+          "bdi_code",
+          "market_type",
+          "open",
+          "high",
+          "low",
+          "close",
+          "volume_fin",
+          "qty",
+          "quote_factor",
+          "source_file",
+          "inserted_at"
+        ],
+        "date": [
+          "2016-01-04",
+          "2026-08-27"
+        ]
+      },
+      "adjustments": {
+        "rows": 43,
+        "columns": [
+          "id",
+          "ticker",
+          "ex_date",
+          "factor",
+          "type",
+          "source",
+          "notes",
+          "approved_by",
+          "inserted_at"
+        ]
+      },
+      "quarantine": {
+        "rows": 2227,
+        "columns": [
+          "id",
+          "ticker",
+          "date",
+          "reason",
+          "raw_return",
+          "resolved_at",
+          "resolution",
+          "inserted_at"
+        ],
+        "date": [
+          "2016-01-06",
+          "2026-08-27"
+        ]
+      },
+      "universe_snapshots": {
+        "rows": 60,
+        "columns": [
+          "asof_date",
+          "ticker",
+          "median_vol",
+          "rank",
+          "inserted_at"
+        ]
+      },
+      "decisions": {
+        "rows": 0,
+        "columns": [
+          "id",
+          "run_id",
+          "asof",
+          "ticker",
+          "signal_value",
+          "rank",
+          "conviction_band",
+          "frozen_mode",
+          "inserted_at",
+          "exec_date",
+          "exec_price",
+          "exit_date",
+          "exit_price",
+          "cost_paid",
+          "realized_return_net",
+          "holding_days"
+        ],
+        "asof": [
+          null,
+          null
+        ],
+        "exec_date": [
+          null,
+          null
+        ]
+      },
+      "runs": {
+        "rows": 1,
+        "columns": [
+          "run_id",
+          "config_hash",
+          "code_version",
+          "started_at",
+          "params_json",
+          "notes",
+          "params_frozen_until"
+        ]
+      },
+      "rj_universe": {
+        "rows": 0,
+        "columns": [
+          "ticker",
+          "company_name",
+          "rj_request_date",
+          "rj_process_number",
+          "plan_presented_date",
+          "plan_approved_date",
+          "rj_end_date",
+          "delisted_date",
+          "source",
+          "approved_by",
+          "notes",
+          "inserted_at"
+        ]
+      },
+      "rj_episodes": {
+        "rows": 0,
+        "columns": [
+          "id",
+          "ticker",
+          "trough_date",
+          "trough_price",
+          "is_primary",
+          "outcome",
+          "rally_pct",
+          "rally_date",
+          "trading_days_to_rally",
+          "censored",
+          "inserted_at",
+          "secondary_outcome",
+          "secondary_rally_pct",
+          "secondary_rally_date",
+          "secondary_trading_days_to_rally",
+          "secondary_censored"
+        ]
+      },
+      "rj_events": {
+        "rows": 0,
+        "columns": [
+          "id",
+          "ticker",
+          "event_date",
+          "published_at",
+          "known_at",
+          "event_type",
+          "source",
+          "approved_by",
+          "notes",
+          "inserted_at"
+        ],
+        "known_at": [
+          null,
+          null
+        ]
+      },
+      "rj_family_scores": {
+        "rows": 0,
+        "columns": [
+          "episode_id",
+          "family",
+          "value",
+          "computed_at"
+        ]
+      },
+      "rj_universe_snapshots": {
+        "rows": 0,
+        "columns": [
+          "snapshot_date",
+          "source",
+          "ticker",
+          "company_name",
+          "payload_hash",
+          "raw_payload",
+          "inserted_at"
+        ]
+      },
+      "fundamentals": {
+        "rows": 1579,
+        "columns": [
+          "id",
+          "ticker",
+          "ref_date",
+          "ativo_total",
+          "passivo_total",
+          "patrimonio_liquido",
+          "lucro_liquido",
+          "roe",
+          "leverage",
+          "source",
+          "inserted_at",
+          "receita_liquida",
+          "net_margin",
+          "fluxo_caixa_operacional",
+          "accruals",
+          "shares_outstanding",
+          "known_at"
+        ],
+        "known_at": [
+          "2019-01-24",
+          "2026-09-04"
+        ]
+      },
+      "rj_company_observations": {
+        "rows": 0,
+        "columns": [
+          "ticker",
+          "asof",
+          "rj_request_date",
+          "observed_trading_days",
+          "censoring_horizon_trading_days",
+          "status",
+          "inserted_at"
+        ],
+        "asof": [
+          null,
+          null
+        ]
+      },
+      "dividends": {
+        "rows": 2384,
+        "columns": [
+          "id",
+          "ticker",
+          "ex_date",
+          "value_per_share",
+          "source",
+          "inserted_at"
+        ]
+      },
+      "ingestion_issues": {
+        "rows": 0,
+        "columns": [
+          "source_sha256",
+          "document_key",
+          "reason"
+        ]
+      },
+      "fundamentals_pit": {
+        "rows": 0,
+        "columns": [
+          "ticker",
+          "cnpj",
+          "ref_date",
+          "document_version",
+          "received_at",
+          "available_at",
+          "source",
+          "source_sha256",
+          "ativo_total",
+          "passivo_total",
+          "patrimonio_liquido",
+          "lucro_liquido",
+          "receita_liquida",
+          "fluxo_caixa_operacional",
+          "roe",
+          "leverage",
+          "net_margin",
+          "accruals"
+        ]
+      },
+      "shares_pit": {
+        "rows": 0,
+        "columns": [
+          "ticker",
+          "ref_date",
+          "document_id",
+          "received_at",
+          "available_at",
+          "shares_outstanding",
+          "basis_date",
+          "basis_source",
+          "price_basis_source",
+          "source",
+          "source_sha256"
+        ]
+      },
+      "cash_events": {
+        "rows": 95,
+        "columns": [
+          "ticker",
+          "event_id",
+          "ex_date",
+          "payment_date",
+          "value_per_share",
+          "source",
+          "source_sha256"
+        ],
+        "payment_date": [
+          "2016-02-29",
+          "2026-10-06"
+        ]
+      },
+      "cash_event_coverage": {
+        "rows": 4,
+        "columns": [
+          "ticker",
+          "start_date",
+          "end_date",
+          "source",
+          "source_sha256"
+        ]
+      },
+      "research_source_documents": {
+        "rows": 30835,
+        "columns": [
+          "record_id",
+          "kind",
+          "archive_year",
+          "cnpj",
+          "document_id",
+          "available_at",
+          "source_sha256",
+          "payload_json"
+        ]
+      }
+    },
+    "hash_unchanged_after_read": true
+  },
+  {
+    "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\07197228920e4082954afbc9035509ae74e84be1773195a4c5b71a435481a804",
+    "role": "REPAIRED_EXAMPLE_NOT_CANONICAL",
+    "sha256": "07197228920e4082954afbc9035509ae74e84be1773195a4c5b71a435481a804",
+    "catalog_hash_matches": true,
+    "aliases": [
+      "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/stocks-correcoes.zip.contents/demonstracao/stocks-cvm-2023-repaired-example.db",
+      "project/.local-research/stocks-session-20260907/work/stocks-cvm-2023-repaired-example.db"
+    ],
+    "integrity": [
+      "ok"
+    ],
+    "foreign_key_violations": [],
+    "tables": {
+      "_migrations": {
+        "rows": 13,
+        "columns": [
+          "name",
+          "applied_at"
+        ]
+      },
+      "prices_raw": {
+        "rows": 1149872,
+        "columns": [
+          "id",
+          "date",
+          "ticker",
+          "bdi_code",
+          "market_type",
+          "open",
+          "high",
+          "low",
+          "close",
+          "volume_fin",
+          "qty",
+          "quote_factor",
+          "source_file",
+          "inserted_at"
+        ],
+        "date": [
+          "2016-01-04",
+          "2026-08-27"
+        ]
+      },
+      "adjustments": {
+        "rows": 43,
+        "columns": [
+          "id",
+          "ticker",
+          "ex_date",
+          "factor",
+          "type",
+          "source",
+          "notes",
+          "approved_by",
+          "inserted_at"
+        ]
+      },
+      "quarantine": {
+        "rows": 2227,
+        "columns": [
+          "id",
+          "ticker",
+          "date",
+          "reason",
+          "raw_return",
+          "resolved_at",
+          "resolution",
+          "inserted_at"
+        ],
+        "date": [
+          "2016-01-06",
+          "2026-08-27"
+        ]
+      },
+      "universe_snapshots": {
+        "rows": 60,
+        "columns": [
+          "asof_date",
+          "ticker",
+          "median_vol",
+          "rank",
+          "inserted_at"
+        ]
+      },
+      "decisions": {
+        "rows": 0,
+        "columns": [
+          "id",
+          "run_id",
+          "asof",
+          "ticker",
+          "signal_value",
+          "rank",
+          "conviction_band",
+          "frozen_mode",
+          "inserted_at",
+          "exec_date",
+          "exec_price",
+          "exit_date",
+          "exit_price",
+          "cost_paid",
+          "realized_return_net",
+          "holding_days"
+        ],
+        "asof": [
+          null,
+          null
+        ],
+        "exec_date": [
+          null,
+          null
+        ]
+      },
+      "runs": {
+        "rows": 1,
+        "columns": [
+          "run_id",
+          "config_hash",
+          "code_version",
+          "started_at",
+          "params_json",
+          "notes",
+          "params_frozen_until"
+        ]
+      },
+      "rj_universe": {
+        "rows": 0,
+        "columns": [
+          "ticker",
+          "company_name",
+          "rj_request_date",
+          "rj_process_number",
+          "plan_presented_date",
+          "plan_approved_date",
+          "rj_end_date",
+          "delisted_date",
+          "source",
+          "approved_by",
+          "notes",
+          "inserted_at"
+        ]
+      },
+      "rj_episodes": {
+        "rows": 0,
+        "columns": [
+          "id",
+          "ticker",
+          "trough_date",
+          "trough_price",
+          "is_primary",
+          "outcome",
+          "rally_pct",
+          "rally_date",
+          "trading_days_to_rally",
+          "censored",
+          "inserted_at",
+          "secondary_outcome",
+          "secondary_rally_pct",
+          "secondary_rally_date",
+          "secondary_trading_days_to_rally",
+          "secondary_censored"
+        ]
+      },
+      "rj_events": {
+        "rows": 0,
+        "columns": [
+          "id",
+          "ticker",
+          "event_date",
+          "published_at",
+          "known_at",
+          "event_type",
+          "source",
+          "approved_by",
+          "notes",
+          "inserted_at"
+        ],
+        "known_at": [
+          null,
+          null
+        ]
+      },
+      "rj_family_scores": {
+        "rows": 0,
+        "columns": [
+          "episode_id",
+          "family",
+          "value",
+          "computed_at"
+        ]
+      },
+      "rj_universe_snapshots": {
+        "rows": 0,
+        "columns": [
+          "snapshot_date",
+          "source",
+          "ticker",
+          "company_name",
+          "payload_hash",
+          "raw_payload",
+          "inserted_at"
+        ]
+      },
+      "fundamentals": {
+        "rows": 1579,
+        "columns": [
+          "id",
+          "ticker",
+          "ref_date",
+          "ativo_total",
+          "passivo_total",
+          "patrimonio_liquido",
+          "lucro_liquido",
+          "roe",
+          "leverage",
+          "source",
+          "inserted_at",
+          "receita_liquida",
+          "net_margin",
+          "fluxo_caixa_operacional",
+          "accruals",
+          "shares_outstanding",
+          "known_at"
+        ],
+        "known_at": [
+          "2019-01-24",
+          "2026-09-04"
+        ]
+      },
+      "rj_company_observations": {
+        "rows": 0,
+        "columns": [
+          "ticker",
+          "asof",
+          "rj_request_date",
+          "observed_trading_days",
+          "censoring_horizon_trading_days",
+          "status",
+          "inserted_at"
+        ],
+        "asof": [
+          null,
+          null
+        ]
+      },
+      "dividends": {
+        "rows": 2384,
+        "columns": [
+          "id",
+          "ticker",
+          "ex_date",
+          "value_per_share",
+          "source",
+          "inserted_at"
+        ]
+      },
+      "ingestion_issues": {
+        "rows": 0,
+        "columns": [
+          "source_sha256",
+          "document_key",
+          "reason"
+        ]
+      },
+      "fundamentals_pit": {
+        "rows": 3,
+        "columns": [
+          "ticker",
+          "cnpj",
+          "ref_date",
+          "document_version",
+          "received_at",
+          "available_at",
+          "source",
+          "source_sha256",
+          "ativo_total",
+          "passivo_total",
+          "patrimonio_liquido",
+          "lucro_liquido",
+          "receita_liquida",
+          "fluxo_caixa_operacional",
+          "roe",
+          "leverage",
+          "net_margin",
+          "accruals"
+        ]
+      },
+      "shares_pit": {
+        "rows": 3,
+        "columns": [
+          "ticker",
+          "ref_date",
+          "document_id",
+          "received_at",
+          "available_at",
+          "shares_outstanding",
+          "basis_date",
+          "basis_source",
+          "price_basis_source",
+          "source",
+          "source_sha256"
+        ]
+      },
+      "cash_events": {
+        "rows": 0,
+        "columns": [
+          "ticker",
+          "event_id",
+          "ex_date",
+          "payment_date",
+          "value_per_share",
+          "source",
+          "source_sha256"
+        ],
+        "payment_date": [
+          null,
+          null
+        ]
+      },
+      "cash_event_coverage": {
+        "rows": 0,
+        "columns": [
+          "ticker",
+          "start_date",
+          "end_date",
+          "source",
+          "source_sha256"
+        ]
+      }
+    },
+    "hash_unchanged_after_read": true
+  },
+  {
+    "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\a8238568980d3303890b04590cfb5c55ab2d24c9271edd86820269336b09679a",
+    "role": "PRESERVED_RESEARCH_VERSION",
+    "sha256": "a8238568980d3303890b04590cfb5c55ab2d24c9271edd86820269336b09679a",
+    "catalog_hash_matches": true,
+    "aliases": [
+      "unpacked-archives/project/.local-research/stocks-session-20260907/outputs/stocks-testes-reais.zip.contents/work/stocks-tested-real-v2-20260907.db",
+      "project/.local-research/stocks-session-20260907/work/stocks-tested-real-v2-20260907.db"
+    ],
+    "integrity": [
+      "ok"
+    ],
+    "foreign_key_violations": [],
+    "tables": {
+      "_migrations": {
+        "rows": 15,
+        "columns": [
+          "name",
+          "applied_at"
+        ]
+      },
+      "prices_raw": {
+        "rows": 1149872,
+        "columns": [
+          "id",
+          "date",
+          "ticker",
+          "bdi_code",
+          "market_type",
+          "open",
+          "high",
+          "low",
+          "close",
+          "volume_fin",
+          "qty",
+          "quote_factor",
+          "source_file",
+          "inserted_at"
+        ],
+        "date": [
+          "2016-01-04",
+          "2026-08-27"
+        ]
+      },
+      "adjustments": {
+        "rows": 43,
+        "columns": [
+          "id",
+          "ticker",
+          "ex_date",
+          "factor",
+          "type",
+          "source",
+          "notes",
+          "approved_by",
+          "inserted_at"
+        ]
+      },
+      "quarantine": {
+        "rows": 2227,
+        "columns": [
+          "id",
+          "ticker",
+          "date",
+          "reason",
+          "raw_return",
+          "resolved_at",
+          "resolution",
+          "inserted_at"
+        ],
+        "date": [
+          "2016-01-06",
+          "2026-08-27"
+        ]
+      },
+      "universe_snapshots": {
+        "rows": 60,
+        "columns": [
+          "asof_date",
+          "ticker",
+          "median_vol",
+          "rank",
+          "inserted_at"
+        ]
+      },
+      "decisions": {
+        "rows": 0,
+        "columns": [
+          "id",
+          "run_id",
+          "asof",
+          "ticker",
+          "signal_value",
+          "rank",
+          "conviction_band",
+          "frozen_mode",
+          "inserted_at",
+          "exec_date",
+          "exec_price",
+          "exit_date",
+          "exit_price",
+          "cost_paid",
+          "realized_return_net",
+          "holding_days"
+        ],
+        "asof": [
+          null,
+          null
+        ],
+        "exec_date": [
+          null,
+          null
+        ]
+      },
+      "runs": {
+        "rows": 1,
+        "columns": [
+          "run_id",
+          "config_hash",
+          "code_version",
+          "started_at",
+          "params_json",
+          "notes",
+          "params_frozen_until"
+        ]
+      },
+      "rj_universe": {
+        "rows": 0,
+        "columns": [
+          "ticker",
+          "company_name",
+          "rj_request_date",
+          "rj_process_number",
+          "plan_presented_date",
+          "plan_approved_date",
+          "rj_end_date",
+          "delisted_date",
+          "source",
+          "approved_by",
+          "notes",
+          "inserted_at"
+        ]
+      },
+      "rj_episodes": {
+        "rows": 0,
+        "columns": [
+          "id",
+          "ticker",
+          "trough_date",
+          "trough_price",
+          "is_primary",
+          "outcome",
+          "rally_pct",
+          "rally_date",
+          "trading_days_to_rally",
+          "censored",
+          "inserted_at",
+          "secondary_outcome",
+          "secondary_rally_pct",
+          "secondary_rally_date",
+          "secondary_trading_days_to_rally",
+          "secondary_censored"
+        ]
+      },
+      "rj_events": {
+        "rows": 0,
+        "columns": [
+          "id",
+          "ticker",
+          "event_date",
+          "published_at",
+          "known_at",
+          "event_type",
+          "source",
+          "approved_by",
+          "notes",
+          "inserted_at"
+        ],
+        "known_at": [
+          null,
+          null
+        ]
+      },
+      "rj_family_scores": {
+        "rows": 0,
+        "columns": [
+          "episode_id",
+          "family",
+          "value",
+          "computed_at"
+        ]
+      },
+      "rj_universe_snapshots": {
+        "rows": 0,
+        "columns": [
+          "snapshot_date",
+          "source",
+          "ticker",
+          "company_name",
+          "payload_hash",
+          "raw_payload",
+          "inserted_at"
+        ]
+      },
+      "fundamentals": {
+        "rows": 1579,
+        "columns": [
+          "id",
+          "ticker",
+          "ref_date",
+          "ativo_total",
+          "passivo_total",
+          "patrimonio_liquido",
+          "lucro_liquido",
+          "roe",
+          "leverage",
+          "source",
+          "inserted_at",
+          "receita_liquida",
+          "net_margin",
+          "fluxo_caixa_operacional",
+          "accruals",
+          "shares_outstanding",
+          "known_at"
+        ],
+        "known_at": [
+          "2019-01-24",
+          "2026-09-04"
+        ]
+      },
+      "rj_company_observations": {
+        "rows": 0,
+        "columns": [
+          "ticker",
+          "asof",
+          "rj_request_date",
+          "observed_trading_days",
+          "censoring_horizon_trading_days",
+          "status",
+          "inserted_at"
+        ],
+        "asof": [
+          null,
+          null
+        ]
+      },
+      "dividends": {
+        "rows": 2384,
+        "columns": [
+          "id",
+          "ticker",
+          "ex_date",
+          "value_per_share",
+          "source",
+          "inserted_at"
+        ]
+      },
+      "ingestion_issues": {
+        "rows": 0,
+        "columns": [
+          "source_sha256",
+          "document_key",
+          "reason"
+        ]
+      },
+      "fundamentals_pit": {
+        "rows": 0,
+        "columns": [
+          "ticker",
+          "cnpj",
+          "ref_date",
+          "document_version",
+          "received_at",
+          "available_at",
+          "source",
+          "source_sha256",
+          "ativo_total",
+          "passivo_total",
+          "patrimonio_liquido",
+          "lucro_liquido",
+          "receita_liquida",
+          "fluxo_caixa_operacional",
+          "roe",
+          "leverage",
+          "net_margin",
+          "accruals"
+        ]
+      },
+      "shares_pit": {
+        "rows": 0,
+        "columns": [
+          "ticker",
+          "ref_date",
+          "document_id",
+          "received_at",
+          "available_at",
+          "shares_outstanding",
+          "basis_date",
+          "basis_source",
+          "price_basis_source",
+          "source",
+          "source_sha256"
+        ]
+      },
+      "cash_events": {
+        "rows": 95,
+        "columns": [
+          "ticker",
+          "event_id",
+          "ex_date",
+          "payment_date",
+          "value_per_share",
+          "source",
+          "source_sha256"
+        ],
+        "payment_date": [
+          "2016-02-29",
+          "2026-10-06"
+        ]
+      },
+      "cash_event_coverage": {
+        "rows": 4,
+        "columns": [
+          "ticker",
+          "start_date",
+          "end_date",
+          "source",
+          "source_sha256"
+        ]
+      },
+      "research_source_documents": {
+        "rows": 30835,
+        "columns": [
+          "record_id",
+          "kind",
+          "archive_year",
+          "cnpj",
+          "document_id",
+          "available_at",
+          "source_sha256",
+          "payload_json"
+        ]
+      },
+      "stock_bonus_events": {
+        "rows": 3,
+        "columns": [
+          "ticker",
+          "event_id",
+          "ex_date",
+          "credit_date",
+          "new_shares_per_old",
+          "source",
+          "source_sha256"
+        ]
+      }
+    },
+    "hash_unchanged_after_read": true
+  },
+  {
+    "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\8f84a743e706573cab9372c21d8c9c186c5afb31c2206821d9c2cf82199bbc64",
+    "role": "PRESERVED_RESEARCH_VERSION",
+    "sha256": "8f84a743e706573cab9372c21d8c9c186c5afb31c2206821d9c2cf82199bbc64",
+    "catalog_hash_matches": true,
+    "aliases": [
+      "project/.local-research/stocks-session-20260907/work/stocks-clean-replay-20260907.db"
+    ],
+    "integrity": [
+      "ok"
+    ],
+    "foreign_key_violations": [],
+    "tables": {
+      "_migrations": {
+        "rows": 15,
+        "columns": [
+          "name",
+          "applied_at"
+        ]
+      },
+      "prices_raw": {
+        "rows": 1149872,
+        "columns": [
+          "id",
+          "date",
+          "ticker",
+          "bdi_code",
+          "market_type",
+          "open",
+          "high",
+          "low",
+          "close",
+          "volume_fin",
+          "qty",
+          "quote_factor",
+          "source_file",
+          "inserted_at"
+        ],
+        "date": [
+          "2016-01-04",
+          "2026-08-27"
+        ]
+      },
+      "adjustments": {
+        "rows": 43,
+        "columns": [
+          "id",
+          "ticker",
+          "ex_date",
+          "factor",
+          "type",
+          "source",
+          "notes",
+          "approved_by",
+          "inserted_at"
+        ]
+      },
+      "quarantine": {
+        "rows": 2227,
+        "columns": [
+          "id",
+          "ticker",
+          "date",
+          "reason",
+          "raw_return",
+          "resolved_at",
+          "resolution",
+          "inserted_at"
+        ],
+        "date": [
+          "2016-01-06",
+          "2026-08-27"
+        ]
+      },
+      "universe_snapshots": {
+        "rows": 60,
+        "columns": [
+          "asof_date",
+          "ticker",
+          "median_vol",
+          "rank",
+          "inserted_at"
+        ]
+      },
+      "decisions": {
+        "rows": 0,
+        "columns": [
+          "id",
+          "run_id",
+          "asof",
+          "ticker",
+          "signal_value",
+          "rank",
+          "conviction_band",
+          "frozen_mode",
+          "inserted_at",
+          "exec_date",
+          "exec_price",
+          "exit_date",
+          "exit_price",
+          "cost_paid",
+          "realized_return_net",
+          "holding_days"
+        ],
+        "asof": [
+          null,
+          null
+        ],
+        "exec_date": [
+          null,
+          null
+        ]
+      },
+      "runs": {
+        "rows": 1,
+        "columns": [
+          "run_id",
+          "config_hash",
+          "code_version",
+          "started_at",
+          "params_json",
+          "notes",
+          "params_frozen_until"
+        ]
+      },
+      "rj_universe": {
+        "rows": 0,
+        "columns": [
+          "ticker",
+          "company_name",
+          "rj_request_date",
+          "rj_process_number",
+          "plan_presented_date",
+          "plan_approved_date",
+          "rj_end_date",
+          "delisted_date",
+          "source",
+          "approved_by",
+          "notes",
+          "inserted_at"
+        ]
+      },
+      "rj_episodes": {
+        "rows": 0,
+        "columns": [
+          "id",
+          "ticker",
+          "trough_date",
+          "trough_price",
+          "is_primary",
+          "outcome",
+          "rally_pct",
+          "rally_date",
+          "trading_days_to_rally",
+          "censored",
+          "inserted_at",
+          "secondary_outcome",
+          "secondary_rally_pct",
+          "secondary_rally_date",
+          "secondary_trading_days_to_rally",
+          "secondary_censored"
+        ]
+      },
+      "rj_events": {
+        "rows": 0,
+        "columns": [
+          "id",
+          "ticker",
+          "event_date",
+          "published_at",
+          "known_at",
+          "event_type",
+          "source",
+          "approved_by",
+          "notes",
+          "inserted_at"
+        ],
+        "known_at": [
+          null,
+          null
+        ]
+      },
+      "rj_family_scores": {
+        "rows": 0,
+        "columns": [
+          "episode_id",
+          "family",
+          "value",
+          "computed_at"
+        ]
+      },
+      "rj_universe_snapshots": {
+        "rows": 0,
+        "columns": [
+          "snapshot_date",
+          "source",
+          "ticker",
+          "company_name",
+          "payload_hash",
+          "raw_payload",
+          "inserted_at"
+        ]
+      },
+      "fundamentals": {
+        "rows": 1579,
+        "columns": [
+          "id",
+          "ticker",
+          "ref_date",
+          "ativo_total",
+          "passivo_total",
+          "patrimonio_liquido",
+          "lucro_liquido",
+          "roe",
+          "leverage",
+          "source",
+          "inserted_at",
+          "receita_liquida",
+          "net_margin",
+          "fluxo_caixa_operacional",
+          "accruals",
+          "shares_outstanding",
+          "known_at"
+        ],
+        "known_at": [
+          "2019-01-24",
+          "2026-09-04"
+        ]
+      },
+      "rj_company_observations": {
+        "rows": 0,
+        "columns": [
+          "ticker",
+          "asof",
+          "rj_request_date",
+          "observed_trading_days",
+          "censoring_horizon_trading_days",
+          "status",
+          "inserted_at"
+        ],
+        "asof": [
+          null,
+          null
+        ]
+      },
+      "dividends": {
+        "rows": 2384,
+        "columns": [
+          "id",
+          "ticker",
+          "ex_date",
+          "value_per_share",
+          "source",
+          "inserted_at"
+        ]
+      },
+      "ingestion_issues": {
+        "rows": 0,
+        "columns": [
+          "source_sha256",
+          "document_key",
+          "reason"
+        ]
+      },
+      "fundamentals_pit": {
+        "rows": 0,
+        "columns": [
+          "ticker",
+          "cnpj",
+          "ref_date",
+          "document_version",
+          "received_at",
+          "available_at",
+          "source",
+          "source_sha256",
+          "ativo_total",
+          "passivo_total",
+          "patrimonio_liquido",
+          "lucro_liquido",
+          "receita_liquida",
+          "fluxo_caixa_operacional",
+          "roe",
+          "leverage",
+          "net_margin",
+          "accruals"
+        ]
+      },
+      "shares_pit": {
+        "rows": 0,
+        "columns": [
+          "ticker",
+          "ref_date",
+          "document_id",
+          "received_at",
+          "available_at",
+          "shares_outstanding",
+          "basis_date",
+          "basis_source",
+          "price_basis_source",
+          "source",
+          "source_sha256"
+        ]
+      },
+      "cash_events": {
+        "rows": 95,
+        "columns": [
+          "ticker",
+          "event_id",
+          "ex_date",
+          "payment_date",
+          "value_per_share",
+          "source",
+          "source_sha256"
+        ],
+        "payment_date": [
+          "2016-02-29",
+          "2026-10-06"
+        ]
+      },
+      "cash_event_coverage": {
+        "rows": 4,
+        "columns": [
+          "ticker",
+          "start_date",
+          "end_date",
+          "source",
+          "source_sha256"
+        ]
+      },
+      "research_source_documents": {
+        "rows": 30835,
+        "columns": [
+          "record_id",
+          "kind",
+          "archive_year",
+          "cnpj",
+          "document_id",
+          "available_at",
+          "source_sha256",
+          "payload_json"
+        ]
+      },
+      "stock_bonus_events": {
+        "rows": 3,
+        "columns": [
+          "ticker",
+          "event_id",
+          "ex_date",
+          "credit_date",
+          "new_shares_per_old",
+          "source",
+          "source_sha256"
+        ]
+      }
+    },
+    "hash_unchanged_after_read": true
+  },
+  {
+    "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\e94633e709392168fc38df9633c5d63b34528a1af75949e9cecd69adf2af8e4a",
+    "role": "PRESERVED_RESEARCH_VERSION",
+    "sha256": "e94633e709392168fc38df9633c5d63b34528a1af75949e9cecd69adf2af8e4a",
+    "catalog_hash_matches": true,
+    "aliases": [
+      "project/.local-research/stocks-session-20260907/work/stocks-tested-real-20260907.db"
+    ],
+    "integrity": [
+      "ok"
+    ],
+    "foreign_key_violations": [],
+    "tables": {
+      "_migrations": {
+        "rows": 15,
+        "columns": [
+          "name",
+          "applied_at"
+        ]
+      },
+      "prices_raw": {
+        "rows": 1149872,
+        "columns": [
+          "id",
+          "date",
+          "ticker",
+          "bdi_code",
+          "market_type",
+          "open",
+          "high",
+          "low",
+          "close",
+          "volume_fin",
+          "qty",
+          "quote_factor",
+          "source_file",
+          "inserted_at"
+        ],
+        "date": [
+          "2016-01-04",
+          "2026-08-27"
+        ]
+      },
+      "adjustments": {
+        "rows": 43,
+        "columns": [
+          "id",
+          "ticker",
+          "ex_date",
+          "factor",
+          "type",
+          "source",
+          "notes",
+          "approved_by",
+          "inserted_at"
+        ]
+      },
+      "quarantine": {
+        "rows": 2227,
+        "columns": [
+          "id",
+          "ticker",
+          "date",
+          "reason",
+          "raw_return",
+          "resolved_at",
+          "resolution",
+          "inserted_at"
+        ],
+        "date": [
+          "2016-01-06",
+          "2026-08-27"
+        ]
+      },
+      "universe_snapshots": {
+        "rows": 60,
+        "columns": [
+          "asof_date",
+          "ticker",
+          "median_vol",
+          "rank",
+          "inserted_at"
+        ]
+      },
+      "decisions": {
+        "rows": 0,
+        "columns": [
+          "id",
+          "run_id",
+          "asof",
+          "ticker",
+          "signal_value",
+          "rank",
+          "conviction_band",
+          "frozen_mode",
+          "inserted_at",
+          "exec_date",
+          "exec_price",
+          "exit_date",
+          "exit_price",
+          "cost_paid",
+          "realized_return_net",
+          "holding_days"
+        ],
+        "asof": [
+          null,
+          null
+        ],
+        "exec_date": [
+          null,
+          null
+        ]
+      },
+      "runs": {
+        "rows": 1,
+        "columns": [
+          "run_id",
+          "config_hash",
+          "code_version",
+          "started_at",
+          "params_json",
+          "notes",
+          "params_frozen_until"
+        ]
+      },
+      "rj_universe": {
+        "rows": 0,
+        "columns": [
+          "ticker",
+          "company_name",
+          "rj_request_date",
+          "rj_process_number",
+          "plan_presented_date",
+          "plan_approved_date",
+          "rj_end_date",
+          "delisted_date",
+          "source",
+          "approved_by",
+          "notes",
+          "inserted_at"
+        ]
+      },
+      "rj_episodes": {
+        "rows": 0,
+        "columns": [
+          "id",
+          "ticker",
+          "trough_date",
+          "trough_price",
+          "is_primary",
+          "outcome",
+          "rally_pct",
+          "rally_date",
+          "trading_days_to_rally",
+          "censored",
+          "inserted_at",
+          "secondary_outcome",
+          "secondary_rally_pct",
+          "secondary_rally_date",
+          "secondary_trading_days_to_rally",
+          "secondary_censored"
+        ]
+      },
+      "rj_events": {
+        "rows": 0,
+        "columns": [
+          "id",
+          "ticker",
+          "event_date",
+          "published_at",
+          "known_at",
+          "event_type",
+          "source",
+          "approved_by",
+          "notes",
+          "inserted_at"
+        ],
+        "known_at": [
+          null,
+          null
+        ]
+      },
+      "rj_family_scores": {
+        "rows": 0,
+        "columns": [
+          "episode_id",
+          "family",
+          "value",
+          "computed_at"
+        ]
+      },
+      "rj_universe_snapshots": {
+        "rows": 0,
+        "columns": [
+          "snapshot_date",
+          "source",
+          "ticker",
+          "company_name",
+          "payload_hash",
+          "raw_payload",
+          "inserted_at"
+        ]
+      },
+      "fundamentals": {
+        "rows": 1579,
+        "columns": [
+          "id",
+          "ticker",
+          "ref_date",
+          "ativo_total",
+          "passivo_total",
+          "patrimonio_liquido",
+          "lucro_liquido",
+          "roe",
+          "leverage",
+          "source",
+          "inserted_at",
+          "receita_liquida",
+          "net_margin",
+          "fluxo_caixa_operacional",
+          "accruals",
+          "shares_outstanding",
+          "known_at"
+        ],
+        "known_at": [
+          "2019-01-24",
+          "2026-09-04"
+        ]
+      },
+      "rj_company_observations": {
+        "rows": 0,
+        "columns": [
+          "ticker",
+          "asof",
+          "rj_request_date",
+          "observed_trading_days",
+          "censoring_horizon_trading_days",
+          "status",
+          "inserted_at"
+        ],
+        "asof": [
+          null,
+          null
+        ]
+      },
+      "dividends": {
+        "rows": 2384,
+        "columns": [
+          "id",
+          "ticker",
+          "ex_date",
+          "value_per_share",
+          "source",
+          "inserted_at"
+        ]
+      },
+      "ingestion_issues": {
+        "rows": 0,
+        "columns": [
+          "source_sha256",
+          "document_key",
+          "reason"
+        ]
+      },
+      "fundamentals_pit": {
+        "rows": 0,
+        "columns": [
+          "ticker",
+          "cnpj",
+          "ref_date",
+          "document_version",
+          "received_at",
+          "available_at",
+          "source",
+          "source_sha256",
+          "ativo_total",
+          "passivo_total",
+          "patrimonio_liquido",
+          "lucro_liquido",
+          "receita_liquida",
+          "fluxo_caixa_operacional",
+          "roe",
+          "leverage",
+          "net_margin",
+          "accruals"
+        ]
+      },
+      "shares_pit": {
+        "rows": 0,
+        "columns": [
+          "ticker",
+          "ref_date",
+          "document_id",
+          "received_at",
+          "available_at",
+          "shares_outstanding",
+          "basis_date",
+          "basis_source",
+          "price_basis_source",
+          "source",
+          "source_sha256"
+        ]
+      },
+      "cash_events": {
+        "rows": 95,
+        "columns": [
+          "ticker",
+          "event_id",
+          "ex_date",
+          "payment_date",
+          "value_per_share",
+          "source",
+          "source_sha256"
+        ],
+        "payment_date": [
+          "2016-02-29",
+          "2026-10-06"
+        ]
+      },
+      "cash_event_coverage": {
+        "rows": 4,
+        "columns": [
+          "ticker",
+          "start_date",
+          "end_date",
+          "source",
+          "source_sha256"
+        ]
+      },
+      "research_source_documents": {
+        "rows": 30835,
+        "columns": [
+          "record_id",
+          "kind",
+          "archive_year",
+          "cnpj",
+          "document_id",
+          "available_at",
+          "source_sha256",
+          "payload_json"
+        ]
+      },
+      "stock_bonus_events": {
+        "rows": 3,
+        "columns": [
+          "ticker",
+          "event_id",
+          "ex_date",
+          "credit_date",
+          "new_shares_per_old",
+          "source",
+          "source_sha256"
+        ]
+      }
+    },
+    "hash_unchanged_after_read": true
+  },
+  {
+    "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\e713af1a867f31c3550e3767c7a9fc6f3963aac2b47b617db2adfe55903da054",
+    "role": "SMOKE_OR_TEST_FIXTURE_NOT_MARKET_DATA",
+    "sha256": "e713af1a867f31c3550e3767c7a9fc6f3963aac2b47b617db2adfe55903da054",
+    "catalog_hash_matches": true,
+    "aliases": [
+      "project/.local-research/stocks-session-20260907/work/test-only.db"
+    ],
+    "integrity": [
+      "ok"
+    ],
+    "foreign_key_violations": [],
+    "tables": {
+      "_migrations": {
+        "rows": 12,
+        "columns": [
+          "name",
+          "applied_at"
+        ]
+      },
+      "prices_raw": {
+        "rows": 0,
+        "columns": [
+          "id",
+          "date",
+          "ticker",
+          "bdi_code",
+          "market_type",
+          "open",
+          "high",
+          "low",
+          "close",
+          "volume_fin",
+          "qty",
+          "quote_factor",
+          "source_file",
+          "inserted_at"
+        ],
+        "date": [
+          null,
+          null
+        ]
+      },
+      "adjustments": {
+        "rows": 0,
+        "columns": [
+          "id",
+          "ticker",
+          "ex_date",
+          "factor",
+          "type",
+          "source",
+          "notes",
+          "approved_by",
+          "inserted_at"
+        ]
+      },
+      "quarantine": {
+        "rows": 0,
+        "columns": [
+          "id",
+          "ticker",
+          "date",
+          "reason",
+          "raw_return",
+          "resolved_at",
+          "resolution",
+          "inserted_at"
+        ],
+        "date": [
+          null,
+          null
+        ]
+      },
+      "universe_snapshots": {
+        "rows": 0,
+        "columns": [
+          "asof_date",
+          "ticker",
+          "median_vol",
+          "rank",
+          "inserted_at"
+        ]
+      },
+      "decisions": {
+        "rows": 0,
+        "columns": [
+          "id",
+          "run_id",
+          "asof",
+          "ticker",
+          "signal_value",
+          "rank",
+          "conviction_band",
+          "frozen_mode",
+          "inserted_at",
+          "exec_date",
+          "exec_price",
+          "exit_date",
+          "exit_price",
+          "cost_paid",
+          "realized_return_net",
+          "holding_days"
+        ],
+        "asof": [
+          null,
+          null
+        ],
+        "exec_date": [
+          null,
+          null
+        ]
+      },
+      "runs": {
+        "rows": 0,
+        "columns": [
+          "run_id",
+          "config_hash",
+          "code_version",
+          "started_at",
+          "params_json",
+          "notes",
+          "params_frozen_until"
+        ]
+      },
+      "rj_universe": {
+        "rows": 0,
+        "columns": [
+          "ticker",
+          "company_name",
+          "rj_request_date",
+          "rj_process_number",
+          "plan_presented_date",
+          "plan_approved_date",
+          "rj_end_date",
+          "delisted_date",
+          "source",
+          "approved_by",
+          "notes",
+          "inserted_at"
+        ]
+      },
+      "rj_episodes": {
+        "rows": 0,
+        "columns": [
+          "id",
+          "ticker",
+          "trough_date",
+          "trough_price",
+          "is_primary",
+          "outcome",
+          "rally_pct",
+          "rally_date",
+          "trading_days_to_rally",
+          "censored",
+          "inserted_at",
+          "secondary_outcome",
+          "secondary_rally_pct",
+          "secondary_rally_date",
+          "secondary_trading_days_to_rally",
+          "secondary_censored"
+        ]
+      },
+      "rj_events": {
+        "rows": 0,
+        "columns": [
+          "id",
+          "ticker",
+          "event_date",
+          "published_at",
+          "known_at",
+          "event_type",
+          "source",
+          "approved_by",
+          "notes",
+          "inserted_at"
+        ],
+        "known_at": [
+          null,
+          null
+        ]
+      },
+      "rj_family_scores": {
+        "rows": 0,
+        "columns": [
+          "episode_id",
+          "family",
+          "value",
+          "computed_at"
+        ]
+      },
+      "rj_universe_snapshots": {
+        "rows": 0,
+        "columns": [
+          "snapshot_date",
+          "source",
+          "ticker",
+          "company_name",
+          "payload_hash",
+          "raw_payload",
+          "inserted_at"
+        ]
+      },
+      "fundamentals": {
+        "rows": 0,
+        "columns": [
+          "id",
+          "ticker",
+          "ref_date",
+          "ativo_total",
+          "passivo_total",
+          "patrimonio_liquido",
+          "lucro_liquido",
+          "roe",
+          "leverage",
+          "source",
+          "inserted_at",
+          "receita_liquida",
+          "net_margin",
+          "fluxo_caixa_operacional",
+          "accruals",
+          "shares_outstanding",
+          "known_at"
+        ],
+        "known_at": [
+          null,
+          null
+        ]
+      },
+      "rj_company_observations": {
+        "rows": 0,
+        "columns": [
+          "ticker",
+          "asof",
+          "rj_request_date",
+          "observed_trading_days",
+          "censoring_horizon_trading_days",
+          "status",
+          "inserted_at"
+        ],
+        "asof": [
+          null,
+          null
+        ]
+      },
+      "dividends": {
+        "rows": 0,
+        "columns": [
+          "id",
+          "ticker",
+          "ex_date",
+          "value_per_share",
+          "source",
+          "inserted_at"
+        ]
+      }
+    },
+    "hash_unchanged_after_read": true
+  },
+  {
+    "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\56c0c7e4d9f342e439ed63d60e031b07ff9de1ebdf5407eea011be19536da66c",
+    "role": "SMOKE_OR_TEST_FIXTURE_NOT_MARKET_DATA",
+    "sha256": "56c0c7e4d9f342e439ed63d60e031b07ff9de1ebdf5407eea011be19536da66c",
+    "catalog_hash_matches": true,
+    "aliases": [
+      "project/.local-research/stocks-session-20260907/work/wheel-real-smoke.db"
+    ],
+    "integrity": [
+      "ok"
+    ],
+    "foreign_key_violations": [],
+    "tables": {
+      "_migrations": {
+        "rows": 15,
+        "columns": [
+          "name",
+          "applied_at"
+        ]
+      },
+      "prices_raw": {
+        "rows": 0,
+        "columns": [
+          "id",
+          "date",
+          "ticker",
+          "bdi_code",
+          "market_type",
+          "open",
+          "high",
+          "low",
+          "close",
+          "volume_fin",
+          "qty",
+          "quote_factor",
+          "source_file",
+          "inserted_at"
+        ],
+        "date": [
+          null,
+          null
+        ]
+      },
+      "adjustments": {
+        "rows": 0,
+        "columns": [
+          "id",
+          "ticker",
+          "ex_date",
+          "factor",
+          "type",
+          "source",
+          "notes",
+          "approved_by",
+          "inserted_at"
+        ]
+      },
+      "quarantine": {
+        "rows": 0,
+        "columns": [
+          "id",
+          "ticker",
+          "date",
+          "reason",
+          "raw_return",
+          "resolved_at",
+          "resolution",
+          "inserted_at"
+        ],
+        "date": [
+          null,
+          null
+        ]
+      },
+      "universe_snapshots": {
+        "rows": 0,
+        "columns": [
+          "asof_date",
+          "ticker",
+          "median_vol",
+          "rank",
+          "inserted_at"
+        ]
+      },
+      "decisions": {
+        "rows": 0,
+        "columns": [
+          "id",
+          "run_id",
+          "asof",
+          "ticker",
+          "signal_value",
+          "rank",
+          "conviction_band",
+          "frozen_mode",
+          "inserted_at",
+          "exec_date",
+          "exec_price",
+          "exit_date",
+          "exit_price",
+          "cost_paid",
+          "realized_return_net",
+          "holding_days"
+        ],
+        "asof": [
+          null,
+          null
+        ],
+        "exec_date": [
+          null,
+          null
+        ]
+      },
+      "runs": {
+        "rows": 0,
+        "columns": [
+          "run_id",
+          "config_hash",
+          "code_version",
+          "started_at",
+          "params_json",
+          "notes",
+          "params_frozen_until"
+        ]
+      },
+      "rj_universe": {
+        "rows": 0,
+        "columns": [
+          "ticker",
+          "company_name",
+          "rj_request_date",
+          "rj_process_number",
+          "plan_presented_date",
+          "plan_approved_date",
+          "rj_end_date",
+          "delisted_date",
+          "source",
+          "approved_by",
+          "notes",
+          "inserted_at"
+        ]
+      },
+      "rj_episodes": {
+        "rows": 0,
+        "columns": [
+          "id",
+          "ticker",
+          "trough_date",
+          "trough_price",
+          "is_primary",
+          "outcome",
+          "rally_pct",
+          "rally_date",
+          "trading_days_to_rally",
+          "censored",
+          "inserted_at",
+          "secondary_outcome",
+          "secondary_rally_pct",
+          "secondary_rally_date",
+          "secondary_trading_days_to_rally",
+          "secondary_censored"
+        ]
+      },
+      "rj_events": {
+        "rows": 0,
+        "columns": [
+          "id",
+          "ticker",
+          "event_date",
+          "published_at",
+          "known_at",
+          "event_type",
+          "source",
+          "approved_by",
+          "notes",
+          "inserted_at"
+        ],
+        "known_at": [
+          null,
+          null
+        ]
+      },
+      "rj_family_scores": {
+        "rows": 0,
+        "columns": [
+          "episode_id",
+          "family",
+          "value",
+          "computed_at"
+        ]
+      },
+      "rj_universe_snapshots": {
+        "rows": 0,
+        "columns": [
+          "snapshot_date",
+          "source",
+          "ticker",
+          "company_name",
+          "payload_hash",
+          "raw_payload",
+          "inserted_at"
+        ]
+      },
+      "fundamentals": {
+        "rows": 0,
+        "columns": [
+          "id",
+          "ticker",
+          "ref_date",
+          "ativo_total",
+          "passivo_total",
+          "patrimonio_liquido",
+          "lucro_liquido",
+          "roe",
+          "leverage",
+          "source",
+          "inserted_at",
+          "receita_liquida",
+          "net_margin",
+          "fluxo_caixa_operacional",
+          "accruals",
+          "shares_outstanding",
+          "known_at"
+        ],
+        "known_at": [
+          null,
+          null
+        ]
+      },
+      "rj_company_observations": {
+        "rows": 0,
+        "columns": [
+          "ticker",
+          "asof",
+          "rj_request_date",
+          "observed_trading_days",
+          "censoring_horizon_trading_days",
+          "status",
+          "inserted_at"
+        ],
+        "asof": [
+          null,
+          null
+        ]
+      },
+      "dividends": {
+        "rows": 0,
+        "columns": [
+          "id",
+          "ticker",
+          "ex_date",
+          "value_per_share",
+          "source",
+          "inserted_at"
+        ]
+      },
+      "ingestion_issues": {
+        "rows": 0,
+        "columns": [
+          "source_sha256",
+          "document_key",
+          "reason"
+        ]
+      },
+      "fundamentals_pit": {
+        "rows": 0,
+        "columns": [
+          "ticker",
+          "cnpj",
+          "ref_date",
+          "document_version",
+          "received_at",
+          "available_at",
+          "source",
+          "source_sha256",
+          "ativo_total",
+          "passivo_total",
+          "patrimonio_liquido",
+          "lucro_liquido",
+          "receita_liquida",
+          "fluxo_caixa_operacional",
+          "roe",
+          "leverage",
+          "net_margin",
+          "accruals"
+        ]
+      },
+      "shares_pit": {
+        "rows": 0,
+        "columns": [
+          "ticker",
+          "ref_date",
+          "document_id",
+          "received_at",
+          "available_at",
+          "shares_outstanding",
+          "basis_date",
+          "basis_source",
+          "price_basis_source",
+          "source",
+          "source_sha256"
+        ]
+      },
+      "cash_events": {
+        "rows": 0,
+        "columns": [
+          "ticker",
+          "event_id",
+          "ex_date",
+          "payment_date",
+          "value_per_share",
+          "source",
+          "source_sha256"
+        ],
+        "payment_date": [
+          null,
+          null
+        ]
+      },
+      "cash_event_coverage": {
+        "rows": 0,
+        "columns": [
+          "ticker",
+          "start_date",
+          "end_date",
+          "source",
+          "source_sha256"
+        ]
+      },
+      "research_source_documents": {
+        "rows": 0,
+        "columns": [
+          "record_id",
+          "kind",
+          "archive_year",
+          "cnpj",
+          "document_id",
+          "available_at",
+          "source_sha256",
+          "payload_json"
+        ]
+      },
+      "stock_bonus_events": {
+        "rows": 3,
+        "columns": [
+          "ticker",
+          "event_id",
+          "ex_date",
+          "credit_date",
+          "new_shares_per_old",
+          "source",
+          "source_sha256"
+        ]
+      }
+    },
+    "hash_unchanged_after_read": true
+  },
+  {
+    "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\396f9aa99dfd812af93d7d58db80f0c0179345500555bb0b27297fa81fa6c32f",
+    "role": "SMOKE_OR_TEST_FIXTURE_NOT_MARKET_DATA",
+    "sha256": "396f9aa99dfd812af93d7d58db80f0c0179345500555bb0b27297fa81fa6c32f",
+    "catalog_hash_matches": true,
+    "aliases": [
+      "project/.local-research/stocks-session-20260907/work/stocks-predictor/data/stocks.db"
+    ],
+    "integrity": [
+      "ok"
+    ],
+    "foreign_key_violations": [],
+    "tables": {
+      "_migrations": {
+        "rows": 15,
+        "columns": [
+          "name",
+          "applied_at"
+        ]
+      },
+      "prices_raw": {
+        "rows": 0,
+        "columns": [
+          "id",
+          "date",
+          "ticker",
+          "bdi_code",
+          "market_type",
+          "open",
+          "high",
+          "low",
+          "close",
+          "volume_fin",
+          "qty",
+          "quote_factor",
+          "source_file",
+          "inserted_at"
+        ],
+        "date": [
+          null,
+          null
+        ]
+      },
+      "adjustments": {
+        "rows": 0,
+        "columns": [
+          "id",
+          "ticker",
+          "ex_date",
+          "factor",
+          "type",
+          "source",
+          "notes",
+          "approved_by",
+          "inserted_at"
+        ]
+      },
+      "quarantine": {
+        "rows": 0,
+        "columns": [
+          "id",
+          "ticker",
+          "date",
+          "reason",
+          "raw_return",
+          "resolved_at",
+          "resolution",
+          "inserted_at"
+        ],
+        "date": [
+          null,
+          null
+        ]
+      },
+      "universe_snapshots": {
+        "rows": 0,
+        "columns": [
+          "asof_date",
+          "ticker",
+          "median_vol",
+          "rank",
+          "inserted_at"
+        ]
+      },
+      "decisions": {
+        "rows": 0,
+        "columns": [
+          "id",
+          "run_id",
+          "asof",
+          "ticker",
+          "signal_value",
+          "rank",
+          "conviction_band",
+          "frozen_mode",
+          "inserted_at",
+          "exec_date",
+          "exec_price",
+          "exit_date",
+          "exit_price",
+          "cost_paid",
+          "realized_return_net",
+          "holding_days"
+        ],
+        "asof": [
+          null,
+          null
+        ],
+        "exec_date": [
+          null,
+          null
+        ]
+      },
+      "runs": {
+        "rows": 0,
+        "columns": [
+          "run_id",
+          "config_hash",
+          "code_version",
+          "started_at",
+          "params_json",
+          "notes",
+          "params_frozen_until"
+        ]
+      },
+      "rj_universe": {
+        "rows": 0,
+        "columns": [
+          "ticker",
+          "company_name",
+          "rj_request_date",
+          "rj_process_number",
+          "plan_presented_date",
+          "plan_approved_date",
+          "rj_end_date",
+          "delisted_date",
+          "source",
+          "approved_by",
+          "notes",
+          "inserted_at"
+        ]
+      },
+      "rj_episodes": {
+        "rows": 0,
+        "columns": [
+          "id",
+          "ticker",
+          "trough_date",
+          "trough_price",
+          "is_primary",
+          "outcome",
+          "rally_pct",
+          "rally_date",
+          "trading_days_to_rally",
+          "censored",
+          "inserted_at",
+          "secondary_outcome",
+          "secondary_rally_pct",
+          "secondary_rally_date",
+          "secondary_trading_days_to_rally",
+          "secondary_censored"
+        ]
+      },
+      "rj_events": {
+        "rows": 0,
+        "columns": [
+          "id",
+          "ticker",
+          "event_date",
+          "published_at",
+          "known_at",
+          "event_type",
+          "source",
+          "approved_by",
+          "notes",
+          "inserted_at"
+        ],
+        "known_at": [
+          null,
+          null
+        ]
+      },
+      "rj_family_scores": {
+        "rows": 0,
+        "columns": [
+          "episode_id",
+          "family",
+          "value",
+          "computed_at"
+        ]
+      },
+      "rj_universe_snapshots": {
+        "rows": 0,
+        "columns": [
+          "snapshot_date",
+          "source",
+          "ticker",
+          "company_name",
+          "payload_hash",
+          "raw_payload",
+          "inserted_at"
+        ]
+      },
+      "fundamentals": {
+        "rows": 0,
+        "columns": [
+          "id",
+          "ticker",
+          "ref_date",
+          "ativo_total",
+          "passivo_total",
+          "patrimonio_liquido",
+          "lucro_liquido",
+          "roe",
+          "leverage",
+          "source",
+          "inserted_at",
+          "receita_liquida",
+          "net_margin",
+          "fluxo_caixa_operacional",
+          "accruals",
+          "shares_outstanding",
+          "known_at"
+        ],
+        "known_at": [
+          null,
+          null
+        ]
+      },
+      "rj_company_observations": {
+        "rows": 0,
+        "columns": [
+          "ticker",
+          "asof",
+          "rj_request_date",
+          "observed_trading_days",
+          "censoring_horizon_trading_days",
+          "status",
+          "inserted_at"
+        ],
+        "asof": [
+          null,
+          null
+        ]
+      },
+      "dividends": {
+        "rows": 0,
+        "columns": [
+          "id",
+          "ticker",
+          "ex_date",
+          "value_per_share",
+          "source",
+          "inserted_at"
+        ]
+      },
+      "ingestion_issues": {
+        "rows": 0,
+        "columns": [
+          "source_sha256",
+          "document_key",
+          "reason"
+        ]
+      },
+      "fundamentals_pit": {
+        "rows": 0,
+        "columns": [
+          "ticker",
+          "cnpj",
+          "ref_date",
+          "document_version",
+          "received_at",
+          "available_at",
+          "source",
+          "source_sha256",
+          "ativo_total",
+          "passivo_total",
+          "patrimonio_liquido",
+          "lucro_liquido",
+          "receita_liquida",
+          "fluxo_caixa_operacional",
+          "roe",
+          "leverage",
+          "net_margin",
+          "accruals"
+        ]
+      },
+      "shares_pit": {
+        "rows": 0,
+        "columns": [
+          "ticker",
+          "ref_date",
+          "document_id",
+          "received_at",
+          "available_at",
+          "shares_outstanding",
+          "basis_date",
+          "basis_source",
+          "price_basis_source",
+          "source",
+          "source_sha256"
+        ]
+      },
+      "cash_events": {
+        "rows": 0,
+        "columns": [
+          "ticker",
+          "event_id",
+          "ex_date",
+          "payment_date",
+          "value_per_share",
+          "source",
+          "source_sha256"
+        ],
+        "payment_date": [
+          null,
+          null
+        ]
+      },
+      "cash_event_coverage": {
+        "rows": 0,
+        "columns": [
+          "ticker",
+          "start_date",
+          "end_date",
+          "source",
+          "source_sha256"
+        ]
+      },
+      "research_source_documents": {
+        "rows": 0,
+        "columns": [
+          "record_id",
+          "kind",
+          "archive_year",
+          "cnpj",
+          "document_id",
+          "available_at",
+          "source_sha256",
+          "payload_json"
+        ]
+      },
+      "stock_bonus_events": {
+        "rows": 0,
+        "columns": [
+          "ticker",
+          "event_id",
+          "ex_date",
+          "credit_date",
+          "new_shares_per_old",
+          "source",
+          "source_sha256"
+        ]
+      }
+    },
+    "hash_unchanged_after_read": true
+  },
+  {
+    "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\a22739794ba4a43a11544338d4a91e14cb6a0b1f7b132ab460f96d3359f63cf4",
+    "role": "ORIGINAL_PROJECT_DATABASE_READ_ONLY_REFERENCE",
+    "sha256": "a22739794ba4a43a11544338d4a91e14cb6a0b1f7b132ab460f96d3359f63cf4",
+    "catalog_hash_matches": true,
+    "aliases": [
+      "project/data/stocks.db"
+    ],
+    "integrity": [
+      "ok"
+    ],
+    "foreign_key_violations": [],
+    "tables": {
+      "_migrations": {
+        "rows": 12,
+        "columns": [
+          "name",
+          "applied_at"
+        ]
+      },
+      "prices_raw": {
+        "rows": 1149872,
+        "columns": [
+          "id",
+          "date",
+          "ticker",
+          "bdi_code",
+          "market_type",
+          "open",
+          "high",
+          "low",
+          "close",
+          "volume_fin",
+          "qty",
+          "quote_factor",
+          "source_file",
+          "inserted_at"
+        ],
+        "date": [
+          "2016-01-04",
+          "2026-08-27"
+        ]
+      },
+      "adjustments": {
+        "rows": 43,
+        "columns": [
+          "id",
+          "ticker",
+          "ex_date",
+          "factor",
+          "type",
+          "source",
+          "notes",
+          "approved_by",
+          "inserted_at"
+        ]
+      },
+      "quarantine": {
+        "rows": 2227,
+        "columns": [
+          "id",
+          "ticker",
+          "date",
+          "reason",
+          "raw_return",
+          "resolved_at",
+          "resolution",
+          "inserted_at"
+        ],
+        "date": [
+          "2016-01-06",
+          "2026-08-27"
+        ]
+      },
+      "universe_snapshots": {
+        "rows": 60,
+        "columns": [
+          "asof_date",
+          "ticker",
+          "median_vol",
+          "rank",
+          "inserted_at"
+        ]
+      },
+      "decisions": {
+        "rows": 0,
+        "columns": [
+          "id",
+          "run_id",
+          "asof",
+          "ticker",
+          "signal_value",
+          "rank",
+          "conviction_band",
+          "frozen_mode",
+          "inserted_at",
+          "exec_date",
+          "exec_price",
+          "exit_date",
+          "exit_price",
+          "cost_paid",
+          "realized_return_net",
+          "holding_days"
+        ],
+        "asof": [
+          null,
+          null
+        ],
+        "exec_date": [
+          null,
+          null
+        ]
+      },
+      "runs": {
+        "rows": 1,
+        "columns": [
+          "run_id",
+          "config_hash",
+          "code_version",
+          "started_at",
+          "params_json",
+          "notes",
+          "params_frozen_until"
+        ]
+      },
+      "rj_universe": {
+        "rows": 0,
+        "columns": [
+          "ticker",
+          "company_name",
+          "rj_request_date",
+          "rj_process_number",
+          "plan_presented_date",
+          "plan_approved_date",
+          "rj_end_date",
+          "delisted_date",
+          "source",
+          "approved_by",
+          "notes",
+          "inserted_at"
+        ]
+      },
+      "rj_episodes": {
+        "rows": 0,
+        "columns": [
+          "id",
+          "ticker",
+          "trough_date",
+          "trough_price",
+          "is_primary",
+          "outcome",
+          "rally_pct",
+          "rally_date",
+          "trading_days_to_rally",
+          "censored",
+          "inserted_at",
+          "secondary_outcome",
+          "secondary_rally_pct",
+          "secondary_rally_date",
+          "secondary_trading_days_to_rally",
+          "secondary_censored"
+        ]
+      },
+      "rj_events": {
+        "rows": 0,
+        "columns": [
+          "id",
+          "ticker",
+          "event_date",
+          "published_at",
+          "known_at",
+          "event_type",
+          "source",
+          "approved_by",
+          "notes",
+          "inserted_at"
+        ],
+        "known_at": [
+          null,
+          null
+        ]
+      },
+      "rj_family_scores": {
+        "rows": 0,
+        "columns": [
+          "episode_id",
+          "family",
+          "value",
+          "computed_at"
+        ]
+      },
+      "rj_universe_snapshots": {
+        "rows": 0,
+        "columns": [
+          "snapshot_date",
+          "source",
+          "ticker",
+          "company_name",
+          "payload_hash",
+          "raw_payload",
+          "inserted_at"
+        ]
+      },
+      "fundamentals": {
+        "rows": 1579,
+        "columns": [
+          "id",
+          "ticker",
+          "ref_date",
+          "ativo_total",
+          "passivo_total",
+          "patrimonio_liquido",
+          "lucro_liquido",
+          "roe",
+          "leverage",
+          "source",
+          "inserted_at",
+          "receita_liquida",
+          "net_margin",
+          "fluxo_caixa_operacional",
+          "accruals",
+          "shares_outstanding",
+          "known_at"
+        ],
+        "known_at": [
+          "2019-01-24",
+          "2026-09-04"
+        ]
+      },
+      "rj_company_observations": {
+        "rows": 0,
+        "columns": [
+          "ticker",
+          "asof",
+          "rj_request_date",
+          "observed_trading_days",
+          "censoring_horizon_trading_days",
+          "status",
+          "inserted_at"
+        ],
+        "asof": [
+          null,
+          null
+        ]
+      },
+      "dividends": {
+        "rows": 2384,
+        "columns": [
+          "id",
+          "ticker",
+          "ex_date",
+          "value_per_share",
+          "source",
+          "inserted_at"
+        ]
+      }
+    },
+    "hash_unchanged_after_read": true
+  }
+]

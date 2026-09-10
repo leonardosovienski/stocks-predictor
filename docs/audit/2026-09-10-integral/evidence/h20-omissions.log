@@ -1,0 +1,150 @@
+{
+  "archive_manifest_files": 1448,
+  "omitted_from_data_archive": 29,
+  "git_blobs_read": 899,
+  "git_bytes_read": 6569809,
+  "recovered": {
+    "2bea618687925b2d933c391c0510d0a5e50cb3b343fc7517dc89dec964c2e41a": {
+      "git_blob": "e16d4b56145706e643508a35cfd94da873c05be7",
+      "git_path": "research/session-20260907/scripts/acquire_profit_cash_gaps.py",
+      "package_path": "preparation/acquire_profit_cash_gaps.py"
+    },
+    "667d8b193652c984d17490de7ac136bab8d391d6397ed630c30c63d6e045f9c8": {
+      "git_blob": "82eeef3239194c969d79ea321e803aee182f86c1",
+      "git_path": "research/session-20260907/scripts/acquire_profit_historical_cash.py",
+      "package_path": "preparation/acquire_profit_historical_cash.py"
+    },
+    "89710dbb8eb99e46186171929536ca3cd6a6e870190b5fbd67b7f141e38543c8": {
+      "git_blob": "79b364f3a6c3201b094463f4f0f15452bc98fae9",
+      "git_path": "research/session-20260907/scripts/acquire_two_cash_names.py",
+      "package_path": "preparation/acquire_two_cash_names.py"
+    },
+    "8ce145185824bade81d80381c9b33bd9681b6c462d445822e481e28d359da460": {
+      "git_blob": "0ffadbeacad68a59e3fca95b714b09621eeba0f0",
+      "git_path": "research/session-20260907/scripts/assess_next_stocks_test.py",
+      "package_path": "baseline/preparation-record/assess_next_stocks_test.py"
+    },
+    "6af10ba53534433e4ea1d583a1a3bb2ee6f9f48e3d748c49f6bfb1c3b69a8dda": {
+      "git_blob": "5d25e02be943fe16d8ba585f1187ab13484762d9",
+      "git_path": "research/session-20260907/scripts/audit_fractional_quotes.py",
+      "package_path": "preparation/audit_fractional_quotes.py"
+    },
+    "841dc081549ada45a05ac46e5cbeae6fbed18a6712add63dd0aaad399453128f": {
+      "git_blob": "4364087b1b658bb23390b060187c399627b099c6",
+      "git_path": "research/session-20260907/scripts/audit_profit_opportunity_cost.py",
+      "package_path": "preparation/audit_profit_opportunity_cost.py"
+    },
+    "5b89e05234e3e00bf54bd9ceb16fa4ba00907891f4405539e1762e317a307db7": {
+      "git_blob": "33532e3de668913dfb1a6ed4c7303edb3ef142f4",
+      "git_path": "research/session-20260907/scripts/audit_profit_sources.py",
+      "package_path": "preparation/audit_profit_sources.py"
+    },
+    "419324e3d0b878b14fbb81f2851b862aee89eade5cf7e34a36f869f28eb85bfc": {
+      "git_blob": "c3f0a5667335d309ebcbc1e9bdeb0cbf98d737db",
+      "git_path": "research/session-20260907/scripts/build_value_reorganization_terms.py",
+      "package_path": "baseline/preparation-record/build_value_reorganization_terms.py"
+    },
+    "531744dfd4e2e4915dd7561c0d42ce3c941fdfd8dae90e48b015f5999d78c432": {
+      "git_blob": "e97e2c720b8bf489a415aad0a5842f7693ca62e5",
+      "git_path": "research/session-20260907/scripts/check_value_event_inputs.py",
+      "package_path": "baseline/preparation-record/check_value_event_inputs.py"
+    },
+    "c5a789b16e2b94851982df0f9c8421c54ffd8a75450dc1f9b8c53aaf2286f2d9": {
+      "git_blob": "86070870f89b3f0a2f8338f5358a82aabf30a73d",
+      "git_path": "research/session-20260907/scripts/download_final_terms.py",
+      "package_path": "baseline/preparation-record/download_final_terms.py"
+    },
+    "bf57f79894ee627979f8b9b8072dc8280fc691d71bca129a5bedf791a64f07c7": {
+      "git_blob": "1e1b0ca057aac5e2aeacd259b9aee007ea765614",
+      "git_path": "research/session-20260907/scripts/download_value_event_sources.py",
+      "package_path": "baseline/preparation-record/download_value_event_sources.py"
+    },
+    "d8cab50440d70a3f00e9cd76c4d8a8df678fc0dfaa803869fd825975fc6b091e": {
+      "git_blob": "1694fbed05435d809cc5dae8e39c6fc8721549eb",
+      "git_path": "research/session-20260907/scripts/extend_value_successor_quotes.py",
+      "package_path": "baseline/preparation-record/extend_value_successor_quotes.py"
+    },
+    "bb11e2e71eb69d8a7915fcb0e6094979e5a3fc3a691b4a16e6fb0e46a63c471e": {
+      "git_blob": "00e1dd2505361a02255b1354a70fb28f878913de",
+      "git_path": "research/session-20260907/scripts/profit_bundle_runner.py",
+      "package_path": "rodar_validacao.py"
+    },
+    "130695f5c204534b27e64cc457ab7ecf32e7cd5a5cf673695ab34f7ee92eefa9": {
+      "git_blob": "42a6fb568789c6b00c5787b2621bf759569f85cc",
+      "git_path": "research/session-20260907/scripts/record_reorganization_results.py",
+      "package_path": "baseline/preparation-record/record_reorganization_results.py"
+    },
+    "2bd51ad102ca7f95dd6e2394d7c705940a4dcad25aba92afc415ee203994fca8": {
+      "git_blob": "87952c884e0ae07e78bf1a4d3d28449ff330b6e9",
+      "git_path": "research/session-20260907/scripts/register_profit_validation.py",
+      "package_path": "preparation/register_profit_validation.py"
+    },
+    "c85087c935929d7bda5963210ca913f61da9ee8ae355a41ed7b3371d30d41738": {
+      "git_blob": "48166753e1a46fac84860184e9891b8038868e81",
+      "git_path": "research/session-20260907/scripts/register_value_reorganizations.py",
+      "package_path": "baseline/preparation-record/register_value_reorganizations.py"
+    },
+    "3784a7a5bc790ee14204a32410d07bdc9a9c11abadc2891c06ebfc24633f2120": {
+      "git_blob": "b374d0c531419d73453c34b07d2bb9f1790cf044",
+      "git_path": "research/session-20260907/scripts/reorganization_bundle_runner.py",
+      "package_path": "baseline/rodar_reorganizacoes.py"
+    },
+    "f90eb4a2466ee76ef4ddc580b32dee2d134380cf9f46d150e7b843d0642aa600": {
+      "git_blob": "7ea9cbc7dd8edb925fdb8fdb2b9d1c04aea2a0c6",
+      "git_path": "research/session-20260907/scripts/run_profit_validation.py",
+      "package_path": "preparation/run_profit_validation.py"
+    },
+    "cd4520594b2d0ca67456d0d81e1ca82380bfe3d47bc84740c4105cb4c0e3e2e8": {
+      "git_blob": "be224bc279e4264a4b17315923ec154599c9e139",
+      "git_path": "research/session-20260907/scripts/validate_expanded_profit_cash.py",
+      "package_path": "preparation/validate_expanded_profit_cash.py"
+    },
+    "782ec98063df39ce0d974377eca9246af3c9906281dc837d0de2333109b80595": {
+      "git_blob": "c8cf7141080da28daca23a9849df87ed0834f105",
+      "git_path": "stocks_predictor/__init__.py",
+      "package_path": "baseline/code/stocks_predictor/__init__.py"
+    },
+    "bcb0fb01e922b3fca5f821cb59e9f8843555245bbff464975d685a652e1fa6cc": {
+      "git_blob": "2a08f9363d2898b93b68d7e016600cc2a5151476",
+      "git_path": "stocks_predictor/discovery_h17.py",
+      "package_path": "baseline/code/stocks_predictor/discovery_h17.py"
+    },
+    "47e04d5720c4dc67e987ffc80802ade82ab288c3c83abc312850b661cd210763": {
+      "git_blob": "e4fea4c4fd4dd074d11a61c1985cf430c5b103ad",
+      "git_path": "stocks_predictor/profit_validation.py",
+      "package_path": "validator/profit_validation.py"
+    },
+    "c844accfca60576dc048af0fcfbe2982d459857307f10916b73fe03a640b3531": {
+      "git_blob": "b8caaa26f90432781f2f5b68b75e16b1f665816c",
+      "git_path": "tests/test_profit_validation.py",
+      "package_path": "validator/test_profit_validation.py"
+    },
+    "19edcae4624402636dbfa7e5f2facfc2d10f34f9090f38aaa8ccb7de7ee6dcd8": {
+      "git_blob": "adb9e69161f950ca2958844836e71292ba7682c5",
+      "git_path": "vendor/predictor_core/measurement/bootstrap.py",
+      "package_path": "validator/bootstrap.py"
+    }
+  },
+  "remaining_missing": [
+    {
+      "sha256": "1cb585bac0c331d166460ae4cbd8b7c2279d7dbdb7cb059e565d6e90ef7850ef",
+      "package_path": "baseline/audit/repository-f9987faa06d5.zip"
+    },
+    {
+      "sha256": "0fa6d8c3c4c5b1cec8023ddc3b3b913631d95cb551f16d7f14e8ae564d492c69",
+      "package_path": "baseline/code/stocks_predictor/discovery_reorganizations.py"
+    },
+    {
+      "sha256": "f50bd2aa0ae3e78cb509ad9d158f8fcaacd6e90123a42eb2c7d180a50078cb40",
+      "package_path": "baseline/code/stocks_predictor/discovery_value.py"
+    },
+    {
+      "sha256": "a8d05b848653b1ce0d81b8a3040f2f3a121387d221de8ade74a82afe5411c681",
+      "package_path": "baseline/code/stocks_predictor/discovery_value_repair.py"
+    },
+    {
+      "sha256": "1b305395c835a206c9a2f153eea8fd4f85a43d3f172f284c63524e95f619a230",
+      "package_path": "audit/repository.zip"
+    }
+  ]
+}

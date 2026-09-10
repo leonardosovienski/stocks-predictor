@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "C:\STOCKS\work\audit-integral-20260910\reproduce_h20.py", line 49, in <module>
+    restore(z,p,expected)
+  File "C:\STOCKS\work\audit-integral-20260910\reproduce_h20.py", line 24, in restore
+    payload=z.read('objects/'+expected)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leona\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\zipfile\__init__.py", line 1585, in read
+    with self.open(name, "r", pwd) as fp:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leona\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\zipfile\__init__.py", line 1622, in open
+    zinfo = self.getinfo(name)
+            ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leona\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\zipfile\__init__.py", line 1550, in getinfo
+    raise KeyError(
+KeyError: "There is no item named 'objects/1cb585bac0c331d166460ae4cbd8b7c2279d7dbdb7cb059e565d6e90ef7850ef' in the archive"

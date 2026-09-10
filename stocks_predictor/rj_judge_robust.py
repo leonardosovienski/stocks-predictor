@@ -19,7 +19,7 @@ import random
 import statistics
 
 import rj_families as families
-from rj_judge import permutation_pvalue_from_count
+from rj_judge import permutation_pvalue_from_count, validate_primary_units
 
 
 def _t_stat(units) -> float | None:
@@ -48,6 +48,11 @@ def romano_wolf_stepdown(units_by_family: dict, n_perm: int = 5000,
     """
     names = [n for n in families.PREDICTIVE_FAMILIES
              if units_by_family.get(n) and n not in families.CATEGORICAL_FAMILIES]
+    for name in names:
+        validate_primary_units(units_by_family[name])
+    signatures = {tuple((ticker, group) for ticker, _, group in units_by_family[name]) for name in names}
+    if len(signatures) > 1:
+        raise ValueError("joint maxT requires identical ordered companies and labels across families")
     t_obs = {n: _t_stat(units_by_family[n]) for n in names}
     t_obs = {n: t for n, t in t_obs.items() if t is not None}
     if not t_obs:
@@ -57,9 +62,8 @@ def romano_wolf_stepdown(units_by_family: dict, n_perm: int = 5000,
     # units na mesma ordem (caso comum na análise primária: 1 episódio por
     # empresa): uma única permutação dos rótulos aplicada a todas — preserva
     # a correlação cruzada entre estatísticas, que é o que o BH ignora.
-    # Fallback documentado: conjuntos de units diferentes (família com dado
-    # faltante) => permutações independentes (aproximação; a correlação
-    # cruzada fica subestimada e o ajuste, mais conservador).
+    # Different samples/labels fail above: independent permutations do not
+    # establish the joint null distribution or guarantee conservatism.
     # Comparar só a IDENTIDADE/ORDEM dos tickers (não o valor, que difere por
     # construção entre famílias — comparar (ticker, valor) fazia same_units
     # dar False quase sempre, mesmo quando todas as famílias usam exatamente

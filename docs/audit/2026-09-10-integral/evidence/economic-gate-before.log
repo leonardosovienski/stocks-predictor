@@ -1,0 +1,76 @@
+test_invalid_external_edge_estimate_is_rejected (tests.test_audit_integrity.EconomicInputTests.test_invalid_external_edge_estimate_is_rejected) ... FAIL
+test_missing_observations_are_not_silently_removed (tests.test_audit_integrity.EconomicInputTests.test_missing_observations_are_not_silently_removed) ... FAIL
+test_nonfinite_costs_and_hurdles_cannot_produce_a_decision (tests.test_audit_integrity.EconomicInputTests.test_nonfinite_costs_and_hurdles_cannot_produce_a_decision) ... 
+  test_nonfinite_costs_and_hurdles_cannot_produce_a_decision (tests.test_audit_integrity.EconomicInputTests.test_nonfinite_costs_and_hurdles_cannot_produce_a_decision) (value=nan) ... FAIL
+  test_nonfinite_costs_and_hurdles_cannot_produce_a_decision (tests.test_audit_integrity.EconomicInputTests.test_nonfinite_costs_and_hurdles_cannot_produce_a_decision) (hurdle=nan) ... FAIL
+  test_nonfinite_costs_and_hurdles_cannot_produce_a_decision (tests.test_audit_integrity.EconomicInputTests.test_nonfinite_costs_and_hurdles_cannot_produce_a_decision) (value=inf) ... FAIL
+  test_nonfinite_costs_and_hurdles_cannot_produce_a_decision (tests.test_audit_integrity.EconomicInputTests.test_nonfinite_costs_and_hurdles_cannot_produce_a_decision) (hurdle=inf) ... FAIL
+test_nonfinite_policy_is_rejected (tests.test_audit_integrity.EconomicInputTests.test_nonfinite_policy_is_rejected) ... FAIL
+
+======================================================================
+FAIL: test_invalid_external_edge_estimate_is_rejected (tests.test_audit_integrity.EconomicInputTests.test_invalid_external_edge_estimate_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\STOCKS\stocks-predictor\tests\test_audit_integrity.py", line 49, in test_invalid_external_edge_estimate_is_rejected
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_missing_observations_are_not_silently_removed (tests.test_audit_integrity.EconomicInputTests.test_missing_observations_are_not_silently_removed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\STOCKS\stocks-predictor\tests\test_audit_integrity.py", line 34, in test_missing_observations_are_not_silently_removed
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_nonfinite_costs_and_hurdles_cannot_produce_a_decision (tests.test_audit_integrity.EconomicInputTests.test_nonfinite_costs_and_hurdles_cannot_produce_a_decision) (value=nan)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\STOCKS\stocks-predictor\tests\test_audit_integrity.py", line 39, in test_nonfinite_costs_and_hurdles_cannot_produce_a_decision
+    with self.subTest(value=value), self.assertRaises(ValueError):
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_nonfinite_costs_and_hurdles_cannot_produce_a_decision (tests.test_audit_integrity.EconomicInputTests.test_nonfinite_costs_and_hurdles_cannot_produce_a_decision) (hurdle=nan)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\STOCKS\stocks-predictor\tests\test_audit_integrity.py", line 41, in test_nonfinite_costs_and_hurdles_cannot_produce_a_decision
+    with self.subTest(hurdle=value), self.assertRaises(ValueError):
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_nonfinite_costs_and_hurdles_cannot_produce_a_decision (tests.test_audit_integrity.EconomicInputTests.test_nonfinite_costs_and_hurdles_cannot_produce_a_decision) (value=inf)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\STOCKS\stocks-predictor\tests\test_audit_integrity.py", line 39, in test_nonfinite_costs_and_hurdles_cannot_produce_a_decision
+    with self.subTest(value=value), self.assertRaises(ValueError):
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_nonfinite_costs_and_hurdles_cannot_produce_a_decision (tests.test_audit_integrity.EconomicInputTests.test_nonfinite_costs_and_hurdles_cannot_produce_a_decision) (hurdle=inf)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\STOCKS\stocks-predictor\tests\test_audit_integrity.py", line 41, in test_nonfinite_costs_and_hurdles_cannot_produce_a_decision
+    with self.subTest(hurdle=value), self.assertRaises(ValueError):
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_nonfinite_policy_is_rejected (tests.test_audit_integrity.EconomicInputTests.test_nonfinite_policy_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\STOCKS\stocks-predictor\tests\test_audit_integrity.py", line 45, in test_nonfinite_policy_is_rejected
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.010s
+
+FAILED (failures=7)

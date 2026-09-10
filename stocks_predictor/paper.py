@@ -1,12 +1,9 @@
-"""M6 — Paper ledger forward: o ANTI-TAUTOLOGIA.
+"""Legacy M6 paper ledger, separate from the H21 observation protocol.
 
-Registra a carteira (parte EVAL do ledger `decisions`, frozen_mode=1) num `asof` ANTES
-de qualquer preço futuro existir — a única validação que nenhum lookahead pode
-contaminar. Quando os preços chegam, a parte RISK é preenchida WRITE-ONCE via COALESCE
-(coleta posterior não reescreve o que já foi registrado).
-
-Operacional: roda no cron diário em rede limpa (mesmo padrão do domínio 1). Começa após
-o veredito da H1 (M6) e nunca para.
+New forward records reject backdating and databases containing future prices.
+These local guards and frozen_mode do not certify source availability, an
+independent holdout, actual fills, or a tamper-proof observation timestamp.
+Historical fixtures use an explicitly named replay API. No scheduler is started.
 """
 import datetime
 
@@ -20,11 +17,34 @@ from execution import next_open_after
 from returns import month_end_dates
 
 
+def validate_forward_context(conn, asof):
+    """Fail before writes if this cannot be a new observation on the UTC day."""
+    day = datetime.date.fromisoformat(asof)
+    if day.isoformat() != asof or day != datetime.datetime.now(datetime.timezone.utc).date():
+        raise ValueError("forward recording requires today's UTC date; historical replay is separate")
+    latest = conn.execute("SELECT MAX(date) FROM prices_raw").fetchone()[0]
+    if latest is not None and latest > asof:
+        raise ValueError("forward recording cannot use a database containing future prices")
+
+
 def record_forward(conn, cfg, asof, run_id) -> int:
+    """Record a new observation after checking the local temporal boundary."""
+    validate_forward_context(conn, asof)
+    return _record_eval(conn, cfg, asof, run_id, legacy=False)
+
+
+def legacy_record_forward(conn, cfg, asof, run_id) -> int:
     """Registra a EVAL da carteira em `asof` (frozen_mode=1). Quintil superior =>
-    conviction 'quintil_superior'; resto do universo => 'resto'. Retorna nº de linhas."""
+    conviction 'quintil_superior'; resto => 'resto'. Historical reproduction only:
+    frozen_mode is a legacy ledger flag, never proof of a prospective observation.
+    """
+    return _record_eval(conn, cfg, asof, run_id, legacy=True)
+
+
+def _record_eval(conn, cfg, asof, run_id, *, legacy):
     u, f = cfg["universe"], cfg["factor"]
-    uni = universe.select_universe(
+    select = universe.legacy_select_universe if legacy else universe.select_universe
+    uni = select(
         conn, asof, u.get("top_n", 60), u.get("lookback_trading_days", 126),
         u.get("min_history_days", 252))
     series = {tk: adjust.adjusted_series(conn, tk) for tk in uni}
@@ -141,10 +161,8 @@ def settle_exits(conn, cfg) -> int:
 
 
 def main():
-    conn = db.get_connection()
-    run_id = db.new_run(conn, {"paper": True}, notes="paper forward")
-    print("paper forward pronto — chame record_forward(conn, cfg, asof, run_id) no cron.")
-    return run_id
+    print("M6 legado inativo. Consulte STOCKS_CURRENT_STATE.md e o protocolo H21; nenhum banco ou cron criado.")
+    return 0
 
 
 if __name__ == "__main__":

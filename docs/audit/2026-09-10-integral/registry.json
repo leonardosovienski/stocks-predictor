@@ -1,0 +1,2431 @@
+{
+  "schema_version": 1,
+  "audit_id": "AUDIT-R3-20260910",
+  "language": "pt-BR",
+  "base_sha": "3f9b891bfc48f38a36fa7f5405547b85ca76b317",
+  "scope_registration_evidence": "E01",
+  "source_of_truth": "Este registro guarda entidades; README apresenta interpretações e visões por ID. Recibos preservam resultados e origem.",
+  "integration": {
+    "pull_request": 74,
+    "url": "https://github.com/leonardosovienski/stocks-predictor/pull/74",
+    "state": "DOMAIN_CI_PASS_FINAL_DOCUMENTATION_CHECK_AND_MERGE_RECORDED_BY_PR74",
+    "final_delivery_receipt": "C:/STOCKS/outputs/AUDITORIA_INTEGRAL_20260910/ENTREGA.json"
+  },
+  "evidence": [
+    {
+      "id": "E01",
+      "path": "evidence/initial-scope.md",
+      "source_path": "C:\\STOCKS\\work\\audit-integral-20260910\\initial-scope.md",
+      "sha256": "23bc9f9d659a8a16db9c470ce2a225006958c54719676e67f0cdec8a5da20d59",
+      "bytes": 6948
+    },
+    {
+      "id": "E02",
+      "path": "evidence/database-verification.json",
+      "source_path": "C:\\STOCKS\\work\\audit-integral-20260910\\database-verification.json",
+      "sha256": "0a51712b90c1b5216dd655447cda6d146f4c4ac1ec16c872065951dee5510bc1",
+      "bytes": 72940
+    },
+    {
+      "id": "E03",
+      "path": "evidence/data-probes.json",
+      "source_path": "C:\\STOCKS\\work\\audit-integral-20260910\\data-probes.json",
+      "sha256": "031c44e4577daea03cf3e96289679b70590d9a29d6912ff4e97869acd8da02c7",
+      "bytes": 58102
+    },
+    {
+      "id": "E04",
+      "path": "evidence/defects-before.json",
+      "source_path": "C:\\STOCKS\\work\\audit-integral-20260910\\defects-before.json",
+      "sha256": "833f784b1a57efa8bb5d5f500af3c710b99147666c91fb067706de26d4024a3c",
+      "bytes": 3939
+    },
+    {
+      "id": "E05",
+      "path": "evidence/regression-before.log",
+      "source_path": "C:\\STOCKS\\work\\audit-integral-20260910\\regression-before.log",
+      "sha256": "578d69aff48b1bfda8eb3b2f4935bf4e27b0fcfce4cd65ac570f0338b2504591",
+      "bytes": 8678
+    },
+    {
+      "id": "E06",
+      "path": "evidence/regression-after.log",
+      "source_path": "C:\\STOCKS\\work\\audit-integral-20260910\\regression-after.log",
+      "sha256": "eb1be46a7f5f72ffcf5d4729d8fc611ff402230d0adb225ea8bb08cdbea79eea",
+      "bytes": 1847
+    },
+    {
+      "id": "E07",
+      "path": "evidence/economic-gate-before.log",
+      "source_path": "C:\\STOCKS\\work\\audit-integral-20260910\\economic-gate-before.log",
+      "sha256": "118bd785fb475348cb7f172deecc9a2dce2a0c1a52958b017363d53ea236ddf7",
+      "bytes": 5930
+    },
+    {
+      "id": "E08",
+      "path": "evidence/integrity-final.log",
+      "source_path": "C:\\STOCKS\\work\\audit-integral-20260910\\integrity-final.log",
+      "sha256": "2ec98c2f245afb07257d116e34fa18144808c25c8eb19c9fc448578e920830c2",
+      "bytes": 2948
+    },
+    {
+      "id": "E09",
+      "path": "evidence/rj-contract-before-after.json",
+      "source_path": "C:\\STOCKS\\work\\audit-integral-20260910\\rj-contract-before-after.json",
+      "sha256": "00bebeab6e4b2700812342d38e0a4d33a16b3c3c13fa443ca0ccf103d994bf85",
+      "bytes": 2216
+    },
+    {
+      "id": "E10",
+      "path": "evidence/h21-reproduction.json",
+      "source_path": "C:\\STOCKS\\work\\audit-integral-20260910\\h21-reproduction.json",
+      "sha256": "562577dd2100395fe03c9e277895b52e4f138152ad1b2ac9b2375b28d3fdbbbb",
+      "bytes": 361
+    },
+    {
+      "id": "E11",
+      "path": "evidence/h21-independent-after.json",
+      "source_path": "C:\\STOCKS\\work\\audit-integral-20260910\\h21-independent-after.json",
+      "sha256": "d871982756af649a70c4a2fa167a954b422cfba262bee8fae7c9b2f32774adbe",
+      "bytes": 1573
+    },
+    {
+      "id": "E12",
+      "path": "evidence/h20-omissions.json",
+      "source_path": "C:\\STOCKS\\work\\audit-integral-20260910\\h20-omissions.json",
+      "sha256": "956e67e84b0a10c9a009ca4b0482ee6314be5bef7553f4c5fe630eef5692d7ad",
+      "bytes": 8135
+    },
+    {
+      "id": "E13",
+      "path": "evidence/h20-numeric-differences.json",
+      "source_path": "C:\\STOCKS\\work\\audit-integral-20260910\\h20-numeric-differences.json",
+      "sha256": "03dde0ae7a6ab53a5feaac8fa7f917cc7737d346985e10867e6e8442206114f0",
+      "bytes": 170
+    },
+    {
+      "id": "E14",
+      "path": "evidence/h20-reproduction.log",
+      "source_path": "C:\\STOCKS\\work\\audit-integral-20260910\\h20-reproduction.log",
+      "sha256": "c25fa11f422ca89c7b133823148bfdd2c2666c35c49f3c36e46148edb63cb84a",
+      "bytes": 1012
+    },
+    {
+      "id": "E15",
+      "path": "evidence/h20-omissions.log",
+      "source_path": "C:\\STOCKS\\work\\audit-integral-20260910\\h20-omissions.log",
+      "sha256": "956e67e84b0a10c9a009ca4b0482ee6314be5bef7553f4c5fe630eef5692d7ad",
+      "bytes": 8135
+    },
+    {
+      "id": "E16",
+      "path": "evidence/temporal-and-sources.json",
+      "source_path": "C:\\STOCKS\\work\\audit-integral-20260910\\temporal-and-sources.json",
+      "sha256": "7a94fdd856f805a73c897f83191e28cfd3b9064f687c9e99586fa07538d34a71",
+      "bytes": 6155
+    },
+    {
+      "id": "E17",
+      "path": "evidence/source-audits-after.json",
+      "source_path": "C:\\STOCKS\\work\\audit-integral-20260910\\source-audits-after.json",
+      "sha256": "3d66353a95ca5b93a8a0650826b631d7fb9a8f031a886e90ac84cdfbeac63bb4",
+      "bytes": 4013,
+      "source_sha256": "27323eb4f0247b1ddfa77d6cdc655a8c8ea903e453072524ce630cb89a9625a3",
+      "representation": "Compact authorial audit result: issue detail lists omitted; full original remains at source_path."
+    },
+    {
+      "id": "E18",
+      "path": "evidence/post-change-equivalence.json",
+      "source_path": "C:\\STOCKS\\work\\audit-integral-20260910\\post-change-equivalence.json",
+      "sha256": "6d1449228bfe0183f3d43bfe948878e809763f3e8cb621d2326196530c6e6317",
+      "bytes": 475
+    },
+    {
+      "id": "E19",
+      "path": "evidence/preservation-check.json",
+      "source_path": "C:\\STOCKS\\work\\audit-integral-20260910\\preservation-check.json",
+      "sha256": "630a0a5759f815e750b4b94f0591b1a7540dede3dd145fc2f20eb0c2e54417d7",
+      "bytes": 2429
+    },
+    {
+      "id": "E20",
+      "path": "evidence/notice-body-verification.json",
+      "source_path": "C:\\STOCKS\\work\\audit-integral-20260910\\notice-body-verification.json",
+      "sha256": "a3ecd2c6964a129f7affaaa1083522b02483fd0e902a61a01bf42340299af19e",
+      "bytes": 20123
+    },
+    {
+      "id": "E21",
+      "path": "evidence/current-module-inventory.json",
+      "source_path": "C:\\STOCKS\\work\\audit-integral-20260910\\current-module-inventory.json",
+      "sha256": "a17c8f6f88cc6eeafdf573f88e0f51bfe6c6d541570fc20e81d2bf59e8367220",
+      "bytes": 24246
+    },
+    {
+      "id": "E22",
+      "path": "evidence/acquisitions.jsonl",
+      "source_path": "C:\\STOCKS\\work\\audit-integral-20260910\\acquisitions.jsonl",
+      "sha256": "48b0de3f0143a6e232b1de805d7adf3c3ef044f76b56dd50fc04e08983a4199e",
+      "bytes": 3834
+    },
+    {
+      "id": "E23",
+      "path": "evidence/runs.jsonl",
+      "source_path": "C:\\STOCKS\\work\\audit-integral-20260910\\runs.jsonl",
+      "sha256": "f0378d7e90e00bbaca8cfabb6e023cd55bb341f68e77abb58589ecf1b5682a04",
+      "bytes": 37821
+    },
+    {
+      "id": "E24",
+      "path": "evidence/stdlib-final.log",
+      "source_path": "C:\\STOCKS\\work\\audit-integral-20260910\\stdlib-final.log",
+      "sha256": "74eee6d541c66d2a1d0a0b563f7d838d0968f8de77cc17bd1ad5a5ed77e5f674",
+      "bytes": 7587
+    },
+    {
+      "id": "E25",
+      "path": "evidence/ci194-quality.log",
+      "source_path": "C:\\STOCKS\\work\\audit-integral-20260910\\ci194-quality.log",
+      "sha256": "fe6ff3c6ec797974c015ae155087a2665fe3283f6ed091e071129e97b58791b4",
+      "bytes": 43326
+    },
+    {
+      "id": "E26",
+      "path": "evidence/ci195-quality.log",
+      "source_path": "C:\\STOCKS\\work\\audit-integral-20260910\\ci195-quality.log",
+      "sha256": "348567ff19e2a0fb793f0f6b9fc36d1a02f1a945929ddad0900e6e1a23928a4b",
+      "bytes": 31246
+    },
+    {
+      "id": "E27",
+      "path": "evidence/ci196-quality.log",
+      "source_path": "C:\\STOCKS\\work\\audit-integral-20260910\\ci196-quality.log",
+      "sha256": "cd581993554d2d6ec212905938ea95b0c07e92aa6f9af7ec5fb40c1462cf529f",
+      "bytes": 31129
+    },
+    {
+      "id": "E28",
+      "path": "evidence/h20-consumed-reconciliation-03-verification.json",
+      "source_path": "C:\\STOCKS\\work\\audit-integral-20260910\\h20-consumed-reconciliation-03\\verification.json",
+      "sha256": "17515a9625c4f7cf3e40fa53a0cd7a924ddd203b0fa92ea65937a24c86eae0f2",
+      "bytes": 5280
+    },
+    {
+      "id": "E29",
+      "path": "evidence/baseline-identity.json",
+      "sha256": "2dd1a6c6cba8cc9c7916381733fe3879632f67b29ee256f671367b807254b007",
+      "bytes": 284411,
+      "source_path": "C:\\STOCKS\\work\\audit-integral-20260910\\baseline.json",
+      "source_sha256": "047f8c4a7861bf6f2eb8911cbb399deef2fcdfcad9b9e99db89a28a24d71ec3b"
+    },
+    {
+      "id": "E30",
+      "path": "evidence/ci197-quality.log",
+      "source_path": "C:\\STOCKS\\work\\audit-integral-20260910\\ci197-quality.log",
+      "sha256": "5d675b30ecc0f2344b4c47227239c089349f5d8186606be5944a689616529dd8",
+      "bytes": 44306
+    },
+    {
+      "id": "E31",
+      "path": "evidence/source-semantic-review.json",
+      "sha256": "d6dd418a0eaab2f540cae1922b6b73dfeb6623e8a88b7256223f5b09d3d0f218",
+      "bytes": 3273,
+      "source_path": "C:\\STOCKS\\work\\audit-integral-20260910\\pdf-selected-pages.json",
+      "source_sha256": "37acf25d1659a40bc1306264f5224b949c2a1d2c5f33955a0b66c60a83b186aa",
+      "representation": "Review scope and paraphrases only; raw PDFs and excerpts remain local."
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "proposition": "SHA antigo do prompt é o HEAD corrente",
+      "nature": "FATO",
+      "state": "REFUTADO",
+      "scope": "Base real 3f9b891bfc48f38a36fa7f5405547b85ca76b317, PR73; integração desta auditoria via PR74.",
+      "temporal_context": "Observação AUDIT-R3 em 2026-09-10 UTC; resultados históricos preservam suas próprias janelas.",
+      "evidence": [
+        "E29"
+      ],
+      "issues": [],
+      "interpretation": ""
+    },
+    {
+      "id": "C02",
+      "proposition": "Os 12 bancos recuperados estão íntegros e preservados",
+      "nature": "FATO",
+      "state": "VALIDADO",
+      "scope": "SHA físico, PRAGMA integrity_check e foreign_key_check; não certifica semântica ou prontidão.",
+      "temporal_context": "Observação AUDIT-R3 em 2026-09-10 UTC; resultados históricos preservam suas próprias janelas.",
+      "evidence": [
+        "E02",
+        "E19"
+      ],
+      "issues": [],
+      "interpretation": ""
+    },
+    {
+      "id": "C03",
+      "proposition": "Todas as tabelas fundamentals_pit estão vazias",
+      "nature": "FATO",
+      "state": "REFUTADO",
+      "scope": "O reparo de exemplo contém 3 linhas. Não há painel PIT amplo certificado.",
+      "temporal_context": "Observação AUDIT-R3 em 2026-09-10 UTC; resultados históricos preservam suas próprias janelas.",
+      "evidence": [
+        "E02"
+      ],
+      "issues": [
+        "I10"
+      ],
+      "interpretation": ""
+    },
+    {
+      "id": "C04",
+      "proposition": "H21 reproduz os oito resultados históricos",
+      "nature": "FATO",
+      "state": "VALIDADO",
+      "scope": "2050 preços, 16400 pontos diários; entradas e campos econômicos exatos. Metadados de execução diferem.",
+      "temporal_context": "Observação AUDIT-R3 em 2026-09-10 UTC; resultados históricos preservam suas próprias janelas.",
+      "evidence": [
+        "E10",
+        "E11",
+        "E18"
+      ],
+      "issues": [],
+      "interpretation": ""
+    },
+    {
+      "id": "C05",
+      "proposition": "O ganho H21 demonstra lucro integral executável ou futuro",
+      "nature": "HIPÓTESE",
+      "state": "NÃO SUSTENTADO",
+      "scope": "Lucro histórico condicional após custos/IR modelados; despesas reais e cobertura integral de eventos não fechadas.",
+      "temporal_context": "Observação AUDIT-R3 em 2026-09-10 UTC; resultados históricos preservam suas próprias janelas.",
+      "evidence": [
+        "E11",
+        "E20",
+        "E22",
+        "E31"
+      ],
+      "issues": [
+        "I11",
+        "I12",
+        "I13",
+        "I16"
+      ],
+      "interpretation": ""
+    },
+    {
+      "id": "C06",
+      "proposition": "Fontes 13/14 são reproduzíveis e suficientes",
+      "nature": "FATO",
+      "state": "LIMITADO",
+      "scope": "Auditorias reproduzidas exatamente; ambas 0/1248 intervalos completos. Reprodução não implica suficiência.",
+      "temporal_context": "Observação AUDIT-R3 em 2026-09-10 UTC; resultados históricos preservam suas próprias janelas.",
+      "evidence": [
+        "E17",
+        "E18"
+      ],
+      "issues": [
+        "I14"
+      ],
+      "interpretation": ""
+    },
+    {
+      "id": "C07",
+      "proposition": "Estacionar reconstrução ampla H20 continua justificável",
+      "nature": "INFERÊNCIA",
+      "state": "SUSTENTADO NO ESCOPO",
+      "scope": "18 cenários de estratégia, intervalos incluem zero, muitas dependências adicionais. H21 exige menos reconstrução.",
+      "temporal_context": "Observação AUDIT-R3 em 2026-09-10 UTC; resultados históricos preservam suas próprias janelas.",
+      "evidence": [
+        "E16",
+        "E28"
+      ],
+      "issues": [
+        "I14",
+        "I15"
+      ],
+      "interpretation": "Prioridade por evidência incremental e custo de validação; não superioridade financeira demonstrada do ETF."
+    },
+    {
+      "id": "C08",
+      "proposition": "ML, interface web e API são necessários ao caminho simples",
+      "nature": "HIPÓTESE",
+      "state": "DISPENSADO COM JUSTIFICATIVA",
+      "scope": "Compra e venda predeterminadas de um ETF não exigem treinamento nem serviço web.",
+      "temporal_context": "Observação AUDIT-R3 em 2026-09-10 UTC; resultados históricos preservam suas próprias janelas.",
+      "evidence": [
+        "E21",
+        "E10"
+      ],
+      "issues": [],
+      "interpretation": ""
+    },
+    {
+      "id": "C09",
+      "proposition": "791 testes e 78% certificam qualquer HEAD e lucratividade",
+      "nature": "FATO",
+      "state": "LIMITADO",
+      "scope": "791/78% pertencem ao CI194 da base. CI por SHA exato valida software dentro de seus testes, não lucro.",
+      "temporal_context": "Observação AUDIT-R3 em 2026-09-10 UTC; resultados históricos preservam suas próprias janelas.",
+      "evidence": [
+        "E25",
+        "E26",
+        "E27",
+        "E30"
+      ],
+      "issues": [],
+      "interpretation": ""
+    },
+    {
+      "id": "C10",
+      "proposition": "Status CLI descreve linha e ambiente vigentes",
+      "nature": "FATO",
+      "state": "CORRIGIDO",
+      "scope": "H19 e instrução Windows obsoletos substituídos por H21 condicional e restrição correta.",
+      "temporal_context": "Observação AUDIT-R3 em 2026-09-10 UTC; resultados históricos preservam suas próprias janelas.",
+      "evidence": [
+        "E21",
+        "E30"
+      ],
+      "issues": [
+        "I06"
+      ],
+      "interpretation": ""
+    },
+    {
+      "id": "C11",
+      "proposition": "Seleção do universo é estruturalmente imune a futuro",
+      "nature": "FATO",
+      "state": "REFUTADO E CORRIGIDO PARCIALMENTE",
+      "scope": "Resolução posterior removia quarentena no passado; guarda temporal nova. Não há known_at completo de toda origem.",
+      "temporal_context": "Observação AUDIT-R3 em 2026-09-10 UTC; resultados históricos preservam suas próprias janelas.",
+      "evidence": [
+        "E04",
+        "E05",
+        "E06",
+        "E16"
+      ],
+      "issues": [
+        "I02",
+        "I10"
+      ],
+      "interpretation": ""
+    },
+    {
+      "id": "C12",
+      "proposition": "Snapshot persistido sempre corresponde ao resultado retornado",
+      "nature": "FATO",
+      "state": "CORRIGIDO",
+      "scope": "Conflito antes acumulava composição; agora falha atomicamente, preserva snapshot e transação do chamador.",
+      "temporal_context": "Observação AUDIT-R3 em 2026-09-10 UTC; resultados históricos preservam suas próprias janelas.",
+      "evidence": [
+        "E04",
+        "E05",
+        "E06"
+      ],
+      "issues": [
+        "I03"
+      ],
+      "interpretation": ""
+    },
+    {
+      "id": "C13",
+      "proposition": "Hash sem tipo comprova fonte primária",
+      "nature": "FATO",
+      "state": "REFUTADO E CORRIGIDO",
+      "scope": "Hash prova identidade. Ausência de source_kind agora é UNCLASSIFIED; declaração explícita ainda exige exame semântico.",
+      "temporal_context": "Observação AUDIT-R3 em 2026-09-10 UTC; resultados históricos preservam suas próprias janelas.",
+      "evidence": [
+        "E05",
+        "E06",
+        "E17"
+      ],
+      "issues": [
+        "I04"
+      ],
+      "interpretation": ""
+    },
+    {
+      "id": "C14",
+      "proposition": "paper legado é evidência prospectiva certificada",
+      "nature": "FATO",
+      "state": "REFUTADO",
+      "scope": "Guarda impede backdate/futuro no banco; não atesta relógio externo, dados known_at completos ou selagem independente. Worker legado inativo.",
+      "temporal_context": "Observação AUDIT-R3 em 2026-09-10 UTC; resultados históricos preservam suas próprias janelas.",
+      "evidence": [
+        "E21",
+        "E30"
+      ],
+      "issues": [
+        "I05",
+        "I16"
+      ],
+      "interpretation": ""
+    },
+    {
+      "id": "C15",
+      "proposition": "Vereditos negativos H1-H16 refutam toda possibilidade econômica",
+      "nature": "INFERÊNCIA",
+      "state": "REFUTADO",
+      "scope": "Conclusões antigas condicionais a custos, dados, métricas e seleção. H3 não executada. Histórico exposto não é holdout intacto.",
+      "temporal_context": "Observação AUDIT-R3 em 2026-09-10 UTC; resultados históricos preservam suas próprias janelas.",
+      "evidence": [
+        "E21"
+      ],
+      "issues": [
+        "I10"
+      ],
+      "interpretation": ""
+    },
+    {
+      "id": "C16",
+      "proposition": "Bootstrap por empresa basta para qualquer inferência RJ",
+      "nature": "FATO",
+      "state": "REFUTADO E CORRIGIDO",
+      "scope": "Permutação por rótulo exige unidades únicas; amostras max-T devem ser alinhadas. Secundária repetida fica sem inferência.",
+      "temporal_context": "Observação AUDIT-R3 em 2026-09-10 UTC; resultados históricos preservam suas próprias janelas.",
+      "evidence": [
+        "E09",
+        "E27",
+        "E30"
+      ],
+      "issues": [
+        "I08"
+      ],
+      "interpretation": ""
+    },
+    {
+      "id": "C17",
+      "proposition": "Todo o pacote H20 de 1448 arquivos foi reproduzido",
+      "nature": "FATO",
+      "state": "REFUTADO; ECONOMIA RECONCILIADA",
+      "scope": "Cinco objetos faltam. Entradas consumidas lacradas reconstituem campos econômicos com tolerância explícita de 2e-12.",
+      "temporal_context": "Observação AUDIT-R3 em 2026-09-10 UTC; resultados históricos preservam suas próprias janelas.",
+      "evidence": [
+        "E12",
+        "E13",
+        "E14",
+        "E28"
+      ],
+      "issues": [
+        "I15"
+      ],
+      "interpretation": ""
+    },
+    {
+      "id": "C18",
+      "proposition": "Contabilidade H21 fecha nas premissas V1",
+      "nature": "FATO",
+      "state": "VALIDADO",
+      "scope": "Oito livros e 16400 pontos reconferidos em centavos por implementação separada do mesmo auditor. Não revisão externa.",
+      "temporal_context": "Observação AUDIT-R3 em 2026-09-10 UTC; resultados históricos preservam suas próprias janelas.",
+      "evidence": [
+        "E11",
+        "E18"
+      ],
+      "issues": [],
+      "interpretation": ""
+    },
+    {
+      "id": "C19",
+      "proposition": "H21 demonstra alpha ou superioridade ajustada ao risco",
+      "nature": "HIPÓTESE",
+      "state": "NÃO SUSTENTADO",
+      "scope": "Selic é referência bruta, riscos/custos diferentes; H21 já é buy-and-hold, sem alpha de seleção.",
+      "temporal_context": "Observação AUDIT-R3 em 2026-09-10 UTC; resultados históricos preservam suas próprias janelas.",
+      "evidence": [
+        "E10",
+        "E11"
+      ],
+      "issues": [
+        "I12"
+      ],
+      "interpretation": ""
+    },
+    {
+      "id": "C20",
+      "proposition": "economic_gate garante maturidade e vantagem líquida robusta",
+      "nature": "FATO",
+      "state": "LIMITADO E CORRIGIDO",
+      "scope": "NaN/inf e estimativas inválidas rejeitadas; maturidade/dependência continuam contrato do chamador. Sem ativação operacional.",
+      "temporal_context": "Observação AUDIT-R3 em 2026-09-10 UTC; resultados históricos preservam suas próprias janelas.",
+      "evidence": [
+        "E07",
+        "E08",
+        "E30"
+      ],
+      "issues": [
+        "I07"
+      ],
+      "interpretation": ""
+    },
+    {
+      "id": "C21",
+      "proposition": "Um banco operacional foi ativado nesta auditoria",
+      "nature": "FATO",
+      "state": "REFUTADO",
+      "scope": "data/stocks.db ausente; leituras de acervo em modo somente leitura.",
+      "temporal_context": "Observação AUDIT-R3 em 2026-09-10 UTC; resultados históricos preservam suas próprias janelas.",
+      "evidence": [
+        "E19"
+      ],
+      "issues": [],
+      "interpretation": ""
+    },
+    {
+      "id": "C22",
+      "proposition": "Todos os 50 PDFs receberam auditoria semântica integral",
+      "nature": "FATO",
+      "state": "NÃO ALEGADO; ESCOPO LIMITADO",
+      "scope": "38 corpos de avisos rehash/parse, amostra textual dirigida, 11 páginas de 5 DFs e 3 páginas renderizadas vistas nesta rodada.",
+      "temporal_context": "Observação AUDIT-R3 em 2026-09-10 UTC; resultados históricos preservam suas próprias janelas.",
+      "evidence": [
+        "E20",
+        "E22",
+        "E31"
+      ],
+      "issues": [
+        "I11"
+      ],
+      "interpretation": ""
+    }
+  ],
+  "issues": [
+    {
+      "id": "I01",
+      "title": "Contrato de COTAHIST permissivo",
+      "state": "CORRIGIDO E VALIDADO",
+      "priority": "P1",
+      "necessity": "Proteger preço/data/unidade de todas as derivações.",
+      "economic_impact": "Data impossível e registro truncado podiam entrar como preço válido.",
+      "dependency": "Interna, resolvida.",
+      "action_taken_or_required": "Exigir 245 colunas, data real e fator positivo; contar falha sem perder vizinho válido.",
+      "resolution_condition": "Regressões passam e 2050 entradas H21 permanecem idênticas.",
+      "evidence": [
+        "E05",
+        "E06",
+        "E18",
+        "E30"
+      ],
+      "claims": [
+        "C04"
+      ]
+    },
+    {
+      "id": "I02",
+      "title": "Resolução de quarentena futura vazava para universo passado",
+      "state": "CORRIGIDO E VALIDADO",
+      "priority": "P1",
+      "necessity": "Garantir corte da informação de resolução.",
+      "economic_impact": "Altera membros e qualquer resultado derivado. Em seis datas fixas mudaram 3,5,16,21,21,0 membros.",
+      "dependency": "Interna, resolvida para esta fronteira; I10 cobre PIT residual.",
+      "action_taken_or_required": "Seleção padrão considera resolved_at estritamente anterior; reprodutores históricos usam função legacy explícita.",
+      "resolution_condition": "Testes antes/depois e sondagem real; nenhum resultado congelado reescrito.",
+      "evidence": [
+        "E04",
+        "E05",
+        "E06",
+        "E16",
+        "E30"
+      ],
+      "claims": [
+        "C11"
+      ]
+    },
+    {
+      "id": "I03",
+      "title": "Snapshot conflitante acumulava membros e devolvia outra carteira",
+      "state": "CORRIGIDO E VALIDADO",
+      "priority": "P1",
+      "necessity": "Identidade do universo salvo.",
+      "economic_impact": "Conta e decisão poderiam usar carteiras diferentes com a mesma data.",
+      "dependency": "Interna, resolvida.",
+      "action_taken_or_required": "Savepoint, comparação completa, erro em conflito/vazio; preservação da transação e idempotência.",
+      "resolution_condition": "Testes de composição, volume, rollback e repetição aprovados.",
+      "evidence": [
+        "E04",
+        "E05",
+        "E06",
+        "E30"
+      ],
+      "claims": [
+        "C12"
+      ]
+    },
+    {
+      "id": "I04",
+      "title": "Fonte sem classificação promovida a primária",
+      "state": "CORRIGIDO E VALIDADO",
+      "priority": "P1",
+      "necessity": "Evitar falsa certificação documental.",
+      "economic_impact": "Suficiência econômica poderia herdar evidência inexistente.",
+      "dependency": "Interna, resolvida.",
+      "action_taken_or_required": "UNCLASSIFIED por omissão; fixture de fonte primária declara seu tipo.",
+      "resolution_condition": "Regressão e auditorias reais 13/14 idênticas; CI195 falha preservada.",
+      "evidence": [
+        "E05",
+        "E06",
+        "E17",
+        "E26",
+        "E30"
+      ],
+      "claims": [
+        "C13"
+      ]
+    },
+    {
+      "id": "I05",
+      "title": "paper permitia backdate e worker periódico legado",
+      "state": "CORRIGIDO E VALIDADO",
+      "priority": "P1",
+      "necessity": "Separar ensaio histórico de observação.",
+      "economic_impact": "Replay podia ser rotulado como novo forward.",
+      "dependency": "Interna para guardas; temporalidade externa em I16.",
+      "action_taken_or_required": "Data UTC corrente e max(price.date) no corte; API legacy explícita; worker não agenda nem grava.",
+      "resolution_condition": "Três regressões de data/futuro e fixtures legadas; nenhuma observação gerada.",
+      "evidence": [
+        "E21",
+        "E30"
+      ],
+      "claims": [
+        "C14"
+      ]
+    },
+    {
+      "id": "I06",
+      "title": "Status e instruções de runtime desatualizados",
+      "state": "CORRIGIDO E VALIDADO",
+      "priority": "P2",
+      "necessity": "Continuidade coerente com decisões vigentes.",
+      "economic_impact": "Uso do caminho antigo/instalação local desnecessária.",
+      "dependency": "Interna, resolvida.",
+      "action_taken_or_required": "CLI e plugin indicam H21 condicional; pontos de entrada atualizados.",
+      "resolution_condition": "Suíte e inspeção do diff; ambiente Windows sem instalação.",
+      "evidence": [
+        "E21",
+        "E19",
+        "E30"
+      ],
+      "claims": [
+        "C10"
+      ]
+    },
+    {
+      "id": "I07",
+      "title": "Entradas não finitas e premissas exageradas no gate econômico",
+      "state": "CORRIGIDO E VALIDADO",
+      "priority": "P1",
+      "necessity": "Não decidir com NaN/inf ou dados silenciosamente removidos.",
+      "economic_impact": "Estimativa e limiar inválidos poderiam aprovar/reter sem significado.",
+      "dependency": "Interna, resolvida no contrato; estatística econômica permanece condicional.",
+      "action_taken_or_required": "Rejeitar não finitos, políticas e estimativas inválidas; explicitar pressupostos e maturidade externa.",
+      "resolution_condition": "Quatro métodos falharam antes e passaram depois.",
+      "evidence": [
+        "E07",
+        "E08",
+        "E30"
+      ],
+      "claims": [
+        "C20"
+      ]
+    },
+    {
+      "id": "I08",
+      "title": "Inferência RJ com unidades repetidas ou famílias desalinhadas",
+      "state": "CORRIGIDO E VALIDADO",
+      "priority": "P1",
+      "necessity": "Evitar p-valores sem suporte da permutação.",
+      "economic_impact": "Falsa robustez poderia orientar escolha de fator.",
+      "dependency": "Interna, resolvida para uso histórico primário.",
+      "action_taken_or_required": "Guardas na inferência, secundária repetida marcada bloqueada mantendo episódios; max-T exige unidades/grupos idênticos.",
+      "resolution_condition": "Três casos antes/depois e teste integrado primário/secondary; CI196 documenta a integração inicialmente faltante.",
+      "evidence": [
+        "E09",
+        "E27",
+        "E30"
+      ],
+      "claims": [
+        "C16"
+      ]
+    },
+    {
+      "id": "I09",
+      "title": "Reconciliação H20 disponível apenas sob verificador de pacote incompleto",
+      "state": "CORRIGIDO E VALIDADO",
+      "priority": "P2",
+      "necessity": "Avaliar decisão econômica sem fingir backup completo.",
+      "economic_impact": "Não havia caminho verificável para campos econômicos com entradas efetivamente existentes.",
+      "dependency": "Interna, resolvida; I15 separa recuperação externa.",
+      "action_taken_or_required": "Construído reconcile_h20.py, valida hashes das entradas, 9732 células, 18 cenários e aritmética separada.",
+      "resolution_condition": "PASS com uma diferença 2.22e-16 documentada; verificador original não alterado.",
+      "evidence": [
+        "E12",
+        "E13",
+        "E28"
+      ],
+      "claims": [
+        "C17"
+      ]
+    },
+    {
+      "id": "I10",
+      "title": "PIT e identidade corporativa amplos não certificados",
+      "state": "BLOQUEADO EXTERNAMENTE PARA NOVA PESQUISA AMPLA",
+      "priority": "P2",
+      "necessity": "Necessários para alegações gerais sem leakage em ações; H21 simples dispensa painel de fundamentos.",
+      "economic_impact": "Sobrevivência, revisões, known_at e ticker podem distorcer seleção/retorno.",
+      "dependency": "Histórico versionado de publicações, mapeamentos CNPJ/ISIN e eventos por intervalo.",
+      "action_taken_or_required": "12 DBs auditados, 11 DFPs rehash, 32 sinais H20 reconstruídos; não reativar H1-H20 em DB atual.",
+      "resolution_condition": "Fontes temporais completas, identidade por intervalo e protocolo novo registrados antes de qualquer nova inferência.",
+      "evidence": [
+        "E02",
+        "E03",
+        "E16"
+      ],
+      "claims": [
+        "C03",
+        "C11",
+        "C15"
+      ]
+    },
+    {
+      "id": "I11",
+      "title": "Cobertura integral de eventos BOVA11 incompleta",
+      "state": "BLOQUEADO EXTERNAMENTE",
+      "priority": "P1",
+      "necessity": "Necessária para elevar lucro condicional a economia integral de unidades/caixa.",
+      "economic_impact": "Evento externo omitido pode mudar quantidade, custo fiscal ou caixa.",
+      "dependency": "Aviso FNET941503 e registro primário contínuo de eventos/ausência por intervalo.",
+      "action_taken_or_required": "38/39 corpos locais rehash; DFs e avisos dirigidos examinados; FNET download timeout e viewer HTML não-PDF em duas tentativas.",
+      "resolution_condition": "Obter documento correto, validar CNPJ/conteúdo e completar intervalo com evidência primária; reprocessar ledger somente se houver fato pertinente.",
+      "evidence": [
+        "E20",
+        "E22",
+        "E31"
+      ],
+      "claims": [
+        "C05",
+        "C22"
+      ]
+    },
+    {
+      "id": "I12",
+      "title": "Despesas e restrições da pessoa/conta desconhecidas",
+      "state": "BLOQUEADO EXTERNAMENTE",
+      "priority": "P1",
+      "necessity": "Necessárias à adequação pessoal e ao lucro integral.",
+      "economic_impact": "Canal/assessor, tarifas, capital, horizonte, perdas e horas podem consumir benefício histórico.",
+      "dependency": "Informações da conta XP escolhida e preferências pessoais; sem login/ordens autorizados.",
+      "action_taken_or_required": "Comparados custos modelados e sensibilidade anual/horas; mantidos R$5/10mil como hipóteses, sem presumir patrimônio.",
+      "resolution_condition": "Dados de conta e orçamento total verificáveis; simulação prospectiva com despesas e limites declarados.",
+      "evidence": [
+        "E11",
+        "E22"
+      ],
+      "claims": [
+        "C05",
+        "C19"
+      ]
+    },
+    {
+      "id": "I13",
+      "title": "Tarifa exata aplicável à entrada de 2018 não certificada",
+      "state": "BLOQUEADO EXTERNAMENTE",
+      "priority": "P2",
+      "necessity": "Necessária se o claim for reprodução exata de despesas históricas.",
+      "economic_impact": "18/36bp são cenários, não nota de corretagem.",
+      "dependency": "Vigência primária B3 na data, canal/tabela de corretora e arredondamento por agrupamento.",
+      "action_taken_or_required": "Recuperada tabela oficial antiga de 0.0325% vigente a partir de 2013, sem prova de continuidade até 2018; OC119 confirma lote10 histórico e mudança para1 em2020.",
+      "resolution_condition": "Documentos com cadeia de vigência e tarifa da conta nas duas operações; conferir centavos com nota ou regra completa.",
+      "evidence": [
+        "E22",
+        "E31"
+      ],
+      "claims": [
+        "C05"
+      ]
+    },
+    {
+      "id": "I14",
+      "title": "Lacunas de caixa/eventos das fontes 13/14",
+      "state": "BLOQUEADO EXTERNAMENTE; H20 ESTACIONADO",
+      "priority": "P2",
+      "necessity": "Necessárias para reconstrução ampla de lucro líquido de ações.",
+      "economic_impact": "Ambas certificam 0/1248 intervalos completos; diagnóstico de preços não fecha tributos/cashflow.",
+      "dependency": "Fonte13:24 datas/54 valores; fonte14:24 datas/52 valores e28 entradas societárias; contagens sobrepostas.",
+      "action_taken_or_required": "Auditorias reexecutadas antes/depois, recuperação local e confronto 13/14 concluídos; não abrir coleta ilimitada sem valor incremental.",
+      "resolution_condition": "Fechar entidades por evento/intervalo com fonte primária, reconciliação e orçamento novo justificado economicamente.",
+      "evidence": [
+        "E17",
+        "E18"
+      ],
+      "claims": [
+        "C06",
+        "C07"
+      ]
+    },
+    {
+      "id": "I15",
+      "title": "Cinco objetos do pacote original H20 ausentes",
+      "state": "BLOQUEADO EXTERNAMENTE",
+      "priority": "P2",
+      "necessity": "Necessários ao certificado exato dos1448 arquivos, não ao replay econômico restrito já realizado.",
+      "economic_impact": "Outro auditor não consegue passar o verificador integral original.",
+      "dependency": "Dois ZIPs de código e três versões de módulos; hashes e caminhos em E12.",
+      "action_taken_or_required": "29 omissões detectadas; busca de899 blobs/6.57MB recuperou24; nova reconciliação sem desativar lacres.",
+      "resolution_condition": "Recuperar os cinco SHA exatos de backup/autor original e executar verificador original em ambiente compatível.",
+      "evidence": [
+        "E12",
+        "E14",
+        "E28"
+      ],
+      "claims": [
+        "C17"
+      ]
+    },
+    {
+      "id": "I16",
+      "title": "Evidência prospectiva e execução observada ainda inexistentes",
+      "state": "BLOQUEADO EXTERNAMENTE PELO TEMPO E INSUMOS",
+      "priority": "P1",
+      "necessity": "Necessária para inferência fora da história exposta e validação operacional.",
+      "economic_impact": "Não há demonstração de fill, custo, disciplina e resultado futuros.",
+      "dependency": "Janela futura do plano V1, fontes disponíveis no momento, I11/I12 e autorização específica se houver operação.",
+      "action_taken_or_required": "Plano registrado preservado, backdating bloqueado, nenhuma automação/paper/ordem ativada.",
+      "resolution_condition": "Observações futuras contemporâneas e verificáveis, sem alterar critérios conforme desempenho; conciliação de execução se depois autorizada.",
+      "evidence": [
+        "E21",
+        "E19"
+      ],
+      "claims": [
+        "C05",
+        "C14"
+      ]
+    }
+  ],
+  "decisions": [
+    {
+      "id": "D01",
+      "state": "MANTIDA COM FUNDAMENTO REVISADO",
+      "decision": "Priorizar validação finita de exposição simples H21; estacionar reconstrução ampla H20.",
+      "hypothesis": "Complexidade adicional precisa oferecer benefício econômico verificável.",
+      "alternatives": [
+        "H20 três braços e baselines pareados",
+        "H21 buy-and-hold",
+        "caixa zero",
+        "Selic bruta"
+      ],
+      "evidence": [
+        "E10",
+        "E11",
+        "E16",
+        "E28"
+      ],
+      "reason": "Incremento H20 inconclusivo, despesas/eventos mais numerosos; H21 serve como baseline e tem menor custo de validação, sem superioridade financeira comprovada."
+    },
+    {
+      "id": "D02",
+      "state": "ALTERADA",
+      "decision": "Seleção estrita como padrão; replay histórico usa caminho legacy explícito.",
+      "hypothesis": "Correção não deve reescrever conclusão de versão antiga.",
+      "alternatives": [
+        "alterar retrospectivamente todos os resultados",
+        "manter falha como padrão",
+        "separar API estrita e replay"
+      ],
+      "evidence": [
+        "E04",
+        "E06",
+        "E16"
+      ],
+      "reason": "Corrige novos usos e preserva rastreabilidade dos protocolos consumidos."
+    },
+    {
+      "id": "D03",
+      "state": "SIMPLIFICADA",
+      "decision": "Worker paper legado permanece inativo; nenhum serviço/cron novo.",
+      "hypothesis": "Agendamento não produz evidência econômica por si só.",
+      "alternatives": [
+        "reativar coleta legada",
+        "observação manual finita conforme plano H21"
+      ],
+      "evidence": [
+        "E19",
+        "E21"
+      ],
+      "reason": "Sem conta/custos/eventos fechados, ativação adiciona risco e manutenção sem benefício validado."
+    },
+    {
+      "id": "D04",
+      "state": "ALTERADA",
+      "decision": "Secundária RJ repetida apenas descritiva; guardar domínio da permutação primária.",
+      "hypothesis": "Bootstrap de clusters não corrige label-shuffle de episódios dependentes.",
+      "alternatives": [
+        "aceitar p-valores antigos",
+        "construir novo teste por clusters",
+        "bloquear inferência não suportada"
+      ],
+      "evidence": [
+        "E09",
+        "E27"
+      ],
+      "reason": "Nenhum objetivo ativo justifica criar novo programa estatístico de RJ nesta rodada; arquivo científico continua interpretável com ressalva."
+    },
+    {
+      "id": "D05",
+      "state": "NÃO APLICÁVEL COM JUSTIFICATIVA",
+      "decision": "Não construir ML, frontend/API, microserviços, Kubernetes, broker adapter ou GPU.",
+      "hypothesis": "Componentes só se justificam por capacidade econômica necessária.",
+      "alternatives": [
+        "produto de previsão completo",
+        "runner determinístico pequeno e verificável"
+      ],
+      "evidence": [
+        "E10",
+        "E21"
+      ],
+      "reason": "Exposição predeterminada a um ETF funciona com arquivo/protocolo/livro; não depende de treinamento, baixa latência ou integração de ordens."
+    },
+    {
+      "id": "D06",
+      "state": "MANTIDA",
+      "decision": "Python/Core de produção somente via Linux CI; stdlib3.12 local para auxiliares.",
+      "hypothesis": "Reprodutibilidade requer contrato de dependências sem contornar a restrição Windows.",
+      "alternatives": [
+        "instalar/alterar Core local",
+        "validar apenas stdlib",
+        "CI oficial e auxiliares explicitamente rotulados"
+      ],
+      "evidence": [
+        "E23",
+        "E25",
+        "E26",
+        "E27"
+      ],
+      "reason": "Mantém lock/wheel3.2 e testa distribuição real sem alterar ambiente local."
+    },
+    {
+      "id": "D07",
+      "state": "ALTERADA",
+      "decision": "Reconciliação de entradas consumidas H20 separada do certificado integral de pacote.",
+      "hypothesis": "Pode haver evidência econômica reproduzível e backup incompleto simultaneamente.",
+      "alternatives": [
+        "pular verificador original",
+        "declarar tudo irrecuperável",
+        "reconciliar escopo identificado sem tocar lacres"
+      ],
+      "evidence": [
+        "E12",
+        "E28"
+      ],
+      "reason": "9732 células/18cenários confirmados, cinco ausências continuam explícitas."
+    }
+  ],
+  "fronts": [
+    {
+      "id": "F01",
+      "front": "Mapa do sistema",
+      "necessary": true,
+      "justification": "Identificar o fluxo realmente capaz de produzir resultado econômico e seus caminhos legados.",
+      "state": "EXAMINADO",
+      "evidence": [
+        "E21"
+      ],
+      "issues": [],
+      "decisions": [
+        "D05"
+      ],
+      "internal_pending": []
+    },
+    {
+      "id": "F02",
+      "front": "Objetivo econômico",
+      "necessary": true,
+      "justification": "Separar lucro nominal, custo de oportunidade, risco, capital finito e despesas de manutenção.",
+      "state": "EXAMINADO",
+      "evidence": [
+        "E10",
+        "E11"
+      ],
+      "issues": [
+        "I12"
+      ],
+      "decisions": [
+        "D01"
+      ],
+      "internal_pending": []
+    },
+    {
+      "id": "F03",
+      "front": "Claims e temporalidade",
+      "necessary": true,
+      "justification": "Impedir que documentação ou versões antigas sejam promovidas a fato atual sem prova.",
+      "state": "EXAMINADO E CORRIGIDO",
+      "evidence": [
+        "E04",
+        "E18"
+      ],
+      "issues": [
+        "I02",
+        "I06"
+      ],
+      "decisions": [
+        "D02"
+      ],
+      "internal_pending": []
+    },
+    {
+      "id": "F04",
+      "front": "Dados existentes",
+      "necessary": true,
+      "justification": "Saber quais fontes existem fisicamente e quais usos sua semântica suporta.",
+      "state": "VALIDADO NO ESCOPO",
+      "evidence": [
+        "E02",
+        "E03"
+      ],
+      "issues": [
+        "I10"
+      ],
+      "decisions": [],
+      "internal_pending": []
+    },
+    {
+      "id": "F05",
+      "front": "Dados ausentes",
+      "necessary": true,
+      "justification": "Medir dependências que impedem o claim econômico mais forte sem coleta ilimitada.",
+      "state": "EXAMINADO; BLOQUEIOS EXTERNOS",
+      "evidence": [
+        "E12",
+        "E17",
+        "E22"
+      ],
+      "issues": [
+        "I11",
+        "I13",
+        "I14",
+        "I15"
+      ],
+      "decisions": [
+        "D07"
+      ],
+      "internal_pending": []
+    },
+    {
+      "id": "F06",
+      "front": "Leakage",
+      "necessary": true,
+      "justification": "Verificar que decisão e universo não usam resolução/publicação posterior ao corte.",
+      "state": "CORRIGIDO; PIT AMPLO LIMITADO",
+      "evidence": [
+        "E04",
+        "E06",
+        "E16"
+      ],
+      "issues": [
+        "I02",
+        "I05",
+        "I10"
+      ],
+      "decisions": [
+        "D02"
+      ],
+      "internal_pending": []
+    },
+    {
+      "id": "F07",
+      "front": "ML e estatística",
+      "necessary": true,
+      "justification": "Examinar pressupostos de inferência existentes e a necessidade econômica de treinamento novo.",
+      "state": "EXAMINADO; ML NÃO APLICÁVEL",
+      "evidence": [
+        "E09",
+        "E21"
+      ],
+      "issues": [
+        "I07",
+        "I08"
+      ],
+      "decisions": [
+        "D04",
+        "D05"
+      ],
+      "internal_pending": []
+    },
+    {
+      "id": "F08",
+      "front": "Baselines",
+      "necessary": true,
+      "justification": "Distinguir ganho absoluto de ganho incremental frente a exposição simples e referência de caixa.",
+      "state": "EXAMINADO",
+      "evidence": [
+        "E10",
+        "E28"
+      ],
+      "issues": [
+        "I12"
+      ],
+      "decisions": [
+        "D01"
+      ],
+      "internal_pending": []
+    },
+    {
+      "id": "F09",
+      "front": "Métricas e seleção",
+      "necessary": true,
+      "justification": "Separar risco, seleção adaptativa, resolução temporal e significância de desempenho nominal.",
+      "state": "EXAMINADO",
+      "evidence": [
+        "E10",
+        "E11",
+        "E28"
+      ],
+      "issues": [
+        "I16"
+      ],
+      "decisions": [
+        "D01"
+      ],
+      "internal_pending": []
+    },
+    {
+      "id": "F10",
+      "front": "Backtest e execução",
+      "necessary": true,
+      "justification": "Verificar preço, momento, lote, giro e plausibilidade sem confundir marca com fill.",
+      "state": "VALIDADO CONDICIONALMENTE",
+      "evidence": [
+        "E11",
+        "E18",
+        "E28"
+      ],
+      "issues": [
+        "I11",
+        "I12",
+        "I14"
+      ],
+      "decisions": [
+        "D01"
+      ],
+      "internal_pending": []
+    },
+    {
+      "id": "F11",
+      "front": "Contabilidade",
+      "necessary": true,
+      "justification": "Conciliar posições, caixa, recebíveis, tributos e custos sem dupla contagem.",
+      "state": "VALIDADO NO ESCOPO H21",
+      "evidence": [
+        "E11",
+        "E18"
+      ],
+      "issues": [
+        "I11",
+        "I12"
+      ],
+      "decisions": [],
+      "internal_pending": []
+    },
+    {
+      "id": "F12",
+      "front": "Decisões H20/H21",
+      "necessary": true,
+      "justification": "Reexaminar prioridade pelo benefício incremental e custo de reconstrução, não inércia.",
+      "state": "REAVALIADO",
+      "evidence": [
+        "E16",
+        "E28"
+      ],
+      "issues": [
+        "I14"
+      ],
+      "decisions": [
+        "D01"
+      ],
+      "internal_pending": []
+    },
+    {
+      "id": "F13",
+      "front": "Novos experimentos",
+      "necessary": true,
+      "justification": "Decidir se nova hipótese é necessária; reproduzir não aumenta evidência independente.",
+      "state": "DISPENSADA NOVA HIPÓTESE; REPLAYS EXECUTADOS",
+      "evidence": [
+        "E01",
+        "E23"
+      ],
+      "issues": [],
+      "decisions": [
+        "D01"
+      ],
+      "internal_pending": []
+    },
+    {
+      "id": "F14",
+      "front": "Código",
+      "necessary": true,
+      "justification": "Corrigir contratos materiais de entradas, persistência, tempo e estatística.",
+      "state": "CORRIGIDO E TESTADO",
+      "evidence": [
+        "E05",
+        "E06",
+        "E07",
+        "E08",
+        "E09",
+        "E30"
+      ],
+      "issues": [
+        "I01",
+        "I02",
+        "I03",
+        "I04",
+        "I05",
+        "I06",
+        "I07",
+        "I08"
+      ],
+      "decisions": [
+        "D02"
+      ],
+      "internal_pending": []
+    },
+    {
+      "id": "F15",
+      "front": "Arquitetura",
+      "necessary": true,
+      "justification": "Reduzir componentes sem necessidade demonstrada e preservar interfaces históricas identificadas.",
+      "state": "SIMPLIFICADA",
+      "evidence": [
+        "E21"
+      ],
+      "issues": [
+        "I05"
+      ],
+      "decisions": [
+        "D03",
+        "D05"
+      ],
+      "internal_pending": []
+    },
+    {
+      "id": "F16",
+      "front": "Testes e checks",
+      "necessary": true,
+      "justification": "Obter prova de regressão e checks do código efetivo sem tratar cobertura como lucro.",
+      "state": "EXECUTADO POR SHA",
+      "evidence": [
+        "E24",
+        "E25",
+        "E26",
+        "E27",
+        "E30"
+      ],
+      "issues": [
+        "I04",
+        "I08"
+      ],
+      "decisions": [
+        "D06"
+      ],
+      "internal_pending": []
+    },
+    {
+      "id": "F17",
+      "front": "Ponta a ponta",
+      "necessary": true,
+      "justification": "Conectar fontes reais ao livro e à reconciliação independente pertinente.",
+      "state": "H21 EXECUTADO; H20 RECONCILIADO PARCIALMENTE",
+      "evidence": [
+        "E18",
+        "E28"
+      ],
+      "issues": [
+        "I15"
+      ],
+      "decisions": [
+        "D07"
+      ],
+      "internal_pending": []
+    },
+    {
+      "id": "F18",
+      "front": "Ambiente e reprodução",
+      "necessary": true,
+      "justification": "Respeitar contrato Python/Core, pacote distribuído e restrições Windows.",
+      "state": "EXAMINADO E VALIDADO NO CI",
+      "evidence": [
+        "E23",
+        "E25",
+        "E30"
+      ],
+      "issues": [],
+      "decisions": [
+        "D06"
+      ],
+      "internal_pending": []
+    },
+    {
+      "id": "F19",
+      "front": "Correções necessárias",
+      "necessary": true,
+      "justification": "Executar o que é necessário internamente antes de encerrar, preservando dados.",
+      "state": "EXECUTADAS",
+      "evidence": [
+        "E06",
+        "E08",
+        "E09",
+        "E18",
+        "E30"
+      ],
+      "issues": [
+        "I01",
+        "I02",
+        "I03",
+        "I04",
+        "I05",
+        "I06",
+        "I07",
+        "I08",
+        "I09"
+      ],
+      "decisions": [],
+      "internal_pending": []
+    },
+    {
+      "id": "F20",
+      "front": "Backlog único",
+      "necessary": true,
+      "justification": "Evitar filas divergentes e atrelar cada lacuna a uma condição concreta de resolução.",
+      "state": "CONSOLIDADO",
+      "evidence": [
+        "E01"
+      ],
+      "issues": [],
+      "decisions": [],
+      "internal_pending": []
+    },
+    {
+      "id": "F21",
+      "front": "Prontidão por subsistema",
+      "necessary": true,
+      "justification": "Não generalizar sucesso de um motor para todo o sistema e suas entradas.",
+      "state": "EXAMINADO",
+      "evidence": [
+        "E21"
+      ],
+      "issues": [
+        "I10",
+        "I11",
+        "I14",
+        "I16"
+      ],
+      "decisions": [],
+      "internal_pending": []
+    },
+    {
+      "id": "F22",
+      "front": "Prontidão por uso",
+      "necessary": true,
+      "justification": "Distinguir desenvolvimento, pesquisa, simulação, apoio e operação real.",
+      "state": "EXAMINADO",
+      "evidence": [
+        "E11",
+        "E19"
+      ],
+      "issues": [
+        "I11",
+        "I12",
+        "I16"
+      ],
+      "decisions": [],
+      "internal_pending": []
+    },
+    {
+      "id": "F23",
+      "front": "Limites e continuidade",
+      "necessary": true,
+      "justification": "Tornar a conclusão auditável e a retomada possível sem depender desta conversa.",
+      "state": "DOCUMENTADO",
+      "evidence": [
+        "E12",
+        "E19",
+        "E22"
+      ],
+      "issues": [
+        "I10",
+        "I11",
+        "I12",
+        "I13",
+        "I14",
+        "I15",
+        "I16"
+      ],
+      "decisions": [],
+      "internal_pending": []
+    },
+    {
+      "id": "F24",
+      "front": "Execução e encerramento",
+      "necessary": true,
+      "justification": "Separar conclusão da auditoria, rodada, prontidão e hipótese econômica.",
+      "state": "VALIDAÇÃO E INTEGRAÇÃO REGISTRADAS NO PR74",
+      "evidence": [
+        "E18",
+        "E19",
+        "E28",
+        "E30"
+      ],
+      "issues": [],
+      "decisions": [],
+      "internal_pending": []
+    }
+  ],
+  "datasets": [
+    {
+      "id": "DS01",
+      "name": "Acervo SQLite recuperado",
+      "available": true,
+      "physical_integrity": "12/12 SHA e SQLite íntegros; nenhum alterado",
+      "semantic_scope": "original, sete versões pesquisa, reparo exemplo, três fixtures",
+      "temporal_validity": "Não equivale a PIT amplo; três linhas PIT do reparo não são população representativa",
+      "sufficient_for": [
+        "inventário",
+        "auditoria de lacunas",
+        "replay identificado"
+      ],
+      "insufficient_for": [
+        "lucro integral ações",
+        "certificação geral sem leakage"
+      ],
+      "evidence": [
+        "E02",
+        "E03",
+        "E19"
+      ],
+      "members": [
+        {
+          "sha256": "30ce8e91fba9cb0a0c09571be71821c9da2d0aec49d12ec15aab8b26522ffd2c",
+          "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\30ce8e91fba9cb0a0c09571be71821c9da2d0aec49d12ec15aab8b26522ffd2c",
+          "role": "PRESERVED_RESEARCH_VERSION"
+        },
+        {
+          "sha256": "0bceedac3936dc4162562ec35e03177c7e71b99e13b66837035d1ccd151f0512",
+          "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\0bceedac3936dc4162562ec35e03177c7e71b99e13b66837035d1ccd151f0512",
+          "role": "PRESERVED_RESEARCH_VERSION"
+        },
+        {
+          "sha256": "fa3d464e3e463b66c2aa64d96228aeb5d1fae63514df1d0ddb58233240b52764",
+          "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\fa3d464e3e463b66c2aa64d96228aeb5d1fae63514df1d0ddb58233240b52764",
+          "role": "PRESERVED_RESEARCH_VERSION"
+        },
+        {
+          "sha256": "e21a89c38f2792c826291baa1175da4fe9dfbf626316635a536f7c28b250146a",
+          "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\e21a89c38f2792c826291baa1175da4fe9dfbf626316635a536f7c28b250146a",
+          "role": "PRESERVED_RESEARCH_VERSION"
+        },
+        {
+          "sha256": "07197228920e4082954afbc9035509ae74e84be1773195a4c5b71a435481a804",
+          "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\07197228920e4082954afbc9035509ae74e84be1773195a4c5b71a435481a804",
+          "role": "REPAIRED_EXAMPLE_NOT_CANONICAL"
+        },
+        {
+          "sha256": "a8238568980d3303890b04590cfb5c55ab2d24c9271edd86820269336b09679a",
+          "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\a8238568980d3303890b04590cfb5c55ab2d24c9271edd86820269336b09679a",
+          "role": "PRESERVED_RESEARCH_VERSION"
+        },
+        {
+          "sha256": "8f84a743e706573cab9372c21d8c9c186c5afb31c2206821d9c2cf82199bbc64",
+          "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\8f84a743e706573cab9372c21d8c9c186c5afb31c2206821d9c2cf82199bbc64",
+          "role": "PRESERVED_RESEARCH_VERSION"
+        },
+        {
+          "sha256": "e94633e709392168fc38df9633c5d63b34528a1af75949e9cecd69adf2af8e4a",
+          "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\e94633e709392168fc38df9633c5d63b34528a1af75949e9cecd69adf2af8e4a",
+          "role": "PRESERVED_RESEARCH_VERSION"
+        },
+        {
+          "sha256": "e713af1a867f31c3550e3767c7a9fc6f3963aac2b47b617db2adfe55903da054",
+          "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\e713af1a867f31c3550e3767c7a9fc6f3963aac2b47b617db2adfe55903da054",
+          "role": "SMOKE_OR_TEST_FIXTURE_NOT_MARKET_DATA"
+        },
+        {
+          "sha256": "56c0c7e4d9f342e439ed63d60e031b07ff9de1ebdf5407eea011be19536da66c",
+          "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\56c0c7e4d9f342e439ed63d60e031b07ff9de1ebdf5407eea011be19536da66c",
+          "role": "SMOKE_OR_TEST_FIXTURE_NOT_MARKET_DATA"
+        },
+        {
+          "sha256": "396f9aa99dfd812af93d7d58db80f0c0179345500555bb0b27297fa81fa6c32f",
+          "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\396f9aa99dfd812af93d7d58db80f0c0179345500555bb0b27297fa81fa6c32f",
+          "role": "SMOKE_OR_TEST_FIXTURE_NOT_MARKET_DATA"
+        },
+        {
+          "sha256": "a22739794ba4a43a11544338d4a91e14cb6a0b1f7b132ab460f96d3359f63cf4",
+          "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\a22739794ba4a43a11544338d4a91e14cb6a0b1f7b132ab460f96d3359f63cf4",
+          "role": "ORIGINAL_PROJECT_DATABASE_READ_ONLY_REFERENCE"
+        }
+      ]
+    },
+    {
+      "id": "DS02",
+      "name": "H21 COTAHIST/SGS11 e protocolo V1",
+      "available": true,
+      "physical_integrity": "nove ZIPs rehash, quotes/linhas exatas, lacre de protocolo",
+      "semantic_scope": "2050 preços BOVA11 e2071 taxasSelic;2018-01-02..2026-04-01",
+      "temporal_validity": "História exposta; escolha retrospectiva declarada, não holdout",
+      "sufficient_for": [
+        "8 livros condicionais",
+        "reprodução aritmética"
+      ],
+      "insufficient_for": [
+        "futuro",
+        "evento ausente certificado",
+        "despesa pessoal"
+      ],
+      "evidence": [
+        "E10",
+        "E11",
+        "E18"
+      ]
+    },
+    {
+      "id": "DS03",
+      "name": "Painel H20, DFPs e entradas consumidas",
+      "available": true,
+      "physical_integrity": "11 DFPs,750chaves únicas, entradas restauradas porSHA",
+      "semantic_scope": "96snapshots5628células3671elegíveis;32sinais exatos;31trimestres de resultado",
+      "temporal_validity": "Cutoffs reproduzidos; não certifica catálogo corporativo integral",
+      "sufficient_for": [
+        "diagnóstico congelado",
+        "reconciliação limitada"
+      ],
+      "insufficient_for": [
+        "backtest integralcaixa",
+        "pacote1448 completo"
+      ],
+      "evidence": [
+        "E16",
+        "E28"
+      ],
+      "issues": [
+        "I14",
+        "I15"
+      ]
+    },
+    {
+      "id": "DS04",
+      "name": "Fontes13/14",
+      "available": true,
+      "physical_integrity": "manifestos distintos identificados, auditores idênticos antes/depois",
+      "semantic_scope": "792fontes declaradas;0/1248intervalos completos em ambas",
+      "temporal_validity": "Conhecimento/pagamento incompleto por evento",
+      "sufficient_for": [
+        "medir lacunas"
+      ],
+      "insufficient_for": [
+        "lucro executável"
+      ],
+      "evidence": [
+        "E17",
+        "E18"
+      ],
+      "issues": [
+        "I14"
+      ]
+    },
+    {
+      "id": "DS05",
+      "name": "Eventos/DFs ETF e tarifas/tributos",
+      "available": "PARCIAL",
+      "physical_integrity": "38/39avisos,5DFs selecionadas; novas respostas registradas porSHA",
+      "semantic_scope": "Fonte primária por documento e CNPJ, nunca certificado de ausência só pelo catálogo",
+      "temporal_validity": "Datas publicação/referência distintas; tarifas por vigência",
+      "sufficient_for": [
+        "fundamentar premissas restritas e lacunas"
+      ],
+      "insufficient_for": [
+        "cobertura integral eventos",
+        "despesa exata conta2018"
+      ],
+      "evidence": [
+        "E20",
+        "E22"
+      ],
+      "issues": [
+        "I11",
+        "I12",
+        "I13"
+      ]
+    },
+    {
+      "id": "DS06",
+      "name": "Quotes R1 até2026-09-08",
+      "available": true,
+      "physical_integrity": "SHA preservado no baseline",
+      "semantic_scope": "2159linhas,62sobrepostas iguais e109adicionais no acervo R1",
+      "temporal_validity": "Não incluídas na janela congelada H21 desta auditoria",
+      "sufficient_for": [
+        "continuidade documental"
+      ],
+      "insufficient_for": [
+        "novo teste independente automático"
+      ],
+      "evidence": [
+        "E19"
+      ]
+    },
+    {
+      "id": "DS07",
+      "name": "Conta/pessoa e dados futuros",
+      "available": false,
+      "physical_integrity": "NÃO APLICÁVEL a dado ainda não obtido",
+      "semantic_scope": "capital/horizonte/perda/horas/canal desconhecidos",
+      "temporal_validity": "Observações futuras não disponíveis nesta rodada",
+      "sufficient_for": [],
+      "insufficient_for": [
+        "alocação pessoal",
+        "execução real",
+        "previsão demonstrada"
+      ],
+      "evidence": [
+        "E01"
+      ],
+      "issues": [
+        "I12",
+        "I16"
+      ]
+    }
+  ],
+  "uses": [
+    {
+      "id": "U01",
+      "use": "Desenvolvimento",
+      "state": "APTO NO AMBIENTE CI VALIDADO",
+      "acceptance": "Python3.13/Core3.2, suite/lint/tipagem/build/wheel por SHA; Windows apenas auxiliares.",
+      "decisions": [
+        "D06"
+      ],
+      "issues": []
+    },
+    {
+      "id": "U02",
+      "use": "Pesquisa histórica",
+      "state": "APTO COM ESCOPO",
+      "acceptance": "Reprodução H21; H20 econômico restrito; linhas antigas condicionais, sem holdout intacto.",
+      "decisions": [
+        "D01",
+        "D02",
+        "D07"
+      ],
+      "issues": [
+        "I10",
+        "I14",
+        "I15"
+      ]
+    },
+    {
+      "id": "U03",
+      "use": "Experimentação controlada",
+      "state": "CONDICIONAL",
+      "acceptance": "Protocolo prévio, orçamento finito e dados suficientes por hipótese. Não abrir tuning sobre mesmo histórico como teste independente.",
+      "decisions": [
+        "D01"
+      ],
+      "issues": [
+        "I10",
+        "I11",
+        "I16"
+      ]
+    },
+    {
+      "id": "U04",
+      "use": "Observação prospectiva",
+      "state": "PLANO DISPONÍVEL; NÃO ATIVADA",
+      "acceptance": "Plano H21 V1 registrado; nenhuma observação desta auditoria, clock local não selo externo.",
+      "decisions": [
+        "D03"
+      ],
+      "issues": [
+        "I11",
+        "I12",
+        "I16"
+      ]
+    },
+    {
+      "id": "U05",
+      "use": "Simulação",
+      "state": "APTO CONDICIONALMENTE H21",
+      "acceptance": "Livro histórico concilia nas premissas; simulação integral H20 bloqueada pelas fontes.",
+      "decisions": [
+        "D01"
+      ],
+      "issues": [
+        "I11",
+        "I12",
+        "I14"
+      ]
+    },
+    {
+      "id": "U06",
+      "use": "Apoio à decisão",
+      "state": "APTO PARA EXPLICITAR LIMITES; INSUFICIENTE PARA ALOCAÇÃO PESSOAL",
+      "acceptance": "Pode mostrar histórico/custo/risco, não recomendar quantidade pessoal sem requisitos.",
+      "decisions": [
+        "D01"
+      ],
+      "issues": [
+        "I11",
+        "I12",
+        "I16"
+      ]
+    },
+    {
+      "id": "U07",
+      "use": "Operação financeira real",
+      "state": "NÃO APTO E NÃO AUTORIZADO",
+      "acceptance": "Sem ordens, corretora, dinheiro, observação de fills ou risco pessoal aprovado.",
+      "decisions": [
+        "D03"
+      ],
+      "issues": [
+        "I11",
+        "I12",
+        "I13",
+        "I16"
+      ]
+    }
+  ],
+  "runs": [
+    {
+      "id": "source-audits",
+      "started_at_utc": "2026-09-10T00:35:53.175809+00:00",
+      "ended_at_utc": "2026-09-10T00:38:03.326790+00:00",
+      "command": [
+        "C:\\Users\\leona\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "-I",
+        "research/session-20260909/data_completion/audit_recovered.py",
+        "C:/STOCKS/data/recovery-r2",
+        "C:\\STOCKS\\work\\audit-integral-20260910\\source-audits.json"
+      ],
+      "cwd": "C:\\STOCKS\\stocks-predictor",
+      "exit_code": 0,
+      "log": "C:\\STOCKS\\work\\audit-integral-20260910\\source-audits.log",
+      "log_sha256": "c86729247360d10f50cb89833b357bde32751dc1e2aaaae84b021e9bb4b2e945",
+      "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+      "code_sha": "3f9b891bfc48f38a36fa7f5405547b85ca76b317",
+      "new_independent_economic_evidence": false,
+      "interpretation": "Execução auxiliar registrada; metadados de checkout e hashes por arquivo delimitam código efetivamente usado."
+    },
+    {
+      "id": "h21-reproduction",
+      "started_at_utc": "2026-09-10T00:38:03.426188+00:00",
+      "ended_at_utc": "2026-09-10T00:38:05.325633+00:00",
+      "command": [
+        "C:\\Users\\leona\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "research/session-20260909/h21/reproduce_check.py",
+        "C:/STOCKS/work/h21",
+        "C:\\STOCKS\\work\\audit-integral-20260910\\h21-reproduction.json"
+      ],
+      "cwd": "C:\\STOCKS\\stocks-predictor",
+      "exit_code": 0,
+      "log": "C:\\STOCKS\\work\\audit-integral-20260910\\h21-reproduction.log",
+      "log_sha256": "562577dd2100395fe03c9e277895b52e4f138152ad1b2ac9b2375b28d3fdbbbb",
+      "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+      "code_sha": "3f9b891bfc48f38a36fa7f5405547b85ca76b317",
+      "new_independent_economic_evidence": false,
+      "interpretation": "Execução auxiliar registrada; metadados de checkout e hashes por arquivo delimitam código efetivamente usado."
+    },
+    {
+      "id": "h21-independent",
+      "started_at_utc": "2026-09-10T00:38:05.500092+00:00",
+      "ended_at_utc": "2026-09-10T00:38:05.865837+00:00",
+      "command": [
+        "C:\\Users\\leona\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "research/session-20260909/h21/verify_result.py",
+        "C:/STOCKS/work/h21/result-01.json",
+        "C:/STOCKS/work/h21/inputs/BOVA11.original-lines.txt",
+        "C:\\STOCKS\\work\\audit-integral-20260910\\h21-independent.json"
+      ],
+      "cwd": "C:\\STOCKS\\stocks-predictor",
+      "exit_code": 0,
+      "log": "C:\\STOCKS\\work\\audit-integral-20260910\\h21-independent.log",
+      "log_sha256": "8fd7f22095b5572a8244c8580ad145c2c36066f3c1ce4243a9d24baee517140a",
+      "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+      "code_sha": "3f9b891bfc48f38a36fa7f5405547b85ca76b317",
+      "new_independent_economic_evidence": false,
+      "interpretation": "Execução auxiliar registrada; metadados de checkout e hashes por arquivo delimitam código efetivamente usado."
+    },
+    {
+      "id": "stdlib-tests",
+      "started_at_utc": "2026-09-10T00:38:05.973305+00:00",
+      "ended_at_utc": "2026-09-10T00:38:07.085933+00:00",
+      "command": [
+        "C:\\Users\\leona\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "tests.test_etf_hold",
+        "tests.test_economics_labels",
+        "tests.test_data_bank",
+        "-v"
+      ],
+      "cwd": "C:\\STOCKS\\stocks-predictor",
+      "exit_code": 0,
+      "log": "C:\\STOCKS\\work\\audit-integral-20260910\\stdlib-tests.log",
+      "log_sha256": "f1ad5225f163adec4cf75108902baa5d5179ec58570efeb439449fbd09dd37c7",
+      "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+      "code_sha": "3f9b891bfc48f38a36fa7f5405547b85ca76b317",
+      "new_independent_economic_evidence": false,
+      "interpretation": "Execução auxiliar registrada; metadados de checkout e hashes por arquivo delimitam código efetivamente usado."
+    },
+    {
+      "id": "h21-extraction",
+      "started_at_utc": "2026-09-10T00:38:07.194187+00:00",
+      "ended_at_utc": "2026-09-10T00:39:10.719597+00:00",
+      "command": [
+        "C:\\Users\\leona\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "research/session-20260909/h21/extract_quotes.py",
+        "C:/STOCKS/work/h21/raw",
+        "C:\\STOCKS\\work\\audit-integral-20260910\\h21-inputs"
+      ],
+      "cwd": "C:\\STOCKS\\stocks-predictor",
+      "exit_code": 0,
+      "log": "C:\\STOCKS\\work\\audit-integral-20260910\\h21-extraction.log",
+      "log_sha256": "af3f6c9c5ed64c3b033a334bfffa463e5105d19a7b37e2ecd9e8b5c9cac5d2c5",
+      "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+      "code_sha": "3f9b891bfc48f38a36fa7f5405547b85ca76b317",
+      "new_independent_economic_evidence": false,
+      "interpretation": "Execução auxiliar registrada; metadados de checkout e hashes por arquivo delimitam código efetivamente usado."
+    },
+    {
+      "id": "source-audits-after",
+      "started_at_utc": "2026-09-10T01:06:45.695813+00:00",
+      "ended_at_utc": "2026-09-10T01:09:21.318433+00:00",
+      "command": [
+        "C:\\Users\\leona\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "-I",
+        "research/session-20260909/data_completion/audit_recovered.py",
+        "C:/STOCKS/data/recovery-r2",
+        "C:\\STOCKS\\work\\audit-integral-20260910\\source-audits-after.json"
+      ],
+      "cwd": "C:\\STOCKS\\stocks-predictor",
+      "exit_code": 0,
+      "log": "C:\\STOCKS\\work\\audit-integral-20260910\\source-audits-after.log",
+      "log_sha256": "c86729247360d10f50cb89833b357bde32751dc1e2aaaae84b021e9bb4b2e945",
+      "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+      "git_head": "564f9f7c7266a2c049925171eaf075b69262ee38",
+      "git_status": " M tests/test_audit_integrity.py\n M tests/test_source_closure.py\n?? research/session-20260910/\n",
+      "domain_file_hashes": {
+        "stocks_predictor\\adjust.py": "910f3a40febeaa55afc0d6abe593dd07af788668d48cd5231bff02db2b84a1c7",
+        "stocks_predictor\\analyst.py": "73ecee7d88bf8f77033510239e51abf2be6bde6d7c10a7577e01d928fccc43b0",
+        "stocks_predictor\\backtest.py": "64d446c0aab670edd340d6a4c4463450aae6a3d07ae6e6e9769de557569cb02c",
+        "stocks_predictor\\buffered_rebalance.py": "66ff3940575b47a778651a53e90f2f46f560895c2ab512b8efc2c278bfe57a39",
+        "stocks_predictor\\cash_events.py": "a20d9680d84bf5fffe380ec812ed155d107b6452157f85791c081a69801e8de7",
+        "stocks_predictor\\cash_source_audit.py": "6a7d99130c1c21f63413ccfa1846a7a7d4e4658830d66d5d3155e1b010b77b78",
+        "stocks_predictor\\config.py": "e8d540a06a3561af8b210be518852f5d9c32b95d3c5c0f2b3532d17825aaa4ee",
+        "stocks_predictor\\continuous_cash.py": "cac6c98839728f4fe7d86d4898b9f806e957db6ac84723c77dfbd3fe95c65dd4",
+        "stocks_predictor\\continuous_research.py": "16a22550a725a73a0f1a0f50cc26ff99e5fd52b4dac32762c3f918c7142efd83",
+        "stocks_predictor\\cotahist.py": "9f8245812cee6c33e1ec58d859badc8f59d7c0da051ddec182442dc5b19b31fb",
+        "stocks_predictor\\cvm_pit.py": "ad0fcd503f80894143366848b439eb8c23d6e27dfb79d884e7e7160b2a8c5f90",
+        "stocks_predictor\\db.py": "dceb09aed44641d21032850b3814df20c6c25ca18959498d61305f9fd015fd7f",
+        "stocks_predictor\\disclosed_accounting.py": "87a0efabf01a942954abe93e0033fbe5e0debae236bf31d004e3a3321f61d81d",
+        "stocks_predictor\\discovery_h17.py": "bcb0fb01e922b3fca5f821cb59e9f8843555245bbff464975d685a652e1fa6cc",
+        "stocks_predictor\\discovery_reorganizations.py": "8c9e3d87ebab22f136e496cdf9b46d1ce0429ecd8de7fd5c9fe5da13c606fe65",
+        "stocks_predictor\\discovery_value.py": "ac9096efeff26f2d5672e0d08437f07aec779135da22017146baeb98b74e9347",
+        "stocks_predictor\\discovery_value_repair.py": "6c44d04b6f8cfede0f8e5ba00401528e83139ed9d0e7350b4ba98384df316453",
+        "stocks_predictor\\document_panel.py": "a8590fe6d3f9efb6586e502ef88cf6311cbee09ce892f305c05deaeccf59dc03",
+        "stocks_predictor\\economics.py": "fa1778ac2e9274f00b5e882a0b30f08e4412d97236550735164665ae103d0098",
+        "stocks_predictor\\economic_gate.py": "124b3146fa5baf1e0ae8e104adcd46fd1f4f6319882a5941677fe197957ab70b",
+        "stocks_predictor\\ecosystem_plugin.py": "704a6e41dcc5b1d4145cdc58622239fbe4322e8a0c705710e1c2e42b5d8c2d64",
+        "stocks_predictor\\entry_feasibility.py": "0a4aafcdea65541eca50ada7cdb30b1d1c592f8c9a7d86034530296053482651",
+        "stocks_predictor\\etf_hold.py": "c254225e605593efddb9dddeaf1e5a0287f57a19df742a3a414f0b7a4095e9b6",
+        "stocks_predictor\\execution.py": "fd867494a27f54e0c64e4fbe2a48f87e5c22669e3c1115a4830ce74770aa9348",
+        "stocks_predictor\\factor.py": "3b5213855dd3b9169b72463df94f061ebe25333a306a2f77582728235856603d",
+        "stocks_predictor\\h20_checked.py": "fc806cfe39de17918662d8b189e4d235b098e94985e81ce0a656e750f0d2859d",
+        "stocks_predictor\\h20_continuous.py": "569d57957e4ac4d0bdf2d6c7b38686c59d7f968e5d0f8e95c73122ad4810b095",
+        "stocks_predictor\\h20_research.py": "23e3a7763a3121fcbe72f80fd9c2d48a8f8400513193197de2b7aa02e843ed28",
+        "stocks_predictor\\ingest_cotahist.py": "a896663b82ef089ba4b72ed60bef37bee9c0f12415b4e3bf8deac8049c7e0a5c",
+        "stocks_predictor\\ingest_cvm.py": "5f6e3b3473dfc60247cf17f213106eac39f553e7526ce6e5826dbe17668e4a58",
+        "stocks_predictor\\ingest_rj_universe.py": "209da4863c556c9dec2ad19180ca6e4fdf1ff3d2982527bef41d5d5d2009c1a5",
+        "stocks_predictor\\paper.py": "70bcd0f5e344390e23e009fe8ea84f5b2d384ad9bd36177535a7dbb9aff79626",
+        "stocks_predictor\\portfolio.py": "8e5639ffb1e17e463fcead1f0fd4d71d032647db8f8de518fc34edcfbb0efb37",
+        "stocks_predictor\\profit_validation.py": "47e04d5720c4dc67e987ffc80802ade82ab288c3c83abc312850b661cd210763",
+        "stocks_predictor\\report.py": "6c3cf22724c84002344a3aca550916b0355e259da4da8342d52aa38d2c467ffc",
+        "stocks_predictor\\retail_cash.py": "124766b7a2df7cf65baebdfc493fb7d695a9d95a87502c39f2eeab14b80cddae",
+        "stocks_predictor\\returns.py": "d243bc94f5b6d67f2b15150adfe4370224bfca45face9b791409fb90424c4eec",
+        "stocks_predictor\\rj_coda.py": "7ef5b31b9a986be78f1523523e903d2aaa947fb17cb2fd83df5af30851869630",
+        "stocks_predictor\\rj_episodes.py": "be3d3f22dd10ea8f01728cc314a0c0c6f99471732a3a36288287a69f52d251ff",
+        "stocks_predictor\\rj_families.py": "0b1eebfa636b5dca39c2203824c95281758925190a224116a4e6e889727a1c98",
+        "stocks_predictor\\rj_families_next.py": "049f74a66376ee50bc9b1346a9285c48273fd35bd01fef1cca8498926b273cb0",
+        "stocks_predictor\\rj_judge.py": "b9c1aeda59fb2e7b1335207a3389e18b27f8da81dfc7da72f3ce93c7dc0ba75f",
+        "stocks_predictor\\rj_judge_robust.py": "a37eb9277546942ec16281e77edb3f462055f87baa08106a96cca41370aed166",
+        "stocks_predictor\\rj_outcomes.py": "3e153b9504c2e12388a8f0b9b0d289cc608ed099c9e6bfdedd8718bc5c7d147c",
+        "stocks_predictor\\rj_pipeline.py": "29abe96f77b575290b161cea346fc5d7f275beb550ecbdd53326a2b6bd7ebc67",
+        "stocks_predictor\\rj_power.py": "222e6064f8f2af24483d0f890d9a56f4a2b10542b7f546833787fd781d619cae",
+        "stocks_predictor\\simulation.py": "a58cef56caf0e0ac2f555713094c4b6e265ce24164b4bbebbca37226a6d5bad7",
+        "stocks_predictor\\source_closure.py": "a3ab2e8aa6461f7ec0822117566643aa29a2ef5db281c27fa42ae59d999fac62",
+        "stocks_predictor\\source_history.py": "30adbd37d3d1a516b74e5538f215853e648f53d3daa232e3ba8a3c1c8aa1e1cd",
+        "stocks_predictor\\stock_events.py": "2879139f85ca0213649cfdd8899ac8ebeebae6248f3d0c7a167be4a1d6eb6879",
+        "stocks_predictor\\trials_gate.py": "491ed0b1d8bdd2c560a45373835114eb9e5fc5365e257bb80b37c6a03e3b2667",
+        "stocks_predictor\\universe.py": "01ac675046f2bb94f064d90476c1a807d230ea9cae5abd34a873a1f39b025342",
+        "stocks_predictor\\value_profitability.py": "b78279121c5e06b713fe6a1a96d3e5769559ed871c15b21bebc4854f751477b2",
+        "stocks_predictor\\__init__.py": "782ec98063df39ce0d974377eca9246af3c9906281dc837d0de2333109b80595",
+        "main.py": "72d7dd3b25abd234e258c49983233c89b79add05ebc100e07b61feb1b05ff98c"
+      },
+      "new_independent_economic_evidence": false,
+      "interpretation": "Execução auxiliar registrada; metadados de checkout e hashes por arquivo delimitam código efetivamente usado."
+    },
+    {
+      "id": "h21-extract-after",
+      "started_at_utc": "2026-09-10T01:09:21.894207+00:00",
+      "ended_at_utc": "2026-09-10T01:10:50.275638+00:00",
+      "command": [
+        "C:\\Users\\leona\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "research/session-20260909/h21/extract_quotes.py",
+        "C:/STOCKS/work/h21/raw",
+        "C:\\STOCKS\\work\\audit-integral-20260910\\h21-inputs-after"
+      ],
+      "cwd": "C:\\STOCKS\\stocks-predictor",
+      "exit_code": 0,
+      "log": "C:\\STOCKS\\work\\audit-integral-20260910\\h21-extract-after.log",
+      "log_sha256": "af3f6c9c5ed64c3b033a334bfffa463e5105d19a7b37e2ecd9e8b5c9cac5d2c5",
+      "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+      "git_head": "564f9f7c7266a2c049925171eaf075b69262ee38",
+      "git_status": " M .github/workflows/ci.yml\n M stocks_predictor/economic_gate.py\n M tests/test_audit_integrity.py\n M tests/test_economic_gate.py\n M tests/test_source_closure.py\n?? research/session-20260910/\n",
+      "domain_file_hashes": {
+        "stocks_predictor\\adjust.py": "910f3a40febeaa55afc0d6abe593dd07af788668d48cd5231bff02db2b84a1c7",
+        "stocks_predictor\\analyst.py": "73ecee7d88bf8f77033510239e51abf2be6bde6d7c10a7577e01d928fccc43b0",
+        "stocks_predictor\\backtest.py": "64d446c0aab670edd340d6a4c4463450aae6a3d07ae6e6e9769de557569cb02c",
+        "stocks_predictor\\buffered_rebalance.py": "66ff3940575b47a778651a53e90f2f46f560895c2ab512b8efc2c278bfe57a39",
+        "stocks_predictor\\cash_events.py": "a20d9680d84bf5fffe380ec812ed155d107b6452157f85791c081a69801e8de7",
+        "stocks_predictor\\cash_source_audit.py": "6a7d99130c1c21f63413ccfa1846a7a7d4e4658830d66d5d3155e1b010b77b78",
+        "stocks_predictor\\config.py": "e8d540a06a3561af8b210be518852f5d9c32b95d3c5c0f2b3532d17825aaa4ee",
+        "stocks_predictor\\continuous_cash.py": "cac6c98839728f4fe7d86d4898b9f806e957db6ac84723c77dfbd3fe95c65dd4",
+        "stocks_predictor\\continuous_research.py": "16a22550a725a73a0f1a0f50cc26ff99e5fd52b4dac32762c3f918c7142efd83",
+        "stocks_predictor\\cotahist.py": "9f8245812cee6c33e1ec58d859badc8f59d7c0da051ddec182442dc5b19b31fb",
+        "stocks_predictor\\cvm_pit.py": "ad0fcd503f80894143366848b439eb8c23d6e27dfb79d884e7e7160b2a8c5f90",
+        "stocks_predictor\\db.py": "dceb09aed44641d21032850b3814df20c6c25ca18959498d61305f9fd015fd7f",
+        "stocks_predictor\\disclosed_accounting.py": "87a0efabf01a942954abe93e0033fbe5e0debae236bf31d004e3a3321f61d81d",
+        "stocks_predictor\\discovery_h17.py": "bcb0fb01e922b3fca5f821cb59e9f8843555245bbff464975d685a652e1fa6cc",
+        "stocks_predictor\\discovery_reorganizations.py": "8c9e3d87ebab22f136e496cdf9b46d1ce0429ecd8de7fd5c9fe5da13c606fe65",
+        "stocks_predictor\\discovery_value.py": "ac9096efeff26f2d5672e0d08437f07aec779135da22017146baeb98b74e9347",
+        "stocks_predictor\\discovery_value_repair.py": "6c44d04b6f8cfede0f8e5ba00401528e83139ed9d0e7350b4ba98384df316453",
+        "stocks_predictor\\document_panel.py": "a8590fe6d3f9efb6586e502ef88cf6311cbee09ce892f305c05deaeccf59dc03",
+        "stocks_predictor\\economics.py": "fa1778ac2e9274f00b5e882a0b30f08e4412d97236550735164665ae103d0098",
+        "stocks_predictor\\economic_gate.py": "124b3146fa5baf1e0ae8e104adcd46fd1f4f6319882a5941677fe197957ab70b",
+        "stocks_predictor\\ecosystem_plugin.py": "704a6e41dcc5b1d4145cdc58622239fbe4322e8a0c705710e1c2e42b5d8c2d64",
+        "stocks_predictor\\entry_feasibility.py": "0a4aafcdea65541eca50ada7cdb30b1d1c592f8c9a7d86034530296053482651",
+        "stocks_predictor\\etf_hold.py": "c254225e605593efddb9dddeaf1e5a0287f57a19df742a3a414f0b7a4095e9b6",
+        "stocks_predictor\\execution.py": "fd867494a27f54e0c64e4fbe2a48f87e5c22669e3c1115a4830ce74770aa9348",
+        "stocks_predictor\\factor.py": "3b5213855dd3b9169b72463df94f061ebe25333a306a2f77582728235856603d",
+        "stocks_predictor\\h20_checked.py": "fc806cfe39de17918662d8b189e4d235b098e94985e81ce0a656e750f0d2859d",
+        "stocks_predictor\\h20_continuous.py": "569d57957e4ac4d0bdf2d6c7b38686c59d7f968e5d0f8e95c73122ad4810b095",
+        "stocks_predictor\\h20_research.py": "23e3a7763a3121fcbe72f80fd9c2d48a8f8400513193197de2b7aa02e843ed28",
+        "stocks_predictor\\ingest_cotahist.py": "a896663b82ef089ba4b72ed60bef37bee9c0f12415b4e3bf8deac8049c7e0a5c",
+        "stocks_predictor\\ingest_cvm.py": "5f6e3b3473dfc60247cf17f213106eac39f553e7526ce6e5826dbe17668e4a58",
+        "stocks_predictor\\ingest_rj_universe.py": "209da4863c556c9dec2ad19180ca6e4fdf1ff3d2982527bef41d5d5d2009c1a5",
+        "stocks_predictor\\paper.py": "70bcd0f5e344390e23e009fe8ea84f5b2d384ad9bd36177535a7dbb9aff79626",
+        "stocks_predictor\\portfolio.py": "8e5639ffb1e17e463fcead1f0fd4d71d032647db8f8de518fc34edcfbb0efb37",
+        "stocks_predictor\\profit_validation.py": "47e04d5720c4dc67e987ffc80802ade82ab288c3c83abc312850b661cd210763",
+        "stocks_predictor\\report.py": "6c3cf22724c84002344a3aca550916b0355e259da4da8342d52aa38d2c467ffc",
+        "stocks_predictor\\retail_cash.py": "124766b7a2df7cf65baebdfc493fb7d695a9d95a87502c39f2eeab14b80cddae",
+        "stocks_predictor\\returns.py": "d243bc94f5b6d67f2b15150adfe4370224bfca45face9b791409fb90424c4eec",
+        "stocks_predictor\\rj_coda.py": "7ef5b31b9a986be78f1523523e903d2aaa947fb17cb2fd83df5af30851869630",
+        "stocks_predictor\\rj_episodes.py": "be3d3f22dd10ea8f01728cc314a0c0c6f99471732a3a36288287a69f52d251ff",
+        "stocks_predictor\\rj_families.py": "0b1eebfa636b5dca39c2203824c95281758925190a224116a4e6e889727a1c98",
+        "stocks_predictor\\rj_families_next.py": "049f74a66376ee50bc9b1346a9285c48273fd35bd01fef1cca8498926b273cb0",
+        "stocks_predictor\\rj_judge.py": "b9c1aeda59fb2e7b1335207a3389e18b27f8da81dfc7da72f3ce93c7dc0ba75f",
+        "stocks_predictor\\rj_judge_robust.py": "a37eb9277546942ec16281e77edb3f462055f87baa08106a96cca41370aed166",
+        "stocks_predictor\\rj_outcomes.py": "3e153b9504c2e12388a8f0b9b0d289cc608ed099c9e6bfdedd8718bc5c7d147c",
+        "stocks_predictor\\rj_pipeline.py": "29abe96f77b575290b161cea346fc5d7f275beb550ecbdd53326a2b6bd7ebc67",
+        "stocks_predictor\\rj_power.py": "222e6064f8f2af24483d0f890d9a56f4a2b10542b7f546833787fd781d619cae",
+        "stocks_predictor\\simulation.py": "a58cef56caf0e0ac2f555713094c4b6e265ce24164b4bbebbca37226a6d5bad7",
+        "stocks_predictor\\source_closure.py": "a3ab2e8aa6461f7ec0822117566643aa29a2ef5db281c27fa42ae59d999fac62",
+        "stocks_predictor\\source_history.py": "30adbd37d3d1a516b74e5538f215853e648f53d3daa232e3ba8a3c1c8aa1e1cd",
+        "stocks_predictor\\stock_events.py": "2879139f85ca0213649cfdd8899ac8ebeebae6248f3d0c7a167be4a1d6eb6879",
+        "stocks_predictor\\trials_gate.py": "491ed0b1d8bdd2c560a45373835114eb9e5fc5365e257bb80b37c6a03e3b2667",
+        "stocks_predictor\\universe.py": "01ac675046f2bb94f064d90476c1a807d230ea9cae5abd34a873a1f39b025342",
+        "stocks_predictor\\value_profitability.py": "b78279121c5e06b713fe6a1a96d3e5769559ed871c15b21bebc4854f751477b2",
+        "stocks_predictor\\__init__.py": "782ec98063df39ce0d974377eca9246af3c9906281dc837d0de2333109b80595",
+        "main.py": "72d7dd3b25abd234e258c49983233c89b79add05ebc100e07b61feb1b05ff98c"
+      },
+      "new_independent_economic_evidence": false,
+      "interpretation": "Execução auxiliar registrada; metadados de checkout e hashes por arquivo delimitam código efetivamente usado."
+    },
+    {
+      "id": "h21-full-flow-after",
+      "started_at_utc": "2026-09-10T01:10:50.597565+00:00",
+      "ended_at_utc": "2026-09-10T01:10:52.772794+00:00",
+      "command": [
+        "C:\\Users\\leona\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "research/session-20260909/h21/run_round.py",
+        "--inputs",
+        "C:\\STOCKS\\work\\audit-integral-20260910\\h21-inputs-after\\quotes.json",
+        "--selic",
+        "C:/STOCKS/work/h21/public/selic-11.json",
+        "--protocol",
+        "C:\\STOCKS\\stocks-predictor\\docs\\research\\2026-09-09-h21-protocol.json",
+        "--expected-protocol-sha256",
+        "5721d7405af2f398448be3966eeb832deda06f7aa936e5244059ae7ca86797fb",
+        "--output",
+        "C:\\STOCKS\\work\\audit-integral-20260910\\h21-result-after.json",
+        "--journal",
+        "C:\\STOCKS\\work\\audit-integral-20260910\\h21-reproduction-journal.jsonl"
+      ],
+      "cwd": "C:\\STOCKS\\stocks-predictor",
+      "exit_code": 0,
+      "log": "C:\\STOCKS\\work\\audit-integral-20260910\\h21-full-flow-after.log",
+      "log_sha256": "e9baa1fdc23c6a8f9fda61b8cb26ead29bb699e3528357a758b75ab8c591b0b3",
+      "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+      "git_head": "564f9f7c7266a2c049925171eaf075b69262ee38",
+      "git_status": " M .github/workflows/ci.yml\n M stocks_predictor/economic_gate.py\n M tests/test_audit_integrity.py\n M tests/test_economic_gate.py\n M tests/test_source_closure.py\n?? research/session-20260910/\n",
+      "domain_file_hashes": {
+        "stocks_predictor\\adjust.py": "910f3a40febeaa55afc0d6abe593dd07af788668d48cd5231bff02db2b84a1c7",
+        "stocks_predictor\\analyst.py": "73ecee7d88bf8f77033510239e51abf2be6bde6d7c10a7577e01d928fccc43b0",
+        "stocks_predictor\\backtest.py": "64d446c0aab670edd340d6a4c4463450aae6a3d07ae6e6e9769de557569cb02c",
+        "stocks_predictor\\buffered_rebalance.py": "66ff3940575b47a778651a53e90f2f46f560895c2ab512b8efc2c278bfe57a39",
+        "stocks_predictor\\cash_events.py": "a20d9680d84bf5fffe380ec812ed155d107b6452157f85791c081a69801e8de7",
+        "stocks_predictor\\cash_source_audit.py": "6a7d99130c1c21f63413ccfa1846a7a7d4e4658830d66d5d3155e1b010b77b78",
+        "stocks_predictor\\config.py": "e8d540a06a3561af8b210be518852f5d9c32b95d3c5c0f2b3532d17825aaa4ee",
+        "stocks_predictor\\continuous_cash.py": "cac6c98839728f4fe7d86d4898b9f806e957db6ac84723c77dfbd3fe95c65dd4",
+        "stocks_predictor\\continuous_research.py": "16a22550a725a73a0f1a0f50cc26ff99e5fd52b4dac32762c3f918c7142efd83",
+        "stocks_predictor\\cotahist.py": "9f8245812cee6c33e1ec58d859badc8f59d7c0da051ddec182442dc5b19b31fb",
+        "stocks_predictor\\cvm_pit.py": "ad0fcd503f80894143366848b439eb8c23d6e27dfb79d884e7e7160b2a8c5f90",
+        "stocks_predictor\\db.py": "dceb09aed44641d21032850b3814df20c6c25ca18959498d61305f9fd015fd7f",
+        "stocks_predictor\\disclosed_accounting.py": "87a0efabf01a942954abe93e0033fbe5e0debae236bf31d004e3a3321f61d81d",
+        "stocks_predictor\\discovery_h17.py": "bcb0fb01e922b3fca5f821cb59e9f8843555245bbff464975d685a652e1fa6cc",
+        "stocks_predictor\\discovery_reorganizations.py": "8c9e3d87ebab22f136e496cdf9b46d1ce0429ecd8de7fd5c9fe5da13c606fe65",
+        "stocks_predictor\\discovery_value.py": "ac9096efeff26f2d5672e0d08437f07aec779135da22017146baeb98b74e9347",
+        "stocks_predictor\\discovery_value_repair.py": "6c44d04b6f8cfede0f8e5ba00401528e83139ed9d0e7350b4ba98384df316453",
+        "stocks_predictor\\document_panel.py": "a8590fe6d3f9efb6586e502ef88cf6311cbee09ce892f305c05deaeccf59dc03",
+        "stocks_predictor\\economics.py": "fa1778ac2e9274f00b5e882a0b30f08e4412d97236550735164665ae103d0098",
+        "stocks_predictor\\economic_gate.py": "289c04fc6b021aa92c452ff2a823fa068704bb250cee7c25fcc27e2dc07c8da8",
+        "stocks_predictor\\ecosystem_plugin.py": "704a6e41dcc5b1d4145cdc58622239fbe4322e8a0c705710e1c2e42b5d8c2d64",
+        "stocks_predictor\\entry_feasibility.py": "0a4aafcdea65541eca50ada7cdb30b1d1c592f8c9a7d86034530296053482651",
+        "stocks_predictor\\etf_hold.py": "c254225e605593efddb9dddeaf1e5a0287f57a19df742a3a414f0b7a4095e9b6",
+        "stocks_predictor\\execution.py": "fd867494a27f54e0c64e4fbe2a48f87e5c22669e3c1115a4830ce74770aa9348",
+        "stocks_predictor\\factor.py": "3b5213855dd3b9169b72463df94f061ebe25333a306a2f77582728235856603d",
+        "stocks_predictor\\h20_checked.py": "fc806cfe39de17918662d8b189e4d235b098e94985e81ce0a656e750f0d2859d",
+        "stocks_predictor\\h20_continuous.py": "569d57957e4ac4d0bdf2d6c7b38686c59d7f968e5d0f8e95c73122ad4810b095",
+        "stocks_predictor\\h20_research.py": "23e3a7763a3121fcbe72f80fd9c2d48a8f8400513193197de2b7aa02e843ed28",
+        "stocks_predictor\\ingest_cotahist.py": "a896663b82ef089ba4b72ed60bef37bee9c0f12415b4e3bf8deac8049c7e0a5c",
+        "stocks_predictor\\ingest_cvm.py": "5f6e3b3473dfc60247cf17f213106eac39f553e7526ce6e5826dbe17668e4a58",
+        "stocks_predictor\\ingest_rj_universe.py": "209da4863c556c9dec2ad19180ca6e4fdf1ff3d2982527bef41d5d5d2009c1a5",
+        "stocks_predictor\\paper.py": "70bcd0f5e344390e23e009fe8ea84f5b2d384ad9bd36177535a7dbb9aff79626",
+        "stocks_predictor\\portfolio.py": "8e5639ffb1e17e463fcead1f0fd4d71d032647db8f8de518fc34edcfbb0efb37",
+        "stocks_predictor\\profit_validation.py": "47e04d5720c4dc67e987ffc80802ade82ab288c3c83abc312850b661cd210763",
+        "stocks_predictor\\report.py": "6c3cf22724c84002344a3aca550916b0355e259da4da8342d52aa38d2c467ffc",
+        "stocks_predictor\\retail_cash.py": "124766b7a2df7cf65baebdfc493fb7d695a9d95a87502c39f2eeab14b80cddae",
+        "stocks_predictor\\returns.py": "d243bc94f5b6d67f2b15150adfe4370224bfca45face9b791409fb90424c4eec",
+        "stocks_predictor\\rj_coda.py": "7ef5b31b9a986be78f1523523e903d2aaa947fb17cb2fd83df5af30851869630",
+        "stocks_predictor\\rj_episodes.py": "be3d3f22dd10ea8f01728cc314a0c0c6f99471732a3a36288287a69f52d251ff",
+        "stocks_predictor\\rj_families.py": "0b1eebfa636b5dca39c2203824c95281758925190a224116a4e6e889727a1c98",
+        "stocks_predictor\\rj_families_next.py": "049f74a66376ee50bc9b1346a9285c48273fd35bd01fef1cca8498926b273cb0",
+        "stocks_predictor\\rj_judge.py": "b9c1aeda59fb2e7b1335207a3389e18b27f8da81dfc7da72f3ce93c7dc0ba75f",
+        "stocks_predictor\\rj_judge_robust.py": "a37eb9277546942ec16281e77edb3f462055f87baa08106a96cca41370aed166",
+        "stocks_predictor\\rj_outcomes.py": "3e153b9504c2e12388a8f0b9b0d289cc608ed099c9e6bfdedd8718bc5c7d147c",
+        "stocks_predictor\\rj_pipeline.py": "29abe96f77b575290b161cea346fc5d7f275beb550ecbdd53326a2b6bd7ebc67",
+        "stocks_predictor\\rj_power.py": "222e6064f8f2af24483d0f890d9a56f4a2b10542b7f546833787fd781d619cae",
+        "stocks_predictor\\simulation.py": "a58cef56caf0e0ac2f555713094c4b6e265ce24164b4bbebbca37226a6d5bad7",
+        "stocks_predictor\\source_closure.py": "a3ab2e8aa6461f7ec0822117566643aa29a2ef5db281c27fa42ae59d999fac62",
+        "stocks_predictor\\source_history.py": "30adbd37d3d1a516b74e5538f215853e648f53d3daa232e3ba8a3c1c8aa1e1cd",
+        "stocks_predictor\\stock_events.py": "2879139f85ca0213649cfdd8899ac8ebeebae6248f3d0c7a167be4a1d6eb6879",
+        "stocks_predictor\\trials_gate.py": "491ed0b1d8bdd2c560a45373835114eb9e5fc5365e257bb80b37c6a03e3b2667",
+        "stocks_predictor\\universe.py": "01ac675046f2bb94f064d90476c1a807d230ea9cae5abd34a873a1f39b025342",
+        "stocks_predictor\\value_profitability.py": "b78279121c5e06b713fe6a1a96d3e5769559ed871c15b21bebc4854f751477b2",
+        "stocks_predictor\\__init__.py": "782ec98063df39ce0d974377eca9246af3c9906281dc837d0de2333109b80595",
+        "main.py": "72d7dd3b25abd234e258c49983233c89b79add05ebc100e07b61feb1b05ff98c"
+      },
+      "new_independent_economic_evidence": false,
+      "interpretation": "Execução auxiliar registrada; metadados de checkout e hashes por arquivo delimitam código efetivamente usado."
+    },
+    {
+      "id": "h21-independent-after",
+      "started_at_utc": "2026-09-10T01:10:53.097220+00:00",
+      "ended_at_utc": "2026-09-10T01:10:53.601495+00:00",
+      "command": [
+        "C:\\Users\\leona\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "research/session-20260909/h21/verify_result.py",
+        "C:\\STOCKS\\work\\audit-integral-20260910\\h21-result-after.json",
+        "C:\\STOCKS\\work\\audit-integral-20260910\\h21-inputs-after\\BOVA11.original-lines.txt",
+        "C:\\STOCKS\\work\\audit-integral-20260910\\h21-independent-after.json"
+      ],
+      "cwd": "C:\\STOCKS\\stocks-predictor",
+      "exit_code": 0,
+      "log": "C:\\STOCKS\\work\\audit-integral-20260910\\h21-independent-after.log",
+      "log_sha256": "d871982756af649a70c4a2fa167a954b422cfba262bee8fae7c9b2f32774adbe",
+      "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+      "git_head": "564f9f7c7266a2c049925171eaf075b69262ee38",
+      "git_status": " M .github/workflows/ci.yml\n M stocks_predictor/economic_gate.py\n M tests/test_audit_integrity.py\n M tests/test_economic_gate.py\n M tests/test_source_closure.py\n?? research/session-20260910/\n",
+      "domain_file_hashes": {
+        "stocks_predictor\\adjust.py": "910f3a40febeaa55afc0d6abe593dd07af788668d48cd5231bff02db2b84a1c7",
+        "stocks_predictor\\analyst.py": "73ecee7d88bf8f77033510239e51abf2be6bde6d7c10a7577e01d928fccc43b0",
+        "stocks_predictor\\backtest.py": "64d446c0aab670edd340d6a4c4463450aae6a3d07ae6e6e9769de557569cb02c",
+        "stocks_predictor\\buffered_rebalance.py": "66ff3940575b47a778651a53e90f2f46f560895c2ab512b8efc2c278bfe57a39",
+        "stocks_predictor\\cash_events.py": "a20d9680d84bf5fffe380ec812ed155d107b6452157f85791c081a69801e8de7",
+        "stocks_predictor\\cash_source_audit.py": "6a7d99130c1c21f63413ccfa1846a7a7d4e4658830d66d5d3155e1b010b77b78",
+        "stocks_predictor\\config.py": "e8d540a06a3561af8b210be518852f5d9c32b95d3c5c0f2b3532d17825aaa4ee",
+        "stocks_predictor\\continuous_cash.py": "cac6c98839728f4fe7d86d4898b9f806e957db6ac84723c77dfbd3fe95c65dd4",
+        "stocks_predictor\\continuous_research.py": "16a22550a725a73a0f1a0f50cc26ff99e5fd52b4dac32762c3f918c7142efd83",
+        "stocks_predictor\\cotahist.py": "9f8245812cee6c33e1ec58d859badc8f59d7c0da051ddec182442dc5b19b31fb",
+        "stocks_predictor\\cvm_pit.py": "ad0fcd503f80894143366848b439eb8c23d6e27dfb79d884e7e7160b2a8c5f90",
+        "stocks_predictor\\db.py": "dceb09aed44641d21032850b3814df20c6c25ca18959498d61305f9fd015fd7f",
+        "stocks_predictor\\disclosed_accounting.py": "87a0efabf01a942954abe93e0033fbe5e0debae236bf31d004e3a3321f61d81d",
+        "stocks_predictor\\discovery_h17.py": "bcb0fb01e922b3fca5f821cb59e9f8843555245bbff464975d685a652e1fa6cc",
+        "stocks_predictor\\discovery_reorganizations.py": "8c9e3d87ebab22f136e496cdf9b46d1ce0429ecd8de7fd5c9fe5da13c606fe65",
+        "stocks_predictor\\discovery_value.py": "ac9096efeff26f2d5672e0d08437f07aec779135da22017146baeb98b74e9347",
+        "stocks_predictor\\discovery_value_repair.py": "6c44d04b6f8cfede0f8e5ba00401528e83139ed9d0e7350b4ba98384df316453",
+        "stocks_predictor\\document_panel.py": "a8590fe6d3f9efb6586e502ef88cf6311cbee09ce892f305c05deaeccf59dc03",
+        "stocks_predictor\\economics.py": "fa1778ac2e9274f00b5e882a0b30f08e4412d97236550735164665ae103d0098",
+        "stocks_predictor\\economic_gate.py": "289c04fc6b021aa92c452ff2a823fa068704bb250cee7c25fcc27e2dc07c8da8",
+        "stocks_predictor\\ecosystem_plugin.py": "704a6e41dcc5b1d4145cdc58622239fbe4322e8a0c705710e1c2e42b5d8c2d64",
+        "stocks_predictor\\entry_feasibility.py": "0a4aafcdea65541eca50ada7cdb30b1d1c592f8c9a7d86034530296053482651",
+        "stocks_predictor\\etf_hold.py": "c254225e605593efddb9dddeaf1e5a0287f57a19df742a3a414f0b7a4095e9b6",
+        "stocks_predictor\\execution.py": "fd867494a27f54e0c64e4fbe2a48f87e5c22669e3c1115a4830ce74770aa9348",
+        "stocks_predictor\\factor.py": "3b5213855dd3b9169b72463df94f061ebe25333a306a2f77582728235856603d",
+        "stocks_predictor\\h20_checked.py": "fc806cfe39de17918662d8b189e4d235b098e94985e81ce0a656e750f0d2859d",
+        "stocks_predictor\\h20_continuous.py": "569d57957e4ac4d0bdf2d6c7b38686c59d7f968e5d0f8e95c73122ad4810b095",
+        "stocks_predictor\\h20_research.py": "23e3a7763a3121fcbe72f80fd9c2d48a8f8400513193197de2b7aa02e843ed28",
+        "stocks_predictor\\ingest_cotahist.py": "a896663b82ef089ba4b72ed60bef37bee9c0f12415b4e3bf8deac8049c7e0a5c",
+        "stocks_predictor\\ingest_cvm.py": "5f6e3b3473dfc60247cf17f213106eac39f553e7526ce6e5826dbe17668e4a58",
+        "stocks_predictor\\ingest_rj_universe.py": "209da4863c556c9dec2ad19180ca6e4fdf1ff3d2982527bef41d5d5d2009c1a5",
+        "stocks_predictor\\paper.py": "70bcd0f5e344390e23e009fe8ea84f5b2d384ad9bd36177535a7dbb9aff79626",
+        "stocks_predictor\\portfolio.py": "8e5639ffb1e17e463fcead1f0fd4d71d032647db8f8de518fc34edcfbb0efb37",
+        "stocks_predictor\\profit_validation.py": "47e04d5720c4dc67e987ffc80802ade82ab288c3c83abc312850b661cd210763",
+        "stocks_predictor\\report.py": "6c3cf22724c84002344a3aca550916b0355e259da4da8342d52aa38d2c467ffc",
+        "stocks_predictor\\retail_cash.py": "124766b7a2df7cf65baebdfc493fb7d695a9d95a87502c39f2eeab14b80cddae",
+        "stocks_predictor\\returns.py": "d243bc94f5b6d67f2b15150adfe4370224bfca45face9b791409fb90424c4eec",
+        "stocks_predictor\\rj_coda.py": "7ef5b31b9a986be78f1523523e903d2aaa947fb17cb2fd83df5af30851869630",
+        "stocks_predictor\\rj_episodes.py": "be3d3f22dd10ea8f01728cc314a0c0c6f99471732a3a36288287a69f52d251ff",
+        "stocks_predictor\\rj_families.py": "0b1eebfa636b5dca39c2203824c95281758925190a224116a4e6e889727a1c98",
+        "stocks_predictor\\rj_families_next.py": "049f74a66376ee50bc9b1346a9285c48273fd35bd01fef1cca8498926b273cb0",
+        "stocks_predictor\\rj_judge.py": "b9c1aeda59fb2e7b1335207a3389e18b27f8da81dfc7da72f3ce93c7dc0ba75f",
+        "stocks_predictor\\rj_judge_robust.py": "a37eb9277546942ec16281e77edb3f462055f87baa08106a96cca41370aed166",
+        "stocks_predictor\\rj_outcomes.py": "3e153b9504c2e12388a8f0b9b0d289cc608ed099c9e6bfdedd8718bc5c7d147c",
+        "stocks_predictor\\rj_pipeline.py": "29abe96f77b575290b161cea346fc5d7f275beb550ecbdd53326a2b6bd7ebc67",
+        "stocks_predictor\\rj_power.py": "222e6064f8f2af24483d0f890d9a56f4a2b10542b7f546833787fd781d619cae",
+        "stocks_predictor\\simulation.py": "a58cef56caf0e0ac2f555713094c4b6e265ce24164b4bbebbca37226a6d5bad7",
+        "stocks_predictor\\source_closure.py": "a3ab2e8aa6461f7ec0822117566643aa29a2ef5db281c27fa42ae59d999fac62",
+        "stocks_predictor\\source_history.py": "30adbd37d3d1a516b74e5538f215853e648f53d3daa232e3ba8a3c1c8aa1e1cd",
+        "stocks_predictor\\stock_events.py": "2879139f85ca0213649cfdd8899ac8ebeebae6248f3d0c7a167be4a1d6eb6879",
+        "stocks_predictor\\trials_gate.py": "491ed0b1d8bdd2c560a45373835114eb9e5fc5365e257bb80b37c6a03e3b2667",
+        "stocks_predictor\\universe.py": "01ac675046f2bb94f064d90476c1a807d230ea9cae5abd34a873a1f39b025342",
+        "stocks_predictor\\value_profitability.py": "b78279121c5e06b713fe6a1a96d3e5769559ed871c15b21bebc4854f751477b2",
+        "stocks_predictor\\__init__.py": "782ec98063df39ce0d974377eca9246af3c9906281dc837d0de2333109b80595",
+        "main.py": "72d7dd3b25abd234e258c49983233c89b79add05ebc100e07b61feb1b05ff98c"
+      },
+      "new_independent_economic_evidence": false,
+      "interpretation": "Execução auxiliar registrada; metadados de checkout e hashes por arquivo delimitam código efetivamente usado."
+    },
+    {
+      "id": "stdlib-final",
+      "started_at_utc": "2026-09-10T01:10:53.894242+00:00",
+      "ended_at_utc": "2026-09-10T01:10:55.396554+00:00",
+      "command": [
+        "C:\\Users\\leona\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "tests.test_audit_integrity",
+        "tests.test_etf_hold",
+        "tests.test_economics_labels",
+        "tests.test_data_bank",
+        "-v"
+      ],
+      "cwd": "C:\\STOCKS\\stocks-predictor",
+      "exit_code": 0,
+      "log": "C:\\STOCKS\\work\\audit-integral-20260910\\stdlib-final.log",
+      "log_sha256": "74eee6d541c66d2a1d0a0b563f7d838d0968f8de77cc17bd1ad5a5ed77e5f674",
+      "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+      "git_head": "564f9f7c7266a2c049925171eaf075b69262ee38",
+      "git_status": " M .github/workflows/ci.yml\n M stocks_predictor/economic_gate.py\n M tests/test_audit_integrity.py\n M tests/test_economic_gate.py\n M tests/test_source_closure.py\n?? research/session-20260910/\n",
+      "domain_file_hashes": {
+        "stocks_predictor\\adjust.py": "910f3a40febeaa55afc0d6abe593dd07af788668d48cd5231bff02db2b84a1c7",
+        "stocks_predictor\\analyst.py": "73ecee7d88bf8f77033510239e51abf2be6bde6d7c10a7577e01d928fccc43b0",
+        "stocks_predictor\\backtest.py": "64d446c0aab670edd340d6a4c4463450aae6a3d07ae6e6e9769de557569cb02c",
+        "stocks_predictor\\buffered_rebalance.py": "66ff3940575b47a778651a53e90f2f46f560895c2ab512b8efc2c278bfe57a39",
+        "stocks_predictor\\cash_events.py": "a20d9680d84bf5fffe380ec812ed155d107b6452157f85791c081a69801e8de7",
+        "stocks_predictor\\cash_source_audit.py": "6a7d99130c1c21f63413ccfa1846a7a7d4e4658830d66d5d3155e1b010b77b78",
+        "stocks_predictor\\config.py": "e8d540a06a3561af8b210be518852f5d9c32b95d3c5c0f2b3532d17825aaa4ee",
+        "stocks_predictor\\continuous_cash.py": "cac6c98839728f4fe7d86d4898b9f806e957db6ac84723c77dfbd3fe95c65dd4",
+        "stocks_predictor\\continuous_research.py": "16a22550a725a73a0f1a0f50cc26ff99e5fd52b4dac32762c3f918c7142efd83",
+        "stocks_predictor\\cotahist.py": "9f8245812cee6c33e1ec58d859badc8f59d7c0da051ddec182442dc5b19b31fb",
+        "stocks_predictor\\cvm_pit.py": "ad0fcd503f80894143366848b439eb8c23d6e27dfb79d884e7e7160b2a8c5f90",
+        "stocks_predictor\\db.py": "dceb09aed44641d21032850b3814df20c6c25ca18959498d61305f9fd015fd7f",
+        "stocks_predictor\\disclosed_accounting.py": "87a0efabf01a942954abe93e0033fbe5e0debae236bf31d004e3a3321f61d81d",
+        "stocks_predictor\\discovery_h17.py": "bcb0fb01e922b3fca5f821cb59e9f8843555245bbff464975d685a652e1fa6cc",
+        "stocks_predictor\\discovery_reorganizations.py": "8c9e3d87ebab22f136e496cdf9b46d1ce0429ecd8de7fd5c9fe5da13c606fe65",
+        "stocks_predictor\\discovery_value.py": "ac9096efeff26f2d5672e0d08437f07aec779135da22017146baeb98b74e9347",
+        "stocks_predictor\\discovery_value_repair.py": "6c44d04b6f8cfede0f8e5ba00401528e83139ed9d0e7350b4ba98384df316453",
+        "stocks_predictor\\document_panel.py": "a8590fe6d3f9efb6586e502ef88cf6311cbee09ce892f305c05deaeccf59dc03",
+        "stocks_predictor\\economics.py": "fa1778ac2e9274f00b5e882a0b30f08e4412d97236550735164665ae103d0098",
+        "stocks_predictor\\economic_gate.py": "289c04fc6b021aa92c452ff2a823fa068704bb250cee7c25fcc27e2dc07c8da8",
+        "stocks_predictor\\ecosystem_plugin.py": "704a6e41dcc5b1d4145cdc58622239fbe4322e8a0c705710e1c2e42b5d8c2d64",
+        "stocks_predictor\\entry_feasibility.py": "0a4aafcdea65541eca50ada7cdb30b1d1c592f8c9a7d86034530296053482651",
+        "stocks_predictor\\etf_hold.py": "c254225e605593efddb9dddeaf1e5a0287f57a19df742a3a414f0b7a4095e9b6",
+        "stocks_predictor\\execution.py": "fd867494a27f54e0c64e4fbe2a48f87e5c22669e3c1115a4830ce74770aa9348",
+        "stocks_predictor\\factor.py": "3b5213855dd3b9169b72463df94f061ebe25333a306a2f77582728235856603d",
+        "stocks_predictor\\h20_checked.py": "fc806cfe39de17918662d8b189e4d235b098e94985e81ce0a656e750f0d2859d",
+        "stocks_predictor\\h20_continuous.py": "569d57957e4ac4d0bdf2d6c7b38686c59d7f968e5d0f8e95c73122ad4810b095",
+        "stocks_predictor\\h20_research.py": "23e3a7763a3121fcbe72f80fd9c2d48a8f8400513193197de2b7aa02e843ed28",
+        "stocks_predictor\\ingest_cotahist.py": "a896663b82ef089ba4b72ed60bef37bee9c0f12415b4e3bf8deac8049c7e0a5c",
+        "stocks_predictor\\ingest_cvm.py": "5f6e3b3473dfc60247cf17f213106eac39f553e7526ce6e5826dbe17668e4a58",
+        "stocks_predictor\\ingest_rj_universe.py": "209da4863c556c9dec2ad19180ca6e4fdf1ff3d2982527bef41d5d5d2009c1a5",
+        "stocks_predictor\\paper.py": "70bcd0f5e344390e23e009fe8ea84f5b2d384ad9bd36177535a7dbb9aff79626",
+        "stocks_predictor\\portfolio.py": "8e5639ffb1e17e463fcead1f0fd4d71d032647db8f8de518fc34edcfbb0efb37",
+        "stocks_predictor\\profit_validation.py": "47e04d5720c4dc67e987ffc80802ade82ab288c3c83abc312850b661cd210763",
+        "stocks_predictor\\report.py": "6c3cf22724c84002344a3aca550916b0355e259da4da8342d52aa38d2c467ffc",
+        "stocks_predictor\\retail_cash.py": "124766b7a2df7cf65baebdfc493fb7d695a9d95a87502c39f2eeab14b80cddae",
+        "stocks_predictor\\returns.py": "d243bc94f5b6d67f2b15150adfe4370224bfca45face9b791409fb90424c4eec",
+        "stocks_predictor\\rj_coda.py": "7ef5b31b9a986be78f1523523e903d2aaa947fb17cb2fd83df5af30851869630",
+        "stocks_predictor\\rj_episodes.py": "be3d3f22dd10ea8f01728cc314a0c0c6f99471732a3a36288287a69f52d251ff",
+        "stocks_predictor\\rj_families.py": "0b1eebfa636b5dca39c2203824c95281758925190a224116a4e6e889727a1c98",
+        "stocks_predictor\\rj_families_next.py": "049f74a66376ee50bc9b1346a9285c48273fd35bd01fef1cca8498926b273cb0",
+        "stocks_predictor\\rj_judge.py": "b9c1aeda59fb2e7b1335207a3389e18b27f8da81dfc7da72f3ce93c7dc0ba75f",
+        "stocks_predictor\\rj_judge_robust.py": "a37eb9277546942ec16281e77edb3f462055f87baa08106a96cca41370aed166",
+        "stocks_predictor\\rj_outcomes.py": "3e153b9504c2e12388a8f0b9b0d289cc608ed099c9e6bfdedd8718bc5c7d147c",
+        "stocks_predictor\\rj_pipeline.py": "29abe96f77b575290b161cea346fc5d7f275beb550ecbdd53326a2b6bd7ebc67",
+        "stocks_predictor\\rj_power.py": "222e6064f8f2af24483d0f890d9a56f4a2b10542b7f546833787fd781d619cae",
+        "stocks_predictor\\simulation.py": "a58cef56caf0e0ac2f555713094c4b6e265ce24164b4bbebbca37226a6d5bad7",
+        "stocks_predictor\\source_closure.py": "a3ab2e8aa6461f7ec0822117566643aa29a2ef5db281c27fa42ae59d999fac62",
+        "stocks_predictor\\source_history.py": "30adbd37d3d1a516b74e5538f215853e648f53d3daa232e3ba8a3c1c8aa1e1cd",
+        "stocks_predictor\\stock_events.py": "2879139f85ca0213649cfdd8899ac8ebeebae6248f3d0c7a167be4a1d6eb6879",
+        "stocks_predictor\\trials_gate.py": "491ed0b1d8bdd2c560a45373835114eb9e5fc5365e257bb80b37c6a03e3b2667",
+        "stocks_predictor\\universe.py": "01ac675046f2bb94f064d90476c1a807d230ea9cae5abd34a873a1f39b025342",
+        "stocks_predictor\\value_profitability.py": "b78279121c5e06b713fe6a1a96d3e5769559ed871c15b21bebc4854f751477b2",
+        "stocks_predictor\\__init__.py": "782ec98063df39ce0d974377eca9246af3c9906281dc837d0de2333109b80595",
+        "main.py": "72d7dd3b25abd234e258c49983233c89b79add05ebc100e07b61feb1b05ff98c"
+      },
+      "new_independent_economic_evidence": false,
+      "interpretation": "Execução auxiliar registrada; metadados de checkout e hashes por arquivo delimitam código efetivamente usado."
+    },
+    {
+      "id": "R-H20-PACKAGE",
+      "status": "FAILED_MISSING_OBJECT",
+      "evidence": [
+        "E14",
+        "E12"
+      ],
+      "effect": "Certificado integral não obtido; verificador preservado."
+    },
+    {
+      "id": "R-H20-CONSUMED-1-2",
+      "status": "FAILED_EXACT_FLOAT_EQUALITY",
+      "evidence": [
+        "E13"
+      ],
+      "effect": "Diferença de2.22e-16; contrato numérico explícito, sem mudança de dados/resultados originais."
+    },
+    {
+      "id": "R-H20-CONSUMED-3",
+      "status": "PASS",
+      "evidence": [
+        "E28"
+      ],
+      "effect": "9732células e18cenários, sem nova hipótese/evidência independente."
+    },
+    {
+      "id": "R-TEMPORAL-H20",
+      "status": "PASS_AFTER_AUXILIARY_SERIALIZATION_FIXES",
+      "evidence": [
+        "E16"
+      ],
+      "effect": "32sinais todos os campos exatos; primeiras tentativas de scaffold list/tuple/Decimal não eram resultado de domínio."
+    },
+    {
+      "id": "R-REGRESSION-BEFORE",
+      "status": "EXPECTED_FAILURE",
+      "evidence": [
+        "E05",
+        "E07",
+        "E09"
+      ],
+      "effect": "Prova de defeitos antes da correção, não escondida por sucesso posterior."
+    },
+    {
+      "id": "CI194",
+      "status": "PASS",
+      "sha": "3f9b891bfc48f38a36fa7f5405547b85ca76b317",
+      "url": "https://github.com/leonardosovienski/stocks-predictor/actions/runs/34420922159",
+      "evidence": [
+        "E25"
+      ],
+      "tests_passed": 791,
+      "coverage_percent": 78
+    },
+    {
+      "id": "CI195",
+      "status": "FAIL",
+      "sha": "564f9f7c7266a2c049925171eaf075b69262ee38",
+      "url": "https://github.com/leonardosovienski/stocks-predictor/actions/runs/34423437645",
+      "evidence": [
+        "E26"
+      ],
+      "tests_passed": 807,
+      "tests_failed": 1,
+      "cause": "Fixture fonte primária sem tipo explícito; corrigida sem relaxar guarda."
+    },
+    {
+      "id": "CI196",
+      "status": "FAIL",
+      "sha": "4d2dcfba7c06bb6491e80cf5cae3d7bd93187805",
+      "url": "https://github.com/leonardosovienski/stocks-predictor/actions/runs/34424635391",
+      "evidence": [
+        "E27"
+      ],
+      "tests_passed": 814,
+      "tests_failed": 1,
+      "cause": "Pipeline secundário RJ ainda chamava permutação com repetição; corrigido sem excluir episódios."
+    },
+    {
+      "id": "CI197",
+      "status": "PASS",
+      "sha": "c1f99b67025c0c013527c3a71c458f1d32d59fe0",
+      "url": "https://github.com/leonardosovienski/stocks-predictor/actions/runs/34425217407",
+      "evidence": [
+        "E30"
+      ],
+      "tests_passed": 815,
+      "subtests_passed": 6,
+      "coverage_percent": 78,
+      "seconds": 230.26,
+      "checks": [
+        "Ruff",
+        "Pyright",
+        "pytest",
+        "build",
+        "wheel outside checkout",
+        "gitleaks"
+      ],
+      "environment": "Linux Python3.13, official Core3.2.0"
+    }
+  ],
+  "round": {
+    "id": "AUDIT-R3",
+    "registration": "E01",
+    "acquisition_closed": true,
+    "downloads_attempted": 8,
+    "responses_saved": 7,
+    "response_bytes_saved": 788034,
+    "max_source_attempts": 2,
+    "usable_or_relevant_bodies": 5,
+    "invalid_bodies": [
+      "IN1585 redirect page is not legal text",
+      "FNET941503 viewer HTML is not PDF"
+    ],
+    "new_economic_hypotheses": 0,
+    "new_independent_market_evidence": 0,
+    "stop_reason": "Questões respondidas no escopo e duas tentativas FNET sem corpo; demais gaps exigem fontes/dados pessoais/futuro. Limites não foram ampliados."
+  },
+  "audit_conclusion": "24 frentes examinadas, correções internas e replays no escopo validados; dependências externas documentadas. Integração final e SHA mais recente comprovados pelo PR74 e recibo de entrega, sem alegar lucro executável ou auditoria exaustiva de toda linha/PDF."
+}

@@ -1,5 +1,8 @@
-"""M6 — paper ledger forward: registro EVAL antes do futuro + RISK write-once."""
+"""M6 historical fixtures test ledger mechanics, not prospective evidence."""
 import datetime
+from unittest.mock import patch
+
+import pytest
 
 import cotahist
 import db
@@ -23,7 +26,7 @@ def _load(tmp_path):
 
 def test_record_forward_writes_eval_part(tmp_path):
     conn = _load(tmp_path)
-    n = paper.record_forward(conn, _CFG, asof="2018-01-31", run_id="run_paper")
+    n = paper.legacy_record_forward(conn, _CFG, asof="2018-01-31", run_id="run_paper")
     assert n > 0
     rows = conn.execute(
         "SELECT conviction_band, frozen_mode, exec_price FROM decisions WHERE run_id='run_paper'"
@@ -43,7 +46,7 @@ def test_settle_ignores_non_spot_rows(tmp_path):
     0,01; com ele, corretamente NÃO liquida (não há D+1 à vista ainda)."""
     conn = _load(tmp_path)
     last_spot = conn.execute("SELECT MAX(date) FROM prices_raw").fetchone()[0]
-    paper.record_forward(conn, _CFG, asof=last_spot, run_id="run_paper")
+    paper.legacy_record_forward(conn, _CFG, asof=last_spot, run_id="run_paper")
     tk = conn.execute(
         "SELECT ticker FROM decisions WHERE run_id='run_paper' LIMIT 1").fetchone()[0]
     conn.execute(
@@ -62,7 +65,7 @@ def test_settle_ignores_non_spot_rows(tmp_path):
 
 def test_settle_fills_exec_write_once(tmp_path):
     conn = _load(tmp_path)
-    paper.record_forward(conn, _CFG, asof="2018-01-31", run_id="run_paper")
+    paper.legacy_record_forward(conn, _CFG, asof="2018-01-31", run_id="run_paper")
     filled = paper.settle_executions(conn, _CFG)
     assert filled > 0
     row = conn.execute(
@@ -85,7 +88,7 @@ def test_settle_exits_writes_risk_part_write_once(tmp_path):
     nunca conseguia fechar o ciclo EVAL->RISK que existe para produzir. Liquida no
     próximo fim-de-mês (mesma cadência de `backtest.walk_forward`), D+1 abertura."""
     conn = _load(tmp_path)
-    paper.record_forward(conn, _CFG, asof="2018-01-31", run_id="run_paper")
+    paper.legacy_record_forward(conn, _CFG, asof="2018-01-31", run_id="run_paper")
     paper.settle_executions(conn, _CFG)
     exited = paper.settle_exits(conn, _CFG)
     assert exited > 0
@@ -119,7 +122,37 @@ def test_settle_exits_pending_stays_open_until_next_rebalance(tmp_path):
     disponível ainda) fica pendente — nunca fecha cedo demais (anti-lookahead)."""
     conn = _load(tmp_path)
     last_spot = conn.execute("SELECT MAX(date) FROM prices_raw").fetchone()[0]
-    paper.record_forward(conn, _CFG, asof=last_spot, run_id="run_open")
+    paper.legacy_record_forward(conn, _CFG, asof=last_spot, run_id="run_open")
     paper.settle_executions(conn, _CFG)
     assert paper.settle_exits(conn, _CFG) == 0
+    conn.close()
+
+
+def test_forward_rejects_backdating_before_any_decision_write(tmp_path):
+    conn = _load(tmp_path)
+    with pytest.raises(ValueError, match="today's UTC date"):
+        paper.record_forward(conn, _CFG, '2018-01-31', 'must_not_exist')
+    assert conn.execute('SELECT COUNT(*) FROM decisions').fetchone()[0] == 0
+    conn.close()
+
+
+def test_forward_rejects_future_prices_even_with_current_clock(tmp_path):
+    conn = _load(tmp_path)
+    now = datetime.datetime(2018, 1, 31, 20, tzinfo=datetime.timezone.utc)
+    with patch.object(paper.datetime, 'datetime') as clock:
+        clock.now.return_value = now
+        with pytest.raises(ValueError, match='future prices'):
+            paper.record_forward(conn, _CFG, '2018-01-31', 'must_not_exist')
+    assert conn.execute('SELECT COUNT(*) FROM decisions').fetchone()[0] == 0
+    conn.close()
+
+
+def test_forward_records_with_current_clock_and_only_past_prices(tmp_path):
+    conn = _load(tmp_path)
+    conn.execute("DELETE FROM prices_raw WHERE date>'2018-01-31'")
+    now = datetime.datetime(2018, 1, 31, 20, tzinfo=datetime.timezone.utc)
+    with patch.object(paper.datetime, 'datetime') as clock:
+        clock.now.return_value = now
+        assert paper.record_forward(conn, _CFG, '2018-01-31', 'guarded') > 0
+    assert conn.execute('SELECT COUNT(*) FROM decisions WHERE exec_price IS NOT NULL').fetchone()[0] == 0
     conn.close()

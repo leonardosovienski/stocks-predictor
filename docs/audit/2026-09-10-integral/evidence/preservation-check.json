@@ -1,0 +1,51 @@
+{
+  "observed_at_utc": "2026-09-10T01:25:07.942719+00:00",
+  "baseline_head": "3f9b891bfc48f38a36fa7f5405547b85ca76b317",
+  "current_head": "c1f99b67025c0c013527c3a71c458f1d32d59fe0",
+  "baseline_tracked_files": 1356,
+  "changed_baseline_paths": [
+    ".github/workflows/ci.yml",
+    "main.py",
+    "stocks_predictor/backtest.py",
+    "stocks_predictor/cotahist.py",
+    "stocks_predictor/economic_gate.py",
+    "stocks_predictor/ecosystem_plugin.py",
+    "stocks_predictor/paper.py",
+    "stocks_predictor/rj_judge.py",
+    "stocks_predictor/rj_judge_robust.py",
+    "stocks_predictor/rj_pipeline.py",
+    "stocks_predictor/source_closure.py",
+    "stocks_predictor/universe.py",
+    "tests/test_economic_gate.py",
+    "tests/test_paper.py",
+    "tests/test_rj_pipeline.py",
+    "tests/test_source_closure.py",
+    "tests/test_universe.py"
+  ],
+  "historical_changes": [],
+  "seals_unchanged": {
+    "data\\CATALOG.json": true,
+    "LOCALIZACAO_PROJETO.json": true,
+    "work\\h21\\result-01.json": true,
+    "work\\h21\\inputs\\quotes.json": true,
+    "work\\h21\\public\\selic-11.json": true,
+    "work\\h21-source-closure-20260909\\normalized-v2\\quotes-2018-20260908.json": true
+  },
+  "database_seals_unchanged": {
+    "30ce8e91fba9cb0a0c09571be71821c9da2d0aec49d12ec15aab8b26522ffd2c": true,
+    "0bceedac3936dc4162562ec35e03177c7e71b99e13b66837035d1ccd151f0512": true,
+    "fa3d464e3e463b66c2aa64d96228aeb5d1fae63514df1d0ddb58233240b52764": true,
+    "e21a89c38f2792c826291baa1175da4fe9dfbf626316635a536f7c28b250146a": true,
+    "07197228920e4082954afbc9035509ae74e84be1773195a4c5b71a435481a804": true,
+    "a8238568980d3303890b04590cfb5c55ab2d24c9271edd86820269336b09679a": true,
+    "8f84a743e706573cab9372c21d8c9c186c5afb31c2206821d9c2cf82199bbc64": true,
+    "e94633e709392168fc38df9633c5d63b34528a1af75949e9cecd69adf2af8e4a": true,
+    "e713af1a867f31c3550e3767c7a9fc6f3963aac2b47b617db2adfe55903da054": true,
+    "56c0c7e4d9f342e439ed63d60e031b07ff9de1ebdf5407eea011be19536da66c": true,
+    "396f9aa99dfd812af93d7d58db80f0c0179345500555bb0b27297fa81fa6c32f": true,
+    "a22739794ba4a43a11544338d4a91e14cb6a0b1f7b132ab460f96d3359f63cf4": true
+  },
+  "default_operational_database_exists": false,
+  "worktrees": "worktree C:/STOCKS/stocks-predictor\nHEAD c1f99b67025c0c013527c3a71c458f1d32d59fe0\nbranch refs/heads/audit/integral-20260910\n\n",
+  "status": "PASS"
+}

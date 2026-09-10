@@ -1,0 +1,77 @@
+{
+  "scope": "Five financial statements; selected evolution/distribution/amortization pages, not full legal/financial audit. No copyrighted source text reproduced.",
+  "financial_statements": [
+    {
+      "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-fs-2019.pdf",
+      "sha256": "0f8b539a8bf77cfc5b6e58f47c60e5b8684adaf4180c5aa3b492f9e49078a80a",
+      "total_pages": 23,
+      "selected_pdf_pages_1_based": [
+        9,
+        20
+      ]
+    },
+    {
+      "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-fs-2021.pdf",
+      "sha256": "494fa33707e026c0db169e555d68909c2bec90c5b60f25327965bda032ed79f7",
+      "total_pages": 25,
+      "selected_pdf_pages_1_based": [
+        11,
+        22
+      ]
+    },
+    {
+      "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-fs-2023.pdf",
+      "sha256": "1241cf219b40bab965c981d3c21c1b29dc74497be83f9259ec22eb34e24d056c",
+      "total_pages": 22,
+      "selected_pdf_pages_1_based": [
+        9,
+        19
+      ]
+    },
+    {
+      "path": "C:\\STOCKS\\work\\data-completion-r2-20260909\\raw\\fnet-fs-2025.pdf",
+      "sha256": "4fa3a2e0ade7b1dbc56af8be321b7a4f5a768310a485f205248e50538ad1549a",
+      "total_pages": 24,
+      "selected_pdf_pages_1_based": [
+        10,
+        16,
+        19
+      ]
+    },
+    {
+      "path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\raw\\bova-fs-2026-retry.pdf",
+      "sha256": "a87749d1f6740441392e6e8e9c4c085f193d8d432bf7eb57a6be7a53b7d39c92",
+      "total_pages": 23,
+      "selected_pdf_pages_1_based": [
+        9,
+        18
+      ]
+    }
+  ],
+  "interpretation": "Reviewed evolution tables do not separately report investor-wide amortization; internal portfolio dividends enter NAV. Permission to amortize is not occurrence; no complete interval absence certificate.",
+  "visual_review": [
+    {
+      "path": "C:\\STOCKS\\work\\audit-integral-20260910\\fs2025-page10.png",
+      "sha256": "981016829a4a77da74b6c7f6edf22af3f16e1a981fdd0593c8dae5e65f9b516d",
+      "observed": "Rendered page visually inspected by the auditor"
+    },
+    {
+      "path": "C:\\STOCKS\\work\\audit-integral-20260910\\fs2026-page9.png",
+      "sha256": "6608e62f79c0ee674107a0df1cdba17b341506eec43756d42270f75e2d72134d",
+      "observed": "Rendered page visually inspected by the auditor"
+    },
+    {
+      "path": "C:\\STOCKS\\work\\audit-integral-20260910\\b3-lot-page1.png",
+      "sha256": "4b706046645ec67b289e28fef95350b481e722cd683de1d17cb31b7c7e4a7835",
+      "observed": "Rendered page visually inspected by the auditor"
+    }
+  ],
+  "primary_source_findings": {
+    "receita_bolsa": "Ordinary operations 15%, day trade20%; modeled deductible transaction fees and withholding credit.",
+    "receita_isencoes": "Equity index fund units are excluded from monthly stock-sale exemption; primary article body read.",
+    "b3_oc119_2020": "ETF lot10 becomes1 effective2020-09-28; supports historical lot, not proof of account tariff.",
+    "bvmf_old_tariffs": "Official old cash-market table0.0325% with2013 start; continuity through2018 not certified.",
+    "in1585": "Only redirect body retrieved; not certified law body.",
+    "fnet941503": "Timeout then HTML viewer/challenge body, not PDF; two resource attempts exhausted."
+  }
+}

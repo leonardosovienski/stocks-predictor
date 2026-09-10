@@ -1,17 +1,23 @@
 # Stocks — instruções vigentes para implementação
 
-Atualizado em 09/09/2026 após H21, centralização, R2 e preparação da auditoria integral.
+Atualizado em 10/09/2026 UTC após a auditoria integral AUDIT-R3.
 
-## Próxima tarefa: auditoria integral
+## Continuidade após auditoria integral
 
 O usuário preparou e revisou o
 [mandato completo de auditoria](docs/continuation/PROMPT_AUDITORIA_INTEGRAL_20260909.md).
-Ele substitui como prioridade a fila limitada a eventos/custos H21. Reexaminar
-objetivo econômico, decisões, lógica, arquitetura, dados e claims; corrigir e
-validar o necessário. A auditoria ainda não foi executada: a última ação foi
-consolidar e publicar a continuidade e os artefatos autorais da sessão.
-Consultar o [pacote de publicação](research/session-20260909/publication/README.md)
-para hashes, recibos e distinção entre arquivos versionados e dados apenas locais.
+Foi executado com revisão das 24 frentes, correções e validação.
+Ler o [relatório canônico](docs/audit/2026-09-10-integral/README.md),
+[registro único](docs/audit/2026-09-10-integral/registry.json) e
+[reprodução](research/session-20260910/integral/README.md).
+H21 continua justificável como validação simples e finita; lucro executável/futuro
+não foi demonstrado. H20 amplo continua estacionado; cinco arquivos impedem seu
+certificado integral, embora os campos econômicos consumidos tenham sido reconciliados.
+Não reabrir busca de estratégias ou coleta ilimitada por inércia. Usar I10–I16 para
+condições concretas de retomada; I01–I09 foram resolvidos no escopo declarado.
+CI197 aprovou 815 testes no domínio consolidado; PR74 registra integração e último check.
+Protocolos e resultados históricos mantêm seus bytes; funções legacy existem apenas
+para reproduzir sua semântica, sem certificado PIT geral ou forward real.
 
 ## Mandato e leitura
 

@@ -11,6 +11,7 @@ diferença. Destrava M1–M6 sem o arquivo físico.
 """
 import logging
 import random
+from datetime import date
 
 logger = logging.getLogger(__name__)
 
@@ -37,7 +38,8 @@ def parse_line(line: str):
     raw = line.rstrip("\r\n")
     if raw[F_TIPREG] != "01":
         return None
-    raw = raw.ljust(RECORD_LEN)
+    if len(raw) != RECORD_LEN:
+        raise ValueError(f"registro tipo 01 deve ter {RECORD_LEN} caracteres: {len(raw)}")
     d = raw[F_DATA]
     # AAAAMMDD tem que ser 8 dígitos — sem essa checagem, um byte corrompido
     # (espaço/lixo em vez de dígito) virava um "date" tipo "2024- x-  " sem
@@ -49,8 +51,12 @@ def parse_line(line: str):
     # n_bad por parse_lines, mesmo tratamento dos outros campos.
     if not (len(d) == 8 and d.isdigit()):
         raise ValueError(f"data malformada no registro tipo 01: {d!r}")
+    day = date.fromisoformat(f"{d[0:4]}-{d[4:6]}-{d[6:8]}").isoformat()
+    quote_factor = int(raw[F_FATCOT])
+    if quote_factor <= 0:
+        raise ValueError("fator de cotação deve ser positivo")
     return {
-        "date": f"{d[0:4]}-{d[4:6]}-{d[6:8]}",
+        "date": day,
         "ticker": raw[F_CODNEG].strip(),
         "bdi_code": raw[F_CODBDI].strip(),
         "market_type": raw[F_TPMERC].strip(),
@@ -60,7 +66,7 @@ def parse_line(line: str):
         "close": int(raw[F_PREULT]) / 100.0,
         "qty": int(raw[F_QUATOT]),
         "volume_fin": int(raw[F_VOLTOT]) / 100.0,
-        "quote_factor": int(raw[F_FATCOT]),
+        "quote_factor": quote_factor,
     }
 
 

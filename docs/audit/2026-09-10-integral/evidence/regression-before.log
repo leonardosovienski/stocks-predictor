@@ -1,0 +1,133 @@
+test_impossible_calendar_date_rejected (tests.test_audit_integrity.QuoteContractTests.test_impossible_calendar_date_rejected) ... FAIL
+test_malformed_quote_is_counted_without_losing_valid_neighbor (tests.test_audit_integrity.QuoteContractTests.test_malformed_quote_is_counted_without_losing_valid_neighbor) ... FAIL
+test_nonpositive_quote_basis_rejected (tests.test_audit_integrity.QuoteContractTests.test_nonpositive_quote_basis_rejected) ... FAIL
+test_truncated_and_oversized_quotes_rejected (tests.test_audit_integrity.QuoteContractTests.test_truncated_and_oversized_quotes_rejected) ... 
+  test_truncated_and_oversized_quotes_rejected (tests.test_audit_integrity.QuoteContractTests.test_truncated_and_oversized_quotes_rejected) (length=217) ... FAIL
+  test_truncated_and_oversized_quotes_rejected (tests.test_audit_integrity.QuoteContractTests.test_truncated_and_oversized_quotes_rejected) (length=246) ... FAIL
+test_future_resolution_cannot_reopen_past_universe (tests.test_audit_integrity.UniverseEvidenceTests.test_future_resolution_cannot_reopen_past_universe) ... FAIL
+test_identical_snapshot_is_idempotent (tests.test_audit_integrity.UniverseEvidenceTests.test_identical_snapshot_is_idempotent) ... ok
+test_resolution_before_cutoff_reopens_instrument (tests.test_audit_integrity.UniverseEvidenceTests.test_resolution_before_cutoff_reopens_instrument) ... ok
+test_same_day_resolution_is_outside_strict_before_cutoff (tests.test_audit_integrity.UniverseEvidenceTests.test_same_day_resolution_is_outside_strict_before_cutoff) ... FAIL
+test_same_members_with_changed_evidence_cannot_rewrite_snapshot (tests.test_audit_integrity.UniverseEvidenceTests.test_same_members_with_changed_evidence_cannot_rewrite_snapshot) ... FAIL
+test_snapshot_conflict_fails_without_appending_members (tests.test_audit_integrity.UniverseEvidenceTests.test_snapshot_conflict_fails_without_appending_members) ... FAIL
+test_unknown_source_does_not_become_primary_by_default (tests.test_audit_integrity.UniverseEvidenceTests.test_unknown_source_does_not_become_primary_by_default) ... FAIL
+
+======================================================================
+FAIL: test_impossible_calendar_date_rejected (tests.test_audit_integrity.QuoteContractTests.test_impossible_calendar_date_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\STOCKS\stocks-predictor\tests\test_audit_integrity.py", line 14, in test_impossible_calendar_date_rejected
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_malformed_quote_is_counted_without_losing_valid_neighbor (tests.test_audit_integrity.QuoteContractTests.test_malformed_quote_is_counted_without_losing_valid_neighbor)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\STOCKS\stocks-predictor\tests\test_audit_integrity.py", line 28, in test_malformed_quote_is_counted_without_losing_valid_neighbor
+    self.assertEqual((len(records), bad), (1, 1))
+AssertionError: Tuples differ: (2, 0) != (1, 1)
+
+First differing element 0:
+2
+1
+
+- (2, 0)
++ (1, 1)
+
+======================================================================
+FAIL: test_nonpositive_quote_basis_rejected (tests.test_audit_integrity.QuoteContractTests.test_nonpositive_quote_basis_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\STOCKS\stocks-predictor\tests\test_audit_integrity.py", line 23, in test_nonpositive_quote_basis_rejected
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_truncated_and_oversized_quotes_rejected (tests.test_audit_integrity.QuoteContractTests.test_truncated_and_oversized_quotes_rejected) (length=217)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\STOCKS\stocks-predictor\tests\test_audit_integrity.py", line 19, in test_truncated_and_oversized_quotes_rejected
+    with self.subTest(length=len(line)), self.assertRaises(ValueError):
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_truncated_and_oversized_quotes_rejected (tests.test_audit_integrity.QuoteContractTests.test_truncated_and_oversized_quotes_rejected) (length=246)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\STOCKS\stocks-predictor\tests\test_audit_integrity.py", line 19, in test_truncated_and_oversized_quotes_rejected
+    with self.subTest(length=len(line)), self.assertRaises(ValueError):
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_future_resolution_cannot_reopen_past_universe (tests.test_audit_integrity.UniverseEvidenceTests.test_future_resolution_cannot_reopen_past_universe)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\STOCKS\stocks-predictor\tests\test_audit_integrity.py", line 52, in test_future_resolution_cannot_reopen_past_universe
+    self.assertEqual(universe.select_universe(self.conn, '2024-01-05', 2, 2, 2), ['AAAA3'])
+AssertionError: Lists differ: ['BBBB3', 'AAAA3'] != ['AAAA3']
+
+First differing element 0:
+'BBBB3'
+'AAAA3'
+
+First list contains 1 additional elements.
+First extra element 1:
+'AAAA3'
+
+- ['BBBB3', 'AAAA3']
++ ['AAAA3']
+
+======================================================================
+FAIL: test_same_day_resolution_is_outside_strict_before_cutoff (tests.test_audit_integrity.UniverseEvidenceTests.test_same_day_resolution_is_outside_strict_before_cutoff)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\STOCKS\stocks-predictor\tests\test_audit_integrity.py", line 60, in test_same_day_resolution_is_outside_strict_before_cutoff
+    self.assertEqual(universe.select_universe(self.conn, '2024-01-05', 2, 2, 2), ['AAAA3'])
+AssertionError: Lists differ: ['BBBB3', 'AAAA3'] != ['AAAA3']
+
+First differing element 0:
+'BBBB3'
+'AAAA3'
+
+First list contains 1 additional elements.
+First extra element 1:
+'AAAA3'
+
+- ['BBBB3', 'AAAA3']
++ ['AAAA3']
+
+======================================================================
+FAIL: test_same_members_with_changed_evidence_cannot_rewrite_snapshot (tests.test_audit_integrity.UniverseEvidenceTests.test_same_members_with_changed_evidence_cannot_rewrite_snapshot)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\STOCKS\stocks-predictor\tests\test_audit_integrity.py", line 73, in test_same_members_with_changed_evidence_cannot_rewrite_snapshot
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_snapshot_conflict_fails_without_appending_members (tests.test_audit_integrity.UniverseEvidenceTests.test_snapshot_conflict_fails_without_appending_members)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\STOCKS\stocks-predictor\tests\test_audit_integrity.py", line 66, in test_snapshot_conflict_fails_without_appending_members
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_unknown_source_does_not_become_primary_by_default (tests.test_audit_integrity.UniverseEvidenceTests.test_unknown_source_does_not_become_primary_by_default)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\STOCKS\stocks-predictor\tests\test_audit_integrity.py", line 83, in test_unknown_source_does_not_become_primary_by_default
+    self.assertEqual(result['verified_primary_files'], 0)
+AssertionError: 1 != 0
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.029s
+
+FAILED (failures=10)
