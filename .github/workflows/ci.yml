@@ -38,7 +38,7 @@ jobs:
       - name: Offline runtime metadata check
         run: uv run --no-sync python main.py doctor --check
       - name: Ruff
-        run: uv run --no-sync ruff check stocks_predictor tests main.py tools/data_bank.py tools/benchmark_ingestion.py tools/benchmark_real_ingestion.py tools/materialize_source_revision.py tools/reproducible_build.py tools/audit_registry.py tools/operational_validation.py tools/verify_operational_evidence.py research/session-20260910/final_review/verify.py research/session-20260909/data_completion research/session-20260910/integral research/session-20260910/profit_validation research/session-20260910/gap_resolution
+        run: uv run --no-sync ruff check stocks_predictor tests main.py tools/data_bank.py tools/benchmark_ingestion.py tools/benchmark_real_ingestion.py tools/materialize_source_revision.py tools/reproducible_build.py tools/audit_registry.py tools/operational_validation.py tools/verify_operational_evidence.py tools/check_project_files.py research/session-20260910/final_review/verify.py research/session-20260909/data_completion research/session-20260910/integral research/session-20260910/profit_validation research/session-20260910/gap_resolution
       - name: Pyright
         run: uv run --no-sync pyright --pythonversion ${{ matrix.python }}
       - name: Audit receipt identities
@@ -55,6 +55,8 @@ jobs:
         run: uv run --no-sync python tools/verify_operational_evidence.py
       - name: Final handoff and historical CI230 receipts
         run: uv run --no-sync python research/session-20260910/final_review/verify.py
+      - name: Project files and complete Markdown index
+        run: uv run --no-sync python tools/check_project_files.py
       - name: Tests
         run: uv run --no-sync coverage run -m pytest -q --durations=15 --junitxml=test-results.xml
       - name: Coverage report

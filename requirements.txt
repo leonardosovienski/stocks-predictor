@@ -1,3 +1,0 @@
-# Dependências de runtime aprovadas — ver tabela em HANDOFF.md.
-# Política do projeto é stdlib-first: cada linha aqui passou pelo portão humano.
-pyyaml>=6.0

@@ -10,7 +10,7 @@
     },
     {
       "path": ".github/workflows/ci.yml",
-      "sha256": "84baeabb38eea1f0eed3eca48214a4d9a075e042d4945bec3944b0d056d05a63"
+      "sha256": "28926322113635b6cd9b3a8459a01292ba1e6e6f9b5745e8c70c8f42c149e3fe"
     },
     {
       "path": ".gitleaks.toml",
@@ -541,6 +541,10 @@
       "sha256": "c844accfca60576dc048af0fcfbe2982d459857307f10916b73fe03a640b3531"
     },
     {
+      "path": "tests/test_project_files.py",
+      "sha256": "5c96c2fd1a012f9bc655dcf3a9f45e27094c5c0033b4a590a9602eec2adaf425"
+    },
+    {
       "path": "tests/test_purge_embargo_limitation.py",
       "sha256": "02685990a32eb42b98a3c2d61c35dd6f61b339fb87cf4d25d5da38920b08e746"
     },
@@ -667,6 +671,10 @@
     {
       "path": "tools/build_h7_ticker_of.py",
       "sha256": "575cd5004a41f203092654fd713aefed7dd1ba5a8a66d41e4b3ead4d99793b5a"
+    },
+    {
+      "path": "tools/check_project_files.py",
+      "sha256": "3dbb4d78c25b5d4590625b822853632161021f1d223ad8ac5e63734afaf9b4c6"
     },
     {
       "path": "tools/cobertura_h18.py",
