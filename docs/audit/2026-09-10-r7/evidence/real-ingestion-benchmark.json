@@ -1,0 +1,234 @@
+{
+  "status": "PASS",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "results": [
+    {
+      "source": "C:\\STOCKS\\data\\recovery-r2\\source14-inputs\\quotes-2018.cotahist.txt",
+      "measurements": [
+        {
+          "source": "C:\\STOCKS\\data\\recovery-r2\\source14-inputs\\quotes-2018.cotahist.txt",
+          "source_sha256": "8fad0b7a46aa5bc583d34c7aff5c0eebd209637b2c54d94b10b3bc7bfe3fb0ab",
+          "code_sha256": "9f8245812cee6c33e1ec58d859badc8f59d7c0da051ddec182442dc5b19b31fb",
+          "revision": "0e9c48a87ff67bbd8d71fe5b9156799ba9bd8807",
+          "lines": 21381,
+          "quote_records": 21381,
+          "spot_records": 10702,
+          "reported_inserts": 10702,
+          "stored_rows": 10702,
+          "stored_rows_sha256": "3b6b89e6f6da75f6518db227b5ea3c176e11bcb8dd01831761c00a0e21cac930",
+          "seconds": 0.1736772000003839,
+          "cpu_seconds": 0.171875,
+          "peak_rss_before_bytes": 27959296,
+          "peak_rss_after_ingestion_bytes": 46608384
+        },
+        {
+          "source": "C:\\STOCKS\\data\\recovery-r2\\source14-inputs\\quotes-2018.cotahist.txt",
+          "source_sha256": "8fad0b7a46aa5bc583d34c7aff5c0eebd209637b2c54d94b10b3bc7bfe3fb0ab",
+          "code_sha256": "32db7f1c39df16e74350f332c8949ac11e711f0f41a7566a27646d24a3b1589f",
+          "revision": "e9f6c9f1003828180655662af2f81076fddf2f70",
+          "lines": 21381,
+          "quote_records": 21381,
+          "spot_records": 10702,
+          "reported_inserts": 10702,
+          "stored_rows": 10702,
+          "stored_rows_sha256": "3b6b89e6f6da75f6518db227b5ea3c176e11bcb8dd01831761c00a0e21cac930",
+          "seconds": 0.15877520000503864,
+          "cpu_seconds": 0.15625,
+          "peak_rss_before_bytes": 28123136,
+          "peak_rss_after_ingestion_bytes": 28123136
+        },
+        {
+          "source": "C:\\STOCKS\\data\\recovery-r2\\source14-inputs\\quotes-2018.cotahist.txt",
+          "source_sha256": "8fad0b7a46aa5bc583d34c7aff5c0eebd209637b2c54d94b10b3bc7bfe3fb0ab",
+          "code_sha256": "9f8245812cee6c33e1ec58d859badc8f59d7c0da051ddec182442dc5b19b31fb",
+          "revision": "0e9c48a87ff67bbd8d71fe5b9156799ba9bd8807",
+          "lines": 21381,
+          "quote_records": 21381,
+          "spot_records": 10702,
+          "reported_inserts": 10702,
+          "stored_rows": 10702,
+          "stored_rows_sha256": "3b6b89e6f6da75f6518db227b5ea3c176e11bcb8dd01831761c00a0e21cac930",
+          "seconds": 0.1883146999971359,
+          "cpu_seconds": 0.1875,
+          "peak_rss_before_bytes": 27914240,
+          "peak_rss_after_ingestion_bytes": 46690304
+        },
+        {
+          "source": "C:\\STOCKS\\data\\recovery-r2\\source14-inputs\\quotes-2018.cotahist.txt",
+          "source_sha256": "8fad0b7a46aa5bc583d34c7aff5c0eebd209637b2c54d94b10b3bc7bfe3fb0ab",
+          "code_sha256": "32db7f1c39df16e74350f332c8949ac11e711f0f41a7566a27646d24a3b1589f",
+          "revision": "e9f6c9f1003828180655662af2f81076fddf2f70",
+          "lines": 21381,
+          "quote_records": 21381,
+          "spot_records": 10702,
+          "reported_inserts": 10702,
+          "stored_rows": 10702,
+          "stored_rows_sha256": "3b6b89e6f6da75f6518db227b5ea3c176e11bcb8dd01831761c00a0e21cac930",
+          "seconds": 0.16015000000334112,
+          "cpu_seconds": 0.125,
+          "peak_rss_before_bytes": 27869184,
+          "peak_rss_after_ingestion_bytes": 27869184
+        },
+        {
+          "source": "C:\\STOCKS\\data\\recovery-r2\\source14-inputs\\quotes-2018.cotahist.txt",
+          "source_sha256": "8fad0b7a46aa5bc583d34c7aff5c0eebd209637b2c54d94b10b3bc7bfe3fb0ab",
+          "code_sha256": "9f8245812cee6c33e1ec58d859badc8f59d7c0da051ddec182442dc5b19b31fb",
+          "revision": "0e9c48a87ff67bbd8d71fe5b9156799ba9bd8807",
+          "lines": 21381,
+          "quote_records": 21381,
+          "spot_records": 10702,
+          "reported_inserts": 10702,
+          "stored_rows": 10702,
+          "stored_rows_sha256": "3b6b89e6f6da75f6518db227b5ea3c176e11bcb8dd01831761c00a0e21cac930",
+          "seconds": 0.16228659999615047,
+          "cpu_seconds": 0.15625,
+          "peak_rss_before_bytes": 27660288,
+          "peak_rss_after_ingestion_bytes": 46415872
+        },
+        {
+          "source": "C:\\STOCKS\\data\\recovery-r2\\source14-inputs\\quotes-2018.cotahist.txt",
+          "source_sha256": "8fad0b7a46aa5bc583d34c7aff5c0eebd209637b2c54d94b10b3bc7bfe3fb0ab",
+          "code_sha256": "32db7f1c39df16e74350f332c8949ac11e711f0f41a7566a27646d24a3b1589f",
+          "revision": "e9f6c9f1003828180655662af2f81076fddf2f70",
+          "lines": 21381,
+          "quote_records": 21381,
+          "spot_records": 10702,
+          "reported_inserts": 10702,
+          "stored_rows": 10702,
+          "stored_rows_sha256": "3b6b89e6f6da75f6518db227b5ea3c176e11bcb8dd01831761c00a0e21cac930",
+          "seconds": 0.20900350000010803,
+          "cpu_seconds": 0.203125,
+          "peak_rss_before_bytes": 27979776,
+          "peak_rss_after_ingestion_bytes": 27979776
+        }
+      ],
+      "medians": {
+        "0e9c48a87ff67bbd8d71fe5b9156799ba9bd8807": {
+          "seconds": 0.1736772000003839,
+          "cpu_seconds": 0.171875,
+          "peak_rss_after_ingestion_bytes": 46608384
+        },
+        "e9f6c9f1003828180655662af2f81076fddf2f70": {
+          "seconds": 0.16015000000334112,
+          "cpu_seconds": 0.15625,
+          "peak_rss_after_ingestion_bytes": 27979776
+        }
+      }
+    },
+    {
+      "source": "C:\\STOCKS\\data\\recovery-r2\\source14-inputs\\quotes-2026.cotahist.txt",
+      "measurements": [
+        {
+          "source": "C:\\STOCKS\\data\\recovery-r2\\source14-inputs\\quotes-2026.cotahist.txt",
+          "source_sha256": "e7caad400b40a484c92d211f5ba9ff5b884ae886b4ae7a1ac40f423ba0a7210c",
+          "code_sha256": "9f8245812cee6c33e1ec58d859badc8f59d7c0da051ddec182442dc5b19b31fb",
+          "revision": "0e9c48a87ff67bbd8d71fe5b9156799ba9bd8807",
+          "lines": 10728,
+          "quote_records": 10728,
+          "spot_records": 5131,
+          "reported_inserts": 5131,
+          "stored_rows": 5131,
+          "stored_rows_sha256": "6da5764c2f58efc25479c6ac24dc601ad76f5779819e56eb6d3e1f396645b4f9",
+          "seconds": 0.08632130000478355,
+          "cpu_seconds": 0.0625,
+          "peak_rss_before_bytes": 25329664,
+          "peak_rss_after_ingestion_bytes": 35454976
+        },
+        {
+          "source": "C:\\STOCKS\\data\\recovery-r2\\source14-inputs\\quotes-2026.cotahist.txt",
+          "source_sha256": "e7caad400b40a484c92d211f5ba9ff5b884ae886b4ae7a1ac40f423ba0a7210c",
+          "code_sha256": "32db7f1c39df16e74350f332c8949ac11e711f0f41a7566a27646d24a3b1589f",
+          "revision": "e9f6c9f1003828180655662af2f81076fddf2f70",
+          "lines": 10728,
+          "quote_records": 10728,
+          "spot_records": 5131,
+          "reported_inserts": 5131,
+          "stored_rows": 5131,
+          "stored_rows_sha256": "6da5764c2f58efc25479c6ac24dc601ad76f5779819e56eb6d3e1f396645b4f9",
+          "seconds": 0.09186419999605278,
+          "cpu_seconds": 0.0625,
+          "peak_rss_before_bytes": 25358336,
+          "peak_rss_after_ingestion_bytes": 26169344
+        },
+        {
+          "source": "C:\\STOCKS\\data\\recovery-r2\\source14-inputs\\quotes-2026.cotahist.txt",
+          "source_sha256": "e7caad400b40a484c92d211f5ba9ff5b884ae886b4ae7a1ac40f423ba0a7210c",
+          "code_sha256": "9f8245812cee6c33e1ec58d859badc8f59d7c0da051ddec182442dc5b19b31fb",
+          "revision": "0e9c48a87ff67bbd8d71fe5b9156799ba9bd8807",
+          "lines": 10728,
+          "quote_records": 10728,
+          "spot_records": 5131,
+          "reported_inserts": 5131,
+          "stored_rows": 5131,
+          "stored_rows_sha256": "6da5764c2f58efc25479c6ac24dc601ad76f5779819e56eb6d3e1f396645b4f9",
+          "seconds": 0.07998640000005253,
+          "cpu_seconds": 0.078125,
+          "peak_rss_before_bytes": 25288704,
+          "peak_rss_after_ingestion_bytes": 35553280
+        },
+        {
+          "source": "C:\\STOCKS\\data\\recovery-r2\\source14-inputs\\quotes-2026.cotahist.txt",
+          "source_sha256": "e7caad400b40a484c92d211f5ba9ff5b884ae886b4ae7a1ac40f423ba0a7210c",
+          "code_sha256": "32db7f1c39df16e74350f332c8949ac11e711f0f41a7566a27646d24a3b1589f",
+          "revision": "e9f6c9f1003828180655662af2f81076fddf2f70",
+          "lines": 10728,
+          "quote_records": 10728,
+          "spot_records": 5131,
+          "reported_inserts": 5131,
+          "stored_rows": 5131,
+          "stored_rows_sha256": "6da5764c2f58efc25479c6ac24dc601ad76f5779819e56eb6d3e1f396645b4f9",
+          "seconds": 0.07876930000202265,
+          "cpu_seconds": 0.078125,
+          "peak_rss_before_bytes": 25243648,
+          "peak_rss_after_ingestion_bytes": 25923584
+        },
+        {
+          "source": "C:\\STOCKS\\data\\recovery-r2\\source14-inputs\\quotes-2026.cotahist.txt",
+          "source_sha256": "e7caad400b40a484c92d211f5ba9ff5b884ae886b4ae7a1ac40f423ba0a7210c",
+          "code_sha256": "9f8245812cee6c33e1ec58d859badc8f59d7c0da051ddec182442dc5b19b31fb",
+          "revision": "0e9c48a87ff67bbd8d71fe5b9156799ba9bd8807",
+          "lines": 10728,
+          "quote_records": 10728,
+          "spot_records": 5131,
+          "reported_inserts": 5131,
+          "stored_rows": 5131,
+          "stored_rows_sha256": "6da5764c2f58efc25479c6ac24dc601ad76f5779819e56eb6d3e1f396645b4f9",
+          "seconds": 0.06843389999994542,
+          "cpu_seconds": 0.0625,
+          "peak_rss_before_bytes": 25366528,
+          "peak_rss_after_ingestion_bytes": 35381248
+        },
+        {
+          "source": "C:\\STOCKS\\data\\recovery-r2\\source14-inputs\\quotes-2026.cotahist.txt",
+          "source_sha256": "e7caad400b40a484c92d211f5ba9ff5b884ae886b4ae7a1ac40f423ba0a7210c",
+          "code_sha256": "32db7f1c39df16e74350f332c8949ac11e711f0f41a7566a27646d24a3b1589f",
+          "revision": "e9f6c9f1003828180655662af2f81076fddf2f70",
+          "lines": 10728,
+          "quote_records": 10728,
+          "spot_records": 5131,
+          "reported_inserts": 5131,
+          "stored_rows": 5131,
+          "stored_rows_sha256": "6da5764c2f58efc25479c6ac24dc601ad76f5779819e56eb6d3e1f396645b4f9",
+          "seconds": 0.08657619999576127,
+          "cpu_seconds": 0.078125,
+          "peak_rss_before_bytes": 25358336,
+          "peak_rss_after_ingestion_bytes": 26275840
+        }
+      ],
+      "medians": {
+        "0e9c48a87ff67bbd8d71fe5b9156799ba9bd8807": {
+          "seconds": 0.07998640000005253,
+          "cpu_seconds": 0.0625,
+          "peak_rss_after_ingestion_bytes": 35454976
+        },
+        "e9f6c9f1003828180655662af2f81076fddf2f70": {
+          "seconds": 0.08657619999576127,
+          "cpu_seconds": 0.078125,
+          "peak_rss_after_ingestion_bytes": 26169344
+        }
+      }
+    }
+  ],
+  "scope": "Preserved real text extracts, no tracing; process peak RSS includes Python and SQLite, not separate allocator attribution. No production throughput or concurrency guarantee."
+}

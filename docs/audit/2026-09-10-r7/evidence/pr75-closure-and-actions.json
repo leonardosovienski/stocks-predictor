@@ -1,0 +1,39 @@
+{
+  "url": "https://github.com/leonardosovienski/stocks-predictor/pull/75",
+  "number": 75,
+  "body": "A carga COTAHIST acumulava todo o arquivo em memória, contava duplicatas ignoradas como novas linhas e confirmava transações do chamador. Agora usa lotes de até 1.000 registros, retorna apenas inserções efetivas e rejeita conteúdo divergente sob a mesma identidade, desfazendo a carga inteira em falhas. Carga e snapshots também tratam bloqueio no commit sem deixar uma transação própria pendente.\n\nEntradas inválidas são rejeitadas antes do escritor, ZIPs ausentes ou ambíguos não abrem banco e falhas de migração fecham a conexão. O novo `doctor` funciona offline sem Core. A CI verifica o lock na instalação, Python 3.13/3.14, tipos de argumentos, cobertura mínima de 77%, timeouts e retenção dos resultados por 14 dias. Dois contratos de tipos antes suprimidos foram corrigidos, preservando a semântica histórica do bootstrap.\n\nValidação do domínio: CI202, SHA 78d83fa78f5c9f2bf6ab137cc34c4b2b59190b86, aprovou 847 testes e 25 subtestes em cada Python, cobertura reportada de 79%, Ruff, Pyright, build/wheel fora do checkout e segredos. Foram executados 59 testes stdlib locais. Sete regressões iniciais falhavam na base; os casos de commit bloqueado também foram reproduzidos antes das correções. As falhas intermediárias da CI estão documentadas.\n\nBenchmark sintético fixo de 100 mil registros, três repetições: pico mediano de memória Python de 78.744.320 para 377.772 bytes (−99,52%), mantendo os hashes de entrada e das 5 mil linhas inseridas. Tempo mediano instrumentado de 7,099 para 5,356 s; sem garantia de desempenho em produção, sem medição da memória nativa do SQLite. Doze bancos permanecem idênticos; oito resultados e 16.400 pontos H21 foram reproduzidos. Não houve instalação Windows, alteração de fontes/protocolos ou ativação operacional.\n\nRelatório e 20 recibos com manifesto: [Engenharia R4](https://github.com/leonardosovienski/stocks-predictor/blob/fix/infrastructure-ingestion-20260910/docs/engineering/2026-09-10-r4/README.md). [CI202 do domínio](https://github.com/leonardosovienski/stocks-predictor/actions/runs/34432353530). Fechamento verificado: o commit documental final `d0394a8d6fece230371ad31149550aaecce900e3` passou na [CI203](https://github.com/leonardosovienski/stocks-predictor/actions/runs/34434626992). PR integrado no commit `ff20638effa3c3de4d2a463ddfc73d195be1f202`. A CI202 acima documenta o domínio; a CI203 documenta o head final do PR.",
+  "head_sha": "d0394a8d6fece230371ad31149550aaecce900e3",
+  "merge_sha": "ff20638effa3c3de4d2a463ddfc73d195be1f202",
+  "action_pins": [
+    {
+      "repo": "actions/checkout",
+      "ref": "v7",
+      "sha": "3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "url": "https://github.com/actions/checkout/commit/3d3c42e5aac5ba805825da76410c181273ba90b1"
+    },
+    {
+      "repo": "astral-sh/setup-uv",
+      "ref": "v7",
+      "sha": "37802adc94f370d6bfd71619e3f0bf239e1f3b78",
+      "url": "https://github.com/astral-sh/setup-uv/commit/37802adc94f370d6bfd71619e3f0bf239e1f3b78"
+    },
+    {
+      "repo": "actions/setup-python",
+      "ref": "v7",
+      "sha": "5fda3b95a4ea91299a34e894583c3862153e4b97",
+      "url": "https://github.com/actions/setup-python/commit/5fda3b95a4ea91299a34e894583c3862153e4b97"
+    },
+    {
+      "repo": "actions/upload-artifact",
+      "ref": "v4",
+      "sha": "ea165f8d65b6e75b540449e92b4886f43607fa02",
+      "url": "https://github.com/actions/upload-artifact/commit/ea165f8d65b6e75b540449e92b4886f43607fa02"
+    },
+    {
+      "repo": "gitleaks/gitleaks-action",
+      "ref": "v3",
+      "sha": "e0c47f4f8be36e29cdc102c57e68cb5cbf0e8d1e",
+      "url": "https://github.com/gitleaks/gitleaks-action/commit/e0c47f4f8be36e29cdc102c57e68cb5cbf0e8d1e"
+    }
+  ]
+}

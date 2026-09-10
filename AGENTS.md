@@ -1,5 +1,16 @@
 # Stocks — instruções vigentes para implementação
 
+## Execução vigente R7 — 10/09/2026 UTC
+
+Ler [relatório R7](docs/audit/2026-09-10-r7/README.md),
+[registro atual](docs/audit/2026-09-10-r7/current.json) e [reprodução](docs/audit/2026-09-10-r7/REPRODUCTION.md).
+Capital confirmado: R$5.000; custos, prazo e residência fiscal ainda desconhecidos.
+O registro preserva todos os achados e distingue engenharia implementada de
+fontes e observações ainda ausentes. I15/arquivos e CHAT-01/PR75 resolvidos.
+I10–I14/I16 e lucro integral continuam abertos. Executar o verificador do registro
+antes de atualizar estados. Novas APIs de origem/tempo são opt-in, sem migrar os
+bancos legados. Os blocos datados abaixo conservam contexto das rodadas anteriores.
+
 ## Correções de dados R6 — 10/09/2026 UTC
 
 [R6](docs/research/2026-09-10-r6/README.md) recuperou os cinco objetos ausentes:
@@ -50,8 +61,8 @@ Ler o [relatório canônico](docs/audit/2026-09-10-integral/README.md),
 [registro único](docs/audit/2026-09-10-integral/registry.json) e
 [reprodução](research/session-20260910/integral/README.md).
 H21 continua justificável como validação simples e finita; lucro executável/futuro
-não foi demonstrado. H20 amplo continua estacionado; cinco arquivos impedem seu
-certificado integral, embora os campos econômicos consumidos tenham sido reconciliados.
+não foi demonstrado. H20 amplo continua estacionado; na R3 cinco arquivos impediam seu
+certificado integral; foram recuperados na R6. A falta de caixa integral permanece.
 Não reabrir busca de estratégias ou coleta ilimitada por inércia. Usar I10–I16 para
 condições concretas de retomada; I01–I09 foram resolvidos no escopo declarado.
 CI197 aprovou 815 testes no domínio consolidado; PR74 registra integração e último check.
@@ -93,7 +104,7 @@ e os protocolos pertinentes; suas descrições antigas de runtime/caminhos são 
 
 Trabalhar sozinho, sem agentes auxiliares. Não enviar ordens, autenticar corretoras,
 movimentar capital, contratar serviços ou criar automações recorrentes.
-R$5 mil e R$10 mil são cenários, não patrimônio confirmado.
+R$5 mil é capital confirmado nesta conversa; R$10 mil permanece cenário histórico.
 
 Preservar fontes originais, bancos, ledgers, quarentenas, trabalho do usuário e
 protocolos H1–H20/H21. Não editar bytes históricos para corrigir caminhos.

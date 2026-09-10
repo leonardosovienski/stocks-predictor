@@ -1,0 +1,16 @@
+{
+  "protocol_path": "docs/research/2026-09-09-h21-forward-plan.json",
+  "protocol_sha256": "9f39f68a5f1887aabd7d2dcba6681374a0bf4d44d5482c91cfb43d6e190a659c",
+  "status": "PREPARED_WAITING_FOR_PUBLISHED_ENTRY_SESSION_DATA",
+  "forward_observations": 0,
+  "orders": 0,
+  "capital_enabled": false,
+  "recorded_at_utc": "2026-09-10T18:05:12+00:00",
+  "entry_session_rule": "First B3 session on or after 2026-09-10",
+  "fixed_exit_rule": "First B3 session on or after 2027-09-10",
+  "source_capture_tool": "research/session-20260910/gap_resolution/acquire.py",
+  "capture_contract": "New destination, actual request/completion UTC timestamps, original response and SHA256; publication date remains separate. A receipt does not certify a fill or historical availability.",
+  "next_checkpoint": "Acquire the official completed entry-session source after publication; verify BOVA11 identity/units/events before any simulated entry. Do not select entry/exit from returns.",
+  "personal_profile": "personal-profile.json",
+  "readiness_limit": "Local receipt is not an independent timestamp authority; future observation and one-year endpoint have not occurred."
+}

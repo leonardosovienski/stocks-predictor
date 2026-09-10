@@ -64,3 +64,9 @@ docs/research/2026-09-10-r5/** text eol=lf
 docs/research/2026-09-10-r6/** text eol=lf
 docs/research/2026-09-10-r6/evidence/** -text !eol -whitespace
 research/session-20260910/gap_resolution/exact_objects/** -text !eol -whitespace
+
+# R7 controlled sources and exact evidence survive cross-platform checkouts.
+.github/workflows/ci.yml text eol=lf
+pyproject.toml text eol=lf
+docs/audit/2026-09-10-r7/*.json text eol=lf
+docs/audit/2026-09-10-r7/evidence/** -text !eol -whitespace

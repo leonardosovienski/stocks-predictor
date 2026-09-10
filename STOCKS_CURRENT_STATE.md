@@ -1,3 +1,13 @@
+## Estado vigente R7 — 10/09/2026 UTC
+
+[Relatório](docs/audit/2026-09-10-r7/README.md) e
+[consolidado verificável](docs/audit/2026-09-10-r7/CONSOLIDADO.md).
+Capital confirmado: R$5.000. Origem por conteúdo, contratos datados, análise
+estática de todo o pacote, build por hashes e materializador de fonte implementados.
+Fontes econômicas ainda parciais: 50 líquidos, 22 datas, 28 registros societários.
+Zero observações prospectivas concluídas; lucro pessoal/futuro não demonstrado.
+I15 documental e fechamento do PR75 resolvidos. O registro R7 prevalece para leitura.
+
 ## Estado R6 — 10/09/2026 UTC
 
 [Relatório vigente de dados](docs/research/2026-09-10-r6/README.md): I15 resolvido

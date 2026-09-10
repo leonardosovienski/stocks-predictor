@@ -37,14 +37,14 @@ target-version = "py313"
 line-length = 110
 
 [tool.ruff.lint]
-# A adoção do Ruff começa pelos erros objetivos de código (F*). Reformatar
+# Ruff cobre erros objetivos de código (F* e E9*). Reformatar
 # o acervo histórico inteiro não faz parte desta migração de infraestrutura.
 select = ["F", "E9"]
 
 [tool.pyright]
 pythonVersion = "3.13"
 typeCheckingMode = "basic"
-# Escopo RJ original mais contabilidade, execução contínua e integração H20.
+# Todo o pacote de produção; ferramentas e arquivos científicos têm checks próprios.
 # Isto verifica código, sem alterar parâmetros científicos congelados.
 include = ["stocks_predictor"]
 extraPaths = ["stocks_predictor"]

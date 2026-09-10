@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "files": 830,
+  "parent_manifest_sha256": "3b36e2416e44f2b0a30e88d4306e00cdc74a7302c6e9b0e33950a893ea169bda",
+  "revision_manifest_sha256": "1c6410bebc9627d6dea8ae6ac4a9034823786fa47c48c26a8632c529c8560c46",
+  "output": "C:\\STOCKS\\work\\completion-r7-20260910\\source15-materialized",
+  "scope": "Byte completeness and identity, not economic or historical publication certification."
+}

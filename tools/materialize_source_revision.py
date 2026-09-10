@@ -61,6 +61,9 @@ if __name__ == '__main__':
     parser.add_argument('--parent-sha', required=True)
     parser.add_argument('--revision-sha', required=True)
     args = parser.parse_args()
+    if args.output.with_suffix('.receipt.json').exists():
+        parser.error('receipt output already exists')
     result = materialize(args.parent, args.revision, args.output, args.parent_sha, args.revision_sha)
-    args.output.with_suffix('.receipt.json').write_text(json.dumps(result, indent=2) + '\n', encoding='utf-8')
+    with args.output.with_suffix('.receipt.json').open('x', encoding='utf-8') as receipt:
+        receipt.write(json.dumps(result, indent=2) + '\n')
     print(json.dumps(result, indent=2))

@@ -1,0 +1,24 @@
+{
+  "status": "INCOMPLETE_PERSONAL_SCENARIO",
+  "capital_brl": "5000",
+  "missing_inputs": [
+    "horizon_months",
+    "resident_pf_brazil",
+    "brokerage_per_order_brl",
+    "monthly_fixed_brl",
+    "advisor_annual_fraction",
+    "setup_cost_brl",
+    "monthly_maintenance_hours",
+    "hourly_opportunity_cost_brl"
+  ],
+  "planned_orders": 2,
+  "known_fixed_reserve_brl": null,
+  "fixed_reserve_fits_capital": null,
+  "project_and_time_cost_brl": null,
+  "cost_scope": "Brokerage/fixed reserve and project opportunity cost are separate; taxes and exchange fees still require applicable trade records.",
+  "advisor_cost_basis": "requires future valuation path; rate is not a fixed expense",
+  "risk_limit_confirmed": false,
+  "absolute_net_profit_demonstrated": false,
+  "capital_enabled": false,
+  "input_provenance": "User confirmed BRL 5000 in this conversation. Horizon, actual costs, tax residency and quantified risk limit not confirmed."
+}

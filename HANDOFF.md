@@ -1,3 +1,14 @@
+## Continuidade vigente R7 — 10/09/2026 UTC
+
+Ler o [relatório R7](docs/audit/2026-09-10-r7/README.md),
+[registro atual](docs/audit/2026-09-10-r7/current.json) e [reprodução](docs/audit/2026-09-10-r7/REPRODUCTION.md).
+Capital confirmado R$5.000; demais premissas pessoais desconhecidas.
+Engenharia implementada e fontes revisadas no escopo explícito. I15 arquivos e
+CHAT-01/PR75 resolvidos; I10–I14/I16 e lucro integral permanecem abertos.
+A Fonte15 conserva 50 líquidos/22 datas e 28 registros societários pendentes.
+Executar `python tools/audit_registry.py` para verificar a visão atual.
+Os blocos seguintes mantêm suas respectivas datas; não substituem R7.
+
 ## Correções de dados R6 — 10/09/2026 UTC
 
 [R6](docs/research/2026-09-10-r6/README.md): cinco objetos H20 recuperados com hashes

@@ -36,7 +36,7 @@ jobs:
       - name: Offline runtime metadata check
         run: uv run --no-sync python main.py doctor --check
       - name: Ruff
-        run: uv run --no-sync ruff check stocks_predictor tests main.py tools/data_bank.py tools/benchmark_ingestion.py tools/benchmark_real_ingestion.py tools/materialize_source_revision.py tools/reproducible_build.py research/session-20260909/data_completion research/session-20260910/integral research/session-20260910/profit_validation research/session-20260910/gap_resolution
+        run: uv run --no-sync ruff check stocks_predictor tests main.py tools/data_bank.py tools/benchmark_ingestion.py tools/benchmark_real_ingestion.py tools/materialize_source_revision.py tools/reproducible_build.py tools/audit_registry.py research/session-20260909/data_completion research/session-20260910/integral research/session-20260910/profit_validation research/session-20260910/gap_resolution
       - name: Pyright
         run: uv run --no-sync pyright --pythonversion ${{ matrix.python }}
       - name: Audit receipt identities
@@ -47,6 +47,8 @@ jobs:
         env:
           PYTHONPATH: stocks_predictor:research/session-20260908/chat-review:research/session-20260908/h20-profit-test
         run: uv run --no-sync pytest -q --import-mode=importlib research/session-20260908/chat-review/test_h20_evidence_integrity.py research/session-20260908/h20-profit-test/test_h20_profit_comparison.py
+      - name: Consolidated R7 inventory and evidence
+        run: uv run --no-sync python tools/audit_registry.py
       - name: Tests
         run: uv run --no-sync coverage run -m pytest -q --durations=15 --junitxml=test-results.xml
       - name: Coverage report

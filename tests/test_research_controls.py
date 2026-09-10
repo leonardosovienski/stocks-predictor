@@ -24,6 +24,16 @@ class ResearchControls(unittest.TestCase):
         self.assertFalse(result['fixed_reserve_fits_capital'])
         self.assertFalse(result['capital_enabled'])
 
+    def test_project_time_cost_is_not_silently_free_or_a_broker_cash_charge(self):
+        unknown = ResearchProfile(Decimal('5000')).assess()
+        self.assertIsNone(unknown['project_and_time_cost_brl'])
+        known = ResearchProfile(Decimal('5000'), horizon_months=12,
+                                setup_cost_brl=Decimal('100'), monthly_maintenance_hours=Decimal('2'),
+                                hourly_opportunity_cost_brl=Decimal('25')).assess()
+        self.assertEqual(known['project_and_time_cost_brl'], '700')
+        self.assertIsNone(known['known_fixed_reserve_brl'])
+        self.assertFalse(known['capital_enabled'])
+
     def test_nonfinite_negative_and_boolean_horizon_rejected(self):
         for profile in (ResearchProfile(Decimal('NaN')), ResearchProfile(Decimal('-1')),
                         ResearchProfile(Decimal('5000'), horizon_months=True),
