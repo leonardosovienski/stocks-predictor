@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "implementation_revision": "0742bfc6fc1f33edabf00aaea73b54435f415bfa",
+  "scope": "Exact downloaded CI230 artifacts, local delivery and preserved construction script; later handoff commits are checked separately.",
+  "files": [
+    {
+      "path": "evidence/build.json",
+      "bytes": 531,
+      "sha256": "7cb55bf2df9561fa6830a7d142fe4c9248daac197a783fe25b9fb1cf23924b07"
+    },
+    {
+      "path": "evidence/check-1.log",
+      "bytes": 398,
+      "sha256": "5751b7e6a06f153b913704caa2015f5ccef960812b7ca637218ffa191ecef9a6"
+    },
+    {
+      "path": "evidence/check-2.log",
+      "bytes": 83,
+      "sha256": "4f9b3c3286ccdb8f5429bd7bfda4242df24e9918c93774c10e4c417bbe15f680"
+    },
+    {
+      "path": "evidence/check-3.log",
+      "bytes": 495,
+      "sha256": "a284b52e6290f94b21ca138d8aeba23d44982113dbc3398947eeee95f65c3b94"
+    },
+    {
+      "path": "evidence/check-4.log",
+      "bytes": 158,
+      "sha256": "030f4bc00447a6c500e8a002ee7982f597ed4fd04e89dd9ba2c0d1372c82db15"
+    },
+    {
+      "path": "evidence/check-5.log",
+      "bytes": 362,
+      "sha256": "71fc42674386cb781f49edff16a7c1cd1167efc2996bb6fcf74f560a715e1e66"
+    },
+    {
+      "path": "evidence/ci230-closure.json",
+      "bytes": 11773,
+      "sha256": "f2773860a3994f9431e5b24b13f466e5c328960458cc7a1a564e85a54adbe9b1"
+    },
+    {
+      "path": "evidence/ci230-python313.log",
+      "bytes": 79947,
+      "sha256": "0d738b10350b57afc4a20d6c5bf4e128c947c06f8de4053b51c02259a390cb4f"
+    },
+    {
+      "path": "evidence/ci230-python314.log",
+      "bytes": 79867,
+      "sha256": "91c9f04c9d8a85af9f0f4187389320cfca55f81ce6bb187a0450c3fcb980819a"
+    },
+    {
+      "path": "evidence/ci230-secrets.log",
+      "bytes": 26628,
+      "sha256": "320eed9f56032f7d065c8bffd0633d04f5ba9cb72abd1e625c386ed07e4813d3"
+    },
+    {
+      "path": "evidence/delivery-receipt.json",
+      "bytes": 9588,
+      "sha256": "bdc9d248c500a3f6cf45c29b1c90a72ea593b301a242618099034419a0a4b9a7"
+    },
+    {
+      "path": "evidence/python-3.13/coverage.json",
+      "bytes": 601293,
+      "sha256": "7992ac847c1cfb6de9b8f70d2d6f4b3469fd428a3b69e702f3a1c03e2ef9a461"
+    },
+    {
+      "path": "evidence/python-3.13/operations.json",
+      "bytes": 18373,
+      "sha256": "63d06ba31f3d59d684bbd95ae442db3e1294de03a3f2ef1ed72f4d1461a18444"
+    },
+    {
+      "path": "evidence/python-3.13/test-results.xml",
+      "bytes": 111619,
+      "sha256": "e83d72400c608532c89b90298c7ef4bba76302bce472aae4ef444424210d5f21"
+    },
+    {
+      "path": "evidence/python-3.14/coverage.json",
+      "bytes": 600922,
+      "sha256": "c9b3d2b9ac662132e4268bcd78e45f7b5005b0bbaade7963e2a8801336690f4b"
+    },
+    {
+      "path": "evidence/python-3.14/operations.json",
+      "bytes": 18389,
+      "sha256": "44b86f7d4951cb5b06b71cf3bb75aed642a5fe29ce1ced3408faec64e7d09294"
+    },
+    {
+      "path": "evidence/python-3.14/test-results.xml",
+      "bytes": 111614,
+      "sha256": "1687a115192eccd91428d1a4e3a7c43e6cd2611147e7ac9c02f276adedd9c737"
+    },
+    {
+      "path": "evidence/review-validation.json",
+      "bytes": 1087,
+      "sha256": "d8053adae999edc839ac0cf8ec80499dc047d8b7dac1f662f6a86a112855e869"
+    },
+    {
+      "path": "evidence/stocks-current-tree.sarif",
+      "bytes": 45825,
+      "sha256": "f1cc1fc5bf34d5e9643655ac6480ff4681e27aa9c2c639f03067fc7ea8595e3d"
+    },
+    {
+      "path": "evidence/stocks-scan-control.sarif",
+      "bytes": 46640,
+      "sha256": "9c1cdf391e8f0985a68e1a426147f9e711aaa904a625e280d5e9486227a22869"
+    }
+  ]
+}

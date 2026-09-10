@@ -1,0 +1,15 @@
+{
+  "status": "PASS_ARTIFACT_INTEGRITY_ONLY",
+  "registry_sha256": "0dc48afc64c361140fdb413cc80c0e0bb7abdecf0975624b45e37dd505d3e685",
+  "counts": {
+    "evidence": 31,
+    "claims": 22,
+    "issues": 16,
+    "decisions": 7,
+    "fronts": 24,
+    "datasets": 7,
+    "uses": 7,
+    "runs": 19
+  },
+  "limitation": "Hashes and references are verified, not economic truth or external completeness."
+}

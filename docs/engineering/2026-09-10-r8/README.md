@@ -1,3 +1,6 @@
+**Fechamento posterior:** [CI230, resolução das falhas e entrega final](../../continuation/2026-09-10-closure/README.md).
+Os recibos históricos abaixo conservam seus estados observados à época.
+
 # Infraestrutura operacional R8 — 10/09/2026
 
 Implementação do [plano registrado antes dos testes](PLAN.md), com

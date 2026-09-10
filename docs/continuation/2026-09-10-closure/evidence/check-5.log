@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "implementation_revision": "0742bfc6fc1f33edabf00aaea73b54435f415bfa",
+  "evidence_files": 14,
+  "scope": "Historical CI230 receipt identities and consistency, not a new software test run.",
+  "local_delivery_checked": true,
+  "capital_enabled": false,
+  "profit_certified": false,
+  "delivery_members": 53,
+  "preserved_databases": 12
+}

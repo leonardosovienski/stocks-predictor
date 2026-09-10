@@ -72,3 +72,6 @@ docs/audit/2026-09-10-r7/*.json text eol=lf
 docs/audit/2026-09-10-r7/evidence/** -text !eol -whitespace
 docs/engineering/2026-09-10-r8/evidence/** -text !eol -whitespace
 docs/engineering/2026-09-10-r8/evidence.json text eol=lf
+
+# Closure retains downloaded CI and local delivery receipt bytes exactly.
+docs/continuation/2026-09-10-closure/evidence/** -text !eol -whitespace

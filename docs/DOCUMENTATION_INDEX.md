@@ -1,3 +1,10 @@
+## Pausa e encerramento revisado — 10/09/2026 UTC
+
+[Estado final, evidências e retomada](continuation/2026-09-10-closure/README.md).
+Infraestrutura de pesquisa em lote validada; CI230 e recibos finais preservados.
+O objetivo econômico permanece aberto. Lucro não validado; nenhuma operação financeira ativa.
+As seções anteriores abaixo conservam seu contexto e suas datas.
+
 ## Operação R8 — 10/09/2026 UTC
 
 [Relatório operacional](engineering/2026-09-10-r8/README.md) e

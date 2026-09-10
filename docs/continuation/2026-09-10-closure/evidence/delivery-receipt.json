@@ -1,0 +1,282 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-09-10T20:41:39.375224+00:00",
+  "merge_sha": "0742bfc6fc1f33edabf00aaea73b54435f415bfa",
+  "files": [
+    {
+      "path": "CI_CLOSURE.json",
+      "bytes": 11773,
+      "sha256": "f2773860a3994f9431e5b24b13f466e5c328960458cc7a1a564e85a54adbe9b1"
+    },
+    {
+      "path": "LEIA-ME.md",
+      "bytes": 3630,
+      "sha256": "1c4405b6755c7fb207369bf12fb82798c3554b46bc0fabaff0e1482834aacccf"
+    },
+    {
+      "path": "R7/CONSOLIDADO.json",
+      "bytes": 1458425,
+      "sha256": "63365dd37e78dea34313b2ee64350ddc3cdacc42baae7d4991bca687c4b36601"
+    },
+    {
+      "path": "R7/CONSOLIDADO.md",
+      "bytes": 48820,
+      "sha256": "6f7c192eb3d083f588eda2f0f36366912ac6841da4322da1f6739895ef619a9d"
+    },
+    {
+      "path": "STOCKS_R8_HISTORY.bundle",
+      "bytes": 19394310,
+      "sha256": "56795abdd8b9396e43f26b4076712be5d0c1dd4cb4668f7da6155f164de4cdae"
+    },
+    {
+      "path": "ci-artifacts/ci230-complete-tree-secrets.zip",
+      "bytes": 13726,
+      "sha256": "b376d25ec99c5147c4a58734789cc92b0921dcb3d25a18adb6fa85eedddd41b7"
+    },
+    {
+      "path": "ci-artifacts/ci230-operations-python-3.13.zip",
+      "bytes": 5321,
+      "sha256": "b06f0d9a237d955553abb4e76e8123ef33907aba8ec4a61e01de7df8a5bd81f9"
+    },
+    {
+      "path": "ci-artifacts/ci230-operations-python-3.14.zip",
+      "bytes": 5325,
+      "sha256": "1873d5e60a00a417903aa9cc5fd73dfb148c087a594c454010ac7f1c069bf727"
+    },
+    {
+      "path": "ci-artifacts/ci230-quality-python-3.13.zip",
+      "bytes": 71672,
+      "sha256": "1b5c8dd103cd766da65ba2b322b00d545053955073ad90f64b3c6b59156384b9"
+    },
+    {
+      "path": "ci-artifacts/ci230-quality-python-3.14.zip",
+      "bytes": 71756,
+      "sha256": "5fa74d431d6a10cef824b16526d878723dd9f0fcb0fab42b6d0a608749ea743e"
+    },
+    {
+      "path": "docs/engineering/2026-09-10-r8/PLAN.md",
+      "bytes": 2450,
+      "sha256": "5acf702c4737a53489e2f2b15a57ae99249538f841f9c5c09fc97e71c0a385b8"
+    },
+    {
+      "path": "docs/engineering/2026-09-10-r8/README.md",
+      "bytes": 5362,
+      "sha256": "6b4a0a9b359c9f9bd9967dbfd4eb024002a49d77dc9216780207ee10ee0b203a"
+    },
+    {
+      "path": "docs/engineering/2026-09-10-r8/RUNBOOK.md",
+      "bytes": 6335,
+      "sha256": "3ad18a01ff356f38ca3b9c49d39feb3925837fb4a36e63d4f8dd871593926415"
+    },
+    {
+      "path": "docs/engineering/2026-09-10-r8/evidence.json",
+      "bytes": 28300,
+      "sha256": "0abf5fbf54cdd9eeea576bea6dde9e3d104212a497cee055a3369f6f070278c8"
+    },
+    {
+      "path": "docs/engineering/2026-09-10-r8/evidence/capacity.json",
+      "bytes": 18592,
+      "sha256": "77f002a2eb360b097c53616fa48c3dde000f64ded2899d11817975e32ef9a360"
+    },
+    {
+      "path": "docs/engineering/2026-09-10-r8/evidence/ci224-build-python314.json",
+      "bytes": 531,
+      "sha256": "9586814517a7b7346415ba38ed89b2b8fc372eaafae64c6c0a622de3324e7e1f"
+    },
+    {
+      "path": "docs/engineering/2026-09-10-r8/evidence/ci224-installed-python314.json",
+      "bytes": 18393,
+      "sha256": "158b8ebd5089a203a230e504ca0214f9c1cb3b619ee75d455cc5774d88f4aa80"
+    },
+    {
+      "path": "docs/engineering/2026-09-10-r8/evidence/ci224.json",
+      "bytes": 7452,
+      "sha256": "e49839201b1007f84197728cd8a8387c8060c3e2277ec69fe05e0ef5d237d86b"
+    },
+    {
+      "path": "docs/engineering/2026-09-10-r8/evidence/failures.json",
+      "bytes": 3504,
+      "sha256": "9e3492ad1a845b506056738cbc2ed9eab7555d5ceb92d952bc6068edf24bf868"
+    },
+    {
+      "path": "docs/engineering/2026-09-10-r8/evidence/local-tests-03.log",
+      "bytes": 4497,
+      "sha256": "ddf2ed982a0d95758c8e3933891814c7f5ddbafa129d9e1ea724c02071943b4b"
+    },
+    {
+      "path": "docs/engineering/2026-09-10-r8/evidence/local-tests.log",
+      "bytes": 4175,
+      "sha256": "e4282fe30f65f16b83bea6a76690a7192bfe51703ae607037d23ec1bc71ac1ee"
+    },
+    {
+      "path": "docs/engineering/2026-09-10-r8/evidence/preservation.json",
+      "bytes": 3186,
+      "sha256": "4a62c8857b6c897f6cf0f386532af24d3645a173ae3f41f89f2d51a50dfad855"
+    },
+    {
+      "path": "docs/engineering/2026-09-10-r8/evidence/real.json",
+      "bytes": 18877,
+      "sha256": "490a2c168064a554abdb90c0a48ecbbca197d830099d38a4c1e21280decb28a6"
+    },
+    {
+      "path": "logs/capacity-250k-v2.log",
+      "bytes": 613,
+      "sha256": "90e816cb00f906cb0292c903559a1ece13549ea31bdd4899d9282e923d6b0144"
+    },
+    {
+      "path": "logs/capacity-250k.log",
+      "bytes": 611,
+      "sha256": "c2b5ac9f910d538b12985aa295c635345fe754ec1424acde38585ef118f6e208"
+    },
+    {
+      "path": "logs/ci223-python313.log",
+      "bytes": 51730,
+      "sha256": "c992e483e375ee9044449858e04cd615d62a93ce57eb848041cb4af08cb5f1c6"
+    },
+    {
+      "path": "logs/ci223-python314.log",
+      "bytes": 51600,
+      "sha256": "f0afa971d4410a7d59fe4a56f5b9316b9d3399829a5fc020d852eebf7c22e39b"
+    },
+    {
+      "path": "logs/ci223-secrets.log",
+      "bytes": 22568,
+      "sha256": "7cecc52352e348d7d9a80e12900ac69de6507b2bba638f72c3523c91dfd0f519"
+    },
+    {
+      "path": "logs/ci224-python313.log",
+      "bytes": 80850,
+      "sha256": "7fd4c21c0e1123a7e141aa00c7555f08163a166587e9a19b3249dc839a125fe8"
+    },
+    {
+      "path": "logs/ci224-python314.log",
+      "bytes": 80692,
+      "sha256": "3c544eca796b9a9cb1257d2ee5ec46f93bf67cb6992d782f26d9d1df88a4b8ab"
+    },
+    {
+      "path": "logs/ci225-python313.log",
+      "bytes": 80860,
+      "sha256": "ffcb4499b75809fcdf9ac268d6a24d9bec8e211b887c45d0dfcedbbca2bc9d73"
+    },
+    {
+      "path": "logs/ci225-python314.log",
+      "bytes": 80663,
+      "sha256": "9d80b3379a2347eeaad5effd3a1e950ee8430fae8335a06d6c1089a6a88b226d"
+    },
+    {
+      "path": "logs/ci226-python314.log",
+      "bytes": 79709,
+      "sha256": "1d52f11a8556b16cafecca67e00d347550b3c41cf34fbdec2ce604ddc66d4123"
+    },
+    {
+      "path": "logs/ci226-secrets.log",
+      "bytes": 18952,
+      "sha256": "88315dacee3060a5213895c19eefbd4e1c6126270e957eda5ebf5632cfa608bc"
+    },
+    {
+      "path": "logs/ci227-secrets.log",
+      "bytes": 24759,
+      "sha256": "30a7c3c2059368c9772a77f8a6063fcc05f36f8f03d4cda5b0fa661e93439091"
+    },
+    {
+      "path": "logs/ci228-secrets.log",
+      "bytes": 25160,
+      "sha256": "0e1a61e544708ade158ca1de5b32d5a68682ff6d6260ffa4ffbf65c6a3ee290f"
+    },
+    {
+      "path": "logs/ci229-python313.log",
+      "bytes": 80970,
+      "sha256": "717b5623617f85c9614db7d2036d113f0252c4ec78582a5635c80c51e4bbc571"
+    },
+    {
+      "path": "logs/ci229-python314.log",
+      "bytes": 80824,
+      "sha256": "d471a88c557a2ea879ba30296cd297b97dc3cd90af547f72c2b80c7f120599d9"
+    },
+    {
+      "path": "logs/ci229-secrets.log",
+      "bytes": 27734,
+      "sha256": "a3b6e444215105c51469a998bb01e0749c25d67e3a178369d0fd1711731b7b8d"
+    },
+    {
+      "path": "logs/ci230-python313.log",
+      "bytes": 79947,
+      "sha256": "0d738b10350b57afc4a20d6c5bf4e128c947c06f8de4053b51c02259a390cb4f"
+    },
+    {
+      "path": "logs/ci230-python314.log",
+      "bytes": 79867,
+      "sha256": "91c9f04c9d8a85af9f0f4187389320cfca55f81ce6bb187a0450c3fcb980819a"
+    },
+    {
+      "path": "logs/ci230-secrets.log",
+      "bytes": 26628,
+      "sha256": "320eed9f56032f7d065c8bffd0633d04f5ba9cb72abd1e625c386ed07e4813d3"
+    },
+    {
+      "path": "logs/delivery-execution.log",
+      "bytes": 387,
+      "sha256": "ba4929b9825cd1f33123fd5d4103082157523c25cd7a561ae41a6c7baf8fa2c1"
+    },
+    {
+      "path": "logs/local-tests-02.log",
+      "bytes": 4175,
+      "sha256": "e4282fe30f65f16b83bea6a76690a7192bfe51703ae607037d23ec1bc71ac1ee"
+    },
+    {
+      "path": "logs/local-tests-03.log",
+      "bytes": 4497,
+      "sha256": "ddf2ed982a0d95758c8e3933891814c7f5ddbafa129d9e1ea724c02071943b4b"
+    },
+    {
+      "path": "logs/real-cotahist-v2.log",
+      "bytes": 617,
+      "sha256": "82bddcaaee97aa928770a3acd57ea0a15963b936707157c6aa6cab55e9fcb54d"
+    },
+    {
+      "path": "logs/real-cotahist.log",
+      "bytes": 618,
+      "sha256": "97823e229ef2e9dd215afc9250494b39bd120dd140756dccf45ec775254492d0"
+    },
+    {
+      "path": "real-backup/manifest.json",
+      "bytes": 1217,
+      "sha256": "6ade9e3810c6edeb78bc0b817fa34b4ee23d7af1c0816ce872d245223cd57c8a"
+    },
+    {
+      "path": "real-backup/snapshot.sqlite",
+      "bytes": 20926464,
+      "sha256": "f498ba3ec9a00e8d1cf5b37a47ad16665d09b00401551fa24383715f053e258c"
+    },
+    {
+      "path": "source/COTAHIST_A2026.ZIP",
+      "bytes": 79798375,
+      "sha256": "34b774681cbd201ef197fb98af8d431e4d7302e801f58b66e54036d2935dc4f4"
+    },
+    {
+      "path": "source/COTAHIST_A2026.ZIP.receipt.json",
+      "bytes": 583,
+      "sha256": "615addd092facaab893d8d4af4fed7aec0d0a4425de4856c6c4e2f7eefe75056"
+    },
+    {
+      "path": "wheel/BUILD_RECEIPT.json",
+      "bytes": 531,
+      "sha256": "7cb55bf2df9561fa6830a7d142fe4c9248daac197a783fe25b9fb1cf23924b07"
+    },
+    {
+      "path": "wheel/stocks_predictor-0.1.0-py3-none-any.whl",
+      "bytes": 247225,
+      "sha256": "8c9bb440cb4f16874a7d51e7f4f01774d07f7dffea9d60247c5d038ccf65863f"
+    }
+  ],
+  "engineering_scope_complete": true,
+  "all_initial_request_items_closed": false,
+  "capital_enabled": false,
+  "profit_certified": false,
+  "status": "PASS",
+  "archive": "C:\\STOCKS\\outputs\\INFRAESTRUTURA_R8_EXECUTAVEL_20260910.zip",
+  "archive_bytes": 102710038,
+  "archive_sha256": "bd85c37c3222421c9380335bbb7ff2c725d8aa68e4a236ecc3981b7348974671",
+  "report": "C:\\STOCKS\\outputs\\INFRAESTRUTURA_R8_VALIDACAO_20260910.md",
+  "report_sha256": "1c4405b6755c7fb207369bf12fb82798c3554b46bc0fabaff0e1482834aacccf"
+}
