@@ -1,0 +1,46 @@
+{
+  "protocol_id": "R5_H22_BOVA_MONTHLY_TREND_V1",
+  "status_at_registration": "BEFORE_NEW_STRATEGY_OUTPUTS",
+  "base_commit": "ff20638effa3c3de4d2a463ddfc73d195be1f202",
+  "authorization": "2026-09-10: user explicitly reopened economic research with freedom over architecture, logic, hypotheses and sources, seeking validated net profit. Public research and isolated simulation only; existing no-orders/no-paid-services/no-recurring-jobs boundary remains.",
+  "objective": "Find defensible absolute BRL profit after specified costs and quantify separately whether the proposed decision rule adds value over a matched simple investment. Positive simulation does not certify future profit or actual fills.",
+  "candidate": {
+    "hypothesis_id": "H22",
+    "mechanism": "Monthly long/cash trend filter may reduce prolonged equity losses, at the cost of delayed exits, missed recoveries, whipsaws, taxes and more trades.",
+    "prior_rule_source": "https://mebfaber.com/wp-content/uploads/2016/05/SSRN-id962461.pdf",
+    "source_context": "Public rule predates the target history; the paper is not evidence of a Brazilian retail after-tax edge. No search over moving-average lengths.",
+    "instrument": {"ticker":"BOVA11","isin":"BRBOVACTF003","currency":"BRL"},
+    "signal": "At each complete month-end, compare that close with the arithmetic mean of the last ten complete monthly closes including that month. Above mean -> long; equal or below -> cash. The signal applies only from the next observed B3 spot session. No intra-month tuning or stops.",
+    "trade": "Trade only on a position-state change; maximum affordable multiple of ten units with all costs and obligations reserved. Keep ten-unit convention for every date, which remains an admissible multiple after lot reduction. No leverage, short, additional contributions, fractional shares or reuse of unsettled sale proceeds.",
+    "cash": "Uninvested cash earns zero in both arms. No fictitious investable Selic instrument is inserted. Gross BCB reference, if shown, remains separate."
+  },
+  "baseline": "BOVA11 buy-and-hold on identical entry/exit, capital, cost, tax, expense and price assumptions. Recomputed under this new identity; frozen H21 unchanged.",
+  "windows": {
+    "warmup": ["2017-01-01","2017-12-31"],
+    "full": ["2018-01-02","2026-09-08"],
+    "fixed_temporal_diagnostics": [["2018-01-02","2021-12-30"],["2022-01-03","2026-09-08"]],
+    "endpoints": "First session on/after each fixed start and last session on/before each fixed end, using a complete session calendar; report actual endpoints and reason. September8 is the latest source cutoff already recorded in R1, not selected from H22 performance.",
+    "exit_signal": "Fixed terminal liquidation instruction known before the terminal session; no terminal close enters an earlier signal or an opening fill."
+  },
+  "capital_brl_scenarios": [5000,10000],
+  "specifications": [
+    {"id":"reference","price_mode":"open","one_way_variable_cost":0.0018,"fixed_cost_per_order_brl":5,"monthly_expense_brl":10},
+    {"id":"adverse","price_mode":"worst_open_close","one_way_variable_cost":0.0036,"fixed_cost_per_order_brl":20,"monthly_expense_brl":50}
+  ],
+  "cost_interpretation": "Explicit economic scenarios, not reconstructed historical brokerage invoices or certified upper bounds. Per-order fixed expenses are additional to variable fees/slippage; monthly amount covers specified operating overhead but is not the user's stated time cost. Historical total cost completeness is a separate source gate. Fund internal expenses embedded in price/NAV are never charged twice.",
+  "expense_funding": "Reserve the full scheduled monthly budget at initialization, pay one charge on the first observed session of each calendar month, and include that reserve in committed capital and marked wealth. No outside funding; fail if reserved obligations exceed capital. No adaptive sale chosen after a negative cash balance.",
+  "tax": "Ordinary ETF scenario for Brazil-resident individual with no external trades or previous losses. Fifteen percent on positive realized gains after accumulated realized losses, no R$20000 equity exemption. Segregate total tax reserve from investable cash; reserve is not refunded by a later loss. At most one state-change trade per month, apart from predetermined terminal liquidation; aggregate any same-month gains/losses before finalizing that month. Track paid/committed tax separately; no claim of actual DARF filing or personalized tax advice. Withholding is inside total liability, not an additional charge.",
+  "settlement": "Purchases commit cash immediately; sale cash becomes available after D+3 before2019-05-27, D+2 thereafter. Require dates in supplied calendar; terminal sale remains receivable if settlement follows endpoint. Tax/expense reserves cannot fund buys. No financing of receivables.",
+  "events": "Read original annual financial statements and all relevant available fund/class notices, distinguish primary creations/redemptions from investor-wide splits, cash amortizations and compulsory redemption. Reconcile any event before interpreting price signals/returns; incomplete coverage remains explicit and prevents the fully executable claim. Do not infer no events from no price jumps or an empty API response.",
+  "metrics": ["BRL cash/receivable/reserves/position reconciliation","absolute profit after specified expenses and tax","matched baseline incremental profit","maximum marked drawdown","minimum wealth versus initial capital","calendar-year attribution","state transitions/order counts/exposure","gain concentration","fixed-period diagnostic results","one-time construction budget supported by historical incremental profit, not a forecast"],
+  "decision_rules": {
+    "accounting": "Independent cash-flow summation must reconcile to cents; signal and execution chronology and source identities must pass before interpretation.",
+    "historical_absolute_profit": "Report each scenario and temporal diagnostic independently. Require positive full-period profit under both specifications at each capital to call the candidate robustly profitable within these modeled historical scenarios; this is not future validation.",
+    "increment": "Report H22-minus-baseline amounts and drawdowns. Do not claim incremental value if net advantage is absent or unstable; positive absolute profit does not require beating baseline.",
+    "source_readiness": "Track full-event and full-cost source gates separately from software/test success. Missing actual-source coverage cannot be changed to zero to pass.",
+    "future": "No historical slice is called an intact holdout. A prospective candidate keeps these rules from registration onward and needs future observations; the existing H21 forward plan is preserved. No present GO for money is inferred."
+  },
+  "trial_accounting": "One new H22 rule plus matched baseline, two economic specifications, two capitals, three predeclared windows =24 valuations, all dependent on overlapping history. Report every valuation, error and correction. No additional rule length, ETF or endpoint is chosen after seeing these outcomes in this round. Any follow-on hypothesis needs an additive protocol and explicit prior exposure.",
+  "prior_exposure": "H1-H21 reports and prices/source descriptions were previously examined. H21 outcomes and issuer annual NAV performance tables through2026 were already seen. The complete historical price archive exists. This is an externally specified retrospective diagnostic, not a newly independent or blind financial test.",
+  "deliverable": "Executed experiment, documented source checks and economic verdict, versioned code/tests as needed, all outcomes and reproduction receipts. Keep original databases, protocols and results byte-identical. No stopping merely on a favorable backtest or relabeling conditional profit as validated future profit."
+}

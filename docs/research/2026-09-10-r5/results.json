@@ -1,0 +1,1050 @@
+{
+  "identity": {
+    "kind": "START",
+    "started_at": "2026-09-10T14:06:06.867122+00:00",
+    "protocol_sha256": "cd8c8cfbadc2edcba5b5e91502df9df7c570b6f31bf2cd943efd23037cc80ea0",
+    "inputs_sha256": "706dcbecaabc642d1719e2cf04ca872919dc6246d3cacfc9f1874faab4cd58b8",
+    "python": "3.12.14",
+    "head": "b248a53c1707bd4f364277a51bf16d7071d817c9"
+  },
+  "attempt_sha256": "6181988b25d8dcdeb9f0695ccf5d4413b71d74e14718567a02d51d16550b4b39",
+  "valuations": [
+    {
+      "kind": "VALUATION",
+      "start": "2018-01-02",
+      "end": "2026-09-08",
+      "specification": "reference",
+      "capital": 5000,
+      "arm": "trend",
+      "verification": {
+        "status": "PASS",
+        "checked_sessions": 2159,
+        "method": "Separate integer-cent replay, signal chronology, max lot, settlement, expenses, monthly taxes, wealth and drawdown"
+      },
+      "result": {
+        "status": "CONDITIONAL_SIMULATION",
+        "arm": "trend",
+        "capital": 5000.0,
+        "start": "2018-01-02",
+        "end": "2026-09-08",
+        "sessions": 2159,
+        "final_wealth": 4269.96,
+        "profit": -730.04,
+        "max_drawdown": 0.4684967661329573,
+        "minimum_wealth": 3177.81,
+        "fees": 214.58,
+        "expenses": 1050.0,
+        "tax": 96.66,
+        "loss_carry": 227.75,
+        "order_count": 20,
+        "exposure_fraction": 0.6989346919870311,
+        "year_profit": {
+          "2018": -115.49,
+          "2019": 945.2,
+          "2020": -776.23,
+          "2021": -359.98,
+          "2022": -953.53,
+          "2023": 48.96,
+          "2024": -439.34,
+          "2025": 487.42,
+          "2026": 432.95
+        },
+        "source_gates": "Events/cost completeness are external; not certified by this simulator"
+      }
+    },
+    {
+      "kind": "VALUATION",
+      "start": "2018-01-02",
+      "end": "2026-09-08",
+      "specification": "reference",
+      "capital": 5000,
+      "arm": "hold",
+      "verification": {
+        "status": "PASS",
+        "checked_sessions": 2159,
+        "method": "Separate integer-cent replay, signal chronology, max lot, settlement, expenses, monthly taxes, wealth and drawdown"
+      },
+      "result": {
+        "status": "CONDITIONAL_SIMULATION",
+        "arm": "hold",
+        "capital": 5000.0,
+        "start": "2018-01-02",
+        "end": "2026-09-08",
+        "sessions": 2159,
+        "final_wealth": 8627.73,
+        "profit": 3627.73,
+        "max_drawdown": 0.40058304063634387,
+        "minimum_wealth": 4075.34,
+        "fees": 33.29,
+        "expenses": 1050.0,
+        "tax": 825.48,
+        "loss_carry": 0.0,
+        "order_count": 2,
+        "exposure_fraction": 0.999536822603057,
+        "year_profit": {
+          "2018": 398.34,
+          "2019": 1211.5,
+          "2020": 51.0,
+          "2021": -812.5,
+          "2022": 137.5,
+          "2023": 1102.0,
+          "2024": -776.0,
+          "2025": 1916.5,
+          "2026": 399.39
+        },
+        "source_gates": "Events/cost completeness are external; not certified by this simulator"
+      }
+    },
+    {
+      "kind": "VALUATION",
+      "start": "2018-01-02",
+      "end": "2026-09-08",
+      "specification": "reference",
+      "capital": 10000,
+      "arm": "trend",
+      "verification": {
+        "status": "PASS",
+        "checked_sessions": 2159,
+        "method": "Separate integer-cent replay, signal chronology, max lot, settlement, expenses, monthly taxes, wealth and drawdown"
+      },
+      "result": {
+        "status": "CONDITIONAL_SIMULATION",
+        "arm": "trend",
+        "capital": 10000.0,
+        "start": "2018-01-02",
+        "end": "2026-09-08",
+        "sessions": 2159,
+        "final_wealth": 9995.6,
+        "profit": -4.4,
+        "max_drawdown": 0.454636431036846,
+        "minimum_wealth": 7002.73,
+        "fees": 385.72,
+        "expenses": 1050.0,
+        "tax": 245.78,
+        "loss_carry": 347.13,
+        "order_count": 20,
+        "exposure_fraction": 0.6989346919870311,
+        "year_profit": {
+          "2018": -90.52,
+          "2019": 2543.0,
+          "2020": -1692.91,
+          "2021": -751.61,
+          "2022": -2161.49,
+          "2023": 533.58,
+          "2024": -1015.38,
+          "2025": 1406.06,
+          "2026": 1224.87
+        },
+        "source_gates": "Events/cost completeness are external; not certified by this simulator"
+      }
+    },
+    {
+      "kind": "VALUATION",
+      "start": "2018-01-02",
+      "end": "2026-09-08",
+      "specification": "reference",
+      "capital": 10000,
+      "arm": "hold",
+      "verification": {
+        "status": "PASS",
+        "checked_sessions": 2159,
+        "method": "Separate integer-cent replay, signal chronology, max lot, settlement, expenses, monthly taxes, wealth and drawdown"
+      },
+      "result": {
+        "status": "CONDITIONAL_SIMULATION",
+        "arm": "hold",
+        "capital": 10000.0,
+        "start": "2018-01-02",
+        "end": "2026-09-08",
+        "sessions": 2159,
+        "final_wealth": 20188.46,
+        "profit": 10188.46,
+        "max_drawdown": 0.4435261294978541,
+        "minimum_wealth": 8165.82,
+        "fees": 65.88,
+        "expenses": 1050.0,
+        "tax": 1983.26,
+        "loss_carry": 0.0,
+        "order_count": 2,
+        "exposure_fraction": 0.999536822603057,
+        "year_profit": {
+          "2018": 1131.02,
+          "2019": 3075.6,
+          "2020": 290.4,
+          "2021": -1782.0,
+          "2022": 498.0,
+          "2023": 2812.8,
+          "2024": -1694.4,
+          "2025": 4767.6,
+          "2026": 1089.44
+        },
+        "source_gates": "Events/cost completeness are external; not certified by this simulator"
+      }
+    },
+    {
+      "kind": "VALUATION",
+      "start": "2018-01-02",
+      "end": "2026-09-08",
+      "specification": "adverse",
+      "capital": 5000,
+      "arm": "trend",
+      "verification": {
+        "status": "EXPECTED_INFEASIBLE"
+      },
+      "result": {
+        "status": "INFEASIBLE_EXPENSE_RESERVE",
+        "capital": 5000.0,
+        "required_expense_reserve": 5250.0,
+        "months": 105
+      }
+    },
+    {
+      "kind": "VALUATION",
+      "start": "2018-01-02",
+      "end": "2026-09-08",
+      "specification": "adverse",
+      "capital": 5000,
+      "arm": "hold",
+      "verification": {
+        "status": "EXPECTED_INFEASIBLE"
+      },
+      "result": {
+        "status": "INFEASIBLE_EXPENSE_RESERVE",
+        "capital": 5000.0,
+        "required_expense_reserve": 5250.0,
+        "months": 105
+      }
+    },
+    {
+      "kind": "VALUATION",
+      "start": "2018-01-02",
+      "end": "2026-09-08",
+      "specification": "adverse",
+      "capital": 10000,
+      "arm": "trend",
+      "verification": {
+        "status": "PASS",
+        "checked_sessions": 2159,
+        "method": "Separate integer-cent replay, signal chronology, max lot, settlement, expenses, monthly taxes, wealth and drawdown"
+      },
+      "result": {
+        "status": "CONDITIONAL_SIMULATION",
+        "arm": "trend",
+        "capital": 10000.0,
+        "start": "2018-01-02",
+        "end": "2026-09-08",
+        "sessions": 2159,
+        "final_wealth": 4459.57,
+        "profit": -5540.43,
+        "max_drawdown": 0.6130947478110292,
+        "minimum_wealth": 4039.67,
+        "fees": 656.23,
+        "expenses": 5250.0,
+        "tax": 90.8,
+        "loss_carry": 804.99,
+        "order_count": 20,
+        "exposure_fraction": 0.6989346919870311,
+        "year_profit": {
+          "2018": -768.99,
+          "2019": 731.5,
+          "2020": -1484.8,
+          "2021": -941.01,
+          "2022": -1603.96,
+          "2023": -512.78,
+          "2024": -981.67,
+          "2025": -30.02,
+          "2026": 51.3
+        },
+        "source_gates": "Events/cost completeness are external; not certified by this simulator"
+      }
+    },
+    {
+      "kind": "VALUATION",
+      "start": "2018-01-02",
+      "end": "2026-09-08",
+      "specification": "adverse",
+      "capital": 10000,
+      "arm": "hold",
+      "verification": {
+        "status": "PASS",
+        "checked_sessions": 2159,
+        "method": "Separate integer-cent replay, signal chronology, max lot, settlement, expenses, monthly taxes, wealth and drawdown"
+      },
+      "result": {
+        "status": "CONDITIONAL_SIMULATION",
+        "arm": "hold",
+        "capital": 10000.0,
+        "start": "2018-01-02",
+        "end": "2026-09-08",
+        "sessions": 2159,
+        "final_wealth": 10259.43,
+        "profit": 259.43,
+        "max_drawdown": 0.3007271334252966,
+        "minimum_wealth": 7776.18,
+        "fees": 96.12,
+        "expenses": 5250.0,
+        "tax": 972.25,
+        "loss_carry": 0.0,
+        "order_count": 2,
+        "exposure_fraction": 0.999536822603057,
+        "year_profit": {
+          "2018": -66.22,
+          "2019": 997.8,
+          "2020": -394.8,
+          "2021": -1431.0,
+          "2022": -291.0,
+          "2023": 866.4,
+          "2024": -1387.2,
+          "2025": 1843.8,
+          "2026": 121.65
+        },
+        "source_gates": "Events/cost completeness are external; not certified by this simulator"
+      }
+    },
+    {
+      "kind": "VALUATION",
+      "start": "2018-01-02",
+      "end": "2021-12-30",
+      "specification": "reference",
+      "capital": 5000,
+      "arm": "trend",
+      "verification": {
+        "status": "PASS",
+        "checked_sessions": 989,
+        "method": "Separate integer-cent replay, signal chronology, max lot, settlement, expenses, monthly taxes, wealth and drawdown"
+      },
+      "result": {
+        "status": "CONDITIONAL_SIMULATION",
+        "arm": "trend",
+        "capital": 5000.0,
+        "start": "2018-01-02",
+        "end": "2021-12-30",
+        "sessions": 989,
+        "final_wealth": 4745.47,
+        "profit": -254.53,
+        "max_drawdown": 0.25283017067690333,
+        "minimum_wealth": 4698.57,
+        "fees": 105.34,
+        "expenses": 480.0,
+        "tax": 121.39,
+        "loss_carry": 462.39,
+        "order_count": 8,
+        "exposure_fraction": 0.6825075834175935,
+        "year_profit": {
+          "2018": -112.01,
+          "2019": 1211.5,
+          "2020": -915.72,
+          "2021": -438.3
+        },
+        "source_gates": "Events/cost completeness are external; not certified by this simulator"
+      }
+    },
+    {
+      "kind": "VALUATION",
+      "start": "2018-01-02",
+      "end": "2021-12-30",
+      "specification": "reference",
+      "capital": 5000,
+      "arm": "hold",
+      "verification": {
+        "status": "PASS",
+        "checked_sessions": 989,
+        "method": "Separate integer-cent replay, signal chronology, max lot, settlement, expenses, monthly taxes, wealth and drawdown"
+      },
+      "result": {
+        "status": "CONDITIONAL_SIMULATION",
+        "arm": "hold",
+        "capital": 5000.0,
+        "start": "2018-01-02",
+        "end": "2021-12-30",
+        "sessions": 989,
+        "final_wealth": 5862.76,
+        "profit": 862.76,
+        "max_drawdown": 0.4527568065401596,
+        "minimum_wealth": 3945.41,
+        "fees": 28.88,
+        "expenses": 480.0,
+        "tax": 236.96,
+        "loss_carry": 0.0,
+        "order_count": 2,
+        "exposure_fraction": 0.9989888776541962,
+        "year_profit": {
+          "2018": 503.01,
+          "2019": 1477.8,
+          "2020": 85.2,
+          "2021": -1203.25
+        },
+        "source_gates": "Events/cost completeness are external; not certified by this simulator"
+      }
+    },
+    {
+      "kind": "VALUATION",
+      "start": "2018-01-02",
+      "end": "2021-12-30",
+      "specification": "reference",
+      "capital": 10000,
+      "arm": "trend",
+      "verification": {
+        "status": "PASS",
+        "checked_sessions": 989,
+        "method": "Separate integer-cent replay, signal chronology, max lot, settlement, expenses, monthly taxes, wealth and drawdown"
+      },
+      "result": {
+        "status": "CONDITIONAL_SIMULATION",
+        "arm": "trend",
+        "capital": 10000.0,
+        "start": "2018-01-02",
+        "end": "2021-12-30",
+        "sessions": 989,
+        "final_wealth": 10055.81,
+        "profit": 55.81,
+        "max_drawdown": 0.2464186715918807,
+        "minimum_wealth": 9593.26,
+        "fees": 181.3,
+        "expenses": 480.0,
+        "tax": 269.79,
+        "loss_carry": 992.97,
+        "order_count": 8,
+        "exposure_fraction": 0.6825075834175935,
+        "year_profit": {
+          "2018": -91.14,
+          "2019": 2809.3,
+          "2020": -1832.41,
+          "2021": -829.94
+        },
+        "source_gates": "Events/cost completeness are external; not certified by this simulator"
+      }
+    },
+    {
+      "kind": "VALUATION",
+      "start": "2018-01-02",
+      "end": "2021-12-30",
+      "specification": "reference",
+      "capital": 10000,
+      "arm": "hold",
+      "verification": {
+        "status": "PASS",
+        "checked_sessions": 989,
+        "method": "Separate integer-cent replay, signal chronology, max lot, settlement, expenses, monthly taxes, wealth and drawdown"
+      },
+      "result": {
+        "status": "CONDITIONAL_SIMULATION",
+        "arm": "hold",
+        "capital": 10000.0,
+        "start": "2018-01-02",
+        "end": "2021-12-30",
+        "sessions": 989,
+        "final_wealth": 12214.03,
+        "profit": 2214.03,
+        "max_drawdown": 0.4435261294978541,
+        "minimum_wealth": 8165.82,
+        "fees": 47.75,
+        "expenses": 480.0,
+        "tax": 475.42,
+        "loss_carry": 0.0,
+        "order_count": 2,
+        "exposure_fraction": 0.9989888776541962,
+        "year_profit": {
+          "2018": 1131.02,
+          "2019": 3075.6,
+          "2020": 290.4,
+          "2021": -2282.99
+        },
+        "source_gates": "Events/cost completeness are external; not certified by this simulator"
+      }
+    },
+    {
+      "kind": "VALUATION",
+      "start": "2018-01-02",
+      "end": "2021-12-30",
+      "specification": "adverse",
+      "capital": 5000,
+      "arm": "trend",
+      "verification": {
+        "status": "PASS",
+        "checked_sessions": 989,
+        "method": "Separate integer-cent replay, signal chronology, max lot, settlement, expenses, monthly taxes, wealth and drawdown"
+      },
+      "result": {
+        "status": "CONDITIONAL_SIMULATION",
+        "arm": "trend",
+        "capital": 5000.0,
+        "start": "2018-01-02",
+        "end": "2021-12-30",
+        "sessions": 989,
+        "final_wealth": 2477.44,
+        "profit": -2522.56,
+        "max_drawdown": 0.519921557836562,
+        "minimum_wealth": 2477.44,
+        "fees": 218.76,
+        "expenses": 2400.0,
+        "tax": 28.2,
+        "loss_carry": 282.39,
+        "order_count": 8,
+        "exposure_fraction": 0.6825075834175935,
+        "year_profit": {
+          "2018": -709.71,
+          "2019": -67.4,
+          "2020": -964.95,
+          "2021": -780.5
+        },
+        "source_gates": "Events/cost completeness are external; not certified by this simulator"
+      }
+    },
+    {
+      "kind": "VALUATION",
+      "start": "2018-01-02",
+      "end": "2021-12-30",
+      "specification": "adverse",
+      "capital": 5000,
+      "arm": "hold",
+      "verification": {
+        "status": "PASS",
+        "checked_sessions": 989,
+        "method": "Separate integer-cent replay, signal chronology, max lot, settlement, expenses, monthly taxes, wealth and drawdown"
+      },
+      "result": {
+        "status": "CONDITIONAL_SIMULATION",
+        "arm": "hold",
+        "capital": 5000.0,
+        "start": "2018-01-02",
+        "end": "2021-12-30",
+        "sessions": 989,
+        "final_wealth": 3205.2,
+        "profit": -1794.8,
+        "max_drawdown": 0.37930506599179536,
+        "minimum_wealth": 3203.09,
+        "fees": 59.0,
+        "expenses": 2400.0,
+        "tax": 106.8,
+        "loss_carry": 0.0,
+        "order_count": 2,
+        "exposure_fraction": 0.9989888776541962,
+        "year_profit": {
+          "2018": -343.11,
+          "2019": 198.9,
+          "2020": -497.4,
+          "2021": -1153.19
+        },
+        "source_gates": "Events/cost completeness are external; not certified by this simulator"
+      }
+    },
+    {
+      "kind": "VALUATION",
+      "start": "2018-01-02",
+      "end": "2021-12-30",
+      "specification": "adverse",
+      "capital": 10000,
+      "arm": "trend",
+      "verification": {
+        "status": "PASS",
+        "checked_sessions": 989,
+        "method": "Separate integer-cent replay, signal chronology, max lot, settlement, expenses, monthly taxes, wealth and drawdown"
+      },
+      "result": {
+        "status": "CONDITIONAL_SIMULATION",
+        "arm": "trend",
+        "capital": 10000.0,
+        "start": "2018-01-02",
+        "end": "2021-12-30",
+        "sessions": 989,
+        "final_wealth": 7579.18,
+        "profit": -2420.82,
+        "max_drawdown": 0.3084910609606445,
+        "minimum_wealth": 7579.18,
+        "fees": 376.54,
+        "expenses": 2400.0,
+        "tax": 151.88,
+        "loss_carry": 881.45,
+        "order_count": 8,
+        "exposure_fraction": 0.6825075834175935,
+        "year_profit": {
+          "2018": -838.45,
+          "2019": 1530.4,
+          "2020": -1931.0,
+          "2021": -1181.77
+        },
+        "source_gates": "Events/cost completeness are external; not certified by this simulator"
+      }
+    },
+    {
+      "kind": "VALUATION",
+      "start": "2018-01-02",
+      "end": "2021-12-30",
+      "specification": "adverse",
+      "capital": 10000,
+      "arm": "hold",
+      "verification": {
+        "status": "PASS",
+        "checked_sessions": 989,
+        "method": "Separate integer-cent replay, signal chronology, max lot, settlement, expenses, monthly taxes, wealth and drawdown"
+      },
+      "result": {
+        "status": "CONDITIONAL_SIMULATION",
+        "arm": "hold",
+        "capital": 10000.0,
+        "start": "2018-01-02",
+        "end": "2021-12-30",
+        "sessions": 989,
+        "final_wealth": 9696.67,
+        "profit": -303.33,
+        "max_drawdown": 0.4331459277833185,
+        "minimum_wealth": 7206.96,
+        "fees": 103.33,
+        "expenses": 2400.0,
+        "tax": 370.0,
+        "loss_carry": 0.0,
+        "order_count": 2,
+        "exposure_fraction": 0.9989888776541962,
+        "year_profit": {
+          "2018": 302.96,
+          "2019": 2063.0,
+          "2020": -258.0,
+          "2021": -2411.29
+        },
+        "source_gates": "Events/cost completeness are external; not certified by this simulator"
+      }
+    },
+    {
+      "kind": "VALUATION",
+      "start": "2022-01-03",
+      "end": "2026-09-08",
+      "specification": "reference",
+      "capital": 5000,
+      "arm": "trend",
+      "verification": {
+        "status": "PASS",
+        "checked_sessions": 1170,
+        "method": "Separate integer-cent replay, signal chronology, max lot, settlement, expenses, monthly taxes, wealth and drawdown"
+      },
+      "result": {
+        "status": "CONDITIONAL_SIMULATION",
+        "arm": "trend",
+        "capital": 5000.0,
+        "start": "2022-01-03",
+        "end": "2026-09-08",
+        "sessions": 1170,
+        "final_wealth": 4582.8,
+        "profit": -417.2,
+        "max_drawdown": 0.296478,
+        "minimum_wealth": 3517.61,
+        "fees": 126.74,
+        "expenses": 570.0,
+        "tax": 26.96,
+        "loss_carry": 0.0,
+        "order_count": 12,
+        "exposure_fraction": 0.7128205128205128,
+        "year_profit": {
+          "2022": -953.53,
+          "2023": 201.8,
+          "2024": -558.88,
+          "2025": 487.42,
+          "2026": 405.99
+        },
+        "source_gates": "Events/cost completeness are external; not certified by this simulator"
+      }
+    },
+    {
+      "kind": "VALUATION",
+      "start": "2022-01-03",
+      "end": "2026-09-08",
+      "specification": "reference",
+      "capital": 5000,
+      "arm": "hold",
+      "verification": {
+        "status": "PASS",
+        "checked_sessions": 1170,
+        "method": "Separate integer-cent replay, signal chronology, max lot, settlement, expenses, monthly taxes, wealth and drawdown"
+      },
+      "result": {
+        "status": "CONDITIONAL_SIMULATION",
+        "arm": "hold",
+        "capital": 5000.0,
+        "start": "2022-01-03",
+        "end": "2026-09-08",
+        "sessions": 1170,
+        "final_wealth": 7234.14,
+        "profit": 2234.14,
+        "max_drawdown": 0.18220652823035496,
+        "minimum_wealth": 4560.09,
+        "fees": 30.61,
+        "expenses": 570.0,
+        "tax": 494.85,
+        "loss_carry": 0.0,
+        "order_count": 2,
+        "exposure_fraction": 0.9991452991452991,
+        "year_profit": {
+          "2022": 46.09,
+          "2023": 857.6,
+          "2024": -644.8,
+          "2025": 1509.2,
+          "2026": 466.05
+        },
+        "source_gates": "Events/cost completeness are external; not certified by this simulator"
+      }
+    },
+    {
+      "kind": "VALUATION",
+      "start": "2022-01-03",
+      "end": "2026-09-08",
+      "specification": "reference",
+      "capital": 10000,
+      "arm": "trend",
+      "verification": {
+        "status": "PASS",
+        "checked_sessions": 1170,
+        "method": "Separate integer-cent replay, signal chronology, max lot, settlement, expenses, monthly taxes, wealth and drawdown"
+      },
+      "result": {
+        "status": "CONDITIONAL_SIMULATION",
+        "arm": "trend",
+        "capital": 10000.0,
+        "start": "2022-01-03",
+        "end": "2026-09-08",
+        "sessions": 1170,
+        "final_wealth": 9903.99,
+        "profit": -96.01,
+        "max_drawdown": 0.300523,
+        "minimum_wealth": 6994.77,
+        "fees": 215.06,
+        "expenses": 570.0,
+        "tax": 83.65,
+        "loss_carry": 0.0,
+        "order_count": 12,
+        "exposure_fraction": 0.7128205128205128,
+        "year_profit": {
+          "2022": -2161.49,
+          "2023": 533.58,
+          "2024": -1015.38,
+          "2025": 1406.06,
+          "2026": 1141.22
+        },
+        "source_gates": "Events/cost completeness are external; not certified by this simulator"
+      }
+    },
+    {
+      "kind": "VALUATION",
+      "start": "2022-01-03",
+      "end": "2026-09-08",
+      "specification": "reference",
+      "capital": 10000,
+      "arm": "hold",
+      "verification": {
+        "status": "PASS",
+        "checked_sessions": 1170,
+        "method": "Separate integer-cent replay, signal chronology, max lot, settlement, expenses, monthly taxes, wealth and drawdown"
+      },
+      "result": {
+        "status": "CONDITIONAL_SIMULATION",
+        "arm": "hold",
+        "capital": 10000.0,
+        "start": "2022-01-03",
+        "end": "2026-09-08",
+        "sessions": 1170,
+        "final_wealth": 15749.95,
+        "profit": 5749.95,
+        "max_drawdown": 0.19806279872380084,
+        "minimum_wealth": 9103.96,
+        "fees": 56.37,
+        "expenses": 570.0,
+        "tax": 1115.28,
+        "loss_carry": 0.0,
+        "order_count": 2,
+        "exposure_fraction": 0.9991452991452991,
+        "year_profit": {
+          "2022": 259.96,
+          "2023": 2079.6,
+          "2024": -1300.8,
+          "2025": 3545.7,
+          "2026": 1165.49
+        },
+        "source_gates": "Events/cost completeness are external; not certified by this simulator"
+      }
+    },
+    {
+      "kind": "VALUATION",
+      "start": "2022-01-03",
+      "end": "2026-09-08",
+      "specification": "adverse",
+      "capital": 5000,
+      "arm": "trend",
+      "verification": {
+        "status": "PASS",
+        "checked_sessions": 1170,
+        "method": "Separate integer-cent replay, signal chronology, max lot, settlement, expenses, monthly taxes, wealth and drawdown"
+      },
+      "result": {
+        "status": "CONDITIONAL_SIMULATION",
+        "arm": "trend",
+        "capital": 5000.0,
+        "start": "2022-01-03",
+        "end": "2026-09-08",
+        "sessions": 1170,
+        "final_wealth": 2092.67,
+        "profit": -2907.33,
+        "max_drawdown": 0.608496,
+        "minimum_wealth": 1957.52,
+        "fees": 291.23,
+        "expenses": 2850.0,
+        "tax": 0.0,
+        "loss_carry": 57.33,
+        "order_count": 12,
+        "exposure_fraction": 0.7128205128205128,
+        "year_profit": {
+          "2022": -1001.33,
+          "2023": -550.81,
+          "2024": -820.83,
+          "2025": -325.01,
+          "2026": -209.35
+        },
+        "source_gates": "Events/cost completeness are external; not certified by this simulator"
+      }
+    },
+    {
+      "kind": "VALUATION",
+      "start": "2022-01-03",
+      "end": "2026-09-08",
+      "specification": "adverse",
+      "capital": 5000,
+      "arm": "hold",
+      "verification": {
+        "status": "PASS",
+        "checked_sessions": 1170,
+        "method": "Separate integer-cent replay, signal chronology, max lot, settlement, expenses, monthly taxes, wealth and drawdown"
+      },
+      "result": {
+        "status": "CONDITIONAL_SIMULATION",
+        "arm": "hold",
+        "capital": 5000.0,
+        "start": "2022-01-03",
+        "end": "2026-09-08",
+        "sessions": 1170,
+        "final_wealth": 3513.56,
+        "profit": -1486.44,
+        "max_drawdown": 0.3476106901146376,
+        "minimum_wealth": 3334.29,
+        "fees": 60.61,
+        "expenses": 2850.0,
+        "tax": 240.63,
+        "loss_carry": 0.0,
+        "order_count": 2,
+        "exposure_fraction": 0.9991452991452991,
+        "year_profit": {
+          "2022": -538.11,
+          "2023": -111.2,
+          "2024": -862.4,
+          "2025": 214.6,
+          "2026": -189.33
+        },
+        "source_gates": "Events/cost completeness are external; not certified by this simulator"
+      }
+    },
+    {
+      "kind": "VALUATION",
+      "start": "2022-01-03",
+      "end": "2026-09-08",
+      "specification": "adverse",
+      "capital": 10000,
+      "arm": "trend",
+      "verification": {
+        "status": "PASS",
+        "checked_sessions": 1170,
+        "method": "Separate integer-cent replay, signal chronology, max lot, settlement, expenses, monthly taxes, wealth and drawdown"
+      },
+      "result": {
+        "status": "CONDITIONAL_SIMULATION",
+        "arm": "trend",
+        "capital": 10000.0,
+        "start": "2022-01-03",
+        "end": "2026-09-08",
+        "sessions": 1170,
+        "final_wealth": 6579.84,
+        "profit": -3420.16,
+        "max_drawdown": 0.444091,
+        "minimum_wealth": 5559.09,
+        "fees": 464.26,
+        "expenses": 2850.0,
+        "tax": 0.0,
+        "loss_carry": 570.16,
+        "order_count": 12,
+        "exposure_fraction": 0.7128205128205128,
+        "year_profit": {
+          "2022": -2359.32,
+          "2023": -334.42,
+          "2024": -1303.34,
+          "2025": 264.97,
+          "2026": 311.95
+        },
+        "source_gates": "Events/cost completeness are external; not certified by this simulator"
+      }
+    },
+    {
+      "kind": "VALUATION",
+      "start": "2022-01-03",
+      "end": "2026-09-08",
+      "specification": "adverse",
+      "capital": 10000,
+      "arm": "hold",
+      "verification": {
+        "status": "PASS",
+        "checked_sessions": 1170,
+        "method": "Separate integer-cent replay, signal chronology, max lot, settlement, expenses, monthly taxes, wealth and drawdown"
+      },
+      "result": {
+        "status": "CONDITIONAL_SIMULATION",
+        "arm": "hold",
+        "capital": 10000.0,
+        "start": "2022-01-03",
+        "end": "2026-09-08",
+        "sessions": 1170,
+        "final_wealth": 12007.47,
+        "profit": 2007.47,
+        "max_drawdown": 0.1965520926615884,
+        "minimum_wealth": 8720.72,
+        "fees": 112.13,
+        "expenses": 2850.0,
+        "tax": 857.2,
+        "loss_carry": 0.0,
+        "order_count": 2,
+        "exposure_fraction": 0.9991452991452991,
+        "year_profit": {
+          "2022": -333.38,
+          "2023": 1110.8,
+          "2024": -1518.4,
+          "2025": 2251.1,
+          "2026": 497.35
+        },
+        "source_gates": "Events/cost completeness are external; not certified by this simulator"
+      }
+    }
+  ],
+  "comparisons": [
+    {
+      "start": "2018-01-02",
+      "end": "2026-09-08",
+      "specification": "reference",
+      "capital": 5000,
+      "trend_profit": -730.04,
+      "hold_profit": 3627.73,
+      "increment": -4357.77,
+      "construction_budget_supported_by_increment": 0
+    },
+    {
+      "start": "2018-01-02",
+      "end": "2026-09-08",
+      "specification": "reference",
+      "capital": 10000,
+      "trend_profit": -4.4,
+      "hold_profit": 10188.46,
+      "increment": -10192.86,
+      "construction_budget_supported_by_increment": 0
+    },
+    {
+      "start": "2018-01-02",
+      "end": "2026-09-08",
+      "specification": "adverse",
+      "capital": 5000,
+      "trend_profit": null,
+      "hold_profit": null,
+      "increment": null,
+      "construction_budget_supported_by_increment": null
+    },
+    {
+      "start": "2018-01-02",
+      "end": "2026-09-08",
+      "specification": "adverse",
+      "capital": 10000,
+      "trend_profit": -5540.43,
+      "hold_profit": 259.43,
+      "increment": -5799.86,
+      "construction_budget_supported_by_increment": 0
+    },
+    {
+      "start": "2018-01-02",
+      "end": "2021-12-30",
+      "specification": "reference",
+      "capital": 5000,
+      "trend_profit": -254.53,
+      "hold_profit": 862.76,
+      "increment": -1117.29,
+      "construction_budget_supported_by_increment": 0
+    },
+    {
+      "start": "2018-01-02",
+      "end": "2021-12-30",
+      "specification": "reference",
+      "capital": 10000,
+      "trend_profit": 55.81,
+      "hold_profit": 2214.03,
+      "increment": -2158.22,
+      "construction_budget_supported_by_increment": 0
+    },
+    {
+      "start": "2018-01-02",
+      "end": "2021-12-30",
+      "specification": "adverse",
+      "capital": 5000,
+      "trend_profit": -2522.56,
+      "hold_profit": -1794.8,
+      "increment": -727.76,
+      "construction_budget_supported_by_increment": 0
+    },
+    {
+      "start": "2018-01-02",
+      "end": "2021-12-30",
+      "specification": "adverse",
+      "capital": 10000,
+      "trend_profit": -2420.82,
+      "hold_profit": -303.33,
+      "increment": -2117.49,
+      "construction_budget_supported_by_increment": 0
+    },
+    {
+      "start": "2022-01-03",
+      "end": "2026-09-08",
+      "specification": "reference",
+      "capital": 5000,
+      "trend_profit": -417.2,
+      "hold_profit": 2234.14,
+      "increment": -2651.34,
+      "construction_budget_supported_by_increment": 0
+    },
+    {
+      "start": "2022-01-03",
+      "end": "2026-09-08",
+      "specification": "reference",
+      "capital": 10000,
+      "trend_profit": -96.01,
+      "hold_profit": 5749.95,
+      "increment": -5845.96,
+      "construction_budget_supported_by_increment": 0
+    },
+    {
+      "start": "2022-01-03",
+      "end": "2026-09-08",
+      "specification": "adverse",
+      "capital": 5000,
+      "trend_profit": -2907.33,
+      "hold_profit": -1486.44,
+      "increment": -1420.89,
+      "construction_budget_supported_by_increment": 0
+    },
+    {
+      "start": "2022-01-03",
+      "end": "2026-09-08",
+      "specification": "adverse",
+      "capital": 10000,
+      "trend_profit": -3420.16,
+      "hold_profit": 2007.47,
+      "increment": -5427.63,
+      "construction_budget_supported_by_increment": 0
+    }
+  ],
+  "expected": 24,
+  "actual": 24,
+  "accounting_pass": 22,
+  "expected_infeasible": 2,
+  "checked_sessions": 30226,
+  "errors": [],
+  "verdict": "H22_REJECTED_IN_REGISTERED_SCENARIOS; HISTORICAL_HOLD_PROFIT_CONDITIONAL; FULL_OR_FUTURE_PROFIT_NOT_VALIDATED"
+}

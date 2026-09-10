@@ -1,0 +1,96 @@
+{
+  "sources": [
+    {
+      "year": 2017,
+      "path": "C:\\STOCKS\\work\\profit-validation-r5-20260910\\raw\\COTAHIST_A2017.ZIP",
+      "sha256": "af6aaa85187c1d58ec6565522644066da573a7dc5b579c1d4c906ae95a2dea86",
+      "spot_sessions": 246,
+      "bova_records": 246,
+      "url": "https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2017.ZIP"
+    },
+    {
+      "year": 2018,
+      "path": "C:\\STOCKS\\work\\h21\\raw\\COTAHIST_A2018.ZIP",
+      "sha256": "9d66136179d9822476c6035000167aecf2665f4396619e4d74c0011745a0c507",
+      "spot_sessions": 245,
+      "bova_records": 245,
+      "url": "https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2018.ZIP"
+    },
+    {
+      "year": 2019,
+      "path": "C:\\STOCKS\\work\\h21\\raw\\COTAHIST_A2019.ZIP",
+      "sha256": "5170d3f8f079c3306424b36c2fae9b467391f8fa37d16d389f487b4c5c28edb9",
+      "spot_sessions": 248,
+      "bova_records": 248,
+      "url": "https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2019.ZIP"
+    },
+    {
+      "year": 2020,
+      "path": "C:\\STOCKS\\work\\h21\\raw\\COTAHIST_A2020.ZIP",
+      "sha256": "86442168939b9da7b3cc1ec1662c333ee5ab4c75f2be1865b5bf55ba4c52168f",
+      "spot_sessions": 249,
+      "bova_records": 249,
+      "url": "https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2020.ZIP"
+    },
+    {
+      "year": 2021,
+      "path": "C:\\STOCKS\\work\\h21\\raw\\COTAHIST_A2021.ZIP",
+      "sha256": "b0d4aed17d609c7ba615a23320c2fd513b580a251ae7d884a5015ef8a3fe4705",
+      "spot_sessions": 247,
+      "bova_records": 247,
+      "url": "https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2021.ZIP"
+    },
+    {
+      "year": 2022,
+      "path": "C:\\STOCKS\\work\\h21\\raw\\COTAHIST_A2022.ZIP",
+      "sha256": "a4f9015b755f797d9c08b0d13f19dbfab18a6c75f379c0271a1cf1b5f6323cd8",
+      "spot_sessions": 250,
+      "bova_records": 250,
+      "url": "https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2022.ZIP"
+    },
+    {
+      "year": 2023,
+      "path": "C:\\STOCKS\\work\\h21\\raw\\COTAHIST_A2023.ZIP",
+      "sha256": "ad1603788d78aaa1de806498572277f1d9443f88ae116452751b5800cb23523e",
+      "spot_sessions": 248,
+      "bova_records": 248,
+      "url": "https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2023.ZIP"
+    },
+    {
+      "year": 2024,
+      "path": "C:\\STOCKS\\work\\h21\\raw\\COTAHIST_A2024.ZIP",
+      "sha256": "96a003d10fab0fa2ace0c64cdc2b892b4c111adf9da8e538aa0b28437bd2a172",
+      "spot_sessions": 251,
+      "bova_records": 251,
+      "url": "https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2024.ZIP"
+    },
+    {
+      "year": 2025,
+      "path": "C:\\STOCKS\\work\\h21\\raw\\COTAHIST_A2025.ZIP",
+      "sha256": "6cc0ad851c8f605ca30418acac48be81f1767f6ed05b4f563772d06ae448047d",
+      "spot_sessions": 250,
+      "bova_records": 250,
+      "url": "https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2025.ZIP"
+    },
+    {
+      "year": 2026,
+      "path": "C:\\STOCKS\\work\\h21-source-closure-20260909\\raw\\COTAHIST_A2026.complete.ZIP",
+      "sha256": "b352157a252a9a31aed1be3a3f55d043785517d652f65ac715892cf2ddaa839a",
+      "spot_sessions": 171,
+      "bova_records": 171,
+      "url": "https://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2026.ZIP"
+    }
+  ],
+  "prior_quotes_sha256": "813a21aa335a84fb4288f125613dd3aab40b30d1c32a53e4e96c065431bc7adb",
+  "calendar_2026_sha256": "e0bea0bc67021513a0a7939ab206f087046142d6a02a230257f65843f5c627f6",
+  "coverage": "2017-2025 all spot dates observed in original annual archives; 2026 official calendar checked. Earlier full closure calendars not independently recovered.",
+  "events_certified": false,
+  "costs_certified": false,
+  "input_sha256": "706dcbecaabc642d1719e2cf04ca872919dc6246d3cacfc9f1874faab4cd58b8",
+  "records": 2405,
+  "calendar_sessions": 2481,
+  "created_at": "2026-09-10T14:05:39.080015+00:00",
+  "status": "BEFORE_H22_OUTPUTS",
+  "prior_prices_reconciled": 2159,
+  "warmup_prices": 246
+}

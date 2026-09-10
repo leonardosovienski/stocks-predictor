@@ -1,0 +1,26 @@
+{
+  "observed_at": "2026-09-10T14:15:11.196953+00:00",
+  "status": "PASS",
+  "identical_valuations": 24,
+  "identical_daily_observations": 30226,
+  "new_economic_evidence": false,
+  "primary_identity": {
+    "kind": "START",
+    "started_at": "2026-09-10T14:06:06.867122+00:00",
+    "protocol_sha256": "cd8c8cfbadc2edcba5b5e91502df9df7c570b6f31bf2cd943efd23037cc80ea0",
+    "inputs_sha256": "706dcbecaabc642d1719e2cf04ca872919dc6246d3cacfc9f1874faab4cd58b8",
+    "python": "3.12.14",
+    "head": "b248a53c1707bd4f364277a51bf16d7071d817c9"
+  },
+  "reproduction_identity": {
+    "kind": "START",
+    "started_at": "2026-09-10T14:14:11.060951+00:00",
+    "protocol_sha256": "cd8c8cfbadc2edcba5b5e91502df9df7c570b6f31bf2cd943efd23037cc80ea0",
+    "inputs_sha256": "706dcbecaabc642d1719e2cf04ca872919dc6246d3cacfc9f1874faab4cd58b8",
+    "python": "3.12.14",
+    "head": "f222f0f08d6652610186e4f7348156c6e96214de"
+  },
+  "primary_sha256": "6181988b25d8dcdeb9f0695ccf5d4413b71d74e14718567a02d51d16550b4b39",
+  "reproduction_sha256": "e29542f0006174d66df58d70e1a77016cb01bd961fd1789b62410ef71347cf4c",
+  "scope": "All result, order, tax and curve fields identical. Metadata timestamps/code commit differ; this is repeatability, not a new independent trial."
+}
