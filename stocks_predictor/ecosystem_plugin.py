@@ -15,7 +15,7 @@ class StocksPredictorPlugin:
         return {
             "domain": self.domain,
             "status": "WAITING",
-            "version": "0.1.0",
+            "version": "0.2.0",
             "details": {
                 "mode": "research",
                 "active_line": "H21_BOVA11_CONDITIONAL_RESEARCH",

@@ -26,7 +26,7 @@
     },
     {
       "path": "pyproject.toml",
-      "sha256": "e5befe8630153a6b1b35cbf14d0f36b5aa0352f53e8a1f2be333d94f1eed8609"
+      "sha256": "1f44796c3a8272083958ce6c2f8b4d44de08dd01261f1362958973032ede9f9b"
     },
     {
       "path": "stocks_predictor/__init__.py",
@@ -126,7 +126,7 @@
     },
     {
       "path": "stocks_predictor/ecosystem_plugin.py",
-      "sha256": "704a6e41dcc5b1d4145cdc58622239fbe4322e8a0c705710e1c2e42b5d8c2d64"
+      "sha256": "ac2ed24d4669b49c8eb35dddb860a775c55b998a259ce90c547f6d4fabfe4715"
     },
     {
       "path": "stocks_predictor/entry_feasibility.py",
@@ -762,7 +762,7 @@
     },
     {
       "path": "uv.lock",
-      "sha256": "795baccf13d592deede9a80b9434d967872e30af25ea508a49ee7c05a8f8e6a0"
+      "sha256": "5ab7161677019ed6db3b9b33c9ce341b93f617b2799572d191c4405ae530f028"
     }
   ],
   "historical_and_run_sha256": {
@@ -779,10 +779,12 @@
     "docs/engineering/2026-09-10-r8/evidence/preservation.json": "4a62c8857b6c897f6cf0f386532af24d3645a173ae3f41f89f2d51a50dfad855",
     "docs/engineering/2026-09-10-r8/evidence/real.json": "490a2c168064a554abdb90c0a48ecbbca197d830099d38a4c1e21280decb28a6",
     "docs/engineering/2026-09-11-architecture/evidence/real-final.json": "c531fee75753a379a559c5f7f53660f84bbf09db5aacbb925487b41093d7cc29",
-    "docs/engineering/2026-09-11-architecture/evidence/capacity-final.json": "674a0bc6cba6864b30843a6715804cfbd7b62789ded9fb1b375b1ef2bc9fef38"
+    "docs/engineering/2026-09-11-architecture/evidence/capacity-final.json": "674a0bc6cba6864b30843a6715804cfbd7b62789ded9fb1b375b1ef2bc9fef38",
+    "docs/engineering/2026-09-11-architecture/evidence/real-v020.json": "7699aa83c78f44bf0fef63d960e10334f125b01dcb264e88ef0efae2855a067d",
+    "docs/engineering/2026-09-11-architecture/evidence/capacity-v020.json": "40419d8b0035cfa7f7a0adb327d91caf7dafb05763388b93f92359d14213f505"
   },
-  "real_validation": "docs/engineering/2026-09-11-architecture/evidence/real-final.json",
-  "capacity_validation": "docs/engineering/2026-09-11-architecture/evidence/capacity-final.json",
+  "real_validation": "docs/engineering/2026-09-11-architecture/evidence/real-v020.json",
+  "capacity_validation": "docs/engineering/2026-09-11-architecture/evidence/capacity-v020.json",
   "capital_enabled": false,
   "profit_certified": false,
   "prior_validation_status": "LOCAL_VALIDATED_CI_PENDING",
