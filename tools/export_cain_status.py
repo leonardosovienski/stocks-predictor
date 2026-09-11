@@ -6,6 +6,8 @@ import argparse
 from datetime import datetime, timezone
 import hashlib
 import json
+import os
+import tempfile
 from pathlib import Path
 import re
 import subprocess
@@ -20,13 +22,17 @@ def canonical(value):
 def digest(raw):
     return hashlib.sha256(raw).hexdigest()
 
-def export(root, expected_sha, output):
+def export(root, expected_sha, output, exported_at=None):
     root = Path(root).resolve(strict=True)
     output = Path(output).resolve()
     if output.is_relative_to(root):
         raise ValueError("Publication must be outside the source checkout")
     if not re.fullmatch("[a-f0-9]{64}", expected_sha):
         raise ValueError("Explicit SHA-256 admission required")
+    if exported_at is not None:
+        parsed = datetime.fromisoformat(exported_at.replace("Z", "+00:00"))
+        if parsed.tzinfo is None:
+            raise ValueError("Publication timestamp requires timezone")
     source = root / SOURCE
     current = source
     while current != root:
@@ -71,7 +77,7 @@ def export(root, expected_sha, output):
             publisher=DOMAIN + "-local", stream="public-status-reports",
             code_revision=revision, exporter_revision="sha256:" + digest(Path(__file__).read_bytes()),
             inputs={SOURCE: expected_sha}),
-        exported_at=datetime.now(timezone.utc).isoformat(),
+        exported_at=exported_at or datetime.now(timezone.utc).isoformat(),
         restrictions=dict(policy=DOMAIN + "-public-status-local/1",
                           read=True, disclose=False, generate=True),
         coverage=dict(scope="Selected public documented status rows", completeness="partial",
@@ -83,8 +89,26 @@ def export(root, expected_sha, output):
         records=records, evidence=evidence)
     package["publication_id"] = digest(canonical(package))
     output.parent.mkdir(parents=True, exist_ok=True)
-    with output.open("xb") as handle:
-        handle.write(canonical(package))
+    content = canonical(package)
+    descriptor, staging = tempfile.mkstemp(prefix=".publication-", dir=output.parent)
+    try:
+        with os.fdopen(descriptor, "wb") as handle:
+            handle.write(content)
+            handle.flush()
+            os.fsync(handle.fileno())
+        try:
+            os.link(staging, output)
+        except FileExistsError:
+            if output.is_symlink() or output.read_bytes() != content:
+                raise
+        if os.name != "nt":
+            directory = os.open(output.parent, os.O_RDONLY)
+            try:
+                os.fsync(directory)
+            finally:
+                os.close(directory)
+    finally:
+        Path(staging).unlink(missing_ok=True)
     return dict(publication_id=package["publication_id"], records=len(records),
                 source_sha256=expected_sha, source_revision=revision)
 
@@ -93,6 +117,7 @@ def main():
     parser.add_argument("--root", type=Path, required=True)
     parser.add_argument("--expected-sha", required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--exported-at", help="Fixed aware timestamp for retrying the identical publication")
     print(json.dumps(export(**vars(parser.parse_args())), ensure_ascii=False))
 
 if __name__ == "__main__":

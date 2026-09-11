@@ -26,7 +26,7 @@
     },
     {
       "path": "pyproject.toml",
-      "sha256": "7497d28bc7fa91492c0716632efa4412c837e22ae11910515ec84e2b35352532"
+      "sha256": "e5befe8630153a6b1b35cbf14d0f36b5aa0352f53e8a1f2be333d94f1eed8609"
     },
     {
       "path": "stocks_predictor/__init__.py",
@@ -710,7 +710,7 @@
     },
     {
       "path": "tools/export_cain_status.py",
-      "sha256": "ebf5f11edeeb013fb9169dbfd5f03df05fb49827ba6b8d259dc4c2495faf6312"
+      "sha256": "c319ebfcc5f8847362a6550c660a326eb22464ff5b7aa0daded3bcef2038de4d"
     },
     {
       "path": "tools/ingest_dividends_real.py",
@@ -750,7 +750,7 @@
     },
     {
       "path": "tools/test_export_cain_status.py",
-      "sha256": "51969760cd825360394acfcd0fc945bca35cdbbf79691d613068c79914f4c331"
+      "sha256": "95c4d0616bd88fcb1201ddcc6994a3e74debeedcac20b8da1a51c40c2296fae6"
     },
     {
       "path": "tools/test_real_integration.py",
@@ -762,7 +762,7 @@
     },
     {
       "path": "uv.lock",
-      "sha256": "91664e0e691e304807c0bb96813e2010c89d1dd9e0f242501f7676aff8ad51b6"
+      "sha256": "795baccf13d592deede9a80b9434d967872e30af25ea508a49ee7c05a8f8e6a0"
     }
   ],
   "historical_and_run_sha256": {
@@ -785,7 +785,7 @@
   "capacity_validation": "docs/engineering/2026-09-11-architecture/evidence/capacity-final.json",
   "capital_enabled": false,
   "profit_certified": false,
-  "prior_validation_status": "VALIDATED_LOCAL_AND_CI",
+  "prior_validation_status": "LOCAL_VALIDATED_CI_PENDING",
   "architecture_candidate_date": "2026-09-11",
   "architecture_validation_scope": "Fresh scratch databases; preserved public archive; synthetic capacity; current Linux CI and installed wheel pending. Historical receipts remain byte-stable."
 }
