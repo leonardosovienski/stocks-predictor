@@ -3,3 +3,7 @@
 # Current manifest separates path and digest. No rule or directory is disabled.
 d57ffa65d8c8a68b70fec87a07744cffa864cb27:docs/engineering/2026-09-10-r8/evidence.json:generic-api-key:156
 d57ffa65d8c8a68b70fec87a07744cffa864cb27:docs/engineering/2026-09-10-r8/evidence.json:generic-api-key:173
+
+# Reviewed historical false positives: constant import and SHA256 source manifest.
+3b5e8b1398d9c68d66e74d27cee39b81f5710c19:src/trials_gate.py:generic-api-key:85
+36f83dc9fecd9bd11b29cf837a07b2f1d37a207a:vendor/predictor_core/CORE_MANIFEST.json:generic-api-key:11
