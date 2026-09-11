@@ -1,5 +1,32 @@
 # Continuidade do Stocks Predictor
 
+## Exportação local de relatos para Cain — 11/09/2026
+
+[tools/export_cain_status.py](tools/export_cain_status.py) é um exportador stdlib
+independente do runtime científico. Lê somente `STOCKS_CURRENT_STATE.md`, com SHA-256
+previamente conferido e fonte commitada. Preserva estados literais, offsets, hashes,
+cobertura parcial e tempos desconhecidos. Não abre bancos, usa LLM ou executa pipeline.
+Publicações desta instalação ficam em `C:\STOCKS\work\cain-l0\publications`.
+Cain recebe cópias autorizadas; este produtor continua independente do consumidor.
+
+```text
+python tools/export_cain_status.py --root CAMINHO_DO_CHECKOUT --expected-sha SHA256_CONFERIDO --output DESTINO_NOVO_FORA_DO_CHECKOUT.json
+python tools/test_export_cain_status.py
+```
+
+O destino deve permanecer na raiz local autorizada do projeto. Não reutilizar um hash
+antigo depois de mudar a fonte. A publicação é ResearchSnapshotV1; o consumidor usa o
+validador canônico do contrato. O exportador não impõe instalações ao ambiente científico.
+No Windows, os checks usam Python auxiliar stdlib; temporários ficam na raiz do projeto.
+
+Integração real Stocks → Cain exercitada nesta rodada: exportação, validação
+canônica, importação/reimportação, consulta na interface, referências e recuperação
+sem acesso ao produtor. É integração de relatos públicos selecionados, sem nova
+validação científica/econômica. O estado do runtime e os protocolos anteriores permanecem.
+Mudança restrita a ferramentas de intercâmbio; não altera pacote ou recibos R8/operacionais.
+Branch de continuidade deste incremento: `integration/cain-status-20260911`.
+
+
 Leia [AGENTS](AGENTS.md), [estado atual](STOCKS_CURRENT_STATE.md),
 [mandato integral](docs/continuation/PROMPT_AUDITORIA_INTEGRAL_20260909.md) e
 [índice documental](docs/DOCUMENTATION_INDEX.md). Antes de agir, confira HEAD,
