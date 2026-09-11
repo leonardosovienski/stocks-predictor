@@ -10,7 +10,7 @@
     },
     {
       "path": ".github/workflows/ci.yml",
-      "sha256": "28926322113635b6cd9b3a8459a01292ba1e6e6f9b5745e8c70c8f42c149e3fe"
+      "sha256": "48b09a7a19ad38b5d809da3abd84a7b8cf65e85f93bf3427c0fd484d6db96afe"
     },
     {
       "path": ".gitleaks.toml",
