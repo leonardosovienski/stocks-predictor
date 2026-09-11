@@ -701,6 +701,10 @@
       "sha256": "7f217afa1aef9613d7ff17cb86621719fcfd4fc32178a9bd3cc67e95da175a6c"
     },
     {
+      "path": "tools/export_cain_status.py",
+      "sha256": "ebf5f11edeeb013fb9169dbfd5f03df05fb49827ba6b8d259dc4c2495faf6312"
+    },
+    {
       "path": "tools/ingest_dividends_real.py",
       "sha256": "13c5a47dddfed729532c6fbd79ecbac7a2e3050b5111edfe926340a18c5fccab"
     },
@@ -735,6 +739,10 @@
     {
       "path": "tools/reproducible_build.py",
       "sha256": "e03d807e8366fd1a095f4905b5f9429330557a935459176a1205f30f17b3225c"
+    },
+    {
+      "path": "tools/test_export_cain_status.py",
+      "sha256": "51969760cd825360394acfcd0fc945bca35cdbbf79691d613068c79914f4c331"
     },
     {
       "path": "tools/test_real_integration.py",
