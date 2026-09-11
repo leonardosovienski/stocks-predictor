@@ -1,0 +1,66 @@
+{
+  "run_id": "OSS-20260911-01",
+  "continuation": "v3; append-only, no discovery or new baseline",
+  "observed_at": "2026-09-11T03:38:01.912545+00:00",
+  "prior_C_E_states": "Unchanged. Earlier FAIL and classifications remain immutable; this delta records narrower new observations.",
+  "gate_transitions": [
+    {
+      "id": "X03",
+      "from": "G1 diagnostic preregistration",
+      "to": "diagnosis completed under stop rule",
+      "scope": "UNC02 mechanism only, not approval of inference for X05",
+      "related": [
+        "K05",
+        "K06",
+        "C02"
+      ]
+    },
+    {
+      "id": "X01",
+      "from": "document controls",
+      "to": "event-input coverage and partial issuer/time join measured",
+      "scope": "X05 data gate remains blocked",
+      "related": [
+        "K01",
+        "K02",
+        "K03",
+        "C01"
+      ]
+    },
+    {
+      "id": "X02",
+      "from": "outline",
+      "to": "12 analytic cases and versions fixed; adapter and Linux execution blocked",
+      "scope": "no independent engine executed",
+      "related": [
+        "K08",
+        "C02"
+      ]
+    },
+    {
+      "id": "X04",
+      "from": "outline",
+      "to": "protocol and 3 synthetic decomposition controls passed",
+      "scope": "not market attribution or statistical alpha",
+      "related": [
+        "K07",
+        "K09",
+        "K10",
+        "K21",
+        "C03"
+      ]
+    },
+    {
+      "id": "X05",
+      "from": "BLOCKED_DATA",
+      "to": "BLOCKED_DATA/ACCOUNTING/INFERENCE/LINEAGE",
+      "scope": "four arms specified; no execution",
+      "related": [
+        "K11",
+        "K12",
+        "K16"
+      ]
+    }
+  ],
+  "single_next_action": "X01: reconstruct one complete TOTS3/BRTOTSACNOR8 information interval2020-04-01..2020-07-01, including3-for-1 split on2020-05-04 and credit2020-05-06; verify identity/PIT/full events/units/cash/cost scenario before expanding population. Chosen for material timing boundary and existing primary lineage, not return."
+}

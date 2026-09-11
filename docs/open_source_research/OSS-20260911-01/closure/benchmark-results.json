@@ -1,0 +1,821 @@
+{
+  "K05": {
+    "parameters": {
+      "start": 0,
+      "end": 10,
+      "decision": 10,
+      "center": 4.5,
+      "scale": 2.8722813232690143,
+      "n": 10
+    },
+    "future_rows_ignored": 100,
+    "unprotected_all_rows_mean": 909090909.5,
+    "protected_mean": 4.5,
+    "baseline_scope": "No general ML fitted-transform contract in inspected runtime; all-row fit is deliberately flawed ablation, not production behavior",
+    "decision": "INTEGRATE_CANDIDATE"
+  },
+  "K07": {
+    "pooled_ic_flawed_ablation": 0.5238095238095238,
+    "correct_date_ic": -1.0,
+    "report": {
+      "dates": [
+        {
+          "date": 0,
+          "eligible": 4,
+          "observed_pairs": 4,
+          "missing_labels": 0,
+          "rank_ic": -1.0,
+          "top": [
+            "A4"
+          ],
+          "bottom": [
+            "A1"
+          ],
+          "spread": -3,
+          "tie_policy": "average ranks for IC; asset ID for quantile membership",
+          "ic_scope": "observed pairs; completeness reported, not universe-certified"
+        },
+        {
+          "date": 1,
+          "eligible": 4,
+          "observed_pairs": 4,
+          "missing_labels": 0,
+          "rank_ic": -1.0,
+          "top": [
+            "A4"
+          ],
+          "bottom": [
+            "A1"
+          ],
+          "spread": -3,
+          "tie_policy": "average ranks for IC; asset ID for quantile membership",
+          "ic_scope": "observed pairs; completeness reported, not universe-certified"
+        }
+      ],
+      "mean_date_ic": -1.0,
+      "valid_dates": 2,
+      "total_dates": 2,
+      "inference": "NONE"
+    },
+    "permutations_checked": 120,
+    "oracle_max_error": 1.1102230246251565e-16,
+    "missing_label_case": {
+      "dates": [
+        {
+          "date": 0,
+          "eligible": 4,
+          "observed_pairs": 3,
+          "missing_labels": 1,
+          "rank_ic": -1.0,
+          "top": [
+            "A4"
+          ],
+          "bottom": [
+            "A1"
+          ],
+          "spread": null,
+          "tie_policy": "average ranks for IC; asset ID for quantile membership",
+          "ic_scope": "observed pairs; completeness reported, not universe-certified"
+        },
+        {
+          "date": 1,
+          "eligible": 4,
+          "observed_pairs": 4,
+          "missing_labels": 0,
+          "rank_ic": -1.0,
+          "top": [
+            "A4"
+          ],
+          "bottom": [
+            "A1"
+          ],
+          "spread": -3,
+          "tie_policy": "average ranks for IC; asset ID for quantile membership",
+          "ic_scope": "observed pairs; completeness reported, not universe-certified"
+        }
+      ],
+      "mean_date_ic": -1.0,
+      "valid_dates": 2,
+      "total_dates": 2,
+      "inference": "NONE"
+    },
+    "baseline_scope": "existing selector supplies membership; diagnostic panel is incremental; pooled IC is deliberate ablation",
+    "decision": "INTEGRATE_CANDIDATE"
+  },
+  "K22": {
+    "raw_score_ic_with_planted_residual": 0.4879500364742666,
+    "neutralized_ic": 1.0,
+    "group_component_mean_abs_before": 10,
+    "group_component_mean_abs_after": 0,
+    "reversal_ic": -1.0,
+    "pure_factor_residual_ic": null,
+    "decision": "INTEGRATE_CANDIDATE_DIAGNOSTIC_ONLY",
+    "economic_note": "neutralization removes group information including genuine future group premia; not a universally better signal"
+  },
+  "K21": {
+    "cases": {
+      "valid": {
+        "eligible": true,
+        "reason": "OK",
+        "participation": 0.01,
+        "volume_forecast_brl": 100000,
+        "assumption": "arithmetic average of supplied lagged observations; no guarantee of next-session liquidity"
+      },
+      "insufficient": {
+        "eligible": false,
+        "reason": "INSUFFICIENT_AVAILABLE_VOLUME",
+        "participation": null
+      },
+      "late": {
+        "eligible": false,
+        "reason": "INSUFFICIENT_AVAILABLE_VOLUME",
+        "participation": null
+      },
+      "zero": {
+        "eligible": false,
+        "reason": "INVALID_VOLUME",
+        "participation": null
+      },
+      "negative": {
+        "eligible": false,
+        "reason": "INVALID_VOLUME",
+        "participation": null
+      },
+      "oversized": {
+        "eligible": false,
+        "reason": "PARTICIPATION_LIMIT",
+        "participation": 0.02,
+        "volume_forecast_brl": 100000,
+        "assumption": "arithmetic average of supplied lagged observations; no guarantee of next-session liquidity"
+      }
+    },
+    "rejected": 5,
+    "accepted": 1,
+    "baseline_scope": "universe liquidity rank does not promise feasibility of an individual order; no production universe bug alleged",
+    "decision": "INTEGRATE_CANDIDATE"
+  },
+  "K09": {
+    "full": {
+      "final_nav_cost_only": 0.9243158144028651,
+      "cash_cost_initial_nav": 0.07568418559713523,
+      "sum_turnover": 19.63670752193206,
+      "records": [
+        {
+          "pre_fee_weights": {
+            "D": 0.49,
+            "CASH": 0.02,
+            "A": 0.0,
+            "B": 0.0,
+            "C": 0.49
+          },
+          "turnover": 0.98,
+          "traded_notional_fraction": 1.96,
+          "cost_fraction_initial_nav": 0.00392,
+          "cash_fraction_initial_nav_after_fee": 0.01608,
+          "nav_fraction_after_fee": 0.99608,
+          "target_completion": 1,
+          "scope": "feasible radial interpolation, NOT objective-optimal portfolio; caps measured vs pretrade NAV"
+        },
+        {
+          "pre_fee_weights": {
+            "D": 0.0,
+            "CASH": 0.02,
+            "A": 0.49,
+            "B": 0.49,
+            "C": 0.0
+          },
+          "turnover": 0.9819283591679383,
+          "traded_notional_fraction": 1.9638567183358766,
+          "cost_fraction_initial_nav": 0.003927713436671754,
+          "cash_fraction_initial_nav_after_fee": 0.016072286563328247,
+          "nav_fraction_after_fee": 0.9960722865633282,
+          "target_completion": 1,
+          "scope": "feasible radial interpolation, NOT objective-optimal portfolio; caps measured vs pretrade NAV"
+        },
+        {
+          "pre_fee_weights": {
+            "D": 0.49,
+            "CASH": 0.02,
+            "A": 0.0,
+            "B": 0.0,
+            "C": 0.49
+          },
+          "turnover": 0.9819321685884961,
+          "traded_notional_fraction": 1.9638643371769922,
+          "cost_fraction_initial_nav": 0.003927728674353984,
+          "cash_fraction_initial_nav_after_fee": 0.016072271325646016,
+          "nav_fraction_after_fee": 0.996072271325646,
+          "target_completion": 1,
+          "scope": "feasible radial interpolation, NOT objective-optimal portfolio; caps measured vs pretrade NAV"
+        },
+        {
+          "pre_fee_weights": {
+            "D": 0.0,
+            "CASH": 0.02,
+            "A": 0.49,
+            "B": 0.49,
+            "C": 0.0
+          },
+          "turnover": 0.9819321761139601,
+          "traded_notional_fraction": 1.9638643522279202,
+          "cost_fraction_initial_nav": 0.00392772870445584,
+          "cash_fraction_initial_nav_after_fee": 0.01607227129554416,
+          "nav_fraction_after_fee": 0.9960722712955442,
+          "target_completion": 1,
+          "scope": "feasible radial interpolation, NOT objective-optimal portfolio; caps measured vs pretrade NAV"
+        },
+        {
+          "pre_fee_weights": {
+            "D": 0.49,
+            "CASH": 0.02,
+            "A": 0.0,
+            "B": 0.0,
+            "C": 0.49
+          },
+          "turnover": 0.9819321761288266,
+          "traded_notional_fraction": 1.963864352257653,
+          "cost_fraction_initial_nav": 0.0039277287045153065,
+          "cash_fraction_initial_nav_after_fee": 0.016072271295484695,
+          "nav_fraction_after_fee": 0.9960722712954847,
+          "target_completion": 1,
+          "scope": "feasible radial interpolation, NOT objective-optimal portfolio; caps measured vs pretrade NAV"
+        },
+        {
+          "pre_fee_weights": {
+            "D": 0.0,
+            "CASH": 0.02,
+            "A": 0.49,
+            "B": 0.49,
+            "C": 0.0
+          },
+          "turnover": 0.981932176128856,
+          "traded_notional_fraction": 1.963864352257712,
+          "cost_fraction_initial_nav": 0.0039277287045154236,
+          "cash_fraction_initial_nav_after_fee": 0.016072271295484577,
+          "nav_fraction_after_fee": 0.9960722712954846,
+          "target_completion": 1,
+          "scope": "feasible radial interpolation, NOT objective-optimal portfolio; caps measured vs pretrade NAV"
+        },
+        {
+          "pre_fee_weights": {
+            "D": 0.49,
+            "CASH": 0.02,
+            "A": 0.0,
+            "B": 0.0,
+            "C": 0.49
+          },
+          "turnover": 0.981932176128856,
+          "traded_notional_fraction": 1.963864352257712,
+          "cost_fraction_initial_nav": 0.0039277287045154236,
+          "cash_fraction_initial_nav_after_fee": 0.016072271295484577,
+          "nav_fraction_after_fee": 0.9960722712954846,
+          "target_completion": 1,
+          "scope": "feasible radial interpolation, NOT objective-optimal portfolio; caps measured vs pretrade NAV"
+        },
+        {
+          "pre_fee_weights": {
+            "D": 0.0,
+            "CASH": 0.02,
+            "A": 0.49,
+            "B": 0.49,
+            "C": 0.0
+          },
+          "turnover": 0.981932176128856,
+          "traded_notional_fraction": 1.963864352257712,
+          "cost_fraction_initial_nav": 0.0039277287045154236,
+          "cash_fraction_initial_nav_after_fee": 0.016072271295484577,
+          "nav_fraction_after_fee": 0.9960722712954846,
+          "target_completion": 1,
+          "scope": "feasible radial interpolation, NOT objective-optimal portfolio; caps measured vs pretrade NAV"
+        },
+        {
+          "pre_fee_weights": {
+            "D": 0.49,
+            "CASH": 0.02,
+            "A": 0.0,
+            "B": 0.0,
+            "C": 0.49
+          },
+          "turnover": 0.981932176128856,
+          "traded_notional_fraction": 1.963864352257712,
+          "cost_fraction_initial_nav": 0.0039277287045154236,
+          "cash_fraction_initial_nav_after_fee": 0.016072271295484577,
+          "nav_fraction_after_fee": 0.9960722712954846,
+          "target_completion": 1,
+          "scope": "feasible radial interpolation, NOT objective-optimal portfolio; caps measured vs pretrade NAV"
+        },
+        {
+          "pre_fee_weights": {
+            "D": 0.0,
+            "CASH": 0.02,
+            "A": 0.49,
+            "B": 0.49,
+            "C": 0.0
+          },
+          "turnover": 0.981932176128856,
+          "traded_notional_fraction": 1.963864352257712,
+          "cost_fraction_initial_nav": 0.0039277287045154236,
+          "cash_fraction_initial_nav_after_fee": 0.016072271295484577,
+          "nav_fraction_after_fee": 0.9960722712954846,
+          "target_completion": 1,
+          "scope": "feasible radial interpolation, NOT objective-optimal portfolio; caps measured vs pretrade NAV"
+        },
+        {
+          "pre_fee_weights": {
+            "D": 0.49,
+            "CASH": 0.02,
+            "A": 0.0,
+            "B": 0.0,
+            "C": 0.49
+          },
+          "turnover": 0.981932176128856,
+          "traded_notional_fraction": 1.963864352257712,
+          "cost_fraction_initial_nav": 0.0039277287045154236,
+          "cash_fraction_initial_nav_after_fee": 0.016072271295484577,
+          "nav_fraction_after_fee": 0.9960722712954846,
+          "target_completion": 1,
+          "scope": "feasible radial interpolation, NOT objective-optimal portfolio; caps measured vs pretrade NAV"
+        },
+        {
+          "pre_fee_weights": {
+            "D": 0.0,
+            "CASH": 0.02,
+            "A": 0.49,
+            "B": 0.49,
+            "C": 0.0
+          },
+          "turnover": 0.981932176128856,
+          "traded_notional_fraction": 1.963864352257712,
+          "cost_fraction_initial_nav": 0.0039277287045154236,
+          "cash_fraction_initial_nav_after_fee": 0.016072271295484577,
+          "nav_fraction_after_fee": 0.9960722712954846,
+          "target_completion": 1,
+          "scope": "feasible radial interpolation, NOT objective-optimal portfolio; caps measured vs pretrade NAV"
+        },
+        {
+          "pre_fee_weights": {
+            "D": 0.49,
+            "CASH": 0.02,
+            "A": 0.0,
+            "B": 0.0,
+            "C": 0.49
+          },
+          "turnover": 0.981932176128856,
+          "traded_notional_fraction": 1.963864352257712,
+          "cost_fraction_initial_nav": 0.0039277287045154236,
+          "cash_fraction_initial_nav_after_fee": 0.016072271295484577,
+          "nav_fraction_after_fee": 0.9960722712954846,
+          "target_completion": 1,
+          "scope": "feasible radial interpolation, NOT objective-optimal portfolio; caps measured vs pretrade NAV"
+        },
+        {
+          "pre_fee_weights": {
+            "D": 0.0,
+            "CASH": 0.02,
+            "A": 0.49,
+            "B": 0.49,
+            "C": 0.0
+          },
+          "turnover": 0.981932176128856,
+          "traded_notional_fraction": 1.963864352257712,
+          "cost_fraction_initial_nav": 0.0039277287045154236,
+          "cash_fraction_initial_nav_after_fee": 0.016072271295484577,
+          "nav_fraction_after_fee": 0.9960722712954846,
+          "target_completion": 1,
+          "scope": "feasible radial interpolation, NOT objective-optimal portfolio; caps measured vs pretrade NAV"
+        },
+        {
+          "pre_fee_weights": {
+            "D": 0.49,
+            "CASH": 0.02,
+            "A": 0.0,
+            "B": 0.0,
+            "C": 0.49
+          },
+          "turnover": 0.981932176128856,
+          "traded_notional_fraction": 1.963864352257712,
+          "cost_fraction_initial_nav": 0.0039277287045154236,
+          "cash_fraction_initial_nav_after_fee": 0.016072271295484577,
+          "nav_fraction_after_fee": 0.9960722712954846,
+          "target_completion": 1,
+          "scope": "feasible radial interpolation, NOT objective-optimal portfolio; caps measured vs pretrade NAV"
+        },
+        {
+          "pre_fee_weights": {
+            "D": 0.0,
+            "CASH": 0.02,
+            "A": 0.49,
+            "B": 0.49,
+            "C": 0.0
+          },
+          "turnover": 0.981932176128856,
+          "traded_notional_fraction": 1.963864352257712,
+          "cost_fraction_initial_nav": 0.0039277287045154236,
+          "cash_fraction_initial_nav_after_fee": 0.016072271295484577,
+          "nav_fraction_after_fee": 0.9960722712954846,
+          "target_completion": 1,
+          "scope": "feasible radial interpolation, NOT objective-optimal portfolio; caps measured vs pretrade NAV"
+        },
+        {
+          "pre_fee_weights": {
+            "D": 0.49,
+            "CASH": 0.02,
+            "A": 0.0,
+            "B": 0.0,
+            "C": 0.49
+          },
+          "turnover": 0.981932176128856,
+          "traded_notional_fraction": 1.963864352257712,
+          "cost_fraction_initial_nav": 0.0039277287045154236,
+          "cash_fraction_initial_nav_after_fee": 0.016072271295484577,
+          "nav_fraction_after_fee": 0.9960722712954846,
+          "target_completion": 1,
+          "scope": "feasible radial interpolation, NOT objective-optimal portfolio; caps measured vs pretrade NAV"
+        },
+        {
+          "pre_fee_weights": {
+            "D": 0.0,
+            "CASH": 0.02,
+            "A": 0.49,
+            "B": 0.49,
+            "C": 0.0
+          },
+          "turnover": 0.981932176128856,
+          "traded_notional_fraction": 1.963864352257712,
+          "cost_fraction_initial_nav": 0.0039277287045154236,
+          "cash_fraction_initial_nav_after_fee": 0.016072271295484577,
+          "nav_fraction_after_fee": 0.9960722712954846,
+          "target_completion": 1,
+          "scope": "feasible radial interpolation, NOT objective-optimal portfolio; caps measured vs pretrade NAV"
+        },
+        {
+          "pre_fee_weights": {
+            "D": 0.49,
+            "CASH": 0.02,
+            "A": 0.0,
+            "B": 0.0,
+            "C": 0.49
+          },
+          "turnover": 0.981932176128856,
+          "traded_notional_fraction": 1.963864352257712,
+          "cost_fraction_initial_nav": 0.0039277287045154236,
+          "cash_fraction_initial_nav_after_fee": 0.016072271295484577,
+          "nav_fraction_after_fee": 0.9960722712954846,
+          "target_completion": 1,
+          "scope": "feasible radial interpolation, NOT objective-optimal portfolio; caps measured vs pretrade NAV"
+        },
+        {
+          "pre_fee_weights": {
+            "D": 0.0,
+            "CASH": 0.02,
+            "A": 0.49,
+            "B": 0.49,
+            "C": 0.0
+          },
+          "turnover": 0.981932176128856,
+          "traded_notional_fraction": 1.963864352257712,
+          "cost_fraction_initial_nav": 0.0039277287045154236,
+          "cash_fraction_initial_nav_after_fee": 0.016072271295484577,
+          "nav_fraction_after_fee": 0.9960722712954846,
+          "target_completion": 1,
+          "scope": "feasible radial interpolation, NOT objective-optimal portfolio; caps measured vs pretrade NAV"
+        }
+      ]
+    },
+    "limited": {
+      "final_nav_cost_only": 0.9920435075133459,
+      "cash_cost_initial_nav": 0.007956492486654592,
+      "sum_turnover": 1.9966797892982655,
+      "records": [
+        {
+          "pre_fee_weights": {
+            "D": 0.05,
+            "CASH": 0.02,
+            "A": 0.44,
+            "B": 0.44,
+            "C": 0.05
+          },
+          "turnover": 0.09999999999999999,
+          "traded_notional_fraction": 0.19999999999999998,
+          "cost_fraction_initial_nav": 0.00039999999999999996,
+          "cash_fraction_initial_nav_after_fee": 0.0196,
+          "nav_fraction_after_fee": 0.9996,
+          "target_completion": 0.10204081632653061,
+          "scope": "feasible radial interpolation, NOT objective-optimal portfolio; caps measured vs pretrade NAV"
+        },
+        {
+          "pre_fee_weights": {
+            "D": 0.0,
+            "CASH": 0.02,
+            "A": 0.49,
+            "B": 0.49,
+            "C": 0.0
+          },
+          "turnover": 0.09984393757503002,
+          "traded_notional_fraction": 0.19968787515006003,
+          "cost_fraction_initial_nav": 0.0003993757503001201,
+          "cash_fraction_initial_nav_after_fee": 0.01960062424969988,
+          "nav_fraction_after_fee": 0.9996006242496999,
+          "target_completion": 1,
+          "scope": "feasible radial interpolation, NOT objective-optimal portfolio; caps measured vs pretrade NAV"
+        },
+        {
+          "pre_fee_weights": {
+            "D": 0.04999001361208191,
+            "CASH": 0.019648400942956345,
+            "A": 0.4401857859164399,
+            "B": 0.4401857859164399,
+            "C": 0.04999001361208191
+          },
+          "turnover": 0.1,
+          "traded_notional_fraction": 0.2,
+          "cost_fraction_initial_nav": 0.0004,
+          "cash_fraction_initial_nav_after_fee": 0.019248400942956344,
+          "nav_fraction_after_fee": 0.9996,
+          "target_completion": 0.10202043594302432,
+          "scope": "feasible radial interpolation, NOT objective-optimal portfolio; caps measured vs pretrade NAV"
+        },
+        {
+          "pre_fee_weights": {
+            "D": 0.0,
+            "CASH": 0.02,
+            "A": 0.49,
+            "B": 0.49,
+            "C": 0.0
+          },
+          "turnover": 0.09964808693041419,
+          "traded_notional_fraction": 0.19929617386082837,
+          "cost_fraction_initial_nav": 0.0003985923477216568,
+          "cash_fraction_initial_nav_after_fee": 0.019601407652278344,
+          "nav_fraction_after_fee": 0.9996014076522783,
+          "target_completion": 1,
+          "scope": "feasible radial interpolation, NOT objective-optimal portfolio; caps measured vs pretrade NAV"
+        },
+        {
+          "pre_fee_weights": {
+            "D": 0.04999003320496284,
+            "CASH": 0.019649090918954025,
+            "A": 0.44018542133556016,
+            "B": 0.44018542133556016,
+            "C": 0.04999003320496284
+          },
+          "turnover": 0.1,
+          "traded_notional_fraction": 0.2,
+          "cost_fraction_initial_nav": 0.0004,
+          "cash_fraction_initial_nav_after_fee": 0.019249090918954024,
+          "nav_fraction_after_fee": 0.9996,
+          "target_completion": 0.1020204759284956,
+          "scope": "feasible radial interpolation, NOT objective-optimal portfolio; caps measured vs pretrade NAV"
+        },
+        {
+          "pre_fee_weights": {
+            "D": 0.0,
+            "CASH": 0.02,
+            "A": 0.49,
+            "B": 0.49,
+            "C": 0.0
+          },
+          "turnover": 0.09964847125790585,
+          "traded_notional_fraction": 0.1992969425158117,
+          "cost_fraction_initial_nav": 0.00039859388503162344,
+          "cash_fraction_initial_nav_after_fee": 0.019601406114968377,
+          "nav_fraction_after_fee": 0.9996014061149684,
+          "target_completion": 1,
+          "scope": "feasible radial interpolation, NOT objective-optimal portfolio; caps measured vs pretrade NAV"
+        },
+        {
+          "pre_fee_weights": {
+            "D": 0.04999003316651477,
+            "CASH": 0.019649089564980817,
+            "A": 0.4401854220509948,
+            "B": 0.4401854220509948,
+            "C": 0.04999003316651477
+          },
+          "turnover": 0.1,
+          "traded_notional_fraction": 0.2,
+          "cost_fraction_initial_nav": 0.0004,
+          "cash_fraction_initial_nav_after_fee": 0.019249089564980816,
+          "nav_fraction_after_fee": 0.9996,
+          "target_completion": 0.10202047585003014,
+          "scope": "feasible radial interpolation, NOT objective-optimal portfolio; caps measured vs pretrade NAV"
+        },
+        {
+          "pre_fee_weights": {
+            "D": 0.0,
+            "CASH": 0.02,
+            "A": 0.49,
+            "B": 0.49,
+            "C": 0.0
+          },
+          "turnover": 0.09964847050372147,
+          "traded_notional_fraction": 0.19929694100744294,
+          "cost_fraction_initial_nav": 0.0003985938820148859,
+          "cash_fraction_initial_nav_after_fee": 0.019601406117985113,
+          "nav_fraction_after_fee": 0.9996014061179851,
+          "target_completion": 1,
+          "scope": "feasible radial interpolation, NOT objective-optimal portfolio; caps measured vs pretrade NAV"
+        },
+        {
+          "pre_fee_weights": {
+            "D": 0.049990033166590224,
+            "CASH": 0.019649089567637786,
+            "A": 0.4401854220495909,
+            "B": 0.4401854220495909,
+            "C": 0.049990033166590224
+          },
+          "turnover": 0.10000000000000003,
+          "traded_notional_fraction": 0.20000000000000007,
+          "cost_fraction_initial_nav": 0.00040000000000000013,
+          "cash_fraction_initial_nav_after_fee": 0.019249089567637784,
+          "nav_fraction_after_fee": 0.9996,
+          "target_completion": 0.10202047585018413,
+          "scope": "feasible radial interpolation, NOT objective-optimal portfolio; caps measured vs pretrade NAV"
+        },
+        {
+          "pre_fee_weights": {
+            "D": 0.0,
+            "CASH": 0.02,
+            "A": 0.49,
+            "B": 0.49,
+            "C": 0.0
+          },
+          "turnover": 0.09964847050520144,
+          "traded_notional_fraction": 0.19929694101040288,
+          "cost_fraction_initial_nav": 0.00039859388202080577,
+          "cash_fraction_initial_nav_after_fee": 0.019601406117979194,
+          "nav_fraction_after_fee": 0.9996014061179792,
+          "target_completion": 1,
+          "scope": "feasible radial interpolation, NOT objective-optimal portfolio; caps measured vs pretrade NAV"
+        },
+        {
+          "pre_fee_weights": {
+            "D": 0.04999003316659007,
+            "CASH": 0.01964908956763257,
+            "A": 0.44018542204959366,
+            "B": 0.44018542204959366,
+            "C": 0.04999003316659007
+          },
+          "turnover": 0.09999999999999998,
+          "traded_notional_fraction": 0.19999999999999996,
+          "cost_fraction_initial_nav": 0.0003999999999999999,
+          "cash_fraction_initial_nav_after_fee": 0.01924908956763257,
+          "nav_fraction_after_fee": 0.9996,
+          "target_completion": 0.10202047585018383,
+          "scope": "feasible radial interpolation, NOT objective-optimal portfolio; caps measured vs pretrade NAV"
+        },
+        {
+          "pre_fee_weights": {
+            "D": 0.0,
+            "CASH": 0.02,
+            "A": 0.49,
+            "B": 0.49,
+            "C": 0.0
+          },
+          "turnover": 0.09964847050519851,
+          "traded_notional_fraction": 0.19929694101039702,
+          "cost_fraction_initial_nav": 0.00039859388202079406,
+          "cash_fraction_initial_nav_after_fee": 0.019601406117979208,
+          "nav_fraction_after_fee": 0.9996014061179792,
+          "target_completion": 1,
+          "scope": "feasible radial interpolation, NOT objective-optimal portfolio; caps measured vs pretrade NAV"
+        },
+        {
+          "pre_fee_weights": {
+            "D": 0.04999003316659007,
+            "CASH": 0.01964908956763258,
+            "A": 0.44018542204959366,
+            "B": 0.44018542204959366,
+            "C": 0.04999003316659007
+          },
+          "turnover": 0.09999999999999998,
+          "traded_notional_fraction": 0.19999999999999996,
+          "cost_fraction_initial_nav": 0.0003999999999999999,
+          "cash_fraction_initial_nav_after_fee": 0.01924908956763258,
+          "nav_fraction_after_fee": 0.9996,
+          "target_completion": 0.10202047585018383,
+          "scope": "feasible radial interpolation, NOT objective-optimal portfolio; caps measured vs pretrade NAV"
+        },
+        {
+          "pre_fee_weights": {
+            "D": 0.0,
+            "CASH": 0.02,
+            "A": 0.49,
+            "B": 0.49,
+            "C": 0.0
+          },
+          "turnover": 0.09964847050519851,
+          "traded_notional_fraction": 0.19929694101039702,
+          "cost_fraction_initial_nav": 0.00039859388202079406,
+          "cash_fraction_initial_nav_after_fee": 0.019601406117979208,
+          "nav_fraction_after_fee": 0.9996014061179792,
+          "target_completion": 1,
+          "scope": "feasible radial interpolation, NOT objective-optimal portfolio; caps measured vs pretrade NAV"
+        },
+        {
+          "pre_fee_weights": {
+            "D": 0.04999003316659007,
+            "CASH": 0.01964908956763258,
+            "A": 0.44018542204959366,
+            "B": 0.44018542204959366,
+            "C": 0.04999003316659007
+          },
+          "turnover": 0.09999999999999998,
+          "traded_notional_fraction": 0.19999999999999996,
+          "cost_fraction_initial_nav": 0.0003999999999999999,
+          "cash_fraction_initial_nav_after_fee": 0.01924908956763258,
+          "nav_fraction_after_fee": 0.9996,
+          "target_completion": 0.10202047585018383,
+          "scope": "feasible radial interpolation, NOT objective-optimal portfolio; caps measured vs pretrade NAV"
+        },
+        {
+          "pre_fee_weights": {
+            "D": 0.0,
+            "CASH": 0.02,
+            "A": 0.49,
+            "B": 0.49,
+            "C": 0.0
+          },
+          "turnover": 0.09964847050519851,
+          "traded_notional_fraction": 0.19929694101039702,
+          "cost_fraction_initial_nav": 0.00039859388202079406,
+          "cash_fraction_initial_nav_after_fee": 0.019601406117979208,
+          "nav_fraction_after_fee": 0.9996014061179792,
+          "target_completion": 1,
+          "scope": "feasible radial interpolation, NOT objective-optimal portfolio; caps measured vs pretrade NAV"
+        },
+        {
+          "pre_fee_weights": {
+            "D": 0.04999003316659007,
+            "CASH": 0.01964908956763258,
+            "A": 0.44018542204959366,
+            "B": 0.44018542204959366,
+            "C": 0.04999003316659007
+          },
+          "turnover": 0.09999999999999998,
+          "traded_notional_fraction": 0.19999999999999996,
+          "cost_fraction_initial_nav": 0.0003999999999999999,
+          "cash_fraction_initial_nav_after_fee": 0.01924908956763258,
+          "nav_fraction_after_fee": 0.9996,
+          "target_completion": 0.10202047585018383,
+          "scope": "feasible radial interpolation, NOT objective-optimal portfolio; caps measured vs pretrade NAV"
+        },
+        {
+          "pre_fee_weights": {
+            "D": 0.0,
+            "CASH": 0.02,
+            "A": 0.49,
+            "B": 0.49,
+            "C": 0.0
+          },
+          "turnover": 0.09964847050519851,
+          "traded_notional_fraction": 0.19929694101039702,
+          "cost_fraction_initial_nav": 0.00039859388202079406,
+          "cash_fraction_initial_nav_after_fee": 0.019601406117979208,
+          "nav_fraction_after_fee": 0.9996014061179792,
+          "target_completion": 1,
+          "scope": "feasible radial interpolation, NOT objective-optimal portfolio; caps measured vs pretrade NAV"
+        },
+        {
+          "pre_fee_weights": {
+            "D": 0.04999003316659007,
+            "CASH": 0.01964908956763258,
+            "A": 0.44018542204959366,
+            "B": 0.44018542204959366,
+            "C": 0.04999003316659007
+          },
+          "turnover": 0.09999999999999998,
+          "traded_notional_fraction": 0.19999999999999996,
+          "cost_fraction_initial_nav": 0.0003999999999999999,
+          "cash_fraction_initial_nav_after_fee": 0.01924908956763258,
+          "nav_fraction_after_fee": 0.9996,
+          "target_completion": 0.10202047585018383,
+          "scope": "feasible radial interpolation, NOT objective-optimal portfolio; caps measured vs pretrade NAV"
+        },
+        {
+          "pre_fee_weights": {
+            "D": 0.0,
+            "CASH": 0.02,
+            "A": 0.49,
+            "B": 0.49,
+            "C": 0.0
+          },
+          "turnover": 0.09964847050519851,
+          "traded_notional_fraction": 0.19929694101039702,
+          "cost_fraction_initial_nav": 0.00039859388202079406,
+          "cash_fraction_initial_nav_after_fee": 0.019601406117979208,
+          "nav_fraction_after_fee": 0.9996014061179792,
+          "target_completion": 1,
+          "scope": "feasible radial interpolation, NOT objective-optimal portfolio; caps measured vs pretrade NAV"
+        }
+      ]
+    },
+    "cost_reduction_fraction": 0.8948724568563534,
+    "adverse_regime_net": {
+      "full_rebalance": 0.01568,
+      "limited": -0.016
+    },
+    "decision": "KEEP_EXPERIMENTAL",
+    "rejected_claim": "Lower turnover always improves net result",
+    "economic_scope": "synthetic counterexample, not B3 economic test; prices otherwise constant for cost-only path"
+  }
+}

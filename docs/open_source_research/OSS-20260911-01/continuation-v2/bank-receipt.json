@@ -1,0 +1,1360 @@
+{
+  "observed_at": "2026-09-11T03:00:34.975184+00:00",
+  "databases": [
+    {
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\30ce8e91fba9cb0a0c09571be71821c9da2d0aec49d12ec15aab8b26522ffd2c",
+      "expected_sha256": "30ce8e91fba9cb0a0c09571be71821c9da2d0aec49d12ec15aab8b26522ffd2c",
+      "policy": "schema only, no market/outcome rows; mode=ro&immutable=1, query_only",
+      "before": "30ce8e91fba9cb0a0c09571be71821c9da2d0aec49d12ec15aab8b26522ffd2c",
+      "schema": [
+        {
+          "name": "prices_raw",
+          "type": "table",
+          "sql": "CREATE TABLE prices_raw(date text,ticker text,market_type text,open real,close real,quote_factor real,volume_fin real,source_file text,primary key(ticker,date))"
+        }
+      ],
+      "after": "30ce8e91fba9cb0a0c09571be71821c9da2d0aec49d12ec15aab8b26522ffd2c"
+    },
+    {
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\0bceedac3936dc4162562ec35e03177c7e71b99e13b66837035d1ccd151f0512",
+      "expected_sha256": "0bceedac3936dc4162562ec35e03177c7e71b99e13b66837035d1ccd151f0512",
+      "policy": "schema only, no market/outcome rows; mode=ro&immutable=1, query_only",
+      "before": "0bceedac3936dc4162562ec35e03177c7e71b99e13b66837035d1ccd151f0512",
+      "schema": [
+        {
+          "name": "prices_raw",
+          "type": "table",
+          "sql": "CREATE TABLE prices_raw(date TEXT,ticker TEXT,market_type TEXT,open REAL,close REAL,quote_factor INTEGER,volume_fin REAL,source_file TEXT,PRIMARY KEY(ticker,date))"
+        }
+      ],
+      "after": "0bceedac3936dc4162562ec35e03177c7e71b99e13b66837035d1ccd151f0512"
+    },
+    {
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\fa3d464e3e463b66c2aa64d96228aeb5d1fae63514df1d0ddb58233240b52764",
+      "expected_sha256": "fa3d464e3e463b66c2aa64d96228aeb5d1fae63514df1d0ddb58233240b52764",
+      "policy": "schema only, no market/outcome rows; mode=ro&immutable=1, query_only",
+      "before": "fa3d464e3e463b66c2aa64d96228aeb5d1fae63514df1d0ddb58233240b52764",
+      "schema": [
+        {
+          "name": "prices_raw",
+          "type": "table",
+          "sql": "CREATE TABLE prices_raw(date TEXT,ticker TEXT,market_type TEXT,open REAL,close REAL,quote_factor INTEGER,volume_fin REAL,source_file TEXT,PRIMARY KEY(ticker,date))"
+        }
+      ],
+      "after": "fa3d464e3e463b66c2aa64d96228aeb5d1fae63514df1d0ddb58233240b52764"
+    },
+    {
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\e21a89c38f2792c826291baa1175da4fe9dfbf626316635a536f7c28b250146a",
+      "expected_sha256": "e21a89c38f2792c826291baa1175da4fe9dfbf626316635a536f7c28b250146a",
+      "policy": "schema only, no market/outcome rows; mode=ro&immutable=1, query_only",
+      "before": "e21a89c38f2792c826291baa1175da4fe9dfbf626316635a536f7c28b250146a",
+      "schema": [
+        {
+          "name": "_migrations",
+          "type": "table",
+          "sql": "CREATE TABLE _migrations (\n            name TEXT PRIMARY KEY,\n            applied_at TEXT NOT NULL DEFAULT (datetime('now'))\n        )"
+        },
+        {
+          "name": "prices_raw",
+          "type": "table",
+          "sql": "CREATE TABLE prices_raw (\n            id          INTEGER PRIMARY KEY,\n            date        TEXT    NOT NULL,          -- YYYY-MM-DD\n            ticker      TEXT    NOT NULL,\n            bdi_code    TEXT    NOT NULL,\n            market_type TEXT    NOT NULL,\n            open        REAL    NOT NULL,\n            high        REAL    NOT NULL,\n            low         REAL    NOT NULL,\n            close       REAL    NOT NULL,\n            volume_fin  REAL    NOT NULL,\n            qty         INTEGER NOT NULL,\n            quote_factor INTEGER NOT NULL DEFAULT 1,\n            source_file TEXT    NOT NULL,\n            inserted_at TEXT    NOT NULL DEFAULT (datetime('now')),\n            UNIQUE(date, ticker, source_file)\n        )"
+        },
+        {
+          "name": "idx_prices_raw_ticker_date",
+          "type": "index",
+          "sql": "CREATE INDEX idx_prices_raw_ticker_date ON prices_raw(ticker, date)"
+        },
+        {
+          "name": "adjustments",
+          "type": "table",
+          "sql": "CREATE TABLE adjustments (\n            id          INTEGER PRIMARY KEY,\n            ticker      TEXT    NOT NULL,\n            ex_date     TEXT    NOT NULL,           -- YYYY-MM-DD\n            factor      REAL    NOT NULL,           -- multiplicar pre\u00e7os anteriores\n            type        TEXT    NOT NULL,           -- 'split','grupamento','dividendo','jcp','outro'\n            source      TEXT    NOT NULL,           -- 'inferred','csv_manual','yfinance_xcheck'\n            notes       TEXT,\n            approved_by TEXT,                       -- null = pendente aprova\u00e7\u00e3o humana\n            inserted_at TEXT    NOT NULL DEFAULT (datetime('now')),\n            UNIQUE(ticker, ex_date, type)\n        )"
+        },
+        {
+          "name": "quarantine",
+          "type": "table",
+          "sql": "CREATE TABLE quarantine (\n            id          INTEGER PRIMARY KEY,\n            ticker      TEXT    NOT NULL,\n            date        TEXT    NOT NULL,\n            reason      TEXT    NOT NULL,\n            raw_return  REAL,                       -- retorno overnight que disparou\n            resolved_at TEXT,\n            resolution  TEXT,\n            inserted_at TEXT    NOT NULL DEFAULT (datetime('now')),\n            UNIQUE(ticker, date)\n        )"
+        },
+        {
+          "name": "universe_snapshots",
+          "type": "table",
+          "sql": "CREATE TABLE universe_snapshots (\n            asof_date   TEXT    NOT NULL,\n            ticker      TEXT    NOT NULL,\n            median_vol  REAL    NOT NULL,           -- mediana vol financeiro na janela\n            rank        INTEGER NOT NULL,\n            inserted_at TEXT    NOT NULL DEFAULT (datetime('now')),\n            PRIMARY KEY (asof_date, ticker)\n        )"
+        },
+        {
+          "name": "decisions",
+          "type": "table",
+          "sql": "CREATE TABLE decisions (\n            id              INTEGER PRIMARY KEY,\n            run_id          TEXT    NOT NULL,\n            asof            TEXT    NOT NULL,       -- data do sinal (\u00faltimo preg\u00e3o do m\u00eas)\n            ticker          TEXT    NOT NULL,\n            signal_value    REAL    NOT NULL,       -- momentum 12-1\n            rank            INTEGER NOT NULL,\n            conviction_band TEXT    NOT NULL,       -- 'quintil_superior','resto'\n            frozen_mode     INTEGER NOT NULL DEFAULT 0,  -- 1=paper forward\n            inserted_at     TEXT    NOT NULL DEFAULT (datetime('now')),\n            -- parte RISK \u2014 preenchida na liquida\u00e7\u00e3o, write-once via COALESCE\n            exec_date       TEXT,\n            exec_price      REAL,\n            exit_date       TEXT,\n            exit_price      REAL,\n            cost_paid       REAL,\n            realized_return_net REAL,\n            holding_days    INTEGER,\n            UNIQUE(run_id, asof, ticker)\n        )"
+        },
+        {
+          "name": "runs",
+          "type": "table",
+          "sql": "CREATE TABLE runs (\n            run_id          TEXT    PRIMARY KEY,\n            config_hash     TEXT    NOT NULL,\n            code_version    TEXT    NOT NULL,\n            started_at      TEXT    NOT NULL DEFAULT (datetime('now')),\n            params_json     TEXT    NOT NULL,\n            notes           TEXT\n        , params_frozen_until TEXT)"
+        },
+        {
+          "name": "idx_prices_raw_mkt_date",
+          "type": "index",
+          "sql": "CREATE INDEX idx_prices_raw_mkt_date\n            ON prices_raw(market_type, date)"
+        },
+        {
+          "name": "rj_universe",
+          "type": "table",
+          "sql": "CREATE TABLE rj_universe (\n            ticker              TEXT    PRIMARY KEY,\n            company_name        TEXT    NOT NULL,\n            rj_request_date     TEXT    NOT NULL,\n            rj_process_number   TEXT,\n            plan_presented_date TEXT,\n            plan_approved_date  TEXT,\n            rj_end_date         TEXT,\n            delisted_date       TEXT,\n            source              TEXT    NOT NULL,\n            approved_by         TEXT,\n            notes               TEXT,\n            inserted_at         TEXT    NOT NULL DEFAULT (datetime('now'))\n        )"
+        },
+        {
+          "name": "rj_episodes",
+          "type": "table",
+          "sql": "CREATE TABLE rj_episodes (\n            id                  INTEGER PRIMARY KEY,\n            ticker              TEXT    NOT NULL REFERENCES rj_universe(ticker),\n            trough_date         TEXT    NOT NULL,\n            trough_price        REAL    NOT NULL,\n            is_primary          INTEGER NOT NULL DEFAULT 1,\n            outcome             TEXT,\n            rally_pct           REAL,\n            rally_date          TEXT,\n            trading_days_to_rally INTEGER,\n            censored            INTEGER NOT NULL DEFAULT 0,\n            inserted_at         TEXT    NOT NULL DEFAULT (datetime('now')), secondary_outcome TEXT, secondary_rally_pct REAL, secondary_rally_date TEXT, secondary_trading_days_to_rally INTEGER, secondary_censored INTEGER,\n            UNIQUE(ticker, trough_date)\n        )"
+        },
+        {
+          "name": "rj_events",
+          "type": "table",
+          "sql": "CREATE TABLE rj_events (\n            id          INTEGER PRIMARY KEY,\n            ticker      TEXT    NOT NULL REFERENCES rj_universe(ticker),\n            event_date  TEXT    NOT NULL,\n            published_at TEXT,\n            known_at    TEXT    NOT NULL,\n            event_type  TEXT    NOT NULL,\n            source      TEXT    NOT NULL,\n            approved_by TEXT,\n            notes       TEXT,\n            inserted_at TEXT    NOT NULL DEFAULT (datetime('now'))\n        )"
+        },
+        {
+          "name": "idx_rj_events_ticker_known",
+          "type": "index",
+          "sql": "CREATE INDEX idx_rj_events_ticker_known ON rj_events(ticker, known_at)"
+        },
+        {
+          "name": "rj_family_scores",
+          "type": "table",
+          "sql": "CREATE TABLE rj_family_scores (\n            episode_id  INTEGER NOT NULL REFERENCES rj_episodes(id),\n            family      TEXT    NOT NULL,\n            value       REAL,\n            computed_at TEXT    NOT NULL DEFAULT (datetime('now')),\n            PRIMARY KEY (episode_id, family)\n        )"
+        },
+        {
+          "name": "rj_universe_snapshots",
+          "type": "table",
+          "sql": "CREATE TABLE rj_universe_snapshots (\n            snapshot_date TEXT    NOT NULL,\n            source        TEXT    NOT NULL,\n            ticker        TEXT    NOT NULL,\n            company_name  TEXT    NOT NULL,\n            payload_hash  TEXT    NOT NULL,\n            raw_payload   TEXT,\n            inserted_at   TEXT    NOT NULL DEFAULT (datetime('now')),\n            PRIMARY KEY (snapshot_date, source, ticker)\n        )"
+        },
+        {
+          "name": "fundamentals",
+          "type": "table",
+          "sql": "CREATE TABLE fundamentals (\n            id                  INTEGER PRIMARY KEY,\n            ticker              TEXT    NOT NULL,\n            ref_date            TEXT    NOT NULL,      -- DT_REFER (fim do exerc\u00edcio/trimestre)\n            ativo_total         REAL,\n            passivo_total       REAL,\n            patrimonio_liquido  REAL,\n            lucro_liquido       REAL,\n            roe                 REAL,                  -- lucro_liquido / patrimonio_liquido\n            leverage            REAL,                  -- passivo_total / ativo_total\n            source              TEXT    NOT NULL,       -- 'CVM DFP <ano>' / 'CVM ITR <ano>'\n            inserted_at         TEXT    NOT NULL DEFAULT (datetime('now')), receita_liquida REAL, net_margin REAL, fluxo_caixa_operacional REAL, accruals REAL, shares_outstanding REAL, known_at TEXT,\n            UNIQUE(ticker, ref_date, source)\n        )"
+        },
+        {
+          "name": "idx_fundamentals_ticker_ref",
+          "type": "index",
+          "sql": "CREATE INDEX idx_fundamentals_ticker_ref\n            ON fundamentals(ticker, ref_date)"
+        },
+        {
+          "name": "rj_company_observations",
+          "type": "table",
+          "sql": "CREATE TABLE rj_company_observations (\n            ticker              TEXT NOT NULL REFERENCES rj_universe(ticker),\n            asof                TEXT NOT NULL,\n            rj_request_date     TEXT NOT NULL,\n            observed_trading_days INTEGER NOT NULL,\n            censoring_horizon_trading_days INTEGER NOT NULL,\n            status              TEXT NOT NULL CHECK(status IN ('censored','no_candidate_control')),\n            inserted_at         TEXT NOT NULL DEFAULT (datetime('now')),\n            PRIMARY KEY (ticker, asof)\n        )"
+        },
+        {
+          "name": "dividends",
+          "type": "table",
+          "sql": "CREATE TABLE dividends (\n            id                  INTEGER PRIMARY KEY,\n            ticker              TEXT    NOT NULL,\n            ex_date             TEXT    NOT NULL,   -- proxy: Data_Pagamento_Dividendo\n            value_per_share     REAL    NOT NULL,\n            source              TEXT    NOT NULL,   -- 'CVM FRE <ano>'\n            inserted_at         TEXT    NOT NULL DEFAULT (datetime('now')),\n            UNIQUE(ticker, ex_date, source)\n        )"
+        },
+        {
+          "name": "idx_dividends_ticker_exdate",
+          "type": "index",
+          "sql": "CREATE INDEX idx_dividends_ticker_exdate\n            ON dividends(ticker, ex_date)"
+        },
+        {
+          "name": "ingestion_issues",
+          "type": "table",
+          "sql": "CREATE TABLE ingestion_issues (\n            source_sha256 TEXT NOT NULL, document_key TEXT NOT NULL, reason TEXT NOT NULL,\n            UNIQUE(source_sha256,document_key,reason)\n        )"
+        },
+        {
+          "name": "fundamentals_pit",
+          "type": "table",
+          "sql": "CREATE TABLE fundamentals_pit (\n            ticker TEXT NOT NULL, cnpj TEXT NOT NULL, ref_date TEXT NOT NULL,\n            document_version INTEGER NOT NULL CHECK(document_version>0),\n            received_at TEXT NOT NULL, available_at TEXT NOT NULL,\n            source TEXT NOT NULL, source_sha256 TEXT NOT NULL,\n            ativo_total REAL, passivo_total REAL, patrimonio_liquido REAL,\n            lucro_liquido REAL, receita_liquida REAL, fluxo_caixa_operacional REAL,\n            roe REAL, leverage REAL, net_margin REAL, accruals REAL,\n            CHECK(available_at>received_at),\n            UNIQUE(ticker,cnpj,ref_date,document_version,source_sha256)\n        )"
+        },
+        {
+          "name": "idx_fundamentals_pit",
+          "type": "index",
+          "sql": "CREATE INDEX idx_fundamentals_pit ON fundamentals_pit(ticker,available_at,ref_date)"
+        },
+        {
+          "name": "shares_pit",
+          "type": "table",
+          "sql": "CREATE TABLE shares_pit (\n            ticker TEXT NOT NULL, ref_date TEXT NOT NULL, document_id TEXT NOT NULL,\n            received_at TEXT NOT NULL, available_at TEXT NOT NULL,\n            shares_outstanding REAL NOT NULL CHECK(shares_outstanding>0),\n            basis_date TEXT, basis_source TEXT, price_basis_source TEXT,\n            source TEXT NOT NULL, source_sha256 TEXT NOT NULL,\n            CHECK(available_at>received_at),\n            CHECK(basis_date IS NULL OR (basis_date<=received_at AND basis_source IS NOT NULL)),\n            UNIQUE(ticker,document_id,source_sha256)\n        )"
+        },
+        {
+          "name": "idx_shares_pit",
+          "type": "index",
+          "sql": "CREATE INDEX idx_shares_pit ON shares_pit(ticker,available_at)"
+        },
+        {
+          "name": "cash_events",
+          "type": "table",
+          "sql": "CREATE TABLE cash_events (\n            ticker TEXT NOT NULL, event_id TEXT NOT NULL, ex_date TEXT NOT NULL,\n            payment_date TEXT NOT NULL, value_per_share REAL NOT NULL CHECK(value_per_share>0),\n            source TEXT NOT NULL, source_sha256 TEXT NOT NULL,\n            CHECK(payment_date>=ex_date), UNIQUE(ticker,event_id)\n        )"
+        },
+        {
+          "name": "cash_event_coverage",
+          "type": "table",
+          "sql": "CREATE TABLE cash_event_coverage (\n            ticker TEXT NOT NULL, start_date TEXT NOT NULL, end_date TEXT NOT NULL,\n            source TEXT NOT NULL, source_sha256 TEXT NOT NULL,\n            CHECK(end_date>=start_date), UNIQUE(ticker,start_date,end_date)\n        )"
+        },
+        {
+          "name": "research_source_documents",
+          "type": "table",
+          "sql": "CREATE TABLE research_source_documents (\n            record_id TEXT PRIMARY KEY, kind TEXT NOT NULL, archive_year INTEGER,\n            cnpj TEXT, document_id TEXT, available_at TEXT,\n            source_sha256 TEXT NOT NULL, payload_json TEXT NOT NULL\n        )"
+        },
+        {
+          "name": "idx_research_sources",
+          "type": "index",
+          "sql": "CREATE INDEX idx_research_sources ON research_source_documents(kind,cnpj,available_at)"
+        }
+      ],
+      "after": "e21a89c38f2792c826291baa1175da4fe9dfbf626316635a536f7c28b250146a"
+    },
+    {
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\07197228920e4082954afbc9035509ae74e84be1773195a4c5b71a435481a804",
+      "expected_sha256": "07197228920e4082954afbc9035509ae74e84be1773195a4c5b71a435481a804",
+      "policy": "schema only, no market/outcome rows; mode=ro&immutable=1, query_only",
+      "before": "07197228920e4082954afbc9035509ae74e84be1773195a4c5b71a435481a804",
+      "schema": [
+        {
+          "name": "_migrations",
+          "type": "table",
+          "sql": "CREATE TABLE _migrations (\n            name TEXT PRIMARY KEY,\n            applied_at TEXT NOT NULL DEFAULT (datetime('now'))\n        )"
+        },
+        {
+          "name": "prices_raw",
+          "type": "table",
+          "sql": "CREATE TABLE prices_raw (\n            id          INTEGER PRIMARY KEY,\n            date        TEXT    NOT NULL,          -- YYYY-MM-DD\n            ticker      TEXT    NOT NULL,\n            bdi_code    TEXT    NOT NULL,\n            market_type TEXT    NOT NULL,\n            open        REAL    NOT NULL,\n            high        REAL    NOT NULL,\n            low         REAL    NOT NULL,\n            close       REAL    NOT NULL,\n            volume_fin  REAL    NOT NULL,\n            qty         INTEGER NOT NULL,\n            quote_factor INTEGER NOT NULL DEFAULT 1,\n            source_file TEXT    NOT NULL,\n            inserted_at TEXT    NOT NULL DEFAULT (datetime('now')),\n            UNIQUE(date, ticker, source_file)\n        )"
+        },
+        {
+          "name": "idx_prices_raw_ticker_date",
+          "type": "index",
+          "sql": "CREATE INDEX idx_prices_raw_ticker_date ON prices_raw(ticker, date)"
+        },
+        {
+          "name": "adjustments",
+          "type": "table",
+          "sql": "CREATE TABLE adjustments (\n            id          INTEGER PRIMARY KEY,\n            ticker      TEXT    NOT NULL,\n            ex_date     TEXT    NOT NULL,           -- YYYY-MM-DD\n            factor      REAL    NOT NULL,           -- multiplicar pre\u00e7os anteriores\n            type        TEXT    NOT NULL,           -- 'split','grupamento','dividendo','jcp','outro'\n            source      TEXT    NOT NULL,           -- 'inferred','csv_manual','yfinance_xcheck'\n            notes       TEXT,\n            approved_by TEXT,                       -- null = pendente aprova\u00e7\u00e3o humana\n            inserted_at TEXT    NOT NULL DEFAULT (datetime('now')),\n            UNIQUE(ticker, ex_date, type)\n        )"
+        },
+        {
+          "name": "quarantine",
+          "type": "table",
+          "sql": "CREATE TABLE quarantine (\n            id          INTEGER PRIMARY KEY,\n            ticker      TEXT    NOT NULL,\n            date        TEXT    NOT NULL,\n            reason      TEXT    NOT NULL,\n            raw_return  REAL,                       -- retorno overnight que disparou\n            resolved_at TEXT,\n            resolution  TEXT,\n            inserted_at TEXT    NOT NULL DEFAULT (datetime('now')),\n            UNIQUE(ticker, date)\n        )"
+        },
+        {
+          "name": "universe_snapshots",
+          "type": "table",
+          "sql": "CREATE TABLE universe_snapshots (\n            asof_date   TEXT    NOT NULL,\n            ticker      TEXT    NOT NULL,\n            median_vol  REAL    NOT NULL,           -- mediana vol financeiro na janela\n            rank        INTEGER NOT NULL,\n            inserted_at TEXT    NOT NULL DEFAULT (datetime('now')),\n            PRIMARY KEY (asof_date, ticker)\n        )"
+        },
+        {
+          "name": "decisions",
+          "type": "table",
+          "sql": "CREATE TABLE decisions (\n            id              INTEGER PRIMARY KEY,\n            run_id          TEXT    NOT NULL,\n            asof            TEXT    NOT NULL,       -- data do sinal (\u00faltimo preg\u00e3o do m\u00eas)\n            ticker          TEXT    NOT NULL,\n            signal_value    REAL    NOT NULL,       -- momentum 12-1\n            rank            INTEGER NOT NULL,\n            conviction_band TEXT    NOT NULL,       -- 'quintil_superior','resto'\n            frozen_mode     INTEGER NOT NULL DEFAULT 0,  -- 1=paper forward\n            inserted_at     TEXT    NOT NULL DEFAULT (datetime('now')),\n            -- parte RISK \u2014 preenchida na liquida\u00e7\u00e3o, write-once via COALESCE\n            exec_date       TEXT,\n            exec_price      REAL,\n            exit_date       TEXT,\n            exit_price      REAL,\n            cost_paid       REAL,\n            realized_return_net REAL,\n            holding_days    INTEGER,\n            UNIQUE(run_id, asof, ticker)\n        )"
+        },
+        {
+          "name": "runs",
+          "type": "table",
+          "sql": "CREATE TABLE runs (\n            run_id          TEXT    PRIMARY KEY,\n            config_hash     TEXT    NOT NULL,\n            code_version    TEXT    NOT NULL,\n            started_at      TEXT    NOT NULL DEFAULT (datetime('now')),\n            params_json     TEXT    NOT NULL,\n            notes           TEXT\n        , params_frozen_until TEXT)"
+        },
+        {
+          "name": "idx_prices_raw_mkt_date",
+          "type": "index",
+          "sql": "CREATE INDEX idx_prices_raw_mkt_date\n            ON prices_raw(market_type, date)"
+        },
+        {
+          "name": "rj_universe",
+          "type": "table",
+          "sql": "CREATE TABLE rj_universe (\n            ticker              TEXT    PRIMARY KEY,\n            company_name        TEXT    NOT NULL,\n            rj_request_date     TEXT    NOT NULL,\n            rj_process_number   TEXT,\n            plan_presented_date TEXT,\n            plan_approved_date  TEXT,\n            rj_end_date         TEXT,\n            delisted_date       TEXT,\n            source              TEXT    NOT NULL,\n            approved_by         TEXT,\n            notes               TEXT,\n            inserted_at         TEXT    NOT NULL DEFAULT (datetime('now'))\n        )"
+        },
+        {
+          "name": "rj_episodes",
+          "type": "table",
+          "sql": "CREATE TABLE rj_episodes (\n            id                  INTEGER PRIMARY KEY,\n            ticker              TEXT    NOT NULL REFERENCES rj_universe(ticker),\n            trough_date         TEXT    NOT NULL,\n            trough_price        REAL    NOT NULL,\n            is_primary          INTEGER NOT NULL DEFAULT 1,\n            outcome             TEXT,\n            rally_pct           REAL,\n            rally_date          TEXT,\n            trading_days_to_rally INTEGER,\n            censored            INTEGER NOT NULL DEFAULT 0,\n            inserted_at         TEXT    NOT NULL DEFAULT (datetime('now')), secondary_outcome TEXT, secondary_rally_pct REAL, secondary_rally_date TEXT, secondary_trading_days_to_rally INTEGER, secondary_censored INTEGER,\n            UNIQUE(ticker, trough_date)\n        )"
+        },
+        {
+          "name": "rj_events",
+          "type": "table",
+          "sql": "CREATE TABLE rj_events (\n            id          INTEGER PRIMARY KEY,\n            ticker      TEXT    NOT NULL REFERENCES rj_universe(ticker),\n            event_date  TEXT    NOT NULL,\n            published_at TEXT,\n            known_at    TEXT    NOT NULL,\n            event_type  TEXT    NOT NULL,\n            source      TEXT    NOT NULL,\n            approved_by TEXT,\n            notes       TEXT,\n            inserted_at TEXT    NOT NULL DEFAULT (datetime('now'))\n        )"
+        },
+        {
+          "name": "idx_rj_events_ticker_known",
+          "type": "index",
+          "sql": "CREATE INDEX idx_rj_events_ticker_known ON rj_events(ticker, known_at)"
+        },
+        {
+          "name": "rj_family_scores",
+          "type": "table",
+          "sql": "CREATE TABLE rj_family_scores (\n            episode_id  INTEGER NOT NULL REFERENCES rj_episodes(id),\n            family      TEXT    NOT NULL,\n            value       REAL,\n            computed_at TEXT    NOT NULL DEFAULT (datetime('now')),\n            PRIMARY KEY (episode_id, family)\n        )"
+        },
+        {
+          "name": "rj_universe_snapshots",
+          "type": "table",
+          "sql": "CREATE TABLE rj_universe_snapshots (\n            snapshot_date TEXT    NOT NULL,\n            source        TEXT    NOT NULL,\n            ticker        TEXT    NOT NULL,\n            company_name  TEXT    NOT NULL,\n            payload_hash  TEXT    NOT NULL,\n            raw_payload   TEXT,\n            inserted_at   TEXT    NOT NULL DEFAULT (datetime('now')),\n            PRIMARY KEY (snapshot_date, source, ticker)\n        )"
+        },
+        {
+          "name": "fundamentals",
+          "type": "table",
+          "sql": "CREATE TABLE fundamentals (\n            id                  INTEGER PRIMARY KEY,\n            ticker              TEXT    NOT NULL,\n            ref_date            TEXT    NOT NULL,      -- DT_REFER (fim do exerc\u00edcio/trimestre)\n            ativo_total         REAL,\n            passivo_total       REAL,\n            patrimonio_liquido  REAL,\n            lucro_liquido       REAL,\n            roe                 REAL,                  -- lucro_liquido / patrimonio_liquido\n            leverage            REAL,                  -- passivo_total / ativo_total\n            source              TEXT    NOT NULL,       -- 'CVM DFP <ano>' / 'CVM ITR <ano>'\n            inserted_at         TEXT    NOT NULL DEFAULT (datetime('now')), receita_liquida REAL, net_margin REAL, fluxo_caixa_operacional REAL, accruals REAL, shares_outstanding REAL, known_at TEXT,\n            UNIQUE(ticker, ref_date, source)\n        )"
+        },
+        {
+          "name": "idx_fundamentals_ticker_ref",
+          "type": "index",
+          "sql": "CREATE INDEX idx_fundamentals_ticker_ref\n            ON fundamentals(ticker, ref_date)"
+        },
+        {
+          "name": "rj_company_observations",
+          "type": "table",
+          "sql": "CREATE TABLE rj_company_observations (\n            ticker              TEXT NOT NULL REFERENCES rj_universe(ticker),\n            asof                TEXT NOT NULL,\n            rj_request_date     TEXT NOT NULL,\n            observed_trading_days INTEGER NOT NULL,\n            censoring_horizon_trading_days INTEGER NOT NULL,\n            status              TEXT NOT NULL CHECK(status IN ('censored','no_candidate_control')),\n            inserted_at         TEXT NOT NULL DEFAULT (datetime('now')),\n            PRIMARY KEY (ticker, asof)\n        )"
+        },
+        {
+          "name": "dividends",
+          "type": "table",
+          "sql": "CREATE TABLE dividends (\n            id                  INTEGER PRIMARY KEY,\n            ticker              TEXT    NOT NULL,\n            ex_date             TEXT    NOT NULL,   -- proxy: Data_Pagamento_Dividendo\n            value_per_share     REAL    NOT NULL,\n            source              TEXT    NOT NULL,   -- 'CVM FRE <ano>'\n            inserted_at         TEXT    NOT NULL DEFAULT (datetime('now')),\n            UNIQUE(ticker, ex_date, source)\n        )"
+        },
+        {
+          "name": "idx_dividends_ticker_exdate",
+          "type": "index",
+          "sql": "CREATE INDEX idx_dividends_ticker_exdate\n            ON dividends(ticker, ex_date)"
+        },
+        {
+          "name": "ingestion_issues",
+          "type": "table",
+          "sql": "CREATE TABLE ingestion_issues (\n            source_sha256 TEXT NOT NULL, document_key TEXT NOT NULL, reason TEXT NOT NULL,\n            UNIQUE(source_sha256,document_key,reason)\n        )"
+        },
+        {
+          "name": "fundamentals_pit",
+          "type": "table",
+          "sql": "CREATE TABLE fundamentals_pit (\n            ticker TEXT NOT NULL, cnpj TEXT NOT NULL, ref_date TEXT NOT NULL,\n            document_version INTEGER NOT NULL CHECK(document_version>0),\n            received_at TEXT NOT NULL, available_at TEXT NOT NULL,\n            source TEXT NOT NULL, source_sha256 TEXT NOT NULL,\n            ativo_total REAL, passivo_total REAL, patrimonio_liquido REAL,\n            lucro_liquido REAL, receita_liquida REAL, fluxo_caixa_operacional REAL,\n            roe REAL, leverage REAL, net_margin REAL, accruals REAL,\n            CHECK(available_at>received_at),\n            UNIQUE(ticker,cnpj,ref_date,document_version,source_sha256)\n        )"
+        },
+        {
+          "name": "idx_fundamentals_pit",
+          "type": "index",
+          "sql": "CREATE INDEX idx_fundamentals_pit ON fundamentals_pit(ticker,available_at,ref_date)"
+        },
+        {
+          "name": "shares_pit",
+          "type": "table",
+          "sql": "CREATE TABLE shares_pit (\n            ticker TEXT NOT NULL, ref_date TEXT NOT NULL, document_id TEXT NOT NULL,\n            received_at TEXT NOT NULL, available_at TEXT NOT NULL,\n            shares_outstanding REAL NOT NULL CHECK(shares_outstanding>0),\n            basis_date TEXT, basis_source TEXT, price_basis_source TEXT,\n            source TEXT NOT NULL, source_sha256 TEXT NOT NULL,\n            CHECK(available_at>received_at),\n            CHECK(basis_date IS NULL OR (basis_date<=received_at AND basis_source IS NOT NULL)),\n            UNIQUE(ticker,document_id,source_sha256)\n        )"
+        },
+        {
+          "name": "idx_shares_pit",
+          "type": "index",
+          "sql": "CREATE INDEX idx_shares_pit ON shares_pit(ticker,available_at)"
+        },
+        {
+          "name": "cash_events",
+          "type": "table",
+          "sql": "CREATE TABLE cash_events (\n            ticker TEXT NOT NULL, event_id TEXT NOT NULL, ex_date TEXT NOT NULL,\n            payment_date TEXT NOT NULL, value_per_share REAL NOT NULL CHECK(value_per_share>0),\n            source TEXT NOT NULL, source_sha256 TEXT NOT NULL,\n            CHECK(payment_date>=ex_date), UNIQUE(ticker,event_id)\n        )"
+        },
+        {
+          "name": "cash_event_coverage",
+          "type": "table",
+          "sql": "CREATE TABLE cash_event_coverage (\n            ticker TEXT NOT NULL, start_date TEXT NOT NULL, end_date TEXT NOT NULL,\n            source TEXT NOT NULL, source_sha256 TEXT NOT NULL,\n            CHECK(end_date>=start_date), UNIQUE(ticker,start_date,end_date)\n        )"
+        }
+      ],
+      "after": "07197228920e4082954afbc9035509ae74e84be1773195a4c5b71a435481a804"
+    },
+    {
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\a8238568980d3303890b04590cfb5c55ab2d24c9271edd86820269336b09679a",
+      "expected_sha256": "a8238568980d3303890b04590cfb5c55ab2d24c9271edd86820269336b09679a",
+      "policy": "schema only, no market/outcome rows; mode=ro&immutable=1, query_only",
+      "before": "a8238568980d3303890b04590cfb5c55ab2d24c9271edd86820269336b09679a",
+      "schema": [
+        {
+          "name": "_migrations",
+          "type": "table",
+          "sql": "CREATE TABLE _migrations (\n            name TEXT PRIMARY KEY,\n            applied_at TEXT NOT NULL DEFAULT (datetime('now'))\n        )"
+        },
+        {
+          "name": "prices_raw",
+          "type": "table",
+          "sql": "CREATE TABLE prices_raw (\n            id          INTEGER PRIMARY KEY,\n            date        TEXT    NOT NULL,          -- YYYY-MM-DD\n            ticker      TEXT    NOT NULL,\n            bdi_code    TEXT    NOT NULL,\n            market_type TEXT    NOT NULL,\n            open        REAL    NOT NULL,\n            high        REAL    NOT NULL,\n            low         REAL    NOT NULL,\n            close       REAL    NOT NULL,\n            volume_fin  REAL    NOT NULL,\n            qty         INTEGER NOT NULL,\n            quote_factor INTEGER NOT NULL DEFAULT 1,\n            source_file TEXT    NOT NULL,\n            inserted_at TEXT    NOT NULL DEFAULT (datetime('now')),\n            UNIQUE(date, ticker, source_file)\n        )"
+        },
+        {
+          "name": "idx_prices_raw_ticker_date",
+          "type": "index",
+          "sql": "CREATE INDEX idx_prices_raw_ticker_date ON prices_raw(ticker, date)"
+        },
+        {
+          "name": "adjustments",
+          "type": "table",
+          "sql": "CREATE TABLE adjustments (\n            id          INTEGER PRIMARY KEY,\n            ticker      TEXT    NOT NULL,\n            ex_date     TEXT    NOT NULL,           -- YYYY-MM-DD\n            factor      REAL    NOT NULL,           -- multiplicar pre\u00e7os anteriores\n            type        TEXT    NOT NULL,           -- 'split','grupamento','dividendo','jcp','outro'\n            source      TEXT    NOT NULL,           -- 'inferred','csv_manual','yfinance_xcheck'\n            notes       TEXT,\n            approved_by TEXT,                       -- null = pendente aprova\u00e7\u00e3o humana\n            inserted_at TEXT    NOT NULL DEFAULT (datetime('now')),\n            UNIQUE(ticker, ex_date, type)\n        )"
+        },
+        {
+          "name": "quarantine",
+          "type": "table",
+          "sql": "CREATE TABLE quarantine (\n            id          INTEGER PRIMARY KEY,\n            ticker      TEXT    NOT NULL,\n            date        TEXT    NOT NULL,\n            reason      TEXT    NOT NULL,\n            raw_return  REAL,                       -- retorno overnight que disparou\n            resolved_at TEXT,\n            resolution  TEXT,\n            inserted_at TEXT    NOT NULL DEFAULT (datetime('now')),\n            UNIQUE(ticker, date)\n        )"
+        },
+        {
+          "name": "universe_snapshots",
+          "type": "table",
+          "sql": "CREATE TABLE universe_snapshots (\n            asof_date   TEXT    NOT NULL,\n            ticker      TEXT    NOT NULL,\n            median_vol  REAL    NOT NULL,           -- mediana vol financeiro na janela\n            rank        INTEGER NOT NULL,\n            inserted_at TEXT    NOT NULL DEFAULT (datetime('now')),\n            PRIMARY KEY (asof_date, ticker)\n        )"
+        },
+        {
+          "name": "decisions",
+          "type": "table",
+          "sql": "CREATE TABLE decisions (\n            id              INTEGER PRIMARY KEY,\n            run_id          TEXT    NOT NULL,\n            asof            TEXT    NOT NULL,       -- data do sinal (\u00faltimo preg\u00e3o do m\u00eas)\n            ticker          TEXT    NOT NULL,\n            signal_value    REAL    NOT NULL,       -- momentum 12-1\n            rank            INTEGER NOT NULL,\n            conviction_band TEXT    NOT NULL,       -- 'quintil_superior','resto'\n            frozen_mode     INTEGER NOT NULL DEFAULT 0,  -- 1=paper forward\n            inserted_at     TEXT    NOT NULL DEFAULT (datetime('now')),\n            -- parte RISK \u2014 preenchida na liquida\u00e7\u00e3o, write-once via COALESCE\n            exec_date       TEXT,\n            exec_price      REAL,\n            exit_date       TEXT,\n            exit_price      REAL,\n            cost_paid       REAL,\n            realized_return_net REAL,\n            holding_days    INTEGER,\n            UNIQUE(run_id, asof, ticker)\n        )"
+        },
+        {
+          "name": "runs",
+          "type": "table",
+          "sql": "CREATE TABLE runs (\n            run_id          TEXT    PRIMARY KEY,\n            config_hash     TEXT    NOT NULL,\n            code_version    TEXT    NOT NULL,\n            started_at      TEXT    NOT NULL DEFAULT (datetime('now')),\n            params_json     TEXT    NOT NULL,\n            notes           TEXT\n        , params_frozen_until TEXT)"
+        },
+        {
+          "name": "idx_prices_raw_mkt_date",
+          "type": "index",
+          "sql": "CREATE INDEX idx_prices_raw_mkt_date\n            ON prices_raw(market_type, date)"
+        },
+        {
+          "name": "rj_universe",
+          "type": "table",
+          "sql": "CREATE TABLE rj_universe (\n            ticker              TEXT    PRIMARY KEY,\n            company_name        TEXT    NOT NULL,\n            rj_request_date     TEXT    NOT NULL,\n            rj_process_number   TEXT,\n            plan_presented_date TEXT,\n            plan_approved_date  TEXT,\n            rj_end_date         TEXT,\n            delisted_date       TEXT,\n            source              TEXT    NOT NULL,\n            approved_by         TEXT,\n            notes               TEXT,\n            inserted_at         TEXT    NOT NULL DEFAULT (datetime('now'))\n        )"
+        },
+        {
+          "name": "rj_episodes",
+          "type": "table",
+          "sql": "CREATE TABLE rj_episodes (\n            id                  INTEGER PRIMARY KEY,\n            ticker              TEXT    NOT NULL REFERENCES rj_universe(ticker),\n            trough_date         TEXT    NOT NULL,\n            trough_price        REAL    NOT NULL,\n            is_primary          INTEGER NOT NULL DEFAULT 1,\n            outcome             TEXT,\n            rally_pct           REAL,\n            rally_date          TEXT,\n            trading_days_to_rally INTEGER,\n            censored            INTEGER NOT NULL DEFAULT 0,\n            inserted_at         TEXT    NOT NULL DEFAULT (datetime('now')), secondary_outcome TEXT, secondary_rally_pct REAL, secondary_rally_date TEXT, secondary_trading_days_to_rally INTEGER, secondary_censored INTEGER,\n            UNIQUE(ticker, trough_date)\n        )"
+        },
+        {
+          "name": "rj_events",
+          "type": "table",
+          "sql": "CREATE TABLE rj_events (\n            id          INTEGER PRIMARY KEY,\n            ticker      TEXT    NOT NULL REFERENCES rj_universe(ticker),\n            event_date  TEXT    NOT NULL,\n            published_at TEXT,\n            known_at    TEXT    NOT NULL,\n            event_type  TEXT    NOT NULL,\n            source      TEXT    NOT NULL,\n            approved_by TEXT,\n            notes       TEXT,\n            inserted_at TEXT    NOT NULL DEFAULT (datetime('now'))\n        )"
+        },
+        {
+          "name": "idx_rj_events_ticker_known",
+          "type": "index",
+          "sql": "CREATE INDEX idx_rj_events_ticker_known ON rj_events(ticker, known_at)"
+        },
+        {
+          "name": "rj_family_scores",
+          "type": "table",
+          "sql": "CREATE TABLE rj_family_scores (\n            episode_id  INTEGER NOT NULL REFERENCES rj_episodes(id),\n            family      TEXT    NOT NULL,\n            value       REAL,\n            computed_at TEXT    NOT NULL DEFAULT (datetime('now')),\n            PRIMARY KEY (episode_id, family)\n        )"
+        },
+        {
+          "name": "rj_universe_snapshots",
+          "type": "table",
+          "sql": "CREATE TABLE rj_universe_snapshots (\n            snapshot_date TEXT    NOT NULL,\n            source        TEXT    NOT NULL,\n            ticker        TEXT    NOT NULL,\n            company_name  TEXT    NOT NULL,\n            payload_hash  TEXT    NOT NULL,\n            raw_payload   TEXT,\n            inserted_at   TEXT    NOT NULL DEFAULT (datetime('now')),\n            PRIMARY KEY (snapshot_date, source, ticker)\n        )"
+        },
+        {
+          "name": "fundamentals",
+          "type": "table",
+          "sql": "CREATE TABLE fundamentals (\n            id                  INTEGER PRIMARY KEY,\n            ticker              TEXT    NOT NULL,\n            ref_date            TEXT    NOT NULL,      -- DT_REFER (fim do exerc\u00edcio/trimestre)\n            ativo_total         REAL,\n            passivo_total       REAL,\n            patrimonio_liquido  REAL,\n            lucro_liquido       REAL,\n            roe                 REAL,                  -- lucro_liquido / patrimonio_liquido\n            leverage            REAL,                  -- passivo_total / ativo_total\n            source              TEXT    NOT NULL,       -- 'CVM DFP <ano>' / 'CVM ITR <ano>'\n            inserted_at         TEXT    NOT NULL DEFAULT (datetime('now')), receita_liquida REAL, net_margin REAL, fluxo_caixa_operacional REAL, accruals REAL, shares_outstanding REAL, known_at TEXT,\n            UNIQUE(ticker, ref_date, source)\n        )"
+        },
+        {
+          "name": "idx_fundamentals_ticker_ref",
+          "type": "index",
+          "sql": "CREATE INDEX idx_fundamentals_ticker_ref\n            ON fundamentals(ticker, ref_date)"
+        },
+        {
+          "name": "rj_company_observations",
+          "type": "table",
+          "sql": "CREATE TABLE rj_company_observations (\n            ticker              TEXT NOT NULL REFERENCES rj_universe(ticker),\n            asof                TEXT NOT NULL,\n            rj_request_date     TEXT NOT NULL,\n            observed_trading_days INTEGER NOT NULL,\n            censoring_horizon_trading_days INTEGER NOT NULL,\n            status              TEXT NOT NULL CHECK(status IN ('censored','no_candidate_control')),\n            inserted_at         TEXT NOT NULL DEFAULT (datetime('now')),\n            PRIMARY KEY (ticker, asof)\n        )"
+        },
+        {
+          "name": "dividends",
+          "type": "table",
+          "sql": "CREATE TABLE dividends (\n            id                  INTEGER PRIMARY KEY,\n            ticker              TEXT    NOT NULL,\n            ex_date             TEXT    NOT NULL,   -- proxy: Data_Pagamento_Dividendo\n            value_per_share     REAL    NOT NULL,\n            source              TEXT    NOT NULL,   -- 'CVM FRE <ano>'\n            inserted_at         TEXT    NOT NULL DEFAULT (datetime('now')),\n            UNIQUE(ticker, ex_date, source)\n        )"
+        },
+        {
+          "name": "idx_dividends_ticker_exdate",
+          "type": "index",
+          "sql": "CREATE INDEX idx_dividends_ticker_exdate\n            ON dividends(ticker, ex_date)"
+        },
+        {
+          "name": "ingestion_issues",
+          "type": "table",
+          "sql": "CREATE TABLE ingestion_issues (\n            source_sha256 TEXT NOT NULL, document_key TEXT NOT NULL, reason TEXT NOT NULL,\n            UNIQUE(source_sha256,document_key,reason)\n        )"
+        },
+        {
+          "name": "fundamentals_pit",
+          "type": "table",
+          "sql": "CREATE TABLE fundamentals_pit (\n            ticker TEXT NOT NULL, cnpj TEXT NOT NULL, ref_date TEXT NOT NULL,\n            document_version INTEGER NOT NULL CHECK(document_version>0),\n            received_at TEXT NOT NULL, available_at TEXT NOT NULL,\n            source TEXT NOT NULL, source_sha256 TEXT NOT NULL,\n            ativo_total REAL, passivo_total REAL, patrimonio_liquido REAL,\n            lucro_liquido REAL, receita_liquida REAL, fluxo_caixa_operacional REAL,\n            roe REAL, leverage REAL, net_margin REAL, accruals REAL,\n            CHECK(available_at>received_at),\n            UNIQUE(ticker,cnpj,ref_date,document_version,source_sha256)\n        )"
+        },
+        {
+          "name": "idx_fundamentals_pit",
+          "type": "index",
+          "sql": "CREATE INDEX idx_fundamentals_pit ON fundamentals_pit(ticker,available_at,ref_date)"
+        },
+        {
+          "name": "shares_pit",
+          "type": "table",
+          "sql": "CREATE TABLE shares_pit (\n            ticker TEXT NOT NULL, ref_date TEXT NOT NULL, document_id TEXT NOT NULL,\n            received_at TEXT NOT NULL, available_at TEXT NOT NULL,\n            shares_outstanding REAL NOT NULL CHECK(shares_outstanding>0),\n            basis_date TEXT, basis_source TEXT, price_basis_source TEXT,\n            source TEXT NOT NULL, source_sha256 TEXT NOT NULL,\n            CHECK(available_at>received_at),\n            CHECK(basis_date IS NULL OR (basis_date<=received_at AND basis_source IS NOT NULL)),\n            UNIQUE(ticker,document_id,source_sha256)\n        )"
+        },
+        {
+          "name": "idx_shares_pit",
+          "type": "index",
+          "sql": "CREATE INDEX idx_shares_pit ON shares_pit(ticker,available_at)"
+        },
+        {
+          "name": "cash_events",
+          "type": "table",
+          "sql": "CREATE TABLE cash_events (\n            ticker TEXT NOT NULL, event_id TEXT NOT NULL, ex_date TEXT NOT NULL,\n            payment_date TEXT NOT NULL, value_per_share REAL NOT NULL CHECK(value_per_share>0),\n            source TEXT NOT NULL, source_sha256 TEXT NOT NULL,\n            CHECK(payment_date>=ex_date), UNIQUE(ticker,event_id)\n        )"
+        },
+        {
+          "name": "cash_event_coverage",
+          "type": "table",
+          "sql": "CREATE TABLE cash_event_coverage (\n            ticker TEXT NOT NULL, start_date TEXT NOT NULL, end_date TEXT NOT NULL,\n            source TEXT NOT NULL, source_sha256 TEXT NOT NULL,\n            CHECK(end_date>=start_date), UNIQUE(ticker,start_date,end_date)\n        )"
+        },
+        {
+          "name": "research_source_documents",
+          "type": "table",
+          "sql": "CREATE TABLE research_source_documents (\n            record_id TEXT PRIMARY KEY, kind TEXT NOT NULL, archive_year INTEGER,\n            cnpj TEXT, document_id TEXT, available_at TEXT,\n            source_sha256 TEXT NOT NULL, payload_json TEXT NOT NULL\n        )"
+        },
+        {
+          "name": "idx_research_sources",
+          "type": "index",
+          "sql": "CREATE INDEX idx_research_sources ON research_source_documents(kind,cnpj,available_at)"
+        },
+        {
+          "name": "stock_bonus_events",
+          "type": "table",
+          "sql": "CREATE TABLE stock_bonus_events (\n            ticker TEXT NOT NULL, event_id TEXT NOT NULL, ex_date TEXT NOT NULL,\n            credit_date TEXT NOT NULL, new_shares_per_old REAL NOT NULL CHECK(new_shares_per_old>0),\n            source TEXT NOT NULL, source_sha256 TEXT NOT NULL,\n            CHECK(credit_date>=ex_date), UNIQUE(ticker,event_id)\n        )"
+        }
+      ],
+      "after": "a8238568980d3303890b04590cfb5c55ab2d24c9271edd86820269336b09679a"
+    },
+    {
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\8f84a743e706573cab9372c21d8c9c186c5afb31c2206821d9c2cf82199bbc64",
+      "expected_sha256": "8f84a743e706573cab9372c21d8c9c186c5afb31c2206821d9c2cf82199bbc64",
+      "policy": "schema only, no market/outcome rows; mode=ro&immutable=1, query_only",
+      "before": "8f84a743e706573cab9372c21d8c9c186c5afb31c2206821d9c2cf82199bbc64",
+      "schema": [
+        {
+          "name": "_migrations",
+          "type": "table",
+          "sql": "CREATE TABLE _migrations (\n            name TEXT PRIMARY KEY,\n            applied_at TEXT NOT NULL DEFAULT (datetime('now'))\n        )"
+        },
+        {
+          "name": "prices_raw",
+          "type": "table",
+          "sql": "CREATE TABLE prices_raw (\n            id          INTEGER PRIMARY KEY,\n            date        TEXT    NOT NULL,          -- YYYY-MM-DD\n            ticker      TEXT    NOT NULL,\n            bdi_code    TEXT    NOT NULL,\n            market_type TEXT    NOT NULL,\n            open        REAL    NOT NULL,\n            high        REAL    NOT NULL,\n            low         REAL    NOT NULL,\n            close       REAL    NOT NULL,\n            volume_fin  REAL    NOT NULL,\n            qty         INTEGER NOT NULL,\n            quote_factor INTEGER NOT NULL DEFAULT 1,\n            source_file TEXT    NOT NULL,\n            inserted_at TEXT    NOT NULL DEFAULT (datetime('now')),\n            UNIQUE(date, ticker, source_file)\n        )"
+        },
+        {
+          "name": "idx_prices_raw_ticker_date",
+          "type": "index",
+          "sql": "CREATE INDEX idx_prices_raw_ticker_date ON prices_raw(ticker, date)"
+        },
+        {
+          "name": "adjustments",
+          "type": "table",
+          "sql": "CREATE TABLE adjustments (\n            id          INTEGER PRIMARY KEY,\n            ticker      TEXT    NOT NULL,\n            ex_date     TEXT    NOT NULL,           -- YYYY-MM-DD\n            factor      REAL    NOT NULL,           -- multiplicar pre\u00e7os anteriores\n            type        TEXT    NOT NULL,           -- 'split','grupamento','dividendo','jcp','outro'\n            source      TEXT    NOT NULL,           -- 'inferred','csv_manual','yfinance_xcheck'\n            notes       TEXT,\n            approved_by TEXT,                       -- null = pendente aprova\u00e7\u00e3o humana\n            inserted_at TEXT    NOT NULL DEFAULT (datetime('now')),\n            UNIQUE(ticker, ex_date, type)\n        )"
+        },
+        {
+          "name": "quarantine",
+          "type": "table",
+          "sql": "CREATE TABLE quarantine (\n            id          INTEGER PRIMARY KEY,\n            ticker      TEXT    NOT NULL,\n            date        TEXT    NOT NULL,\n            reason      TEXT    NOT NULL,\n            raw_return  REAL,                       -- retorno overnight que disparou\n            resolved_at TEXT,\n            resolution  TEXT,\n            inserted_at TEXT    NOT NULL DEFAULT (datetime('now')),\n            UNIQUE(ticker, date)\n        )"
+        },
+        {
+          "name": "universe_snapshots",
+          "type": "table",
+          "sql": "CREATE TABLE universe_snapshots (\n            asof_date   TEXT    NOT NULL,\n            ticker      TEXT    NOT NULL,\n            median_vol  REAL    NOT NULL,           -- mediana vol financeiro na janela\n            rank        INTEGER NOT NULL,\n            inserted_at TEXT    NOT NULL DEFAULT (datetime('now')),\n            PRIMARY KEY (asof_date, ticker)\n        )"
+        },
+        {
+          "name": "decisions",
+          "type": "table",
+          "sql": "CREATE TABLE decisions (\n            id              INTEGER PRIMARY KEY,\n            run_id          TEXT    NOT NULL,\n            asof            TEXT    NOT NULL,       -- data do sinal (\u00faltimo preg\u00e3o do m\u00eas)\n            ticker          TEXT    NOT NULL,\n            signal_value    REAL    NOT NULL,       -- momentum 12-1\n            rank            INTEGER NOT NULL,\n            conviction_band TEXT    NOT NULL,       -- 'quintil_superior','resto'\n            frozen_mode     INTEGER NOT NULL DEFAULT 0,  -- 1=paper forward\n            inserted_at     TEXT    NOT NULL DEFAULT (datetime('now')),\n            -- parte RISK \u2014 preenchida na liquida\u00e7\u00e3o, write-once via COALESCE\n            exec_date       TEXT,\n            exec_price      REAL,\n            exit_date       TEXT,\n            exit_price      REAL,\n            cost_paid       REAL,\n            realized_return_net REAL,\n            holding_days    INTEGER,\n            UNIQUE(run_id, asof, ticker)\n        )"
+        },
+        {
+          "name": "runs",
+          "type": "table",
+          "sql": "CREATE TABLE runs (\n            run_id          TEXT    PRIMARY KEY,\n            config_hash     TEXT    NOT NULL,\n            code_version    TEXT    NOT NULL,\n            started_at      TEXT    NOT NULL DEFAULT (datetime('now')),\n            params_json     TEXT    NOT NULL,\n            notes           TEXT\n        , params_frozen_until TEXT)"
+        },
+        {
+          "name": "idx_prices_raw_mkt_date",
+          "type": "index",
+          "sql": "CREATE INDEX idx_prices_raw_mkt_date\n            ON prices_raw(market_type, date)"
+        },
+        {
+          "name": "rj_universe",
+          "type": "table",
+          "sql": "CREATE TABLE rj_universe (\n            ticker              TEXT    PRIMARY KEY,\n            company_name        TEXT    NOT NULL,\n            rj_request_date     TEXT    NOT NULL,\n            rj_process_number   TEXT,\n            plan_presented_date TEXT,\n            plan_approved_date  TEXT,\n            rj_end_date         TEXT,\n            delisted_date       TEXT,\n            source              TEXT    NOT NULL,\n            approved_by         TEXT,\n            notes               TEXT,\n            inserted_at         TEXT    NOT NULL DEFAULT (datetime('now'))\n        )"
+        },
+        {
+          "name": "rj_episodes",
+          "type": "table",
+          "sql": "CREATE TABLE rj_episodes (\n            id                  INTEGER PRIMARY KEY,\n            ticker              TEXT    NOT NULL REFERENCES rj_universe(ticker),\n            trough_date         TEXT    NOT NULL,\n            trough_price        REAL    NOT NULL,\n            is_primary          INTEGER NOT NULL DEFAULT 1,\n            outcome             TEXT,\n            rally_pct           REAL,\n            rally_date          TEXT,\n            trading_days_to_rally INTEGER,\n            censored            INTEGER NOT NULL DEFAULT 0,\n            inserted_at         TEXT    NOT NULL DEFAULT (datetime('now')), secondary_outcome TEXT, secondary_rally_pct REAL, secondary_rally_date TEXT, secondary_trading_days_to_rally INTEGER, secondary_censored INTEGER,\n            UNIQUE(ticker, trough_date)\n        )"
+        },
+        {
+          "name": "rj_events",
+          "type": "table",
+          "sql": "CREATE TABLE rj_events (\n            id          INTEGER PRIMARY KEY,\n            ticker      TEXT    NOT NULL REFERENCES rj_universe(ticker),\n            event_date  TEXT    NOT NULL,\n            published_at TEXT,\n            known_at    TEXT    NOT NULL,\n            event_type  TEXT    NOT NULL,\n            source      TEXT    NOT NULL,\n            approved_by TEXT,\n            notes       TEXT,\n            inserted_at TEXT    NOT NULL DEFAULT (datetime('now'))\n        )"
+        },
+        {
+          "name": "idx_rj_events_ticker_known",
+          "type": "index",
+          "sql": "CREATE INDEX idx_rj_events_ticker_known ON rj_events(ticker, known_at)"
+        },
+        {
+          "name": "rj_family_scores",
+          "type": "table",
+          "sql": "CREATE TABLE rj_family_scores (\n            episode_id  INTEGER NOT NULL REFERENCES rj_episodes(id),\n            family      TEXT    NOT NULL,\n            value       REAL,\n            computed_at TEXT    NOT NULL DEFAULT (datetime('now')),\n            PRIMARY KEY (episode_id, family)\n        )"
+        },
+        {
+          "name": "rj_universe_snapshots",
+          "type": "table",
+          "sql": "CREATE TABLE rj_universe_snapshots (\n            snapshot_date TEXT    NOT NULL,\n            source        TEXT    NOT NULL,\n            ticker        TEXT    NOT NULL,\n            company_name  TEXT    NOT NULL,\n            payload_hash  TEXT    NOT NULL,\n            raw_payload   TEXT,\n            inserted_at   TEXT    NOT NULL DEFAULT (datetime('now')),\n            PRIMARY KEY (snapshot_date, source, ticker)\n        )"
+        },
+        {
+          "name": "fundamentals",
+          "type": "table",
+          "sql": "CREATE TABLE fundamentals (\n            id                  INTEGER PRIMARY KEY,\n            ticker              TEXT    NOT NULL,\n            ref_date            TEXT    NOT NULL,      -- DT_REFER (fim do exerc\u00edcio/trimestre)\n            ativo_total         REAL,\n            passivo_total       REAL,\n            patrimonio_liquido  REAL,\n            lucro_liquido       REAL,\n            roe                 REAL,                  -- lucro_liquido / patrimonio_liquido\n            leverage            REAL,                  -- passivo_total / ativo_total\n            source              TEXT    NOT NULL,       -- 'CVM DFP <ano>' / 'CVM ITR <ano>'\n            inserted_at         TEXT    NOT NULL DEFAULT (datetime('now')), receita_liquida REAL, net_margin REAL, fluxo_caixa_operacional REAL, accruals REAL, shares_outstanding REAL, known_at TEXT,\n            UNIQUE(ticker, ref_date, source)\n        )"
+        },
+        {
+          "name": "idx_fundamentals_ticker_ref",
+          "type": "index",
+          "sql": "CREATE INDEX idx_fundamentals_ticker_ref\n            ON fundamentals(ticker, ref_date)"
+        },
+        {
+          "name": "rj_company_observations",
+          "type": "table",
+          "sql": "CREATE TABLE rj_company_observations (\n            ticker              TEXT NOT NULL REFERENCES rj_universe(ticker),\n            asof                TEXT NOT NULL,\n            rj_request_date     TEXT NOT NULL,\n            observed_trading_days INTEGER NOT NULL,\n            censoring_horizon_trading_days INTEGER NOT NULL,\n            status              TEXT NOT NULL CHECK(status IN ('censored','no_candidate_control')),\n            inserted_at         TEXT NOT NULL DEFAULT (datetime('now')),\n            PRIMARY KEY (ticker, asof)\n        )"
+        },
+        {
+          "name": "dividends",
+          "type": "table",
+          "sql": "CREATE TABLE dividends (\n            id                  INTEGER PRIMARY KEY,\n            ticker              TEXT    NOT NULL,\n            ex_date             TEXT    NOT NULL,   -- proxy: Data_Pagamento_Dividendo\n            value_per_share     REAL    NOT NULL,\n            source              TEXT    NOT NULL,   -- 'CVM FRE <ano>'\n            inserted_at         TEXT    NOT NULL DEFAULT (datetime('now')),\n            UNIQUE(ticker, ex_date, source)\n        )"
+        },
+        {
+          "name": "idx_dividends_ticker_exdate",
+          "type": "index",
+          "sql": "CREATE INDEX idx_dividends_ticker_exdate\n            ON dividends(ticker, ex_date)"
+        },
+        {
+          "name": "ingestion_issues",
+          "type": "table",
+          "sql": "CREATE TABLE ingestion_issues (\n            source_sha256 TEXT NOT NULL, document_key TEXT NOT NULL, reason TEXT NOT NULL,\n            UNIQUE(source_sha256,document_key,reason)\n        )"
+        },
+        {
+          "name": "fundamentals_pit",
+          "type": "table",
+          "sql": "CREATE TABLE fundamentals_pit (\n            ticker TEXT NOT NULL, cnpj TEXT NOT NULL, ref_date TEXT NOT NULL,\n            document_version INTEGER NOT NULL CHECK(document_version>0),\n            received_at TEXT NOT NULL, available_at TEXT NOT NULL,\n            source TEXT NOT NULL, source_sha256 TEXT NOT NULL,\n            ativo_total REAL, passivo_total REAL, patrimonio_liquido REAL,\n            lucro_liquido REAL, receita_liquida REAL, fluxo_caixa_operacional REAL,\n            roe REAL, leverage REAL, net_margin REAL, accruals REAL,\n            CHECK(available_at>received_at),\n            UNIQUE(ticker,cnpj,ref_date,document_version,source_sha256)\n        )"
+        },
+        {
+          "name": "idx_fundamentals_pit",
+          "type": "index",
+          "sql": "CREATE INDEX idx_fundamentals_pit ON fundamentals_pit(ticker,available_at,ref_date)"
+        },
+        {
+          "name": "shares_pit",
+          "type": "table",
+          "sql": "CREATE TABLE shares_pit (\n            ticker TEXT NOT NULL, ref_date TEXT NOT NULL, document_id TEXT NOT NULL,\n            received_at TEXT NOT NULL, available_at TEXT NOT NULL,\n            shares_outstanding REAL NOT NULL CHECK(shares_outstanding>0),\n            basis_date TEXT, basis_source TEXT, price_basis_source TEXT,\n            source TEXT NOT NULL, source_sha256 TEXT NOT NULL,\n            CHECK(available_at>received_at),\n            CHECK(basis_date IS NULL OR (basis_date<=received_at AND basis_source IS NOT NULL)),\n            UNIQUE(ticker,document_id,source_sha256)\n        )"
+        },
+        {
+          "name": "idx_shares_pit",
+          "type": "index",
+          "sql": "CREATE INDEX idx_shares_pit ON shares_pit(ticker,available_at)"
+        },
+        {
+          "name": "cash_events",
+          "type": "table",
+          "sql": "CREATE TABLE cash_events (\n            ticker TEXT NOT NULL, event_id TEXT NOT NULL, ex_date TEXT NOT NULL,\n            payment_date TEXT NOT NULL, value_per_share REAL NOT NULL CHECK(value_per_share>0),\n            source TEXT NOT NULL, source_sha256 TEXT NOT NULL,\n            CHECK(payment_date>=ex_date), UNIQUE(ticker,event_id)\n        )"
+        },
+        {
+          "name": "cash_event_coverage",
+          "type": "table",
+          "sql": "CREATE TABLE cash_event_coverage (\n            ticker TEXT NOT NULL, start_date TEXT NOT NULL, end_date TEXT NOT NULL,\n            source TEXT NOT NULL, source_sha256 TEXT NOT NULL,\n            CHECK(end_date>=start_date), UNIQUE(ticker,start_date,end_date)\n        )"
+        },
+        {
+          "name": "research_source_documents",
+          "type": "table",
+          "sql": "CREATE TABLE research_source_documents (\n            record_id TEXT PRIMARY KEY, kind TEXT NOT NULL, archive_year INTEGER,\n            cnpj TEXT, document_id TEXT, available_at TEXT,\n            source_sha256 TEXT NOT NULL, payload_json TEXT NOT NULL\n        )"
+        },
+        {
+          "name": "idx_research_sources",
+          "type": "index",
+          "sql": "CREATE INDEX idx_research_sources ON research_source_documents(kind,cnpj,available_at)"
+        },
+        {
+          "name": "stock_bonus_events",
+          "type": "table",
+          "sql": "CREATE TABLE stock_bonus_events (\n            ticker TEXT NOT NULL, event_id TEXT NOT NULL, ex_date TEXT NOT NULL,\n            credit_date TEXT NOT NULL, new_shares_per_old REAL NOT NULL CHECK(new_shares_per_old>0),\n            source TEXT NOT NULL, source_sha256 TEXT NOT NULL,\n            CHECK(credit_date>=ex_date), UNIQUE(ticker,event_id)\n        )"
+        }
+      ],
+      "after": "8f84a743e706573cab9372c21d8c9c186c5afb31c2206821d9c2cf82199bbc64"
+    },
+    {
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\e94633e709392168fc38df9633c5d63b34528a1af75949e9cecd69adf2af8e4a",
+      "expected_sha256": "e94633e709392168fc38df9633c5d63b34528a1af75949e9cecd69adf2af8e4a",
+      "policy": "schema only, no market/outcome rows; mode=ro&immutable=1, query_only",
+      "before": "e94633e709392168fc38df9633c5d63b34528a1af75949e9cecd69adf2af8e4a",
+      "schema": [
+        {
+          "name": "_migrations",
+          "type": "table",
+          "sql": "CREATE TABLE _migrations (\n            name TEXT PRIMARY KEY,\n            applied_at TEXT NOT NULL DEFAULT (datetime('now'))\n        )"
+        },
+        {
+          "name": "prices_raw",
+          "type": "table",
+          "sql": "CREATE TABLE prices_raw (\n            id          INTEGER PRIMARY KEY,\n            date        TEXT    NOT NULL,          -- YYYY-MM-DD\n            ticker      TEXT    NOT NULL,\n            bdi_code    TEXT    NOT NULL,\n            market_type TEXT    NOT NULL,\n            open        REAL    NOT NULL,\n            high        REAL    NOT NULL,\n            low         REAL    NOT NULL,\n            close       REAL    NOT NULL,\n            volume_fin  REAL    NOT NULL,\n            qty         INTEGER NOT NULL,\n            quote_factor INTEGER NOT NULL DEFAULT 1,\n            source_file TEXT    NOT NULL,\n            inserted_at TEXT    NOT NULL DEFAULT (datetime('now')),\n            UNIQUE(date, ticker, source_file)\n        )"
+        },
+        {
+          "name": "idx_prices_raw_ticker_date",
+          "type": "index",
+          "sql": "CREATE INDEX idx_prices_raw_ticker_date ON prices_raw(ticker, date)"
+        },
+        {
+          "name": "adjustments",
+          "type": "table",
+          "sql": "CREATE TABLE adjustments (\n            id          INTEGER PRIMARY KEY,\n            ticker      TEXT    NOT NULL,\n            ex_date     TEXT    NOT NULL,           -- YYYY-MM-DD\n            factor      REAL    NOT NULL,           -- multiplicar pre\u00e7os anteriores\n            type        TEXT    NOT NULL,           -- 'split','grupamento','dividendo','jcp','outro'\n            source      TEXT    NOT NULL,           -- 'inferred','csv_manual','yfinance_xcheck'\n            notes       TEXT,\n            approved_by TEXT,                       -- null = pendente aprova\u00e7\u00e3o humana\n            inserted_at TEXT    NOT NULL DEFAULT (datetime('now')),\n            UNIQUE(ticker, ex_date, type)\n        )"
+        },
+        {
+          "name": "quarantine",
+          "type": "table",
+          "sql": "CREATE TABLE quarantine (\n            id          INTEGER PRIMARY KEY,\n            ticker      TEXT    NOT NULL,\n            date        TEXT    NOT NULL,\n            reason      TEXT    NOT NULL,\n            raw_return  REAL,                       -- retorno overnight que disparou\n            resolved_at TEXT,\n            resolution  TEXT,\n            inserted_at TEXT    NOT NULL DEFAULT (datetime('now')),\n            UNIQUE(ticker, date)\n        )"
+        },
+        {
+          "name": "universe_snapshots",
+          "type": "table",
+          "sql": "CREATE TABLE universe_snapshots (\n            asof_date   TEXT    NOT NULL,\n            ticker      TEXT    NOT NULL,\n            median_vol  REAL    NOT NULL,           -- mediana vol financeiro na janela\n            rank        INTEGER NOT NULL,\n            inserted_at TEXT    NOT NULL DEFAULT (datetime('now')),\n            PRIMARY KEY (asof_date, ticker)\n        )"
+        },
+        {
+          "name": "decisions",
+          "type": "table",
+          "sql": "CREATE TABLE decisions (\n            id              INTEGER PRIMARY KEY,\n            run_id          TEXT    NOT NULL,\n            asof            TEXT    NOT NULL,       -- data do sinal (\u00faltimo preg\u00e3o do m\u00eas)\n            ticker          TEXT    NOT NULL,\n            signal_value    REAL    NOT NULL,       -- momentum 12-1\n            rank            INTEGER NOT NULL,\n            conviction_band TEXT    NOT NULL,       -- 'quintil_superior','resto'\n            frozen_mode     INTEGER NOT NULL DEFAULT 0,  -- 1=paper forward\n            inserted_at     TEXT    NOT NULL DEFAULT (datetime('now')),\n            -- parte RISK \u2014 preenchida na liquida\u00e7\u00e3o, write-once via COALESCE\n            exec_date       TEXT,\n            exec_price      REAL,\n            exit_date       TEXT,\n            exit_price      REAL,\n            cost_paid       REAL,\n            realized_return_net REAL,\n            holding_days    INTEGER,\n            UNIQUE(run_id, asof, ticker)\n        )"
+        },
+        {
+          "name": "runs",
+          "type": "table",
+          "sql": "CREATE TABLE runs (\n            run_id          TEXT    PRIMARY KEY,\n            config_hash     TEXT    NOT NULL,\n            code_version    TEXT    NOT NULL,\n            started_at      TEXT    NOT NULL DEFAULT (datetime('now')),\n            params_json     TEXT    NOT NULL,\n            notes           TEXT\n        , params_frozen_until TEXT)"
+        },
+        {
+          "name": "idx_prices_raw_mkt_date",
+          "type": "index",
+          "sql": "CREATE INDEX idx_prices_raw_mkt_date\n            ON prices_raw(market_type, date)"
+        },
+        {
+          "name": "rj_universe",
+          "type": "table",
+          "sql": "CREATE TABLE rj_universe (\n            ticker              TEXT    PRIMARY KEY,\n            company_name        TEXT    NOT NULL,\n            rj_request_date     TEXT    NOT NULL,\n            rj_process_number   TEXT,\n            plan_presented_date TEXT,\n            plan_approved_date  TEXT,\n            rj_end_date         TEXT,\n            delisted_date       TEXT,\n            source              TEXT    NOT NULL,\n            approved_by         TEXT,\n            notes               TEXT,\n            inserted_at         TEXT    NOT NULL DEFAULT (datetime('now'))\n        )"
+        },
+        {
+          "name": "rj_episodes",
+          "type": "table",
+          "sql": "CREATE TABLE rj_episodes (\n            id                  INTEGER PRIMARY KEY,\n            ticker              TEXT    NOT NULL REFERENCES rj_universe(ticker),\n            trough_date         TEXT    NOT NULL,\n            trough_price        REAL    NOT NULL,\n            is_primary          INTEGER NOT NULL DEFAULT 1,\n            outcome             TEXT,\n            rally_pct           REAL,\n            rally_date          TEXT,\n            trading_days_to_rally INTEGER,\n            censored            INTEGER NOT NULL DEFAULT 0,\n            inserted_at         TEXT    NOT NULL DEFAULT (datetime('now')), secondary_outcome TEXT, secondary_rally_pct REAL, secondary_rally_date TEXT, secondary_trading_days_to_rally INTEGER, secondary_censored INTEGER,\n            UNIQUE(ticker, trough_date)\n        )"
+        },
+        {
+          "name": "rj_events",
+          "type": "table",
+          "sql": "CREATE TABLE rj_events (\n            id          INTEGER PRIMARY KEY,\n            ticker      TEXT    NOT NULL REFERENCES rj_universe(ticker),\n            event_date  TEXT    NOT NULL,\n            published_at TEXT,\n            known_at    TEXT    NOT NULL,\n            event_type  TEXT    NOT NULL,\n            source      TEXT    NOT NULL,\n            approved_by TEXT,\n            notes       TEXT,\n            inserted_at TEXT    NOT NULL DEFAULT (datetime('now'))\n        )"
+        },
+        {
+          "name": "idx_rj_events_ticker_known",
+          "type": "index",
+          "sql": "CREATE INDEX idx_rj_events_ticker_known ON rj_events(ticker, known_at)"
+        },
+        {
+          "name": "rj_family_scores",
+          "type": "table",
+          "sql": "CREATE TABLE rj_family_scores (\n            episode_id  INTEGER NOT NULL REFERENCES rj_episodes(id),\n            family      TEXT    NOT NULL,\n            value       REAL,\n            computed_at TEXT    NOT NULL DEFAULT (datetime('now')),\n            PRIMARY KEY (episode_id, family)\n        )"
+        },
+        {
+          "name": "rj_universe_snapshots",
+          "type": "table",
+          "sql": "CREATE TABLE rj_universe_snapshots (\n            snapshot_date TEXT    NOT NULL,\n            source        TEXT    NOT NULL,\n            ticker        TEXT    NOT NULL,\n            company_name  TEXT    NOT NULL,\n            payload_hash  TEXT    NOT NULL,\n            raw_payload   TEXT,\n            inserted_at   TEXT    NOT NULL DEFAULT (datetime('now')),\n            PRIMARY KEY (snapshot_date, source, ticker)\n        )"
+        },
+        {
+          "name": "fundamentals",
+          "type": "table",
+          "sql": "CREATE TABLE fundamentals (\n            id                  INTEGER PRIMARY KEY,\n            ticker              TEXT    NOT NULL,\n            ref_date            TEXT    NOT NULL,      -- DT_REFER (fim do exerc\u00edcio/trimestre)\n            ativo_total         REAL,\n            passivo_total       REAL,\n            patrimonio_liquido  REAL,\n            lucro_liquido       REAL,\n            roe                 REAL,                  -- lucro_liquido / patrimonio_liquido\n            leverage            REAL,                  -- passivo_total / ativo_total\n            source              TEXT    NOT NULL,       -- 'CVM DFP <ano>' / 'CVM ITR <ano>'\n            inserted_at         TEXT    NOT NULL DEFAULT (datetime('now')), receita_liquida REAL, net_margin REAL, fluxo_caixa_operacional REAL, accruals REAL, shares_outstanding REAL, known_at TEXT,\n            UNIQUE(ticker, ref_date, source)\n        )"
+        },
+        {
+          "name": "idx_fundamentals_ticker_ref",
+          "type": "index",
+          "sql": "CREATE INDEX idx_fundamentals_ticker_ref\n            ON fundamentals(ticker, ref_date)"
+        },
+        {
+          "name": "rj_company_observations",
+          "type": "table",
+          "sql": "CREATE TABLE rj_company_observations (\n            ticker              TEXT NOT NULL REFERENCES rj_universe(ticker),\n            asof                TEXT NOT NULL,\n            rj_request_date     TEXT NOT NULL,\n            observed_trading_days INTEGER NOT NULL,\n            censoring_horizon_trading_days INTEGER NOT NULL,\n            status              TEXT NOT NULL CHECK(status IN ('censored','no_candidate_control')),\n            inserted_at         TEXT NOT NULL DEFAULT (datetime('now')),\n            PRIMARY KEY (ticker, asof)\n        )"
+        },
+        {
+          "name": "dividends",
+          "type": "table",
+          "sql": "CREATE TABLE dividends (\n            id                  INTEGER PRIMARY KEY,\n            ticker              TEXT    NOT NULL,\n            ex_date             TEXT    NOT NULL,   -- proxy: Data_Pagamento_Dividendo\n            value_per_share     REAL    NOT NULL,\n            source              TEXT    NOT NULL,   -- 'CVM FRE <ano>'\n            inserted_at         TEXT    NOT NULL DEFAULT (datetime('now')),\n            UNIQUE(ticker, ex_date, source)\n        )"
+        },
+        {
+          "name": "idx_dividends_ticker_exdate",
+          "type": "index",
+          "sql": "CREATE INDEX idx_dividends_ticker_exdate\n            ON dividends(ticker, ex_date)"
+        },
+        {
+          "name": "ingestion_issues",
+          "type": "table",
+          "sql": "CREATE TABLE ingestion_issues (\n            source_sha256 TEXT NOT NULL, document_key TEXT NOT NULL, reason TEXT NOT NULL,\n            UNIQUE(source_sha256,document_key,reason)\n        )"
+        },
+        {
+          "name": "fundamentals_pit",
+          "type": "table",
+          "sql": "CREATE TABLE fundamentals_pit (\n            ticker TEXT NOT NULL, cnpj TEXT NOT NULL, ref_date TEXT NOT NULL,\n            document_version INTEGER NOT NULL CHECK(document_version>0),\n            received_at TEXT NOT NULL, available_at TEXT NOT NULL,\n            source TEXT NOT NULL, source_sha256 TEXT NOT NULL,\n            ativo_total REAL, passivo_total REAL, patrimonio_liquido REAL,\n            lucro_liquido REAL, receita_liquida REAL, fluxo_caixa_operacional REAL,\n            roe REAL, leverage REAL, net_margin REAL, accruals REAL,\n            CHECK(available_at>received_at),\n            UNIQUE(ticker,cnpj,ref_date,document_version,source_sha256)\n        )"
+        },
+        {
+          "name": "idx_fundamentals_pit",
+          "type": "index",
+          "sql": "CREATE INDEX idx_fundamentals_pit ON fundamentals_pit(ticker,available_at,ref_date)"
+        },
+        {
+          "name": "shares_pit",
+          "type": "table",
+          "sql": "CREATE TABLE shares_pit (\n            ticker TEXT NOT NULL, ref_date TEXT NOT NULL, document_id TEXT NOT NULL,\n            received_at TEXT NOT NULL, available_at TEXT NOT NULL,\n            shares_outstanding REAL NOT NULL CHECK(shares_outstanding>0),\n            basis_date TEXT, basis_source TEXT, price_basis_source TEXT,\n            source TEXT NOT NULL, source_sha256 TEXT NOT NULL,\n            CHECK(available_at>received_at),\n            CHECK(basis_date IS NULL OR (basis_date<=received_at AND basis_source IS NOT NULL)),\n            UNIQUE(ticker,document_id,source_sha256)\n        )"
+        },
+        {
+          "name": "idx_shares_pit",
+          "type": "index",
+          "sql": "CREATE INDEX idx_shares_pit ON shares_pit(ticker,available_at)"
+        },
+        {
+          "name": "cash_events",
+          "type": "table",
+          "sql": "CREATE TABLE cash_events (\n            ticker TEXT NOT NULL, event_id TEXT NOT NULL, ex_date TEXT NOT NULL,\n            payment_date TEXT NOT NULL, value_per_share REAL NOT NULL CHECK(value_per_share>0),\n            source TEXT NOT NULL, source_sha256 TEXT NOT NULL,\n            CHECK(payment_date>=ex_date), UNIQUE(ticker,event_id)\n        )"
+        },
+        {
+          "name": "cash_event_coverage",
+          "type": "table",
+          "sql": "CREATE TABLE cash_event_coverage (\n            ticker TEXT NOT NULL, start_date TEXT NOT NULL, end_date TEXT NOT NULL,\n            source TEXT NOT NULL, source_sha256 TEXT NOT NULL,\n            CHECK(end_date>=start_date), UNIQUE(ticker,start_date,end_date)\n        )"
+        },
+        {
+          "name": "research_source_documents",
+          "type": "table",
+          "sql": "CREATE TABLE research_source_documents (\n            record_id TEXT PRIMARY KEY, kind TEXT NOT NULL, archive_year INTEGER,\n            cnpj TEXT, document_id TEXT, available_at TEXT,\n            source_sha256 TEXT NOT NULL, payload_json TEXT NOT NULL\n        )"
+        },
+        {
+          "name": "idx_research_sources",
+          "type": "index",
+          "sql": "CREATE INDEX idx_research_sources ON research_source_documents(kind,cnpj,available_at)"
+        },
+        {
+          "name": "stock_bonus_events",
+          "type": "table",
+          "sql": "CREATE TABLE stock_bonus_events (\n            ticker TEXT NOT NULL, event_id TEXT NOT NULL, ex_date TEXT NOT NULL,\n            credit_date TEXT NOT NULL, new_shares_per_old REAL NOT NULL CHECK(new_shares_per_old>0),\n            source TEXT NOT NULL, source_sha256 TEXT NOT NULL,\n            CHECK(credit_date>=ex_date), UNIQUE(ticker,event_id)\n        )"
+        }
+      ],
+      "after": "e94633e709392168fc38df9633c5d63b34528a1af75949e9cecd69adf2af8e4a"
+    },
+    {
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\e713af1a867f31c3550e3767c7a9fc6f3963aac2b47b617db2adfe55903da054",
+      "expected_sha256": "e713af1a867f31c3550e3767c7a9fc6f3963aac2b47b617db2adfe55903da054",
+      "policy": "schema only, no market/outcome rows; mode=ro&immutable=1, query_only",
+      "before": "e713af1a867f31c3550e3767c7a9fc6f3963aac2b47b617db2adfe55903da054",
+      "schema": [
+        {
+          "name": "_migrations",
+          "type": "table",
+          "sql": "CREATE TABLE _migrations (\n            name TEXT PRIMARY KEY,\n            applied_at TEXT NOT NULL DEFAULT (datetime('now'))\n        )"
+        },
+        {
+          "name": "prices_raw",
+          "type": "table",
+          "sql": "CREATE TABLE prices_raw (\n            id          INTEGER PRIMARY KEY,\n            date        TEXT    NOT NULL,          -- YYYY-MM-DD\n            ticker      TEXT    NOT NULL,\n            bdi_code    TEXT    NOT NULL,\n            market_type TEXT    NOT NULL,\n            open        REAL    NOT NULL,\n            high        REAL    NOT NULL,\n            low         REAL    NOT NULL,\n            close       REAL    NOT NULL,\n            volume_fin  REAL    NOT NULL,\n            qty         INTEGER NOT NULL,\n            quote_factor INTEGER NOT NULL DEFAULT 1,\n            source_file TEXT    NOT NULL,\n            inserted_at TEXT    NOT NULL DEFAULT (datetime('now')),\n            UNIQUE(date, ticker, source_file)\n        )"
+        },
+        {
+          "name": "idx_prices_raw_ticker_date",
+          "type": "index",
+          "sql": "CREATE INDEX idx_prices_raw_ticker_date ON prices_raw(ticker, date)"
+        },
+        {
+          "name": "adjustments",
+          "type": "table",
+          "sql": "CREATE TABLE adjustments (\n            id          INTEGER PRIMARY KEY,\n            ticker      TEXT    NOT NULL,\n            ex_date     TEXT    NOT NULL,           -- YYYY-MM-DD\n            factor      REAL    NOT NULL,           -- multiplicar pre\u00e7os anteriores\n            type        TEXT    NOT NULL,           -- 'split','grupamento','dividendo','jcp','outro'\n            source      TEXT    NOT NULL,           -- 'inferred','csv_manual','yfinance_xcheck'\n            notes       TEXT,\n            approved_by TEXT,                       -- null = pendente aprova\u00e7\u00e3o humana\n            inserted_at TEXT    NOT NULL DEFAULT (datetime('now')),\n            UNIQUE(ticker, ex_date, type)\n        )"
+        },
+        {
+          "name": "quarantine",
+          "type": "table",
+          "sql": "CREATE TABLE quarantine (\n            id          INTEGER PRIMARY KEY,\n            ticker      TEXT    NOT NULL,\n            date        TEXT    NOT NULL,\n            reason      TEXT    NOT NULL,\n            raw_return  REAL,                       -- retorno overnight que disparou\n            resolved_at TEXT,\n            resolution  TEXT,\n            inserted_at TEXT    NOT NULL DEFAULT (datetime('now')),\n            UNIQUE(ticker, date)\n        )"
+        },
+        {
+          "name": "universe_snapshots",
+          "type": "table",
+          "sql": "CREATE TABLE universe_snapshots (\n            asof_date   TEXT    NOT NULL,\n            ticker      TEXT    NOT NULL,\n            median_vol  REAL    NOT NULL,           -- mediana vol financeiro na janela\n            rank        INTEGER NOT NULL,\n            inserted_at TEXT    NOT NULL DEFAULT (datetime('now')),\n            PRIMARY KEY (asof_date, ticker)\n        )"
+        },
+        {
+          "name": "decisions",
+          "type": "table",
+          "sql": "CREATE TABLE decisions (\n            id              INTEGER PRIMARY KEY,\n            run_id          TEXT    NOT NULL,\n            asof            TEXT    NOT NULL,       -- data do sinal (\u00faltimo preg\u00e3o do m\u00eas)\n            ticker          TEXT    NOT NULL,\n            signal_value    REAL    NOT NULL,       -- momentum 12-1\n            rank            INTEGER NOT NULL,\n            conviction_band TEXT    NOT NULL,       -- 'quintil_superior','resto'\n            frozen_mode     INTEGER NOT NULL DEFAULT 0,  -- 1=paper forward\n            inserted_at     TEXT    NOT NULL DEFAULT (datetime('now')),\n            -- parte RISK \u2014 preenchida na liquida\u00e7\u00e3o, write-once via COALESCE\n            exec_date       TEXT,\n            exec_price      REAL,\n            exit_date       TEXT,\n            exit_price      REAL,\n            cost_paid       REAL,\n            realized_return_net REAL,\n            holding_days    INTEGER,\n            UNIQUE(run_id, asof, ticker)\n        )"
+        },
+        {
+          "name": "runs",
+          "type": "table",
+          "sql": "CREATE TABLE runs (\n            run_id          TEXT    PRIMARY KEY,\n            config_hash     TEXT    NOT NULL,\n            code_version    TEXT    NOT NULL,\n            started_at      TEXT    NOT NULL DEFAULT (datetime('now')),\n            params_json     TEXT    NOT NULL,\n            notes           TEXT\n        , params_frozen_until TEXT)"
+        },
+        {
+          "name": "idx_prices_raw_mkt_date",
+          "type": "index",
+          "sql": "CREATE INDEX idx_prices_raw_mkt_date\n            ON prices_raw(market_type, date)"
+        },
+        {
+          "name": "rj_universe",
+          "type": "table",
+          "sql": "CREATE TABLE rj_universe (\n            ticker              TEXT    PRIMARY KEY,\n            company_name        TEXT    NOT NULL,\n            rj_request_date     TEXT    NOT NULL,\n            rj_process_number   TEXT,\n            plan_presented_date TEXT,\n            plan_approved_date  TEXT,\n            rj_end_date         TEXT,\n            delisted_date       TEXT,\n            source              TEXT    NOT NULL,\n            approved_by         TEXT,\n            notes               TEXT,\n            inserted_at         TEXT    NOT NULL DEFAULT (datetime('now'))\n        )"
+        },
+        {
+          "name": "rj_episodes",
+          "type": "table",
+          "sql": "CREATE TABLE rj_episodes (\n            id                  INTEGER PRIMARY KEY,\n            ticker              TEXT    NOT NULL REFERENCES rj_universe(ticker),\n            trough_date         TEXT    NOT NULL,\n            trough_price        REAL    NOT NULL,\n            is_primary          INTEGER NOT NULL DEFAULT 1,\n            outcome             TEXT,\n            rally_pct           REAL,\n            rally_date          TEXT,\n            trading_days_to_rally INTEGER,\n            censored            INTEGER NOT NULL DEFAULT 0,\n            inserted_at         TEXT    NOT NULL DEFAULT (datetime('now')), secondary_outcome TEXT, secondary_rally_pct REAL, secondary_rally_date TEXT, secondary_trading_days_to_rally INTEGER, secondary_censored INTEGER,\n            UNIQUE(ticker, trough_date)\n        )"
+        },
+        {
+          "name": "rj_events",
+          "type": "table",
+          "sql": "CREATE TABLE rj_events (\n            id          INTEGER PRIMARY KEY,\n            ticker      TEXT    NOT NULL REFERENCES rj_universe(ticker),\n            event_date  TEXT    NOT NULL,\n            published_at TEXT,\n            known_at    TEXT    NOT NULL,\n            event_type  TEXT    NOT NULL,\n            source      TEXT    NOT NULL,\n            approved_by TEXT,\n            notes       TEXT,\n            inserted_at TEXT    NOT NULL DEFAULT (datetime('now'))\n        )"
+        },
+        {
+          "name": "idx_rj_events_ticker_known",
+          "type": "index",
+          "sql": "CREATE INDEX idx_rj_events_ticker_known ON rj_events(ticker, known_at)"
+        },
+        {
+          "name": "rj_family_scores",
+          "type": "table",
+          "sql": "CREATE TABLE rj_family_scores (\n            episode_id  INTEGER NOT NULL REFERENCES rj_episodes(id),\n            family      TEXT    NOT NULL,\n            value       REAL,\n            computed_at TEXT    NOT NULL DEFAULT (datetime('now')),\n            PRIMARY KEY (episode_id, family)\n        )"
+        },
+        {
+          "name": "rj_universe_snapshots",
+          "type": "table",
+          "sql": "CREATE TABLE rj_universe_snapshots (\n            snapshot_date TEXT    NOT NULL,\n            source        TEXT    NOT NULL,\n            ticker        TEXT    NOT NULL,\n            company_name  TEXT    NOT NULL,\n            payload_hash  TEXT    NOT NULL,\n            raw_payload   TEXT,\n            inserted_at   TEXT    NOT NULL DEFAULT (datetime('now')),\n            PRIMARY KEY (snapshot_date, source, ticker)\n        )"
+        },
+        {
+          "name": "fundamentals",
+          "type": "table",
+          "sql": "CREATE TABLE fundamentals (\n            id                  INTEGER PRIMARY KEY,\n            ticker              TEXT    NOT NULL,\n            ref_date            TEXT    NOT NULL,      -- DT_REFER (fim do exerc\u00edcio/trimestre)\n            ativo_total         REAL,\n            passivo_total       REAL,\n            patrimonio_liquido  REAL,\n            lucro_liquido       REAL,\n            roe                 REAL,                  -- lucro_liquido / patrimonio_liquido\n            leverage            REAL,                  -- passivo_total / ativo_total\n            source              TEXT    NOT NULL,       -- 'CVM DFP <ano>' / 'CVM ITR <ano>'\n            inserted_at         TEXT    NOT NULL DEFAULT (datetime('now')), receita_liquida REAL, net_margin REAL, fluxo_caixa_operacional REAL, accruals REAL, shares_outstanding REAL, known_at TEXT,\n            UNIQUE(ticker, ref_date, source)\n        )"
+        },
+        {
+          "name": "idx_fundamentals_ticker_ref",
+          "type": "index",
+          "sql": "CREATE INDEX idx_fundamentals_ticker_ref\n            ON fundamentals(ticker, ref_date)"
+        },
+        {
+          "name": "rj_company_observations",
+          "type": "table",
+          "sql": "CREATE TABLE rj_company_observations (\n            ticker              TEXT NOT NULL REFERENCES rj_universe(ticker),\n            asof                TEXT NOT NULL,\n            rj_request_date     TEXT NOT NULL,\n            observed_trading_days INTEGER NOT NULL,\n            censoring_horizon_trading_days INTEGER NOT NULL,\n            status              TEXT NOT NULL CHECK(status IN ('censored','no_candidate_control')),\n            inserted_at         TEXT NOT NULL DEFAULT (datetime('now')),\n            PRIMARY KEY (ticker, asof)\n        )"
+        },
+        {
+          "name": "dividends",
+          "type": "table",
+          "sql": "CREATE TABLE dividends (\n            id                  INTEGER PRIMARY KEY,\n            ticker              TEXT    NOT NULL,\n            ex_date             TEXT    NOT NULL,   -- proxy: Data_Pagamento_Dividendo\n            value_per_share     REAL    NOT NULL,\n            source              TEXT    NOT NULL,   -- 'CVM FRE <ano>'\n            inserted_at         TEXT    NOT NULL DEFAULT (datetime('now')),\n            UNIQUE(ticker, ex_date, source)\n        )"
+        },
+        {
+          "name": "idx_dividends_ticker_exdate",
+          "type": "index",
+          "sql": "CREATE INDEX idx_dividends_ticker_exdate\n            ON dividends(ticker, ex_date)"
+        }
+      ],
+      "after": "e713af1a867f31c3550e3767c7a9fc6f3963aac2b47b617db2adfe55903da054"
+    },
+    {
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\56c0c7e4d9f342e439ed63d60e031b07ff9de1ebdf5407eea011be19536da66c",
+      "expected_sha256": "56c0c7e4d9f342e439ed63d60e031b07ff9de1ebdf5407eea011be19536da66c",
+      "policy": "schema only, no market/outcome rows; mode=ro&immutable=1, query_only",
+      "before": "56c0c7e4d9f342e439ed63d60e031b07ff9de1ebdf5407eea011be19536da66c",
+      "schema": [
+        {
+          "name": "_migrations",
+          "type": "table",
+          "sql": "CREATE TABLE _migrations (\n            name TEXT PRIMARY KEY,\n            applied_at TEXT NOT NULL DEFAULT (datetime('now'))\n        )"
+        },
+        {
+          "name": "prices_raw",
+          "type": "table",
+          "sql": "CREATE TABLE prices_raw (\n            id          INTEGER PRIMARY KEY,\n            date        TEXT    NOT NULL,          -- YYYY-MM-DD\n            ticker      TEXT    NOT NULL,\n            bdi_code    TEXT    NOT NULL,\n            market_type TEXT    NOT NULL,\n            open        REAL    NOT NULL,\n            high        REAL    NOT NULL,\n            low         REAL    NOT NULL,\n            close       REAL    NOT NULL,\n            volume_fin  REAL    NOT NULL,\n            qty         INTEGER NOT NULL,\n            quote_factor INTEGER NOT NULL DEFAULT 1,\n            source_file TEXT    NOT NULL,\n            inserted_at TEXT    NOT NULL DEFAULT (datetime('now')),\n            UNIQUE(date, ticker, source_file)\n        )"
+        },
+        {
+          "name": "idx_prices_raw_ticker_date",
+          "type": "index",
+          "sql": "CREATE INDEX idx_prices_raw_ticker_date ON prices_raw(ticker, date)"
+        },
+        {
+          "name": "adjustments",
+          "type": "table",
+          "sql": "CREATE TABLE adjustments (\n            id          INTEGER PRIMARY KEY,\n            ticker      TEXT    NOT NULL,\n            ex_date     TEXT    NOT NULL,           -- YYYY-MM-DD\n            factor      REAL    NOT NULL,           -- multiplicar pre\u00e7os anteriores\n            type        TEXT    NOT NULL,           -- 'split','grupamento','dividendo','jcp','outro'\n            source      TEXT    NOT NULL,           -- 'inferred','csv_manual','yfinance_xcheck'\n            notes       TEXT,\n            approved_by TEXT,                       -- null = pendente aprova\u00e7\u00e3o humana\n            inserted_at TEXT    NOT NULL DEFAULT (datetime('now')),\n            UNIQUE(ticker, ex_date, type)\n        )"
+        },
+        {
+          "name": "quarantine",
+          "type": "table",
+          "sql": "CREATE TABLE quarantine (\n            id          INTEGER PRIMARY KEY,\n            ticker      TEXT    NOT NULL,\n            date        TEXT    NOT NULL,\n            reason      TEXT    NOT NULL,\n            raw_return  REAL,                       -- retorno overnight que disparou\n            resolved_at TEXT,\n            resolution  TEXT,\n            inserted_at TEXT    NOT NULL DEFAULT (datetime('now')),\n            UNIQUE(ticker, date)\n        )"
+        },
+        {
+          "name": "universe_snapshots",
+          "type": "table",
+          "sql": "CREATE TABLE universe_snapshots (\n            asof_date   TEXT    NOT NULL,\n            ticker      TEXT    NOT NULL,\n            median_vol  REAL    NOT NULL,           -- mediana vol financeiro na janela\n            rank        INTEGER NOT NULL,\n            inserted_at TEXT    NOT NULL DEFAULT (datetime('now')),\n            PRIMARY KEY (asof_date, ticker)\n        )"
+        },
+        {
+          "name": "decisions",
+          "type": "table",
+          "sql": "CREATE TABLE decisions (\n            id              INTEGER PRIMARY KEY,\n            run_id          TEXT    NOT NULL,\n            asof            TEXT    NOT NULL,       -- data do sinal (\u00faltimo preg\u00e3o do m\u00eas)\n            ticker          TEXT    NOT NULL,\n            signal_value    REAL    NOT NULL,       -- momentum 12-1\n            rank            INTEGER NOT NULL,\n            conviction_band TEXT    NOT NULL,       -- 'quintil_superior','resto'\n            frozen_mode     INTEGER NOT NULL DEFAULT 0,  -- 1=paper forward\n            inserted_at     TEXT    NOT NULL DEFAULT (datetime('now')),\n            -- parte RISK \u2014 preenchida na liquida\u00e7\u00e3o, write-once via COALESCE\n            exec_date       TEXT,\n            exec_price      REAL,\n            exit_date       TEXT,\n            exit_price      REAL,\n            cost_paid       REAL,\n            realized_return_net REAL,\n            holding_days    INTEGER,\n            UNIQUE(run_id, asof, ticker)\n        )"
+        },
+        {
+          "name": "runs",
+          "type": "table",
+          "sql": "CREATE TABLE runs (\n            run_id          TEXT    PRIMARY KEY,\n            config_hash     TEXT    NOT NULL,\n            code_version    TEXT    NOT NULL,\n            started_at      TEXT    NOT NULL DEFAULT (datetime('now')),\n            params_json     TEXT    NOT NULL,\n            notes           TEXT\n        , params_frozen_until TEXT)"
+        },
+        {
+          "name": "idx_prices_raw_mkt_date",
+          "type": "index",
+          "sql": "CREATE INDEX idx_prices_raw_mkt_date\n            ON prices_raw(market_type, date)"
+        },
+        {
+          "name": "rj_universe",
+          "type": "table",
+          "sql": "CREATE TABLE rj_universe (\n            ticker              TEXT    PRIMARY KEY,\n            company_name        TEXT    NOT NULL,\n            rj_request_date     TEXT    NOT NULL,\n            rj_process_number   TEXT,\n            plan_presented_date TEXT,\n            plan_approved_date  TEXT,\n            rj_end_date         TEXT,\n            delisted_date       TEXT,\n            source              TEXT    NOT NULL,\n            approved_by         TEXT,\n            notes               TEXT,\n            inserted_at         TEXT    NOT NULL DEFAULT (datetime('now'))\n        )"
+        },
+        {
+          "name": "rj_episodes",
+          "type": "table",
+          "sql": "CREATE TABLE rj_episodes (\n            id                  INTEGER PRIMARY KEY,\n            ticker              TEXT    NOT NULL REFERENCES rj_universe(ticker),\n            trough_date         TEXT    NOT NULL,\n            trough_price        REAL    NOT NULL,\n            is_primary          INTEGER NOT NULL DEFAULT 1,\n            outcome             TEXT,\n            rally_pct           REAL,\n            rally_date          TEXT,\n            trading_days_to_rally INTEGER,\n            censored            INTEGER NOT NULL DEFAULT 0,\n            inserted_at         TEXT    NOT NULL DEFAULT (datetime('now')), secondary_outcome TEXT, secondary_rally_pct REAL, secondary_rally_date TEXT, secondary_trading_days_to_rally INTEGER, secondary_censored INTEGER,\n            UNIQUE(ticker, trough_date)\n        )"
+        },
+        {
+          "name": "rj_events",
+          "type": "table",
+          "sql": "CREATE TABLE rj_events (\n            id          INTEGER PRIMARY KEY,\n            ticker      TEXT    NOT NULL REFERENCES rj_universe(ticker),\n            event_date  TEXT    NOT NULL,\n            published_at TEXT,\n            known_at    TEXT    NOT NULL,\n            event_type  TEXT    NOT NULL,\n            source      TEXT    NOT NULL,\n            approved_by TEXT,\n            notes       TEXT,\n            inserted_at TEXT    NOT NULL DEFAULT (datetime('now'))\n        )"
+        },
+        {
+          "name": "idx_rj_events_ticker_known",
+          "type": "index",
+          "sql": "CREATE INDEX idx_rj_events_ticker_known ON rj_events(ticker, known_at)"
+        },
+        {
+          "name": "rj_family_scores",
+          "type": "table",
+          "sql": "CREATE TABLE rj_family_scores (\n            episode_id  INTEGER NOT NULL REFERENCES rj_episodes(id),\n            family      TEXT    NOT NULL,\n            value       REAL,\n            computed_at TEXT    NOT NULL DEFAULT (datetime('now')),\n            PRIMARY KEY (episode_id, family)\n        )"
+        },
+        {
+          "name": "rj_universe_snapshots",
+          "type": "table",
+          "sql": "CREATE TABLE rj_universe_snapshots (\n            snapshot_date TEXT    NOT NULL,\n            source        TEXT    NOT NULL,\n            ticker        TEXT    NOT NULL,\n            company_name  TEXT    NOT NULL,\n            payload_hash  TEXT    NOT NULL,\n            raw_payload   TEXT,\n            inserted_at   TEXT    NOT NULL DEFAULT (datetime('now')),\n            PRIMARY KEY (snapshot_date, source, ticker)\n        )"
+        },
+        {
+          "name": "fundamentals",
+          "type": "table",
+          "sql": "CREATE TABLE fundamentals (\n            id                  INTEGER PRIMARY KEY,\n            ticker              TEXT    NOT NULL,\n            ref_date            TEXT    NOT NULL,      -- DT_REFER (fim do exerc\u00edcio/trimestre)\n            ativo_total         REAL,\n            passivo_total       REAL,\n            patrimonio_liquido  REAL,\n            lucro_liquido       REAL,\n            roe                 REAL,                  -- lucro_liquido / patrimonio_liquido\n            leverage            REAL,                  -- passivo_total / ativo_total\n            source              TEXT    NOT NULL,       -- 'CVM DFP <ano>' / 'CVM ITR <ano>'\n            inserted_at         TEXT    NOT NULL DEFAULT (datetime('now')), receita_liquida REAL, net_margin REAL, fluxo_caixa_operacional REAL, accruals REAL, shares_outstanding REAL, known_at TEXT,\n            UNIQUE(ticker, ref_date, source)\n        )"
+        },
+        {
+          "name": "idx_fundamentals_ticker_ref",
+          "type": "index",
+          "sql": "CREATE INDEX idx_fundamentals_ticker_ref\n            ON fundamentals(ticker, ref_date)"
+        },
+        {
+          "name": "rj_company_observations",
+          "type": "table",
+          "sql": "CREATE TABLE rj_company_observations (\n            ticker              TEXT NOT NULL REFERENCES rj_universe(ticker),\n            asof                TEXT NOT NULL,\n            rj_request_date     TEXT NOT NULL,\n            observed_trading_days INTEGER NOT NULL,\n            censoring_horizon_trading_days INTEGER NOT NULL,\n            status              TEXT NOT NULL CHECK(status IN ('censored','no_candidate_control')),\n            inserted_at         TEXT NOT NULL DEFAULT (datetime('now')),\n            PRIMARY KEY (ticker, asof)\n        )"
+        },
+        {
+          "name": "dividends",
+          "type": "table",
+          "sql": "CREATE TABLE dividends (\n            id                  INTEGER PRIMARY KEY,\n            ticker              TEXT    NOT NULL,\n            ex_date             TEXT    NOT NULL,   -- proxy: Data_Pagamento_Dividendo\n            value_per_share     REAL    NOT NULL,\n            source              TEXT    NOT NULL,   -- 'CVM FRE <ano>'\n            inserted_at         TEXT    NOT NULL DEFAULT (datetime('now')),\n            UNIQUE(ticker, ex_date, source)\n        )"
+        },
+        {
+          "name": "idx_dividends_ticker_exdate",
+          "type": "index",
+          "sql": "CREATE INDEX idx_dividends_ticker_exdate\n            ON dividends(ticker, ex_date)"
+        },
+        {
+          "name": "ingestion_issues",
+          "type": "table",
+          "sql": "CREATE TABLE ingestion_issues (\n            source_sha256 TEXT NOT NULL, document_key TEXT NOT NULL, reason TEXT NOT NULL,\n            UNIQUE(source_sha256,document_key,reason)\n        )"
+        },
+        {
+          "name": "fundamentals_pit",
+          "type": "table",
+          "sql": "CREATE TABLE fundamentals_pit (\n            ticker TEXT NOT NULL, cnpj TEXT NOT NULL, ref_date TEXT NOT NULL,\n            document_version INTEGER NOT NULL CHECK(document_version>0),\n            received_at TEXT NOT NULL, available_at TEXT NOT NULL,\n            source TEXT NOT NULL, source_sha256 TEXT NOT NULL,\n            ativo_total REAL, passivo_total REAL, patrimonio_liquido REAL,\n            lucro_liquido REAL, receita_liquida REAL, fluxo_caixa_operacional REAL,\n            roe REAL, leverage REAL, net_margin REAL, accruals REAL,\n            CHECK(available_at>received_at),\n            UNIQUE(ticker,cnpj,ref_date,document_version,source_sha256)\n        )"
+        },
+        {
+          "name": "idx_fundamentals_pit",
+          "type": "index",
+          "sql": "CREATE INDEX idx_fundamentals_pit ON fundamentals_pit(ticker,available_at,ref_date)"
+        },
+        {
+          "name": "shares_pit",
+          "type": "table",
+          "sql": "CREATE TABLE shares_pit (\n            ticker TEXT NOT NULL, ref_date TEXT NOT NULL, document_id TEXT NOT NULL,\n            received_at TEXT NOT NULL, available_at TEXT NOT NULL,\n            shares_outstanding REAL NOT NULL CHECK(shares_outstanding>0),\n            basis_date TEXT, basis_source TEXT, price_basis_source TEXT,\n            source TEXT NOT NULL, source_sha256 TEXT NOT NULL,\n            CHECK(available_at>received_at),\n            CHECK(basis_date IS NULL OR (basis_date<=received_at AND basis_source IS NOT NULL)),\n            UNIQUE(ticker,document_id,source_sha256)\n        )"
+        },
+        {
+          "name": "idx_shares_pit",
+          "type": "index",
+          "sql": "CREATE INDEX idx_shares_pit ON shares_pit(ticker,available_at)"
+        },
+        {
+          "name": "cash_events",
+          "type": "table",
+          "sql": "CREATE TABLE cash_events (\n            ticker TEXT NOT NULL, event_id TEXT NOT NULL, ex_date TEXT NOT NULL,\n            payment_date TEXT NOT NULL, value_per_share REAL NOT NULL CHECK(value_per_share>0),\n            source TEXT NOT NULL, source_sha256 TEXT NOT NULL,\n            CHECK(payment_date>=ex_date), UNIQUE(ticker,event_id)\n        )"
+        },
+        {
+          "name": "cash_event_coverage",
+          "type": "table",
+          "sql": "CREATE TABLE cash_event_coverage (\n            ticker TEXT NOT NULL, start_date TEXT NOT NULL, end_date TEXT NOT NULL,\n            source TEXT NOT NULL, source_sha256 TEXT NOT NULL,\n            CHECK(end_date>=start_date), UNIQUE(ticker,start_date,end_date)\n        )"
+        },
+        {
+          "name": "research_source_documents",
+          "type": "table",
+          "sql": "CREATE TABLE research_source_documents (\n            record_id TEXT PRIMARY KEY, kind TEXT NOT NULL, archive_year INTEGER,\n            cnpj TEXT, document_id TEXT, available_at TEXT,\n            source_sha256 TEXT NOT NULL, payload_json TEXT NOT NULL\n        )"
+        },
+        {
+          "name": "idx_research_sources",
+          "type": "index",
+          "sql": "CREATE INDEX idx_research_sources ON research_source_documents(kind,cnpj,available_at)"
+        },
+        {
+          "name": "stock_bonus_events",
+          "type": "table",
+          "sql": "CREATE TABLE stock_bonus_events (\n            ticker TEXT NOT NULL, event_id TEXT NOT NULL, ex_date TEXT NOT NULL,\n            credit_date TEXT NOT NULL, new_shares_per_old REAL NOT NULL CHECK(new_shares_per_old>0),\n            source TEXT NOT NULL, source_sha256 TEXT NOT NULL,\n            CHECK(credit_date>=ex_date), UNIQUE(ticker,event_id)\n        )"
+        }
+      ],
+      "after": "56c0c7e4d9f342e439ed63d60e031b07ff9de1ebdf5407eea011be19536da66c"
+    },
+    {
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\396f9aa99dfd812af93d7d58db80f0c0179345500555bb0b27297fa81fa6c32f",
+      "expected_sha256": "396f9aa99dfd812af93d7d58db80f0c0179345500555bb0b27297fa81fa6c32f",
+      "policy": "schema only, no market/outcome rows; mode=ro&immutable=1, query_only",
+      "before": "396f9aa99dfd812af93d7d58db80f0c0179345500555bb0b27297fa81fa6c32f",
+      "schema": [
+        {
+          "name": "_migrations",
+          "type": "table",
+          "sql": "CREATE TABLE _migrations (\n            name TEXT PRIMARY KEY,\n            applied_at TEXT NOT NULL DEFAULT (datetime('now'))\n        )"
+        },
+        {
+          "name": "prices_raw",
+          "type": "table",
+          "sql": "CREATE TABLE prices_raw (\n            id          INTEGER PRIMARY KEY,\n            date        TEXT    NOT NULL,          -- YYYY-MM-DD\n            ticker      TEXT    NOT NULL,\n            bdi_code    TEXT    NOT NULL,\n            market_type TEXT    NOT NULL,\n            open        REAL    NOT NULL,\n            high        REAL    NOT NULL,\n            low         REAL    NOT NULL,\n            close       REAL    NOT NULL,\n            volume_fin  REAL    NOT NULL,\n            qty         INTEGER NOT NULL,\n            quote_factor INTEGER NOT NULL DEFAULT 1,\n            source_file TEXT    NOT NULL,\n            inserted_at TEXT    NOT NULL DEFAULT (datetime('now')),\n            UNIQUE(date, ticker, source_file)\n        )"
+        },
+        {
+          "name": "idx_prices_raw_ticker_date",
+          "type": "index",
+          "sql": "CREATE INDEX idx_prices_raw_ticker_date ON prices_raw(ticker, date)"
+        },
+        {
+          "name": "adjustments",
+          "type": "table",
+          "sql": "CREATE TABLE adjustments (\n            id          INTEGER PRIMARY KEY,\n            ticker      TEXT    NOT NULL,\n            ex_date     TEXT    NOT NULL,           -- YYYY-MM-DD\n            factor      REAL    NOT NULL,           -- multiplicar pre\u00e7os anteriores\n            type        TEXT    NOT NULL,           -- 'split','grupamento','dividendo','jcp','outro'\n            source      TEXT    NOT NULL,           -- 'inferred','csv_manual','yfinance_xcheck'\n            notes       TEXT,\n            approved_by TEXT,                       -- null = pendente aprova\u00e7\u00e3o humana\n            inserted_at TEXT    NOT NULL DEFAULT (datetime('now')),\n            UNIQUE(ticker, ex_date, type)\n        )"
+        },
+        {
+          "name": "quarantine",
+          "type": "table",
+          "sql": "CREATE TABLE quarantine (\n            id          INTEGER PRIMARY KEY,\n            ticker      TEXT    NOT NULL,\n            date        TEXT    NOT NULL,\n            reason      TEXT    NOT NULL,\n            raw_return  REAL,                       -- retorno overnight que disparou\n            resolved_at TEXT,\n            resolution  TEXT,\n            inserted_at TEXT    NOT NULL DEFAULT (datetime('now')),\n            UNIQUE(ticker, date)\n        )"
+        },
+        {
+          "name": "universe_snapshots",
+          "type": "table",
+          "sql": "CREATE TABLE universe_snapshots (\n            asof_date   TEXT    NOT NULL,\n            ticker      TEXT    NOT NULL,\n            median_vol  REAL    NOT NULL,           -- mediana vol financeiro na janela\n            rank        INTEGER NOT NULL,\n            inserted_at TEXT    NOT NULL DEFAULT (datetime('now')),\n            PRIMARY KEY (asof_date, ticker)\n        )"
+        },
+        {
+          "name": "decisions",
+          "type": "table",
+          "sql": "CREATE TABLE decisions (\n            id              INTEGER PRIMARY KEY,\n            run_id          TEXT    NOT NULL,\n            asof            TEXT    NOT NULL,       -- data do sinal (\u00faltimo preg\u00e3o do m\u00eas)\n            ticker          TEXT    NOT NULL,\n            signal_value    REAL    NOT NULL,       -- momentum 12-1\n            rank            INTEGER NOT NULL,\n            conviction_band TEXT    NOT NULL,       -- 'quintil_superior','resto'\n            frozen_mode     INTEGER NOT NULL DEFAULT 0,  -- 1=paper forward\n            inserted_at     TEXT    NOT NULL DEFAULT (datetime('now')),\n            -- parte RISK \u2014 preenchida na liquida\u00e7\u00e3o, write-once via COALESCE\n            exec_date       TEXT,\n            exec_price      REAL,\n            exit_date       TEXT,\n            exit_price      REAL,\n            cost_paid       REAL,\n            realized_return_net REAL,\n            holding_days    INTEGER,\n            UNIQUE(run_id, asof, ticker)\n        )"
+        },
+        {
+          "name": "runs",
+          "type": "table",
+          "sql": "CREATE TABLE runs (\n            run_id          TEXT    PRIMARY KEY,\n            config_hash     TEXT    NOT NULL,\n            code_version    TEXT    NOT NULL,\n            started_at      TEXT    NOT NULL DEFAULT (datetime('now')),\n            params_json     TEXT    NOT NULL,\n            notes           TEXT\n        , params_frozen_until TEXT)"
+        },
+        {
+          "name": "idx_prices_raw_mkt_date",
+          "type": "index",
+          "sql": "CREATE INDEX idx_prices_raw_mkt_date\n            ON prices_raw(market_type, date)"
+        },
+        {
+          "name": "rj_universe",
+          "type": "table",
+          "sql": "CREATE TABLE rj_universe (\n            ticker              TEXT    PRIMARY KEY,\n            company_name        TEXT    NOT NULL,\n            rj_request_date     TEXT    NOT NULL,\n            rj_process_number   TEXT,\n            plan_presented_date TEXT,\n            plan_approved_date  TEXT,\n            rj_end_date         TEXT,\n            delisted_date       TEXT,\n            source              TEXT    NOT NULL,\n            approved_by         TEXT,\n            notes               TEXT,\n            inserted_at         TEXT    NOT NULL DEFAULT (datetime('now'))\n        )"
+        },
+        {
+          "name": "rj_episodes",
+          "type": "table",
+          "sql": "CREATE TABLE rj_episodes (\n            id                  INTEGER PRIMARY KEY,\n            ticker              TEXT    NOT NULL REFERENCES rj_universe(ticker),\n            trough_date         TEXT    NOT NULL,\n            trough_price        REAL    NOT NULL,\n            is_primary          INTEGER NOT NULL DEFAULT 1,\n            outcome             TEXT,\n            rally_pct           REAL,\n            rally_date          TEXT,\n            trading_days_to_rally INTEGER,\n            censored            INTEGER NOT NULL DEFAULT 0,\n            inserted_at         TEXT    NOT NULL DEFAULT (datetime('now')), secondary_outcome TEXT, secondary_rally_pct REAL, secondary_rally_date TEXT, secondary_trading_days_to_rally INTEGER, secondary_censored INTEGER,\n            UNIQUE(ticker, trough_date)\n        )"
+        },
+        {
+          "name": "rj_events",
+          "type": "table",
+          "sql": "CREATE TABLE rj_events (\n            id          INTEGER PRIMARY KEY,\n            ticker      TEXT    NOT NULL REFERENCES rj_universe(ticker),\n            event_date  TEXT    NOT NULL,\n            published_at TEXT,\n            known_at    TEXT    NOT NULL,\n            event_type  TEXT    NOT NULL,\n            source      TEXT    NOT NULL,\n            approved_by TEXT,\n            notes       TEXT,\n            inserted_at TEXT    NOT NULL DEFAULT (datetime('now'))\n        )"
+        },
+        {
+          "name": "idx_rj_events_ticker_known",
+          "type": "index",
+          "sql": "CREATE INDEX idx_rj_events_ticker_known ON rj_events(ticker, known_at)"
+        },
+        {
+          "name": "rj_family_scores",
+          "type": "table",
+          "sql": "CREATE TABLE rj_family_scores (\n            episode_id  INTEGER NOT NULL REFERENCES rj_episodes(id),\n            family      TEXT    NOT NULL,\n            value       REAL,\n            computed_at TEXT    NOT NULL DEFAULT (datetime('now')),\n            PRIMARY KEY (episode_id, family)\n        )"
+        },
+        {
+          "name": "rj_universe_snapshots",
+          "type": "table",
+          "sql": "CREATE TABLE rj_universe_snapshots (\n            snapshot_date TEXT    NOT NULL,\n            source        TEXT    NOT NULL,\n            ticker        TEXT    NOT NULL,\n            company_name  TEXT    NOT NULL,\n            payload_hash  TEXT    NOT NULL,\n            raw_payload   TEXT,\n            inserted_at   TEXT    NOT NULL DEFAULT (datetime('now')),\n            PRIMARY KEY (snapshot_date, source, ticker)\n        )"
+        },
+        {
+          "name": "fundamentals",
+          "type": "table",
+          "sql": "CREATE TABLE fundamentals (\n            id                  INTEGER PRIMARY KEY,\n            ticker              TEXT    NOT NULL,\n            ref_date            TEXT    NOT NULL,      -- DT_REFER (fim do exerc\u00edcio/trimestre)\n            ativo_total         REAL,\n            passivo_total       REAL,\n            patrimonio_liquido  REAL,\n            lucro_liquido       REAL,\n            roe                 REAL,                  -- lucro_liquido / patrimonio_liquido\n            leverage            REAL,                  -- passivo_total / ativo_total\n            source              TEXT    NOT NULL,       -- 'CVM DFP <ano>' / 'CVM ITR <ano>'\n            inserted_at         TEXT    NOT NULL DEFAULT (datetime('now')), receita_liquida REAL, net_margin REAL, fluxo_caixa_operacional REAL, accruals REAL, shares_outstanding REAL, known_at TEXT,\n            UNIQUE(ticker, ref_date, source)\n        )"
+        },
+        {
+          "name": "idx_fundamentals_ticker_ref",
+          "type": "index",
+          "sql": "CREATE INDEX idx_fundamentals_ticker_ref\n            ON fundamentals(ticker, ref_date)"
+        },
+        {
+          "name": "rj_company_observations",
+          "type": "table",
+          "sql": "CREATE TABLE rj_company_observations (\n            ticker              TEXT NOT NULL REFERENCES rj_universe(ticker),\n            asof                TEXT NOT NULL,\n            rj_request_date     TEXT NOT NULL,\n            observed_trading_days INTEGER NOT NULL,\n            censoring_horizon_trading_days INTEGER NOT NULL,\n            status              TEXT NOT NULL CHECK(status IN ('censored','no_candidate_control')),\n            inserted_at         TEXT NOT NULL DEFAULT (datetime('now')),\n            PRIMARY KEY (ticker, asof)\n        )"
+        },
+        {
+          "name": "dividends",
+          "type": "table",
+          "sql": "CREATE TABLE dividends (\n            id                  INTEGER PRIMARY KEY,\n            ticker              TEXT    NOT NULL,\n            ex_date             TEXT    NOT NULL,   -- proxy: Data_Pagamento_Dividendo\n            value_per_share     REAL    NOT NULL,\n            source              TEXT    NOT NULL,   -- 'CVM FRE <ano>'\n            inserted_at         TEXT    NOT NULL DEFAULT (datetime('now')),\n            UNIQUE(ticker, ex_date, source)\n        )"
+        },
+        {
+          "name": "idx_dividends_ticker_exdate",
+          "type": "index",
+          "sql": "CREATE INDEX idx_dividends_ticker_exdate\n            ON dividends(ticker, ex_date)"
+        },
+        {
+          "name": "ingestion_issues",
+          "type": "table",
+          "sql": "CREATE TABLE ingestion_issues (\n            source_sha256 TEXT NOT NULL, document_key TEXT NOT NULL, reason TEXT NOT NULL,\n            UNIQUE(source_sha256,document_key,reason)\n        )"
+        },
+        {
+          "name": "fundamentals_pit",
+          "type": "table",
+          "sql": "CREATE TABLE fundamentals_pit (\n            ticker TEXT NOT NULL, cnpj TEXT NOT NULL, ref_date TEXT NOT NULL,\n            document_version INTEGER NOT NULL CHECK(document_version>0),\n            received_at TEXT NOT NULL, available_at TEXT NOT NULL,\n            source TEXT NOT NULL, source_sha256 TEXT NOT NULL,\n            ativo_total REAL, passivo_total REAL, patrimonio_liquido REAL,\n            lucro_liquido REAL, receita_liquida REAL, fluxo_caixa_operacional REAL,\n            roe REAL, leverage REAL, net_margin REAL, accruals REAL,\n            CHECK(available_at>received_at),\n            UNIQUE(ticker,cnpj,ref_date,document_version,source_sha256)\n        )"
+        },
+        {
+          "name": "idx_fundamentals_pit",
+          "type": "index",
+          "sql": "CREATE INDEX idx_fundamentals_pit ON fundamentals_pit(ticker,available_at,ref_date)"
+        },
+        {
+          "name": "shares_pit",
+          "type": "table",
+          "sql": "CREATE TABLE shares_pit (\n            ticker TEXT NOT NULL, ref_date TEXT NOT NULL, document_id TEXT NOT NULL,\n            received_at TEXT NOT NULL, available_at TEXT NOT NULL,\n            shares_outstanding REAL NOT NULL CHECK(shares_outstanding>0),\n            basis_date TEXT, basis_source TEXT, price_basis_source TEXT,\n            source TEXT NOT NULL, source_sha256 TEXT NOT NULL,\n            CHECK(available_at>received_at),\n            CHECK(basis_date IS NULL OR (basis_date<=received_at AND basis_source IS NOT NULL)),\n            UNIQUE(ticker,document_id,source_sha256)\n        )"
+        },
+        {
+          "name": "idx_shares_pit",
+          "type": "index",
+          "sql": "CREATE INDEX idx_shares_pit ON shares_pit(ticker,available_at)"
+        },
+        {
+          "name": "cash_events",
+          "type": "table",
+          "sql": "CREATE TABLE cash_events (\n            ticker TEXT NOT NULL, event_id TEXT NOT NULL, ex_date TEXT NOT NULL,\n            payment_date TEXT NOT NULL, value_per_share REAL NOT NULL CHECK(value_per_share>0),\n            source TEXT NOT NULL, source_sha256 TEXT NOT NULL,\n            CHECK(payment_date>=ex_date), UNIQUE(ticker,event_id)\n        )"
+        },
+        {
+          "name": "cash_event_coverage",
+          "type": "table",
+          "sql": "CREATE TABLE cash_event_coverage (\n            ticker TEXT NOT NULL, start_date TEXT NOT NULL, end_date TEXT NOT NULL,\n            source TEXT NOT NULL, source_sha256 TEXT NOT NULL,\n            CHECK(end_date>=start_date), UNIQUE(ticker,start_date,end_date)\n        )"
+        },
+        {
+          "name": "research_source_documents",
+          "type": "table",
+          "sql": "CREATE TABLE research_source_documents (\n            record_id TEXT PRIMARY KEY, kind TEXT NOT NULL, archive_year INTEGER,\n            cnpj TEXT, document_id TEXT, available_at TEXT,\n            source_sha256 TEXT NOT NULL, payload_json TEXT NOT NULL\n        )"
+        },
+        {
+          "name": "idx_research_sources",
+          "type": "index",
+          "sql": "CREATE INDEX idx_research_sources ON research_source_documents(kind,cnpj,available_at)"
+        },
+        {
+          "name": "stock_bonus_events",
+          "type": "table",
+          "sql": "CREATE TABLE stock_bonus_events (\n            ticker TEXT NOT NULL, event_id TEXT NOT NULL, ex_date TEXT NOT NULL,\n            credit_date TEXT NOT NULL, new_shares_per_old REAL NOT NULL CHECK(new_shares_per_old>0),\n            source TEXT NOT NULL, source_sha256 TEXT NOT NULL,\n            CHECK(credit_date>=ex_date), UNIQUE(ticker,event_id)\n        )"
+        }
+      ],
+      "after": "396f9aa99dfd812af93d7d58db80f0c0179345500555bb0b27297fa81fa6c32f"
+    },
+    {
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\a22739794ba4a43a11544338d4a91e14cb6a0b1f7b132ab460f96d3359f63cf4",
+      "expected_sha256": "a22739794ba4a43a11544338d4a91e14cb6a0b1f7b132ab460f96d3359f63cf4",
+      "policy": "schema only, no market/outcome rows; mode=ro&immutable=1, query_only",
+      "before": "a22739794ba4a43a11544338d4a91e14cb6a0b1f7b132ab460f96d3359f63cf4",
+      "schema": [
+        {
+          "name": "_migrations",
+          "type": "table",
+          "sql": "CREATE TABLE _migrations (\n            name TEXT PRIMARY KEY,\n            applied_at TEXT NOT NULL DEFAULT (datetime('now'))\n        )"
+        },
+        {
+          "name": "prices_raw",
+          "type": "table",
+          "sql": "CREATE TABLE prices_raw (\n            id          INTEGER PRIMARY KEY,\n            date        TEXT    NOT NULL,          -- YYYY-MM-DD\n            ticker      TEXT    NOT NULL,\n            bdi_code    TEXT    NOT NULL,\n            market_type TEXT    NOT NULL,\n            open        REAL    NOT NULL,\n            high        REAL    NOT NULL,\n            low         REAL    NOT NULL,\n            close       REAL    NOT NULL,\n            volume_fin  REAL    NOT NULL,\n            qty         INTEGER NOT NULL,\n            quote_factor INTEGER NOT NULL DEFAULT 1,\n            source_file TEXT    NOT NULL,\n            inserted_at TEXT    NOT NULL DEFAULT (datetime('now')),\n            UNIQUE(date, ticker, source_file)\n        )"
+        },
+        {
+          "name": "idx_prices_raw_ticker_date",
+          "type": "index",
+          "sql": "CREATE INDEX idx_prices_raw_ticker_date ON prices_raw(ticker, date)"
+        },
+        {
+          "name": "adjustments",
+          "type": "table",
+          "sql": "CREATE TABLE adjustments (\n            id          INTEGER PRIMARY KEY,\n            ticker      TEXT    NOT NULL,\n            ex_date     TEXT    NOT NULL,           -- YYYY-MM-DD\n            factor      REAL    NOT NULL,           -- multiplicar pre\u00e7os anteriores\n            type        TEXT    NOT NULL,           -- 'split','grupamento','dividendo','jcp','outro'\n            source      TEXT    NOT NULL,           -- 'inferred','csv_manual','yfinance_xcheck'\n            notes       TEXT,\n            approved_by TEXT,                       -- null = pendente aprova\u00e7\u00e3o humana\n            inserted_at TEXT    NOT NULL DEFAULT (datetime('now')),\n            UNIQUE(ticker, ex_date, type)\n        )"
+        },
+        {
+          "name": "quarantine",
+          "type": "table",
+          "sql": "CREATE TABLE quarantine (\n            id          INTEGER PRIMARY KEY,\n            ticker      TEXT    NOT NULL,\n            date        TEXT    NOT NULL,\n            reason      TEXT    NOT NULL,\n            raw_return  REAL,                       -- retorno overnight que disparou\n            resolved_at TEXT,\n            resolution  TEXT,\n            inserted_at TEXT    NOT NULL DEFAULT (datetime('now')),\n            UNIQUE(ticker, date)\n        )"
+        },
+        {
+          "name": "universe_snapshots",
+          "type": "table",
+          "sql": "CREATE TABLE universe_snapshots (\n            asof_date   TEXT    NOT NULL,\n            ticker      TEXT    NOT NULL,\n            median_vol  REAL    NOT NULL,           -- mediana vol financeiro na janela\n            rank        INTEGER NOT NULL,\n            inserted_at TEXT    NOT NULL DEFAULT (datetime('now')),\n            PRIMARY KEY (asof_date, ticker)\n        )"
+        },
+        {
+          "name": "decisions",
+          "type": "table",
+          "sql": "CREATE TABLE decisions (\n            id              INTEGER PRIMARY KEY,\n            run_id          TEXT    NOT NULL,\n            asof            TEXT    NOT NULL,       -- data do sinal (\u00faltimo preg\u00e3o do m\u00eas)\n            ticker          TEXT    NOT NULL,\n            signal_value    REAL    NOT NULL,       -- momentum 12-1\n            rank            INTEGER NOT NULL,\n            conviction_band TEXT    NOT NULL,       -- 'quintil_superior','resto'\n            frozen_mode     INTEGER NOT NULL DEFAULT 0,  -- 1=paper forward\n            inserted_at     TEXT    NOT NULL DEFAULT (datetime('now')),\n            -- parte RISK \u2014 preenchida na liquida\u00e7\u00e3o, write-once via COALESCE\n            exec_date       TEXT,\n            exec_price      REAL,\n            exit_date       TEXT,\n            exit_price      REAL,\n            cost_paid       REAL,\n            realized_return_net REAL,\n            holding_days    INTEGER,\n            UNIQUE(run_id, asof, ticker)\n        )"
+        },
+        {
+          "name": "runs",
+          "type": "table",
+          "sql": "CREATE TABLE runs (\n            run_id          TEXT    PRIMARY KEY,\n            config_hash     TEXT    NOT NULL,\n            code_version    TEXT    NOT NULL,\n            started_at      TEXT    NOT NULL DEFAULT (datetime('now')),\n            params_json     TEXT    NOT NULL,\n            notes           TEXT\n        , params_frozen_until TEXT)"
+        },
+        {
+          "name": "idx_prices_raw_mkt_date",
+          "type": "index",
+          "sql": "CREATE INDEX idx_prices_raw_mkt_date\n            ON prices_raw(market_type, date)"
+        },
+        {
+          "name": "rj_universe",
+          "type": "table",
+          "sql": "CREATE TABLE rj_universe (\n            ticker              TEXT    PRIMARY KEY,\n            company_name        TEXT    NOT NULL,\n            rj_request_date     TEXT    NOT NULL,\n            rj_process_number   TEXT,\n            plan_presented_date TEXT,\n            plan_approved_date  TEXT,\n            rj_end_date         TEXT,\n            delisted_date       TEXT,\n            source              TEXT    NOT NULL,\n            approved_by         TEXT,\n            notes               TEXT,\n            inserted_at         TEXT    NOT NULL DEFAULT (datetime('now'))\n        )"
+        },
+        {
+          "name": "rj_episodes",
+          "type": "table",
+          "sql": "CREATE TABLE rj_episodes (\n            id                  INTEGER PRIMARY KEY,\n            ticker              TEXT    NOT NULL REFERENCES rj_universe(ticker),\n            trough_date         TEXT    NOT NULL,\n            trough_price        REAL    NOT NULL,\n            is_primary          INTEGER NOT NULL DEFAULT 1,\n            outcome             TEXT,\n            rally_pct           REAL,\n            rally_date          TEXT,\n            trading_days_to_rally INTEGER,\n            censored            INTEGER NOT NULL DEFAULT 0,\n            inserted_at         TEXT    NOT NULL DEFAULT (datetime('now')), secondary_outcome TEXT, secondary_rally_pct REAL, secondary_rally_date TEXT, secondary_trading_days_to_rally INTEGER, secondary_censored INTEGER,\n            UNIQUE(ticker, trough_date)\n        )"
+        },
+        {
+          "name": "rj_events",
+          "type": "table",
+          "sql": "CREATE TABLE rj_events (\n            id          INTEGER PRIMARY KEY,\n            ticker      TEXT    NOT NULL REFERENCES rj_universe(ticker),\n            event_date  TEXT    NOT NULL,\n            published_at TEXT,\n            known_at    TEXT    NOT NULL,\n            event_type  TEXT    NOT NULL,\n            source      TEXT    NOT NULL,\n            approved_by TEXT,\n            notes       TEXT,\n            inserted_at TEXT    NOT NULL DEFAULT (datetime('now'))\n        )"
+        },
+        {
+          "name": "idx_rj_events_ticker_known",
+          "type": "index",
+          "sql": "CREATE INDEX idx_rj_events_ticker_known ON rj_events(ticker, known_at)"
+        },
+        {
+          "name": "rj_family_scores",
+          "type": "table",
+          "sql": "CREATE TABLE rj_family_scores (\n            episode_id  INTEGER NOT NULL REFERENCES rj_episodes(id),\n            family      TEXT    NOT NULL,\n            value       REAL,\n            computed_at TEXT    NOT NULL DEFAULT (datetime('now')),\n            PRIMARY KEY (episode_id, family)\n        )"
+        },
+        {
+          "name": "rj_universe_snapshots",
+          "type": "table",
+          "sql": "CREATE TABLE rj_universe_snapshots (\n            snapshot_date TEXT    NOT NULL,\n            source        TEXT    NOT NULL,\n            ticker        TEXT    NOT NULL,\n            company_name  TEXT    NOT NULL,\n            payload_hash  TEXT    NOT NULL,\n            raw_payload   TEXT,\n            inserted_at   TEXT    NOT NULL DEFAULT (datetime('now')),\n            PRIMARY KEY (snapshot_date, source, ticker)\n        )"
+        },
+        {
+          "name": "fundamentals",
+          "type": "table",
+          "sql": "CREATE TABLE fundamentals (\n            id                  INTEGER PRIMARY KEY,\n            ticker              TEXT    NOT NULL,\n            ref_date            TEXT    NOT NULL,      -- DT_REFER (fim do exerc\u00edcio/trimestre)\n            ativo_total         REAL,\n            passivo_total       REAL,\n            patrimonio_liquido  REAL,\n            lucro_liquido       REAL,\n            roe                 REAL,                  -- lucro_liquido / patrimonio_liquido\n            leverage            REAL,                  -- passivo_total / ativo_total\n            source              TEXT    NOT NULL,       -- 'CVM DFP <ano>' / 'CVM ITR <ano>'\n            inserted_at         TEXT    NOT NULL DEFAULT (datetime('now')), receita_liquida REAL, net_margin REAL, fluxo_caixa_operacional REAL, accruals REAL, shares_outstanding REAL, known_at TEXT,\n            UNIQUE(ticker, ref_date, source)\n        )"
+        },
+        {
+          "name": "idx_fundamentals_ticker_ref",
+          "type": "index",
+          "sql": "CREATE INDEX idx_fundamentals_ticker_ref\n            ON fundamentals(ticker, ref_date)"
+        },
+        {
+          "name": "rj_company_observations",
+          "type": "table",
+          "sql": "CREATE TABLE rj_company_observations (\n            ticker              TEXT NOT NULL REFERENCES rj_universe(ticker),\n            asof                TEXT NOT NULL,\n            rj_request_date     TEXT NOT NULL,\n            observed_trading_days INTEGER NOT NULL,\n            censoring_horizon_trading_days INTEGER NOT NULL,\n            status              TEXT NOT NULL CHECK(status IN ('censored','no_candidate_control')),\n            inserted_at         TEXT NOT NULL DEFAULT (datetime('now')),\n            PRIMARY KEY (ticker, asof)\n        )"
+        },
+        {
+          "name": "dividends",
+          "type": "table",
+          "sql": "CREATE TABLE dividends (\n            id                  INTEGER PRIMARY KEY,\n            ticker              TEXT    NOT NULL,\n            ex_date             TEXT    NOT NULL,   -- proxy: Data_Pagamento_Dividendo\n            value_per_share     REAL    NOT NULL,\n            source              TEXT    NOT NULL,   -- 'CVM FRE <ano>'\n            inserted_at         TEXT    NOT NULL DEFAULT (datetime('now')),\n            UNIQUE(ticker, ex_date, source)\n        )"
+        },
+        {
+          "name": "idx_dividends_ticker_exdate",
+          "type": "index",
+          "sql": "CREATE INDEX idx_dividends_ticker_exdate\n            ON dividends(ticker, ex_date)"
+        }
+      ],
+      "after": "a22739794ba4a43a11544338d4a91e14cb6a0b1f7b132ab460f96d3359f63cf4"
+    }
+  ],
+  "result": "PASS",
+  "protected_rows_read": false
+}

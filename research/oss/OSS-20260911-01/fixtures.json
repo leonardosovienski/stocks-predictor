@@ -1,0 +1,882 @@
+{
+  "K05": {
+    "train": [
+      {
+        "time": 0,
+        "known_at": 0,
+        "value": 0
+      },
+      {
+        "time": 1,
+        "known_at": 1,
+        "value": 1
+      },
+      {
+        "time": 2,
+        "known_at": 2,
+        "value": 2
+      },
+      {
+        "time": 3,
+        "known_at": 3,
+        "value": 3
+      },
+      {
+        "time": 4,
+        "known_at": 4,
+        "value": 4
+      },
+      {
+        "time": 5,
+        "known_at": 5,
+        "value": 5
+      },
+      {
+        "time": 6,
+        "known_at": 6,
+        "value": 6
+      },
+      {
+        "time": 7,
+        "known_at": 7,
+        "value": 7
+      },
+      {
+        "time": 8,
+        "known_at": 8,
+        "value": 8
+      },
+      {
+        "time": 9,
+        "known_at": 9,
+        "value": 9
+      }
+    ],
+    "future_poison": [
+      {
+        "time": 10,
+        "known_at": 10,
+        "value": 1000000000.0
+      },
+      {
+        "time": 11,
+        "known_at": 11,
+        "value": 1000000000.0
+      },
+      {
+        "time": 12,
+        "known_at": 12,
+        "value": 1000000000.0
+      },
+      {
+        "time": 13,
+        "known_at": 13,
+        "value": 1000000000.0
+      },
+      {
+        "time": 14,
+        "known_at": 14,
+        "value": 1000000000.0
+      },
+      {
+        "time": 15,
+        "known_at": 15,
+        "value": 1000000000.0
+      },
+      {
+        "time": 16,
+        "known_at": 16,
+        "value": 1000000000.0
+      },
+      {
+        "time": 17,
+        "known_at": 17,
+        "value": 1000000000.0
+      },
+      {
+        "time": 18,
+        "known_at": 18,
+        "value": 1000000000.0
+      },
+      {
+        "time": 19,
+        "known_at": 19,
+        "value": 1000000000.0
+      },
+      {
+        "time": 20,
+        "known_at": 20,
+        "value": 1000000000.0
+      },
+      {
+        "time": 21,
+        "known_at": 21,
+        "value": 1000000000.0
+      },
+      {
+        "time": 22,
+        "known_at": 22,
+        "value": 1000000000.0
+      },
+      {
+        "time": 23,
+        "known_at": 23,
+        "value": 1000000000.0
+      },
+      {
+        "time": 24,
+        "known_at": 24,
+        "value": 1000000000.0
+      },
+      {
+        "time": 25,
+        "known_at": 25,
+        "value": 1000000000.0
+      },
+      {
+        "time": 26,
+        "known_at": 26,
+        "value": 1000000000.0
+      },
+      {
+        "time": 27,
+        "known_at": 27,
+        "value": 1000000000.0
+      },
+      {
+        "time": 28,
+        "known_at": 28,
+        "value": 1000000000.0
+      },
+      {
+        "time": 29,
+        "known_at": 29,
+        "value": 1000000000.0
+      },
+      {
+        "time": 30,
+        "known_at": 30,
+        "value": 1000000000.0
+      },
+      {
+        "time": 31,
+        "known_at": 31,
+        "value": 1000000000.0
+      },
+      {
+        "time": 32,
+        "known_at": 32,
+        "value": 1000000000.0
+      },
+      {
+        "time": 33,
+        "known_at": 33,
+        "value": 1000000000.0
+      },
+      {
+        "time": 34,
+        "known_at": 34,
+        "value": 1000000000.0
+      },
+      {
+        "time": 35,
+        "known_at": 35,
+        "value": 1000000000.0
+      },
+      {
+        "time": 36,
+        "known_at": 36,
+        "value": 1000000000.0
+      },
+      {
+        "time": 37,
+        "known_at": 37,
+        "value": 1000000000.0
+      },
+      {
+        "time": 38,
+        "known_at": 38,
+        "value": 1000000000.0
+      },
+      {
+        "time": 39,
+        "known_at": 39,
+        "value": 1000000000.0
+      },
+      {
+        "time": 40,
+        "known_at": 40,
+        "value": 1000000000.0
+      },
+      {
+        "time": 41,
+        "known_at": 41,
+        "value": 1000000000.0
+      },
+      {
+        "time": 42,
+        "known_at": 42,
+        "value": 1000000000.0
+      },
+      {
+        "time": 43,
+        "known_at": 43,
+        "value": 1000000000.0
+      },
+      {
+        "time": 44,
+        "known_at": 44,
+        "value": 1000000000.0
+      },
+      {
+        "time": 45,
+        "known_at": 45,
+        "value": 1000000000.0
+      },
+      {
+        "time": 46,
+        "known_at": 46,
+        "value": 1000000000.0
+      },
+      {
+        "time": 47,
+        "known_at": 47,
+        "value": 1000000000.0
+      },
+      {
+        "time": 48,
+        "known_at": 48,
+        "value": 1000000000.0
+      },
+      {
+        "time": 49,
+        "known_at": 49,
+        "value": 1000000000.0
+      },
+      {
+        "time": 50,
+        "known_at": 50,
+        "value": 1000000000.0
+      },
+      {
+        "time": 51,
+        "known_at": 51,
+        "value": 1000000000.0
+      },
+      {
+        "time": 52,
+        "known_at": 52,
+        "value": 1000000000.0
+      },
+      {
+        "time": 53,
+        "known_at": 53,
+        "value": 1000000000.0
+      },
+      {
+        "time": 54,
+        "known_at": 54,
+        "value": 1000000000.0
+      },
+      {
+        "time": 55,
+        "known_at": 55,
+        "value": 1000000000.0
+      },
+      {
+        "time": 56,
+        "known_at": 56,
+        "value": 1000000000.0
+      },
+      {
+        "time": 57,
+        "known_at": 57,
+        "value": 1000000000.0
+      },
+      {
+        "time": 58,
+        "known_at": 58,
+        "value": 1000000000.0
+      },
+      {
+        "time": 59,
+        "known_at": 59,
+        "value": 1000000000.0
+      },
+      {
+        "time": 60,
+        "known_at": 60,
+        "value": 1000000000.0
+      },
+      {
+        "time": 61,
+        "known_at": 61,
+        "value": 1000000000.0
+      },
+      {
+        "time": 62,
+        "known_at": 62,
+        "value": 1000000000.0
+      },
+      {
+        "time": 63,
+        "known_at": 63,
+        "value": 1000000000.0
+      },
+      {
+        "time": 64,
+        "known_at": 64,
+        "value": 1000000000.0
+      },
+      {
+        "time": 65,
+        "known_at": 65,
+        "value": 1000000000.0
+      },
+      {
+        "time": 66,
+        "known_at": 66,
+        "value": 1000000000.0
+      },
+      {
+        "time": 67,
+        "known_at": 67,
+        "value": 1000000000.0
+      },
+      {
+        "time": 68,
+        "known_at": 68,
+        "value": 1000000000.0
+      },
+      {
+        "time": 69,
+        "known_at": 69,
+        "value": 1000000000.0
+      },
+      {
+        "time": 70,
+        "known_at": 70,
+        "value": 1000000000.0
+      },
+      {
+        "time": 71,
+        "known_at": 71,
+        "value": 1000000000.0
+      },
+      {
+        "time": 72,
+        "known_at": 72,
+        "value": 1000000000.0
+      },
+      {
+        "time": 73,
+        "known_at": 73,
+        "value": 1000000000.0
+      },
+      {
+        "time": 74,
+        "known_at": 74,
+        "value": 1000000000.0
+      },
+      {
+        "time": 75,
+        "known_at": 75,
+        "value": 1000000000.0
+      },
+      {
+        "time": 76,
+        "known_at": 76,
+        "value": 1000000000.0
+      },
+      {
+        "time": 77,
+        "known_at": 77,
+        "value": 1000000000.0
+      },
+      {
+        "time": 78,
+        "known_at": 78,
+        "value": 1000000000.0
+      },
+      {
+        "time": 79,
+        "known_at": 79,
+        "value": 1000000000.0
+      },
+      {
+        "time": 80,
+        "known_at": 80,
+        "value": 1000000000.0
+      },
+      {
+        "time": 81,
+        "known_at": 81,
+        "value": 1000000000.0
+      },
+      {
+        "time": 82,
+        "known_at": 82,
+        "value": 1000000000.0
+      },
+      {
+        "time": 83,
+        "known_at": 83,
+        "value": 1000000000.0
+      },
+      {
+        "time": 84,
+        "known_at": 84,
+        "value": 1000000000.0
+      },
+      {
+        "time": 85,
+        "known_at": 85,
+        "value": 1000000000.0
+      },
+      {
+        "time": 86,
+        "known_at": 86,
+        "value": 1000000000.0
+      },
+      {
+        "time": 87,
+        "known_at": 87,
+        "value": 1000000000.0
+      },
+      {
+        "time": 88,
+        "known_at": 88,
+        "value": 1000000000.0
+      },
+      {
+        "time": 89,
+        "known_at": 89,
+        "value": 1000000000.0
+      },
+      {
+        "time": 90,
+        "known_at": 90,
+        "value": 1000000000.0
+      },
+      {
+        "time": 91,
+        "known_at": 91,
+        "value": 1000000000.0
+      },
+      {
+        "time": 92,
+        "known_at": 92,
+        "value": 1000000000.0
+      },
+      {
+        "time": 93,
+        "known_at": 93,
+        "value": 1000000000.0
+      },
+      {
+        "time": 94,
+        "known_at": 94,
+        "value": 1000000000.0
+      },
+      {
+        "time": 95,
+        "known_at": 95,
+        "value": 1000000000.0
+      },
+      {
+        "time": 96,
+        "known_at": 96,
+        "value": 1000000000.0
+      },
+      {
+        "time": 97,
+        "known_at": 97,
+        "value": 1000000000.0
+      },
+      {
+        "time": 98,
+        "known_at": 98,
+        "value": 1000000000.0
+      },
+      {
+        "time": 99,
+        "known_at": 99,
+        "value": 1000000000.0
+      },
+      {
+        "time": 100,
+        "known_at": 100,
+        "value": 1000000000.0
+      },
+      {
+        "time": 101,
+        "known_at": 101,
+        "value": 1000000000.0
+      },
+      {
+        "time": 102,
+        "known_at": 102,
+        "value": 1000000000.0
+      },
+      {
+        "time": 103,
+        "known_at": 103,
+        "value": 1000000000.0
+      },
+      {
+        "time": 104,
+        "known_at": 104,
+        "value": 1000000000.0
+      },
+      {
+        "time": 105,
+        "known_at": 105,
+        "value": 1000000000.0
+      },
+      {
+        "time": 106,
+        "known_at": 106,
+        "value": 1000000000.0
+      },
+      {
+        "time": 107,
+        "known_at": 107,
+        "value": 1000000000.0
+      },
+      {
+        "time": 108,
+        "known_at": 108,
+        "value": 1000000000.0
+      },
+      {
+        "time": 109,
+        "known_at": 109,
+        "value": 1000000000.0
+      }
+    ]
+  },
+  "K07": [
+    {
+      "date": 0,
+      "asset": "A1",
+      "score": 1,
+      "label": 4
+    },
+    {
+      "date": 0,
+      "asset": "A2",
+      "score": 2,
+      "label": 3
+    },
+    {
+      "date": 0,
+      "asset": "A3",
+      "score": 3,
+      "label": 2
+    },
+    {
+      "date": 0,
+      "asset": "A4",
+      "score": 4,
+      "label": 1
+    },
+    {
+      "date": 1,
+      "asset": "A1",
+      "score": 101,
+      "label": 104
+    },
+    {
+      "date": 1,
+      "asset": "A2",
+      "score": 102,
+      "label": 103
+    },
+    {
+      "date": 1,
+      "asset": "A3",
+      "score": 103,
+      "label": 102
+    },
+    {
+      "date": 1,
+      "asset": "A4",
+      "score": 104,
+      "label": 101
+    }
+  ],
+  "K22": {
+    "groups": {
+      "A0": {
+        "group": "A",
+        "known_at": 0
+      },
+      "A1": {
+        "group": "A",
+        "known_at": 0
+      },
+      "A2": {
+        "group": "A",
+        "known_at": 0
+      },
+      "A3": {
+        "group": "A",
+        "known_at": 0
+      },
+      "B0": {
+        "group": "B",
+        "known_at": 0
+      },
+      "B1": {
+        "group": "B",
+        "known_at": 0
+      },
+      "B2": {
+        "group": "B",
+        "known_at": 0
+      },
+      "B3": {
+        "group": "B",
+        "known_at": 0
+      }
+    },
+    "scores": {
+      "A0": 8.5,
+      "A1": 9.5,
+      "A2": 10.5,
+      "A3": 11.5,
+      "B0": -11.5,
+      "B1": -10.5,
+      "B2": -9.5,
+      "B3": -8.5
+    }
+  },
+  "K21": {
+    "valid": [
+      1000,
+      [
+        {
+          "time": 7,
+          "known_at": 7,
+          "volume_brl": 100000
+        },
+        {
+          "time": 8,
+          "known_at": 8,
+          "volume_brl": 100000
+        },
+        {
+          "time": 9,
+          "known_at": 9,
+          "volume_brl": 100000
+        }
+      ]
+    ],
+    "insufficient": [
+      1000,
+      [
+        {
+          "time": 7,
+          "known_at": 7,
+          "volume_brl": 100000
+        },
+        {
+          "time": 8,
+          "known_at": 8,
+          "volume_brl": 100000
+        }
+      ]
+    ],
+    "late": [
+      1000,
+      [
+        {
+          "time": 7,
+          "known_at": 10,
+          "volume_brl": 100000
+        },
+        {
+          "time": 8,
+          "known_at": 10,
+          "volume_brl": 100000
+        },
+        {
+          "time": 9,
+          "known_at": 10,
+          "volume_brl": 100000
+        }
+      ]
+    ],
+    "zero": [
+      1000,
+      [
+        {
+          "time": 7,
+          "known_at": 7,
+          "volume_brl": 0
+        },
+        {
+          "time": 8,
+          "known_at": 8,
+          "volume_brl": 0
+        },
+        {
+          "time": 9,
+          "known_at": 9,
+          "volume_brl": 0
+        }
+      ]
+    ],
+    "negative": [
+      1000,
+      [
+        {
+          "time": 7,
+          "known_at": 7,
+          "volume_brl": -1
+        },
+        {
+          "time": 8,
+          "known_at": 8,
+          "volume_brl": -1
+        },
+        {
+          "time": 9,
+          "known_at": 9,
+          "volume_brl": -1
+        }
+      ]
+    ],
+    "oversized": [
+      2000,
+      [
+        {
+          "time": 7,
+          "known_at": 7,
+          "volume_brl": 100000
+        },
+        {
+          "time": 8,
+          "known_at": 8,
+          "volume_brl": 100000
+        },
+        {
+          "time": 9,
+          "known_at": 9,
+          "volume_brl": 100000
+        }
+      ]
+    ]
+  },
+  "K09": {
+    "initial": {
+      "A": 0.49,
+      "B": 0.49,
+      "CASH": 0.02
+    },
+    "targets": [
+      {
+        "C": 0.49,
+        "D": 0.49,
+        "CASH": 0.02
+      },
+      {
+        "A": 0.49,
+        "B": 0.49,
+        "CASH": 0.02
+      },
+      {
+        "C": 0.49,
+        "D": 0.49,
+        "CASH": 0.02
+      },
+      {
+        "A": 0.49,
+        "B": 0.49,
+        "CASH": 0.02
+      },
+      {
+        "C": 0.49,
+        "D": 0.49,
+        "CASH": 0.02
+      },
+      {
+        "A": 0.49,
+        "B": 0.49,
+        "CASH": 0.02
+      },
+      {
+        "C": 0.49,
+        "D": 0.49,
+        "CASH": 0.02
+      },
+      {
+        "A": 0.49,
+        "B": 0.49,
+        "CASH": 0.02
+      },
+      {
+        "C": 0.49,
+        "D": 0.49,
+        "CASH": 0.02
+      },
+      {
+        "A": 0.49,
+        "B": 0.49,
+        "CASH": 0.02
+      },
+      {
+        "C": 0.49,
+        "D": 0.49,
+        "CASH": 0.02
+      },
+      {
+        "A": 0.49,
+        "B": 0.49,
+        "CASH": 0.02
+      },
+      {
+        "C": 0.49,
+        "D": 0.49,
+        "CASH": 0.02
+      },
+      {
+        "A": 0.49,
+        "B": 0.49,
+        "CASH": 0.02
+      },
+      {
+        "C": 0.49,
+        "D": 0.49,
+        "CASH": 0.02
+      },
+      {
+        "A": 0.49,
+        "B": 0.49,
+        "CASH": 0.02
+      },
+      {
+        "C": 0.49,
+        "D": 0.49,
+        "CASH": 0.02
+      },
+      {
+        "A": 0.49,
+        "B": 0.49,
+        "CASH": 0.02
+      },
+      {
+        "C": 0.49,
+        "D": 0.49,
+        "CASH": 0.02
+      },
+      {
+        "A": 0.49,
+        "B": 0.49,
+        "CASH": 0.02
+      }
+    ],
+    "budget": 0.1,
+    "fee": 0.002
+  }
+}

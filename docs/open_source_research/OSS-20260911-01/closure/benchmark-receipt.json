@@ -1,0 +1,151 @@
+{
+  "run_id": "OSS-20260911-01",
+  "observed_at": "2026-09-11T05:16:26.639444+00:00",
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "elapsed_seconds": 0.014909000004990958,
+  "protocol_sha256": "4ca4f9098501c6a27b5c00b4169decf7aec3028910c7e7b1f5e3d9a7b42a085a",
+  "code_sha256": "15d2f979758efcb3904b335bee518c6b0bb3410bbb9839d6c50430e8ad7015d9",
+  "runner_sha256": "5621ec65f682eb1336314f58190ded959f796832b08e8a9f804efbcb20239032",
+  "existing_portfolio_sha256": "8e5639ffb1e17e463fcead1f0fd4d71d032647db8f8de518fc34edcfbb0efb37",
+  "fixtures_sha256": "ee7cbe2cd1152c8d7a54991b22d5f2d035e8f44ea10ca4e8a2f3d0a3fe6f78df",
+  "results_sha256": "9c0f5de201e2920d007f9c3d8c6b7c9d7e3aa151209835a60261a424512110df",
+  "checks": [
+    {
+      "test": "K05.future_append_invariance",
+      "pass": true
+    },
+    {
+      "test": "K05.analytic_fit",
+      "pass": true
+    },
+    {
+      "test": "K05.fit_crosses_decision",
+      "pass": true
+    },
+    {
+      "test": "K05.late_training_value",
+      "pass": true
+    },
+    {
+      "test": "K05.constant_feature_explicit",
+      "pass": true
+    },
+    {
+      "test": "K05.unknown_not_imputed",
+      "pass": true
+    },
+    {
+      "test": "K07.date_not_pooled",
+      "pass": true
+    },
+    {
+      "test": "K07.tie_average",
+      "pass": true
+    },
+    {
+      "test": "K07.constant_undefined",
+      "pass": true
+    },
+    {
+      "test": "K07.missing_label_does_not_select",
+      "pass": true
+    },
+    {
+      "test": "K07.duplicate_rejected",
+      "pass": true
+    },
+    {
+      "test": "K07.monotone_invariance",
+      "pass": true
+    },
+    {
+      "test": "K07.analytic_spread",
+      "pass": true
+    },
+    {
+      "test": "K07.120_permutation_oracles",
+      "pass": true
+    },
+    {
+      "test": "K22.planted_residual_recovered",
+      "pass": true
+    },
+    {
+      "test": "K22.zero_group_means",
+      "pass": true
+    },
+    {
+      "test": "K22.pure_group_no_residual_signal",
+      "pass": true
+    },
+    {
+      "test": "K22.future_group_block",
+      "pass": true
+    },
+    {
+      "test": "K22.singleton_block",
+      "pass": true
+    },
+    {
+      "test": "K22.reversal_not_hidden",
+      "pass": true
+    },
+    {
+      "test": "K21.six_cases_only_valid_passes",
+      "pass": true
+    },
+    {
+      "test": "K21.future_spike_invariant",
+      "pass": true
+    },
+    {
+      "test": "K21.reject_duplicate",
+      "pass": true
+    },
+    {
+      "test": "K09.cost_reduction",
+      "pass": true
+    },
+    {
+      "test": "K09.budget_bound",
+      "pass": true
+    },
+    {
+      "test": "K09.accounting_conservation",
+      "pass": true
+    },
+    {
+      "test": "K09.weights_cash_caps",
+      "pass": true
+    },
+    {
+      "test": "K09.zero_budget_no_trade",
+      "pass": true
+    },
+    {
+      "test": "K09.broad_budget_target",
+      "pass": true
+    },
+    {
+      "test": "K09.no_fee_reserve_block",
+      "pass": true
+    },
+    {
+      "test": "K09.adverse_counterexample_retained",
+      "pass": true
+    },
+    {
+      "test": "resource_budget",
+      "pass": true
+    },
+    {
+      "test": "prior_science_and_runtime_preserved",
+      "pass": true
+    }
+  ],
+  "pass": true,
+  "economic_test": false,
+  "external_engine_executed": false,
+  "prior_files_preserved": 129,
+  "attempt": "current; prior failed receipts retained separately when applicable"
+}

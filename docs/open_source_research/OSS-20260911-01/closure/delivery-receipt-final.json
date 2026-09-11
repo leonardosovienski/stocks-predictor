@@ -1,0 +1,15 @@
+{
+  "run_id": "OSS-20260911-01",
+  "status": "CLOSED_WITH_SCOPED_DEFERRED_ECONOMIC_BENCHMARK",
+  "package_layout": "repository paths; original first package preserved separately",
+  "sha256": "16e4842b54bc7e28bb54198b38ccd60f7c2b6a7c233a63de925657d78a7d5c1e",
+  "bytes": 97193,
+  "prior_files_preserved": 129,
+  "all_preserved": true,
+  "main_checks": 33,
+  "cost_checks": 40,
+  "cli_checks": "positive and immutable negative PASS",
+  "economic_tests": 0,
+  "runtime_changed": false,
+  "observed_at": "2026-09-11T05:27:45.828575+00:00"
+}

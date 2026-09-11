@@ -1,0 +1,35 @@
+{
+  "experiment": "X04",
+  "protocol_sha256": "456a85e2f3ed1531b69852d7b4eec2fed2fea7891ffbc3c48a214d8eaaedb320",
+  "script_sha256": "4ed55e8fc4eb7a5d8c59dc6c299bfb60abb3394a09cac22a04ef97e1ffb330d6",
+  "result": "PASS_ARITHMETIC_ONLY",
+  "results": [
+    {
+      "scenario": 1,
+      "train_beta": 0.975,
+      "train_intercept": 0.0,
+      "test_mean_residual_gross": 0.0,
+      "test_mean_residual_net": 0.0,
+      "decomposition_error": 0.0,
+      "alpha_claim": false
+    },
+    {
+      "scenario": 2,
+      "train_beta": 0.975,
+      "train_intercept": 0.001,
+      "test_mean_residual_gross": 0.001,
+      "test_mean_residual_net": 0.001,
+      "decomposition_error": 0.0,
+      "alpha_claim": false
+    },
+    {
+      "scenario": 3,
+      "train_beta": 0.975,
+      "train_intercept": 0.001,
+      "test_mean_residual_gross": 0.001,
+      "test_mean_residual_net": -0.001,
+      "decomposition_error": 0.0,
+      "alpha_claim": false
+    }
+  ]
+}

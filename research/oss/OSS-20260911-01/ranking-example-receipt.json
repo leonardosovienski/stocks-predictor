@@ -1,0 +1,47 @@
+{
+  "run_id": "OSS-20260911-01",
+  "scope": "experimental; no economic certification",
+  "input_sha256": "932f02d3f6137898bfcebb91fc8c4d0f0da449c7749d439b4a6c6dae1fc526f4",
+  "code_sha256": "15d2f979758efcb3904b335bee518c6b0bb3410bbb9839d6c50430e8ad7015d9",
+  "operation": "ranking",
+  "result": {
+    "dates": [
+      {
+        "date": 0,
+        "eligible": 4,
+        "observed_pairs": 4,
+        "missing_labels": 0,
+        "rank_ic": -1.0,
+        "top": [
+          "A4"
+        ],
+        "bottom": [
+          "A1"
+        ],
+        "spread": -3,
+        "tie_policy": "average ranks for IC; asset ID for quantile membership",
+        "ic_scope": "observed pairs; completeness reported, not universe-certified"
+      },
+      {
+        "date": 1,
+        "eligible": 4,
+        "observed_pairs": 4,
+        "missing_labels": 0,
+        "rank_ic": -1.0,
+        "top": [
+          "A4"
+        ],
+        "bottom": [
+          "A1"
+        ],
+        "spread": -3,
+        "tie_policy": "average ranks for IC; asset ID for quantile membership",
+        "ic_scope": "observed pairs; completeness reported, not universe-certified"
+      }
+    ],
+    "mean_date_ic": -1.0,
+    "valid_dates": 2,
+    "total_dates": 2,
+    "inference": "NONE"
+  }
+}

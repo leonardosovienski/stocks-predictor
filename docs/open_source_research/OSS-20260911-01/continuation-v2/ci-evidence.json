@@ -1,0 +1,99 @@
+{
+  "web_verified_url": "https://github.com/leonardosovienski/stocks-predictor/actions/runs/34534223498",
+  "logs": [
+    {
+      "path": "C:\\STOCKS\\work\\file-review-20260910\\final-integration.json",
+      "sha256": "248a3d48d40298ff62a2b5e126920a11d45ef555ff5b00bfc93f96ec3220caa0",
+      "excerpts": [
+        {
+          "line": 3,
+          "text": "  \"main\": \"80e69daa7d83b3b0f0e3384c53207ee0a9afd5b5\","
+        }
+      ]
+    },
+    {
+      "path": "C:\\STOCKS\\work\\file-review-20260910\\ci234-python313.log",
+      "sha256": "fc1f741072db9afa063e2fa57141cfd93680c8e7e29775a66799e6fa16a0cf26",
+      "excerpts": [
+        {
+          "line": 118,
+          "text": "2026-09-10T21:49:20.5415816Z 80e69daa7d83b3b0f0e3384c53207ee0a9afd5b5"
+        },
+        {
+          "line": 130,
+          "text": "2026-09-10T21:49:20.9864786Z 80e69daa7d83b3b0f0e3384c53207ee0a9afd5b5"
+        },
+        {
+          "line": 184,
+          "text": "2026-09-10T21:49:22.8459288Z Successfully set up CPython (3.13.15)"
+        },
+        {
+          "line": 218,
+          "text": "2026-09-10T21:49:26.6738391Z  + predictor-core==3.2.0 (from https://github.com/leonardosovienski/core-predictor/releases/download/v3.2.0/predictor_core-3.2.0-py3-none-any.whl)"
+        },
+        {
+          "line": 354,
+          "text": "2026-09-10T21:49:35.0816887Z 17 passed in 0.18s"
+        },
+        {
+          "line": 494,
+          "text": "2026-09-10T21:53:19.4572386Z 897 passed, 63 subtests passed in 222.17s (0:03:42)"
+        },
+        {
+          "line": 657,
+          "text": "2026-09-10T21:53:30.2817619Z   \"head\": \"80e69daa7d83b3b0f0e3384c53207ee0a9afd5b5\","
+        },
+        {
+          "line": 787,
+          "text": "2026-09-10T21:53:32.8592126Z  + predictor-core==3.2.0 (from https://github.com/leonardosovienski/core-predictor/releases/download/v3.2.0/predictor_core-3.2.0-py3-none-any.whl)"
+        },
+        {
+          "line": 830,
+          "text": "2026-09-10T21:53:47.6463709Z predictor_core /tmp/stocks-wheel/lib/python3.13/site-packages/predictor_core/__init__.py"
+        }
+      ]
+    },
+    {
+      "path": "C:\\STOCKS\\work\\file-review-20260910\\ci234-python314.log",
+      "sha256": "335003b7ec7b06085d58d327d508ba889fcdb4046a35f5d15da54a508cc6bb41",
+      "excerpts": [
+        {
+          "line": 118,
+          "text": "2026-09-10T21:49:19.1462190Z 80e69daa7d83b3b0f0e3384c53207ee0a9afd5b5"
+        },
+        {
+          "line": 130,
+          "text": "2026-09-10T21:49:19.5142416Z 80e69daa7d83b3b0f0e3384c53207ee0a9afd5b5"
+        },
+        {
+          "line": 184,
+          "text": "2026-09-10T21:49:21.2677150Z Successfully set up CPython (3.14.7)"
+        },
+        {
+          "line": 218,
+          "text": "2026-09-10T21:49:23.2923685Z  + predictor-core==3.2.0 (from https://github.com/leonardosovienski/core-predictor/releases/download/v3.2.0/predictor_core-3.2.0-py3-none-any.whl)"
+        },
+        {
+          "line": 354,
+          "text": "2026-09-10T21:49:31.7929705Z 17 passed in 0.14s"
+        },
+        {
+          "line": 494,
+          "text": "2026-09-10T21:51:17.2349675Z 897 passed, 63 subtests passed in 104.12s (0:01:44)"
+        },
+        {
+          "line": 657,
+          "text": "2026-09-10T21:51:30.2454523Z   \"head\": \"80e69daa7d83b3b0f0e3384c53207ee0a9afd5b5\","
+        },
+        {
+          "line": 787,
+          "text": "2026-09-10T21:51:32.3601636Z  + predictor-core==3.2.0 (from https://github.com/leonardosovienski/core-predictor/releases/download/v3.2.0/predictor_core-3.2.0-py3-none-any.whl)"
+        },
+        {
+          "line": 830,
+          "text": "2026-09-10T21:51:53.4396853Z predictor_core /tmp/stocks-wheel/lib/python3.14/site-packages/predictor_core/__init__.py"
+        }
+      ]
+    }
+  ]
+}

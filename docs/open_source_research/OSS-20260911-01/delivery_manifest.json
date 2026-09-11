@@ -1,0 +1,30 @@
+{
+  "run_id": "OSS-20260911-01",
+  "created_at": "2026-09-11T02:52:02.230753+00:00",
+  "baseline_sha": "80e69daa7d83b3b0f0e3384c53207ee0a9afd5b5",
+  "candidate_attempts": 60,
+  "identity_confirmed": 56,
+  "code_focused_reviews": 15,
+  "capabilities": 22,
+  "external_download_files": 105,
+  "external_stored_bytes": 2717144,
+  "quota_note": "Bytes armazenados, não tráfego total; HTTP failures recorded in acquisition logs.",
+  "external_execution": false,
+  "new_economic_trials": 0,
+  "original_databases_accessed": false,
+  "files": {
+    "baseline.json": "fb1dd36dd00b30040d7df29bb000dfcf244945f9c8cfed7a06521456c71060be",
+    "BASELINE.md": "c27f6265ce1da4c1ca500465cc8c1a6bfd7fb4bf2cbf2478f4e6e302fe68cc8a",
+    "CAPABILITY_MATRIX.md": "cf85160aa1b4f3a13f8fd7ca90af0ea423ccd3dd53854edd71bb52acc4e0fdfb",
+    "DECISIONS.md": "6d26eac4615281d02d47a55a5abca7164583f26015d004924648dd20d6bbbb96",
+    "deep_sources.json": "3d9ff6091d4c3cb4635863844a86b056b812f7c9a05c6b4a63f11e6532618e9b",
+    "EXPERIMENTS.md": "b55ab875072d02ec68d1925ba4db39f73d3d3112207d5cdd8b7f2fa34930011d",
+    "G1.json": "415fa2f3f7f0c8bcd2c78cb350a2be136f17e8b3746e90ff744714de8610449d",
+    "mechanical-receipt.json": "55d0ceee19fb9360ab8422de63003e61ae0d46b78cd5934a582fbc8d6f03591c",
+    "mechanical.py": "364524a0a4223a2ba95ac0a14cca94333f79f6995ccced9285f7c6597987ec6d",
+    "registry.json": "60843f9bfc595b93a531e26554912cb7ee463353f9393ab1340317b997f8f770",
+    "REPORT.md": "638ddd47e9c29f9e25cbbadda7dec2a9182a13eceee152708386fa8e5c28974e",
+    "second_wave.json": "76ff433028bc58804a70e4e6870d520a7f7924f961fd5f339f5fd7c2f469a336",
+    "SURVEY.md": "046cf7eef8b5b7cf6421a27093ef2f528d4af6c955db713e9f823145b856660e"
+  }
+}

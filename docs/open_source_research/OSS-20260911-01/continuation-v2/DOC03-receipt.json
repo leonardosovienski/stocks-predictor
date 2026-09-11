@@ -1,0 +1,98 @@
+{
+  "id": "DOC03",
+  "observed_at": "2026-09-11T03:13:06.828481+00:00",
+  "manifest_sha256": "b15dedf7be9f1150ce77084b088215fd8a00bdc699d4a70e76712dc6784c9930",
+  "runner_sha256": "0f8c4578c4ba4c901d7d08cdc290097d9265d969fcc3ef65e18a1eb0424c0c57",
+  "result": "PASS",
+  "documents": [
+    {
+      "document_id": "125324",
+      "status": "PASS",
+      "cnpj": "00001180000126",
+      "rows_accepted": 0,
+      "tickers_at_model_cutoff": []
+    },
+    {
+      "document_id": "128737",
+      "status": "PASS",
+      "cnpj": "00001180000126",
+      "rows_accepted": 0,
+      "tickers_at_model_cutoff": []
+    },
+    {
+      "document_id": "130810",
+      "status": "PASS",
+      "cnpj": "00001180000126",
+      "rows_accepted": 0,
+      "tickers_at_model_cutoff": []
+    },
+    {
+      "document_id": "131173",
+      "status": "PASS",
+      "cnpj": "00001180000126",
+      "rows_accepted": 0,
+      "tickers_at_model_cutoff": []
+    },
+    {
+      "document_id": "122858",
+      "status": "PASS",
+      "cnpj": "00776574000156",
+      "rows_accepted": 0,
+      "tickers_at_model_cutoff": []
+    },
+    {
+      "document_id": "123050",
+      "status": "PASS",
+      "cnpj": "00776574000156",
+      "rows_accepted": 0,
+      "tickers_at_model_cutoff": []
+    },
+    {
+      "document_id": "123248",
+      "status": "PASS",
+      "cnpj": "00776574000156",
+      "rows_accepted": 0,
+      "tickers_at_model_cutoff": []
+    },
+    {
+      "document_id": "123314",
+      "status": "PASS",
+      "cnpj": "00776574000156",
+      "rows_accepted": 0,
+      "tickers_at_model_cutoff": []
+    },
+    {
+      "document_id": "124298",
+      "status": "PASS",
+      "cnpj": "00924429000175",
+      "rows_accepted": 0,
+      "tickers_at_model_cutoff": []
+    },
+    {
+      "document_id": "124768",
+      "status": "PASS",
+      "cnpj": "00924429000175",
+      "rows_accepted": 0,
+      "tickers_at_model_cutoff": []
+    },
+    {
+      "document_id": "127601",
+      "status": "PASS",
+      "cnpj": "00924429000175",
+      "rows_accepted": 0,
+      "tickers_at_model_cutoff": []
+    },
+    {
+      "document_id": "131307",
+      "status": "PASS",
+      "cnpj": "00924429000175",
+      "rows_accepted": 2,
+      "tickers_at_model_cutoff": [
+        "VSPT3",
+        "VSPT4"
+      ]
+    }
+  ],
+  "all_archive_parser_issues": 504,
+  "scope": "C3/E5 LOCAL ENGINEERING; 12 metadata identities and no link before model cutoff, not a financial panel or economic validation"
+}

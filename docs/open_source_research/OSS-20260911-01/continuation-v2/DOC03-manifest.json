@@ -1,0 +1,145 @@
+{
+  "id": "DOC03",
+  "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FCA/DADOS/fca_cia_aberta_2023.zip",
+  "retrieved_at": "2026-09-11T03:12:56.648557+00:00",
+  "bytes": 434044,
+  "sha256": "40c732b6d386ef32c30e1434a9c999e9d6b1b2d346d40f7d6e86aadde08108c1",
+  "license": "ODbL declared in official FCA catalog",
+  "selection": "First three CNPJs lexicographically with >=4 filing rows; first4 sorted ref/version/id each. No price/return selection. Includes non-listed/unsupported records as rejection cases.",
+  "protocol": "Compare metadata and links with independent CSV conditions at received_date and received_date+1; exactly12 documents,0 metadata divergence,0 premature link; no tuning. This is FCA identity scope, not full financial/capital-event X01.",
+  "availability": "following calendar day is model convention, not observed public timestamp",
+  "documents": [
+    {
+      "CNPJ_CIA": "00.001.180/0001-26",
+      "DT_REFER": "2023-01-01",
+      "VERSAO": "1",
+      "DENOM_CIA": "AXIA ENERGIA S.A.",
+      "CD_CVM": "002437",
+      "CATEG_DOC": "FCA",
+      "ID_DOC": "125324",
+      "DT_RECEB": "2023-04-19",
+      "LINK_DOC": "http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=125324"
+    },
+    {
+      "CNPJ_CIA": "00.001.180/0001-26",
+      "DT_REFER": "2023-01-01",
+      "VERSAO": "2",
+      "DENOM_CIA": "AXIA ENERGIA S.A.",
+      "CD_CVM": "002437",
+      "CATEG_DOC": "FCA",
+      "ID_DOC": "128737",
+      "DT_RECEB": "2023-07-03",
+      "LINK_DOC": "http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=128737"
+    },
+    {
+      "CNPJ_CIA": "00.001.180/0001-26",
+      "DT_REFER": "2023-01-01",
+      "VERSAO": "3",
+      "DENOM_CIA": "AXIA ENERGIA S.A.",
+      "CD_CVM": "002437",
+      "CATEG_DOC": "FCA",
+      "ID_DOC": "130810",
+      "DT_RECEB": "2023-09-01",
+      "LINK_DOC": "http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=130810"
+    },
+    {
+      "CNPJ_CIA": "00.001.180/0001-26",
+      "DT_REFER": "2023-01-01",
+      "VERSAO": "4",
+      "DENOM_CIA": "AXIA ENERGIA S.A.",
+      "CD_CVM": "002437",
+      "CATEG_DOC": "FCA",
+      "ID_DOC": "131173",
+      "DT_RECEB": "2023-09-28",
+      "LINK_DOC": "http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=131173"
+    },
+    {
+      "CNPJ_CIA": "00.776.574/0001-56",
+      "DT_REFER": "2023-01-01",
+      "VERSAO": "1",
+      "DENOM_CIA": "AMERICANAS S.A. - EM RECUPERAÇÃO JUDICIAL",
+      "CD_CVM": "020990",
+      "CATEG_DOC": "FCA",
+      "ID_DOC": "122858",
+      "DT_RECEB": "2023-01-02",
+      "LINK_DOC": "http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=122858"
+    },
+    {
+      "CNPJ_CIA": "00.776.574/0001-56",
+      "DT_REFER": "2023-01-01",
+      "VERSAO": "2",
+      "DENOM_CIA": "AMERICANAS S.A. - EM RECUPERAÇÃO JUDICIAL",
+      "CD_CVM": "020990",
+      "CATEG_DOC": "FCA",
+      "ID_DOC": "123050",
+      "DT_RECEB": "2023-01-12",
+      "LINK_DOC": "http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=123050"
+    },
+    {
+      "CNPJ_CIA": "00.776.574/0001-56",
+      "DT_REFER": "2023-01-01",
+      "VERSAO": "3",
+      "DENOM_CIA": "AMERICANAS S.A. - EM RECUPERAÇÃO JUDICIAL",
+      "CD_CVM": "020990",
+      "CATEG_DOC": "FCA",
+      "ID_DOC": "123248",
+      "DT_RECEB": "2023-01-26",
+      "LINK_DOC": "http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=123248"
+    },
+    {
+      "CNPJ_CIA": "00.776.574/0001-56",
+      "DT_REFER": "2023-01-01",
+      "VERSAO": "4",
+      "DENOM_CIA": "AMERICANAS S.A. - EM RECUPERAÇÃO JUDICIAL",
+      "CD_CVM": "020990",
+      "CATEG_DOC": "FCA",
+      "ID_DOC": "123314",
+      "DT_RECEB": "2023-02-01",
+      "LINK_DOC": "http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=123314"
+    },
+    {
+      "CNPJ_CIA": "00.924.429/0001-75",
+      "DT_REFER": "2023-01-01",
+      "VERSAO": "1",
+      "DENOM_CIA": "FERROVIA CENTRO-ATLANTICA S.A.",
+      "CD_CVM": "015369",
+      "CATEG_DOC": "FCA",
+      "ID_DOC": "124298",
+      "DT_RECEB": "2023-03-17",
+      "LINK_DOC": "http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=124298"
+    },
+    {
+      "CNPJ_CIA": "00.924.429/0001-75",
+      "DT_REFER": "2023-01-01",
+      "VERSAO": "2",
+      "DENOM_CIA": "FERROVIA CENTRO-ATLANTICA S.A.",
+      "CD_CVM": "015369",
+      "CATEG_DOC": "FCA",
+      "ID_DOC": "124768",
+      "DT_RECEB": "2023-03-29",
+      "LINK_DOC": "http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=124768"
+    },
+    {
+      "CNPJ_CIA": "00.924.429/0001-75",
+      "DT_REFER": "2023-01-01",
+      "VERSAO": "3",
+      "DENOM_CIA": "FERROVIA CENTRO-ATLANTICA S.A.",
+      "CD_CVM": "015369",
+      "CATEG_DOC": "FCA",
+      "ID_DOC": "127601",
+      "DT_RECEB": "2023-05-31",
+      "LINK_DOC": "http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=127601"
+    },
+    {
+      "CNPJ_CIA": "00.924.429/0001-75",
+      "DT_REFER": "2023-01-01",
+      "VERSAO": "4",
+      "DENOM_CIA": "FERROVIA CENTRO-ATLANTICA S.A.",
+      "CD_CVM": "015369",
+      "CATEG_DOC": "FCA",
+      "ID_DOC": "131307",
+      "DT_RECEB": "2023-10-05",
+      "LINK_DOC": "http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=131307"
+    }
+  ]
+}

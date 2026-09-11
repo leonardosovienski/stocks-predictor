@@ -1,0 +1,11 @@
+{
+  "run_id": "OSS-20260911-01/continuation-v2",
+  "purpose": "Isolated permitted stdlib controls; not a market trial or external package certification",
+  "baseline": "80e69daa7d83b3b0f0e3384c53207ee0a9afd5b5",
+  "attempts": 1,
+  "tuning": 0,
+  "budget": {"wall_seconds": 120, "network": false, "market_rows": 0},
+  "PIT02": {"hypothesis":"Known future filings cannot change earlier panel, conflicts reject, missing data never resurrects old values", "cases":["before availability","exact availability","future append invariance","revision available","conflicting version","ambiguous ticker","future security","expired security","two classes","new blank metadata","three issuers","future reference"], "criterion":"12 exact assertions; 0 leaks, 0 silent conflicts", "real_documents":["capital-134335.html","capital-133944.html","capital-134790.html"], "document_checks":"original provenance sha256, reference date, scale, total, treasury and valuation eligibility; 3 fixed public fixtures only, not original 12-document proposal"},
+  "UNC02": {"hypothesis":"iid standard error undercovers a stationary AR(1) with positive dependence; known covariance oracle calibrates the same DGP", "baseline":"unmodified economic_gate.estimate_edge", "N":500,"T":504,"phi":[0,0.5],"seeds":"20260911+i for i=0..499; paired seeds across phi", "burn_in":200,"z":1.96,"metric":"two-sided coverage of zero and Wilson 95% interval", "criterion":"95% must lie inside Wilson interval; report all, no tuning", "oracle":"exact finite-T AR(1) variance of mean with known phi and innovation variance 1", "limits":"oracle knows DGP; not deployable estimator; arch bootstrap experiment remains separate"},
+  "RANK02": {"hypothesis":"Relative order need not imply positive executable return", "fixture":"20 scores j=0..19, return -0.10 + j*0.001; common negative shock", "criterion":"Spearman=1, top5 gross<0, fixed one-way cost0.001 worsens net", "limits":"analytical synthetic falsification, not a comparison of trained ranking and regression models"}
+}

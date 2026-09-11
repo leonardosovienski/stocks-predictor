@@ -1,0 +1,90 @@
+{
+  "files": [
+    {
+      "sha256": "1DAB1F56C41BE4E463145ED10CF517908ABD84E1A6A2F2663CC40E93DC95A0E2",
+      "path": "README.md"
+    },
+    {
+      "sha256": "BAF481587C951C4DEC651D35F177EA8C447DBB0E922C821E825ED19291309DC8",
+      "path": "AGENTS.md"
+    },
+    {
+      "sha256": "3F62ABE1868B9E29F5CB3474491BB8295298F8565BF7BA91CA43BF46845B3093",
+      "path": "HANDOFF.md"
+    },
+    {
+      "sha256": "BADCA182772D6025F7E00DC16AE46F30EC439BED921A9949337BA414085B1166",
+      "path": "STOCKS_CURRENT_STATE.md"
+    },
+    {
+      "sha256": "A6B9E923D243B486D52D8C97ED64A758CC40DF29C19699BDB220E79115CF39BA",
+      "path": "RESEARCH_FREEZE.md"
+    },
+    {
+      "sha256": "A6D16928CB762E9F97B56FD45BD1E2444EDD4920C023F89063C60174BCBE9F16",
+      "path": "docs/DESIGN.md"
+    },
+    {
+      "sha256": "7497D28BC7FA91492C0716632EFA4412C837E22AE11910515EC84E2B35352532",
+      "path": "pyproject.toml"
+    },
+    {
+      "sha256": "B8AF98075EEE9BF6CE01AD487C72BA01C7C0F22C30B88F299B45A98227DA394B",
+      "path": "uv.lock"
+    },
+    {
+      "sha256": "28926322113635B6CD9B3A8459A01292BA1E6E6F9B5745E8C70C8F42C149E3FE",
+      "path": ".github/workflows/ci.yml"
+    },
+    {
+      "sha256": "59EA318AFCBA6F6548786648189C018DBFF0E84EC057CCB751FC0A311370E548",
+      "path": "stocks_predictor/universe.py"
+    },
+    {
+      "sha256": "A58CEF56CAF0E0AC2F555713094C4B6E265CE24164B4BBEBBCA37226A6D5BAD7",
+      "path": "stocks_predictor/simulation.py"
+    },
+    {
+      "sha256": "A8590FE6D3F9EFB6586E502EF88CF6311CBEE09CE892F305C05DEAECCF59DC03",
+      "path": "stocks_predictor/document_panel.py"
+    },
+    {
+      "sha256": "AD0FCD503F80894143366848B439EB8C23D6E27DFB79D884E7E7160B2A8C5F90",
+      "path": "stocks_predictor/cvm_pit.py"
+    },
+    {
+      "sha256": "5F8199AF7215C75D3F4478CEC4EB4DC7B703AADED37AC8B6BC7D0491ECB378E3",
+      "path": "stocks_predictor/operational_store.py"
+    },
+    {
+      "sha256": "3364BD10E5103EA5E1F41830E2FF00932E77C9AF21555B26CF88BB038123BA41",
+      "path": "trials.json"
+    },
+    {
+      "sha256": "3874A0D68F0EDBB2C80A01E5C4629D816F969D078BED4F19DCB6F561A494229C",
+      "path": "trials_v2.json"
+    },
+    {
+      "sha256": "9F39F68A5F1887AABD7D2DCBA6681374A0BF4D44D5482C91CFB43D6E190A659C",
+      "path": "docs/research/2026-09-09-h21-forward-plan.json"
+    }
+  ],
+  "limitations": [
+    "No protected evaluators executed",
+    "Original databases NOT_ACCESSED; catalog located",
+    "Current-SHA workflow connector returned empty array; no CI certification",
+    "Core installation not verified locally"
+  ],
+  "budget": {
+    "no_paid_services": true,
+    "discovery_waves": 2,
+    "max_candidates": 65,
+    "max_download_mb": 30,
+    "max_deep_dives": 20
+  },
+  "run_id": "OSS-20260911-01",
+  "sha": "80e69daa7d83b3b0f0e3384c53207ee0a9afd5b5",
+  "status": [],
+  "observed_at": "2026-09-11T02:35:20.9567440Z",
+  "branch": "main"
+}

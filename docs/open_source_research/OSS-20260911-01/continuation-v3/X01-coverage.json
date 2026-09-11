@@ -1,0 +1,3315 @@
+{
+  "run_id": "OSS-20260911-01",
+  "experiment": "X01",
+  "observed_at": "2026-09-11T03:32:33.313681+00:00",
+  "source_hashes": {
+    "C:\\STOCKS\\work\\completion-r7-20260910\\source15-materialized\\cash-events.json": "09f07deccb14ba6d5dd1b4d63cb20476ae95e61e1b5908bba9f300a5440e7b94",
+    "C:\\STOCKS\\work\\completion-r7-20260910\\source15-materialized\\corporate-actions.json": "b7df5315fc3888544a09124ace3d574f836d12999519d3536fa0cc71b5c0e4e6",
+    "C:\\STOCKS\\work\\completion-r7-20260910\\source15-materialized\\evidence.json": "8fc54395f02288a815f31ea1c3b31d67c49e6baedeb83316f323a15fe60df685",
+    "C:\\STOCKS\\work\\completion-r7-20260910\\source15-materialized\\primary-catalog.json": "68d97e07bfdb93013aa34cc664dff5e4ad0bbab7e77676e3aeffa58e887e64eb",
+    "C:\\STOCKS\\work\\oss-20260911-01\\continuation-v2\\fca2023.zip": "40c732b6d386ef32c30e1434a9c999e9d6b1b2d346d40f7d6e86aadde08108c1"
+  },
+  "source_manifest_sha256": "1c6410bebc9627d6dea8ae6ac4a9034823786fa47c48c26a8632c529c8560c46",
+  "source_primary_files_checked": 668,
+  "scope": "Source15 event-input population; not all B3 or X05 universe; no price or returns read",
+  "summary": {
+    "rows": 800,
+    "unique_events": 800,
+    "ex_dates": 494,
+    "ex_min": "2018-07-04",
+    "ex_max": "2026-04-01",
+    "field_presence": {
+      "isin": 800,
+      "gross_per_share": 800,
+      "net_per_share": 750,
+      "payment_date": 778,
+      "known_on": 778,
+      "available_on": 770
+    },
+    "verified_primary_bytes": 778,
+    "one_cnpj_asof_from_partial_fca": 357,
+    "recorded_value_available_by_ex": 0,
+    "conditional_cash_fields_complete": 750,
+    "certified_integrated_rows": 0
+  },
+  "by_asset": {
+    "ABEV3": {
+      "rows": 13,
+      "unique_events": 13,
+      "ex_dates": 9,
+      "ex_min": "2019-12-20",
+      "ex_max": "2025-12-19",
+      "field_presence": {
+        "isin": 13,
+        "gross_per_share": 13,
+        "net_per_share": 10,
+        "payment_date": 13,
+        "known_on": 13,
+        "available_on": 12
+      },
+      "verified_primary_bytes": 13,
+      "one_cnpj_asof_from_partial_fca": 10,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 10,
+      "certified_integrated_rows": 0
+    },
+    "ALOS3": {
+      "rows": 10,
+      "unique_events": 10,
+      "ex_dates": 9,
+      "ex_min": "2025-01-24",
+      "ex_max": "2026-03-30",
+      "field_presence": {
+        "isin": 10,
+        "gross_per_share": 10,
+        "net_per_share": 8,
+        "payment_date": 10,
+        "known_on": 10,
+        "available_on": 10
+      },
+      "verified_primary_bytes": 10,
+      "one_cnpj_asof_from_partial_fca": 10,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 8,
+      "certified_integrated_rows": 0
+    },
+    "ALSC3": {
+      "rows": 1,
+      "unique_events": 1,
+      "ex_dates": 1,
+      "ex_min": "2019-04-30",
+      "ex_max": "2019-04-30",
+      "field_presence": {
+        "isin": 1,
+        "gross_per_share": 1,
+        "net_per_share": 1,
+        "payment_date": 1,
+        "known_on": 1,
+        "available_on": 1
+      },
+      "verified_primary_bytes": 1,
+      "one_cnpj_asof_from_partial_fca": 0,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 1,
+      "certified_integrated_rows": 0
+    },
+    "ALSO3": {
+      "rows": 2,
+      "unique_events": 2,
+      "ex_dates": 1,
+      "ex_min": "2023-05-02",
+      "ex_max": "2023-05-02",
+      "field_presence": {
+        "isin": 2,
+        "gross_per_share": 2,
+        "net_per_share": 2,
+        "payment_date": 2,
+        "known_on": 2,
+        "available_on": 2
+      },
+      "verified_primary_bytes": 2,
+      "one_cnpj_asof_from_partial_fca": 0,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 2,
+      "certified_integrated_rows": 0
+    },
+    "AMBP3": {
+      "rows": 1,
+      "unique_events": 1,
+      "ex_dates": 1,
+      "ex_min": "2022-05-05",
+      "ex_max": "2022-05-05",
+      "field_presence": {
+        "isin": 1,
+        "gross_per_share": 1,
+        "net_per_share": 1,
+        "payment_date": 1,
+        "known_on": 1,
+        "available_on": 1
+      },
+      "verified_primary_bytes": 1,
+      "one_cnpj_asof_from_partial_fca": 0,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 1,
+      "certified_integrated_rows": 0
+    },
+    "ANIM3": {
+      "rows": 1,
+      "unique_events": 1,
+      "ex_dates": 1,
+      "ex_min": "2024-08-14",
+      "ex_max": "2024-08-14",
+      "field_presence": {
+        "isin": 1,
+        "gross_per_share": 1,
+        "net_per_share": 1,
+        "payment_date": 1,
+        "known_on": 1,
+        "available_on": 1
+      },
+      "verified_primary_bytes": 1,
+      "one_cnpj_asof_from_partial_fca": 1,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 1,
+      "certified_integrated_rows": 0
+    },
+    "ARZZ3": {
+      "rows": 8,
+      "unique_events": 8,
+      "ex_dates": 6,
+      "ex_min": "2021-04-30",
+      "ex_max": "2023-11-13",
+      "field_presence": {
+        "isin": 8,
+        "gross_per_share": 8,
+        "net_per_share": 8,
+        "payment_date": 8,
+        "known_on": 8,
+        "available_on": 8
+      },
+      "verified_primary_bytes": 8,
+      "one_cnpj_asof_from_partial_fca": 4,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 8,
+      "certified_integrated_rows": 0
+    },
+    "AURE3": {
+      "rows": 2,
+      "unique_events": 2,
+      "ex_dates": 2,
+      "ex_min": "2023-05-05",
+      "ex_max": "2025-04-25",
+      "field_presence": {
+        "isin": 2,
+        "gross_per_share": 2,
+        "net_per_share": 2,
+        "payment_date": 2,
+        "known_on": 2,
+        "available_on": 2
+      },
+      "verified_primary_bytes": 2,
+      "one_cnpj_asof_from_partial_fca": 1,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 2,
+      "certified_integrated_rows": 0
+    },
+    "AZZA3": {
+      "rows": 2,
+      "unique_events": 2,
+      "ex_dates": 2,
+      "ex_min": "2025-11-24",
+      "ex_max": "2025-12-22",
+      "field_presence": {
+        "isin": 2,
+        "gross_per_share": 2,
+        "net_per_share": 2,
+        "payment_date": 2,
+        "known_on": 2,
+        "available_on": 2
+      },
+      "verified_primary_bytes": 2,
+      "one_cnpj_asof_from_partial_fca": 0,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 2,
+      "certified_integrated_rows": 0
+    },
+    "BBAS3": {
+      "rows": 48,
+      "unique_events": 48,
+      "ex_dates": 24,
+      "ex_min": "2020-02-26",
+      "ex_max": "2026-03-03",
+      "field_presence": {
+        "isin": 48,
+        "gross_per_share": 48,
+        "net_per_share": 48,
+        "payment_date": 48,
+        "known_on": 48,
+        "available_on": 48
+      },
+      "verified_primary_bytes": 48,
+      "one_cnpj_asof_from_partial_fca": 32,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 48,
+      "certified_integrated_rows": 0
+    },
+    "BBSE3": {
+      "rows": 24,
+      "unique_events": 24,
+      "ex_dates": 15,
+      "ex_min": "2018-08-10",
+      "ex_max": "2026-02-13",
+      "field_presence": {
+        "isin": 24,
+        "gross_per_share": 24,
+        "net_per_share": 22,
+        "payment_date": 24,
+        "known_on": 24,
+        "available_on": 24
+      },
+      "verified_primary_bytes": 24,
+      "one_cnpj_asof_from_partial_fca": 9,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 22,
+      "certified_integrated_rows": 0
+    },
+    "BEEF3": {
+      "rows": 4,
+      "unique_events": 4,
+      "ex_dates": 4,
+      "ex_min": "2022-04-28",
+      "ex_max": "2023-08-15",
+      "field_presence": {
+        "isin": 4,
+        "gross_per_share": 4,
+        "net_per_share": 4,
+        "payment_date": 4,
+        "known_on": 4,
+        "available_on": 4
+      },
+      "verified_primary_bytes": 4,
+      "one_cnpj_asof_from_partial_fca": 1,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 4,
+      "certified_integrated_rows": 0
+    },
+    "BRDT3": {
+      "rows": 7,
+      "unique_events": 7,
+      "ex_dates": 3,
+      "ex_min": "2020-08-03",
+      "ex_max": "2021-04-16",
+      "field_presence": {
+        "isin": 7,
+        "gross_per_share": 7,
+        "net_per_share": 7,
+        "payment_date": 7,
+        "known_on": 7,
+        "available_on": 7
+      },
+      "verified_primary_bytes": 7,
+      "one_cnpj_asof_from_partial_fca": 0,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 7,
+      "certified_integrated_rows": 0
+    },
+    "BRFS3": {
+      "rows": 2,
+      "unique_events": 2,
+      "ex_dates": 2,
+      "ex_min": "2024-11-26",
+      "ex_max": "2024-12-17",
+      "field_presence": {
+        "isin": 2,
+        "gross_per_share": 2,
+        "net_per_share": 2,
+        "payment_date": 2,
+        "known_on": 2,
+        "available_on": 2
+      },
+      "verified_primary_bytes": 2,
+      "one_cnpj_asof_from_partial_fca": 2,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 2,
+      "certified_integrated_rows": 0
+    },
+    "BRML3": {
+      "rows": 7,
+      "unique_events": 7,
+      "ex_dates": 6,
+      "ex_min": "2018-11-27",
+      "ex_max": "2022-05-02",
+      "field_presence": {
+        "isin": 7,
+        "gross_per_share": 7,
+        "net_per_share": 7,
+        "payment_date": 7,
+        "known_on": 7,
+        "available_on": 7
+      },
+      "verified_primary_bytes": 7,
+      "one_cnpj_asof_from_partial_fca": 0,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 7,
+      "certified_integrated_rows": 0
+    },
+    "CAML3": {
+      "rows": 3,
+      "unique_events": 3,
+      "ex_dates": 3,
+      "ex_min": "2019-07-02",
+      "ex_max": "2021-09-02",
+      "field_presence": {
+        "isin": 3,
+        "gross_per_share": 3,
+        "net_per_share": 3,
+        "payment_date": 3,
+        "known_on": 3,
+        "available_on": 3
+      },
+      "verified_primary_bytes": 3,
+      "one_cnpj_asof_from_partial_fca": 0,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 3,
+      "certified_integrated_rows": 0
+    },
+    "CCRO3": {
+      "rows": 11,
+      "unique_events": 11,
+      "ex_dates": 11,
+      "ex_min": "2018-10-24",
+      "ex_max": "2025-04-24",
+      "field_presence": {
+        "isin": 11,
+        "gross_per_share": 11,
+        "net_per_share": 11,
+        "payment_date": 11,
+        "known_on": 11,
+        "available_on": 11
+      },
+      "verified_primary_bytes": 11,
+      "one_cnpj_asof_from_partial_fca": 4,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 11,
+      "certified_integrated_rows": 0
+    },
+    "CIEL3": {
+      "rows": 19,
+      "unique_events": 19,
+      "ex_dates": 18,
+      "ex_min": "2019-09-13",
+      "ex_max": "2024-03-18",
+      "field_presence": {
+        "isin": 19,
+        "gross_per_share": 19,
+        "net_per_share": 19,
+        "payment_date": 19,
+        "known_on": 19,
+        "available_on": 19
+      },
+      "verified_primary_bytes": 19,
+      "one_cnpj_asof_from_partial_fca": 5,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 19,
+      "certified_integrated_rows": 0
+    },
+    "COGN3": {
+      "rows": 3,
+      "unique_events": 3,
+      "ex_dates": 2,
+      "ex_min": "2025-04-29",
+      "ex_max": "2025-12-26",
+      "field_presence": {
+        "isin": 3,
+        "gross_per_share": 3,
+        "net_per_share": 3,
+        "payment_date": 3,
+        "known_on": 3,
+        "available_on": 2
+      },
+      "verified_primary_bytes": 3,
+      "one_cnpj_asof_from_partial_fca": 3,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 3,
+      "certified_integrated_rows": 0
+    },
+    "CPFE3": {
+      "rows": 27,
+      "unique_events": 27,
+      "ex_dates": 8,
+      "ex_min": "2020-07-28",
+      "ex_max": "2025-04-30",
+      "field_presence": {
+        "isin": 27,
+        "gross_per_share": 27,
+        "net_per_share": 27,
+        "payment_date": 27,
+        "known_on": 27,
+        "available_on": 27
+      },
+      "verified_primary_bytes": 27,
+      "one_cnpj_asof_from_partial_fca": 17,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 27,
+      "certified_integrated_rows": 0
+    },
+    "CRFB3": {
+      "rows": 11,
+      "unique_events": 11,
+      "ex_dates": 9,
+      "ex_min": "2018-11-13",
+      "ex_max": "2024-12-26",
+      "field_presence": {
+        "isin": 11,
+        "gross_per_share": 11,
+        "net_per_share": 11,
+        "payment_date": 11,
+        "known_on": 11,
+        "available_on": 11
+      },
+      "verified_primary_bytes": 11,
+      "one_cnpj_asof_from_partial_fca": 1,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 11,
+      "certified_integrated_rows": 0
+    },
+    "CSAN3": {
+      "rows": 5,
+      "unique_events": 5,
+      "ex_dates": 5,
+      "ex_min": "2019-05-03",
+      "ex_max": "2024-06-06",
+      "field_presence": {
+        "isin": 5,
+        "gross_per_share": 5,
+        "net_per_share": 5,
+        "payment_date": 5,
+        "known_on": 5,
+        "available_on": 5
+      },
+      "verified_primary_bytes": 5,
+      "one_cnpj_asof_from_partial_fca": 1,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 5,
+      "certified_integrated_rows": 0
+    },
+    "CSMG3": {
+      "rows": 17,
+      "unique_events": 17,
+      "ex_dates": 14,
+      "ex_min": "2018-09-25",
+      "ex_max": "2026-03-24",
+      "field_presence": {
+        "isin": 17,
+        "gross_per_share": 17,
+        "net_per_share": 16,
+        "payment_date": 17,
+        "known_on": 17,
+        "available_on": 17
+      },
+      "verified_primary_bytes": 17,
+      "one_cnpj_asof_from_partial_fca": 8,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 16,
+      "certified_integrated_rows": 0
+    },
+    "CURY3": {
+      "rows": 6,
+      "unique_events": 6,
+      "ex_dates": 5,
+      "ex_min": "2025-04-22",
+      "ex_max": "2026-02-05",
+      "field_presence": {
+        "isin": 6,
+        "gross_per_share": 6,
+        "net_per_share": 5,
+        "payment_date": 5,
+        "known_on": 5,
+        "available_on": 5
+      },
+      "verified_primary_bytes": 5,
+      "one_cnpj_asof_from_partial_fca": 6,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 5,
+      "certified_integrated_rows": 0
+    },
+    "CXSE3": {
+      "rows": 11,
+      "unique_events": 11,
+      "ex_dates": 7,
+      "ex_min": "2024-04-29",
+      "ex_max": "2026-01-05",
+      "field_presence": {
+        "isin": 11,
+        "gross_per_share": 11,
+        "net_per_share": 9,
+        "payment_date": 11,
+        "known_on": 11,
+        "available_on": 11
+      },
+      "verified_primary_bytes": 11,
+      "one_cnpj_asof_from_partial_fca": 11,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 9,
+      "certified_integrated_rows": 0
+    },
+    "CYRE3": {
+      "rows": 10,
+      "unique_events": 10,
+      "ex_dates": 10,
+      "ex_min": "2019-07-11",
+      "ex_max": "2025-12-10",
+      "field_presence": {
+        "isin": 10,
+        "gross_per_share": 10,
+        "net_per_share": 10,
+        "payment_date": 10,
+        "known_on": 10,
+        "available_on": 10
+      },
+      "verified_primary_bytes": 10,
+      "one_cnpj_asof_from_partial_fca": 4,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 10,
+      "certified_integrated_rows": 0
+    },
+    "DIRR3": {
+      "rows": 5,
+      "unique_events": 5,
+      "ex_dates": 5,
+      "ex_min": "2024-07-05",
+      "ex_max": "2025-12-17",
+      "field_presence": {
+        "isin": 5,
+        "gross_per_share": 5,
+        "net_per_share": 5,
+        "payment_date": 5,
+        "known_on": 5,
+        "available_on": 5
+      },
+      "verified_primary_bytes": 5,
+      "one_cnpj_asof_from_partial_fca": 5,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 5,
+      "certified_integrated_rows": 0
+    },
+    "DTEX3": {
+      "rows": 2,
+      "unique_events": 2,
+      "ex_dates": 2,
+      "ex_min": "2019-12-17",
+      "ex_max": "2020-12-14",
+      "field_presence": {
+        "isin": 2,
+        "gross_per_share": 2,
+        "net_per_share": 2,
+        "payment_date": 2,
+        "known_on": 2,
+        "available_on": 2
+      },
+      "verified_primary_bytes": 2,
+      "one_cnpj_asof_from_partial_fca": 0,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 2,
+      "certified_integrated_rows": 0
+    },
+    "ECOR3": {
+      "rows": 2,
+      "unique_events": 2,
+      "ex_dates": 1,
+      "ex_min": "2018-11-06",
+      "ex_max": "2018-11-06",
+      "field_presence": {
+        "isin": 2,
+        "gross_per_share": 2,
+        "net_per_share": 2,
+        "payment_date": 2,
+        "known_on": 2,
+        "available_on": 2
+      },
+      "verified_primary_bytes": 2,
+      "one_cnpj_asof_from_partial_fca": 0,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 2,
+      "certified_integrated_rows": 0
+    },
+    "EGIE3": {
+      "rows": 14,
+      "unique_events": 14,
+      "ex_dates": 13,
+      "ex_min": "2020-08-10",
+      "ex_max": "2025-12-19",
+      "field_presence": {
+        "isin": 14,
+        "gross_per_share": 14,
+        "net_per_share": 14,
+        "payment_date": 14,
+        "known_on": 14,
+        "available_on": 14
+      },
+      "verified_primary_bytes": 14,
+      "one_cnpj_asof_from_partial_fca": 4,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 14,
+      "certified_integrated_rows": 0
+    },
+    "EMBR3": {
+      "rows": 2,
+      "unique_events": 2,
+      "ex_dates": 2,
+      "ex_min": "2018-09-25",
+      "ex_max": "2018-12-27",
+      "field_presence": {
+        "isin": 2,
+        "gross_per_share": 2,
+        "net_per_share": 2,
+        "payment_date": 2,
+        "known_on": 2,
+        "available_on": 2
+      },
+      "verified_primary_bytes": 2,
+      "one_cnpj_asof_from_partial_fca": 0,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 2,
+      "certified_integrated_rows": 0
+    },
+    "ENBR3": {
+      "rows": 5,
+      "unique_events": 5,
+      "ex_dates": 5,
+      "ex_min": "2019-01-02",
+      "ex_max": "2022-04-06",
+      "field_presence": {
+        "isin": 5,
+        "gross_per_share": 5,
+        "net_per_share": 5,
+        "payment_date": 5,
+        "known_on": 5,
+        "available_on": 5
+      },
+      "verified_primary_bytes": 5,
+      "one_cnpj_asof_from_partial_fca": 0,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 5,
+      "certified_integrated_rows": 0
+    },
+    "EQTL3": {
+      "rows": 7,
+      "unique_events": 7,
+      "ex_dates": 7,
+      "ex_min": "2019-05-02",
+      "ex_max": "2025-01-14",
+      "field_presence": {
+        "isin": 7,
+        "gross_per_share": 7,
+        "net_per_share": 7,
+        "payment_date": 7,
+        "known_on": 7,
+        "available_on": 7
+      },
+      "verified_primary_bytes": 7,
+      "one_cnpj_asof_from_partial_fca": 3,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 7,
+      "certified_integrated_rows": 0
+    },
+    "ESTC3": {
+      "rows": 2,
+      "unique_events": 2,
+      "ex_dates": 2,
+      "ex_min": "2018-11-16",
+      "ex_max": "2019-04-29",
+      "field_presence": {
+        "isin": 2,
+        "gross_per_share": 2,
+        "net_per_share": 2,
+        "payment_date": 2,
+        "known_on": 2,
+        "available_on": 2
+      },
+      "verified_primary_bytes": 2,
+      "one_cnpj_asof_from_partial_fca": 0,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 2,
+      "certified_integrated_rows": 0
+    },
+    "EZTC3": {
+      "rows": 7,
+      "unique_events": 7,
+      "ex_dates": 7,
+      "ex_min": "2019-04-29",
+      "ex_max": "2025-08-15",
+      "field_presence": {
+        "isin": 7,
+        "gross_per_share": 7,
+        "net_per_share": 7,
+        "payment_date": 7,
+        "known_on": 7,
+        "available_on": 7
+      },
+      "verified_primary_bytes": 7,
+      "one_cnpj_asof_from_partial_fca": 1,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 7,
+      "certified_integrated_rows": 0
+    },
+    "FIBR3": {
+      "rows": 1,
+      "unique_events": 1,
+      "ex_dates": 1,
+      "ex_min": "2018-12-04",
+      "ex_max": "2018-12-04",
+      "field_presence": {
+        "isin": 1,
+        "gross_per_share": 1,
+        "net_per_share": 1,
+        "payment_date": 1,
+        "known_on": 1,
+        "available_on": 1
+      },
+      "verified_primary_bytes": 1,
+      "one_cnpj_asof_from_partial_fca": 0,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 1,
+      "certified_integrated_rows": 0
+    },
+    "FLRY3": {
+      "rows": 8,
+      "unique_events": 8,
+      "ex_dates": 8,
+      "ex_min": "2019-01-03",
+      "ex_max": "2024-12-16",
+      "field_presence": {
+        "isin": 8,
+        "gross_per_share": 8,
+        "net_per_share": 8,
+        "payment_date": 8,
+        "known_on": 8,
+        "available_on": 8
+      },
+      "verified_primary_bytes": 8,
+      "one_cnpj_asof_from_partial_fca": 3,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 8,
+      "certified_integrated_rows": 0
+    },
+    "GMAT3": {
+      "rows": 2,
+      "unique_events": 2,
+      "ex_dates": 2,
+      "ex_min": "2024-09-27",
+      "ex_max": "2025-09-26",
+      "field_presence": {
+        "isin": 2,
+        "gross_per_share": 2,
+        "net_per_share": 2,
+        "payment_date": 2,
+        "known_on": 2,
+        "available_on": 2
+      },
+      "verified_primary_bytes": 2,
+      "one_cnpj_asof_from_partial_fca": 2,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 2,
+      "certified_integrated_rows": 0
+    },
+    "GNDI3": {
+      "rows": 3,
+      "unique_events": 3,
+      "ex_dates": 3,
+      "ex_min": "2020-03-26",
+      "ex_max": "2022-02-14",
+      "field_presence": {
+        "isin": 3,
+        "gross_per_share": 3,
+        "net_per_share": 3,
+        "payment_date": 3,
+        "known_on": 3,
+        "available_on": 3
+      },
+      "verified_primary_bytes": 3,
+      "one_cnpj_asof_from_partial_fca": 0,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 3,
+      "certified_integrated_rows": 0
+    },
+    "HAPV3": {
+      "rows": 11,
+      "unique_events": 11,
+      "ex_dates": 9,
+      "ex_min": "2019-07-03",
+      "ex_max": "2021-12-28",
+      "field_presence": {
+        "isin": 11,
+        "gross_per_share": 11,
+        "net_per_share": 11,
+        "payment_date": 11,
+        "known_on": 11,
+        "available_on": 11
+      },
+      "verified_primary_bytes": 11,
+      "one_cnpj_asof_from_partial_fca": 0,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 11,
+      "certified_integrated_rows": 0
+    },
+    "HGTX3": {
+      "rows": 9,
+      "unique_events": 9,
+      "ex_dates": 9,
+      "ex_min": "2018-11-09",
+      "ex_max": "2021-04-30",
+      "field_presence": {
+        "isin": 9,
+        "gross_per_share": 9,
+        "net_per_share": 9,
+        "payment_date": 9,
+        "known_on": 9,
+        "available_on": 9
+      },
+      "verified_primary_bytes": 9,
+      "one_cnpj_asof_from_partial_fca": 0,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 9,
+      "certified_integrated_rows": 0
+    },
+    "HYPE3": {
+      "rows": 40,
+      "unique_events": 40,
+      "ex_dates": 37,
+      "ex_min": "2018-07-04",
+      "ex_max": "2026-04-01",
+      "field_presence": {
+        "isin": 40,
+        "gross_per_share": 40,
+        "net_per_share": 35,
+        "payment_date": 35,
+        "known_on": 35,
+        "available_on": 35
+      },
+      "verified_primary_bytes": 35,
+      "one_cnpj_asof_from_partial_fca": 18,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 35,
+      "certified_integrated_rows": 0
+    },
+    "IGTA3": {
+      "rows": 7,
+      "unique_events": 7,
+      "ex_dates": 4,
+      "ex_min": "2019-03-06",
+      "ex_max": "2021-04-23",
+      "field_presence": {
+        "isin": 7,
+        "gross_per_share": 7,
+        "net_per_share": 6,
+        "payment_date": 6,
+        "known_on": 6,
+        "available_on": 6
+      },
+      "verified_primary_bytes": 6,
+      "one_cnpj_asof_from_partial_fca": 0,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 6,
+      "certified_integrated_rows": 0
+    },
+    "JHSF3": {
+      "rows": 4,
+      "unique_events": 4,
+      "ex_dates": 4,
+      "ex_min": "2020-08-19",
+      "ex_max": "2021-10-15",
+      "field_presence": {
+        "isin": 4,
+        "gross_per_share": 4,
+        "net_per_share": 4,
+        "payment_date": 4,
+        "known_on": 4,
+        "available_on": 4
+      },
+      "verified_primary_bytes": 4,
+      "one_cnpj_asof_from_partial_fca": 0,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 4,
+      "certified_integrated_rows": 0
+    },
+    "LCAM3": {
+      "rows": 5,
+      "unique_events": 5,
+      "ex_dates": 5,
+      "ex_min": "2020-07-02",
+      "ex_max": "2022-07-04",
+      "field_presence": {
+        "isin": 5,
+        "gross_per_share": 5,
+        "net_per_share": 5,
+        "payment_date": 5,
+        "known_on": 5,
+        "available_on": 5
+      },
+      "verified_primary_bytes": 5,
+      "one_cnpj_asof_from_partial_fca": 0,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 5,
+      "certified_integrated_rows": 0
+    },
+    "LEVE3": {
+      "rows": 1,
+      "unique_events": 1,
+      "ex_dates": 1,
+      "ex_min": "2019-05-07",
+      "ex_max": "2019-05-07",
+      "field_presence": {
+        "isin": 1,
+        "gross_per_share": 1,
+        "net_per_share": 1,
+        "payment_date": 1,
+        "known_on": 1,
+        "available_on": 1
+      },
+      "verified_primary_bytes": 1,
+      "one_cnpj_asof_from_partial_fca": 0,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 1,
+      "certified_integrated_rows": 0
+    },
+    "LIGT3": {
+      "rows": 2,
+      "unique_events": 2,
+      "ex_dates": 2,
+      "ex_min": "2019-04-30",
+      "ex_max": "2021-04-30",
+      "field_presence": {
+        "isin": 2,
+        "gross_per_share": 2,
+        "net_per_share": 2,
+        "payment_date": 2,
+        "known_on": 2,
+        "available_on": 2
+      },
+      "verified_primary_bytes": 2,
+      "one_cnpj_asof_from_partial_fca": 0,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 2,
+      "certified_integrated_rows": 0
+    },
+    "LINX3": {
+      "rows": 1,
+      "unique_events": 1,
+      "ex_dates": 1,
+      "ex_min": "2018-12-13",
+      "ex_max": "2018-12-13",
+      "field_presence": {
+        "isin": 1,
+        "gross_per_share": 1,
+        "net_per_share": 1,
+        "payment_date": 1,
+        "known_on": 1,
+        "available_on": 1
+      },
+      "verified_primary_bytes": 1,
+      "one_cnpj_asof_from_partial_fca": 0,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 1,
+      "certified_integrated_rows": 0
+    },
+    "LJQQ3": {
+      "rows": 1,
+      "unique_events": 1,
+      "ex_dates": 1,
+      "ex_min": "2021-12-23",
+      "ex_max": "2021-12-23",
+      "field_presence": {
+        "isin": 1,
+        "gross_per_share": 1,
+        "net_per_share": 1,
+        "payment_date": 1,
+        "known_on": 1,
+        "available_on": 1
+      },
+      "verified_primary_bytes": 1,
+      "one_cnpj_asof_from_partial_fca": 0,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 1,
+      "certified_integrated_rows": 0
+    },
+    "LREN3": {
+      "rows": 30,
+      "unique_events": 30,
+      "ex_dates": 30,
+      "ex_min": "2018-09-25",
+      "ex_max": "2026-03-25",
+      "field_presence": {
+        "isin": 30,
+        "gross_per_share": 30,
+        "net_per_share": 29,
+        "payment_date": 30,
+        "known_on": 30,
+        "available_on": 30
+      },
+      "verified_primary_bytes": 30,
+      "one_cnpj_asof_from_partial_fca": 11,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 29,
+      "certified_integrated_rows": 0
+    },
+    "LWSA3": {
+      "rows": 2,
+      "unique_events": 2,
+      "ex_dates": 2,
+      "ex_min": "2023-05-10",
+      "ex_max": "2025-08-20",
+      "field_presence": {
+        "isin": 2,
+        "gross_per_share": 2,
+        "net_per_share": 2,
+        "payment_date": 2,
+        "known_on": 2,
+        "available_on": 2
+      },
+      "verified_primary_bytes": 2,
+      "one_cnpj_asof_from_partial_fca": 1,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 2,
+      "certified_integrated_rows": 0
+    },
+    "MDIA3": {
+      "rows": 7,
+      "unique_events": 7,
+      "ex_dates": 7,
+      "ex_min": "2018-12-28",
+      "ex_max": "2024-09-17",
+      "field_presence": {
+        "isin": 7,
+        "gross_per_share": 7,
+        "net_per_share": 7,
+        "payment_date": 7,
+        "known_on": 7,
+        "available_on": 7
+      },
+      "verified_primary_bytes": 7,
+      "one_cnpj_asof_from_partial_fca": 1,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 7,
+      "certified_integrated_rows": 0
+    },
+    "MGLU3": {
+      "rows": 5,
+      "unique_events": 5,
+      "ex_dates": 5,
+      "ex_min": "2019-01-02",
+      "ex_max": "2025-04-28",
+      "field_presence": {
+        "isin": 5,
+        "gross_per_share": 5,
+        "net_per_share": 5,
+        "payment_date": 5,
+        "known_on": 5,
+        "available_on": 5
+      },
+      "verified_primary_bytes": 5,
+      "one_cnpj_asof_from_partial_fca": 1,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 5,
+      "certified_integrated_rows": 0
+    },
+    "MOVI3": {
+      "rows": 10,
+      "unique_events": 10,
+      "ex_dates": 10,
+      "ex_min": "2019-09-30",
+      "ex_max": "2025-12-22",
+      "field_presence": {
+        "isin": 10,
+        "gross_per_share": 10,
+        "net_per_share": 9,
+        "payment_date": 10,
+        "known_on": 10,
+        "available_on": 9
+      },
+      "verified_primary_bytes": 10,
+      "one_cnpj_asof_from_partial_fca": 2,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 9,
+      "certified_integrated_rows": 0
+    },
+    "MRVE3": {
+      "rows": 7,
+      "unique_events": 7,
+      "ex_dates": 7,
+      "ex_min": "2019-06-07",
+      "ex_max": "2021-12-07",
+      "field_presence": {
+        "isin": 7,
+        "gross_per_share": 7,
+        "net_per_share": 7,
+        "payment_date": 7,
+        "known_on": 7,
+        "available_on": 7
+      },
+      "verified_primary_bytes": 7,
+      "one_cnpj_asof_from_partial_fca": 0,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 7,
+      "certified_integrated_rows": 0
+    },
+    "MULT3": {
+      "rows": 9,
+      "unique_events": 9,
+      "ex_dates": 9,
+      "ex_min": "2024-04-05",
+      "ex_max": "2026-03-31",
+      "field_presence": {
+        "isin": 9,
+        "gross_per_share": 9,
+        "net_per_share": 6,
+        "payment_date": 6,
+        "known_on": 6,
+        "available_on": 6
+      },
+      "verified_primary_bytes": 6,
+      "one_cnpj_asof_from_partial_fca": 9,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 6,
+      "certified_integrated_rows": 0
+    },
+    "MYPK3": {
+      "rows": 1,
+      "unique_events": 1,
+      "ex_dates": 1,
+      "ex_min": "2021-12-28",
+      "ex_max": "2021-12-28",
+      "field_presence": {
+        "isin": 1,
+        "gross_per_share": 1,
+        "net_per_share": 1,
+        "payment_date": 1,
+        "known_on": 1,
+        "available_on": 1
+      },
+      "verified_primary_bytes": 1,
+      "one_cnpj_asof_from_partial_fca": 0,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 1,
+      "certified_integrated_rows": 0
+    },
+    "NATU3": {
+      "rows": 2,
+      "unique_events": 2,
+      "ex_dates": 2,
+      "ex_min": "2019-01-07",
+      "ex_max": "2019-02-27",
+      "field_presence": {
+        "isin": 2,
+        "gross_per_share": 2,
+        "net_per_share": 2,
+        "payment_date": 2,
+        "known_on": 2,
+        "available_on": 2
+      },
+      "verified_primary_bytes": 2,
+      "one_cnpj_asof_from_partial_fca": 0,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 2,
+      "certified_integrated_rows": 0
+    },
+    "NEOE3": {
+      "rows": 2,
+      "unique_events": 2,
+      "ex_dates": 2,
+      "ex_min": "2021-07-02",
+      "ex_max": "2022-01-06",
+      "field_presence": {
+        "isin": 2,
+        "gross_per_share": 2,
+        "net_per_share": 2,
+        "payment_date": 2,
+        "known_on": 2,
+        "available_on": 2
+      },
+      "verified_primary_bytes": 2,
+      "one_cnpj_asof_from_partial_fca": 0,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 2,
+      "certified_integrated_rows": 0
+    },
+    "NTCO3": {
+      "rows": 2,
+      "unique_events": 2,
+      "ex_dates": 2,
+      "ex_min": "2024-03-20",
+      "ex_max": "2024-04-09",
+      "field_presence": {
+        "isin": 2,
+        "gross_per_share": 2,
+        "net_per_share": 2,
+        "payment_date": 2,
+        "known_on": 2,
+        "available_on": 2
+      },
+      "verified_primary_bytes": 2,
+      "one_cnpj_asof_from_partial_fca": 2,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 2,
+      "certified_integrated_rows": 0
+    },
+    "ODPV3": {
+      "rows": 12,
+      "unique_events": 12,
+      "ex_dates": 11,
+      "ex_min": "2018-07-31",
+      "ex_max": "2019-12-20",
+      "field_presence": {
+        "isin": 12,
+        "gross_per_share": 12,
+        "net_per_share": 12,
+        "payment_date": 12,
+        "known_on": 12,
+        "available_on": 12
+      },
+      "verified_primary_bytes": 12,
+      "one_cnpj_asof_from_partial_fca": 0,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 12,
+      "certified_integrated_rows": 0
+    },
+    "PARD3": {
+      "rows": 3,
+      "unique_events": 3,
+      "ex_dates": 3,
+      "ex_min": "2018-10-01",
+      "ex_max": "2019-06-27",
+      "field_presence": {
+        "isin": 3,
+        "gross_per_share": 3,
+        "net_per_share": 3,
+        "payment_date": 3,
+        "known_on": 3,
+        "available_on": 3
+      },
+      "verified_primary_bytes": 3,
+      "one_cnpj_asof_from_partial_fca": 0,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 3,
+      "certified_integrated_rows": 0
+    },
+    "PETZ3": {
+      "rows": 7,
+      "unique_events": 7,
+      "ex_dates": 6,
+      "ex_min": "2022-04-27",
+      "ex_max": "2024-05-02",
+      "field_presence": {
+        "isin": 7,
+        "gross_per_share": 7,
+        "net_per_share": 7,
+        "payment_date": 7,
+        "known_on": 7,
+        "available_on": 7
+      },
+      "verified_primary_bytes": 7,
+      "one_cnpj_asof_from_partial_fca": 2,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 7,
+      "certified_integrated_rows": 0
+    },
+    "PRIO3": {
+      "rows": 1,
+      "unique_events": 1,
+      "ex_dates": 1,
+      "ex_min": "2023-12-14",
+      "ex_max": "2023-12-14",
+      "field_presence": {
+        "isin": 1,
+        "gross_per_share": 1,
+        "net_per_share": 1,
+        "payment_date": 1,
+        "known_on": 1,
+        "available_on": 1
+      },
+      "verified_primary_bytes": 1,
+      "one_cnpj_asof_from_partial_fca": 1,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 1,
+      "certified_integrated_rows": 0
+    },
+    "PSSA3": {
+      "rows": 21,
+      "unique_events": 21,
+      "ex_dates": 19,
+      "ex_min": "2018-11-07",
+      "ex_max": "2026-04-01",
+      "field_presence": {
+        "isin": 21,
+        "gross_per_share": 21,
+        "net_per_share": 14,
+        "payment_date": 18,
+        "known_on": 18,
+        "available_on": 18
+      },
+      "verified_primary_bytes": 18,
+      "one_cnpj_asof_from_partial_fca": 10,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 14,
+      "certified_integrated_rows": 0
+    },
+    "PTBL3": {
+      "rows": 2,
+      "unique_events": 2,
+      "ex_dates": 1,
+      "ex_min": "2018-08-15",
+      "ex_max": "2018-08-15",
+      "field_presence": {
+        "isin": 2,
+        "gross_per_share": 2,
+        "net_per_share": 2,
+        "payment_date": 2,
+        "known_on": 2,
+        "available_on": 2
+      },
+      "verified_primary_bytes": 2,
+      "one_cnpj_asof_from_partial_fca": 0,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 2,
+      "certified_integrated_rows": 0
+    },
+    "QUAL3": {
+      "rows": 4,
+      "unique_events": 4,
+      "ex_dates": 4,
+      "ex_min": "2019-04-30",
+      "ex_max": "2021-07-14",
+      "field_presence": {
+        "isin": 4,
+        "gross_per_share": 4,
+        "net_per_share": 4,
+        "payment_date": 4,
+        "known_on": 4,
+        "available_on": 4
+      },
+      "verified_primary_bytes": 4,
+      "one_cnpj_asof_from_partial_fca": 0,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 4,
+      "certified_integrated_rows": 0
+    },
+    "RADL3": {
+      "rows": 37,
+      "unique_events": 37,
+      "ex_dates": 32,
+      "ex_min": "2019-06-27",
+      "ex_max": "2025-12-08",
+      "field_presence": {
+        "isin": 37,
+        "gross_per_share": 37,
+        "net_per_share": 30,
+        "payment_date": 32,
+        "known_on": 32,
+        "available_on": 32
+      },
+      "verified_primary_bytes": 32,
+      "one_cnpj_asof_from_partial_fca": 18,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 30,
+      "certified_integrated_rows": 0
+    },
+    "RAIL3": {
+      "rows": 1,
+      "unique_events": 1,
+      "ex_dates": 1,
+      "ex_min": "2023-04-20",
+      "ex_max": "2023-04-20",
+      "field_presence": {
+        "isin": 1,
+        "gross_per_share": 1,
+        "net_per_share": 1,
+        "payment_date": 1,
+        "known_on": 1,
+        "available_on": 1
+      },
+      "verified_primary_bytes": 1,
+      "one_cnpj_asof_from_partial_fca": 0,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 1,
+      "certified_integrated_rows": 0
+    },
+    "RDOR3": {
+      "rows": 17,
+      "unique_events": 17,
+      "ex_dates": 15,
+      "ex_min": "2022-04-01",
+      "ex_max": "2026-03-27",
+      "field_presence": {
+        "isin": 17,
+        "gross_per_share": 17,
+        "net_per_share": 16,
+        "payment_date": 16,
+        "known_on": 16,
+        "available_on": 16
+      },
+      "verified_primary_bytes": 16,
+      "one_cnpj_asof_from_partial_fca": 13,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 16,
+      "certified_integrated_rows": 0
+    },
+    "RECV3": {
+      "rows": 4,
+      "unique_events": 4,
+      "ex_dates": 4,
+      "ex_min": "2023-04-27",
+      "ex_max": "2024-11-13",
+      "field_presence": {
+        "isin": 4,
+        "gross_per_share": 4,
+        "net_per_share": 3,
+        "payment_date": 3,
+        "known_on": 3,
+        "available_on": 3
+      },
+      "verified_primary_bytes": 3,
+      "one_cnpj_asof_from_partial_fca": 3,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 3,
+      "certified_integrated_rows": 0
+    },
+    "RENT3": {
+      "rows": 17,
+      "unique_events": 17,
+      "ex_dates": 17,
+      "ex_min": "2019-09-10",
+      "ex_max": "2026-03-30",
+      "field_presence": {
+        "isin": 17,
+        "gross_per_share": 17,
+        "net_per_share": 16,
+        "payment_date": 17,
+        "known_on": 17,
+        "available_on": 17
+      },
+      "verified_primary_bytes": 17,
+      "one_cnpj_asof_from_partial_fca": 9,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 16,
+      "certified_integrated_rows": 0
+    },
+    "ROMI3": {
+      "rows": 3,
+      "unique_events": 3,
+      "ex_dates": 2,
+      "ex_min": "2021-09-21",
+      "ex_max": "2021-12-22",
+      "field_presence": {
+        "isin": 3,
+        "gross_per_share": 3,
+        "net_per_share": 3,
+        "payment_date": 3,
+        "known_on": 3,
+        "available_on": 3
+      },
+      "verified_primary_bytes": 3,
+      "one_cnpj_asof_from_partial_fca": 0,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 3,
+      "certified_integrated_rows": 0
+    },
+    "SBSP3": {
+      "rows": 1,
+      "unique_events": 1,
+      "ex_dates": 1,
+      "ex_min": "2024-04-26",
+      "ex_max": "2024-04-26",
+      "field_presence": {
+        "isin": 1,
+        "gross_per_share": 1,
+        "net_per_share": 1,
+        "payment_date": 1,
+        "known_on": 1,
+        "available_on": 1
+      },
+      "verified_primary_bytes": 1,
+      "one_cnpj_asof_from_partial_fca": 1,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 1,
+      "certified_integrated_rows": 0
+    },
+    "SEER3": {
+      "rows": 3,
+      "unique_events": 3,
+      "ex_dates": 3,
+      "ex_min": "2018-09-14",
+      "ex_max": "2019-05-15",
+      "field_presence": {
+        "isin": 3,
+        "gross_per_share": 3,
+        "net_per_share": 3,
+        "payment_date": 3,
+        "known_on": 3,
+        "available_on": 3
+      },
+      "verified_primary_bytes": 3,
+      "one_cnpj_asof_from_partial_fca": 0,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 3,
+      "certified_integrated_rows": 0
+    },
+    "SIMH3": {
+      "rows": 1,
+      "unique_events": 1,
+      "ex_dates": 1,
+      "ex_min": "2021-12-23",
+      "ex_max": "2021-12-23",
+      "field_presence": {
+        "isin": 1,
+        "gross_per_share": 1,
+        "net_per_share": 1,
+        "payment_date": 1,
+        "known_on": 1,
+        "available_on": 1
+      },
+      "verified_primary_bytes": 1,
+      "one_cnpj_asof_from_partial_fca": 0,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 1,
+      "certified_integrated_rows": 0
+    },
+    "SLCE3": {
+      "rows": 5,
+      "unique_events": 5,
+      "ex_dates": 5,
+      "ex_min": "2019-05-02",
+      "ex_max": "2025-05-06",
+      "field_presence": {
+        "isin": 5,
+        "gross_per_share": 5,
+        "net_per_share": 4,
+        "payment_date": 5,
+        "known_on": 5,
+        "available_on": 5
+      },
+      "verified_primary_bytes": 5,
+      "one_cnpj_asof_from_partial_fca": 2,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 4,
+      "certified_integrated_rows": 0
+    },
+    "SMFT3": {
+      "rows": 4,
+      "unique_events": 4,
+      "ex_dates": 4,
+      "ex_min": "2024-12-16",
+      "ex_max": "2025-12-08",
+      "field_presence": {
+        "isin": 4,
+        "gross_per_share": 4,
+        "net_per_share": 3,
+        "payment_date": 4,
+        "known_on": 4,
+        "available_on": 4
+      },
+      "verified_primary_bytes": 4,
+      "one_cnpj_asof_from_partial_fca": 4,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 3,
+      "certified_integrated_rows": 0
+    },
+    "SMLS3": {
+      "rows": 1,
+      "unique_events": 1,
+      "ex_dates": 1,
+      "ex_min": "2020-01-02",
+      "ex_max": "2020-01-02",
+      "field_presence": {
+        "isin": 1,
+        "gross_per_share": 1,
+        "net_per_share": 1,
+        "payment_date": 1,
+        "known_on": 1,
+        "available_on": 1
+      },
+      "verified_primary_bytes": 1,
+      "one_cnpj_asof_from_partial_fca": 0,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 1,
+      "certified_integrated_rows": 0
+    },
+    "SMTO3": {
+      "rows": 5,
+      "unique_events": 5,
+      "ex_dates": 5,
+      "ex_min": "2018-07-30",
+      "ex_max": "2024-12-13",
+      "field_presence": {
+        "isin": 5,
+        "gross_per_share": 5,
+        "net_per_share": 5,
+        "payment_date": 5,
+        "known_on": 5,
+        "available_on": 5
+      },
+      "verified_primary_bytes": 5,
+      "one_cnpj_asof_from_partial_fca": 2,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 5,
+      "certified_integrated_rows": 0
+    },
+    "SOMA3": {
+      "rows": 2,
+      "unique_events": 2,
+      "ex_dates": 2,
+      "ex_min": "2022-05-02",
+      "ex_max": "2023-05-02",
+      "field_presence": {
+        "isin": 2,
+        "gross_per_share": 2,
+        "net_per_share": 2,
+        "payment_date": 2,
+        "known_on": 2,
+        "available_on": 2
+      },
+      "verified_primary_bytes": 2,
+      "one_cnpj_asof_from_partial_fca": 0,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 2,
+      "certified_integrated_rows": 0
+    },
+    "STBP3": {
+      "rows": 1,
+      "unique_events": 1,
+      "ex_dates": 1,
+      "ex_min": "2019-05-02",
+      "ex_max": "2019-05-02",
+      "field_presence": {
+        "isin": 1,
+        "gross_per_share": 1,
+        "net_per_share": 1,
+        "payment_date": 1,
+        "known_on": 1,
+        "available_on": 1
+      },
+      "verified_primary_bytes": 1,
+      "one_cnpj_asof_from_partial_fca": 0,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 1,
+      "certified_integrated_rows": 0
+    },
+    "SUZB3": {
+      "rows": 4,
+      "unique_events": 4,
+      "ex_dates": 4,
+      "ex_min": "2022-05-05",
+      "ex_max": "2025-12-19",
+      "field_presence": {
+        "isin": 4,
+        "gross_per_share": 4,
+        "net_per_share": 4,
+        "payment_date": 4,
+        "known_on": 4,
+        "available_on": 4
+      },
+      "verified_primary_bytes": 4,
+      "one_cnpj_asof_from_partial_fca": 2,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 4,
+      "certified_integrated_rows": 0
+    },
+    "TEND3": {
+      "rows": 8,
+      "unique_events": 8,
+      "ex_dates": 8,
+      "ex_min": "2018-12-18",
+      "ex_max": "2025-12-26",
+      "field_presence": {
+        "isin": 8,
+        "gross_per_share": 8,
+        "net_per_share": 8,
+        "payment_date": 8,
+        "known_on": 8,
+        "available_on": 8
+      },
+      "verified_primary_bytes": 8,
+      "one_cnpj_asof_from_partial_fca": 2,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 8,
+      "certified_integrated_rows": 0
+    },
+    "TIMP3": {
+      "rows": 5,
+      "unique_events": 5,
+      "ex_dates": 5,
+      "ex_min": "2018-07-26",
+      "ex_max": "2020-01-20",
+      "field_presence": {
+        "isin": 5,
+        "gross_per_share": 5,
+        "net_per_share": 5,
+        "payment_date": 5,
+        "known_on": 5,
+        "available_on": 5
+      },
+      "verified_primary_bytes": 5,
+      "one_cnpj_asof_from_partial_fca": 0,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 5,
+      "certified_integrated_rows": 0
+    },
+    "TIMS3": {
+      "rows": 16,
+      "unique_events": 16,
+      "ex_dates": 12,
+      "ex_min": "2022-06-24",
+      "ex_max": "2026-03-24",
+      "field_presence": {
+        "isin": 16,
+        "gross_per_share": 16,
+        "net_per_share": 15,
+        "payment_date": 16,
+        "known_on": 16,
+        "available_on": 14
+      },
+      "verified_primary_bytes": 16,
+      "one_cnpj_asof_from_partial_fca": 15,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 15,
+      "certified_integrated_rows": 0
+    },
+    "TOTS3": {
+      "rows": 16,
+      "unique_events": 16,
+      "ex_dates": 15,
+      "ex_min": "2018-08-02",
+      "ex_max": "2026-03-26",
+      "field_presence": {
+        "isin": 16,
+        "gross_per_share": 16,
+        "net_per_share": 16,
+        "payment_date": 16,
+        "known_on": 16,
+        "available_on": 16
+      },
+      "verified_primary_bytes": 16,
+      "one_cnpj_asof_from_partial_fca": 8,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 16,
+      "certified_integrated_rows": 0
+    },
+    "TUPY3": {
+      "rows": 4,
+      "unique_events": 4,
+      "ex_dates": 3,
+      "ex_min": "2018-08-14",
+      "ex_max": "2019-05-22",
+      "field_presence": {
+        "isin": 4,
+        "gross_per_share": 4,
+        "net_per_share": 4,
+        "payment_date": 4,
+        "known_on": 4,
+        "available_on": 4
+      },
+      "verified_primary_bytes": 4,
+      "one_cnpj_asof_from_partial_fca": 0,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 4,
+      "certified_integrated_rows": 0
+    },
+    "UGPA3": {
+      "rows": 11,
+      "unique_events": 11,
+      "ex_dates": 11,
+      "ex_min": "2018-08-10",
+      "ex_max": "2025-12-08",
+      "field_presence": {
+        "isin": 11,
+        "gross_per_share": 11,
+        "net_per_share": 11,
+        "payment_date": 11,
+        "known_on": 11,
+        "available_on": 11
+      },
+      "verified_primary_bytes": 11,
+      "one_cnpj_asof_from_partial_fca": 5,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 11,
+      "certified_integrated_rows": 0
+    },
+    "VALE3": {
+      "rows": 20,
+      "unique_events": 20,
+      "ex_dates": 13,
+      "ex_min": "2020-09-22",
+      "ex_max": "2025-12-12",
+      "field_presence": {
+        "isin": 20,
+        "gross_per_share": 20,
+        "net_per_share": 19,
+        "payment_date": 20,
+        "known_on": 20,
+        "available_on": 20
+      },
+      "verified_primary_bytes": 20,
+      "one_cnpj_asof_from_partial_fca": 9,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 19,
+      "certified_integrated_rows": 0
+    },
+    "VAMO3": {
+      "rows": 3,
+      "unique_events": 3,
+      "ex_dates": 3,
+      "ex_min": "2023-12-20",
+      "ex_max": "2025-12-19",
+      "field_presence": {
+        "isin": 3,
+        "gross_per_share": 3,
+        "net_per_share": 3,
+        "payment_date": 3,
+        "known_on": 3,
+        "available_on": 3
+      },
+      "verified_primary_bytes": 3,
+      "one_cnpj_asof_from_partial_fca": 3,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 3,
+      "certified_integrated_rows": 0
+    },
+    "VBBR3": {
+      "rows": 10,
+      "unique_events": 10,
+      "ex_dates": 9,
+      "ex_min": "2023-12-26",
+      "ex_max": "2026-03-27",
+      "field_presence": {
+        "isin": 10,
+        "gross_per_share": 10,
+        "net_per_share": 7,
+        "payment_date": 10,
+        "known_on": 10,
+        "available_on": 8
+      },
+      "verified_primary_bytes": 10,
+      "one_cnpj_asof_from_partial_fca": 10,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 7,
+      "certified_integrated_rows": 0
+    },
+    "VIVA3": {
+      "rows": 4,
+      "unique_events": 4,
+      "ex_dates": 4,
+      "ex_min": "2021-12-28",
+      "ex_max": "2025-12-22",
+      "field_presence": {
+        "isin": 4,
+        "gross_per_share": 4,
+        "net_per_share": 4,
+        "payment_date": 4,
+        "known_on": 4,
+        "available_on": 4
+      },
+      "verified_primary_bytes": 4,
+      "one_cnpj_asof_from_partial_fca": 3,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 4,
+      "certified_integrated_rows": 0
+    },
+    "VIVT3": {
+      "rows": 32,
+      "unique_events": 32,
+      "ex_dates": 31,
+      "ex_min": "2022-03-02",
+      "ex_max": "2026-03-26",
+      "field_presence": {
+        "isin": 32,
+        "gross_per_share": 32,
+        "net_per_share": 29,
+        "payment_date": 30,
+        "known_on": 30,
+        "available_on": 30
+      },
+      "verified_primary_bytes": 30,
+      "one_cnpj_asof_from_partial_fca": 24,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 29,
+      "certified_integrated_rows": 0
+    },
+    "VLID3": {
+      "rows": 2,
+      "unique_events": 2,
+      "ex_dates": 2,
+      "ex_min": "2018-09-27",
+      "ex_max": "2018-12-17",
+      "field_presence": {
+        "isin": 2,
+        "gross_per_share": 2,
+        "net_per_share": 2,
+        "payment_date": 2,
+        "known_on": 2,
+        "available_on": 2
+      },
+      "verified_primary_bytes": 2,
+      "one_cnpj_asof_from_partial_fca": 0,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 2,
+      "certified_integrated_rows": 0
+    },
+    "WEGE3": {
+      "rows": 34,
+      "unique_events": 34,
+      "ex_dates": 34,
+      "ex_min": "2018-07-23",
+      "ex_max": "2026-03-23",
+      "field_presence": {
+        "isin": 34,
+        "gross_per_share": 34,
+        "net_per_share": 34,
+        "payment_date": 34,
+        "known_on": 34,
+        "available_on": 33
+      },
+      "verified_primary_bytes": 34,
+      "one_cnpj_asof_from_partial_fca": 14,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 34,
+      "certified_integrated_rows": 0
+    },
+    "WIZS3": {
+      "rows": 2,
+      "unique_events": 2,
+      "ex_dates": 1,
+      "ex_min": "2019-04-25",
+      "ex_max": "2019-04-25",
+      "field_presence": {
+        "isin": 2,
+        "gross_per_share": 2,
+        "net_per_share": 2,
+        "payment_date": 2,
+        "known_on": 2,
+        "available_on": 2
+      },
+      "verified_primary_bytes": 2,
+      "one_cnpj_asof_from_partial_fca": 0,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 2,
+      "certified_integrated_rows": 0
+    },
+    "YDUQ3": {
+      "rows": 4,
+      "unique_events": 4,
+      "ex_dates": 4,
+      "ex_min": "2023-08-21",
+      "ex_max": "2025-12-29",
+      "field_presence": {
+        "isin": 4,
+        "gross_per_share": 4,
+        "net_per_share": 3,
+        "payment_date": 4,
+        "known_on": 4,
+        "available_on": 4
+      },
+      "verified_primary_bytes": 4,
+      "one_cnpj_asof_from_partial_fca": 4,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 3,
+      "certified_integrated_rows": 0
+    }
+  },
+  "by_issuer_partial": {
+    "00000000000191": {
+      "rows": 32,
+      "unique_events": 32,
+      "ex_dates": 16,
+      "ex_min": "2023-08-22",
+      "ex_max": "2026-03-03",
+      "field_presence": {
+        "isin": 32,
+        "gross_per_share": 32,
+        "net_per_share": 32,
+        "payment_date": 32,
+        "known_on": 32,
+        "available_on": 32
+      },
+      "verified_primary_bytes": 32,
+      "one_cnpj_asof_from_partial_fca": 32,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 32,
+      "certified_integrated_rows": 0
+    },
+    "01027058000191": {
+      "rows": 5,
+      "unique_events": 5,
+      "ex_dates": 5,
+      "ex_min": "2023-05-05",
+      "ex_max": "2024-03-18",
+      "field_presence": {
+        "isin": 5,
+        "gross_per_share": 5,
+        "net_per_share": 5,
+        "payment_date": 5,
+        "known_on": 5,
+        "available_on": 5
+      },
+      "verified_primary_bytes": 5,
+      "one_cnpj_asof_from_partial_fca": 5,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 5,
+      "certified_integrated_rows": 0
+    },
+    "01838723000127": {
+      "rows": 2,
+      "unique_events": 2,
+      "ex_dates": 2,
+      "ex_min": "2024-11-26",
+      "ex_max": "2024-12-17",
+      "field_presence": {
+        "isin": 2,
+        "gross_per_share": 2,
+        "net_per_share": 2,
+        "payment_date": 2,
+        "known_on": 2,
+        "available_on": 2
+      },
+      "verified_primary_bytes": 2,
+      "one_cnpj_asof_from_partial_fca": 2,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 2,
+      "certified_integrated_rows": 0
+    },
+    "02149205000169": {
+      "rows": 10,
+      "unique_events": 10,
+      "ex_dates": 8,
+      "ex_min": "2024-09-30",
+      "ex_max": "2026-04-01",
+      "field_presence": {
+        "isin": 10,
+        "gross_per_share": 10,
+        "net_per_share": 3,
+        "payment_date": 7,
+        "known_on": 7,
+        "available_on": 7
+      },
+      "verified_primary_bytes": 7,
+      "one_cnpj_asof_from_partial_fca": 10,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 3,
+      "certified_integrated_rows": 0
+    },
+    "02351877000152": {
+      "rows": 1,
+      "unique_events": 1,
+      "ex_dates": 1,
+      "ex_min": "2025-08-20",
+      "ex_max": "2025-08-20",
+      "field_presence": {
+        "isin": 1,
+        "gross_per_share": 1,
+        "net_per_share": 1,
+        "payment_date": 1,
+        "known_on": 1,
+        "available_on": 1
+      },
+      "verified_primary_bytes": 1,
+      "one_cnpj_asof_from_partial_fca": 1,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 1,
+      "certified_integrated_rows": 0
+    },
+    "02421421000111": {
+      "rows": 15,
+      "unique_events": 15,
+      "ex_dates": 11,
+      "ex_min": "2024-04-10",
+      "ex_max": "2026-03-24",
+      "field_presence": {
+        "isin": 15,
+        "gross_per_share": 15,
+        "net_per_share": 14,
+        "payment_date": 15,
+        "known_on": 15,
+        "available_on": 13
+      },
+      "verified_primary_bytes": 15,
+      "one_cnpj_asof_from_partial_fca": 15,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 14,
+      "certified_integrated_rows": 0
+    },
+    "02429144000193": {
+      "rows": 17,
+      "unique_events": 17,
+      "ex_dates": 3,
+      "ex_min": "2023-08-18",
+      "ex_max": "2025-04-30",
+      "field_presence": {
+        "isin": 17,
+        "gross_per_share": 17,
+        "net_per_share": 17,
+        "payment_date": 17,
+        "known_on": 17,
+        "available_on": 17
+      },
+      "verified_primary_bytes": 17,
+      "one_cnpj_asof_from_partial_fca": 17,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 17,
+      "certified_integrated_rows": 0
+    },
+    "02474103000119": {
+      "rows": 4,
+      "unique_events": 4,
+      "ex_dates": 4,
+      "ex_min": "2024-05-07",
+      "ex_max": "2025-12-19",
+      "field_presence": {
+        "isin": 4,
+        "gross_per_share": 4,
+        "net_per_share": 4,
+        "payment_date": 4,
+        "known_on": 4,
+        "available_on": 4
+      },
+      "verified_primary_bytes": 4,
+      "one_cnpj_asof_from_partial_fca": 4,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 4,
+      "certified_integrated_rows": 0
+    },
+    "02558157000162": {
+      "rows": 24,
+      "unique_events": 24,
+      "ex_dates": 24,
+      "ex_min": "2023-03-01",
+      "ex_max": "2026-03-26",
+      "field_presence": {
+        "isin": 24,
+        "gross_per_share": 24,
+        "net_per_share": 21,
+        "payment_date": 22,
+        "known_on": 22,
+        "available_on": 22
+      },
+      "verified_primary_bytes": 22,
+      "one_cnpj_asof_from_partial_fca": 24,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 21,
+      "certified_integrated_rows": 0
+    },
+    "02800026000140": {
+      "rows": 3,
+      "unique_events": 3,
+      "ex_dates": 2,
+      "ex_min": "2025-04-29",
+      "ex_max": "2025-12-26",
+      "field_presence": {
+        "isin": 3,
+        "gross_per_share": 3,
+        "net_per_share": 3,
+        "payment_date": 3,
+        "known_on": 3,
+        "available_on": 2
+      },
+      "verified_primary_bytes": 3,
+      "one_cnpj_asof_from_partial_fca": 3,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 3,
+      "certified_integrated_rows": 0
+    },
+    "02846056000197": {
+      "rows": 4,
+      "unique_events": 4,
+      "ex_dates": 4,
+      "ex_min": "2023-10-31",
+      "ex_max": "2025-04-24",
+      "field_presence": {
+        "isin": 4,
+        "gross_per_share": 4,
+        "net_per_share": 4,
+        "payment_date": 4,
+        "known_on": 4,
+        "available_on": 4
+      },
+      "verified_primary_bytes": 4,
+      "one_cnpj_asof_from_partial_fca": 4,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 4,
+      "certified_integrated_rows": 0
+    },
+    "02932074000191": {
+      "rows": 18,
+      "unique_events": 18,
+      "ex_dates": 17,
+      "ex_min": "2023-07-04",
+      "ex_max": "2026-04-01",
+      "field_presence": {
+        "isin": 18,
+        "gross_per_share": 18,
+        "net_per_share": 13,
+        "payment_date": 13,
+        "known_on": 13,
+        "available_on": 13
+      },
+      "verified_primary_bytes": 13,
+      "one_cnpj_asof_from_partial_fca": 18,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 13,
+      "certified_integrated_rows": 0
+    },
+    "03220438000173": {
+      "rows": 3,
+      "unique_events": 3,
+      "ex_dates": 3,
+      "ex_min": "2023-05-02",
+      "ex_max": "2025-01-14",
+      "field_presence": {
+        "isin": 3,
+        "gross_per_share": 3,
+        "net_per_share": 3,
+        "payment_date": 3,
+        "known_on": 3,
+        "available_on": 3
+      },
+      "verified_primary_bytes": 3,
+      "one_cnpj_asof_from_partial_fca": 3,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 3,
+      "certified_integrated_rows": 0
+    },
+    "03342704000130": {
+      "rows": 3,
+      "unique_events": 3,
+      "ex_dates": 3,
+      "ex_min": "2024-04-25",
+      "ex_max": "2024-11-13",
+      "field_presence": {
+        "isin": 3,
+        "gross_per_share": 3,
+        "net_per_share": 3,
+        "payment_date": 3,
+        "known_on": 3,
+        "available_on": 3
+      },
+      "verified_primary_bytes": 3,
+      "one_cnpj_asof_from_partial_fca": 3,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 3,
+      "certified_integrated_rows": 0
+    },
+    "05878397000132": {
+      "rows": 10,
+      "unique_events": 10,
+      "ex_dates": 9,
+      "ex_min": "2025-01-24",
+      "ex_max": "2026-03-30",
+      "field_presence": {
+        "isin": 10,
+        "gross_per_share": 10,
+        "net_per_share": 8,
+        "payment_date": 10,
+        "known_on": 10,
+        "available_on": 10
+      },
+      "verified_primary_bytes": 10,
+      "one_cnpj_asof_from_partial_fca": 10,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 8,
+      "certified_integrated_rows": 0
+    },
+    "06047087000139": {
+      "rows": 13,
+      "unique_events": 13,
+      "ex_dates": 11,
+      "ex_min": "2023-10-17",
+      "ex_max": "2026-03-27",
+      "field_presence": {
+        "isin": 13,
+        "gross_per_share": 13,
+        "net_per_share": 12,
+        "payment_date": 12,
+        "known_on": 12,
+        "available_on": 12
+      },
+      "verified_primary_bytes": 12,
+      "one_cnpj_asof_from_partial_fca": 13,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 12,
+      "certified_integrated_rows": 0
+    },
+    "07206816000115": {
+      "rows": 1,
+      "unique_events": 1,
+      "ex_dates": 1,
+      "ex_min": "2024-09-17",
+      "ex_max": "2024-09-17",
+      "field_presence": {
+        "isin": 1,
+        "gross_per_share": 1,
+        "net_per_share": 1,
+        "payment_date": 1,
+        "known_on": 1,
+        "available_on": 1
+      },
+      "verified_primary_bytes": 1,
+      "one_cnpj_asof_from_partial_fca": 1,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 1,
+      "certified_integrated_rows": 0
+    },
+    "07526557000100": {
+      "rows": 10,
+      "unique_events": 10,
+      "ex_dates": 6,
+      "ex_min": "2023-12-20",
+      "ex_max": "2025-12-19",
+      "field_presence": {
+        "isin": 10,
+        "gross_per_share": 10,
+        "net_per_share": 7,
+        "payment_date": 10,
+        "known_on": 10,
+        "available_on": 9
+      },
+      "verified_primary_bytes": 10,
+      "one_cnpj_asof_from_partial_fca": 10,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 7,
+      "certified_integrated_rows": 0
+    },
+    "07594978000178": {
+      "rows": 4,
+      "unique_events": 4,
+      "ex_dates": 4,
+      "ex_min": "2024-12-16",
+      "ex_max": "2025-12-08",
+      "field_presence": {
+        "isin": 4,
+        "gross_per_share": 4,
+        "net_per_share": 3,
+        "payment_date": 4,
+        "known_on": 4,
+        "available_on": 4
+      },
+      "verified_primary_bytes": 4,
+      "one_cnpj_asof_from_partial_fca": 4,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 3,
+      "certified_integrated_rows": 0
+    },
+    "07816890000153": {
+      "rows": 9,
+      "unique_events": 9,
+      "ex_dates": 9,
+      "ex_min": "2024-04-05",
+      "ex_max": "2026-03-31",
+      "field_presence": {
+        "isin": 9,
+        "gross_per_share": 9,
+        "net_per_share": 6,
+        "payment_date": 6,
+        "known_on": 6,
+        "available_on": 6
+      },
+      "verified_primary_bytes": 6,
+      "one_cnpj_asof_from_partial_fca": 9,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 6,
+      "certified_integrated_rows": 0
+    },
+    "08312229000173": {
+      "rows": 1,
+      "unique_events": 1,
+      "ex_dates": 1,
+      "ex_min": "2025-08-15",
+      "ex_max": "2025-08-15",
+      "field_presence": {
+        "isin": 1,
+        "gross_per_share": 1,
+        "net_per_share": 1,
+        "payment_date": 1,
+        "known_on": 1,
+        "available_on": 1
+      },
+      "verified_primary_bytes": 1,
+      "one_cnpj_asof_from_partial_fca": 1,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 1,
+      "certified_integrated_rows": 0
+    },
+    "08797760000183": {
+      "rows": 6,
+      "unique_events": 6,
+      "ex_dates": 5,
+      "ex_min": "2025-04-22",
+      "ex_max": "2026-02-05",
+      "field_presence": {
+        "isin": 6,
+        "gross_per_share": 6,
+        "net_per_share": 5,
+        "payment_date": 5,
+        "known_on": 5,
+        "available_on": 5
+      },
+      "verified_primary_bytes": 5,
+      "one_cnpj_asof_from_partial_fca": 6,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 5,
+      "certified_integrated_rows": 0
+    },
+    "08807432000110": {
+      "rows": 4,
+      "unique_events": 4,
+      "ex_dates": 4,
+      "ex_min": "2023-08-21",
+      "ex_max": "2025-12-29",
+      "field_presence": {
+        "isin": 4,
+        "gross_per_share": 4,
+        "net_per_share": 3,
+        "payment_date": 4,
+        "known_on": 4,
+        "available_on": 4
+      },
+      "verified_primary_bytes": 4,
+      "one_cnpj_asof_from_partial_fca": 4,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 3,
+      "certified_integrated_rows": 0
+    },
+    "09288252000132": {
+      "rows": 1,
+      "unique_events": 1,
+      "ex_dates": 1,
+      "ex_min": "2024-08-14",
+      "ex_max": "2024-08-14",
+      "field_presence": {
+        "isin": 1,
+        "gross_per_share": 1,
+        "net_per_share": 1,
+        "payment_date": 1,
+        "known_on": 1,
+        "available_on": 1
+      },
+      "verified_primary_bytes": 1,
+      "one_cnpj_asof_from_partial_fca": 1,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 1,
+      "certified_integrated_rows": 0
+    },
+    "10629105000168": {
+      "rows": 1,
+      "unique_events": 1,
+      "ex_dates": 1,
+      "ex_min": "2023-12-14",
+      "ex_max": "2023-12-14",
+      "field_presence": {
+        "isin": 1,
+        "gross_per_share": 1,
+        "net_per_share": 1,
+        "payment_date": 1,
+        "known_on": 1,
+        "available_on": 1
+      },
+      "verified_primary_bytes": 1,
+      "one_cnpj_asof_from_partial_fca": 1,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 1,
+      "certified_integrated_rows": 0
+    },
+    "16404287000155": {
+      "rows": 2,
+      "unique_events": 2,
+      "ex_dates": 2,
+      "ex_min": "2023-12-08",
+      "ex_max": "2025-12-19",
+      "field_presence": {
+        "isin": 2,
+        "gross_per_share": 2,
+        "net_per_share": 2,
+        "payment_date": 2,
+        "known_on": 2,
+        "available_on": 2
+      },
+      "verified_primary_bytes": 2,
+      "one_cnpj_asof_from_partial_fca": 2,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 2,
+      "certified_integrated_rows": 0
+    },
+    "16590234000176": {
+      "rows": 4,
+      "unique_events": 4,
+      "ex_dates": 2,
+      "ex_min": "2023-07-03",
+      "ex_max": "2023-11-13",
+      "field_presence": {
+        "isin": 4,
+        "gross_per_share": 4,
+        "net_per_share": 4,
+        "payment_date": 4,
+        "known_on": 4,
+        "available_on": 4
+      },
+      "verified_primary_bytes": 4,
+      "one_cnpj_asof_from_partial_fca": 4,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 4,
+      "certified_integrated_rows": 0
+    },
+    "16614075000100": {
+      "rows": 5,
+      "unique_events": 5,
+      "ex_dates": 5,
+      "ex_min": "2024-07-05",
+      "ex_max": "2025-12-17",
+      "field_presence": {
+        "isin": 5,
+        "gross_per_share": 5,
+        "net_per_share": 5,
+        "payment_date": 5,
+        "known_on": 5,
+        "available_on": 5
+      },
+      "verified_primary_bytes": 5,
+      "one_cnpj_asof_from_partial_fca": 5,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 5,
+      "certified_integrated_rows": 0
+    },
+    "16670085000155": {
+      "rows": 9,
+      "unique_events": 9,
+      "ex_dates": 9,
+      "ex_min": "2023-07-03",
+      "ex_max": "2026-03-30",
+      "field_presence": {
+        "isin": 9,
+        "gross_per_share": 9,
+        "net_per_share": 8,
+        "payment_date": 9,
+        "known_on": 9,
+        "available_on": 9
+      },
+      "verified_primary_bytes": 9,
+      "one_cnpj_asof_from_partial_fca": 9,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 8,
+      "certified_integrated_rows": 0
+    },
+    "17281106000103": {
+      "rows": 8,
+      "unique_events": 8,
+      "ex_dates": 6,
+      "ex_min": "2024-09-18",
+      "ex_max": "2026-03-24",
+      "field_presence": {
+        "isin": 8,
+        "gross_per_share": 8,
+        "net_per_share": 7,
+        "payment_date": 8,
+        "known_on": 8,
+        "available_on": 8
+      },
+      "verified_primary_bytes": 8,
+      "one_cnpj_asof_from_partial_fca": 8,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 7,
+      "certified_integrated_rows": 0
+    },
+    "17344597000194": {
+      "rows": 9,
+      "unique_events": 9,
+      "ex_dates": 6,
+      "ex_min": "2023-08-17",
+      "ex_max": "2026-02-13",
+      "field_presence": {
+        "isin": 9,
+        "gross_per_share": 9,
+        "net_per_share": 8,
+        "payment_date": 9,
+        "known_on": 9,
+        "available_on": 9
+      },
+      "verified_primary_bytes": 9,
+      "one_cnpj_asof_from_partial_fca": 9,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 8,
+      "certified_integrated_rows": 0
+    },
+    "18328118000109": {
+      "rows": 2,
+      "unique_events": 2,
+      "ex_dates": 2,
+      "ex_min": "2023-07-03",
+      "ex_max": "2024-05-02",
+      "field_presence": {
+        "isin": 2,
+        "gross_per_share": 2,
+        "net_per_share": 2,
+        "payment_date": 2,
+        "known_on": 2,
+        "available_on": 2
+      },
+      "verified_primary_bytes": 2,
+      "one_cnpj_asof_from_partial_fca": 2,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 2,
+      "certified_integrated_rows": 0
+    },
+    "21314559000166": {
+      "rows": 2,
+      "unique_events": 2,
+      "ex_dates": 2,
+      "ex_min": "2024-12-30",
+      "ex_max": "2025-12-22",
+      "field_presence": {
+        "isin": 2,
+        "gross_per_share": 2,
+        "net_per_share": 1,
+        "payment_date": 2,
+        "known_on": 2,
+        "available_on": 1
+      },
+      "verified_primary_bytes": 2,
+      "one_cnpj_asof_from_partial_fca": 2,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 1,
+      "certified_integrated_rows": 0
+    },
+    "22543331000100": {
+      "rows": 11,
+      "unique_events": 11,
+      "ex_dates": 7,
+      "ex_min": "2024-04-29",
+      "ex_max": "2026-01-05",
+      "field_presence": {
+        "isin": 11,
+        "gross_per_share": 11,
+        "net_per_share": 9,
+        "payment_date": 11,
+        "known_on": 11,
+        "available_on": 11
+      },
+      "verified_primary_bytes": 11,
+      "one_cnpj_asof_from_partial_fca": 11,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 9,
+      "certified_integrated_rows": 0
+    },
+    "23373000000132": {
+      "rows": 3,
+      "unique_events": 3,
+      "ex_dates": 3,
+      "ex_min": "2023-12-20",
+      "ex_max": "2025-12-19",
+      "field_presence": {
+        "isin": 3,
+        "gross_per_share": 3,
+        "net_per_share": 3,
+        "payment_date": 3,
+        "known_on": 3,
+        "available_on": 3
+      },
+      "verified_primary_bytes": 3,
+      "one_cnpj_asof_from_partial_fca": 3,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 3,
+      "certified_integrated_rows": 0
+    },
+    "24990777000109": {
+      "rows": 2,
+      "unique_events": 2,
+      "ex_dates": 2,
+      "ex_min": "2024-09-27",
+      "ex_max": "2025-09-26",
+      "field_presence": {
+        "isin": 2,
+        "gross_per_share": 2,
+        "net_per_share": 2,
+        "payment_date": 2,
+        "known_on": 2,
+        "available_on": 2
+      },
+      "verified_primary_bytes": 2,
+      "one_cnpj_asof_from_partial_fca": 2,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 2,
+      "certified_integrated_rows": 0
+    },
+    "28594234000123": {
+      "rows": 1,
+      "unique_events": 1,
+      "ex_dates": 1,
+      "ex_min": "2025-04-25",
+      "ex_max": "2025-04-25",
+      "field_presence": {
+        "isin": 1,
+        "gross_per_share": 1,
+        "net_per_share": 1,
+        "payment_date": 1,
+        "known_on": 1,
+        "available_on": 1
+      },
+      "verified_primary_bytes": 1,
+      "one_cnpj_asof_from_partial_fca": 1,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 1,
+      "certified_integrated_rows": 0
+    },
+    "32785497000197": {
+      "rows": 2,
+      "unique_events": 2,
+      "ex_dates": 2,
+      "ex_min": "2024-03-20",
+      "ex_max": "2024-04-09",
+      "field_presence": {
+        "isin": 2,
+        "gross_per_share": 2,
+        "net_per_share": 2,
+        "payment_date": 2,
+        "known_on": 2,
+        "available_on": 2
+      },
+      "verified_primary_bytes": 2,
+      "one_cnpj_asof_from_partial_fca": 2,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 2,
+      "certified_integrated_rows": 0
+    },
+    "33256439000139": {
+      "rows": 5,
+      "unique_events": 5,
+      "ex_dates": 5,
+      "ex_min": "2023-08-18",
+      "ex_max": "2025-12-08",
+      "field_presence": {
+        "isin": 5,
+        "gross_per_share": 5,
+        "net_per_share": 5,
+        "payment_date": 5,
+        "known_on": 5,
+        "available_on": 5
+      },
+      "verified_primary_bytes": 5,
+      "one_cnpj_asof_from_partial_fca": 5,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 5,
+      "certified_integrated_rows": 0
+    },
+    "33592510000154": {
+      "rows": 9,
+      "unique_events": 9,
+      "ex_dates": 6,
+      "ex_min": "2023-08-14",
+      "ex_max": "2025-12-12",
+      "field_presence": {
+        "isin": 9,
+        "gross_per_share": 9,
+        "net_per_share": 8,
+        "payment_date": 9,
+        "known_on": 9,
+        "available_on": 9
+      },
+      "verified_primary_bytes": 9,
+      "one_cnpj_asof_from_partial_fca": 9,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 8,
+      "certified_integrated_rows": 0
+    },
+    "33839910000111": {
+      "rows": 3,
+      "unique_events": 3,
+      "ex_dates": 3,
+      "ex_min": "2024-04-30",
+      "ex_max": "2025-12-22",
+      "field_presence": {
+        "isin": 3,
+        "gross_per_share": 3,
+        "net_per_share": 3,
+        "payment_date": 3,
+        "known_on": 3,
+        "available_on": 3
+      },
+      "verified_primary_bytes": 3,
+      "one_cnpj_asof_from_partial_fca": 3,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 3,
+      "certified_integrated_rows": 0
+    },
+    "34274233000102": {
+      "rows": 10,
+      "unique_events": 10,
+      "ex_dates": 9,
+      "ex_min": "2023-12-26",
+      "ex_max": "2026-03-27",
+      "field_presence": {
+        "isin": 10,
+        "gross_per_share": 10,
+        "net_per_share": 7,
+        "payment_date": 10,
+        "known_on": 10,
+        "available_on": 8
+      },
+      "verified_primary_bytes": 10,
+      "one_cnpj_asof_from_partial_fca": 10,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 7,
+      "certified_integrated_rows": 0
+    },
+    "43776517000180": {
+      "rows": 1,
+      "unique_events": 1,
+      "ex_dates": 1,
+      "ex_min": "2024-04-26",
+      "ex_max": "2024-04-26",
+      "field_presence": {
+        "isin": 1,
+        "gross_per_share": 1,
+        "net_per_share": 1,
+        "payment_date": 1,
+        "known_on": 1,
+        "available_on": 1
+      },
+      "verified_primary_bytes": 1,
+      "one_cnpj_asof_from_partial_fca": 1,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 1,
+      "certified_integrated_rows": 0
+    },
+    "47960950000121": {
+      "rows": 1,
+      "unique_events": 1,
+      "ex_dates": 1,
+      "ex_min": "2025-04-28",
+      "ex_max": "2025-04-28",
+      "field_presence": {
+        "isin": 1,
+        "gross_per_share": 1,
+        "net_per_share": 1,
+        "payment_date": 1,
+        "known_on": 1,
+        "available_on": 1
+      },
+      "verified_primary_bytes": 1,
+      "one_cnpj_asof_from_partial_fca": 1,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 1,
+      "certified_integrated_rows": 0
+    },
+    "50746577000115": {
+      "rows": 1,
+      "unique_events": 1,
+      "ex_dates": 1,
+      "ex_min": "2024-06-06",
+      "ex_max": "2024-06-06",
+      "field_presence": {
+        "isin": 1,
+        "gross_per_share": 1,
+        "net_per_share": 1,
+        "payment_date": 1,
+        "known_on": 1,
+        "available_on": 1
+      },
+      "verified_primary_bytes": 1,
+      "one_cnpj_asof_from_partial_fca": 1,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 1,
+      "certified_integrated_rows": 0
+    },
+    "51466860000156": {
+      "rows": 2,
+      "unique_events": 2,
+      "ex_dates": 2,
+      "ex_min": "2024-06-21",
+      "ex_max": "2024-12-13",
+      "field_presence": {
+        "isin": 2,
+        "gross_per_share": 2,
+        "net_per_share": 2,
+        "payment_date": 2,
+        "known_on": 2,
+        "available_on": 2
+      },
+      "verified_primary_bytes": 2,
+      "one_cnpj_asof_from_partial_fca": 2,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 2,
+      "certified_integrated_rows": 0
+    },
+    "53113791000122": {
+      "rows": 8,
+      "unique_events": 8,
+      "ex_dates": 8,
+      "ex_min": "2023-07-28",
+      "ex_max": "2026-03-26",
+      "field_presence": {
+        "isin": 8,
+        "gross_per_share": 8,
+        "net_per_share": 8,
+        "payment_date": 8,
+        "known_on": 8,
+        "available_on": 8
+      },
+      "verified_primary_bytes": 8,
+      "one_cnpj_asof_from_partial_fca": 8,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 8,
+      "certified_integrated_rows": 0
+    },
+    "60840055000131": {
+      "rows": 3,
+      "unique_events": 3,
+      "ex_dates": 3,
+      "ex_min": "2023-09-05",
+      "ex_max": "2024-12-16",
+      "field_presence": {
+        "isin": 3,
+        "gross_per_share": 3,
+        "net_per_share": 3,
+        "payment_date": 3,
+        "known_on": 3,
+        "available_on": 3
+      },
+      "verified_primary_bytes": 3,
+      "one_cnpj_asof_from_partial_fca": 3,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 3,
+      "certified_integrated_rows": 0
+    },
+    "61585865000151": {
+      "rows": 18,
+      "unique_events": 18,
+      "ex_dates": 16,
+      "ex_min": "2023-04-05",
+      "ex_max": "2025-12-08",
+      "field_presence": {
+        "isin": 18,
+        "gross_per_share": 18,
+        "net_per_share": 15,
+        "payment_date": 17,
+        "known_on": 17,
+        "available_on": 17
+      },
+      "verified_primary_bytes": 17,
+      "one_cnpj_asof_from_partial_fca": 18,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 15,
+      "certified_integrated_rows": 0
+    },
+    "67620377000114": {
+      "rows": 1,
+      "unique_events": 1,
+      "ex_dates": 1,
+      "ex_min": "2023-08-15",
+      "ex_max": "2023-08-15",
+      "field_presence": {
+        "isin": 1,
+        "gross_per_share": 1,
+        "net_per_share": 1,
+        "payment_date": 1,
+        "known_on": 1,
+        "available_on": 1
+      },
+      "verified_primary_bytes": 1,
+      "one_cnpj_asof_from_partial_fca": 1,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 1,
+      "certified_integrated_rows": 0
+    },
+    "71476527000135": {
+      "rows": 2,
+      "unique_events": 2,
+      "ex_dates": 2,
+      "ex_min": "2025-08-08",
+      "ex_max": "2025-12-26",
+      "field_presence": {
+        "isin": 2,
+        "gross_per_share": 2,
+        "net_per_share": 2,
+        "payment_date": 2,
+        "known_on": 2,
+        "available_on": 2
+      },
+      "verified_primary_bytes": 2,
+      "one_cnpj_asof_from_partial_fca": 2,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 2,
+      "certified_integrated_rows": 0
+    },
+    "73178600000118": {
+      "rows": 4,
+      "unique_events": 4,
+      "ex_dates": 4,
+      "ex_min": "2023-12-12",
+      "ex_max": "2025-12-10",
+      "field_presence": {
+        "isin": 4,
+        "gross_per_share": 4,
+        "net_per_share": 4,
+        "payment_date": 4,
+        "known_on": 4,
+        "available_on": 4
+      },
+      "verified_primary_bytes": 4,
+      "one_cnpj_asof_from_partial_fca": 4,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 4,
+      "certified_integrated_rows": 0
+    },
+    "75315333000109": {
+      "rows": 1,
+      "unique_events": 1,
+      "ex_dates": 1,
+      "ex_min": "2024-12-26",
+      "ex_max": "2024-12-26",
+      "field_presence": {
+        "isin": 1,
+        "gross_per_share": 1,
+        "net_per_share": 1,
+        "payment_date": 1,
+        "known_on": 1,
+        "available_on": 1
+      },
+      "verified_primary_bytes": 1,
+      "one_cnpj_asof_from_partial_fca": 1,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 1,
+      "certified_integrated_rows": 0
+    },
+    "84429695000111": {
+      "rows": 14,
+      "unique_events": 14,
+      "ex_dates": 14,
+      "ex_min": "2023-06-26",
+      "ex_max": "2026-03-23",
+      "field_presence": {
+        "isin": 14,
+        "gross_per_share": 14,
+        "net_per_share": 14,
+        "payment_date": 14,
+        "known_on": 14,
+        "available_on": 13
+      },
+      "verified_primary_bytes": 14,
+      "one_cnpj_asof_from_partial_fca": 14,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 14,
+      "certified_integrated_rows": 0
+    },
+    "89096457000155": {
+      "rows": 2,
+      "unique_events": 2,
+      "ex_dates": 2,
+      "ex_min": "2024-05-02",
+      "ex_max": "2025-05-06",
+      "field_presence": {
+        "isin": 2,
+        "gross_per_share": 2,
+        "net_per_share": 2,
+        "payment_date": 2,
+        "known_on": 2,
+        "available_on": 2
+      },
+      "verified_primary_bytes": 2,
+      "one_cnpj_asof_from_partial_fca": 2,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 2,
+      "certified_integrated_rows": 0
+    },
+    "92754738000162": {
+      "rows": 11,
+      "unique_events": 11,
+      "ex_dates": 11,
+      "ex_min": "2023-09-27",
+      "ex_max": "2026-03-25",
+      "field_presence": {
+        "isin": 11,
+        "gross_per_share": 11,
+        "net_per_share": 10,
+        "payment_date": 11,
+        "known_on": 11,
+        "available_on": 11
+      },
+      "verified_primary_bytes": 11,
+      "one_cnpj_asof_from_partial_fca": 11,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 10,
+      "certified_integrated_rows": 0
+    }
+  },
+  "by_ex_year": {
+    "2018": {
+      "rows": 47,
+      "unique_events": 47,
+      "ex_dates": 30,
+      "ex_min": "2018-07-04",
+      "ex_max": "2018-12-28",
+      "field_presence": {
+        "isin": 47,
+        "gross_per_share": 47,
+        "net_per_share": 47,
+        "payment_date": 47,
+        "known_on": 47,
+        "available_on": 47
+      },
+      "verified_primary_bytes": 47,
+      "one_cnpj_asof_from_partial_fca": 0,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 47,
+      "certified_integrated_rows": 0
+    },
+    "2019": {
+      "rows": 110,
+      "unique_events": 110,
+      "ex_dates": 71,
+      "ex_min": "2019-01-02",
+      "ex_max": "2019-12-26",
+      "field_presence": {
+        "isin": 110,
+        "gross_per_share": 110,
+        "net_per_share": 109,
+        "payment_date": 110,
+        "known_on": 110,
+        "available_on": 110
+      },
+      "verified_primary_bytes": 110,
+      "one_cnpj_asof_from_partial_fca": 0,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 109,
+      "certified_integrated_rows": 0
+    },
+    "2020": {
+      "rows": 81,
+      "unique_events": 81,
+      "ex_dates": 61,
+      "ex_min": "2020-01-02",
+      "ex_max": "2020-12-30",
+      "field_presence": {
+        "isin": 81,
+        "gross_per_share": 81,
+        "net_per_share": 78,
+        "payment_date": 79,
+        "known_on": 79,
+        "available_on": 79
+      },
+      "verified_primary_bytes": 79,
+      "one_cnpj_asof_from_partial_fca": 0,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 78,
+      "certified_integrated_rows": 0
+    },
+    "2021": {
+      "rows": 80,
+      "unique_events": 80,
+      "ex_dates": 50,
+      "ex_min": "2021-01-08",
+      "ex_max": "2021-12-30",
+      "field_presence": {
+        "isin": 80,
+        "gross_per_share": 80,
+        "net_per_share": 79,
+        "payment_date": 79,
+        "known_on": 79,
+        "available_on": 79
+      },
+      "verified_primary_bytes": 79,
+      "one_cnpj_asof_from_partial_fca": 0,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 79,
+      "certified_integrated_rows": 0
+    },
+    "2022": {
+      "rows": 87,
+      "unique_events": 87,
+      "ex_dates": 55,
+      "ex_min": "2022-01-06",
+      "ex_max": "2022-12-27",
+      "field_presence": {
+        "isin": 87,
+        "gross_per_share": 87,
+        "net_per_share": 85,
+        "payment_date": 85,
+        "known_on": 85,
+        "available_on": 85
+      },
+      "verified_primary_bytes": 85,
+      "one_cnpj_asof_from_partial_fca": 0,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 85,
+      "certified_integrated_rows": 0
+    },
+    "2023": {
+      "rows": 103,
+      "unique_events": 103,
+      "ex_dates": 63,
+      "ex_min": "2023-01-02",
+      "ex_max": "2023-12-27",
+      "field_presence": {
+        "isin": 103,
+        "gross_per_share": 103,
+        "net_per_share": 101,
+        "payment_date": 101,
+        "known_on": 101,
+        "available_on": 101
+      },
+      "verified_primary_bytes": 101,
+      "one_cnpj_asof_from_partial_fca": 67,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 101,
+      "certified_integrated_rows": 0
+    },
+    "2024": {
+      "rows": 116,
+      "unique_events": 116,
+      "ex_dates": 70,
+      "ex_min": "2024-01-02",
+      "ex_max": "2024-12-30",
+      "field_presence": {
+        "isin": 116,
+        "gross_per_share": 116,
+        "net_per_share": 114,
+        "payment_date": 115,
+        "known_on": 115,
+        "available_on": 115
+      },
+      "verified_primary_bytes": 115,
+      "one_cnpj_asof_from_partial_fca": 116,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 114,
+      "certified_integrated_rows": 0
+    },
+    "2025": {
+      "rows": 150,
+      "unique_events": 150,
+      "ex_dates": 78,
+      "ex_min": "2025-01-02",
+      "ex_max": "2025-12-30",
+      "field_presence": {
+        "isin": 150,
+        "gross_per_share": 150,
+        "net_per_share": 124,
+        "payment_date": 143,
+        "known_on": 143,
+        "available_on": 138
+      },
+      "verified_primary_bytes": 143,
+      "one_cnpj_asof_from_partial_fca": 148,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 124,
+      "certified_integrated_rows": 0
+    },
+    "2026": {
+      "rows": 26,
+      "unique_events": 26,
+      "ex_dates": 16,
+      "ex_min": "2026-01-05",
+      "ex_max": "2026-04-01",
+      "field_presence": {
+        "isin": 26,
+        "gross_per_share": 26,
+        "net_per_share": 13,
+        "payment_date": 19,
+        "known_on": 19,
+        "available_on": 16
+      },
+      "verified_primary_bytes": 19,
+      "one_cnpj_asof_from_partial_fca": 26,
+      "recorded_value_available_by_ex": 0,
+      "conditional_cash_fields_complete": 13,
+      "certified_integrated_rows": 0
+    }
+  },
+  "required_interval_count": 1237,
+  "required_interval_assets": 123,
+  "cash_coverage_raw_count": 0,
+  "cash_coverage_raw_type": "list",
+  "corporate_actions_in_input": 8,
+  "raw_coverage": [],
+  "limits": [
+    "Completeness of fields is not economic correctness",
+    "Known/available dates are asserted metadata with source lineage; not intraday publication proof",
+    "Absence of mapping in FCA2023 is UNKNOWN outside its coverage, not issuer absence",
+    "0 certified rows is a certification status, not proof all800 are economically false",
+    "Payment-date and ex-date availability serve different questions: payout reconstruction vs predictive input",
+    "Net amounts in preserved data may be historical tax scenarios, not personal cash receipts"
+  ]
+}

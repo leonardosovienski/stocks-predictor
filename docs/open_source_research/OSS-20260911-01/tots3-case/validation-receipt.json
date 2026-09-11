@@ -1,0 +1,108 @@
+{
+  "run_id": "OSS-20260911-01",
+  "scope": "Document/byte reconciliation and analytical accounting fixtures only",
+  "observed_at": "2026-09-11T04:56:46.097716+00:00",
+  "checks": {
+    "raw_quote_reconciliation": true,
+    "issuer_split_count": true,
+    "exclude_future_fca_content": true,
+    "synthetic_split_value_invariance": true,
+    "pending_credit_not_double_counted": true,
+    "old_entitlement_unchanged_after_split": true,
+    "synthetic_receivable_to_cash_conservation": true,
+    "duplicate_settlement_rejected": true,
+    "no_cash_assumption_from_missing_data": true,
+    "independent_old_entitlement_parameters": true,
+    "preserved_prior_round": true
+  },
+  "quote_rows": 62,
+  "calendar_rows": 92,
+  "document_inventory_rows": 51,
+  "returns_computed": false,
+  "X03_reopened": false,
+  "X05_executed": false,
+  "case_status": "X01_CANONICAL_CASE_INCOMPLETE",
+  "source_receipts": [
+    {
+      "path": "C:\\STOCKS\\work\\completion-r7-20260910\\source15-materialized\\primary\\71a6957c565c04c4ba9f7768a49ce1066c6fea3a3407734b0f02636dd4fa92ea-cvm-complete-0163.pdf",
+      "sha256": "71a6957c565c04c4ba9f7768a49ce1066c6fea3a3407734b0f02636dd4fa92ea",
+      "manifest": "C:\\STOCKS\\work\\completion-r7-20260910\\source15-materialized\\SHA256.json",
+      "manifest_sha256": "1c6410bebc9627d6dea8ae6ac4a9034823786fa47c48c26a8632c529c8560c46",
+      "observed_at": "2026-09-11T04:56:46.097716+00:00",
+      "original_ingestion_at": null
+    },
+    {
+      "path": "C:\\STOCKS\\work\\completion-r7-20260910\\source15-materialized\\primary\\741865b495b248d397c051ae290b4a5a2abd337205fc4a9a03abc516ef76e9ff-cvm-corporate-0031.pdf",
+      "sha256": "741865b495b248d397c051ae290b4a5a2abd337205fc4a9a03abc516ef76e9ff",
+      "manifest": "C:\\STOCKS\\work\\completion-r7-20260910\\source15-materialized\\SHA256.json",
+      "manifest_sha256": "1c6410bebc9627d6dea8ae6ac4a9034823786fa47c48c26a8632c529c8560c46",
+      "observed_at": "2026-09-11T04:56:46.097716+00:00",
+      "original_ingestion_at": null
+    },
+    {
+      "path": "C:\\STOCKS\\work\\completion-r7-20260910\\source15-materialized\\primary\\9276d390ea04746cd547ff46698fdb63ef3af2f6744510954a52e222dfcafc4c-issuer-13-totvs-agm2020.pdf",
+      "sha256": "9276d390ea04746cd547ff46698fdb63ef3af2f6744510954a52e222dfcafc4c",
+      "manifest": "C:\\STOCKS\\work\\completion-r7-20260910\\source15-materialized\\SHA256.json",
+      "manifest_sha256": "1c6410bebc9627d6dea8ae6ac4a9034823786fa47c48c26a8632c529c8560c46",
+      "observed_at": "2026-09-11T04:56:46.097716+00:00",
+      "original_ingestion_at": null
+    },
+    {
+      "path": "C:\\STOCKS\\work\\completion-r7-20260910\\source15-materialized\\primary\\4d334bf4321f7b5a6c16a3bf204b5e39b651f7fc976dffb6edbd213940270e1d-b3-cvm19992-cash-1.json",
+      "sha256": "4d334bf4321f7b5a6c16a3bf204b5e39b651f7fc976dffb6edbd213940270e1d",
+      "manifest": "C:\\STOCKS\\work\\completion-r7-20260910\\source15-materialized\\SHA256.json",
+      "manifest_sha256": "1c6410bebc9627d6dea8ae6ac4a9034823786fa47c48c26a8632c529c8560c46",
+      "observed_at": "2026-09-11T04:56:46.097716+00:00",
+      "original_ingestion_at": null
+    },
+    {
+      "path": "C:\\STOCKS\\work\\completion-r7-20260910\\source15-materialized\\primary\\757704676e462302d7c5234bd48f8ea5fa7a4b2dda7f15b1f882f3025429b910-ipe-2020.zip",
+      "sha256": "757704676e462302d7c5234bd48f8ea5fa7a4b2dda7f15b1f882f3025429b910",
+      "manifest": "C:\\STOCKS\\work\\completion-r7-20260910\\source15-materialized\\SHA256.json",
+      "manifest_sha256": "1c6410bebc9627d6dea8ae6ac4a9034823786fa47c48c26a8632c529c8560c46",
+      "observed_at": "2026-09-11T04:56:46.097716+00:00",
+      "original_ingestion_at": null
+    },
+    {
+      "path": "C:\\STOCKS\\work\\completion-r7-20260910\\source15-materialized\\cash-events.json",
+      "sha256": "09f07deccb14ba6d5dd1b4d63cb20476ae95e61e1b5908bba9f300a5440e7b94",
+      "manifest": "C:\\STOCKS\\work\\completion-r7-20260910\\source15-materialized\\SHA256.json",
+      "manifest_sha256": "1c6410bebc9627d6dea8ae6ac4a9034823786fa47c48c26a8632c529c8560c46",
+      "observed_at": "2026-09-11T04:56:46.097716+00:00",
+      "original_ingestion_at": null
+    },
+    {
+      "path": "C:\\STOCKS\\work\\completion-r7-20260910\\source15-materialized\\corporate-actions.json",
+      "sha256": "b7df5315fc3888544a09124ace3d574f836d12999519d3536fa0cc71b5c0e4e6",
+      "manifest": "C:\\STOCKS\\work\\completion-r7-20260910\\source15-materialized\\SHA256.json",
+      "manifest_sha256": "1c6410bebc9627d6dea8ae6ac4a9034823786fa47c48c26a8632c529c8560c46",
+      "observed_at": "2026-09-11T04:56:46.097716+00:00",
+      "original_ingestion_at": null
+    },
+    {
+      "path": "C:\\STOCKS\\work\\completion-r7-20260910\\source15-materialized\\primary-catalog.json",
+      "sha256": "68d97e07bfdb93013aa34cc664dff5e4ad0bbab7e77676e3aeffa58e887e64eb",
+      "manifest": "C:\\STOCKS\\work\\completion-r7-20260910\\source15-materialized\\SHA256.json",
+      "manifest_sha256": "1c6410bebc9627d6dea8ae6ac4a9034823786fa47c48c26a8632c529c8560c46",
+      "observed_at": "2026-09-11T04:56:46.097716+00:00",
+      "original_ingestion_at": null
+    },
+    {
+      "path": "C:\\STOCKS\\work\\completion-r7-20260910\\source15-materialized\\quotes-2020.jsonl",
+      "sha256": "0ee94ded611aefc0c4cbfab1c1c688e48f9e76b513237050b6635136ae113664",
+      "manifest": "C:\\STOCKS\\work\\completion-r7-20260910\\source15-materialized\\SHA256.json",
+      "manifest_sha256": "1c6410bebc9627d6dea8ae6ac4a9034823786fa47c48c26a8632c529c8560c46",
+      "observed_at": "2026-09-11T04:56:46.097716+00:00",
+      "original_ingestion_at": null
+    },
+    {
+      "path": "C:\\STOCKS\\work\\completion-r7-20260910\\source15-materialized\\quotes-2020.cotahist.txt",
+      "sha256": "d9d0ebf88122561d9b0514f13703e36b3193cf0151816cc82afb8b7c14587996",
+      "manifest": "C:\\STOCKS\\work\\completion-r7-20260910\\source15-materialized\\SHA256.json",
+      "manifest_sha256": "1c6410bebc9627d6dea8ae6ac4a9034823786fa47c48c26a8632c529c8560c46",
+      "observed_at": "2026-09-11T04:56:46.097716+00:00",
+      "original_ingestion_at": null
+    }
+  ],
+  "prior_files_preserved": 59
+}

@@ -1,0 +1,116 @@
+[
+  {
+    "id": "R61",
+    "repo": "cvxgrp/cvxportfolio",
+    "version": "82bbceb96181a64aaf241a3de2e6cd5fde4a3825",
+    "path": "LICENSE",
+    "local": "C:\\STOCKS\\work\\oss-20260911-01\\closure\\external\\R61\\LICENSE",
+    "url": "https://raw.githubusercontent.com/cvxgrp/cvxportfolio/82bbceb96181a64aaf241a3de2e6cd5fde4a3825/LICENSE",
+    "sha256": "e57f1c320b8cf8798a7d2ff83a6f9e06a33a03585f6e065fea97f1d86db84052",
+    "bytes": 35150,
+    "observed_at": "2026-09-11T05:11:48.185384+00:00",
+    "status": "FETCHED_NOT_YET_REVIEWED"
+  },
+  {
+    "id": "R61",
+    "repo": "cvxgrp/cvxportfolio",
+    "version": "82bbceb96181a64aaf241a3de2e6cd5fde4a3825",
+    "path": "cvxportfolio/constraints/constraints.py",
+    "local": "C:\\STOCKS\\work\\oss-20260911-01\\closure\\external\\R61\\cvxportfolio__constraints__constraints.py",
+    "url": "https://raw.githubusercontent.com/cvxgrp/cvxportfolio/82bbceb96181a64aaf241a3de2e6cd5fde4a3825/cvxportfolio/constraints/constraints.py",
+    "sha256": "fa7af0ae82d509a6ae0296553fecb3274f6059bbd89b1b8eaeb9d89dc28b6897",
+    "bytes": 51430,
+    "observed_at": "2026-09-11T05:11:47.888646+00:00",
+    "status": "FETCHED_NOT_YET_REVIEWED"
+  },
+  {
+    "id": "R61",
+    "repo": "cvxgrp/cvxportfolio",
+    "version": "82bbceb96181a64aaf241a3de2e6cd5fde4a3825",
+    "path": "cvxportfolio/costs.py",
+    "local": "C:\\STOCKS\\work\\oss-20260911-01\\closure\\external\\R61\\cvxportfolio__costs.py",
+    "url": "https://raw.githubusercontent.com/cvxgrp/cvxportfolio/82bbceb96181a64aaf241a3de2e6cd5fde4a3825/cvxportfolio/costs.py",
+    "sha256": "04c0940134d90e98ff9c8dee2c6fd7071977579c262a85b582fb4b6db0bf1aef",
+    "bytes": 44414,
+    "observed_at": "2026-09-11T05:11:48.348941+00:00",
+    "status": "FETCHED_NOT_YET_REVIEWED"
+  },
+  {
+    "id": "R61",
+    "url": "https://raw.githubusercontent.com/cvxgrp/cvxportfolio/82bbceb96181a64aaf241a3de2e6cd5fde4a3825/tests/test_constraints.py",
+    "status": "FAILED",
+    "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+    "id": "R01",
+    "repo": "microsoft/qlib",
+    "version": "79633dd9506ea689e5400dea0197717b5b3d74b7",
+    "path": "qlib/contrib/strategy/signal_strategy.py",
+    "local": "C:\\STOCKS\\work\\oss-20260911-01\\closure\\external\\R01\\qlib__contrib__strategy__signal_strategy.py",
+    "url": "https://raw.githubusercontent.com/microsoft/qlib/79633dd9506ea689e5400dea0197717b5b3d74b7/qlib/contrib/strategy/signal_strategy.py",
+    "sha256": "b1b4145e94065879768cfc9750c08a7c3af8880d3c338e0de675f5fb6b78d932",
+    "bytes": 22495,
+    "observed_at": "2026-09-11T05:11:48.124161+00:00",
+    "status": "FETCHED_NOT_YET_REVIEWED"
+  },
+  {
+    "id": "R01",
+    "repo": "microsoft/qlib",
+    "version": "79633dd9506ea689e5400dea0197717b5b3d74b7",
+    "path": "qlib/contrib/eva/alpha.py",
+    "local": "C:\\STOCKS\\work\\oss-20260911-01\\closure\\external\\R01\\qlib__contrib__eva__alpha.py",
+    "url": "https://raw.githubusercontent.com/microsoft/qlib/79633dd9506ea689e5400dea0197717b5b3d74b7/qlib/contrib/eva/alpha.py",
+    "sha256": "f8e6eb2a4647cb7b2f6ce316fec36f875dcf9125d21515790a145435f5d26229",
+    "bytes": 6758,
+    "observed_at": "2026-09-11T05:11:48.172139+00:00",
+    "status": "FETCHED_NOT_YET_REVIEWED"
+  },
+  {
+    "id": "R02",
+    "repo": "QuantConnect/Lean",
+    "version": "8ee075a39918f2df6fe9e0a5944e366fb60d10dc",
+    "path": "Common/Orders/Slippage/VolumeShareSlippageModel.cs",
+    "local": "C:\\STOCKS\\work\\oss-20260911-01\\closure\\external\\R02\\Common__Orders__Slippage__VolumeShareSlippageModel.cs",
+    "url": "https://raw.githubusercontent.com/QuantConnect/Lean/8ee075a39918f2df6fe9e0a5944e366fb60d10dc/Common/Orders/Slippage/VolumeShareSlippageModel.cs",
+    "sha256": "1bf775a04e149f70efcb8196ae6530aad455b48e1cc037ec10a30a9d4543f1be",
+    "bytes": 4089,
+    "observed_at": "2026-09-11T05:11:48.253684+00:00",
+    "status": "FETCHED_NOT_YET_REVIEWED"
+  },
+  {
+    "id": "R05",
+    "repo": "stefan-jansen/zipline-reloaded",
+    "version": "943010b9da848e317fc520de87edade2b884d329",
+    "path": "src/zipline/pipeline/factors/factor.py",
+    "local": "C:\\STOCKS\\work\\oss-20260911-01\\closure\\external\\R05\\src__zipline__pipeline__factors__factor.py",
+    "url": "https://raw.githubusercontent.com/stefan-jansen/zipline-reloaded/943010b9da848e317fc520de87edade2b884d329/src/zipline/pipeline/factors/factor.py",
+    "sha256": "70ddb925f6cbcc79bf3414b50e1d0c28279e2d7b233a679042e6de27735056e2",
+    "bytes": 63855,
+    "observed_at": "2026-09-11T05:11:48.438255+00:00",
+    "status": "FETCHED_NOT_YET_REVIEWED"
+  },
+  {
+    "id": "R11",
+    "repo": "scikit-learn/scikit-learn",
+    "version": "8c54c136cac4982a0dac7bee8b8fbcada411fe10",
+    "path": "sklearn/preprocessing/_data.py",
+    "local": "C:\\STOCKS\\work\\oss-20260911-01\\closure\\external\\R11\\sklearn__preprocessing___data.py",
+    "url": "https://raw.githubusercontent.com/scikit-learn/scikit-learn/8c54c136cac4982a0dac7bee8b8fbcada411fe10/sklearn/preprocessing/_data.py",
+    "sha256": "40a37e1e8ae15867c21a836248a1de5dd05dcbddd665b41f55d39a571b6a0fb4",
+    "bytes": 130762,
+    "observed_at": "2026-09-11T05:11:48.736169+00:00",
+    "status": "FETCHED_NOT_YET_REVIEWED"
+  },
+  {
+    "id": "R16",
+    "repo": "stefan-jansen/alphalens-reloaded",
+    "version": "f0a07c22d554e4b4036983cc80320b432714fe7e",
+    "path": "LICENSE",
+    "local": "C:\\STOCKS\\work\\oss-20260911-01\\closure\\external\\R16\\LICENSE",
+    "url": "https://raw.githubusercontent.com/stefan-jansen/alphalens-reloaded/f0a07c22d554e4b4036983cc80320b432714fe7e/LICENSE",
+    "sha256": "2b651c2d29c644d1c73417cd96e6cfa506d6de102ed96fc3de96d676e089cf29",
+    "bytes": 11346,
+    "observed_at": "2026-09-11T05:11:48.570374+00:00",
+    "status": "FETCHED_NOT_YET_REVIEWED"
+  }
+]

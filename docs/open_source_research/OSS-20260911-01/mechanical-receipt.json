@@ -1,0 +1,63 @@
+{
+  "id": "OSS-20260911-01-MECH-01",
+  "executed_at": "2026-09-11T02:41:38.726173+00:00",
+  "python": "3.12.14",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "source_sha256": "a58cef56caf0e0ac2f555713094c4b6e265ce24164b4bbebbca37226a6d5bad7",
+  "protocol_sha256": "415fa2f3f7f0c8bcd2c78cb350a2be136f17e8b3746e90ff744714de8610449d",
+  "runner_sha256": "364524a0a4223a2ba95ac0a14cca94333f79f6995ccced9285f7c6597987ec6d",
+  "seconds": 0.2791276999923866,
+  "results": [
+    {
+      "case": "entrada após gap",
+      "status": "PASS",
+      "detail": {
+        "error_brl": 0.0
+      }
+    },
+    {
+      "case": "custo proporcional",
+      "status": "PASS",
+      "detail": {
+        "error_brl": 0.0
+      }
+    },
+    {
+      "case": "split",
+      "status": "PASS",
+      "detail": {
+        "error_brl": 0.0
+      }
+    },
+    {
+      "case": "dividendo",
+      "status": "PASS",
+      "detail": {
+        "error_brl": 0.0
+      }
+    },
+    {
+      "case": "stale",
+      "status": "PASS",
+      "detail": "incomplete final valuation; stale holdings: ['AAAA3']"
+    },
+    {
+      "case": "futuro",
+      "status": "PASS",
+      "detail": "prefix invariant"
+    },
+    {
+      "case": "sem cotação",
+      "status": "PASS",
+      "detail": "cash retained until first quote"
+    },
+    {
+      "case": "fechamento",
+      "status": "PASS",
+      "detail": {
+        "error_brl": 0.0
+      }
+    }
+  ],
+  "scope": "LOCAL/ENGINEERING; C3; E5; no external engine execution; no economic validation"
+}

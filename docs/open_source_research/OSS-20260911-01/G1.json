@@ -1,0 +1,19 @@
+{
+  "experiment_id": "OSS-20260911-01-MECH-01",
+  "registered_before_execution": true,
+  "purpose": "ENGINEERING",
+  "hypothesis": "O simulador atual reconcilia caixa e patrimônio com soluções analíticas em cenários sintéticos de entrada, custo, split, dividendo e ausência de cotação.",
+  "baseline_sha": "80e69daa7d83b3b0f0e3384c53207ee0a9afd5b5",
+  "baseline": "Equações de caixa e quantidade calculadas separadamente com Decimal, sem sinal empírico.",
+  "initial_comparison": "LEAN verifica horário e bid/ask; vectorbt explicita slippage e granularidade; Stocks usa barras diárias, custos e ordens posteriores. A comparação externa é de código, não equivalência de motores.",
+  "data_contract": "Somente barras sintéticas AAAA3 em 2000-01-03/04/05/06. BRL, sem dados de mercado, nenhum banco, nenhuma leitura de holdout.",
+  "cases": ["entrada após gap", "custo proporcional", "split 2:1", "dividendo ex/pagamento", "cotação final ausente rejeitada", "mutação de futuro não muda prefixo", "ordem sem cotação preserva caixa", "fechamento posterior ao sinal"],
+  "metric": "erro absoluto de patrimônio BRL e invariantes de tempo/caixa",
+  "success": "Todos os 8 controles passam; erro <=1e-8 BRL nos casos analíticos de capital 1000. Datas de execução estritamente posteriores ao sinal. Falha é diagnóstico de engenharia, não refutação econômica.",
+  "resources": "Python auxiliar 3.12 stdlib existente; até 30 segundos; sem rede durante execução; sem instalações; módulo simulation.py carregado por caminho após inspeção.",
+  "attempt_budget": 1,
+  "parameters": "capital=1000; custo=0 ou 0.01 conforme controle; preços=100/200/220/242, split=0.5, dividendo=10; sem tuning; sem RNG",
+  "risks": "Cobertura sintética limitada; não testa instalação Core, pacote, liquidação tributária, calendários reais nem todo domínio. Revisão pelo mesmo agente não é independente.",
+  "authorization": "Mandato atual permite benchmark técnico isolado após baseline e G1; não reabre H1-H22.",
+  "next_gate": "Falha: registrar divergência sem modificar runtime. Sucesso: protocolo futuro para comparação com motor externo em Linux permitido. Sem G4."
+}

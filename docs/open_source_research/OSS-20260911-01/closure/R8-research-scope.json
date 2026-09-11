@@ -1,0 +1,7 @@
+{
+  "scope": "R8 additive evidence for isolated research code only; runtime package unchanged",
+  "run_id": "OSS-20260911-01",
+  "checks": "33 main +40 cost conventions +CLI example",
+  "runtime_suite": "NOT_RUN; no runtime change; Linux remains required for package integration",
+  "benchmark_receipt_sha256": "8b7624e462d9503b8df5cb10fe281ee8387ed841633471b8cd09ab9e041138af"
+}

@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "baseline_files_unchanged": [
+    "README.md",
+    "AGENTS.md",
+    "HANDOFF.md",
+    "STOCKS_CURRENT_STATE.md",
+    "RESEARCH_FREEZE.md",
+    "docs/DESIGN.md",
+    "pyproject.toml",
+    "uv.lock",
+    ".github/workflows/ci.yml",
+    "stocks_predictor/universe.py",
+    "stocks_predictor/simulation.py",
+    "stocks_predictor/document_panel.py",
+    "stocks_predictor/cvm_pit.py",
+    "stocks_predictor/operational_store.py",
+    "trials.json",
+    "trials_v2.json",
+    "docs/research/2026-09-09-h21-forward-plan.json"
+  ],
+  "source_domain_diff": false,
+  "syntax_only_for_linux_protocol": true,
+  "no_external_benchmark_executed": true,
+  "documentation_checker": {
+    "status": "PASS",
+    "markdown_files": 142,
+    "local_links": 477,
+    "unresolved_current_links": 0,
+    "external_links_not_checked": 377
+  },
+  "artifacts_hashed": 18
+}

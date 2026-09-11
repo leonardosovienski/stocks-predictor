@@ -1,0 +1,100 @@
+{
+  "issuer": "TOTVS S.A.",
+  "cnpj": "53.113.791/0001-22",
+  "cvm": "019992",
+  "ticker": "TOTS3",
+  "class": "ON",
+  "isin": "BRTOTSACNOR8",
+  "identity_evidence": {
+    "fca2019": [
+      {
+        "CNPJ_Companhia": "53.113.791/0001-22",
+        "Data_Referencia": "2019-01-01",
+        "Versao": "1",
+        "ID_Documento": "83108",
+        "Nome_Empresarial": "TOTVS S.A.",
+        "Valor_Mobiliario": "Ações Ordinárias",
+        "Sigla_Classe_Acao_Preferencial": "",
+        "Classe_Acao_Preferencial": "",
+        "Codigo_Negociacao": "TOTS3",
+        "Composicao_BDR_Unit": "",
+        "Mercado": "Bolsa",
+        "Sigla_Entidade_Administradora": "B3",
+        "Entidade_Administradora": "B3 S.A. - Brasil, Bolsa, Balcão.",
+        "Data_Inicio_Negociacao": "2006-03-07",
+        "Data_Fim_Negociacao": "",
+        "Segmento": "Novo Mercado",
+        "Data_Inicio_Listagem": "2006-03-07",
+        "Data_Fim_Listagem": ""
+      }
+    ],
+    "fca2019_metadata": [
+      {
+        "CNPJ_CIA": "53.113.791/0001-22",
+        "DT_REFER": "2019-01-01",
+        "VERSAO": "1",
+        "DENOM_CIA": "TOTVS S.A.",
+        "CD_CVM": "019992",
+        "CATEG_DOC": "FCA",
+        "ID_DOC": "83108",
+        "DT_RECEB": "2019-05-10",
+        "LINK_DOC": "http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=83108"
+      }
+    ],
+    "fca2020_metadata": [
+      {
+        "CNPJ_CIA": "53.113.791/0001-22",
+        "DT_REFER": "2020-01-01",
+        "VERSAO": "1",
+        "DENOM_CIA": "TOTVS S.A.",
+        "CD_CVM": "019992",
+        "CATEG_DOC": "FCA",
+        "ID_DOC": "93408",
+        "DT_RECEB": "2020-05-25",
+        "LINK_DOC": "http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=93408"
+      },
+      {
+        "CNPJ_CIA": "53.113.791/0001-22",
+        "DT_REFER": "2020-01-01",
+        "VERSAO": "2",
+        "DENOM_CIA": "TOTVS S.A.",
+        "CD_CVM": "019992",
+        "CATEG_DOC": "FCA",
+        "ID_DOC": "102853",
+        "DT_RECEB": "2021-04-13",
+        "LINK_DOC": "http://www.rad.cvm.gov.br/ENETCONSULTA/frmDownloadDocumento.aspx?CodigoInstituicao=1&NumeroSequencialDocumento=102853"
+      }
+    ],
+    "fca2020_security_rejected": [
+      {
+        "CNPJ_Companhia": "53.113.791/0001-22",
+        "Data_Referencia": "2020-01-01",
+        "Versao": "2",
+        "ID_Documento": "102853",
+        "Nome_Empresarial": "TOTVS S.A.",
+        "Valor_Mobiliario": "Ações Ordinárias",
+        "Sigla_Classe_Acao_Preferencial": "",
+        "Classe_Acao_Preferencial": "",
+        "Codigo_Negociacao": "TOTS3",
+        "Composicao_BDR_Unit": "",
+        "Mercado": "Bolsa",
+        "Sigla_Entidade_Administradora": "B3",
+        "Entidade_Administradora": "B3 S.A. - Brasil, Bolsa, Balcão.",
+        "Data_Inicio_Negociacao": "2006-03-07",
+        "Data_Fim_Negociacao": "",
+        "Segmento": "Novo Mercado",
+        "Data_Inicio_Listagem": "2006-03-07",
+        "Data_Fim_Listagem": ""
+      }
+    ],
+    "isin_evidence": "COTAHIST original records in prices.jsonl"
+  },
+  "continuity": "Same issuer/CNPJ/ticker/class and ISIN in inspected interval quotes; split explicitly preserves same rights. No change found in inspected evidence. Continuous negative-event certification remains open.",
+  "rejection_reason": "FCA2020 security content ID102853 version2 delivered2021-04-13. Version1 metadata ID93408 delivered2020-05-25 exists but its security content is absent from current CSV; never attach v2 content to v1 metadata.",
+  "source_receipts": [
+    "fca2019-receipt.json",
+    "fca2020-receipt.json"
+  ],
+  "effective_decision_time": null,
+  "historical_ingestion_at": null
+}

@@ -1,0 +1,16 @@
+[
+  {
+    "url": "https://fred.stlouisfed.org/docs/api/fred/realtime_period.html",
+    "path": "C:\\STOCKS\\work\\oss-20260911-01\\closure\\R62-alfred.html",
+    "sha256": "22d3447c13ffe57e881d4a069d355d629ca1d2717f8f5c112fdedd3f48967037",
+    "observed_at": "2026-09-11T05:26:31.541148+00:00",
+    "scope": "documentation only, no data ingestion"
+  },
+  {
+    "url": "https://nefin.com.br/",
+    "path": "C:\\STOCKS\\work\\oss-20260911-01\\closure\\R56-nefin.html",
+    "sha256": "ae1238da125a9828a1930b4ab8df99810d8d7ed2236725b4fce31d3d6054961d",
+    "observed_at": "2026-09-11T05:26:31.141093+00:00",
+    "scope": "documentation only, no data ingestion"
+  }
+]

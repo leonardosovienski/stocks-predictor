@@ -1,0 +1,8 @@
+{
+  "run_id": "OSS-20260911-01",
+  "prior_files_preserved": 59,
+  "all_preserved": true,
+  "status": "X01_CANONICAL_CASE_INCOMPLETE",
+  "package_sha256": "6ccc9dcf3ab64cde4fe245c09a4135864dfa6a7c708e07b8933af441637a7112",
+  "observed_at": "2026-09-11T05:00:15.912240+00:00"
+}

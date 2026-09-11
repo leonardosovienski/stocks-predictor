@@ -1,0 +1,83 @@
+{
+  "run_id": "OSS-20260911-01",
+  "experiment": "X03",
+  "timestamp": "2026-09-11T03:29:29.774403+00:00",
+  "protocol_sha256": "8bc8aaff158db81e3b186beafb70478d264758c0f9efc0516423e2ca54014450",
+  "script_sha256": "a2dca35994062bf4e0b2021336b716df8acb03f2e5f2d5e80e86a6681e3f4c11",
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "summary": [
+    {
+      "phi": 0,
+      "counts": [
+        462,
+        464
+      ],
+      "variance_mean": 0.001984126984126984,
+      "expected_sample_variance": 0.9999999999999999,
+      "oracle_to_iid_se_population_approx": 1.0,
+      "known_gamma0_normal_surrogate_coverage": 0.9500042097035593,
+      "mean_z": -0.004548870554687437,
+      "variance_z": 1.129997703920239,
+      "recovered_by_oracle": 3,
+      "lost_by_oracle": 1,
+      "mean_width_ratio": 0.9982112911299589,
+      "oracle_exact_binomial": {
+        "lower_tail": 0.019621019440324104,
+        "two_sided_probability_ordered": 0.030444908671025877,
+        "central95_integer_acceptance": [
+          465,
+          484
+        ],
+        "bonferroni4_p_diagnostic": 0.12177963468410351
+      },
+      "iid_exact_null_phi0_only": {
+        "lower_tail": 0.009023422549263815,
+        "two_sided_probability_ordered": 0.013771725143028794,
+        "central95_integer_acceptance": [
+          465,
+          484
+        ],
+        "bonferroni4_p_diagnostic": 0.055086900572115176
+      }
+    },
+    {
+      "phi": 0.5,
+      "counts": [
+        359,
+        462
+      ],
+      "variance_mean": 0.007915511883765852,
+      "expected_sample_variance": 1.3280528469395265,
+      "oracle_to_iid_se_population_approx": 1.7331936621640658,
+      "known_gamma0_normal_surrogate_coverage": 0.7428303999623777,
+      "mean_z": -0.005715465255764124,
+      "variance_z": 1.12801325688419,
+      "recovered_by_oracle": 103,
+      "lost_by_oracle": 0,
+      "mean_width_ratio": 0.5765456003998377,
+      "oracle_exact_binomial": {
+        "lower_tail": 0.007651054328954712,
+        "two_sided_probability_ordered": 0.013165065078521393,
+        "central95_integer_acceptance": [
+          465,
+          484
+        ],
+        "bonferroni4_p_diagnostic": 0.05266026031408557
+      },
+      "iid_exact_null_phi0_only": null
+    }
+  ],
+  "oracle_expected_coverage": 0.9500042097035593,
+  "iid_phi0_expected_student_t503_coverage": 0.9494525227990351,
+  "max_production_arithmetic_error": 5.551115123125783e-17,
+  "max_independent_weighted_mean_error": 2.7755575615628914e-17,
+  "variance_recursion_errors": [
+    0.0,
+    0.0
+  ],
+  "boundary_hit_changes": 0,
+  "paired_phi_z_correlation": 0.9993157702621746,
+  "shared_oracle_misses": 36,
+  "closure": "DIAGNOSIS_CLOSED_SCOPE; previous calibration FAIL preserved; no substitute approved",
+  "seconds": 4.14100000000326
+}

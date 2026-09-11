@@ -1,0 +1,47 @@
+[
+  {
+    "field": "publication_time / original_ingestion_at / effective_decision_time",
+    "status": "UNKNOWN",
+    "impact": "Date-only CVM delivery is not exact publication or local observation. D+1 is a disclosed scenario, never a historical receipt."
+  },
+  {
+    "field": "dividend.precision_first_publication_time; AGM issuer copy to CVM v2 byte match",
+    "status": "UNKNOWN",
+    "impact": "B3 snapshot0.13014413 vs issuer rounded0.13; no backfill of exact value into2020 decisions."
+  },
+  {
+    "field": "JCP.aggregate_reconciliation",
+    "status": "UNKNOWN",
+    "impact": "Original44,306,677.21 vs AGM43,857,567.02; difference449,110.19. Per-share0.23 agrees, reason cannot be silently attributed to treasury."
+  },
+  {
+    "field": "cash.actual_credit_time / cash.actual_available_time / beneficiary rounding and withholding",
+    "status": "UNKNOWN",
+    "impact": "Scheduled20May is not a bank receipt; original notice permits delayed payment for incomplete registration.21May prior available_on is convention, not confirmed liquidity."
+  },
+  {
+    "field": "opening cash, holdings, acquired pre-window entitlements and transaction costs",
+    "status": "UNKNOWN_NOT_REQUESTED_FROM_ACCOUNT",
+    "impact": "Use independent symbolic Q0,Q_JCP,Q_DIV,Q_SPLIT,C0 and costs; never infer historical JCP entitlement from April holdings. No personal account claims."
+  },
+  {
+    "field": "all-material-event negative coverage; metadata-only document contents",
+    "status": "UNKNOWN",
+    "impact": "Wealth08Apr, nonconvertible debentures22Apr, Supplier30Apr, holdings disclosures, results, governance and other rows are explicitly inventoried. Content is not fully certified; no claim of no further events."
+  },
+  {
+    "field": "identity full continuous certification and FCA2020 v1 security content",
+    "status": "UNKNOWN",
+    "impact": "FCA2019 and matched quote ISIN support continuity; FCA2020v2 is excluded. Absence of change requires completed event coverage."
+  },
+  {
+    "field": "quotes.publication_time / adjusted_close / certified total-return factor",
+    "status": "UNKNOWN",
+    "impact": "Raw prices reconciled to original bytes; split-only analytical adjustment is explicitly separate. No economic comparison or return computed."
+  },
+  {
+    "field": "split.actual_custody_credit_time; settlement/execution constraints04-06May",
+    "status": "UNKNOWN",
+    "impact": "Notice fixes scheduled06May and ex04May; no broker confirmation or assumption that unsettled shares are executable."
+  }
+]

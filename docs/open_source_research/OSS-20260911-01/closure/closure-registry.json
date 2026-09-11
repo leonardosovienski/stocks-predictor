@@ -1,0 +1,3463 @@
+{
+  "run_id": "OSS-20260911-01",
+  "phase": "CLOSURE",
+  "status": "CLOSED_WITH_SCOPED_DEFERRED_ECONOMIC_BENCHMARK",
+  "observed_at": "2026-09-11T05:24:13.959359+00:00",
+  "prior_registry_sha256": "84d06b6e35a0f4e97ecf0e34b3fccda0ba39fd35d0d1e94b92093c08db21592c",
+  "baseline_sha_preserved": "80e69daa7d83b3b0f0e3384c53207ee0a9afd5b5",
+  "capabilities": [
+    {
+      "id": "K01",
+      "name": "Identidade histórica CNPJ/ISIN/classe",
+      "category": "dados",
+      "internal_state": "PARCIAL",
+      "technical": "C3 no painel/fixtures somente",
+      "internal_evidence": "https://github.com/leonardosovienski/stocks-predictor/blob/80e69daa7d83b3b0f0e3384c53207ee0a9afd5b5/stocks_predictor/universe.py#L28",
+      "references": [
+        "R53",
+        "R52",
+        "R22"
+      ],
+      "action": "IMPROVE",
+      "status": "CANDIDATE; controle mínimo executado, contrato amplo pendente",
+      "mechanism": "Evitar prefixo de ticker como identidade definitiva e excluir ambiguidade antes de retorno.",
+      "prerequisites": "Mapa documental por data e transições societárias",
+      "profile": "ENABLER",
+      "comparison": "NOT_DIRECTLY_COMPARABLE para resultados econômicos; comparação funcional por contrato",
+      "evidence_origin": "LOCAL/EXTERNAL",
+      "evidence_scope": "ENGINEERING",
+      "result": "POSITIVE limitado aos controles",
+      "benefit_measured": false,
+      "score_confidence": "MEDIUM/LOW por dimensão; ver score",
+      "b3_transferability": 4,
+      "b3_reason": "Contrato genérico transferível com adaptação e dados B3.",
+      "data_accessibility": "UNKNOWN",
+      "data_pit_quality": "UNKNOWN",
+      "edge_decay_risk": "N/A: finalidade de engenharia",
+      "competitor_prevalence": "UNKNOWN",
+      "competitive_gap": "UNKNOWN",
+      "differentiation_potential": "UNKNOWN",
+      "comparative_class": "UNCLASSIFIED",
+      "redundancy_penalty": 0,
+      "reuse": "Referência ou adapter estreito; integração não autorizada",
+      "score": {
+        "profile": "ENABLER",
+        "ratings_value": {
+          "scientific_value": [
+            4,
+            5
+          ],
+          "validation_value": [
+            4,
+            5
+          ],
+          "external_evidence": [
+            2,
+            3
+          ],
+          "architectural_fit": [
+            3,
+            4
+          ],
+          "incremental_capability": [
+            3,
+            4
+          ],
+          "domain_fit": [
+            4,
+            5
+          ],
+          "independent_references": [
+            1,
+            2
+          ]
+        },
+        "ratings_cost": {
+          "implementation_complexity": [
+            3,
+            4
+          ],
+          "methodological_risk": [
+            2,
+            3
+          ],
+          "dependency_risk": [
+            1,
+            2
+          ],
+          "maintenance_cost": [
+            3,
+            4
+          ],
+          "data_cost": [
+            3,
+            4
+          ],
+          "operational_cost": [
+            2,
+            3
+          ]
+        },
+        "rating_rationale": {
+          "scientific_value": "Erro/alvo científico concreto: Prefixo ainda é heurística; 12 controles aprovam contrato do painel, não completude do cadastro.",
+          "validation_value": "Benefício potencial de falsificar esse erro; evidência local restrita aos controles explicitamente listados.",
+          "external_evidence": "Referências R53,R52,R22 sustentam método/contrato, não lucro nem eficácia de combinação.",
+          "architectural_fit": "Adapter de pesquisa separado e contratos existentes; acoplamento real não medido, intervalo cobre essa incerteza.",
+          "incremental_capability": "Comparação com estado interno PARCIAL: Evitar prefixo de ticker como identidade definitiva e excluir ambiguidade antes de retorno.",
+          "domain_fit": "Uso diagnóstico B3 descrito; domínio não ganha pontos por popularidade da biblioteca.",
+          "independent_references": "Linhagens/objetos distintos parcialmente inspecionados; wrappers/fontes CVM e sklearn compartilhadas não duplicam evidência.",
+          "implementation_complexity": "Escopo de implementação: Mapa documental por data e transições societárias; estimativa, sem horas medidas.",
+          "methodological_risk": "Extrapolação dos contratos e amostras revisadas: Prefixo ainda é heurística; 12 controles aprovam contrato do painel, não completude do cadastro.",
+          "dependency_risk": "Auxiliar stdlib quando possível; referências externas requerem host/versões/licença e não foram instaladas.",
+          "maintenance_cost": "Manter o contrato e mudanças de fonte/versão desta capacidade; estimativa ainda sem operação recorrente.",
+          "data_cost": "0..5 quando custo/cobertura não certificados; para fixtures sintéticas custo baixo, não inferir preço de produção.",
+          "operational_cost": "Execução em lote e armazenamento de recibos; sem infraestrutura live ou compra de dados prevista."
+        },
+        "VALUE_SCORE": [
+          67.0,
+          87.0
+        ],
+        "COST_RISK_SCORE": [
+          48.0,
+          68.0
+        ],
+        "PRIORITY_SCORE": [
+          56.5,
+          76.5
+        ],
+        "confidence": "MEDIUM na utilidade do contrato; LOW no custo/ganho incremental",
+        "weight_sensitivity": {
+          "0.6": [
+            53.0,
+            73.0
+          ],
+          "0.7": [
+            56.5,
+            76.5
+          ],
+          "0.8": [
+            60.0,
+            80.0
+          ]
+        },
+        "within_profile_sensitivity": "Variar individualmente cada peso ±20%, renormalizando; intervalos por dimensão têm incerteza de até1 ponto. Não ordenar diferenças pequenas.",
+        "dimension_weight_sensitivity_range": [
+          55.92,
+          77.08
+        ]
+      },
+      "competitor_context_reason": "UNKNOWN: amostra intencional de referências por capacidade; sem denominador de concorrentes diretos, não estimar prevalência/gap/diferenciação.",
+      "score_basis": "Prefixo ainda é heurística; 12 controles aprovam contrato do painel, não completude do cadastro.",
+      "closure": {
+        "our_state": "PARCIAL; FCA/ISIN e joins existentes",
+        "reference_ids": [
+          "R53",
+          "R05",
+          "R02"
+        ],
+        "gap": "Cobertura contínua identidade",
+        "result": "X01/TOTS3 incompleto preservado",
+        "queue": "BLOCKED",
+        "action": "IMPROVE",
+        "economic_value": "UNKNOWN; no new B3 economic benchmark",
+        "historical_C_E_preserved": true,
+        "stage": {
+          "FOUND": true,
+          "STUDIED": true,
+          "IMPLEMENTED": false,
+          "EXECUTED": false,
+          "BENCHMARKED": false,
+          "ECONOMICALLY_TESTED": false
+        },
+        "decision": "BLOCKED",
+        "local_blocker": "No decision-time/economic-label panel frozen for this empirical use",
+        "score_delta": null
+      }
+    },
+    {
+      "id": "K02",
+      "name": "Versões e disponibilidade de fundamentos",
+      "category": "dados",
+      "internal_state": "PARCIAL",
+      "technical": "C3 no painel/fixtures somente",
+      "internal_evidence": "https://github.com/leonardosovienski/stocks-predictor/blob/80e69daa7d83b3b0f0e3384c53207ee0a9afd5b5/stocks_predictor/document_panel.py#L21",
+      "references": [
+        "R51",
+        "R60",
+        "R22",
+        "R23"
+      ],
+      "action": "IMPROVE",
+      "status": "CANDIDATE; controle mínimo executado, contrato amplo pendente",
+      "mechanism": "Impedir que reapresentações ou vínculos posteriores alterem decisões anteriores.",
+      "prerequisites": "Competência, recebimento, publicação, ingestão e versão",
+      "profile": "ENABLER",
+      "comparison": "NOT_DIRECTLY_COMPARABLE para resultados econômicos; comparação funcional por contrato",
+      "evidence_origin": "LOCAL/EXTERNAL",
+      "evidence_scope": "ENGINEERING",
+      "result": "POSITIVE limitado aos controles",
+      "benefit_measured": false,
+      "score_confidence": "MEDIUM/LOW por dimensão; ver score",
+      "b3_transferability": 4,
+      "b3_reason": "Contrato genérico transferível com adaptação e dados B3.",
+      "data_accessibility": "UNKNOWN",
+      "data_pit_quality": "UNKNOWN",
+      "edge_decay_risk": "N/A: finalidade de engenharia",
+      "competitor_prevalence": "UNKNOWN",
+      "competitive_gap": "UNKNOWN",
+      "differentiation_potential": "UNKNOWN",
+      "comparative_class": "UNCLASSIFIED",
+      "redundancy_penalty": 0,
+      "reuse": "Referência ou adapter estreito; integração não autorizada",
+      "score": {
+        "profile": "ENABLER",
+        "ratings_value": {
+          "scientific_value": [
+            4,
+            5
+          ],
+          "validation_value": [
+            4,
+            5
+          ],
+          "external_evidence": [
+            3,
+            4
+          ],
+          "architectural_fit": [
+            4,
+            5
+          ],
+          "incremental_capability": [
+            2,
+            3
+          ],
+          "domain_fit": [
+            4,
+            5
+          ],
+          "independent_references": [
+            1,
+            2
+          ]
+        },
+        "ratings_cost": {
+          "implementation_complexity": [
+            2,
+            3
+          ],
+          "methodological_risk": [
+            2,
+            3
+          ],
+          "dependency_risk": [
+            1,
+            2
+          ],
+          "maintenance_cost": [
+            2,
+            3
+          ],
+          "data_cost": [
+            2,
+            3
+          ],
+          "operational_cost": [
+            1,
+            2
+          ]
+        },
+        "rating_rationale": {
+          "scientific_value": "Erro/alvo científico concreto: Versões e publicação CVM são observáveis; 3 documentos reconciliados preservam escala e não autorizam valuation.",
+          "validation_value": "Benefício potencial de falsificar esse erro; evidência local restrita aos controles explicitamente listados.",
+          "external_evidence": "Referências R51,R60,R22,R23 sustentam método/contrato, não lucro nem eficácia de combinação.",
+          "architectural_fit": "Adapter de pesquisa separado e contratos existentes; acoplamento real não medido, intervalo cobre essa incerteza.",
+          "incremental_capability": "Comparação com estado interno PARCIAL: Impedir que reapresentações ou vínculos posteriores alterem decisões anteriores.",
+          "domain_fit": "Uso diagnóstico B3 descrito; domínio não ganha pontos por popularidade da biblioteca.",
+          "independent_references": "Linhagens/objetos distintos parcialmente inspecionados; wrappers/fontes CVM e sklearn compartilhadas não duplicam evidência.",
+          "implementation_complexity": "Escopo de implementação: Competência, recebimento, publicação, ingestão e versão; estimativa, sem horas medidas.",
+          "methodological_risk": "Extrapolação dos contratos e amostras revisadas: Versões e publicação CVM são observáveis; 3 documentos reconciliados preservam escala e não autorizam valuation.",
+          "dependency_risk": "Auxiliar stdlib quando possível; referências externas requerem host/versões/licença e não foram instaladas.",
+          "maintenance_cost": "Manter o contrato e mudanças de fonte/versão desta capacidade; estimativa ainda sem operação recorrente.",
+          "data_cost": "0..5 quando custo/cobertura não certificados; para fixtures sintéticas custo baixo, não inferir preço de produção.",
+          "operational_cost": "Execução em lote e armazenamento de recibos; sem infraestrutura live ou compra de dados prevista."
+        },
+        "VALUE_SCORE": [
+          70.0,
+          90.0
+        ],
+        "COST_RISK_SCORE": [
+          35.0,
+          55.0
+        ],
+        "PRIORITY_SCORE": [
+          62.5,
+          82.5
+        ],
+        "confidence": "MEDIUM na utilidade do contrato; LOW no custo/ganho incremental",
+        "weight_sensitivity": {
+          "0.6": [
+            60.0,
+            80.0
+          ],
+          "0.7": [
+            62.5,
+            82.5
+          ],
+          "0.8": [
+            65.0,
+            85.0
+          ]
+        },
+        "within_profile_sensitivity": "Variar individualmente cada peso ±20%, renormalizando; intervalos por dimensão têm incerteza de até1 ponto. Não ordenar diferenças pequenas.",
+        "dimension_weight_sensitivity_range": [
+          62.05,
+          82.93
+        ]
+      },
+      "competitor_context_reason": "UNKNOWN: amostra intencional de referências por capacidade; sem denominador de concorrentes diretos, não estimar prevalência/gap/diferenciação.",
+      "score_basis": "Versões e publicação CVM são observáveis; 3 documentos reconciliados preservam escala e não autorizam valuation.",
+      "closure": {
+        "our_state": "PARCIAL; versões e disponibilidade modelada",
+        "reference_ids": [
+          "R01",
+          "R51",
+          "R60"
+        ],
+        "gap": "Contratos completos de PIT",
+        "result": "DOC03 majoritariamente rejeição",
+        "queue": "BLOCKED",
+        "action": "IMPROVE",
+        "economic_value": "UNKNOWN; no new B3 economic benchmark",
+        "historical_C_E_preserved": true,
+        "stage": {
+          "FOUND": true,
+          "STUDIED": true,
+          "IMPLEMENTED": false,
+          "EXECUTED": false,
+          "BENCHMARKED": false,
+          "ECONOMICALLY_TESTED": false
+        },
+        "decision": "BLOCKED",
+        "local_blocker": "No decision-time/economic-label panel frozen for this empirical use",
+        "score_delta": null
+      }
+    },
+    {
+      "id": "K03",
+      "name": "Eventos e recebíveis reconciliados",
+      "category": "dados",
+      "internal_state": "PARCIAL",
+      "technical": "C3",
+      "internal_evidence": "https://github.com/leonardosovienski/stocks-predictor/blob/80e69daa7d83b3b0f0e3384c53207ee0a9afd5b5/stocks_predictor/simulation.py#L89",
+      "references": [
+        "R54",
+        "R05",
+        "R02"
+      ],
+      "action": "AUGMENT",
+      "status": "BLOCKED_DATA",
+      "mechanism": "Distinguir retorno de preço, direito adquirido, pagamento e reinvestimento.",
+      "prerequisites": "Valores líquidos, datas e termos societários faltantes",
+      "profile": "ENABLER",
+      "comparison": "NOT_DIRECTLY_COMPARABLE para resultados econômicos; comparação funcional por contrato",
+      "evidence_origin": "LOCAL/EXTERNAL",
+      "evidence_scope": "ENGINEERING",
+      "result": "NOT_EVALUATED",
+      "benefit_measured": false,
+      "score_confidence": "MEDIUM/LOW por dimensão; ver score",
+      "b3_transferability": 4,
+      "b3_reason": "Contrato genérico transferível com adaptação e dados B3.",
+      "data_accessibility": "UNKNOWN",
+      "data_pit_quality": "UNKNOWN",
+      "edge_decay_risk": "N/A: finalidade de engenharia",
+      "competitor_prevalence": "UNKNOWN",
+      "competitive_gap": "UNKNOWN",
+      "differentiation_potential": "UNKNOWN",
+      "comparative_class": "UNCLASSIFIED",
+      "redundancy_penalty": 0,
+      "reuse": "Referência ou adapter estreito; integração não autorizada",
+      "score": {
+        "profile": "ENABLER",
+        "ratings_value": {
+          "scientific_value": [
+            4,
+            5
+          ],
+          "validation_value": [
+            4,
+            5
+          ],
+          "external_evidence": [
+            2,
+            3
+          ],
+          "architectural_fit": [
+            3,
+            4
+          ],
+          "incremental_capability": [
+            3,
+            4
+          ],
+          "domain_fit": [
+            4,
+            5
+          ],
+          "independent_references": [
+            1,
+            2
+          ]
+        },
+        "ratings_cost": {
+          "implementation_complexity": [
+            4,
+            5
+          ],
+          "methodological_risk": [
+            3,
+            4
+          ],
+          "dependency_risk": [
+            2,
+            3
+          ],
+          "maintenance_cost": [
+            3,
+            4
+          ],
+          "data_cost": [
+            0,
+            5
+          ],
+          "operational_cost": [
+            2,
+            3
+          ]
+        },
+        "rating_rationale": {
+          "scientific_value": "Erro/alvo científico concreto: 50 valores líquidos/22 datas/28 eventos pendentes no registro atual; domínio demanda reconciliação documental.",
+          "validation_value": "Benefício potencial de falsificar esse erro; evidência local restrita aos controles explicitamente listados.",
+          "external_evidence": "Referências R54,R05,R02 sustentam método/contrato, não lucro nem eficácia de combinação.",
+          "architectural_fit": "Adapter de pesquisa separado e contratos existentes; acoplamento real não medido, intervalo cobre essa incerteza.",
+          "incremental_capability": "Comparação com estado interno PARCIAL: Distinguir retorno de preço, direito adquirido, pagamento e reinvestimento.",
+          "domain_fit": "Uso diagnóstico B3 descrito; domínio não ganha pontos por popularidade da biblioteca.",
+          "independent_references": "Linhagens/objetos distintos parcialmente inspecionados; wrappers/fontes CVM e sklearn compartilhadas não duplicam evidência.",
+          "implementation_complexity": "Escopo de implementação: Valores líquidos, datas e termos societários faltantes; estimativa, sem horas medidas.",
+          "methodological_risk": "Extrapolação dos contratos e amostras revisadas: 50 valores líquidos/22 datas/28 eventos pendentes no registro atual; domínio demanda reconciliação documental.",
+          "dependency_risk": "Auxiliar stdlib quando possível; referências externas requerem host/versões/licença e não foram instaladas.",
+          "maintenance_cost": "Manter o contrato e mudanças de fonte/versão desta capacidade; estimativa ainda sem operação recorrente.",
+          "data_cost": "0..5 quando custo/cobertura não certificados; para fixtures sintéticas custo baixo, não inferir preço de produção.",
+          "operational_cost": "Execução em lote e armazenamento de recibos; sem infraestrutura live ou compra de dados prevista."
+        },
+        "VALUE_SCORE": [
+          67.0,
+          87.0
+        ],
+        "COST_RISK_SCORE": [
+          51.0,
+          83.0
+        ],
+        "PRIORITY_SCORE": [
+          52.0,
+          75.6
+        ],
+        "confidence": "MEDIUM na utilidade do contrato; LOW no custo/ganho incremental",
+        "weight_sensitivity": {
+          "0.6": [
+            47.0,
+            71.8
+          ],
+          "0.7": [
+            52.0,
+            75.6
+          ],
+          "0.8": [
+            57.0,
+            79.4
+          ]
+        },
+        "within_profile_sensitivity": "Variar individualmente cada peso ±20%, renormalizando; intervalos por dimensão têm incerteza de até1 ponto. Não ordenar diferenças pequenas.",
+        "dimension_weight_sensitivity_range": [
+          51.42,
+          76.18
+        ]
+      },
+      "competitor_context_reason": "UNKNOWN: amostra intencional de referências por capacidade; sem denominador de concorrentes diretos, não estimar prevalência/gap/diferenciação.",
+      "score_basis": "50 valores líquidos/22 datas/28 eventos pendentes no registro atual; domínio demanda reconciliação documental.",
+      "closure": {
+        "our_state": "PARCIAL; eventos e recebíveis mecânicos",
+        "reference_ids": [
+          "R02",
+          "R05"
+        ],
+        "gap": "Calendário econômico completo",
+        "result": "Split TOTS3 mecânico; liquidez UNKNOWN",
+        "queue": "BLOCKED",
+        "action": "AUGMENT",
+        "economic_value": "UNKNOWN; no new B3 economic benchmark",
+        "historical_C_E_preserved": true,
+        "stage": {
+          "FOUND": true,
+          "STUDIED": true,
+          "IMPLEMENTED": false,
+          "EXECUTED": false,
+          "BENCHMARKED": false,
+          "ECONOMICALLY_TESTED": false
+        },
+        "decision": "BLOCKED",
+        "local_blocker": "No decision-time/economic-label panel frozen for this empirical use",
+        "score_delta": null
+      }
+    },
+    {
+      "id": "K04",
+      "name": "Contrato de calendário e observação",
+      "category": "dados",
+      "internal_state": "PARCIAL",
+      "technical": "C1",
+      "internal_evidence": "https://github.com/leonardosovienski/stocks-predictor/blob/80e69daa7d83b3b0f0e3384c53207ee0a9afd5b5/stocks_predictor/universe.py#L43",
+      "references": [
+        "R18",
+        "R19",
+        "R54"
+      ],
+      "action": "VALIDATE",
+      "status": "CANDIDATE",
+      "mechanism": "Detectar sessão faltante na base e distinguir negociação de liquidação.",
+      "prerequisites": "Calendário oficial por período e versão",
+      "profile": "ENABLER",
+      "comparison": "NOT_DIRECTLY_COMPARABLE para resultados econômicos; comparação funcional por contrato",
+      "evidence_origin": "LOCAL/EXTERNAL",
+      "evidence_scope": "ENGINEERING",
+      "result": "NOT_EVALUATED",
+      "benefit_measured": false,
+      "score_confidence": "MEDIUM/LOW por dimensão; ver score",
+      "b3_transferability": 4,
+      "b3_reason": "Contrato genérico transferível com adaptação e dados B3.",
+      "data_accessibility": "UNKNOWN",
+      "data_pit_quality": "UNKNOWN",
+      "edge_decay_risk": "N/A: finalidade de engenharia",
+      "competitor_prevalence": "UNKNOWN",
+      "competitive_gap": "UNKNOWN",
+      "differentiation_potential": "UNKNOWN",
+      "comparative_class": "UNCLASSIFIED",
+      "redundancy_penalty": 0,
+      "reuse": "Referência ou adapter estreito; integração não autorizada",
+      "score": {
+        "profile": "ENABLER",
+        "ratings_value": {
+          "scientific_value": [
+            3,
+            4
+          ],
+          "validation_value": [
+            3,
+            4
+          ],
+          "external_evidence": [
+            2,
+            3
+          ],
+          "architectural_fit": [
+            3,
+            4
+          ],
+          "incremental_capability": [
+            2,
+            3
+          ],
+          "domain_fit": [
+            4,
+            5
+          ],
+          "independent_references": [
+            1,
+            2
+          ]
+        },
+        "ratings_cost": {
+          "implementation_complexity": [
+            2,
+            3
+          ],
+          "methodological_risk": [
+            2,
+            3
+          ],
+          "dependency_risk": [
+            2,
+            3
+          ],
+          "maintenance_cost": [
+            2,
+            3
+          ],
+          "data_cost": [
+            1,
+            2
+          ],
+          "operational_cost": [
+            1,
+            2
+          ]
+        },
+        "rating_rationale": {
+          "scientific_value": "Erro/alvo científico concreto: Calendário BVMF comparável por sessão; não fornece negociação real de cada papel.",
+          "validation_value": "Benefício potencial de falsificar esse erro; evidência local restrita aos controles explicitamente listados.",
+          "external_evidence": "Referências R18,R19,R54 sustentam método/contrato, não lucro nem eficácia de combinação.",
+          "architectural_fit": "Adapter de pesquisa separado e contratos existentes; acoplamento real não medido, intervalo cobre essa incerteza.",
+          "incremental_capability": "Comparação com estado interno PARCIAL: Detectar sessão faltante na base e distinguir negociação de liquidação.",
+          "domain_fit": "Uso diagnóstico B3 descrito; domínio não ganha pontos por popularidade da biblioteca.",
+          "independent_references": "Linhagens/objetos distintos parcialmente inspecionados; wrappers/fontes CVM e sklearn compartilhadas não duplicam evidência.",
+          "implementation_complexity": "Escopo de implementação: Calendário oficial por período e versão; estimativa, sem horas medidas.",
+          "methodological_risk": "Extrapolação dos contratos e amostras revisadas: Calendário BVMF comparável por sessão; não fornece negociação real de cada papel.",
+          "dependency_risk": "Auxiliar stdlib quando possível; referências externas requerem host/versões/licença e não foram instaladas.",
+          "maintenance_cost": "Manter o contrato e mudanças de fonte/versão desta capacidade; estimativa ainda sem operação recorrente.",
+          "data_cost": "0..5 quando custo/cobertura não certificados; para fixtures sintéticas custo baixo, não inferir preço de produção.",
+          "operational_cost": "Execução em lote e armazenamento de recibos; sem infraestrutura live ou compra de dados prevista."
+        },
+        "VALUE_SCORE": [
+          55.0,
+          75.0
+        ],
+        "COST_RISK_SCORE": [
+          35.0,
+          55.0
+        ],
+        "PRIORITY_SCORE": [
+          52.0,
+          72.0
+        ],
+        "confidence": "MEDIUM na utilidade do contrato; LOW no custo/ganho incremental",
+        "weight_sensitivity": {
+          "0.6": [
+            51.0,
+            71.0
+          ],
+          "0.7": [
+            52.0,
+            72.0
+          ],
+          "0.8": [
+            53.0,
+            73.0
+          ]
+        },
+        "within_profile_sensitivity": "Variar individualmente cada peso ±20%, renormalizando; intervalos por dimensão têm incerteza de até1 ponto. Não ordenar diferenças pequenas.",
+        "dimension_weight_sensitivity_range": [
+          51.64,
+          72.34
+        ]
+      },
+      "competitor_context_reason": "UNKNOWN: amostra intencional de referências por capacidade; sem denominador de concorrentes diretos, não estimar prevalência/gap/diferenciação.",
+      "score_basis": "Calendário BVMF comparável por sessão; não fornece negociação real de cada papel.",
+      "closure": {
+        "our_state": "PARCIAL; calendário observado",
+        "reference_ids": [
+          "R18",
+          "R19",
+          "R02"
+        ],
+        "gap": "Calendário oficial/sessões e staleness",
+        "result": "Não há novo teste de calendário",
+        "queue": "EXPERIMENT_NEXT",
+        "action": "VALIDATE",
+        "economic_value": "UNKNOWN; no new B3 economic benchmark",
+        "historical_C_E_preserved": true,
+        "stage": {
+          "FOUND": true,
+          "STUDIED": true,
+          "IMPLEMENTED": false,
+          "EXECUTED": false,
+          "BENCHMARKED": false,
+          "ECONOMICALLY_TESTED": false
+        },
+        "decision": "EXPERIMENT_NEXT",
+        "local_blocker": null,
+        "score_delta": null
+      }
+    },
+    {
+      "id": "K05",
+      "name": "Validação de treino e labels por data",
+      "category": "validação",
+      "internal_state": "PARCIAL",
+      "technical": "C2",
+      "internal_evidence": "https://github.com/leonardosovienski/stocks-predictor/blob/80e69daa7d83b3b0f0e3384c53207ee0a9afd5b5/stocks_predictor/simulation.py#L326",
+      "references": [
+        "R11",
+        "R01",
+        "R57",
+        "R58"
+      ],
+      "action": "ADD",
+      "status": "CANDIDATE",
+      "mechanism": "Bloquear sobreposição de labels e fit de preprocessamento no teste.",
+      "prerequisites": "Painel sintético e intervalos de label; antes de ML econômico",
+      "profile": "ENABLER",
+      "comparison": "NOT_DIRECTLY_COMPARABLE para resultados econômicos; comparação funcional por contrato",
+      "evidence_origin": "LOCAL/EXTERNAL",
+      "evidence_scope": "ENGINEERING",
+      "result": "NOT_EVALUATED",
+      "benefit_measured": false,
+      "score_confidence": "MEDIUM/LOW por dimensão; ver score",
+      "b3_transferability": 4,
+      "b3_reason": "Contrato genérico transferível com adaptação e dados B3.",
+      "data_accessibility": "UNKNOWN",
+      "data_pit_quality": "UNKNOWN",
+      "edge_decay_risk": "N/A: finalidade de engenharia",
+      "competitor_prevalence": "UNKNOWN",
+      "competitive_gap": "UNKNOWN",
+      "differentiation_potential": "UNKNOWN",
+      "comparative_class": "UNCLASSIFIED",
+      "redundancy_penalty": 0,
+      "reuse": "Referência ou adapter estreito; integração não autorizada",
+      "score": {
+        "profile": "ENABLER",
+        "ratings_value": {
+          "scientific_value": [
+            4,
+            5
+          ],
+          "validation_value": [
+            4,
+            5
+          ],
+          "external_evidence": [
+            3,
+            4
+          ],
+          "architectural_fit": [
+            3,
+            4
+          ],
+          "incremental_capability": [
+            4,
+            5
+          ],
+          "domain_fit": [
+            4,
+            5
+          ],
+          "independent_references": [
+            2,
+            3
+          ]
+        },
+        "ratings_cost": {
+          "implementation_complexity": [
+            3,
+            4
+          ],
+          "methodological_risk": [
+            3,
+            4
+          ],
+          "dependency_risk": [
+            1,
+            2
+          ],
+          "maintenance_cost": [
+            2,
+            3
+          ],
+          "data_cost": [
+            1,
+            2
+          ],
+          "operational_cost": [
+            1,
+            2
+          ]
+        },
+        "rating_rationale": {
+          "scientific_value": "Erro/alvo científico concreto: Gap por linha/calendário não usa intervalo do label; gate explícito é lacuna metodológica material.",
+          "validation_value": "Benefício potencial de falsificar esse erro; evidência local restrita aos controles explicitamente listados.",
+          "external_evidence": "Referências R11,R01,R57,R58 sustentam método/contrato, não lucro nem eficácia de combinação.",
+          "architectural_fit": "Adapter de pesquisa separado e contratos existentes; acoplamento real não medido, intervalo cobre essa incerteza.",
+          "incremental_capability": "Comparação com estado interno PARCIAL: Bloquear sobreposição de labels e fit de preprocessamento no teste.",
+          "domain_fit": "Uso diagnóstico B3 descrito; domínio não ganha pontos por popularidade da biblioteca.",
+          "independent_references": "Linhagens/objetos distintos parcialmente inspecionados; wrappers/fontes CVM e sklearn compartilhadas não duplicam evidência.",
+          "implementation_complexity": "Escopo de implementação: Painel sintético e intervalos de label; antes de ML econômico; estimativa, sem horas medidas.",
+          "methodological_risk": "Extrapolação dos contratos e amostras revisadas: Gap por linha/calendário não usa intervalo do label; gate explícito é lacuna metodológica material.",
+          "dependency_risk": "Auxiliar stdlib quando possível; referências externas requerem host/versões/licença e não foram instaladas.",
+          "maintenance_cost": "Manter o contrato e mudanças de fonte/versão desta capacidade; estimativa ainda sem operação recorrente.",
+          "data_cost": "0..5 quando custo/cobertura não certificados; para fixtures sintéticas custo baixo, não inferir preço de produção.",
+          "operational_cost": "Execução em lote e armazenamento de recibos; sem infraestrutura live ou compra de dados prevista."
+        },
+        "VALUE_SCORE": [
+          73.0,
+          93.0
+        ],
+        "COST_RISK_SCORE": [
+          41.0,
+          61.0
+        ],
+        "PRIORITY_SCORE": [
+          62.8,
+          82.8
+        ],
+        "confidence": "MEDIUM na utilidade do contrato; LOW no custo/ganho incremental",
+        "weight_sensitivity": {
+          "0.6": [
+            59.4,
+            79.4
+          ],
+          "0.7": [
+            62.8,
+            82.8
+          ],
+          "0.8": [
+            66.2,
+            86.2
+          ]
+        },
+        "within_profile_sensitivity": "Variar individualmente cada peso ±20%, renormalizando; intervalos por dimensão têm incerteza de até1 ponto. Não ordenar diferenças pequenas.",
+        "dimension_weight_sensitivity_range": [
+          62.49,
+          83.08
+        ]
+      },
+      "competitor_context_reason": "UNKNOWN: amostra intencional de referências por capacidade; sem denominador de concorrentes diretos, não estimar prevalência/gap/diferenciação.",
+      "score_basis": "Gap por linha/calendário não usa intervalo do label; gate explícito é lacuna metodológica material.",
+      "closure": {
+        "our_state": "PARCIAL; corte cronológico, sem pipeline geral fit/transform",
+        "reference_ids": [
+          "R01",
+          "R11"
+        ],
+        "gap": "Estado ajustado por fold e disponibilidade",
+        "result": "100 linhas futuras não alteram parâmetros;6 checks",
+        "queue": "IMPLEMENT_NOW",
+        "action": "ADD",
+        "economic_value": "UNKNOWN; no new B3 economic benchmark",
+        "historical_C_E_preserved": true,
+        "stage": {
+          "FOUND": true,
+          "STUDIED": true,
+          "IMPLEMENTED": true,
+          "EXECUTED": true,
+          "BENCHMARKED": true,
+          "ECONOMICALLY_TESTED": false
+        },
+        "decision": "INTEGRATE_CANDIDATE",
+        "local_blocker": null,
+        "score_delta": {
+          "profile": "ENABLER",
+          "ratings_value": {
+            "scientific_value": [
+              4,
+              5
+            ],
+            "validation_value": [
+              4,
+              5
+            ],
+            "external_evidence": [
+              3,
+              4
+            ],
+            "architectural_fit": [
+              3,
+              4
+            ],
+            "incremental_capability": [
+              4,
+              5
+            ],
+            "domain_fit": [
+              4,
+              5
+            ],
+            "independent_references": [
+              2,
+              3
+            ]
+          },
+          "ratings_cost": {
+            "implementation_complexity": [
+              1,
+              2
+            ],
+            "methodological_risk": [
+              3,
+              4
+            ],
+            "dependency_risk": [
+              0,
+              1
+            ],
+            "maintenance_cost": [
+              2,
+              3
+            ],
+            "data_cost": [
+              0,
+              0
+            ],
+            "operational_cost": [
+              1,
+              2
+            ]
+          },
+          "rating_rationale": {
+            "scientific_value": "Erro/alvo científico concreto: Gap por linha/calendário não usa intervalo do label; gate explícito é lacuna metodológica material.",
+            "validation_value": "Benefício potencial de falsificar esse erro; evidência local restrita aos controles explicitamente listados.",
+            "external_evidence": "Referências R11,R01,R57,R58 sustentam método/contrato, não lucro nem eficácia de combinação.",
+            "architectural_fit": "Adapter de pesquisa separado e contratos existentes; acoplamento real não medido, intervalo cobre essa incerteza.",
+            "incremental_capability": "Comparação com estado interno PARCIAL: Bloquear sobreposição de labels e fit de preprocessamento no teste.",
+            "domain_fit": "Uso diagnóstico B3 descrito; domínio não ganha pontos por popularidade da biblioteca.",
+            "independent_references": "Linhagens/objetos distintos parcialmente inspecionados; wrappers/fontes CVM e sklearn compartilhadas não duplicam evidência.",
+            "implementation_complexity": "Prototype implemented and tested; production adapter work remains outside this narrow assessment",
+            "methodological_risk": "Extrapolação dos contratos e amostras revisadas: Gap por linha/calendário não usa intervalo do label; gate explícito é lacuna metodológica material.",
+            "dependency_risk": "New module uses stdlib; no imported external engine",
+            "maintenance_cost": "Manter o contrato e mudanças de fonte/versão desta capacidade; estimativa ainda sem operação recorrente.",
+            "data_cost": "Synthetic fixture; no inference about empirical data cost",
+            "operational_cost": "Execução em lote e armazenamento de recibos; sem infraestrutura live ou compra de dados prevista."
+          },
+          "VALUE_SCORE": [
+            73.0,
+            93.0
+          ],
+          "COST_RISK_SCORE": [
+            25.0,
+            42.0
+          ],
+          "PRIORITY_SCORE": [
+            68.5,
+            87.6
+          ],
+          "confidence": "MEDIUM na utilidade do contrato; LOW no custo/ganho incremental",
+          "weight_sensitivity": {
+            "0.6": [
+              67.0,
+              85.8
+            ],
+            "0.7": [
+              68.5,
+              87.6
+            ],
+            "0.8": [
+              70.0,
+              89.4
+            ]
+          },
+          "within_profile_sensitivity": "Variar individualmente cada peso ±20%, renormalizando; intervalos por dimensão têm incerteza de até1 ponto. Não ordenar diferenças pequenas.",
+          "scope": "narrow synthetic/engineering component only; not production or economic cost"
+        }
+      }
+    },
+    {
+      "id": "K06",
+      "name": "Inferência temporal e multiplicidade",
+      "category": "validação",
+      "internal_state": "PARCIAL",
+      "technical": "C1",
+      "internal_evidence": "https://github.com/leonardosovienski/stocks-predictor/blob/80e69daa7d83b3b0f0e3384c53207ee0a9afd5b5/stocks_predictor/economic_gate.py#L32",
+      "references": [
+        "R09",
+        "R57",
+        "R58"
+      ],
+      "action": "AUGMENT",
+      "status": "RESEARCH; preservar falha do controle",
+      "mechanism": "Quantificar incerteza com dependência e família de tentativas conhecida.",
+      "prerequisites": "Séries por data, família e denominador auditável",
+      "profile": "ENABLER",
+      "comparison": "NOT_DIRECTLY_COMPARABLE para resultados econômicos; comparação funcional por contrato",
+      "evidence_origin": "LOCAL/EXTERNAL",
+      "evidence_scope": "ENGINEERING",
+      "result": "INCONCLUSIVE calibração; inadequação iid sob dependência observada",
+      "benefit_measured": false,
+      "score_confidence": "MEDIUM/LOW por dimensão; ver score",
+      "b3_transferability": 4,
+      "b3_reason": "Contrato genérico transferível com adaptação e dados B3.",
+      "data_accessibility": "UNKNOWN",
+      "data_pit_quality": "UNKNOWN",
+      "edge_decay_risk": "N/A: finalidade de engenharia",
+      "competitor_prevalence": "UNKNOWN",
+      "competitive_gap": "UNKNOWN",
+      "differentiation_potential": "UNKNOWN",
+      "comparative_class": "UNCLASSIFIED",
+      "redundancy_penalty": 0,
+      "reuse": "Referência ou adapter estreito; integração não autorizada",
+      "score": {
+        "profile": "ENABLER",
+        "ratings_value": {
+          "scientific_value": [
+            4,
+            5
+          ],
+          "validation_value": [
+            4,
+            5
+          ],
+          "external_evidence": [
+            3,
+            4
+          ],
+          "architectural_fit": [
+            3,
+            4
+          ],
+          "incremental_capability": [
+            3,
+            4
+          ],
+          "domain_fit": [
+            4,
+            5
+          ],
+          "independent_references": [
+            2,
+            3
+          ]
+        },
+        "ratings_cost": {
+          "implementation_complexity": [
+            3,
+            4
+          ],
+          "methodological_risk": [
+            4,
+            5
+          ],
+          "dependency_risk": [
+            2,
+            3
+          ],
+          "maintenance_cost": [
+            2,
+            3
+          ],
+          "data_cost": [
+            1,
+            2
+          ],
+          "operational_cost": [
+            2,
+            3
+          ]
+        },
+        "rating_rationale": {
+          "scientific_value": "Erro/alvo científico concreto: IID subcobre no AR positivo; controle nominal falhou também. Bootstrap deve ser calibrado, sem escolher sementes favoráveis.",
+          "validation_value": "Benefício potencial de falsificar esse erro; evidência local restrita aos controles explicitamente listados.",
+          "external_evidence": "Referências R09,R57,R58 sustentam método/contrato, não lucro nem eficácia de combinação.",
+          "architectural_fit": "Adapter de pesquisa separado e contratos existentes; acoplamento real não medido, intervalo cobre essa incerteza.",
+          "incremental_capability": "Comparação com estado interno PARCIAL: Quantificar incerteza com dependência e família de tentativas conhecida.",
+          "domain_fit": "Uso diagnóstico B3 descrito; domínio não ganha pontos por popularidade da biblioteca.",
+          "independent_references": "Linhagens/objetos distintos parcialmente inspecionados; wrappers/fontes CVM e sklearn compartilhadas não duplicam evidência.",
+          "implementation_complexity": "Escopo de implementação: Séries por data, família e denominador auditável; estimativa, sem horas medidas.",
+          "methodological_risk": "Extrapolação dos contratos e amostras revisadas: IID subcobre no AR positivo; controle nominal falhou também. Bootstrap deve ser calibrado, sem escolher sementes favoráveis.",
+          "dependency_risk": "Auxiliar stdlib quando possível; referências externas requerem host/versões/licença e não foram instaladas.",
+          "maintenance_cost": "Manter o contrato e mudanças de fonte/versão desta capacidade; estimativa ainda sem operação recorrente.",
+          "data_cost": "0..5 quando custo/cobertura não certificados; para fixtures sintéticas custo baixo, não inferir preço de produção.",
+          "operational_cost": "Execução em lote e armazenamento de recibos; sem infraestrutura live ou compra de dados prevista."
+        },
+        "VALUE_SCORE": [
+          71.0,
+          91.0
+        ],
+        "COST_RISK_SCORE": [
+          50.0,
+          70.0
+        ],
+        "PRIORITY_SCORE": [
+          58.7,
+          78.7
+        ],
+        "confidence": "MEDIUM na utilidade do contrato; LOW no custo/ganho incremental",
+        "weight_sensitivity": {
+          "0.6": [
+            54.6,
+            74.6
+          ],
+          "0.7": [
+            58.7,
+            78.7
+          ],
+          "0.8": [
+            62.8,
+            82.8
+          ]
+        },
+        "within_profile_sensitivity": "Variar individualmente cada peso ±20%, renormalizando; intervalos por dimensão têm incerteza de até1 ponto. Não ordenar diferenças pequenas.",
+        "dimension_weight_sensitivity_range": [
+          58.3,
+          79.06
+        ]
+      },
+      "competitor_context_reason": "UNKNOWN: amostra intencional de referências por capacidade; sem denominador de concorrentes diretos, não estimar prevalência/gap/diferenciação.",
+      "score_basis": "IID subcobre no AR positivo; controle nominal falhou também. Bootstrap deve ser calibrado, sem escolher sementes favoráveis.",
+      "closure": {
+        "our_state": "PARCIAL; governança e diagnóstico UNC02",
+        "reference_ids": [
+          "R09",
+          "R57",
+          "R58"
+        ],
+        "gap": "Inferência apropriada ao experimento real",
+        "result": "IID inadequado; FAIL e diagnóstico preservados",
+        "queue": "KEEP_CURRENT",
+        "action": "KEEP",
+        "economic_value": "UNKNOWN; no new B3 economic benchmark",
+        "historical_C_E_preserved": true,
+        "stage": {
+          "FOUND": true,
+          "STUDIED": true,
+          "IMPLEMENTED": false,
+          "EXECUTED": false,
+          "BENCHMARKED": false,
+          "ECONOMICALLY_TESTED": false
+        },
+        "decision": "KEEP_CURRENT",
+        "local_blocker": null,
+        "score_delta": null
+      }
+    },
+    {
+      "id": "K07",
+      "name": "Diagnóstico de ranking e atrito",
+      "category": "ranking",
+      "internal_state": "PARCIAL",
+      "technical": "C1",
+      "internal_evidence": "https://github.com/leonardosovienski/stocks-predictor/blob/80e69daa7d83b3b0f0e3384c53207ee0a9afd5b5/stocks_predictor/portfolio.py#L76",
+      "references": [
+        "R16",
+        "R01",
+        "R56"
+      ],
+      "action": "AUGMENT",
+      "status": "CANDIDATE",
+      "mechanism": "Separar IC, cobertura, turnover e resultado líquido.",
+      "prerequisites": "Labels completos e universos registrados; teste sintético primeiro",
+      "profile": "ENABLER",
+      "comparison": "NOT_DIRECTLY_COMPARABLE para resultados econômicos; comparação funcional por contrato",
+      "evidence_origin": "LOCAL/EXTERNAL",
+      "evidence_scope": "ENGINEERING",
+      "result": "NOT_EVALUATED",
+      "benefit_measured": false,
+      "score_confidence": "MEDIUM/LOW por dimensão; ver score",
+      "b3_transferability": 4,
+      "b3_reason": "Contrato genérico transferível com adaptação e dados B3.",
+      "data_accessibility": "UNKNOWN",
+      "data_pit_quality": "UNKNOWN",
+      "edge_decay_risk": "N/A: finalidade de engenharia",
+      "competitor_prevalence": "UNKNOWN",
+      "competitive_gap": "UNKNOWN",
+      "differentiation_potential": "UNKNOWN",
+      "comparative_class": "UNCLASSIFIED",
+      "redundancy_penalty": 0,
+      "reuse": "Referência ou adapter estreito; integração não autorizada",
+      "score": {
+        "profile": "ENABLER",
+        "ratings_value": {
+          "scientific_value": [
+            3,
+            4
+          ],
+          "validation_value": [
+            3,
+            4
+          ],
+          "external_evidence": [
+            3,
+            4
+          ],
+          "architectural_fit": [
+            3,
+            4
+          ],
+          "incremental_capability": [
+            3,
+            4
+          ],
+          "domain_fit": [
+            4,
+            5
+          ],
+          "independent_references": [
+            1,
+            2
+          ]
+        },
+        "ratings_cost": {
+          "implementation_complexity": [
+            2,
+            3
+          ],
+          "methodological_risk": [
+            2,
+            3
+          ],
+          "dependency_risk": [
+            2,
+            3
+          ],
+          "maintenance_cost": [
+            2,
+            3
+          ],
+          "data_cost": [
+            1,
+            2
+          ],
+          "operational_cost": [
+            1,
+            2
+          ]
+        },
+        "rating_rationale": {
+          "scientific_value": "Erro/alvo científico concreto: IC e custos distinguem ordenação de retorno; controle perfeito deu perda sintética.",
+          "validation_value": "Benefício potencial de falsificar esse erro; evidência local restrita aos controles explicitamente listados.",
+          "external_evidence": "Referências R16,R01,R56 sustentam método/contrato, não lucro nem eficácia de combinação.",
+          "architectural_fit": "Adapter de pesquisa separado e contratos existentes; acoplamento real não medido, intervalo cobre essa incerteza.",
+          "incremental_capability": "Comparação com estado interno PARCIAL: Separar IC, cobertura, turnover e resultado líquido.",
+          "domain_fit": "Uso diagnóstico B3 descrito; domínio não ganha pontos por popularidade da biblioteca.",
+          "independent_references": "Linhagens/objetos distintos parcialmente inspecionados; wrappers/fontes CVM e sklearn compartilhadas não duplicam evidência.",
+          "implementation_complexity": "Escopo de implementação: Labels completos e universos registrados; teste sintético primeiro; estimativa, sem horas medidas.",
+          "methodological_risk": "Extrapolação dos contratos e amostras revisadas: IC e custos distinguem ordenação de retorno; controle perfeito deu perda sintética.",
+          "dependency_risk": "Auxiliar stdlib quando possível; referências externas requerem host/versões/licença e não foram instaladas.",
+          "maintenance_cost": "Manter o contrato e mudanças de fonte/versão desta capacidade; estimativa ainda sem operação recorrente.",
+          "data_cost": "0..5 quando custo/cobertura não certificados; para fixtures sintéticas custo baixo, não inferir preço de produção.",
+          "operational_cost": "Execução em lote e armazenamento de recibos; sem infraestrutura live ou compra de dados prevista."
+        },
+        "VALUE_SCORE": [
+          60.0,
+          80.0
+        ],
+        "COST_RISK_SCORE": [
+          35.0,
+          55.0
+        ],
+        "PRIORITY_SCORE": [
+          55.5,
+          75.5
+        ],
+        "confidence": "MEDIUM na utilidade do contrato; LOW no custo/ganho incremental",
+        "weight_sensitivity": {
+          "0.6": [
+            54.0,
+            74.0
+          ],
+          "0.7": [
+            55.5,
+            75.5
+          ],
+          "0.8": [
+            57.0,
+            77.0
+          ]
+        },
+        "within_profile_sensitivity": "Variar individualmente cada peso ±20%, renormalizando; intervalos por dimensão têm incerteza de até1 ponto. Não ordenar diferenças pequenas.",
+        "dimension_weight_sensitivity_range": [
+          55.21,
+          75.78
+        ]
+      },
+      "competitor_context_reason": "UNKNOWN: amostra intencional de referências por capacidade; sem denominador de concorrentes diretos, não estimar prevalência/gap/diferenciação.",
+      "score_basis": "IC e custos distinguem ordenação de retorno; controle perfeito deu perda sintética.",
+      "closure": {
+        "our_state": "PARCIAL; seleção existe, painel IC/quantis incremental",
+        "reference_ids": [
+          "R16",
+          "R01"
+        ],
+        "gap": "IC por data, empates e cobertura de labels",
+        "result": "IC agregado+0,524 versus por data−1;120 permutações",
+        "queue": "IMPLEMENT_NOW",
+        "action": "AUGMENT",
+        "economic_value": "UNKNOWN; no new B3 economic benchmark",
+        "historical_C_E_preserved": true,
+        "stage": {
+          "FOUND": true,
+          "STUDIED": true,
+          "IMPLEMENTED": true,
+          "EXECUTED": true,
+          "BENCHMARKED": true,
+          "ECONOMICALLY_TESTED": false
+        },
+        "decision": "INTEGRATE_CANDIDATE",
+        "local_blocker": null,
+        "score_delta": {
+          "profile": "ENABLER",
+          "ratings_value": {
+            "scientific_value": [
+              3,
+              4
+            ],
+            "validation_value": [
+              3,
+              4
+            ],
+            "external_evidence": [
+              3,
+              4
+            ],
+            "architectural_fit": [
+              3,
+              4
+            ],
+            "incremental_capability": [
+              3,
+              4
+            ],
+            "domain_fit": [
+              4,
+              5
+            ],
+            "independent_references": [
+              1,
+              2
+            ]
+          },
+          "ratings_cost": {
+            "implementation_complexity": [
+              1,
+              2
+            ],
+            "methodological_risk": [
+              2,
+              3
+            ],
+            "dependency_risk": [
+              0,
+              1
+            ],
+            "maintenance_cost": [
+              2,
+              3
+            ],
+            "data_cost": [
+              0,
+              0
+            ],
+            "operational_cost": [
+              1,
+              2
+            ]
+          },
+          "rating_rationale": {
+            "scientific_value": "Erro/alvo científico concreto: IC e custos distinguem ordenação de retorno; controle perfeito deu perda sintética.",
+            "validation_value": "Benefício potencial de falsificar esse erro; evidência local restrita aos controles explicitamente listados.",
+            "external_evidence": "Referências R16,R01,R56 sustentam método/contrato, não lucro nem eficácia de combinação.",
+            "architectural_fit": "Adapter de pesquisa separado e contratos existentes; acoplamento real não medido, intervalo cobre essa incerteza.",
+            "incremental_capability": "Comparação com estado interno PARCIAL: Separar IC, cobertura, turnover e resultado líquido.",
+            "domain_fit": "Uso diagnóstico B3 descrito; domínio não ganha pontos por popularidade da biblioteca.",
+            "independent_references": "Linhagens/objetos distintos parcialmente inspecionados; wrappers/fontes CVM e sklearn compartilhadas não duplicam evidência.",
+            "implementation_complexity": "Prototype implemented and tested; production adapter work remains outside this narrow assessment",
+            "methodological_risk": "Extrapolação dos contratos e amostras revisadas: IC e custos distinguem ordenação de retorno; controle perfeito deu perda sintética.",
+            "dependency_risk": "New module uses stdlib; no imported external engine",
+            "maintenance_cost": "Manter o contrato e mudanças de fonte/versão desta capacidade; estimativa ainda sem operação recorrente.",
+            "data_cost": "Synthetic fixture; no inference about empirical data cost",
+            "operational_cost": "Execução em lote e armazenamento de recibos; sem infraestrutura live ou compra de dados prevista."
+          },
+          "VALUE_SCORE": [
+            60.0,
+            80.0
+          ],
+          "COST_RISK_SCORE": [
+            21.0,
+            38.0
+          ],
+          "PRIORITY_SCORE": [
+            60.6,
+            79.7
+          ],
+          "confidence": "MEDIUM na utilidade do contrato; LOW no custo/ganho incremental",
+          "weight_sensitivity": {
+            "0.6": [
+              60.8,
+              79.6
+            ],
+            "0.7": [
+              60.6,
+              79.7
+            ],
+            "0.8": [
+              60.4,
+              79.8
+            ]
+          },
+          "within_profile_sensitivity": "Variar individualmente cada peso ±20%, renormalizando; intervalos por dimensão têm incerteza de até1 ponto. Não ordenar diferenças pequenas.",
+          "scope": "narrow synthetic/engineering component only; not production or economic cost"
+        }
+      }
+    },
+    {
+      "id": "K08",
+      "name": "Teste diferencial de contabilidade",
+      "category": "execução",
+      "internal_state": "IMPLEMENTADO",
+      "technical": "C3",
+      "internal_evidence": "https://github.com/leonardosovienski/stocks-predictor/blob/80e69daa7d83b3b0f0e3384c53207ee0a9afd5b5/stocks_predictor/simulation.py#L89",
+      "references": [
+        "R02",
+        "R03",
+        "R05"
+      ],
+      "action": "VALIDATE",
+      "status": "CANDIDATE",
+      "mechanism": "Localizar divergências em caixa, quantidade, gaps e ações corporativas.",
+      "prerequisites": "Contrato comum e engine externo em Linux permitido",
+      "profile": "ENABLER",
+      "comparison": "NOT_DIRECTLY_COMPARABLE para resultados econômicos; comparação funcional por contrato",
+      "evidence_origin": "LOCAL/EXTERNAL",
+      "evidence_scope": "ENGINEERING",
+      "result": "NOT_EVALUATED",
+      "benefit_measured": false,
+      "score_confidence": "MEDIUM/LOW por dimensão; ver score",
+      "b3_transferability": 4,
+      "b3_reason": "Contrato genérico transferível com adaptação e dados B3.",
+      "data_accessibility": "UNKNOWN",
+      "data_pit_quality": "UNKNOWN",
+      "edge_decay_risk": "N/A: finalidade de engenharia",
+      "competitor_prevalence": "UNKNOWN",
+      "competitive_gap": "UNKNOWN",
+      "differentiation_potential": "UNKNOWN",
+      "comparative_class": "UNCLASSIFIED",
+      "redundancy_penalty": 0,
+      "reuse": "Referência ou adapter estreito; integração não autorizada",
+      "score": {
+        "profile": "ENABLER",
+        "ratings_value": {
+          "scientific_value": [
+            3,
+            4
+          ],
+          "validation_value": [
+            4,
+            5
+          ],
+          "external_evidence": [
+            3,
+            4
+          ],
+          "architectural_fit": [
+            2,
+            3
+          ],
+          "incremental_capability": [
+            2,
+            3
+          ],
+          "domain_fit": [
+            4,
+            5
+          ],
+          "independent_references": [
+            2,
+            3
+          ]
+        },
+        "ratings_cost": {
+          "implementation_complexity": [
+            3,
+            4
+          ],
+          "methodological_risk": [
+            2,
+            3
+          ],
+          "dependency_risk": [
+            3,
+            4
+          ],
+          "maintenance_cost": [
+            3,
+            4
+          ],
+          "data_cost": [
+            1,
+            2
+          ],
+          "operational_cost": [
+            2,
+            3
+          ]
+        },
+        "rating_rationale": {
+          "scientific_value": "Erro/alvo científico concreto: 8 casos locais; segundo engine pode revelar convenções, mas ainda não foi executado.",
+          "validation_value": "Benefício potencial de falsificar esse erro; evidência local restrita aos controles explicitamente listados.",
+          "external_evidence": "Referências R02,R03,R05 sustentam método/contrato, não lucro nem eficácia de combinação.",
+          "architectural_fit": "Adapter de pesquisa separado e contratos existentes; acoplamento real não medido, intervalo cobre essa incerteza.",
+          "incremental_capability": "Comparação com estado interno IMPLEMENTADO: Localizar divergências em caixa, quantidade, gaps e ações corporativas.",
+          "domain_fit": "Uso diagnóstico B3 descrito; domínio não ganha pontos por popularidade da biblioteca.",
+          "independent_references": "Linhagens/objetos distintos parcialmente inspecionados; wrappers/fontes CVM e sklearn compartilhadas não duplicam evidência.",
+          "implementation_complexity": "Escopo de implementação: Contrato comum e engine externo em Linux permitido; estimativa, sem horas medidas.",
+          "methodological_risk": "Extrapolação dos contratos e amostras revisadas: 8 casos locais; segundo engine pode revelar convenções, mas ainda não foi executado.",
+          "dependency_risk": "Auxiliar stdlib quando possível; referências externas requerem host/versões/licença e não foram instaladas.",
+          "maintenance_cost": "Manter o contrato e mudanças de fonte/versão desta capacidade; estimativa ainda sem operação recorrente.",
+          "data_cost": "0..5 quando custo/cobertura não certificados; para fixtures sintéticas custo baixo, não inferir preço de produção.",
+          "operational_cost": "Execução em lote e armazenamento de recibos; sem infraestrutura live ou compra de dados prevista."
+        },
+        "VALUE_SCORE": [
+          61.0,
+          81.0
+        ],
+        "COST_RISK_SCORE": [
+          48.0,
+          68.0
+        ],
+        "PRIORITY_SCORE": [
+          52.3,
+          72.3
+        ],
+        "confidence": "MEDIUM na utilidade do contrato; LOW no custo/ganho incremental",
+        "weight_sensitivity": {
+          "0.6": [
+            49.4,
+            69.4
+          ],
+          "0.7": [
+            52.3,
+            72.3
+          ],
+          "0.8": [
+            55.2,
+            75.2
+          ]
+        },
+        "within_profile_sensitivity": "Variar individualmente cada peso ±20%, renormalizando; intervalos por dimensão têm incerteza de até1 ponto. Não ordenar diferenças pequenas.",
+        "dimension_weight_sensitivity_range": [
+          51.75,
+          72.81
+        ]
+      },
+      "competitor_context_reason": "UNKNOWN: amostra intencional de referências por capacidade; sem denominador de concorrentes diretos, não estimar prevalência/gap/diferenciação.",
+      "score_basis": "8 casos locais; segundo engine pode revelar convenções, mas ainda não foi executado.",
+      "closure": {
+        "our_state": "CONTROLES LOCAIS; engine independente pendente",
+        "reference_ids": [
+          "R05",
+          "R02",
+          "R03"
+        ],
+        "gap": "Adapter e ambiente independente",
+        "result": "40 custos locais reconciliados; engine externo não rodou",
+        "queue": "BLOCKED",
+        "action": "VALIDATE",
+        "economic_value": "UNKNOWN; no new B3 economic benchmark",
+        "historical_C_E_preserved": true,
+        "stage": {
+          "FOUND": true,
+          "STUDIED": true,
+          "IMPLEMENTED": false,
+          "EXECUTED": false,
+          "BENCHMARKED": false,
+          "ECONOMICALLY_TESTED": false
+        },
+        "decision": "BLOCKED",
+        "local_blocker": "Authorized Linux+external adapter+environment lock",
+        "score_delta": null
+      }
+    },
+    {
+      "id": "K09",
+      "name": "Covariância e risco de cauda",
+      "category": "risco",
+      "internal_state": "DESCONHECIDO",
+      "technical": "C0",
+      "internal_evidence": "https://github.com/leonardosovienski/stocks-predictor/blob/80e69daa7d83b3b0f0e3384c53207ee0a9afd5b5/stocks_predictor/portfolio.py#L12",
+      "references": [
+        "R07",
+        "R08",
+        "R17"
+      ],
+      "action": "RESEARCH",
+      "status": "CANDIDATE",
+      "mechanism": "Adicionar shrinkage e ES verificáveis antes de otimizar pesos.",
+      "prerequisites": "Retornos admissíveis e convenções de cauda; solver não instalado",
+      "profile": "ENABLER",
+      "comparison": "NOT_DIRECTLY_COMPARABLE para resultados econômicos; comparação funcional por contrato",
+      "evidence_origin": "LOCAL/EXTERNAL",
+      "evidence_scope": "ENGINEERING",
+      "result": "NOT_EVALUATED",
+      "benefit_measured": false,
+      "score_confidence": "MEDIUM/LOW por dimensão; ver score",
+      "b3_transferability": 4,
+      "b3_reason": "Contrato genérico transferível com adaptação e dados B3.",
+      "data_accessibility": "UNKNOWN",
+      "data_pit_quality": "UNKNOWN",
+      "edge_decay_risk": "N/A: finalidade de engenharia",
+      "competitor_prevalence": "UNKNOWN",
+      "competitive_gap": "UNKNOWN",
+      "differentiation_potential": "UNKNOWN",
+      "comparative_class": "UNCLASSIFIED",
+      "redundancy_penalty": 0,
+      "reuse": "Referência ou adapter estreito; integração não autorizada",
+      "score": {
+        "profile": "ENABLER",
+        "ratings_value": {
+          "scientific_value": [
+            3,
+            4
+          ],
+          "validation_value": [
+            3,
+            4
+          ],
+          "external_evidence": [
+            3,
+            4
+          ],
+          "architectural_fit": [
+            2,
+            3
+          ],
+          "incremental_capability": [
+            3,
+            4
+          ],
+          "domain_fit": [
+            3,
+            4
+          ],
+          "independent_references": [
+            1,
+            2
+          ]
+        },
+        "ratings_cost": {
+          "implementation_complexity": [
+            3,
+            4
+          ],
+          "methodological_risk": [
+            3,
+            4
+          ],
+          "dependency_risk": [
+            3,
+            4
+          ],
+          "maintenance_cost": [
+            3,
+            4
+          ],
+          "data_cost": [
+            1,
+            2
+          ],
+          "operational_cost": [
+            2,
+            3
+          ]
+        },
+        "rating_rationale": {
+          "scientific_value": "Erro/alvo científico concreto: Shrinkage/CVaR têm implementações específicas; PSD singular e solver precisam de controles.",
+          "validation_value": "Benefício potencial de falsificar esse erro; evidência local restrita aos controles explicitamente listados.",
+          "external_evidence": "Referências R07,R08,R17 sustentam método/contrato, não lucro nem eficácia de combinação.",
+          "architectural_fit": "Adapter de pesquisa separado e contratos existentes; acoplamento real não medido, intervalo cobre essa incerteza.",
+          "incremental_capability": "Comparação com estado interno DESCONHECIDO: Adicionar shrinkage e ES verificáveis antes de otimizar pesos.",
+          "domain_fit": "Uso diagnóstico B3 descrito; domínio não ganha pontos por popularidade da biblioteca.",
+          "independent_references": "Linhagens/objetos distintos parcialmente inspecionados; wrappers/fontes CVM e sklearn compartilhadas não duplicam evidência.",
+          "implementation_complexity": "Escopo de implementação: Retornos admissíveis e convenções de cauda; solver não instalado; estimativa, sem horas medidas.",
+          "methodological_risk": "Extrapolação dos contratos e amostras revisadas: Shrinkage/CVaR têm implementações específicas; PSD singular e solver precisam de controles.",
+          "dependency_risk": "Auxiliar stdlib quando possível; referências externas requerem host/versões/licença e não foram instaladas.",
+          "maintenance_cost": "Manter o contrato e mudanças de fonte/versão desta capacidade; estimativa ainda sem operação recorrente.",
+          "data_cost": "0..5 quando custo/cobertura não certificados; para fixtures sintéticas custo baixo, não inferir preço de produção.",
+          "operational_cost": "Execução em lote e armazenamento de recibos; sem infraestrutura live ou compra de dados prevista."
+        },
+        "VALUE_SCORE": [
+          56.0,
+          76.0
+        ],
+        "COST_RISK_SCORE": [
+          52.0,
+          72.0
+        ],
+        "PRIORITY_SCORE": [
+          47.6,
+          67.6
+        ],
+        "confidence": "MEDIUM na utilidade do contrato; LOW no custo/ganho incremental",
+        "weight_sensitivity": {
+          "0.6": [
+            44.8,
+            64.8
+          ],
+          "0.7": [
+            47.6,
+            67.6
+          ],
+          "0.8": [
+            50.4,
+            70.4
+          ]
+        },
+        "within_profile_sensitivity": "Variar individualmente cada peso ±20%, renormalizando; intervalos por dimensão têm incerteza de até1 ponto. Não ordenar diferenças pequenas.",
+        "dimension_weight_sensitivity_range": [
+          47.35,
+          67.85
+        ]
+      },
+      "competitor_context_reason": "UNKNOWN: amostra intencional de referências por capacidade; sem denominador de concorrentes diretos, não estimar prevalência/gap/diferenciação.",
+      "score_basis": "Shrinkage/CVaR têm implementações específicas; PSD singular e solver precisam de controles.",
+      "closure": {
+        "our_state": "Pesos iguais/inverso vol/custos; sem budget explícito no seletor",
+        "reference_ids": [
+          "R61",
+          "R07",
+          "R08"
+        ],
+        "gap": "Restrições de giro/exposição/capacidade",
+        "result": "Custo sintético−89,49%; perde na reversão",
+        "queue": "EXPERIMENT_NEXT",
+        "action": "AUGMENT",
+        "economic_value": "UNKNOWN; no new B3 economic benchmark",
+        "historical_C_E_preserved": true,
+        "stage": {
+          "FOUND": true,
+          "STUDIED": true,
+          "IMPLEMENTED": true,
+          "EXECUTED": true,
+          "BENCHMARKED": true,
+          "ECONOMICALLY_TESTED": false
+        },
+        "decision": "KEEP_EXPERIMENTAL",
+        "local_blocker": null,
+        "score_delta": {
+          "profile": "ENABLER",
+          "ratings_value": {
+            "scientific_value": [
+              3,
+              4
+            ],
+            "validation_value": [
+              3,
+              4
+            ],
+            "external_evidence": [
+              3,
+              4
+            ],
+            "architectural_fit": [
+              2,
+              3
+            ],
+            "incremental_capability": [
+              3,
+              4
+            ],
+            "domain_fit": [
+              3,
+              4
+            ],
+            "independent_references": [
+              1,
+              2
+            ]
+          },
+          "ratings_cost": {
+            "implementation_complexity": [
+              1,
+              2
+            ],
+            "methodological_risk": [
+              3,
+              4
+            ],
+            "dependency_risk": [
+              0,
+              1
+            ],
+            "maintenance_cost": [
+              3,
+              4
+            ],
+            "data_cost": [
+              0,
+              0
+            ],
+            "operational_cost": [
+              2,
+              3
+            ]
+          },
+          "rating_rationale": {
+            "scientific_value": "Erro/alvo científico concreto: Shrinkage/CVaR têm implementações específicas; PSD singular e solver precisam de controles.",
+            "validation_value": "Benefício potencial de falsificar esse erro; evidência local restrita aos controles explicitamente listados.",
+            "external_evidence": "Referências R07,R08,R17 sustentam método/contrato, não lucro nem eficácia de combinação.",
+            "architectural_fit": "Adapter de pesquisa separado e contratos existentes; acoplamento real não medido, intervalo cobre essa incerteza.",
+            "incremental_capability": "Comparação com estado interno DESCONHECIDO: Adicionar shrinkage e ES verificáveis antes de otimizar pesos.",
+            "domain_fit": "Uso diagnóstico B3 descrito; domínio não ganha pontos por popularidade da biblioteca.",
+            "independent_references": "Linhagens/objetos distintos parcialmente inspecionados; wrappers/fontes CVM e sklearn compartilhadas não duplicam evidência.",
+            "implementation_complexity": "Prototype implemented and tested; production adapter work remains outside this narrow assessment",
+            "methodological_risk": "Extrapolação dos contratos e amostras revisadas: Shrinkage/CVaR têm implementações específicas; PSD singular e solver precisam de controles.",
+            "dependency_risk": "New module uses stdlib; no imported external engine",
+            "maintenance_cost": "Manter o contrato e mudanças de fonte/versão desta capacidade; estimativa ainda sem operação recorrente.",
+            "data_cost": "Synthetic fixture; no inference about empirical data cost",
+            "operational_cost": "Execução em lote e armazenamento de recibos; sem infraestrutura live ou compra de dados prevista."
+          },
+          "VALUE_SCORE": [
+            56.0,
+            76.0
+          ],
+          "COST_RISK_SCORE": [
+            30.0,
+            47.0
+          ],
+          "PRIORITY_SCORE": [
+            55.1,
+            74.2
+          ],
+          "confidence": "MEDIUM na utilidade do contrato; LOW no custo/ganho incremental",
+          "weight_sensitivity": {
+            "0.6": [
+              54.8,
+              73.6
+            ],
+            "0.7": [
+              55.1,
+              74.2
+            ],
+            "0.8": [
+              55.4,
+              74.8
+            ]
+          },
+          "within_profile_sensitivity": "Variar individualmente cada peso ±20%, renormalizando; intervalos por dimensão têm incerteza de até1 ponto. Não ordenar diferenças pequenas.",
+          "scope": "narrow synthetic/engineering component only; not production or economic cost"
+        }
+      }
+    },
+    {
+      "id": "K10",
+      "name": "Fatores brasileiros como controle",
+      "category": "análises",
+      "internal_state": "DESCONHECIDO",
+      "technical": "C0",
+      "internal_evidence": "https://github.com/leonardosovienski/stocks-predictor/blob/80e69daa7d83b3b0f0e3384c53207ee0a9afd5b5/stocks_predictor/factor.py#L33",
+      "references": [
+        "R56",
+        "R10",
+        "R59"
+      ],
+      "action": "RESEARCH",
+      "status": "CANDIDATE",
+      "mechanism": "Distinguir exposição comum de incremento específico.",
+      "prerequisites": "Fatores datados e retorno líquido comparável",
+      "profile": "ENABLER",
+      "comparison": "NOT_DIRECTLY_COMPARABLE para resultados econômicos; comparação funcional por contrato",
+      "evidence_origin": "LOCAL/EXTERNAL",
+      "evidence_scope": "ENGINEERING",
+      "result": "NOT_EVALUATED",
+      "benefit_measured": false,
+      "score_confidence": "MEDIUM/LOW por dimensão; ver score",
+      "b3_transferability": 4,
+      "b3_reason": "Contrato genérico transferível com adaptação e dados B3.",
+      "data_accessibility": "UNKNOWN",
+      "data_pit_quality": "UNKNOWN",
+      "edge_decay_risk": "N/A: finalidade de engenharia",
+      "competitor_prevalence": "UNKNOWN",
+      "competitive_gap": "UNKNOWN",
+      "differentiation_potential": "UNKNOWN",
+      "comparative_class": "UNCLASSIFIED",
+      "redundancy_penalty": 0,
+      "reuse": "Referência ou adapter estreito; integração não autorizada",
+      "score": {
+        "profile": "ENABLER",
+        "ratings_value": {
+          "scientific_value": [
+            3,
+            4
+          ],
+          "validation_value": [
+            3,
+            4
+          ],
+          "external_evidence": [
+            2,
+            3
+          ],
+          "architectural_fit": [
+            3,
+            4
+          ],
+          "incremental_capability": [
+            3,
+            4
+          ],
+          "domain_fit": [
+            4,
+            5
+          ],
+          "independent_references": [
+            1,
+            2
+          ]
+        },
+        "ratings_cost": {
+          "implementation_complexity": [
+            2,
+            3
+          ],
+          "methodological_risk": [
+            3,
+            4
+          ],
+          "dependency_risk": [
+            1,
+            2
+          ],
+          "maintenance_cost": [
+            2,
+            3
+          ],
+          "data_cost": [
+            0,
+            5
+          ],
+          "operational_cost": [
+            1,
+            2
+          ]
+        },
+        "rating_rationale": {
+          "scientific_value": "Erro/alvo científico concreto: NEFIN permite decompor fatores B3; fonte histórica agregada não é carteira pessoal nem vintage do constituinte.",
+          "validation_value": "Benefício potencial de falsificar esse erro; evidência local restrita aos controles explicitamente listados.",
+          "external_evidence": "Referências R56,R10,R59 sustentam método/contrato, não lucro nem eficácia de combinação.",
+          "architectural_fit": "Adapter de pesquisa separado e contratos existentes; acoplamento real não medido, intervalo cobre essa incerteza.",
+          "incremental_capability": "Comparação com estado interno DESCONHECIDO: Distinguir exposição comum de incremento específico.",
+          "domain_fit": "Uso diagnóstico B3 descrito; domínio não ganha pontos por popularidade da biblioteca.",
+          "independent_references": "Linhagens/objetos distintos parcialmente inspecionados; wrappers/fontes CVM e sklearn compartilhadas não duplicam evidência.",
+          "implementation_complexity": "Escopo de implementação: Fatores datados e retorno líquido comparável; estimativa, sem horas medidas.",
+          "methodological_risk": "Extrapolação dos contratos e amostras revisadas: NEFIN permite decompor fatores B3; fonte histórica agregada não é carteira pessoal nem vintage do constituinte.",
+          "dependency_risk": "Auxiliar stdlib quando possível; referências externas requerem host/versões/licença e não foram instaladas.",
+          "maintenance_cost": "Manter o contrato e mudanças de fonte/versão desta capacidade; estimativa ainda sem operação recorrente.",
+          "data_cost": "0..5 quando custo/cobertura não certificados; para fixtures sintéticas custo baixo, não inferir preço de produção.",
+          "operational_cost": "Execução em lote e armazenamento de recibos; sem infraestrutura live ou compra de dados prevista."
+        },
+        "VALUE_SCORE": [
+          57.0,
+          77.0
+        ],
+        "COST_RISK_SCORE": [
+          33.0,
+          65.0
+        ],
+        "PRIORITY_SCORE": [
+          50.4,
+          74.0
+        ],
+        "confidence": "MEDIUM na utilidade do contrato; LOW no custo/ganho incremental",
+        "weight_sensitivity": {
+          "0.6": [
+            48.2,
+            73.0
+          ],
+          "0.7": [
+            50.4,
+            74.0
+          ],
+          "0.8": [
+            52.6,
+            75.0
+          ]
+        },
+        "within_profile_sensitivity": "Variar individualmente cada peso ±20%, renormalizando; intervalos por dimensão têm incerteza de até1 ponto. Não ordenar diferenças pequenas.",
+        "dimension_weight_sensitivity_range": [
+          50.05,
+          74.37
+        ]
+      },
+      "competitor_context_reason": "UNKNOWN: amostra intencional de referências por capacidade; sem denominador de concorrentes diretos, não estimar prevalência/gap/diferenciação.",
+      "score_basis": "NEFIN permite decompor fatores B3; fonte histórica agregada não é carteira pessoal nem vintage do constituinte.",
+      "closure": {
+        "our_state": "Controle sintético de fator já existente",
+        "reference_ids": [
+          "R56",
+          "R10"
+        ],
+        "gap": "Fatores brasileiros datados no painel",
+        "result": "X04 prévio preservado; sem retorno real novo",
+        "queue": "EXPERIMENT_NEXT",
+        "action": "AUGMENT",
+        "economic_value": "UNKNOWN; no new B3 economic benchmark",
+        "historical_C_E_preserved": true,
+        "stage": {
+          "FOUND": true,
+          "STUDIED": true,
+          "IMPLEMENTED": false,
+          "EXECUTED": false,
+          "BENCHMARKED": false,
+          "ECONOMICALLY_TESTED": false
+        },
+        "decision": "EXPERIMENT_NEXT",
+        "local_blocker": null,
+        "score_delta": null
+      }
+    },
+    {
+      "id": "K11",
+      "name": "Ranking relativo versus forecast",
+      "category": "modelos",
+      "internal_state": "APENAS_DOCUMENTADO",
+      "technical": "C0",
+      "internal_evidence": "https://github.com/leonardosovienski/stocks-predictor/blob/80e69daa7d83b3b0f0e3384c53207ee0a9afd5b5/docs/DESIGN.md#L1",
+      "references": [
+        "R12",
+        "R13",
+        "R14",
+        "R11",
+        "R01"
+      ],
+      "action": "RESEARCH",
+      "status": "BLOCKED_DATA",
+      "mechanism": "Testar se objetivo relativo melhora seleção após custos, com informação idêntica.",
+      "prerequisites": "K01 K02 K03 K05 K07; protocolo materialmente novo",
+      "profile": "ECONOMIC",
+      "comparison": "NOT_DIRECTLY_COMPARABLE para resultados econômicos; comparação funcional por contrato",
+      "evidence_origin": "LOCAL/EXTERNAL",
+      "evidence_scope": "ECONOMIC",
+      "result": "NOT_EVALUATED",
+      "benefit_measured": false,
+      "score_confidence": "LOW",
+      "b3_transferability": 2,
+      "b3_reason": "Eficácia líquida local não testada.",
+      "data_accessibility": "UNKNOWN",
+      "data_pit_quality": "UNKNOWN",
+      "edge_decay_risk": "UNKNOWN",
+      "competitor_prevalence": "UNKNOWN",
+      "competitive_gap": "UNKNOWN",
+      "differentiation_potential": "UNKNOWN",
+      "comparative_class": "UNCLASSIFIED",
+      "redundancy_penalty": 0,
+      "reuse": "Referência ou adapter estreito; integração não autorizada",
+      "score": {
+        "profile": "ECONOMIC",
+        "VALUE_SCORE": null,
+        "COST_RISK_SCORE": null,
+        "PRIORITY_SCORE": null,
+        "reason": "Valor econômico incremental, transferência e decaimento não medidos em painel B3 admissível. Sem número até dados/protocolo; não substituir UNKNOWN por zero."
+      },
+      "competitor_context_reason": "UNKNOWN: amostra intencional de referências por capacidade; sem denominador de concorrentes diretos, não estimar prevalência/gap/diferenciação.",
+      "closure": {
+        "our_state": "Pergunta econômica aberta",
+        "reference_ids": [
+          "R01",
+          "R12",
+          "R13"
+        ],
+        "gap": "Confronto comum forecasting/ranking",
+        "result": "X05 não executado; sem vencedor",
+        "queue": "BLOCKED",
+        "action": "RESEARCH",
+        "economic_value": "UNKNOWN; no new B3 economic benchmark",
+        "historical_C_E_preserved": true,
+        "stage": {
+          "FOUND": true,
+          "STUDIED": true,
+          "IMPLEMENTED": false,
+          "EXECUTED": false,
+          "BENCHMARKED": false,
+          "ECONOMICALLY_TESTED": false
+        },
+        "decision": "BLOCKED",
+        "local_blocker": "No decision-time/economic-label panel frozen for this empirical use",
+        "score_delta": null
+      }
+    },
+    {
+      "id": "K12",
+      "name": "Value/quality/ranking com baixo giro",
+      "category": "estratégias",
+      "internal_state": "EXPERIMENTAL",
+      "technical": "C1",
+      "internal_evidence": "https://github.com/leonardosovienski/stocks-predictor/blob/80e69daa7d83b3b0f0e3384c53207ee0a9afd5b5/stocks_predictor/factor.py#L428",
+      "references": [
+        "R16",
+        "R56",
+        "R59"
+      ],
+      "action": "RESEARCH",
+      "status": "BLOCKED_PERMISSION",
+      "mechanism": "Hipótese de prêmio de risco/precificação com menor desgaste por negociação.",
+      "prerequisites": "Linhagem H7–H19; seis campos e revisão humana para reabertura",
+      "profile": "ECONOMIC",
+      "comparison": "NOT_DIRECTLY_COMPARABLE para resultados econômicos; comparação funcional por contrato",
+      "evidence_origin": "LOCAL/EXTERNAL",
+      "evidence_scope": "ECONOMIC",
+      "result": "NOT_EVALUATED",
+      "benefit_measured": false,
+      "score_confidence": "LOW",
+      "b3_transferability": 2,
+      "b3_reason": "Eficácia líquida local não testada.",
+      "data_accessibility": "UNKNOWN",
+      "data_pit_quality": "UNKNOWN",
+      "edge_decay_risk": "UNKNOWN",
+      "competitor_prevalence": "UNKNOWN",
+      "competitive_gap": "UNKNOWN",
+      "differentiation_potential": "UNKNOWN",
+      "comparative_class": "UNCLASSIFIED",
+      "redundancy_penalty": 0,
+      "reuse": "Referência ou adapter estreito; integração não autorizada",
+      "score": {
+        "profile": "ECONOMIC",
+        "VALUE_SCORE": null,
+        "COST_RISK_SCORE": null,
+        "PRIORITY_SCORE": null,
+        "reason": "Valor econômico incremental, transferência e decaimento não medidos em painel B3 admissível. Sem número até dados/protocolo; não substituir UNKNOWN por zero."
+      },
+      "competitor_context_reason": "UNKNOWN: amostra intencional de referências por capacidade; sem denominador de concorrentes diretos, não estimar prevalência/gap/diferenciação.",
+      "closure": {
+        "our_state": "Famílias value/quality já investigadas e protegidas",
+        "reference_ids": [
+          "R16",
+          "R56",
+          "R59"
+        ],
+        "gap": "Ganho incremental líquido não demonstrado",
+        "result": "Não reabrir resultados antigos por novo wrapper",
+        "queue": "RESEARCH_MORE",
+        "action": "RESEARCH",
+        "economic_value": "UNKNOWN; no new B3 economic benchmark",
+        "historical_C_E_preserved": true,
+        "stage": {
+          "FOUND": true,
+          "STUDIED": true,
+          "IMPLEMENTED": false,
+          "EXECUTED": false,
+          "BENCHMARKED": false,
+          "ECONOMICALLY_TESTED": false
+        },
+        "decision": "RESEARCH_MORE",
+        "local_blocker": null,
+        "score_delta": null
+      }
+    },
+    {
+      "id": "K13",
+      "name": "Regimes causais para sizing",
+      "category": "regimes",
+      "internal_state": "DESCONHECIDO",
+      "technical": "C0",
+      "internal_evidence": "https://github.com/leonardosovienski/stocks-predictor/blob/80e69daa7d83b3b0f0e3384c53207ee0a9afd5b5/stocks_predictor/factor.py#L58",
+      "references": [
+        "R32",
+        "R33",
+        "R10"
+      ],
+      "action": "RESEARCH",
+      "status": "DEFER",
+      "mechanism": "Regime pode alterar risco; testar causalidade e ganho além de vol simples.",
+      "prerequisites": "K05, parâmetros causais; sem estados suavizados como sinal",
+      "profile": "ECONOMIC",
+      "comparison": "NOT_DIRECTLY_COMPARABLE para resultados econômicos; comparação funcional por contrato",
+      "evidence_origin": "LOCAL/EXTERNAL",
+      "evidence_scope": "ECONOMIC",
+      "result": "NOT_EVALUATED",
+      "benefit_measured": false,
+      "score_confidence": "LOW",
+      "b3_transferability": 2,
+      "b3_reason": "Eficácia líquida local não testada.",
+      "data_accessibility": "UNKNOWN",
+      "data_pit_quality": "UNKNOWN",
+      "edge_decay_risk": "UNKNOWN",
+      "competitor_prevalence": "UNKNOWN",
+      "competitive_gap": "UNKNOWN",
+      "differentiation_potential": "UNKNOWN",
+      "comparative_class": "UNCLASSIFIED",
+      "redundancy_penalty": 0,
+      "reuse": "Referência ou adapter estreito; integração não autorizada",
+      "score": {
+        "profile": "ECONOMIC",
+        "VALUE_SCORE": null,
+        "COST_RISK_SCORE": null,
+        "PRIORITY_SCORE": null,
+        "reason": "Valor econômico incremental, transferência e decaimento não medidos em painel B3 admissível. Sem número até dados/protocolo; não substituir UNKNOWN por zero."
+      },
+      "competitor_context_reason": "UNKNOWN: amostra intencional de referências por capacidade; sem denominador de concorrentes diretos, não estimar prevalência/gap/diferenciação.",
+      "closure": {
+        "our_state": "Não certificado como sinal causal",
+        "reference_ids": [
+          "R32",
+          "R10"
+        ],
+        "gap": "Filtro online sem smoothing retrospectivo",
+        "result": "Deferido; sem teste novo",
+        "queue": "RESEARCH_MORE",
+        "action": "RESEARCH",
+        "economic_value": "UNKNOWN; no new B3 economic benchmark",
+        "historical_C_E_preserved": true,
+        "stage": {
+          "FOUND": true,
+          "STUDIED": true,
+          "IMPLEMENTED": false,
+          "EXECUTED": false,
+          "BENCHMARKED": false,
+          "ECONOMICALLY_TESTED": false
+        },
+        "decision": "RESEARCH_MORE",
+        "local_blocker": null,
+        "score_delta": null
+      }
+    },
+    {
+      "id": "K14",
+      "name": "Macro com vintages",
+      "category": "dados",
+      "internal_state": "PARCIAL",
+      "technical": "C0",
+      "internal_evidence": "https://github.com/leonardosovienski/stocks-predictor/blob/80e69daa7d83b3b0f0e3384c53207ee0a9afd5b5/STOCKS_CURRENT_STATE.md#L1",
+      "references": [
+        "R55",
+        "R20",
+        "R21"
+      ],
+      "action": "AUGMENT",
+      "status": "BLOCKED_DATA",
+      "mechanism": "Explicar regimes com informação publicada na decisão.",
+      "prerequisites": "Vintages e relógios por série; wrapper não preenche lacuna",
+      "profile": "ENABLER",
+      "comparison": "NOT_DIRECTLY_COMPARABLE para resultados econômicos; comparação funcional por contrato",
+      "evidence_origin": "LOCAL/EXTERNAL",
+      "evidence_scope": "ENGINEERING",
+      "result": "NOT_EVALUATED",
+      "benefit_measured": false,
+      "score_confidence": "MEDIUM/LOW por dimensão; ver score",
+      "b3_transferability": 4,
+      "b3_reason": "Contrato genérico transferível com adaptação e dados B3.",
+      "data_accessibility": "UNKNOWN",
+      "data_pit_quality": "UNKNOWN",
+      "edge_decay_risk": "N/A: finalidade de engenharia",
+      "competitor_prevalence": "UNKNOWN",
+      "competitive_gap": "UNKNOWN",
+      "differentiation_potential": "UNKNOWN",
+      "comparative_class": "UNCLASSIFIED",
+      "redundancy_penalty": 0,
+      "reuse": "Referência ou adapter estreito; integração não autorizada",
+      "score": {
+        "profile": "ENABLER",
+        "ratings_value": {
+          "scientific_value": [
+            2,
+            3
+          ],
+          "validation_value": [
+            2,
+            3
+          ],
+          "external_evidence": [
+            1,
+            2
+          ],
+          "architectural_fit": [
+            3,
+            4
+          ],
+          "incremental_capability": [
+            2,
+            3
+          ],
+          "domain_fit": [
+            3,
+            4
+          ],
+          "independent_references": [
+            0,
+            1
+          ]
+        },
+        "ratings_cost": {
+          "implementation_complexity": [
+            3,
+            4
+          ],
+          "methodological_risk": [
+            4,
+            5
+          ],
+          "dependency_risk": [
+            2,
+            3
+          ],
+          "maintenance_cost": [
+            3,
+            4
+          ],
+          "data_cost": [
+            0,
+            5
+          ],
+          "operational_cost": [
+            2,
+            3
+          ]
+        },
+        "rating_rationale": {
+          "scientific_value": "Erro/alvo científico concreto: SGS atual não prova vintage; valor causal depende de recibos de divulgação/revisão por série.",
+          "validation_value": "Benefício potencial de falsificar esse erro; evidência local restrita aos controles explicitamente listados.",
+          "external_evidence": "Referências R55,R20,R21 sustentam método/contrato, não lucro nem eficácia de combinação.",
+          "architectural_fit": "Adapter de pesquisa separado e contratos existentes; acoplamento real não medido, intervalo cobre essa incerteza.",
+          "incremental_capability": "Comparação com estado interno PARCIAL: Explicar regimes com informação publicada na decisão.",
+          "domain_fit": "Uso diagnóstico B3 descrito; domínio não ganha pontos por popularidade da biblioteca.",
+          "independent_references": "Linhagens/objetos distintos parcialmente inspecionados; wrappers/fontes CVM e sklearn compartilhadas não duplicam evidência.",
+          "implementation_complexity": "Escopo de implementação: Vintages e relógios por série; wrapper não preenche lacuna; estimativa, sem horas medidas.",
+          "methodological_risk": "Extrapolação dos contratos e amostras revisadas: SGS atual não prova vintage; valor causal depende de recibos de divulgação/revisão por série.",
+          "dependency_risk": "Auxiliar stdlib quando possível; referências externas requerem host/versões/licença e não foram instaladas.",
+          "maintenance_cost": "Manter o contrato e mudanças de fonte/versão desta capacidade; estimativa ainda sem operação recorrente.",
+          "data_cost": "0..5 quando custo/cobertura não certificados; para fixtures sintéticas custo baixo, não inferir preço de produção.",
+          "operational_cost": "Execução em lote e armazenamento de recibos; sem infraestrutura live ou compra de dados prevista."
+        },
+        "VALUE_SCORE": [
+          39.0,
+          59.0
+        ],
+        "COST_RISK_SCORE": [
+          50.0,
+          82.0
+        ],
+        "PRIORITY_SCORE": [
+          32.7,
+          56.3
+        ],
+        "confidence": "MEDIUM na utilidade do contrato; LOW no custo/ganho incremental",
+        "weight_sensitivity": {
+          "0.6": [
+            30.6,
+            55.4
+          ],
+          "0.7": [
+            32.7,
+            56.3
+          ],
+          "0.8": [
+            34.8,
+            57.2
+          ]
+        },
+        "within_profile_sensitivity": "Variar individualmente cada peso ±20%, renormalizando; intervalos por dimensão têm incerteza de até1 ponto. Não ordenar diferenças pequenas.",
+        "dimension_weight_sensitivity_range": [
+          32.31,
+          56.71
+        ]
+      },
+      "competitor_context_reason": "UNKNOWN: amostra intencional de referências por capacidade; sem denominador de concorrentes diretos, não estimar prevalência/gap/diferenciação.",
+      "score_basis": "SGS atual não prova vintage; valor causal depende de recibos de divulgação/revisão por série.",
+      "closure": {
+        "our_state": "SGS acessível; vintage é questão separada",
+        "reference_ids": [
+          "R55",
+          "R20",
+          "R62"
+        ],
+        "gap": "Relógio de revisão macro",
+        "result": "ALFRED ensina contrato; não certifica macro B3",
+        "queue": "RESEARCH_MORE",
+        "action": "AUGMENT",
+        "economic_value": "UNKNOWN; no new B3 economic benchmark",
+        "historical_C_E_preserved": true,
+        "stage": {
+          "FOUND": true,
+          "STUDIED": true,
+          "IMPLEMENTED": false,
+          "EXECUTED": false,
+          "BENCHMARKED": false,
+          "ECONOMICALLY_TESTED": false
+        },
+        "decision": "RESEARCH_MORE",
+        "local_blocker": null,
+        "score_delta": null
+      }
+    },
+    {
+      "id": "K15",
+      "name": "Incerteza preditiva e calibração",
+      "category": "incerteza",
+      "internal_state": "DESCONHECIDO",
+      "technical": "C0",
+      "internal_evidence": "https://github.com/leonardosovienski/stocks-predictor/blob/80e69daa7d83b3b0f0e3384c53207ee0a9afd5b5/stocks_predictor/temporal_evidence.py#L29",
+      "references": [
+        "R35",
+        "R29",
+        "R27"
+      ],
+      "action": "RESEARCH",
+      "status": "DEFER",
+      "mechanism": "Medir cobertura e abstinência com labels maturados.",
+      "prerequisites": "Modelo baseline e hipótese de dependência explícita",
+      "profile": "ENABLER",
+      "comparison": "NOT_DIRECTLY_COMPARABLE para resultados econômicos; comparação funcional por contrato",
+      "evidence_origin": "LOCAL/EXTERNAL",
+      "evidence_scope": "ENGINEERING",
+      "result": "NOT_EVALUATED",
+      "benefit_measured": false,
+      "score_confidence": "MEDIUM/LOW por dimensão; ver score",
+      "b3_transferability": 4,
+      "b3_reason": "Contrato genérico transferível com adaptação e dados B3.",
+      "data_accessibility": "UNKNOWN",
+      "data_pit_quality": "UNKNOWN",
+      "edge_decay_risk": "N/A: finalidade de engenharia",
+      "competitor_prevalence": "UNKNOWN",
+      "competitive_gap": "UNKNOWN",
+      "differentiation_potential": "UNKNOWN",
+      "comparative_class": "UNCLASSIFIED",
+      "redundancy_penalty": 0,
+      "reuse": "Referência ou adapter estreito; integração não autorizada",
+      "score": {
+        "profile": "ENABLER",
+        "ratings_value": {
+          "scientific_value": [
+            3,
+            4
+          ],
+          "validation_value": [
+            3,
+            4
+          ],
+          "external_evidence": [
+            2,
+            3
+          ],
+          "architectural_fit": [
+            2,
+            3
+          ],
+          "incremental_capability": [
+            3,
+            4
+          ],
+          "domain_fit": [
+            3,
+            4
+          ],
+          "independent_references": [
+            1,
+            2
+          ]
+        },
+        "ratings_cost": {
+          "implementation_complexity": [
+            3,
+            4
+          ],
+          "methodological_risk": [
+            4,
+            5
+          ],
+          "dependency_risk": [
+            3,
+            4
+          ],
+          "maintenance_cost": [
+            3,
+            4
+          ],
+          "data_cost": [
+            1,
+            2
+          ],
+          "operational_cost": [
+            2,
+            3
+          ]
+        },
+        "rating_rationale": {
+          "scientific_value": "Erro/alvo científico concreto: Conformal exige cobertura por cenário; teste/issue de MAPIE impede selo automático de95%.",
+          "validation_value": "Benefício potencial de falsificar esse erro; evidência local restrita aos controles explicitamente listados.",
+          "external_evidence": "Referências R35,R29,R27 sustentam método/contrato, não lucro nem eficácia de combinação.",
+          "architectural_fit": "Adapter de pesquisa separado e contratos existentes; acoplamento real não medido, intervalo cobre essa incerteza.",
+          "incremental_capability": "Comparação com estado interno DESCONHECIDO: Medir cobertura e abstinência com labels maturados.",
+          "domain_fit": "Uso diagnóstico B3 descrito; domínio não ganha pontos por popularidade da biblioteca.",
+          "independent_references": "Linhagens/objetos distintos parcialmente inspecionados; wrappers/fontes CVM e sklearn compartilhadas não duplicam evidência.",
+          "implementation_complexity": "Escopo de implementação: Modelo baseline e hipótese de dependência explícita; estimativa, sem horas medidas.",
+          "methodological_risk": "Extrapolação dos contratos e amostras revisadas: Conformal exige cobertura por cenário; teste/issue de MAPIE impede selo automático de95%.",
+          "dependency_risk": "Auxiliar stdlib quando possível; referências externas requerem host/versões/licença e não foram instaladas.",
+          "maintenance_cost": "Manter o contrato e mudanças de fonte/versão desta capacidade; estimativa ainda sem operação recorrente.",
+          "data_cost": "0..5 quando custo/cobertura não certificados; para fixtures sintéticas custo baixo, não inferir preço de produção.",
+          "operational_cost": "Execução em lote e armazenamento de recibos; sem infraestrutura live ou compra de dados prevista."
+        },
+        "VALUE_SCORE": [
+          53.0,
+          73.0
+        ],
+        "COST_RISK_SCORE": [
+          56.0,
+          76.0
+        ],
+        "PRIORITY_SCORE": [
+          44.3,
+          64.3
+        ],
+        "confidence": "MEDIUM na utilidade do contrato; LOW no custo/ganho incremental",
+        "weight_sensitivity": {
+          "0.6": [
+            41.4,
+            61.4
+          ],
+          "0.7": [
+            44.3,
+            64.3
+          ],
+          "0.8": [
+            47.2,
+            67.2
+          ]
+        },
+        "within_profile_sensitivity": "Variar individualmente cada peso ±20%, renormalizando; intervalos por dimensão têm incerteza de até1 ponto. Não ordenar diferenças pequenas.",
+        "dimension_weight_sensitivity_range": [
+          43.99,
+          64.58
+        ]
+      },
+      "competitor_context_reason": "UNKNOWN: amostra intencional de referências por capacidade; sem denominador de concorrentes diretos, não estimar prevalência/gap/diferenciação.",
+      "score_basis": "Conformal exige cobertura por cenário; teste/issue de MAPIE impede selo automático de95%.",
+      "closure": {
+        "our_state": "Calibração preditiva não qualificada",
+        "reference_ids": [
+          "R35",
+          "R29"
+        ],
+        "gap": "Incerteza condicional ao modelo/alvo",
+        "result": "Não aprovar conformal por cobertura conveniente",
+        "queue": "RESEARCH_MORE",
+        "action": "RESEARCH",
+        "economic_value": "UNKNOWN; no new B3 economic benchmark",
+        "historical_C_E_preserved": true,
+        "stage": {
+          "FOUND": true,
+          "STUDIED": true,
+          "IMPLEMENTED": false,
+          "EXECUTED": false,
+          "BENCHMARKED": false,
+          "ECONOMICALLY_TESTED": false
+        },
+        "decision": "RESEARCH_MORE",
+        "local_blocker": null,
+        "score_delta": null
+      }
+    },
+    {
+      "id": "K16",
+      "name": "RF/ExtraTrees/boosting baselines",
+      "category": "modelos",
+      "internal_state": "DESCONHECIDO",
+      "technical": "C0",
+      "internal_evidence": "https://github.com/leonardosovienski/stocks-predictor/blob/80e69daa7d83b3b0f0e3384c53207ee0a9afd5b5/pyproject.toml#L10",
+      "references": [
+        "R11",
+        "R12",
+        "R13",
+        "R14"
+      ],
+      "action": "RESEARCH",
+      "status": "DEFER",
+      "mechanism": "Comparar não linearidade com regressão regularizada sem inflar busca.",
+      "prerequisites": "K05, painel elegível e orçamento igual de tuning",
+      "profile": "ECONOMIC",
+      "comparison": "NOT_DIRECTLY_COMPARABLE para resultados econômicos; comparação funcional por contrato",
+      "evidence_origin": "LOCAL/EXTERNAL",
+      "evidence_scope": "ECONOMIC",
+      "result": "NOT_EVALUATED",
+      "benefit_measured": false,
+      "score_confidence": "LOW",
+      "b3_transferability": 2,
+      "b3_reason": "Eficácia líquida local não testada.",
+      "data_accessibility": "UNKNOWN",
+      "data_pit_quality": "UNKNOWN",
+      "edge_decay_risk": "UNKNOWN",
+      "competitor_prevalence": "UNKNOWN",
+      "competitive_gap": "UNKNOWN",
+      "differentiation_potential": "UNKNOWN",
+      "comparative_class": "UNCLASSIFIED",
+      "redundancy_penalty": 0,
+      "reuse": "Referência ou adapter estreito; integração não autorizada",
+      "score": {
+        "profile": "ECONOMIC",
+        "VALUE_SCORE": null,
+        "COST_RISK_SCORE": null,
+        "PRIORITY_SCORE": null,
+        "reason": "Valor econômico incremental, transferência e decaimento não medidos em painel B3 admissível. Sem número até dados/protocolo; não substituir UNKNOWN por zero."
+      },
+      "competitor_context_reason": "UNKNOWN: amostra intencional de referências por capacidade; sem denominador de concorrentes diretos, não estimar prevalência/gap/diferenciação.",
+      "closure": {
+        "our_state": "Sem benchmark comum B3 destes modelos",
+        "reference_ids": [
+          "R11",
+          "R12",
+          "R13"
+        ],
+        "gap": "Baseline linear/árvore antes de complexidade",
+        "result": "Aguardar painel X05; sem instalar modelos",
+        "queue": "EXPERIMENT_NEXT",
+        "action": "RESEARCH",
+        "economic_value": "UNKNOWN; no new B3 economic benchmark",
+        "historical_C_E_preserved": true,
+        "stage": {
+          "FOUND": true,
+          "STUDIED": true,
+          "IMPLEMENTED": false,
+          "EXECUTED": false,
+          "BENCHMARKED": false,
+          "ECONOMICALLY_TESTED": false
+        },
+        "decision": "EXPERIMENT_NEXT",
+        "local_blocker": null,
+        "score_delta": null
+      }
+    },
+    {
+      "id": "K17",
+      "name": "ARIMA/VAR/Kalman e baselines temporais",
+      "category": "modelos",
+      "internal_state": "DESCONHECIDO",
+      "technical": "C0",
+      "internal_evidence": "https://github.com/leonardosovienski/stocks-predictor/blob/80e69daa7d83b3b0f0e3384c53207ee0a9afd5b5/pyproject.toml#L10",
+      "references": [
+        "R10",
+        "R27",
+        "R29",
+        "R30"
+      ],
+      "action": "RESEARCH",
+      "status": "DEFER",
+      "mechanism": "Estabelecer controles temporais de baixo custo.",
+      "prerequisites": "Target de retorno/risco, não erro de preço como prova econômica",
+      "profile": "ENABLER",
+      "comparison": "NOT_DIRECTLY_COMPARABLE para resultados econômicos; comparação funcional por contrato",
+      "evidence_origin": "LOCAL/EXTERNAL",
+      "evidence_scope": "ENGINEERING",
+      "result": "NOT_EVALUATED",
+      "benefit_measured": false,
+      "score_confidence": "MEDIUM/LOW por dimensão; ver score",
+      "b3_transferability": 4,
+      "b3_reason": "Contrato genérico transferível com adaptação e dados B3.",
+      "data_accessibility": "UNKNOWN",
+      "data_pit_quality": "UNKNOWN",
+      "edge_decay_risk": "N/A: finalidade de engenharia",
+      "competitor_prevalence": "UNKNOWN",
+      "competitive_gap": "UNKNOWN",
+      "differentiation_potential": "UNKNOWN",
+      "comparative_class": "UNCLASSIFIED",
+      "redundancy_penalty": 0,
+      "reuse": "Referência ou adapter estreito; integração não autorizada",
+      "score": {
+        "profile": "ENABLER",
+        "ratings_value": {
+          "scientific_value": [
+            2,
+            3
+          ],
+          "validation_value": [
+            2,
+            3
+          ],
+          "external_evidence": [
+            3,
+            4
+          ],
+          "architectural_fit": [
+            2,
+            3
+          ],
+          "incremental_capability": [
+            2,
+            3
+          ],
+          "domain_fit": [
+            3,
+            4
+          ],
+          "independent_references": [
+            2,
+            3
+          ]
+        },
+        "ratings_cost": {
+          "implementation_complexity": [
+            3,
+            4
+          ],
+          "methodological_risk": [
+            3,
+            4
+          ],
+          "dependency_risk": [
+            3,
+            4
+          ],
+          "maintenance_cost": [
+            2,
+            3
+          ],
+          "data_cost": [
+            1,
+            2
+          ],
+          "operational_cost": [
+            2,
+            3
+          ]
+        },
+        "rating_rationale": {
+          "scientific_value": "Erro/alvo científico concreto: Kalman útil como baseline e estado causal; não há alvo B3 elegível congelado para confronto.",
+          "validation_value": "Benefício potencial de falsificar esse erro; evidência local restrita aos controles explicitamente listados.",
+          "external_evidence": "Referências R10,R27,R29,R30 sustentam método/contrato, não lucro nem eficácia de combinação.",
+          "architectural_fit": "Adapter de pesquisa separado e contratos existentes; acoplamento real não medido, intervalo cobre essa incerteza.",
+          "incremental_capability": "Comparação com estado interno DESCONHECIDO: Estabelecer controles temporais de baixo custo.",
+          "domain_fit": "Uso diagnóstico B3 descrito; domínio não ganha pontos por popularidade da biblioteca.",
+          "independent_references": "Linhagens/objetos distintos parcialmente inspecionados; wrappers/fontes CVM e sklearn compartilhadas não duplicam evidência.",
+          "implementation_complexity": "Escopo de implementação: Target de retorno/risco, não erro de preço como prova econômica; estimativa, sem horas medidas.",
+          "methodological_risk": "Extrapolação dos contratos e amostras revisadas: Kalman útil como baseline e estado causal; não há alvo B3 elegível congelado para confronto.",
+          "dependency_risk": "Auxiliar stdlib quando possível; referências externas requerem host/versões/licença e não foram instaladas.",
+          "maintenance_cost": "Manter o contrato e mudanças de fonte/versão desta capacidade; estimativa ainda sem operação recorrente.",
+          "data_cost": "0..5 quando custo/cobertura não certificados; para fixtures sintéticas custo baixo, não inferir preço de produção.",
+          "operational_cost": "Execução em lote e armazenamento de recibos; sem infraestrutura live ou compra de dados prevista."
+        },
+        "VALUE_SCORE": [
+          45.0,
+          65.0
+        ],
+        "COST_RISK_SCORE": [
+          49.0,
+          69.0
+        ],
+        "PRIORITY_SCORE": [
+          40.8,
+          60.8
+        ],
+        "confidence": "MEDIUM na utilidade do contrato; LOW no custo/ganho incremental",
+        "weight_sensitivity": {
+          "0.6": [
+            39.4,
+            59.4
+          ],
+          "0.7": [
+            40.8,
+            60.8
+          ],
+          "0.8": [
+            42.2,
+            62.2
+          ]
+        },
+        "within_profile_sensitivity": "Variar individualmente cada peso ±20%, renormalizando; intervalos por dimensão têm incerteza de até1 ponto. Não ordenar diferenças pequenas.",
+        "dimension_weight_sensitivity_range": [
+          40.48,
+          61.11
+        ]
+      },
+      "competitor_context_reason": "UNKNOWN: amostra intencional de referências por capacidade; sem denominador de concorrentes diretos, não estimar prevalência/gap/diferenciação.",
+      "score_basis": "Kalman útil como baseline e estado causal; não há alvo B3 elegível congelado para confronto.",
+      "closure": {
+        "our_state": "Sem comparação admissível para alvo relevante",
+        "reference_ids": [
+          "R10",
+          "R27",
+          "R30"
+        ],
+        "gap": "Baselines temporais específicos",
+        "result": "Deferir campeonato de preço absoluto",
+        "queue": "RESEARCH_MORE",
+        "action": "RESEARCH",
+        "economic_value": "UNKNOWN; no new B3 economic benchmark",
+        "historical_C_E_preserved": true,
+        "stage": {
+          "FOUND": true,
+          "STUDIED": true,
+          "IMPLEMENTED": false,
+          "EXECUTED": false,
+          "BENCHMARKED": false,
+          "ECONOMICALLY_TESTED": false
+        },
+        "decision": "RESEARCH_MORE",
+        "local_blocker": null,
+        "score_delta": null
+      }
+    },
+    {
+      "id": "K18",
+      "name": "Redes temporais e Transformers",
+      "category": "modelos",
+      "internal_state": "DESCONHECIDO",
+      "technical": "C0",
+      "internal_evidence": "https://github.com/leonardosovienski/stocks-predictor/blob/80e69daa7d83b3b0f0e3384c53207ee0a9afd5b5/pyproject.toml#L10",
+      "references": [
+        "R28",
+        "R29",
+        "R31"
+      ],
+      "action": "RESEARCH",
+      "status": "DEFER",
+      "mechanism": "LSTM/GRU/TCN/TFT/PatchTST/N-BEATS/N-HiTS só avançam após baseline e amostra suficiente.",
+      "prerequisites": "Custo computacional e ganho incremental não medidos",
+      "profile": "ECONOMIC",
+      "comparison": "NOT_DIRECTLY_COMPARABLE para resultados econômicos; comparação funcional por contrato",
+      "evidence_origin": "LOCAL/EXTERNAL",
+      "evidence_scope": "ECONOMIC",
+      "result": "NOT_EVALUATED",
+      "benefit_measured": false,
+      "score_confidence": "LOW",
+      "b3_transferability": 2,
+      "b3_reason": "Eficácia líquida local não testada.",
+      "data_accessibility": "UNKNOWN",
+      "data_pit_quality": "UNKNOWN",
+      "edge_decay_risk": "UNKNOWN",
+      "competitor_prevalence": "UNKNOWN",
+      "competitive_gap": "UNKNOWN",
+      "differentiation_potential": "UNKNOWN",
+      "comparative_class": "UNCLASSIFIED",
+      "redundancy_penalty": 0,
+      "reuse": "Referência ou adapter estreito; integração não autorizada",
+      "score": {
+        "profile": "ECONOMIC",
+        "VALUE_SCORE": null,
+        "COST_RISK_SCORE": null,
+        "PRIORITY_SCORE": null,
+        "reason": "Valor econômico incremental, transferência e decaimento não medidos em painel B3 admissível. Sem número até dados/protocolo; não substituir UNKNOWN por zero."
+      },
+      "competitor_context_reason": "UNKNOWN: amostra intencional de referências por capacidade; sem denominador de concorrentes diretos, não estimar prevalência/gap/diferenciação.",
+      "closure": {
+        "our_state": "Sem ganho incremental validado",
+        "reference_ids": [
+          "R28",
+          "R29",
+          "R31"
+        ],
+        "gap": "Complexidade sem justificativa atual",
+        "result": "DEFER; não foi refutação empírica de Transformers",
+        "queue": "REJECT",
+        "action": "REJECT",
+        "economic_value": "UNKNOWN; no new B3 economic benchmark",
+        "historical_C_E_preserved": true,
+        "stage": {
+          "FOUND": true,
+          "STUDIED": true,
+          "IMPLEMENTED": false,
+          "EXECUTED": false,
+          "BENCHMARKED": false,
+          "ECONOMICALLY_TESTED": false
+        },
+        "decision": "REJECT",
+        "local_blocker": null,
+        "score_delta": null
+      }
+    },
+    {
+      "id": "K19",
+      "name": "RL e notícias/LLMs",
+      "category": "notícias",
+      "internal_state": "DESCONHECIDO",
+      "technical": "C0",
+      "internal_evidence": "https://github.com/leonardosovienski/stocks-predictor/blob/80e69daa7d83b3b0f0e3384c53207ee0a9afd5b5/stocks_predictor/analyst.py#L1",
+      "references": [
+        "R44",
+        "R45",
+        "R46"
+      ],
+      "action": "RESEARCH",
+      "status": "DEFER",
+      "mechanism": "Investigar apenas depois de ambiente executável e controle de conhecimento futuro.",
+      "prerequisites": "Pesos, notícias, timestamps, licenças e custos; não executar bots",
+      "profile": "ECONOMIC",
+      "comparison": "NOT_DIRECTLY_COMPARABLE para resultados econômicos; comparação funcional por contrato",
+      "evidence_origin": "LOCAL/EXTERNAL",
+      "evidence_scope": "ECONOMIC",
+      "result": "NOT_EVALUATED",
+      "benefit_measured": false,
+      "score_confidence": "LOW",
+      "b3_transferability": 2,
+      "b3_reason": "Eficácia líquida local não testada.",
+      "data_accessibility": "UNKNOWN",
+      "data_pit_quality": "UNKNOWN",
+      "edge_decay_risk": "UNKNOWN",
+      "competitor_prevalence": "UNKNOWN",
+      "competitive_gap": "UNKNOWN",
+      "differentiation_potential": "UNKNOWN",
+      "comparative_class": "UNCLASSIFIED",
+      "redundancy_penalty": 0,
+      "reuse": "Referência ou adapter estreito; integração não autorizada",
+      "score": {
+        "profile": "ECONOMIC",
+        "VALUE_SCORE": null,
+        "COST_RISK_SCORE": null,
+        "PRIORITY_SCORE": null,
+        "reason": "Valor econômico incremental, transferência e decaimento não medidos em painel B3 admissível. Sem número até dados/protocolo; não substituir UNKNOWN por zero."
+      },
+      "competitor_context_reason": "UNKNOWN: amostra intencional de referências por capacidade; sem denominador de concorrentes diretos, não estimar prevalência/gap/diferenciação.",
+      "closure": {
+        "our_state": "Sem notícias/alt-data PIT e execução RL",
+        "reference_ids": [
+          "R44",
+          "R45",
+          "R46"
+        ],
+        "gap": "Custo, timestamps, direitos e recompensa",
+        "result": "DEFER nesta fase; não instalar bots/LLMs",
+        "queue": "REJECT",
+        "action": "REJECT",
+        "economic_value": "UNKNOWN; no new B3 economic benchmark",
+        "historical_C_E_preserved": true,
+        "stage": {
+          "FOUND": true,
+          "STUDIED": true,
+          "IMPLEMENTED": false,
+          "EXECUTED": false,
+          "BENCHMARKED": false,
+          "ECONOMICALLY_TESTED": false
+        },
+        "decision": "REJECT",
+        "local_blocker": null,
+        "score_delta": null
+      }
+    },
+    {
+      "id": "K20",
+      "name": "Registro e contratos de dados",
+      "category": "engenharia",
+      "internal_state": "IMPLEMENTADO",
+      "technical": "C1",
+      "internal_evidence": "https://github.com/leonardosovienski/stocks-predictor/blob/80e69daa7d83b3b0f0e3384c53207ee0a9afd5b5/stocks_predictor/operational_store.py#L26",
+      "references": [
+        "R40",
+        "R41",
+        "R42",
+        "R39",
+        "R38"
+      ],
+      "action": "KEEP",
+      "status": "CANDIDATE",
+      "mechanism": "Preservar hashes e gates; adicionar esquema só se detectar erro incremental.",
+      "prerequisites": "Evitar novo serviço de tracking que duplique ledgers",
+      "profile": "ENABLER",
+      "comparison": "NOT_DIRECTLY_COMPARABLE para resultados econômicos; comparação funcional por contrato",
+      "evidence_origin": "LOCAL/EXTERNAL",
+      "evidence_scope": "ENGINEERING",
+      "result": "NOT_EVALUATED",
+      "benefit_measured": false,
+      "score_confidence": "MEDIUM/LOW por dimensão; ver score",
+      "b3_transferability": 4,
+      "b3_reason": "Contrato genérico transferível com adaptação e dados B3.",
+      "data_accessibility": "UNKNOWN",
+      "data_pit_quality": "UNKNOWN",
+      "edge_decay_risk": "N/A: finalidade de engenharia",
+      "competitor_prevalence": "UNKNOWN",
+      "competitive_gap": "UNKNOWN",
+      "differentiation_potential": "UNKNOWN",
+      "comparative_class": "UNCLASSIFIED",
+      "redundancy_penalty": 4,
+      "reuse": "Referência ou adapter estreito; integração não autorizada",
+      "score": {
+        "profile": "ENABLER",
+        "ratings_value": {
+          "scientific_value": [
+            3,
+            4
+          ],
+          "validation_value": [
+            4,
+            5
+          ],
+          "external_evidence": [
+            3,
+            4
+          ],
+          "architectural_fit": [
+            4,
+            5
+          ],
+          "incremental_capability": [
+            0,
+            1
+          ],
+          "domain_fit": [
+            4,
+            5
+          ],
+          "independent_references": [
+            1,
+            2
+          ]
+        },
+        "ratings_cost": {
+          "implementation_complexity": [
+            1,
+            2
+          ],
+          "methodological_risk": [
+            1,
+            2
+          ],
+          "dependency_risk": [
+            1,
+            2
+          ],
+          "maintenance_cost": [
+            1,
+            2
+          ],
+          "data_cost": [
+            1,
+            2
+          ],
+          "operational_cost": [
+            1,
+            2
+          ]
+        },
+        "rating_rationale": {
+          "scientific_value": "Erro/alvo científico concreto: Append-only e hashes já existem: KEEP. Baixo incremento impede virar nova plataforma mesmo com score alto.",
+          "validation_value": "Benefício potencial de falsificar esse erro; evidência local restrita aos controles explicitamente listados.",
+          "external_evidence": "Referências R40,R41,R42,R39,R38 sustentam método/contrato, não lucro nem eficácia de combinação.",
+          "architectural_fit": "Adapter de pesquisa separado e contratos existentes; acoplamento real não medido, intervalo cobre essa incerteza.",
+          "incremental_capability": "Comparação com estado interno IMPLEMENTADO: Preservar hashes e gates; adicionar esquema só se detectar erro incremental.",
+          "domain_fit": "Uso diagnóstico B3 descrito; domínio não ganha pontos por popularidade da biblioteca.",
+          "independent_references": "Linhagens/objetos distintos parcialmente inspecionados; wrappers/fontes CVM e sklearn compartilhadas não duplicam evidência.",
+          "implementation_complexity": "Escopo de implementação: Evitar novo serviço de tracking que duplique ledgers; estimativa, sem horas medidas.",
+          "methodological_risk": "Extrapolação dos contratos e amostras revisadas: Append-only e hashes já existem: KEEP. Baixo incremento impede virar nova plataforma mesmo com score alto.",
+          "dependency_risk": "Auxiliar stdlib quando possível; referências externas requerem host/versões/licença e não foram instaladas.",
+          "maintenance_cost": "Manter o contrato e mudanças de fonte/versão desta capacidade; estimativa ainda sem operação recorrente.",
+          "data_cost": "0..5 quando custo/cobertura não certificados; para fixtures sintéticas custo baixo, não inferir preço de produção.",
+          "operational_cost": "Execução em lote e armazenamento de recibos; sem infraestrutura live ou compra de dados prevista."
+        },
+        "VALUE_SCORE": [
+          60.0,
+          80.0
+        ],
+        "COST_RISK_SCORE": [
+          20.0,
+          40.0
+        ],
+        "PRIORITY_SCORE": [
+          60.0,
+          80.0
+        ],
+        "confidence": "MEDIUM na utilidade do contrato; LOW no custo/ganho incremental",
+        "weight_sensitivity": {
+          "0.6": [
+            60.0,
+            80.0
+          ],
+          "0.7": [
+            60.0,
+            80.0
+          ],
+          "0.8": [
+            60.0,
+            80.0
+          ]
+        },
+        "within_profile_sensitivity": "Variar individualmente cada peso ±20%, renormalizando; intervalos por dimensão têm incerteza de até1 ponto. Não ordenar diferenças pequenas.",
+        "dimension_weight_sensitivity_range": [
+          59.18,
+          80.86
+        ]
+      },
+      "competitor_context_reason": "UNKNOWN: amostra intencional de referências por capacidade; sem denominador de concorrentes diretos, não estimar prevalência/gap/diferenciação.",
+      "score_basis": "Append-only e hashes já existem: KEEP. Baixo incremento impede virar nova plataforma mesmo com score alto.",
+      "closure": {
+        "our_state": "ADEQUADO ao escopo: registros, hashes e recibos",
+        "reference_ids": [
+          "R40",
+          "R39",
+          "R41"
+        ],
+        "gap": "Não há gap que justifique outro tracking",
+        "result": "KEEP; não substituir Core ou duplicar serviço",
+        "queue": "KEEP_CURRENT",
+        "action": "KEEP",
+        "economic_value": "UNKNOWN; no new B3 economic benchmark",
+        "historical_C_E_preserved": true,
+        "stage": {
+          "FOUND": true,
+          "STUDIED": true,
+          "IMPLEMENTED": false,
+          "EXECUTED": false,
+          "BENCHMARKED": false,
+          "ECONOMICALLY_TESTED": false
+        },
+        "decision": "KEEP_CURRENT",
+        "local_blocker": null,
+        "score_delta": null
+      }
+    },
+    {
+      "id": "K21",
+      "name": "Viabilidade por capital e custos",
+      "category": "execução",
+      "internal_state": "PARCIAL",
+      "technical": "C1",
+      "internal_evidence": "https://github.com/leonardosovienski/stocks-predictor/blob/80e69daa7d83b3b0f0e3384c53207ee0a9afd5b5/stocks_predictor/research_profile.py#L7",
+      "references": [
+        "R02",
+        "R54",
+        "R55"
+      ],
+      "action": "IMPROVE",
+      "status": "BLOCKED_DATA",
+      "mechanism": "Distinguir simulação condicional de lucro pessoal executável.",
+      "prerequisites": "Custos, tributação aplicável, prazo, perdas e esforço pessoal",
+      "profile": "ENABLER",
+      "comparison": "NOT_DIRECTLY_COMPARABLE para resultados econômicos; comparação funcional por contrato",
+      "evidence_origin": "LOCAL/EXTERNAL",
+      "evidence_scope": "ENGINEERING",
+      "result": "NOT_EVALUATED",
+      "benefit_measured": false,
+      "score_confidence": "MEDIUM/LOW por dimensão; ver score",
+      "b3_transferability": 4,
+      "b3_reason": "Contrato genérico transferível com adaptação e dados B3.",
+      "data_accessibility": "UNKNOWN",
+      "data_pit_quality": "UNKNOWN",
+      "edge_decay_risk": "N/A: finalidade de engenharia",
+      "competitor_prevalence": "UNKNOWN",
+      "competitive_gap": "UNKNOWN",
+      "differentiation_potential": "UNKNOWN",
+      "comparative_class": "UNCLASSIFIED",
+      "redundancy_penalty": 0,
+      "reuse": "Referência ou adapter estreito; integração não autorizada",
+      "score": {
+        "profile": "ENABLER",
+        "ratings_value": {
+          "scientific_value": [
+            4,
+            5
+          ],
+          "validation_value": [
+            4,
+            5
+          ],
+          "external_evidence": [
+            2,
+            3
+          ],
+          "architectural_fit": [
+            4,
+            5
+          ],
+          "incremental_capability": [
+            3,
+            4
+          ],
+          "domain_fit": [
+            4,
+            5
+          ],
+          "independent_references": [
+            0,
+            1
+          ]
+        },
+        "ratings_cost": {
+          "implementation_complexity": [
+            2,
+            3
+          ],
+          "methodological_risk": [
+            3,
+            4
+          ],
+          "dependency_risk": [
+            1,
+            2
+          ],
+          "maintenance_cost": [
+            2,
+            3
+          ],
+          "data_cost": [
+            0,
+            5
+          ],
+          "operational_cost": [
+            2,
+            3
+          ]
+        },
+        "rating_rationale": {
+          "scientific_value": "Erro/alvo científico concreto: Capital5000 confirmado; custos e tributos pessoais desconhecidos impedem conclusão individual líquida.",
+          "validation_value": "Benefício potencial de falsificar esse erro; evidência local restrita aos controles explicitamente listados.",
+          "external_evidence": "Referências R02,R54,R55 sustentam método/contrato, não lucro nem eficácia de combinação.",
+          "architectural_fit": "Adapter de pesquisa separado e contratos existentes; acoplamento real não medido, intervalo cobre essa incerteza.",
+          "incremental_capability": "Comparação com estado interno PARCIAL: Distinguir simulação condicional de lucro pessoal executável.",
+          "domain_fit": "Uso diagnóstico B3 descrito; domínio não ganha pontos por popularidade da biblioteca.",
+          "independent_references": "Linhagens/objetos distintos parcialmente inspecionados; wrappers/fontes CVM e sklearn compartilhadas não duplicam evidência.",
+          "implementation_complexity": "Escopo de implementação: Custos, tributação aplicável, prazo, perdas e esforço pessoal; estimativa, sem horas medidas.",
+          "methodological_risk": "Extrapolação dos contratos e amostras revisadas: Capital5000 confirmado; custos e tributos pessoais desconhecidos impedem conclusão individual líquida.",
+          "dependency_risk": "Auxiliar stdlib quando possível; referências externas requerem host/versões/licença e não foram instaladas.",
+          "maintenance_cost": "Manter o contrato e mudanças de fonte/versão desta capacidade; estimativa ainda sem operação recorrente.",
+          "data_cost": "0..5 quando custo/cobertura não certificados; para fixtures sintéticas custo baixo, não inferir preço de produção.",
+          "operational_cost": "Execução em lote e armazenamento de recibos; sem infraestrutura live ou compra de dados prevista."
+        },
+        "VALUE_SCORE": [
+          68.0,
+          88.0
+        ],
+        "COST_RISK_SCORE": [
+          35.0,
+          67.0
+        ],
+        "PRIORITY_SCORE": [
+          57.5,
+          81.1
+        ],
+        "confidence": "MEDIUM na utilidade do contrato; LOW no custo/ganho incremental",
+        "weight_sensitivity": {
+          "0.6": [
+            54.0,
+            78.8
+          ],
+          "0.7": [
+            57.5,
+            81.1
+          ],
+          "0.8": [
+            61.0,
+            83.4
+          ]
+        },
+        "within_profile_sensitivity": "Variar individualmente cada peso ±20%, renormalizando; intervalos por dimensão têm incerteza de até1 ponto. Não ordenar diferenças pequenas.",
+        "dimension_weight_sensitivity_range": [
+          56.93,
+          81.71
+        ]
+      },
+      "competitor_context_reason": "UNKNOWN: amostra intencional de referências por capacidade; sem denominador de concorrentes diretos, não estimar prevalência/gap/diferenciação.",
+      "score_basis": "Capital5000 confirmado; custos e tributos pessoais desconhecidos impedem conclusão individual líquida.",
+      "closure": {
+        "our_state": "Perfil e custo existem; volume não limita ordem individual",
+        "reference_ids": [
+          "R61",
+          "R02"
+        ],
+        "gap": "Gate ordem/volume disponível",
+        "result": "5/6 casos inviáveis recusados;1/6 elegível",
+        "queue": "IMPLEMENT_NOW",
+        "action": "AUGMENT",
+        "economic_value": "UNKNOWN; no new B3 economic benchmark",
+        "historical_C_E_preserved": true,
+        "stage": {
+          "FOUND": true,
+          "STUDIED": true,
+          "IMPLEMENTED": true,
+          "EXECUTED": true,
+          "BENCHMARKED": true,
+          "ECONOMICALLY_TESTED": false
+        },
+        "decision": "INTEGRATE_CANDIDATE",
+        "local_blocker": null,
+        "score_delta": {
+          "profile": "ENABLER",
+          "ratings_value": {
+            "scientific_value": [
+              4,
+              5
+            ],
+            "validation_value": [
+              4,
+              5
+            ],
+            "external_evidence": [
+              2,
+              3
+            ],
+            "architectural_fit": [
+              4,
+              5
+            ],
+            "incremental_capability": [
+              3,
+              4
+            ],
+            "domain_fit": [
+              4,
+              5
+            ],
+            "independent_references": [
+              0,
+              1
+            ]
+          },
+          "ratings_cost": {
+            "implementation_complexity": [
+              1,
+              2
+            ],
+            "methodological_risk": [
+              3,
+              4
+            ],
+            "dependency_risk": [
+              0,
+              1
+            ],
+            "maintenance_cost": [
+              2,
+              3
+            ],
+            "data_cost": [
+              0,
+              0
+            ],
+            "operational_cost": [
+              2,
+              3
+            ]
+          },
+          "rating_rationale": {
+            "scientific_value": "Erro/alvo científico concreto: Capital5000 confirmado; custos e tributos pessoais desconhecidos impedem conclusão individual líquida.",
+            "validation_value": "Benefício potencial de falsificar esse erro; evidência local restrita aos controles explicitamente listados.",
+            "external_evidence": "Referências R02,R54,R55 sustentam método/contrato, não lucro nem eficácia de combinação.",
+            "architectural_fit": "Adapter de pesquisa separado e contratos existentes; acoplamento real não medido, intervalo cobre essa incerteza.",
+            "incremental_capability": "Comparação com estado interno PARCIAL: Distinguir simulação condicional de lucro pessoal executável.",
+            "domain_fit": "Uso diagnóstico B3 descrito; domínio não ganha pontos por popularidade da biblioteca.",
+            "independent_references": "Linhagens/objetos distintos parcialmente inspecionados; wrappers/fontes CVM e sklearn compartilhadas não duplicam evidência.",
+            "implementation_complexity": "Prototype implemented and tested; production adapter work remains outside this narrow assessment",
+            "methodological_risk": "Extrapolação dos contratos e amostras revisadas: Capital5000 confirmado; custos e tributos pessoais desconhecidos impedem conclusão individual líquida.",
+            "dependency_risk": "New module uses stdlib; no imported external engine",
+            "maintenance_cost": "Manter o contrato e mudanças de fonte/versão desta capacidade; estimativa ainda sem operação recorrente.",
+            "data_cost": "Synthetic fixture; no inference about empirical data cost",
+            "operational_cost": "Execução em lote e armazenamento de recibos; sem infraestrutura live ou compra de dados prevista."
+          },
+          "VALUE_SCORE": [
+            68.0,
+            88.0
+          ],
+          "COST_RISK_SCORE": [
+            27.0,
+            44.0
+          ],
+          "PRIORITY_SCORE": [
+            64.4,
+            83.5
+          ],
+          "confidence": "MEDIUM na utilidade do contrato; LOW no custo/ganho incremental",
+          "weight_sensitivity": {
+            "0.6": [
+              63.2,
+              82.0
+            ],
+            "0.7": [
+              64.4,
+              83.5
+            ],
+            "0.8": [
+              65.6,
+              85.0
+            ]
+          },
+          "within_profile_sensitivity": "Variar individualmente cada peso ±20%, renormalizando; intervalos por dimensão têm incerteza de até1 ponto. Não ordenar diferenças pequenas.",
+          "scope": "narrow synthetic/engineering component only; not production or economic cost"
+        }
+      }
+    },
+    {
+      "id": "K22",
+      "name": "Relações, neutralização e features",
+      "category": "análises",
+      "internal_state": "DESCONHECIDO",
+      "technical": "C0",
+      "internal_evidence": "https://github.com/leonardosovienski/stocks-predictor/blob/80e69daa7d83b3b0f0e3384c53207ee0a9afd5b5/stocks_predictor/factor.py#L1",
+      "references": [
+        "R10",
+        "R11",
+        "R16",
+        "R34"
+      ],
+      "action": "RESEARCH",
+      "status": "DEFER",
+      "mechanism": "Avaliar beta, PCA, dispersão, breadth, momentum residual, spreads, cointegração e anomalias.",
+      "prerequisites": "Ajuste somente no treino e histórico setorial; múltiplas hipóteses",
+      "profile": "ECONOMIC",
+      "comparison": "NOT_DIRECTLY_COMPARABLE para resultados econômicos; comparação funcional por contrato",
+      "evidence_origin": "LOCAL/EXTERNAL",
+      "evidence_scope": "ECONOMIC",
+      "result": "NOT_EVALUATED",
+      "benefit_measured": false,
+      "score_confidence": "LOW",
+      "b3_transferability": 2,
+      "b3_reason": "Eficácia líquida local não testada.",
+      "data_accessibility": "UNKNOWN",
+      "data_pit_quality": "UNKNOWN",
+      "edge_decay_risk": "UNKNOWN",
+      "competitor_prevalence": "UNKNOWN",
+      "competitive_gap": "UNKNOWN",
+      "differentiation_potential": "UNKNOWN",
+      "comparative_class": "UNCLASSIFIED",
+      "redundancy_penalty": 0,
+      "reuse": "Referência ou adapter estreito; integração não autorizada",
+      "score": {
+        "profile": "ECONOMIC",
+        "VALUE_SCORE": null,
+        "COST_RISK_SCORE": null,
+        "PRIORITY_SCORE": null,
+        "reason": "Valor econômico incremental, transferência e decaimento não medidos em painel B3 admissível. Sem número até dados/protocolo; não substituir UNKNOWN por zero."
+      },
+      "competitor_context_reason": "UNKNOWN: amostra intencional de referências por capacidade; sem denominador de concorrentes diretos, não estimar prevalência/gap/diferenciação.",
+      "closure": {
+        "our_state": "Features existem; neutralização por grupo não demonstrada",
+        "reference_ids": [
+          "R05",
+          "R16",
+          "R61"
+        ],
+        "gap": "Diagnóstico separando componente setorial",
+        "result": "Média de grupo10→0;IC residual0,488→1 no controle",
+        "queue": "IMPLEMENT_NOW",
+        "action": "AUGMENT",
+        "economic_value": "UNKNOWN; no new B3 economic benchmark",
+        "historical_C_E_preserved": true,
+        "stage": {
+          "FOUND": true,
+          "STUDIED": true,
+          "IMPLEMENTED": true,
+          "EXECUTED": true,
+          "BENCHMARKED": true,
+          "ECONOMICALLY_TESTED": false
+        },
+        "decision": "INTEGRATE_CANDIDATE_DIAGNOSTIC_ONLY",
+        "local_blocker": null,
+        "score_delta": null
+      }
+    }
+  ],
+  "score_governance_preserved": {
+    "value_enabler": {
+      "scientific_value": 0.3,
+      "validation_value": 0.2,
+      "external_evidence": 0.15,
+      "architectural_fit": 0.1,
+      "incremental_capability": 0.1,
+      "domain_fit": 0.1,
+      "independent_references": 0.05
+    },
+    "cost_risk": {
+      "implementation_complexity": 0.25,
+      "methodological_risk": 0.2,
+      "dependency_risk": 0.15,
+      "maintenance_cost": 0.15,
+      "data_cost": 0.15,
+      "operational_cost": 0.1
+    },
+    "priority_value_weight": 0.7,
+    "economic_weights": {
+      "economic_value": 0.2,
+      "scientific_value": 0.15,
+      "external_evidence": 0.15,
+      "independent_references": 0.1,
+      "b3_transferability": 0.15,
+      "incremental_capability": 0.1,
+      "validation_value": 0.1,
+      "architectural_fit": 0.05
+    },
+    "economic_scores": "UNKNOWN: potencial líquido e dados não medidos; não pontuar como zero",
+    "v2": "Notas específicas por capacidade; pesos originais; sensibilidade externa .6/.7/.8 e interna ±20%; desconhecido preservado."
+  },
+  "new_reference_ids": {
+    "R61": "cvxgrp/cvxportfolio@82bbceb96181a64aaf241a3de2e6cd5fde4a3825 GPL-3.0 text; concepts only; no vendor",
+    "R62": "ALFRED/FRED real-time API official documentation; no API key obtained/no data ingested"
+  },
+  "old_references": "R01..R60 preserved; R16 license clarified Apache-2.0 in closure acquisition",
+  "X01": "preserved, not reopened",
+  "X02": "external engine still locally blocked; existing cost formula validated against new trade vectors",
+  "X03": "diagnosis closed, untouched",
+  "X04": "group diagnostic added; old temporal fixture not rerun",
+  "X05": {
+    "executed": false,
+    "single_material_blocker": "No frozen admissible B3 panel linking decision-time inputs to complete economic outcome labels across the common experiment interval/universe",
+    "proportionality": "X02 external agreement and every TOTS3 UNKNOWN are NOT universal prerequisites. Restrict a candidate panel if economically material; no global block of tools."
+  },
+  "integration": "candidates for later production integration, not a runtime replacement"
+}

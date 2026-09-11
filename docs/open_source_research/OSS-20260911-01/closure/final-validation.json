@@ -1,0 +1,13 @@
+{
+  "cli_immutable_output_test": "PASS",
+  "cli_first_run": "PASS in work receipt; copied bytes identical",
+  "documentation_checker": {
+    "status": "PASS",
+    "markdown_files": 150,
+    "unresolved_current_links": 0
+  },
+  "linux_status": "wsl --status returned not installed; Docker command absent",
+  "runtime_suite": "NOT_RUN; runtime unmodified",
+  "external_engine": "NOT_RUN",
+  "new_research_module_sha256": "15d2f979758efcb3904b335bee518c6b0bb3410bbb9839d6c50430e8ad7015d9"
+}

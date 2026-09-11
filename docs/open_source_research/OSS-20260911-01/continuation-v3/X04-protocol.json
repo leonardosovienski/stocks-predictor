@@ -1,0 +1,11 @@
+{
+  "run_id": "OSS-20260911-01",
+  "id": "X04",
+  "purpose": "Observed return = factor exposure + regression residual - explicit costs, period by period",
+  "synthetic_prereg": "120dates,20assets,market alternates\u00b1.01,beta=.5+.05*j; orthogonal residual pattern[.002,.002,-.002,-.002];scenario1 zero residual,scenario2 residual plusintercept.001,scenario3 samepluscost.002; fixed before outputs",
+  "split": "first60 fit OLS intercept/beta, last60 evaluation, no tuning; equalweights, dates as inference unit",
+  "criterion": "gross decomposition error<=1e-12, training fitted beta known<=1e-12, null intercept<=1e-12, plantedintercept.001; scenario3 net belowfactor by.001 onmean; no alpha declaration",
+  "market_protocol": "Choose admissible risk-free/factors before returns; normalize units/calendar; y=portfolio excess gross; exposure fitted strictlyintrain, residual outofsample; costs by orders+fixedexpenses; compare equalrisk baseline, sectors,beta,turnover,drawdown; report grossfactor/residual and cost separately; geometrically compounded attribution needs interaction terms, not sums of mean returns",
+  "material_exposure_rule": "No alpha label when estimated residual improvement fails frozen net hurdle and temporal confidence criterion even if grossreturn positive; R\u00b2 descriptive only, residual is not proofalpha",
+  "gate": "External/statistical calibration and realdata are separate unmet gates"
+}

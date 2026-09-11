@@ -8,7 +8,7 @@ Comece por [README](../README.md), [estado atual](../STOCKS_CURRENT_STATE.md),
 A [revisão dos arquivos](maintenance/2026-09-10-files/README.md) explica limpeza,
 preservação, dados externos e referências históricas sem destino direto.
 
-130 Markdown versionados. Classificação não certifica todas as afirmações históricas.
+150 Markdown versionados. Classificação não certifica todas as afirmações históricas.
 URLs externas e fragmentos/âncoras não são validados por este verificador.
 
 | Documento | Papel |
@@ -50,6 +50,25 @@ URLs externas e fragmentos/âncoras não são validados por este verificador.
 | [docs/engineering/2026-09-10-r8/README.md](engineering/2026-09-10-r8/README.md) | REGISTRO_DATADO |
 | [docs/engineering/2026-09-10-r8/RUNBOOK.md](engineering/2026-09-10-r8/RUNBOOK.md) | REPRODUCAO_COM_ESCOPO_DATADO |
 | [docs/maintenance/2026-09-10-files/README.md](maintenance/2026-09-10-files/README.md) | REGISTRO_DATADO |
+| [docs/open_source_research/OSS-20260911-01/BASELINE.md](open_source_research/OSS-20260911-01/BASELINE.md) | REGISTRO_DATADO |
+| [docs/open_source_research/OSS-20260911-01/CAPABILITY_MATRIX.md](open_source_research/OSS-20260911-01/CAPABILITY_MATRIX.md) | REGISTRO_DATADO |
+| [docs/open_source_research/OSS-20260911-01/DECISIONS.md](open_source_research/OSS-20260911-01/DECISIONS.md) | REGISTRO_DATADO |
+| [docs/open_source_research/OSS-20260911-01/EXPERIMENTS.md](open_source_research/OSS-20260911-01/EXPERIMENTS.md) | REGISTRO_DATADO |
+| [docs/open_source_research/OSS-20260911-01/REPORT.md](open_source_research/OSS-20260911-01/REPORT.md) | REGISTRO_DATADO |
+| [docs/open_source_research/OSS-20260911-01/SURVEY.md](open_source_research/OSS-20260911-01/SURVEY.md) | REGISTRO_DATADO |
+| [docs/open_source_research/OSS-20260911-01/closure/REPORT.md](open_source_research/OSS-20260911-01/closure/REPORT.md) | REGISTRO_DATADO |
+| [docs/open_source_research/OSS-20260911-01/closure/SOURCE_REVIEW.md](open_source_research/OSS-20260911-01/closure/SOURCE_REVIEW.md) | REGISTRO_DATADO |
+| [docs/open_source_research/OSS-20260911-01/continuation-v2/BASELINE.md](open_source_research/OSS-20260911-01/continuation-v2/BASELINE.md) | REGISTRO_DATADO |
+| [docs/open_source_research/OSS-20260911-01/continuation-v2/CAPABILITY_MATRIX.md](open_source_research/OSS-20260911-01/continuation-v2/CAPABILITY_MATRIX.md) | REGISTRO_DATADO |
+| [docs/open_source_research/OSS-20260911-01/continuation-v2/DECISIONS.md](open_source_research/OSS-20260911-01/continuation-v2/DECISIONS.md) | REGISTRO_DATADO |
+| [docs/open_source_research/OSS-20260911-01/continuation-v2/EXPERIMENTS.md](open_source_research/OSS-20260911-01/continuation-v2/EXPERIMENTS.md) | REGISTRO_DATADO |
+| [docs/open_source_research/OSS-20260911-01/continuation-v2/REPORT.md](open_source_research/OSS-20260911-01/continuation-v2/REPORT.md) | REGISTRO_DATADO |
+| [docs/open_source_research/OSS-20260911-01/continuation-v2/SURVEY.md](open_source_research/OSS-20260911-01/continuation-v2/SURVEY.md) | REGISTRO_DATADO |
+| [docs/open_source_research/OSS-20260911-01/continuation-v3/REPORT.md](open_source_research/OSS-20260911-01/continuation-v3/REPORT.md) | REGISTRO_DATADO |
+| [docs/open_source_research/OSS-20260911-01/continuation-v3/X01-PAINEL.md](open_source_research/OSS-20260911-01/continuation-v3/X01-PAINEL.md) | REGISTRO_DATADO |
+| [docs/open_source_research/OSS-20260911-01/continuation-v3/X02-X04-X05.md](open_source_research/OSS-20260911-01/continuation-v3/X02-X04-X05.md) | REGISTRO_DATADO |
+| [docs/open_source_research/OSS-20260911-01/continuation-v3/X03-DIAGNOSTICO.md](open_source_research/OSS-20260911-01/continuation-v3/X03-DIAGNOSTICO.md) | REGISTRO_DATADO |
+| [docs/open_source_research/OSS-20260911-01/tots3-case/REPORT.md](open_source_research/OSS-20260911-01/tots3-case/REPORT.md) | REGISTRO_DATADO |
 | [docs/research/2026-09-06-readiness.md](research/2026-09-06-readiness.md) | REGISTRO_DATADO |
 | [docs/research/2026-09-07-final-review.md](research/2026-09-07-final-review.md) | REGISTRO_DATADO |
 | [docs/research/2026-09-07-h17-first-observation.md](research/2026-09-07-h17-first-observation.md) | REGISTRO_DATADO |
@@ -94,6 +113,7 @@ URLs externas e fragmentos/âncoras não são validados por este verificador.
 | [reports/h7_verdict_adhoc.md](../reports/h7_verdict_adhoc.md) | REGISTRO_DATADO |
 | [reports/h8_verdict_adhoc.md](../reports/h8_verdict_adhoc.md) | REGISTRO_DATADO |
 | [reports/h9_verdict_adhoc.md](../reports/h9_verdict_adhoc.md) | REGISTRO_DATADO |
+| [research/oss/OSS-20260911-01/README.md](../research/oss/OSS-20260911-01/README.md) | REGISTRO_DATADO |
 | [research/session-20260907/README.md](../research/session-20260907/README.md) | REGISTRO_DATADO |
 | [research/session-20260907/deliverables/COMPLEMENTO_STOCKS.md](../research/session-20260907/deliverables/COMPLEMENTO_STOCKS.md) | REGISTRO_DATADO |
 | [research/session-20260907/deliverables/CORRECOES_STOCKS.md](../research/session-20260907/deliverables/CORRECOES_STOCKS.md) | REGISTRO_DATADO |

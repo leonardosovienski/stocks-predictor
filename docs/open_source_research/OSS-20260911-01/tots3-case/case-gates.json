@@ -1,0 +1,24 @@
+{
+  "run_id": "OSS-20260911-01",
+  "experiment": "X01",
+  "asset": "TOTS3/BRTOTSACNOR8",
+  "interval": [
+    "2020-04-01",
+    "2020-07-01"
+  ],
+  "status": "X01_CANONICAL_CASE_INCOMPLETE",
+  "gates": {
+    "1_identity_continuous_reconciled": "PARTIAL",
+    "2_split_no_double_counting": "PASS_ANALYTICAL_TERMS",
+    "3_all_material_events_explicit": "INVENTORIED_NOT_CONTENT_COMPLETE",
+    "4_receivables_units_timing": "UNIT_AND_SCHEDULE_PASS_ACTUAL_AVAILABILITY_UNKNOWN",
+    "5_no_retrospective_information": "GUARD_PASS_PIT_CERTIFICATION_BLOCKED",
+    "6_reproducible": "PASS_FOR_INSPECTED_SOURCES_NOT_MISSING_SOURCES",
+    "7_unknowns_explicit": "PASS"
+  },
+  "prior_K_X_C_E_states": "unchanged",
+  "next_gate": "Complete dated document version/precision lineage and event-content coverage, then replay one canonical case without hindsight",
+  "X02": "Analytical fixtures/adapters can progress; independent engine execution remains contingent on authorized Linux and pinned environment",
+  "X04": "Protocol and synthetic factor/residual/cost checks can progress; empirical alpha claims remain blocked",
+  "X05": "NOT_AUTHORIZED_NOT_EXECUTED"
+}

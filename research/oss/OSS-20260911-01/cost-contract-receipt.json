@@ -1,0 +1,250 @@
+{
+  "run_id": "OSS-20260911-01",
+  "reason": "Integration convention discovered during source review: L1 vs half L1, never charge cash as another security",
+  "checks": [
+    {
+      "path": "full",
+      "step": 0,
+      "difference": 0.0,
+      "pass": true
+    },
+    {
+      "path": "full",
+      "step": 1,
+      "difference": 0.0,
+      "pass": true
+    },
+    {
+      "path": "full",
+      "step": 2,
+      "difference": 0.0,
+      "pass": true
+    },
+    {
+      "path": "full",
+      "step": 3,
+      "difference": 0.0,
+      "pass": true
+    },
+    {
+      "path": "full",
+      "step": 4,
+      "difference": 0.0,
+      "pass": true
+    },
+    {
+      "path": "full",
+      "step": 5,
+      "difference": 0.0,
+      "pass": true
+    },
+    {
+      "path": "full",
+      "step": 6,
+      "difference": 0.0,
+      "pass": true
+    },
+    {
+      "path": "full",
+      "step": 7,
+      "difference": 0.0,
+      "pass": true
+    },
+    {
+      "path": "full",
+      "step": 8,
+      "difference": 0.0,
+      "pass": true
+    },
+    {
+      "path": "full",
+      "step": 9,
+      "difference": 0.0,
+      "pass": true
+    },
+    {
+      "path": "full",
+      "step": 10,
+      "difference": 0.0,
+      "pass": true
+    },
+    {
+      "path": "full",
+      "step": 11,
+      "difference": 0.0,
+      "pass": true
+    },
+    {
+      "path": "full",
+      "step": 12,
+      "difference": 0.0,
+      "pass": true
+    },
+    {
+      "path": "full",
+      "step": 13,
+      "difference": 0.0,
+      "pass": true
+    },
+    {
+      "path": "full",
+      "step": 14,
+      "difference": 0.0,
+      "pass": true
+    },
+    {
+      "path": "full",
+      "step": 15,
+      "difference": 0.0,
+      "pass": true
+    },
+    {
+      "path": "full",
+      "step": 16,
+      "difference": 0.0,
+      "pass": true
+    },
+    {
+      "path": "full",
+      "step": 17,
+      "difference": 0.0,
+      "pass": true
+    },
+    {
+      "path": "full",
+      "step": 18,
+      "difference": 0.0,
+      "pass": true
+    },
+    {
+      "path": "full",
+      "step": 19,
+      "difference": 0.0,
+      "pass": true
+    },
+    {
+      "path": "limited",
+      "step": 0,
+      "difference": 0.0,
+      "pass": true
+    },
+    {
+      "path": "limited",
+      "step": 1,
+      "difference": 0.0,
+      "pass": true
+    },
+    {
+      "path": "limited",
+      "step": 2,
+      "difference": 0.0,
+      "pass": true
+    },
+    {
+      "path": "limited",
+      "step": 3,
+      "difference": 0.0,
+      "pass": true
+    },
+    {
+      "path": "limited",
+      "step": 4,
+      "difference": 0.0,
+      "pass": true
+    },
+    {
+      "path": "limited",
+      "step": 5,
+      "difference": 0.0,
+      "pass": true
+    },
+    {
+      "path": "limited",
+      "step": 6,
+      "difference": 0.0,
+      "pass": true
+    },
+    {
+      "path": "limited",
+      "step": 7,
+      "difference": 0.0,
+      "pass": true
+    },
+    {
+      "path": "limited",
+      "step": 8,
+      "difference": 0.0,
+      "pass": true
+    },
+    {
+      "path": "limited",
+      "step": 9,
+      "difference": 0.0,
+      "pass": true
+    },
+    {
+      "path": "limited",
+      "step": 10,
+      "difference": 0.0,
+      "pass": true
+    },
+    {
+      "path": "limited",
+      "step": 11,
+      "difference": 0.0,
+      "pass": true
+    },
+    {
+      "path": "limited",
+      "step": 12,
+      "difference": 0.0,
+      "pass": true
+    },
+    {
+      "path": "limited",
+      "step": 13,
+      "difference": 0.0,
+      "pass": true
+    },
+    {
+      "path": "limited",
+      "step": 14,
+      "difference": 0.0,
+      "pass": true
+    },
+    {
+      "path": "limited",
+      "step": 15,
+      "difference": 0.0,
+      "pass": true
+    },
+    {
+      "path": "limited",
+      "step": 16,
+      "difference": 0.0,
+      "pass": true
+    },
+    {
+      "path": "limited",
+      "step": 17,
+      "difference": 0.0,
+      "pass": true
+    },
+    {
+      "path": "limited",
+      "step": 18,
+      "difference": 0.0,
+      "pass": true
+    },
+    {
+      "path": "limited",
+      "step": 19,
+      "difference": 0.0,
+      "pass": true
+    }
+  ],
+  "pass": true,
+  "existing_execution_sha256": "fd867494a27f54e0c64e4fbe2a48f87e5c22669e3c1115a4830ce74770aa9348",
+  "independent_external_engine": false,
+  "observed_at": "2026-09-11T05:18:19.678191+00:00"
+}

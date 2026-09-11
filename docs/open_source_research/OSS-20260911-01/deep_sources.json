@@ -1,0 +1,534 @@
+[
+  {
+    "id": "R01",
+    "repo": "microsoft/qlib",
+    "files": [
+      {
+        "path": "LICENSE",
+        "local": "LICENSE",
+        "url": "https://raw.githubusercontent.com/microsoft/qlib/79633dd9506ea689e5400dea0197717b5b3d74b7/LICENSE",
+        "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+        "bytes": 1141
+      },
+      {
+        "path": "qlib/contrib/evaluate.py",
+        "local": "qlib__contrib__evaluate.py",
+        "url": "https://raw.githubusercontent.com/microsoft/qlib/79633dd9506ea689e5400dea0197717b5b3d74b7/qlib/contrib/evaluate.py",
+        "sha256": "f4440ebaab095d7f239f5ea53fc8d9f686a304262a10223afb07d93b9d1da636",
+        "bytes": 14842
+      },
+      {
+        "path": "qlib/data/dataset/processor.py",
+        "local": "qlib__data__dataset__processor.py",
+        "url": "https://raw.githubusercontent.com/microsoft/qlib/79633dd9506ea689e5400dea0197717b5b3d74b7/qlib/data/dataset/processor.py",
+        "sha256": "424af44e81c99467171c2d0b7978fb9f95d3b4c8b743a535ff4fe45d708cf517",
+        "bytes": 14534
+      }
+    ],
+    "commit": "79633dd9506ea689e5400dea0197717b5b3d74b7",
+    "errors": [
+      {
+        "path": "LICENSE.txt",
+        "error": "HTTP Error 404: Not Found"
+      }
+    ]
+  },
+  {
+    "id": "R02",
+    "repo": "QuantConnect/Lean",
+    "files": [
+      {
+        "path": "LICENSE",
+        "local": "LICENSE",
+        "url": "https://raw.githubusercontent.com/QuantConnect/Lean/8ee075a39918f2df6fe9e0a5944e366fb60d10dc/LICENSE",
+        "sha256": "522cf0a716ce03f67d46f8fceb5bf78c5b84400ec5cd8d14bf9f02cddc1cb6ba",
+        "bytes": 10737
+      },
+      {
+        "path": "readme.md",
+        "local": "readme.md",
+        "url": "https://raw.githubusercontent.com/QuantConnect/Lean/8ee075a39918f2df6fe9e0a5944e366fb60d10dc/readme.md",
+        "sha256": "c93d2d649740ffdbfeca35ee5035eff668dc1f0a6b97873756addb70f4f4b91e",
+        "bytes": 11001
+      }
+    ],
+    "commit": "8ee075a39918f2df6fe9e0a5944e366fb60d10dc",
+    "errors": [
+      {
+        "path": "LICENSE.txt",
+        "error": "HTTP Error 404: Not Found"
+      },
+      {
+        "path": "Common/Securities/Equity/EquityFillModel.cs",
+        "error": "HTTP Error 404: Not Found"
+      }
+    ]
+  },
+  {
+    "id": "R03",
+    "repo": "polakowo/vectorbt",
+    "files": [
+      {
+        "path": "vectorbt/portfolio/nb.py",
+        "local": "vectorbt__portfolio__nb.py",
+        "url": "https://raw.githubusercontent.com/polakowo/vectorbt/34b6d5935e3ea3eccd549e2592bc0f455b8045f5/vectorbt/portfolio/nb.py",
+        "sha256": "3bc4fcbd9871dcd20fe49037484253d6fe200b88042a942ff98e75bb83ec46c7",
+        "bytes": 290039
+      },
+      {
+        "path": "tests/test_portfolio.py",
+        "local": "tests__test_portfolio.py",
+        "url": "https://raw.githubusercontent.com/polakowo/vectorbt/34b6d5935e3ea3eccd549e2592bc0f455b8045f5/tests/test_portfolio.py",
+        "sha256": "46e871f35869480cb0ea2bf716761695ff4be5dff594537acc622f01ddf65bce",
+        "bytes": 429319
+      }
+    ],
+    "commit": "34b6d5935e3ea3eccd549e2592bc0f455b8045f5",
+    "errors": [
+      {
+        "path": "LICENSE",
+        "error": "HTTP Error 404: Not Found"
+      },
+      {
+        "path": "LICENSE.txt",
+        "error": "HTTP Error 404: Not Found"
+      }
+    ]
+  },
+  {
+    "id": "R05",
+    "repo": "stefan-jansen/zipline-reloaded",
+    "files": [
+      {
+        "path": "LICENSE",
+        "local": "LICENSE",
+        "url": "https://raw.githubusercontent.com/stefan-jansen/zipline-reloaded/943010b9da848e317fc520de87edade2b884d329/LICENSE",
+        "sha256": "e35c4578f7db4498e62e278978f6c42e0fce6f21f9993a060b08a33549cd3044",
+        "bytes": 11347
+      },
+      {
+        "path": "src/zipline/data/adjustments.py",
+        "local": "src__zipline__data__adjustments.py",
+        "url": "https://raw.githubusercontent.com/stefan-jansen/zipline-reloaded/943010b9da848e317fc520de87edade2b884d329/src/zipline/data/adjustments.py",
+        "sha256": "a10172de0bbd1e9a42ae57c91128e08c82537e349bcb0098c0b7294fd276ff59",
+        "bytes": 25359
+      },
+      {
+        "path": "tests/data/test_adjustments.py",
+        "local": "tests__data__test_adjustments.py",
+        "url": "https://raw.githubusercontent.com/stefan-jansen/zipline-reloaded/943010b9da848e317fc520de87edade2b884d329/tests/data/test_adjustments.py",
+        "sha256": "0fe18e3572320431f2bf4655f7a4a58f41117faa72f2c95707b2d98ffe512841",
+        "bytes": 11332
+      }
+    ],
+    "commit": "943010b9da848e317fc520de87edade2b884d329",
+    "errors": [
+      {
+        "path": "LICENSE.txt",
+        "error": "HTTP Error 404: Not Found"
+      }
+    ]
+  },
+  {
+    "id": "R07",
+    "repo": "robertmartin8/PyPortfolioOpt",
+    "files": [
+      {
+        "path": "LICENSE",
+        "local": "LICENSE",
+        "url": "https://raw.githubusercontent.com/robertmartin8/PyPortfolioOpt/a6638d2e06dae6f444fd022cfd4b3c528902a85b/LICENSE",
+        "sha256": "0e401d63a7b31bde363ca577a2537af1c345fccbf532edc55cb589f568b2a883",
+        "bytes": 1077
+      },
+      {
+        "path": "pypfopt/risk_models.py",
+        "local": "pypfopt__risk_models.py",
+        "url": "https://raw.githubusercontent.com/robertmartin8/PyPortfolioOpt/a6638d2e06dae6f444fd022cfd4b3c528902a85b/pypfopt/risk_models.py",
+        "sha256": "fba14f75f40023e3a7c4f8273073f3e6cc0c6c5c9fc3b7fc917c06c69e10544a",
+        "bytes": 21602
+      },
+      {
+        "path": "tests/test_risk_models.py",
+        "local": "tests__test_risk_models.py",
+        "url": "https://raw.githubusercontent.com/robertmartin8/PyPortfolioOpt/a6638d2e06dae6f444fd022cfd4b3c528902a85b/tests/test_risk_models.py",
+        "sha256": "9d3f9689357f3e7abc127e75a8374bea8a5e8d06ba745b00e7f5d24924341892",
+        "bytes": 12636
+      }
+    ],
+    "commit": "a6638d2e06dae6f444fd022cfd4b3c528902a85b",
+    "errors": [
+      {
+        "path": "LICENSE.txt",
+        "error": "HTTP Error 404: Not Found"
+      }
+    ]
+  },
+  {
+    "id": "R08",
+    "repo": "dcajasn/Riskfolio-Lib",
+    "files": [
+      {
+        "path": "LICENSE.txt",
+        "local": "LICENSE.txt",
+        "url": "https://raw.githubusercontent.com/dcajasn/Riskfolio-Lib/632a9e48fbaf2b9f8e83864a492332364b6ed32c/LICENSE.txt",
+        "sha256": "7f7a68d261604e432e818993f92b74b636c632e31f207730dd189267044aa5e6",
+        "bytes": 1486
+      },
+      {
+        "path": "riskfolio/src/RiskFunctions.py",
+        "local": "riskfolio__src__RiskFunctions.py",
+        "url": "https://raw.githubusercontent.com/dcajasn/Riskfolio-Lib/632a9e48fbaf2b9f8e83864a492332364b6ed32c/riskfolio/src/RiskFunctions.py",
+        "sha256": "eed72dceb7024c9ead811fa12d8e834618604f8db9c4fbb6367ce4d2a3992719",
+        "bytes": 100886
+      },
+      {
+        "path": "riskfolio/src/HCPortfolio.py",
+        "local": "riskfolio__src__HCPortfolio.py",
+        "url": "https://raw.githubusercontent.com/dcajasn/Riskfolio-Lib/632a9e48fbaf2b9f8e83864a492332364b6ed32c/riskfolio/src/HCPortfolio.py",
+        "sha256": "2dba3807c57aee518461042cfa8d56b781a7cbe97704f85e333798b19d08ce8d",
+        "bytes": 46330
+      }
+    ],
+    "commit": "632a9e48fbaf2b9f8e83864a492332364b6ed32c",
+    "errors": [
+      {
+        "path": "LICENSE",
+        "error": "HTTP Error 404: Not Found"
+      }
+    ]
+  },
+  {
+    "id": "R09",
+    "repo": "bashtage/arch",
+    "files": [
+      {
+        "path": "arch/bootstrap/base.py",
+        "local": "arch__bootstrap__base.py",
+        "url": "https://raw.githubusercontent.com/bashtage/arch/704bb70e48372e3ccccdde7da379811657ad0224/arch/bootstrap/base.py",
+        "sha256": "104d3552a8e79a801e2f8cd0401160f83a7263b4ff13da44a82d763e5664fd21",
+        "bytes": 60275
+      },
+      {
+        "path": "arch/tests/bootstrap/test_bootstrap.py",
+        "local": "arch__tests__bootstrap__test_bootstrap.py",
+        "url": "https://raw.githubusercontent.com/bashtage/arch/704bb70e48372e3ccccdde7da379811657ad0224/arch/tests/bootstrap/test_bootstrap.py",
+        "sha256": "136a7ac338f17524b47f84d686b8428d0891df0a50e93800c7eb396f8fed75d7",
+        "bytes": 32318
+      }
+    ],
+    "commit": "704bb70e48372e3ccccdde7da379811657ad0224",
+    "errors": [
+      {
+        "path": "LICENSE",
+        "error": "HTTP Error 404: Not Found"
+      },
+      {
+        "path": "LICENSE.txt",
+        "error": "HTTP Error 404: Not Found"
+      }
+    ]
+  },
+  {
+    "id": "R10",
+    "repo": "statsmodels/statsmodels",
+    "files": [
+      {
+        "path": "LICENSE.txt",
+        "local": "LICENSE.txt",
+        "url": "https://raw.githubusercontent.com/statsmodels/statsmodels/1d2307006379fd78ed4f921a92d7fe8c069565f7/LICENSE.txt",
+        "sha256": "1ca78e1dec9dcebc55f3b96a862317f23e76422c5fc943568d955aad1f6b5fad",
+        "bytes": 1636
+      },
+      {
+        "path": "statsmodels/tsa/statespace/kalman_filter.py",
+        "local": "statsmodels__tsa__statespace__kalman_filter.py",
+        "url": "https://raw.githubusercontent.com/statsmodels/statsmodels/1d2307006379fd78ed4f921a92d7fe8c069565f7/statsmodels/tsa/statespace/kalman_filter.py",
+        "sha256": "5fd2a63f3a781e1061f4105032cd5a685f166bc8f039f7e64ce7504174369d0a",
+        "bytes": 106670
+      },
+      {
+        "path": "statsmodels/tsa/statespace/tests/test_kalman.py",
+        "local": "statsmodels__tsa__statespace__tests__test_kalman.py",
+        "url": "https://raw.githubusercontent.com/statsmodels/statsmodels/1d2307006379fd78ed4f921a92d7fe8c069565f7/statsmodels/tsa/statespace/tests/test_kalman.py",
+        "sha256": "8ff43c0dff0883397db9f23c9a220b364f81a789aae3a90946be09afd5eb166b",
+        "bytes": 28547
+      }
+    ],
+    "commit": "1d2307006379fd78ed4f921a92d7fe8c069565f7",
+    "errors": [
+      {
+        "path": "LICENSE",
+        "error": "HTTP Error 404: Not Found"
+      }
+    ]
+  },
+  {
+    "id": "R11",
+    "repo": "scikit-learn/scikit-learn",
+    "files": [
+      {
+        "path": "README.rst",
+        "local": "README.rst",
+        "url": "https://raw.githubusercontent.com/scikit-learn/scikit-learn/8c54c136cac4982a0dac7bee8b8fbcada411fe10/README.rst",
+        "sha256": "42f55d9c11bc9003a0e0c7dda6380dc4b85a2fd1f09701c6be9689f36ba8675c",
+        "bytes": 7676
+      },
+      {
+        "path": "sklearn/model_selection/_split.py",
+        "local": "sklearn__model_selection___split.py",
+        "url": "https://raw.githubusercontent.com/scikit-learn/scikit-learn/8c54c136cac4982a0dac7bee8b8fbcada411fe10/sklearn/model_selection/_split.py",
+        "sha256": "78072f5c87abc9c42f88d49596b0db087643737b073841f8b8b2797588418ad6",
+        "bytes": 112741
+      }
+    ],
+    "commit": "8c54c136cac4982a0dac7bee8b8fbcada411fe10",
+    "errors": [
+      {
+        "path": "LICENSE",
+        "error": "HTTP Error 404: Not Found"
+      },
+      {
+        "path": "LICENSE.txt",
+        "error": "HTTP Error 404: Not Found"
+      }
+    ]
+  },
+  {
+    "id": "R12",
+    "repo": "microsoft/LightGBM",
+    "files": [
+      {
+        "path": "LICENSE",
+        "local": "LICENSE",
+        "url": "https://raw.githubusercontent.com/microsoft/LightGBM/7d3d1d829981fc670629f63f00e11ce25d6624f5/LICENSE",
+        "sha256": "ca70f15d841f7e76c8bbd284d25300cd4ae2ef1035e7e5252b13b73449464305",
+        "bytes": 1121
+      },
+      {
+        "path": "src/objective/rank_objective.hpp",
+        "local": "src__objective__rank_objective.hpp",
+        "url": "https://raw.githubusercontent.com/microsoft/LightGBM/7d3d1d829981fc670629f63f00e11ce25d6624f5/src/objective/rank_objective.hpp",
+        "sha256": "865f9f4735564a80a1ba49bbeb2f2e25f08c41bfbcc398838c82eba60ac8eeaa",
+        "bytes": 17969
+      },
+      {
+        "path": "tests/python_package_test/test_engine.py",
+        "local": "tests__python_package_test__test_engine.py",
+        "url": "https://raw.githubusercontent.com/microsoft/LightGBM/7d3d1d829981fc670629f63f00e11ce25d6624f5/tests/python_package_test/test_engine.py",
+        "sha256": "01a9afa03a4bb01725cad26d59bf704b9f30448995e9c6cfb9ae297ce764df2b",
+        "bytes": 201816
+      }
+    ],
+    "commit": "7d3d1d829981fc670629f63f00e11ce25d6624f5",
+    "errors": [
+      {
+        "path": "LICENSE.txt",
+        "error": "HTTP Error 404: Not Found"
+      }
+    ]
+  },
+  {
+    "id": "R16",
+    "repo": "stefan-jansen/alphalens-reloaded",
+    "files": [
+      {
+        "path": "LICENSE",
+        "local": "LICENSE",
+        "url": "https://raw.githubusercontent.com/stefan-jansen/alphalens-reloaded/f0a07c22d554e4b4036983cc80320b432714fe7e/LICENSE",
+        "sha256": "2b651c2d29c644d1c73417cd96e6cfa506d6de102ed96fc3de96d676e089cf29",
+        "bytes": 11346
+      },
+      {
+        "path": "src/alphalens/performance.py",
+        "local": "src__alphalens__performance.py",
+        "url": "https://raw.githubusercontent.com/stefan-jansen/alphalens-reloaded/f0a07c22d554e4b4036983cc80320b432714fe7e/src/alphalens/performance.py",
+        "sha256": "49cb32d4670314911fb1d205b73ffece0f3cfa49a6b4fea05dc215adac07f505",
+        "bytes": 43929
+      },
+      {
+        "path": "src/alphalens/utils.py",
+        "local": "src__alphalens__utils.py",
+        "url": "https://raw.githubusercontent.com/stefan-jansen/alphalens-reloaded/f0a07c22d554e4b4036983cc80320b432714fe7e/src/alphalens/utils.py",
+        "sha256": "fb09e6c746fac2fc159eab34d6d13d749a618a7d3f48db7882597fe625acd02b",
+        "bytes": 41195
+      }
+    ],
+    "commit": "f0a07c22d554e4b4036983cc80320b432714fe7e",
+    "errors": [
+      {
+        "path": "LICENSE.txt",
+        "error": "HTTP Error 404: Not Found"
+      }
+    ]
+  },
+  {
+    "id": "R18",
+    "repo": "exchange-calendars/exchange_calendars",
+    "files": [],
+    "error": "Command '['git', 'ls-remote', 'https://github.com/exchange-calendars/exchange_calendars.git', 'HEAD']' returned non-zero exit status 128."
+  },
+  {
+    "id": "R20",
+    "repo": "wilsonfreitas/python-bcb",
+    "files": [
+      {
+        "path": "LICENSE",
+        "local": "LICENSE",
+        "url": "https://raw.githubusercontent.com/wilsonfreitas/python-bcb/c431f1dd4c5321658d7879f9ef825df427bdd3fb/LICENSE",
+        "sha256": "3cad2d0d625481175e642980dfd64742ef2fda8cc03a5e3da8468311c9ed6c00",
+        "bytes": 1070
+      },
+      {
+        "path": "bcb/sgs/__init__.py",
+        "local": "bcb__sgs____init__.py",
+        "url": "https://raw.githubusercontent.com/wilsonfreitas/python-bcb/c431f1dd4c5321658d7879f9ef825df427bdd3fb/bcb/sgs/__init__.py",
+        "sha256": "abf5c6f26ee60bcf64ca1a2c72a66678d7c82531881cdf5f74ed99a08c3e7909",
+        "bytes": 19499
+      }
+    ],
+    "commit": "c431f1dd4c5321658d7879f9ef825df427bdd3fb",
+    "errors": [
+      {
+        "path": "LICENSE.txt",
+        "error": "HTTP Error 404: Not Found"
+      },
+      {
+        "path": "bcb/sgs.py",
+        "error": "HTTP Error 404: Not Found"
+      }
+    ]
+  },
+  {
+    "id": "R21",
+    "repo": "wilsonfreitas/brasa",
+    "files": [
+      {
+        "path": "LICENSE",
+        "local": "LICENSE",
+        "url": "https://raw.githubusercontent.com/wilsonfreitas/brasa/59deae75c90a6edd599e73109e0b97fd88b3d50f/LICENSE",
+        "sha256": "99434fb12423966aed09d05c95dc93d7db54cb25151f91caf82d8a018febd635",
+        "bytes": 1071
+      },
+      {
+        "path": "README.md",
+        "local": "README.md",
+        "url": "https://raw.githubusercontent.com/wilsonfreitas/brasa/59deae75c90a6edd599e73109e0b97fd88b3d50f/README.md",
+        "sha256": "f3a2d92c72acb49baecd47ffecb4828ebce3e3efe33229c0c04ced984c35b49a",
+        "bytes": 4944
+      }
+    ],
+    "commit": "59deae75c90a6edd599e73109e0b97fd88b3d50f",
+    "errors": [
+      {
+        "path": "LICENSE.txt",
+        "error": "HTTP Error 404: Not Found"
+      },
+      {
+        "path": "brasa/parsers/b3.py",
+        "error": "HTTP Error 404: Not Found"
+      }
+    ]
+  },
+  {
+    "id": "R32",
+    "repo": "hmmlearn/hmmlearn",
+    "files": [
+      {
+        "path": "LICENSE.txt",
+        "local": "LICENSE.txt",
+        "url": "https://raw.githubusercontent.com/hmmlearn/hmmlearn/e01a10e99df1042e4c1e6b7c822fd292dd37502f/LICENSE.txt",
+        "sha256": "3e1189a748644e7e65cf59dbd17cd623044467d89a7484d4841e03b9ca5e3c27",
+        "bytes": 1527
+      },
+      {
+        "path": "src/hmmlearn/base.py",
+        "local": "src__hmmlearn__base.py",
+        "url": "https://raw.githubusercontent.com/hmmlearn/hmmlearn/e01a10e99df1042e4c1e6b7c822fd292dd37502f/src/hmmlearn/base.py",
+        "sha256": "bb3e50ab5c55d30c8f506ada01d09cc253695f501135b844ab1d80b6063ad326",
+        "bytes": 49587
+      },
+      {
+        "path": "src/hmmlearn/tests/test_base.py",
+        "local": "src__hmmlearn__tests__test_base.py",
+        "url": "https://raw.githubusercontent.com/hmmlearn/hmmlearn/e01a10e99df1042e4c1e6b7c822fd292dd37502f/src/hmmlearn/tests/test_base.py",
+        "sha256": "349233d35869c2f21447ac68d8bab30fe1dd7260c57c25785bce1abb02a99f2e",
+        "bytes": 9365
+      }
+    ],
+    "commit": "e01a10e99df1042e4c1e6b7c822fd292dd37502f",
+    "errors": [
+      {
+        "path": "LICENSE",
+        "error": "HTTP Error 404: Not Found"
+      }
+    ]
+  },
+  {
+    "id": "R33",
+    "repo": "deepcharles/ruptures",
+    "files": [
+      {
+        "path": "LICENSE",
+        "local": "LICENSE",
+        "url": "https://raw.githubusercontent.com/deepcharles/ruptures/ee1c8ff8a548d54c641b2bb471562165931f31c7/LICENSE",
+        "sha256": "f29c48be39fff974e2d631b2317c194409531cc86e16e05f3968ead0456bc920",
+        "bytes": 1332
+      },
+      {
+        "path": "src/ruptures/detection/pelt.py",
+        "local": "src__ruptures__detection__pelt.py",
+        "url": "https://raw.githubusercontent.com/deepcharles/ruptures/ee1c8ff8a548d54c641b2bb471562165931f31c7/src/ruptures/detection/pelt.py",
+        "sha256": "136e4636b006ef62ab80ddb585a6df4296cf87a24faf43c6c8020a6acaa76231",
+        "bytes": 5377
+      },
+      {
+        "path": "tests/test_detection.py",
+        "local": "tests__test_detection.py",
+        "url": "https://raw.githubusercontent.com/deepcharles/ruptures/ee1c8ff8a548d54c641b2bb471562165931f31c7/tests/test_detection.py",
+        "sha256": "3e87718fced6d9ef7af5a74f5d01aa8a7e27173da60d4b600f9554384db758ce",
+        "bytes": 13077
+      }
+    ],
+    "commit": "ee1c8ff8a548d54c641b2bb471562165931f31c7",
+    "errors": [
+      {
+        "path": "LICENSE.txt",
+        "error": "HTTP Error 404: Not Found"
+      }
+    ]
+  },
+  {
+    "id": "R35",
+    "repo": "scikit-learn-contrib/MAPIE",
+    "files": [
+      {
+        "path": "LICENSE",
+        "local": "LICENSE",
+        "url": "https://raw.githubusercontent.com/scikit-learn-contrib/MAPIE/7e888f5249bf942912207d398525d3259a5f07c0/LICENSE",
+        "sha256": "92372faa472615c49bd4255fb56d998644e60b255b1093c7dad969ac70c1a60c",
+        "bytes": 1575
+      },
+      {
+        "path": "mapie/regression/time_series_regression.py",
+        "local": "mapie__regression__time_series_regression.py",
+        "url": "https://raw.githubusercontent.com/scikit-learn-contrib/MAPIE/7e888f5249bf942912207d398525d3259a5f07c0/mapie/regression/time_series_regression.py",
+        "sha256": "c5b52741784168967697086166a53601eaf020aa99f14de5c1becb8eda7e8611",
+        "bytes": 17402
+      },
+      {
+        "path": "mapie/tests/test_time_series_regression.py",
+        "local": "mapie__tests__test_time_series_regression.py",
+        "url": "https://raw.githubusercontent.com/scikit-learn-contrib/MAPIE/7e888f5249bf942912207d398525d3259a5f07c0/mapie/tests/test_time_series_regression.py",
+        "sha256": "35c08f200a4288753a62c925c4c561f29d780898520b88be4aa214a99b4db038",
+        "bytes": 20417
+      }
+    ],
+    "commit": "7e888f5249bf942912207d398525d3259a5f07c0",
+    "errors": [
+      {
+        "path": "LICENSE.txt",
+        "error": "HTTP Error 404: Not Found"
+      }
+    ]
+  }
+]

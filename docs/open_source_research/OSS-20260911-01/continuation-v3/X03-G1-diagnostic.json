@@ -1,0 +1,21 @@
+{
+  "run_id": "OSS-20260911-01",
+  "experiment": "X03",
+  "substudy": "UNC02 diagnostic continuation",
+  "prior_receipt": "continuation-v2/controls-receipt.json",
+  "seeds": "exactly20260911..20261410, phi0/0.5; no new seeds",
+  "budget": "one replay of1000 original series, no substitute estimator,120seconds",
+  "checks": [
+    "replicate counts462/464/359/462",
+    "means from independent innovation weights <=1e-10",
+    "finite variance via covariance sum versus forward recursion <=1e-12",
+    "production standard error versus independent fsum calculation <=1e-12",
+    "boundary versus < does not change counts",
+    "exact binomial tails and diagnostic family correction4 tests, preserving original FAIL",
+    "normal DGP stationary initial variance, truncation/burn-in audited",
+    "paired cross-phi standardized means correlation and outlier overlap"
+  ],
+  "closure": "Close diagnosis if arithmetic, generator and oracle agree within thresholds, counts reproduce, temporal variance mechanism quantitatively reconciles the nested interval changes, and nominal-control deviations receive exact finite-M MonteCarlo tail probabilities. Otherwise stop after this replay as unresolved with failing invariant. No seed search or alternative estimator. A possible random-tail explanation is not proof that PRNG independence is true. Original FAIL remains.",
+  "decision": "diagnostic closure is not calibration approval or economic gate; unadjusted criterion retained; family correction is post-hoc diagnosis only",
+  "monte_carlo_null": "oracle two-sided P(|Z|<=1.96); iid estimated-sigma expected Student-t503 coverage; 500 replicates, pseudo-independent seeds assumption explicit"
+}

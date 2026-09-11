@@ -1,0 +1,37 @@
+{
+  "run_id": "OSS-20260911-01",
+  "id": "X05",
+  "state": "BLOCKED_DATA_AND_PROTOCOL",
+  "executed": false,
+  "arms": [
+    "simple admissible equalweight/cash baseline",
+    "absolute forecasting with regularized linear regression",
+    "simple cross-sectional ranking of a predeclared admissible score",
+    "more complex ranking only upon incremental justification; otherwise omitted explicitly"
+  ],
+  "comparability": [
+    "same decision-available features",
+    "same target horizon and nonoverlapping date splits/purge",
+    "same historical admissible universe and identities",
+    "same cost scenarios and execution assumptions",
+    "same capital and risk constraints",
+    "same maximum5 configurations per fitted arm, unused budget not transferred; simple deterministic arm has1; all failures recorded"
+  ],
+  "metrics": [
+    "IC bydate and temporal stability",
+    "quantile spreads atsame gross exposure",
+    "turnover",
+    "gross and neteconomic outcome",
+    "factor exposure and residual",
+    "risk/drawdown",
+    "RMSE as secondary only"
+  ],
+  "gates": [
+    "X01 usable integrated interval history and eventcoverage",
+    "X02 accepted common accounting contract independently checked",
+    "X03 temporal inferential method qualified for the actual labels, not merelyUNC02diagnosed",
+    "X04 matched factors/costs protocol",
+    "lineage6fields+humanreview ifclosedfamily; real reserved split identified before return read"
+  ],
+  "capital_authorized": false
+}

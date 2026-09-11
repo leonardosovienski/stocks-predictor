@@ -1,0 +1,139 @@
+{
+  "observed_at": "2026-09-11T03:02:20.773370+00:00",
+  "python": "3.12.14",
+  "command": "python -I -B -X utf8 controls.py",
+  "protocol_sha256": "a8621f91055f2390e5510a1e1f913f7a9dc3402ac5ad9d9428c68ec5969a9213",
+  "runner_sha256": "3bae7cc8e68e7d8a2e9b6aa9b9d8ef57966442ab80a0e72007c8d879348bfd82",
+  "source_sha256": {
+    "document_panel.py": "a8590fe6d3f9efb6586e502ef88cf6311cbee09ce892f305c05deaeccf59dc03",
+    "source_history.py": "30adbd37d3d1a516b74e5538f215853e648f53d3daa232e3ba8a3c1c8aa1e1cd",
+    "cvm_pit.py": "ad0fcd503f80894143366848b439eb8c23d6e27dfb79d884e7e7160b2a8c5f90",
+    "ingest_cvm.py": "17d694353b5596caf396aed978b22ff688d9d06cd0375d33888cc569317af14e",
+    "economic_gate.py": "289c04fc6b021aa92c452ff2a823fa068704bb250cee7c25fcc27e2dc07c8da8"
+  },
+  "pit": [
+    {
+      "case": "before availability",
+      "status": "PASS"
+    },
+    {
+      "case": "exact availability",
+      "status": "PASS"
+    },
+    {
+      "case": "future append invariance",
+      "status": "PASS"
+    },
+    {
+      "case": "revision available",
+      "status": "PASS"
+    },
+    {
+      "case": "conflicting version",
+      "status": "PASS"
+    },
+    {
+      "case": "ambiguous ticker",
+      "status": "PASS"
+    },
+    {
+      "case": "future security",
+      "status": "PASS"
+    },
+    {
+      "case": "expired security",
+      "status": "PASS"
+    },
+    {
+      "case": "two classes",
+      "status": "PASS"
+    },
+    {
+      "case": "new blank metadata",
+      "status": "PASS"
+    },
+    {
+      "case": "three issuers",
+      "status": "PASS"
+    },
+    {
+      "case": "future reference",
+      "status": "PASS"
+    },
+    {
+      "case": "public document 134335",
+      "status": "PASS"
+    },
+    {
+      "case": "public document 133944",
+      "status": "PASS"
+    },
+    {
+      "case": "public document 134790",
+      "status": "PASS"
+    }
+  ],
+  "uncertainty": [
+    {
+      "phi": 0,
+      "method": "current iid",
+      "covered": 462,
+      "n": 500,
+      "coverage": 0.924,
+      "wilson95": [
+        0.8974030342199025,
+        0.9441312892658914
+      ],
+      "mean_width": 0.17429835038081967,
+      "nominal_inside_interval": false
+    },
+    {
+      "phi": 0,
+      "method": "known AR covariance oracle",
+      "covered": 464,
+      "n": 500,
+      "coverage": 0.928,
+      "wilson95": [
+        0.9019310525910869,
+        0.9475422739464601
+      ],
+      "mean_width": 0.1746106780494506,
+      "nominal_inside_interval": false
+    },
+    {
+      "phi": 0.5,
+      "method": "current iid",
+      "covered": 359,
+      "n": 500,
+      "coverage": 0.718,
+      "wilson95": [
+        0.6770114417638189,
+        0.7556642245567071
+      ],
+      "mean_width": 0.20107553460493635,
+      "nominal_inside_interval": false
+    },
+    {
+      "phi": 0.5,
+      "method": "known AR covariance oracle",
+      "covered": 462,
+      "n": 500,
+      "coverage": 0.924,
+      "wilson95": [
+        0.8974030342199025,
+        0.9441312892658914
+      ],
+      "mean_width": 0.3487591171721531,
+      "nominal_inside_interval": false
+    }
+  ],
+  "ranking": {
+    "spearman": 1.0,
+    "top5_gross": -0.083,
+    "top5_net": -0.084,
+    "baseline_cash_synthetic": 0
+  },
+  "seconds": 3.172000000005937,
+  "external_packages_executed": false,
+  "economic_result": "NOT_EVALUATED"
+}
