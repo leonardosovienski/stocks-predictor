@@ -1,0 +1,47 @@
+{
+  "run_id": 34629227472,
+  "head_sha": "56c1a7b8db33f15404342fc61cceaa64452517d5",
+  "url": "https://github.com/leonardosovienski/stocks-predictor/actions/runs/34629227472",
+  "artifacts": [
+    {
+      "id": 10275757144,
+      "name": "complete-tree-secrets",
+      "archive_sha256": "4b7ec7397025e21484f59316d051e59de7c3e24d4c8ce8d83764855f3457914d"
+    },
+    {
+      "id": 10275717608,
+      "name": "quality-python-3.13",
+      "archive_sha256": "a4ec7ae81345155812331c406d8890f7588120be4d15b220ad96073d522afe9f"
+    },
+    {
+      "id": 10275712711,
+      "name": "distributions-python-3.13",
+      "archive_sha256": "a0f1ec83b69d79b9b526d7e784e936aa871bc4dd38a500137141507ca76948ba"
+    },
+    {
+      "id": 10275572585,
+      "name": "operations-python-3.14",
+      "archive_sha256": "b45339af70a51e5f626f5241341ac6f941f375462184e66596f39ec358d84d00"
+    },
+    {
+      "id": 10275468094,
+      "name": "operations-python-3.13",
+      "archive_sha256": "71c389f1e2fdcb970dc5c9382e2448675fdc17d4a1ba378db0b0da5ca12617ca"
+    },
+    {
+      "id": 10275234435,
+      "name": "distributions-python-3.14",
+      "archive_sha256": "391b702c36a793d2eaaab5ff95d723856d2a2a4afa0a267b52a15f628df545c0"
+    },
+    {
+      "id": 10274919976,
+      "name": "quality-python-3.14",
+      "archive_sha256": "8476f0f618319eb8d64aa94ab22ddd1d0cf0af887430f14e37c4092c1f59e9d7"
+    },
+    {
+      "id": 10274849342,
+      "name": "gitleaks-results.sarif",
+      "archive_sha256": "bb095f666186911ce7264f87408970008ea8630205f18d7e4631d8a508f7ea0f"
+    }
+  ]
+}

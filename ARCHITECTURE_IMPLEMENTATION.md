@@ -10,4 +10,8 @@ Quatro testes stdlib passaram em Python 3.12 auxiliar: seleção exata, versão 
 
 Rollback remove somente o uso da nova entrada e reinstala o pacote anterior. Nenhuma migração de dados é necessária. H1–H22, protocolos e evidências preservados.
 
-As duas cargas finais passaram: 55.986 linhas da população pública preservada e 250.000 linhas sintéticas. Os recibos novos estão em `docs/engineering/2026-09-11-architecture/evidence/`. O registry R8 verifica 190 arquivos atuais e preserva todos os hashes históricos. Estado atual: `LOCAL_VALIDATED_CI_PENDING`; recibos anteriores de CI não certificam este candidato.
+As duas cargas finais passaram: 55.986 linhas da população pública preservada e 250.000 linhas sintéticas. Os recibos novos estão em `docs/engineering/2026-09-11-architecture/evidence/`. O registry R8 verifica 190 arquivos atuais e preserva todos os hashes históricos. Estado atual: `CI_VALIDATED`; a CI Linux 34629227472 passou em Python 3.13/3.14, incluindo builds reproduzíveis, wheel instalado e carga sintética de 250.000 linhas. O merge de teste 19ce2d5 e a fonte 56c1a7b têm a mesma árvore 6aea5beace71de87633daff54a5c0bde89c90014.
+
+## Entrega arquitetural publicada — 11/09/2026
+
+Versão **0.2.0** publicada: [release e artefatos](https://github.com/leonardosovienski/stocks-predictor/releases/tag/v0.2.0). [CI de engenharia aprovada](https://github.com/leonardosovienski/stocks-predictor/actions/runs/34629227472) para a fonte `56c1a7b8db33f15404342fc61cceaa64452517d5`. Consulte [ARCHITECTURE_IMPLEMENTATION.md](ARCHITECTURE_IMPLEMENTATION.md) para comportamento, migração e limites. Este registro atualiza a entrega de software; estados científicos e registros datados abaixo conservam sua autoridade e contexto histórico.

@@ -1,0 +1,412 @@
+{
+  "status": "PASS",
+  "python": "3.13.15 (main, Aug  6 2026, 02:15:18) [GCC 13.3.0]",
+  "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+  "package_code_sha256_lf": {
+    "cash_source_audit.py": "6a7d99130c1c21f63413ccfa1846a7a7d4e4658830d66d5d3155e1b010b77b78",
+    "dataset_selection.py": "a8fad1ad66123c3726cab8badab33fbde362762b0c0806bddd5f8ba65847b355",
+    "trials_gate.py": "491ed0b1d8bdd2c560a45373835114eb9e5fc5365e257bb80b37c6a03e3b2667",
+    "cvm_pit.py": "ad0fcd503f80894143366848b439eb8c23d6e27dfb79d884e7e7160b2a8c5f90",
+    "rj_pipeline.py": "2ad14495ce5af63cc1abc32a8b2193b9ffa7e59d1354b4bd23084fa0c0a82a3b",
+    "report.py": "df758c42f9e66be6ea959808d652eefb96424be269f0acc0786d91b433d40c82",
+    "buffered_rebalance.py": "66ff3940575b47a778651a53e90f2f46f560895c2ab512b8efc2c278bfe57a39",
+    "universe.py": "59ea318afcba6f6548786648189c018dbff0e84ec057ccb751fc0a311370e548",
+    "temporal_evidence.py": "8ec0cf50328b63e17b0fb2697d38de3d86054f8ea36b9d17f9a23d86c197a309",
+    "rj_families_next.py": "049f74a66376ee50bc9b1346a9285c48273fd35bd01fef1cca8498926b273cb0",
+    "source_history.py": "30adbd37d3d1a516b74e5538f215853e648f53d3daa232e3ba8a3c1c8aa1e1cd",
+    "returns.py": "d243bc94f5b6d67f2b15150adfe4370224bfca45face9b791409fb90424c4eec",
+    "__init__.py": "782ec98063df39ce0d974377eca9246af3c9906281dc837d0de2333109b80595",
+    "source_closure.py": "a3ab2e8aa6461f7ec0822117566643aa29a2ef5db281c27fa42ae59d999fac62",
+    "execution.py": "fd867494a27f54e0c64e4fbe2a48f87e5c22669e3c1115a4830ce74770aa9348",
+    "monthly_etf.py": "56b4d8c1246c5107f5f962b3c8df5b24fa4f279611a4ba80f7526f1b815f2c2a",
+    "value_profitability.py": "b78279121c5e06b713fe6a1a96d3e5769559ed871c15b21bebc4854f751477b2",
+    "cash_events.py": "a20d9680d84bf5fffe380ec812ed155d107b6452157f85791c081a69801e8de7",
+    "config.py": "1cf9eb82c9f3be725f376ed0b2ed2ca71a69677ea7fe13bcfa989da474a38d23",
+    "analyst.py": "73ecee7d88bf8f77033510239e51abf2be6bde6d7c10a7577e01d928fccc43b0",
+    "etf_hold.py": "c254225e605593efddb9dddeaf1e5a0287f57a19df742a3a414f0b7a4095e9b6",
+    "simulation.py": "a58cef56caf0e0ac2f555713094c4b6e265ce24164b4bbebbca37226a6d5bad7",
+    "validation.py": "7455faf2631085fe6762a7fa09e820e2cb5fe183292fc7fd33b8d802662c81e7",
+    "research_profile.py": "f8ef1353ac6701ef3eb24d92e3974bc95c745133e0597a9266308069d9ef1cfb",
+    "profit_validation.py": "47e04d5720c4dc67e987ffc80802ade82ab288c3c83abc312850b661cd210763",
+    "source_catalog.py": "94501e8822b26cf7479f73a6db4b6d9be26ce735509bb85873828eed82bf81f2",
+    "entry_feasibility.py": "0a4aafcdea65541eca50ada7cdb30b1d1c592f8c9a7d86034530296053482651",
+    "diagnostics.py": "a5fe606963b0b77a1465f326d0e59347453aabe7776d9b923adb6a83d32c4bd4",
+    "stock_events.py": "2879139f85ca0213649cfdd8899ac8ebeebae6248f3d0c7a167be4a1d6eb6879",
+    "ingest_rj_universe.py": "209da4863c556c9dec2ad19180ca6e4fdf1ff3d2982527bef41d5d5d2009c1a5",
+    "backtest.py": "e3a720e81722b06fcb7c7005d82142e62c38046f49ffa71730155da0254bf107",
+    "rj_coda.py": "7ef5b31b9a986be78f1523523e903d2aaa947fb17cb2fd83df5af30851869630",
+    "ingest_cvm.py": "17d694353b5596caf396aed978b22ff688d9d06cd0375d33888cc569317af14e",
+    "rj_episodes.py": "be3d3f22dd10ea8f01728cc314a0c0c6f99471732a3a36288287a69f52d251ff",
+    "paper.py": "2b1a2f527d43b7e6a5d0c8a50692fe07f0d5dfe83d05d7980546256050a10b96",
+    "economics.py": "fa1778ac2e9274f00b5e882a0b30f08e4412d97236550735164665ae103d0098",
+    "h20_research.py": "23e3a7763a3121fcbe72f80fd9c2d48a8f8400513193197de2b7aa02e843ed28",
+    "economic_gate.py": "289c04fc6b021aa92c452ff2a823fa068704bb250cee7c25fcc27e2dc07c8da8",
+    "document_panel.py": "a8590fe6d3f9efb6586e502ef88cf6311cbee09ce892f305c05deaeccf59dc03",
+    "rj_power.py": "222e6064f8f2af24483d0f890d9a56f4a2b10542b7f546833787fd781d619cae",
+    "db.py": "32e7d22ce9fa2f49665ce4b55de924dc1fca1aef69188670b7ee3c8ce1b0e569",
+    "cotahist.py": "32db7f1c39df16e74350f332c8949ac11e711f0f41a7566a27646d24a3b1589f",
+    "continuous_research.py": "16a22550a725a73a0f1a0f50cc26ff99e5fd52b4dac32762c3f918c7142efd83",
+    "adjust.py": "910f3a40febeaa55afc0d6abe593dd07af788668d48cd5231bff02db2b84a1c7",
+    "discovery_value_repair.py": "6c44d04b6f8cfede0f8e5ba00401528e83139ed9d0e7350b4ba98384df316453",
+    "rj_judge_robust.py": "4a24eba1c18430030f4d20c81d5750b48a38225288ca090f8e9ddf1fa615b2b1",
+    "rj_outcomes.py": "3e153b9504c2e12388a8f0b9b0d289cc608ed099c9e6bfdedd8718bc5c7d147c",
+    "continuous_cash.py": "cac6c98839728f4fe7d86d4898b9f806e957db6ac84723c77dfbd3fe95c65dd4",
+    "rj_families.py": "0b1eebfa636b5dca39c2203824c95281758925190a224116a4e6e889727a1c98",
+    "portfolio.py": "8e5639ffb1e17e463fcead1f0fd4d71d032647db8f8de518fc34edcfbb0efb37",
+    "disclosed_accounting.py": "87a0efabf01a942954abe93e0033fbe5e0debae236bf31d004e3a3321f61d81d",
+    "discovery_h17.py": "0254b3542f014649e4512daf40cbf3c63cbe8ee12640808775df397f5f97d4cc",
+    "__main__.py": "d6cc0e4a986dbcbc2fedc55c9bdfb356e2fc53204c7d206315b5164ed04de328",
+    "h20_continuous.py": "569d57957e4ac4d0bdf2d6c7b38686c59d7f968e5d0f8e95c73122ad4810b095",
+    "retail_cash.py": "9450da3d4dbd5a88cf50ca5ed0984c2a19bc3a0e49e90b629e61b12a4d632833",
+    "discovery_reorganizations.py": "359b3301baf44bc61f89fb3148bf689dec0036da232ae8a02a14be95c10fd304",
+    "ingest_cotahist.py": "40316fceaf8a8b43725203f4497b2cf817d09543d44ab77ddbf85ca6d0a0ab33",
+    "operational_store.py": "5f8199af7215c75d3f4478cec4eb4dc7b703aaded37ac8b6bc7d0491ecb378e3",
+    "factor.py": "3b5213855dd3b9169b72463df94f061ebe25333a306a2f77582728235856603d",
+    "rj_judge.py": "888a70fed443776de60b0347eb3ead81197cf8beaa9d638e6265c5b267296a5f",
+    "discovery_value.py": "ac9096efeff26f2d5672e0d08437f07aec779135da22017146baeb98b74e9347",
+    "operations.py": "98ebe6f6af0913eb2c2912d020cd418560874d3550545f016dcc9f93bacd50e9",
+    "ecosystem_plugin.py": "ac2ed24d4669b49c8eb35dddb860a775c55b998a259ce90c547f6d4fabfe4715",
+    "h20_checked.py": "fc806cfe39de17918662d8b189e4d235b098e94985e81ce0a656e750f0d2859d"
+  },
+  "installed_wheel": true,
+  "source_sha256": "da7ce5a110f819cfa2e71f38b8a1c1385345ea0a92a2669f44c099c5433834a1",
+  "archive_bytes": 771994,
+  "rows": 250000,
+  "inspection": {
+    "status": "PASS",
+    "schema_version": 1,
+    "sources": [
+      {
+        "source_id": "sha256:89a37fe216d9321db1afe88aa0ee533303f331c62ba089edb77503f27b496a11",
+        "publisher": "SYNTHETIC",
+        "dataset": "synthetic-capacity-fixture",
+        "version": "v1",
+        "policy": "cotahist-strict-v1/spot-02-010",
+        "sha256": "da7ce5a110f819cfa2e71f38b8a1c1385345ea0a92a2669f44c099c5433834a1",
+        "source_url": "https://example.invalid/synthetic.zip",
+        "original_name": "synthetic.zip",
+        "observed_at": "2026-09-10T10:00:00+00:00",
+        "rows": 250000,
+        "tickers": 1000,
+        "date_min": "2024-01-01",
+        "date_max": "2024-09-06",
+        "rows_sha256": "6b8e2c5f09e0c963f6ed1168cd10e8ef9d70e710321a81f8a2c817ae6126f2e9"
+      }
+    ],
+    "stored_rows": 250000,
+    "scope": "Physical source versions; never an automatically merged price series.",
+    "historical_publication_certified": false,
+    "capital_enabled": false
+  },
+  "measurements": [
+    {
+      "command": [
+        "init",
+        "--db",
+        "/home/runner/work/_temp/stocks-wheel-smoke/load/research.sqlite"
+      ],
+      "exit_code": 0,
+      "result": {
+        "status": "PASS",
+        "schema_version": 1,
+        "sources": [],
+        "stored_rows": 0,
+        "scope": "Physical source versions; never an automatically merged price series.",
+        "historical_publication_certified": false,
+        "capital_enabled": false
+      },
+      "seconds": 0.0063715829999750895,
+      "cpu_seconds": 0.0043407949999999945,
+      "peak_process_rss_bytes": 25493504
+    },
+    {
+      "command": [
+        "ingest",
+        "--db",
+        "/home/runner/work/_temp/stocks-wheel-smoke/load/research.sqlite",
+        "--archive",
+        "/home/runner/work/_temp/stocks-wheel-smoke/load/synthetic.zip",
+        "--publisher",
+        "SYNTHETIC",
+        "--dataset",
+        "synthetic-capacity-fixture",
+        "--version",
+        "v1",
+        "--source-url",
+        "https://example.invalid/synthetic.zip",
+        "--observed-at",
+        "2026-09-10T10:00:00Z",
+        "--sha256",
+        "da7ce5a110f819cfa2e71f38b8a1c1385345ea0a92a2669f44c099c5433834a1",
+        "--scratch-dir",
+        "/home/runner/work/_temp/stocks-wheel-smoke/load"
+      ],
+      "exit_code": 0,
+      "result": {
+        "status": "PASS",
+        "source_id": "sha256:89a37fe216d9321db1afe88aa0ee533303f331c62ba089edb77503f27b496a11",
+        "sha256": "da7ce5a110f819cfa2e71f38b8a1c1385345ea0a92a2669f44c099c5433834a1",
+        "inserted": 250000,
+        "policy": "cotahist-strict-v1/spot-02-010",
+        "historical_publication_certified": false,
+        "capital_enabled": false
+      },
+      "seconds": 3.5935742320000372,
+      "cpu_seconds": 3.558645688,
+      "peak_process_rss_bytes": 28618752
+    },
+    {
+      "command": [
+        "ingest",
+        "--db",
+        "/home/runner/work/_temp/stocks-wheel-smoke/load/research.sqlite",
+        "--archive",
+        "/home/runner/work/_temp/stocks-wheel-smoke/load/synthetic.zip",
+        "--publisher",
+        "SYNTHETIC",
+        "--dataset",
+        "synthetic-capacity-fixture",
+        "--version",
+        "v1",
+        "--source-url",
+        "https://example.invalid/synthetic.zip",
+        "--observed-at",
+        "2026-09-10T10:00:00Z",
+        "--sha256",
+        "da7ce5a110f819cfa2e71f38b8a1c1385345ea0a92a2669f44c099c5433834a1",
+        "--scratch-dir",
+        "/home/runner/work/_temp/stocks-wheel-smoke/load"
+      ],
+      "exit_code": 0,
+      "result": {
+        "status": "PASS",
+        "source_id": "sha256:89a37fe216d9321db1afe88aa0ee533303f331c62ba089edb77503f27b496a11",
+        "sha256": "da7ce5a110f819cfa2e71f38b8a1c1385345ea0a92a2669f44c099c5433834a1",
+        "inserted": 0,
+        "policy": "cotahist-strict-v1/spot-02-010",
+        "historical_publication_certified": false,
+        "capital_enabled": false
+      },
+      "seconds": 3.7959811059999993,
+      "cpu_seconds": 3.795579078,
+      "peak_process_rss_bytes": 28237824
+    },
+    {
+      "command": [
+        "inspect",
+        "--db",
+        "/home/runner/work/_temp/stocks-wheel-smoke/load/research.sqlite"
+      ],
+      "exit_code": 0,
+      "result": {
+        "status": "PASS",
+        "schema_version": 1,
+        "sources": [
+          {
+            "source_id": "sha256:89a37fe216d9321db1afe88aa0ee533303f331c62ba089edb77503f27b496a11",
+            "publisher": "SYNTHETIC",
+            "dataset": "synthetic-capacity-fixture",
+            "version": "v1",
+            "policy": "cotahist-strict-v1/spot-02-010",
+            "sha256": "da7ce5a110f819cfa2e71f38b8a1c1385345ea0a92a2669f44c099c5433834a1",
+            "source_url": "https://example.invalid/synthetic.zip",
+            "original_name": "synthetic.zip",
+            "observed_at": "2026-09-10T10:00:00+00:00",
+            "rows": 250000,
+            "tickers": 1000,
+            "date_min": "2024-01-01",
+            "date_max": "2024-09-06",
+            "rows_sha256": "6b8e2c5f09e0c963f6ed1168cd10e8ef9d70e710321a81f8a2c817ae6126f2e9"
+          }
+        ],
+        "stored_rows": 250000,
+        "scope": "Physical source versions; never an automatically merged price series.",
+        "historical_publication_certified": false,
+        "capital_enabled": false
+      },
+      "seconds": 2.0809625510000274,
+      "cpu_seconds": 2.0807518689999998,
+      "peak_process_rss_bytes": 27541504
+    },
+    {
+      "command": [
+        "snapshot",
+        "--db",
+        "/home/runner/work/_temp/stocks-wheel-smoke/load/research.sqlite",
+        "--destination",
+        "/home/runner/work/_temp/stocks-wheel-smoke/load/backup"
+      ],
+      "exit_code": 0,
+      "result": {
+        "status": "PASS",
+        "format": "stocks-snapshot-v1",
+        "sha256": "e47b2e52090e11dd4a7e26ecf0ce2a60dbfa8fa097643926a0bbc4ea663fe48c",
+        "created_at": "2026-09-11T17:47:48.339936+00:00",
+        "inspection": {
+          "status": "PASS",
+          "schema_version": 1,
+          "sources": [
+            {
+              "source_id": "sha256:89a37fe216d9321db1afe88aa0ee533303f331c62ba089edb77503f27b496a11",
+              "publisher": "SYNTHETIC",
+              "dataset": "synthetic-capacity-fixture",
+              "version": "v1",
+              "policy": "cotahist-strict-v1/spot-02-010",
+              "sha256": "da7ce5a110f819cfa2e71f38b8a1c1385345ea0a92a2669f44c099c5433834a1",
+              "source_url": "https://example.invalid/synthetic.zip",
+              "original_name": "synthetic.zip",
+              "observed_at": "2026-09-10T10:00:00+00:00",
+              "rows": 250000,
+              "tickers": 1000,
+              "date_min": "2024-01-01",
+              "date_max": "2024-09-06",
+              "rows_sha256": "6b8e2c5f09e0c963f6ed1168cd10e8ef9d70e710321a81f8a2c817ae6126f2e9"
+            }
+          ],
+          "stored_rows": 250000,
+          "scope": "Physical source versions; never an automatically merged price series.",
+          "historical_publication_certified": false,
+          "capital_enabled": false
+        }
+      },
+      "seconds": 2.3146186540000144,
+      "cpu_seconds": 2.303259596,
+      "peak_process_rss_bytes": 29982720
+    },
+    {
+      "command": [
+        "restore",
+        "--snapshot",
+        "/home/runner/work/_temp/stocks-wheel-smoke/load/backup",
+        "--destination",
+        "/home/runner/work/_temp/stocks-wheel-smoke/load/restored"
+      ],
+      "exit_code": 0,
+      "result": {
+        "status": "PASS",
+        "source_snapshot_sha256": "e47b2e52090e11dd4a7e26ecf0ce2a60dbfa8fa097643926a0bbc4ea663fe48c",
+        "inspection": {
+          "status": "PASS",
+          "schema_version": 1,
+          "sources": [
+            {
+              "source_id": "sha256:89a37fe216d9321db1afe88aa0ee533303f331c62ba089edb77503f27b496a11",
+              "publisher": "SYNTHETIC",
+              "dataset": "synthetic-capacity-fixture",
+              "version": "v1",
+              "policy": "cotahist-strict-v1/spot-02-010",
+              "sha256": "da7ce5a110f819cfa2e71f38b8a1c1385345ea0a92a2669f44c099c5433834a1",
+              "source_url": "https://example.invalid/synthetic.zip",
+              "original_name": "synthetic.zip",
+              "observed_at": "2026-09-10T10:00:00+00:00",
+              "rows": 250000,
+              "tickers": 1000,
+              "date_min": "2024-01-01",
+              "date_max": "2024-09-06",
+              "rows_sha256": "6b8e2c5f09e0c963f6ed1168cd10e8ef9d70e710321a81f8a2c817ae6126f2e9"
+            }
+          ],
+          "stored_rows": 250000,
+          "scope": "Physical source versions; never an automatically merged price series.",
+          "historical_publication_certified": false,
+          "capital_enabled": false
+        }
+      },
+      "seconds": 2.1721192129999736,
+      "cpu_seconds": 2.155214637,
+      "peak_process_rss_bytes": 27389952
+    },
+    {
+      "command": [
+        "inspect",
+        "--db",
+        "/home/runner/work/_temp/stocks-wheel-smoke/load/restored/research.sqlite"
+      ],
+      "exit_code": 0,
+      "result": {
+        "status": "PASS",
+        "schema_version": 1,
+        "sources": [
+          {
+            "source_id": "sha256:89a37fe216d9321db1afe88aa0ee533303f331c62ba089edb77503f27b496a11",
+            "publisher": "SYNTHETIC",
+            "dataset": "synthetic-capacity-fixture",
+            "version": "v1",
+            "policy": "cotahist-strict-v1/spot-02-010",
+            "sha256": "da7ce5a110f819cfa2e71f38b8a1c1385345ea0a92a2669f44c099c5433834a1",
+            "source_url": "https://example.invalid/synthetic.zip",
+            "original_name": "synthetic.zip",
+            "observed_at": "2026-09-10T10:00:00+00:00",
+            "rows": 250000,
+            "tickers": 1000,
+            "date_min": "2024-01-01",
+            "date_max": "2024-09-06",
+            "rows_sha256": "6b8e2c5f09e0c963f6ed1168cd10e8ef9d70e710321a81f8a2c817ae6126f2e9"
+          }
+        ],
+        "stored_rows": 250000,
+        "scope": "Physical source versions; never an automatically merged price series.",
+        "historical_publication_certified": false,
+        "capital_enabled": false
+      },
+      "seconds": 2.088039213000002,
+      "cpu_seconds": 2.0878727599999998,
+      "peak_process_rss_bytes": 27537408
+    },
+    {
+      "command": [
+        "profile",
+        "--input",
+        "/home/runner/work/_temp/stocks-wheel-smoke/load/profile.json"
+      ],
+      "exit_code": 0,
+      "result": {
+        "status": "INCOMPLETE_PERSONAL_SCENARIO",
+        "capital_brl": "5000",
+        "missing_inputs": [
+          "horizon_months",
+          "resident_pf_brazil",
+          "brokerage_per_order_brl",
+          "monthly_fixed_brl",
+          "advisor_annual_fraction",
+          "setup_cost_brl",
+          "monthly_maintenance_hours",
+          "hourly_opportunity_cost_brl"
+        ],
+        "planned_orders": 2,
+        "known_fixed_reserve_brl": null,
+        "fixed_reserve_fits_capital": null,
+        "project_and_time_cost_brl": null,
+        "cost_scope": "Brokerage/fixed reserve and project opportunity cost are separate; taxes and exchange fees still require applicable trade records.",
+        "advisor_cost_basis": "requires future valuation path; rate is not a fixed expense",
+        "risk_limit_confirmed": false,
+        "absolute_net_profit_demonstrated": false,
+        "capital_enabled": false
+      },
+      "seconds": 0.00223312299999634,
+      "cpu_seconds": 0.0022325339999999944,
+      "peak_process_rss_bytes": 24817664
+    },
+    {
+      "command": [
+        "evidence",
+        "--input",
+        "/home/runner/work/_temp/stocks-wheel-smoke/load/outcomes.json",
+        "--asof",
+        "2026-09-10T00:00:00Z"
+      ],
+      "exit_code": 0,
+      "result": {
+        "status": "INSUFFICIENT_EVIDENCE",
+        "estimate": null,
+        "capital_enabled": false,
+        "scope": "Supplied chronology only; independence, timestamp truth and profit unverified."
+      },
+      "seconds": 0.0021939900000234047,
+      "cpu_seconds": 0.0021928910000000024,
+      "peak_process_rss_bytes": 24817664
+    }
+  ],
+  "capital_enabled": false,
+  "scope": "Finite local batch capacity and CLI recovery. RSS is peak of each fresh CLI process; no live-trading or profit validation."
+}

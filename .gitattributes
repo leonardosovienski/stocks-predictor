@@ -75,3 +75,6 @@ docs/engineering/2026-09-10-r8/evidence.json text eol=lf
 
 # Closure retains downloaded CI and local delivery receipt bytes exactly.
 docs/continuation/2026-09-10-closure/evidence/** -text !eol -whitespace
+
+# Architecture run receipts retain their downloaded byte hashes.
+docs/engineering/2026-09-11-architecture/evidence/** -text !eol -whitespace

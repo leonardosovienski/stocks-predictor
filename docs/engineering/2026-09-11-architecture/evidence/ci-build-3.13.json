@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "head": "19ce2d5bf350eb601c0b49dc44837280b7230047",
+  "source_date_epoch": "1789148565",
+  "python": "3.13.15 (main, Aug  6 2026, 02:15:18) [GCC 13.3.0]",
+  "distributions": {
+    "stocks_predictor-0.2.0-py3-none-any.whl": "a839aeca095b27ce65ab7a29333713223e89358f1bf5878ca8f1dcaaab5440ae",
+    "stocks_predictor-0.2.0.tar.gz": "11fa80ea305cc116f290218fdc88192f3e2dbfbadc8ab8a575963a6260a6477a"
+  },
+  "scope": "Two isolated output directories, same controlled environment; not a cross-OS identity claim."
+}

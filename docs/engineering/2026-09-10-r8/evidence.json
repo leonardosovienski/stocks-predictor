@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "status": "LOCAL_VALIDATED_CI_PENDING",
+  "status": "CI_VALIDATED",
   "code_text_hash_policy": "UTF-8 file bytes with CRLF normalized to LF",
   "plan_commit": "37a989b",
   "current_code_sha256_lf": [
     {
       "path": ".gitattributes",
-      "sha256": "1fb5c1490dcfb6104a14e07cf7c0ae1f4baadb3adbc73e3ddb8703f88d28125a"
+      "sha256": "853c0af87d1e2ed31a5031808ab7bfdc6986f701582c61745cfc4ef19f4a3e2a"
     },
     {
       "path": ".github/workflows/ci.yml",
@@ -781,7 +781,12 @@
     "docs/engineering/2026-09-11-architecture/evidence/real-final.json": "c531fee75753a379a559c5f7f53660f84bbf09db5aacbb925487b41093d7cc29",
     "docs/engineering/2026-09-11-architecture/evidence/capacity-final.json": "674a0bc6cba6864b30843a6715804cfbd7b62789ded9fb1b375b1ef2bc9fef38",
     "docs/engineering/2026-09-11-architecture/evidence/real-v020.json": "7699aa83c78f44bf0fef63d960e10334f125b01dcb264e88ef0efae2855a067d",
-    "docs/engineering/2026-09-11-architecture/evidence/capacity-v020.json": "40419d8b0035cfa7f7a0adb327d91caf7dafb05763388b93f92359d14213f505"
+    "docs/engineering/2026-09-11-architecture/evidence/capacity-v020.json": "40419d8b0035cfa7f7a0adb327d91caf7dafb05763388b93f92359d14213f505",
+    "docs/engineering/2026-09-11-architecture/evidence/ci-final.json": "fd20db341f0445127851891518a24c5acef2dcdb655ff358a051eb1b692c9bc6",
+    "docs/engineering/2026-09-11-architecture/evidence/ci-build-3.13.json": "b027ebc49f6cd14613a507135f447fdb7a6e1bffa6ff4a33e8c2a6aff2c39029",
+    "docs/engineering/2026-09-11-architecture/evidence/ci-build-3.14.json": "e0a462b618c3a797e942f9109ca533bbeda3831598fcc1c027699332b94ae824",
+    "docs/engineering/2026-09-11-architecture/evidence/ci-operations-3.13.json": "380d267ba87285fb06b894ac9881a8ba92883018ba29abf982de2f1ed3540c25",
+    "docs/engineering/2026-09-11-architecture/evidence/ci-operations-3.14.json": "8d69c1f9bf4da6d0c772434f7326bb1fc42250794e0a0e43727909963114d966"
   },
   "real_validation": "docs/engineering/2026-09-11-architecture/evidence/real-v020.json",
   "capacity_validation": "docs/engineering/2026-09-11-architecture/evidence/capacity-v020.json",
@@ -789,5 +794,11 @@
   "profit_certified": false,
   "prior_validation_status": "LOCAL_VALIDATED_CI_PENDING",
   "architecture_candidate_date": "2026-09-11",
-  "architecture_validation_scope": "Fresh scratch databases; preserved public archive; synthetic capacity; current Linux CI and installed wheel pending. Historical receipts remain byte-stable."
+  "architecture_validation_scope": "Published 0.2.0; Linux Python 3.13/3.14 CI 34629227472 passed; current wheel and capacity receipts retained. Historical receipts remain byte-stable.",
+  "architecture_ci": {
+    "run_id": 34629227472,
+    "head_sha": "56c1a7b8db33f15404342fc61cceaa64452517d5",
+    "tested_merge_sha": "19ce2d5bf350eb601c0b49dc44837280b7230047",
+    "identical_tree": "6aea5beace71de87633daff54a5c0bde89c90014"
+  }
 }

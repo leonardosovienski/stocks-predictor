@@ -1,5 +1,9 @@
 # Continuidade do Stocks Predictor
 
+## Entrega arquitetural publicada — 11/09/2026
+
+Versão **0.2.0** publicada: [release e artefatos](https://github.com/leonardosovienski/stocks-predictor/releases/tag/v0.2.0). [CI de engenharia aprovada](https://github.com/leonardosovienski/stocks-predictor/actions/runs/34629227472) para a fonte `56c1a7b8db33f15404342fc61cceaa64452517d5`. Consulte [ARCHITECTURE_IMPLEMENTATION.md](ARCHITECTURE_IMPLEMENTATION.md) para comportamento, migração e limites. Este registro atualiza a entrega de software; estados científicos e registros datados abaixo conservam sua autoridade e contexto histórico.
+
 ## Exportação local de relatos para Cain — 11/09/2026
 
 [tools/export_cain_status.py](tools/export_cain_status.py) é um exportador stdlib
