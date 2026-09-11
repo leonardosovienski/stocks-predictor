@@ -53,6 +53,12 @@ completude econômica ou certificação de disponibilidade histórica.
 
 ## Histórico e continuidade
 
+A [iniciativa OSS-20260911-01](docs/open_source_research/OSS-20260911-01/closure/REPORT.md)
+está encerrada com mapa competitivo, decisões, roadmap e
+[cinco capacidades experimentais executáveis](research/oss/OSS-20260911-01/README.md).
+Os resultados são de engenharia e cenários sintéticos; não demonstram ganho
+econômico B3. O [HANDOFF](HANDOFF.md) registra como continuar sem depender do chat.
+
 Protocolos e resultados H1–H20/H21, relatórios negativos, fontes e o snapshot
 `vendor/predictor_core` permanecem preservados. O vendor não é dependência do runtime.
 O [README anterior completo](https://github.com/leonardosovienski/stocks-predictor/blob/bf7b3bc9f888dc94fd186646424159f31682b747/README.md)

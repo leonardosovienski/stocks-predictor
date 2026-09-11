@@ -1,6 +1,6 @@
 # Estado atual do Stocks Predictor
 
-Estado consolidado em 10/09/2026. A infraestrutura está validada para pesquisa
+Estado atualizado em 11/09/2026. A infraestrutura está validada para pesquisa
 em lote em um host/disco local. **O pedido econômico integral permanece aberto;
 lucro líquido pessoal executável ou futuro não foi demonstrado.**
 
@@ -10,6 +10,16 @@ lucro líquido pessoal executável ou futuro não foi demonstrado.**
 [índice completo](docs/DOCUMENTATION_INDEX.md).
 
 ## Prontidão por uso
+
+A iniciativa [OSS-20260911-01](docs/open_source_research/OSS-20260911-01/closure/REPORT.md)
+terminou com cinco protótipos stdlib executados: fit temporal, ranking por data,
+neutralização por grupo, participação ordem/volume e alocação com limite de giro.
+Quatro são candidatos de engenharia; o último permanece experimental após
+contraexemplo de reversão. Os recibos registram 33 checks e 40 comparações de
+custos; nenhum benchmark econômico B3 novo. Código e evidências foram salvos
+no commit `860996d`, sem integração no runtime. X05 continua bloqueado pelo
+painel comum de inputs PIT e labels econômicos completos. UNC02 e TOTS3 mantêm
+seus resultados e UNKNOWNs originais. Ver a [retomada](HANDOFF.md).
 
 | Uso | Estado e limite |
 |---|---|

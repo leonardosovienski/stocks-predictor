@@ -8,6 +8,25 @@ remoto, branch, alterações e worktrees. O checkout canônico é
 
 ## Estado para retomada
 
+Atualização de 11/09/2026: a iniciativa `OSS-20260911-01` foi encerrada no
+[relatório final OSS](docs/open_source_research/OSS-20260911-01/closure/REPORT.md).
+O commit `860996d` preserva pesquisa, continuidades, recibos e cinco capacidades
+experimentais no [kit executável](research/oss/OSS-20260911-01/README.md).
+São 33 checks principais e 40 comparações de custos já registrados; não são
+testes econômicos B3 nem certificação de produção. Quatro capacidades são
+candidatas à integração; o alocador com limite de giro continua experimental.
+
+Para retomar sem este chat, ler o relatório final e seu roadmap. Não reiniciar
+discovery, baseline, UNC02/X03 ou reconstrução TOTS3 sem evidência material.
+X05 depende de um painel B3 congelado com inputs disponíveis na decisão e labels
+econômicos completos no mesmo universo/período. Aplicar esse bloqueio somente
+aos experimentos dependentes. O runtime R8 e os estados históricos permanecem.
+
+Pasta de entrega local: `C:\STOCKS\outputs\OSS-20260911-01-ENCERRAMENTO`.
+O pacote `OSS-closure-kit-final.zip` e `manifest-final.json` preservam a entrega;
+não sobrescrever recibos. Fontes e bancos externos ao Git continuam na raiz
+`C:\STOCKS`; apagar o chat não é autorização para removê-los.
+
 O [encerramento revisado](docs/continuation/2026-09-10-closure/README.md) foi
 integrado pelo [PR81](https://github.com/leonardosovienski/stocks-predictor/pull/81),
 merge `bf7b3bc9f888dc94fd186646424159f31682b747`, com CI232 aprovada.
