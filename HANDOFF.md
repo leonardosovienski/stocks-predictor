@@ -109,3 +109,8 @@ O antigo `reports/splits_candidates.csv` era um derivado local de revisão de
 quarentenas, não uma dependência do runtime nem um resultado certificado.
 Não foi recuperado no acervo examinado; não foi inventado ou regenerado como se
 fosse o original. As referências históricas estão mapeadas na revisão de arquivos.
+
+
+## Implementação arquitetural local — 2026-09-11
+
+As alterações candidatas, seus limites, verificações e rollback estão em [ARCHITECTURE_IMPLEMENTATION.md](ARCHITECTURE_IMPLEMENTATION.md). Esta implementação local não publica releases, não atualiza automaticamente os consumidores e não altera os vereditos científicos históricos.

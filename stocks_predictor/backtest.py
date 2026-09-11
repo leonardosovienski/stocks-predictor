@@ -19,15 +19,21 @@ import math
 import statistics
 import sys
 
-import adjust
-import db
-import execution
-import factor
-import portfolio
-from config import load_config
-from execution import equal_weight_turnover_cost
-from returns import month_end_dates
-import universe
+if __package__:
+    from . import adjust, db, execution, factor, portfolio, universe
+    from .config import load_config
+    from .execution import equal_weight_turnover_cost
+    from .returns import month_end_dates
+else:
+    import adjust
+    import db
+    import execution
+    import factor
+    import portfolio
+    from config import load_config
+    from execution import equal_weight_turnover_cost
+    from returns import month_end_dates
+    import universe
 from predictor_core.measurement.bootstrap import bootstrap_ci
 from predictor_core.measurement.stats import (max_drawdown,
                                               probabilistic_sharpe_ratio, sharpe)
@@ -734,5 +740,8 @@ if __name__ == "__main__":
 
 def walk_forward(conn, cfg, signal_fn=None, take="top", portfolio_fn=None, series_fn=None):
     """Corrected instrument. Historical hypothesis runners explicitly use legacy_walk_forward."""
-    from simulation import walk_forward as simulate
+    if __package__:
+        from .simulation import walk_forward as simulate
+    else:
+        from simulation import walk_forward as simulate
     return simulate(conn, cfg, signal_fn, take, portfolio_fn, series_fn)

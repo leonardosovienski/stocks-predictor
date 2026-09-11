@@ -42,6 +42,9 @@ def parser() -> argparse.ArgumentParser:
     evidence.add_argument('--input', type=Path, required=True)
     evidence.add_argument('--asof', required=True)
     evidence.add_argument('--minimum-observations', type=int, default=12)
+    selected = commands.add_parser('simulate-selected', help='Measure explicitly selected catalog versions')
+    selected.add_argument('--db', type=Path, required=True)
+    selected.add_argument('--input', type=Path, required=True)
     return root
 
 
@@ -97,6 +100,16 @@ def _evidence(path: Path, asof: str, minimum: int) -> dict:
 def main(argv: list[str] | None = None) -> int:
     args = parser().parse_args(argv)
     try:
+        if args.command == 'simulate-selected':
+            from .dataset_selection import DatasetSelection, simulate_selected
+            data = _json_input(args.input)
+            if set(data) != {'selection', 'targets', 'corporate_actions', 'cost_per_side', 'price_mode'}:
+                raise ValueError('simulation input requires explicit selection, targets, actions and costs')
+            result = simulate_selected(args.db, DatasetSelection(**data['selection']),
+                                       data['targets'], corporate_actions=data['corporate_actions'],
+                                       cost_per_side=data['cost_per_side'], price_mode=data['price_mode'])
+            print(json.dumps(result, ensure_ascii=False, sort_keys=True, allow_nan=False))
+            return 0
         if args.command == 'doctor':
             return diagnostics.main((['--check'] if args.check else []) +
                                     (['--db', str(args.db)] if args.db else []))

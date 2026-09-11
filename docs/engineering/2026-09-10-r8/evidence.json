@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "VALIDATED_LOCAL_AND_CI",
+  "status": "LOCAL_VALIDATED_CI_PENDING",
   "code_text_hash_policy": "UTF-8 file bytes with CRLF normalized to LF",
   "plan_commit": "37a989b",
   "current_code_sha256_lf": [
@@ -46,7 +46,7 @@
     },
     {
       "path": "stocks_predictor/backtest.py",
-      "sha256": "ad756b97dd891815a4d6376c559feb8f449fe1663fd31283ecc95b6f7ca18691"
+      "sha256": "e3a720e81722b06fcb7c7005d82142e62c38046f49ffa71730155da0254bf107"
     },
     {
       "path": "stocks_predictor/buffered_rebalance.py",
@@ -79,6 +79,10 @@
     {
       "path": "stocks_predictor/cvm_pit.py",
       "sha256": "ad0fcd503f80894143366848b439eb8c23d6e27dfb79d884e7e7160b2a8c5f90"
+    },
+    {
+      "path": "stocks_predictor/dataset_selection.py",
+      "sha256": "a8fad1ad66123c3726cab8badab33fbde362762b0c0806bddd5f8ba65847b355"
     },
     {
       "path": "stocks_predictor/db.py",
@@ -174,7 +178,7 @@
     },
     {
       "path": "stocks_predictor/operations.py",
-      "sha256": "d0e2a6aef789e8974bb25beee2f488562918c8185b06e02a23ebf945422384f4"
+      "sha256": "98ebe6f6af0913eb2c2912d020cd418560874d3550545f016dcc9f93bacd50e9"
     },
     {
       "path": "stocks_predictor/paper.py",
@@ -355,6 +359,10 @@
     {
       "path": "tests/test_data_transfer.py",
       "sha256": "0f87cc0fe0ceabd975d8ed7b3b830e1ca1c76cbea6c3ac7fd668687b3441abe3"
+    },
+    {
+      "path": "tests/test_dataset_selection.py",
+      "sha256": "191563e493cceeef58cd87a0086bd1c42fc905136ebdae3847619376aee5dade"
     },
     {
       "path": "tests/test_dfp_readiness_audit.py",
@@ -769,10 +777,15 @@
     "docs/engineering/2026-09-10-r8/evidence/local-tests-03.log": "ddf2ed982a0d95758c8e3933891814c7f5ddbafa129d9e1ea724c02071943b4b",
     "docs/engineering/2026-09-10-r8/evidence/local-tests.log": "e4282fe30f65f16b83bea6a76690a7192bfe51703ae607037d23ec1bc71ac1ee",
     "docs/engineering/2026-09-10-r8/evidence/preservation.json": "4a62c8857b6c897f6cf0f386532af24d3645a173ae3f41f89f2d51a50dfad855",
-    "docs/engineering/2026-09-10-r8/evidence/real.json": "490a2c168064a554abdb90c0a48ecbbca197d830099d38a4c1e21280decb28a6"
+    "docs/engineering/2026-09-10-r8/evidence/real.json": "490a2c168064a554abdb90c0a48ecbbca197d830099d38a4c1e21280decb28a6",
+    "docs/engineering/2026-09-11-architecture/evidence/real-final.json": "c531fee75753a379a559c5f7f53660f84bbf09db5aacbb925487b41093d7cc29",
+    "docs/engineering/2026-09-11-architecture/evidence/capacity-final.json": "674a0bc6cba6864b30843a6715804cfbd7b62789ded9fb1b375b1ef2bc9fef38"
   },
-  "real_validation": "docs/engineering/2026-09-10-r8/evidence/real.json",
-  "capacity_validation": "docs/engineering/2026-09-10-r8/evidence/capacity.json",
+  "real_validation": "docs/engineering/2026-09-11-architecture/evidence/real-final.json",
+  "capacity_validation": "docs/engineering/2026-09-11-architecture/evidence/capacity-final.json",
   "capital_enabled": false,
-  "profit_certified": false
+  "profit_certified": false,
+  "prior_validation_status": "VALIDATED_LOCAL_AND_CI",
+  "architecture_candidate_date": "2026-09-11",
+  "architecture_validation_scope": "Fresh scratch databases; preserved public archive; synthetic capacity; current Linux CI and installed wheel pending. Historical receipts remain byte-stable."
 }

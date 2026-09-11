@@ -91,3 +91,8 @@ Protocolos e resultados H1–H20/H21, relatórios negativos, fontes e o snapshot
 O [README anterior completo](https://github.com/leonardosovienski/stocks-predictor/blob/bf7b3bc9f888dc94fd186646424159f31682b747/README.md)
 continua no histórico Git. Comandos e alegações antigos devem ser lidos com a data
 original; as instruções atuais ficam em [AGENTS.md](AGENTS.md).
+
+
+## Implementação arquitetural local — 2026-09-11
+
+As alterações candidatas, seus limites, verificações e rollback estão em [ARCHITECTURE_IMPLEMENTATION.md](ARCHITECTURE_IMPLEMENTATION.md). Esta implementação local não publica releases, não atualiza automaticamente os consumidores e não altera os vereditos científicos históricos.
