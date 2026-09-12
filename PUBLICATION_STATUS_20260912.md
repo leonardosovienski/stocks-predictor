@@ -1,3 +1,5 @@
+> **Continuidade atual:** [auditoria e aceite de integração](docs/INTEGRATION_AUDIT_20260912.md). Entrega consolidada pelo PR85 em main; referências às branches e gates abaixo são históricas. Conferir o recibo externo final antes de usar SHAs antigos.
+
 # Estado de publicação e continuidade — Stocks
 
 Conferência documental de 12/09/2026. Este registro complementa os protocolos científicos e substitui apenas afirmações anteriores de que o candidato ainda não teve commit/push.

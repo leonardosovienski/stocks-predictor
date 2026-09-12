@@ -58,3 +58,27 @@ novo destino dentro de C:/STOCKS, nunca sobre o checkout ou dados existentes.
 Exclusões dependem de publicação e validação final, decisão por branch e condição
 pelo SHA esperado. Não presumir limpeza concluída a partir deste documento.
 A auditoria é técnica; lucro, habilitação de capital e nova pesquisa não foram certificados.
+
+## Aceite administrativo e percurso concluído
+
+Após o pedido de aprovação do SHA256
+`6c8a00efb6b7ff418ab83372f6768aca8d4f2dd6ca7e9c5b3f81584bad6c9ee0`,
+o usuário respondeu "aprovo tudo". O artefato exato foi novamente conferido,
+aprovado pela CLI administrativa e importado no CAIN isolado. Consulta retornou
+duas entidades/três relações; evidências comparadas ao manifest. Reimportação
+retornou duplicate. Archive restore com raízes do produtor inexistentes recuperou
+entidades, relações, evidências e referências; verificação/rebuild aprovados.
+A web exibiu as duas entidades e as três relações, mantendo UNKNOWN.
+Recibo: `bundle-approved-e2e.json` na pasta da auditoria.
+
+A CI245 aprovou 966 testes por Python 3.13/3.14, sem falhas/erros/skips,
+com cobertura 79,43%/79,35%. Os dois wheels instalados passaram no percurso de
+250 mil linhas sintéticas, deduplicação e restore. Exportadores aprovados em
+3.12/3.13/3.14. Ecosystem corrigido pelo PR23, main `1a21dd5`, CI144 aprovada.
+
+A branch de entrega após integração do PR85 é main. As referências secundárias
+citadas nos documentos anteriores são históricas e recuperáveis pelos commits
+no inventário e no backup verificado. O recibo externo final registra o SHA
+publicado, CI posterior ao merge e resultado da limpeza condicionada por SHA.
+A integração delimitada não instala CAIN nem promove Bundle Supply a release
+Ecosystem; permanece o pin canônico explicitado acima.
