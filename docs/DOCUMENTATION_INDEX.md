@@ -8,7 +8,7 @@ Comece por [README](../README.md), [estado atual](../STOCKS_CURRENT_STATE.md),
 A [revisão dos arquivos](maintenance/2026-09-10-files/README.md) explica limpeza,
 preservação, dados externos e referências históricas sem destino direto.
 
-151 Markdown versionados. Classificação não certifica todas as afirmações históricas.
+152 Markdown versionados. Classificação não certifica todas as afirmações históricas.
 URLs externas e fragmentos/âncoras não são validados por este verificador.
 
 | Documento | Papel |
@@ -23,6 +23,7 @@ URLs externas e fragmentos/âncoras não são validados por este verificador.
 | [docs/AGENT_CHARTER.md](AGENT_CHARTER.md) | REGISTRO_DATADO |
 | [docs/DESIGN.md](DESIGN.md) | PROTOCOLO_PRESERVADO |
 | [docs/DOCUMENTATION_INDEX.md](DOCUMENTATION_INDEX.md) | ENTRADA_ATUAL |
+| [docs/RESEARCH_BUNDLE_V1.md](RESEARCH_BUNDLE_V1.md) | REGISTRO_DATADO |
 | [docs/RJ_DESIGN.md](RJ_DESIGN.md) | PROTOCOLO_PRESERVADO |
 | [docs/RUNBOOK_H18.md](RUNBOOK_H18.md) | REGISTRO_DATADO |
 | [docs/audit/2026-09-10-integral/README.md](audit/2026-09-10-integral/README.md) | REGISTRO_DATADO |
