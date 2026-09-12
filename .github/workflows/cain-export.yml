@@ -20,3 +20,16 @@ jobs:
           python-version: ${{ matrix.python }}
       - run: python tools/test_export_cain_status.py
       - run: python -m py_compile tools/export_cain_status.py
+
+      - name: Checkout exact independent interchange contracts
+        uses: actions/checkout@v4
+        with:
+          repository: leonardosovienski/ecosystem-predictor
+          ref: a9f6594c840482419d6c310f373813e0e71f17d0
+          path: .interchange-contracts
+      - name: Bundle and selector regressions using canonical sources
+        env:
+          PYTHONPATH: .interchange-contracts/packages/research-snapshot/src:.interchange-contracts/packages/research-bundle/src
+        run: |
+          python tools/test_export_cain_bundle.py
+          python tools/test_cain_bundle_selection.py

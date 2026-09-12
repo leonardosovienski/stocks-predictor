@@ -1,6 +1,7 @@
 """Synthetic selector tests; no operational database or scientific execution."""
 
 from contextlib import closing
+import os
 import hashlib
 from pathlib import Path
 import sqlite3
@@ -15,7 +16,7 @@ from cain_bundle_selection import BACKUP, select_metadata
 
 class SelectionTests(unittest.TestCase):
     def setUp(self):
-        self.temp = tempfile.TemporaryDirectory(dir="C:/STOCKS/work")
+        self.temp = tempfile.TemporaryDirectory(dir="C:/STOCKS/work" if os.name == "nt" else None)
         self.area = Path(self.temp.name)
         self.root = self.area / "repo"
         self.root.mkdir()

@@ -1,5 +1,6 @@
 """Producer exporter regressions using fictional committed source fixtures."""
 
+import os
 from pathlib import Path
 import subprocess
 import tempfile
@@ -13,7 +14,7 @@ SAMPLE = '{"status":"UNKNOWN","scope":"fictional fixture","capital_enabled":fals
 
 class ExportTests(unittest.TestCase):
     def setUp(self):
-        area = Path("C:/STOCKS/work/bundle-export-tests")
+        area = (Path("C:/STOCKS/work/bundle-export-tests") if os.name == "nt" else Path(tempfile.gettempdir()) / "stocks-bundle-export-tests")
         area.mkdir(parents=True, exist_ok=True)
         self.temporary = tempfile.TemporaryDirectory(dir=area)
         self.base = Path(self.temporary.name)
