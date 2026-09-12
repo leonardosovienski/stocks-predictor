@@ -1,5 +1,16 @@
 # Exportação ResearchBundleV1 — candidato local
 
+Estado corrente 12/09/2026: remediação local, perfil `local-research/2`.
+Origem/restrições são do produtor. `exporter_revision` identifica a evidence
+`exporter-provenance/1`, com hashes dos bytes efetivos do exportador, seletor,
+módulos usados pela seleção e contratos compartilhados, versões e Python.
+CAIN exige aprovação administrativa do pacote exato antes da importação.
+O modo padrão lê apenas o recibo; o modo opcional executa DatasetSelection para
+esta exportação sobre cópia verificada, sem simulação ou transferência de preços.
+Recibos abaixo são históricos; nova evidência fica em
+`C:/STOCKS/work/bundle-remediation-20260912-real`. Sem push, release, venv ou
+instalação de Core/runtime neste Windows. Fontes e recibos R8 são preservados.
+
 Este incremento é aditivo ao exportador ResearchSnapshotV1, que permanece intacto.
 O produtor usa somente o pacote independente predictor-research-bundle 1.0.0 do Ecosystem;
 não importa CAIN nem executa o runtime científico. Instale o wheel compartilhado em ambiente
@@ -20,7 +31,8 @@ pública histórica não foi certificada. Isso é uma âncora de versão real, n
 de execução DatasetSelection. O contrato DatasetSelection existente não é substituído por latest.
 Fonte B3 e recibo bruto são reference_only, com licença UNKNOWN e sem auto-fetch/materialização.
 Os metadados preservados não concedem direito de redistribuir documentos ou preços.
-Nenhum banco, simulador, modelo ou pacote científico foi aberto/importado. Os recibos R8
+No modo padrão nenhum banco ou módulo de domínio é aberto/importado. No modo opcional,
+somente os adaptadores stdlib necessários à seleção são usados; não há simulação. Os recibos R8
 históricos e seus hashes foram preservados; este incremento está em tools, fora do runtime.
 
 Testes: `python tools/test_export_cain_bundle.py`. E2E em

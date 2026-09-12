@@ -3,9 +3,12 @@
 ## Candidato local ResearchBundleV1
 
 Leia [o exportador aditivo](docs/RESEARCH_BUNDLE_V1.md): recibo real de catálogo,
-versão exata e lineage, com recursos reference_only/licença UNKNOWN. Nove testes
-novos e E2E via contrato instalado passaram. Runtime/recibos científicos preservados;
-sem push ou instalação operacional. Não equivale a execução DatasetSelection.
+versão exata e lineage, com recursos reference_only/licença UNKNOWN. O modo opcional
+executa DatasetSelection para esta exportação sobre cópia verificada; não prova input
+de experimento histórico e não roda simulação. São nove testes do exportador e cinco
+do seletor, além do Snapshot legado. A remediação de 12/09 usa perfil 2 e proveniência
+dos bytes efetivos do helper/contratos. Recibos científicos preservados; sem push ou
+instalação operacional. O documento do exportador aponta a evidência da rodada atual.
 
 ## Entrega arquitetural publicada — 11/09/2026
 

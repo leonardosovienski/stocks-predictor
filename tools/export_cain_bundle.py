@@ -8,8 +8,8 @@ import argparse
 import sys
 from pathlib import Path
 
-from research_bundle import digest, loads
-from research_bundle.export import Builder, admitted_sources
+from research_bundle import canonical, digest, loads
+from research_bundle.export import Builder, admitted_sources, exporter_provenance
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
@@ -28,16 +28,17 @@ def export(root, expected, destination, exported_at, *, selection=None, backup_s
     receipt = loads(sources[SOURCE])
     if not isinstance(receipt.get("inspection", {}).get("sources"), list):
         raise ValueError("Unsupported catalog receipt")
-    builder = Builder(
-        "stocks",
-        revision,
-        "sha256:"
-        + digest(
-            Path(__file__).read_bytes() + (Path(__file__).parent / "cain_bundle_selection.py").read_bytes()
-        ),
-        dict(expected),
-        exported_at,
-    )
+    code_files = {"export_cain_bundle.py": Path(__file__),
+                  "cain_bundle_selection.py": Path(__file__).parent / "cain_bundle_selection.py"}
+    if selection is not None:
+        for name in ("__init__", "dataset_selection", "operational_store", "simulation", "source_catalog", "cotahist"):
+            code_files["stocks_predictor/" + name + ".py"] = Path(__file__).parents[1] / "stocks_predictor" / (name + ".py")
+    provenance = exporter_provenance(code_files)
+    builder = Builder(dict(domain="stocks", repository="https://github.com/leonardosovienski/stocks-predictor",
+                           publisher="stocks-local", stream="research-bundle", code_revision=revision,
+                           exporter_revision="sha256:" + digest(canonical(provenance)), inputs=dict(expected)),
+                      dict(policy="stocks-research-bundle/1", read=True, disclose=False, generate=False),
+                      exported_at, provenance=provenance)
     artifact = builder.resource(
         SOURCE,
         "producer:" + SOURCE,
