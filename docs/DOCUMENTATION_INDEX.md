@@ -8,7 +8,7 @@ Comece por [README](../README.md), [estado atual](../STOCKS_CURRENT_STATE.md),
 A [revisão dos arquivos](maintenance/2026-09-10-files/README.md) explica limpeza,
 preservação, dados externos e referências históricas sem destino direto.
 
-151 Markdown versionados. Classificação não certifica todas as afirmações históricas.
+154 Markdown versionados. Classificação não certifica todas as afirmações históricas.
 URLs externas e fragmentos/âncoras não são validados por este verificador.
 
 | Documento | Papel |
@@ -17,12 +17,15 @@ URLs externas e fragmentos/âncoras não são validados por este verificador.
 | [ARCHITECTURE_IMPLEMENTATION.md](../ARCHITECTURE_IMPLEMENTATION.md) | REGISTRO_DATADO |
 | [CLAUDE.md](../CLAUDE.md) | ENTRADA_ATUAL |
 | [HANDOFF.md](../HANDOFF.md) | ENTRADA_ATUAL |
+| [PUBLICATION_STATUS_20260912.md](../PUBLICATION_STATUS_20260912.md) | REGISTRO_DATADO |
 | [README.md](../README.md) | ENTRADA_ATUAL |
 | [RESEARCH_FREEZE.md](../RESEARCH_FREEZE.md) | PROTOCOLO_PRESERVADO |
 | [STOCKS_CURRENT_STATE.md](../STOCKS_CURRENT_STATE.md) | ENTRADA_ATUAL |
 | [docs/AGENT_CHARTER.md](AGENT_CHARTER.md) | REGISTRO_DATADO |
 | [docs/DESIGN.md](DESIGN.md) | PROTOCOLO_PRESERVADO |
 | [docs/DOCUMENTATION_INDEX.md](DOCUMENTATION_INDEX.md) | ENTRADA_ATUAL |
+| [docs/INTEGRATION_AUDIT_20260912.md](INTEGRATION_AUDIT_20260912.md) | REGISTRO_DATADO |
+| [docs/RESEARCH_BUNDLE_V1.md](RESEARCH_BUNDLE_V1.md) | REGISTRO_DATADO |
 | [docs/RJ_DESIGN.md](RJ_DESIGN.md) | PROTOCOLO_PRESERVADO |
 | [docs/RUNBOOK_H18.md](RUNBOOK_H18.md) | REGISTRO_DATADO |
 | [docs/audit/2026-09-10-integral/README.md](audit/2026-09-10-integral/README.md) | REGISTRO_DATADO |

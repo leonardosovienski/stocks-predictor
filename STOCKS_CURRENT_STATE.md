@@ -1,5 +1,8 @@
 # Estado atual do Stocks Predictor
 
+> **Continuidade vigente:** [auditoria de integração e consolidação](docs/INTEGRATION_AUDIT_20260912.md). Notas datadas abaixo são históricas; publicação e aceite devem ser conferidos pelo SHA e pelos recibos atuais.
+
+
 ## Entrega arquitetural publicada — 11/09/2026
 
 Versão **0.2.0** publicada: [release e artefatos](https://github.com/leonardosovienski/stocks-predictor/releases/tag/v0.2.0). [CI de engenharia aprovada](https://github.com/leonardosovienski/stocks-predictor/actions/runs/34629227472) para a fonte `56c1a7b8db33f15404342fc61cceaa64452517d5`. Consulte [ARCHITECTURE_IMPLEMENTATION.md](ARCHITECTURE_IMPLEMENTATION.md) para comportamento, migração e limites. Este registro atualiza a entrega de software; estados científicos e registros datados abaixo conservam sua autoridade e contexto histórico.

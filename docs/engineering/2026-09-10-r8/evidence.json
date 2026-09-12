@@ -681,6 +681,10 @@
       "sha256": "575cd5004a41f203092654fd713aefed7dd1ba5a8a66d41e4b3ead4d99793b5a"
     },
     {
+      "path": "tools/cain_bundle_selection.py",
+      "sha256": "79bd3d65d7cbd74852d3f93ed1dffa7c016bd57679221781980f5f0bc0eac54f"
+    },
+    {
       "path": "tools/check_project_files.py",
       "sha256": "d18ea0c0b43a47192be87f20189cc7a61eb008ffb225fa317cb517cfc893b33f"
     },
@@ -707,6 +711,10 @@
     {
       "path": "tools/explore_fre_ref_date.py",
       "sha256": "7f217afa1aef9613d7ff17cb86621719fcfd4fc32178a9bd3cc67e95da175a6c"
+    },
+    {
+      "path": "tools/export_cain_bundle.py",
+      "sha256": "40942ca68cf15992d5b8caabe908eced206227693b8e18c3b55b4ec616462e41"
     },
     {
       "path": "tools/export_cain_status.py",
@@ -747,6 +755,14 @@
     {
       "path": "tools/reproducible_build.py",
       "sha256": "e03d807e8366fd1a095f4905b5f9429330557a935459176a1205f30f17b3225c"
+    },
+    {
+      "path": "tools/test_cain_bundle_selection.py",
+      "sha256": "5c4864c963d2f0ff18eda75ded740b3575043fa83be75cc6e999e05a2e854838"
+    },
+    {
+      "path": "tools/test_export_cain_bundle.py",
+      "sha256": "0080a1254b5154adf1775b447d8ec02b58728fa4933492530e85104a6e61eb25"
     },
     {
       "path": "tools/test_export_cain_status.py",

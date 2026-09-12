@@ -1,5 +1,18 @@
 # Continuidade do Stocks Predictor
 
+> **Continuidade vigente:** [auditoria de integração e consolidação](docs/INTEGRATION_AUDIT_20260912.md). Notas datadas abaixo são históricas; publicação e aceite devem ser conferidos pelo SHA e pelos recibos atuais.
+
+
+## Candidato local ResearchBundleV1
+
+Leia [o exportador aditivo](docs/RESEARCH_BUNDLE_V1.md): recibo real de catálogo,
+versão exata e lineage, com recursos reference_only/licença UNKNOWN. O modo opcional
+executa DatasetSelection para esta exportação sobre cópia verificada; não prova input
+de experimento histórico e não roda simulação. São nove testes do exportador e cinco
+do seletor, além do Snapshot legado. A remediação de 12/09 usa perfil 2 e proveniência
+dos bytes efetivos do helper/contratos. Recibos científicos preservados; sem push ou
+instalação operacional. O documento do exportador aponta a evidência da rodada atual.
+
 ## Entrega arquitetural publicada — 11/09/2026
 
 Versão **0.2.0** publicada: [release e artefatos](https://github.com/leonardosovienski/stocks-predictor/releases/tag/v0.2.0). [CI de engenharia aprovada](https://github.com/leonardosovienski/stocks-predictor/actions/runs/34629227472) para a fonte `56c1a7b8db33f15404342fc61cceaa64452517d5`. Consulte [ARCHITECTURE_IMPLEMENTATION.md](ARCHITECTURE_IMPLEMENTATION.md) para comportamento, migração e limites. Este registro atualiza a entrega de software; estados científicos e registros datados abaixo conservam sua autoridade e contexto histórico.
