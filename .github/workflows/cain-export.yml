@@ -1,7 +1,10 @@
 name: Cain report exporter
 on:
+  workflow_dispatch:
   push:
-    branches: ["integration/cain-status-20260911"]
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
 permissions:
   contents: read
 jobs:
