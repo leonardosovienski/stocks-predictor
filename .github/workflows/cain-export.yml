@@ -14,7 +14,7 @@ jobs:
       matrix:
         python: ["3.12", "3.13", "3.14"]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python }}
@@ -22,7 +22,7 @@ jobs:
       - run: python -m py_compile tools/export_cain_status.py
 
       - name: Checkout exact independent interchange contracts
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: leonardosovienski/ecosystem-predictor
           ref: a9f6594c840482419d6c310f373813e0e71f17d0
