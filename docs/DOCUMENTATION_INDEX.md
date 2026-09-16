@@ -8,7 +8,7 @@ Comece por [README](../README.md), [estado atual](../STOCKS_CURRENT_STATE.md),
 A [revisão dos arquivos](maintenance/2026-09-10-files/README.md) explica limpeza,
 preservação, dados externos e referências históricas sem destino direto.
 
-154 Markdown versionados. Classificação não certifica todas as afirmações históricas.
+156 Markdown versionados. Classificação não certifica todas as afirmações históricas.
 URLs externas e fragmentos/âncoras não são validados por este verificador.
 
 | Documento | Papel |
@@ -35,6 +35,8 @@ URLs externas e fragmentos/âncoras não são validados por este verificador.
 | [docs/audit/2026-09-10-r7/REPRODUCTION.md](audit/2026-09-10-r7/REPRODUCTION.md) | REPRODUCAO_COM_ESCOPO_DATADO |
 | [docs/audit/2026-09-10-r7/SOURCE_REVIEW.md](audit/2026-09-10-r7/SOURCE_REVIEW.md) | REGISTRO_DATADO |
 | [docs/audit/2026-09-10-r7/SOURCE_RIGHTS.md](audit/2026-09-10-r7/SOURCE_RIGHTS.md) | REGISTRO_DATADO |
+| [docs/audit/2026-09-15-review/AUDITORIA_INICIAL.md](audit/2026-09-15-review/AUDITORIA_INICIAL.md) | REGISTRO_DATADO |
+| [docs/audit/2026-09-15-review/README.md](audit/2026-09-15-review/README.md) | REGISTRO_DATADO |
 | [docs/audit/kimi_2026-08-24/RELATORIO_AUDITORIA_RJ.md](audit/kimi_2026-08-24/RELATORIO_AUDITORIA_RJ.md) | REGISTRO_DATADO |
 | [docs/audit/kimi_2026-08-24/plan.md](audit/kimi_2026-08-24/plan.md) | REGISTRO_DATADO |
 | [docs/auditoria_2026-09-04.md](auditoria_2026-09-04.md) | REGISTRO_DATADO |
