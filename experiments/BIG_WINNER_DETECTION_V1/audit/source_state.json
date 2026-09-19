@@ -1,0 +1,14 @@
+{
+  "captured_at_local": "2026-09-19",
+  "source_repository": "https://github.com/leonardosovienski/stocks-predictor.git",
+  "source_branch": "audit/evidence-remediation-20260915",
+  "source_commit": "9363ce242cb8e732b7c5222dd09b0d0715b323b9",
+  "experiment_branch": "experiment/BIG_WINNER_DETECTION_V1",
+  "initial_commit": "9363ce242cb8e732b7c5222dd09b0d0715b323b9",
+  "final_commit_resolution": "git rev-parse experiment/BIG_WINNER_DETECTION_V1 after the experiment commit",
+  "working_tree_status_before": "CLEAN",
+  "working_tree_status_after_expected": "CLEAN",
+  "primary_checkout_modified": false,
+  "remote_modified": false,
+  "main_modified": false
+}

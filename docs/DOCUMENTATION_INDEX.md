@@ -8,7 +8,7 @@ Comece por [README](../README.md), [estado atual](../STOCKS_CURRENT_STATE.md),
 A [revisão dos arquivos](maintenance/2026-09-10-files/README.md) explica limpeza,
 preservação, dados externos e referências históricas sem destino direto.
 
-156 Markdown versionados. Classificação não certifica todas as afirmações históricas.
+176 Markdown versionados. Classificação não certifica todas as afirmações históricas.
 URLs externas e fragmentos/âncoras não são validados por este verificador.
 
 | Documento | Papel |
@@ -104,6 +104,26 @@ URLs externas e fragmentos/âncoras não são validados por este verificador.
 | [docs/research/2026-09-09-h21-source-closure.md](research/2026-09-09-h21-source-closure.md) | REGISTRO_DATADO |
 | [docs/research/2026-09-10-r5/README.md](research/2026-09-10-r5/README.md) | REGISTRO_DATADO |
 | [docs/research/2026-09-10-r6/README.md](research/2026-09-10-r6/README.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_DETECTION_V1/FINAL_REPORT.md](../experiments/BIG_WINNER_DETECTION_V1/FINAL_REPORT.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_DETECTION_V1/README.md](../experiments/BIG_WINNER_DETECTION_V1/README.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_DETECTION_V1/ablations/README.md](../experiments/BIG_WINNER_DETECTION_V1/ablations/README.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_DETECTION_V1/audit/coverage_audit.md](../experiments/BIG_WINNER_DETECTION_V1/audit/coverage_audit.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_DETECTION_V1/audit/data_contract.md](../experiments/BIG_WINNER_DETECTION_V1/audit/data_contract.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_DETECTION_V1/audit/detector_registry.md](../experiments/BIG_WINNER_DETECTION_V1/audit/detector_registry.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_DETECTION_V1/audit/leakage_audit.md](../experiments/BIG_WINNER_DETECTION_V1/audit/leakage_audit.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_DETECTION_V1/audit/replay_fidelity.md](../experiments/BIG_WINNER_DETECTION_V1/audit/replay_fidelity.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_DETECTION_V1/audit/system_contract.md](../experiments/BIG_WINNER_DETECTION_V1/audit/system_contract.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_DETECTION_V1/baselines/matched_random/README.md](../experiments/BIG_WINNER_DETECTION_V1/baselines/matched_random/README.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_DETECTION_V1/baselines/negative_control/README.md](../experiments/BIG_WINNER_DETECTION_V1/baselines/negative_control/README.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_DETECTION_V1/baselines/simple_baselines/README.md](../experiments/BIG_WINNER_DETECTION_V1/baselines/simple_baselines/README.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_DETECTION_V1/controls/leakage_positive_control/README.md](../experiments/BIG_WINNER_DETECTION_V1/controls/leakage_positive_control/README.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_DETECTION_V1/labels/README.md](../experiments/BIG_WINNER_DETECTION_V1/labels/README.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_DETECTION_V1/metrics/confirmatory_tail/README.md](../experiments/BIG_WINNER_DETECTION_V1/metrics/confirmatory_tail/README.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_DETECTION_V1/metrics/cross_sectional/README.md](../experiments/BIG_WINNER_DETECTION_V1/metrics/cross_sectional/README.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_DETECTION_V1/metrics/episode_detection/README.md](../experiments/BIG_WINNER_DETECTION_V1/metrics/episode_detection/README.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_DETECTION_V1/metrics/temporal_blocks/README.md](../experiments/BIG_WINNER_DETECTION_V1/metrics/temporal_blocks/README.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_DETECTION_V1/miss_analysis/README.md](../experiments/BIG_WINNER_DETECTION_V1/miss_analysis/README.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_DETECTION_V1/winner_cards/README.md](../experiments/BIG_WINNER_DETECTION_V1/winner_cards/README.md) | REGISTRO_DATADO |
 | [reports/h10_verdict_adhoc.md](../reports/h10_verdict_adhoc.md) | REGISTRO_DATADO |
 | [reports/h11_verdict_adhoc.md](../reports/h11_verdict_adhoc.md) | REGISTRO_DATADO |
 | [reports/h12_verdict_adhoc.md](../reports/h12_verdict_adhoc.md) | REGISTRO_DATADO |

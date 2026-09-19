@@ -1,0 +1,104 @@
+{
+  "schema_version": "BIG_WINNER_DATA_AUDIT_V1",
+  "created_at": "2026-09-19T23:05:38.646982+00:00",
+  "access_policy": "sqlite mode=ro&immutable=1",
+  "catalog_path": "C:\\STOCKS\\data\\CATALOG.json",
+  "catalog_sha256": "cd43a87d22cfd8c64af55a81d785ce218a336e4541b9310ec2f18a727d71b0f6",
+  "datasets": {
+    "ORIGINAL_PROJECT_DB": {
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\a22739794ba4a43a11544338d4a91e14cb6a0b1f7b132ab460f96d3359f63cf4",
+      "sha256_before": "a22739794ba4a43a11544338d4a91e14cb6a0b1f7b132ab460f96d3359f63cf4",
+      "sqlite_quick_check": "ok",
+      "tables": [
+        "_migrations",
+        "adjustments",
+        "decisions",
+        "dividends",
+        "fundamentals",
+        "prices_raw",
+        "quarantine",
+        "rj_company_observations",
+        "rj_episodes",
+        "rj_events",
+        "rj_family_scores",
+        "rj_universe",
+        "rj_universe_snapshots",
+        "runs",
+        "universe_snapshots"
+      ],
+      "prices_raw": {
+        "rows": 1149872,
+        "distinct_dates": 2647,
+        "coverage_start": "2016-01-04",
+        "coverage_end": "2026-08-27",
+        "distinct_tickers": 1784
+      },
+      "adjustments": {
+        "rows": 43
+      },
+      "fundamentals": {
+        "rows": 1579
+      },
+      "quarantine": {
+        "rows": 2227
+      },
+      "sha256_after": "a22739794ba4a43a11544338d4a91e14cb6a0b1f7b132ab460f96d3359f63cf4",
+      "source_unchanged": true
+    },
+    "HISTORY_2016_2026": {
+      "path": "C:\\STOCKS\\data\\recovery-r2\\objects\\e21a89c38f2792c826291baa1175da4fe9dfbf626316635a536f7c28b250146a",
+      "sha256_before": "e21a89c38f2792c826291baa1175da4fe9dfbf626316635a536f7c28b250146a",
+      "sqlite_quick_check": "ok",
+      "tables": [
+        "_migrations",
+        "adjustments",
+        "cash_event_coverage",
+        "cash_events",
+        "decisions",
+        "dividends",
+        "fundamentals",
+        "fundamentals_pit",
+        "ingestion_issues",
+        "prices_raw",
+        "quarantine",
+        "research_source_documents",
+        "rj_company_observations",
+        "rj_episodes",
+        "rj_events",
+        "rj_family_scores",
+        "rj_universe",
+        "rj_universe_snapshots",
+        "runs",
+        "shares_pit",
+        "universe_snapshots"
+      ],
+      "prices_raw": {
+        "rows": 1149872,
+        "distinct_dates": 2647,
+        "coverage_start": "2016-01-04",
+        "coverage_end": "2026-08-27",
+        "distinct_tickers": 1784
+      },
+      "adjustments": {
+        "rows": 43
+      },
+      "fundamentals": {
+        "rows": 1579
+      },
+      "quarantine": {
+        "rows": 2227
+      },
+      "cash_events": {
+        "rows": 95
+      },
+      "cash_event_coverage": {
+        "rows": 4
+      },
+      "sha256_after": "e21a89c38f2792c826291baa1175da4fe9dfbf626316635a536f7c28b250146a",
+      "source_unchanged": true
+    }
+  },
+  "economic_completeness_certified": false,
+  "real_signal_generation_authorized_by_gate": false,
+  "real_outcome_generation_authorized_by_gate": false
+}

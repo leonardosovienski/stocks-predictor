@@ -1,0 +1,26 @@
+{
+  "experiment_id": "BIG_WINNER_DETECTION_V1",
+  "protocol_status": "PRE_REGISTERED_BEFORE_OUTCOMES",
+  "question": "Do pre-existing Stocks mechanisms enrich and detect future B3 total-return winners using only point-in-time information?",
+  "evidence_layers": {
+    "RETROSPECTIVE_PIT_EVIDENCE": "ELIGIBLE_IF_ALL_GATES_PASS",
+    "PSEUDO_OOS_TEMPORAL_CONFIRMATION": "LAST_24_COMPLETE_MONTHLY_ASOFS",
+    "TRUE_PROSPECTIVE_EVIDENCE": "NOT_AVAILABLE"
+  },
+  "primary_endpoint": {
+    "unit": "ticker_x_signal_asof",
+    "population": "DETECTOR_SCORABLE",
+    "label": "BIG_WINNER_12M_TOTAL_RETURN_GTE_30_PERCENT",
+    "selection": "TOP_20_PERCENT",
+    "execution": "FIRST_ELIGIBLE_NEXT_OPEN",
+    "effect": "LIFT"
+  },
+  "selection": {"fraction": 0.20, "rounding": "CEILING", "tie_break": "TICKER_ASCENDING"},
+  "period": {"primary_start": "2018-01-01", "extension": "2016-2017_SEPARATE_ONLY"},
+  "inference": {"method": "MOVING_BLOCK_BOOTSTRAP", "block_unit": "MONTHLY_CROSS_SECTION", "block_length": 12, "n_bootstrap": 10000, "ci": "PERCENTILE_95", "seed": 20260921},
+  "matched_random": {"simulations": 10000, "seed": 20260919, "match": ["detector", "signal_asof", "scorable_universe", "selection_size"]},
+  "negative_control": {"method": "SCORE_PERMUTATION_WITHIN_DETECTOR_ASOF", "seed": 20260920},
+  "multiplicity": {"primary": "HOLM_FWER", "family": "ALL_CONFIRMATORY_REPLAY_ELIGIBLE_DETECTORS"},
+  "episodes": {"minimum_negative_gap": 1, "sensitivity_gap": 3, "pre_episode_alert_months": 3, "early_hit_minimum_fraction_remaining": 0.50},
+  "stop_conditions": ["SIGNAL_FREEZE_INVALID", "PIT_TEMPORALITY_UNDEMONSTRATED", "MATERIAL_CORPORATE_ACTIONS_UNRESOLVED", "NEXT_OPEN_UNAVAILABLE", "SCORABLE_UNIVERSE_UNDEFINED", "LEAKAGE_CONTROL_FAILED", "FUTURE_SELECTED_OUTCOME_POPULATION"]
+}
