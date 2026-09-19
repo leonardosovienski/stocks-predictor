@@ -1,0 +1,15 @@
+{
+  "FREEZE_VALID": true,
+  "asofs": 103,
+  "detectors": [
+    "MOMENTUM_12_1",
+    "MOMENTUM_6_1",
+    "LOW_VOL_252",
+    "REVERSAL_21",
+    "MOMENTUM_LOW_VOL",
+    "52W_HIGH",
+    "VOLUME_SURGE"
+  ],
+  "freeze": "C:\\STOCKS\\work\\big-winner-price-detection-v1\\experiments\\BIG_WINNER_PRICE_DETECTION_V1\\frozen_signals\\MANIFEST.json",
+  "rows": 43260
+}

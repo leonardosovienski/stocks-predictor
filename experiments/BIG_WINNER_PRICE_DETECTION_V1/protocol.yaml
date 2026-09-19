@@ -1,0 +1,32 @@
+{
+  "experiment": "BIG_WINNER_PRICE_DETECTION_V1",
+  "frozen_before_outcomes": true,
+  "question": "Did an existing historical price/volume mechanism enrich its top-20% ranking with subsequent >=30% 12-month price winners?",
+  "market_observation_contract": "Historical OHLCV observation time is its trading date; later source retrieval does not by itself invalidate PIT status.",
+  "price_index": "PRICE_INDEX_EX_CASH_DISTRIBUTIONS",
+  "cash_distributions": "EXCLUDED",
+  "share_count_events": "CONTINUITY_ADJUSTED_WHEN_EVIDENCED",
+  "complex_reorganizations": "OUTCOME_NOT_ESTIMABLE_UNLESS_ECONOMIC_CONTINUITY_IS_DEFENSIBLE",
+  "detectors": {
+    "MOMENTUM_12_1": {"direction": "HIGHER_IS_BETTER"},
+    "MOMENTUM_6_1": {"direction": "HIGHER_IS_BETTER"},
+    "LOW_VOL_252": {"direction": "LOWER_IS_BETTER"},
+    "REVERSAL_21": {"direction": "LOWER_IS_BETTER"},
+    "MOMENTUM_LOW_VOL": {"direction": "HIGHER_IS_BETTER"},
+    "52W_HIGH": {"direction": "HIGHER_IS_BETTER"},
+    "VOLUME_SURGE": {"direction": "HIGHER_IS_BETTER"}
+  },
+  "universe": {"top_n": 60, "liquidity_lookback_sessions": 126, "min_history_sessions": 252, "historical_quarantine_state": true},
+  "selection": {"rule": "TOP_20_PERCENT_CEIL_V1", "tie_break": "SCORE_THEN_TICKER_ASC_V1"},
+  "execution": "FIRST_GLOBAL_MARKET_SESSION_STRICTLY_AFTER_SIGNAL_ASOF_OPEN",
+  "horizon": "12_CALENDAR_MONTHS_LAST_VALID_QUOTE_ON_OR_BEFORE_TARGET",
+  "terminal_quote_maximum_staleness_sessions": 5,
+  "winner_threshold": 0.30,
+  "primary_statistic": "precision_minus_base_rate",
+  "random": {"simulations": 10000, "seed": 20260919, "population": "same_asof_complete_case_scorable"},
+  "bootstrap": {"simulations": 10000, "seed": 20260921, "method": "moving_monthly_cross_section_blocks", "block_length": 12, "interval": "percentile_95"},
+  "raw_p": "(1 + count(random_statistic >= observed_statistic)) / (1 + 10000)",
+  "multiple_testing": {"method": "HOLM_FWER", "alpha": 0.05},
+  "confirmatory_tail": "last_24_complete_monthly_signal_asofs",
+  "system_level_aggregation": "NOT_DEFINED"
+}

@@ -1,0 +1,872 @@
+{
+  "common_scorable_population": {
+    "52W_HIGH": {
+      "base_rate": 0.191044776119403,
+      "known_n": 2010,
+      "lift": 0.8825399709302325,
+      "partial_identification": {
+        "base_rate_lower": 0.1553398058252427,
+        "base_rate_upper": 0.3422330097087379,
+        "lift_outer_lower": 0.3847336601701805,
+        "lift_outer_upper": 2.257874574347333,
+        "precision_lower": 0.13166855845629966,
+        "precision_upper": 0.3507377979568672,
+        "selected_known_winners": 116,
+        "selected_n": 881,
+        "selected_unknown": 193,
+        "universe_known_winners": 384,
+        "universe_n": 2472,
+        "universe_unknown": 462
+      },
+      "precision": 0.1686046511627907,
+      "precision_minus_base_rate": -0.022440124956612295,
+      "selected_known_n": 688
+    },
+    "LOW_VOL_252": {
+      "base_rate": 0.191044776119403,
+      "known_n": 2010,
+      "lift": 0.5518166415662651,
+      "partial_identification": {
+        "base_rate_lower": 0.1553398058252427,
+        "base_rate_upper": 0.3422330097087379,
+        "lift_outer_lower": 0.2608915906788247,
+        "lift_outer_upper": 1.560108418367347,
+        "precision_lower": 0.08928571428571429,
+        "precision_upper": 0.2423469387755102,
+        "selected_known_winners": 35,
+        "selected_n": 392,
+        "selected_unknown": 60,
+        "universe_known_winners": 384,
+        "universe_n": 2472,
+        "universe_unknown": 462
+      },
+      "precision": 0.10542168674698796,
+      "precision_minus_base_rate": -0.08562308937241503,
+      "selected_known_n": 332
+    },
+    "MOMENTUM_12_1": {
+      "base_rate": 0.191044776119403,
+      "known_n": 2010,
+      "lift": 1.2024170179135931,
+      "partial_identification": {
+        "base_rate_lower": 0.1553398058252427,
+        "base_rate_upper": 0.3422330097087379,
+        "lift_outer_lower": 0.5153664302600472,
+        "lift_outer_upper": 2.6302083333333335,
+        "precision_lower": 0.17637540453074432,
+        "precision_upper": 0.4085760517799353,
+        "selected_known_winners": 218,
+        "selected_n": 1236,
+        "selected_unknown": 287,
+        "universe_known_winners": 384,
+        "universe_n": 2472,
+        "universe_unknown": 462
+      },
+      "precision": 0.2297154899894626,
+      "precision_minus_base_rate": 0.0386707138700596,
+      "selected_known_n": 949
+    },
+    "MOMENTUM_6_1": {
+      "base_rate": 0.191044776119403,
+      "known_n": 2010,
+      "lift": 1.1284827953714982,
+      "partial_identification": {
+        "base_rate_lower": 0.1553398058252427,
+        "base_rate_upper": 0.3422330097087379,
+        "lift_outer_lower": 0.49921958432596725,
+        "lift_outer_upper": 2.435810810810811,
+        "precision_lower": 0.17084942084942084,
+        "precision_upper": 0.3783783783783784,
+        "selected_known_winners": 177,
+        "selected_n": 1036,
+        "selected_unknown": 215,
+        "universe_known_winners": 384,
+        "universe_n": 2472,
+        "universe_unknown": 462
+      },
+      "precision": 0.21559074299634592,
+      "precision_minus_base_rate": 0.024545966876942937,
+      "selected_known_n": 821
+    },
+    "MOMENTUM_LOW_VOL": {
+      "base_rate": 0.191044776119403,
+      "known_n": 2010,
+      "lift": 0.6624147022332506,
+      "partial_identification": {
+        "base_rate_lower": 0.1553398058252427,
+        "base_rate_upper": 0.3422330097087379,
+        "lift_outer_lower": 0.28936170212765955,
+        "lift_outer_upper": 2.0375,
+        "precision_lower": 0.09902912621359224,
+        "precision_upper": 0.31650485436893205,
+        "selected_known_winners": 51,
+        "selected_n": 515,
+        "selected_unknown": 112,
+        "universe_known_winners": 384,
+        "universe_n": 2472,
+        "universe_unknown": 462
+      },
+      "precision": 0.12655086848635236,
+      "precision_minus_base_rate": -0.06449390763305063,
+      "selected_known_n": 403
+    },
+    "REVERSAL_21": {
+      "base_rate": 0.191044776119403,
+      "known_n": 2010,
+      "lift": 1.0344122023809523,
+      "partial_identification": {
+        "base_rate_lower": 0.1553398058252427,
+        "base_rate_upper": 0.3422330097087379,
+        "lift_outer_lower": 0.4755388680294813,
+        "lift_outer_upper": 2.183700980392157,
+        "precision_lower": 0.1627450980392157,
+        "precision_upper": 0.3392156862745098,
+        "selected_known_winners": 83,
+        "selected_n": 510,
+        "selected_unknown": 90,
+        "universe_known_winners": 384,
+        "universe_n": 2472,
+        "universe_unknown": 462
+      },
+      "precision": 0.1976190476190476,
+      "precision_minus_base_rate": 0.006574271499644624,
+      "selected_known_n": 420
+    },
+    "VOLUME_SURGE": {
+      "base_rate": 0.191044776119403,
+      "known_n": 2010,
+      "lift": 1.0312758692052981,
+      "partial_identification": {
+        "base_rate_lower": 0.1553398058252427,
+        "base_rate_upper": 0.3422330097087379,
+        "lift_outer_lower": 0.4504097306434424,
+        "lift_outer_upper": 2.3932156735751295,
+        "precision_lower": 0.15414507772020725,
+        "precision_upper": 0.37176165803108807,
+        "selected_known_winners": 119,
+        "selected_n": 772,
+        "selected_unknown": 168,
+        "universe_known_winners": 384,
+        "universe_n": 2472,
+        "universe_unknown": 462
+      },
+      "precision": 0.19701986754966888,
+      "precision_minus_base_rate": 0.005975091430265894,
+      "selected_known_n": 604
+    }
+  },
+  "detectors": {
+    "52W_HIGH": {
+      "CONFIRMATORY_TAIL": {
+        "base_rate": 0.20580912863070538,
+        "known_n": 1205,
+        "lift": 1.0649580203269995,
+        "partial_identification": {
+          "base_rate_lower": 0.17222222222222222,
+          "base_rate_upper": 0.33541666666666664,
+          "lift_outer_lower": 0.4968944099378882,
+          "lift_outer_upper": 2.3588709677419355,
+          "precision_lower": 0.16666666666666666,
+          "precision_upper": 0.40625,
+          "selected_known_winners": 48,
+          "selected_n": 288,
+          "selected_unknown": 69,
+          "universe_known_winners": 248,
+          "universe_n": 1440,
+          "universe_unknown": 235
+        },
+        "precision": 0.2191780821917808,
+        "precision_minus_base_rate": 0.013368953561075425,
+        "selected_known_n": 219
+      },
+      "FULL_HISTORY": {
+        "base_rate": 0.20472741136103698,
+        "known_n": 5246,
+        "lift": 0.8372088191855437,
+        "partial_identification": {
+          "base_rate_lower": 0.17378640776699028,
+          "base_rate_upper": 0.3249190938511327,
+          "lift_outer_lower": 0.4208167330677291,
+          "lift_outer_upper": 1.9506517690875234,
+          "precision_lower": 0.13673139158576053,
+          "precision_upper": 0.3389967637540453,
+          "selected_known_winners": 169,
+          "selected_n": 1236,
+          "selected_unknown": 250,
+          "universe_known_winners": 1074,
+          "universe_n": 6180,
+          "universe_unknown": 934
+        },
+        "precision": 0.17139959432048682,
+        "precision_minus_base_rate": -0.033327817040550156,
+        "selected_known_n": 986
+      },
+      "HISTORICAL_MAIN_BLOCK": {
+        "base_rate": 0.20472741136103698,
+        "known_n": 5246,
+        "lift": 0.8372088191855437,
+        "partial_identification": {
+          "base_rate_lower": 0.17378640776699028,
+          "base_rate_upper": 0.3249190938511327,
+          "lift_outer_lower": 0.4208167330677291,
+          "lift_outer_upper": 1.9506517690875234,
+          "precision_lower": 0.13673139158576053,
+          "precision_upper": 0.3389967637540453,
+          "selected_known_winners": 169,
+          "selected_n": 1236,
+          "selected_unknown": 250,
+          "universe_known_winners": 1074,
+          "universe_n": 6180,
+          "universe_unknown": 934
+        },
+        "precision": 0.17139959432048682,
+        "precision_minus_base_rate": -0.033327817040550156,
+        "selected_known_n": 986
+      },
+      "WINNER_EPISODES": {
+        "boundary_uncertain": 55,
+        "detected": 43,
+        "early_hit_recall": 0.17040358744394618,
+        "early_hits": 38,
+        "episode_recall": 0.19282511210762332,
+        "late_hits": 5,
+        "misses": 180,
+        "scorable_episodes": 223,
+        "winner_episodes": 278
+      },
+      "detector": "52W_HIGH",
+      "evaluation_period": [
+        "2017-01-31",
+        "2025-07-31"
+      ],
+      "historical_scientific_status": "HISTORICAL_JUDGED_MECHANISM",
+      "holm_adjusted_p": 1,
+      "matched_random_mean": -0.001042421503024805,
+      "negative_control": 0.0036464932153992546,
+      "observed_test_statistic": -0.033327817040550156,
+      "outcome_coverage": 0.8488673139158576,
+      "positive_leakage_control_pass": true,
+      "raw_empirical_p": 0.9984001599840016,
+      "replay_fidelity": "SEMANTICALLY_EQUIVALENT",
+      "scientific_verdict": "NO_EVIDENCE_OF_PRICE_DETECTION",
+      "scorable_observations": 6180,
+      "selected_observations": 1236,
+      "temporal_95_ci": [
+        -0.07228436970737673,
+        0.007109645190213898
+      ]
+    },
+    "LOW_VOL_252": {
+      "CONFIRMATORY_TAIL": {
+        "base_rate": 0.20580912863070538,
+        "known_n": 1205,
+        "lift": 0.6676311253385866,
+        "partial_identification": {
+          "base_rate_lower": 0.17222222222222222,
+          "base_rate_upper": 0.33541666666666664,
+          "lift_outer_lower": 0.3726708074534162,
+          "lift_outer_upper": 1.25,
+          "precision_lower": 0.125,
+          "precision_upper": 0.2152777777777778,
+          "selected_known_winners": 36,
+          "selected_n": 288,
+          "selected_unknown": 26,
+          "universe_known_winners": 248,
+          "universe_n": 1440,
+          "universe_unknown": 235
+        },
+        "precision": 0.13740458015267176,
+        "precision_minus_base_rate": -0.06840454847803362,
+        "selected_known_n": 262
+      },
+      "FULL_HISTORY": {
+        "base_rate": 0.20472741136103698,
+        "known_n": 5246,
+        "lift": 0.5720234231379304,
+        "partial_identification": {
+          "base_rate_lower": 0.17378640776699028,
+          "base_rate_upper": 0.3249190938511327,
+          "lift_outer_lower": 0.3187250996015936,
+          "lift_outer_upper": 1.2616387337057728,
+          "precision_lower": 0.10355987055016182,
+          "precision_upper": 0.21925566343042072,
+          "selected_known_winners": 128,
+          "selected_n": 1236,
+          "selected_unknown": 143,
+          "universe_known_winners": 1074,
+          "universe_n": 6180,
+          "universe_unknown": 934
+        },
+        "precision": 0.1171088746569076,
+        "precision_minus_base_rate": -0.08761853670412938,
+        "selected_known_n": 1093
+      },
+      "HISTORICAL_MAIN_BLOCK": {
+        "base_rate": 0.20472741136103698,
+        "known_n": 5246,
+        "lift": 0.5720234231379304,
+        "partial_identification": {
+          "base_rate_lower": 0.17378640776699028,
+          "base_rate_upper": 0.3249190938511327,
+          "lift_outer_lower": 0.3187250996015936,
+          "lift_outer_upper": 1.2616387337057728,
+          "precision_lower": 0.10355987055016182,
+          "precision_upper": 0.21925566343042072,
+          "selected_known_winners": 128,
+          "selected_n": 1236,
+          "selected_unknown": 143,
+          "universe_known_winners": 1074,
+          "universe_n": 6180,
+          "universe_unknown": 934
+        },
+        "precision": 0.1171088746569076,
+        "precision_minus_base_rate": -0.08761853670412938,
+        "selected_known_n": 1093
+      },
+      "WINNER_EPISODES": {
+        "boundary_uncertain": 55,
+        "detected": 42,
+        "early_hit_recall": 0.18834080717488788,
+        "early_hits": 42,
+        "episode_recall": 0.18834080717488788,
+        "late_hits": 0,
+        "misses": 181,
+        "scorable_episodes": 223,
+        "winner_episodes": 278
+      },
+      "detector": "LOW_VOL_252",
+      "evaluation_period": [
+        "2017-01-31",
+        "2025-07-31"
+      ],
+      "historical_scientific_status": "HISTORICAL_JUDGED_MECHANISM",
+      "holm_adjusted_p": 1,
+      "matched_random_mean": -0.001141958479060765,
+      "negative_control": -0.008332724454016116,
+      "observed_test_statistic": -0.08761853670412938,
+      "outcome_coverage": 0.8488673139158576,
+      "positive_leakage_control_pass": true,
+      "raw_empirical_p": 1.0,
+      "replay_fidelity": "SEMANTICALLY_EQUIVALENT",
+      "scientific_verdict": "NO_EVIDENCE_OF_PRICE_DETECTION",
+      "scorable_observations": 6180,
+      "selected_observations": 1236,
+      "temporal_95_ci": [
+        -0.12041159869951976,
+        -0.05252185979878203
+      ]
+    },
+    "MOMENTUM_12_1": {
+      "CONFIRMATORY_TAIL": {
+        "base_rate": 0.20580912863070538,
+        "known_n": 1205,
+        "lift": 1.477813289727962,
+        "partial_identification": {
+          "base_rate_lower": 0.17222222222222222,
+          "base_rate_upper": 0.33541666666666664,
+          "lift_outer_lower": 0.6832298136645963,
+          "lift_outer_upper": 2.762096774193548,
+          "precision_lower": 0.22916666666666666,
+          "precision_upper": 0.4756944444444444,
+          "selected_known_winners": 66,
+          "selected_n": 288,
+          "selected_unknown": 71,
+          "universe_known_winners": 248,
+          "universe_n": 1440,
+          "universe_unknown": 235
+        },
+        "precision": 0.30414746543778803,
+        "precision_minus_base_rate": 0.09833833680708265,
+        "selected_known_n": 217
+      },
+      "FULL_HISTORY": {
+        "base_rate": 0.20472741136103698,
+        "known_n": 5246,
+        "lift": 1.1220553635798145,
+        "partial_identification": {
+          "base_rate_lower": 0.17378640776699028,
+          "base_rate_upper": 0.3249190938511327,
+          "lift_outer_lower": 0.5428286852589641,
+          "lift_outer_upper": 2.351024208566108,
+          "precision_lower": 0.17637540453074432,
+          "precision_upper": 0.4085760517799353,
+          "selected_known_winners": 218,
+          "selected_n": 1236,
+          "selected_unknown": 287,
+          "universe_known_winners": 1074,
+          "universe_n": 6180,
+          "universe_unknown": 934
+        },
+        "precision": 0.2297154899894626,
+        "precision_minus_base_rate": 0.024988078628425614,
+        "selected_known_n": 949
+      },
+      "HISTORICAL_MAIN_BLOCK": {
+        "base_rate": 0.20472741136103698,
+        "known_n": 5246,
+        "lift": 1.1220553635798145,
+        "partial_identification": {
+          "base_rate_lower": 0.17378640776699028,
+          "base_rate_upper": 0.3249190938511327,
+          "lift_outer_lower": 0.5428286852589641,
+          "lift_outer_upper": 2.351024208566108,
+          "precision_lower": 0.17637540453074432,
+          "precision_upper": 0.4085760517799353,
+          "selected_known_winners": 218,
+          "selected_n": 1236,
+          "selected_unknown": 287,
+          "universe_known_winners": 1074,
+          "universe_n": 6180,
+          "universe_unknown": 934
+        },
+        "precision": 0.2297154899894626,
+        "precision_minus_base_rate": 0.024988078628425614,
+        "selected_known_n": 949
+      },
+      "WINNER_EPISODES": {
+        "boundary_uncertain": 55,
+        "detected": 52,
+        "early_hit_recall": 0.22869955156950672,
+        "early_hits": 51,
+        "episode_recall": 0.23318385650224216,
+        "late_hits": 1,
+        "misses": 171,
+        "scorable_episodes": 223,
+        "winner_episodes": 278
+      },
+      "detector": "MOMENTUM_12_1",
+      "evaluation_period": [
+        "2017-01-31",
+        "2025-07-31"
+      ],
+      "historical_scientific_status": "HISTORICAL_JUDGED_MECHANISM",
+      "holm_adjusted_p": 0.019598040195980403,
+      "matched_random_mean": -0.008123196397917903,
+      "negative_control": 0.004328465324897501,
+      "observed_test_statistic": 0.024988078628425614,
+      "outcome_coverage": 0.8488673139158576,
+      "positive_leakage_control_pass": true,
+      "raw_empirical_p": 0.0027997200279972004,
+      "replay_fidelity": "SEMANTICALLY_EQUIVALENT",
+      "scientific_verdict": "WEAK_PRICE_DETECTION_SIGNAL",
+      "scorable_observations": 6180,
+      "selected_observations": 1236,
+      "temporal_95_ci": [
+        -0.033173057291028624,
+        0.08764085906727104
+      ]
+    },
+    "MOMENTUM_6_1": {
+      "CONFIRMATORY_TAIL": {
+        "base_rate": 0.20580912863070538,
+        "known_n": 1205,
+        "lift": 1.3114651727091065,
+        "partial_identification": {
+          "base_rate_lower": 0.17222222222222222,
+          "base_rate_upper": 0.33541666666666664,
+          "lift_outer_lower": 0.6314699792960663,
+          "lift_outer_upper": 2.4798387096774195,
+          "precision_lower": 0.21180555555555555,
+          "precision_upper": 0.4270833333333333,
+          "selected_known_winners": 61,
+          "selected_n": 288,
+          "selected_unknown": 62,
+          "universe_known_winners": 248,
+          "universe_n": 1440,
+          "universe_unknown": 235
+        },
+        "precision": 0.26991150442477874,
+        "precision_minus_base_rate": 0.06410237579407335,
+        "selected_known_n": 226
+      },
+      "FULL_HISTORY": {
+        "base_rate": 0.20472741136103698,
+        "known_n": 5246,
+        "lift": 1.0903880518405658,
+        "partial_identification": {
+          "base_rate_lower": 0.17378640776699028,
+          "base_rate_upper": 0.3249190938511327,
+          "lift_outer_lower": 0.5502988047808764,
+          "lift_outer_upper": 2.1741154562383613,
+          "precision_lower": 0.17880258899676377,
+          "precision_upper": 0.37783171521035597,
+          "selected_known_winners": 221,
+          "selected_n": 1236,
+          "selected_unknown": 246,
+          "universe_known_winners": 1074,
+          "universe_n": 6180,
+          "universe_unknown": 934
+        },
+        "precision": 0.22323232323232323,
+        "precision_minus_base_rate": 0.01850491187128625,
+        "selected_known_n": 990
+      },
+      "HISTORICAL_MAIN_BLOCK": {
+        "base_rate": 0.20472741136103698,
+        "known_n": 5246,
+        "lift": 1.0903880518405658,
+        "partial_identification": {
+          "base_rate_lower": 0.17378640776699028,
+          "base_rate_upper": 0.3249190938511327,
+          "lift_outer_lower": 0.5502988047808764,
+          "lift_outer_upper": 2.1741154562383613,
+          "precision_lower": 0.17880258899676377,
+          "precision_upper": 0.37783171521035597,
+          "selected_known_winners": 221,
+          "selected_n": 1236,
+          "selected_unknown": 246,
+          "universe_known_winners": 1074,
+          "universe_n": 6180,
+          "universe_unknown": 934
+        },
+        "precision": 0.22323232323232323,
+        "precision_minus_base_rate": 0.01850491187128625,
+        "selected_known_n": 990
+      },
+      "WINNER_EPISODES": {
+        "boundary_uncertain": 55,
+        "detected": 75,
+        "early_hit_recall": 0.32286995515695066,
+        "early_hits": 72,
+        "episode_recall": 0.336322869955157,
+        "late_hits": 3,
+        "misses": 148,
+        "scorable_episodes": 223,
+        "winner_episodes": 278
+      },
+      "detector": "MOMENTUM_6_1",
+      "evaluation_period": [
+        "2017-01-31",
+        "2025-07-31"
+      ],
+      "historical_scientific_status": "HISTORICAL_JUDGED_MECHANISM",
+      "holm_adjusted_p": 0.11248875112488751,
+      "matched_random_mean": -0.00387054267416829,
+      "negative_control": 0.00030160217861485705,
+      "observed_test_statistic": 0.01850491187128625,
+      "outcome_coverage": 0.8488673139158576,
+      "positive_leakage_control_pass": true,
+      "raw_empirical_p": 0.022497750224977502,
+      "replay_fidelity": "SEMANTICALLY_EQUIVALENT",
+      "scientific_verdict": "WEAK_PRICE_DETECTION_SIGNAL",
+      "scorable_observations": 6180,
+      "selected_observations": 1236,
+      "temporal_95_ci": [
+        -0.019535416042565618,
+        0.06706657420249651
+      ]
+    },
+    "MOMENTUM_LOW_VOL": {
+      "CONFIRMATORY_TAIL": {
+        "base_rate": 0.22362869198312235,
+        "known_n": 474,
+        "lift": 0.6019593613933236,
+        "partial_identification": {
+          "base_rate_lower": 0.1840277777777778,
+          "base_rate_upper": 0.3611111111111111,
+          "lift_outer_lower": 0.3230769230769231,
+          "lift_outer_upper": 1.3584905660377358,
+          "precision_lower": 0.11666666666666667,
+          "precision_upper": 0.25,
+          "selected_known_winners": 14,
+          "selected_n": 120,
+          "selected_unknown": 16,
+          "universe_known_winners": 106,
+          "universe_n": 576,
+          "universe_unknown": 102
+        },
+        "precision": 0.1346153846153846,
+        "precision_minus_base_rate": -0.08901330736773774,
+        "selected_known_n": 104
+      },
+      "FULL_HISTORY": {
+        "base_rate": 0.191044776119403,
+        "known_n": 2010,
+        "lift": 0.6624147022332506,
+        "partial_identification": {
+          "base_rate_lower": 0.1553398058252427,
+          "base_rate_upper": 0.3422330097087379,
+          "lift_outer_lower": 0.28936170212765955,
+          "lift_outer_upper": 2.0375,
+          "precision_lower": 0.09902912621359224,
+          "precision_upper": 0.31650485436893205,
+          "selected_known_winners": 51,
+          "selected_n": 515,
+          "selected_unknown": 112,
+          "universe_known_winners": 384,
+          "universe_n": 2472,
+          "universe_unknown": 462
+        },
+        "precision": 0.12655086848635236,
+        "precision_minus_base_rate": -0.06449390763305063,
+        "selected_known_n": 403
+      },
+      "HISTORICAL_MAIN_BLOCK": {
+        "base_rate": 0.191044776119403,
+        "known_n": 2010,
+        "lift": 0.6624147022332506,
+        "partial_identification": {
+          "base_rate_lower": 0.1553398058252427,
+          "base_rate_upper": 0.3422330097087379,
+          "lift_outer_lower": 0.28936170212765955,
+          "lift_outer_upper": 2.0375,
+          "precision_lower": 0.09902912621359224,
+          "precision_upper": 0.31650485436893205,
+          "selected_known_winners": 51,
+          "selected_n": 515,
+          "selected_unknown": 112,
+          "universe_known_winners": 384,
+          "universe_n": 2472,
+          "universe_unknown": 462
+        },
+        "precision": 0.12655086848635236,
+        "precision_minus_base_rate": -0.06449390763305063,
+        "selected_known_n": 403
+      },
+      "WINNER_EPISODES": {
+        "boundary_uncertain": 55,
+        "detected": 20,
+        "early_hit_recall": 0.18627450980392157,
+        "early_hits": 19,
+        "episode_recall": 0.19607843137254902,
+        "late_hits": 1,
+        "misses": 82,
+        "scorable_episodes": 102,
+        "winner_episodes": 278
+      },
+      "detector": "MOMENTUM_LOW_VOL",
+      "evaluation_period": [
+        "2017-01-31",
+        "2025-07-31"
+      ],
+      "historical_scientific_status": "HISTORICAL_JUDGED_MECHANISM",
+      "holm_adjusted_p": 1,
+      "matched_random_mean": 0.002570112218065996,
+      "negative_control": -0.000223520080755657,
+      "observed_test_statistic": -0.06449390763305063,
+      "outcome_coverage": 0.8131067961165048,
+      "positive_leakage_control_pass": true,
+      "raw_empirical_p": 1.0,
+      "replay_fidelity": "SEMANTICALLY_EQUIVALENT",
+      "scientific_verdict": "NO_EVIDENCE_OF_PRICE_DETECTION",
+      "scorable_observations": 2472,
+      "selected_observations": 515,
+      "temporal_95_ci": [
+        -0.1043694311586577,
+        -0.02064650014004532
+      ]
+    },
+    "REVERSAL_21": {
+      "CONFIRMATORY_TAIL": {
+        "base_rate": 0.20580912863070538,
+        "known_n": 1205,
+        "lift": 0.9924502402196294,
+        "partial_identification": {
+          "base_rate_lower": 0.17222222222222222,
+          "base_rate_upper": 0.33541666666666664,
+          "lift_outer_lower": 0.4968944099378882,
+          "lift_outer_upper": 2.036290322580645,
+          "precision_lower": 0.16666666666666666,
+          "precision_upper": 0.3506944444444444,
+          "selected_known_winners": 48,
+          "selected_n": 288,
+          "selected_unknown": 53,
+          "universe_known_winners": 248,
+          "universe_n": 1440,
+          "universe_unknown": 235
+        },
+        "precision": 0.20425531914893616,
+        "precision_minus_base_rate": -0.001553809481769225,
+        "selected_known_n": 235
+      },
+      "FULL_HISTORY": {
+        "base_rate": 0.20472741136103698,
+        "known_n": 5246,
+        "lift": 1.1152571016458381,
+        "partial_identification": {
+          "base_rate_lower": 0.17378640776699028,
+          "base_rate_upper": 0.3249190938511327,
+          "lift_outer_lower": 0.5901394422310756,
+          "lift_outer_upper": 2.0251396648044695,
+          "precision_lower": 0.19174757281553398,
+          "precision_upper": 0.35194174757281554,
+          "selected_known_winners": 237,
+          "selected_n": 1236,
+          "selected_unknown": 198,
+          "universe_known_winners": 1074,
+          "universe_n": 6180,
+          "universe_unknown": 934
+        },
+        "precision": 0.22832369942196531,
+        "precision_minus_base_rate": 0.02359628806092834,
+        "selected_known_n": 1038
+      },
+      "HISTORICAL_MAIN_BLOCK": {
+        "base_rate": 0.20472741136103698,
+        "known_n": 5246,
+        "lift": 1.1152571016458381,
+        "partial_identification": {
+          "base_rate_lower": 0.17378640776699028,
+          "base_rate_upper": 0.3249190938511327,
+          "lift_outer_lower": 0.5901394422310756,
+          "lift_outer_upper": 2.0251396648044695,
+          "precision_lower": 0.19174757281553398,
+          "precision_upper": 0.35194174757281554,
+          "selected_known_winners": 237,
+          "selected_n": 1236,
+          "selected_unknown": 198,
+          "universe_known_winners": 1074,
+          "universe_n": 6180,
+          "universe_unknown": 934
+        },
+        "precision": 0.22832369942196531,
+        "precision_minus_base_rate": 0.02359628806092834,
+        "selected_known_n": 1038
+      },
+      "WINNER_EPISODES": {
+        "boundary_uncertain": 55,
+        "detected": 123,
+        "early_hit_recall": 0.547085201793722,
+        "early_hits": 122,
+        "episode_recall": 0.5515695067264574,
+        "late_hits": 1,
+        "misses": 100,
+        "scorable_episodes": 223,
+        "winner_episodes": 278
+      },
+      "detector": "REVERSAL_21",
+      "evaluation_period": [
+        "2017-01-31",
+        "2025-07-31"
+      ],
+      "historical_scientific_status": "HISTORICAL_JUDGED_MECHANISM",
+      "holm_adjusted_p": 0.10258974102589741,
+      "matched_random_mean": 0.0002818371938763184,
+      "negative_control": -0.0003547877868924909,
+      "observed_test_statistic": 0.02359628806092834,
+      "outcome_coverage": 0.8488673139158576,
+      "positive_leakage_control_pass": true,
+      "raw_empirical_p": 0.0170982901709829,
+      "replay_fidelity": "SEMANTICALLY_EQUIVALENT",
+      "scientific_verdict": "WEAK_PRICE_DETECTION_SIGNAL",
+      "scorable_observations": 6180,
+      "selected_observations": 1236,
+      "temporal_95_ci": [
+        0.003457491023046766,
+        0.042813930104600745
+      ]
+    },
+    "VOLUME_SURGE": {
+      "CONFIRMATORY_TAIL": {
+        "base_rate": 0.20580912863070538,
+        "known_n": 1205,
+        "lift": 1.0505666957279862,
+        "partial_identification": {
+          "base_rate_lower": 0.17222222222222222,
+          "base_rate_upper": 0.33541666666666664,
+          "lift_outer_lower": 0.4968944099378882,
+          "lift_outer_upper": 2.2983870967741935,
+          "precision_lower": 0.16666666666666666,
+          "precision_upper": 0.3958333333333333,
+          "selected_known_winners": 48,
+          "selected_n": 288,
+          "selected_unknown": 66,
+          "universe_known_winners": 248,
+          "universe_n": 1440,
+          "universe_unknown": 235
+        },
+        "precision": 0.21621621621621623,
+        "precision_minus_base_rate": 0.010407087585510844,
+        "selected_known_n": 222
+      },
+      "FULL_HISTORY": {
+        "base_rate": 0.20472741136103698,
+        "known_n": 5246,
+        "lift": 0.985963519342113,
+        "partial_identification": {
+          "base_rate_lower": 0.17378640776699028,
+          "base_rate_upper": 0.3249190938511327,
+          "lift_outer_lower": 0.4880478087649402,
+          "lift_outer_upper": 2.1461824953445063,
+          "precision_lower": 0.15857605177993528,
+          "precision_upper": 0.37297734627831713,
+          "selected_known_winners": 196,
+          "selected_n": 1236,
+          "selected_unknown": 265,
+          "universe_known_winners": 1074,
+          "universe_n": 6180,
+          "universe_unknown": 934
+        },
+        "precision": 0.20185375901132852,
+        "precision_minus_base_rate": -0.002873652349708461,
+        "selected_known_n": 971
+      },
+      "HISTORICAL_MAIN_BLOCK": {
+        "base_rate": 0.20472741136103698,
+        "known_n": 5246,
+        "lift": 0.985963519342113,
+        "partial_identification": {
+          "base_rate_lower": 0.17378640776699028,
+          "base_rate_upper": 0.3249190938511327,
+          "lift_outer_lower": 0.4880478087649402,
+          "lift_outer_upper": 2.1461824953445063,
+          "precision_lower": 0.15857605177993528,
+          "precision_upper": 0.37297734627831713,
+          "selected_known_winners": 196,
+          "selected_n": 1236,
+          "selected_unknown": 265,
+          "universe_known_winners": 1074,
+          "universe_n": 6180,
+          "universe_unknown": 934
+        },
+        "precision": 0.20185375901132852,
+        "precision_minus_base_rate": -0.002873652349708461,
+        "selected_known_n": 971
+      },
+      "WINNER_EPISODES": {
+        "boundary_uncertain": 55,
+        "detected": 82,
+        "early_hit_recall": 0.35874439461883406,
+        "early_hits": 80,
+        "episode_recall": 0.36771300448430494,
+        "late_hits": 2,
+        "misses": 141,
+        "scorable_episodes": 223,
+        "winner_episodes": 278
+      },
+      "detector": "VOLUME_SURGE",
+      "evaluation_period": [
+        "2017-01-31",
+        "2025-07-31"
+      ],
+      "historical_scientific_status": "HISTORICAL_JUDGED_MECHANISM",
+      "holm_adjusted_p": 1,
+      "matched_random_mean": -0.0002989870561966062,
+      "negative_control": -0.014432454177402354,
+      "observed_test_statistic": -0.002873652349708461,
+      "outcome_coverage": 0.8488673139158576,
+      "positive_leakage_control_pass": true,
+      "raw_empirical_p": 0.6131386861313869,
+      "replay_fidelity": "EXACT",
+      "scientific_verdict": "NO_EVIDENCE_OF_PRICE_DETECTION",
+      "scorable_observations": 6180,
+      "selected_observations": 1236,
+      "temporal_95_ci": [
+        -0.024026552159679304,
+        0.020150302237500695
+      ]
+    }
+  },
+  "experiment": "BIG_WINNER_PRICE_DETECTION_V1",
+  "methods": {
+    "alpha": 0.05,
+    "block_length": 12,
+    "bootstrap_simulations": 10000,
+    "multiple_testing": "HOLM_FWER",
+    "random_simulations": 10000
+  },
+  "system_level": {
+    "reason": "No pre-existing deterministic PIT system-level aggregation rule existed.",
+    "status": "NOT_DEFINED"
+  }
+}

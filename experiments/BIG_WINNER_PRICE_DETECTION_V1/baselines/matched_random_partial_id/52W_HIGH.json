@@ -1,0 +1,14 @@
+{
+  "base_rate_lower": 0.17378640776699028,
+  "base_rate_upper": 0.3249190938511327,
+  "lift_outer_lower": 0.4208167330677291,
+  "lift_outer_upper": 1.9506517690875234,
+  "precision_lower": 0.13673139158576053,
+  "precision_upper": 0.3389967637540453,
+  "selected_known_winners": 169,
+  "selected_n": 1236,
+  "selected_unknown": 250,
+  "universe_known_winners": 1074,
+  "universe_n": 6180,
+  "universe_unknown": 934
+}

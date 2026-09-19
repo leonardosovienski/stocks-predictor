@@ -1,0 +1,2403 @@
+{
+  "episodes": [
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2017-03-31",
+      "episode_id": "ABEV3-0001",
+      "episode_start": "2017-03-31",
+      "ticker": "ABEV3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2020-05-29",
+      "episode_id": "ABEV3-0002",
+      "episode_start": "2020-05-29",
+      "ticker": "ABEV3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2020-08-31",
+      "episode_id": "ABEV3-0003",
+      "episode_start": "2020-08-31",
+      "ticker": "ABEV3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2020-10-30",
+      "episode_id": "ABEV3-0004",
+      "episode_start": "2020-10-30",
+      "ticker": "ABEV3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2025-01-31",
+      "episode_id": "ABEV3-0005",
+      "episode_start": "2025-01-31",
+      "first_qualified_signal": "2025-01-31",
+      "fraction_of_move_remaining": 1.0,
+      "ticker": "ABEV3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2025-07-31",
+      "episode_id": "ABEV3-0006",
+      "episode_start": "2025-07-31",
+      "ticker": "ABEV3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2025-04-30",
+      "episode_id": "ALOS3-0007",
+      "episode_start": "2024-11-29",
+      "ticker": "ALOS3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2020-09-30",
+      "episode_id": "ALPA4-0008",
+      "episode_start": "2020-03-31",
+      "first_qualified_signal": "2020-03-31",
+      "fraction_of_move_remaining": 1.0,
+      "ticker": "ALPA4"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2023-04-28",
+      "episode_id": "ALPA4-0009",
+      "episode_start": "2023-04-28",
+      "ticker": "ALPA4"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2022-07-29",
+      "episode_id": "ALSO3-0010",
+      "episode_start": "2022-06-30",
+      "ticker": "ALSO3"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2021-10-29",
+      "episode_id": "ARZZ3-0011",
+      "episode_start": "2021-10-29",
+      "ticker": "ARZZ3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2025-04-30",
+      "episode_id": "AURE3-0012",
+      "episode_start": "2024-11-29",
+      "ticker": "AURE3"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2019-01-31",
+      "episode_id": "AZUL4-0013",
+      "episode_start": "2018-05-30",
+      "ticker": "AZUL4"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2019-08-30",
+      "episode_id": "B3SA3-0014",
+      "episode_start": "2019-05-31",
+      "first_qualified_signal": "2019-06-28",
+      "fraction_of_move_remaining": 0.9007817197835238,
+      "ticker": "B3SA3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2019-12-30",
+      "episode_id": "B3SA3-0015",
+      "episode_start": "2019-12-30",
+      "first_qualified_signal": "2019-12-30",
+      "fraction_of_move_remaining": 1.0,
+      "ticker": "B3SA3"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2020-04-30",
+      "episode_id": "B3SA3-0016",
+      "episode_start": "2020-03-31",
+      "ticker": "B3SA3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "LATE_HIT",
+      "episode_end": "2018-01-31",
+      "episode_id": "BBAS3-0017",
+      "episode_start": "2017-11-30",
+      "first_qualified_signal": "2018-01-31",
+      "fraction_of_move_remaining": 0.3985313751668892,
+      "ticker": "BBAS3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2018-09-28",
+      "episode_id": "BBAS3-0018",
+      "episode_start": "2018-04-30",
+      "ticker": "BBAS3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2021-10-29",
+      "episode_id": "BBAS3-0019",
+      "episode_start": "2021-08-31",
+      "ticker": "BBAS3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2022-07-29",
+      "episode_id": "BBAS3-0020",
+      "episode_start": "2022-06-30",
+      "first_qualified_signal": "2022-06-30",
+      "fraction_of_move_remaining": 1.0,
+      "ticker": "BBAS3"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2023-03-31",
+      "episode_id": "BBAS3-0021",
+      "episode_start": "2022-11-30",
+      "ticker": "BBAS3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2018-06-29",
+      "episode_id": "BBDC4-0022",
+      "episode_start": "2018-06-29",
+      "ticker": "BBDC4"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2020-05-29",
+      "episode_id": "BBDC4-0023",
+      "episode_start": "2020-04-30",
+      "ticker": "BBDC4"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2024-06-28",
+      "episode_id": "BBDC4-0024",
+      "episode_start": "2024-06-28",
+      "ticker": "BBDC4"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2025-04-30",
+      "episode_id": "BBDC4-0025",
+      "episode_start": "2024-11-29",
+      "ticker": "BBDC4"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2018-06-29",
+      "episode_id": "BBSE3-0026",
+      "episode_start": "2018-06-29",
+      "ticker": "BBSE3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2018-09-28",
+      "episode_id": "BBSE3-0027",
+      "episode_start": "2018-08-31",
+      "ticker": "BBSE3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2018-12-28",
+      "episode_id": "BBSE3-0028",
+      "episode_start": "2018-12-28",
+      "ticker": "BBSE3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2022-02-25",
+      "episode_id": "BBSE3-0029",
+      "episode_start": "2021-07-30",
+      "first_qualified_signal": "2021-07-30",
+      "fraction_of_move_remaining": 1.0,
+      "ticker": "BBSE3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2022-04-29",
+      "episode_id": "BBSE3-0030",
+      "episode_start": "2022-04-29",
+      "ticker": "BBSE3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2024-04-30",
+      "episode_id": "BBSE3-0031",
+      "episode_start": "2024-04-30",
+      "ticker": "BBSE3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2021-08-31",
+      "episode_id": "BEEF3-0032",
+      "episode_start": "2021-04-30",
+      "first_qualified_signal": "2021-04-30",
+      "fraction_of_move_remaining": 1.0,
+      "ticker": "BEEF3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2021-11-30",
+      "episode_id": "BEEF3-0033",
+      "episode_start": "2021-10-29",
+      "ticker": "BEEF3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2022-01-31",
+      "episode_id": "BEEF3-0034",
+      "episode_start": "2022-01-31",
+      "ticker": "BEEF3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2025-01-31",
+      "episode_id": "BEEF3-0035",
+      "episode_start": "2025-01-31",
+      "ticker": "BEEF3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2019-08-30",
+      "episode_id": "BPAC11-0036",
+      "episode_start": "2019-06-28",
+      "first_qualified_signal": "2019-06-28",
+      "fraction_of_move_remaining": 1.0,
+      "ticker": "BPAC11"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2020-05-29",
+      "episode_id": "BPAC11-0037",
+      "episode_start": "2020-01-31",
+      "ticker": "BPAC11"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2017-07-31",
+      "episode_id": "BRAP4-0038",
+      "episode_start": "2017-01-31",
+      "first_qualified_signal": "2017-01-31",
+      "fraction_of_move_remaining": 1.0,
+      "ticker": "BRAP4"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2017-10-31",
+      "episode_id": "BRAP4-0039",
+      "episode_start": "2017-09-29",
+      "ticker": "BRAP4"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2020-08-31",
+      "episode_id": "BRAP4-0040",
+      "episode_start": "2019-07-31",
+      "ticker": "BRAP4"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2020-03-31",
+      "episode_id": "BRDT3-0041",
+      "episode_start": "2020-03-31",
+      "ticker": "BRDT3"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2020-06-30",
+      "episode_id": "BRDT3-0042",
+      "episode_start": "2020-06-30",
+      "ticker": "BRDT3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2018-12-28",
+      "episode_id": "BRFS3-0043",
+      "episode_start": "2018-06-29",
+      "ticker": "BRFS3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2019-02-28",
+      "episode_id": "BRFS3-0044",
+      "episode_start": "2019-02-28",
+      "ticker": "BRFS3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2020-03-31",
+      "episode_id": "BRFS3-0045",
+      "episode_start": "2020-03-31",
+      "ticker": "BRFS3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2020-06-30",
+      "episode_id": "BRFS3-0046",
+      "episode_start": "2020-06-30",
+      "ticker": "BRFS3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2020-10-30",
+      "episode_id": "BRFS3-0047",
+      "episode_start": "2020-09-30",
+      "ticker": "BRFS3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2024-01-31",
+      "episode_id": "BRFS3-0048",
+      "episode_start": "2022-11-30",
+      "first_qualified_signal": "2023-07-31",
+      "fraction_of_move_remaining": 0.8184568835098337,
+      "ticker": "BRFS3"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2024-04-30",
+      "episode_id": "BRFS3-0049",
+      "episode_start": "2024-04-30",
+      "ticker": "BRFS3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2017-03-31",
+      "episode_id": "BRKM5-0050",
+      "episode_start": "2017-01-31",
+      "ticker": "BRKM5"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2017-09-29",
+      "episode_id": "BRKM5-0051",
+      "episode_start": "2017-05-31",
+      "ticker": "BRKM5"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2018-09-28",
+      "episode_id": "BRML3-0052",
+      "episode_start": "2018-06-29",
+      "ticker": "BRML3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2018-12-28",
+      "episode_id": "BRML3-0053",
+      "episode_start": "2018-12-28",
+      "ticker": "BRML3"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2021-10-29",
+      "episode_id": "BRML3-0054",
+      "episode_start": "2021-10-29",
+      "ticker": "BRML3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2018-07-31",
+      "episode_id": "BRSR6-0055",
+      "episode_start": "2018-05-30",
+      "ticker": "BRSR6"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2018-04-30",
+      "episode_id": "BTOW3-0056",
+      "episode_start": "2017-10-31",
+      "first_qualified_signal": "2017-10-31",
+      "fraction_of_move_remaining": 1.0,
+      "ticker": "BTOW3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2019-01-31",
+      "episode_id": "BTOW3-0057",
+      "episode_start": "2018-07-31",
+      "first_qualified_signal": "2018-08-31",
+      "fraction_of_move_remaining": 1.135460009246417,
+      "ticker": "BTOW3"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2019-10-31",
+      "episode_id": "BTOW3-0058",
+      "episode_start": "2019-04-30",
+      "ticker": "BTOW3"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2017-02-24",
+      "episode_id": "BVMF3-0059",
+      "episode_start": "2017-01-31",
+      "ticker": "BVMF3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2025-07-31",
+      "episode_id": "CBAV3-0060",
+      "episode_start": "2023-05-31",
+      "first_qualified_signal": "2025-04-30",
+      "fraction_of_move_remaining": 1.5776699029126209,
+      "ticker": "CBAV3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2018-12-28",
+      "episode_id": "CCRO3-0061",
+      "episode_start": "2018-06-29",
+      "ticker": "CCRO3"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2022-12-29",
+      "episode_id": "CCRO3-0062",
+      "episode_start": "2022-12-29",
+      "ticker": "CCRO3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2024-09-30",
+      "episode_id": "CEAB3-0063",
+      "episode_start": "2024-05-31",
+      "first_qualified_signal": "2024-05-31",
+      "fraction_of_move_remaining": 1.0,
+      "ticker": "CEAB3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2024-12-30",
+      "episode_id": "CEAB3-0064",
+      "episode_start": "2024-11-29",
+      "first_qualified_signal": "2024-11-29",
+      "fraction_of_move_remaining": 1.0,
+      "ticker": "CEAB3"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2018-08-31",
+      "episode_id": "CESP6-0065",
+      "episode_start": "2017-10-31",
+      "ticker": "CESP6"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2022-04-29",
+      "episode_id": "CIEL3-0066",
+      "episode_start": "2021-08-31",
+      "first_qualified_signal": "2022-02-25",
+      "fraction_of_move_remaining": 1.0987261146496814,
+      "ticker": "CIEL3"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2023-08-31",
+      "episode_id": "CIEL3-0067",
+      "episode_start": "2023-08-31",
+      "ticker": "CIEL3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2018-09-28",
+      "episode_id": "CMIG4-0068",
+      "episode_start": "2017-10-31",
+      "first_qualified_signal": "2018-08-31",
+      "fraction_of_move_remaining": 1.0086206896551724,
+      "ticker": "CMIG4"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2020-03-31",
+      "episode_id": "CMIG4-0069",
+      "episode_start": "2020-03-31",
+      "ticker": "CMIG4"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2020-09-30",
+      "episode_id": "CMIG4-0070",
+      "episode_start": "2020-09-30",
+      "ticker": "CMIG4"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2022-12-29",
+      "episode_id": "CMIN3-0071",
+      "episode_start": "2022-09-30",
+      "ticker": "CMIN3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2023-06-30",
+      "episode_id": "CMIN3-0072",
+      "episode_start": "2023-06-30",
+      "ticker": "CMIN3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2023-09-29",
+      "episode_id": "CMIN3-0073",
+      "episode_start": "2023-08-31",
+      "ticker": "CMIN3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2022-07-29",
+      "episode_id": "COGN3-0074",
+      "episode_start": "2022-06-30",
+      "ticker": "COGN3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2022-12-29",
+      "episode_id": "COGN3-0075",
+      "episode_start": "2022-11-30",
+      "first_qualified_signal": "2022-11-30",
+      "fraction_of_move_remaining": 1.0,
+      "ticker": "COGN3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2023-02-28",
+      "episode_id": "COGN3-0076",
+      "episode_start": "2023-02-28",
+      "ticker": "COGN3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2025-03-31",
+      "episode_id": "COGN3-0077",
+      "episode_start": "2024-05-31",
+      "first_qualified_signal": "2025-02-28",
+      "fraction_of_move_remaining": 1.2519685039370076,
+      "ticker": "COGN3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2018-01-31",
+      "episode_id": "CPFE3-0078",
+      "episode_start": "2017-11-30",
+      "ticker": "CPFE3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2021-08-31",
+      "episode_id": "CPFE3-0079",
+      "episode_start": "2021-08-31",
+      "ticker": "CPFE3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2021-10-29",
+      "episode_id": "CPFE3-0080",
+      "episode_start": "2021-10-29",
+      "ticker": "CPFE3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2025-02-28",
+      "episode_id": "CPFE3-0081",
+      "episode_start": "2024-11-29",
+      "first_qualified_signal": "2025-02-28",
+      "fraction_of_move_remaining": 0.8183894917190176,
+      "ticker": "CPFE3"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2019-03-29",
+      "episode_id": "CPLE6-0082",
+      "episode_start": "2018-01-31",
+      "ticker": "CPLE6"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2018-09-28",
+      "episode_id": "CRFB3-0083",
+      "episode_start": "2018-07-31",
+      "ticker": "CRFB3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2019-02-28",
+      "episode_id": "CSAN3-0084",
+      "episode_start": "2018-06-29",
+      "ticker": "CSAN3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2019-09-30",
+      "episode_id": "CSAN3-0085",
+      "episode_start": "2019-05-31",
+      "ticker": "CSAN3"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2020-04-30",
+      "episode_id": "CSAN3-0086",
+      "episode_start": "2020-03-31",
+      "ticker": "CSAN3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2017-04-28",
+      "episode_id": "CSMG3-0087",
+      "episode_start": "2017-04-28",
+      "first_qualified_signal": "2017-04-28",
+      "fraction_of_move_remaining": 1.0,
+      "ticker": "CSMG3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2018-02-28",
+      "episode_id": "CSMG3-0088",
+      "episode_start": "2018-02-28",
+      "ticker": "CSMG3"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2018-11-30",
+      "episode_id": "CSMG3-0089",
+      "episode_start": "2018-04-30",
+      "ticker": "CSMG3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2018-09-28",
+      "episode_id": "CSNA3-0090",
+      "episode_start": "2018-02-28",
+      "ticker": "CSNA3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2018-12-28",
+      "episode_id": "CSNA3-0091",
+      "episode_start": "2018-11-30",
+      "ticker": "CSNA3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2020-09-30",
+      "episode_id": "CSNA3-0092",
+      "episode_start": "2019-10-31",
+      "first_qualified_signal": "2020-09-30",
+      "fraction_of_move_remaining": 0.5167714884696017,
+      "ticker": "CSNA3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2022-12-29",
+      "episode_id": "CSNA3-0093",
+      "episode_start": "2022-12-29",
+      "ticker": "CSNA3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2025-03-31",
+      "episode_id": "CURY3-0094",
+      "episode_start": "2024-04-30",
+      "first_qualified_signal": "2024-04-30",
+      "fraction_of_move_remaining": 1.0,
+      "ticker": "CURY3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2017-06-30",
+      "episode_id": "CVCB3-0095",
+      "episode_start": "2017-01-31",
+      "first_qualified_signal": "2017-05-31",
+      "fraction_of_move_remaining": 0.8731931668856766,
+      "ticker": "CVCB3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2017-11-30",
+      "episode_id": "CVCB3-0096",
+      "episode_start": "2017-10-31",
+      "first_qualified_signal": "2017-10-31",
+      "fraction_of_move_remaining": 1.0,
+      "ticker": "CVCB3"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2018-09-28",
+      "episode_id": "CVCB3-0097",
+      "episode_start": "2018-09-28",
+      "ticker": "CVCB3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2025-07-31",
+      "episode_id": "CXSE3-0098",
+      "episode_start": "2025-06-30",
+      "first_qualified_signal": "2025-06-30",
+      "fraction_of_move_remaining": 1.0,
+      "ticker": "CXSE3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2019-02-28",
+      "episode_id": "CYRE3-0099",
+      "episode_start": "2018-05-30",
+      "first_qualified_signal": "2018-10-31",
+      "fraction_of_move_remaining": 0.6260434056761268,
+      "ticker": "CYRE3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2020-05-29",
+      "episode_id": "CYRE3-0100",
+      "episode_start": "2020-03-31",
+      "ticker": "CYRE3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2022-08-31",
+      "episode_id": "CYRE3-0101",
+      "episode_start": "2022-05-31",
+      "ticker": "CYRE3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2023-04-28",
+      "episode_id": "CYRE3-0102",
+      "episode_start": "2022-11-30",
+      "ticker": "CYRE3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2024-06-28",
+      "episode_id": "CYRE3-0103",
+      "episode_start": "2024-05-31",
+      "ticker": "CYRE3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2025-02-28",
+      "episode_id": "CYRE3-0104",
+      "episode_start": "2024-09-30",
+      "first_qualified_signal": "2024-10-31",
+      "fraction_of_move_remaining": 0.9318854886475814,
+      "ticker": "CYRE3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2023-06-30",
+      "episode_id": "DIRR3-0105",
+      "episode_start": "2022-12-29",
+      "first_qualified_signal": "2022-12-29",
+      "fraction_of_move_remaining": 1.0,
+      "ticker": "DIRR3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2023-11-30",
+      "episode_id": "DIRR3-0106",
+      "episode_start": "2023-08-31",
+      "first_qualified_signal": "2023-09-29",
+      "fraction_of_move_remaining": 1.2104097452934661,
+      "ticker": "DIRR3"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2024-07-31",
+      "episode_id": "DIRR3-0107",
+      "episode_start": "2024-04-30",
+      "ticker": "DIRR3"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2020-06-30",
+      "episode_id": "DTEX3-0108",
+      "episode_start": "2020-04-30",
+      "ticker": "DTEX3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2023-04-28",
+      "episode_id": "DXCO3-0109",
+      "episode_start": "2023-04-28",
+      "ticker": "DXCO3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2017-01-31",
+      "episode_id": "ECOR3-0110",
+      "episode_start": "2017-01-31",
+      "ticker": "ECOR3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2019-02-28",
+      "episode_id": "ECOR3-0111",
+      "episode_start": "2018-06-29",
+      "ticker": "ECOR3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2019-04-30",
+      "episode_id": "ECOR3-0112",
+      "episode_start": "2019-04-30",
+      "ticker": "ECOR3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2022-09-30",
+      "episode_id": "ECOR3-0113",
+      "episode_start": "2022-07-29",
+      "ticker": "ECOR3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2025-04-30",
+      "episode_id": "ECOR3-0114",
+      "episode_start": "2024-11-29",
+      "ticker": "ECOR3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2018-12-28",
+      "episode_id": "EGIE3-0115",
+      "episode_start": "2018-12-28",
+      "first_qualified_signal": "2018-12-28",
+      "fraction_of_move_remaining": 1.0,
+      "ticker": "EGIE3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2017-06-30",
+      "episode_id": "EMBR3-0116",
+      "episode_start": "2017-04-28",
+      "ticker": "EMBR3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2017-11-30",
+      "episode_id": "EMBR3-0117",
+      "episode_start": "2017-10-31",
+      "ticker": "EMBR3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2021-02-26",
+      "episode_id": "EMBR3-0118",
+      "episode_start": "2020-03-31",
+      "first_qualified_signal": "2020-04-30",
+      "fraction_of_move_remaining": 1.3276190476190475,
+      "ticker": "EMBR3"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2024-10-31",
+      "episode_id": "EMBR3-0119",
+      "episode_start": "2022-03-31",
+      "ticker": "EMBR3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2018-03-29",
+      "episode_id": "ENBR3-0120",
+      "episode_start": "2018-03-29",
+      "ticker": "ENBR3"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2018-12-28",
+      "episode_id": "ENBR3-0121",
+      "episode_start": "2018-05-30",
+      "ticker": "ENBR3"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2020-02-28",
+      "episode_id": "ENEV3-0122",
+      "episode_start": "2020-01-31",
+      "ticker": "ENEV3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2018-10-31",
+      "episode_id": "ENGI11-0123",
+      "episode_start": "2018-06-29",
+      "first_qualified_signal": "2018-07-31",
+      "fraction_of_move_remaining": 0.8969194312796207,
+      "ticker": "ENGI11"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2019-01-31",
+      "episode_id": "ENGI11-0124",
+      "episode_start": "2018-12-28",
+      "first_qualified_signal": "2019-01-31",
+      "fraction_of_move_remaining": 0.741219963031423,
+      "ticker": "ENGI11"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2023-02-28",
+      "episode_id": "ENGI11-0125",
+      "episode_start": "2023-02-28",
+      "ticker": "ENGI11"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2024-12-30",
+      "episode_id": "ENGI11-0126",
+      "episode_start": "2024-12-30",
+      "ticker": "ENGI11"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2025-03-31",
+      "episode_id": "ENGI11-0127",
+      "episode_start": "2025-02-28",
+      "ticker": "ENGI11"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2018-10-31",
+      "episode_id": "EQTL3-0128",
+      "episode_start": "2018-05-30",
+      "ticker": "EQTL3"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2017-07-31",
+      "episode_id": "ESTC3-0129",
+      "episode_start": "2017-01-31",
+      "ticker": "ESTC3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2022-07-29",
+      "episode_id": "EZTC3-0130",
+      "episode_start": "2022-07-29",
+      "ticker": "EZTC3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2022-12-29",
+      "episode_id": "EZTC3-0131",
+      "episode_start": "2022-12-29",
+      "ticker": "EZTC3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2023-02-28",
+      "episode_id": "EZTC3-0132",
+      "episode_start": "2023-02-28",
+      "first_qualified_signal": "2023-02-28",
+      "fraction_of_move_remaining": 1.0,
+      "ticker": "EZTC3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2024-11-29",
+      "episode_id": "EZTC3-0133",
+      "episode_start": "2024-11-29",
+      "first_qualified_signal": "2024-11-29",
+      "fraction_of_move_remaining": 1.0,
+      "ticker": "EZTC3"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2017-12-28",
+      "episode_id": "FIBR3-0134",
+      "episode_start": "2017-01-31",
+      "ticker": "FIBR3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2017-07-31",
+      "episode_id": "GGBR4-0135",
+      "episode_start": "2017-03-31",
+      "ticker": "GGBR4"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2017-11-30",
+      "episode_id": "GGBR4-0136",
+      "episode_start": "2017-09-29",
+      "ticker": "GGBR4"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2018-12-28",
+      "episode_id": "GGBR4-0137",
+      "episode_start": "2018-12-28",
+      "ticker": "GGBR4"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2019-11-29",
+      "episode_id": "GGBR4-0138",
+      "episode_start": "2019-08-30",
+      "first_qualified_signal": "2019-11-29",
+      "fraction_of_move_remaining": 0.5015608740894901,
+      "ticker": "GGBR4"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2020-09-30",
+      "episode_id": "GGBR4-0139",
+      "episode_start": "2020-02-28",
+      "ticker": "GGBR4"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2025-01-31",
+      "episode_id": "GGBR4-0140",
+      "episode_start": "2025-01-31",
+      "ticker": "GGBR4"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2025-07-31",
+      "episode_id": "GGBR4-0141",
+      "episode_start": "2025-04-30",
+      "ticker": "GGBR4"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2025-02-28",
+      "episode_id": "GGPS3-0142",
+      "episode_start": "2025-02-28",
+      "ticker": "GGPS3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2023-04-28",
+      "episode_id": "GMAT3-0143",
+      "episode_start": "2023-02-28",
+      "first_qualified_signal": "2023-03-31",
+      "fraction_of_move_remaining": 0.9608540925266903,
+      "ticker": "GMAT3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2019-07-31",
+      "episode_id": "GNDI3-0144",
+      "episode_start": "2019-05-31",
+      "first_qualified_signal": "2019-05-31",
+      "fraction_of_move_remaining": 1.0,
+      "ticker": "GNDI3"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2020-05-29",
+      "episode_id": "GNDI3-0145",
+      "episode_start": "2020-01-31",
+      "ticker": "GNDI3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2017-05-31",
+      "episode_id": "GOAU4-0146",
+      "episode_start": "2017-02-24",
+      "ticker": "GOAU4"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2017-11-30",
+      "episode_id": "GOAU4-0147",
+      "episode_start": "2017-07-31",
+      "ticker": "GOAU4"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2018-12-28",
+      "episode_id": "GOAU4-0148",
+      "episode_start": "2018-12-28",
+      "ticker": "GOAU4"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2019-11-29",
+      "episode_id": "GOAU4-0149",
+      "episode_start": "2019-08-30",
+      "ticker": "GOAU4"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2020-09-30",
+      "episode_id": "GOAU4-0150",
+      "episode_start": "2020-02-28",
+      "first_qualified_signal": "2020-09-30",
+      "fraction_of_move_remaining": 0.7663934426229511,
+      "ticker": "GOAU4"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2022-07-29",
+      "episode_id": "GOAU4-0151",
+      "episode_start": "2022-07-29",
+      "ticker": "GOAU4"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2019-07-31",
+      "episode_id": "HAPV3-0152",
+      "episode_start": "2019-05-31",
+      "ticker": "HAPV3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2018-05-30",
+      "episode_id": "HGTX3-0153",
+      "episode_start": "2018-01-31",
+      "ticker": "HGTX3"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2020-08-31",
+      "episode_id": "HGTX3-0154",
+      "episode_start": "2020-04-30",
+      "ticker": "HGTX3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2017-01-31",
+      "episode_id": "HYPE3-0155",
+      "episode_start": "2017-01-31",
+      "ticker": "HYPE3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2022-01-31",
+      "episode_id": "HYPE3-0156",
+      "episode_start": "2021-09-30",
+      "ticker": "HYPE3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2025-01-31",
+      "episode_id": "HYPE3-0157",
+      "episode_start": "2024-11-29",
+      "ticker": "HYPE3"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2018-09-28",
+      "episode_id": "IGTA3-0158",
+      "episode_start": "2018-06-29",
+      "ticker": "IGTA3"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2018-08-31",
+      "episode_id": "IRBR3-0159",
+      "episode_start": "2018-08-31",
+      "ticker": "IRBR3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2017-03-31",
+      "episode_id": "ITSA4-0160",
+      "episode_start": "2017-01-31",
+      "ticker": "ITSA4"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2018-06-29",
+      "episode_id": "ITSA4-0161",
+      "episode_start": "2018-06-29",
+      "first_qualified_signal": "2018-06-29",
+      "fraction_of_move_remaining": 1.0,
+      "ticker": "ITSA4"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2025-04-30",
+      "episode_id": "ITSA4-0162",
+      "episode_start": "2024-11-29",
+      "first_qualified_signal": "2024-12-30",
+      "fraction_of_move_remaining": 1.3129251700680273,
+      "ticker": "ITSA4"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2025-07-31",
+      "episode_id": "ITSA4-0163",
+      "episode_start": "2025-07-31",
+      "ticker": "ITSA4"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2017-01-31",
+      "episode_id": "ITUB4-0164",
+      "episode_start": "2017-01-31",
+      "ticker": "ITUB4"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2017-03-31",
+      "episode_id": "ITUB4-0165",
+      "episode_start": "2017-03-31",
+      "ticker": "ITUB4"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2017-04-28",
+      "episode_id": "KLBN11-0166",
+      "episode_start": "2017-03-31",
+      "ticker": "KLBN11"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2020-05-29",
+      "episode_id": "KLBN11-0167",
+      "episode_start": "2019-07-31",
+      "first_qualified_signal": "2020-03-31",
+      "fraction_of_move_remaining": 0.986842105263158,
+      "ticker": "KLBN11"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2023-03-31",
+      "episode_id": "KLBN11-0168",
+      "episode_start": "2023-03-31",
+      "ticker": "KLBN11"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2017-11-30",
+      "episode_id": "LAME4-0169",
+      "episode_start": "2017-11-30",
+      "ticker": "LAME4"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2019-02-28",
+      "episode_id": "LAME4-0170",
+      "episode_start": "2018-12-28",
+      "ticker": "LAME4"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2019-09-30",
+      "episode_id": "LAME4-0171",
+      "episode_start": "2019-04-30",
+      "ticker": "LAME4"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2020-04-30",
+      "episode_id": "LIGT3-0172",
+      "episode_start": "2020-03-31",
+      "ticker": "LIGT3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2017-02-24",
+      "episode_id": "LREN3-0173",
+      "episode_start": "2017-01-31",
+      "ticker": "LREN3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2018-12-28",
+      "episode_id": "LREN3-0174",
+      "episode_start": "2018-05-30",
+      "first_qualified_signal": "2018-10-31",
+      "fraction_of_move_remaining": 0.5270994639666469,
+      "ticker": "LREN3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2020-03-31",
+      "episode_id": "LREN3-0175",
+      "episode_start": "2020-03-31",
+      "first_qualified_signal": "2020-03-31",
+      "fraction_of_move_remaining": 1.0,
+      "ticker": "LREN3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2023-10-31",
+      "episode_id": "LREN3-0176",
+      "episode_start": "2023-09-29",
+      "ticker": "LREN3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2024-06-28",
+      "episode_id": "LREN3-0177",
+      "episode_start": "2024-05-31",
+      "ticker": "LREN3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2025-02-28",
+      "episode_id": "LREN3-0178",
+      "episode_start": "2025-02-28",
+      "ticker": "LREN3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2022-12-29",
+      "episode_id": "MOVI3-0179",
+      "episode_start": "2022-11-30",
+      "ticker": "MOVI3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2023-02-28",
+      "episode_id": "MOVI3-0180",
+      "episode_start": "2023-02-28",
+      "ticker": "MOVI3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2025-06-30",
+      "episode_id": "MOVI3-0181",
+      "episode_start": "2024-09-30",
+      "first_qualified_signal": "2024-11-29",
+      "fraction_of_move_remaining": 1.2962962962962963,
+      "ticker": "MOVI3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2018-11-30",
+      "episode_id": "MRFG3-0182",
+      "episode_start": "2018-08-31",
+      "first_qualified_signal": "2018-08-31",
+      "fraction_of_move_remaining": 1.0,
+      "ticker": "MRFG3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2019-12-30",
+      "episode_id": "MRFG3-0183",
+      "episode_start": "2019-11-29",
+      "first_qualified_signal": "2019-11-29",
+      "fraction_of_move_remaining": 1.0,
+      "ticker": "MRFG3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2020-07-31",
+      "episode_id": "MRFG3-0184",
+      "episode_start": "2020-03-31",
+      "first_qualified_signal": "2020-05-29",
+      "fraction_of_move_remaining": 0.5546786922209694,
+      "ticker": "MRFG3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2021-02-26",
+      "episode_id": "MRFG3-0185",
+      "episode_start": "2020-09-30",
+      "ticker": "MRFG3"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2024-08-30",
+      "episode_id": "MRFG3-0186",
+      "episode_start": "2023-02-28",
+      "ticker": "MRFG3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2019-02-28",
+      "episode_id": "MRVE3-0187",
+      "episode_start": "2018-06-29",
+      "first_qualified_signal": "2018-10-31",
+      "fraction_of_move_remaining": 0.9030144167758847,
+      "ticker": "MRVE3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2020-03-31",
+      "episode_id": "MRVE3-0188",
+      "episode_start": "2020-03-31",
+      "ticker": "MRVE3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2022-07-29",
+      "episode_id": "MRVE3-0189",
+      "episode_start": "2022-06-30",
+      "first_qualified_signal": "2022-07-29",
+      "fraction_of_move_remaining": 0.7677419354838709,
+      "ticker": "MRVE3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2022-12-29",
+      "episode_id": "MRVE3-0190",
+      "episode_start": "2022-12-29",
+      "ticker": "MRVE3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2023-02-28",
+      "episode_id": "MRVE3-0191",
+      "episode_start": "2023-02-28",
+      "ticker": "MRVE3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2025-03-31",
+      "episode_id": "MRVE3-0192",
+      "episode_start": "2024-11-29",
+      "ticker": "MRVE3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2017-02-24",
+      "episode_id": "NATU3-0193",
+      "episode_start": "2017-01-31",
+      "ticker": "NATU3"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2018-08-31",
+      "episode_id": "NATU3-0194",
+      "episode_start": "2017-11-30",
+      "ticker": "NATU3"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2025-04-30",
+      "episode_id": "NEOE3-0195",
+      "episode_start": "2025-02-28",
+      "ticker": "NEOE3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2022-12-29",
+      "episode_id": "NTCO3-0196",
+      "episode_start": "2022-11-30",
+      "ticker": "NTCO3"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2023-04-28",
+      "episode_id": "NTCO3-0197",
+      "episode_start": "2023-03-31",
+      "ticker": "NTCO3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2025-07-31",
+      "episode_id": "ORVR3-0198",
+      "episode_start": "2024-12-30",
+      "ticker": "ORVR3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2017-01-31",
+      "episode_id": "PCAR4-0199",
+      "episode_start": "2017-01-31",
+      "ticker": "PCAR4"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2018-03-29",
+      "episode_id": "PCAR4-0200",
+      "episode_start": "2018-02-28",
+      "ticker": "PCAR4"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2017-04-28",
+      "episode_id": "PETR4-0201",
+      "episode_start": "2017-01-31",
+      "ticker": "PETR4"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2017-12-28",
+      "episode_id": "PETR4-0202",
+      "episode_start": "2017-06-30",
+      "ticker": "PETR4"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2018-03-29",
+      "episode_id": "PETR4-0203",
+      "episode_start": "2018-03-29",
+      "first_qualified_signal": "2018-03-29",
+      "fraction_of_move_remaining": 1.0,
+      "ticker": "PETR4"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2018-06-29",
+      "episode_id": "PETR4-0204",
+      "episode_start": "2018-05-30",
+      "first_qualified_signal": "2018-05-30",
+      "fraction_of_move_remaining": 1.0,
+      "ticker": "PETR4"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2018-09-28",
+      "episode_id": "PETR4-0205",
+      "episode_start": "2018-08-31",
+      "first_qualified_signal": "2018-08-31",
+      "fraction_of_move_remaining": 1.0,
+      "ticker": "PETR4"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2020-06-30",
+      "episode_id": "PETR4-0206",
+      "episode_start": "2020-03-31",
+      "ticker": "PETR4"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2020-10-30",
+      "episode_id": "PETR4-0207",
+      "episode_start": "2020-09-30",
+      "ticker": "PETR4"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2021-03-31",
+      "episode_id": "PETR4-0208",
+      "episode_start": "2021-02-26",
+      "first_qualified_signal": "2021-02-26",
+      "fraction_of_move_remaining": 1.0,
+      "ticker": "PETR4"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2023-05-31",
+      "episode_id": "PETR4-0209",
+      "episode_start": "2022-11-30",
+      "ticker": "PETR4"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2025-05-30",
+      "episode_id": "PETR4-0210",
+      "episode_start": "2025-04-30",
+      "first_qualified_signal": "2025-04-30",
+      "fraction_of_move_remaining": 1.0,
+      "ticker": "PETR4"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2025-07-31",
+      "episode_id": "PETR4-0211",
+      "episode_start": "2025-07-31",
+      "ticker": "PETR4"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2023-11-30",
+      "episode_id": "POMO4-0212",
+      "episode_start": "2023-09-29",
+      "first_qualified_signal": "2023-09-29",
+      "fraction_of_move_remaining": 1.0,
+      "ticker": "POMO4"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2024-07-31",
+      "episode_id": "POMO4-0213",
+      "episode_start": "2024-06-28",
+      "ticker": "POMO4"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2017-12-28",
+      "episode_id": "PSSA3-0214",
+      "episode_start": "2017-12-28",
+      "ticker": "PSSA3"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2018-06-29",
+      "episode_id": "PSSA3-0215",
+      "episode_start": "2018-06-29",
+      "ticker": "PSSA3"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2017-02-24",
+      "episode_id": "QUAL3-0216",
+      "episode_start": "2017-01-31",
+      "ticker": "QUAL3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2017-02-24",
+      "episode_id": "RADL3-0217",
+      "episode_start": "2017-01-31",
+      "ticker": "RADL3"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2019-07-31",
+      "episode_id": "RADL3-0218",
+      "episode_start": "2018-09-28",
+      "ticker": "RADL3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2018-03-29",
+      "episode_id": "RAIL3-0219",
+      "episode_start": "2018-03-29",
+      "ticker": "RAIL3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2018-12-28",
+      "episode_id": "RAIL3-0220",
+      "episode_start": "2018-05-30",
+      "first_qualified_signal": "2018-12-28",
+      "fraction_of_move_remaining": 0.543939393939394,
+      "ticker": "RAIL3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2021-10-29",
+      "episode_id": "RAIL3-0221",
+      "episode_start": "2021-10-29",
+      "ticker": "RAIL3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2022-07-29",
+      "episode_id": "RAIL3-0222",
+      "episode_start": "2022-06-30",
+      "ticker": "RAIL3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2020-05-29",
+      "episode_id": "RAPT4-0223",
+      "episode_start": "2020-05-29",
+      "ticker": "RAPT4"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2024-06-28",
+      "episode_id": "RDOR3-0224",
+      "episode_start": "2024-05-31",
+      "first_qualified_signal": "2024-05-31",
+      "fraction_of_move_remaining": 1.0,
+      "ticker": "RDOR3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2025-03-31",
+      "episode_id": "RDOR3-0225",
+      "episode_start": "2024-09-30",
+      "first_qualified_signal": "2024-09-30",
+      "fraction_of_move_remaining": 1.0,
+      "ticker": "RDOR3"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2021-11-30",
+      "episode_id": "RRRP3-0226",
+      "episode_start": "2021-11-30",
+      "ticker": "RRRP3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2017-05-31",
+      "episode_id": "SANB11-0227",
+      "episode_start": "2017-03-31",
+      "first_qualified_signal": "2017-03-31",
+      "fraction_of_move_remaining": 1.0,
+      "ticker": "SANB11"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2017-07-31",
+      "episode_id": "SANB11-0228",
+      "episode_start": "2017-07-31",
+      "ticker": "SANB11"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2018-01-31",
+      "episode_id": "SANB11-0229",
+      "episode_start": "2017-09-29",
+      "first_qualified_signal": "2017-10-31",
+      "fraction_of_move_remaining": 0.8841761827079934,
+      "ticker": "SANB11"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2018-06-29",
+      "episode_id": "SANB11-0230",
+      "episode_start": "2018-05-30",
+      "first_qualified_signal": "2018-06-29",
+      "fraction_of_move_remaining": 1.387981711299804,
+      "ticker": "SANB11"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2020-09-30",
+      "episode_id": "SANB11-0231",
+      "episode_start": "2020-03-31",
+      "first_qualified_signal": "2020-06-30",
+      "fraction_of_move_remaining": 0.8304066543438077,
+      "ticker": "SANB11"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2025-01-31",
+      "episode_id": "SANB11-0232",
+      "episode_start": "2024-11-29",
+      "ticker": "SANB11"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2019-02-28",
+      "episode_id": "SAPR11-0233",
+      "episode_start": "2019-02-28",
+      "ticker": "SAPR11"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2023-03-31",
+      "episode_id": "SBFG3-0234",
+      "episode_start": "2023-02-28",
+      "ticker": "SBFG3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2019-02-28",
+      "episode_id": "SBSP3-0235",
+      "episode_start": "2018-04-30",
+      "first_qualified_signal": "2018-10-31",
+      "fraction_of_move_remaining": 1.4957918898240243,
+      "ticker": "SBSP3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2021-08-31",
+      "episode_id": "SBSP3-0236",
+      "episode_start": "2021-08-31",
+      "ticker": "SBSP3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2022-01-31",
+      "episode_id": "SBSP3-0237",
+      "episode_start": "2021-10-29",
+      "ticker": "SBSP3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2022-06-30",
+      "episode_id": "SBSP3-0238",
+      "episode_start": "2022-06-30",
+      "first_qualified_signal": "2022-06-30",
+      "fraction_of_move_remaining": 1.0,
+      "ticker": "SBSP3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2023-11-30",
+      "episode_id": "SBSP3-0239",
+      "episode_start": "2022-12-29",
+      "first_qualified_signal": "2022-12-29",
+      "fraction_of_move_remaining": 1.0,
+      "ticker": "SBSP3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2024-06-28",
+      "episode_id": "SBSP3-0240",
+      "episode_start": "2024-04-30",
+      "first_qualified_signal": "2024-04-30",
+      "fraction_of_move_remaining": 1.0,
+      "ticker": "SBSP3"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2025-03-31",
+      "episode_id": "SBSP3-0241",
+      "episode_start": "2024-09-30",
+      "ticker": "SBSP3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2024-12-30",
+      "episode_id": "SMFT3-0242",
+      "episode_start": "2024-11-29",
+      "ticker": "SMFT3"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2022-06-30",
+      "episode_id": "SOMA3-0243",
+      "episode_start": "2022-06-30",
+      "ticker": "SOMA3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2021-10-29",
+      "episode_id": "STBP3-0244",
+      "episode_start": "2021-10-29",
+      "ticker": "STBP3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2022-07-29",
+      "episode_id": "STBP3-0245",
+      "episode_start": "2022-05-31",
+      "ticker": "STBP3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2023-04-28",
+      "episode_id": "STBP3-0246",
+      "episode_start": "2023-02-28",
+      "first_qualified_signal": "2023-02-28",
+      "fraction_of_move_remaining": 1.0,
+      "ticker": "STBP3"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2023-12-28",
+      "episode_id": "STBP3-0247",
+      "episode_start": "2023-06-30",
+      "ticker": "STBP3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "LATE_HIT",
+      "episode_end": "2019-02-28",
+      "episode_id": "SULA11-0248",
+      "episode_start": "2018-05-30",
+      "first_qualified_signal": "2018-12-28",
+      "fraction_of_move_remaining": 0.4332061068702288,
+      "ticker": "SULA11"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2019-05-31",
+      "episode_id": "SULA11-0249",
+      "episode_start": "2019-04-30",
+      "ticker": "SULA11"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2020-06-30",
+      "episode_id": "SUZB3-0250",
+      "episode_start": "2019-07-31",
+      "first_qualified_signal": "2020-05-29",
+      "fraction_of_move_remaining": 0.6088264794383148,
+      "ticker": "SUZB3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2023-04-28",
+      "episode_id": "SUZB3-0251",
+      "episode_start": "2023-03-31",
+      "ticker": "SUZB3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2018-09-28",
+      "episode_id": "TAEE11-0252",
+      "episode_start": "2018-05-30",
+      "first_qualified_signal": "2018-06-29",
+      "fraction_of_move_remaining": 1.1409495548961424,
+      "ticker": "TAEE11"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2020-05-29",
+      "episode_id": "TAEE11-0253",
+      "episode_start": "2020-03-31",
+      "first_qualified_signal": "2020-03-31",
+      "fraction_of_move_remaining": 1.0,
+      "ticker": "TAEE11"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2020-08-31",
+      "episode_id": "TAEE11-0254",
+      "episode_start": "2020-07-31",
+      "ticker": "TAEE11"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2020-10-30",
+      "episode_id": "TAEE11-0255",
+      "episode_start": "2020-10-30",
+      "ticker": "TAEE11"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2021-02-26",
+      "episode_id": "TAEE11-0256",
+      "episode_start": "2021-02-26",
+      "ticker": "TAEE11"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2017-06-30",
+      "episode_id": "TIMP3-0257",
+      "episode_start": "2017-01-31",
+      "first_qualified_signal": "2017-02-24",
+      "fraction_of_move_remaining": 0.7965367965367967,
+      "ticker": "TIMP3"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2019-02-28",
+      "episode_id": "TIMP3-0258",
+      "episode_start": "2019-01-31",
+      "ticker": "TIMP3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2023-03-31",
+      "episode_id": "TIMS3-0259",
+      "episode_start": "2022-11-30",
+      "first_qualified_signal": "2023-02-28",
+      "fraction_of_move_remaining": 1.1743119266055047,
+      "ticker": "TIMS3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2024-06-28",
+      "episode_id": "TIMS3-0260",
+      "episode_start": "2024-06-28",
+      "ticker": "TIMS3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2025-04-30",
+      "episode_id": "TIMS3-0261",
+      "episode_start": "2024-10-31",
+      "ticker": "TIMS3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2020-04-30",
+      "episode_id": "TOTS3-0262",
+      "episode_start": "2020-04-30",
+      "ticker": "TOTS3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2017-11-30",
+      "episode_id": "VALE3-0263",
+      "episode_start": "2017-11-30",
+      "first_qualified_signal": "2017-11-30",
+      "fraction_of_move_remaining": 1.0,
+      "ticker": "VALE3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2019-08-30",
+      "episode_id": "VALE3-0264",
+      "episode_start": "2019-08-30",
+      "ticker": "VALE3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2020-08-31",
+      "episode_id": "VALE3-0265",
+      "episode_start": "2019-11-29",
+      "first_qualified_signal": "2020-08-31",
+      "fraction_of_move_remaining": 0.6516215312604482,
+      "ticker": "VALE3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2025-07-31",
+      "episode_id": "VALE3-0266",
+      "episode_start": "2024-12-30",
+      "first_qualified_signal": "2025-01-31",
+      "fraction_of_move_remaining": 1.0021197668256492,
+      "ticker": "VALE3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2023-04-28",
+      "episode_id": "VBBR3-0267",
+      "episode_start": "2022-11-30",
+      "ticker": "VBBR3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2023-08-31",
+      "episode_id": "VBBR3-0268",
+      "episode_start": "2023-07-31",
+      "ticker": "VBBR3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2025-07-31",
+      "episode_id": "VBBR3-0269",
+      "episode_start": "2024-12-30",
+      "first_qualified_signal": "2025-02-28",
+      "fraction_of_move_remaining": 1.1471571906354514,
+      "ticker": "VBBR3"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2023-03-31",
+      "episode_id": "VIVT3-0270",
+      "episode_start": "2022-11-30",
+      "ticker": "VIVT3"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2018-09-28",
+      "episode_id": "VIVT4-0271",
+      "episode_start": "2018-08-31",
+      "ticker": "VIVT4"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2017-02-24",
+      "episode_id": "WEGE3-0272",
+      "episode_start": "2017-01-31",
+      "ticker": "WEGE3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2018-06-29",
+      "episode_id": "WEGE3-0273",
+      "episode_start": "2018-06-29",
+      "first_qualified_signal": "2018-06-29",
+      "fraction_of_move_remaining": 1.0,
+      "ticker": "WEGE3"
+    },
+    {
+      "boundary_uncertain": true,
+      "classification": "BOUNDARY_UNCERTAIN_EXCLUDED",
+      "episode_end": "2020-03-31",
+      "episode_id": "WEGE3-0274",
+      "episode_start": "2018-10-31",
+      "ticker": "WEGE3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2022-09-30",
+      "episode_id": "YDUQ3-0275",
+      "episode_start": "2022-06-30",
+      "ticker": "YDUQ3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "EARLY_HIT",
+      "episode_end": "2023-04-28",
+      "episode_id": "YDUQ3-0276",
+      "episode_start": "2022-11-30",
+      "first_qualified_signal": "2022-11-30",
+      "fraction_of_move_remaining": 1.0,
+      "ticker": "YDUQ3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2024-06-28",
+      "episode_id": "YDUQ3-0277",
+      "episode_start": "2024-05-31",
+      "ticker": "YDUQ3"
+    },
+    {
+      "boundary_uncertain": false,
+      "classification": "MISS",
+      "episode_end": "2025-01-31",
+      "episode_id": "YDUQ3-0278",
+      "episode_start": "2024-08-30",
+      "ticker": "YDUQ3"
+    }
+  ],
+  "summary": {
+    "boundary_uncertain": 55,
+    "detected": 82,
+    "early_hit_recall": 0.35874439461883406,
+    "early_hits": 80,
+    "episode_recall": 0.36771300448430494,
+    "late_hits": 2,
+    "misses": 141,
+    "scorable_episodes": 223,
+    "winner_episodes": 278
+  }
+}

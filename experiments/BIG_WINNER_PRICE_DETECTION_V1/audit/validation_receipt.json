@@ -1,0 +1,30 @@
+{
+  "experiment": "BIG_WINNER_PRICE_DETECTION_V1",
+  "validated_at": "2026-09-19",
+  "source_freeze_commit": "57bfc5aaa932d2ec2e34ffae7e0c77ed0759ddb8",
+  "branch": "experiment/BIG_WINNER_PRICE_DETECTION_V1",
+  "database_sha256": "a22739794ba4a43a11544338d4a91e14cb6a0b1f7b132ab460f96d3359f63cf4",
+  "signal_rows": 43260,
+  "monthly_asofs": 103,
+  "period": ["2017-01-31", "2025-07-31"],
+  "detector_count": 7,
+  "required_tests_passed": 33,
+  "required_tests_failed": 0,
+  "python_compileall": "PASS",
+  "git_diff_check": "PASS",
+  "protocol_json_parse": "PASS",
+  "scorecard_json_parse": "PASS",
+  "signal_freeze_validation": "PASS",
+  "positive_leakage_control": "PASS_ALL_DETECTORS",
+  "hashes": {
+    "frozen_signals_csv": "2ba1821bacfda0370c140f3557a6fc087c4452792b32a98935c1b5b4537c1f15",
+    "price_outcomes_csv": "4f0b761ad9f97a1a63f0f07c61929dfeb6220ddf77904e847b757bbbc83a4c35",
+    "final_scorecard_json": "05ed3a383ece6cae9cb5dd2a5ce77911e8c7d41e9149597c117af9414c01d33b",
+    "final_report_md": "a1438c131d761dbef68c3eeca612f2a25b663cb537ac56da0bd635ceeadac067"
+  },
+  "publication": {
+    "pushed": false,
+    "merged": false,
+    "primary_checkout_modified": false
+  }
+}

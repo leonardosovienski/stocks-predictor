@@ -1,0 +1,23 @@
+{
+  "52W_HIGH": {
+    "base_rate": 0.20472741136103698
+  },
+  "LOW_VOL_252": {
+    "base_rate": 0.20472741136103698
+  },
+  "MOMENTUM_12_1": {
+    "base_rate": 0.20472741136103698
+  },
+  "MOMENTUM_6_1": {
+    "base_rate": 0.20472741136103698
+  },
+  "MOMENTUM_LOW_VOL": {
+    "base_rate": 0.191044776119403
+  },
+  "REVERSAL_21": {
+    "base_rate": 0.20472741136103698
+  },
+  "VOLUME_SURGE": {
+    "base_rate": 0.20472741136103698
+  }
+}

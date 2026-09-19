@@ -1,0 +1,27 @@
+{
+  "schema_version": "BIG_WINNER_PRICE_SIGNAL_FREEZE_V1",
+  "status": "FROZEN",
+  "file": "signals.csv",
+  "sha256": "2ba1821bacfda0370c140f3557a6fc087c4452792b32a98935c1b5b4537c1f15",
+  "row_count": 43260,
+  "detectors": [
+    "52W_HIGH",
+    "LOW_VOL_252",
+    "MOMENTUM_12_1",
+    "MOMENTUM_6_1",
+    "MOMENTUM_LOW_VOL",
+    "REVERSAL_21",
+    "VOLUME_SURGE"
+  ],
+  "period": {
+    "start": "2017-01-31",
+    "end": "2025-07-31"
+  },
+  "code_commit": "57bfc5aaa932d2ec2e34ffae7e0c77ed0759ddb8",
+  "config_hash": "0676c3954496776a955efb2f960f6bacf77a4266baf6de9192b48b68d46ec94d",
+  "dataset_hashes": {
+    "market_db": "a22739794ba4a43a11544338d4a91e14cb6a0b1f7b132ab460f96d3359f63cf4"
+  },
+  "created_at": "2026-09-19T23:40:32.758520+00:00",
+  "manifest_payload_sha256": "effc0580fcb25735e8c887d1f0ab32553a0b860b46cfe489795b8414459d7322"
+}
