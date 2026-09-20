@@ -20,6 +20,10 @@ class BigWinnerV2Tests(unittest.TestCase):
         data=model.verify_selection_freeze(PROGRAM/"V2_SELECTION_FREEZE.yaml")
         self.assertEqual(data["v2_identifier"],model.MODEL_ID)
 
+    def test_final_freeze_hash_and_identity(self):
+        data=model.verify_final_freeze(PROGRAM/"V2_FINAL_FREEZE.json")
+        self.assertEqual(data["final_v2_identifier"],model.MODEL_ID)
+
     def test_pit_boundary_ignores_asof_and_future(self):
         dates=[(dt.date(2020,1,1)+dt.timedelta(days=i)).isoformat() for i in range(260)]
         closes=[float(i+1) for i in range(260)]

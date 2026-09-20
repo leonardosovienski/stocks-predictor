@@ -1,0 +1,96 @@
+{
+  "schema_version": "V2_FINAL_FREEZE_V1",
+  "final_v2_identifier": "BIG_WINNER_V2_MOMENTUM_12_1_BASELINE",
+  "scientific_status": "UNVALIDATED_PROSPECTIVE_CANDIDATE",
+  "finalized_at": "2026-09-19T21:40:00-03:00",
+  "selection_freeze_hash": "57892cdfa540f57cca70737ddcdbf4bf75c643d04091b5ea7926072ad4ba24a2",
+  "implementation_commit": "861429e",
+  "final_freeze_commit": "861429e",
+  "configuration": {
+    "feature": "MOMENTUM_12_1",
+    "lookback": 252,
+    "skip": 21,
+    "direction": "HIGHER_IS_BETTER",
+    "selection": "TOP_20_PERCENT_CEIL",
+    "tie_break": "TICKER_ASC"
+  },
+  "features": {
+    "momentum_12_1": "close[-22]/close[-253]-1 using observations strictly before signal_asof"
+  },
+  "universe_contract": {
+    "top_n": 60,
+    "liquidity_lookback_sessions": 126,
+    "minimum_history_sessions": 252,
+    "spot_market": "010",
+    "quarantine": "strict PIT repository universe"
+  },
+  "target_contract": "12-calendar-month PRICE_INDEX_EX_CASH_DISTRIBUTIONS >= 30%",
+  "ranking_contract": "finite scores descending, ticker ascending ties, ceil(20%) selected",
+  "execution_contract": "first eligible next-open strictly after signal asof",
+  "dataset_contract": {
+    "immutable_hash_required": true,
+    "source_versions_required": true,
+    "identity_missing_state_required": true,
+    "corporate_action_continuity": "approved share-count events only"
+  },
+  "pit_cutoff_semantics": "market observations strictly before asof; no outcomes or later source revisions",
+  "primary_endpoint": "lift over PIT base rate jointly with precision, recall, selection fraction, early-hit recall",
+  "secondary_endpoints": [
+    "1m",
+    "3m",
+    "6m",
+    "12m",
+    "time_to_10",
+    "time_to_20",
+    "time_to_30",
+    "maximum_adverse_excursion",
+    "maximum_favorable_excursion"
+  ],
+  "kill_criteria": {
+    "minimum_mature_monthly_cohorts": 24,
+    "lift_point_estimate_lte": 1.0,
+    "lift_upper_95_below": 1.15,
+    "outcome_coverage_below": 0.8,
+    "any_leakage_or_integrity_failure": true
+  },
+  "promotion_criteria": {
+    "minimum_mature_monthly_cohorts": 24,
+    "lift_point_estimate_gte": 1.15,
+    "lift_lower_95_above": 1.0,
+    "early_hit_recall_gte": 0.15,
+    "selection_fraction_lte": 0.2,
+    "positive_in_both_temporal_halves": true,
+    "software_and_data_integrity": "PASS"
+  },
+  "prospective_protocol": {
+    "evidence_start": "first decision whose market observation and generation occur after this freeze boundary",
+    "development_backfill_eligible": false,
+    "primary_maturity": "12 calendar months",
+    "cohort_permanence": true
+  },
+  "ledger_schema": {
+    "storage": "SQLite",
+    "append_only_triggers": true,
+    "hash_chain": true,
+    "corrections": "append event",
+    "logical_idempotency_key": [
+      "signal_asof",
+      "model_identity",
+      "config_hash",
+      "dataset_hash"
+    ]
+  },
+  "shadow_schema": {
+    "capital": "NONE",
+    "decision_artifact": "immutable JSON",
+    "runtime_status": "READY_NOT_SCHEDULED"
+  },
+  "code_hashes": {
+    "stocks_predictor/big_winner_v2.py": "190b90e5a0939b5460b98db4c4d4dea357b282014d211e4f27620683d18547aa",
+    "stocks_predictor/prospective_big_winner.py": "2bd3f4dce04afbd7d364867ce61ca5668a0a98a975350c1afd518973203e22eb",
+    "stocks_predictor/big_winner_shadow.py": "0e94f2e87d8841142265c9876f7482d32203cdd1aa782efb6ec937ac56624c05"
+  },
+  "config_hash": "10ddbb06e8af8d7160591b0c1bbaea644f638d889dfec75611067284a6b22127",
+  "artifact_hash_scope": "canonical JSON excluding artifact_hash",
+  "artifact_hash": "d8f4c956a6853cacab605c178b9ebe0830476d3b93b17cd9a324e912642d9d52"
+}

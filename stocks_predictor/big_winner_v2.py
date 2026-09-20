@@ -40,6 +40,14 @@ def verify_selection_freeze(path: str | Path) -> dict:
     return data
 
 
+def verify_final_freeze(path: str | Path) -> dict:
+    data=json.loads(Path(path).read_text(encoding="utf-8"))
+    if data["final_v2_identifier"] != MODEL_ID: raise ValueError("unexpected final V2 identity")
+    expected=data["artifact_hash"]; payload=dict(data); payload.pop("artifact_hash")
+    if canonical_hash(payload)!=expected: raise ValueError("V2_FINAL_FREEZE hash mismatch")
+    return data
+
+
 def momentum_12_1(dates: list[str], closes: list[float], asof: str) -> float | None:
     """252-to-21 session return using observations strictly before ``asof``."""
     end = bisect.bisect_left(dates, asof)
