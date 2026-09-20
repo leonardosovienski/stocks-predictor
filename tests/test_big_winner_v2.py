@@ -100,6 +100,11 @@ class BigWinnerV2Tests(unittest.TestCase):
             path=Path(tmp)/"decision.json"; ledger.write_artifact(path,decision(),{"status":"APPENDED"}); ledger.write_artifact(path,decision(),{"status":"APPENDED"})
             with self.assertRaises(FileExistsError):ledger.write_artifact(path,decision(),{"status":"different"})
 
+    def test_idempotent_receipt_is_artifact_stable(self):
+        appended={"status":"APPENDED","logical_key":"k","event_hash":"h","prospective_evidence_eligible":False}
+        existing={**appended,"status":"IDEMPOTENT_EXISTING"}
+        self.assertEqual(ledger.stable_decision_receipt(appended),ledger.stable_decision_receipt(existing))
+
     def test_historical_artifacts_preserved(self):
         expected={
           REPO/"experiments"/"BIG_WINNER_DETECTION_V1"/"frozen_signals"/"MANIFEST.json":"2a28df6f7f8689f0ff5ac534711cd660746fd4622d974f198bb52e27405462b9",

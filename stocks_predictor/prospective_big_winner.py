@@ -114,3 +114,8 @@ def write_artifact(path: str | Path, decision: dict, ledger_receipt: dict) -> Pa
         return path
     path.write_text(json.dumps(artifact,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
     return path
+
+
+def stable_decision_receipt(receipt: dict) -> dict:
+    """Remove append-attempt status so idempotent retries reproduce the artifact."""
+    return {key:receipt[key] for key in ("logical_key","event_hash","prospective_evidence_eligible")}
