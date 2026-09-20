@@ -1,0 +1,9 @@
+{
+  "issues":[
+    {"id":"ISSUE-001","priority":"P0","problem":"V1_PRICE detailed episode JSONs all contain last-detector rows","status":"CLOSED_WITH_PRESERVED_HISTORY_AND_CORRECTED_DERIVATION","actionable_open":false},
+    {"id":"ISSUE-002","priority":"P0","problem":"no prospective decision ledger","status":"CLOSED_IMPLEMENTED","actionable_open":false},
+    {"id":"ISSUE-003","priority":"P1","problem":"no automatic historical artifact guard","status":"CLOSED_IMPLEMENTED","actionable_open":false},
+    {"id":"ISSUE-004","priority":"P1","problem":"sector/security-master PIT incomplete","status":"EXTERNALLY_BLOCKED_SOURCE_ABSENT_INTERFACE_READY","actionable_open":false},
+    {"id":"ISSUE-005","priority":"P1","problem":"future 12-month outcomes do not yet exist","status":"FUTURE_EVIDENCE_DEPENDENCY","actionable_open":false}
+  ]
+}

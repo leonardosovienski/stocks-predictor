@@ -1,0 +1,81 @@
+{
+  "schema_version": "V2_SELECTION_FREEZE_V1",
+  "v2_identifier": "BIG_WINNER_V2_MOMENTUM_12_1_BASELINE",
+  "scientific_status": "UNVALIDATED_PROSPECTIVE_CANDIDATE",
+  "selection_timestamp": "2026-09-19T21:23:26-03:00",
+  "source_commit": "1b20684b547ee0cf353641106f18b8e310fc23a6",
+  "selected_hypotheses": [
+    "V2-H01"
+  ],
+  "rejected_hypotheses": [
+    "V2-H02",
+    "V2-H03"
+  ],
+  "deferred_hypotheses": [
+    "V2-H04",
+    "V2-H05"
+  ],
+  "feature_definitions": {
+    "momentum_12_1": "close[-22]/close[-253]-1 on PIT continuity-adjusted prices"
+  },
+  "score_definitions": {
+    "score": "momentum_12_1"
+  },
+  "feature_directions": {
+    "momentum_12_1": "HIGHER_IS_BETTER"
+  },
+  "combination_rule": "SINGLE_FEATURE_NO_ENSEMBLE",
+  "weights": {
+    "momentum_12_1": 1.0
+  },
+  "threshold": "TOP_20_PERCENT_CEIL",
+  "ranking_rule": "score_desc_then_ticker_asc",
+  "universe_contract": {
+    "top_n": 60,
+    "liquidity_lookback_sessions": 126,
+    "minimum_history_sessions": 252,
+    "spot_market": "010"
+  },
+  "target_contract": "PRICE_INDEX_EX_CASH_DISTRIBUTIONS >= +30% at 12 calendar months",
+  "pit_contract": "all observations and source versions at or before PIT cutoff; no outcome input",
+  "execution_contract": "first eligible next-open strictly after signal asof",
+  "primary_endpoint": "lift over PIT base rate with precision, recall, selection fraction and early-hit recall",
+  "secondary_endpoints": [
+    "1m",
+    "3m",
+    "6m",
+    "time_to_10",
+    "time_to_20",
+    "time_to_30",
+    "MAE",
+    "MFE"
+  ],
+  "kill_criteria": {
+    "minimum_mature_monthly_cohorts": 24,
+    "kill_if_lift_point_estimate_lte": 1.0,
+    "kill_if_lift_upper_95_below": 1.15,
+    "minimum_outcome_coverage": 0.8,
+    "integrity_required": true
+  },
+  "promotion_criteria": {
+    "minimum_mature_monthly_cohorts": 24,
+    "minimum_lift_point_estimate": 1.15,
+    "lift_lower_95_above": 1.0,
+    "minimum_early_hit_recall": 0.15,
+    "maximum_selection_fraction": 0.2,
+    "positive_in_both_temporal_halves": true
+  },
+  "development_only_metrics": "allowed only for debugging; never confirmatory",
+  "architecture_rationale": "unchanged simplest mechanism; no defensible added predictive complexity",
+  "source_evidence": {
+    "v1_price_scorecard_sha256": "05ed3a383ece6cae9cb5dd2a5ce77911e8c7d41e9149597c117af9414c01d33b",
+    "M12_lift": 1.1220553635798145,
+    "M12_temporal_ci": [
+      -0.033173057291028624,
+      0.08764085906727104
+    ]
+  },
+  "config_hash": "10ddbb06e8af8d7160591b0c1bbaea644f638d889dfec75611067284a6b22127",
+  "artifact_hash_scope": "canonical JSON excluding artifact_hash",
+  "artifact_hash": "57892cdfa540f57cca70737ddcdbf4bf75c643d04091b5ea7926072ad4ba24a2"
+}

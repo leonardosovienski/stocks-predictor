@@ -1,0 +1,10 @@
+{
+  "program": "BIG_WINNER_IMPROVEMENT_PROGRAM_V1",
+  "items": [
+    {"id":"IMP-001","class":"SCIENTIFIC_INFRASTRUCTURE_IMPROVEMENT","decision":"IMPLEMENT","status":"COMPLETE","action":"append-only prospective ledger"},
+    {"id":"IMP-002","class":"SCIENTIFIC_INFRASTRUCTURE_IMPROVEMENT","decision":"IMPLEMENT","status":"COMPLETE","action":"historical artifact regression guard"},
+    {"id":"IMP-003","class":"PREDICTIVE_V2_CHANGE","decision":"REJECT","status":"COMPLETE","action":"multi-factor ensemble"},
+    {"id":"IMP-004","class":"OBJECTIVE_DATA_QUALITY_REPAIR","decision":"IMPLEMENT_INTERFACE","status":"COMPLETE","action":"explicit missing identity/action metadata states"},
+    {"id":"IMP-005","class":"FUTURE_EVIDENCE_DEPENDENCY","decision":"PRE_REGISTER","status":"PENDING_FUTURE_TIME","action":"12-month prospective outcomes"}
+  ]
+}
