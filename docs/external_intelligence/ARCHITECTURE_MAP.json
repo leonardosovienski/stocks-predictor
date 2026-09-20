@@ -1,0 +1,135 @@
+{
+  "schema_version": "external-intelligence-architecture-map/1",
+  "audited_at": "2026-09-19",
+  "ecosystem_audit_status": "COMPLETE",
+  "components": [
+    {
+      "component": "stocks-predictor",
+      "repository": "https://github.com/leonardosovienski/stocks-predictor.git",
+      "revision_version": "3f25895eeeaee9086c1f32f26ef1df920aeec79c / 0.2.0",
+      "responsibility_observed": [
+        "B3/CVM domain acquisition and parsing",
+        "point-in-time equity research",
+        "scientific ledgers and evidence publication"
+      ],
+      "public_contracts_relevant": [
+        "python -m stocks_predictor",
+        "source_history.security_links_asof",
+        "DatasetSelection",
+        "ResearchSnapshotV1 exporter",
+        "ResearchBundleV1 exporter"
+      ],
+      "contracts_to_reuse": [
+        "CVM date and identity parsing patterns",
+        "temporal security links",
+        "producer-owned publication boundary"
+      ],
+      "contracts_not_found": [
+        "generic external-source catalog suitable for non-COTAHIST sources",
+        "external-intelligence normalized observation store"
+      ],
+      "write_allowed": true,
+      "integration_points": [
+        "installed CLI",
+        "SQLite migrations",
+        "ResearchBundleV1 reference identities"
+      ],
+      "known_limitations": [
+        "Windows host exposes only auxiliary Python 3.12 without project dependencies",
+        "legacy source_catalog and operational_store are COTAHIST-specific"
+      ]
+    },
+    {
+      "component": "core-predictor",
+      "repository": "https://github.com/leonardosovienski/core-predictor.git",
+      "revision_version": "9bf43efe92459a0b484cac00f51170b2c70d420f / 3.2.1",
+      "responsibility_observed": [
+        "cross-domain scientific and temporal primitives",
+        "migration, hash and replay infrastructure"
+      ],
+      "public_contracts_relevant": [
+        "predictor_core.kernel.infra.run_migrations",
+        "predictor_core.kernel.net.sha256_file",
+        "predictor_core.measurement.replay"
+      ],
+      "contracts_to_reuse": [
+        "additive SQLite migration runner",
+        "availability-aware replay boundary"
+      ],
+      "contracts_not_found": [
+        "CVM receipt semantics",
+        "B3 publication or tradable-session semantics"
+      ],
+      "write_allowed": false,
+      "integration_points": [
+        "installed predictor-core dependency"
+      ],
+      "known_limitations": [
+        "Core explicitly leaves proof of external publication time to consumers"
+      ]
+    },
+    {
+      "component": "predictor-ops",
+      "repository": "https://github.com/leonardosovienski/predictor-ops.git",
+      "revision_version": "b19e69527c0fda5cb1f96281d3a984fea1431768 / 4.2.1",
+      "responsibility_observed": [
+        "validated non-interactive job execution",
+        "timeouts, retries, heartbeats and expected artifacts"
+      ],
+      "public_contracts_relevant": [
+        "JobsFile schema 2",
+        "MARKET_COLLECTION job type",
+        "predictor-ops run --config ... --job ..."
+      ],
+      "contracts_to_reuse": [
+        "JobConfig command/cwd/timeout/expected_artifact",
+        "exit-status mapping"
+      ],
+      "contracts_not_found": [
+        "domain scheduler configuration owned by Stocks"
+      ],
+      "write_allowed": false,
+      "integration_points": [
+        "external CLI commands and receipt files"
+      ],
+      "known_limitations": [
+        "scheduling remains deployment-owned and is not activated"
+      ]
+    },
+    {
+      "component": "cain",
+      "repository": "https://github.com/leonardosovienski/cain.git",
+      "revision_version": "24f784c5dde1fa66c262ad5899f4fd8d02526adf / 0.4.12",
+      "responsibility_observed": [
+        "independent research memory and reasoning",
+        "authorized Snapshot and Bundle admission"
+      ],
+      "public_contracts_relevant": [
+        "ResearchSnapshotV1",
+        "ResearchBundleV1"
+      ],
+      "contracts_to_reuse": [
+        "producer-owned reference-only publication"
+      ],
+      "contracts_not_found": [
+        "authorization for CAIN to read a private Stocks database",
+        "semantic classifier admission contract for IPE"
+      ],
+      "write_allowed": false,
+      "integration_points": [
+        "future ResearchBundleV1 evidence references only"
+      ],
+      "known_limitations": [
+        "checkout was detached and dirty before this mission and was not modified",
+        "semantic classification is outside scope"
+      ]
+    }
+  ],
+  "potential_core_candidates": [
+    {
+      "concept": "content-addressed external-source version identity",
+      "decision": "retain in Stocks until another independent consumer proves equivalent semantics"
+    }
+  ],
+  "cross_repo_changes_required": []
+}
