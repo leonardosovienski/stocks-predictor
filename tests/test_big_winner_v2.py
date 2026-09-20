@@ -95,6 +95,13 @@ class BigWinnerV2Tests(unittest.TestCase):
             ledger.append_correction(conn,r["logical_key"],{"reason":"administrative"},"2026-10-02T00:00:00+00:00")
             self.assertEqual(conn.execute("select count(*) from ledger_events").fetchone()[0],2); self.assertEqual(ledger.verify_chain(conn)["status"],"VALID"); conn.close()
 
+    def test_intermediate_outcomes_do_not_mature_primary(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            conn=ledger.connect(Path(tmp)/"ledger.sqlite"); r=ledger.append_decision(conn,decision(),decision_timestamp="2026-10-01T00:00:00+00:00",development_backfill=False,final_freeze_timestamp="2026-09-19T00:00:00+00:00",final_freeze_commit="sha")
+            metrics={"price_return":.1,"time_to_10":None,"time_to_20":None,"time_to_30":None,"maximum_adverse_excursion":-.05,"maximum_favorable_excursion":.12,"outcome_status":"INTERMEDIATE"}
+            self.assertFalse(ledger.append_outcome_observation(conn,r["logical_key"],"2026-11-01T00:00:00+00:00",1,metrics)["primary_endpoint_mature"])
+            self.assertTrue(ledger.append_outcome_observation(conn,r["logical_key"],"2027-10-01T00:00:00+00:00",12,{**metrics,"outcome_status":"FINAL"})["primary_endpoint_mature"]); conn.close()
+
     def test_artifact_is_immutable(self):
         with tempfile.TemporaryDirectory() as tmp:
             path=Path(tmp)/"decision.json"; ledger.write_artifact(path,decision(),{"status":"APPENDED"}); ledger.write_artifact(path,decision(),{"status":"APPENDED"})

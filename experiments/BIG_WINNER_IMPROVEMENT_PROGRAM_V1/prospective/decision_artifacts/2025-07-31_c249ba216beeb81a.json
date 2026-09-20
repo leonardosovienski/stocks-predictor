@@ -1,0 +1,881 @@
+{
+  "decision": {
+    "schema_version": "BIG_WINNER_V2_DECISION_V1",
+    "model_identity": "BIG_WINNER_V2_MOMENTUM_12_1_BASELINE",
+    "scientific_status": "UNVALIDATED_PROSPECTIVE_CANDIDATE",
+    "signal_asof": "2025-07-31",
+    "execution_time": "2025-08-01",
+    "pit_cutoff": "2025-07-31",
+    "eligible_universe": [
+      "ABEV3",
+      "ALOS3",
+      "ALUP11",
+      "AURE3",
+      "BBDC4",
+      "BBSE3",
+      "BEEF3",
+      "BRFS3",
+      "CBAV3",
+      "CCRO3",
+      "CEAB3",
+      "CMIG4",
+      "CMIN3",
+      "COGN3",
+      "CPFE3",
+      "CRFB3",
+      "CSNA3",
+      "CURY3",
+      "CXSE3",
+      "CYRE3",
+      "DIRR3",
+      "ECOR3",
+      "EGIE3",
+      "EMBR3",
+      "ENGI11",
+      "EZTC3",
+      "GGBR4",
+      "GGPS3",
+      "GMAT3",
+      "GOAU4",
+      "HYPE3",
+      "INTB3",
+      "ITSA4",
+      "KLBN11",
+      "LREN3",
+      "MOVI3",
+      "MRFG3",
+      "MRVE3",
+      "NEOE3",
+      "NTCO3",
+      "ORVR3",
+      "PETR4",
+      "POMO4",
+      "RAIL3",
+      "RAIZ4",
+      "RAPT4",
+      "RDOR3",
+      "RECV3",
+      "SANB11",
+      "SBSP3",
+      "SMFT3",
+      "SRNA3",
+      "STBP3",
+      "SUZB3",
+      "TAEE11",
+      "TIMS3",
+      "TTEN3",
+      "VALE3",
+      "VBBR3",
+      "YDUQ3"
+    ],
+    "ranking": [
+      {
+        "ticker": "CEAB3",
+        "score": 1.4059523809523808,
+        "rank": 1,
+        "percentile": 0.016666666666666666,
+        "selected": true,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "CEAB3",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "MRFG3",
+        "score": 1.0545454545454547,
+        "rank": 2,
+        "percentile": 0.03333333333333333,
+        "selected": true,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "MRFG3",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "EMBR3",
+        "score": 0.9785925196850394,
+        "rank": 3,
+        "percentile": 0.05,
+        "selected": true,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "EMBR3",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "COGN3",
+        "score": 0.8152866242038217,
+        "rank": 4,
+        "percentile": 0.06666666666666667,
+        "selected": true,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "COGN3",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "YDUQ3",
+        "score": 0.5759013282732448,
+        "rank": 5,
+        "percentile": 0.08333333333333333,
+        "selected": true,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "YDUQ3",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "LREN3",
+        "score": 0.49089529590288317,
+        "rank": 6,
+        "percentile": 0.1,
+        "selected": true,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "LREN3",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "DIRR3",
+        "score": 0.4576271186440679,
+        "rank": 7,
+        "percentile": 0.11666666666666667,
+        "selected": true,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "DIRR3",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "NEOE3",
+        "score": 0.4275321768326805,
+        "rank": 8,
+        "percentile": 0.13333333333333333,
+        "selected": true,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "NEOE3",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "CURY3",
+        "score": 0.40964419475655434,
+        "rank": 9,
+        "percentile": 0.15,
+        "selected": true,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "CURY3",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "TTEN3",
+        "score": 0.40427509293680286,
+        "rank": 10,
+        "percentile": 0.16666666666666666,
+        "selected": true,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "TTEN3",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "SBSP3",
+        "score": 0.38999077490774914,
+        "rank": 11,
+        "percentile": 0.18333333333333332,
+        "selected": true,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "SBSP3",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "CYRE3",
+        "score": 0.35769034236075625,
+        "rank": 12,
+        "percentile": 0.2,
+        "selected": true,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "CYRE3",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "SRNA3",
+        "score": 0.35423925667828127,
+        "rank": 13,
+        "percentile": 0.21666666666666667,
+        "selected": false,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "SRNA3",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "BBDC4",
+        "score": 0.3506072874493926,
+        "rank": 14,
+        "percentile": 0.23333333333333334,
+        "selected": false,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "BBDC4",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "TIMS3",
+        "score": 0.3496034167175106,
+        "rank": 15,
+        "percentile": 0.25,
+        "selected": false,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "TIMS3",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "RDOR3",
+        "score": 0.3085735402808574,
+        "rank": 16,
+        "percentile": 0.26666666666666666,
+        "selected": false,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "RDOR3",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "POMO4",
+        "score": 0.2938311688311688,
+        "rank": 17,
+        "percentile": 0.2833333333333333,
+        "selected": false,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "POMO4",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "CPFE3",
+        "score": 0.2590529247910862,
+        "rank": 18,
+        "percentile": 0.3,
+        "selected": false,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "CPFE3",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "ORVR3",
+        "score": 0.24843713822644142,
+        "rank": 19,
+        "percentile": 0.31666666666666665,
+        "selected": false,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "ORVR3",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "GMAT3",
+        "score": 0.18958031837916067,
+        "rank": 20,
+        "percentile": 0.3333333333333333,
+        "selected": false,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "GMAT3",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "MOVI3",
+        "score": 0.17796610169491522,
+        "rank": 21,
+        "percentile": 0.35,
+        "selected": false,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "MOVI3",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "SMFT3",
+        "score": 0.15772128060263668,
+        "rank": 22,
+        "percentile": 0.36666666666666664,
+        "selected": false,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "SMFT3",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "ABEV3",
+        "score": 0.12911392405063293,
+        "rank": 23,
+        "percentile": 0.38333333333333336,
+        "selected": false,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "ABEV3",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "ECOR3",
+        "score": 0.12152269399707172,
+        "rank": 24,
+        "percentile": 0.4,
+        "selected": false,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "ECOR3",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "ENGI11",
+        "score": 0.09274376417233543,
+        "rank": 25,
+        "percentile": 0.4166666666666667,
+        "selected": false,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "ENGI11",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "SANB11",
+        "score": 0.09271284271284275,
+        "rank": 26,
+        "percentile": 0.43333333333333335,
+        "selected": false,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "SANB11",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "ITSA4",
+        "score": 0.08267716535433078,
+        "rank": 27,
+        "percentile": 0.45,
+        "selected": false,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "ITSA4",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "BBSE3",
+        "score": 0.06832844574780061,
+        "rank": 28,
+        "percentile": 0.4666666666666667,
+        "selected": false,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "BBSE3",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "ALOS3",
+        "score": 0.06716417910447747,
+        "rank": 29,
+        "percentile": 0.48333333333333334,
+        "selected": false,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "ALOS3",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "EGIE3",
+        "score": 0.04143083540864834,
+        "rank": 30,
+        "percentile": 0.5,
+        "selected": false,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "EGIE3",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "TAEE11",
+        "score": 0.04034411153960238,
+        "rank": 31,
+        "percentile": 0.5166666666666667,
+        "selected": false,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "TAEE11",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "CMIG4",
+        "score": 0.03292568203198498,
+        "rank": 32,
+        "percentile": 0.5333333333333333,
+        "selected": false,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "CMIG4",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "EZTC3",
+        "score": 0.029695619896065173,
+        "rank": 33,
+        "percentile": 0.55,
+        "selected": false,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "EZTC3",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "CXSE3",
+        "score": 0.026370575988896583,
+        "rank": 34,
+        "percentile": 0.5666666666666667,
+        "selected": false,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "CXSE3",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "ALUP11",
+        "score": 0.00804375804375801,
+        "rank": 35,
+        "percentile": 0.5833333333333334,
+        "selected": false,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "ALUP11",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "STBP3",
+        "score": -0.006498194945848357,
+        "rank": 36,
+        "percentile": 0.6,
+        "selected": false,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "STBP3",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "HYPE3",
+        "score": -0.006810035842293782,
+        "rank": 37,
+        "percentile": 0.6166666666666667,
+        "selected": false,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "HYPE3",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "CMIN3",
+        "score": -0.013944223107569598,
+        "rank": 38,
+        "percentile": 0.6333333333333333,
+        "selected": false,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "CMIN3",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "CCRO3",
+        "score": -0.030154849225753844,
+        "rank": 39,
+        "percentile": 0.65,
+        "selected": false,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "CCRO3",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "SUZB3",
+        "score": -0.031065370688012073,
+        "rank": 40,
+        "percentile": 0.6666666666666666,
+        "selected": false,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "SUZB3",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "MRVE3",
+        "score": -0.031722054380664666,
+        "rank": 41,
+        "percentile": 0.6833333333333333,
+        "selected": false,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "MRVE3",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "VBBR3",
+        "score": -0.04045734388742295,
+        "rank": 42,
+        "percentile": 0.7,
+        "selected": false,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "VBBR3",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "BRFS3",
+        "score": -0.049881235154394354,
+        "rank": 43,
+        "percentile": 0.7166666666666667,
+        "selected": false,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "BRFS3",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "GGPS3",
+        "score": -0.06576629477392837,
+        "rank": 44,
+        "percentile": 0.7333333333333333,
+        "selected": false,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "GGPS3",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "VALE3",
+        "score": -0.11903582631665843,
+        "rank": 45,
+        "percentile": 0.75,
+        "selected": false,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "VALE3",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "GGBR4",
+        "score": -0.1266375545851528,
+        "rank": 46,
+        "percentile": 0.7666666666666667,
+        "selected": false,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "GGBR4",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "CBAV3",
+        "score": -0.12996389891696747,
+        "rank": 47,
+        "percentile": 0.7833333333333333,
+        "selected": false,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "CBAV3",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "KLBN11",
+        "score": -0.13778608127043435,
+        "rank": 48,
+        "percentile": 0.8,
+        "selected": false,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "KLBN11",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "RAIL3",
+        "score": -0.16044943820224722,
+        "rank": 49,
+        "percentile": 0.8166666666666667,
+        "selected": false,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "RAIL3",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "GOAU4",
+        "score": -0.16228893058161353,
+        "rank": 50,
+        "percentile": 0.8333333333333334,
+        "selected": false,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "GOAU4",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "AURE3",
+        "score": -0.16362126245847164,
+        "rank": 51,
+        "percentile": 0.85,
+        "selected": false,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "AURE3",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "PETR4",
+        "score": -0.16427813163481952,
+        "rank": 52,
+        "percentile": 0.8666666666666667,
+        "selected": false,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "PETR4",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "CRFB3",
+        "score": -0.17231364956437556,
+        "rank": 53,
+        "percentile": 0.8833333333333333,
+        "selected": false,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "CRFB3",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "BEEF3",
+        "score": -0.1893203883495146,
+        "rank": 54,
+        "percentile": 0.9,
+        "selected": false,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "BEEF3",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "RAPT4",
+        "score": -0.19131238447319776,
+        "rank": 55,
+        "percentile": 0.9166666666666666,
+        "selected": false,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "RAPT4",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "RECV3",
+        "score": -0.28779069767441867,
+        "rank": 56,
+        "percentile": 0.9333333333333333,
+        "selected": false,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "RECV3",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "INTB3",
+        "score": -0.2953229398663697,
+        "rank": 57,
+        "percentile": 0.95,
+        "selected": false,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "INTB3",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "NTCO3",
+        "score": -0.3192457737321196,
+        "rank": 58,
+        "percentile": 0.9666666666666667,
+        "selected": false,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "NTCO3",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "CSNA3",
+        "score": -0.37207357859531776,
+        "rank": 59,
+        "percentile": 0.9833333333333333,
+        "selected": false,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "CSNA3",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      },
+      {
+        "ticker": "RAIZ4",
+        "score": -0.4560260586319218,
+        "rank": 60,
+        "percentile": 1.0,
+        "selected": false,
+        "scorable_size": 60,
+        "selection_size": 12,
+        "security_identity": {
+          "ticker": "RAIZ4",
+          "identity_status": "TICKER_ONLY_PIT_IDENTITY_NOT_AVAILABLE"
+        }
+      }
+    ],
+    "decision_reason": "FROZEN_M12_TOP20",
+    "decision_timestamp": "2026-09-19T22:15:00-03:00",
+    "code_commit": "7638f4c",
+    "config_hash": "10ddbb06e8af8d7160591b0c1bbaea644f638d889dfec75611067284a6b22127",
+    "dataset_hash": "a22739794ba4a43a11544338d4a91e14cb6a0b1f7b132ab460f96d3359f63cf4",
+    "source_versions": [
+      "COTAHIST_A2016.ZIP",
+      "COTAHIST_A2017.ZIP",
+      "COTAHIST_A2018.ZIP",
+      "COTAHIST_A2019.ZIP",
+      "COTAHIST_A2020.ZIP",
+      "COTAHIST_A2021.ZIP",
+      "COTAHIST_A2022.ZIP",
+      "COTAHIST_A2023.ZIP",
+      "COTAHIST_A2024.ZIP",
+      "COTAHIST_A2025.ZIP",
+      "COTAHIST_A2026.ZIP"
+    ],
+    "development_backfill": true,
+    "prospective_evidence_eligible": false,
+    "decision_payload_hash": "c249ba216beeb81af0c10ef808346a6f7b8782612b1323f06263bf209f233f4b"
+  },
+  "ledger_receipt": {
+    "logical_key": "aac4359a868e1d0f015eb24c9310a1e97432cc7cc4057929147cbdc078afa677",
+    "event_hash": "2be224328a26f0fca4c98bb7610858fadb8200522339daa8db510b12140f7b35",
+    "prospective_evidence_eligible": false
+  },
+  "artifact_hash": "0182f510b8b92232a455d97a8b3cf26d2ce8afb959c9afe5eceec94fd0b7183a"
+}

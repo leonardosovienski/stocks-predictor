@@ -30,6 +30,20 @@ CREATE TRIGGER IF NOT EXISTS ledger_no_update BEFORE UPDATE ON ledger_events
 BEGIN SELECT RAISE(ABORT, 'append-only ledger: UPDATE forbidden'); END;
 CREATE TRIGGER IF NOT EXISTS ledger_no_delete BEFORE DELETE ON ledger_events
 BEGIN SELECT RAISE(ABORT, 'append-only ledger: DELETE forbidden'); END;
+CREATE TABLE IF NOT EXISTS outcome_observations(
+  sequence INTEGER PRIMARY KEY AUTOINCREMENT,
+  decision_logical_key TEXT NOT NULL,
+  observed_at TEXT NOT NULL,
+  horizon_months INTEGER NOT NULL CHECK(horizon_months IN (1,3,6,12)),
+  metrics_json TEXT NOT NULL,
+  metrics_hash TEXT NOT NULL,
+  primary_endpoint_mature INTEGER NOT NULL CHECK(primary_endpoint_mature IN (0,1)),
+  UNIQUE(decision_logical_key,horizon_months,metrics_hash)
+);
+CREATE TRIGGER IF NOT EXISTS outcomes_no_update BEFORE UPDATE ON outcome_observations
+BEGIN SELECT RAISE(ABORT, 'append-only outcomes: UPDATE forbidden'); END;
+CREATE TRIGGER IF NOT EXISTS outcomes_no_delete BEFORE DELETE ON outcome_observations
+BEGIN SELECT RAISE(ABORT, 'append-only outcomes: DELETE forbidden'); END;
 """
 
 
@@ -102,6 +116,19 @@ def verify_chain(conn) -> dict:
         previous=event_hash; count+=1; eligible+=is_eligible; backfills+=backfill
     return {"status":"VALID","events":count,"development_backfill_count":backfills,
             "prospective_eligible_decision_count":eligible,"head_hash":previous}
+
+
+def append_outcome_observation(conn, decision_logical_key: str, observed_at: str,
+                               horizon_months: int, metrics: dict) -> dict:
+    decision=conn.execute("SELECT prospective_evidence_eligible FROM ledger_events WHERE event_type='DECISION' AND logical_key=?",(decision_logical_key,)).fetchone()
+    if not decision: raise ValueError("decision cohort not found")
+    if horizon_months not in {1,3,6,12}: raise ValueError("unsupported horizon")
+    required={"price_return","time_to_10","time_to_20","time_to_30","maximum_adverse_excursion","maximum_favorable_excursion","outcome_status"}
+    if set(metrics)!=required: raise ValueError("incomplete intermediate outcome contract")
+    payload=json.dumps(metrics,sort_keys=True,ensure_ascii=False,separators=(",", ":")); digest=hashlib.sha256(payload.encode()).hexdigest()
+    mature=int(horizon_months==12)
+    conn.execute("INSERT OR IGNORE INTO outcome_observations(decision_logical_key,observed_at,horizon_months,metrics_json,metrics_hash,primary_endpoint_mature) VALUES(?,?,?,?,?,?)",(decision_logical_key,observed_at,horizon_months,payload,digest,mature))
+    conn.commit(); return {"metrics_hash":digest,"primary_endpoint_mature":bool(mature),"prospective_evidence_eligible":bool(decision[0])}
 
 
 def write_artifact(path: str | Path, decision: dict, ledger_receipt: dict) -> Path:

@@ -1,0 +1,21 @@
+{
+  "final_freeze_hash": "67febfd610f71f8af59e74e65095b093d615ca6c5c40a3ae9df50c97fe2f9e8b",
+  "historical_artifact_hashes": {
+    "BIG_WINNER_DETECTION_V1_manifest": "2a28df6f7f8689f0ff5ac534711cd660746fd4622d974f198bb52e27405462b9",
+    "BIG_WINNER_PRICE_DETECTION_V1_manifest": "770d2425d8a329fa486d5871cc5b388521da1e71a9eea6aa2b293194aefb53f8",
+    "BIG_WINNER_PRICE_DETECTION_V1_scorecard": "05ed3a383ece6cae9cb5dd2a5ce77911e8c7d41e9149597c117af9414c01d33b"
+  },
+  "ledger": {
+    "development_backfill_count": 1,
+    "events": 1,
+    "head_hash": "2be224328a26f0fca4c98bb7610858fadb8200522339daa8db510b12140f7b35",
+    "prospective_eligible_decision_count": 0,
+    "status": "VALID"
+  },
+  "outcome_observation_count": 0,
+  "prospective_evidence_start": "FIRST_ELIGIBLE_DECISION_AFTER_FINAL_FREEZE; NOT_STARTED",
+  "selection_freeze_hash": "57892cdfa540f57cca70737ddcdbf4bf75c643d04091b5ea7926072ad4ba24a2",
+  "shadow_implementation_status": "COMPLETE",
+  "shadow_runtime_status": "READY_NOT_SCHEDULED",
+  "status": "PASS"
+}
