@@ -8,7 +8,7 @@ import sqlite3
 import sys
 import zipfile
 
-from . import diagnostics, operational_store as store
+from . import diagnostics, external_intelligence, operational_store as store
 from .research_profile import ResearchProfile
 from .temporal_evidence import DatedOutcome, estimate_asof
 
@@ -45,6 +45,7 @@ def parser() -> argparse.ArgumentParser:
     selected = commands.add_parser('simulate-selected', help='Measure explicitly selected catalog versions')
     selected.add_argument('--db', type=Path, required=True)
     selected.add_argument('--input', type=Path, required=True)
+    external_intelligence.add_cli(commands)
     return root
 
 
@@ -100,6 +101,8 @@ def _evidence(path: Path, asof: str, minimum: int) -> dict:
 def main(argv: list[str] | None = None) -> int:
     args = parser().parse_args(argv)
     try:
+        if args.command == 'external':
+            return external_intelligence.run_cli(args)
         if args.command == 'simulate-selected':
             from .dataset_selection import DatasetSelection, simulate_selected
             data = _json_input(args.input)
