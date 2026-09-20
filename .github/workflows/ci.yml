@@ -27,7 +27,7 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           fetch-depth: 0 # Historical R7 code receipts remain anchored to their original commit.
-      - uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78 # v7
+      - uses: astral-sh/setup-uv@bec219d24cd3e171d82865faccec33120bb574f4 # v10.1.0
         with:
           version: "0.12.1"
           enable-cache: true
@@ -66,7 +66,7 @@ jobs:
           uv run --no-sync coverage report
       - name: Retain test evidence
         if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: quality-python-${{ matrix.python }}
           path: |
@@ -80,7 +80,7 @@ jobs:
       - name: Build identical distributions twice
         run: uv run --no-sync python tools/reproducible_build.py
       - name: Retain distribution evidence
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: distributions-python-${{ matrix.python }}
           path: |
@@ -117,7 +117,7 @@ jobs:
           PY
       - name: Retain installed operational evidence
         if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: operations-python-${{ matrix.python }}
           path: ${{ runner.temp }}/stocks-wheel-smoke/load/validation.json
@@ -170,7 +170,7 @@ jobs:
           PY
       - name: Retain complete tree scan
         if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: complete-tree-secrets
           path: |
