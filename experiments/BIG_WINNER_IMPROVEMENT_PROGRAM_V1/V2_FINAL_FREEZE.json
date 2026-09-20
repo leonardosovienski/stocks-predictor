@@ -1,11 +1,13 @@
 {
-  "schema_version": "V2_FINAL_FREEZE_V1",
+  "schema_version": "V2_FINAL_FREEZE_V2",
+  "freeze_revision": 2,
+  "supersedes_artifact_hash": "d8f4c956a6853cacab605c178b9ebe0830476d3b93b17cd9a324e912642d9d52",
   "final_v2_identifier": "BIG_WINNER_V2_MOMENTUM_12_1_BASELINE",
   "scientific_status": "UNVALIDATED_PROSPECTIVE_CANDIDATE",
-  "finalized_at": "2026-09-19T21:40:00-03:00",
+  "finalized_at": "2026-09-19T22:10:00-03:00",
   "selection_freeze_hash": "57892cdfa540f57cca70737ddcdbf4bf75c643d04091b5ea7926072ad4ba24a2",
-  "implementation_commit": "861429e",
-  "final_freeze_commit": "861429e",
+  "implementation_commit": "d6f1e1e",
+  "final_freeze_commit": "d6f1e1e",
   "configuration": {
     "feature": "MOMENTUM_12_1",
     "lookback": 252,
@@ -87,10 +89,10 @@
   },
   "code_hashes": {
     "stocks_predictor/big_winner_v2.py": "190b90e5a0939b5460b98db4c4d4dea357b282014d211e4f27620683d18547aa",
-    "stocks_predictor/prospective_big_winner.py": "2bd3f4dce04afbd7d364867ce61ca5668a0a98a975350c1afd518973203e22eb",
-    "stocks_predictor/big_winner_shadow.py": "0e94f2e87d8841142265c9876f7482d32203cdd1aa782efb6ec937ac56624c05"
+    "stocks_predictor/prospective_big_winner.py": "70ae53536e7c3b73078eea2ac5ae7b47e0de0ac8785b16a7edc61ad2017db98d",
+    "stocks_predictor/big_winner_shadow.py": "b8540d5a697aee2ee418b0f61e273d08cfcb4a2d83a602d06af6a8401b39f409"
   },
   "config_hash": "10ddbb06e8af8d7160591b0c1bbaea644f638d889dfec75611067284a6b22127",
   "artifact_hash_scope": "canonical JSON excluding artifact_hash",
-  "artifact_hash": "d8f4c956a6853cacab605c178b9ebe0830476d3b93b17cd9a324e912642d9d52"
+  "artifact_hash": "67febfd610f71f8af59e74e65095b093d615ca6c5c40a3ae9df50c97fe2f9e8b"
 }
