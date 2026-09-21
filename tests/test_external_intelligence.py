@@ -32,12 +32,15 @@ def csv_zip(files: dict[str, tuple[tuple[str, ...], list[list[str]]]]) -> bytes:
     return result.getvalue()
 
 
-def ipe_zip(year: int = 2026, *, subject: str = "Aviso") -> bytes:
+def ipe_zip(
+    year: int = 2026, *, subject: str = "Aviso", protocol: str = "12345", duplicate: bool = False,
+    reference: str = "2026-09-18",
+) -> bytes:
     row = [
-        CNPJ, "PETROLEO BRASILEIRO S.A. PETROBRAS", "9512", "2026-09-18", "Aviso aos Acionistas",
-        "Outros", "", subject, "2026-09-18", "AP", "12345", "1", "https://example.invalid/doc",
+        CNPJ, "PETROLEO BRASILEIRO S.A. PETROBRAS", "9512", reference, "Aviso aos Acionistas",
+        "Outros", "", subject, "2026-09-18", "AP", protocol, "1", "https://example.invalid/doc",
     ]
-    return csv_zip({f"ipe_cia_aberta_{year}.csv": (external.IPE_COLUMNS, [row])})
+    return csv_zip({f"ipe_cia_aberta_{year}.csv": (external.IPE_COLUMNS, [row, row] if duplicate else [row])})
 
 
 def vlmo_zip(year: int = 2026) -> bytes:
@@ -56,15 +59,21 @@ def vlmo_zip(year: int = 2026) -> bytes:
     })
 
 
-def buyback_zip() -> bytes:
+def buyback_zip(*, include_bad: bool = False) -> bytes:
     main = [
         "P-1", CNPJ, "PETROBRAS", "2026-09-01", "2027-03-01", "Ativo", "Compra",
         "Tesouraria", "Permanencia", "100", "200",
     ]
     intermediary = ["P-1", "60.746.948/0001-12", "BANCO BRADESCO S.A."]
     quantity = ["P-1", "Preferencial", "PN", "1000", "200"]
+    rows = [main]
+    if include_bad:
+        rows.append([
+            "P-BAD", CNPJ, "PETROBRAS", "2026-09-10", "2026-09-01", "Encerrado", "Compra",
+            "", "", "", "",
+        ])
     return csv_zip({
-        "cia_aberta_recompra_acoes.csv": (external.BUYBACK_MAIN, [main]),
+        "cia_aberta_recompra_acoes.csv": (external.BUYBACK_MAIN, rows),
         "cia_aberta_recompra_acoes_intermediarios.csv": (
             external.BUYBACK_INTERMEDIARIES, [intermediary]
         ),
@@ -84,7 +93,7 @@ def b3_payload(table_name: str) -> bytes:
     return json.dumps({
         "status": 4,
         "table": {"name": table_name, "pageCount": 1,
-                  "columns": [{"name": name} for name in expected], "values": [values]},
+                  "version": 1, "columns": [{"name": name} for name in expected], "values": [values]},
     }).encode()
 
 
@@ -135,10 +144,23 @@ class ExternalIntelligenceTests(unittest.TestCase):
             external.resolve_tradable_session("2026-09-18T23:00:00Z", []),
             (None, "NO_SUBSEQUENT_OBSERVED_B3_SESSION"),
         )
+        self.assertTrue(external._observation(
+            self.conn, source_version_id=self._source_version_for_temporal_test(),
+            family="future-event", natural_key="future", payload={}, available_at=STAMP,
+            sessions=[], reference_at="2026-10-01",
+        ))
         with self.assertRaises(external.TemporalError):
             external.ingest_ipe(
                 self.conn, self.raw, 2026, acquired(ipe_zip(), "2026-09-17T15:00:00Z"), []
             )
+
+    def _source_version_for_temporal_test(self) -> str:
+        source_id, _ = external._source_version(
+            self.conn, self.raw, acquired(b"temporal-test"), publisher="TEST", dataset="TEMPORAL",
+            logical_period="2026", source_url="https://example.invalid/source",
+            parser_version="test/1",
+        )
+        return source_id
 
     def test_all_four_source_families_parse_with_explicit_lineage(self):
         b3 = {name: acquired(b3_payload(name)) for name in external.B3_TABLES}
@@ -146,11 +168,14 @@ class ExternalIntelligenceTests(unittest.TestCase):
             self.conn, self.raw, "2026-09-18", b3, ["2026-09-22"]
         )
         vlmo_result = external.ingest_vlmo(self.conn, self.raw, 2026, acquired(vlmo_zip()), [])
-        buyback_result = external.ingest_buyback(self.conn, self.raw, acquired(buyback_zip()), [])
+        buyback_result = external.ingest_buyback(
+            self.conn, self.raw, acquired(buyback_zip(include_bad=True)), []
+        )
         ipe_result = external.ingest_ipe(self.conn, self.raw, 2026, acquired(ipe_zip()), [])
         self.assertEqual(b3_result["rows_read"], 2)
         self.assertEqual(vlmo_result["rows_read"], 1)
-        self.assertEqual(buyback_result["rows_read"], 1)
+        self.assertEqual(buyback_result["rows_read"], 2)
+        self.assertEqual(buyback_result["rows_rejected"], 1)
         self.assertEqual(ipe_result["rows_read"], 1)
         direct = self.conn.execute(
             "SELECT COUNT(*) FROM external_observations WHERE identity_status='DIRECT_B3_TICKER_ISIN'"
@@ -215,6 +240,26 @@ class ExternalIntelligenceTests(unittest.TestCase):
         ):
             with self.assertRaises(external.ExternalIntelligenceError):
                 external.validate_source_url(url)
+
+    def test_ipe_without_protocol_uses_explicit_official_composite_identity(self):
+        result = external.ingest_ipe(self.conn, self.raw, 2026, acquired(ipe_zip(protocol="")), [])
+        self.assertEqual(result["rows_persisted"], 1)
+        payload = json.loads(self.conn.execute(
+            "SELECT payload_json FROM external_observations"
+        ).fetchone()[0])
+        self.assertIsNone(payload["document_id"])
+        self.assertEqual(payload["document_identity_basis"], "OFFICIAL_METADATA_COMPOSITE_NO_PROTOCOL")
+
+    def test_duplicate_source_rows_remain_in_the_rejection_denominator(self):
+        result = external.ingest_ipe(self.conn, self.raw, 2026, acquired(ipe_zip(duplicate=True)), [])
+        self.assertEqual((result["rows_read"], result["rows_persisted"], result["rows_rejected"]), (2, 1, 1))
+        self.assertEqual(self.conn.execute("SELECT COUNT(*) FROM external_rejections").fetchone()[0], 1)
+
+    def test_implausibly_far_future_ipe_reference_is_preserved_as_rejection(self):
+        result = external.ingest_ipe(
+            self.conn, self.raw, 2026, acquired(ipe_zip(reference="3036-03-20")), []
+        )
+        self.assertEqual((result["rows_read"], result["rows_persisted"], result["rows_rejected"]), (1, 0, 1))
 
 
 if __name__ == "__main__":

@@ -1,0 +1,46 @@
+{
+  "schema_version": "2",
+  "jobs": [
+    {
+      "id": "stocks-external-b3-lending-2026-09-18",
+      "job_type": "MARKET_COLLECTION",
+      "economic_key": {
+        "domain": "stocks-external-intelligence",
+        "event_id": "b3-lending-2026-09-18",
+        "market": "B3",
+        "decision_stage": "research-only-collection",
+        "logical_time": "2026-09-18T00:00:00Z"
+      },
+      "command": [
+        "python",
+        "-m",
+        "stocks_predictor",
+        "external",
+        "collect",
+        "b3-lending",
+        "--db",
+        "C:\\STOCKS\\work\\external-intelligence\\external.sqlite",
+        "--raw-root",
+        "C:\\STOCKS\\work\\external-intelligence\\raw",
+        "--receipt",
+        "C:\\STOCKS\\work\\external-intelligence\\receipts\\b3-2026-09-18.json",
+        "--reference-date",
+        "2026-09-18"
+      ],
+      "cwd": "C:\\STOCKS\\stocks-predictor",
+      "timeout_seconds": 900,
+      "heartbeat_interval_seconds": 10,
+      "max_output_bytes": 1048576,
+      "expected_artifact": "C:\\STOCKS\\work\\external-intelligence\\receipts\\b3-2026-09-18.json",
+      "runtime": {
+        "backend": "local",
+        "root": "C:\\STOCKS\\work\\predictor-ops"
+      },
+      "provenance": {
+        "domain": "stocks",
+        "mode": "COLLECTION_ONLY",
+        "contract": "EXTERNAL_INTELLIGENCE_V1"
+      }
+    }
+  ]
+}

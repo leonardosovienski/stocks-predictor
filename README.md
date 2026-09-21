@@ -1,5 +1,14 @@
 # Stocks Predictor
 
+## Candidato EXTERNAL_INTELLIGENCE_V1 — 20/09/2026
+
+A camada aditiva de staging externo B3/CVM está documentada em
+[docs/external_intelligence/README.md](docs/external_intelligence/README.md), com o relatório factual
+em [docs/external_intelligence/REPORT.md](docs/external_intelligence/REPORT.md). Ela preserva raw
+endereçado por SHA-256, versões imutáveis, PIT/identidade/lineage e rejeições auditáveis. Não alimenta
+fatores ou BIG_WINNER_V2, não publica no CAIN e não ativa agendamento. Evidência científica e econômica
+permanecem `NOT_EVALUATED`.
+
 > **Continuidade vigente:** [auditoria de integração e consolidação](docs/INTEGRATION_AUDIT_20260912.md). Notas datadas abaixo são históricas; publicação e aceite devem ser conferidos pelo SHA e pelos recibos atuais.
 
 

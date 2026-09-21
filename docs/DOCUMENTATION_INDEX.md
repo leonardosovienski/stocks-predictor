@@ -8,7 +8,7 @@ Comece por [README](../README.md), [estado atual](../STOCKS_CURRENT_STATE.md),
 A [revisão dos arquivos](maintenance/2026-09-10-files/README.md) explica limpeza,
 preservação, dados externos e referências históricas sem destino direto.
 
-176 Markdown versionados. Classificação não certifica todas as afirmações históricas.
+211 Markdown versionados. Classificação não certifica todas as afirmações históricas.
 URLs externas e fragmentos/âncoras não são validados por este verificador.
 
 | Documento | Papel |
@@ -55,6 +55,8 @@ URLs externas e fragmentos/âncoras não são validados por este verificador.
 | [docs/engineering/2026-09-10-r8/PLAN.md](engineering/2026-09-10-r8/PLAN.md) | REGISTRO_DATADO |
 | [docs/engineering/2026-09-10-r8/README.md](engineering/2026-09-10-r8/README.md) | REGISTRO_DATADO |
 | [docs/engineering/2026-09-10-r8/RUNBOOK.md](engineering/2026-09-10-r8/RUNBOOK.md) | REPRODUCAO_COM_ESCOPO_DATADO |
+| [docs/external_intelligence/README.md](external_intelligence/README.md) | REGISTRO_DATADO |
+| [docs/external_intelligence/REPORT.md](external_intelligence/REPORT.md) | REGISTRO_DATADO |
 | [docs/maintenance/2026-09-10-files/README.md](maintenance/2026-09-10-files/README.md) | REGISTRO_DATADO |
 | [docs/open_source_research/OSS-20260911-01/BASELINE.md](open_source_research/OSS-20260911-01/BASELINE.md) | REGISTRO_DATADO |
 | [docs/open_source_research/OSS-20260911-01/CAPABILITY_MATRIX.md](open_source_research/OSS-20260911-01/CAPABILITY_MATRIX.md) | REGISTRO_DATADO |
@@ -124,6 +126,39 @@ URLs externas e fragmentos/âncoras não são validados por este verificador.
 | [experiments/BIG_WINNER_DETECTION_V1/metrics/temporal_blocks/README.md](../experiments/BIG_WINNER_DETECTION_V1/metrics/temporal_blocks/README.md) | REGISTRO_DATADO |
 | [experiments/BIG_WINNER_DETECTION_V1/miss_analysis/README.md](../experiments/BIG_WINNER_DETECTION_V1/miss_analysis/README.md) | REGISTRO_DATADO |
 | [experiments/BIG_WINNER_DETECTION_V1/winner_cards/README.md](../experiments/BIG_WINNER_DETECTION_V1/winner_cards/README.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/BASE_RATE_STRUCTURE.md](../experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/BASE_RATE_STRUCTURE.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/BIG_WINNER_DETECTION_V2_DESIGN.md](../experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/BIG_WINNER_DETECTION_V2_DESIGN.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/DECISION_LOG.md](../experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/DECISION_LOG.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/DETECTOR_OVERLAP_ANALYSIS.md](../experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/DETECTOR_OVERLAP_ANALYSIS.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/FINAL_IMPROVEMENT_REPORT.md](../experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/FINAL_IMPROVEMENT_REPORT.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/IMPROVEMENT_REGISTER.md](../experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/IMPROVEMENT_REGISTER.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/MISS_TAXONOMY.md](../experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/MISS_TAXONOMY.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/MOMENTUM_12_1_POSTMORTEM.md](../experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/MOMENTUM_12_1_POSTMORTEM.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/MOMENTUM_6_1_POSTMORTEM.md](../experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/MOMENTUM_6_1_POSTMORTEM.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/NEGATIVE_SIGNAL_LEARNINGS.md](../experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/NEGATIVE_SIGNAL_LEARNINGS.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/POSTMORTEM_V1_PRICE.md](../experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/POSTMORTEM_V1_PRICE.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/PRE_WINNER_RANK_TRAJECTORIES.md](../experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/PRE_WINNER_RANK_TRAJECTORIES.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/RANK_PERSISTENCE_ANALYSIS.md](../experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/RANK_PERSISTENCE_ANALYSIS.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/README.md](../experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/README.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/REGIME_ANALYSIS.md](../experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/REGIME_ANALYSIS.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/REJECTED_IDEAS.md](../experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/REJECTED_IDEAS.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/REPAIR_LOG.md](../experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/REPAIR_LOG.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/REVERSAL_21_POSTMORTEM.md](../experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/REVERSAL_21_POSTMORTEM.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/ROADMAP.md](../experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/ROADMAP.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/SECTOR_ANALYSIS.md](../experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/SECTOR_ANALYSIS.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/SIGNAL_CONCORDANCE_ANALYSIS.md](../experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/SIGNAL_CONCORDANCE_ANALYSIS.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_PRICE_DETECTION_V1/FINAL_REPORT.md](../experiments/BIG_WINNER_PRICE_DETECTION_V1/FINAL_REPORT.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_PRICE_DETECTION_V1/README.md](../experiments/BIG_WINNER_PRICE_DETECTION_V1/README.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_PRICE_DETECTION_V1/audit/corporate_action_audit.md](../experiments/BIG_WINNER_PRICE_DETECTION_V1/audit/corporate_action_audit.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_PRICE_DETECTION_V1/audit/coverage_audit.md](../experiments/BIG_WINNER_PRICE_DETECTION_V1/audit/coverage_audit.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_PRICE_DETECTION_V1/audit/data_contract.md](../experiments/BIG_WINNER_PRICE_DETECTION_V1/audit/data_contract.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_PRICE_DETECTION_V1/audit/detector_registry.md](../experiments/BIG_WINNER_PRICE_DETECTION_V1/audit/detector_registry.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_PRICE_DETECTION_V1/audit/invariance_audit.md](../experiments/BIG_WINNER_PRICE_DETECTION_V1/audit/invariance_audit.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_PRICE_DETECTION_V1/audit/leakage_audit.md](../experiments/BIG_WINNER_PRICE_DETECTION_V1/audit/leakage_audit.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_PRICE_DETECTION_V1/audit/missingness_audit.md](../experiments/BIG_WINNER_PRICE_DETECTION_V1/audit/missingness_audit.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_PRICE_DETECTION_V1/audit/price_adjustment_audit.md](../experiments/BIG_WINNER_PRICE_DETECTION_V1/audit/price_adjustment_audit.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_PRICE_DETECTION_V1/audit/replay_fidelity.md](../experiments/BIG_WINNER_PRICE_DETECTION_V1/audit/replay_fidelity.md) | REGISTRO_DATADO |
+| [experiments/BIG_WINNER_PRICE_DETECTION_V1/audit/system_contract.md](../experiments/BIG_WINNER_PRICE_DETECTION_V1/audit/system_contract.md) | REGISTRO_DATADO |
 | [reports/h10_verdict_adhoc.md](../reports/h10_verdict_adhoc.md) | REGISTRO_DATADO |
 | [reports/h11_verdict_adhoc.md](../reports/h11_verdict_adhoc.md) | REGISTRO_DATADO |
 | [reports/h12_verdict_adhoc.md](../reports/h12_verdict_adhoc.md) | REGISTRO_DATADO |

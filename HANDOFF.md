@@ -1,5 +1,13 @@
 # Continuidade do Stocks Predictor
 
+## Candidato EXTERNAL_INTELLIGENCE_V1 — 20/09/2026
+
+Retome pela [arquitetura/runbook](docs/external_intelligence/README.md) e pelo
+[relatório de implementação](docs/external_intelligence/REPORT.md). A nova camada é um staging externo
+separado, imutável e research-only; não promover observações a features nem publicar/ativar jobs sem
+novo aceite. Os recibos QA ficam em `C:\STOCKS\work\external-intelligence-v1-qa` e incluem também as
+tentativas que falharam de forma segura.
+
 > **Continuidade vigente:** [auditoria de integração e consolidação](docs/INTEGRATION_AUDIT_20260912.md). Notas datadas abaixo são históricas; publicação e aceite devem ser conferidos pelo SHA e pelos recibos atuais.
 
 

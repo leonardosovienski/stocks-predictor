@@ -51,6 +51,7 @@ B3_TABLES = {
         ),
     ),
 }
+B3_PAGE_SIZE = 1000
 
 VLMO_MAIN = (
     "CNPJ_Companhia", "Nome_Companhia", "Data_Referencia", "Versao", "Codigo_CVM",
@@ -168,9 +169,27 @@ EXTERNAL_MIGRATIONS: list[tuple[str, str]] = [
             SELECT RAISE(ABORT,'external security links are immutable'); END;
         CREATE TRIGGER external_links_no_delete BEFORE DELETE ON external_security_links BEGIN
             SELECT RAISE(ABORT,'external security links are immutable'); END;
-        CREATE TRIGGER external_receipts_no_update BEFORE UPDATE ON external_receipts BEGIN
+    """),
+    ("external_0002_rejections", """
+        CREATE TABLE external_rejections (
+            rejection_id TEXT PRIMARY KEY,
+            source_version_id TEXT NOT NULL REFERENCES external_source_versions(source_version_id),
+            family TEXT NOT NULL,
+            natural_key TEXT NOT NULL,
+            reason TEXT NOT NULL,
+            payload_json TEXT NOT NULL
+        );
+        CREATE TRIGGER external_rejections_no_update BEFORE UPDATE ON external_rejections BEGIN
+            SELECT RAISE(ABORT,'external rejections are immutable'); END;
+        CREATE TRIGGER external_rejections_no_delete BEFORE DELETE ON external_rejections BEGIN
+            SELECT RAISE(ABORT,'external rejections are immutable'); END;
+    """),
+    ("external_0003_receipt_immutability", """
+        CREATE TRIGGER IF NOT EXISTS external_receipts_no_update
+        BEFORE UPDATE ON external_receipts BEGIN
             SELECT RAISE(ABORT,'external receipts are immutable'); END;
-        CREATE TRIGGER external_receipts_no_delete BEFORE DELETE ON external_receipts BEGIN
+        CREATE TRIGGER IF NOT EXISTS external_receipts_no_delete
+        BEFORE DELETE ON external_receipts BEGIN
             SELECT RAISE(ABORT,'external receipts are immutable'); END;
     """),
 ]
@@ -458,8 +477,6 @@ def _observation(
     available_at = utc_timestamp(available_at)
     if reference_at is not None:
         reference_at = iso_date(reference_at[:10])
-        if reference_at > available_at[:10]:
-            raise TemporalError("reference date is after collector first-seen time")
     if event_at is not None:
         event_at = iso_date(event_at[:10])
     if received_at is not None:
@@ -514,11 +531,28 @@ def _result(source_versions: list[str], read: int, persisted: int, rejected: int
     }
 
 
+def _reject(
+    conn: sqlite3.Connection,
+    *,
+    source_version_id: str,
+    family: str,
+    natural_key: Any,
+    reason: str,
+    payload: dict[str, Any],
+) -> None:
+    key = canonical_json(natural_key)
+    rejection_id = digest_identity(source_version_id, family, key, reason)
+    conn.execute(
+        "INSERT OR IGNORE INTO external_rejections VALUES (?,?,?,?,?,?)",
+        (rejection_id, source_version_id, family, key, reason, canonical_json(payload)),
+    )
+
+
 def ingest_b3_lending(
     conn: sqlite3.Connection,
     raw_root: Path,
     reference_date: str,
-    acquired_by_table: dict[str, dict[str, Any]],
+    acquired_by_table: dict[str, dict[str, Any] | list[dict[str, Any]]],
     sessions: list[str],
 ) -> dict[str, Any]:
     reference_date = iso_date(reference_date)
@@ -526,45 +560,64 @@ def ingest_b3_lending(
     rows_read = persisted = 0
     conn.execute("SAVEPOINT external_b3")
     try:
-        for table_name, acquired in acquired_by_table.items():
+        for table_name, acquired_value in acquired_by_table.items():
             if table_name not in B3_TABLES:
                 raise SchemaDriftError(f"unsupported B3 table {table_name}")
             dataset, expected = B3_TABLES[table_name]
-            document = _json_payload(acquired["payload"])
-            table = document.get("table") if isinstance(document, dict) else None
-            if not isinstance(table, dict) or table.get("name") != table_name:
-                raise SchemaDriftError(f"B3 response does not contain table {table_name}")
-            columns = tuple(column.get("name") for column in table.get("columns", []))
-            if columns != expected:
-                raise SchemaDriftError(f"{table_name}: column contract changed")
-            if table.get("pageCount") != 1 or document.get("status") not in (4, 5):
-                raise SchemaDriftError(f"{table_name}: incomplete or unpublished response")
-            version_id, _ = _source_version(
-                conn, raw_root, acquired, publisher="B3", dataset=dataset,
-                logical_period=reference_date,
-                source_url=f"https://arquivos.b3.com.br/bdi/table/{table_name}/{reference_date}/{reference_date}/1/20000",
-                parser_version=f"b3-bdi-{table_name}/1",
-            )
-            source_versions.append(version_id)
-            for values in table.get("values", []):
-                if not isinstance(values, list) or len(values) != len(expected):
-                    raise SchemaDriftError(f"{table_name}: malformed row")
-                row = dict(zip(expected, values))
-                if str(row["DtRef"])[:10] != reference_date or str(row["RptDt"])[:10] != reference_date:
-                    raise TemporalError(f"{table_name}: row date differs from requested period")
-                ticker, isin = str(row["TckrSymb"]).strip(), str(row["ISIN"]).strip()
-                if not re.fullmatch(r"[A-Z0-9]{5,12}", ticker) or not re.fullmatch(r"[A-Z]{2}[A-Z0-9]{9}\d", isin):
-                    raise IdentityError(f"{table_name}: invalid ticker or ISIN")
-                normalized = {key: (decimal_text(value, optional=True) if key not in expected[:7] else value)
-                              for key, value in row.items()}
-                natural = [reference_date, ticker, isin, row.get("Type"), row["Market"]]
-                if _observation(
-                    conn, source_version_id=version_id, family=dataset, natural_key=natural,
-                    payload=normalized, available_at=acquired["fetched_at"], sessions=sessions,
-                    ticker=ticker, isin=isin, reference_at=reference_date, identity_status="DIRECT_B3_TICKER_ISIN",
-                ):
-                    persisted += 1
-                rows_read += 1
+            pages = acquired_value if isinstance(acquired_value, list) else [acquired_value]
+            expected_table_version: int | None = None
+            for page_number, acquired in enumerate(pages, 1):
+                document = _json_payload(acquired["payload"])
+                table = document.get("table") if isinstance(document, dict) else None
+                if not isinstance(table, dict) or table.get("name") != table_name:
+                    raise SchemaDriftError(f"B3 response does not contain table {table_name}")
+                columns = tuple(column.get("name") for column in table.get("columns", []))
+                if columns != expected:
+                    raise SchemaDriftError(f"{table_name}: column contract changed")
+                if table.get("pageCount") != len(pages) or document.get("status") not in (4, 5):
+                    raise SchemaDriftError(f"{table_name}: incomplete or unpublished response")
+                table_version = table.get("version")
+                if not isinstance(table_version, int) or isinstance(table_version, bool) or table_version < 1:
+                    raise SchemaDriftError(f"{table_name}: invalid table version")
+                if expected_table_version is None:
+                    expected_table_version = table_version
+                elif table_version != expected_table_version:
+                    raise SchemaDriftError(f"{table_name}: table version changed during pagination")
+                logical_period = f"{reference_date}/page-{page_number:04d}-of-{len(pages):04d}"
+                version_id, _ = _source_version(
+                    conn, raw_root, acquired, publisher="B3", dataset=dataset,
+                    logical_period=logical_period,
+                    source_url=(
+                        f"https://arquivos.b3.com.br/bdi/table/{table_name}/{reference_date}/"
+                        f"{reference_date}/{page_number}/{B3_PAGE_SIZE}"
+                    ),
+                    parser_version=f"b3-bdi-{table_name}/1",
+                )
+                source_versions.append(version_id)
+                for values in table.get("values", []):
+                    if not isinstance(values, list) or len(values) != len(expected):
+                        raise SchemaDriftError(f"{table_name}: malformed row")
+                    row = dict(zip(expected, values))
+                    if str(row["DtRef"])[:10] != reference_date or str(row["RptDt"])[:10] != reference_date:
+                        raise TemporalError(f"{table_name}: row date differs from requested period")
+                    ticker, isin = str(row["TckrSymb"]).strip(), str(row["ISIN"]).strip()
+                    if not re.fullmatch(r"[A-Z0-9]{5,12}", ticker) or not re.fullmatch(
+                        r"[A-Z]{2}[A-Z0-9]{9}\d", isin
+                    ):
+                        raise IdentityError(f"{table_name}: invalid ticker or ISIN")
+                    normalized = {
+                        key: (decimal_text(value, optional=True) if key not in expected[:7] else value)
+                        for key, value in row.items()
+                    }
+                    natural = [reference_date, ticker, isin, row.get("Type"), row["Market"]]
+                    if _observation(
+                        conn, source_version_id=version_id, family=dataset, natural_key=natural,
+                        payload=normalized, available_at=acquired["fetched_at"], sessions=sessions,
+                        ticker=ticker, isin=isin, reference_at=reference_date,
+                        identity_status="DIRECT_B3_TICKER_ISIN",
+                    ):
+                        persisted += 1
+                    rows_read += 1
         conn.execute("RELEASE external_b3")
     except BaseException:
         conn.execute("ROLLBACK TO external_b3")
@@ -660,7 +713,7 @@ def ingest_buyback(
             source_url="https://dados.cvm.gov.br/dados/CIA_ABERTA/EVENTOS/RECOMPRA_ACOES/DADOS/cia_aberta_recompra_acoes.zip",
             parser_version="cvm-buyback/1",
         )
-        persisted = 0
+        persisted = rejected = 0
         for row in main:
             program = row["ID_Programa"].strip()
             if not program:
@@ -669,7 +722,12 @@ def ingest_buyback(
             start = iso_date(row["Data_Deliberacao"])
             end = iso_date(row["Data_Final_Prazo"]) if row["Data_Final_Prazo"].strip() else None
             if end and end < start:
-                raise TemporalError(f"buyback program {program} ends before deliberation")
+                _reject(
+                    conn, source_version_id=version_id, family="cvm-buyback", natural_key=program,
+                    reason="PROGRAM_END_BEFORE_DELIBERATION", payload=row,
+                )
+                rejected += 1
+                continue
             normalized_quantities = []
             for item in by_program_q.get(program, []):
                 normalized_quantities.append({
@@ -713,7 +771,7 @@ def ingest_buyback(
         conn.execute("ROLLBACK TO external_buyback")
         conn.execute("RELEASE external_buyback")
         raise
-    return _result([version_id], len(main), persisted)
+    return _result([version_id], len(main), persisted, rejected)
 
 
 def ingest_ipe(
@@ -722,23 +780,46 @@ def ingest_ipe(
     rows = _rows_from_zip(acquired["payload"], f"ipe_cia_aberta_{year}.csv", IPE_COLUMNS)
     conn.execute("SAVEPOINT external_ipe")
     try:
-        version_id, _ = _source_version(
+        version_id, source_existed = _source_version(
             conn, raw_root, acquired, publisher="CVM", dataset="IPE_METADATA", logical_period=str(year),
             source_url=f"https://dados.cvm.gov.br/dados/cia_aberta/DOC/IPE/DADOS/ipe_cia_aberta_{year}.zip",
             parser_version="cvm-ipe-metadata/1",
         )
-        persisted = 0
-        for row in rows:
+        persisted = rejected = 0
+        collection_year = datetime.fromisoformat(
+            utc_timestamp(acquired["fetched_at"]).replace("Z", "+00:00")
+        ).astimezone(SAO_PAULO).year
+        for source_row, row in enumerate(rows, 2):
             cnpj = digits(row["CNPJ_Companhia"])
             reference = iso_date(row["Data_Referencia"][:10])
             received = iso_date(row["Data_Entrega"][:10])
+            if date.fromisoformat(reference).year > collection_year + 50:
+                _reject(
+                    conn, source_version_id=version_id, family="cvm-ipe-metadata",
+                    natural_key=["IMPLAUSIBLE_REFERENCE_DATE", source_row],
+                    reason="REFERENCE_DATE_MORE_THAN_50_YEARS_AFTER_COLLECTION", payload=row,
+                )
+                rejected += 1
+                continue
             version = int(row["Versao"])
             protocol = row["Protocolo_Entrega"].strip()
-            if not protocol or version < 1:
+            download_reference = row["Link_Download"].strip()
+            if version < 1:
                 raise IdentityError("invalid IPE document identity")
+            if protocol:
+                natural_key: list[Any] = ["PROTOCOL", protocol, version]
+                identity_basis = "CVM_PROTOCOL_VERSION"
+            else:
+                natural_key = [
+                    "OFFICIAL_COMPOSITE", cnpj, reference, received, row["Categoria"].strip(),
+                    row["Tipo"].strip(), row["Especie"].strip(), row["Assunto"].strip(),
+                    version, download_reference,
+                ]
+                identity_basis = "OFFICIAL_METADATA_COMPOSITE_NO_PROTOCOL"
             normalized = {
-                "document_id": protocol,
+                "document_id": protocol or None,
                 "document_version": version,
+                "document_identity_basis": identity_basis,
                 "company": row["Nome_Companhia"].strip(),
                 "cvm_code": row["Codigo_CVM"].strip(),
                 "category": row["Categoria"].strip(),
@@ -746,21 +827,29 @@ def ingest_ipe(
                 "species": row["Especie"].strip(),
                 "subject": row["Assunto"].strip(),
                 "presentation_type": row["Tipo_Apresentacao"].strip(),
-                "download_reference": row["Link_Download"].strip(),
+                "download_reference": download_reference,
                 "semantic_classification": "NOT_IMPLEMENTED",
             }
-            if _observation(
+            inserted = _observation(
                 conn, source_version_id=version_id, family="cvm-ipe-metadata",
-                natural_key=[protocol, version], payload=normalized, available_at=acquired["fetched_at"],
+                natural_key=natural_key, payload=normalized, available_at=acquired["fetched_at"],
                 sessions=sessions, company_cnpj=cnpj, reference_at=reference, received_at=received,
-            ):
+            )
+            if inserted:
                 persisted += 1
+            elif not source_existed:
+                _reject(
+                    conn, source_version_id=version_id, family="cvm-ipe-metadata",
+                    natural_key=["DUPLICATE_SOURCE_ROW", source_row, natural_key],
+                    reason="DUPLICATE_DOCUMENT_IDENTITY_IN_SOURCE", payload=row,
+                )
+                rejected += 1
         conn.execute("RELEASE external_ipe")
     except BaseException:
         conn.execute("ROLLBACK TO external_ipe")
         conn.execute("RELEASE external_ipe")
         raise
-    return _result([version_id], len(rows), persisted)
+    return _result([version_id], len(rows), persisted, rejected)
 
 
 def ingest_fca_identity(
@@ -771,13 +860,13 @@ def ingest_fca_identity(
     records = derive_fca_securities(acquired["payload"], year)
     conn.execute("SAVEPOINT external_fca_identity")
     try:
-        version_id, _ = _source_version(
+        version_id, source_existed = _source_version(
             conn, raw_root, acquired, publisher="CVM", dataset="FCA_SECURITY_IDENTITY",
             logical_period=str(year),
             source_url=f"https://dados.cvm.gov.br/dados/cia_aberta/DOC/FCA/DADOS/fca_cia_aberta_{year}.zip",
             parser_version="cvm-fca-security-identity/1",
         )
-        persisted = 0
+        persisted = rejected = 0
         for record in records:
             link_id = digest_identity(
                 record["cnpj"], record["ticker"], record["trading_start"], record["trading_end"],
@@ -791,13 +880,21 @@ def ingest_fca_identity(
                     record["trading_end"], record["available_at"], version_id,
                 ),
             )
-            persisted += conn.total_changes > before
+            inserted = conn.total_changes > before
+            persisted += inserted
+            if not inserted and not source_existed:
+                _reject(
+                    conn, source_version_id=version_id, family="cvm-fca-security-identity",
+                    natural_key=["DUPLICATE_SOURCE_ROW", record["source_row"], link_id],
+                    reason="DUPLICATE_SECURITY_INTERVAL_IN_SOURCE", payload=record,
+                )
+                rejected += 1
         conn.execute("RELEASE external_fca_identity")
     except BaseException:
         conn.execute("ROLLBACK TO external_fca_identity")
         conn.execute("RELEASE external_fca_identity")
         raise
-    return _result([version_id], len(records), int(persisted))
+    return _result([version_id], len(records), int(persisted), rejected)
 
 
 def verify(conn: sqlite3.Connection, raw_root: Path) -> dict[str, Any]:
@@ -856,6 +953,7 @@ def verify(conn: sqlite3.Connection, raw_root: Path) -> dict[str, Any]:
         "schema_version": SCHEMA_VERSION,
         "source_versions": len(versions),
         "observations": len(observations),
+        "rejections": conn.execute("SELECT COUNT(*) FROM external_rejections").fetchone()[0],
         "security_links": conn.execute("SELECT COUNT(*) FROM external_security_links").fetchone()[0],
         "issues": issues,
         "staging_is_factor_input": False,
@@ -880,6 +978,11 @@ def status(conn: sqlite3.Connection) -> dict[str, Any]:
             " WHERE s.dataset=?",
             (dataset,),
         ).fetchone()
+        rejected = conn.execute(
+            "SELECT COUNT(*) FROM external_rejections r"
+            " JOIN external_source_versions s USING(source_version_id) WHERE s.dataset=?",
+            (dataset,),
+        ).fetchone()[0]
         result.append({
             "source": dataset,
             "last_logical_period": latest[1],
@@ -887,6 +990,7 @@ def status(conn: sqlite3.Connection) -> dict[str, Any]:
             "last_source_version": latest[3],
             "last_hash": latest[4],
             "row_count": count,
+            "rejected_row_count": rejected,
             "latest_reference_at": reference,
             "latest_available_at": available,
             "pit_status": pit,
@@ -940,13 +1044,24 @@ def _collect(args: argparse.Namespace, conn: sqlite3.Connection) -> dict[str, An
     if args.collector == "b3-lending":
         if args.source_file:
             raise ValueError("b3-lending uses two official responses and does not accept one --source-file")
-        acquired = {}
+        acquired: dict[str, list[dict[str, Any]]] = {}
         for table_name in B3_TABLES:
-            url = (
+            base = (
                 f"https://arquivos.b3.com.br/bdi/table/{table_name}/{args.reference_date}/"
-                f"{args.reference_date}/1/20000"
+                f"{args.reference_date}"
             )
-            acquired[table_name] = fetch_bytes(url, body=b"{}", timeout=args.timeout)
+            first = fetch_bytes(f"{base}/1/{B3_PAGE_SIZE}", body=b"{}", timeout=args.timeout)
+            first_document = _json_payload(first["payload"])
+            first_table = first_document.get("table") if isinstance(first_document, dict) else None
+            page_count = first_table.get("pageCount") if isinstance(first_table, dict) else None
+            if not isinstance(page_count, int) or isinstance(page_count, bool) or not 1 <= page_count <= 100:
+                raise SchemaDriftError(f"{table_name}: invalid page count")
+            pages = [first]
+            for page_number in range(2, page_count + 1):
+                pages.append(fetch_bytes(
+                    f"{base}/{page_number}/{B3_PAGE_SIZE}", body=b"{}", timeout=args.timeout
+                ))
+            acquired[table_name] = pages
         return ingest_b3_lending(conn, args.raw_root, args.reference_date, acquired, sessions)
     if args.source_file:
         if not args.observed_at:

@@ -1,5 +1,13 @@
 # Estado atual do Stocks Predictor
 
+## Candidato EXTERNAL_INTELLIGENCE_V1 — 20/09/2026
+
+Foi implementada uma fundação aditiva de staging B3/CVM com raw por SHA-256, versionamento imutável,
+PIT/identidade/lineage, CLI, receipts, verify/status e compatibilidade Ops não ativada. Consulte
+[docs/external_intelligence/REPORT.md](docs/external_intelligence/REPORT.md). Ela não altera
+BIG_WINNER_V2, fatores, ranking, portfólio ou publicação CAIN. Estados científico e econômico:
+`NOT_EVALUATED`.
+
 > **Continuidade vigente:** [auditoria de integração e consolidação](docs/INTEGRATION_AUDIT_20260912.md). Notas datadas abaixo são históricas; publicação e aceite devem ser conferidos pelo SHA e pelos recibos atuais.
 
 
