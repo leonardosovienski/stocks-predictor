@@ -1,0 +1,252 @@
+{
+  "audit_version": "1.0.0",
+  "created_at": "2026-09-21T01:20:45.8006163-03:00",
+  "created_at_commit": "391faa52a420a2519802e1c409f90a1233a96fc9",
+  "observed_at": "2026-09-21T01:20:45.8006163-03:00",
+  "official_urls": {
+    "cda_dataset": "https://dados.cvm.gov.br/dataset/fi-doc-cda",
+    "cda_ckan_api": "https://dados.cvm.gov.br/api/3/action/package_show?id=fi-doc-cda",
+    "cda_dictionary": "https://dados.cvm.gov.br/dados/FI/DOC/CDA/META/meta_cda_fi_txt.zip",
+    "cda_observed_data_file": "https://dados.cvm.gov.br/dados/FI/DOC/CDA/DADOS/cda_fi_202608.zip",
+    "entrega_dataset": "https://dados.cvm.gov.br/dataset/fi-doc-entrega",
+    "entrega_ckan_api": "https://dados.cvm.gov.br/api/3/action/package_show?id=fi-doc-entrega",
+    "entrega_dictionary": "https://dados.cvm.gov.br/dados/FI/DOC/ENTREGA/META/meta_fi_entrega_documento.txt",
+    "entrega_observed_data_file": "https://dados.cvm.gov.br/dados/FI/DOC/ENTREGA/DADOS/fi_entrega_documento_202609.zip",
+    "portal_change_log": "https://dados.cvm.gov.br/pages/novidades"
+  },
+  "source_documents": [
+    {
+      "name": "CDA CKAN package metadata",
+      "url": "https://dados.cvm.gov.br/api/3/action/package_show?id=fi-doc-cda",
+      "retrieved_bytes": 15976,
+      "source_document_sha256": "9b68fd60d0eced27bc2d7e53c5f4dad03c3b66e9a0f83b1425b644aa0cbf8681"
+    },
+    {
+      "name": "CDA official data dictionary archive",
+      "url": "https://dados.cvm.gov.br/dados/FI/DOC/CDA/META/meta_cda_fi_txt.zip",
+      "retrieved_bytes": 10094,
+      "source_document_sha256": "e60c85f33227f3c98dc389a4b7322faabdb91357e99b5529b1b1e25f142358e8"
+    },
+    {
+      "name": "CDA observed monthly archive",
+      "url": "https://dados.cvm.gov.br/dados/FI/DOC/CDA/DADOS/cda_fi_202608.zip",
+      "retrieved_bytes": 15216867,
+      "source_document_sha256": "dd7514746a6ca68a1ed1559eef0c212de65259d1df745302777e662c24dfb0bd"
+    },
+    {
+      "name": "Entrega CKAN package metadata",
+      "url": "https://dados.cvm.gov.br/api/3/action/package_show?id=fi-doc-entrega",
+      "retrieved_bytes": 12691,
+      "source_document_sha256": "543451dbec2d5ee23d8c84b8b6cc6a1810bb1cea77eb6f8bc2666a4e65595859"
+    },
+    {
+      "name": "Entrega official data dictionary",
+      "url": "https://dados.cvm.gov.br/dados/FI/DOC/ENTREGA/META/meta_fi_entrega_documento.txt",
+      "retrieved_bytes": 1829,
+      "source_document_sha256": "5fede4eb89b96089078c2c357e3dc02f8259630d80932a79fdbea00e079747f0"
+    },
+    {
+      "name": "Entrega observed monthly archive",
+      "url": "https://dados.cvm.gov.br/dados/FI/DOC/ENTREGA/DADOS/fi_entrega_documento_202609.zip",
+      "retrieved_bytes": 10260855,
+      "source_document_sha256": "d08d0e80e002be499f6c3ce787c8630f1a665ce648dcd9dd82cc0ad1c6dc5f64"
+    }
+  ],
+  "file_versions": {
+    "cda": {
+      "observed_competence": "2026-08-31",
+      "archive": "cda_fi_202608.zip",
+      "members": [
+        "cda_fie_202608.csv",
+        "cda_fie_CONFID_202608.csv",
+        "cda_fi_BLC_1_202608.csv",
+        "cda_fi_BLC_2_202608.csv",
+        "cda_fi_BLC_3_202608.csv",
+        "cda_fi_BLC_4_202608.csv",
+        "cda_fi_BLC_5_202608.csv",
+        "cda_fi_BLC_6_202608.csv",
+        "cda_fi_BLC_7_202608.csv",
+        "cda_fi_BLC_8_202608.csv",
+        "cda_fi_CONFID_202608.csv",
+        "cda_fi_PL_202608.csv"
+      ],
+      "portal_naming_changes": [
+        "From 2024-03-04, FIIM data from competence 2018-06 onward is published separately.",
+        "From 2025-11-08, FIDC and FIAGRO are included in the separate file.",
+        "From 2025-11-15, the separate file is named cda_fie and cda_fie_CONFID."
+      ]
+    },
+    "entrega": {
+      "observed_period": "2026-09",
+      "archive": "fi_entrega_documento_202609.zip",
+      "members": [
+        "fi_entrega_documento_202609.csv",
+        "fi_entrega_documento_diario_202609.csv"
+      ]
+    }
+  },
+  "schema_versions": {
+    "cda_dictionary_archive_sha256": "e60c85f33227f3c98dc389a4b7322faabdb91357e99b5529b1b1e25f142358e8",
+    "cda_common_fields": [
+      "TP_FUNDO_CLASSE",
+      "CNPJ_FUNDO_CLASSE",
+      "DENOM_SOCIAL",
+      "DT_COMPTC",
+      "TP_APLIC",
+      "VL_VENDA_NEGOC",
+      "VL_AQUIS_NEGOC",
+      "VL_MERC_POS_FINAL",
+      "VL_CUSTO_POS_FINAL",
+      "DT_CONFID_APLIC"
+    ],
+    "cda_equity_coded_block_fields": [
+      "TP_FUNDO_CLASSE",
+      "CNPJ_FUNDO_CLASSE",
+      "DENOM_SOCIAL",
+      "DT_COMPTC",
+      "TP_APLIC",
+      "TP_ATIVO",
+      "EMISSOR_LIGADO",
+      "TP_NEGOC",
+      "QT_VENDA_NEGOC",
+      "VL_VENDA_NEGOC",
+      "QT_AQUIS_NEGOC",
+      "VL_AQUIS_NEGOC",
+      "QT_POS_FINAL",
+      "VL_MERC_POS_FINAL",
+      "VL_CUSTO_POS_FINAL",
+      "DT_CONFID_APLIC",
+      "CD_ATIVO",
+      "DS_ATIVO",
+      "CD_ISIN",
+      "DT_INI_VIGENCIA",
+      "DT_FIM_VIGENCIA"
+    ],
+    "cda_confidential_fields": [
+      "TP_FUNDO_CLASSE",
+      "CNPJ_FUNDO_CLASSE",
+      "DENOM_SOCIAL",
+      "DT_COMPTC",
+      "TP_APLIC",
+      "VL_VENDA_NEGOC",
+      "VL_AQUIS_NEGOC",
+      "VL_MERC_POS_FINAL",
+      "VL_CUSTO_POS_FINAL",
+      "DT_CONFID_APLIC"
+    ],
+    "entrega_dictionary_sha256": "5fede4eb89b96089078c2c357e3dc02f8259630d80932a79fdbea00e079747f0",
+    "entrega_fields": [
+      "Tipo_Fundo_Classe",
+      "CNPJ_Fundo_Classe",
+      "ID_Subclasse",
+      "Tipo_Documento",
+      "Data_Inicio_Competencia",
+      "Data_Fim_Competencia",
+      "ID_Documento",
+      "Data_Hora_Entrega",
+      "Tipo_Apresentacao",
+      "Ativo",
+      "Sistema_Origem"
+    ],
+    "encoding_observed": "Windows-1252 compatible text; parser must fail closed on undecodable bytes and must not silently replace characters",
+    "delimiter_observed": ";"
+  },
+  "available_history": {
+    "cda": "Portal states current files cover the last 12 months, historical series from 2021, and an older historical series from 2005. Historical files are stated not to be subject to the current update policy.",
+    "entrega": "Portal states current files cover the last 12 months and provides a historical series from 2021. Historical files are stated not to be subject to the current update policy.",
+    "historical_publication_instants": "UNKNOWN"
+  },
+  "submission_semantics": {
+    "cda": "For M-1 through M-3, the portal states Tuesday-Saturday 08:00 updates include data received by CVMWeb through 23:59 on the preceding day; for M-4 through M-12, Monday 08:00 updates include data received during the preceding week.",
+    "entrega": "The dataset exposes Data_Hora_Entrega and Tipo_Apresentacao. The dictionary calls Data_Hora_Entrega a datetime but does not define clock zone or distinguish client submission time from CVM receipt time.",
+    "timezone": "UNKNOWN"
+  },
+  "delivery_semantics": {
+    "entrega": "Data_Hora_Entrega is an official field observed in the resource and dictionary. It is retained verbatim and parsed as a naive official timestamp because the source does not document a time zone.",
+    "cda": "No row-level delivery timestamp was observed in the CDA dictionary. Entrega may be joined only using exact official identifiers actually present; CDA BLC files observed do not expose ID_DOC, while cda_fie does."
+  },
+  "re_presentation_semantics": {
+    "cda": "The portal expressly says current monthly archives are updated for reapresentacoes at the stated daily or weekly cadence. A changed archive is therefore a new immutable source version, never an overwrite.",
+    "entrega": "The portal expressly says M and M-1 are updated daily for new submissions and reapresentacoes, while M-2 through M-11 are updated weekly for reapresentacoes. Tipo_Apresentacao is preserved verbatim; no undocumented ordering is inferred beyond Data_Hora_Entrega plus first-seen source version.",
+    "document_version_field": "UNSUPPORTED"
+  },
+  "confidentiality_rules": {
+    "official_rule": "The CDA portal states individual application details become available only after the confidentiality period requested by fund administrators expires. Restricted applications are published in consolidated form in cda_fi_CONFID_AAAAMM.csv; equivalent separate confidential files exist for the separately published fund classes.",
+    "observed_row_field": "DT_CONFID_APLIC",
+    "confidential_aggregate_identity": "The confidential schemas omit CD_ATIVO, CD_ISIN, issuer identifiers, quantities, and individual position identity. Aggregate rows must remain unresolved and must not be attributed to a security.",
+    "expiration_boundary_inclusivity": "AMBIGUOUS",
+    "retroactive_release_linkage": "UNSUPPORTED"
+  },
+  "applicable_document_classes": [
+    "CDA public block files 1 through 8",
+    "CDA separately published FIE rows",
+    "CDA CONFID aggregate files",
+    "Entrega periodic and eventual fund-document metadata",
+    "Entrega daily-document metadata"
+  ],
+  "applicable_security_classes": {
+    "cda_all_official_blocks": "Blocks 1 through 8 cover the official application classes listed by the portal.",
+    "equity_relevant_subset": "Only rows with explicit official equity identifiers/types from coded block 4 or the separate FIE file may enter the equity staging subset. Other rows remain outside that subset; no name-based ticker invention is allowed.",
+    "confidential_rows": "Security class and identity are unavailable at the individual-position level."
+  },
+  "applicable_periods": {
+    "observed_contract": "Portal contract observed on 2026-09-21; schema validated against CDA competence 2026-08 and Entrega period 2026-09.",
+    "older_periods": "Schema and confidentiality behavior must be validated per file era; current rules must not be projected backward without official evidence."
+  },
+  "exceptions": [
+    "FIIM publication has a distinct file regime from competence 2018-06 onward.",
+    "FIDC and FIAGRO were added to the distinct regime in November 2025, followed by cda_fie file renaming.",
+    "Portal change log reports column-name changes in December 2024; historical schemas cannot be presumed equal to the observed 2026 schema.",
+    "Historical archives are not subject to the current update policy."
+  ],
+  "public_availability_semantics": {
+    "live_collection": "PIT_STRICT only from the collector's local UTC first-seen timestamp after complete raw bytes are received and hashed.",
+    "official_schedule": "The documented schedule constrains expected updates but does not prove that a particular historical byte sequence was publicly reachable at every scheduled instant.",
+    "historical_archives": "HISTORICAL_ONLY unless an independently preserved source version or an exact official availability rule proves the historical public instant.",
+    "entrega_delivery_time": "Data_Hora_Entrega is not treated as public availability time."
+  },
+  "identity_disclosure_semantics": {
+    "public_identified_row": "security_identity_available_at equals the collector first-seen time for the exact identified source version, unless stronger official evidence is preserved.",
+    "confidential_aggregate_row": "security_identity_available_at is NULL and confidentiality_status is CONFIDENTIAL_AGGREGATE.",
+    "later_identified_row": "A later identified row is a distinct observation with its own first-seen time. It must not retroactively rewrite or guess the identity of an earlier aggregate row.",
+    "ticker_mapping": "Current ticker mappings must not be projected backward. Preserve CD_ATIVO, CD_ISIN, and official issuer identifiers as observed; unresolved is valid."
+  },
+  "licensing_status": {
+    "dataset_license": "Open Data Commons Open Database License (ODbL), as displayed by both official CVM dataset pages and CKAN resource metadata.",
+    "legal_interpretation": "UNSUPPORTED; this engineering audit is not legal advice."
+  },
+  "redistribution_status": {
+    "raw_files": "CONDITIONAL_ODBL; do not redistribute from this repository until attribution, notice, database-right, and share-alike obligations are reviewed for the concrete artifact.",
+    "derived_receipts_and_references": "PERMITTED_FOR_ENGINEERING_USE_SUBJECT_TO_ODBL; publish hashes, URLs, schemas, counts, and non-row-level receipts by default.",
+    "cain_bundle_policy": "REFERENCE_ONLY unless a later reviewed publication manifest explicitly authorizes row payloads."
+  },
+  "known_uncertainties": [
+    "The official sources observed do not define the time zone of Data_Hora_Entrega.",
+    "The official sources observed do not define whether DT_CONFID_APLIC becomes public at the start or end of that date.",
+    "The official sources observed do not provide a stable linkage from a confidential aggregate row to every later individual row.",
+    "The official schedule does not prove historical byte-level availability of current or historical archives.",
+    "The Entrega dictionary does not define a numeric document version or a distinct received-at field.",
+    "Current-schema observations do not prove that every historical file has the same members, fields, or encoding."
+  ],
+  "unsupported_assumptions": [
+    "Data_Hora_Entrega equals public availability time.",
+    "DT_CONFID_APLIC alone proves an exact identity disclosure instant.",
+    "A confidential aggregate can be allocated across later securities.",
+    "A current ticker is a historically valid identity.",
+    "A changed monthly archive can overwrite a prior stored source version.",
+    "Current CDA and Entrega schemas apply unchanged to all historical periods.",
+    "Absence from a current archive proves absence at a prior point in time."
+  ],
+  "implementation_constraints": [
+    "Preserve each complete raw archive content-addressed and reject hash/path conflicts.",
+    "Create immutable source-version chains for republished URLs; never update prior source versions in place.",
+    "Use strict schema contracts per member and parser revision; reject reorder, addition, or removal unless an explicit new schema version is implemented.",
+    "Stream ZIP members and retain only the explicitly defined equity-relevant subset in holdings staging; do not materialize the whole CDA universe in the feature store.",
+    "Store fund holdings documents separately from holdings observations.",
+    "Preserve explicit buy/sell quantity and value fields; do not derive them by differencing positions.",
+    "Preserve Entrega fields verbatim and represent revisions through source-version history plus official presentation metadata; do not invent a version field.",
+    "Represent document_available_at separately from security_identity_available_at.",
+    "Exclude HISTORICAL_ONLY and unresolved confidential aggregates from strong causal inference.",
+    "Do not change production ranking, Core, Ops, CAIN, or BIG_WINNER_V2 artifacts."
+  ]
+}
