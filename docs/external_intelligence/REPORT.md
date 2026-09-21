@@ -144,36 +144,52 @@ CAIN does not access the Stocks database. No CAIN file or configuration was chan
 
 | Suite | Passed | Failed | Skipped | Environment |
 |---|---:|---:|---:|---|
-| `unittest tests.test_external_intelligence` | 10 | 0 | 0 | auxiliary Windows Python 3.12 + read-only vendored Core |
+| `unittest tests.test_external_intelligence` | 11 | 0 | 0 | auxiliary Windows Python 3.12 + read-only vendored Core |
 | live official collection | 5 | 0 | 0 | isolated QA database under `C:\STOCKS\work` |
 | `external verify` | 1 | 0 | 0 | isolated QA database/raw tree |
-| full pytest/lint/type/build/wheel/secrets | pending | pending | n/a | supported Linux CI required |
+| focused external/V2 preservation tests | pass | 0 | 0 | Linux Python 3.13 and 3.14, diagnostic run `35554715248` |
+| build, wheel smoke, coverage and secrets | pass | 0 | n/a | Linux Python 3.13/3.14; coverage 78%; diagnostic run `35554715248` |
+| full pytest | 928 | 2 inherited | 65 subtests | each supported Linux runtime; failures reproduce from `main` |
 
 Normal unit tests are offline. The Windows host has no permitted project venv/pytest installation;
-that limitation is recorded rather than represented as a pass.
+that limitation is recorded rather than represented as a pass. The isolated diagnostic workflow
+completed successfully in both supported runtimes and its `secrets` job passed. The ordinary workflow
+remains red for inherited baseline defects: three Ruff unused imports in frozen/existing files, one
+Pyright error in `prospective_big_winner.py`, the historical R8 code-population receipt, and a
+platform-dependent historical manifest hash test. The same ordinary failures are present on baseline
+run `35483073771`; they are not reclassified as implementation regressions.
 
 ## N. Baseline preservation
 
-The seven frozen BIG_WINNER_V2/config/ledger hashes were captured before implementation. Post-change
-comparison and focused/full CI remain the final gate. No frozen file is in any implementation commit,
-and the new module has no automatic import into factors or BIG_WINNER pipelines.
+The seven frozen BIG_WINNER_V2/config/ledger raw hashes match the pre-change capture exactly, and
+`git diff --name-only 3f25895e -- <seven frozen paths>` is empty. A portable LF-normalized comparison
+also passes on Linux Python 3.13 and 3.14; the SQLite ledger remains byte-for-byte raw hashed. No
+frozen file is in any implementation commit, and the new module has no automatic import into factors
+or BIG_WINNER pipelines. `BIG_WINNER_V2_PRESERVATION_STATUS = PASS_UNCHANGED`.
 
 ## O. Git
 
 Logical commits currently include:
 
 - `d23881e` — ecosystem/frozen baseline audit;
-- `ec1862f` — immutable PIT staging, collectors, CLI, and initial tests.
+- `ec1862f` — immutable PIT staging, collectors, CLI, and initial tests;
+- `d89c5e0` — live-collector hardening and operational documentation;
+- `295cc60` — paginated collector typing correction;
+- `bf8d2c3` — exact frozen-ledger false-positive classification for secret scanning;
+- `bb2e999`, `cffff02` — portable frozen-V2 preservation tests.
 
-Final branch integration SHA, CI URL, push status, and clean-tree receipt are filled only after the
-final gates; no push is claimed here.
+Candidate branch `external-intelligence-v1` was pushed through validated code SHA `cffff02`. The
+separate evidence-only branch `external-intelligence-v1-ci-validation` passed diagnostic Linux run
+`35554715248`; its continue-on-error treatment of inherited checks is not part of the candidate.
+Because the ordinary repository gates remain red on defects reproduced from `main`, the candidate was
+not integrated into or pushed as `main`. `GIT_REMOTE_INTEGRATION_STATUS = BRANCH_PUSHED_MAIN_NOT_INTEGRATED`.
 
 ## P. Status matrix
 
 | Status | Value |
 |---|---|
 | `ECOSYSTEM_AUDIT_STATUS` | `COMPLETE` |
-| `ENGINEERING_IMPLEMENTATION_STATUS` | `IMPLEMENTED_PENDING_LINUX_CI` |
+| `ENGINEERING_IMPLEMENTATION_STATUS` | `IMPLEMENTED_QA_VALIDATED_BASELINE_CI_BLOCKED` |
 | `DATA_FOUNDATION_STATUS` | `IMPLEMENTED_QA_VERIFIED` |
 | `B3_LENDING_IMPLEMENTATION_STATUS` | `IMPLEMENTED_QA_VERIFIED` |
 | `B3_LENDING_DATA_QUALITY_STATUS` | `OBSERVED_CURRENT_PERIOD_HISTORY_INCOMPLETE` |
@@ -189,14 +205,17 @@ final gates; no push is claimed here.
 | `IPE_METADATA_PIT_STATUS` | `PIT_STRICT_FROM_FIRST_SEEN` |
 | `OPS_COMPATIBILITY_STATUS` | `IMPLEMENTED_NOT_SCHEDULED` |
 | `RESEARCH_PUBLICATION_COMPATIBILITY_STATUS` | `COMPATIBLE_NOT_PUBLISHED` |
-| `BIG_WINNER_V2_PRESERVATION_STATUS` | `PENDING_FINAL_COMPARISON` |
+| `BIG_WINNER_V2_PRESERVATION_STATUS` | `PASS_UNCHANGED` |
+| `GIT_REMOTE_INTEGRATION_STATUS` | `BRANCH_PUSHED_MAIN_NOT_INTEGRATED` |
 | `SCIENTIFIC_EVIDENCE_STATUS` | `NOT_EVALUATED` |
 | `ECONOMIC_EVIDENCE_STATUS` | `NOT_EVALUATED` |
 
 ## Q. Open issues
 
 - P0: none known.
-- P1: supported Linux CI and final V2 preservation comparison remain before integration.
+- P1 in implementation scope: none known after live QA and supported-runtime diagnostic validation.
+- P1 integration blocker outside this increment: ordinary repository CI remains red on baseline Ruff,
+  Pyright, historical R8 receipt, and platform-dependent manifest-hash defects reproduced from `main`.
 - P2: public historical B3 lending backfill is incomplete; IPE contents/CDA are not collected.
 - P3: expose a richer rejection summary and calendar coverage metric in a later compatible increment.
 - External blockers: no credentials are needed; broad historical source availability is not supplied
@@ -211,7 +230,9 @@ executed. `SCIENTIFIC_EVIDENCE_STATUS = NOT_EVALUATED` and
 
 ## S. Next step
 
-After the engineering gates close, the justified next research increment is CDA + Entrega + a
+First repair or explicitly rebaseline the inherited ordinary-CI defects in a separately authorized
+maintenance increment, rerun the unmodified gate, and only then integrate the candidate into `main`.
+After that engineering gate closes, the justified next research increment is CDA + Entrega + a
 confidentiality/licensing audit, because IPE currently exposes metadata only. Do not promote V3 and do
 not start a scientific trial automatically. A first preregistered external-intelligence trial is later,
 after historical PIT coverage and a fixed selection/multiplicity budget exist.
