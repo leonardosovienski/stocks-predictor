@@ -63,14 +63,17 @@ external database is not the managed COTAHIST/scientific database.
 
 | Source | Official endpoint/file pattern | Auth | Observed coverage/format | Version and PIT semantics | Current/historical limitation |
 |---|---|---|---|---|---|
-| B3 lending | `arquivos.b3.com.br/bdi/table/{table}/{date}/{date}/{page}/1000` | none | 2026-09-18; paginated JSON with exact column contracts | exact response-page hash; `PIT_STRICT` from HTTP Date | public BDI history/backfill not established; `HISTORICAL_BACKFILL_STATUS = INCOMPLETE` |
-| CVM VLMO | `.../DOC/VLMO/DADOS/vlmo_cia_aberta_<year>.zip` | none | 2026 annual ZIP; document + detail CSV | annual exact ZIP hash; first-seen HTTP Date | source fields and reported granularity only; no inferred beneficial ownership |
-| CVM buyback | `.../EVENTOS/RECOMPRA_ACOES/DADOS/cia_aberta_recompra_acoes.zip` | none | current historical ZIP; three CSVs | fetched-day logical version; first-seen HTTP Date | program data are not execution data; malformed intervals rejected |
-| CVM IPE | `.../DOC/IPE/DADOS/ipe_cia_aberta_<year>.zip` | none | 2026 annual metadata CSV | protocol/version or explicit composite; first-seen HTTP Date | metadata only; semantic classification `NOT_IMPLEMENTED` |
+| B3 lending | `arquivos.b3.com.br/bdi/table/{table}/{date}/{date}/{page}/1000` | none | 2026-09-18; paginated JSON with exact column contracts | exact response-page hash; collector first-seen from parser v2 | public BDI history/backfill not established; `HISTORICAL_BACKFILL_STATUS = INCOMPLETE` |
+| CVM VLMO | `.../DOC/VLMO/DADOS/vlmo_cia_aberta_<year>.zip` | none | 2026 annual ZIP; document + detail CSV | annual exact ZIP hash; collector first-seen from parser v2 | source fields and reported granularity only; no inferred beneficial ownership |
+| CVM buyback | `.../EVENTOS/RECOMPRA_ACOES/DADOS/cia_aberta_recompra_acoes.zip` | none | current historical ZIP; three CSVs | fetched-day logical version; collector first-seen from parser v2 | program data are not execution data; malformed intervals rejected |
+| CVM IPE | `.../DOC/IPE/DADOS/ipe_cia_aberta_<year>.zip` | none | 2026 annual metadata CSV | protocol/version or explicit composite; collector first-seen from parser v2 | metadata only; semantic classification `NOT_IMPLEMENTED` |
 | CVM FCA | `.../DOC/FCA/DADOS/fca_cia_aberta_<year>.zip` | none | 2026 identity rows | filing availability + trading interval | identity evidence only; no present-day ticker backfill |
 
-All acquisitions are credential-free HTTPS. Current availability was observed live on 2026-09-20.
-Earlier source dates do not establish historical first-seen availability.
+All acquisitions are credential-free HTTPS. The live QA captured on 2026-09-20 used the revision-1
+HTTP-Date policy and remains immutable with that limitation. Parser revision 2 instead records
+collector request/receipt clocks and retains the HTTP `Date` separately; new collection is required
+before claiming revision-2 live coverage. Earlier source dates do not establish historical first-seen
+availability.
 
 ## F. B3 lending
 

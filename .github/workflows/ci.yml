@@ -42,6 +42,8 @@ jobs:
         run: uv run --no-sync ruff check stocks_predictor tests main.py tools/data_bank.py tools/benchmark_ingestion.py tools/benchmark_real_ingestion.py tools/materialize_source_revision.py tools/reproducible_build.py tools/audit_registry.py tools/operational_validation.py tools/verify_operational_evidence.py tools/check_project_files.py research/session-20260910/final_review/verify.py research/session-20260909/data_completion research/session-20260910/integral research/session-20260910/profit_validation research/session-20260910/gap_resolution
       - name: Pyright
         run: uv run --no-sync pyright --pythonversion ${{ matrix.python }}
+      - name: Frozen artifact quality exception control
+        run: uv run --no-sync python tools/quality_exception_control.py
       - name: Audit receipt identities
         run: uv run --no-sync python research/session-20260910/integral/verify_audit.py
       - name: Recovered package and R6 evidence identities

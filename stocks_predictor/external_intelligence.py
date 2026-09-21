@@ -18,19 +18,16 @@ from pathlib import Path, PurePosixPath
 import re
 import sqlite3
 import tempfile
-from typing import Any, Iterable
+from typing import Any, Callable, Iterable
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlsplit
 from urllib.request import Request, urlopen
 import zipfile
 from zoneinfo import ZoneInfo
 
-from predictor_core.kernel import infra
-
-
-SCHEMA_VERSION = "external-intelligence/1"
+SCHEMA_VERSION = "external-intelligence/2"
 RECEIPT_VERSION = "external-intelligence-receipt/1"
-COLLECTOR_VERSION = "1"
+COLLECTOR_VERSION = "2"
 MAX_SOURCE_BYTES = 64 * 1024 * 1024
 SAO_PAULO = ZoneInfo("America/Sao_Paulo")
 
@@ -192,6 +189,12 @@ EXTERNAL_MIGRATIONS: list[tuple[str, str]] = [
         BEFORE DELETE ON external_receipts BEGIN
             SELECT RAISE(ABORT,'external receipts are immutable'); END;
     """),
+    ("external_0004_collector_temporal_provenance", """
+        ALTER TABLE external_source_versions ADD COLUMN request_started_at TEXT;
+        ALTER TABLE external_source_versions ADD COLUMN response_http_date TEXT;
+        ALTER TABLE external_source_versions ADD COLUMN collector_received_at TEXT;
+        ALTER TABLE external_source_versions ADD COLUMN temporal_semantics_version TEXT;
+    """),
 ]
 
 
@@ -279,6 +282,8 @@ def validate_source_url(url: str) -> str:
 
 
 def connect(path: Path) -> sqlite3.Connection:
+    from predictor_core.kernel import infra
+
     path.parent.mkdir(parents=True, exist_ok=True)
     conn = infra.connect(path)
     try:
@@ -322,30 +327,61 @@ def preserve_raw(raw_root: Path, payload: bytes, stored_at: str) -> dict[str, An
     }
 
 
-def _http_date(headers: Any) -> str:
+def _http_date(headers: Any) -> str | None:
     raw = headers.get("Date")
     if not raw:
-        raise SourceUnavailableError("official response omitted its HTTP Date header")
-    parsed = parsedate_to_datetime(raw)
+        return None
+    try:
+        parsed = parsedate_to_datetime(raw)
+    except (TypeError, ValueError) as exc:
+        raise SourceUnavailableError("official response has an invalid HTTP Date header") from exc
     if parsed.tzinfo is None:
         parsed = parsed.replace(tzinfo=UTC)
     return parsed.astimezone(UTC).isoformat().replace("+00:00", "Z")
 
 
-def fetch_bytes(url: str, *, body: bytes | None = None, timeout: float = 60) -> dict[str, Any]:
+def _clock_timestamp(clock: Callable[[], datetime] | None = None) -> str:
+    observed = (clock or (lambda: datetime.now(UTC)))()
+    if observed.tzinfo is None or observed.utcoffset() is None:
+        raise TemporalError("collector clock must return an aware timestamp")
+    return utc_timestamp(observed.isoformat())
+
+
+def _first_seen_at(acquired: dict[str, Any]) -> str:
+    value = acquired.get("first_seen_at") or acquired.get("collector_received_at") or acquired.get("fetched_at")
+    if not isinstance(value, str):
+        raise TemporalError("source acquisition has no demonstrable first-seen timestamp")
+    return utc_timestamp(value)
+
+
+def fetch_bytes(
+    url: str,
+    *,
+    body: bytes | None = None,
+    timeout: float = 60,
+    clock: Callable[[], datetime] | None = None,
+) -> dict[str, Any]:
     url = validate_source_url(url)
     headers = {"Accept": "application/json" if body is not None else "application/zip"}
     if body is not None:
         headers["Content-Type"] = "application/json"
     request = Request(url, data=body, headers=headers, method="POST" if body is not None else "GET")
+    request_started_at = _clock_timestamp(clock)
     try:
         with urlopen(request, timeout=timeout) as response:
             payload = response.read(MAX_SOURCE_BYTES + 1)
             if len(payload) > MAX_SOURCE_BYTES:
                 raise ExternalIntelligenceError("source exceeds the 64 MiB acquisition limit")
+            collector_received_at = _clock_timestamp(clock)
+            if collector_received_at < request_started_at:
+                raise TemporalError("collector clock moved backwards during acquisition")
             return {
                 "payload": payload,
-                "fetched_at": _http_date(response.headers),
+                "fetched_at": collector_received_at,
+                "first_seen_at": collector_received_at,
+                "request_started_at": request_started_at,
+                "collector_received_at": collector_received_at,
+                "response_http_date": _http_date(response.headers),
                 "etag": response.headers.get("ETag"),
                 "last_modified": response.headers.get("Last-Modified"),
             }
@@ -357,7 +393,17 @@ def source_file(path: Path, observed_at: str) -> dict[str, Any]:
     payload = path.read_bytes()
     if len(payload) > MAX_SOURCE_BYTES:
         raise ExternalIntelligenceError("source exceeds the 64 MiB acquisition limit")
-    return {"payload": payload, "fetched_at": utc_timestamp(observed_at), "etag": None, "last_modified": None}
+    first_seen_at = utc_timestamp(observed_at)
+    return {
+        "payload": payload,
+        "fetched_at": first_seen_at,
+        "first_seen_at": first_seen_at,
+        "request_started_at": None,
+        "collector_received_at": first_seen_at,
+        "response_http_date": None,
+        "etag": None,
+        "last_modified": None,
+    }
 
 
 def trading_sessions(path: Path | None) -> list[str]:
@@ -427,7 +473,16 @@ def _source_version(
     parser_version: str,
 ) -> tuple[str, bool]:
     source_url = validate_source_url(source_url)
-    fetched_at = utc_timestamp(acquired["fetched_at"])
+    fetched_at = _first_seen_at(acquired)
+    request_started_at = acquired.get("request_started_at")
+    if request_started_at is not None:
+        request_started_at = utc_timestamp(request_started_at)
+    collector_received_at = utc_timestamp(acquired.get("collector_received_at") or fetched_at)
+    response_http_date = acquired.get("response_http_date")
+    if response_http_date is not None:
+        response_http_date = utc_timestamp(response_http_date)
+    if request_started_at is not None and request_started_at > collector_received_at:
+        raise TemporalError("collector request started after response receipt")
     raw = preserve_raw(raw_root, acquired["payload"], fetched_at)
     identity = digest_identity(publisher, dataset, logical_period, raw["sha256"], parser_version)
     prior = conn.execute(
@@ -446,12 +501,14 @@ def _source_version(
     conn.execute(
         "INSERT OR IGNORE INTO external_source_versions"
         " (source_version_id,publisher,dataset,logical_period,source_url,fetched_at,source_observed_at,"
-        " http_etag,http_last_modified,sha256,byte_length,parser_version,supersedes_source_version_id)"
-        " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)",
+        " http_etag,http_last_modified,sha256,byte_length,parser_version,supersedes_source_version_id,"
+        " request_started_at,response_http_date,collector_received_at,temporal_semantics_version)"
+        " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
         (
             identity, publisher, dataset, logical_period, source_url, fetched_at, fetched_at,
             acquired.get("etag"), acquired.get("last_modified"), raw["sha256"], raw["byte_length"],
-            parser_version, prior[0] if prior else None,
+            parser_version, prior[0] if prior else None, request_started_at, response_http_date,
+            collector_received_at, "collector-observation-v2",
         ),
     )
     return identity, existed
@@ -591,7 +648,7 @@ def ingest_b3_lending(
                         f"https://arquivos.b3.com.br/bdi/table/{table_name}/{reference_date}/"
                         f"{reference_date}/{page_number}/{B3_PAGE_SIZE}"
                     ),
-                    parser_version=f"b3-bdi-{table_name}/1",
+                    parser_version=f"b3-bdi-{table_name}/2",
                 )
                 source_versions.append(version_id)
                 for values in table.get("values", []):
@@ -612,7 +669,7 @@ def ingest_b3_lending(
                     natural = [reference_date, ticker, isin, row.get("Type"), row["Market"]]
                     if _observation(
                         conn, source_version_id=version_id, family=dataset, natural_key=natural,
-                        payload=normalized, available_at=acquired["fetched_at"], sessions=sessions,
+                        payload=normalized, available_at=_first_seen_at(acquired), sessions=sessions,
                         ticker=ticker, isin=isin, reference_at=reference_date,
                         identity_status="DIRECT_B3_TICKER_ISIN",
                     ):
@@ -642,7 +699,7 @@ def ingest_vlmo(
         version_id, _ = _source_version(
             conn, raw_root, acquired, publisher="CVM", dataset="VLMO", logical_period=str(year),
             source_url=f"https://dados.cvm.gov.br/dados/cia_aberta/DOC/VLMO/DADOS/vlmo_cia_aberta_{year}.zip",
-            parser_version="cvm-vlmo/1",
+            parser_version="cvm-vlmo/2",
         )
         persisted = 0
         for index, row in enumerate(details, 2):
@@ -677,7 +734,7 @@ def ingest_vlmo(
             natural = [document["Protocolo_Entrega"], index, hashlib.sha256(canonical_json(normalized).encode()).hexdigest()]
             if _observation(
                 conn, source_version_id=version_id, family="cvm-vlmo", natural_key=natural,
-                payload=normalized, available_at=acquired["fetched_at"], sessions=sessions,
+                payload=normalized, available_at=_first_seen_at(acquired), sessions=sessions,
                 company_cnpj=cnpj, reference_at=reference, event_at=movement, received_at=received,
             ):
                 persisted += 1
@@ -707,11 +764,11 @@ def ingest_buyback(
         by_program_q.setdefault(row["ID_Programa"], []).append(row)
     conn.execute("SAVEPOINT external_buyback")
     try:
-        period = acquired["fetched_at"][:10]
+        period = _first_seen_at(acquired)[:10]
         version_id, _ = _source_version(
             conn, raw_root, acquired, publisher="CVM", dataset="RECOMPRA_ACOES", logical_period=period,
             source_url="https://dados.cvm.gov.br/dados/CIA_ABERTA/EVENTOS/RECOMPRA_ACOES/DADOS/cia_aberta_recompra_acoes.zip",
-            parser_version="cvm-buyback/1",
+            parser_version="cvm-buyback/2",
         )
         persisted = rejected = 0
         for row in main:
@@ -762,7 +819,7 @@ def ingest_buyback(
             }
             if _observation(
                 conn, source_version_id=version_id, family="cvm-buyback", natural_key=program,
-                payload=normalized, available_at=acquired["fetched_at"], sessions=sessions,
+                payload=normalized, available_at=_first_seen_at(acquired), sessions=sessions,
                 company_cnpj=cnpj, reference_at=start,
             ):
                 persisted += 1
@@ -783,11 +840,11 @@ def ingest_ipe(
         version_id, source_existed = _source_version(
             conn, raw_root, acquired, publisher="CVM", dataset="IPE_METADATA", logical_period=str(year),
             source_url=f"https://dados.cvm.gov.br/dados/cia_aberta/DOC/IPE/DADOS/ipe_cia_aberta_{year}.zip",
-            parser_version="cvm-ipe-metadata/1",
+            parser_version="cvm-ipe-metadata/2",
         )
         persisted = rejected = 0
         collection_year = datetime.fromisoformat(
-            utc_timestamp(acquired["fetched_at"]).replace("Z", "+00:00")
+            _first_seen_at(acquired).replace("Z", "+00:00")
         ).astimezone(SAO_PAULO).year
         for source_row, row in enumerate(rows, 2):
             cnpj = digits(row["CNPJ_Companhia"])
@@ -832,7 +889,7 @@ def ingest_ipe(
             }
             inserted = _observation(
                 conn, source_version_id=version_id, family="cvm-ipe-metadata",
-                natural_key=natural_key, payload=normalized, available_at=acquired["fetched_at"],
+                natural_key=natural_key, payload=normalized, available_at=_first_seen_at(acquired),
                 sessions=sessions, company_cnpj=cnpj, reference_at=reference, received_at=received,
             )
             if inserted:
@@ -864,7 +921,7 @@ def ingest_fca_identity(
             conn, raw_root, acquired, publisher="CVM", dataset="FCA_SECURITY_IDENTITY",
             logical_period=str(year),
             source_url=f"https://dados.cvm.gov.br/dados/cia_aberta/DOC/FCA/DADOS/fca_cia_aberta_{year}.zip",
-            parser_version="cvm-fca-security-identity/1",
+            parser_version="cvm-fca-security-identity/2",
         )
         persisted = rejected = 0
         for record in records:
@@ -902,11 +959,16 @@ def verify(conn: sqlite3.Connection, raw_root: Path) -> dict[str, Any]:
     versions = conn.execute(
         "SELECT source_version_id,publisher,dataset,logical_period,sha256,relative_path,"
         " external_raw_objects.byte_length,"
-        " supersedes_source_version_id FROM external_source_versions JOIN external_raw_objects USING(sha256)"
+        " supersedes_source_version_id,parser_version,request_started_at,response_http_date,"
+        " collector_received_at,fetched_at,source_observed_at,temporal_semantics_version"
+        " FROM external_source_versions JOIN external_raw_objects USING(sha256)"
         " ORDER BY source_version_id"
     ).fetchall()
     known = {row[0] for row in versions}
-    for source_id, publisher, dataset, period, digest, relative, length, supersedes in versions:
+    for row in versions:
+        (source_id, publisher, dataset, period, digest, relative, length, supersedes, parser_version,
+         request_started, response_http_date, collector_received, fetched_at, source_observed,
+         temporal_semantics_version) = row
         path = raw_root / relative
         if not path.is_file():
             issues.append(f"RAW_MISSING:{source_id}")
@@ -923,6 +985,19 @@ def verify(conn: sqlite3.Connection, raw_root: Path) -> dict[str, Any]:
             ).fetchone()
             if prior != (publisher, dataset, period):
                 issues.append(f"SUPERSEDES_PERIOD_MISMATCH:{source_id}")
+        if temporal_semantics_version == "collector-observation-v2":
+            try:
+                received = utc_timestamp(collector_received)
+                if fetched_at != received or source_observed != received:
+                    issues.append(f"COLLECTOR_FIRST_SEEN_MISMATCH:{source_id}")
+                if request_started and utc_timestamp(request_started) > received:
+                    issues.append(f"COLLECTOR_CLOCK_ORDER:{source_id}")
+                if response_http_date:
+                    utc_timestamp(response_http_date)
+            except (TypeError, TemporalError):
+                issues.append(f"SOURCE_TEMPORAL_PROVENANCE_INVALID:{source_id}")
+        elif parser_version.endswith("/2"):
+            issues.append(f"SOURCE_TEMPORAL_PROVENANCE_MISSING:{source_id}")
     observations = conn.execute(
         "SELECT observation_id,source_version_id,reference_at,event_at,received_at,available_at,"
         " first_seen_at,tradable_session,ticker,isin,identity_status,payload_json FROM external_observations"

@@ -33,10 +33,17 @@ credential-like query parameters are rejected.
 
 ## Time and PIT policy
 
-`available_at` and `first_seen_at` are the official HTTP `Date` observed by the collector. A source
-date alone is not treated as proof of historical availability. Therefore the current acquisitions
-are `PIT_STRICT` only from collector first-seen time onward; they do not reconstruct earlier PIT
-knowledge. `received_at` must not exceed `available_at`.
+For live acquisition, `available_at` and `first_seen_at` are the collector-controlled UTC timestamp
+recorded only after the complete response bytes have been received. `request_started_at` and
+`collector_received_at` preserve the local observation interval; `response_http_date` preserves the
+server header as metadata and never substitutes for collector observation. Missing HTTP `Date` is
+permitted because the local clock still proves first-seen time; an invalid header or a collector
+clock that moves backwards fails closed. Controlled offline replay requires an explicit
+`--observed-at`. Parser revision 2 creates new immutable source versions, while revision-1 history
+remains untouched and retains its documented legacy HTTP-Date limitation.
+
+Current acquisitions are `PIT_STRICT` only from collector first-seen time onward; they do not
+reconstruct earlier PIT knowledge. `received_at` must not exceed `available_at`.
 
 `tradable_session` is the first actually observed B3 session strictly after the Sao Paulo local
 collection date. It is `NULL` with reason `NO_SUBSEQUENT_OBSERVED_B3_SESSION` if a read-only
@@ -51,7 +58,7 @@ ticker is backfilled into history.
 ## Version, raw, lineage, and rejection policy
 
 Every source version identifies publisher, dataset, logical period, parser version, exact raw SHA-256,
-byte length, URL, fetch time, and prior different version for the same logical period. Republishing
+byte length, URL, collector timing, optional HTTP metadata, and prior different version for the same logical period. Republishing
 creates a new immutable version. Replaying identical bytes is idempotent. B3 responses are retained
 page by page because the official endpoint is paginated; a partial page set rolls back the database.
 

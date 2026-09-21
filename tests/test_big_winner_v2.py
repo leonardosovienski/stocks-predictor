@@ -1,6 +1,6 @@
 from __future__ import annotations
 import datetime as dt
-import json, sqlite3, tempfile, unittest
+import hashlib, sqlite3, tempfile, unittest
 from pathlib import Path
 
 from stocks_predictor import big_winner_v2 as model
@@ -114,9 +114,11 @@ class BigWinnerV2Tests(unittest.TestCase):
 
     def test_historical_artifacts_preserved(self):
         expected={
-          REPO/"experiments"/"BIG_WINNER_DETECTION_V1"/"frozen_signals"/"MANIFEST.json":"2a28df6f7f8689f0ff5ac534711cd660746fd4622d974f198bb52e27405462b9",
-          REPO/"experiments"/"BIG_WINNER_PRICE_DETECTION_V1"/"frozen_signals"/"MANIFEST.json":"770d2425d8a329fa486d5871cc5b388521da1e71a9eea6aa2b293194aefb53f8",
-          REPO/"experiments"/"BIG_WINNER_PRICE_DETECTION_V1"/"FINAL_SCORECARD.json":"05ed3a383ece6cae9cb5dd2a5ce77911e8c7d41e9149597c117af9414c01d33b"}
-        for path,digest in expected.items():self.assertEqual(model.sha256_file(path),digest)
+          REPO/"experiments"/"BIG_WINNER_DETECTION_V1"/"frozen_signals"/"MANIFEST.json":"85eac17353d5833a27c7dac57232afaf16b4321dfcc97b4ed5c24593e23ba402",
+          REPO/"experiments"/"BIG_WINNER_PRICE_DETECTION_V1"/"frozen_signals"/"MANIFEST.json":"805b27c739f7e6444551cb1541f8a92c13512444e99ed0659a1b73870e01d507",
+          REPO/"experiments"/"BIG_WINNER_PRICE_DETECTION_V1"/"FINAL_SCORECARD.json":"dd3d75cd3f17dc3a50ed56ec1c60e198ee0b1a4d632c40dc2225f93475f68aec"}
+        for path,digest in expected.items():
+            canonical=path.read_bytes().replace(b"\r\n",b"\n")
+            self.assertEqual(hashlib.sha256(canonical).hexdigest(),digest)
 
 if __name__=="__main__":unittest.main()

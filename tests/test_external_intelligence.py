@@ -3,12 +3,14 @@
 from __future__ import annotations
 
 from contextlib import redirect_stdout
-import io
+from datetime import UTC, datetime
 import hashlib
+import io
 import json
 from pathlib import Path
 import sqlite3
 import unittest
+from unittest.mock import patch
 import zipfile
 
 from stocks_predictor import external_intelligence as external
@@ -20,7 +22,16 @@ CNPJ_DIGITS = "33000167000101"
 
 
 def acquired(payload: bytes, stamp: str = STAMP) -> dict:
-    return {"payload": payload, "fetched_at": stamp, "etag": None, "last_modified": None}
+    return {
+        "payload": payload,
+        "fetched_at": stamp,
+        "first_seen_at": stamp,
+        "request_started_at": None,
+        "collector_received_at": stamp,
+        "response_http_date": None,
+        "etag": None,
+        "last_modified": None,
+    }
 
 
 def csv_zip(files: dict[str, tuple[tuple[str, ...], list[list[str]]]]) -> bytes:
@@ -135,6 +146,36 @@ class ExternalIntelligenceTests(unittest.TestCase):
         self.assertEqual(self.conn.execute("SELECT COUNT(*) FROM external_source_versions").fetchone()[0], 0)
         self.assertEqual(self.conn.execute("SELECT COUNT(*) FROM external_observations").fetchone()[0], 0)
 
+    def test_schema_reorder_addition_and_removal_all_fail_closed(self):
+        columns = list(external.IPE_COLUMNS)
+        variants = (
+            tuple(reversed(columns)),
+            tuple(columns + ["Unexpected"]),
+            tuple(columns[:-1]),
+        )
+        for variant in variants:
+            with self.subTest(variant=variant):
+                broken = csv_zip({"ipe_cia_aberta_2026.csv": (variant, [[""] * len(variant)])})
+                with self.assertRaises(external.SchemaDriftError):
+                    external.ingest_ipe(self.conn, self.raw, 2026, acquired(broken), [])
+        self.assertEqual(self.conn.execute("SELECT COUNT(*) FROM external_source_versions").fetchone()[0], 0)
+
+    def test_raw_conflict_and_partial_b3_pagination_fail_without_database_commit(self):
+        raw = external.preserve_raw(self.raw, b"first", STAMP)
+        path = self.raw / raw["relative_path"]
+        path.write_bytes(b"conflict")
+        with self.assertRaises(external.ExternalIntelligenceError):
+            external.preserve_raw(self.raw, b"first", STAMP)
+
+        document = json.loads(b3_payload("BTBLendingOpenPosition"))
+        document["table"]["pageCount"] = 2
+        incomplete = acquired(json.dumps(document).encode())
+        with self.assertRaises(external.SchemaDriftError):
+            external.ingest_b3_lending(
+                self.conn, self.raw, "2026-09-18", {"BTBLendingOpenPosition": [incomplete]}, []
+            )
+        self.assertEqual(self.conn.execute("SELECT COUNT(*) FROM external_source_versions").fetchone()[0], 0)
+
     def test_temporal_boundary_uses_first_later_observed_session_and_fails_closed(self):
         # Friday 23:00 UTC is Friday 20:00 in Sao Paulo; Monday is intentionally absent (holiday).
         self.assertEqual(
@@ -154,6 +195,66 @@ class ExternalIntelligenceTests(unittest.TestCase):
             external.ingest_ipe(
                 self.conn, self.raw, 2026, acquired(ipe_zip(), "2026-09-17T15:00:00Z"), []
             )
+
+    def test_live_first_seen_uses_collector_clock_and_http_date_is_metadata(self):
+        class Response:
+            def __init__(self, http_date):
+                self.headers = {} if http_date is None else {"Date": http_date}
+
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *_args):
+                return False
+
+            def read(self, _limit):
+                return b"official-bytes"
+
+        started = datetime(2026, 9, 21, 1, 0, tzinfo=UTC)
+        received = datetime(2026, 9, 21, 1, 0, 2, tzinfo=UTC)
+        for http_date, expected in (
+            ("Sat, 19 Sep 2026 00:00:00 GMT", "2026-09-19T00:00:00Z"),
+            ("Tue, 22 Sep 2026 00:00:00 GMT", "2026-09-22T00:00:00Z"),
+            (None, None),
+        ):
+            ticks = iter((started, received))
+            with self.subTest(http_date=http_date), patch.object(
+                external, "urlopen", return_value=Response(http_date)
+            ):
+                result = external.fetch_bytes(
+                    "https://example.invalid/source", clock=lambda: next(ticks)
+                )
+            self.assertEqual(result["request_started_at"], "2026-09-21T01:00:00Z")
+            self.assertEqual(result["collector_received_at"], "2026-09-21T01:00:02Z")
+            self.assertEqual(result["first_seen_at"], "2026-09-21T01:00:02Z")
+            self.assertEqual(result["fetched_at"], "2026-09-21T01:00:02Z")
+            self.assertEqual(result["response_http_date"], expected)
+
+    def test_collector_clock_fails_closed_and_offline_observation_is_explicit(self):
+        class Response:
+            headers = {}
+
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *_args):
+                return False
+
+            def read(self, _limit):
+                return b"official-bytes"
+
+        ticks = iter((
+            datetime(2026, 9, 21, 1, 0, 2, tzinfo=UTC),
+            datetime(2026, 9, 21, 1, 0, tzinfo=UTC),
+        ))
+        with patch.object(external, "urlopen", return_value=Response()):
+            with self.assertRaises(external.TemporalError):
+                external.fetch_bytes("https://example.invalid/source", clock=lambda: next(ticks))
+        source = self.root / "source.zip"
+        source.write_bytes(b"offline")
+        offline = external.source_file(source, "2026-09-21T02:00:00-03:00")
+        self.assertEqual(offline["first_seen_at"], "2026-09-21T05:00:00Z")
+        self.assertIsNone(offline["response_http_date"])
 
     def _source_version_for_temporal_test(self) -> str:
         source_id, _ = external._source_version(
@@ -232,6 +333,46 @@ class ExternalIntelligenceTests(unittest.TestCase):
             self.assertEqual(cli.execute("SELECT COUNT(*) FROM external_receipts").fetchone()[0], 1)
         finally:
             cli.close()
+
+    def test_receipt_is_deterministic_and_cli_failure_is_nonzero(self):
+        operations = __import__("stocks_predictor.operations", fromlist=["main"])
+        receipt_one = self.root / "status-one.json"
+        receipt_two = self.root / "status-two.json"
+        for receipt in (receipt_one, receipt_two):
+            with redirect_stdout(io.StringIO()):
+                self.assertEqual(operations.main([
+                    "external", "status", "--db", str(self.root / "status.sqlite"),
+                    "--receipt", str(receipt),
+                ]), 0)
+        first = json.loads(receipt_one.read_text(encoding="utf-8"))
+        second = json.loads(receipt_two.read_text(encoding="utf-8"))
+        self.assertEqual(first["receipt_id"], second["receipt_id"])
+        with redirect_stdout(io.StringIO()):
+            exit_code = operations.main([
+                "external", "collect", "cvm-ipe", "--db", str(self.root / "failure.sqlite"),
+                "--raw-root", str(self.raw), "--receipt", str(self.root / "failure.json"),
+                "--year", "2026", "--source-file", str(self.root / "missing.zip"),
+            ])
+        self.assertNotEqual(exit_code, 0)
+
+    def test_ops_contract_publication_lineage_and_no_factor_isolation(self):
+        repository = Path(__file__).resolve().parents[1]
+        job = json.loads(
+            (repository / "docs/external_intelligence/ops-job.example.json").read_text(encoding="utf-8")
+        )
+        serialized = json.dumps(job)
+        self.assertIn("MARKET_COLLECTION", serialized)
+        self.assertIn("external", serialized)
+        self.assertIn("expected_artifact", serialized)
+        external.ingest_ipe(self.conn, self.raw, 2026, acquired(ipe_zip()), [])
+        source_id, digest = self.conn.execute(
+            "SELECT source_version_id,sha256 FROM external_source_versions"
+        ).fetchone()
+        self.assertTrue(source_id.startswith("sha256:"))
+        self.assertEqual(len(digest), 64)
+        for name in ("factor.py", "portfolio.py", "big_winner_v2.py", "big_winner_shadow.py"):
+            source = (repository / "stocks_predictor" / name).read_text(encoding="utf-8")
+            self.assertNotIn("external_intelligence", source)
 
     def test_source_url_rejects_credentials_and_secret_like_queries(self):
         for url in (

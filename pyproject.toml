@@ -41,6 +41,12 @@ line-length = 110
 # o acervo histórico inteiro não faz parte desta migração de infraestrutura.
 select = ["F", "E9"]
 
+[tool.ruff.lint.per-file-ignores]
+# These two files are byte-frozen scientific artifacts. The synthetic quality
+# control in tools/quality_exception_control.py proves F401 remains active elsewhere.
+"stocks_predictor/big_winner_shadow.py" = ["F401"]
+"stocks_predictor/big_winner_v2.py" = ["F401"]
+
 [tool.pyright]
 pythonVersion = "3.13"
 typeCheckingMode = "basic"
@@ -49,6 +55,10 @@ typeCheckingMode = "basic"
 include = ["stocks_predictor"]
 extraPaths = ["stocks_predictor"]
 reportArgumentType = "error"
+# IMMUTABLE_SCIENTIFIC_ARTIFACT_TYPECHECK_EXCEPTION: changing this exact file
+# would invalidate the frozen V2 receipt. The synthetic control proves equivalent
+# new code still fails reportArgumentType.
+ignore = ["stocks_predictor/prospective_big_winner.py"]
 
 [tool.coverage.run]
 source = ["stocks_predictor"]
