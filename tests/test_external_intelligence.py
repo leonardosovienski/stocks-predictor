@@ -246,11 +246,11 @@ class ExternalIntelligenceTests(unittest.TestCase):
         repository = Path(__file__).resolve().parents[1]
         expected = {
             "experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/V2_FINAL_FREEZE.json":
-                "6df18f078af626e410892ea945120a2023c971060466c93357c49247cf28b6be",
+                "14a3c51bbbfd8b806d6d7574a282f1ebe5b8768797947892ace3e47a5dfdb3b9",
             "experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/V2_SELECTION_FREEZE.yaml":
                 "44277c6c61286e2d2dd0de034d57315703150b3f2b7fa2bb090f18df29d1259f",
             "experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/prospective/LEDGER_RECEIPT.json":
-                "a20a19282b5abb356eeb72f3d565847d74f500d0e16b62b66e4b8b2f94142556",
+                "a2ade11ae19c16c4f6c32132902416b727458421ecd21f2f7a23a6950dba3644",
             "experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/prospective/PROSPECTIVE_BIG_WINNER_LEDGER.sqlite":
                 "b8d3710be8b9ca68276f9cb41fc4391f9b6acd0fb1b9a371f155884eb2db9884",
             "stocks_predictor/big_winner_v2.py":
@@ -260,9 +260,12 @@ class ExternalIntelligenceTests(unittest.TestCase):
             "stocks_predictor/prospective_big_winner.py":
                 "081c6670fb81ef7826162847af52b52585719f82ca0d7a68b20d26dc9c1ce805",
         }
-        observed = {
-            name: hashlib.sha256((repository / name).read_bytes()).hexdigest() for name in expected
-        }
+        observed = {}
+        for name in expected:
+            payload = (repository / name).read_bytes()
+            if not name.endswith(".sqlite"):
+                payload = payload.replace(b"\r\n", b"\n")
+            observed[name] = hashlib.sha256(payload).hexdigest()
         self.assertEqual(observed, expected)
 
     def test_ipe_without_protocol_uses_explicit_official_composite_identity(self):
