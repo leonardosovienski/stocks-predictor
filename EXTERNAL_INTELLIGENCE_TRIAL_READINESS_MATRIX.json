@@ -1,0 +1,360 @@
+{
+  "matrix_version": "external-intelligence-trial-readiness-matrix/1.0.0",
+  "assessed_at": "2026-09-21T02:48:00-03:00",
+  "assessment_commit_parent": "40f0a1030a77d7defe263c37bbb2884fb4535a45",
+  "protocol": {
+    "path": "EXTERNAL_INTELLIGENCE_TRIAL_READINESS_PROTOCOL.json",
+    "commit": "40f0a1030a77d7defe263c37bbb2884fb4535a45",
+    "protocol_sha256": "e33a9826ef5615c0cdd704094b3ae1cb79eb93742734415fa616306b99fb7145"
+  },
+  "outcome_access": "NOT_PERFORMED",
+  "assessment_inputs": [
+    {
+      "path": "C:/STOCKS/work/external-intelligence-v1-qa/run-final2-20260920T0320Z/external.sqlite",
+      "sha256": "99e1b268a136c6df6b6ee60e5fbc5fa5f8a8aad9d2df3fd703027069205eafee",
+      "role": "Preserved V1 live QA staging; parser revision 1 temporal limitation is applied conservatively in this matrix."
+    },
+    {
+      "path": "C:/STOCKS/work/external-intelligence-final-20260921/cda-entrega-real/external.sqlite",
+      "sha256": "b110cca0edd7c7ba7932829d2e525dfa651c2c4790578b1ca6b8f0241676f20d",
+      "role": "Isolated CDA and Entrega QA staging collected with collector temporal semantics revision 2."
+    }
+  ],
+  "thresholds": {
+    "minimum_temporal_coverage_days": 730,
+    "minimum_independent_cohorts": 24,
+    "minimum_PIT_STRICT_fraction": 0.95,
+    "minimum_identity_fraction": 0.8,
+    "maximum_missingness_fraction": 0.1
+  },
+  "eligible_families": [
+    {
+      "source": "B3_LENDING",
+      "datasets": [
+        "b3-lending-open-position",
+        "b3-loan-balance"
+      ],
+      "source_version_count": 8,
+      "source_version_set_sha256": [
+        "a102e73ed3a5d1b8298c84c151d0d5838a9440e938a3c62c9963d2df7087c2f0",
+        "648d3c09bc64136f89694335ca68dbb9c198b34a2f850adcf4091e85f2f4a1c5"
+      ],
+      "date_range": {
+        "min": "2026-09-18",
+        "max": "2026-09-18",
+        "calendar_days": 0
+      },
+      "companies": 0,
+      "securities": 2672,
+      "observations": 7617,
+      "independent_periods_or_cohorts": 1,
+      "database_declared_PIT": {
+        "PIT_STRICT": 7617,
+        "PIT_RECONSTRUCTED": 0,
+        "HISTORICAL_ONLY": 0
+      },
+      "protocol_effective_PIT": {
+        "PIT_STRICT": 0,
+        "PIT_RECONSTRUCTED": 0,
+        "HISTORICAL_ONLY": 7617,
+        "reason": "Preserved live QA used parser revision 1 HTTP-Date availability. It predates collector-controlled byte-receipt semantics and is not upgraded retroactively."
+      },
+      "missingness": {
+        "count": 1030,
+        "denominator": 7617,
+        "fraction": 0.13522384140737823,
+        "field_basis": "Open-position core balance/price/value fields plus loan-balance quantity/value and at least one average-rate field."
+      },
+      "identity_coverage": {
+        "count": 7617,
+        "denominator": 7617,
+        "fraction": 1.0
+      },
+      "revisions": 0,
+      "rejections": 0,
+      "criteria_passed": [
+        "minimum_identity_coverage"
+      ],
+      "criteria_failed": {
+        "minimum_temporal_coverage_days": {
+          "required": 730,
+          "observed": 0,
+          "shortfall": 730
+        },
+        "minimum_independent_cohorts": {
+          "required": 24,
+          "observed": 1,
+          "shortfall": 23
+        },
+        "minimum_PIT_STRICT_fraction": {
+          "required": 0.95,
+          "observed": 0.0,
+          "shortfall": 0.95
+        },
+        "maximum_missingness_fraction": {
+          "maximum": 0.1,
+          "observed": 0.13522384140737823,
+          "excess": 0.03522384140737822
+        }
+      },
+      "readiness": "NOT_READY"
+    },
+    {
+      "source": "CVM_VLMO",
+      "datasets": [
+        "VLMO"
+      ],
+      "source_version_count": 1,
+      "source_version_set_sha256": "bd4b822c2c26ed5068674b3f1a117a1bc5355d7150f87bf4580d30552d2d37a5",
+      "date_range": {
+        "min": "2026-01-01",
+        "max": "2026-08-01",
+        "calendar_days": 212
+      },
+      "companies": 451,
+      "securities": 0,
+      "observations": 38621,
+      "independent_periods_or_cohorts": 8,
+      "database_declared_PIT": {
+        "PIT_STRICT": 38621,
+        "PIT_RECONSTRUCTED": 0,
+        "HISTORICAL_ONLY": 0
+      },
+      "protocol_effective_PIT": {
+        "PIT_STRICT": 0,
+        "PIT_RECONSTRUCTED": 0,
+        "HISTORICAL_ONLY": 38621,
+        "reason": "Preserved live QA used parser revision 1 HTTP-Date availability."
+      },
+      "missingness": {
+        "count": 23209,
+        "denominator": 38621,
+        "fraction": 0.6009424924264002,
+        "field_basis": "Quantity, movement date, unit price, and volume required together for a transaction-flow candidate."
+      },
+      "identity_coverage": {
+        "count": 0,
+        "denominator": 38621,
+        "fraction": 0.0
+      },
+      "revisions": 0,
+      "rejections": 0,
+      "criteria_passed": [],
+      "criteria_failed": {
+        "minimum_temporal_coverage_days": {
+          "required": 730,
+          "observed": 212,
+          "shortfall": 518
+        },
+        "minimum_independent_cohorts": {
+          "required": 24,
+          "observed": 8,
+          "shortfall": 16
+        },
+        "minimum_PIT_STRICT_fraction": {
+          "required": 0.95,
+          "observed": 0.0,
+          "shortfall": 0.95
+        },
+        "minimum_identity_coverage": {
+          "required": 0.8,
+          "observed": 0.0,
+          "shortfall": 0.8
+        },
+        "maximum_missingness_fraction": {
+          "maximum": 0.1,
+          "observed": 0.6009424924264002,
+          "excess": 0.5009424924264002
+        }
+      },
+      "readiness": "NOT_READY"
+    },
+    {
+      "source": "CVM_BUYBACK",
+      "datasets": [
+        "RECOMPRA_ACOES"
+      ],
+      "source_version_count": 1,
+      "source_version_set_sha256": "09dce82f12df8382319f9431065db711763a4ca2c581ce18c4c21e6a3e5bf87b",
+      "date_range": {
+        "min": "1997-01-10",
+        "max": "2026-08-31",
+        "calendar_days": 10825
+      },
+      "companies": 356,
+      "securities": 0,
+      "observations": 1925,
+      "independent_periods_or_cohorts": 339,
+      "database_declared_PIT": {
+        "PIT_STRICT": 1925,
+        "PIT_RECONSTRUCTED": 0,
+        "HISTORICAL_ONLY": 0
+      },
+      "protocol_effective_PIT": {
+        "PIT_STRICT": 0,
+        "PIT_RECONSTRUCTED": 0,
+        "HISTORICAL_ONLY": 1925,
+        "reason": "The current historical archive does not prove historical byte-level availability, and the preserved live QA used parser revision 1 availability."
+      },
+      "missingness": {
+        "count": 1925,
+        "denominator": 1925,
+        "fraction": 1.0,
+        "field_basis": "Executed quantity and executed value; authorization quantities are not execution data."
+      },
+      "identity_coverage": {
+        "count": 0,
+        "denominator": 1925,
+        "fraction": 0.0
+      },
+      "revisions": 0,
+      "rejections": 2,
+      "criteria_passed": [
+        "minimum_temporal_coverage_days",
+        "minimum_independent_cohorts"
+      ],
+      "criteria_failed": {
+        "minimum_PIT_STRICT_fraction": {
+          "required": 0.95,
+          "observed": 0.0,
+          "shortfall": 0.95
+        },
+        "minimum_identity_coverage": {
+          "required": 0.8,
+          "observed": 0.0,
+          "shortfall": 0.8
+        },
+        "maximum_missingness_fraction": {
+          "maximum": 0.1,
+          "observed": 1.0,
+          "excess": 0.9
+        }
+      },
+      "readiness": "NOT_READY"
+    },
+    {
+      "source": "CVM_CDA",
+      "datasets": [
+        "CDA_FUND_HOLDINGS"
+      ],
+      "source_version_count": 1,
+      "source_version_set_sha256": "694f1e5406a494842eb33dd860e0c5a16517311ae2fdb2843b506f1389739bd8",
+      "date_range": {
+        "min": "2026-08-31",
+        "max": "2026-08-31",
+        "calendar_days": 0
+      },
+      "companies_or_funds": 6262,
+      "securities": 607,
+      "observations": 37282,
+      "independent_periods_or_cohorts": 1,
+      "PIT_STRICT": 37282,
+      "PIT_RECONSTRUCTED": 0,
+      "HISTORICAL_ONLY": 0,
+      "confidential_aggregate_observations": 8203,
+      "public_unresolved_observations": 149,
+      "missingness": {
+        "count": 18419,
+        "denominator": 37282,
+        "fraction": 0.4940453838313395,
+        "field_basis": "Explicit buy value, sell value, and ending market value required together for a flow-and-position candidate."
+      },
+      "identity_coverage": {
+        "count": 28930,
+        "denominator": 37282,
+        "fraction": 0.7759776836006652
+      },
+      "revisions": 0,
+      "rejections": 144,
+      "criteria_passed": [
+        "minimum_PIT_STRICT_coverage"
+      ],
+      "criteria_failed": {
+        "minimum_temporal_coverage_days": {
+          "required": 730,
+          "observed": 0,
+          "shortfall": 730
+        },
+        "minimum_independent_cohorts": {
+          "required": 24,
+          "observed": 1,
+          "shortfall": 23
+        },
+        "minimum_identity_coverage": {
+          "required": 0.8,
+          "observed": 0.7759776836006652,
+          "shortfall": 0.02402231639933483
+        },
+        "maximum_missingness_fraction": {
+          "maximum": 0.1,
+          "observed": 0.4940453838313395,
+          "excess": 0.39404538383133947
+        }
+      },
+      "readiness": "NOT_READY"
+    }
+  ],
+  "supporting_families": [
+    {
+      "source": "CVM_ENTREGA",
+      "source_version_count": 1,
+      "source_version_set_sha256": "f305e20c74cd026be65b4f606919828a8d49940c88d61f5083959bf0b53203be",
+      "date_range": {
+        "min": "2026-09-01",
+        "max": "2026-09-30"
+      },
+      "funds": 26438,
+      "documents": 774713,
+      "observations": 787875,
+      "independent_periods_or_cohorts": 1,
+      "PIT_STRICT": 787875,
+      "revised_documents": 471167,
+      "re_presentation_rows": 480089,
+      "rejections": 0,
+      "readiness_role": "SUPPORTING_METADATA_NOT_SIGNAL_FAMILY"
+    },
+    {
+      "source": "CVM_FCA_IDENTITY",
+      "source_version_count": 1,
+      "source_version_set_sha256": "6e9fc2cb196cebbc8c0410f7b2fb5fb11aae9cd3a72dc41856db894c689c1f12",
+      "security_links": 468,
+      "companies": 334,
+      "tickers": 459,
+      "rejections": 1,
+      "readiness_role": "SUPPORTING_IDENTITY_NOT_SIGNAL_FAMILY"
+    }
+  ],
+  "ineligible_families": [
+    {
+      "source": "CVM_IPE_METADATA",
+      "observations": 34343,
+      "companies": 718,
+      "date_range": {
+        "min": "2016-02-24",
+        "max": "2035-04-29"
+      },
+      "independent_periods_or_cohorts": 95,
+      "rejections": 129,
+      "status": "DEFERRED_CAUSALLY_NOT_READY",
+      "reason": "Metadata includes future reference anomalies and has no schema-constrained semantically evaluated classifier, model identity, prompt hash, or evidence-span preservation."
+    }
+  ],
+  "decision": {
+    "EXTERNAL_INTELLIGENCE_TRIAL_READINESS": "NOT_READY",
+    "ready_family_count": 0,
+    "eligible_family_count": 4,
+    "criteria_passed_by_at_least_one_family": [
+      "minimum_temporal_coverage_days",
+      "minimum_independent_cohorts",
+      "minimum_PIT_STRICT_coverage",
+      "minimum_identity_coverage"
+    ],
+    "criteria_passed_by_one_same_family": false,
+    "preregistration_status": "NOT_CREATED_DATA_NOT_READY",
+    "trial_execution": "FORBIDDEN",
+    "scientific_evidence_status": "NOT_EVALUATED_DATA_NOT_READY",
+    "economic_evidence_status": "NOT_EVALUATED",
+    "v3_promotion_status": "NOT_AUTHORIZED",
+    "objective_condition_to_change_state": "At least one eligible family must simultaneously reach 730 calendar days, 24 independent monthly cohorts, PIT_STRICT fraction at least 0.95, identity fraction at least 0.80, and applicable feature-field missingness at most 0.10 under the unchanged protocol."
+  }
+}
