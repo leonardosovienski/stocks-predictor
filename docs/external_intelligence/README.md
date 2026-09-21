@@ -15,7 +15,7 @@ not import CAIN.
 The database is deliberately separate from the managed COTAHIST/scientific database. Tables are
 prefixed `external_`; raw bytes live outside SQLite under `sha256/<prefix>/<digest>`. Immutable
 triggers prohibit update/delete of raw registrations, versions, observations, security links,
-receipts, and rejected rows.
+receipts, rejected rows, fund-holdings documents/observations, and document-delivery metadata.
 
 ## Source contracts
 
@@ -26,6 +26,8 @@ receipts, and rejected rows.
 | CVM buyback | `cia_aberta_recompra_acoes.zip` | Program, quantities, intermediaries; executed quantity/value remain unknown | CNPJ; temporal security link when FCA evidence exists |
 | CVM IPE | Annual `ipe_cia_aberta_<year>.zip` | Metadata and document reference only | CVM protocol/version, or an explicit official-metadata composite when protocol is absent |
 | CVM FCA | Annual FCA ZIP | Temporal CNPJ-to-ticker intervals used only for identity | CNPJ + ticker + filing availability + trading interval |
+| CVM CDA | Monthly `cda_fi_<YYYYMM>.zip` | Streamed equity-relevant public detail plus confidential aggregates | Official code/ISIN/issuer when present; otherwise unresolved |
+| CVM Entrega | Monthly `fi_entrega_documento_<YYYYMM>.zip` | Periodic/eventual and daily delivery metadata | Fund/class CNPJ + official document ID; no invented version |
 
 Schema headers are exact contracts. A missing/extra/reordered field, malformed archive, incomplete
 B3 pagination, or unpublished B3 response fails explicitly. HTTPS URLs containing credentials or
@@ -44,6 +46,18 @@ remains untouched and retains its documented legacy HTTP-Date limitation.
 
 Current acquisitions are `PIT_STRICT` only from collector first-seen time onward; they do not
 reconstruct earlier PIT knowledge. `received_at` must not exceed `available_at`.
+
+For CDA, `document_available_at` is separate from `security_identity_available_at`. Confidential
+files contain consolidated application values but omit individual security identity, so those rows
+are retained as `CONFIDENTIAL_AGGREGATE`, `UNRESOLVED`, with null identity availability. A later
+identified row gets the first-seen timestamp of that exact source version and never backfills an
+earlier aggregate. `DT_CONFID_APLIC` is preserved but is not converted into an exact disclosure
+instant because the official contract does not define the date boundary or a row-level release link.
+
+Entrega's `Data_Hora_Entrega` is preserved as an official naive timestamp with `UNKNOWN` time zone.
+It is submission/delivery metadata, not proof of public availability. `Tipo_Apresentacao` preserves
+presentations and re-presentations; immutable source-version history captures republication without
+inventing a document-version field.
 
 `tradable_session` is the first actually observed B3 session strictly after the Sao Paulo local
 collection date. It is `NULL` with reason `NO_SUBSEQUENT_OBSERVED_B3_SESSION` if a read-only
@@ -68,6 +82,12 @@ PIT state, time fields, and identity state. Source-local invalid or duplicate ro
 collector transaction. Raw bytes written before a transaction failure may remain content-addressed
 and unregistered; a later identical retry safely reuses them.
 
+CDA uses separate `external_fund_holdings_documents` and
+`external_fund_holdings_observations` tables. ZIP members are streamed, while only explicitly
+equity-relevant rows from coded/public detail and confidential aggregates enter staging. Explicit
+buy/sell/ending quantities and values are preserved as reported and are never derived by differencing.
+Entrega rows use `external_fund_document_deliveries`. All three tables are append-only.
+
 ## CLI
 
 All commands are non-interactive and emit JSON. Collection requires a separate external database,
@@ -79,6 +99,8 @@ python -m stocks_predictor external collect cvm-vlmo --db DB --raw-root RAW --re
 python -m stocks_predictor external collect cvm-buyback --db DB --raw-root RAW --receipt RECEIPT
 python -m stocks_predictor external collect cvm-ipe --db DB --raw-root RAW --receipt RECEIPT --year 2026
 python -m stocks_predictor external collect cvm-fca-identity --db DB --raw-root RAW --receipt RECEIPT --year 2026
+python -m stocks_predictor external collect cvm-cda --db DB --raw-root RAW --receipt RECEIPT --month 2026-08
+python -m stocks_predictor external collect cvm-entrega --db DB --raw-root RAW --receipt RECEIPT --month 2026-09
 python -m stocks_predictor external verify --db DB --raw-root RAW --receipt RECEIPT
 python -m stocks_predictor external status --db DB --receipt RECEIPT
 ```
@@ -104,5 +126,11 @@ pipelines require no rollback because no import or automatic feature promotion e
 
 Known limitations: public B3 history is limited by current BDI availability; broad historical PIT has
 not been reconstructed; CVM files can contain anomalies/duplicates; IPE semantic classification is
-`NOT_IMPLEMENTED`; buyback execution quantities/values are not inferred; no analyst consensus, paid
-source, CDA/Entrega corpus, feature selection, backtest, or capital action is included.
+`NOT_IMPLEMENTED`; buyback execution quantities/values are not inferred; CDA history before the
+post-November-2025 file regime requires a separate schema contract; official update schedules do not
+prove historical byte-level availability; raw redistribution remains conditional on ODbL review;
+no analyst consensus, paid source, feature selection, backtest, or capital action is included.
+
+The evidence boundary for CDA/Entrega is frozen in
+`CDA_ENTREGA_SOURCE_CONTRACT_AUDIT.json`. Current code must not broaden its confidentiality,
+historical-publication, identity, licensing, or redistribution claims without a versioned audit update.

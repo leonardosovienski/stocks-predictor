@@ -19,16 +19,20 @@ import re
 import sqlite3
 import tempfile
 from typing import Any, Callable, Iterable
+import unicodedata
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlsplit
 from urllib.request import Request, urlopen
 import zipfile
 from zoneinfo import ZoneInfo
 
-SCHEMA_VERSION = "external-intelligence/2"
+SCHEMA_VERSION = "external-intelligence/3"
 RECEIPT_VERSION = "external-intelligence-receipt/1"
-COLLECTOR_VERSION = "2"
+COLLECTOR_VERSION = "3"
 MAX_SOURCE_BYTES = 64 * 1024 * 1024
+MAX_ARCHIVE_MEMBERS = 64
+MAX_ARCHIVE_MEMBER_BYTES = 256 * 1024 * 1024
+MAX_ARCHIVE_UNCOMPRESSED_BYTES = 512 * 1024 * 1024
 SAO_PAULO = ZoneInfo("America/Sao_Paulo")
 
 B3_TABLES = {
@@ -74,6 +78,38 @@ IPE_COLUMNS = (
     "CNPJ_Companhia", "Nome_Companhia", "Codigo_CVM", "Data_Referencia", "Categoria", "Tipo",
     "Especie", "Assunto", "Data_Entrega", "Tipo_Apresentacao", "Protocolo_Entrega", "Versao",
     "Link_Download",
+)
+
+CDA_BLC4_COLUMNS = (
+    "TP_FUNDO_CLASSE", "CNPJ_FUNDO_CLASSE", "DENOM_SOCIAL", "DT_COMPTC", "TP_APLIC",
+    "TP_ATIVO", "EMISSOR_LIGADO", "TP_NEGOC", "QT_VENDA_NEGOC", "VL_VENDA_NEGOC",
+    "QT_AQUIS_NEGOC", "VL_AQUIS_NEGOC", "QT_POS_FINAL", "VL_MERC_POS_FINAL",
+    "VL_CUSTO_POS_FINAL", "DT_CONFID_APLIC", "CD_ATIVO", "DS_ATIVO", "CD_ISIN",
+    "DT_INI_VIGENCIA", "DT_FIM_VIGENCIA",
+)
+CDA_FIE_COLUMNS = (
+    "TP_FUNDO_CLASSE", "CNPJ_FUNDO_CLASSE", "DENOM_SOCIAL", "DT_COMPTC", "ID_DOC",
+    "VL_PATRIM_LIQ", "TP_APLIC", "TP_ATIVO", "EMISSOR_LIGADO", "TP_NEGOC",
+    "QT_VENDA_NEGOC", "VL_VENDA_NEGOC", "QT_AQUIS_NEGOC", "VL_AQUIS_NEGOC",
+    "QT_POS_FINAL", "VL_MERC_POS_FINAL", "VL_CUSTO_POS_FINAL", "DT_CONFID_APLIC",
+    "CD_ATIVO", "DS_ATIVO", "DT_VENC", "PF_PJ_EMISSOR", "CPF_CNPJ_EMISSOR",
+    "EMISSOR", "RISCO_EMISSOR", "CD_SELIC", "DT_INI_VIGENCIA", "CD_PAIS", "PAIS",
+    "CD_BV_MERC", "BV_MERC",
+)
+CDA_CONFID_COLUMNS = (
+    "TP_FUNDO_CLASSE", "CNPJ_FUNDO_CLASSE", "DENOM_SOCIAL", "DT_COMPTC", "TP_APLIC",
+    "VL_VENDA_NEGOC", "VL_AQUIS_NEGOC", "VL_MERC_POS_FINAL", "VL_CUSTO_POS_FINAL",
+    "DT_CONFID_APLIC",
+)
+CDA_FIE_CONFID_COLUMNS = (
+    "TP_FUNDO_CLASSE", "CNPJ_FUNDO_CLASSE", "DENOM_SOCIAL", "DT_COMPTC", "ID_DOC",
+    "TP_APLIC", "VL_VENDA_NEGOC", "VL_AQUIS_NEGOC", "VL_MERC_POS_FINAL",
+    "VL_CUSTO_POS_FINAL", "DT_CONFID_APLIC",
+)
+ENTREGA_COLUMNS = (
+    "Tipo_Fundo_Classe", "CNPJ_Fundo_Classe", "ID_Subclasse", "Tipo_Documento",
+    "Data_Inicio_Competencia", "Data_Fim_Competencia", "ID_Documento",
+    "Data_Hora_Entrega", "Tipo_Apresentacao", "Ativo", "Sistema_Origem",
 )
 
 EXTERNAL_MIGRATIONS: list[tuple[str, str]] = [
@@ -194,6 +230,108 @@ EXTERNAL_MIGRATIONS: list[tuple[str, str]] = [
         ALTER TABLE external_source_versions ADD COLUMN response_http_date TEXT;
         ALTER TABLE external_source_versions ADD COLUMN collector_received_at TEXT;
         ALTER TABLE external_source_versions ADD COLUMN temporal_semantics_version TEXT;
+    """),
+    ("external_0005_cvm_fund_documents", """
+        CREATE TABLE external_fund_holdings_documents (
+            holdings_document_id TEXT PRIMARY KEY,
+            source_version_id TEXT NOT NULL REFERENCES external_source_versions(source_version_id),
+            source_member TEXT NOT NULL,
+            fund_cnpj TEXT NOT NULL CHECK(length(fund_cnpj)=14),
+            competence_date TEXT NOT NULL,
+            official_document_id TEXT,
+            document_available_at TEXT NOT NULL,
+            first_seen_at TEXT NOT NULL,
+            pit_status TEXT NOT NULL CHECK(pit_status IN
+                ('PIT_STRICT','PIT_RECONSTRUCTED','HISTORICAL_ONLY')),
+            temporal_reason TEXT NOT NULL,
+            UNIQUE(source_version_id,source_member,fund_cnpj,competence_date,official_document_id)
+        );
+        CREATE TABLE external_fund_holdings_observations (
+            holdings_observation_id TEXT PRIMARY KEY,
+            holdings_document_id TEXT NOT NULL
+                REFERENCES external_fund_holdings_documents(holdings_document_id),
+            source_version_id TEXT NOT NULL REFERENCES external_source_versions(source_version_id),
+            source_member TEXT NOT NULL,
+            natural_key TEXT NOT NULL,
+            fund_cnpj TEXT NOT NULL CHECK(length(fund_cnpj)=14),
+            competence_date TEXT NOT NULL,
+            application_type TEXT NOT NULL,
+            asset_type TEXT,
+            official_security_code TEXT,
+            isin TEXT,
+            issuer_cnpj TEXT,
+            buy_quantity TEXT,
+            buy_value TEXT,
+            sell_quantity TEXT,
+            sell_value TEXT,
+            ending_quantity TEXT,
+            ending_market_value TEXT,
+            confidentiality_status TEXT NOT NULL CHECK(confidentiality_status IN
+                ('PUBLIC_DETAIL','CONFIDENTIAL_AGGREGATE')),
+            confidentiality_rule TEXT NOT NULL,
+            confidentiality_until TEXT,
+            identity_status TEXT NOT NULL CHECK(identity_status IN
+                ('OFFICIAL_IDENTIFIER_AVAILABLE','UNRESOLVED')),
+            document_available_at TEXT NOT NULL,
+            security_identity_available_at TEXT,
+            pit_status TEXT NOT NULL CHECK(pit_status IN
+                ('PIT_STRICT','PIT_RECONSTRUCTED','HISTORICAL_ONLY')),
+            evidence_reference TEXT NOT NULL,
+            payload_json TEXT NOT NULL,
+            UNIQUE(source_version_id,source_member,natural_key),
+            CHECK(confidentiality_status<>'CONFIDENTIAL_AGGREGATE' OR
+                (official_security_code IS NULL AND isin IS NULL AND issuer_cnpj IS NULL AND
+                 security_identity_available_at IS NULL AND identity_status='UNRESOLVED'))
+        );
+        CREATE INDEX external_holdings_fund_competence
+            ON external_fund_holdings_observations(fund_cnpj,competence_date);
+        CREATE INDEX external_holdings_security_competence
+            ON external_fund_holdings_observations(
+                official_security_code,isin,competence_date,security_identity_available_at);
+        CREATE TABLE external_fund_document_deliveries (
+            delivery_observation_id TEXT PRIMARY KEY,
+            source_version_id TEXT NOT NULL REFERENCES external_source_versions(source_version_id),
+            source_member TEXT NOT NULL,
+            natural_key TEXT NOT NULL,
+            fund_cnpj TEXT NOT NULL CHECK(length(fund_cnpj)=14),
+            subclass_id TEXT,
+            document_type TEXT NOT NULL,
+            competence_start TEXT NOT NULL,
+            competence_end TEXT NOT NULL,
+            official_document_id TEXT NOT NULL,
+            official_delivery_at TEXT NOT NULL,
+            presentation_type TEXT NOT NULL,
+            active_flag TEXT NOT NULL,
+            source_system TEXT NOT NULL,
+            document_available_at TEXT NOT NULL,
+            first_seen_at TEXT NOT NULL,
+            pit_status TEXT NOT NULL CHECK(pit_status IN
+                ('PIT_STRICT','PIT_RECONSTRUCTED','HISTORICAL_ONLY')),
+            temporal_reason TEXT NOT NULL,
+            payload_json TEXT NOT NULL,
+            UNIQUE(source_version_id,source_member,natural_key)
+        );
+        CREATE INDEX external_delivery_document_history
+            ON external_fund_document_deliveries(
+                fund_cnpj,document_type,competence_start,competence_end,official_delivery_at);
+        CREATE TRIGGER external_holdings_documents_no_update
+        BEFORE UPDATE ON external_fund_holdings_documents BEGIN
+            SELECT RAISE(ABORT,'external holdings documents are immutable'); END;
+        CREATE TRIGGER external_holdings_documents_no_delete
+        BEFORE DELETE ON external_fund_holdings_documents BEGIN
+            SELECT RAISE(ABORT,'external holdings documents are immutable'); END;
+        CREATE TRIGGER external_holdings_observations_no_update
+        BEFORE UPDATE ON external_fund_holdings_observations BEGIN
+            SELECT RAISE(ABORT,'external holdings observations are immutable'); END;
+        CREATE TRIGGER external_holdings_observations_no_delete
+        BEFORE DELETE ON external_fund_holdings_observations BEGIN
+            SELECT RAISE(ABORT,'external holdings observations are immutable'); END;
+        CREATE TRIGGER external_deliveries_no_update
+        BEFORE UPDATE ON external_fund_document_deliveries BEGIN
+            SELECT RAISE(ABORT,'external document deliveries are immutable'); END;
+        CREATE TRIGGER external_deliveries_no_delete
+        BEFORE DELETE ON external_fund_document_deliveries BEGIN
+            SELECT RAISE(ABORT,'external document deliveries are immutable'); END;
     """),
 ]
 
@@ -430,6 +568,24 @@ def resolve_tradable_session(available_at: str, sessions: Iterable[str]) -> tupl
     return candidates[0], "FIRST_SUBSEQUENT_OBSERVED_B3_SESSION"
 
 
+def classify_pit(evidence_basis: str) -> tuple[str, str]:
+    classifications = {
+        "COLLECTOR_FIRST_SEEN": (
+            "PIT_STRICT", "EXACT_SOURCE_VERSION_OBSERVED_AFTER_COMPLETE_BYTE_RECEIPT",
+        ),
+        "OFFICIAL_RULE_AND_PRESERVED_SOURCE_VERSION": (
+            "PIT_RECONSTRUCTED", "OFFICIAL_RULE_APPLIED_TO_PRESERVED_SOURCE_VERSION",
+        ),
+        "NO_DEFENSIBLE_PUBLICATION_INSTANT": (
+            "HISTORICAL_ONLY", "FINAL_DATA_WITHOUT_PROVEN_HISTORICAL_PUBLICATION_INSTANT",
+        ),
+    }
+    try:
+        return classifications[evidence_basis]
+    except KeyError as exc:
+        raise TemporalError(f"unsupported PIT evidence basis: {evidence_basis!r}") from exc
+
+
 def _rows_from_zip(payload: bytes, basename: str, expected: tuple[str, ...]) -> list[dict[str, str]]:
     try:
         with zipfile.ZipFile(io.BytesIO(payload)) as archive:
@@ -450,6 +606,88 @@ def _rows_from_zip(payload: bytes, basename: str, expected: tuple[str, ...]) -> 
                 return rows
     except zipfile.BadZipFile as exc:
         raise SchemaDriftError("source is not a valid ZIP archive") from exc
+
+
+def _validate_archive_members(payload: bytes, expected_basenames: set[str]) -> None:
+    try:
+        with zipfile.ZipFile(io.BytesIO(payload)) as archive:
+            entries = [entry for entry in archive.infolist() if not entry.is_dir()]
+            if len(entries) > MAX_ARCHIVE_MEMBERS:
+                raise SchemaDriftError("ZIP archive has too many members")
+            basenames = [PurePosixPath(entry.filename).name for entry in entries]
+            if len(basenames) != len(set(basenames)) or set(basenames) != expected_basenames:
+                raise SchemaDriftError(
+                    f"ZIP member contract changed; expected {sorted(expected_basenames)!r}, "
+                    f"got {sorted(basenames)!r}"
+                )
+            total = 0
+            for entry in entries:
+                if entry.flag_bits & 0x1:
+                    raise SchemaDriftError("encrypted ZIP members are unsupported")
+                if entry.file_size > MAX_ARCHIVE_MEMBER_BYTES:
+                    raise SchemaDriftError(f"ZIP member exceeds limit: {entry.filename}")
+                total += entry.file_size
+            if total > MAX_ARCHIVE_UNCOMPRESSED_BYTES:
+                raise SchemaDriftError("ZIP archive exceeds uncompressed size limit")
+    except zipfile.BadZipFile as exc:
+        raise SchemaDriftError("source is not a valid ZIP archive") from exc
+
+
+def _iter_csv_member(
+    payload: bytes, basename: str, expected: tuple[str, ...]
+) -> Iterable[tuple[int, dict[str, str]]]:
+    try:
+        with zipfile.ZipFile(io.BytesIO(payload)) as archive:
+            names = [name for name in archive.namelist() if PurePosixPath(name).name == basename]
+            if len(names) != 1:
+                raise SchemaDriftError(f"expected exactly one ZIP member {basename}")
+            with archive.open(names[0]) as binary:
+                text = io.TextIOWrapper(binary, encoding="cp1252", errors="strict", newline="")
+                reader = csv.DictReader(text, delimiter=";")
+                if tuple(reader.fieldnames or ()) != expected:
+                    raise SchemaDriftError(
+                        f"{basename}: columns changed; expected {list(expected)!r}, "
+                        f"got {reader.fieldnames!r}"
+                    )
+                for line_number, row in enumerate(reader, 2):
+                    if None in row or any(value is None for value in row.values()):
+                        raise SchemaDriftError(f"{basename}:{line_number}: malformed CSV row")
+                    yield line_number, row
+    except (UnicodeDecodeError, zipfile.BadZipFile) as exc:
+        raise SchemaDriftError(f"{basename}: invalid archive or Windows-1252 text") from exc
+
+
+def _month_token(value: str) -> str:
+    if not re.fullmatch(r"\d{4}-(?:0[1-9]|1[0-2])", value):
+        raise TemporalError(f"invalid month: {value!r}")
+    return value.replace("-", "")
+
+
+def _optional_date(value: str) -> str | None:
+    stripped = value.strip()
+    return iso_date(stripped) if stripped else None
+
+
+def _official_naive_datetime(value: str) -> str:
+    stripped = value.strip()
+    try:
+        parsed = datetime.strptime(stripped, "%Y-%m-%d %H:%M:%S.%f")
+    except ValueError as exc:
+        raise TemporalError(f"invalid official naive datetime: {value!r}") from exc
+    if parsed.strftime("%Y-%m-%d %H:%M:%S.%f")[:23] != stripped:
+        raise TemporalError(f"invalid official naive datetime: {value!r}")
+    return stripped
+
+
+def _fold(value: str) -> str:
+    decomposed = unicodedata.normalize("NFKD", value)
+    return "".join(char for char in decomposed if not unicodedata.combining(char)).casefold()
+
+
+def _is_equity_relevant(row: dict[str, str]) -> bool:
+    application = _fold(row.get("TP_APLIC", ""))
+    asset = _fold(row.get("TP_ATIVO", ""))
+    return "acoes" in application or asset.startswith("acao")
 
 
 def _json_payload(payload: bytes) -> Any:
@@ -541,6 +779,7 @@ def _observation(
         if received_at > available_at[:10]:
             raise TemporalError("received date is after collector first-seen time")
     tradable, reason = resolve_tradable_session(available_at, sessions)
+    pit_status, pit_reason = classify_pit("COLLECTOR_FIRST_SEEN")
     key = canonical_json(natural_key)
     observation_id = digest_identity(family, key, source_version_id)
     before = conn.total_changes
@@ -548,8 +787,8 @@ def _observation(
         "INSERT OR IGNORE INTO external_observations VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
         (
             observation_id, source_version_id, family, key, company_cnpj, ticker, isin, reference_at,
-            event_at, received_at, available_at, available_at, tradable, "PIT_STRICT",
-            "COLLECTOR_FIRST_SEEN;" + reason, identity_status, canonical_json(payload),
+            event_at, received_at, available_at, available_at, tradable, pit_status,
+            pit_reason + ";" + reason, identity_status, canonical_json(payload),
         ),
     )
     if company_cnpj and not ticker:
@@ -954,6 +1193,261 @@ def ingest_fca_identity(
     return _result([version_id], len(records), int(persisted), rejected)
 
 
+def _holdings_document(
+    conn: sqlite3.Connection,
+    *,
+    source_version_id: str,
+    source_member: str,
+    fund_cnpj: str,
+    competence_date: str,
+    official_document_id: str | None,
+    available_at: str,
+) -> str:
+    pit_status, pit_reason = classify_pit("COLLECTOR_FIRST_SEEN")
+    identity = digest_identity(
+        "cvm-cda-document", source_version_id, source_member, fund_cnpj, competence_date,
+        official_document_id,
+    )
+    conn.execute(
+        "INSERT OR IGNORE INTO external_fund_holdings_documents"
+        " (holdings_document_id,source_version_id,source_member,fund_cnpj,competence_date,"
+        " official_document_id,document_available_at,first_seen_at,pit_status,temporal_reason)"
+        " VALUES (?,?,?,?,?,?,?,?,?,?)",
+        (
+            identity, source_version_id, source_member, fund_cnpj, competence_date,
+            official_document_id, available_at, available_at, pit_status,
+            pit_reason + ";CDA_ROW_HAS_NO_PROVEN_EARLIER_PUBLICATION_INSTANT",
+        ),
+    )
+    return identity
+
+
+def _cda_archive_contract(token: str) -> dict[str, tuple[tuple[str, ...], bool]]:
+    if token < "202512":
+        raise SchemaDriftError(
+            "this parser implements only the post-2025-11 cda_fie schema; older eras require "
+            "an explicit source-contract revision"
+        )
+    return {
+        f"cda_fi_BLC_4_{token}.csv": (CDA_BLC4_COLUMNS, False),
+        f"cda_fie_{token}.csv": (CDA_FIE_COLUMNS, False),
+        f"cda_fi_CONFID_{token}.csv": (CDA_CONFID_COLUMNS, True),
+        f"cda_fie_CONFID_{token}.csv": (CDA_FIE_CONFID_COLUMNS, True),
+    }
+
+
+def _cda_all_members(token: str) -> set[str]:
+    return {
+        f"cda_fie_{token}.csv",
+        f"cda_fie_CONFID_{token}.csv",
+        *(f"cda_fi_BLC_{number}_{token}.csv" for number in range(1, 9)),
+        f"cda_fi_CONFID_{token}.csv",
+        f"cda_fi_PL_{token}.csv",
+    }
+
+
+def ingest_cvm_cda(
+    conn: sqlite3.Connection,
+    raw_root: Path,
+    month: str,
+    acquired: dict[str, Any],
+) -> dict[str, Any]:
+    token = _month_token(month)
+    contract = _cda_archive_contract(token)
+    payload = acquired["payload"]
+    _validate_archive_members(payload, _cda_all_members(token))
+    available_at = _first_seen_at(acquired)
+    pit_status, _pit_reason = classify_pit("COLLECTOR_FIRST_SEEN")
+    rows_read = persisted = rejected = filtered = 0
+    conn.execute("SAVEPOINT external_cda")
+    try:
+        version_id, source_existed = _source_version(
+            conn, raw_root, acquired, publisher="CVM", dataset="CDA_FUND_HOLDINGS",
+            logical_period=month,
+            source_url=f"https://dados.cvm.gov.br/dados/FI/DOC/CDA/DADOS/cda_fi_{token}.zip",
+            parser_version="cvm-cda/1",
+        )
+        for member, (columns, confidential) in contract.items():
+            for line_number, row in _iter_csv_member(payload, member, columns):
+                rows_read += 1
+                if not _is_equity_relevant(row):
+                    filtered += 1
+                    continue
+                fund_cnpj = digits(row["CNPJ_FUNDO_CLASSE"])
+                competence = iso_date(row["DT_COMPTC"].strip())
+                official_document_id = row.get("ID_DOC", "").strip() or None
+                confidentiality_until = _optional_date(row["DT_CONFID_APLIC"])
+                code = row.get("CD_ATIVO", "").strip() or None
+                isin = row.get("CD_ISIN", "").strip() or None
+                if isin is not None and not re.fullmatch(r"[A-Z0-9]{12}", isin):
+                    raise IdentityError(f"{member}:{line_number}: invalid ISIN {isin!r}")
+                issuer_raw = "".join(char for char in row.get("CPF_CNPJ_EMISSOR", "") if char.isdigit())
+                issuer_cnpj = issuer_raw if len(issuer_raw) == 14 else None
+                if confidential:
+                    code = isin = issuer_cnpj = None
+                identity_status = (
+                    "OFFICIAL_IDENTIFIER_AVAILABLE" if any((code, isin, issuer_cnpj))
+                    else "UNRESOLVED"
+                )
+                identity_available_at = available_at if identity_status == (
+                    "OFFICIAL_IDENTIFIER_AVAILABLE"
+                ) else None
+                natural_key = [
+                    fund_cnpj, competence, official_document_id, row["TP_APLIC"].strip(),
+                    row.get("TP_ATIVO", "").strip() or None, code, isin, issuer_cnpj,
+                    row.get("TP_NEGOC", "").strip() or None, confidentiality_until,
+                ]
+                key = canonical_json(natural_key)
+                document_id = _holdings_document(
+                    conn, source_version_id=version_id, source_member=member,
+                    fund_cnpj=fund_cnpj, competence_date=competence,
+                    official_document_id=official_document_id, available_at=available_at,
+                )
+                observation_id = digest_identity("cvm-cda-holding", version_id, member, key)
+                before = conn.total_changes
+                conn.execute(
+                    "INSERT OR IGNORE INTO external_fund_holdings_observations"
+                    " (holdings_observation_id,holdings_document_id,source_version_id,source_member,"
+                    " natural_key,fund_cnpj,competence_date,application_type,asset_type,"
+                    " official_security_code,isin,issuer_cnpj,buy_quantity,buy_value,sell_quantity,"
+                    " sell_value,ending_quantity,ending_market_value,confidentiality_status,"
+                    " confidentiality_rule,confidentiality_until,identity_status,"
+                    " document_available_at,security_identity_available_at,pit_status,"
+                    " evidence_reference,payload_json) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,"
+                    " ?,?,?,?,?,?,?,?,?)",
+                    (
+                        observation_id, document_id, version_id, member, key, fund_cnpj, competence,
+                        row["TP_APLIC"].strip(), row.get("TP_ATIVO", "").strip() or None,
+                        code, isin, issuer_cnpj,
+                        decimal_text(row.get("QT_AQUIS_NEGOC"), optional=True),
+                        decimal_text(row["VL_AQUIS_NEGOC"], optional=True),
+                        decimal_text(row.get("QT_VENDA_NEGOC"), optional=True),
+                        decimal_text(row["VL_VENDA_NEGOC"], optional=True),
+                        decimal_text(row.get("QT_POS_FINAL"), optional=True),
+                        decimal_text(row["VL_MERC_POS_FINAL"], optional=True),
+                        "CONFIDENTIAL_AGGREGATE" if confidential else "PUBLIC_DETAIL",
+                        (
+                            "CVM_CDA_CONSOLIDATED_UNTIL_ADMINISTRATOR_REQUESTED_PERIOD_EXPIRES"
+                            if confidential else "CVM_CDA_PUBLIC_INDIVIDUAL_DETAIL"
+                        ),
+                        confidentiality_until, identity_status, available_at,
+                        identity_available_at, pit_status,
+                        "CDA_ENTREGA_SOURCE_CONTRACT_AUDIT.json", canonical_json(row),
+                    ),
+                )
+                if conn.total_changes > before:
+                    persisted += 1
+                elif not source_existed:
+                    _reject(
+                        conn, source_version_id=version_id, family="cvm-cda-holding",
+                        natural_key=[member, line_number, natural_key],
+                        reason="DUPLICATE_CDA_NATURAL_KEY", payload=row,
+                    )
+                    rejected += 1
+        conn.execute("RELEASE external_cda")
+    except BaseException:
+        conn.execute("ROLLBACK TO external_cda")
+        conn.execute("RELEASE external_cda")
+        raise
+    result = _result([version_id], rows_read, persisted, rejected)
+    result["rows_filtered_out"] = filtered
+    result["document_availability_basis"] = "COLLECTOR_FIRST_SEEN"
+    result["security_identity_availability_basis"] = "EXACT_IDENTIFIED_SOURCE_VERSION_FIRST_SEEN"
+    return result
+
+
+def ingest_cvm_entrega(
+    conn: sqlite3.Connection,
+    raw_root: Path,
+    month: str,
+    acquired: dict[str, Any],
+) -> dict[str, Any]:
+    token = _month_token(month)
+    members = {
+        f"fi_entrega_documento_{token}.csv",
+        f"fi_entrega_documento_diario_{token}.csv",
+    }
+    payload = acquired["payload"]
+    _validate_archive_members(payload, members)
+    available_at = _first_seen_at(acquired)
+    pit_status, pit_reason = classify_pit("COLLECTOR_FIRST_SEEN")
+    rows_read = persisted = rejected = 0
+    conn.execute("SAVEPOINT external_entrega")
+    try:
+        version_id, source_existed = _source_version(
+            conn, raw_root, acquired, publisher="CVM", dataset="FUND_DOCUMENT_DELIVERIES",
+            logical_period=month,
+            source_url=(
+                "https://dados.cvm.gov.br/dados/FI/DOC/ENTREGA/DADOS/"
+                f"fi_entrega_documento_{token}.zip"
+            ),
+            parser_version="cvm-entrega/1",
+        )
+        for member in sorted(members):
+            for line_number, row in _iter_csv_member(payload, member, ENTREGA_COLUMNS):
+                rows_read += 1
+                fund_cnpj = digits(row["CNPJ_Fundo_Classe"])
+                competence_start = iso_date(row["Data_Inicio_Competencia"].strip())
+                competence_end = iso_date(row["Data_Fim_Competencia"].strip())
+                if competence_end < competence_start:
+                    raise TemporalError(f"{member}:{line_number}: competence interval is reversed")
+                official_document_id = decimal_text(row["ID_Documento"], integer=True)
+                if official_document_id is None:
+                    raise SchemaDriftError(f"{member}:{line_number}: missing document identity")
+                official_delivery_at = _official_naive_datetime(row["Data_Hora_Entrega"])
+                presentation_type = row["Tipo_Apresentacao"].strip()
+                document_type = row["Tipo_Documento"].strip()
+                active_flag = row["Ativo"].strip()
+                source_system = row["Sistema_Origem"].strip()
+                if not presentation_type or not document_type or active_flag not in {"S", "N"}:
+                    raise SchemaDriftError(f"{member}:{line_number}: invalid required delivery metadata")
+                if not source_system:
+                    raise SchemaDriftError(f"{member}:{line_number}: missing source system")
+                natural_key = [
+                    fund_cnpj, row["ID_Subclasse"].strip() or None, document_type,
+                    competence_start, competence_end, official_document_id, official_delivery_at,
+                    presentation_type, active_flag, source_system,
+                ]
+                key = canonical_json(natural_key)
+                identity = digest_identity("cvm-entrega", version_id, member, key)
+                before = conn.total_changes
+                conn.execute(
+                    "INSERT OR IGNORE INTO external_fund_document_deliveries"
+                    " (delivery_observation_id,source_version_id,source_member,natural_key,fund_cnpj,"
+                    " subclass_id,document_type,competence_start,competence_end,official_document_id,"
+                    " official_delivery_at,presentation_type,active_flag,source_system,"
+                    " document_available_at,first_seen_at,pit_status,temporal_reason,payload_json)"
+                    " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+                    (
+                        identity, version_id, member, key, fund_cnpj,
+                        row["ID_Subclasse"].strip() or None, document_type, competence_start,
+                        competence_end, official_document_id, official_delivery_at,
+                        presentation_type, active_flag, source_system, available_at, available_at,
+                        pit_status,
+                        pit_reason + ";OFFICIAL_DELIVERY_TIME_IS_NOT_PUBLIC_AVAILABILITY",
+                        canonical_json(row),
+                    ),
+                )
+                if conn.total_changes > before:
+                    persisted += 1
+                elif not source_existed:
+                    _reject(
+                        conn, source_version_id=version_id, family="cvm-fund-delivery",
+                        natural_key=[member, line_number, natural_key],
+                        reason="DUPLICATE_ENTREGA_NATURAL_KEY", payload=row,
+                    )
+                    rejected += 1
+        conn.execute("RELEASE external_entrega")
+    except BaseException:
+        conn.execute("ROLLBACK TO external_entrega")
+        conn.execute("RELEASE external_entrega")
+        raise
+    result = _result([version_id], rows_read, persisted, rejected)
+    result["official_delivery_timezone"] = "UNKNOWN"
+    result["document_availability_basis"] = "COLLECTOR_FIRST_SEEN"
+    return result
+
+
 def verify(conn: sqlite3.Connection, raw_root: Path) -> dict[str, Any]:
     issues: list[str] = []
     versions = conn.execute(
@@ -1023,11 +1517,58 @@ def verify(conn: sqlite3.Connection, raw_root: Path) -> dict[str, Any]:
             issues.append(f"TRADABLE_SESSION_ORDER:{observation_id}")
         if row[10] == "DIRECT_B3_TICKER_ISIN" and (not row[8] or not row[9]):
             issues.append(f"DIRECT_IDENTITY_INCOMPLETE:{observation_id}")
+    holdings_count = 0
+    holdings = conn.execute(
+        "SELECT holdings_observation_id,source_version_id,document_available_at,"
+        " security_identity_available_at,confidentiality_status,identity_status,pit_status,"
+        " payload_json FROM external_fund_holdings_observations"
+    ).fetchall()
+    for row in holdings:
+        holdings_count += 1
+        observation_id, source_id, document_available, identity_available = row[:4]
+        if source_id not in known:
+            issues.append(f"HOLDINGS_LINEAGE_MISSING:{observation_id}")
+        try:
+            utc_timestamp(document_available)
+            if identity_available:
+                utc_timestamp(identity_available)
+            json.loads(row[7])
+        except (TypeError, ValueError, json.JSONDecodeError):
+            issues.append(f"HOLDINGS_INVALID:{observation_id}")
+        if row[4] == "CONFIDENTIAL_AGGREGATE" and (
+            identity_available is not None or row[5] != "UNRESOLVED"
+        ):
+            issues.append(f"CONFIDENTIAL_IDENTITY_LEAK:{observation_id}")
+        if row[6] == "HISTORICAL_ONLY" and identity_available is not None:
+            issues.append(f"HISTORICAL_IDENTITY_OVERCLAIM:{observation_id}")
+    deliveries_count = 0
+    deliveries = conn.execute(
+        "SELECT delivery_observation_id,source_version_id,document_available_at,first_seen_at,"
+        " official_delivery_at,payload_json FROM external_fund_document_deliveries"
+    )
+    for row in deliveries:
+        deliveries_count += 1
+        if row[1] not in known:
+            issues.append(f"DELIVERY_LINEAGE_MISSING:{row[0]}")
+        try:
+            available = utc_timestamp(row[2])
+            first_seen = utc_timestamp(row[3])
+            _official_naive_datetime(row[4])
+            json.loads(row[5])
+            if available != first_seen:
+                issues.append(f"DELIVERY_FIRST_SEEN_MISMATCH:{row[0]}")
+        except (TypeError, ValueError, json.JSONDecodeError, TemporalError):
+            issues.append(f"DELIVERY_INVALID:{row[0]}")
     result = {
         "status": "SUCCESS" if not issues else "INTEGRITY_ERROR",
         "schema_version": SCHEMA_VERSION,
         "source_versions": len(versions),
         "observations": len(observations),
+        "fund_holdings_documents": conn.execute(
+            "SELECT COUNT(*) FROM external_fund_holdings_documents"
+        ).fetchone()[0],
+        "fund_holdings_observations": holdings_count,
+        "fund_document_deliveries": deliveries_count,
         "rejections": conn.execute("SELECT COUNT(*) FROM external_rejections").fetchone()[0],
         "security_links": conn.execute("SELECT COUNT(*) FROM external_security_links").fetchone()[0],
         "issues": issues,
@@ -1045,14 +1586,33 @@ def status(conn: sqlite3.Connection) -> dict[str, Any]:
     result = []
     for dataset in sorted({row[0] for row in rows}):
         latest = next(row for row in rows if row[0] == dataset)
-        count, reference, available, pit = conn.execute(
-            "SELECT COUNT(*),MAX(reference_at),MAX(available_at),"
-            " CASE WHEN COUNT(*)=0 THEN 'NOT_APPLICABLE'"
-            " WHEN COUNT(DISTINCT pit_status)=1 THEN MIN(pit_status) ELSE 'MIXED' END"
-            " FROM external_observations o JOIN external_source_versions s USING(source_version_id)"
-            " WHERE s.dataset=?",
-            (dataset,),
-        ).fetchone()
+        if dataset == "CDA_FUND_HOLDINGS":
+            count, reference, available, pit = conn.execute(
+                "SELECT COUNT(*),MAX(competence_date),MAX(document_available_at),"
+                " CASE WHEN COUNT(*)=0 THEN 'NOT_APPLICABLE'"
+                " WHEN COUNT(DISTINCT pit_status)=1 THEN MIN(pit_status) ELSE 'MIXED' END"
+                " FROM external_fund_holdings_observations o"
+                " JOIN external_source_versions s USING(source_version_id) WHERE s.dataset=?",
+                (dataset,),
+            ).fetchone()
+        elif dataset == "FUND_DOCUMENT_DELIVERIES":
+            count, reference, available, pit = conn.execute(
+                "SELECT COUNT(*),MAX(competence_end),MAX(document_available_at),"
+                " CASE WHEN COUNT(*)=0 THEN 'NOT_APPLICABLE'"
+                " WHEN COUNT(DISTINCT pit_status)=1 THEN MIN(pit_status) ELSE 'MIXED' END"
+                " FROM external_fund_document_deliveries o"
+                " JOIN external_source_versions s USING(source_version_id) WHERE s.dataset=?",
+                (dataset,),
+            ).fetchone()
+        else:
+            count, reference, available, pit = conn.execute(
+                "SELECT COUNT(*),MAX(reference_at),MAX(available_at),"
+                " CASE WHEN COUNT(*)=0 THEN 'NOT_APPLICABLE'"
+                " WHEN COUNT(DISTINCT pit_status)=1 THEN MIN(pit_status) ELSE 'MIXED' END"
+                " FROM external_observations o"
+                " JOIN external_source_versions s USING(source_version_id) WHERE s.dataset=?",
+                (dataset,),
+            ).fetchone()
         rejected = conn.execute(
             "SELECT COUNT(*) FROM external_rejections r"
             " JOIN external_source_versions s USING(source_version_id) WHERE s.dataset=?",
@@ -1094,7 +1654,10 @@ def add_cli(root: argparse._SubParsersAction) -> None:  # type: ignore[type-arg]
     actions = external.add_subparsers(dest="external_action", required=True)
     collect = actions.add_parser("collect")
     collectors = collect.add_subparsers(dest="collector", required=True)
-    for name in ("b3-lending", "cvm-vlmo", "cvm-buyback", "cvm-ipe", "cvm-fca-identity"):
+    for name in (
+        "b3-lending", "cvm-vlmo", "cvm-buyback", "cvm-ipe", "cvm-fca-identity",
+        "cvm-cda", "cvm-entrega",
+    ):
         command = collectors.add_parser(name)
         command.add_argument("--db", type=Path, required=True)
         command.add_argument("--raw-root", type=Path, required=True)
@@ -1107,6 +1670,8 @@ def add_cli(root: argparse._SubParsersAction) -> None:  # type: ignore[type-arg]
             command.add_argument("--reference-date", required=True)
         elif name in ("cvm-vlmo", "cvm-ipe", "cvm-fca-identity"):
             command.add_argument("--year", type=int, required=True)
+        elif name in ("cvm-cda", "cvm-entrega"):
+            command.add_argument("--month", required=True, help="Official period in YYYY-MM form")
     for action in ("verify", "status"):
         command = actions.add_parser(action)
         command.add_argument("--db", type=Path, required=True)
@@ -1149,8 +1714,17 @@ def _collect(args: argparse.Namespace, conn: sqlite3.Connection) -> dict[str, An
             url = "https://dados.cvm.gov.br/dados/CIA_ABERTA/EVENTOS/RECOMPRA_ACOES/DADOS/cia_aberta_recompra_acoes.zip"
         elif args.collector == "cvm-ipe":
             url = f"https://dados.cvm.gov.br/dados/cia_aberta/DOC/IPE/DADOS/ipe_cia_aberta_{args.year}.zip"
-        else:
+        elif args.collector == "cvm-fca-identity":
             url = f"https://dados.cvm.gov.br/dados/cia_aberta/DOC/FCA/DADOS/fca_cia_aberta_{args.year}.zip"
+        elif args.collector == "cvm-cda":
+            token = _month_token(args.month)
+            url = f"https://dados.cvm.gov.br/dados/FI/DOC/CDA/DADOS/cda_fi_{token}.zip"
+        else:
+            token = _month_token(args.month)
+            url = (
+                "https://dados.cvm.gov.br/dados/FI/DOC/ENTREGA/DADOS/"
+                f"fi_entrega_documento_{token}.zip"
+            )
         acquired_one = fetch_bytes(url, timeout=args.timeout)
     if args.collector == "cvm-vlmo":
         return ingest_vlmo(conn, args.raw_root, args.year, acquired_one, sessions)
@@ -1158,7 +1732,11 @@ def _collect(args: argparse.Namespace, conn: sqlite3.Connection) -> dict[str, An
         return ingest_buyback(conn, args.raw_root, acquired_one, sessions)
     if args.collector == "cvm-ipe":
         return ingest_ipe(conn, args.raw_root, args.year, acquired_one, sessions)
-    return ingest_fca_identity(conn, args.raw_root, args.year, acquired_one)
+    if args.collector == "cvm-fca-identity":
+        return ingest_fca_identity(conn, args.raw_root, args.year, acquired_one)
+    if args.collector == "cvm-cda":
+        return ingest_cvm_cda(conn, args.raw_root, args.month, acquired_one)
+    return ingest_cvm_entrega(conn, args.raw_root, args.month, acquired_one)
 
 
 def run_cli(args: argparse.Namespace) -> int:

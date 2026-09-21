@@ -109,6 +109,52 @@ def b3_payload(table_name: str) -> bytes:
     }).encode()
 
 
+def cda_zip(*, public: bool = True, confidential: bool = True, duplicate: bool = False) -> bytes:
+    token = "202608"
+    files: dict[str, tuple[tuple[str, ...], list[list[str]]]] = {}
+    for number in range(1, 9):
+        name = f"cda_fi_BLC_{number}_{token}.csv"
+        files[name] = (("IGNORED",), [])
+    public_row = [
+        "CLASSES - FIF", CNPJ, "FUNDO TESTE", "2026-08-31", "Ações", "Ação ordinária",
+        "N", "Para negociação", "2", "20", "5", "50", "10", "100", "", "",
+        "PETR4", "PETROBRAS PN", "BRPETRACNPR6", "2009-05-20", "",
+    ]
+    public_rows = [public_row] if public else []
+    if duplicate:
+        public_rows.append(public_row)
+    files[f"cda_fi_BLC_4_{token}.csv"] = (external.CDA_BLC4_COLUMNS, public_rows)
+    files[f"cda_fie_{token}.csv"] = (external.CDA_FIE_COLUMNS, [])
+    confidential_row = [
+        "CLASSES - FIF", CNPJ, "FUNDO TESTE", "2026-08-31", "Ações", "2", "5",
+        "100", "", "2026-11-29",
+    ]
+    files[f"cda_fi_CONFID_{token}.csv"] = (
+        external.CDA_CONFID_COLUMNS, [confidential_row] if confidential else [],
+    )
+    files[f"cda_fie_CONFID_{token}.csv"] = (external.CDA_FIE_CONFID_COLUMNS, [])
+    files[f"cda_fi_PL_{token}.csv"] = (("IGNORED",), [])
+    return csv_zip(files)
+
+
+def entrega_zip(*, revision: bool = True) -> bytes:
+    token = "202609"
+    first = [
+        "CLASSES - FIF", CNPJ_DIGITS, "", "CDA", "2026-08-01", "2026-08-31", "101",
+        "2026-09-10 12:34:56.789", "Apresentação", "S", "CVMWEB",
+    ]
+    second = [
+        "CLASSES - FIF", CNPJ_DIGITS, "", "CDA", "2026-08-01", "2026-08-31", "101",
+        "2026-09-12 12:34:56.789", "Reapresentação", "S", "CVMWEB",
+    ]
+    return csv_zip({
+        f"fi_entrega_documento_{token}.csv": (
+            external.ENTREGA_COLUMNS, [first, second] if revision else [first],
+        ),
+        f"fi_entrega_documento_diario_{token}.csv": (external.ENTREGA_COLUMNS, []),
+    })
+
+
 class ExternalIntelligenceTests(unittest.TestCase):
     def setUp(self):
         self.temporary = __import__("tempfile").TemporaryDirectory()
@@ -195,6 +241,19 @@ class ExternalIntelligenceTests(unittest.TestCase):
             external.ingest_ipe(
                 self.conn, self.raw, 2026, acquired(ipe_zip(), "2026-09-17T15:00:00Z"), []
             )
+
+    def test_pit_states_require_explicit_evidence_basis(self):
+        self.assertEqual(external.classify_pit("COLLECTOR_FIRST_SEEN")[0], "PIT_STRICT")
+        self.assertEqual(
+            external.classify_pit("OFFICIAL_RULE_AND_PRESERVED_SOURCE_VERSION")[0],
+            "PIT_RECONSTRUCTED",
+        )
+        self.assertEqual(
+            external.classify_pit("NO_DEFENSIBLE_PUBLICATION_INSTANT")[0],
+            "HISTORICAL_ONLY",
+        )
+        with self.assertRaises(external.TemporalError):
+            external.classify_pit("OFFICIAL_SCHEDULE_SEEMS_PLAUSIBLE")
 
     def test_live_first_seen_uses_collector_clock_and_http_date_is_metadata(self):
         class Response:
@@ -285,6 +344,135 @@ class ExternalIntelligenceTests(unittest.TestCase):
         self.assertEqual(direct, 2)
         self.assertEqual(external.verify(self.conn, self.raw)["status"], "SUCCESS")
 
+    def test_cda_streams_equity_subset_and_separates_confidential_identity_time(self):
+        result = external.ingest_cvm_cda(
+            self.conn, self.raw, "2026-08", acquired(cda_zip())
+        )
+        self.assertEqual(result["rows_read"], 2)
+        self.assertEqual(result["rows_persisted"], 2)
+        rows = self.conn.execute(
+            "SELECT confidentiality_status,official_security_code,isin,buy_quantity,buy_value,"
+            " sell_quantity,sell_value,ending_quantity,ending_market_value,"
+            " document_available_at,security_identity_available_at,identity_status"
+            " FROM external_fund_holdings_observations ORDER BY confidentiality_status"
+        ).fetchall()
+        confidential, public = rows
+        self.assertEqual(confidential[0], "CONFIDENTIAL_AGGREGATE")
+        self.assertEqual(confidential[1:3], (None, None))
+        self.assertIsNone(confidential[10])
+        self.assertEqual(confidential[11], "UNRESOLVED")
+        self.assertEqual(public[0:3], ("PUBLIC_DETAIL", "PETR4", "BRPETRACNPR6"))
+        self.assertEqual(public[3:9], ("5", "50", "2", "20", "10", "100"))
+        self.assertEqual(public[9], public[10])
+        self.assertEqual(public[11], "OFFICIAL_IDENTIFIER_AVAILABLE")
+        self.assertEqual(
+            self.conn.execute("SELECT COUNT(*) FROM external_fund_holdings_documents").fetchone()[0],
+            2,
+        )
+        with self.assertRaises(sqlite3.IntegrityError):
+            self.conn.execute(
+                "UPDATE external_fund_holdings_observations SET application_type='mutated'"
+            )
+        self.assertEqual(external.verify(self.conn, self.raw)["status"], "SUCCESS")
+
+    def test_cda_identity_disclosure_transition_never_backfills_confidential_row(self):
+        external.ingest_cvm_cda(
+            self.conn, self.raw, "2026-08",
+            acquired(cda_zip(public=False), "2026-09-19T15:00:00Z"),
+        )
+        external.ingest_cvm_cda(
+            self.conn, self.raw, "2026-08",
+            acquired(cda_zip(confidential=False), "2026-11-30T15:00:00Z"),
+        )
+        rows = self.conn.execute(
+            "SELECT confidentiality_status,official_security_code,security_identity_available_at,"
+            " document_available_at FROM external_fund_holdings_observations"
+            " ORDER BY document_available_at"
+        ).fetchall()
+        self.assertEqual(tuple(rows[0]), (
+            "CONFIDENTIAL_AGGREGATE", None, None, "2026-09-19T15:00:00Z",
+        ))
+        self.assertEqual(tuple(rows[1]), (
+            "PUBLIC_DETAIL", "PETR4", "2026-11-30T15:00:00Z", "2026-11-30T15:00:00Z",
+        ))
+        self.assertEqual(
+            self.conn.execute(
+                "SELECT COUNT(*) FROM external_source_versions"
+                " WHERE supersedes_source_version_id IS NOT NULL"
+            ).fetchone()[0],
+            1,
+        )
+
+    def test_cda_duplicate_natural_key_is_rejected_and_remains_in_denominator(self):
+        result = external.ingest_cvm_cda(
+            self.conn, self.raw, "2026-08", acquired(cda_zip(confidential=False, duplicate=True))
+        )
+        self.assertEqual(
+            (result["rows_read"], result["rows_persisted"], result["rows_rejected"]),
+            (2, 1, 1),
+        )
+        self.assertEqual(self.conn.execute(
+            "SELECT COUNT(*) FROM external_rejections WHERE family='cvm-cda-holding'"
+        ).fetchone()[0], 1)
+
+    def test_cda_schema_and_member_drift_roll_back_all_database_changes(self):
+        malformed = cda_zip(confidential=False)
+        with zipfile.ZipFile(io.BytesIO(malformed)) as source:
+            files = {}
+            for name in source.namelist():
+                content = source.read(name)
+                if name == "cda_fi_BLC_4_202608.csv":
+                    text = content.decode("latin-1")
+                    text = text.replace("TP_FUNDO_CLASSE;", "UNEXPECTED;TP_FUNDO_CLASSE;", 1)
+                    content = text.encode("latin-1")
+                files[name] = content
+        changed = io.BytesIO()
+        with zipfile.ZipFile(changed, "w") as target:
+            for name, content in files.items():
+                target.writestr(name, content)
+        with self.assertRaises(external.SchemaDriftError):
+            external.ingest_cvm_cda(self.conn, self.raw, "2026-08", acquired(changed.getvalue()))
+        self.assertEqual(self.conn.execute("SELECT COUNT(*) FROM external_source_versions").fetchone()[0], 0)
+
+        with zipfile.ZipFile(io.BytesIO(malformed)) as source:
+            changed = io.BytesIO()
+            with zipfile.ZipFile(changed, "w") as target:
+                for name in source.namelist()[1:]:
+                    target.writestr(name, source.read(name))
+        with self.assertRaises(external.SchemaDriftError):
+            external.ingest_cvm_cda(self.conn, self.raw, "2026-08", acquired(changed.getvalue()))
+        self.assertEqual(self.conn.execute("SELECT COUNT(*) FROM external_source_versions").fetchone()[0], 0)
+
+    def test_entrega_preserves_presentations_without_inventing_publication_time_or_version(self):
+        result = external.ingest_cvm_entrega(
+            self.conn, self.raw, "2026-09", acquired(entrega_zip())
+        )
+        self.assertEqual((result["rows_read"], result["rows_persisted"]), (2, 2))
+        rows = self.conn.execute(
+            "SELECT official_document_id,official_delivery_at,presentation_type,"
+            " document_available_at,first_seen_at,pit_status"
+            " FROM external_fund_document_deliveries ORDER BY official_delivery_at"
+        ).fetchall()
+        self.assertEqual([row[2] for row in rows], ["Apresentação", "Reapresentação"])
+        self.assertTrue(all(row[0] == "101" for row in rows))
+        self.assertTrue(all(row[3] == STAMP and row[4] == STAMP for row in rows))
+        self.assertTrue(all(row[5] == "PIT_STRICT" for row in rows))
+        columns = {
+            row[1] for row in self.conn.execute("PRAGMA table_info(external_fund_document_deliveries)")
+        }
+        self.assertNotIn("version", columns)
+        self.assertEqual(external.verify(self.conn, self.raw)["status"], "SUCCESS")
+
+    def test_cda_and_entrega_cli_contract_requires_explicit_month(self):
+        parser = __import__("stocks_predictor.operations", fromlist=["parser"]).parser()
+        for collector in ("cvm-cda", "cvm-entrega"):
+            args = parser.parse_args([
+                "external", "collect", collector, "--db", str(self.root / "cli.sqlite"),
+                "--raw-root", str(self.raw), "--receipt", str(self.root / "receipt.json"),
+                "--month", "2026-08",
+            ])
+            self.assertEqual(args.month, "2026-08")
+
     def test_fca_identity_is_available_only_after_filing_and_links_by_interval(self):
         year = 2026
         metadata_columns = ("ID_DOC", "CNPJ_CIA", "DT_REFER", "VERSAO", "DT_RECEB")
@@ -373,6 +561,27 @@ class ExternalIntelligenceTests(unittest.TestCase):
         for name in ("factor.py", "portfolio.py", "big_winner_v2.py", "big_winner_shadow.py"):
             source = (repository / "stocks_predictor" / name).read_text(encoding="utf-8")
             self.assertNotIn("external_intelligence", source)
+
+    def test_cda_entrega_code_is_bounded_by_frozen_official_source_audit(self):
+        repository = Path(__file__).resolve().parents[1]
+        audit = json.loads(
+            (repository / "CDA_ENTREGA_SOURCE_CONTRACT_AUDIT.json").read_text(encoding="utf-8")
+        )
+        self.assertEqual(audit["audit_version"], "1.0.0")
+        self.assertEqual(
+            audit["created_at_commit"], "391faa52a420a2519802e1c409f90a1233a96fc9"
+        )
+        self.assertEqual(
+            audit["public_availability_semantics"]["live_collection"].split()[0],
+            "PIT_STRICT",
+        )
+        self.assertIn(
+            "Data_Hora_Entrega equals public availability time.",
+            audit["unsupported_assumptions"],
+        )
+        self.assertEqual(
+            audit["redistribution_status"]["cain_bundle_policy"].split()[0], "REFERENCE_ONLY"
+        )
 
     def test_source_url_rejects_credentials_and_secret_like_queries(self):
         for url in (
