@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from contextlib import redirect_stdout
 import io
+import hashlib
 import json
 from pathlib import Path
 import sqlite3
@@ -240,6 +241,29 @@ class ExternalIntelligenceTests(unittest.TestCase):
         ):
             with self.assertRaises(external.ExternalIntelligenceError):
                 external.validate_source_url(url)
+
+    def test_frozen_big_winner_v2_baseline_bytes_are_unchanged(self):
+        repository = Path(__file__).resolve().parents[1]
+        expected = {
+            "experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/V2_FINAL_FREEZE.json":
+                "6df18f078af626e410892ea945120a2023c971060466c93357c49247cf28b6be",
+            "experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/V2_SELECTION_FREEZE.yaml":
+                "44277c6c61286e2d2dd0de034d57315703150b3f2b7fa2bb090f18df29d1259f",
+            "experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/prospective/LEDGER_RECEIPT.json":
+                "a20a19282b5abb356eeb72f3d565847d74f500d0e16b62b66e4b8b2f94142556",
+            "experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/prospective/PROSPECTIVE_BIG_WINNER_LEDGER.sqlite":
+                "b8d3710be8b9ca68276f9cb41fc4391f9b6acd0fb1b9a371f155884eb2db9884",
+            "stocks_predictor/big_winner_v2.py":
+                "190b90e5a0939b5460b98db4c4d4dea357b282014d211e4f27620683d18547aa",
+            "stocks_predictor/big_winner_shadow.py":
+                "b8540d5a697aee2ee418b0f61e273d08cfcb4a2d83a602d06af6a8401b39f409",
+            "stocks_predictor/prospective_big_winner.py":
+                "081c6670fb81ef7826162847af52b52585719f82ca0d7a68b20d26dc9c1ce805",
+        }
+        observed = {
+            name: hashlib.sha256((repository / name).read_bytes()).hexdigest() for name in expected
+        }
+        self.assertEqual(observed, expected)
 
     def test_ipe_without_protocol_uses_explicit_official_composite_identity(self):
         result = external.ingest_ipe(self.conn, self.raw, 2026, acquired(ipe_zip(protocol="")), [])
