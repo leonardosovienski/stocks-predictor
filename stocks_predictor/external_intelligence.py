@@ -1044,7 +1044,7 @@ def _collect(args: argparse.Namespace, conn: sqlite3.Connection) -> dict[str, An
     if args.collector == "b3-lending":
         if args.source_file:
             raise ValueError("b3-lending uses two official responses and does not accept one --source-file")
-        acquired: dict[str, list[dict[str, Any]]] = {}
+        acquired: dict[str, dict[str, Any] | list[dict[str, Any]]] = {}
         for table_name in B3_TABLES:
             base = (
                 f"https://arquivos.b3.com.br/bdi/table/{table_name}/{args.reference_date}/"
