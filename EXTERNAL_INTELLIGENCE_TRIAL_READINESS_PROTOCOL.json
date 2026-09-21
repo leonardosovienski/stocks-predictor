@@ -1,0 +1,86 @@
+{
+  "protocol_version": "external-intelligence-trial-readiness/1.0.0",
+  "created_at": "2026-09-21T02:38:19.8096699-03:00",
+  "created_at_commit": "2ebed4a53b52242581858ba986f9335cba822ffd",
+  "purpose": "Determine whether one External Intelligence source family is ready for a separately preregistered first trial without consulting trial outcomes.",
+  "eligible_source_families": [
+    "B3_LENDING",
+    "CVM_VLMO",
+    "CVM_BUYBACK",
+    "CVM_CDA"
+  ],
+  "supporting_non_signal_families": [
+    "CVM_ENTREGA",
+    "CVM_FCA_IDENTITY"
+  ],
+  "ineligible_until_separate_gate": {
+    "CVM_IPE_METADATA": "Requires a frozen schema-constrained classifier with semantic evaluation and evidence-span provenance before feature readiness can be assessed."
+  },
+  "minimum_temporal_coverage": {
+    "calendar_days_inclusive": 730,
+    "rule": "For the selected family, eligible feature-bearing observations must span at least 730 calendar days between minimum and maximum reference dates."
+  },
+  "minimum_independent_cohorts": {
+    "count": 24,
+    "cohort_definition": "Distinct calendar months containing at least one eligible feature-bearing observation whose information set is fixed at that cohort cutoff.",
+    "dependence_rule": "Multiple documents, revisions, securities, funds, days, or rows within one calendar month count as one cohort."
+  },
+  "minimum_PIT_STRICT_coverage": {
+    "fraction": 0.95,
+    "numerator": "Eligible feature-bearing observations classified PIT_STRICT.",
+    "denominator": "All eligible feature-bearing observations, including PIT_RECONSTRUCTED and HISTORICAL_ONLY."
+  },
+  "minimum_identity_coverage": {
+    "fraction": 0.8,
+    "numerator": "Eligible feature-bearing observations with a temporally admissible official ticker, ISIN, issuer CNPJ, or official security code required by the candidate feature.",
+    "denominator": "All eligible feature-bearing observations after source-contract filtering; confidential aggregates and unresolved rows remain in the denominator when the feature requires security identity."
+  },
+  "maximum_missingness": {
+    "fraction": 0.1,
+    "scope": "Only fields explicitly required by the later preregistered feature definition.",
+    "rule": "Structurally unavailable fields cannot be removed from the denominator merely to pass readiness."
+  },
+  "selection_budget": {
+    "source_families": 1,
+    "hypotheses": 1,
+    "feature_definitions": 1,
+    "selection_basis": "Mechanism, source-contract quality, PIT coverage, identity coverage, and temporal coverage only; no target or return outcome."
+  },
+  "multiplicity_budget": {
+    "primary_tests": 1,
+    "family_wise_alpha": 0.05,
+    "adaptive_reuse": false,
+    "first_trial_composite_multi_family": false
+  },
+  "baseline_identity": {
+    "identifier": "BIG_WINNER_V2_MOMENTUM_12_1_BASELINE",
+    "artifact": "experiments/BIG_WINNER_IMPROVEMENT_PROGRAM_V1/V2_FINAL_FREEZE.json",
+    "artifact_hash": "5e1a96fab748fee69446fe46ffe2692128247060b590ff4e96c096202f7ad564",
+    "config_hash": "10ddbb06e8af8d7160591b0c1bbaea644f638d889dfec75611067284a6b22127",
+    "comparison_if_trial_occurs": "Report standalone source-family value separately from incremental value versus this unchanged M12-1 baseline."
+  },
+  "development_cutoff": "2026-09-21T05:38:19.809669Z",
+  "reserved_evaluation_definition": {
+    "state": "UNPOPULATED",
+    "rule": "Prospective monthly cohorts whose first complete source-version collection occurs strictly after the readiness-protocol commit and, if readiness passes, after a separate preregistration commit.",
+    "minimum_mature_cohorts": 24,
+    "primary_outcome_maturity": "12 calendar months",
+    "reuse_in_development": false,
+    "outcome_access_before_preregistration": "FORBIDDEN"
+  },
+  "readiness_rules": [
+    "Evaluate each eligible family independently using source/staging metadata only and without target or return outcomes.",
+    "A family passes only if every minimum temporal coverage, cohort count, PIT_STRICT coverage, identity coverage, and applicable missingness threshold passes.",
+    "The overall decision is READY only if at least one eligible family passes every criterion without expanding the selection or multiplicity budgets.",
+    "UNKNOWN, unsupported, confidential-unresolved, rejected, and HISTORICAL_ONLY observations cannot be silently removed from relevant denominators.",
+    "A READY decision permits only a separate preregistration freeze; it does not permit production promotion, capital use, or automatic trial execution.",
+    "A NOT_READY decision forbids exploratory outcome evaluation and records the exact quantitative shortfalls."
+  ],
+  "canonical_hash_representation": {
+    "encoding": "UTF-8",
+    "json": "RFC 8259 object with lexicographically sorted keys, separators comma and colon, ensure_ascii=true, allow_nan=false",
+    "exclusion": "Omit the top-level protocol_sha256 field before hashing.",
+    "algorithm": "SHA-256 lowercase hexadecimal"
+  },
+  "protocol_sha256": "e33a9826ef5615c0cdd704094b3ae1cb79eb93742734415fa616306b99fb7145"
+}
