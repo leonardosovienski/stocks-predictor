@@ -1,9 +1,9 @@
 {
   "schema_version": "current-operational-evidence/1",
   "status": "LOCAL_VALIDATED_CI_PENDING",
-  "generated_at": "2026-09-21T03:50:55.346145Z",
+  "generated_at": "2026-09-21T05:25:45.185571Z",
   "code_text_hash_policy": "UTF-8 file bytes with CRLF normalized to LF",
-  "code_population_sha256": "acf34a9a165c5794f9b17e14fabf4a8c95fa3a90dcd997fc17328a3452d33297",
+  "code_population_sha256": "8705e4b7502734140b634ce9848b4fe60154f2d4d72ff9f46c085a91313e97d1",
   "current_code_sha256_lf": [
     {
       "path": ".gitattributes",
@@ -151,7 +151,7 @@
     },
     {
       "path": "stocks_predictor/external_intelligence.py",
-      "sha256": "9d2cdc9c8ee1f91ca806a303c94fc42acf5073d3dee7c58bb71132bb8e057c89"
+      "sha256": "4860c9e139c9c3cdebf7468f965ed1afdb0fb93a8aaba9c897853ae5d7b9e51c"
     },
     {
       "path": "stocks_predictor/factor.py",
@@ -447,7 +447,7 @@
     },
     {
       "path": "tests/test_external_intelligence.py",
-      "sha256": "af9d4a33b970a76079253c5daa0545a87132a9528c1e19e26ac0ce7060212d5c"
+      "sha256": "f516a8120bd0157fbfa60e7f65669057b380472db706f471a2df1e19561d4676"
     },
     {
       "path": "tests/test_factor_portfolio.py",

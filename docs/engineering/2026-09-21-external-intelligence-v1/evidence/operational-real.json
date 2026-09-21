@@ -31,7 +31,7 @@
     "entry_feasibility.py": "0a4aafcdea65541eca50ada7cdb30b1d1c592f8c9a7d86034530296053482651",
     "etf_hold.py": "c254225e605593efddb9dddeaf1e5a0287f57a19df742a3a414f0b7a4095e9b6",
     "execution.py": "fd867494a27f54e0c64e4fbe2a48f87e5c22669e3c1115a4830ce74770aa9348",
-    "external_intelligence.py": "9d2cdc9c8ee1f91ca806a303c94fc42acf5073d3dee7c58bb71132bb8e057c89",
+    "external_intelligence.py": "4860c9e139c9c3cdebf7468f965ed1afdb0fb93a8aaba9c897853ae5d7b9e51c",
     "factor.py": "3b5213855dd3b9169b72463df94f061ebe25333a306a2f77582728235856603d",
     "h20_checked.py": "fc806cfe39de17918662d8b189e4d235b098e94985e81ce0a656e750f0d2859d",
     "h20_continuous.py": "569d57957e4ac4d0bdf2d6c7b38686c59d7f968e5d0f8e95c73122ad4810b095",
@@ -107,7 +107,7 @@
       "command": [
         "init",
         "--db",
-        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\operational-real\\research.sqlite"
+        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\gate2-operational-real\\research.sqlite"
       ],
       "exit_code": 0,
       "result": {
@@ -119,15 +119,15 @@
         "historical_publication_certified": false,
         "capital_enabled": false
       },
-      "seconds": 0.040209999948274344,
-      "cpu_seconds": 0.03125,
-      "peak_process_rss_bytes": 30457856
+      "seconds": 0.10090540000237525,
+      "cpu_seconds": 0.078125,
+      "peak_process_rss_bytes": 30453760
     },
     {
       "command": [
         "ingest",
         "--db",
-        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\operational-real\\research.sqlite",
+        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\gate2-operational-real\\research.sqlite",
         "--archive",
         "C:\\STOCKS\\work\\gap-resolution-r6-20260910\\raw\\COTAHIST_A2026.ZIP",
         "--publisher",
@@ -143,7 +143,7 @@
         "--sha256",
         "34b774681cbd201ef197fb98af8d431e4d7302e801f58b66e54036d2935dc4f4",
         "--scratch-dir",
-        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\operational-real"
+        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\gate2-operational-real"
       ],
       "exit_code": 0,
       "result": {
@@ -155,15 +155,15 @@
         "historical_publication_certified": false,
         "capital_enabled": false
       },
-      "seconds": 73.77098359999945,
-      "cpu_seconds": 65.59375,
-      "peak_process_rss_bytes": 33427456
+      "seconds": 58.643996400001924,
+      "cpu_seconds": 53.625,
+      "peak_process_rss_bytes": 33644544
     },
     {
       "command": [
         "ingest",
         "--db",
-        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\operational-real\\research.sqlite",
+        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\gate2-operational-real\\research.sqlite",
         "--archive",
         "C:\\STOCKS\\work\\gap-resolution-r6-20260910\\raw\\COTAHIST_A2026.ZIP",
         "--publisher",
@@ -179,7 +179,7 @@
         "--sha256",
         "34b774681cbd201ef197fb98af8d431e4d7302e801f58b66e54036d2935dc4f4",
         "--scratch-dir",
-        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\operational-real"
+        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\gate2-operational-real"
       ],
       "exit_code": 0,
       "result": {
@@ -191,15 +191,15 @@
         "historical_publication_certified": false,
         "capital_enabled": false
       },
-      "seconds": 73.79077919997508,
-      "cpu_seconds": 66.109375,
-      "peak_process_rss_bytes": 33992704
+      "seconds": 55.482403000001796,
+      "cpu_seconds": 50.59375,
+      "peak_process_rss_bytes": 34004992
     },
     {
       "command": [
         "inspect",
         "--db",
-        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\operational-real\\research.sqlite"
+        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\gate2-operational-real\\research.sqlite"
       ],
       "exit_code": 0,
       "result": {
@@ -228,24 +228,24 @@
         "historical_publication_certified": false,
         "capital_enabled": false
       },
-      "seconds": 1.507759400003124,
-      "cpu_seconds": 1.328125,
-      "peak_process_rss_bytes": 32178176
+      "seconds": 1.5029937000363134,
+      "cpu_seconds": 1.359375,
+      "peak_process_rss_bytes": 32219136
     },
     {
       "command": [
         "snapshot",
         "--db",
-        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\operational-real\\research.sqlite",
+        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\gate2-operational-real\\research.sqlite",
         "--destination",
-        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\operational-real\\backup"
+        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\gate2-operational-real\\backup"
       ],
       "exit_code": 0,
       "result": {
         "status": "PASS",
         "format": "stocks-snapshot-v1",
         "sha256": "f498ba3ec9a00e8d1cf5b37a47ad16665d09b00401551fa24383715f053e258c",
-        "created_at": "2026-09-21T03:23:47.779814+00:00",
+        "created_at": "2026-09-21T05:24:12.200126+00:00",
         "inspection": {
           "status": "PASS",
           "schema_version": 1,
@@ -273,17 +273,17 @@
           "capital_enabled": false
         }
       },
-      "seconds": 1.6277020999696106,
-      "cpu_seconds": 1.421875,
-      "peak_process_rss_bytes": 34738176
+      "seconds": 1.8479052999755368,
+      "cpu_seconds": 1.671875,
+      "peak_process_rss_bytes": 34693120
     },
     {
       "command": [
         "restore",
         "--snapshot",
-        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\operational-real\\backup",
+        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\gate2-operational-real\\backup",
         "--destination",
-        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\operational-real\\restored"
+        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\gate2-operational-real\\restored"
       ],
       "exit_code": 0,
       "result": {
@@ -316,15 +316,15 @@
           "capital_enabled": false
         }
       },
-      "seconds": 1.6159764000331052,
-      "cpu_seconds": 1.359375,
-      "peak_process_rss_bytes": 32190464
+      "seconds": 1.7559795000124723,
+      "cpu_seconds": 1.5625,
+      "peak_process_rss_bytes": 32325632
     },
     {
       "command": [
         "inspect",
         "--db",
-        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\operational-real\\restored\\research.sqlite"
+        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\gate2-operational-real\\restored\\research.sqlite"
       ],
       "exit_code": 0,
       "result": {
@@ -353,15 +353,15 @@
         "historical_publication_certified": false,
         "capital_enabled": false
       },
-      "seconds": 1.304805000021588,
-      "cpu_seconds": 1.25,
-      "peak_process_rss_bytes": 32124928
+      "seconds": 1.4620705000124872,
+      "cpu_seconds": 1.359375,
+      "peak_process_rss_bytes": 32325632
     },
     {
       "command": [
         "profile",
         "--input",
-        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\operational-real\\profile.json"
+        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\gate2-operational-real\\profile.json"
       ],
       "exit_code": 0,
       "result": {
@@ -387,15 +387,15 @@
         "absolute_net_profit_demonstrated": false,
         "capital_enabled": false
       },
-      "seconds": 0.0363491999451071,
+      "seconds": 0.031271400046534836,
       "cpu_seconds": 0.03125,
-      "peak_process_rss_bytes": 29569024
+      "peak_process_rss_bytes": 29863936
     },
     {
       "command": [
         "evidence",
         "--input",
-        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\operational-real\\outcomes.json",
+        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\gate2-operational-real\\outcomes.json",
         "--asof",
         "2026-09-10T00:00:00Z"
       ],
@@ -406,9 +406,9 @@
         "capital_enabled": false,
         "scope": "Supplied chronology only; independence, timestamp truth and profit unverified."
       },
-      "seconds": 0.01552730001276359,
+      "seconds": 0.060588000051211566,
       "cpu_seconds": 0.015625,
-      "peak_process_rss_bytes": 29347840
+      "peak_process_rss_bytes": 29638656
     }
   ],
   "capital_enabled": false,

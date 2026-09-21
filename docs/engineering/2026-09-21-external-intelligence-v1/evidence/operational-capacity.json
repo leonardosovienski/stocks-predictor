@@ -31,7 +31,7 @@
     "entry_feasibility.py": "0a4aafcdea65541eca50ada7cdb30b1d1c592f8c9a7d86034530296053482651",
     "etf_hold.py": "c254225e605593efddb9dddeaf1e5a0287f57a19df742a3a414f0b7a4095e9b6",
     "execution.py": "fd867494a27f54e0c64e4fbe2a48f87e5c22669e3c1115a4830ce74770aa9348",
-    "external_intelligence.py": "9d2cdc9c8ee1f91ca806a303c94fc42acf5073d3dee7c58bb71132bb8e057c89",
+    "external_intelligence.py": "4860c9e139c9c3cdebf7468f965ed1afdb0fb93a8aaba9c897853ae5d7b9e51c",
     "factor.py": "3b5213855dd3b9169b72463df94f061ebe25333a306a2f77582728235856603d",
     "h20_checked.py": "fc806cfe39de17918662d8b189e4d235b098e94985e81ce0a656e750f0d2859d",
     "h20_continuous.py": "569d57957e4ac4d0bdf2d6c7b38686c59d7f968e5d0f8e95c73122ad4810b095",
@@ -107,7 +107,7 @@
       "command": [
         "init",
         "--db",
-        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\operational-capacity\\research.sqlite"
+        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\gate2-operational-capacity\\research.sqlite"
       ],
       "exit_code": 0,
       "result": {
@@ -119,17 +119,17 @@
         "historical_publication_certified": false,
         "capital_enabled": false
       },
-      "seconds": 0.0567917000153102,
-      "cpu_seconds": 0.015625,
-      "peak_process_rss_bytes": 30281728
+      "seconds": 0.07446060003712773,
+      "cpu_seconds": 0.046875,
+      "peak_process_rss_bytes": 30597120
     },
     {
       "command": [
         "ingest",
         "--db",
-        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\operational-capacity\\research.sqlite",
+        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\gate2-operational-capacity\\research.sqlite",
         "--archive",
-        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\operational-capacity\\synthetic.zip",
+        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\gate2-operational-capacity\\synthetic.zip",
         "--publisher",
         "SYNTHETIC",
         "--dataset",
@@ -143,7 +143,7 @@
         "--sha256",
         "05a678df5899bbda28b1aa3f6cdbd0c0b0a0899d956804b1d09d24d74a661f6c",
         "--scratch-dir",
-        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\operational-capacity"
+        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\gate2-operational-capacity"
       ],
       "exit_code": 0,
       "result": {
@@ -155,17 +155,17 @@
         "historical_publication_certified": false,
         "capital_enabled": false
       },
-      "seconds": 12.854175299988128,
-      "cpu_seconds": 10.421875,
-      "peak_process_rss_bytes": 33427456
+      "seconds": 10.559989099972881,
+      "cpu_seconds": 9.375,
+      "peak_process_rss_bytes": 33705984
     },
     {
       "command": [
         "ingest",
         "--db",
-        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\operational-capacity\\research.sqlite",
+        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\gate2-operational-capacity\\research.sqlite",
         "--archive",
-        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\operational-capacity\\synthetic.zip",
+        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\gate2-operational-capacity\\synthetic.zip",
         "--publisher",
         "SYNTHETIC",
         "--dataset",
@@ -179,7 +179,7 @@
         "--sha256",
         "05a678df5899bbda28b1aa3f6cdbd0c0b0a0899d956804b1d09d24d74a661f6c",
         "--scratch-dir",
-        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\operational-capacity"
+        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\gate2-operational-capacity"
       ],
       "exit_code": 0,
       "result": {
@@ -191,15 +191,15 @@
         "historical_publication_certified": false,
         "capital_enabled": false
       },
-      "seconds": 13.511490100005176,
-      "cpu_seconds": 11.90625,
-      "peak_process_rss_bytes": 33652736
+      "seconds": 10.241026500007138,
+      "cpu_seconds": 9.265625,
+      "peak_process_rss_bytes": 33714176
     },
     {
       "command": [
         "inspect",
         "--db",
-        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\operational-capacity\\research.sqlite"
+        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\gate2-operational-capacity\\research.sqlite"
       ],
       "exit_code": 0,
       "result": {
@@ -228,24 +228,24 @@
         "historical_publication_certified": false,
         "capital_enabled": false
       },
-      "seconds": 7.085602800012566,
-      "cpu_seconds": 6.296875,
-      "peak_process_rss_bytes": 31977472
+      "seconds": 6.376276199996937,
+      "cpu_seconds": 5.9375,
+      "peak_process_rss_bytes": 32264192
     },
     {
       "command": [
         "snapshot",
         "--db",
-        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\operational-capacity\\research.sqlite",
+        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\gate2-operational-capacity\\research.sqlite",
         "--destination",
-        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\operational-capacity\\backup"
+        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\gate2-operational-capacity\\backup"
       ],
       "exit_code": 0,
       "result": {
         "status": "PASS",
         "format": "stocks-snapshot-v1",
         "sha256": "22c1472c4a9a9310a966bda293a705deabe81a691649506795220cfe06f4d840",
-        "created_at": "2026-09-21T03:24:58.126755+00:00",
+        "created_at": "2026-09-21T05:25:14.677933+00:00",
         "inspection": {
           "status": "PASS",
           "schema_version": 1,
@@ -273,17 +273,17 @@
           "capital_enabled": false
         }
       },
-      "seconds": 8.53115859994432,
-      "cpu_seconds": 7.28125,
-      "peak_process_rss_bytes": 34631680
+      "seconds": 7.6944111000048,
+      "cpu_seconds": 6.875,
+      "peak_process_rss_bytes": 34902016
     },
     {
       "command": [
         "restore",
         "--snapshot",
-        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\operational-capacity\\backup",
+        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\gate2-operational-capacity\\backup",
         "--destination",
-        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\operational-capacity\\restored"
+        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\gate2-operational-capacity\\restored"
       ],
       "exit_code": 0,
       "result": {
@@ -316,15 +316,15 @@
           "capital_enabled": false
         }
       },
-      "seconds": 7.514933499973267,
-      "cpu_seconds": 6.546875,
-      "peak_process_rss_bytes": 32165888
+      "seconds": 6.509439799992833,
+      "cpu_seconds": 5.984375,
+      "peak_process_rss_bytes": 32137216
     },
     {
       "command": [
         "inspect",
         "--db",
-        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\operational-capacity\\restored\\research.sqlite"
+        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\gate2-operational-capacity\\restored\\research.sqlite"
       ],
       "exit_code": 0,
       "result": {
@@ -353,15 +353,15 @@
         "historical_publication_certified": false,
         "capital_enabled": false
       },
-      "seconds": 7.237355799996294,
-      "cpu_seconds": 6.53125,
-      "peak_process_rss_bytes": 32075776
+      "seconds": 6.554776199976914,
+      "cpu_seconds": 6.15625,
+      "peak_process_rss_bytes": 32231424
     },
     {
       "command": [
         "profile",
         "--input",
-        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\operational-capacity\\profile.json"
+        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\gate2-operational-capacity\\profile.json"
       ],
       "exit_code": 0,
       "result": {
@@ -387,15 +387,15 @@
         "absolute_net_profit_demonstrated": false,
         "capital_enabled": false
       },
-      "seconds": 0.013666899991221726,
+      "seconds": 0.024203200009651482,
       "cpu_seconds": 0.015625,
-      "peak_process_rss_bytes": 29503488
+      "peak_process_rss_bytes": 29638656
     },
     {
       "command": [
         "evidence",
         "--input",
-        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\operational-capacity\\outcomes.json",
+        "C:\\STOCKS\\work\\external-intelligence-final-20260921\\gate2-operational-capacity\\outcomes.json",
         "--asof",
         "2026-09-10T00:00:00Z"
       ],
@@ -406,9 +406,9 @@
         "capital_enabled": false,
         "scope": "Supplied chronology only; independence, timestamp truth and profit unverified."
       },
-      "seconds": 0.01723379996838048,
-      "cpu_seconds": 0.015625,
-      "peak_process_rss_bytes": 29540352
+      "seconds": 0.024862099962774664,
+      "cpu_seconds": 0.03125,
+      "peak_process_rss_bytes": 29630464
     }
   ],
   "capital_enabled": false,
