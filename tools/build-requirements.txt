@@ -1,5 +1,5 @@
 # Exact build wheels observed on 2026-09-10; install with --require-hashes --no-deps.
-hatchling==1.32.0 --hash=sha256:0e17c9c3b9aa7c625acc8d0f5b622f107d5049af9ecf5ada4de1aada5be7cdbc
+hatchling==1.32.3 --hash=sha256:acdd4436d84d829c6e7ae6df723241d8f0bca9c5bad5a6148bd41f2ea6b8a792 --hash=sha256:d05b350af5d9aa5bf7b34b434a45a742b99e67d0b48ea67d240cfeab98e13945
 packaging==26.3 --hash=sha256:d7193f7c8e4e93f444fde0262bf90af30e16fa0ad0ad44cb553c87339b23cd1c
 pathspec==1.1.1 --hash=sha256:a00ce642f577bf7f473932318056212bc4f8bfdf53128c78bbd5af0b9b20b189
 pluggy==1.6.0 --hash=sha256:e920276dd6813095e9377c0bc5566d94c932c33b27a3e3945d8389c374dd4746
