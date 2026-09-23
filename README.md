@@ -65,7 +65,7 @@ silenciosamente, não ajusta eventos corporativos automaticamente e não habilit
 
 ## Ambiente e validação
 
-- Runtime: Python `>=3.13,<3.15`, PyYAML `>=6,<7`, predictor-core `>=3.2,<4`.
+- Runtime: Python `>=3.13,<3.15`, PyYAML `>=6,<7`, predictor-core `>=3.2.1,<4`.
 - Dependências e configuração: [pyproject.toml](pyproject.toml); versões e hashes:
   [uv.lock](uv.lock). Não há um segundo arquivo de dependências ou configuração pytest.
 - Produção/testes: Linux CI com Python 3.13 e 3.14. Neste Windows, somente auxiliares
