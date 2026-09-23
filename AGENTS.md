@@ -32,7 +32,7 @@ em validação independente nem antecipar a janela prospectiva fixada.
   do ambiente não precisam ser movidos. Não criar links para desviar conteúdo.
 - Conferir Git, HEAD, remoto, branches, worktrees e alterações. Não impor um SHA
   antigo por reset, recriar branches antigas, fazer force-push ou apagar trabalho concorrente.
-- Runtime: Python `>=3.13,<3.15`, PyYAML `>=6,<7`, Core `>=3.2,<4`.
+- Runtime: Python `>=3.13,<3.15`, PyYAML `>=6,<7`, Core `>=3.2.1,<4`.
   [pyproject.toml](pyproject.toml) e [uv.lock](uv.lock) são as fontes canônicas;
   o lock usa wheel oficial Core 3.2.1. Vendor é histórico, fora do runtime.
 - Neste Windows, não criar venv, instalar Core/dependências, alterar Python global
