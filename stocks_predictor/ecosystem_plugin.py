@@ -6,6 +6,16 @@ não cria sinal econômico e não autoriza capital.
 
 from __future__ import annotations
 
+from importlib.metadata import PackageNotFoundError, version
+
+
+def _installed_version() -> str:
+    """The version of the installed distribution (never a stale literal)."""
+    try:
+        return version("stocks-predictor")
+    except PackageNotFoundError:
+        return "UNKNOWN"
+
 
 class StocksPredictorPlugin:
     name = "stocks-predictor"
@@ -15,7 +25,7 @@ class StocksPredictorPlugin:
         return {
             "domain": self.domain,
             "status": "WAITING",
-            "version": "0.2.0",
+            "version": _installed_version(),
             "details": {
                 "mode": "research",
                 "active_line": "H21_BOVA11_CONDITIONAL_RESEARCH",
