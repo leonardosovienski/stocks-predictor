@@ -1,0 +1,15 @@
+{
+  "index_id": "IDX11",
+  "candidate": {"lookback": 252, "skip": 21, "quantile": 0.2, "max_stale": 5},
+  "family": [
+    {"lookback": 252, "skip": 21, "quantile": 0.2, "max_stale": 5},
+    {"lookback": 189, "skip": 21, "quantile": 0.2, "max_stale": 5},
+    {"lookback": 126, "skip": 21, "quantile": 0.2, "max_stale": 5},
+    {"lookback": 252, "skip": 5, "quantile": 0.2, "max_stale": 5},
+    {"lookback": 189, "skip": 5, "quantile": 0.2, "max_stale": 5},
+    {"lookback": 126, "skip": 5, "quantile": 0.2, "max_stale": 5}
+  ],
+  "family_name": "momentum-variants-synthetic-demo",
+  "horizons": [21, 63, 126],
+  "n_quantiles": 5
+}

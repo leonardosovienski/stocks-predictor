@@ -148,4 +148,21 @@ def build(seed: int = 7, *, end: str = "2021-06-30") -> dict:
             "corporate_actions": actions, "cash_events": cash_events, "fundamentals": fundamentals}
 
 
-__all__ = ["HOLIDAYS", "build", "trading_calendar"]
+def riskfree(end: str = "2021-06-30") -> dict:
+    """Taxa livre de risco SINTÉTICA no formato da SGS 11 (% ao dia), degraus de 6,5% a.a. (2019), 4,25%
+    (até 2020-06), 2% (até 2021-03) e 3,5%. Só teste e demonstração; a política recusa ``SYNTHETIC-RF``."""
+    def annual(session: str) -> float:
+        if session < "2020-01-01":
+            return 0.065
+        if session < "2020-07-01":
+            return 0.0425
+        if session < "2021-04-01":
+            return 0.02
+        return 0.035
+    rates = [{"session": s, "rate": round(((1 + annual(s)) ** (1 / 252) - 1) * 100, 8)}
+             for s in trading_calendar(end=end)]
+    return {"schema": "stocks-riskfree/1", "series_id": "SYNTHETIC-RF", "unit": "percent_per_day",
+            "source": {"kind": "synthetic", "generator": "stocks_predictor.v2.synthetic.riskfree"}, "rates": rates}
+
+
+__all__ = ["HOLIDAYS", "build", "riskfree", "trading_calendar"]

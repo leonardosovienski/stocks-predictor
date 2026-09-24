@@ -70,6 +70,8 @@ class Momentum12_1(Strategy):
         if not 0 < skip < lookback or not 0 < quantile <= 1 or max_stale < 0:
             raise ValueError("momentum: 0 < skip < lookback, 0 < quantile <= 1")
         self.lookback, self.skip, self.quantile, self.max_stale = lookback, skip, quantile, max_stale
+        if (lookback, skip, quantile) != (252, 21, 0.2):  # variantes de uma família precisam de nomes distintos
+            self.name = f"momentum_{lookback}_{skip}" + ("" if quantile == 0.2 else f"_q{quantile:g}")
 
     def describe(self) -> dict:
         return {"name": self.name, "lookback": self.lookback, "skip": self.skip, "quantile": self.quantile,

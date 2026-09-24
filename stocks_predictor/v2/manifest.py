@@ -34,6 +34,7 @@ from .engine import ENGINE_VERSION, ProtocolConfig, Strategy, evaluate
 
 POLICY_VERSION = "stocks-evaluation-protocol-v2/3a.1"
 LEDGER_SCHEMA = "stocks-trial-ledger/1"
+TERMINAL = ("COMPLETED", "FAILED", "ABANDONED")
 MANIFEST_SCHEMA = "stocks-run-manifest/1"
 EXPERIMENT_ID = "stocks-protocol-v2"
 # Prompt 2 (docs/evidence/2026-09-24-prompt2-auditoria.md): 71 trials observados no domínio, limite inferior.
@@ -74,10 +75,16 @@ def package_version() -> str:
 
 
 def build_manifest(dataset: PITDataset, strategy: Strategy, config: ProtocolConfig, *, validation: dict,
-                   family: str, git: dict | None = None, run_id: str | None = None) -> dict:
-    """Manifesto de uma execução avaliativa (sem métricas nem número de trial: o ledger os atribui)."""
+                   family: str, git: dict | None = None, run_id: str | None = None,
+                   decision_policy: dict | None = None) -> dict:
+    """Manifesto de uma execução avaliativa (sem métricas nem número de trial: o ledger os atribui).
+
+    ``policy_version`` é a versão do protocolo; ``decision_policy`` (versão, status e sha256 do arquivo de
+    política) entra quando a execução é avaliada sob uma política de decisão.
+    """
     config_dict = config.to_dict()
     return {
+        "decision_policy": decision_policy,
         "schema": MANIFEST_SCHEMA,
         "run_id": run_id or uuid.uuid4().hex,
         "created_at": utc_now(),
@@ -163,12 +170,15 @@ class TrialLedger:
                 and (family is None or r["payload"]["manifest"]["model"]["family"] == family)]
 
     def open_runs(self) -> list[dict]:
-        closed = {r["run_id"] for r in self._records if r["kind"] != "STARTED"}
+        closed = {r["run_id"] for r in self._records if r["kind"] in TERMINAL}
         return [r for r in self.started() if r["run_id"] not in closed]
 
     def outcome(self, run_id: str) -> str | None:
-        kinds = [r["kind"] for r in self._records if r["run_id"] == run_id and r["kind"] != "STARTED"]
-        return kinds[-1] if kinds else ("STARTED" if any(r["run_id"] == run_id for r in self._records) else None)
+        kinds = [r["kind"] for r in self._records if r["run_id"] == run_id and r["kind"] in TERMINAL]
+        return kinds[-1] if kinds else ("STARTED" if any(r["run_id"] == run_id for r in self.started()) else None)
+
+    def decisions(self) -> list[dict]:
+        return [r for r in self._records if r["kind"] == "DECISION"]
 
     # -- ciclo de vida ------------------------------------------------------------------------------
     def recover_abandoned(self) -> list[str]:
@@ -207,6 +217,17 @@ class TrialLedger:
         self._require_open(run_id)
         return self._append("FAILED", run_id, {"error_type": type(error).__name__, "error": str(error)[:2000],
                                                "trial_v2": trial_v2})
+
+    def record_decision(self, decision: dict, evaluated_run_ids: list[str]) -> dict:
+        """Decisão da política sobre execuções já concluídas (``COMPLETED``); registro próprio, append-only."""
+        self.refresh()
+        for run_id in evaluated_run_ids:
+            if self.outcome(run_id) != "COMPLETED":
+                raise LedgerError(f"decisão sobre {run_id} sem execução concluída")
+        if "policy_sha256" not in decision or "decision" not in decision:
+            raise LedgerError("decisão sem política identificada")
+        return self._append("DECISION", "decision:" + uuid.uuid4().hex,
+                            {"decision": decision, "evaluated_run_ids": list(evaluated_run_ids)})
 
 
 def _alive(pid: int) -> bool:
@@ -264,7 +285,8 @@ def _net_total_return(result: dict):
 
 def run_evaluation(ledger: TrialLedger, dataset: PITDataset, strategy: Strategy, config: ProtocolConfig, *,
                    family: str, validation: dict | None = None, runner=evaluate, metric: str = "net_total_return",
-                   primary=_net_total_return, selection: dict | None = None, git: dict | None = None) -> dict:
+                   primary=_net_total_return, selection: dict | None = None, git: dict | None = None,
+                   decision_policy: dict | None = None) -> dict:
     """Executa ``runner(dataset, strategy, config)`` sob o ledger. Falha → ``FAILED`` registrado e relançada.
 
     ``runner`` devolve um dict JSON nativo com ``result_digest``; ``primary(result)`` é o valor de ``metric``.
@@ -272,7 +294,8 @@ def run_evaluation(ledger: TrialLedger, dataset: PITDataset, strategy: Strategy,
     validation = validation or {"scheme": "single_window"}
     selection = selection or {"family": family, "candidate_set": [strategy.name],
                               "selection_metric": NOT_APPLICABLE, "selected_candidate": NOT_APPLICABLE}
-    manifest = build_manifest(dataset, strategy, config, validation=validation, family=family, git=git)
+    manifest = build_manifest(dataset, strategy, config, validation=validation, family=family, git=git,
+                              decision_policy=decision_policy)
     trial_number = ledger.start(manifest)
     try:
         result = runner(dataset, strategy, config)
@@ -289,5 +312,5 @@ def run_evaluation(ledger: TrialLedger, dataset: PITDataset, strategy: Strategy,
     return manifest | {"trial_number": trial_number, "status": "COMPLETED", "metrics": result}
 
 
-__all__ = ["EXPERIMENT_ID", "LEDGER_SCHEMA", "LedgerError", "MANIFEST_SCHEMA", "POLICY_VERSION", "TrialLedger",
-           "build_manifest", "git_state", "run_evaluation", "trial_v2_row"]
+__all__ = ["EXPERIMENT_ID", "LEDGER_SCHEMA", "LedgerError", "MANIFEST_SCHEMA", "POLICY_VERSION", "TERMINAL",
+           "TrialLedger", "build_manifest", "git_state", "run_evaluation", "trial_v2_row"]

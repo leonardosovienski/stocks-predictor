@@ -12,6 +12,15 @@ Módulos:
     baselines    EW do universo, buy-and-hold do índice, momentum 12-1, carteiras aleatórias, forecast ingênuo
     walkforward  splits temporais com separação estrita (horizonte + embargo)
     manifest     RunManifest / TrialLedger — toda execução avaliativa registrada, append-only
+
+Validação estatística (Prompt 3b):
+    riskfree        série livre de risco versionada e retorno em excesso
+    metrics         Sharpe em excesso, PSR, sensibilidade do DSR, t, beta/alpha
+    factor_metrics  IC, Rank IC, ICIR, decaimento e quantis por rebalanceamento
+    cpcv            CPCV com purge pelo intervalo real do rótulo e embargo derivado
+    pbo             PBO por CSCV
+    policy          política de decisão versionada (PASS / REJECT / NO_DECISION)
+    validation      orquestração sob o ledger
 """
 
 SCHEMA = "stocks-pit-dataset/2"

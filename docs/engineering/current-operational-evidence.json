@@ -1,9 +1,9 @@
 {
   "schema_version": "current-operational-evidence/1",
   "status": "LOCAL_VALIDATED_CI_PENDING",
-  "generated_at": "2026-09-24T17:32:08.803467Z",
+  "generated_at": "2026-09-24T18:12:30.501980Z",
   "code_text_hash_policy": "UTF-8 file bytes with CRLF normalized to LF",
-  "code_population_sha256": "66293c9f3963c88e04418e625058deb7005bb41c224452fe86d733fccf77cebd",
+  "code_population_sha256": "4d7701c828386f5b48a7b57f2e74fcfa9951582e4946043edf2c949da7085506",
   "current_code_sha256_lf": [
     {
       "path": ".gitattributes",
@@ -347,7 +347,7 @@
     },
     {
       "path": "stocks_predictor/v2/__init__.py",
-      "sha256": "095d5f378cbf606ce4f39265d5a7665499abb362fcdc8b066013b6f0e108a6ad"
+      "sha256": "dce0724ad75cff3a31e1cec667de9356e19a0ddc410cd66e415c33bf7f9ca7c5"
     },
     {
       "path": "stocks_predictor/v2/__main__.py",
@@ -355,11 +355,15 @@
     },
     {
       "path": "stocks_predictor/v2/baselines.py",
-      "sha256": "87335970c3dfb83e736f5ae5cfc7eb68ecba1204140364a5d0f5eb068423f6bd"
+      "sha256": "f388bb7e523372485b4b6e67ac2e5e33e5db19711c7a1a7af4d0d9f108a3d9bc"
     },
     {
       "path": "stocks_predictor/v2/costs.py",
       "sha256": "1ea8d1257dee345827b57df396130785be76fadc6369f347ccc613d3881b9744"
+    },
+    {
+      "path": "stocks_predictor/v2/cpcv.py",
+      "sha256": "c541c66bff9fe187bf521a5ac2250558ec2b92ddd1fd7bc1a5c41bc65634186a"
     },
     {
       "path": "stocks_predictor/v2/dataset.py",
@@ -374,12 +378,36 @@
       "sha256": "b43d290aa7cc36513c2cb29ffa35b75fef53b2823f0dcd290b479e71a6869428"
     },
     {
+      "path": "stocks_predictor/v2/factor_metrics.py",
+      "sha256": "c24c88a7836f59080f7d6867965fa6c39423ce15a698d3685a326ee3fb90b72e"
+    },
+    {
       "path": "stocks_predictor/v2/manifest.py",
-      "sha256": "7be81b8830896c8ec831dd0f294a120cf28f1ec1ed83b2654e9a357b6acac7ad"
+      "sha256": "1077d86228e70fcd75166f7d51516454903eccf8e56c409281c3f9d0354834ec"
+    },
+    {
+      "path": "stocks_predictor/v2/metrics.py",
+      "sha256": "38fc2f3fd2eb6988aece3a2d597a40c706265e8ac70dc431fdaa0636c3d0f551"
+    },
+    {
+      "path": "stocks_predictor/v2/pbo.py",
+      "sha256": "52e47fabdec4ed3199f563e20a0f28ab8ed110ce8aac3f4b935b5f325766c455"
+    },
+    {
+      "path": "stocks_predictor/v2/policy.py",
+      "sha256": "469a93392b865dd295a98cd484dc998551967cf4b308ddbd4570165f5fce954d"
+    },
+    {
+      "path": "stocks_predictor/v2/riskfree.py",
+      "sha256": "be7ba1de8145d70a78cc3e5919364e32e1ef8f9d3f634fdc5f61b8c1da3681f8"
     },
     {
       "path": "stocks_predictor/v2/synthetic.py",
-      "sha256": "4fa9398e4d61db6acbe068f7ab71909e18ebd43b8673f6048797c68e4afc095a"
+      "sha256": "205d6e2a174efbc11fc3c288935ef66e8d511cc731205bc7b5e957334a5c725c"
+    },
+    {
+      "path": "stocks_predictor/v2/validation.py",
+      "sha256": "60b979e5253dd521d48d7c977a2f22e3da8dda5959243be00ab4e9d89b444ae2"
     },
     {
       "path": "stocks_predictor/v2/walkforward.py",
@@ -818,6 +846,10 @@
       "sha256": "e36718a0248e4e2a81b82304bf2a790f145c13ad442919550b221e99ff777cd8"
     },
     {
+      "path": "tests/test_v2_validation.py",
+      "sha256": "92417d0e359f8ece9c046b1d304d3a4de140e885915009fb2380a064186e6e60"
+    },
+    {
       "path": "tests/test_versioned_sources.py",
       "sha256": "409807fa46234d4c22ba82c68f16cfbb1941e491cc51c3701da04da6d627f49f"
     },
@@ -962,8 +994,8 @@
       "sha256": "cf4519d43880e531dea6f6ed982a1708dbfac8e3cd63e790b8270c37e0ecd4fd"
     }
   ],
-  "real_validation": "docs/engineering/2026-09-24-protocol-v2/evidence/operational-real.json",
-  "capacity_validation": "docs/engineering/2026-09-24-protocol-v2/evidence/operational-capacity.json",
+  "real_validation": "docs/engineering/2026-09-24-protocol-v2/evidence/prompt3b/operational-real.json",
+  "capacity_validation": "docs/engineering/2026-09-24-protocol-v2/evidence/prompt3b/operational-capacity.json",
   "capital_enabled": false,
   "profit_certified": false
 }
