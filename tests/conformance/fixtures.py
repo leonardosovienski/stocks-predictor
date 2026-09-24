@@ -189,7 +189,7 @@ def objects() -> dict[tuple[str, str], dict]:
         },
         ("baseline", "ew-universe"): {"baseline_id": "stocks:BASELINE-EW-UNIVERSE", "method": "EQUAL_WEIGHT_UNIVERSE"},
         ("cost_model", "h1-frozen"): {"b3_fee_pct": 0.0003, "spread_slippage_pct": 0.0015},
-        ("cost_model", "expensive"): {"b3_fee_pct": 0.01, "spread_slippage_pct": 0.04},
+        ("cost_model", "expensive"): {"b3_fee_pct": 0.1, "spread_slippage_pct": 0.1},
         ("readiness", "matrix-20260921"): matrix(),
         ("readiness", "counterfactual-vlmo-ready"): ready_matrix("CVM_VLMO"),
         ("source", "vlmo-2026"): source_object(vlmo_zip(2026)),
@@ -258,7 +258,7 @@ def request(request_id: str, dataset: str = "positive", **overrides) -> dict:
     }
     if dataset == "case_b":
         value["references"]["cost_model"] = {"name": "expensive", "version": "v1"}
-        value["parameters"]["fee_bps"], value["parameters"]["slippage_bps"] = 100, 400
+        value["parameters"]["fee_bps"], value["parameters"]["slippage_bps"] = 1000, 1000
     value.update(overrides)
     return value
 
