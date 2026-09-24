@@ -338,6 +338,7 @@ def test_validation_on_synthetic_data_is_ledgered_and_refuses_to_decide(tmp_path
     started = [r for r in records if r["kind"] == "STARTED"]
     assert all(r["payload"]["manifest"]["decision_policy"]["policy_sha256"] == report["policy"]["policy_sha256"]
                for r in started)
+    assert all(r["payload"]["manifest"]["validation"]["risk_free"]["hash"] == RF.hash for r in started)
     assert records[-1]["payload"]["evaluated_run_ids"] == report["run_ids"]
     assert report["n_trials"]["grid"][0] == 71 + 8
     assert report["purge_embargo"]["purge_size"] == 22 and report["cpcv"]["n_paths"] == 5

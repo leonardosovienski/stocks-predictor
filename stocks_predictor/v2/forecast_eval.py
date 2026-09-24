@@ -101,7 +101,8 @@ def run_forecast_evaluation(dataset: PITDataset, config: ProtocolConfig, spec: d
     ppy = PERIODS_PER_YEAR[config.rebalance]
     identity = policy.identity()
     validation = {"scheme": "forecast_origins", "spec_sha256": spec_sha, "tasks": task_stats,
-                  "dataset_meta": {k: v for k, v in dataset_meta.items()}, "stage": "prompt3c"}
+                  "dataset_meta": {k: v for k, v in dataset_meta.items()}, "stage": "prompt3c",
+                  "risk_free": rf.to_dict() if rf is not None else None}
     period = f"{config.start}..{config.end}"
     universe = ("sem deslistagens conhecidas (limitação da fonte)" if dataset_meta.get("limitations")
                 else "com deslistadas (PIT)")
@@ -178,7 +179,7 @@ def run_forecast_evaluation(dataset: PITDataset, config: ProtocolConfig, spec: d
     return {"dataset": {"hash": dataset.hash, "version": dataset.version, "data_cutoff": dataset.cutoff,
                         "meta": dataset_meta},
             "config": config.to_dict(), "spec": spec, "spec_sha256": spec_sha, "policy": identity,
-            "tasks": task_stats, "forecasts": forecasts,
+            "risk_free": rf.to_dict() if rf is not None else None, "tasks": task_stats, "forecasts": forecasts,
             "portfolios": {n: {"net": s.metrics, "run_id": r} for n, (s, r) in series.items()},
             "table": rows, "run_ids": run_ids, "n_trials_ledger": len(ledger.started()),
             "ledger": {"records": len(ledger.records), "head": ledger.records[-1]["hash"]}}

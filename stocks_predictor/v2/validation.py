@@ -83,7 +83,7 @@ def run_validation(dataset: PITDataset, config: ProtocolConfig, rf: RiskFreeSeri
         out = run_evaluation(ledger, dataset, strategy, config, family=family, runner=evaluate_with_series,
                              selection=selection, git=git, decision_policy=identity,
                              validation={"scheme": "single_window", "window": [config.start, config.end],
-                                         "stage": "prompt3b"})
+                                         "stage": "prompt3b", "risk_free": rf.to_dict()})
         run_ids.append(out["run_id"])
         m = out["metrics"]
         return NetSeries(strategy.name, m["sessions"], m["returns"], m["net"])

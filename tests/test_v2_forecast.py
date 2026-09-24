@@ -25,6 +25,7 @@ from stocks_predictor.v2.forecasting import (EmpiricalRandomWalk, GaussianRandom
                                              tasks_sha256)
 from stocks_predictor.v2.manifest import TrialLedger
 from stocks_predictor.v2.policy import load_policy
+from stocks_predictor.v2.riskfree import RiskFreeSeries
 
 ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs/engineering/2026-09-24-protocol-v2"
@@ -189,9 +190,10 @@ def test_cotahist_adapter_builds_a_valid_pit_dataset_and_declares_limits(tmp_pat
 def test_forecast_run_is_ledgered_with_contamination_and_rank_portfolio(tmp_path):
     ledger = TrialLedger(tmp_path / "ledger.jsonl")
     early = {**MODEL, "weights_committed_at": "2019-06-01T00:00:00Z", "published_at": "2019-06-02T00:00:00Z"}
+    rf = RiskFreeSeries(synthetic.riskfree())
     report = run_forecast_evaluation(DS, CONFIG, SPEC, POLICY, ledger, git=GIT,
                                      dataset_meta={"index_isin": "IDX11", "limitations": []},
-                                     external=[external(model=early)])
+                                     external=[external(model=early)], rf=rf)
     names = [row["candidate"] for row in report["table"]]
     model = "amazon/chronos-bolt-small@772f3d25d38a"
     assert names == ["gaussian_random_walk", "empirical_random_walk", model, "ew_universe", "index_buy_and_hold",
@@ -204,6 +206,10 @@ def test_forecast_run_is_ledgered_with_contamination_and_rank_portfolio(tmp_path
     assert report["portfolios"][f"rank:{model}"]["net"]["trades_filled"] > 0
     assert all(r["payload"]["manifest"]["validation"]["spec_sha256"] == report["spec_sha256"]
                for r in ledger.records if r["kind"] == "STARTED")
+    assert all(r["payload"]["manifest"]["validation"]["risk_free"]["hash"] == rf.hash
+               for r in ledger.records if r["kind"] == "STARTED")
+    assert report["risk_free"]["series_id"] == "SYNTHETIC-RF"
+    assert isinstance(report["table"][3]["sharpe_net_excess_rf"], float)
 
 
 def test_forecast_cli_never_overwrites_and_spec_is_exact(tmp_path, capsys):
