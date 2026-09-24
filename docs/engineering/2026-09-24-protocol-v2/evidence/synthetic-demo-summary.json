@@ -1,0 +1,135 @@
+{
+  "dataset": {
+    "hash": "f1edbb034a8426f3a333c851f3495dc301a6096cb5b9fe6ded8b6cf0f5ea4053",
+    "version": "synthetic-seed7-2021-06-30",
+    "data_cutoff": "2021-06-30T23:59:59Z"
+  },
+  "config_hash": "e4c30869e3118e251ceacc3be220a0a41e4966064a3611ccd57a5ab54bcb80ed",
+  "config": {
+    "start": "2020-01-02",
+    "end": "2021-06-30",
+    "rebalance": "monthly",
+    "execution": {
+      "lag_sessions": 1,
+      "price": "open",
+      "signal_data": "bars <= close(D)",
+      "execution": "D+1 open"
+    },
+    "costs": {
+      "brokerage_bps": 0.0,
+      "brokerage_fixed": 0.0,
+      "exchange_fee_bps": 3.0,
+      "spread_bps": 7.5,
+      "slippage_bps": 7.5,
+      "impact_bps_at_full_adv": 0.0,
+      "impact_exponent": 0.5,
+      "borrow_bps_annual": 0.0,
+      "sessions_per_year": 252
+    },
+    "liquidity": {
+      "min_adv": 1000000.0,
+      "adv_lookback": 63,
+      "max_participation": 0.05,
+      "statistic": "mean"
+    },
+    "initial_cash": 1000000.0,
+    "seed": 7,
+    "allow_short": false,
+    "engine": "stocks-pit-engine-v2/1"
+  },
+  "results": {
+    "ew_universe": {
+      "run_id": "872fe3faea8e427da1e33efaa5d6c774",
+      "trial_number": 1,
+      "result_digest": "2c67f8b425ce00b2950b73a9562474855c1d45b4a5feb5d5c9be1dd4a21f7723",
+      "net": {
+        "total_return": 0.1662188478186315,
+        "cagr": 0.10855398127903682,
+        "ann_vol": 0.10524133224252225,
+        "sharpe_ann_rf0": 1.033276357896361,
+        "max_drawdown": -0.09136342700838329,
+        "turnover_ann": 1.5337554823878456,
+        "costs_total": 4378.806546930032,
+        "trades_filled": 300,
+        "orders_unfilled": 1
+      },
+      "gross_total_return": 0.17120638468805383
+    },
+    "index_buy_and_hold": {
+      "run_id": "c1380ecc67854cc98ceb7d0e92788218",
+      "trial_number": 2,
+      "result_digest": "a8df3faec0fb6ce143e740ac9ca7d370afaa312ef847ed361306c3b9c18b0fb6",
+      "net": {
+        "total_return": 0.25946345384041836,
+        "cagr": 0.16720099194493,
+        "ann_vol": 0.07973450428938746,
+        "sharpe_ann_rf0": 1.9793547811164398,
+        "max_drawdown": -0.042959654023431604,
+        "turnover_ann": 0.6088208039095069,
+        "costs_total": 1796.7658215212616,
+        "trades_filled": 1,
+        "orders_unfilled": 0
+      },
+      "gross_total_return": 0.261730488057331
+    },
+    "momentum_12_1": {
+      "run_id": "546e02cda56947359aaab5ef631d39d2",
+      "trial_number": 3,
+      "result_digest": "44832c00294361ef0d8ae383fe03479b0e7f0ccd19760415f300cbdb10cf4a10",
+      "net": {
+        "total_return": 0.3352363106264964,
+        "cagr": 0.2138098692903605,
+        "ann_vol": 0.17686386860245687,
+        "sharpe_ann_rf0": 1.184147099446283,
+        "max_drawdown": -0.12601079271724436,
+        "turnover_ann": 6.394318982535207,
+        "costs_total": 18492.902892495425,
+        "trades_filled": 81,
+        "orders_unfilled": 0
+      },
+      "gross_total_return": 0.3594165658933741
+    },
+    "random_5": {
+      "run_id": "65f39526ff584353829805a209ad8bf2",
+      "trial_number": 4,
+      "result_digest": "1faac1180a8161549dcdc93b1661112cc3f3e960ce3f5c1f53f212c2d865c0a8",
+      "net": {
+        "total_return": 0.09124087409718329,
+        "cagr": 0.06026612669824161,
+        "ann_vol": 0.15313264177415284,
+        "sharpe_ann_rf0": 0.4585379180038701,
+        "max_drawdown": -0.10612429994480144,
+        "turnover_ann": 16.70789283510094,
+        "costs_total": 48706.6564742841,
+        "trades_filled": 149,
+        "orders_unfilled": 0
+      },
+      "gross_total_return": 0.14070536123082023
+    },
+    "forecast_baselines_h21": {
+      "run_id": "0804890e5f234c48bebf0ed6c1f464e9",
+      "trial_number": 5,
+      "result_digest": "92d81e2a1e5006a8fc6d42d51e48115cc630512fcea941840978f0b4f033339e",
+      "excluded_pairs": 2,
+      "metrics": {
+        "random_walk": {
+          "n": 299,
+          "mse": 0.010644535466715677,
+          "mae": 0.07812058721522953,
+          "hit_rate": null
+        },
+        "naive_last_return": {
+          "n": 299,
+          "mse": 0.01963776744193448,
+          "mae": 0.10955956870104135,
+          "hit_rate": 0.47157190635451507
+        }
+      }
+    }
+  },
+  "ledger": {
+    "path": "ledger.jsonl",
+    "records": 10,
+    "head": "102be3d0df3f1a65de599679cd6a4aaf7317bd197bc74bc09583c49b07a39ddc"
+  }
+}
