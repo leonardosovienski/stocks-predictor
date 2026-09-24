@@ -1,0 +1,614 @@
+{
+  "dataset": {
+    "hash": "f1edbb034a8426f3a333c851f3495dc301a6096cb5b9fe6ded8b6cf0f5ea4053",
+    "version": "synthetic-seed7-2021-06-30",
+    "data_cutoff": "2021-06-30T23:59:59Z"
+  },
+  "risk_free": {
+    "series_id": "SYNTHETIC-RF",
+    "unit": "percent_per_day",
+    "hash": "d08823db82e2112316aa02d962a63d4dbe61b2cbb3c263bf546759d7e4549835",
+    "first": "2019-01-02",
+    "last": "2021-06-30",
+    "sessions": 630
+  },
+  "policy": {
+    "policy_version": "1.0.0",
+    "policy_status": "PROPOSED_PENDING_OWNER_APPROVAL",
+    "policy_sha256": "4898b7c73f30c938d188cfb278c2c4aa82fe44995b10352d0f24a1e020d6f5d8",
+    "policy_path": "/home/superleo13/predictors/work/stocks-stocks-predictor/policy/stocks-evaluation-policy-v1.json"
+  },
+  "config": {
+    "start": "2020-01-02",
+    "end": "2021-06-30",
+    "rebalance": "monthly",
+    "execution": {
+      "lag_sessions": 1,
+      "price": "open",
+      "signal_data": "bars <= close(D)",
+      "execution": "D+1 open"
+    },
+    "costs": {
+      "brokerage_bps": 0.0,
+      "brokerage_fixed": 0.0,
+      "exchange_fee_bps": 3.0,
+      "spread_bps": 7.5,
+      "slippage_bps": 7.5,
+      "impact_bps_at_full_adv": 0.0,
+      "impact_exponent": 0.5,
+      "borrow_bps_annual": 0.0,
+      "sessions_per_year": 252
+    },
+    "liquidity": {
+      "min_adv": 1000000.0,
+      "adv_lookback": 63,
+      "max_participation": 0.05,
+      "statistic": "mean"
+    },
+    "initial_cash": 1000000.0,
+    "seed": 7,
+    "allow_short": false,
+    "engine": "stocks-pit-engine-v2/1"
+  },
+  "candidate": {
+    "name": "momentum_12_1",
+    "lookback": 252,
+    "skip": 21,
+    "quantile": 0.2,
+    "max_stale": 5
+  },
+  "family": [
+    {
+      "name": "momentum_12_1",
+      "lookback": 252,
+      "skip": 21,
+      "quantile": 0.2,
+      "max_stale": 5
+    },
+    {
+      "name": "momentum_189_21",
+      "lookback": 189,
+      "skip": 21,
+      "quantile": 0.2,
+      "max_stale": 5
+    },
+    {
+      "name": "momentum_126_21",
+      "lookback": 126,
+      "skip": 21,
+      "quantile": 0.2,
+      "max_stale": 5
+    },
+    {
+      "name": "momentum_252_5",
+      "lookback": 252,
+      "skip": 5,
+      "quantile": 0.2,
+      "max_stale": 5
+    },
+    {
+      "name": "momentum_189_5",
+      "lookback": 189,
+      "skip": 5,
+      "quantile": 0.2,
+      "max_stale": 5
+    },
+    {
+      "name": "momentum_126_5",
+      "lookback": 126,
+      "skip": 5,
+      "quantile": 0.2,
+      "max_stale": 5
+    }
+  ],
+  "baselines": {
+    "ew_universe": {
+      "sessions": 376,
+      "risk_free": {
+        "series_id": "SYNTHETIC-RF",
+        "unit": "percent_per_day",
+        "hash": "d08823db82e2112316aa02d962a63d4dbe61b2cbb3c263bf546759d7e4549835",
+        "first": "2019-01-02",
+        "last": "2021-06-30",
+        "sessions": 630
+      },
+      "ann_excess_return": 0.07929712364567168,
+      "total_return_net": 0.1662188478186315,
+      "risk_free_compounded": 0.04491215820557204,
+      "ann_vol": 0.10525419939170344,
+      "sharpe_excess_per_period": 0.04745890698122319,
+      "sharpe_excess_ann": 0.7533867922035823,
+      "psr_vs_zero": 0.7897138273571889,
+      "t_stat_excess": 0.9202623497114835,
+      "max_drawdown": -0.09136342700838329,
+      "turnover_ann": 1.5337554823878456,
+      "costs_total": 4378.806546930032,
+      "net_of_costs": true
+    },
+    "index_buy_and_hold": {
+      "sessions": 376,
+      "risk_free": {
+        "series_id": "SYNTHETIC-RF",
+        "unit": "percent_per_day",
+        "hash": "d08823db82e2112316aa02d962a63d4dbe61b2cbb3c263bf546759d7e4549835",
+        "first": "2019-01-02",
+        "last": "2021-06-30",
+        "sessions": 630
+      },
+      "ann_excess_return": 0.12837661545110582,
+      "total_return_net": 0.25946345384041836,
+      "risk_free_compounded": 0.04491215820557204,
+      "ann_vol": 0.07979165266090751,
+      "sharpe_excess_per_period": 0.10135103566093911,
+      "sharpe_excess_ann": 1.6088978128661025,
+      "psr_vs_zero": 0.9758777811797148,
+      "t_stat_excess": 1.9652694964072746,
+      "max_drawdown": -0.042959654023431604,
+      "turnover_ann": 0.6088208039095069,
+      "costs_total": 1796.7658215212616,
+      "net_of_costs": true
+    }
+  },
+  "candidate_report": {
+    "sessions": 376,
+    "risk_free": {
+      "series_id": "SYNTHETIC-RF",
+      "unit": "percent_per_day",
+      "hash": "d08823db82e2112316aa02d962a63d4dbe61b2cbb3c263bf546759d7e4549835",
+      "first": "2019-01-02",
+      "last": "2021-06-30",
+      "sessions": 630
+    },
+    "ann_excess_return": 0.17998658016840519,
+    "total_return_net": 0.3352363106264964,
+    "risk_free_compounded": 0.04491215820557204,
+    "ann_vol": 0.17691670232828682,
+    "sharpe_excess_per_period": 0.0640871589348778,
+    "sharpe_excess_ann": 1.0173521086461466,
+    "psr_vs_zero": 0.8924033248627494,
+    "t_stat_excess": 1.2426961179505842,
+    "max_drawdown": -0.12601079271724436,
+    "turnover_ann": 6.394318982535207,
+    "costs_total": 18492.902892495425,
+    "net_of_costs": true,
+    "vs_benchmark": {
+      "beta": 1.1131495330665169,
+      "alpha_per_period": 0.0001471595659616943,
+      "alpha_ann": 0.03708421062234696,
+      "r2": 0.2520485865619253,
+      "n": 376,
+      "benchmark": "index_buy_and_hold"
+    }
+  },
+  "family_sharpe_excess_ann": {
+    "momentum_12_1": 1.0173521086461466,
+    "momentum_189_21": 1.480629208522763,
+    "momentum_126_21": 0.304951372880051,
+    "momentum_252_5": 0.8567576892782045,
+    "momentum_189_5": 1.6070749034890037,
+    "momentum_126_5": 0.7310774779233687
+  },
+  "cross_section": {
+    "horizons": [
+      21,
+      63,
+      126
+    ],
+    "main_horizon": 21,
+    "n_quantiles": 5,
+    "summary": {
+      "21": {
+        "ic": {
+          "n": 18,
+          "mean": 0.08758207441718864,
+          "std": 0.32061568282680736,
+          "ir": 0.2731684041310587,
+          "ir_ann": 0.9462831099550032,
+          "t": 1.1589553858018733,
+          "hit_rate": 0.6666666666666666
+        },
+        "rank_ic": {
+          "n": 18,
+          "mean": 0.02806178026766262,
+          "std": 0.26510239639347816,
+          "ir": 0.10585260883878217,
+          "ir_ann": 0.36668419324497026,
+          "t": 0.4490945850971397,
+          "hit_rate": 0.5555555555555556
+        }
+      },
+      "63": {
+        "ic": {
+          "n": 15,
+          "mean": 0.09612646121756782,
+          "std": 0.2844986098020379,
+          "ir": 0.33788024934271316,
+          "ir_ann": 1.1704515174712398,
+          "t": 1.3086045787167375,
+          "hit_rate": 0.6666666666666666
+        },
+        "rank_ic": {
+          "n": 15,
+          "mean": -0.027016806722689076,
+          "std": 0.3015918413979663,
+          "ir": -0.08958069488039956,
+          "ir_ann": -0.31031662982035446,
+          "t": -0.34694453941347553,
+          "hit_rate": 0.4666666666666667
+        }
+      },
+      "126": {
+        "ic": {
+          "n": 12,
+          "mean": 0.03688008227737223,
+          "std": 0.18935281473884955,
+          "ir": 0.19476912623789763,
+          "ir_ann": 0.6747000447796704,
+          "t": 0.6747000447796704,
+          "hit_rate": 0.5833333333333334
+        },
+        "rank_ic": {
+          "n": 12,
+          "mean": -0.06980042016806721,
+          "std": 0.22498918659136707,
+          "ir": -0.31023899959619433,
+          "ir_ann": -1.074699419579898,
+          "t": -1.074699419579898,
+          "hit_rate": 0.3333333333333333
+        }
+      }
+    },
+    "decay_rank_ic": {
+      "21": 0.02806178026766262,
+      "63": -0.027016806722689076,
+      "126": -0.06980042016806721
+    },
+    "quantile_mean_returns": [
+      0.001416517663908149,
+      0.023327620962415283,
+      0.007584684382414801,
+      0.013663259688683836,
+      0.02934111550100616
+    ],
+    "long_short": {
+      "n": 18,
+      "mean": 0.02792459783709801,
+      "std": 0.07978458189022754,
+      "ir": 0.3499999269974036,
+      "ir_ann": 1.212435312409802,
+      "t": 1.484923930767964,
+      "hit_rate": 0.7222222222222222
+    },
+    "long_only": {
+      "n": 18,
+      "mean": 0.02934111550100616,
+      "std": 0.05076174144050439,
+      "ir": 0.5780163301803898,
+      "ir_ann": 2.0023073029538856,
+      "t": 2.4523156002426965,
+      "hit_rate": 0.6666666666666666
+    },
+    "long_only_excess": {
+      "n": 18,
+      "mean": 0.013531480289722071,
+      "std": 0.04157341022496986,
+      "ir": 0.32548401048886727,
+      "ir_ann": 1.1275096864359988,
+      "t": 1.3809117059068283,
+      "hit_rate": 0.7222222222222222
+    },
+    "gross_of_costs": true,
+    "n_periods": 18
+  },
+  "purge_embargo": {
+    "purge_size": 22,
+    "embargo_size": 0,
+    "label_horizon": 21,
+    "execution_lag": 1,
+    "rebalance_step": 21,
+    "acf": [
+      1.0,
+      0.12415010332252495,
+      -0.17833107164530096,
+      -0.24964903669332048,
+      -0.2847668604833482,
+      -0.10394777476202441,
+      0.22296464291074672,
+      0.056217919957158566,
+      -0.015249848791137909,
+      0.042623939566142216,
+      -0.18206056249009686,
+      -0.1656468617678548,
+      0.1332009046455182
+    ],
+    "band": 0.4619764303752111,
+    "z": 1.96,
+    "n": 18,
+    "first_insignificant_lag": 1,
+    "max_lag_exhausted": false,
+    "rule": "purge = lag + h; embargo = (primeira defasagem com |ρ| < z/√n − 1) × passo"
+  },
+  "cpcv": {
+    "n_splits": 15,
+    "n_paths": 5,
+    "paths": [
+      {
+        "performance": 0.44725731539614233,
+        "n": 18
+      },
+      {
+        "performance": 0.4285155460056487,
+        "n": 18
+      },
+      {
+        "performance": 0.3967157444819544,
+        "n": 18
+      },
+      {
+        "performance": 0.4985644773917817,
+        "n": 18
+      },
+      {
+        "performance": 0.4079404698901678,
+        "n": 18
+      }
+    ],
+    "splits": [
+      {
+        "index": 0,
+        "test_groups": [
+          0,
+          1
+        ],
+        "train": 11,
+        "test": 6,
+        "purged": 1,
+        "embargoed": 0
+      },
+      {
+        "index": 1,
+        "test_groups": [
+          0,
+          2
+        ],
+        "train": 9,
+        "test": 6,
+        "purged": 3,
+        "embargoed": 0
+      },
+      {
+        "index": 2,
+        "test_groups": [
+          0,
+          3
+        ],
+        "train": 9,
+        "test": 6,
+        "purged": 3,
+        "embargoed": 0
+      },
+      {
+        "index": 3,
+        "test_groups": [
+          0,
+          4
+        ],
+        "train": 10,
+        "test": 6,
+        "purged": 2,
+        "embargoed": 0
+      },
+      {
+        "index": 4,
+        "test_groups": [
+          0,
+          5
+        ],
+        "train": 11,
+        "test": 6,
+        "purged": 1,
+        "embargoed": 0
+      },
+      {
+        "index": 5,
+        "test_groups": [
+          1,
+          2
+        ],
+        "train": 10,
+        "test": 6,
+        "purged": 2,
+        "embargoed": 0
+      },
+      {
+        "index": 6,
+        "test_groups": [
+          1,
+          3
+        ],
+        "train": 8,
+        "test": 6,
+        "purged": 4,
+        "embargoed": 0
+      },
+      {
+        "index": 7,
+        "test_groups": [
+          1,
+          4
+        ],
+        "train": 9,
+        "test": 6,
+        "purged": 3,
+        "embargoed": 0
+      },
+      {
+        "index": 8,
+        "test_groups": [
+          1,
+          5
+        ],
+        "train": 10,
+        "test": 6,
+        "purged": 2,
+        "embargoed": 0
+      },
+      {
+        "index": 9,
+        "test_groups": [
+          2,
+          3
+        ],
+        "train": 10,
+        "test": 6,
+        "purged": 2,
+        "embargoed": 0
+      },
+      {
+        "index": 10,
+        "test_groups": [
+          2,
+          4
+        ],
+        "train": 9,
+        "test": 6,
+        "purged": 3,
+        "embargoed": 0
+      },
+      {
+        "index": 11,
+        "test_groups": [
+          2,
+          5
+        ],
+        "train": 10,
+        "test": 6,
+        "purged": 2,
+        "embargoed": 0
+      },
+      {
+        "index": 12,
+        "test_groups": [
+          3,
+          4
+        ],
+        "train": 11,
+        "test": 6,
+        "purged": 1,
+        "embargoed": 0
+      },
+      {
+        "index": 13,
+        "test_groups": [
+          3,
+          5
+        ],
+        "train": 10,
+        "test": 6,
+        "purged": 2,
+        "embargoed": 0
+      },
+      {
+        "index": 14,
+        "test_groups": [
+          4,
+          5
+        ],
+        "train": 11,
+        "test": 6,
+        "purged": 1,
+        "embargoed": 0
+      }
+    ]
+  },
+  "n_trials": {
+    "prior_lower_bound": 71,
+    "ledger_started": 8,
+    "grid": [
+      79,
+      150,
+      158,
+      395
+    ]
+  },
+  "dsr": {
+    "var_trial_sharpe": 0.0009331547389798667,
+    "n_trial_sharpes": 6,
+    "rows": [
+      {
+        "n": 79,
+        "sr0": 0.07473543122551575,
+        "dsr": 0.4191734122175036
+      },
+      {
+        "n": 150,
+        "sr0": 0.08156529025108981,
+        "dsr": 0.3684661430624511
+      },
+      {
+        "n": 158,
+        "sr0": 0.08209811863264822,
+        "dsr": 0.3645926555191099
+      },
+      {
+        "n": 395,
+        "sr0": 0.09106064822710112,
+        "dsr": 0.3017725431686181
+      }
+    ],
+    "worst": {
+      "n": 395,
+      "sr0": 0.09106064822710112,
+      "dsr": 0.3017725431686181
+    }
+  },
+  "dsr_error": null,
+  "pbo": {
+    "pbo": 0.4178710178710179,
+    "combinations": 12870,
+    "n_splits": 16,
+    "configurations": 6,
+    "rows_used": 368,
+    "rows_dropped": 8,
+    "prob_oos_loss": 0.14374514374514374
+  },
+  "pbo_error": null,
+  "decision": {
+    "policy_version": "1.0.0",
+    "policy_status": "PROPOSED_PENDING_OWNER_APPROVAL",
+    "policy_sha256": "4898b7c73f30c938d188cfb278c2c4aa82fe44995b10352d0f24a1e020d6f5d8",
+    "policy_path": "/home/superleo13/predictors/work/stocks-stocks-predictor/policy/stocks-evaluation-policy-v1.json",
+    "decision": "NO_DECISION",
+    "decided_at": "2026-09-24T18:12:55.943043Z",
+    "no_decision_reasons": [
+      "taxa livre de risco não admitida: 'SYNTHETIC-RF'",
+      "dataset sintético não sustenta decisão",
+      "amostra com menos de 504 pregões"
+    ],
+    "checks": [],
+    "diagnostics": [
+      {
+        "gate": "t_stat",
+        "value": 1.484923930767964,
+        "threshold": 3.0,
+        "role": "diagnostic",
+        "passed": false
+      }
+    ],
+    "failed": []
+  },
+  "run_ids": [
+    "9a10955ce6014289bd91f97f6ddfc530",
+    "851708ef8e2b437aa8129a67905a9dd5",
+    "743c3f397f4c4c6c97f4f179f196c727",
+    "cde9b680a86145e0978e2b82a3f946a7",
+    "5535b49c41924d33b28fb4f6d2c70ee3",
+    "39e1d7e44f42485695c779a5e0825304",
+    "053672d8ac3b42b58898b932209ebb8c",
+    "21eb96675d814a0d9035ec7fceebceef"
+  ],
+  "ledger": {
+    "records": 17,
+    "head": "38ad1759cc599453e622baa5f935c177e553816d57fd3bd057bcd773e29dc230"
+  }
+}
