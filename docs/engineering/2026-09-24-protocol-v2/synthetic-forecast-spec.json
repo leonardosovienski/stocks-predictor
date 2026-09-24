@@ -1,0 +1,13 @@
+{
+  "horizon": 21,
+  "context_length": 64,
+  "levels": [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9],
+  "jump_threshold": 0.30,
+  "jump_threshold_source": "config.yaml jump_detector.threshold_abs (H1 congelado)",
+  "baseline": "gaussian_random_walk",
+  "design": {"alpha": 0.05, "power": 0.8, "min_detectable_relative_improvement": 0.05},
+  "period_rule": "config",
+  "source_sha256": null,
+  "index_ticker": "IDX11",
+  "rank_quantile": 0.2
+}

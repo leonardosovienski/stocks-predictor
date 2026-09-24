@@ -30,6 +30,18 @@ partir do Prompt 3a. Implementa só com a biblioteca padrão; única dependênci
 | `policy` | Política de decisão versionada em [policy/stocks-evaluation-policy-v1.json](../../../policy/stocks-evaluation-policy-v1.json); limiares só no arquivo. `NO_DECISION` sem baseline, sem rf admitida, com dataset sintético, amostra curta ou DSR/PBO não estimáveis. `REJECT` se algum gate falhar; `PASS` se todos passarem. Toda decisão carrega versão, status e sha256. Status atual: `PROPOSED_PENDING_OWNER_APPROVAL`. |
 | `validation` | Orquestra, sob o ledger: baselines exigidos pela política; família pré-declarada, com o candidato dentro; relatórios em excesso de rf; cross-section; CPCV do procedimento "melhor configuração no treino, aplicada no teste"; DSR; PBO; decisão registrada. |
 
+### Previsão e execução real (Prompt 3c)
+
+| Módulo | Contrato |
+|---|---|
+| `cotahist_dataset` | `stocks-pit-dataset/2` a partir de um COTAHIST local cujo sha256 bate com o declarado: ações à vista (BDI 02, mercado 010) e o fundo de índice declarado; ISIN (CODISI) como identidade; ticker por vigência; barra disponível às 23:00 UTC. Limitações registradas em toda execução: listagem = primeiro pregão do arquivo, deslistagem desconhecida, sem eventos societários, proventos nem fundamentos. |
+| `forecast_metrics` | Perda quantílica, CRPS por quantis (Gneiting & Raftery 2007), WQL (Chronos/fev) e cobertura. Implementação pequena; o `fev` não foi adotado. |
+| `forecasting` | Tarefas (papel, origem D): contexto de L fechamentos consecutivos conhecidos na decisão, alvo log(close(D+h)/close(D)) realizado e ajustado, alvo de ranking desde a execução. Janelas com \|r\| diário > 0,30 são excluídas (limiar congelado do `config.yaml`). Baselines de passeio aleatório gaussiano e empírico. Previsões externas `stocks-forecasts/1` exigem proveniência completa (id, revisão, sha256 dos pesos, licença e data da verificação, datas de commit e publicação). Contaminação: só origens depois do corte contam (`CLEAN_POST_CUTOFF`, `INSUFFICIENT_SAMPLE` ou `POTENTIALLY_CONTAMINATED`). Poder pelo n necessário no teste pareado de CRPS. |
+| `forecast_eval` | Execução sob o ledger: previsores, carteiras de referência e carteira pelo ranking da mediana de cada modelo externo. Decisão da política e tabela de entrega. Nenhum modelo é baixado aqui. |
+
+As especificações da execução real ([protocolo](prompt3c-real-protocol-config.json) e
+[previsão](prompt3c-real-forecast-spec.json)) foram versionadas antes da primeira execução.
+
 O skfolio (BSD-3, 1.3.1) não foi adotado: o `CombinatorialPurgedCV` dele purga um número fixo de observações,
 não o intervalo real de cada rótulo, e traria numpy, scipy, pandas, cvxpy, scikit-learn e plotly. O pypbo
 (AGPL) e o mlfinlab (proprietário) também não são usados.

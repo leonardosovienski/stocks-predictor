@@ -1,9 +1,9 @@
 {
   "schema_version": "current-operational-evidence/1",
   "status": "LOCAL_VALIDATED_CI_PENDING",
-  "generated_at": "2026-09-24T18:12:30.501980Z",
+  "generated_at": "2026-09-24T18:30:39.017643Z",
   "code_text_hash_policy": "UTF-8 file bytes with CRLF normalized to LF",
-  "code_population_sha256": "4d7701c828386f5b48a7b57f2e74fcfa9951582e4946043edf2c949da7085506",
+  "code_population_sha256": "ce29a482d642a9e9181b38fbba1544df54788fc65f6a19fc2f1445dec73db72a",
   "current_code_sha256_lf": [
     {
       "path": ".gitattributes",
@@ -347,7 +347,7 @@
     },
     {
       "path": "stocks_predictor/v2/__init__.py",
-      "sha256": "dce0724ad75cff3a31e1cec667de9356e19a0ddc410cd66e415c33bf7f9ca7c5"
+      "sha256": "5b1312e71cba7cab32876f1f6656279a1cc0ffd804a2f8e9daf1085dc7ad6fd9"
     },
     {
       "path": "stocks_predictor/v2/__main__.py",
@@ -360,6 +360,10 @@
     {
       "path": "stocks_predictor/v2/costs.py",
       "sha256": "1ea8d1257dee345827b57df396130785be76fadc6369f347ccc613d3881b9744"
+    },
+    {
+      "path": "stocks_predictor/v2/cotahist_dataset.py",
+      "sha256": "fa0bc031718b29f5b835a1c696feba363b22b3a507577390893216054ee63cea"
     },
     {
       "path": "stocks_predictor/v2/cpcv.py",
@@ -380,6 +384,18 @@
     {
       "path": "stocks_predictor/v2/factor_metrics.py",
       "sha256": "c24c88a7836f59080f7d6867965fa6c39423ce15a698d3685a326ee3fb90b72e"
+    },
+    {
+      "path": "stocks_predictor/v2/forecast_eval.py",
+      "sha256": "beb5e15362e28540b987e6ee09cd5affeb8a8bdb75e0a9b3721ef06daff04824"
+    },
+    {
+      "path": "stocks_predictor/v2/forecast_metrics.py",
+      "sha256": "832320634e28ec3b632ac8e7cadf749ac6c4fee17599ec3e7c9791543239565b"
+    },
+    {
+      "path": "stocks_predictor/v2/forecasting.py",
+      "sha256": "5dd659a9372a16e3695cdf14f758dfa7babdb567a39444976cfed80270720103"
     },
     {
       "path": "stocks_predictor/v2/manifest.py",
@@ -842,6 +858,10 @@
       "sha256": "6bb90503917ae609b5a5e7bfc0116c1d53d60df26e8b1078b78ffa0259565e45"
     },
     {
+      "path": "tests/test_v2_forecast.py",
+      "sha256": "247efa38445f92778871650fc99148660af7160f809dda5c98fa26e8ed43ecb1"
+    },
+    {
       "path": "tests/test_v2_manifest.py",
       "sha256": "e36718a0248e4e2a81b82304bf2a790f145c13ad442919550b221e99ff777cd8"
     },
@@ -994,8 +1014,8 @@
       "sha256": "cf4519d43880e531dea6f6ed982a1708dbfac8e3cd63e790b8270c37e0ecd4fd"
     }
   ],
-  "real_validation": "docs/engineering/2026-09-24-protocol-v2/evidence/prompt3b/operational-real.json",
-  "capacity_validation": "docs/engineering/2026-09-24-protocol-v2/evidence/prompt3b/operational-capacity.json",
+  "real_validation": "docs/engineering/2026-09-24-protocol-v2/evidence/prompt3c/operational-real.json",
+  "capacity_validation": "docs/engineering/2026-09-24-protocol-v2/evidence/prompt3c/operational-capacity.json",
   "capital_enabled": false,
   "profit_certified": false
 }

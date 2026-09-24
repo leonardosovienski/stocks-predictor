@@ -21,6 +21,12 @@ Validação estatística (Prompt 3b):
     pbo             PBO por CSCV
     policy          política de decisão versionada (PASS / REJECT / NO_DECISION)
     validation      orquestração sob o ledger
+
+Previsão e execução real (Prompt 3c):
+    cotahist_dataset  dataset PIT v2 a partir de um COTAHIST local com hash (limitações declaradas)
+    forecast_metrics  perda quantílica, CRPS por quantis, WQL, cobertura
+    forecasting       tarefas PIT, baselines probabilísticos, previsões externas com proveniência, contaminação
+    forecast_eval     execução sob o ledger e a política, com a tabela de entrega
 """
 
 SCHEMA = "stocks-pit-dataset/2"
