@@ -1,9 +1,9 @@
 {
   "schema_version": "current-operational-evidence/1",
   "status": "LOCAL_VALIDATED_CI_PENDING",
-  "generated_at": "2026-09-24T02:33:59.843065Z",
+  "generated_at": "2026-09-24T02:45:03.359306Z",
   "code_text_hash_policy": "UTF-8 file bytes with CRLF normalized to LF",
-  "code_population_sha256": "55e659819ada4083023b40b3bfbb2a8562f3d8efa31bfa5982e387dda8b49903",
+  "code_population_sha256": "207f359b3df187374e71fcdab5e8c0a4ffb82610384f92acc1c44e5172312bb5",
   "current_code_sha256_lf": [
     {
       "path": ".gitattributes",
@@ -139,7 +139,7 @@
     },
     {
       "path": "stocks_predictor/ecosystem_plugin.py",
-      "sha256": "ac2ed24d4669b49c8eb35dddb860a775c55b998a259ce90c547f6d4fabfe4715"
+      "sha256": "a9cf4065362d346b018bdba1d6682b4640bb40b3d21efba0ce4aa29e569173f3"
     },
     {
       "path": "stocks_predictor/entry_feasibility.py",
@@ -515,7 +515,7 @@
     },
     {
       "path": "tests/test_ecosystem_plugin.py",
-      "sha256": "43df61f871d869ff3b86a08d618bdbfa8e97694e3caab44db682a2a777883ef6"
+      "sha256": "39ad78d7851a77611e7c22b4cf8bcc4e9f6fded5a35ff6620fe1b3c24935fb09"
     },
     {
       "path": "tests/test_entrypoint_integrity.py",

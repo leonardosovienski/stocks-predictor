@@ -11,3 +11,9 @@ def test_ecosystem_plugin_contract_shape():
     assert caps["scientific_status"] == "DISCOVERY_INCONCLUSIVE"
     assert caps["economic_status"] == "NO_GO"
     assert caps["capital_permission"] == "FORBIDDEN"
+
+
+def test_ecosystem_plugin_reports_the_installed_version():
+    from importlib.metadata import version
+
+    assert PLUGIN.health()["version"] == version("stocks-predictor")

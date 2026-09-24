@@ -27,7 +27,7 @@
     "document_panel.py": "a8590fe6d3f9efb6586e502ef88cf6311cbee09ce892f305c05deaeccf59dc03",
     "economics.py": "fa1778ac2e9274f00b5e882a0b30f08e4412d97236550735164665ae103d0098",
     "economic_gate.py": "289c04fc6b021aa92c452ff2a823fa068704bb250cee7c25fcc27e2dc07c8da8",
-    "ecosystem_plugin.py": "ac2ed24d4669b49c8eb35dddb860a775c55b998a259ce90c547f6d4fabfe4715",
+    "ecosystem_plugin.py": "a9cf4065362d346b018bdba1d6682b4640bb40b3d21efba0ce4aa29e569173f3",
     "entry_feasibility.py": "0a4aafcdea65541eca50ada7cdb30b1d1c592f8c9a7d86034530296053482651",
     "etf_hold.py": "c254225e605593efddb9dddeaf1e5a0287f57a19df742a3a414f0b7a4095e9b6",
     "execution.py": "fd867494a27f54e0c64e4fbe2a48f87e5c22669e3c1115a4830ce74770aa9348",
@@ -119,7 +119,7 @@
       "command": [
         "init",
         "--db",
-        "C:\\STOCKS\\work\\qualification\\r8-20260924\\capacity\\research.sqlite"
+        "C:\\STOCKS\\work\\qualification\\r8-20260924b\\capacity\\research.sqlite"
       ],
       "exit_code": 0,
       "result": {
@@ -131,17 +131,17 @@
         "historical_publication_certified": false,
         "capital_enabled": false
       },
-      "seconds": 0.02760530007071793,
+      "seconds": 0.03256830002646893,
       "cpu_seconds": 0.03125,
-      "peak_process_rss_bytes": 29499392
+      "peak_process_rss_bytes": 29458432
     },
     {
       "command": [
         "ingest",
         "--db",
-        "C:\\STOCKS\\work\\qualification\\r8-20260924\\capacity\\research.sqlite",
+        "C:\\STOCKS\\work\\qualification\\r8-20260924b\\capacity\\research.sqlite",
         "--archive",
-        "C:\\STOCKS\\work\\qualification\\r8-20260924\\capacity\\synthetic.zip",
+        "C:\\STOCKS\\work\\qualification\\r8-20260924b\\capacity\\synthetic.zip",
         "--publisher",
         "SYNTHETIC",
         "--dataset",
@@ -155,7 +155,7 @@
         "--sha256",
         "05a678df5899bbda28b1aa3f6cdbd0c0b0a0899d956804b1d09d24d74a661f6c",
         "--scratch-dir",
-        "C:\\STOCKS\\work\\qualification\\r8-20260924\\capacity"
+        "C:\\STOCKS\\work\\qualification\\r8-20260924b\\capacity"
       ],
       "exit_code": 0,
       "result": {
@@ -167,17 +167,17 @@
         "historical_publication_certified": false,
         "capital_enabled": false
       },
-      "seconds": 6.614554999978282,
-      "cpu_seconds": 6.28125,
-      "peak_process_rss_bytes": 32550912
+      "seconds": 9.41499499999918,
+      "cpu_seconds": 7.5,
+      "peak_process_rss_bytes": 32722944
     },
     {
       "command": [
         "ingest",
         "--db",
-        "C:\\STOCKS\\work\\qualification\\r8-20260924\\capacity\\research.sqlite",
+        "C:\\STOCKS\\work\\qualification\\r8-20260924b\\capacity\\research.sqlite",
         "--archive",
-        "C:\\STOCKS\\work\\qualification\\r8-20260924\\capacity\\synthetic.zip",
+        "C:\\STOCKS\\work\\qualification\\r8-20260924b\\capacity\\synthetic.zip",
         "--publisher",
         "SYNTHETIC",
         "--dataset",
@@ -191,7 +191,7 @@
         "--sha256",
         "05a678df5899bbda28b1aa3f6cdbd0c0b0a0899d956804b1d09d24d74a661f6c",
         "--scratch-dir",
-        "C:\\STOCKS\\work\\qualification\\r8-20260924\\capacity"
+        "C:\\STOCKS\\work\\qualification\\r8-20260924b\\capacity"
       ],
       "exit_code": 0,
       "result": {
@@ -203,15 +203,15 @@
         "historical_publication_certified": false,
         "capital_enabled": false
       },
-      "seconds": 6.580716700060293,
-      "cpu_seconds": 6.453125,
-      "peak_process_rss_bytes": 32989184
+      "seconds": 7.530157699948177,
+      "cpu_seconds": 7.21875,
+      "peak_process_rss_bytes": 32780288
     },
     {
       "command": [
         "inspect",
         "--db",
-        "C:\\STOCKS\\work\\qualification\\r8-20260924\\capacity\\research.sqlite"
+        "C:\\STOCKS\\work\\qualification\\r8-20260924b\\capacity\\research.sqlite"
       ],
       "exit_code": 0,
       "result": {
@@ -240,24 +240,24 @@
         "historical_publication_certified": false,
         "capital_enabled": false
       },
-      "seconds": 3.4992068000137806,
-      "cpu_seconds": 3.4375,
-      "peak_process_rss_bytes": 31170560
+      "seconds": 4.2701049000024796,
+      "cpu_seconds": 4.21875,
+      "peak_process_rss_bytes": 31227904
     },
     {
       "command": [
         "snapshot",
         "--db",
-        "C:\\STOCKS\\work\\qualification\\r8-20260924\\capacity\\research.sqlite",
+        "C:\\STOCKS\\work\\qualification\\r8-20260924b\\capacity\\research.sqlite",
         "--destination",
-        "C:\\STOCKS\\work\\qualification\\r8-20260924\\capacity\\backup"
+        "C:\\STOCKS\\work\\qualification\\r8-20260924b\\capacity\\backup"
       ],
       "exit_code": 0,
       "result": {
         "status": "PASS",
         "format": "stocks-snapshot-v1",
         "sha256": "22c1472c4a9a9310a966bda293a705deabe81a691649506795220cfe06f4d840",
-        "created_at": "2026-09-24T02:24:16.370234+00:00",
+        "created_at": "2026-09-24T02:44:50.878521+00:00",
         "inspection": {
           "status": "PASS",
           "schema_version": 1,
@@ -285,17 +285,17 @@
           "capital_enabled": false
         }
       },
-      "seconds": 4.350216299993917,
-      "cpu_seconds": 4.1875,
-      "peak_process_rss_bytes": 33685504
+      "seconds": 5.652169800014235,
+      "cpu_seconds": 4.84375,
+      "peak_process_rss_bytes": 33710080
     },
     {
       "command": [
         "restore",
         "--snapshot",
-        "C:\\STOCKS\\work\\qualification\\r8-20260924\\capacity\\backup",
+        "C:\\STOCKS\\work\\qualification\\r8-20260924b\\capacity\\backup",
         "--destination",
-        "C:\\STOCKS\\work\\qualification\\r8-20260924\\capacity\\restored"
+        "C:\\STOCKS\\work\\qualification\\r8-20260924b\\capacity\\restored"
       ],
       "exit_code": 0,
       "result": {
@@ -328,15 +328,15 @@
           "capital_enabled": false
         }
       },
-      "seconds": 3.842850900022313,
-      "cpu_seconds": 3.609375,
-      "peak_process_rss_bytes": 31170560
+      "seconds": 5.831338600022718,
+      "cpu_seconds": 4.578125,
+      "peak_process_rss_bytes": 31207424
     },
     {
       "command": [
         "inspect",
         "--db",
-        "C:\\STOCKS\\work\\qualification\\r8-20260924\\capacity\\restored\\research.sqlite"
+        "C:\\STOCKS\\work\\qualification\\r8-20260924b\\capacity\\restored\\research.sqlite"
       ],
       "exit_code": 0,
       "result": {
@@ -365,15 +365,15 @@
         "historical_publication_certified": false,
         "capital_enabled": false
       },
-      "seconds": 3.631182299926877,
-      "cpu_seconds": 3.578125,
-      "peak_process_rss_bytes": 31174656
+      "seconds": 3.589623999898322,
+      "cpu_seconds": 3.53125,
+      "peak_process_rss_bytes": 31182848
     },
     {
       "command": [
         "profile",
         "--input",
-        "C:\\STOCKS\\work\\qualification\\r8-20260924\\capacity\\profile.json"
+        "C:\\STOCKS\\work\\qualification\\r8-20260924b\\capacity\\profile.json"
       ],
       "exit_code": 0,
       "result": {
@@ -399,15 +399,15 @@
         "absolute_net_profit_demonstrated": false,
         "capital_enabled": false
       },
-      "seconds": 0.0062278000405058265,
+      "seconds": 0.019683999940752983,
       "cpu_seconds": 0.0,
-      "peak_process_rss_bytes": 28749824
+      "peak_process_rss_bytes": 28762112
     },
     {
       "command": [
         "evidence",
         "--input",
-        "C:\\STOCKS\\work\\qualification\\r8-20260924\\capacity\\outcomes.json",
+        "C:\\STOCKS\\work\\qualification\\r8-20260924b\\capacity\\outcomes.json",
         "--asof",
         "2026-09-10T00:00:00Z"
       ],
@@ -418,9 +418,9 @@
         "capital_enabled": false,
         "scope": "Supplied chronology only; independence, timestamp truth and profit unverified."
       },
-      "seconds": 0.004581599961966276,
+      "seconds": 0.0061833999352529645,
       "cpu_seconds": 0.0,
-      "peak_process_rss_bytes": 28635136
+      "peak_process_rss_bytes": 28672000
     }
   ],
   "capital_enabled": false,
