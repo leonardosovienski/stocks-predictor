@@ -40,8 +40,10 @@ def _pit_counts(entry: dict) -> tuple[dict, dict, str]:
         effective, basis = dict(top), "declared_without_downgrade"
     else:
         raise ReadinessError(f"{entry.get('source')}: no PIT state in the matrix")
+    if declared is None:
+        raise ReadinessError(f"{entry.get('source')}: no declared PIT state in the matrix")
     for counts in (declared, effective):
-        if counts is None or any(type(v) is not int or v < 0 for v in counts.values()):
+        if any(type(v) is not int or v < 0 for v in counts.values()):
             raise ReadinessError(f"{entry.get('source')}: malformed PIT counts")
     return declared, effective, basis
 

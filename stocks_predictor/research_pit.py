@@ -70,7 +70,8 @@ def ts(value, field: str) -> str:
         parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
     except ValueError as exc:
         raise TemporalViolation(f"{field}: malformed instant {value!r}") from exc
-    if parsed.utcoffset() is None or parsed.utcoffset().total_seconds() != 0:
+    offset = parsed.utcoffset()
+    if offset is None or offset.total_seconds() != 0:
         raise TemporalViolation(f"{field}: not UTC")
     return parsed.strftime("%Y-%m-%dT%H:%M:%SZ")
 

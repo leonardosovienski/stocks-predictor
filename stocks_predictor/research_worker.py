@@ -148,12 +148,12 @@ def walk_forward(panel: Panel, refs: dict, control: dict | None) -> dict:
         uni = panel.universe(session, universe_cfg)
         members = [m["security_id"] for m in uni["members"]]
         if kind == "UNIVERSE_PERTURBATION" and members:
-            rng = random.Random(seed * 1_000_003 + index)
+            rng = random.Random(int(seed or 0) * 1_000_003 + index)
             drop = set(rng.sample(members, int(len(members) * 0.2)))
             members = [m for m in members if m not in drop]
         series = {sid: uni["series"][sid] for sid in members}
         if kind == "FEATURE_ABLATION":
-            rng = random.Random(seed * 1_000_003 + index)
+            rng = random.Random(int(seed or 0) * 1_000_003 + index)
             scores = {sid: rng.random() for sid in sorted(series)}
         else:
             scores = factor.signals(series, session, features["lookback"], features["skip"])
@@ -187,7 +187,7 @@ def walk_forward(panel: Panel, refs: dict, control: dict | None) -> dict:
             else:
                 rets[sid] = 0.0  # no known price: held as cash (never dropped from the denominator)
         if kind == "SHUFFLED_LABELS" and members:
-            rng = random.Random(seed * 1_000_003 + k)
+            rng = random.Random(int(seed or 0) * 1_000_003 + k)
             shuffled = [rets[sid] for sid in members]
             rng.shuffle(shuffled)
             rets.update(zip(members, shuffled))
