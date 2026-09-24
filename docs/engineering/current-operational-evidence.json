@@ -1,9 +1,9 @@
 {
   "schema_version": "current-operational-evidence/1",
   "status": "LOCAL_VALIDATED_CI_PENDING",
-  "generated_at": "2026-09-24T02:24:33.659680Z",
+  "generated_at": "2026-09-24T02:33:59.843065Z",
   "code_text_hash_policy": "UTF-8 file bytes with CRLF normalized to LF",
-  "code_population_sha256": "007f47f5e5a3e2f183d1b56647314d770e5dd91e1691f5d82316d274dc6371c1",
+  "code_population_sha256": "55e659819ada4083023b40b3bfbb2a8562f3d8efa31bfa5982e387dda8b49903",
   "current_code_sha256_lf": [
     {
       "path": ".gitattributes",
@@ -692,6 +692,10 @@
     {
       "path": "tests/test_research_controls.py",
       "sha256": "a66185f7a36beea92bf947bc87d4a87601f3ce2d10bdeeeb0f758e20e9fee8bc"
+    },
+    {
+      "path": "tests/test_research_units.py",
+      "sha256": "bd1b6e6e5751b21fec3bdcc7f4c35e5bfd060f70bfa4c3aca130e9000cd44a38"
     },
     {
       "path": "tests/test_retail_cash.py",
