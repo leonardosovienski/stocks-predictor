@@ -1,9 +1,9 @@
 {
   "schema_version": "current-operational-evidence/1",
   "status": "LOCAL_VALIDATED_CI_PENDING",
-  "generated_at": "2026-09-24T02:45:03.359306Z",
+  "generated_at": "2026-09-24T03:54:22.857464Z",
   "code_text_hash_policy": "UTF-8 file bytes with CRLF normalized to LF",
-  "code_population_sha256": "207f359b3df187374e71fcdab5e8c0a4ffb82610384f92acc1c44e5172312bb5",
+  "code_population_sha256": "338b5218e66b249a0bbfa0702f3137a827f8ebb043c48f117e6fe9ffe40e1f55",
   "current_code_sha256_lf": [
     {
       "path": ".gitattributes",
@@ -27,7 +27,7 @@
     },
     {
       "path": "pyproject.toml",
-      "sha256": "7dc08b4703df997abf0e0f5c7235cd1be38cbb26b5456456bef4790d3e0ccb5e"
+      "sha256": "6fa7e95a5019d8bef59810369581fb97be08761717faf5971f0180c545891eac"
     },
     {
       "path": "stocks_predictor/__init__.py",
@@ -791,7 +791,7 @@
     },
     {
       "path": "tools/build-requirements.txt",
-      "sha256": "429d47a82b885479ddabb8e96aa60d58a8672487e2a3a28faeaeb6fd54109f4f"
+      "sha256": "47905956e4e542f1acd2375b37fa86e68e8c125f731bc6a5c119271340c42ef8"
     },
     {
       "path": "tools/build_h7_ticker_of.py",
@@ -907,7 +907,7 @@
     },
     {
       "path": "uv.lock",
-      "sha256": "725c601425d12911366232bfee4510d3226e2d5a5071b3a115666e129489a6ca"
+      "sha256": "cf4519d43880e531dea6f6ed982a1708dbfac8e3cd63e790b8270c37e0ecd4fd"
     }
   ],
   "real_validation": "docs/engineering/2026-09-24-qualification-stage-a/evidence/operational-real.json",
