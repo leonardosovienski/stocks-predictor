@@ -73,7 +73,7 @@ def panel(name: str = "positive", *, sessions: int = SESSIONS, seed: int = 20260
         delisted = delisting_at = None
         if sid == "S13":  # IPO at session 200 (announced 5 sessions earlier); bars exist before it
             listed, listing_at = cal[200], _at(cal[195])
-        if sid == "S14":  # delisted at session 400, known two sessions later
+        if sid == "S14" and len(cal) > 402:  # delisted at session 400, known two sessions later
             delisted, delisting_at = cal[400], _at(cal[402])
         securities.append({"security_id": sid, "listed_on": listed, "listing_available_at": listing_at,
                            "delisted_on": delisted, "delisting_available_at": delisting_at})
