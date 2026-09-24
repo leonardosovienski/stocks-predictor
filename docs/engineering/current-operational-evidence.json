@@ -1,9 +1,9 @@
 {
   "schema_version": "current-operational-evidence/1",
   "status": "LOCAL_VALIDATED_CI_PENDING",
-  "generated_at": "2026-09-23T04:54:19.000000Z",
+  "generated_at": "2026-09-24T02:24:33.659680Z",
   "code_text_hash_policy": "UTF-8 file bytes with CRLF normalized to LF",
-  "code_population_sha256": "62509101fdfdc7e8c3600493b4856d73b362f9edaef8f537d54f03032fed4596",
+  "code_population_sha256": "007f47f5e5a3e2f183d1b56647314d770e5dd91e1691f5d82316d274dc6371c1",
   "current_code_sha256_lf": [
     {
       "path": ".gitattributes",
@@ -27,7 +27,7 @@
     },
     {
       "path": "pyproject.toml",
-      "sha256": "441a7d9ed3ec63a98cfeb8d3e42c2851704bd2d1b5fe340ba690d27ba606c97f"
+      "sha256": "7dc08b4703df997abf0e0f5c7235cd1be38cbb26b5456456bef4790d3e0ccb5e"
     },
     {
       "path": "stocks_predictor/__init__.py",
@@ -36,6 +36,10 @@
     {
       "path": "stocks_predictor/__main__.py",
       "sha256": "d6cc0e4a986dbcbc2fedc55c9bdfb356e2fc53204c7d206315b5164ed04de328"
+    },
+    {
+      "path": "stocks_predictor/adapters/__init__.py",
+      "sha256": "5220a87c4bd0dc18596b556a6945500b591f0c4ee8768e5cb1511a73eea4c262"
     },
     {
       "path": "stocks_predictor/adjust.py",
@@ -214,8 +218,56 @@
       "sha256": "df758c42f9e66be6ea959808d652eefb96424be269f0acc0786d91b433d40c82"
     },
     {
+      "path": "stocks_predictor/research_admission.py",
+      "sha256": "d29bd40ccdb376b993b5eb090b1c8f7a4f8035322e93517a31f77cfd8e270213"
+    },
+    {
+      "path": "stocks_predictor/research_collect_worker.py",
+      "sha256": "f6607db819b1959e40324db33296e26707de37aa546462e9018611b7c3b71274"
+    },
+    {
+      "path": "stocks_predictor/research_contract.py",
+      "sha256": "3e47ead36c0b77893ee69291e1c82f11c8725dac6c42a7e75ec32193086c0edf"
+    },
+    {
+      "path": "stocks_predictor/research_execution.py",
+      "sha256": "5212024a7eb28becefbe70864d1aa3e3afd30ef559e56279347d8913979b465e"
+    },
+    {
+      "path": "stocks_predictor/research_faults.py",
+      "sha256": "373eafcabe0384abe1aa9a6bb45631158070b9c02a2650964ba361b0476bb058"
+    },
+    {
+      "path": "stocks_predictor/research_io.py",
+      "sha256": "f28e8ed3547ffc3ad713b24d95f4787902626fe326af107816a4cc7218a9ea19"
+    },
+    {
+      "path": "stocks_predictor/research_pit.py",
+      "sha256": "5bd37457d366f672d393ff8bee10fcba64b1d9f4a77c6b8e1ea3ef26257248b3"
+    },
+    {
       "path": "stocks_predictor/research_profile.py",
       "sha256": "f8ef1353ac6701ef3eb24d92e3974bc95c745133e0597a9266308069d9ef1cfb"
+    },
+    {
+      "path": "stocks_predictor/research_readiness.py",
+      "sha256": "c89e06f5811cced2789556e4849946ec9f0d826b0877d7ce4b6c9d2ee8e0217a"
+    },
+    {
+      "path": "stocks_predictor/research_recovery.py",
+      "sha256": "9ef7194df0bb89cc66ecda97e50e7678724fef22a29d66bca03a3836020a8d97"
+    },
+    {
+      "path": "stocks_predictor/research_results.py",
+      "sha256": "4a3a42402b46e73488f58d11ad53f376fdb0f731f370f2b305e85a14d0c491d9"
+    },
+    {
+      "path": "stocks_predictor/research_runner.py",
+      "sha256": "64b44ab6ec4a0dfff723dbf117636242a147cae901a13b77499cfa7c26833d78"
+    },
+    {
+      "path": "stocks_predictor/research_worker.py",
+      "sha256": "10871ec57a7052bbc6cd47fe29b052f47c3e13ad9c38d129ce44c911d390f290"
     },
     {
       "path": "stocks_predictor/retail_cash.py",
@@ -304,6 +356,38 @@
     {
       "path": "tests/__init__.py",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/conformance/__init__.py",
+      "sha256": "1266d735c32d7b75d740b70d85dc1bc27e3381e9f20284fb8498e34e7feb144b"
+    },
+    {
+      "path": "tests/conformance/conftest.py",
+      "sha256": "a57f51b5ef5164db8b180454752e00ae66eb238e5f1141ad0e9bd381c9926698"
+    },
+    {
+      "path": "tests/conformance/fixtures.py",
+      "sha256": "3510ca5aafd01ddac606381640f242a8bb4c42618a46d5f0050ff79b4802d13c"
+    },
+    {
+      "path": "tests/conformance/test_contract_conformance.py",
+      "sha256": "25502f6cfd4fc617a662436dd5ecb6aeb1e39e77a64e8c2ae135cbcb24158edc"
+    },
+    {
+      "path": "tests/conformance/test_failure_extra.py",
+      "sha256": "4a9113b2ea5b58af9cabef7a7393ee1d529e9322d12d7ef0b7064b50f34fed43"
+    },
+    {
+      "path": "tests/conformance/test_failure_recovery.py",
+      "sha256": "18edebdd8b0f29a26d3dc9bb2a2b6d158f79a0de2cd528930221f39b09458818"
+    },
+    {
+      "path": "tests/conformance/test_import_closure.py",
+      "sha256": "3a63bcfde6a00dade4f945af2640dc521167e7e2172007e21f0f6002d8b303b7"
+    },
+    {
+      "path": "tests/conformance/test_pit_adversarial.py",
+      "sha256": "9e86f6963403ad10443b9b0ad4a3bf01c48b8221e6ec5e82d05d21b8dac29d26"
     },
     {
       "path": "tests/conftest.py",
@@ -670,6 +754,10 @@
       "sha256": "7f2f5ba72ca2ba52bc5cd9896a6fb84ea28d6c1c7208eae31a97607d63858ee5"
     },
     {
+      "path": "tests/test_timezone_runtime.py",
+      "sha256": "77928bc0ff62dc93312ffc92613da104294714316c9435318879db1cf30b020c"
+    },
+    {
       "path": "tests/test_universe.py",
       "sha256": "e9822b7ba38d7c8158a5aa6243bd68261cf83bc488199baafe0e10e04193b9b4"
     },
@@ -815,11 +903,11 @@
     },
     {
       "path": "uv.lock",
-      "sha256": "5ab7161677019ed6db3b9b33c9ce341b93f617b2799572d191c4405ae530f028"
+      "sha256": "725c601425d12911366232bfee4510d3226e2d5a5071b3a115666e129489a6ca"
     }
   ],
-  "real_validation": "docs/engineering/2026-09-21-external-intelligence-v1/evidence/operational-real.json",
-  "capacity_validation": "docs/engineering/2026-09-21-external-intelligence-v1/evidence/operational-capacity.json",
+  "real_validation": "docs/engineering/2026-09-24-qualification-stage-a/evidence/operational-real.json",
+  "capacity_validation": "docs/engineering/2026-09-24-qualification-stage-a/evidence/operational-capacity.json",
   "capital_enabled": false,
   "profit_certified": false
 }
