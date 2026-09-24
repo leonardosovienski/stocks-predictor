@@ -26,11 +26,11 @@ from .cotahist_dataset import build_from_cotahist
 from .dataset import PITDataset, canonical
 from .engine import ProtocolConfig, Strategy
 from .forecasting import (EmpiricalRandomWalk, ForecastRankStrategy, GaussianRandomWalk, build_tasks,
-                          contamination_status, evaluate_predictions, load_forecasts, predict_all)
+                          contamination_status, evaluate_predictions, load_forecasts, predict_all, tasks_payload)
 from .manifest import TrialLedger, run_evaluation
 from .metrics import NetSeries, beta_alpha, strategy_report
 from .policy import Policy, decide, load_policy
-from .riskfree import RiskFreeSeries
+from .riskfree import RiskFreeSeries, from_sgs
 from .validation import PERIODS_PER_YEAR, evaluate_with_series
 
 FAMILY = "forecast-prompt3c"
@@ -70,16 +70,34 @@ def _row(candidate: str, **values) -> dict:
     return {"candidate": candidate} | {k: values.get(k, NA) for k in keys}
 
 
-def run_forecast_evaluation(dataset: PITDataset, config: ProtocolConfig, spec: dict, policy: Policy,
-                            ledger: TrialLedger, *, dataset_meta: dict, rf: RiskFreeSeries | None = None,
-                            external: list[dict] | None = None, git: dict | None = None) -> dict:
+def prepare(dataset: PITDataset, config: ProtocolConfig, spec: dict) -> tuple[ProtocolConfig, list, dict, str]:
+    """Janela pela regra da especificação, tarefas e hash da especificação — o mesmo para avaliar e exportar."""
     cal = dataset.calendar
     if spec["period_rule"] == "full_context_to_end":
         config = config.with_window(cal[spec["context_length"]], cal[-1])
+    tasks, stats = build_tasks(dataset, config, horizon=spec["horizon"], context_length=spec["context_length"],
+                               jump_threshold=spec["jump_threshold"])
+    return config, tasks, stats, hashlib.sha256(canonical(spec)).hexdigest()
+
+
+def load_riskfree(value: str) -> RiskFreeSeries:
+    """``bcb-sgs-12:ARQUIVO`` (resposta bruta da API SGS + ``ARQUIVO.receipt.json``) ou um ``stocks-riskfree/1``."""
+    if value.startswith("bcb-sgs-12:"):
+        path = Path(value.split(":", 1)[1])
+        data = path.read_bytes()
+        receipt = json.loads(Path(str(path) + ".receipt.json").read_text(encoding="utf-8"))
+        if hashlib.sha256(data).hexdigest() != receipt["sha256"]:
+            raise ValueError("série SGS diferente do recibo")
+        return RiskFreeSeries(from_sgs(json.loads(data), series_id="BCB-SGS-12", unit="percent_per_day",
+                                       source=receipt))
+    return RiskFreeSeries(json.loads(Path(value).read_bytes()))
+
+
+def run_forecast_evaluation(dataset: PITDataset, config: ProtocolConfig, spec: dict, policy: Policy,
+                            ledger: TrialLedger, *, dataset_meta: dict, rf: RiskFreeSeries | None = None,
+                            external: list[dict] | None = None, git: dict | None = None) -> dict:
+    config, tasks, task_stats, spec_sha = prepare(dataset, config, spec)
     horizon, levels = spec["horizon"], spec["levels"]
-    spec_sha = hashlib.sha256(canonical(spec)).hexdigest()
-    tasks, task_stats = build_tasks(dataset, config, horizon=horizon, context_length=spec["context_length"],
-                                    jump_threshold=spec["jump_threshold"])
     ppy = PERIODS_PER_YEAR[config.rebalance]
     identity = policy.identity()
     validation = {"scheme": "forecast_origins", "spec_sha256": spec_sha, "tasks": task_stats,
@@ -169,10 +187,13 @@ def run_forecast_evaluation(dataset: PITDataset, config: ProtocolConfig, spec: d
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="python -m stocks_predictor.v2.forecast_eval",
                                      description="Execução de previsão do protocolo v2 sob o TrialLedger.")
-    for flag in ("--spec", "--config", "--policy", "--ledger"):
+    for flag in ("--spec", "--config"):
         parser.add_argument(flag, required=True, type=Path)
+    parser.add_argument("--policy", type=Path)
+    parser.add_argument("--ledger", type=Path)
     parser.add_argument("--dataset", required=True)
-    parser.add_argument("--riskfree", type=Path)
+    parser.add_argument("--riskfree", help="bcb-sgs-12:ARQUIVO | stocks-riskfree/1")
+    parser.add_argument("--export-tasks", type=Path, help="só grava as tarefas para o ambiente isolado do modelo")
     parser.add_argument("--forecasts", type=Path, action="append", default=[])
     parser.add_argument("--output", type=Path)
     args = parser.parse_args(argv)
@@ -187,9 +208,21 @@ def main(argv: list[str] | None = None) -> int:
                                         index_ticker=spec["index_ticker"])
     else:
         parser.error("--dataset: synthetic | cotahist:ARQUIVO.ZIP")
-    rf = RiskFreeSeries(json.loads(args.riskfree.read_bytes())) if args.riskfree else None
+    dataset = PITDataset(raw)
+    if args.export_tasks is not None:
+        window, tasks, stats, spec_sha = prepare(dataset, config, spec)
+        payload = tasks_payload(tasks, horizon=spec["horizon"], levels=spec["levels"], dataset_hash=dataset.hash,
+                                spec_sha256=spec_sha)
+        with args.export_tasks.open("x", encoding="utf-8") as handle:
+            json.dump(payload, handle, ensure_ascii=False, allow_nan=False)
+        sys.stdout.write(json.dumps({"tasks": stats, "tasks_sha256": payload["tasks_sha256"],
+                                     "window": [window.start, window.end]}) + "\n")
+        return 0
+    if args.policy is None or args.ledger is None:
+        parser.error("--policy e --ledger são obrigatórios para avaliar")
+    rf = load_riskfree(args.riskfree) if args.riskfree else None
     external = [json.loads(p.read_bytes()) for p in args.forecasts]
-    report = run_forecast_evaluation(PITDataset(raw), config, spec, load_policy(args.policy), TrialLedger(args.ledger),
+    report = run_forecast_evaluation(dataset, config, spec, load_policy(args.policy), TrialLedger(args.ledger),
                                      dataset_meta=meta, rf=rf, external=external)
     text = json.dumps(report, ensure_ascii=False, indent=2, allow_nan=False) + "\n"
     if args.output is not None:
