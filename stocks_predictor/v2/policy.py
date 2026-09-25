@@ -64,9 +64,21 @@ def _probability(value, name: str) -> None:
         raise PolicyError(f"{name} em [0, 1]")
 
 
+_ROOT = Path(__file__).resolve().parents[2]
+
+
+def _display_path(path: Path | str) -> str:
+    """Caminho relativo ao repositório (sem diretório pessoal no registro); fora dele, só o nome do arquivo."""
+    resolved = Path(path).resolve()
+    try:
+        return resolved.relative_to(_ROOT).as_posix()
+    except ValueError:
+        return resolved.name
+
+
 def load_policy(path: Path | str) -> Policy:
     data = Path(path).read_bytes().replace(b"\r\n", b"\n")
-    return Policy(json.loads(data), hashlib.sha256(data).hexdigest(), Path(path).as_posix())
+    return Policy(json.loads(data), hashlib.sha256(data).hexdigest(), _display_path(path))
 
 
 def _finite(value) -> bool:

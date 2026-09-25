@@ -63,6 +63,12 @@ class RiskFreeSeries:
         except KeyError as exc:
             raise RiskFreeError(f"{self.series_id}: sem taxa para o pregão {session}") from exc
 
+    def sessions(self) -> list[str]:
+        return sorted(self._daily)
+
+    def min_daily_rate(self) -> float:
+        return min(self._daily.values())
+
     def compounded(self, sessions: list[str]) -> float:
         total = 1.0
         for session in sessions:

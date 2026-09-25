@@ -35,6 +35,7 @@ from .engine import ENGINE_VERSION, ProtocolConfig, Strategy, evaluate
 POLICY_VERSION = "stocks-evaluation-protocol-v2/3a.1"
 LEDGER_SCHEMA = "stocks-trial-ledger/1"
 TERMINAL = ("COMPLETED", "FAILED", "ABANDONED")
+GOVERNANCE = ("PREREGISTERED", "HOLDOUT_SEALED", "HOLDOUT_OPENED", "REASSESSMENT")
 MANIFEST_SCHEMA = "stocks-run-manifest/1"
 EXPERIMENT_ID = "stocks-protocol-v2"
 # Prompt 2 (docs/evidence/2026-09-24-prompt2-auditoria.md): 71 trials observados no domínio, limite inferior.
@@ -217,6 +218,12 @@ class TrialLedger:
         self._require_open(run_id)
         return self._append("FAILED", run_id, {"error_type": type(error).__name__, "error": str(error)[:2000],
                                                "trial_v2": trial_v2})
+
+    def append_record(self, kind: str, run_id: str, payload: dict) -> dict:
+        """Registros de governança (pré-registro, holdout, reavaliação de artefato), fora do ciclo de execução."""
+        if kind not in GOVERNANCE:
+            raise LedgerError(f"tipo de registro não permitido: {kind}")
+        return self._append(kind, run_id, payload)
 
     def record_decision(self, decision: dict, evaluated_run_ids: list[str]) -> dict:
         """Decisão da política sobre execuções já concluídas (``COMPLETED``); registro próprio, append-only."""
