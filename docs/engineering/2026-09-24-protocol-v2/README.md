@@ -16,7 +16,8 @@ partir do Prompt 3a. Implementa só com a biblioteca padrão; única dependênci
 | `engine` | Carteira por quantidades e caixa. Eventos na data ex: ações × multiplicador, proventos (vendido paga). A deslistagem sai pelo valor de saída ou pelo último fechamento, com custo. Vendas antes de compras, participação limitada ao ADV da decisão, compras limitadas ao caixa, sem alavancagem. Sem barra no pregão, a ordem não é executada e fica registrada. Métricas **líquidas**; `evaluate` roda a mesma estratégia com custo zero só para decompor. Sharpe com rf = 0 (o excesso sobre CDI/Selic entra no Prompt 3b). Resultado com digest sha256. |
 | `baselines` | EW do universo PIT na mesma frequência e com os mesmos custos. Buy-and-hold do fundo de índice. Momentum 12-1 (quintil superior, EW). Carteiras aleatórias com semente e o mesmo número de posições. Previsores de passeio aleatório e ingênuo contra o retorno realizado desde o preço de execução. |
 | `walkforward` | `train_end + horizonte + embargo < test_start`, testes contíguos sem sobreposição. O ajuste recebe só a visão do fim do treino. O teste roda num backtest contínuo em que cada decisão usa o modelo da divisão do pregão de execução. |
-| `manifest` | `RunManifest`: run_id, commit Git + sujeira, versão do pacote, config + hash, dataset (hash, versão, corte), universo e corte, intervalo, semente, modelo, custos, execução, validação, versão do motor e da política (e, desde o 3b, `decision_policy` com versão, status e sha256 do arquivo de política). `TrialLedger`: JSONL só de acréscimo (`O_APPEND` + `fsync`), cadeia de hashes verificada ao abrir. Ciclo `STARTED` → `COMPLETED`/`FAILED`. `STARTED` sem desfecho, de processo morto, vira `ABANDONED`. Registros `DECISION` só sobre execuções concluídas. Todo `STARTED` é um trial. Cada desfecho leva a linha `trial-registry/2.0.0` validada por `predictor_core.contracts.trial_v2.require_trial_v2`. |
+| `manifest` | `RunManifest`: run_id, commit Git + sujeira, versão do pacote, config + hash, dataset (hash, versão, corte), universo e corte, intervalo, semente, modelo, custos, execução, validação, versão do motor e da política (e, desde o 3b, `decision_policy` com versão, status e sha256 do arquivo de política). `TrialLedger`: JSONL só de acréscimo (`O_APPEND` + `fsync`), cadeia de hashes verificada ao abrir. Ciclo `STARTED` → `COMPLETED`/`FAILED`. `STARTED` sem desfecho, de processo morto, vira `ABANDONED`. Registros `DECISION` só sobre execuções concluídas. Todo `STARTED` é um trial. Cada desfecho leva a linha `trial-registry/2.0.0` validada por `predictor_core.contracts.trial_v2.require_trial_v2`. O `STARTED` guarda `host_id` (16 hex do sha256 do hostname) e pid, nunca o nome da máquina; registros antigos com `host` continuam reconhecidos na recuperação de `ABANDONED`. `run_evaluation` relê o ledger e aplica pré-registro e holdout (ver `preregistration`) antes do `STARTED`. `ledger_index` gera o índice `stocks-trial-ledger-index/1`: seq, tipo, run_id, hashes da cadeia e o essencial de cada tipo, sem dados de processo. |
+| `config` | `load_config`: campos exatos da configuração do protocolo e dos baselines, compartilhada pela CLI, pela validação e pela previsão. |
 
 ### Validação estatística (Prompt 3b)
 
@@ -27,17 +28,17 @@ partir do Prompt 3a. Implementa só com a biblioteca padrão; única dependênci
 | `factor_metrics` | IC (Pearson), Rank IC (Spearman com postos médios), ICIR, t, decaimento por horizonte, retornos por quantil (long-short e long-only) por período de rebalanceamento. Rótulo desde o preço de execução; cada horizonte só usa sinais cujo rótulo termina dentro da janela. Bruto de custos (diagnóstico do sinal). |
 | `cpcv` | CPCV de López de Prado com purge pelo intervalo **real** do rótulo de cada amostra (`t0` = decisão, `t1 = t0 + lag + h`), embargo após cada bloco de teste e verificação de vazamento em toda divisão. φ = C(N − 1, k − 1) caminhos. `derive_purge_embargo`: purge = lag + h; embargo = (primeira defasagem com \|ρ\| < z/√n − 1) × passo de rebalanceamento. |
 | `pbo` | PBO por CSCV (Bailey, Borwein, López de Prado & Zhu, 2017), implementação local. λ ≤ 0 conta como overfitting. |
-| `policy` | Política de decisão versionada em [policy/stocks-evaluation-policy-v1.json](../../../policy/stocks-evaluation-policy-v1.json); limiares só no arquivo. `NO_DECISION` sem baseline, sem rf admitida, com dataset sintético, amostra curta ou DSR/PBO não estimáveis. `REJECT` se algum gate falhar; `PASS` se todos passarem. Toda decisão carrega versão, status e sha256. Status atual: `PROPOSED_PENDING_OWNER_APPROVAL`. |
-| `validation` | Orquestra, sob o ledger: baselines exigidos pela política; família pré-declarada, com o candidato dentro; relatórios em excesso de rf; cross-section; CPCV do procedimento "melhor configuração no treino, aplicada no teste"; DSR; PBO; decisão registrada. |
+| `policy` | Política de decisão versionada em [policy/stocks-evaluation-policy-v1.json](../../../policy/stocks-evaluation-policy-v1.json); limiares só no arquivo. `NO_DECISION` sem baseline, sem rf admitida, com dataset sintético, amostra curta ou DSR/PBO não estimáveis. `REJECT` se algum gate falhar; `PASS` se todos passarem. Toda decisão carrega versão, status e sha256. Status válidos: `PROPOSED_PENDING_OWNER_APPROVAL`, `APPROVED`, `RETIRED`. **Só política `APPROVED` decide**: com outro status a decisão é sempre `NO_DECISION`, com o motivo, e `decision_if_approved` registra o que os limiares decidiriam. Status atual: `PROPOSED_PENDING_OWNER_APPROVAL`. Aprovar é decisão explícita do dono e muda o status no arquivo e, com ele, o sha256. |
+| `validation` | Orquestra, sob o ledger: baselines exigidos pela política; família pré-declarada, com o candidato dentro; relatórios em excesso de rf; cross-section; CPCV do procedimento "melhor configuração no treino, aplicada no teste"; DSR; PBO; decisão registrada. Com `--hypothesis-id`, cada configuração da família é uma variante da hipótese pré-registrada. |
 
 ### Previsão e execução real (Prompt 3c)
 
 | Módulo | Contrato |
 |---|---|
 | `cotahist_dataset` | `stocks-pit-dataset/2` a partir de um COTAHIST local cujo sha256 bate com o declarado: ações à vista (BDI 02, mercado 010) e o fundo de índice declarado; ISIN (CODISI) como identidade; ticker por vigência; barra disponível às 23:00 UTC. Limitações registradas em toda execução: listagem = primeiro pregão do arquivo, deslistagem desconhecida, sem eventos societários, proventos nem fundamentos. |
-| `forecast_metrics` | Perda quantílica, CRPS por quantis (Gneiting & Raftery 2007), WQL (Chronos/fev) e cobertura. Implementação pequena; o `fev` não foi adotado. |
+| `forecast_metrics` | Perda quantílica, CRPS por quantis (Gneiting & Raftery 2007), WQL (Chronos/fev) e cobertura. Implementação pequena; o `fev` 0.10.0 (Apache-2.0; depende de datasets, numpy, pydantic e scipy, conferido no PyPI em 2026-09-25) não foi adotado. |
 | `forecasting` | Tarefas (papel, origem D): contexto de L fechamentos consecutivos conhecidos na decisão, alvo log(close(D+h)/close(D)) realizado e ajustado, alvo de ranking desde a execução. Janelas com \|r\| diário > 0,30 são excluídas (limiar congelado do `config.yaml`). Baselines de passeio aleatório gaussiano e empírico. Previsões externas `stocks-forecasts/1` exigem proveniência completa (id, revisão, sha256 dos pesos, licença e data da verificação, datas de commit e publicação). Contaminação: só origens depois do corte contam (`CLEAN_POST_CUTOFF`, `INSUFFICIENT_SAMPLE` ou `POTENTIALLY_CONTAMINATED`). Poder pelo n necessário no teste pareado de CRPS. |
-| `forecast_eval` | Execução sob o ledger: previsores, carteiras de referência e carteira pelo ranking da mediana de cada modelo externo. Decisão da política e tabela de entrega. Nenhum modelo é baixado aqui. |
+| `forecast_eval` | Execução sob o ledger: previsores, carteiras de referência (EW do universo e fundo de índice) e carteira pelo ranking da mediana de cada modelo externo. Só a carteira candidata recebe decisão, contra as duas referências; previsores e referências ficam `N/A` na tabela. Esta execução não calcula DSR nem PBO (não há família), então a decisão é sempre `NO_DECISION`: decidir uma carteira exige a `validation`. Com `--hypothesis-id`, a carteira candidata é variante da hipótese pré-registrada. Nenhum modelo é baixado aqui; `--export-tasks` grava só contexto (sem alvo) para o ambiente isolado do modelo. |
 
 As especificações da execução real ([protocolo](prompt3c-real-protocol-config.json) e
 [previsão](prompt3c-real-forecast-spec.json)) foram versionadas antes da primeira execução.
@@ -47,7 +48,7 @@ As especificações da execução real ([protocolo](prompt3c-real-protocol-confi
 | Módulo | Contrato |
 |---|---|
 | `reassessment` | Régua nova sobre artefatos históricos, **sem reexecutar** (a `reopen_policy` do `RESEARCH_FREEZE.md` exige 6 campos revisados por um humano para reabrir família encerrada). Lê o relatório de veredito versionado e a linha do `trials.json`. Recalcula o DSR na grade de N reaproveitando o D de não-normalidade implícito no DSR histórico, que é reproduzido exatamente. Compara o retorno anual com o CDI da mesma janela e lista as incompatibilidades de protocolo por hipótese. Cada artefato vira um registro `REASSESSMENT` no ledger. |
-| `preregistration` | Pré-registro `PREREGISTERED`, com os 17 campos do Prompt 4, ID imutável; `require_preregistration` barra backtest sem ele. Holdout selado `HOLDOUT_SEALED`, com intervalo, conteúdo (`FUTURE` ou sha256), condições e hash do selo. Abertura única `HOLDOUT_OPENED`, só com aprovação humana registrada (quem, quando, motivo, canal). Deduplicação por \|ρ\| no período de desenvolvimento (`REJECTED_REDUNDANT` com \|ρ\| ≥ limiar). |
+| `preregistration` | Pré-registro `PREREGISTERED`, com os 17 campos do Prompt 4, ID imutável; `require_preregistration` barra backtest sem ele. Holdout selado `HOLDOUT_SEALED`, com intervalo, conteúdo (`FUTURE` ou sha256), condições e hash do selo. Abertura única `HOLDOUT_OPENED`, só com aprovação humana registrada (quem, quando, motivo, canal). Deduplicação por \|ρ\| no período de desenvolvimento (`REJECTED_REDUNDANT` com \|ρ\| ≥ limiar). **Aplicação em `run_evaluation`:** com `hypothesis_id`, exige o pré-registro e recusa variante nova (sha256 da descrição do modelo) além de `max_variants`; repetir a mesma variante não conta como nova. Um holdout selado e não aberto recusa toda execução cujo dataset (`data_cutoff`) ou janela alcance o início do intervalo selado. Aberto, só hipótese pré-registrada antes da abertura consulta, uma vez; a tentativa que falha também consome a consulta. O ponto de aplicação é a avaliação: carregar o arquivo ou exportar tarefas não produz resultado. |
 
 O skfolio (BSD-3, 1.3.1) não foi adotado: o `CombinatorialPurgedCV` dele purga um número fixo de observações,
 não o intervalo real de cada rótulo, e traria numpy, scipy, pandas, cvxpy, scikit-learn e plotly. O pypbo
@@ -75,12 +76,47 @@ python -m stocks_predictor.v2.validation \
 política recusa. A [especificação sintética](synthetic-validation-spec.json) declara o candidato e a família
 antes de qualquer resultado.
 
+Previsão (3c). O modelo roda fora do pacote, num ambiente isolado com as dependências dele
+([freeze](evidence/prompt3c/chronos-venv.freeze.txt)):
+
+```bash
+python -m stocks_predictor.v2.forecast_eval --spec docs/engineering/2026-09-24-protocol-v2/prompt3c-real-forecast-spec.json \
+  --config docs/engineering/2026-09-24-protocol-v2/prompt3c-real-protocol-config.json \
+  --dataset cotahist:/caminho/COTAHIST_A2026.ZIP --export-tasks /caminho/novo/tarefas.json
+/caminho/venv-do-modelo/bin/python tools/chronos_forecast.py --tasks /caminho/novo/tarefas.json \
+  --model-dir /caminho/modelo --provenance /caminho/proveniencia.json --output /caminho/novo/previsoes.json
+python -m stocks_predictor.v2.forecast_eval --spec ... --config ... --dataset cotahist:/caminho/COTAHIST_A2026.ZIP \
+  --policy policy/stocks-evaluation-policy-v1.json --ledger /caminho/ledger.jsonl \
+  --riskfree bcb-sgs-12:/caminho/sgs12.json --forecasts /caminho/novo/previsoes.json --output /caminho/novo/saida.json
+```
+
+`bcb-sgs-12:` exige ao lado o recibo `ARQUIVO.receipt.json` com o sha256 do arquivo bruto.
+
+Reavaliação (4), selo de holdout e índice do ledger:
+
+```bash
+python -m stocks_predictor.v2.reassessment --reports reports --trials trials.json \
+  --riskfree bcb-sgs-12:/caminho/sgs12.json --policy policy/stocks-evaluation-policy-v1.json \
+  --ledger /caminho/ledger.jsonl --output /caminho/novo/reavaliacao.json
+python -m stocks_predictor.v2.preregistration seal --ledger /caminho/ledger.jsonl --holdout-id ID \
+  --start AAAA-MM-DD --end AAAA-MM-DD --content FUTURE --conditions "quem aprova e quando abre"
+python -m stocks_predictor.v2.manifest index --ledger /caminho/ledger.jsonl --output /caminho/novo/indice.json
+```
+
+O pré-registro de uma hipótese e a abertura do holdout não têm CLI: são atos do dono, feitos com
+`preregister` e `open_holdout` e registrados no ledger. O índice do ledger de domínio está em
+[evidence/ledger](evidence/ledger/stocks-domain-ledger-index.json); o ledger completo fica fora do Git
+(`~/predictors/runtime/stocks/real3c/ledger.jsonl` no PC 2) porque os `STARTED` anteriores a 2026-09-25 guardam o
+hostname.
+
 A [config sintética](synthetic-demo-config.json) usa o custo congelado da H1: emolumentos de 3 bps e 15 bps de
 spread + slippage por lado. A divisão 7,5/7,5 é nominal; o que vale é o total.
 
 ## Testes
 
-`tests/test_v2_dataset.py`, `tests/test_v2_engine.py`, `tests/test_v2_manifest.py`. Os cinco obrigatórios:
+`tests/test_v2_dataset.py`, `tests/test_v2_engine.py`, `tests/test_v2_manifest.py` (3a),
+`tests/test_v2_validation.py` (3b), `tests/test_v2_forecast.py` (3c) e `tests/test_v2_prompt4.py` (4). Os cinco
+obrigatórios do 3a:
 
 - PIT: fundamento divulgado em D nunca aparece antes de D; varredura em todos os pregões.
 - Execução: nenhum negócio usa o fechamento que gerou o sinal; varredura em três convenções.
@@ -92,24 +128,27 @@ spread + slippage por lado. A divisão 7,5/7,5 é nominal; o que vale é o total
 
 1. O core 3.2.1 não tem RunManifest nem ledger com ciclo de vida. Este pacote tem a versão mínima local, com
    ponte validada para `trial-registry/2.0.0`. Candidata a subir para o core.
-2. Não existe construtor de dataset PIT real. O banco atual não guarda quando cada evento ficou conhecido:
-   `adjustments` não tem instante de anúncio e `prices_raw` é por ticker.
+2. O único dataset real é o do adaptador `cotahist_dataset` (3c): só preços, sem eventos societários,
+   proventos, fundamentos nem deslistagem conhecida. Não existe construtor de dataset PIT completo. O banco atual
+   não guarda quando cada evento ficou conhecido: `adjustments` não tem instante de anúncio e `prices_raw` é por
+   ticker.
    - O `stocks-pit-panel/1` do circuito qualificado (`research_pit.Panel`) segue as mesmas regras de instante: decisão às
      12:00 UTC, barra só depois das 20:00 UTC, listagem e deslistagem só quando conhecidas, revisões. Também tem
      identidade por CNPJ. Mas não tem preço de abertura, eventos societários nem fundamentos. Convertê-lo exigiria
      inventar esses dados, então não há adaptador.
    - O dataset real precisa ser montado no PC 1 com: abertura e fechamento do COTAHIST; eventos societários
      versionados, com data de anúncio; fundamentos do `cvm_pit`, com `DT_RECEB` e versões.
-   - Nada foi baixado.
+   - Os COTAHIST 2019–2025, baixados com autorização no Prompt 4, estão no PC 2 com recibo e não foram usados:
+     reexecutar hipótese encerrada exige a `reopen_policy`, e reproduzir os vereditos exige o banco do PC 1.
 3. A carteira aleatória iguala número de posições e frequência, não o turnover (DESIGN §8 pede os dois).
 4. Lote padrão e fracionário, tributação e margem de vendidos não são modelados. A participação é medida contra
    o ADV da decisão, não contra o volume do próprio pregão.
 5. Sem `delisting_value`, a saída é pelo último fechamento: otimista em falências. O dataset deve informar o
    valor de saída quando ele for conhecido.
 6. O core 3.2.1 não tem arquivo de política de decisão. A política é local, versionada e com hash, e os limiares
-   da v1 estão **propostos, pendentes de aprovação do dono**.
-7. Não há série de taxa livre de risco real versionada no PC 2. A Selic SGS 11 usada na H21 só tem o manifesto de
-   fonte no Git (sha256 `82d23198…`). A avaliação real (3c e 4) precisa dessa série; sem cópia local, parar e
-   perguntar antes de baixar.
+   da v1 estão **propostos, pendentes de aprovação do dono**. Enquanto isso, nenhuma execução decide (ver `policy`).
+7. A série de taxa livre de risco real é o CDI (BCB SGS 12), baixado no 3c com autorização do dono. Fica no PC 2,
+   fora do Git, com recibo sha256 do arquivo bruto; o hash da série canônica (`567b931f…`, 2019-01-02 a 2026-09-23)
+   entra em todo manifesto. A Selic SGS 11 da H21 continua só com o manifesto de fonte no Git (`82d23198…`).
 8. O t de Harvey, Liu & Zhu e o t do IC supõem independência entre períodos. Com h maior que o passo de
    rebalanceamento, são otimistas; a autocorrelação entra só no embargo do CPCV.

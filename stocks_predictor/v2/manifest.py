@@ -12,6 +12,16 @@ abertura — o crash fica no ledger. Todo ``STARTED`` conta como trial, qualquer
 Cada registro terminal leva também a linha ``trial-registry/2.0.0`` validada por
 ``predictor_core.contracts.trial_v2.require_trial_v2`` (contrato do core). O core 3.2.1 não tem RunManifest nem
 ledger com ciclo de vida: estes dois são a versão mínima local, registrada como dívida técnica.
+
+Privacidade: o processo dono de um ``STARTED`` é identificado por ``host_id`` (sha256 do nome do host, 16 hex) e
+pid. O nome do host nunca é gravado. Registros antigos com ``host`` continuam reconhecidos na detecção de crash.
+``ledger_index`` gera um índice verificável (seq, tipo, run_id, cadeia de hashes e o essencial de cada registro)
+para versionar no repositório.
+
+Integridade experimental aplicada em ``run_evaluation``:
+- com ``hypothesis_id``, exige ``PREREGISTERED`` no ledger e respeita ``max_variants``;
+- recusa dataset ou janela que alcance um holdout selado e não aberto;
+- depois da abertura (aprovação humana), aceita uma única consulta por hipótese pré-registrada antes da abertura.
 """
 
 from __future__ import annotations
@@ -68,6 +78,11 @@ def git_state(repo: Path | str | None = None) -> dict:
     return {"commit": commit, "dirty": bool(status.strip())}
 
 
+def host_id(hostname: str) -> str:
+    """Pseudônimo estável do host: reconhece o mesmo host sem gravar o nome dele."""
+    return hashlib.sha256(hostname.encode("utf-8")).hexdigest()[:16]
+
+
 def package_version() -> str:
     try:
         return version("stocks-predictor")
@@ -77,7 +92,8 @@ def package_version() -> str:
 
 def build_manifest(dataset: PITDataset, strategy: Strategy, config: ProtocolConfig, *, validation: dict,
                    family: str, git: dict | None = None, run_id: str | None = None,
-                   decision_policy: dict | None = None) -> dict:
+                   decision_policy: dict | None = None, preregistration: dict | None = None,
+                   holdout_access: str | None = None) -> dict:
     """Manifesto de uma execução avaliativa (sem métricas nem número de trial: o ledger os atribui).
 
     ``policy_version`` é a versão do protocolo; ``decision_policy`` (versão, status e sha256 do arquivo de
@@ -86,6 +102,8 @@ def build_manifest(dataset: PITDataset, strategy: Strategy, config: ProtocolConf
     config_dict = config.to_dict()
     return {
         "decision_policy": decision_policy,
+        "preregistration": preregistration,
+        "holdout_access": holdout_access,
         "schema": MANIFEST_SCHEMA,
         "run_id": run_id or uuid.uuid4().hex,
         "created_at": utc_now(),
@@ -112,7 +130,7 @@ def build_manifest(dataset: PITDataset, strategy: Strategy, config: ProtocolConf
 class TrialLedger:
     def __init__(self, path: Path | str, *, host: str | None = None):
         self.path = Path(path)
-        self.host = host or socket.gethostname()
+        self.host_id = host_id(host or socket.gethostname())
         self._records = self._load()
 
     # -- leitura verificada ------------------------------------------------------------------------
@@ -181,13 +199,31 @@ class TrialLedger:
     def decisions(self) -> list[dict]:
         return [r for r in self._records if r["kind"] == "DECISION"]
 
+    def preregistration(self, hypothesis_id: str) -> dict | None:
+        for r in self._records:
+            if r["kind"] == "PREREGISTERED" and r["payload"]["record"]["hypothesis_id"] == hypothesis_id:
+                return r
+        return None
+
+    def holdout_records(self, holdout_id: str, kind: str) -> list[dict]:
+        return [r for r in self._records if r["kind"] == kind and r["payload"]["holdout_id"] == holdout_id]
+
+    def holdouts(self) -> list[dict]:
+        """Selos com o registro de abertura (ou ``None``)."""
+        out = []
+        for seal in (r for r in self._records if r["kind"] == "HOLDOUT_SEALED"):
+            opened = self.holdout_records(seal["payload"]["holdout_id"], "HOLDOUT_OPENED")
+            out.append({"seal": seal, "opened": opened[0] if opened else None})
+        return out
+
     # -- ciclo de vida ------------------------------------------------------------------------------
     def recover_abandoned(self) -> list[str]:
         """``STARTED`` sem desfecho cujo processo (neste host) já não existe → ``ABANDONED``."""
         abandoned = []
         for record in self.open_runs():
             owner = record["payload"]["process"]
-            if owner["host"] == self.host and not _alive(owner["pid"]):
+            owner_host = owner.get("host_id") or host_id(owner.get("host", ""))  # registros antigos gravavam o nome
+            if owner_host == self.host_id and not _alive(owner["pid"]):
                 self._append("ABANDONED", record["run_id"], {"detected_at": utc_now(),
                                                               "reason": "processo terminou sem desfecho (crash)"})
                 abandoned.append(record["run_id"])
@@ -201,7 +237,7 @@ class TrialLedger:
         trial_number = len(self.started()) + 1
         self._append("STARTED", manifest["run_id"], {
             "trial_number": trial_number, "manifest": manifest,
-            "process": {"host": self.host, "pid": os.getpid()}})
+            "process": {"host_id": self.host_id, "pid": os.getpid()}})
         return trial_number
 
     def _require_open(self, run_id: str) -> dict:
@@ -290,19 +326,63 @@ def _net_total_return(result: dict):
     return result["net"]["total_return"]
 
 
+def _check_preregistration(ledger: TrialLedger, hypothesis_id: str, model: dict) -> dict:
+    record = ledger.preregistration(hypothesis_id)
+    if record is None:
+        raise LedgerError(f"{hypothesis_id}: sem pré-registro no ledger; nenhum backtest antes dele")
+    model_sha = sha256_json(model)
+    used = {r["payload"]["manifest"]["preregistration"]["model_sha256"] for r in ledger.started()
+            if (r["payload"]["manifest"].get("preregistration") or {}).get("hypothesis_id") == hypothesis_id}
+    limit = record["payload"]["record"]["max_variants"]
+    if model_sha not in used and len(used) >= limit:
+        raise LedgerError(f"{hypothesis_id}: limite pré-registrado de {limit} variante(s) já atingido")
+    return {"hypothesis_id": hypothesis_id, "record_hash": record["hash"], "model_sha256": model_sha,
+            "registered_seq": record["seq"]}
+
+
+def _check_holdouts(ledger: TrialLedger, dataset: PITDataset, config: ProtocolConfig,
+                    preregistration: dict | None) -> str | None:
+    """Recusa dados de holdout selado; depois da abertura, uma consulta por hipótese pré-registrada antes dela."""
+    touched = None
+    for item in ledger.holdouts():
+        seal = item["seal"]["payload"]
+        start = seal["interval"][0]
+        if dataset.cutoff[:10] < start and config.end < start:
+            continue
+        if item["opened"] is None:
+            raise LedgerError(f"holdout selado {seal['holdout_id']} (desde {start}) ainda não aberto: o dataset ou a "
+                              "janela alcança o intervalo; abrir exige aprovação humana registrada")
+        if preregistration is None or preregistration["registered_seq"] > item["opened"]["seq"]:
+            raise LedgerError(f"holdout {seal['holdout_id']}: só hipótese pré-registrada antes da abertura consulta")
+        previous = [r for r in ledger.started()
+                    if r["payload"]["manifest"].get("holdout_access") == seal["holdout_id"]
+                    and (r["payload"]["manifest"].get("preregistration") or {}).get("hypothesis_id")
+                    == preregistration["hypothesis_id"]]
+        if previous:
+            raise LedgerError(f"holdout {seal['holdout_id']}: consulta única de {preregistration['hypothesis_id']} já usada")
+        touched = seal["holdout_id"]
+    return touched
+
+
 def run_evaluation(ledger: TrialLedger, dataset: PITDataset, strategy: Strategy, config: ProtocolConfig, *,
                    family: str, validation: dict | None = None, runner=evaluate, metric: str = "net_total_return",
                    primary=_net_total_return, selection: dict | None = None, git: dict | None = None,
-                   decision_policy: dict | None = None) -> dict:
+                   decision_policy: dict | None = None, hypothesis_id: str | None = None) -> dict:
     """Executa ``runner(dataset, strategy, config)`` sob o ledger. Falha → ``FAILED`` registrado e relançada.
 
     ``runner`` devolve um dict JSON nativo com ``result_digest``; ``primary(result)`` é o valor de ``metric``.
+    Com ``hypothesis_id``, a execução exige pré-registro e respeita o limite de variantes. Toda execução é recusada
+    se alcançar um holdout selado e não aberto.
     """
     validation = validation or {"scheme": "single_window"}
     selection = selection or {"family": family, "candidate_set": [strategy.name],
                               "selection_metric": NOT_APPLICABLE, "selected_candidate": NOT_APPLICABLE}
+    ledger.refresh()
+    prereg = None if hypothesis_id is None else _check_preregistration(ledger, hypothesis_id,
+                                                                       strategy.describe() | {"family": family})
+    holdout = _check_holdouts(ledger, dataset, config, prereg)
     manifest = build_manifest(dataset, strategy, config, validation=validation, family=family, git=git,
-                              decision_policy=decision_policy)
+                              decision_policy=decision_policy, preregistration=prereg, holdout_access=holdout)
     trial_number = ledger.start(manifest)
     try:
         result = runner(dataset, strategy, config)
@@ -319,5 +399,67 @@ def run_evaluation(ledger: TrialLedger, dataset: PITDataset, strategy: Strategy,
     return manifest | {"trial_number": trial_number, "status": "COMPLETED", "metrics": result}
 
 
+def ledger_index(ledger: TrialLedger) -> dict:
+    """Índice verificável do ledger, sem dados de processo, para versionar no repositório.
+
+    Cada linha traz seq, tipo, run_id, ``prev`` e ``hash`` (quem tem o ledger confere a cadeia) e o essencial do
+    registro: modelo e família do trial, commit, dataset e política; decisão; selo e abertura de holdout.
+    """
+    ledger.refresh()
+    rows, counts = [], {}
+    for r in ledger.records:
+        counts[r["kind"]] = counts.get(r["kind"], 0) + 1
+        p = r["payload"]
+        row = {k: r[k] for k in ("seq", "kind", "run_id", "recorded_at", "prev", "hash")}
+        if r["kind"] == "STARTED":
+            m = p["manifest"]
+            row |= {"trial_number": p["trial_number"], "model": m["model"]["name"], "family": m["model"]["family"],
+                    "git": m["git"], "dataset_hash": m["dataset"]["hash"], "interval": m["interval"],
+                    "decision_policy_sha256": (m.get("decision_policy") or {}).get("policy_sha256"),
+                    "preregistration": (m.get("preregistration") or {}).get("hypothesis_id"),
+                    "holdout_access": m.get("holdout_access")}
+        elif r["kind"] == "COMPLETED":
+            row["result_digest"] = p["result"].get("result_digest")
+        elif r["kind"] == "FAILED":
+            row["error_type"] = p["error_type"]
+        elif r["kind"] == "DECISION":
+            row |= {"decision": p["decision"]["decision"],
+                    "decision_if_approved": p["decision"].get("decision_if_approved"),  # ausente antes de 25/09
+                    "policy_sha256": p["decision"]["policy_sha256"], "evaluated_run_ids": p["evaluated_run_ids"]}
+        elif r["kind"] in ("HOLDOUT_SEALED", "HOLDOUT_OPENED"):
+            row |= {"holdout_id": p["holdout_id"], "interval": p.get("interval"), "seal_sha256": p.get("seal_sha256")}
+        elif r["kind"] == "PREREGISTERED":
+            row |= {"hypothesis_id": p["record"]["hypothesis_id"], "record_sha256": p["record_sha256"]}
+        elif r["kind"] == "REASSESSMENT":
+            row |= {"hypothesis": p["row"]["hypothesis"], "status_after": p["row"]["status_after"]}
+        rows.append(row)
+    return {"schema": "stocks-trial-ledger-index/1", "ledger_schema": LEDGER_SCHEMA, "records": len(rows),
+            "head": rows[-1]["hash"] if rows else None, "counts": counts, "trials_started": counts.get("STARTED", 0),
+            "generated_at": utc_now(), "rows": rows}
+
+
+def main(argv: list[str] | None = None) -> int:
+    """``python -m stocks_predictor.v2.manifest index --ledger L --output O``: índice verificável do ledger."""
+    import argparse
+
+    parser = argparse.ArgumentParser(prog="python -m stocks_predictor.v2.manifest")
+    sub = parser.add_subparsers(dest="command", required=True)
+    index = sub.add_parser("index")
+    index.add_argument("--ledger", required=True, type=Path)
+    index.add_argument("--output", required=True, type=Path)
+    args = parser.parse_args(argv)
+    out = ledger_index(TrialLedger(args.ledger))
+    with args.output.open("x", encoding="utf-8") as handle:
+        json.dump(out, handle, ensure_ascii=False, indent=2, allow_nan=False)
+        handle.write("\n")
+    print(json.dumps({"records": out["records"], "head": out["head"], "counts": out["counts"]}))
+    return 0
+
+
 __all__ = ["EXPERIMENT_ID", "LEDGER_SCHEMA", "LedgerError", "MANIFEST_SCHEMA", "POLICY_VERSION", "TERMINAL",
-           "TrialLedger", "build_manifest", "git_state", "run_evaluation", "trial_v2_row"]
+           "TrialLedger", "build_manifest", "git_state", "host_id", "ledger_index", "main", "run_evaluation",
+           "trial_v2_row"]
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

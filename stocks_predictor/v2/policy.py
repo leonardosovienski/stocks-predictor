@@ -5,13 +5,18 @@ técnica. Os limiares vivem só no arquivo JSON versionado (``policy/stocks-eval
 decisão carrega a versão, o status e o sha256 do arquivo (bytes com CRLF normalizado para LF).
 
 Decisões:
-    NO_DECISION   falta insumo: baseline exigido ausente, taxa livre de risco não admitida, dataset sintético,
-                  amostra curta, DSR ou PBO não estimáveis, métrica indefinida
+    NO_DECISION   falta insumo (baseline exigido ausente, taxa livre de risco não admitida, dataset sintético,
+                  amostra curta, DSR ou PBO não estimáveis, métrica indefinida) ou política não vigente
+                  (``PROPOSED_PENDING_OWNER_APPROVAL``: ainda não aprovada pelo dono; ``RETIRED``: aposentada)
     REJECT        algum gate reprovou
     PASS          todos os gates passaram (não habilita capital; é a entrada da etapa seguinte)
 
 Gates: vencer cada baseline exigido na métrica da política (estritamente), PSR ≥ mínimo, DSR no pior N ≥ mínimo,
 PBO ≤ máximo. O t de Harvey, Liu & Zhu é diagnóstico, a menos que ``t_stat.role`` seja ``"gate"``.
+
+Limiares só decidem depois de aprovados. Com a política proposta, os gates são calculados e registrados, e o
+resultado que teria saído vai em ``decision_if_approved``. A decisão, porém, é ``NO_DECISION``: um PASS sob
+limiares não aprovados seria lido como decisão válida.
 """
 
 from __future__ import annotations
@@ -25,6 +30,7 @@ from .manifest import utc_now
 
 SCHEMA = "stocks-evaluation-policy/1"
 DECISIONS = ("PASS", "REJECT", "NO_DECISION")
+STATUSES = ("PROPOSED_PENDING_OWNER_APPROVAL", "APPROVED", "RETIRED")
 _SECTIONS = {"schema", "policy_version", "status", "created_at", "scope", "data", "risk_free", "baselines", "psr",
              "dsr", "pbo", "t_stat", "cpcv"}
 
@@ -39,6 +45,8 @@ class Policy:
             raise PolicyError(f"política não é {SCHEMA} com as seções {sorted(_SECTIONS)}")
         self.raw, self.sha256, self.path = raw, sha256, path
         self.version, self.status = raw["policy_version"], raw["status"]
+        if self.status not in STATUSES:
+            raise PolicyError(f"status fora de {STATUSES}")
         _probability(raw["psr"]["min_probability"], "psr.min_probability")
         _probability(raw["dsr"]["min_probability"], "dsr.min_probability")
         _probability(raw["pbo"]["max"], "pbo.max")
@@ -130,16 +138,20 @@ def decide(evidence: dict, policy: Policy) -> dict:
     t_value = evidence.get("t_stat")
     t_check = {"gate": "t_stat", "value": t_value, "threshold": t_rule["threshold"], "role": t_rule["role"],
                "passed": _finite(t_value) and t_value > t_rule["threshold"]}
-    if missing:
-        decision = "NO_DECISION"
-    else:
+    computed = None
+    if not missing:
         gating = checks + ([t_check] if t_rule["role"] == "gate" else [])
-        decision = "PASS" if all(c["passed"] for c in gating) else "REJECT"
+        computed = "PASS" if all(c["passed"] for c in gating) else "REJECT"
+    reasons = list(missing)
+    if policy.status != "APPROVED":
+        why = "aposentada" if policy.status == "RETIRED" else "limiares ainda não aprovados pelo dono"
+        reasons.append(f"política {policy.version} com status {policy.status}: {why}")
     return policy.identity() | {
-        "decision": decision, "decided_at": utc_now(), "no_decision_reasons": missing, "checks": checks,
+        "decision": "NO_DECISION" if reasons else computed, "decision_if_approved": computed,
+        "decided_at": utc_now(), "no_decision_reasons": reasons, "checks": checks,
         "diagnostics": [t_check] if t_rule["role"] == "diagnostic" else [],
         "failed": [c["gate"] for c in checks if not c["passed"]],
     }
 
 
-__all__ = ["DECISIONS", "Policy", "PolicyError", "decide", "load_policy"]
+__all__ = ["DECISIONS", "Policy", "PolicyError", "STATUSES", "decide", "load_policy"]

@@ -8,6 +8,8 @@
   ainda não ocorrido, com o hash gravado na abertura), condições de abertura e sha256 do próprio selo. A
   abertura (``HOLDOUT_OPENED``) exige aprovação humana registrada e acontece uma única vez; não há consulta
   iterativa.
+- **Aplicação:** ``run_evaluation(..., hypothesis_id=...)`` recusa execução sem pré-registro ou além de
+  ``max_variants``; toda execução é recusada se o dataset ou a janela alcançar um holdout selado e não aberto.
 - **Deduplicação** antes do backtest: |ρ| entre a candidata e cada fator existente, só no período de
   desenvolvimento. Com |ρ| ≥ limiar, a candidata é ``REJECTED_REDUNDANT``, sem gastar backtest nem holdout. O filtro
   só controla redundância.
@@ -45,10 +47,7 @@ def preregister(ledger: TrialLedger, record: dict) -> dict:
 
 def preregistration(ledger: TrialLedger, hypothesis_id: str) -> dict | None:
     ledger.refresh()
-    for r in ledger.records:
-        if r["kind"] == "PREREGISTERED" and r["payload"]["record"]["hypothesis_id"] == hypothesis_id:
-            return r
-    return None
+    return ledger.preregistration(hypothesis_id)
 
 
 def require_preregistration(ledger: TrialLedger, hypothesis_id: str) -> dict:
@@ -86,7 +85,7 @@ def open_holdout(ledger: TrialLedger, holdout_id: str, approval: dict, data_sha2
 
 def _holdout_records(ledger: TrialLedger, holdout_id: str, kind: str) -> list[dict]:
     ledger.refresh()
-    return [r for r in ledger.records if r["kind"] == kind and r["payload"]["holdout_id"] == holdout_id]
+    return ledger.holdout_records(holdout_id, kind)
 
 
 def dedup_check(candidate: list[float], existing: dict[str, list[float]], *, threshold: float,

@@ -8,7 +8,7 @@ Comece por [README](../README.md), [estado atual](../STOCKS_CURRENT_STATE.md),
 A [revisão dos arquivos](maintenance/2026-09-10-files/README.md) explica limpeza,
 preservação, dados externos e referências históricas sem destino direto.
 
-218 Markdown versionados. Classificação não certifica todas as afirmações históricas.
+220 Markdown versionados. Classificação não certifica todas as afirmações históricas.
 URLs externas e fragmentos/âncoras não são validados por este verificador.
 
 | Documento | Papel |
@@ -41,6 +41,7 @@ URLs externas e fragmentos/âncoras não são validados por este verificador.
 | [docs/audit/kimi_2026-08-24/plan.md](audit/kimi_2026-08-24/plan.md) | REGISTRO_DATADO |
 | [docs/auditoria_2026-09-04.md](auditoria_2026-09-04.md) | REGISTRO_DATADO |
 | [docs/continuation/2026-09-10-closure/README.md](continuation/2026-09-10-closure/README.md) | REGISTRO_DATADO |
+| [docs/continuation/2026-09-25-serie-stocks-revisada.md](continuation/2026-09-25-serie-stocks-revisada.md) | REGISTRO_DATADO |
 | [docs/continuation/COMPLETION_R7_20260910.md](continuation/COMPLETION_R7_20260910.md) | REGISTRO_DATADO |
 | [docs/continuation/INITIAL_REQUEST.md](continuation/INITIAL_REQUEST.md) | REGISTRO_DATADO |
 | [docs/continuation/MANDATO_20260909.md](continuation/MANDATO_20260909.md) | REGISTRO_DATADO |
@@ -62,6 +63,7 @@ URLs externas e fragmentos/âncoras não são validados por este verificador.
 | [docs/evidence/2026-09-24-prompt3b-validacao.md](evidence/2026-09-24-prompt3b-validacao.md) | REGISTRO_DATADO |
 | [docs/evidence/2026-09-24-prompt3c-execucao.md](evidence/2026-09-24-prompt3c-execucao.md) | REGISTRO_DATADO |
 | [docs/evidence/2026-09-25-prompt4-reavaliacao.md](evidence/2026-09-25-prompt4-reavaliacao.md) | REGISTRO_DATADO |
+| [docs/evidence/2026-09-25-revisao-completa.md](evidence/2026-09-25-revisao-completa.md) | REGISTRO_DATADO |
 | [docs/external_intelligence/README.md](external_intelligence/README.md) | REGISTRO_DATADO |
 | [docs/external_intelligence/REPORT.md](external_intelligence/REPORT.md) | REGISTRO_DATADO |
 | [docs/maintenance/2026-09-10-files/README.md](maintenance/2026-09-10-files/README.md) | REGISTRO_DATADO |

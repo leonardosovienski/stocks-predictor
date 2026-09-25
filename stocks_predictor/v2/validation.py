@@ -2,7 +2,7 @@
 
     python -m stocks_predictor.v2.validation --config PROTOCOLO.json --validation VALIDACAO.json \
         --dataset DATASET.json|synthetic --riskfree RF.json|synthetic --policy POLITICA.json \
-        --ledger LEDGER.jsonl [--output SAIDA.json]
+        --ledger LEDGER.jsonl [--hypothesis-id ID] [--output SAIDA.json]
 
 Todas as etapas usam o mesmo dataset, janela, custos e convenção de execução:
 
@@ -17,6 +17,9 @@ Todas as etapas usam o mesmo dataset, janela, custos e convenção de execução
 6. DSR na grade de N (prior da política + todas as execuções do ledger); PBO por CSCV na matriz de excesso
    diário da família.
 7. Decisão da política, registrada no ledger com versão e sha256.
+
+Com ``--hypothesis-id``, cada configuração da família é uma variante da hipótese: o ledger exige o pré-registro e
+recusa variantes além de ``max_variants``. Hipótese nova só é avaliada assim.
 """
 
 from __future__ import annotations
@@ -30,7 +33,7 @@ from statistics import median
 from predictor_core.measurement.trials import DeflationNotEstimableError
 
 from . import synthetic
-from .__main__ import load_config
+from .config import load_config
 from .baselines import EqualWeightUniverse, IndexBuyAndHold, Momentum12_1
 from .costs import CostModel
 from .cpcv import derive_purge_embargo, label_samples, run_cpcv
@@ -70,7 +73,8 @@ def load_spec(raw: dict) -> dict:
 
 
 def run_validation(dataset: PITDataset, config: ProtocolConfig, rf: RiskFreeSeries, policy: Policy,
-                   ledger: TrialLedger, spec: dict, *, git: dict | None = None) -> dict:
+                   ledger: TrialLedger, spec: dict, *, git: dict | None = None,
+                   hypothesis_id: str | None = None) -> dict:
     identity = policy.identity()
     run_ids: list[str] = []
     periods = config.costs.sessions_per_year
@@ -83,7 +87,8 @@ def run_validation(dataset: PITDataset, config: ProtocolConfig, rf: RiskFreeSeri
         out = run_evaluation(ledger, dataset, strategy, config, family=family, runner=evaluate_with_series,
                              selection=selection, git=git, decision_policy=identity,
                              validation={"scheme": "single_window", "window": [config.start, config.end],
-                                         "stage": "prompt3b", "risk_free": rf.to_dict()})
+                                         "stage": "prompt3b", "risk_free": rf.to_dict()},
+                             hypothesis_id=hypothesis_id if family == spec["family_name"] else None)
         run_ids.append(out["run_id"])
         m = out["metrics"]
         return NetSeries(strategy.name, m["sessions"], m["returns"], m["net"])
@@ -178,6 +183,7 @@ def main(argv: list[str] | None = None) -> int:
         parser.add_argument(flag, required=True, type=Path)
     parser.add_argument("--dataset", required=True)
     parser.add_argument("--riskfree", required=True)
+    parser.add_argument("--hypothesis-id", help="hipótese pré-registrada no ledger (família = variantes)")
     parser.add_argument("--output", type=Path)
     args = parser.parse_args(argv)
     if args.output is not None and args.output.exists():
@@ -187,7 +193,7 @@ def main(argv: list[str] | None = None) -> int:
     raw = synthetic.build() if args.dataset == "synthetic" else json.loads(Path(args.dataset).read_bytes())
     rf_raw = synthetic.riskfree() if args.riskfree == "synthetic" else json.loads(Path(args.riskfree).read_bytes())
     report = run_validation(PITDataset(raw), config, RiskFreeSeries(rf_raw), load_policy(args.policy),
-                            TrialLedger(args.ledger), spec)
+                            TrialLedger(args.ledger), spec, hypothesis_id=args.hypothesis_id)
     text = json.dumps(report, ensure_ascii=False, indent=2, allow_nan=False) + "\n"
     if args.output is not None:
         with args.output.open("x", encoding="utf-8") as handle:
