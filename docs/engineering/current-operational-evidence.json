@@ -1,9 +1,9 @@
 {
   "schema_version": "current-operational-evidence/1",
   "status": "LOCAL_VALIDATED_CI_PENDING",
-  "generated_at": "2026-09-25T16:39:42.583758Z",
+  "generated_at": "2026-09-25T16:48:25.648079Z",
   "code_text_hash_policy": "UTF-8 file bytes with CRLF normalized to LF",
-  "code_population_sha256": "eb9c25f5f84253fcb1739a46fe9037a52f8107071b36e2e392b6fdabe90852cc",
+  "code_population_sha256": "d7abd4e89e89601e10faa5b10267c1aff8eee24f0377417ba5a52a9ca59105f0",
   "current_code_sha256_lf": [
     {
       "path": ".gitattributes",
@@ -403,7 +403,7 @@
     },
     {
       "path": "stocks_predictor/v2/manifest.py",
-      "sha256": "85e287ec22cf039f44a7fdd985f16582b3d7e51730ed552d3a9256513634ebf1"
+      "sha256": "f28467933721ef06821434d22b4c995666a81bd56cff6fb41cc5c10137434ff5"
     },
     {
       "path": "stocks_predictor/v2/metrics.py",
@@ -415,7 +415,7 @@
     },
     {
       "path": "stocks_predictor/v2/policy.py",
-      "sha256": "83a4e87dc4d15dea01f9854e3efffcd62037e70ed659679e4154fb070689394c"
+      "sha256": "343d54b3c1cfd86ed0a405e5040c94f0c52547cfe29f5833f4bc659e06dc9237"
     },
     {
       "path": "stocks_predictor/v2/preregistration.py",
@@ -883,7 +883,7 @@
     },
     {
       "path": "tests/test_v2_validation.py",
-      "sha256": "21e70ee54424ddd872c0e7485be870243990e8f4d9b17ef185f956f87909495f"
+      "sha256": "b5c1c38b49e1bb0610e7f67426684db5fe29babc184af354978b548521cad63c"
     },
     {
       "path": "tests/test_versioned_sources.py",
@@ -1034,8 +1034,8 @@
       "sha256": "cf4519d43880e531dea6f6ed982a1708dbfac8e3cd63e790b8270c37e0ecd4fd"
     }
   ],
-  "real_validation": "docs/engineering/2026-09-24-protocol-v2/evidence/review-20260925/operational-real.json",
-  "capacity_validation": "docs/engineering/2026-09-24-protocol-v2/evidence/review-20260925/operational-capacity.json",
+  "real_validation": "docs/engineering/2026-09-24-protocol-v2/evidence/review-20260925-ciclo2/operational-real.json",
+  "capacity_validation": "docs/engineering/2026-09-24-protocol-v2/evidence/review-20260925-ciclo2/operational-capacity.json",
   "capital_enabled": false,
   "profit_certified": false
 }

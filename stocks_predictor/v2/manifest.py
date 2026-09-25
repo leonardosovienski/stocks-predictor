@@ -423,8 +423,9 @@ def ledger_index(ledger: TrialLedger) -> dict:
         elif r["kind"] == "FAILED":
             row["error_type"] = p["error_type"]
         elif r["kind"] == "DECISION":
-            row |= {"decision": p["decision"]["decision"], "policy_sha256": p["decision"]["policy_sha256"],
-                    "evaluated_run_ids": p["evaluated_run_ids"]}
+            row |= {"decision": p["decision"]["decision"],
+                    "decision_if_approved": p["decision"].get("decision_if_approved"),  # ausente antes de 25/09
+                    "policy_sha256": p["decision"]["policy_sha256"], "evaluated_run_ids": p["evaluated_run_ids"]}
         elif r["kind"] in ("HOLDOUT_SEALED", "HOLDOUT_OPENED"):
             row |= {"holdout_id": p["holdout_id"], "interval": p.get("interval"), "seal_sha256": p.get("seal_sha256")}
         elif r["kind"] == "PREREGISTERED":

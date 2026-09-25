@@ -6,8 +6,8 @@ decisão carrega a versão, o status e o sha256 do arquivo (bytes com CRLF norma
 
 Decisões:
     NO_DECISION   falta insumo (baseline exigido ausente, taxa livre de risco não admitida, dataset sintético,
-                  amostra curta, DSR ou PBO não estimáveis, métrica indefinida) ou a política ainda não foi
-                  aprovada pelo dono (``status`` diferente de ``APPROVED``)
+                  amostra curta, DSR ou PBO não estimáveis, métrica indefinida) ou política não vigente
+                  (``PROPOSED_PENDING_OWNER_APPROVAL``: ainda não aprovada pelo dono; ``RETIRED``: aposentada)
     REJECT        algum gate reprovou
     PASS          todos os gates passaram (não habilita capital; é a entrada da etapa seguinte)
 
@@ -144,7 +144,8 @@ def decide(evidence: dict, policy: Policy) -> dict:
         computed = "PASS" if all(c["passed"] for c in gating) else "REJECT"
     reasons = list(missing)
     if policy.status != "APPROVED":
-        reasons.append(f"política {policy.version} com status {policy.status}: limiares ainda não aprovados pelo dono")
+        why = "aposentada" if policy.status == "RETIRED" else "limiares ainda não aprovados pelo dono"
+        reasons.append(f"política {policy.version} com status {policy.status}: {why}")
     return policy.identity() | {
         "decision": "NO_DECISION" if reasons else computed, "decision_if_approved": computed,
         "decided_at": utc_now(), "no_decision_reasons": reasons, "checks": checks,

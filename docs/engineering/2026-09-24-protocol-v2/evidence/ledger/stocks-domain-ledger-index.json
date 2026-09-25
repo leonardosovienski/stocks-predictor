@@ -11,7 +11,7 @@
     "HOLDOUT_SEALED": 1
   },
   "trials_started": 16,
-  "generated_at": "2026-09-25T16:33:56.348438Z",
+  "generated_at": "2026-09-25T16:48:25.765844Z",
   "rows": [
     {
       "seq": 1,
@@ -153,6 +153,7 @@
       "prev": "32796f8473b2b7d130f6e2043b3353473892f42db3932178d60f49953c68803a",
       "hash": "a01a8bf3ddeb7c1350e09f2846c05f3efd365fedc23464947e0e4328e9fe01fa",
       "decision": "NO_DECISION",
+      "decision_if_approved": null,
       "policy_sha256": "4898b7c73f30c938d188cfb278c2c4aa82fe44995b10352d0f24a1e020d6f5d8",
       "evaluated_run_ids": [
         "4f25763dd1a34179ba16a7f56c558ff2"
@@ -166,6 +167,7 @@
       "prev": "a01a8bf3ddeb7c1350e09f2846c05f3efd365fedc23464947e0e4328e9fe01fa",
       "hash": "82ea39bb4137bf28cdaac4067bbd6971aef332a13728b8de40fd038f6364f57d",
       "decision": "NO_DECISION",
+      "decision_if_approved": null,
       "policy_sha256": "4898b7c73f30c938d188cfb278c2c4aa82fe44995b10352d0f24a1e020d6f5d8",
       "evaluated_run_ids": [
         "8b3e9996218b4077adc18aa9fc4f6edc"
@@ -377,6 +379,7 @@
       "prev": "b2124697e5490a3642aacd7e045e590a7d0177c40b0757ac82d75d707981257b",
       "hash": "0aefb6225479e49a71ab1cfe74e8c6f66394117eb63433597efa9bb3bead3af8",
       "decision": "NO_DECISION",
+      "decision_if_approved": null,
       "policy_sha256": "4898b7c73f30c938d188cfb278c2c4aa82fe44995b10352d0f24a1e020d6f5d8",
       "evaluated_run_ids": [
         "74057d17db584ebf92fd703647bd40b0"
@@ -390,6 +393,7 @@
       "prev": "0aefb6225479e49a71ab1cfe74e8c6f66394117eb63433597efa9bb3bead3af8",
       "hash": "78b6e38d7917508d9ab824c9f7cb35da74ba6b256e9ef1757039ba98fa9db012",
       "decision": "NO_DECISION",
+      "decision_if_approved": null,
       "policy_sha256": "4898b7c73f30c938d188cfb278c2c4aa82fe44995b10352d0f24a1e020d6f5d8",
       "evaluated_run_ids": [
         "838f88b93b864fc0a158f0a1e860fd6a"
@@ -403,6 +407,7 @@
       "prev": "78b6e38d7917508d9ab824c9f7cb35da74ba6b256e9ef1757039ba98fa9db012",
       "hash": "9c1aff4fb756b11624372d2bf141a9f78b657902bea3755bdb49a01ae2b159fd",
       "decision": "NO_DECISION",
+      "decision_if_approved": null,
       "policy_sha256": "4898b7c73f30c938d188cfb278c2c4aa82fe44995b10352d0f24a1e020d6f5d8",
       "evaluated_run_ids": [
         "9ebc6d51e2d8449d85e389d13519a7d8"
@@ -614,6 +619,7 @@
       "prev": "9f3baf392438fb2bee2ad73a73e826fb56e3a252fac2f91b9c851b749e6c28cd",
       "hash": "3db26b58b3830899720d7b0a210a3d6a7e6c3b7eba4d13510bd6aeda1fd00468",
       "decision": "NO_DECISION",
+      "decision_if_approved": null,
       "policy_sha256": "4898b7c73f30c938d188cfb278c2c4aa82fe44995b10352d0f24a1e020d6f5d8",
       "evaluated_run_ids": [
         "697469438aa94201b8b8a5637006ac93"
@@ -627,6 +633,7 @@
       "prev": "3db26b58b3830899720d7b0a210a3d6a7e6c3b7eba4d13510bd6aeda1fd00468",
       "hash": "7ab7c776b26307174188f1b5ff871013b2a011de5d1eab2b65e4f41846026ccc",
       "decision": "NO_DECISION",
+      "decision_if_approved": null,
       "policy_sha256": "4898b7c73f30c938d188cfb278c2c4aa82fe44995b10352d0f24a1e020d6f5d8",
       "evaluated_run_ids": [
         "6f3db56d26f3445d9f09b211fc653aab"
@@ -640,6 +647,7 @@
       "prev": "7ab7c776b26307174188f1b5ff871013b2a011de5d1eab2b65e4f41846026ccc",
       "hash": "6316036926745e24615b2b5b278a66faa7ff8fa5056f527753ec5693042b57e9",
       "decision": "NO_DECISION",
+      "decision_if_approved": null,
       "policy_sha256": "4898b7c73f30c938d188cfb278c2c4aa82fe44995b10352d0f24a1e020d6f5d8",
       "evaluated_run_ids": [
         "d0a320c20d4248f6962d8cdc34f5af48"

@@ -330,6 +330,15 @@ def test_policy_decisions_carry_version_and_hash_and_use_file_thresholds(tmp_pat
     assert decide(evidence(t_stat=2.0), policy)["decision"] == "PASS"  # diagnóstico não bloqueia
 
 
+def test_retired_policy_never_decides(tmp_path):
+    raw = json.loads(POLICY.read_text()) | {"status": "RETIRED"}
+    path = tmp_path / "retired-policy.json"
+    path.write_text(json.dumps(raw))
+    out = decide(evidence(), load_policy(path))
+    assert out["decision"] == "NO_DECISION" and out["decision_if_approved"] == "PASS"
+    assert any("aposentada" in r for r in out["no_decision_reasons"])
+
+
 def test_policy_file_is_validated(tmp_path):
     raw = json.loads(POLICY.read_text())
     for broken in ({**raw, "extra": 1}, {**raw, "status": "MAYBE"}, {**raw, "psr": {**raw["psr"], "min_probability": 2}},
