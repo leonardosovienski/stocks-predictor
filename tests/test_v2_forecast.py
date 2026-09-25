@@ -23,8 +23,9 @@ from stocks_predictor.v2.forecast_metrics import coverage, crps_quantile, pinbal
 from stocks_predictor.v2.forecasting import (EmpiricalRandomWalk, GaussianRandomWalk, build_tasks,
                                              contamination_status, evaluate_predictions, load_forecasts,
                                              tasks_sha256)
-from stocks_predictor.v2.manifest import TrialLedger
+from stocks_predictor.v2.manifest import LedgerError, TrialLedger
 from stocks_predictor.v2.policy import load_policy
+from stocks_predictor.v2.preregistration import PREREG_FIELDS, preregister
 from stocks_predictor.v2.riskfree import RiskFreeSeries
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -201,8 +202,14 @@ def test_forecast_run_is_ledgered_with_contamination_and_rank_portfolio(tmp_path
     assert report["forecasts"][model]["contamination"]["status"] in ("CLEAN_POST_CUTOFF", "INSUFFICIENT_SAMPLE")
     assert report["forecasts"]["gaussian_random_walk"]["contamination"]["status"] == "NOT_APPLICABLE"
     kinds = [r["kind"] for r in ledger.records]
-    assert kinds.count("STARTED") == kinds.count("COMPLETED") == 6 and kinds.count("DECISION") == 3
-    assert all(row["decision"].startswith("NO_DECISION") for row in report["table"])
+    # só a carteira candidata é decidida; previsores e baselines de referência não
+    assert kinds.count("STARTED") == kinds.count("COMPLETED") == 6 and kinds.count("DECISION") == 1
+    decisions = {row["candidate"]: row["decision"] for row in report["table"]}
+    assert decisions[f"rank:{model}"].startswith("NO_DECISION")
+    assert decisions["ew_universe"].startswith("N/A") and decisions["index_buy_and_hold"].startswith("N/A")
+    assert decisions["gaussian_random_walk"].startswith("N/A")
+    decision_record = [r for r in ledger.records if r["kind"] == "DECISION"][0]
+    assert len(decision_record["payload"]["evaluated_run_ids"]) == 3  # candidata + as duas referências
     assert report["portfolios"][f"rank:{model}"]["net"]["trades_filled"] > 0
     assert all(r["payload"]["manifest"]["validation"]["spec_sha256"] == report["spec_sha256"]
                for r in ledger.records if r["kind"] == "STARTED")
@@ -260,3 +267,26 @@ def test_riskfree_from_the_raw_sgs_response_is_checked_against_its_receipt(tmp_p
     raw.write_text(json.dumps(rows[:1]))
     with pytest.raises(ValueError, match="recibo"):
         load_riskfree(f"bcb-sgs-12:{raw}")
+
+
+def preregistered(ledger, max_variants):
+    record = {k: f"valor de {k}" for k in PREREG_FIELDS}
+    record |= {"hypothesis_id": "stocks:NEW-001", "policy": {"version": "1.0.0", "sha256": "0" * 64},
+               "max_variants": max_variants, "seeds": [7], "secondary_metrics": ["ic"],
+               "criteria": {"GO": "a", "NO_GO": "b", "NO_DECISION": "c"}}
+    return preregister(ledger, record)
+
+
+def test_forecast_candidate_portfolio_is_a_variant_of_the_preregistered_hypothesis(tmp_path):
+    ledger = TrialLedger(tmp_path / "ledger.jsonl")
+    meta = {"index_isin": "IDX11", "limitations": []}
+    with pytest.raises(LedgerError, match="sem pré-registro"):
+        run_forecast_evaluation(DS, CONFIG, SPEC, POLICY, ledger, git=GIT, dataset_meta=meta,
+                                external=[external()], hypothesis_id="stocks:NEW-001")
+    preregistered(ledger, max_variants=1)
+    report = run_forecast_evaluation(DS, CONFIG, SPEC, POLICY, ledger, git=GIT, dataset_meta=meta,
+                                     external=[external()], hypothesis_id="stocks:NEW-001")
+    tied = {r["run_id"]: r["payload"]["manifest"].get("preregistration") for r in ledger.started()}
+    candidate = report["portfolios"]["rank:amazon/chronos-bolt-small@772f3d25d38a"]["run_id"]
+    assert tied[candidate]["hypothesis_id"] == "stocks:NEW-001"
+    assert all(v is None for k, v in tied.items() if k != candidate)  # previsores e referências não são variantes

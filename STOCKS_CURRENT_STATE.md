@@ -1,5 +1,37 @@
 # Estado atual do Stocks Predictor
 
+## Protocolo de avaliação v2 e série de prompts — 24 e 25/09/2026
+
+Toda avaliação nova usa o pacote aditivo `stocks_predictor/v2`
+([contratos, uso e dívida técnica](docs/engineering/2026-09-24-protocol-v2/README.md)). Motores legados,
+circuito `research_*` e vereditos congelados não mudaram. Série executada, um prompt por vez: Prompt 1, portão de
+segredos liberado (PR #98); 2, auditoria (#99); 3a, protocolo v2 (#100); 3b, validação estatística (#101); 3c,
+previsão e execução real (#102 e #103); 4, reavaliação e integridade experimental (#104). A
+[revisão de coerência de 25/09](docs/evidence/2026-09-25-revisao-completa.md) corrigiu a governança e registrou a
+[auditoria dos prompts](docs/continuation/2026-09-25-serie-stocks-revisada.md).
+
+- **3c, COTAHIST 2026 (172 pregões; janela 2026-04-07 a 2026-09-09; CDI SGS 12):** o `chronos-bolt-small`
+  zero-shot teve CRPS 0,0722, contra 0,0602 do passeio aleatório gaussiano (19,9% pior, 747 tarefas). A amostra é
+  insuficiente para o poder desenhado (n necessário 1552), então o status é `INSUFFICIENT_SAMPLE`, não uma
+  conclusão. A carteira pelo ranking do modelo teve Sharpe líquido em excesso do CDI de −1,68, contra −1,69 da EW
+  e −0,74 do fundo de índice. Nenhuma decisão: amostra abaixo de 504 pregões, DSR e PBO não estimáveis.
+- **4:** 15 vereditos históricos reavaliados sem reexecução, com N conhecido = 102 (grade 102/150/204/510). Todos
+  seguem `NOT_SUPPORTED`; a régua nova é mais conservadora. Nenhuma hipótese foi aprovada.
+- **Política de decisão** [v1](policy/stocks-evaluation-policy-v1.json): `PROPOSED_PENDING_OWNER_APPROVAL`.
+  Desde 25/09, política não aprovada nunca decide: toda decisão é `NO_DECISION` e `decision_if_approved` registra o
+  que os limiares decidiriam. Os 8 registros `DECISION` anteriores já eram `NO_DECISION`.
+- **Holdout prospectivo selado** de 2026-09-10 a 2027-09-10 (selo `d2fc50e7…`). Abre só com aprovação humana
+  registrada. Até lá, toda avaliação cujo dataset ou janela alcance 2026-09-10 é recusada.
+- **Ledger de domínio:** fica no PC 2, fora do Git, com 56 registros. O
+  [índice verificável](docs/engineering/2026-09-24-protocol-v2/evidence/ledger/stocks-domain-ledger-index.json)
+  tem os hashes da cadeia e nenhum dado de processo.
+- **Qualificação:** o runtime qualificado continua `61fc017` / wheel 0.3.0rc2. O pacote v2 é código posterior e
+  **não está qualificado**; requalificar (C14) é decisão do dono. Os achados ST-F007 e ST-F008 passam a
+  `ACCEPTED_BY_OWNER` (D-21) na
+  [PR #48 do predictor-qualification](https://github.com/leonardosovienski/predictor-qualification/pull/48).
+- **Decisões pendentes do dono:** aprovar ou alterar os limiares da política v1; requalificar o v2; reabrir família
+  encerrada, só pela `reopen_policy` do [congelamento](RESEARCH_FREEZE.md).
+
 ## Candidato EXTERNAL_INTELLIGENCE_V1 — 20/09/2026
 
 Foi implementada uma fundação aditiva de staging B3/CVM com raw por SHA-256, versionamento imutável,

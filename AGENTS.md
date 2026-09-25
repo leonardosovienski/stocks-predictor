@@ -23,6 +23,11 @@ Capital confirmado R$5.000; não inferir custos, prazo, residência fiscal ou pe
 H22 rejeitada; H21 histórica condicional. Não transformar repetição de backtest
 em validação independente nem antecipar a janela prospectiva fixada.
 
+Avaliação nova usa o [protocolo v2](docs/engineering/2026-09-24-protocol-v2/README.md)
+(`stocks_predictor/v2`): sob o ledger, com pré-registro para hipótese nova e holdout
+selado até aprovação humana. A política v1 só decide quando o dono a aprova. O v2 não
+está qualificado; o runtime qualificado continua `61fc017`.
+
 ## Raiz e ambiente
 
 - Raiz canônica: `C:\STOCKS`; checkout `C:\STOCKS\stocks-predictor`.

@@ -8,7 +8,13 @@ from pathlib import Path
 
 import pytest
 
-from stocks_predictor.v2.manifest import LedgerError, TrialLedger
+from stocks_predictor.v2 import synthetic
+from stocks_predictor.v2.baselines import EqualWeightUniverse, RandomPortfolio
+from stocks_predictor.v2.costs import CostModel, LiquidityRule
+from stocks_predictor.v2.dataset import PITDataset
+from stocks_predictor.v2.engine import ProtocolConfig
+from stocks_predictor.v2.execution import ExecutionConvention
+from stocks_predictor.v2.manifest import LedgerError, TrialLedger, run_evaluation
 from stocks_predictor.v2.preregistration import (PREREG_FIELDS, dedup_check, open_holdout, preregister,
                                                  require_preregistration, seal_holdout)
 from stocks_predictor.v2.reassessment import (biases_for, implied_denominator, main, parse_verdict_report,
@@ -135,3 +141,53 @@ def test_dedup_rejects_redundant_candidates_only():
     assert dedup_check(other, {"momentum": base}, threshold=0.99, period=("a", "b"))["status"] == "DISTINCT"
     with pytest.raises(ValueError, match="desalinhada"):
         dedup_check(base, {"x": base[:10]}, threshold=0.99, period=("a", "b"))
+
+
+# -- aplicação no ponto em que a avaliação roda -------------------------------------------------------
+DS = PITDataset(synthetic.build())
+CONFIG = ProtocolConfig(start="2020-07-01", end="2020-12-30", rebalance="monthly", execution=ExecutionConvention(),
+                        costs=CostModel(0.0, 0.0, 3.0, 7.5, 7.5, 0.0, 0.5, 0.0),
+                        liquidity=LiquidityRule(1e6, 63, 0.05), seed=3)
+GIT = {"commit": "0" * 40, "dirty": False}
+
+
+def test_evaluation_of_a_hypothesis_requires_preregistration_and_respects_max_variants(tmp_path):
+    ledger = TrialLedger(tmp_path / "ledger.jsonl")
+    with pytest.raises(LedgerError, match="sem pré-registro"):
+        run_evaluation(ledger, DS, EqualWeightUniverse(), CONFIG, family="nova", git=GIT,
+                       hypothesis_id="stocks:NEW-001")
+    assert ledger.started() == []  # nada roda antes do pré-registro
+    preregister(ledger, prereg(max_variants=1))
+    first = run_evaluation(ledger, DS, EqualWeightUniverse(), CONFIG, family="nova", git=GIT,
+                           hypothesis_id="stocks:NEW-001")
+    assert first["preregistration"]["hypothesis_id"] == "stocks:NEW-001"
+    run_evaluation(ledger, DS, EqualWeightUniverse(), CONFIG, family="nova", git=GIT,
+                   hypothesis_id="stocks:NEW-001")  # repetir a mesma variante não é variante nova
+    with pytest.raises(LedgerError, match="limite pré-registrado"):
+        run_evaluation(ledger, DS, RandomPortfolio(3), CONFIG, family="nova", git=GIT,
+                       hypothesis_id="stocks:NEW-001")
+
+
+def test_sealed_holdout_blocks_evaluation_until_opened_and_then_allows_one_query(tmp_path):
+    ledger = TrialLedger(tmp_path / "ledger.jsonl")
+    seal_holdout(ledger, holdout_id="h", interval=["2020-10-01", "2021-06-30"], content="FUTURE", conditions="c")
+    with pytest.raises(LedgerError, match="ainda não aberto"):
+        run_evaluation(ledger, DS, EqualWeightUniverse(), CONFIG, family="x", git=GIT)
+    early = ProtocolConfig(**{**CONFIG.__dict__, "end": "2020-09-30"})
+    with pytest.raises(LedgerError, match="ainda não aberto"):  # o dataset contém o intervalo selado
+        run_evaluation(ledger, DS, EqualWeightUniverse(), early, family="x", git=GIT)
+    preregister(ledger, prereg())
+    approval = {"approved_by": "dono", "approved_at": "2021-07-01T12:00:00Z", "reason": "r", "channel": "chat"}
+    open_holdout(ledger, "h", approval, "a" * 64)
+    with pytest.raises(LedgerError, match="só hipótese pré-registrada"):
+        run_evaluation(ledger, DS, EqualWeightUniverse(), CONFIG, family="x", git=GIT)
+    out = run_evaluation(ledger, DS, EqualWeightUniverse(), CONFIG, family="x", git=GIT,
+                         hypothesis_id="stocks:NEW-001")
+    assert out["holdout_access"] == "h"
+    with pytest.raises(LedgerError, match="consulta única"):
+        run_evaluation(ledger, DS, EqualWeightUniverse(), CONFIG, family="x", git=GIT,
+                       hypothesis_id="stocks:NEW-001")
+    preregister(ledger, prereg(hypothesis_id="stocks:NEW-002"))
+    with pytest.raises(LedgerError, match="só hipótese pré-registrada antes da abertura"):
+        run_evaluation(ledger, DS, EqualWeightUniverse(), CONFIG, family="x", git=GIT,
+                       hypothesis_id="stocks:NEW-002")

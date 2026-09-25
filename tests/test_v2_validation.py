@@ -26,6 +26,7 @@ from stocks_predictor.v2.metrics import (NetSeries, beta_alpha, dsr_sensitivity,
                                          strategy_report)
 from stocks_predictor.v2.pbo import pbo_cscv
 from stocks_predictor.v2.policy import PolicyError, decide, load_policy
+from stocks_predictor.v2.preregistration import PREREG_FIELDS, preregister
 from stocks_predictor.v2.riskfree import RiskFreeError, RiskFreeSeries, excess_returns
 from stocks_predictor.v2.validation import load_spec, main, run_validation
 from stocks_predictor.v2.walkforward import LeakageError
@@ -45,8 +46,20 @@ def rf_series(annual: float, sessions: list[str], series_id: str = "BCB-SGS-12")
                            "source": {"kind": "test"}, "rates": [{"session": s, "rate": annual} for s in sessions]})
 
 
+def approved_policy(tmp_path, **changes):
+    """Cópia da política real com status APPROVED (só limiares do arquivo; nada no código)."""
+    raw = json.loads(POLICY.read_text())
+    raw["status"] = "APPROVED"
+    for section, values in changes.items():
+        raw[section] = raw[section] | values
+    path = tmp_path / "approved-policy.json"
+    path.write_text(json.dumps(raw))
+    return load_policy(path)
+
+
 def permissive_policy(tmp_path, **changes):
     raw = json.loads(POLICY.read_text())
+    raw["status"] = "APPROVED"
     raw["data"] = {"forbid_synthetic_dataset": False, "min_sessions": 100}
     raw["risk_free"]["allowed_series"].append("SYNTHETIC-RF")
     raw["pbo"]["n_splits"] = 4
@@ -285,11 +298,21 @@ def test_no_baseline_means_no_decision():
     assert partial["decision"] == "NO_DECISION"
 
 
+def test_unapproved_policy_never_decides_but_records_what_it_would_decide():
+    proposed = load_policy(POLICY)
+    out = decide(evidence(), proposed)
+    assert proposed.status == "PROPOSED_PENDING_OWNER_APPROVAL"
+    assert out["decision"] == "NO_DECISION" and out["decision_if_approved"] == "PASS"
+    assert any("não aprovados pelo dono" in r for r in out["no_decision_reasons"])
+    assert out["checks"] and out["policy_path"] == "policy/stocks-evaluation-policy-v1.json"
+    assert decide(evidence(pbo={"pbo": 0.5}), proposed)["decision_if_approved"] == "REJECT"
+
+
 def test_policy_decisions_carry_version_and_hash_and_use_file_thresholds(tmp_path):
-    policy = load_policy(POLICY)
+    policy = approved_policy(tmp_path)
     ok = decide(evidence(), policy)
-    assert ok["decision"] == "PASS" and ok["policy_version"] == "1.0.0"
-    assert len(ok["policy_sha256"]) == 64 and ok["policy_status"] == "PROPOSED_PENDING_OWNER_APPROVAL"
+    assert ok["decision"] == "PASS" and ok["policy_version"] == "1.0.0" and ok["no_decision_reasons"] == []
+    assert len(ok["policy_sha256"]) == 64 and ok["policy_status"] == "APPROVED"
     assert decide(evidence(pbo={"pbo": 0.5}), policy)["decision"] == "REJECT"
     assert decide(evidence(dsr={"worst": {"n": 355, "dsr": 0.5}}), policy)["failed"] == ["dsr_worst_case"]
     assert decide(evidence(strategy={"sharpe_excess_ann": 0.45, "psr_vs_zero": 0.99}), policy)["failed"] == \
@@ -309,7 +332,7 @@ def test_policy_decisions_carry_version_and_hash_and_use_file_thresholds(tmp_pat
 
 def test_policy_file_is_validated(tmp_path):
     raw = json.loads(POLICY.read_text())
-    for broken in ({**raw, "extra": 1}, {**raw, "psr": {**raw["psr"], "min_probability": 2}},
+    for broken in ({**raw, "extra": 1}, {**raw, "status": "MAYBE"}, {**raw, "psr": {**raw["psr"], "min_probability": 2}},
                    {**raw, "t_stat": {**raw["t_stat"], "role": "maybe"}},
                    {**raw, "dsr": {**raw["dsr"], "aggregation": "best_case"}}):
         path = tmp_path / "bad.json"
@@ -381,3 +404,29 @@ def test_validation_spec_is_exact_and_candidate_is_predeclared():
     with pytest.raises(ValueError, match="pré-declarado"):
         load_spec(SPEC | {"candidate": {"lookback": 100, "skip": 10}})
     assert Momentum12_1().name == "momentum_12_1" and Momentum12_1(189, 21).name == "momentum_189_21"
+
+
+def preregistered(ledger, max_variants):
+    record = {k: f"valor de {k}" for k in PREREG_FIELDS}
+    record |= {"hypothesis_id": "stocks:NEW-001", "policy": {"version": "1.0.0", "sha256": "0" * 64},
+               "max_variants": max_variants, "seeds": [7], "secondary_metrics": ["ic"],
+               "criteria": {"GO": "a", "NO_GO": "b", "NO_DECISION": "c"}}
+    return preregister(ledger, record)
+
+
+def test_validation_cli_ties_the_family_to_a_preregistered_hypothesis(tmp_path):
+    """Cada configuração da família é uma variante: sem pré-registro nada da família roda; além de max_variants, para."""
+    ledger = tmp_path / "ledger.jsonl"
+    argv = ["--config", str(DOCS / "synthetic-demo-config.json"), "--validation",
+            str(DOCS / "synthetic-validation-spec.json"), "--dataset", "synthetic", "--riskfree", "synthetic",
+            "--policy", str(POLICY), "--ledger", str(ledger), "--hypothesis-id", "stocks:NEW-001"]
+    with pytest.raises(LedgerError, match="sem pré-registro"):
+        main(argv)
+    assert all(not r["payload"]["manifest"].get("preregistration") for r in TrialLedger(ledger).started())
+    preregistered(TrialLedger(ledger), max_variants=2)
+    with pytest.raises(LedgerError, match="limite pré-registrado de 2"):
+        main(argv)
+    tied = [r["payload"]["manifest"]["preregistration"] for r in TrialLedger(ledger).started()
+            if r["payload"]["manifest"].get("preregistration")]
+    assert len(tied) == 2 and {t["hypothesis_id"] for t in tied} == {"stocks:NEW-001"}
+    assert len({t["model_sha256"] for t in tied}) == 2

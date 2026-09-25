@@ -7,8 +7,9 @@
                       (Ansari et al. 2024, TMLR) e no fev; exige série de nível positivo (aqui: preço)
     cobertura         fração de alvos dentro de [q_baixo, q_alto]
 
-O ``fev`` (Apache-2.0) não foi adotado: traria datasets e pandas para duas fórmulas de poucas linhas, e o alvo aqui
-(retorno em log e nível de preço por janela) não é o formato de tarefa dele.
+O ``fev`` 0.10.0 (Apache-2.0; depende de datasets, numpy, pydantic e scipy, e o datasets traz pandas — conferido no
+PyPI em 2026-09-25) não foi adotado: seriam essas dependências para fórmulas de poucas linhas, e o alvo aqui (retorno
+em log e nível de preço por janela) não é o formato de tarefa dele.
 """
 
 from __future__ import annotations

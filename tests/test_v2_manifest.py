@@ -16,7 +16,8 @@ from stocks_predictor.v2.costs import CostModel, LiquidityRule
 from stocks_predictor.v2.dataset import PITDataset
 from stocks_predictor.v2.engine import ProtocolConfig, Strategy
 from stocks_predictor.v2.execution import ExecutionConvention
-from stocks_predictor.v2.manifest import (LedgerError, TrialLedger, build_manifest, git_state, run_evaluation)
+from stocks_predictor.v2.manifest import (LedgerError, TrialLedger, build_manifest, git_state, host_id,
+                                          ledger_index, run_evaluation)
 
 DS = PITDataset(synthetic.build())
 CONFIG = ProtocolConfig(start="2020-07-01", end="2020-12-30", rebalance="monthly", execution=ExecutionConvention(),
@@ -191,3 +192,36 @@ def test_dirty_checkout_is_recorded(tmp_path):
                          git={"commit": "1" * 40, "dirty": True})
     row = lines(tmp_path / "ledger.jsonl")[-1]["payload"]["trial_v2"]
     assert out["git"]["dirty"] is True and row["code_version"].endswith(";dirty")
+
+
+def test_ledger_never_writes_the_host_name(tmp_path):
+    path = tmp_path / "ledger.jsonl"
+    ledger = TrialLedger(path, host="MAQUINA-PESSOAL-XYZ")
+    run_evaluation(ledger, DS, EqualWeightUniverse(), CONFIG, family="baselines", git=GIT)
+    text = path.read_text()
+    assert "MAQUINA-PESSOAL-XYZ" not in text and host_id("MAQUINA-PESSOAL-XYZ") in text
+
+
+def test_legacy_records_with_host_name_are_still_recognized(tmp_path, monkeypatch):
+    path = tmp_path / "ledger.jsonl"
+    legacy = TrialLedger(path, host="antigo")
+    manifest = build_manifest(DS, EqualWeightUniverse(), CONFIG, validation={}, family="baselines", git=GIT)
+    legacy._append("STARTED", manifest["run_id"], {"trial_number": 1, "manifest": manifest,
+                                                   "process": {"host": "antigo", "pid": 999999}})
+    monkeypatch.setattr(manifest_module, "_alive", lambda pid: False)
+    assert TrialLedger(path, host="outro").recover_abandoned() == []  # outro host: não é crash deste
+    assert TrialLedger(path, host="antigo").recover_abandoned() == [manifest["run_id"]]
+
+
+def test_ledger_index_is_verifiable_and_free_of_process_data(tmp_path):
+    ledger = TrialLedger(tmp_path / "ledger.jsonl")
+    run_evaluation(ledger, DS, EqualWeightUniverse(), CONFIG, family="baselines", git=GIT)
+    index = ledger_index(ledger)
+    assert index["records"] == 2 and index["head"] == ledger.records[-1]["hash"]
+    assert [r["hash"] for r in index["rows"]] == [r["hash"] for r in ledger.records]
+    assert index["counts"] == {"STARTED": 1, "COMPLETED": 1} and index["trials_started"] == 1
+    assert "process" not in json.dumps(index) and index["rows"][0]["model"] == "ew_universe"
+    out = tmp_path / "index.json"
+    assert manifest_module.main(["index", "--ledger", str(tmp_path / "ledger.jsonl"), "--output", str(out)]) == 0
+    with pytest.raises(FileExistsError):
+        manifest_module.main(["index", "--ledger", str(tmp_path / "ledger.jsonl"), "--output", str(out)])

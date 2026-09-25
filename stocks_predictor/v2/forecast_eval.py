@@ -3,12 +3,16 @@ no protocolo v2, sob o TrialLedger e a política de decisão.
 
     python -m stocks_predictor.v2.forecast_eval --spec SPEC.json --config PROTOCOLO.json \
         --dataset synthetic|cotahist:ARQUIVO.ZIP --policy POLITICA.json --ledger LEDGER.jsonl \
-        [--riskfree RF.json] [--forecasts PREVISOES.json ...] [--output SAIDA.json]
+        [--riskfree bcb-sgs-12:ARQUIVO|RF.json] [--forecasts PREVISOES.json ...] [--hypothesis-id ID] \
+        [--output SAIDA.json]
+    python -m stocks_predictor.v2.forecast_eval --spec ... --config ... --dataset ... --export-tasks TAREFAS.json
 
 A especificação (versionada, com hash no manifesto) fixa antes de qualquer resultado: horizonte, contexto, níveis,
 limiar de salto e sua origem, baseline de comparação, desenho de poder, regra do período e sha256 da fonte.
-Sem ``--riskfree``, as métricas em excesso de rf ficam N/A e a política devolve NO_DECISION. Um modelo
-pré-treinado só entra via ``--forecasts``, gerado fora com proveniência completa; nada é baixado aqui.
+Sem ``--riskfree``, as métricas em excesso de rf ficam N/A e a política devolve NO_DECISION. Previsores e baselines
+de referência não recebem decisão; só as carteiras candidatas. Com ``--hypothesis-id``, cada carteira candidata é uma
+variante da hipótese pré-registrada. Um modelo pré-treinado só entra via ``--forecasts``, gerado fora com
+proveniência completa; nada é baixado aqui.
 """
 
 from __future__ import annotations
@@ -20,7 +24,7 @@ import sys
 from pathlib import Path
 
 from . import synthetic
-from .__main__ import load_config
+from .config import load_config
 from .baselines import EqualWeightUniverse, IndexBuyAndHold
 from .cotahist_dataset import build_from_cotahist
 from .dataset import PITDataset, canonical
@@ -95,7 +99,8 @@ def load_riskfree(value: str) -> RiskFreeSeries:
 
 def run_forecast_evaluation(dataset: PITDataset, config: ProtocolConfig, spec: dict, policy: Policy,
                             ledger: TrialLedger, *, dataset_meta: dict, rf: RiskFreeSeries | None = None,
-                            external: list[dict] | None = None, git: dict | None = None) -> dict:
+                            external: list[dict] | None = None, git: dict | None = None,
+                            hypothesis_id: str | None = None) -> dict:
     config, tasks, task_stats, spec_sha = prepare(dataset, config, spec)
     horizon, levels = spec["horizon"], spec["levels"]
     ppy = PERIODS_PER_YEAR[config.rebalance]
@@ -142,8 +147,7 @@ def run_forecast_evaluation(dataset: PITDataset, config: ProtocolConfig, spec: d
                                           "n": clean.get("n"), "contamination": contamination["status"]},
                          ic_rank_ic="N/A (mediana prevista constante no corte transversal)" if not ic else
                          {"ic": (clean.get("ic") or {}).get("mean"), "rank_ic": ic.get("mean"), "n_origins": ic.get("n")},
-                         decision="NO_DECISION (previsão não é carteira; política decide carteira)",
-                         run_id=out["run_id"]))
+                         decision="N/A (previsor; a política decide carteiras)", run_id=out["run_id"]))
     portfolios = {"ew_universe": EqualWeightUniverse(), "index_buy_and_hold": IndexBuyAndHold(dataset_meta["index_isin"])}
     for name, (_description, meta) in models.items():
         if meta is not None:
@@ -152,30 +156,33 @@ def run_forecast_evaluation(dataset: PITDataset, config: ProtocolConfig, spec: d
     series = {}
     for name, strategy in portfolios.items():
         out = run_evaluation(ledger, dataset, strategy, config, family=FAMILY, runner=evaluate_with_series, git=git,
-                             decision_policy=identity, validation=validation)
+                             decision_policy=identity, validation=validation,
+                             hypothesis_id=hypothesis_id if name.startswith("rank:") else None)
         run_ids.append(out["run_id"])
         m = out["metrics"]
         series[name] = (NetSeries(name, m["sessions"], m["returns"], m["net"]), out["run_id"])
     index_series = series["index_buy_and_hold"][0]
-    reports = {}
+    references = ("ew_universe", "index_buy_and_hold")
+    reports = {name: strategy_report(s, rf, periods=config.costs.sessions_per_year) if rf is not None else None
+               for name, (s, _run_id) in series.items()}
     for name, (s, run_id) in series.items():
         beta = beta_alpha(s.returns, index_series.returns, config.costs.sessions_per_year)["beta"] \
             if name != "index_buy_and_hold" else 1.0
-        report = strategy_report(s, rf, periods=config.costs.sessions_per_year) if rf is not None else None
-        reports[name] = report
-        evidence = {"dataset_version": dataset.version, "risk_free_series_id": rf.series_id if rf else None,
-                    "sessions": len(s.sessions), "strategy": report or {},
-                    "baselines": {k: v for k, v in reports.items() if k in ("ew_universe", "index_buy_and_hold")
-                                  and v is not None and k != name},
-                    "dsr": None, "pbo": None, "t_stat": None}
-        decision = decide(evidence, policy)
-        ledger.record_decision(decision, [run_id])
+        report = reports[name]
+        if name in references:  # referência de comparação: a política não decide sobre ela mesma
+            label = "N/A (baseline de referência)"
+        else:
+            evidence = {"dataset_version": dataset.version, "risk_free_series_id": rf.series_id if rf else None,
+                        "sessions": len(s.sessions), "strategy": report or {},
+                        "baselines": {k: reports[k] for k in references if reports.get(k) is not None},
+                        "dsr": None, "pbo": None, "t_stat": None}
+            decision = decide(evidence, policy)
+            ledger.record_decision(decision, [run_id] + [series[k][1] for k in references])
+            label = f"{decision['decision']}: " + "; ".join(decision["no_decision_reasons"] or decision["failed"])
         rows.append(_row(name, protocol=protocol, period=period, universe=universe, costs=costs,
                          sharpe_net_excess_rf=report["sharpe_excess_ann"] if report else "N/A (sem série de rf local)",
                          max_drawdown=s.metrics["max_drawdown"], turnover_ann=s.metrics["turnover_ann"], beta=beta,
-                         psr=report["psr_vs_zero"] if report else NA,
-                         decision=f"{decision['decision']}: " + "; ".join(decision["no_decision_reasons"] or decision["failed"]),
-                         run_id=run_id))
+                         psr=report["psr_vs_zero"] if report else NA, decision=label, run_id=run_id))
     return {"dataset": {"hash": dataset.hash, "version": dataset.version, "data_cutoff": dataset.cutoff,
                         "meta": dataset_meta},
             "config": config.to_dict(), "spec": spec, "spec_sha256": spec_sha, "policy": identity,
@@ -196,6 +203,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--riskfree", help="bcb-sgs-12:ARQUIVO | stocks-riskfree/1")
     parser.add_argument("--export-tasks", type=Path, help="só grava as tarefas para o ambiente isolado do modelo")
     parser.add_argument("--forecasts", type=Path, action="append", default=[])
+    parser.add_argument("--hypothesis-id", help="hipótese pré-registrada no ledger (carteiras candidatas)")
     parser.add_argument("--output", type=Path)
     args = parser.parse_args(argv)
     if args.output is not None and args.output.exists():
@@ -224,7 +232,7 @@ def main(argv: list[str] | None = None) -> int:
     rf = load_riskfree(args.riskfree) if args.riskfree else None
     external = [json.loads(p.read_bytes()) for p in args.forecasts]
     report = run_forecast_evaluation(dataset, config, spec, load_policy(args.policy), TrialLedger(args.ledger),
-                                     dataset_meta=meta, rf=rf, external=external)
+                                     dataset_meta=meta, rf=rf, external=external, hypothesis_id=args.hypothesis_id)
     text = json.dumps(report, ensure_ascii=False, indent=2, allow_nan=False) + "\n"
     if args.output is not None:
         with args.output.open("x", encoding="utf-8") as handle:

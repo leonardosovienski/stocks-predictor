@@ -3,13 +3,7 @@
     python -m stocks_predictor.v2 --config CONFIG.json --dataset DATASET.json --ledger LEDGER.jsonl [--output OUT.json]
 
 ``--dataset synthetic`` usa o dataset sintético (demonstração, nunca evidência empírica). A configuração é
-explícita e completa — nenhum custo, liquidez ou convenção vem de padrão escondido:
-
-    {"start", "end", "rebalance", "execution": {"lag_sessions", "price"},
-     "costs": {todos os campos de CostModel}, "liquidity": {"min_adv", "adv_lookback", "max_participation",
-     "statistic"}, "initial_cash", "seed", "allow_short",
-     "baselines": {"index_id", "random_positions", "forecast_horizon",
-                   "momentum": {"lookback", "skip", "quantile", "max_stale"}}}
+explícita e completa; o formato está em ``stocks_predictor/v2/config.py``.
 
 Cada baseline é uma execução avaliativa (manifesto + trial no ledger). ``--output`` nunca sobrescreve.
 """
@@ -22,27 +16,13 @@ import sys
 from pathlib import Path
 
 from . import synthetic
+from .config import load_config
 from .baselines import EqualWeightUniverse, ForecastBaselines, IndexBuyAndHold, Momentum12_1, RandomPortfolio
-from .costs import CostModel, LiquidityRule
 from .dataset import PITDataset
 from .engine import ProtocolConfig
-from .execution import ExecutionConvention
 from .manifest import TrialLedger, run_evaluation, sha256_json
 
-_TOP = {"start", "end", "rebalance", "execution", "costs", "liquidity", "initial_cash", "seed", "allow_short",
-        "baselines"}
-_BASELINES = {"index_id", "random_positions", "forecast_horizon", "momentum"}
 FAMILY = "baselines-protocol-v2"
-
-
-def load_config(raw: dict) -> tuple[ProtocolConfig, dict]:
-    if set(raw) != _TOP or set(raw["baselines"]) != _BASELINES:
-        raise ValueError(f"configuração: campos exatos {sorted(_TOP)} e baselines {sorted(_BASELINES)}")
-    config = ProtocolConfig(start=raw["start"], end=raw["end"], rebalance=raw["rebalance"],
-                            execution=ExecutionConvention(**raw["execution"]), costs=CostModel.from_dict(raw["costs"]),
-                            liquidity=LiquidityRule(**raw["liquidity"]), initial_cash=raw["initial_cash"],
-                            seed=raw["seed"], allow_short=raw["allow_short"])
-    return config, raw["baselines"]
 
 
 def run(config: ProtocolConfig, baselines: dict, dataset: PITDataset, ledger: TrialLedger,
