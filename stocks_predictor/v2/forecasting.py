@@ -38,6 +38,7 @@ from .factor_metrics import pearson, spearman, summarize
 from .forecast_metrics import coverage, crps_each, wql
 
 FORECAST_SCHEMA = "stocks-forecasts/1"
+TASKS_SCHEMA = "stocks-forecast-tasks/1"
 MODEL_FIELDS = {"id", "revision", "weights_sha256", "license", "license_verified_at", "weights_committed_at",
                 "published_at", "source", "library", "library_version"}
 
@@ -145,8 +146,23 @@ def predict_all(forecaster, tasks: list[Task], horizon: int, levels: list[float]
     return {t.key: forecaster.predict(t.context, horizon, levels) for t in tasks}
 
 
+def tasks_sha256(tasks: list[Task]) -> str:
+    """Identidade das tarefas exatas (papel, origem, contexto) que um modelo externo recebeu."""
+    return hashlib.sha256(canonical([{"security_id": t.security_id, "origin_session": t.origin,
+                                      "context": list(t.context)} for t in tasks])).hexdigest()
+
+
+def tasks_payload(tasks: list[Task], *, horizon: int, levels: list[float], dataset_hash: str, spec_sha256: str) -> dict:
+    """Arquivo ``stocks-forecast-tasks/1`` entregue ao ambiente isolado do modelo externo."""
+    return {"schema": TASKS_SCHEMA, "horizon": horizon, "levels": levels, "dataset_hash": dataset_hash,
+            "spec_sha256": spec_sha256, "tasks_sha256": tasks_sha256(tasks),
+            "tasks": [{"security_id": t.security_id, "origin_session": t.origin, "context": list(t.context)}
+                      for t in tasks]}
+
+
 def load_forecasts(raw: dict, tasks: list[Task], *, horizon: int, levels: list[float]) -> tuple[dict, dict]:
-    """Previsões externas com proveniência. Toda tarefa precisa de previsão; nada a mais nem a menos."""
+    """Previsões externas com proveniência, amarradas às tarefas exatas (``tasks_sha256``). Toda tarefa precisa
+    de previsão; nada a mais nem a menos."""
     if type(raw) is not dict or raw.get("schema") != FORECAST_SCHEMA:
         raise ValueError(f"arquivo de previsões não é {FORECAST_SCHEMA}")
     model = raw.get("model")
@@ -154,6 +170,8 @@ def load_forecasts(raw: dict, tasks: list[Task], *, horizon: int, levels: list[f
         raise ValueError(f"proveniência do modelo: campos exatos {sorted(MODEL_FIELDS)}")
     if raw.get("horizon") != horizon or raw.get("levels") != levels:
         raise ValueError("horizonte ou níveis diferentes do protocolo")
+    if raw.get("tasks_sha256") != tasks_sha256(tasks):
+        raise ValueError("previsões geradas para outras tarefas (tasks_sha256 diferente)")
     predictions = {}
     for entry in raw.get("entries", []):
         key = (entry["security_id"], entry["origin_session"])
@@ -251,4 +269,5 @@ class ForecastRankStrategy(Strategy):
 
 
 __all__ = ["EmpiricalRandomWalk", "FORECAST_SCHEMA", "ForecastRankStrategy", "GaussianRandomWalk", "MODEL_FIELDS",
-           "Task", "build_tasks", "contamination_status", "evaluate_predictions", "load_forecasts", "predict_all"]
+           "TASKS_SCHEMA", "Task", "build_tasks", "contamination_status", "evaluate_predictions", "load_forecasts",
+           "predict_all", "tasks_payload", "tasks_sha256"]

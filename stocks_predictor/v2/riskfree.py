@@ -63,6 +63,12 @@ class RiskFreeSeries:
         except KeyError as exc:
             raise RiskFreeError(f"{self.series_id}: sem taxa para o pregão {session}") from exc
 
+    def sessions(self) -> list[str]:
+        return sorted(self._daily)
+
+    def min_daily_rate(self) -> float:
+        return min(self._daily.values())
+
     def compounded(self, sessions: list[str]) -> float:
         total = 1.0
         for session in sessions:
@@ -75,10 +81,22 @@ class RiskFreeSeries:
                 "last": sessions[-1], "sessions": len(sessions)}
 
 
+def from_sgs(rows: list[dict], *, series_id: str, unit: str, source: dict) -> dict:
+    """Resposta JSON da API SGS do BCB (``[{"data": "dd/mm/aaaa", "valor": "0.050788"}, ...]``) →
+    ``stocks-riskfree/1``. ``source`` leva URL, data da coleta e sha256 do arquivo bruto."""
+    rates = []
+    for row in rows:
+        if type(row) is not dict or set(row) != {"data", "valor"}:
+            raise RiskFreeError("linha SGS: {data, valor}")
+        day, month, year = row["data"].split("/")
+        rates.append({"session": f"{year}-{month}-{day}", "rate": float(row["valor"])})
+    return {"schema": SCHEMA, "series_id": series_id, "unit": unit, "source": source, "rates": rates}
+
+
 def excess_returns(sessions: list[str], returns: list[float], rf: RiskFreeSeries) -> list[float]:
     if len(sessions) != len(returns):
         raise RiskFreeError("pregões e retornos com tamanhos diferentes")
     return [r - rf.daily(s) for s, r in zip(sessions, returns)]
 
 
-__all__ = ["RiskFreeError", "RiskFreeSeries", "SCHEMA", "UNITS", "excess_returns"]
+__all__ = ["RiskFreeError", "RiskFreeSeries", "SCHEMA", "UNITS", "excess_returns", "from_sgs"]

@@ -27,6 +27,10 @@ Previsão e execução real (Prompt 3c):
     forecast_metrics  perda quantílica, CRPS por quantis, WQL, cobertura
     forecasting       tarefas PIT, baselines probabilísticos, previsões externas com proveniência, contaminação
     forecast_eval     execução sob o ledger e a política, com a tabela de entrega
+
+Reavaliação e integridade experimental (Prompt 4):
+    reassessment      régua nova sobre artefatos históricos, sem reexecução (DSR na grade de N, CDI, vieses)
+    preregistration   pré-registro imutável, holdout selado com abertura única aprovada, deduplicação
 """
 
 SCHEMA = "stocks-pit-dataset/2"

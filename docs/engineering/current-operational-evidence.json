@@ -1,9 +1,9 @@
 {
   "schema_version": "current-operational-evidence/1",
   "status": "LOCAL_VALIDATED_CI_PENDING",
-  "generated_at": "2026-09-24T18:30:39.017643Z",
+  "generated_at": "2026-09-25T15:00:03.147020Z",
   "code_text_hash_policy": "UTF-8 file bytes with CRLF normalized to LF",
-  "code_population_sha256": "ce29a482d642a9e9181b38fbba1544df54788fc65f6a19fc2f1445dec73db72a",
+  "code_population_sha256": "a2e04f1c3dce4868f1dc5967e659daa162059562e407ecd6e10ea47acd45eb56",
   "current_code_sha256_lf": [
     {
       "path": ".gitattributes",
@@ -347,7 +347,7 @@
     },
     {
       "path": "stocks_predictor/v2/__init__.py",
-      "sha256": "5b1312e71cba7cab32876f1f6656279a1cc0ffd804a2f8e9daf1085dc7ad6fd9"
+      "sha256": "85c4d17379dd83b945a66d24a2209acdf6d510959444331950c37cf4be6f70bf"
     },
     {
       "path": "stocks_predictor/v2/__main__.py",
@@ -387,7 +387,7 @@
     },
     {
       "path": "stocks_predictor/v2/forecast_eval.py",
-      "sha256": "beb5e15362e28540b987e6ee09cd5affeb8a8bdb75e0a9b3721ef06daff04824"
+      "sha256": "54bd007656663f08b5d495605ca5d55e4bec480359eb03b612de3fbaf66b9907"
     },
     {
       "path": "stocks_predictor/v2/forecast_metrics.py",
@@ -395,11 +395,11 @@
     },
     {
       "path": "stocks_predictor/v2/forecasting.py",
-      "sha256": "5dd659a9372a16e3695cdf14f758dfa7babdb567a39444976cfed80270720103"
+      "sha256": "af0365fcfbd7b5be278a4c02f1be1d214be8519af32ddb9084a0c73ec0cd450f"
     },
     {
       "path": "stocks_predictor/v2/manifest.py",
-      "sha256": "1077d86228e70fcd75166f7d51516454903eccf8e56c409281c3f9d0354834ec"
+      "sha256": "f61bff50508ce760573b7254686e4dc2e1ef9f551f92873c1cd130a53a5b8e4c"
     },
     {
       "path": "stocks_predictor/v2/metrics.py",
@@ -411,11 +411,19 @@
     },
     {
       "path": "stocks_predictor/v2/policy.py",
-      "sha256": "469a93392b865dd295a98cd484dc998551967cf4b308ddbd4570165f5fce954d"
+      "sha256": "0ce8206e60a0b84acd3ae075a005f55cfeaef9596c24f0c0eba3c2cb225da939"
+    },
+    {
+      "path": "stocks_predictor/v2/preregistration.py",
+      "sha256": "ca649689bca9fd5687359367af44378a93ae70463f97ba8b0e5882eb180f21fa"
+    },
+    {
+      "path": "stocks_predictor/v2/reassessment.py",
+      "sha256": "3b20cb6f80716b7f3cacacaa3026264bb7cb924da53517ef18303b0b3fa5e6b8"
     },
     {
       "path": "stocks_predictor/v2/riskfree.py",
-      "sha256": "be7ba1de8145d70a78cc3e5919364e32e1ef8f9d3f634fdc5f61b8c1da3681f8"
+      "sha256": "37a7eda17224e171ed134304135137adf2b2cfbcc0380e68441b03cd6c04b57e"
     },
     {
       "path": "stocks_predictor/v2/synthetic.py",
@@ -423,7 +431,7 @@
     },
     {
       "path": "stocks_predictor/v2/validation.py",
-      "sha256": "60b979e5253dd521d48d7c977a2f22e3da8dda5959243be00ab4e9d89b444ae2"
+      "sha256": "f7228486a29914bdba8a706fd25c4e9001fa4e890fe0c9c47b14a35871db813c"
     },
     {
       "path": "stocks_predictor/v2/walkforward.py",
@@ -859,15 +867,19 @@
     },
     {
       "path": "tests/test_v2_forecast.py",
-      "sha256": "247efa38445f92778871650fc99148660af7160f809dda5c98fa26e8ed43ecb1"
+      "sha256": "38ace0d0de6f8ed2c83aa0bb4c7f825b16f1309928ab2fe685235af3b2087b17"
     },
     {
       "path": "tests/test_v2_manifest.py",
       "sha256": "e36718a0248e4e2a81b82304bf2a790f145c13ad442919550b221e99ff777cd8"
     },
     {
+      "path": "tests/test_v2_prompt4.py",
+      "sha256": "ce5b49b5570b0d34386eb7d977d039a65dbf66070bcdf9f8f755426794341fad"
+    },
+    {
       "path": "tests/test_v2_validation.py",
-      "sha256": "92417d0e359f8ece9c046b1d304d3a4de140e885915009fb2380a064186e6e60"
+      "sha256": "4a592cc937f29d82ef1ad4090b1f6cf7a19ccfd01ef770f4aaf54f66295ecd3a"
     },
     {
       "path": "tests/test_versioned_sources.py",
@@ -908,6 +920,10 @@
     {
       "path": "tools/check_project_files.py",
       "sha256": "d18ea0c0b43a47192be87f20189cc7a61eb008ffb225fa317cb517cfc893b33f"
+    },
+    {
+      "path": "tools/chronos_forecast.py",
+      "sha256": "1ce6024bd179dce3840ec81dd09169b17e015c307f9a6d6e1c30fef384d0d08b"
     },
     {
       "path": "tools/cobertura_h18.py",
@@ -1014,8 +1030,8 @@
       "sha256": "cf4519d43880e531dea6f6ed982a1708dbfac8e3cd63e790b8270c37e0ecd4fd"
     }
   ],
-  "real_validation": "docs/engineering/2026-09-24-protocol-v2/evidence/prompt3c/operational-real.json",
-  "capacity_validation": "docs/engineering/2026-09-24-protocol-v2/evidence/prompt3c/operational-capacity.json",
+  "real_validation": "docs/engineering/2026-09-24-protocol-v2/evidence/prompt4/operational-real.json",
+  "capacity_validation": "docs/engineering/2026-09-24-protocol-v2/evidence/prompt4/operational-capacity.json",
   "capital_enabled": false,
   "profit_certified": false
 }

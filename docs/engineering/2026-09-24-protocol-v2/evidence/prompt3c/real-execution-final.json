@@ -1,0 +1,489 @@
+{
+  "dataset": {
+    "hash": "d73291071be6b966660e4d4647c8c7db6386f27f8d08dba0db16daf1e8b8ea16",
+    "version": "cotahist-COTAHIST_A2026.ZIP-34b774681cbd201e",
+    "data_cutoff": "2026-09-09T23:59:59Z",
+    "meta": {
+      "source_file": "COTAHIST_A2026.ZIP",
+      "source_sha256": "34b774681cbd201ef197fb98af8d431e4d7302e801f58b66e54036d2935dc4f4",
+      "index_ticker": "BOVA11",
+      "index_isin": "BRBOVACTF003",
+      "sessions": 172,
+      "first_session": "2026-01-02",
+      "last_session": "2026-09-09",
+      "securities": 409,
+      "bars": 56158,
+      "limitations": [
+        "listagem = primeiro pregão no arquivo (quem já era listado aparece como listado a partir dele)",
+        "deslistagem desconhecida: o arquivo não informa saídas; o universo não perde ninguém por deslistagem",
+        "sem eventos societários nem proventos: preços não ajustados; saltos são tratados pela regra de exclusão da avaliação",
+        "sem fundamentos"
+      ]
+    }
+  },
+  "config": {
+    "start": "2026-04-07",
+    "end": "2026-09-09",
+    "rebalance": "monthly",
+    "execution": {
+      "lag_sessions": 1,
+      "price": "open",
+      "signal_data": "bars <= close(D)",
+      "execution": "D+1 open"
+    },
+    "costs": {
+      "brokerage_bps": 0.0,
+      "brokerage_fixed": 0.0,
+      "exchange_fee_bps": 3.0,
+      "spread_bps": 7.5,
+      "slippage_bps": 7.5,
+      "impact_bps_at_full_adv": 0.0,
+      "impact_exponent": 0.5,
+      "borrow_bps_annual": 0.0,
+      "sessions_per_year": 252
+    },
+    "liquidity": {
+      "min_adv": 5000000.0,
+      "adv_lookback": 63,
+      "max_participation": 0.05,
+      "statistic": "mean"
+    },
+    "initial_cash": 1000000.0,
+    "seed": 7,
+    "allow_short": false,
+    "engine": "stocks-pit-engine-v2/1"
+  },
+  "spec": {
+    "horizon": 21,
+    "context_length": 64,
+    "levels": [
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9
+    ],
+    "jump_threshold": 0.3,
+    "jump_threshold_source": "config.yaml jump_detector.threshold_abs (H1 congelado): |retorno diário| > 30% = evento não ajustado provável",
+    "baseline": "gaussian_random_walk",
+    "design": {
+      "alpha": 0.05,
+      "power": 0.8,
+      "min_detectable_relative_improvement": 0.05
+    },
+    "period_rule": "full_context_to_end",
+    "source_sha256": "34b774681cbd201ef197fb98af8d431e4d7302e801f58b66e54036d2935dc4f4",
+    "index_ticker": "BOVA11",
+    "rank_quantile": 0.2
+  },
+  "spec_sha256": "0a129bd05767d9cbc4a67e0daf46073dbad3b320ad8f3f6f189093656c9167c5",
+  "policy": {
+    "policy_version": "1.0.0",
+    "policy_status": "PROPOSED_PENDING_OWNER_APPROVAL",
+    "policy_sha256": "4898b7c73f30c938d188cfb278c2c4aa82fe44995b10352d0f24a1e020d6f5d8",
+    "policy_path": "/home/superleo13/predictors/work/stocks-stocks-predictor/policy/stocks-evaluation-policy-v1.json"
+  },
+  "risk_free": {
+    "series_id": "BCB-SGS-12",
+    "unit": "percent_per_day",
+    "hash": "567b931f80f219a0a77c7b716f8cfcba46b70d0f9021eb53203d312e5f81c982",
+    "first": "2019-01-02",
+    "last": "2026-09-23",
+    "sessions": 1942
+  },
+  "tasks": {
+    "tasks": 747,
+    "origins": 5,
+    "excluded": {
+      "context_gap": 27,
+      "jump_context": 12,
+      "jump_target": 5,
+      "target_gap": 8
+    },
+    "horizon": 21,
+    "context_length": 64,
+    "jump_threshold": 0.3
+  },
+  "forecasts": {
+    "gaussian_random_walk": {
+      "all_tasks": {
+        "n": 747,
+        "origins": 5,
+        "crps": 0.06021094061382362,
+        "wql_price": 0.052889390288984935,
+        "coverage_80": 0.8514056224899599,
+        "ic": null,
+        "rank_ic": null
+      },
+      "clean": {
+        "n": 747,
+        "origins": 5,
+        "crps": 0.06021094061382362,
+        "wql_price": 0.052889390288984935,
+        "coverage_80": 0.8514056224899599,
+        "ic": null,
+        "rank_ic": null
+      },
+      "contamination": {
+        "status": "NOT_APPLICABLE",
+        "reason": "baseline sem pré-treino"
+      },
+      "result_digest": "193adf452164c17a7d7830de89aa00af104ee24aecbb9f1086e881d542bf02b8",
+      "run_id": "0511b781eeaf49029b9bb6b592147a5c",
+      "trial_number": 11
+    },
+    "empirical_random_walk": {
+      "all_tasks": {
+        "n": 747,
+        "origins": 5,
+        "crps": 0.06340796044101192,
+        "wql_price": 0.05583530687330832,
+        "coverage_80": 0.7081659973226239,
+        "ic": null,
+        "rank_ic": null,
+        "vs_baseline": {
+          "baseline_crps": 0.06021094061382362,
+          "mean_diff": 0.0031970198271882955,
+          "sd_diff": 0.013248549481811384,
+          "t": 6.595341662147934,
+          "relative_improvement": -0.05309699191867967,
+          "n_required": 153
+        }
+      },
+      "clean": {
+        "n": 747,
+        "origins": 5,
+        "crps": 0.06340796044101192,
+        "wql_price": 0.05583530687330832,
+        "coverage_80": 0.7081659973226239,
+        "ic": null,
+        "rank_ic": null,
+        "vs_baseline": {
+          "baseline_crps": 0.06021094061382362,
+          "mean_diff": 0.0031970198271882955,
+          "sd_diff": 0.013248549481811384,
+          "t": 6.595341662147934,
+          "relative_improvement": -0.05309699191867967,
+          "n_required": 153
+        }
+      },
+      "contamination": {
+        "status": "NOT_APPLICABLE",
+        "reason": "baseline sem pré-treino"
+      },
+      "result_digest": "7de75efc072544529a2b47cf0cd5e25e538a54700645f12fa6f185cc6ce2a3f5",
+      "run_id": "83e24daf3a804feab96fe447f89726ca",
+      "trial_number": 12
+    },
+    "amazon/chronos-bolt-small@772f3d25d38a": {
+      "all_tasks": {
+        "n": 747,
+        "origins": 5,
+        "crps": 0.07217687385313475,
+        "wql_price": 0.06142478185724347,
+        "coverage_80": 0.7215528781793842,
+        "ic": {
+          "n": 5,
+          "mean": -0.012821682657551407,
+          "std": 0.10441256313160041,
+          "ir": -0.12279827515958117,
+          "ir_ann": -0.4253857033164355,
+          "t": -0.27458529077654736,
+          "hit_rate": 0.4
+        },
+        "rank_ic": {
+          "n": 5,
+          "mean": 0.015758985306190805,
+          "std": 0.15425610644098461,
+          "ir": 0.10216117643433381,
+          "ir_ann": 0.3538966962905489,
+          "t": 0.22843933516852,
+          "hit_rate": 0.6
+        },
+        "vs_baseline": {
+          "baseline_crps": 0.06021094061382362,
+          "mean_diff": 0.011965933239311125,
+          "sd_diff": 0.04232317939586673,
+          "t": 7.727314550465838,
+          "relative_improvement": -0.1987335377478543,
+          "n_required": 1552
+        }
+      },
+      "clean": {
+        "n": 747,
+        "origins": 5,
+        "crps": 0.07217687385313475,
+        "wql_price": 0.06142478185724347,
+        "coverage_80": 0.7215528781793842,
+        "ic": {
+          "n": 5,
+          "mean": -0.012821682657551407,
+          "std": 0.10441256313160041,
+          "ir": -0.12279827515958117,
+          "ir_ann": -0.4253857033164355,
+          "t": -0.27458529077654736,
+          "hit_rate": 0.4
+        },
+        "rank_ic": {
+          "n": 5,
+          "mean": 0.015758985306190805,
+          "std": 0.15425610644098461,
+          "ir": 0.10216117643433381,
+          "ir_ann": 0.3538966962905489,
+          "t": 0.22843933516852,
+          "hit_rate": 0.6
+        },
+        "vs_baseline": {
+          "baseline_crps": 0.06021094061382362,
+          "mean_diff": 0.011965933239311125,
+          "sd_diff": 0.04232317939586673,
+          "t": 7.727314550465838,
+          "relative_improvement": -0.1987335377478543,
+          "n_required": 1552
+        }
+      },
+      "contamination": {
+        "status": "INSUFFICIENT_SAMPLE",
+        "cutoff": "2024-11-25",
+        "tasks_post_cutoff": 747,
+        "tasks_total": 747,
+        "n_required": 1552
+      },
+      "result_digest": "fc698302875e8fac23ce222a68059ad614c9bc6d58c18cf5b058b424340820c6",
+      "run_id": "90f31fe7d5ed4bdabcd19fcdb5ccc82f",
+      "trial_number": 13
+    }
+  },
+  "portfolios": {
+    "ew_universe": {
+      "net": {
+        "sessions": 108,
+        "final_nav": 904676.7056135981,
+        "total_return": -0.09532329438640186,
+        "cagr": -0.20843858099306734,
+        "ann_vol": 0.20489296490773445,
+        "sharpe_ann_rf0": -1.039060229303747,
+        "max_drawdown": -0.23055758432309648,
+        "turnover_ann": 3.7658602108240924,
+        "costs_total": 2635.1453628505674,
+        "costs_by_component": {
+          "brokerage": 0.0,
+          "exchange_fee": 439.1908938084279,
+          "spread": 1097.9772345210697,
+          "slippage": 1097.9772345210697,
+          "impact": 0.0,
+          "borrow": 0
+        },
+        "trades_filled": 951,
+        "trades_partial_participation": 0,
+        "trades_partial_cash": 312,
+        "orders_unfilled": 22,
+        "rebalances": 6,
+        "metrics_are": "net of all modeled costs; sharpe with rf=0"
+      },
+      "run_id": "697469438aa94201b8b8a5637006ac93"
+    },
+    "index_buy_and_hold": {
+      "net": {
+        "sessions": 108,
+        "final_nav": 993747.2123371899,
+        "total_return": -0.006252787662810011,
+        "cagr": -0.014529062072117349,
+        "ann_vol": 0.17928706749985013,
+        "sharpe_ann_rf0": 0.007039492262132615,
+        "max_drawdown": -0.1619696659151465,
+        "turnover_ann": 2.456125233528823,
+        "costs_total": 1796.7658215212616,
+        "costs_by_component": {
+          "brokerage": 0.0,
+          "exchange_fee": 299.4609702535436,
+          "spread": 748.652425633859,
+          "slippage": 748.652425633859,
+          "impact": 0.0,
+          "borrow": 0
+        },
+        "trades_filled": 1,
+        "trades_partial_participation": 0,
+        "trades_partial_cash": 1,
+        "orders_unfilled": 0,
+        "rebalances": 6,
+        "metrics_are": "net of all modeled costs; sharpe with rf=0"
+      },
+      "run_id": "6f3db56d26f3445d9f09b211fc653aab"
+    },
+    "rank:amazon/chronos-bolt-small@772f3d25d38a": {
+      "net": {
+        "sessions": 108,
+        "final_nav": 885256.9896531799,
+        "total_return": -0.1147430103468201,
+        "cagr": -0.24751961473350592,
+        "ann_vol": 0.23284459797440782,
+        "sharpe_ann_rf0": -1.1057466806986844,
+        "max_drawdown": -0.22706352868963786,
+        "turnover_ann": 19.438033661821994,
+        "costs_total": 13633.425871280286,
+        "costs_by_component": {
+          "brokerage": 0.0,
+          "exchange_fee": 2272.237645213381,
+          "spread": 5680.594113033452,
+          "slippage": 5680.594113033452,
+          "impact": 0.0,
+          "borrow": 0
+        },
+        "trades_filled": 272,
+        "trades_partial_participation": 0,
+        "trades_partial_cash": 144,
+        "orders_unfilled": 0,
+        "rebalances": 6,
+        "metrics_are": "net of all modeled costs; sharpe with rf=0"
+      },
+      "run_id": "d0a320c20d4248f6962d8cdc34f5af48"
+    }
+  },
+  "table": [
+    {
+      "candidate": "gaussian_random_walk",
+      "protocol": "v2 + spec 0a129bd05767",
+      "period": "2026-04-07..2026-09-09",
+      "universe": "sem deslistagens conhecidas (limitação da fonte)",
+      "costs": "N/A (previsão)",
+      "forecast_metric": {
+        "crps": 0.06021094061382362,
+        "wql_price": 0.052889390288984935,
+        "n": 747,
+        "contamination": "NOT_APPLICABLE"
+      },
+      "ic_rank_ic": "N/A (mediana prevista constante no corte transversal)",
+      "sharpe_net_excess_rf": "N/A",
+      "max_drawdown": "N/A",
+      "turnover_ann": "N/A",
+      "beta": "N/A",
+      "psr": "N/A",
+      "dsr_worst": "N/A",
+      "pbo": "N/A",
+      "decision": "NO_DECISION (previsão não é carteira; política decide carteira)",
+      "run_id": "0511b781eeaf49029b9bb6b592147a5c"
+    },
+    {
+      "candidate": "empirical_random_walk",
+      "protocol": "v2 + spec 0a129bd05767",
+      "period": "2026-04-07..2026-09-09",
+      "universe": "sem deslistagens conhecidas (limitação da fonte)",
+      "costs": "N/A (previsão)",
+      "forecast_metric": {
+        "crps": 0.06340796044101192,
+        "wql_price": 0.05583530687330832,
+        "n": 747,
+        "contamination": "NOT_APPLICABLE"
+      },
+      "ic_rank_ic": "N/A (mediana prevista constante no corte transversal)",
+      "sharpe_net_excess_rf": "N/A",
+      "max_drawdown": "N/A",
+      "turnover_ann": "N/A",
+      "beta": "N/A",
+      "psr": "N/A",
+      "dsr_worst": "N/A",
+      "pbo": "N/A",
+      "decision": "NO_DECISION (previsão não é carteira; política decide carteira)",
+      "run_id": "83e24daf3a804feab96fe447f89726ca"
+    },
+    {
+      "candidate": "amazon/chronos-bolt-small@772f3d25d38a",
+      "protocol": "v2 + spec 0a129bd05767",
+      "period": "2026-04-07..2026-09-09",
+      "universe": "sem deslistagens conhecidas (limitação da fonte)",
+      "costs": "N/A (previsão)",
+      "forecast_metric": {
+        "crps": 0.07217687385313475,
+        "wql_price": 0.06142478185724347,
+        "n": 747,
+        "contamination": "INSUFFICIENT_SAMPLE"
+      },
+      "ic_rank_ic": {
+        "ic": -0.012821682657551407,
+        "rank_ic": 0.015758985306190805,
+        "n_origins": 5
+      },
+      "sharpe_net_excess_rf": "N/A",
+      "max_drawdown": "N/A",
+      "turnover_ann": "N/A",
+      "beta": "N/A",
+      "psr": "N/A",
+      "dsr_worst": "N/A",
+      "pbo": "N/A",
+      "decision": "NO_DECISION (previsão não é carteira; política decide carteira)",
+      "run_id": "90f31fe7d5ed4bdabcd19fcdb5ccc82f"
+    },
+    {
+      "candidate": "ew_universe",
+      "protocol": "v2 + spec 0a129bd05767",
+      "period": "2026-04-07..2026-09-09",
+      "universe": "sem deslistagens conhecidas (limitação da fonte)",
+      "costs": "emol 3.0 + spread 7.5 + slip 7.5 bps/lado",
+      "forecast_metric": "N/A",
+      "ic_rank_ic": "N/A",
+      "sharpe_net_excess_rf": -1.6890475193435233,
+      "max_drawdown": -0.23055758432309648,
+      "turnover_ann": 3.7658602108240924,
+      "beta": 1.0473097341676314,
+      "psr": 0.1403845733706855,
+      "dsr_worst": "N/A",
+      "pbo": "N/A",
+      "decision": "NO_DECISION: sem comparação com baseline: faltam ['ew_universe', 'index_buy_and_hold']; amostra com menos de 504 pregões; DSR não estimável; PBO não estimável",
+      "run_id": "697469438aa94201b8b8a5637006ac93"
+    },
+    {
+      "candidate": "index_buy_and_hold",
+      "protocol": "v2 + spec 0a129bd05767",
+      "period": "2026-04-07..2026-09-09",
+      "universe": "sem deslistagens conhecidas (limitação da fonte)",
+      "costs": "emol 3.0 + spread 7.5 + slip 7.5 bps/lado",
+      "forecast_metric": "N/A",
+      "ic_rank_ic": "N/A",
+      "sharpe_net_excess_rf": -0.7358643083402944,
+      "max_drawdown": -0.1619696659151465,
+      "turnover_ann": 2.456125233528823,
+      "beta": 1.0,
+      "psr": 0.31603794452084455,
+      "dsr_worst": "N/A",
+      "pbo": "N/A",
+      "decision": "NO_DECISION: sem comparação com baseline: faltam ['index_buy_and_hold']; amostra com menos de 504 pregões; DSR não estimável; PBO não estimável",
+      "run_id": "6f3db56d26f3445d9f09b211fc653aab"
+    },
+    {
+      "candidate": "rank:amazon/chronos-bolt-small@772f3d25d38a",
+      "protocol": "v2 + spec 0a129bd05767",
+      "period": "2026-04-07..2026-09-09",
+      "universe": "sem deslistagens conhecidas (limitação da fonte)",
+      "costs": "emol 3.0 + spread 7.5 + slip 7.5 bps/lado",
+      "forecast_metric": "N/A",
+      "ic_rank_ic": "N/A",
+      "sharpe_net_excess_rf": -1.6777405763196518,
+      "max_drawdown": -0.22706352868963786,
+      "turnover_ann": 19.438033661821994,
+      "beta": 1.0456537037313973,
+      "psr": 0.143262991173792,
+      "dsr_worst": "N/A",
+      "pbo": "N/A",
+      "decision": "NO_DECISION: amostra com menos de 504 pregões; DSR não estimável; PBO não estimável",
+      "run_id": "d0a320c20d4248f6962d8cdc34f5af48"
+    }
+  ],
+  "run_ids": [
+    "0511b781eeaf49029b9bb6b592147a5c",
+    "83e24daf3a804feab96fe447f89726ca",
+    "90f31fe7d5ed4bdabcd19fcdb5ccc82f",
+    "697469438aa94201b8b8a5637006ac93",
+    "6f3db56d26f3445d9f09b211fc653aab",
+    "d0a320c20d4248f6962d8cdc34f5af48"
+  ],
+  "n_trials_ledger": 16,
+  "ledger": {
+    "records": 40,
+    "head": "6316036926745e24615b2b5b278a66faa7ff8fa5056f527753ec5693042b57e9"
+  }
+}

@@ -42,6 +42,13 @@ partir do Prompt 3a. Implementa só com a biblioteca padrão; única dependênci
 As especificações da execução real ([protocolo](prompt3c-real-protocol-config.json) e
 [previsão](prompt3c-real-forecast-spec.json)) foram versionadas antes da primeira execução.
 
+### Reavaliação e integridade experimental (Prompt 4)
+
+| Módulo | Contrato |
+|---|---|
+| `reassessment` | Régua nova sobre artefatos históricos, **sem reexecutar** (a `reopen_policy` do `RESEARCH_FREEZE.md` exige 6 campos revisados por um humano para reabrir família encerrada). Lê o relatório de veredito versionado e a linha do `trials.json`. Recalcula o DSR na grade de N reaproveitando o D de não-normalidade implícito no DSR histórico, que é reproduzido exatamente. Compara o retorno anual com o CDI da mesma janela e lista as incompatibilidades de protocolo por hipótese. Cada artefato vira um registro `REASSESSMENT` no ledger. |
+| `preregistration` | Pré-registro `PREREGISTERED`, com os 17 campos do Prompt 4, ID imutável; `require_preregistration` barra backtest sem ele. Holdout selado `HOLDOUT_SEALED`, com intervalo, conteúdo (`FUTURE` ou sha256), condições e hash do selo. Abertura única `HOLDOUT_OPENED`, só com aprovação humana registrada (quem, quando, motivo, canal). Deduplicação por \|ρ\| no período de desenvolvimento (`REJECTED_REDUNDANT` com \|ρ\| ≥ limiar). |
+
 O skfolio (BSD-3, 1.3.1) não foi adotado: o `CombinatorialPurgedCV` dele purga um número fixo de observações,
 não o intervalo real de cada rótulo, e traria numpy, scipy, pandas, cvxpy, scikit-learn e plotly. O pypbo
 (AGPL) e o mlfinlab (proprietário) também não são usados.

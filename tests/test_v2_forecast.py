@@ -18,12 +18,14 @@ from stocks_predictor.v2.cotahist_dataset import CotahistError, build_from_cotah
 from stocks_predictor.v2.dataset import PITDataset
 from stocks_predictor.v2.engine import ProtocolConfig
 from stocks_predictor.v2.execution import ExecutionConvention
-from stocks_predictor.v2.forecast_eval import load_spec, main, run_forecast_evaluation
+from stocks_predictor.v2.forecast_eval import load_riskfree, load_spec, main, run_forecast_evaluation
 from stocks_predictor.v2.forecast_metrics import coverage, crps_quantile, pinball, wql
 from stocks_predictor.v2.forecasting import (EmpiricalRandomWalk, GaussianRandomWalk, build_tasks,
-                                             contamination_status, evaluate_predictions, load_forecasts)
+                                             contamination_status, evaluate_predictions, load_forecasts,
+                                             tasks_sha256)
 from stocks_predictor.v2.manifest import TrialLedger
 from stocks_predictor.v2.policy import load_policy
+from stocks_predictor.v2.riskfree import RiskFreeSeries
 
 ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs/engineering/2026-09-24-protocol-v2"
@@ -117,6 +119,7 @@ def external(model=MODEL, tasks=TASKS, value=lambda t: [t.target_exec_return + d
                                                                                           -0.001, 0, 0.001, 0.005,
                                                                                           0.01, 0.02)]):
     return {"schema": "stocks-forecasts/1", "model": model, "horizon": 21, "levels": LEVELS,
+            "tasks_sha256": tasks_sha256(TASKS),
             "entries": [{"security_id": t.security_id, "origin_session": t.origin, "quantiles": value(t)}
                         for t in tasks]}
 
@@ -128,6 +131,8 @@ def test_external_forecasts_require_provenance_and_exact_coverage():
         load_forecasts(external(model={**MODEL, "license": ""}), TASKS, horizon=21, levels=LEVELS)
     with pytest.raises(ValueError, match="faltam 1"):
         load_forecasts(external(tasks=TASKS[1:]), TASKS, horizon=21, levels=LEVELS)
+    with pytest.raises(ValueError, match="outras tarefas"):
+        load_forecasts(external() | {"tasks_sha256": "0" * 64}, TASKS, horizon=21, levels=LEVELS)
     with pytest.raises(ValueError, match="níveis"):
         load_forecasts(external() | {"levels": [0.5]}, TASKS, horizon=21, levels=LEVELS)
     raw = external()
@@ -185,9 +190,10 @@ def test_cotahist_adapter_builds_a_valid_pit_dataset_and_declares_limits(tmp_pat
 def test_forecast_run_is_ledgered_with_contamination_and_rank_portfolio(tmp_path):
     ledger = TrialLedger(tmp_path / "ledger.jsonl")
     early = {**MODEL, "weights_committed_at": "2019-06-01T00:00:00Z", "published_at": "2019-06-02T00:00:00Z"}
+    rf = RiskFreeSeries(synthetic.riskfree())
     report = run_forecast_evaluation(DS, CONFIG, SPEC, POLICY, ledger, git=GIT,
                                      dataset_meta={"index_isin": "IDX11", "limitations": []},
-                                     external=[external(model=early)])
+                                     external=[external(model=early)], rf=rf)
     names = [row["candidate"] for row in report["table"]]
     model = "amazon/chronos-bolt-small@772f3d25d38a"
     assert names == ["gaussian_random_walk", "empirical_random_walk", model, "ew_universe", "index_buy_and_hold",
@@ -200,6 +206,10 @@ def test_forecast_run_is_ledgered_with_contamination_and_rank_portfolio(tmp_path
     assert report["portfolios"][f"rank:{model}"]["net"]["trades_filled"] > 0
     assert all(r["payload"]["manifest"]["validation"]["spec_sha256"] == report["spec_sha256"]
                for r in ledger.records if r["kind"] == "STARTED")
+    assert all(r["payload"]["manifest"]["validation"]["risk_free"]["hash"] == rf.hash
+               for r in ledger.records if r["kind"] == "STARTED")
+    assert report["risk_free"]["series_id"] == "SYNTHETIC-RF"
+    assert isinstance(report["table"][3]["sharpe_net_excess_rf"], float)
 
 
 def test_forecast_cli_never_overwrites_and_spec_is_exact(tmp_path, capsys):
@@ -221,3 +231,32 @@ def test_real_spec_is_declared_and_pinned():
     real = load_spec(json.loads((DOCS / "prompt3c-real-forecast-spec.json").read_text()))
     assert real["source_sha256"].startswith("34b77468") and real["period_rule"] == "full_context_to_end"
     assert real["jump_threshold"] == 0.30 and real["baseline"] == "gaussian_random_walk"
+
+
+def test_task_export_is_bound_to_the_exact_tasks(tmp_path, capsys):
+    path = tmp_path / "tasks.json"
+    argv = ["--spec", str(DOCS / "synthetic-forecast-spec.json"), "--config", str(DOCS / "synthetic-demo-config.json"),
+            "--dataset", "synthetic", "--export-tasks", str(path)]
+    assert main(argv) == 0
+    payload = json.loads(path.read_text())
+    assert payload["schema"] == "stocks-forecast-tasks/1" and payload["tasks_sha256"] == tasks_sha256(TASKS)
+    assert len(payload["tasks"]) == len(TASKS) and payload["dataset_hash"] == DS.hash
+    capsys.readouterr()
+    with pytest.raises(FileExistsError):
+        main(argv)
+    with pytest.raises(SystemExit):  # avaliar exige política e ledger
+        main(argv[:6])
+
+
+def test_riskfree_from_the_raw_sgs_response_is_checked_against_its_receipt(tmp_path):
+    rows = [{"data": "02/01/2020", "valor": "0.017089"}, {"data": "03/01/2020", "valor": "0.017089"}]
+    raw = tmp_path / "sgs12.json"
+    raw.write_text(json.dumps(rows))
+    receipt = {"url": "https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json",
+               "sha256": hashlib.sha256(raw.read_bytes()).hexdigest()}
+    Path(str(raw) + ".receipt.json").write_text(json.dumps(receipt))
+    rf = load_riskfree(f"bcb-sgs-12:{raw}")
+    assert rf.series_id == "BCB-SGS-12" and rf.daily("2020-01-03") == pytest.approx(0.00017089)
+    raw.write_text(json.dumps(rows[:1]))
+    with pytest.raises(ValueError, match="recibo"):
+        load_riskfree(f"bcb-sgs-12:{raw}")
