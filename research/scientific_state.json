@@ -1,0 +1,262 @@
+{
+  "schema": "stocks-scientific-state/1",
+  "domain": "stocks",
+  "hypotheses": {
+    "H1": "CLOSED_JUDGED",
+    "H2": "CLOSED_JUDGED",
+    "H3": "CLOSED_JUDGED",
+    "H4": "CLOSED_JUDGED",
+    "H5": "CLOSED_JUDGED",
+    "H6": "CLOSED_JUDGED",
+    "H7": "CLOSED_EMBARGO_ORIGINAL",
+    "H8": "CLOSED_JUDGED",
+    "H9": "CLOSED_EMBARGO_ORIGINAL",
+    "H10": "CLOSED_EMBARGO_ORIGINAL",
+    "H11": "CLOSED_JUDGED",
+    "H12": "CLOSED_EMBARGO_ORIGINAL",
+    "H13": "CLOSED_EMBARGO_ORIGINAL",
+    "H14": "CLOSED_JUDGED",
+    "H15": "CLOSED_JUDGED",
+    "H16": "CLOSED_JUDGED",
+    "H17": "PAUSED_INCONCLUSIVE_DATA_QUALITY",
+    "H18": "PAUSED",
+    "H19": "PAUSED",
+    "H20": "CLOSED_HISTORICAL",
+    "H21": "CLOSED_HISTORICAL_CONDITIONAL",
+    "H22": "CLOSED_REJECTED"
+  },
+  "hypothesis_trials": {
+    "H1": "h1-momentum-12-1",
+    "H2": "h2-lowvol-252",
+    "H4": "h4-invvol-sizing-252",
+    "H5": "h5-strev-21",
+    "H6": "h6-momentum-6-1",
+    "H7": "h7-quality-roe",
+    "H8": "h8-mom-lowvol-double",
+    "H9": "h9-quality-leverage",
+    "H10": "h10-roe-leverage-double",
+    "H11": "h11-momentum-12-1-total-return",
+    "H12": "h12-quality-net-margin",
+    "H13": "h13-revenue-growth-yoy",
+    "H14": "h14-near-52w-high",
+    "H15": "h15-volume-surge",
+    "H16": "h16-turn-of-month"
+  },
+  "frozen_families": [
+    "low_vol_252",
+    "momentum_12_1",
+    "momentum_12_1_total_return",
+    "momentum_6_1",
+    "momentum_lowvol_intersection",
+    "near_52w_high",
+    "quality_leverage",
+    "quality_net_margin",
+    "quality_roe",
+    "quality_roe_leverage_double_filter",
+    "quality_roe_leverage_intersection",
+    "revenue_growth_yoy",
+    "reversal_21d",
+    "turn_of_month",
+    "vol_target_sizing",
+    "volume_surge"
+  ],
+  "vocabulary": {
+    "CLOSED_JUDGED": {
+      "closed": true,
+      "meaning": "julgada em rodada única; NOT_SUPPORTED no manifesto de congelamento"
+    },
+    "CLOSED_EMBARGO_ORIGINAL": {
+      "closed": true,
+      "meaning": "julgada; conserva o embargo estimado original dos fundamentos"
+    },
+    "CLOSED_HISTORICAL": {
+      "closed": true,
+      "meaning": "encerrada; registro histórico"
+    },
+    "CLOSED_HISTORICAL_CONDITIONAL": {
+      "closed": true,
+      "meaning": "encerrada; resultado histórico condicional, nunca aprovação"
+    },
+    "CLOSED_REJECTED": {
+      "closed": true,
+      "meaning": "rejeitada"
+    },
+    "PAUSED": {
+      "closed": false,
+      "meaning": "pausada; não observada; bloqueada até dataset e metodologia validados"
+    },
+    "PAUSED_INCONCLUSIVE_DATA_QUALITY": {
+      "closed": false,
+      "meaning": "pausada; resultado observado INCONCLUSIVE_DATA_QUALITY"
+    }
+  },
+  "reopen_policy": {
+    "source": "RESEARCH_FREEZE.md#ST_RESEARCH_FREEZE.reopen_policy",
+    "text": "Nenhuma família de fatores já encerrada (momentum 12-1, momentum 6-1, low-vol, vol-target, reversão 21d, interseção momentum×low-vol, qualidade/ROE, qualidade/alavancagem, interseção ROE×alavancagem, momentum 12-1 em retorno total, qualidade/margem líquida, crescimento de receita YoY) pode ser reaberta sem registrar EXPLICITAMENTE, antes de qualquer código novo:\n  previous_result, closure_reason, new_information, causal_reason,\n  why_old_test_no_longer_answers_question, new_protocol.\nSem esses 6 campos preenchidos e revisados por um humano, qualquer proposta de reabertura deve ser recusada. A linha RJ segue a mesma regra e adicionalmente exige uma fonte de dados reais nomeada antes de qualquer ingestão nova.\n"
+  },
+  "reassessment": {
+    "H1": {
+      "status_before": "CLOSED_JUDGED",
+      "status_after": "NOT_SUPPORTED mantido — régua nova mais conservadora",
+      "report": "reports/h1_verdict_20260712T091903477689-41cc24.md",
+      "report_sha256": "8401589c6a0ef6358da52b0b0ce33b2c4cab64653e3e4aa2525f971f3aae5f1a",
+      "ledger_hash": "bbf7e68fea981ec0650de08b7915316bcfbc7b1aee3b0af7048cf3f475f11210"
+    },
+    "H2": {
+      "status_before": "CLOSED_JUDGED",
+      "status_after": "NOT_SUPPORTED mantido — régua nova mais conservadora",
+      "report": "reports/h2_verdict_20260716T221541856778-ac106e.md",
+      "report_sha256": "1f587c35dd0f9de721ee05f59c89341043d7bfea5a695e612ea793606ff80e45",
+      "ledger_hash": "ebbccf248db0d4467ca4d08be7d6cb8dabd3d99e3aa79e15b303afbd01654e73"
+    },
+    "H4": {
+      "status_before": "CLOSED_JUDGED",
+      "status_after": "NOT_SUPPORTED mantido — régua nova mais conservadora",
+      "report": "reports/h4_verdict_20260718T201214322046-5e3833.md",
+      "report_sha256": "4d18822deb44d96107a72f9a93ecacd2c30eab9a8f912cc84029f38b48ba638f",
+      "ledger_hash": "88a475fa2a57b0b797a0b9a3c5265c684c9250344507a4c8a2e833dfa10757ad"
+    },
+    "H5": {
+      "status_before": "CLOSED_JUDGED",
+      "status_after": "NOT_SUPPORTED mantido — régua nova mais conservadora",
+      "report": "reports/h5_verdict_20260718T202628182793-427444.md",
+      "report_sha256": "eb130e30d0c4b986eaab19af21ff76daaeedec656ad2886ca156d0f3dfadb135",
+      "ledger_hash": "9f24505cf1e6cb27b98d3726374edbb25c7507a77a2a7a228914b5fe8610f593"
+    },
+    "H6": {
+      "status_before": "CLOSED_JUDGED",
+      "status_after": "NOT_SUPPORTED mantido — régua nova mais conservadora",
+      "report": "reports/h6_verdict_adhoc.md",
+      "report_sha256": "d5150e068695708ff2ab0a25c62d52c7cba886e83985b2c9a9864fc3ccce863f",
+      "ledger_hash": "1e798a652062cd44866519ddcdf299c95e070678ebb33b9bb2cbb48aba9a06fb"
+    },
+    "H7": {
+      "status_before": "CLOSED_EMBARGO_ORIGINAL",
+      "status_after": "NOT_SUPPORTED mantido — régua nova mais conservadora",
+      "report": "reports/h7_verdict_adhoc.md",
+      "report_sha256": "439e523311c077844da8a94a282f595913a41c1dc8c8ea360ef2b66779f2c6c6",
+      "ledger_hash": "bda9e09c0fdecb19e5dae25028b8ac63921a47965923b026fdd2a3e1cadf74dd"
+    },
+    "H8": {
+      "status_before": "CLOSED_JUDGED",
+      "status_after": "NOT_SUPPORTED mantido — régua nova mais conservadora",
+      "report": "reports/h8_verdict_adhoc.md",
+      "report_sha256": "8f7ce81e7cf43c93b0abdd383375f40c5070175485b3c4160fb4876fb19054b7",
+      "ledger_hash": "f6048e21120492b83e8e86f7cecbfd9216c8a6a99e656cbf47a6530e14a7bec2"
+    },
+    "H9": {
+      "status_before": "CLOSED_EMBARGO_ORIGINAL",
+      "status_after": "NOT_SUPPORTED mantido — régua nova mais conservadora",
+      "report": "reports/h9_verdict_adhoc.md",
+      "report_sha256": "9d446a1ebe945e69be7b98ab1f8f34b0603db89fc04b29b7b92b1ecc129b068a",
+      "ledger_hash": "3e293b46174d3a53a9b59191694d36f8d34c82f6a1263f0c7e9550c56647edb6"
+    },
+    "H10": {
+      "status_before": "CLOSED_EMBARGO_ORIGINAL",
+      "status_after": "NOT_SUPPORTED mantido — régua nova mais conservadora",
+      "report": "reports/h10_verdict_adhoc.md",
+      "report_sha256": "fcd696570e6a01948533f8b533d1880b74d60bbff65a6fc1c5fe0a60204b964e",
+      "ledger_hash": "0cc4eb11f5ffadc2cd665b1177f7ec9ce5d83b8c5b3af467d399d623fdf7d86a"
+    },
+    "H11": {
+      "status_before": "CLOSED_JUDGED",
+      "status_after": "NOT_SUPPORTED mantido — régua nova mais conservadora",
+      "report": "reports/h11_verdict_adhoc.md",
+      "report_sha256": "48baecfa53161e2f4b07ab781c51a4e5ebfc14d4e1aee81f01cfac6459f45d17",
+      "ledger_hash": "05e3f746a323973ef2a63d01f468420fb2f780eb7cc949c4542e79d3f34564eb"
+    },
+    "H12": {
+      "status_before": "CLOSED_EMBARGO_ORIGINAL",
+      "status_after": "NOT_SUPPORTED mantido — régua nova mais conservadora",
+      "report": "reports/h12_verdict_adhoc.md",
+      "report_sha256": "53604c2bd609fd158f6559cea0a6bc6c8cb6a70d82728e9641c5a2943d3ef2bd",
+      "ledger_hash": "0ce17bd7b7432113d69056f150c3a6c69a5a4464ccc94b334f3fe5ef51a0944d"
+    },
+    "H13": {
+      "status_before": "CLOSED_EMBARGO_ORIGINAL",
+      "status_after": "NOT_SUPPORTED mantido — régua nova mais conservadora",
+      "report": "reports/h13_verdict_adhoc.md",
+      "report_sha256": "367a4bbf067fa7d02e6d9cfee676e662fbfafa9fe71a7b205a9d67bf8c564ff3",
+      "ledger_hash": "fcacfb82d48a78b06a4f1184657d1a57870b3d8bcbdb5a04e666d2719f527a53"
+    },
+    "H14": {
+      "status_before": "CLOSED_JUDGED",
+      "status_after": "NOT_SUPPORTED mantido — régua nova mais conservadora",
+      "report": "reports/h14_verdict_adhoc.md",
+      "report_sha256": "dec14b1b5a92abc9d5e2779e8f505fc96fc76f676bd442c7374f22c041b661a6",
+      "ledger_hash": "f4ee8eabad7fdf1135962566042a4a503b70b0da1b9601ed1655b62d8803dfbe"
+    },
+    "H15": {
+      "status_before": "CLOSED_JUDGED",
+      "status_after": "NOT_SUPPORTED mantido — régua nova mais conservadora",
+      "report": "reports/h15_verdict_adhoc.md",
+      "report_sha256": "1690671bcf51ded65ae5b25ecb464d3d5636057504252ff3ad0d15981ef62e06",
+      "ledger_hash": "ba8636f1196b22fc183fc2683c3f2072ade442e5b8cddb0f97d090f01745e00b"
+    },
+    "H16": {
+      "status_before": "CLOSED_JUDGED",
+      "status_after": "NOT_SUPPORTED mantido — régua nova mais conservadora",
+      "report": "reports/h16_verdict_adhoc.md",
+      "report_sha256": "ba805faa014dd15d589f81b236f76ad0d386dfa432173688e856b943230dfc8b",
+      "ledger_hash": "ed0021ccbe1f875a97ed724cb8ced189ab7b32dc417dc95d2e9f9e15adb623ee"
+    }
+  },
+  "n_trials": {
+    "prior_lower_bound": 71,
+    "ledger_started": 16,
+    "reassessed_artifacts": 15,
+    "n_known": 102,
+    "grid": [
+      102,
+      150,
+      204,
+      510
+    ]
+  },
+  "ledger_index": {
+    "path": "docs/engineering/2026-09-24-protocol-v2/evidence/ledger/stocks-domain-ledger-index.json",
+    "schema": "stocks-trial-ledger-index/1",
+    "records": 56,
+    "head": "f9dc936725bd5b4a4f769b0cf50aaa20dd3ed04ec3271d753d30d3c643d76d45",
+    "counts": {
+      "STARTED": 16,
+      "COMPLETED": 16,
+      "DECISION": 8,
+      "REASSESSMENT": 15,
+      "HOLDOUT_SEALED": 1
+    }
+  },
+  "decision_policy": {
+    "path": "policy/stocks-evaluation-policy-v1.json",
+    "version": "1.0.0",
+    "status": "PROPOSED_PENDING_OWNER_APPROVAL",
+    "sha256": "4898b7c73f30c938d188cfb278c2c4aa82fe44995b10352d0f24a1e020d6f5d8"
+  },
+  "sources": [
+    {
+      "path": "stocks_predictor/research_admission.py",
+      "sha256_lf": "d29bd40ccdb376b993b5eb090b1c8f7a4f8035322e93517a31f77cfd8e270213"
+    },
+    {
+      "path": "RESEARCH_FREEZE.md",
+      "sha256_lf": "a6b9e923d243b486d52d8c97ed64a758cc40df29c19699bdb220e79115cf39ba"
+    },
+    {
+      "path": "trials_v2.json",
+      "sha256_lf": "281030b156cec7a5415e655c7f86319fd00d77fdec9e12bee6f5bdde8c5aa208"
+    },
+    {
+      "path": "docs/engineering/2026-09-24-protocol-v2/evidence/prompt4/reassessment.json",
+      "sha256_lf": "b32b63332ba126c41d9f2c60be1dc5c608d6924e2672b850b305667d80ef570f"
+    },
+    {
+      "path": "docs/engineering/2026-09-24-protocol-v2/evidence/ledger/stocks-domain-ledger-index.json",
+      "sha256_lf": "5ecd6b9672c7588f43202946136daba41af991a3ff1c795b989907bf85ca1a05"
+    },
+    {
+      "path": "policy/stocks-evaluation-policy-v1.json",
+      "sha256_lf": "4898b7c73f30c938d188cfb278c2c4aa82fe44995b10352d0f24a1e020d6f5d8"
+    }
+  ],
+  "notes": "Estados literais do repositório; nenhum GO, nenhum edge econômico demonstrado. Preços não fazem parte deste arquivo (licença de redistribuição não verificada)."
+}

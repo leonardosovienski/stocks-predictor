@@ -1,9 +1,9 @@
 {
   "schema_version": "current-operational-evidence/1",
   "status": "LOCAL_VALIDATED_CI_PENDING",
-  "generated_at": "2026-09-25T16:48:25.648079Z",
+  "generated_at": "2026-09-26T04:33:52.903102Z",
   "code_text_hash_policy": "UTF-8 file bytes with CRLF normalized to LF",
-  "code_population_sha256": "d7abd4e89e89601e10faa5b10267c1aff8eee24f0377417ba5a52a9ca59105f0",
+  "code_population_sha256": "049bdfe05c5693af5d2cacccb75c14a5b87ec16dc89454e0698723bbb7c5f84d",
   "current_code_sha256_lf": [
     {
       "path": ".gitattributes",
@@ -834,6 +834,10 @@
       "sha256": "361616333404a42b78abc611efe42fb9b78b609dcef21292904072048e8440fa"
     },
     {
+      "path": "tests/test_scientific_state.py",
+      "sha256": "fa3340d9fb2e502bf8faf3bd558bf78ba5220362de04be169f5623444f54dadc"
+    },
+    {
       "path": "tests/test_secrets_telemetry.py",
       "sha256": "d86eb6564d8c61384f3e2516ac6f8fda9c51bc33f4ae3f3915626f01d6b12849"
     },
@@ -960,6 +964,10 @@
     {
       "path": "tools/export_cain_status.py",
       "sha256": "c319ebfcc5f8847362a6550c660a326eb22464ff5b7aa0daded3bcef2038de4d"
+    },
+    {
+      "path": "tools/export_scientific_state.py",
+      "sha256": "df4585320fd3a4301a4785aaf00f2d6d03fdd72eff3bbb6f08dd703d12ad397e"
     },
     {
       "path": "tools/ingest_dividends_real.py",
