@@ -27,6 +27,9 @@ Avaliação nova usa o [protocolo v2](docs/engineering/2026-09-24-protocol-v2/RE
 (`stocks_predictor/v2`): sob o ledger, com pré-registro para hipótese nova e holdout
 selado até aprovação humana. A política v1 só decide quando o dono a aprova. O v2 não
 está qualificado; o runtime qualificado continua `61fc017`.
+Mudou estado de hipótese, tentativa, congelamento, reavaliação, índice do ledger ou
+política? Regrave `research/scientific_state.json` (`tools/export_scientific_state.py --write`);
+é o que a CAIN lê, e o teste recusa divergência.
 
 ## Raiz e ambiente
 

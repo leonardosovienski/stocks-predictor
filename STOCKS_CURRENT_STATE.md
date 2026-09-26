@@ -25,6 +25,10 @@ previsão e execução real (#102 e #103); 4, reavaliação e integridade experi
 - **Ledger de domínio:** fica no PC 2, fora do Git, com 56 registros. O
   [índice verificável](docs/engineering/2026-09-24-protocol-v2/evidence/ledger/stocks-domain-ledger-index.json)
   tem os hashes da cadeia e nenhum dado de processo.
+- **Leitura pela CAIN (26/09):** o estado da pesquisa está em
+  [`research/scientific_state.json`](research/scientific_state.json), gerado das fontes e conferido por teste.
+  A CAIN lê esse arquivo, o `trials_v2.json` e o índice do ledger num commit fixado, sem preços
+  ([contrato](docs/engineering/2026-09-26-cain-findings/README.md)).
 - **Qualificação:** o runtime qualificado continua `61fc017` / wheel 0.3.0rc2. O pacote v2 é código posterior e
   **não está qualificado**; requalificar (C14) é decisão do dono. Os achados ST-F007 e ST-F008 passam a
   `ACCEPTED_BY_OWNER` (D-21) na
