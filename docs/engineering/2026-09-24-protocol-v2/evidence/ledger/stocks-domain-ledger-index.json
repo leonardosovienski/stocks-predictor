@@ -1,0 +1,821 @@
+{
+  "schema": "stocks-trial-ledger-index/1",
+  "ledger_schema": "stocks-trial-ledger/1",
+  "records": 56,
+  "head": "f9dc936725bd5b4a4f769b0cf50aaa20dd3ed04ec3271d753d30d3c643d76d45",
+  "counts": {
+    "STARTED": 16,
+    "COMPLETED": 16,
+    "DECISION": 8,
+    "REASSESSMENT": 15,
+    "HOLDOUT_SEALED": 1
+  },
+  "trials_started": 16,
+  "generated_at": "2026-09-25T16:48:25.765844Z",
+  "rows": [
+    {
+      "seq": 1,
+      "kind": "STARTED",
+      "run_id": "f7433c0423444ff5b6be939f07341b62",
+      "recorded_at": "2026-09-24T18:30:58.456728Z",
+      "prev": null,
+      "hash": "5e94e1d44e835991d7dc12b84623d01a599a1f3909760870dabc52d9878b49c5",
+      "trial_number": 1,
+      "model": "gaussian_random_walk",
+      "family": "forecast-prompt3c",
+      "git": {
+        "commit": "b07f6705ffadf65e0169bf09a2d54c39f08adc97",
+        "dirty": false
+      },
+      "dataset_hash": "d73291071be6b966660e4d4647c8c7db6386f27f8d08dba0db16daf1e8b8ea16",
+      "interval": {
+        "end": "2026-09-09",
+        "rebalance": "monthly",
+        "start": "2026-04-07"
+      },
+      "decision_policy_sha256": "4898b7c73f30c938d188cfb278c2c4aa82fe44995b10352d0f24a1e020d6f5d8",
+      "preregistration": null,
+      "holdout_access": null
+    },
+    {
+      "seq": 2,
+      "kind": "COMPLETED",
+      "run_id": "f7433c0423444ff5b6be939f07341b62",
+      "recorded_at": "2026-09-24T18:30:58.458686Z",
+      "prev": "5e94e1d44e835991d7dc12b84623d01a599a1f3909760870dabc52d9878b49c5",
+      "hash": "11882764fd4af7faab5840aa8ec249a2c91c901bc3ec03a36eb79e17c3e97a29",
+      "result_digest": "193adf452164c17a7d7830de89aa00af104ee24aecbb9f1086e881d542bf02b8"
+    },
+    {
+      "seq": 3,
+      "kind": "STARTED",
+      "run_id": "4c7f7fe209e14135bd27de2902d8d67e",
+      "recorded_at": "2026-09-24T18:30:58.472856Z",
+      "prev": "11882764fd4af7faab5840aa8ec249a2c91c901bc3ec03a36eb79e17c3e97a29",
+      "hash": "1d845311312f15c1157ea44ad09a4b7f3722242c783e9a7641976798af626545",
+      "trial_number": 2,
+      "model": "empirical_random_walk",
+      "family": "forecast-prompt3c",
+      "git": {
+        "commit": "b07f6705ffadf65e0169bf09a2d54c39f08adc97",
+        "dirty": false
+      },
+      "dataset_hash": "d73291071be6b966660e4d4647c8c7db6386f27f8d08dba0db16daf1e8b8ea16",
+      "interval": {
+        "end": "2026-09-09",
+        "rebalance": "monthly",
+        "start": "2026-04-07"
+      },
+      "decision_policy_sha256": "4898b7c73f30c938d188cfb278c2c4aa82fe44995b10352d0f24a1e020d6f5d8",
+      "preregistration": null,
+      "holdout_access": null
+    },
+    {
+      "seq": 4,
+      "kind": "COMPLETED",
+      "run_id": "4c7f7fe209e14135bd27de2902d8d67e",
+      "recorded_at": "2026-09-24T18:30:58.475813Z",
+      "prev": "1d845311312f15c1157ea44ad09a4b7f3722242c783e9a7641976798af626545",
+      "hash": "4276b98c9f730db374afe6e9efbcee23e89260b2cc66b4f124d580f9652a555c",
+      "result_digest": "7de75efc072544529a2b47cf0cd5e25e538a54700645f12fa6f185cc6ce2a3f5"
+    },
+    {
+      "seq": 5,
+      "kind": "STARTED",
+      "run_id": "4f25763dd1a34179ba16a7f56c558ff2",
+      "recorded_at": "2026-09-24T18:30:58.482965Z",
+      "prev": "4276b98c9f730db374afe6e9efbcee23e89260b2cc66b4f124d580f9652a555c",
+      "hash": "3f2d471f604e1d36b6909518153b06fbd10a426353e144b0d931af18d4878f65",
+      "trial_number": 3,
+      "model": "ew_universe",
+      "family": "forecast-prompt3c",
+      "git": {
+        "commit": "b07f6705ffadf65e0169bf09a2d54c39f08adc97",
+        "dirty": false
+      },
+      "dataset_hash": "d73291071be6b966660e4d4647c8c7db6386f27f8d08dba0db16daf1e8b8ea16",
+      "interval": {
+        "end": "2026-09-09",
+        "rebalance": "monthly",
+        "start": "2026-04-07"
+      },
+      "decision_policy_sha256": "4898b7c73f30c938d188cfb278c2c4aa82fe44995b10352d0f24a1e020d6f5d8",
+      "preregistration": null,
+      "holdout_access": null
+    },
+    {
+      "seq": 6,
+      "kind": "COMPLETED",
+      "run_id": "4f25763dd1a34179ba16a7f56c558ff2",
+      "recorded_at": "2026-09-24T18:30:58.810073Z",
+      "prev": "3f2d471f604e1d36b6909518153b06fbd10a426353e144b0d931af18d4878f65",
+      "hash": "f14e9de07c0b5923bad48106644fa46236fa9ef5d5420051d0be64ba735c5886",
+      "result_digest": "b79336ba6082705e68b14348bad67dce2bc98d1678975fbc751ff757d54f7dd9"
+    },
+    {
+      "seq": 7,
+      "kind": "STARTED",
+      "run_id": "8b3e9996218b4077adc18aa9fc4f6edc",
+      "recorded_at": "2026-09-24T18:30:58.818004Z",
+      "prev": "f14e9de07c0b5923bad48106644fa46236fa9ef5d5420051d0be64ba735c5886",
+      "hash": "1617e2df445b8019e2e845d30d5bdf4a20d2f79b8aedb9f55e25f48a2dff9cfb",
+      "trial_number": 4,
+      "model": "index_buy_and_hold",
+      "family": "forecast-prompt3c",
+      "git": {
+        "commit": "b07f6705ffadf65e0169bf09a2d54c39f08adc97",
+        "dirty": false
+      },
+      "dataset_hash": "d73291071be6b966660e4d4647c8c7db6386f27f8d08dba0db16daf1e8b8ea16",
+      "interval": {
+        "end": "2026-09-09",
+        "rebalance": "monthly",
+        "start": "2026-04-07"
+      },
+      "decision_policy_sha256": "4898b7c73f30c938d188cfb278c2c4aa82fe44995b10352d0f24a1e020d6f5d8",
+      "preregistration": null,
+      "holdout_access": null
+    },
+    {
+      "seq": 8,
+      "kind": "COMPLETED",
+      "run_id": "8b3e9996218b4077adc18aa9fc4f6edc",
+      "recorded_at": "2026-09-24T18:30:59.058677Z",
+      "prev": "1617e2df445b8019e2e845d30d5bdf4a20d2f79b8aedb9f55e25f48a2dff9cfb",
+      "hash": "32796f8473b2b7d130f6e2043b3353473892f42db3932178d60f49953c68803a",
+      "result_digest": "82ef27a1b6634cbdaedbe06d9f0f4a6f40723a08ecdaf520336d690df1d38a5c"
+    },
+    {
+      "seq": 9,
+      "kind": "DECISION",
+      "run_id": "decision:1920127283b34f198a86a3b711583c5d",
+      "recorded_at": "2026-09-24T18:30:59.062104Z",
+      "prev": "32796f8473b2b7d130f6e2043b3353473892f42db3932178d60f49953c68803a",
+      "hash": "a01a8bf3ddeb7c1350e09f2846c05f3efd365fedc23464947e0e4328e9fe01fa",
+      "decision": "NO_DECISION",
+      "decision_if_approved": null,
+      "policy_sha256": "4898b7c73f30c938d188cfb278c2c4aa82fe44995b10352d0f24a1e020d6f5d8",
+      "evaluated_run_ids": [
+        "4f25763dd1a34179ba16a7f56c558ff2"
+      ]
+    },
+    {
+      "seq": 10,
+      "kind": "DECISION",
+      "run_id": "decision:8723f7d45cc54ee09a5786d60be7a13d",
+      "recorded_at": "2026-09-24T18:30:59.064547Z",
+      "prev": "a01a8bf3ddeb7c1350e09f2846c05f3efd365fedc23464947e0e4328e9fe01fa",
+      "hash": "82ea39bb4137bf28cdaac4067bbd6971aef332a13728b8de40fd038f6364f57d",
+      "decision": "NO_DECISION",
+      "decision_if_approved": null,
+      "policy_sha256": "4898b7c73f30c938d188cfb278c2c4aa82fe44995b10352d0f24a1e020d6f5d8",
+      "evaluated_run_ids": [
+        "8b3e9996218b4077adc18aa9fc4f6edc"
+      ]
+    },
+    {
+      "seq": 11,
+      "kind": "STARTED",
+      "run_id": "e8dfd314513a4fb9a1031ffe4accd925",
+      "recorded_at": "2026-09-24T20:34:46.919269Z",
+      "prev": "82ea39bb4137bf28cdaac4067bbd6971aef332a13728b8de40fd038f6364f57d",
+      "hash": "8c310bec376216ff7ecc77acd5a29d6885749b96384afb335c9b2b263bb2c14a",
+      "trial_number": 5,
+      "model": "gaussian_random_walk",
+      "family": "forecast-prompt3c",
+      "git": {
+        "commit": "5048a80527943e061cb49b8200b3cd958e6c8493",
+        "dirty": false
+      },
+      "dataset_hash": "d73291071be6b966660e4d4647c8c7db6386f27f8d08dba0db16daf1e8b8ea16",
+      "interval": {
+        "end": "2026-09-09",
+        "rebalance": "monthly",
+        "start": "2026-04-07"
+      },
+      "decision_policy_sha256": "4898b7c73f30c938d188cfb278c2c4aa82fe44995b10352d0f24a1e020d6f5d8",
+      "preregistration": null,
+      "holdout_access": null
+    },
+    {
+      "seq": 12,
+      "kind": "COMPLETED",
+      "run_id": "e8dfd314513a4fb9a1031ffe4accd925",
+      "recorded_at": "2026-09-24T20:34:46.921600Z",
+      "prev": "8c310bec376216ff7ecc77acd5a29d6885749b96384afb335c9b2b263bb2c14a",
+      "hash": "1fef21ee24eda8f4289648f0ce649b260a6bd9576c400d4c7261bd0052a64610",
+      "result_digest": "193adf452164c17a7d7830de89aa00af104ee24aecbb9f1086e881d542bf02b8"
+    },
+    {
+      "seq": 13,
+      "kind": "STARTED",
+      "run_id": "039f962add374bb1a74c0085c031b841",
+      "recorded_at": "2026-09-24T20:34:46.937745Z",
+      "prev": "1fef21ee24eda8f4289648f0ce649b260a6bd9576c400d4c7261bd0052a64610",
+      "hash": "fc884bcd0ebba40c1b15b737d2bfe2ec35aea82da2028e8c848a05a490ce8eeb",
+      "trial_number": 6,
+      "model": "empirical_random_walk",
+      "family": "forecast-prompt3c",
+      "git": {
+        "commit": "5048a80527943e061cb49b8200b3cd958e6c8493",
+        "dirty": false
+      },
+      "dataset_hash": "d73291071be6b966660e4d4647c8c7db6386f27f8d08dba0db16daf1e8b8ea16",
+      "interval": {
+        "end": "2026-09-09",
+        "rebalance": "monthly",
+        "start": "2026-04-07"
+      },
+      "decision_policy_sha256": "4898b7c73f30c938d188cfb278c2c4aa82fe44995b10352d0f24a1e020d6f5d8",
+      "preregistration": null,
+      "holdout_access": null
+    },
+    {
+      "seq": 14,
+      "kind": "COMPLETED",
+      "run_id": "039f962add374bb1a74c0085c031b841",
+      "recorded_at": "2026-09-24T20:34:46.940383Z",
+      "prev": "fc884bcd0ebba40c1b15b737d2bfe2ec35aea82da2028e8c848a05a490ce8eeb",
+      "hash": "b8be127d3eccfc497604f181333cd2292231797b80124e85bc9ead2b2c05c177",
+      "result_digest": "7de75efc072544529a2b47cf0cd5e25e538a54700645f12fa6f185cc6ce2a3f5"
+    },
+    {
+      "seq": 15,
+      "kind": "STARTED",
+      "run_id": "89502be7deda487898b147e3b0c6426f",
+      "recorded_at": "2026-09-24T20:34:46.962525Z",
+      "prev": "b8be127d3eccfc497604f181333cd2292231797b80124e85bc9ead2b2c05c177",
+      "hash": "47d5ae4c11a48203df804c30e7a6dfbd4da46713370f0a4a97f0ea297822417d",
+      "trial_number": 7,
+      "model": "amazon/chronos-bolt-small@772f3d25d38a",
+      "family": "forecast-prompt3c",
+      "git": {
+        "commit": "5048a80527943e061cb49b8200b3cd958e6c8493",
+        "dirty": false
+      },
+      "dataset_hash": "d73291071be6b966660e4d4647c8c7db6386f27f8d08dba0db16daf1e8b8ea16",
+      "interval": {
+        "end": "2026-09-09",
+        "rebalance": "monthly",
+        "start": "2026-04-07"
+      },
+      "decision_policy_sha256": "4898b7c73f30c938d188cfb278c2c4aa82fe44995b10352d0f24a1e020d6f5d8",
+      "preregistration": null,
+      "holdout_access": null
+    },
+    {
+      "seq": 16,
+      "kind": "COMPLETED",
+      "run_id": "89502be7deda487898b147e3b0c6426f",
+      "recorded_at": "2026-09-24T20:34:46.965099Z",
+      "prev": "47d5ae4c11a48203df804c30e7a6dfbd4da46713370f0a4a97f0ea297822417d",
+      "hash": "2dfe6cd6ae8fc71836b8625de32d1df609da1b0d83ba1559296c4abe5a8eeff1",
+      "result_digest": "fc698302875e8fac23ce222a68059ad614c9bc6d58c18cf5b058b424340820c6"
+    },
+    {
+      "seq": 17,
+      "kind": "STARTED",
+      "run_id": "74057d17db584ebf92fd703647bd40b0",
+      "recorded_at": "2026-09-24T20:34:46.974383Z",
+      "prev": "2dfe6cd6ae8fc71836b8625de32d1df609da1b0d83ba1559296c4abe5a8eeff1",
+      "hash": "0746ef4a16540c76b48aee25ef36fa991018a6908e184b8c76308fc633ca2a43",
+      "trial_number": 8,
+      "model": "ew_universe",
+      "family": "forecast-prompt3c",
+      "git": {
+        "commit": "5048a80527943e061cb49b8200b3cd958e6c8493",
+        "dirty": false
+      },
+      "dataset_hash": "d73291071be6b966660e4d4647c8c7db6386f27f8d08dba0db16daf1e8b8ea16",
+      "interval": {
+        "end": "2026-09-09",
+        "rebalance": "monthly",
+        "start": "2026-04-07"
+      },
+      "decision_policy_sha256": "4898b7c73f30c938d188cfb278c2c4aa82fe44995b10352d0f24a1e020d6f5d8",
+      "preregistration": null,
+      "holdout_access": null
+    },
+    {
+      "seq": 18,
+      "kind": "COMPLETED",
+      "run_id": "74057d17db584ebf92fd703647bd40b0",
+      "recorded_at": "2026-09-24T20:34:47.370340Z",
+      "prev": "0746ef4a16540c76b48aee25ef36fa991018a6908e184b8c76308fc633ca2a43",
+      "hash": "c68c707e35a48f29cd071224b4a77a4a3510cd2e981b5418b0ca8d5e31ea5ddd",
+      "result_digest": "b79336ba6082705e68b14348bad67dce2bc98d1678975fbc751ff757d54f7dd9"
+    },
+    {
+      "seq": 19,
+      "kind": "STARTED",
+      "run_id": "838f88b93b864fc0a158f0a1e860fd6a",
+      "recorded_at": "2026-09-24T20:34:47.381199Z",
+      "prev": "c68c707e35a48f29cd071224b4a77a4a3510cd2e981b5418b0ca8d5e31ea5ddd",
+      "hash": "cbb490bee8e8ba405ffa3038e556532bfbb10e3eca8157a14f9f2c3c6b27af44",
+      "trial_number": 9,
+      "model": "index_buy_and_hold",
+      "family": "forecast-prompt3c",
+      "git": {
+        "commit": "5048a80527943e061cb49b8200b3cd958e6c8493",
+        "dirty": false
+      },
+      "dataset_hash": "d73291071be6b966660e4d4647c8c7db6386f27f8d08dba0db16daf1e8b8ea16",
+      "interval": {
+        "end": "2026-09-09",
+        "rebalance": "monthly",
+        "start": "2026-04-07"
+      },
+      "decision_policy_sha256": "4898b7c73f30c938d188cfb278c2c4aa82fe44995b10352d0f24a1e020d6f5d8",
+      "preregistration": null,
+      "holdout_access": null
+    },
+    {
+      "seq": 20,
+      "kind": "COMPLETED",
+      "run_id": "838f88b93b864fc0a158f0a1e860fd6a",
+      "recorded_at": "2026-09-24T20:34:47.665380Z",
+      "prev": "cbb490bee8e8ba405ffa3038e556532bfbb10e3eca8157a14f9f2c3c6b27af44",
+      "hash": "c9b290ed544e872915c1ae82353186e9815c27179b1606fd3a3816520b17319b",
+      "result_digest": "82ef27a1b6634cbdaedbe06d9f0f4a6f40723a08ecdaf520336d690df1d38a5c"
+    },
+    {
+      "seq": 21,
+      "kind": "STARTED",
+      "run_id": "9ebc6d51e2d8449d85e389d13519a7d8",
+      "recorded_at": "2026-09-24T20:34:47.684891Z",
+      "prev": "c9b290ed544e872915c1ae82353186e9815c27179b1606fd3a3816520b17319b",
+      "hash": "10ad49790c32a9470e1ed5a091f3458db15fdbf558e2c964b83b8e176fc43032",
+      "trial_number": 10,
+      "model": "rank:amazon/chronos-bolt-small@772f3d25d38a",
+      "family": "forecast-prompt3c",
+      "git": {
+        "commit": "5048a80527943e061cb49b8200b3cd958e6c8493",
+        "dirty": false
+      },
+      "dataset_hash": "d73291071be6b966660e4d4647c8c7db6386f27f8d08dba0db16daf1e8b8ea16",
+      "interval": {
+        "end": "2026-09-09",
+        "rebalance": "monthly",
+        "start": "2026-04-07"
+      },
+      "decision_policy_sha256": "4898b7c73f30c938d188cfb278c2c4aa82fe44995b10352d0f24a1e020d6f5d8",
+      "preregistration": null,
+      "holdout_access": null
+    },
+    {
+      "seq": 22,
+      "kind": "COMPLETED",
+      "run_id": "9ebc6d51e2d8449d85e389d13519a7d8",
+      "recorded_at": "2026-09-24T20:34:47.997241Z",
+      "prev": "10ad49790c32a9470e1ed5a091f3458db15fdbf558e2c964b83b8e176fc43032",
+      "hash": "b2124697e5490a3642aacd7e045e590a7d0177c40b0757ac82d75d707981257b",
+      "result_digest": "07b14532a2a02b2afd05dbb5e69e536320151ea309543c251e974cc3ab0f557d"
+    },
+    {
+      "seq": 23,
+      "kind": "DECISION",
+      "run_id": "decision:0a29e84e21b74109a538de4e243e09f0",
+      "recorded_at": "2026-09-24T20:34:48.003351Z",
+      "prev": "b2124697e5490a3642aacd7e045e590a7d0177c40b0757ac82d75d707981257b",
+      "hash": "0aefb6225479e49a71ab1cfe74e8c6f66394117eb63433597efa9bb3bead3af8",
+      "decision": "NO_DECISION",
+      "decision_if_approved": null,
+      "policy_sha256": "4898b7c73f30c938d188cfb278c2c4aa82fe44995b10352d0f24a1e020d6f5d8",
+      "evaluated_run_ids": [
+        "74057d17db584ebf92fd703647bd40b0"
+      ]
+    },
+    {
+      "seq": 24,
+      "kind": "DECISION",
+      "run_id": "decision:b0b2f670cabc436dbf37072d55d8bf8e",
+      "recorded_at": "2026-09-24T20:34:48.008062Z",
+      "prev": "0aefb6225479e49a71ab1cfe74e8c6f66394117eb63433597efa9bb3bead3af8",
+      "hash": "78b6e38d7917508d9ab824c9f7cb35da74ba6b256e9ef1757039ba98fa9db012",
+      "decision": "NO_DECISION",
+      "decision_if_approved": null,
+      "policy_sha256": "4898b7c73f30c938d188cfb278c2c4aa82fe44995b10352d0f24a1e020d6f5d8",
+      "evaluated_run_ids": [
+        "838f88b93b864fc0a158f0a1e860fd6a"
+      ]
+    },
+    {
+      "seq": 25,
+      "kind": "DECISION",
+      "run_id": "decision:78a31cb226ce421ca467f51805bc45f1",
+      "recorded_at": "2026-09-24T20:34:48.013480Z",
+      "prev": "78b6e38d7917508d9ab824c9f7cb35da74ba6b256e9ef1757039ba98fa9db012",
+      "hash": "9c1aff4fb756b11624372d2bf141a9f78b657902bea3755bdb49a01ae2b159fd",
+      "decision": "NO_DECISION",
+      "decision_if_approved": null,
+      "policy_sha256": "4898b7c73f30c938d188cfb278c2c4aa82fe44995b10352d0f24a1e020d6f5d8",
+      "evaluated_run_ids": [
+        "9ebc6d51e2d8449d85e389d13519a7d8"
+      ]
+    },
+    {
+      "seq": 26,
+      "kind": "STARTED",
+      "run_id": "0511b781eeaf49029b9bb6b592147a5c",
+      "recorded_at": "2026-09-24T20:41:50.546171Z",
+      "prev": "9c1aff4fb756b11624372d2bf141a9f78b657902bea3755bdb49a01ae2b159fd",
+      "hash": "aa6e683145d402cb489bce794e5f4cc9448f66ca2a926ff6b8dbd1b572c50806",
+      "trial_number": 11,
+      "model": "gaussian_random_walk",
+      "family": "forecast-prompt3c",
+      "git": {
+        "commit": "ab66a4866c6ebb467f92d1a95ad58a702a0ff4f1",
+        "dirty": false
+      },
+      "dataset_hash": "d73291071be6b966660e4d4647c8c7db6386f27f8d08dba0db16daf1e8b8ea16",
+      "interval": {
+        "end": "2026-09-09",
+        "rebalance": "monthly",
+        "start": "2026-04-07"
+      },
+      "decision_policy_sha256": "4898b7c73f30c938d188cfb278c2c4aa82fe44995b10352d0f24a1e020d6f5d8",
+      "preregistration": null,
+      "holdout_access": null
+    },
+    {
+      "seq": 27,
+      "kind": "COMPLETED",
+      "run_id": "0511b781eeaf49029b9bb6b592147a5c",
+      "recorded_at": "2026-09-24T20:41:50.555664Z",
+      "prev": "aa6e683145d402cb489bce794e5f4cc9448f66ca2a926ff6b8dbd1b572c50806",
+      "hash": "7fd72877821c8e42d2b4ce535f0be7902b3568383eebb0cf04c8ca19f6ed18fc",
+      "result_digest": "193adf452164c17a7d7830de89aa00af104ee24aecbb9f1086e881d542bf02b8"
+    },
+    {
+      "seq": 28,
+      "kind": "STARTED",
+      "run_id": "83e24daf3a804feab96fe447f89726ca",
+      "recorded_at": "2026-09-24T20:41:50.577933Z",
+      "prev": "7fd72877821c8e42d2b4ce535f0be7902b3568383eebb0cf04c8ca19f6ed18fc",
+      "hash": "fd46c0502aa99cfb9b56fc8bf57aaf93d1e7521c527bd6e0745ca88dc42c23a6",
+      "trial_number": 12,
+      "model": "empirical_random_walk",
+      "family": "forecast-prompt3c",
+      "git": {
+        "commit": "ab66a4866c6ebb467f92d1a95ad58a702a0ff4f1",
+        "dirty": false
+      },
+      "dataset_hash": "d73291071be6b966660e4d4647c8c7db6386f27f8d08dba0db16daf1e8b8ea16",
+      "interval": {
+        "end": "2026-09-09",
+        "rebalance": "monthly",
+        "start": "2026-04-07"
+      },
+      "decision_policy_sha256": "4898b7c73f30c938d188cfb278c2c4aa82fe44995b10352d0f24a1e020d6f5d8",
+      "preregistration": null,
+      "holdout_access": null
+    },
+    {
+      "seq": 29,
+      "kind": "COMPLETED",
+      "run_id": "83e24daf3a804feab96fe447f89726ca",
+      "recorded_at": "2026-09-24T20:41:50.582408Z",
+      "prev": "fd46c0502aa99cfb9b56fc8bf57aaf93d1e7521c527bd6e0745ca88dc42c23a6",
+      "hash": "fa4742209fefebba91a9ec229ea311d29df12f4117640b497ae7514c7f629fa5",
+      "result_digest": "7de75efc072544529a2b47cf0cd5e25e538a54700645f12fa6f185cc6ce2a3f5"
+    },
+    {
+      "seq": 30,
+      "kind": "STARTED",
+      "run_id": "90f31fe7d5ed4bdabcd19fcdb5ccc82f",
+      "recorded_at": "2026-09-24T20:41:49.396933Z",
+      "prev": "fa4742209fefebba91a9ec229ea311d29df12f4117640b497ae7514c7f629fa5",
+      "hash": "a5921d11c3f27bda2616d6a4410209934220daf05a3bba2aad48512d5196d07e",
+      "trial_number": 13,
+      "model": "amazon/chronos-bolt-small@772f3d25d38a",
+      "family": "forecast-prompt3c",
+      "git": {
+        "commit": "ab66a4866c6ebb467f92d1a95ad58a702a0ff4f1",
+        "dirty": false
+      },
+      "dataset_hash": "d73291071be6b966660e4d4647c8c7db6386f27f8d08dba0db16daf1e8b8ea16",
+      "interval": {
+        "end": "2026-09-09",
+        "rebalance": "monthly",
+        "start": "2026-04-07"
+      },
+      "decision_policy_sha256": "4898b7c73f30c938d188cfb278c2c4aa82fe44995b10352d0f24a1e020d6f5d8",
+      "preregistration": null,
+      "holdout_access": null
+    },
+    {
+      "seq": 31,
+      "kind": "COMPLETED",
+      "run_id": "90f31fe7d5ed4bdabcd19fcdb5ccc82f",
+      "recorded_at": "2026-09-24T20:41:49.401246Z",
+      "prev": "a5921d11c3f27bda2616d6a4410209934220daf05a3bba2aad48512d5196d07e",
+      "hash": "f2aee5cb71752b1c52aee3a0e01dd86b7e024021ad81d314feb45cc2cbb0e391",
+      "result_digest": "fc698302875e8fac23ce222a68059ad614c9bc6d58c18cf5b058b424340820c6"
+    },
+    {
+      "seq": 32,
+      "kind": "STARTED",
+      "run_id": "697469438aa94201b8b8a5637006ac93",
+      "recorded_at": "2026-09-24T20:41:49.413925Z",
+      "prev": "f2aee5cb71752b1c52aee3a0e01dd86b7e024021ad81d314feb45cc2cbb0e391",
+      "hash": "37da1e7bd98ed871b90fdffb50fcd22f80c2631b179febf020aaffc7f4004c4a",
+      "trial_number": 14,
+      "model": "ew_universe",
+      "family": "forecast-prompt3c",
+      "git": {
+        "commit": "ab66a4866c6ebb467f92d1a95ad58a702a0ff4f1",
+        "dirty": false
+      },
+      "dataset_hash": "d73291071be6b966660e4d4647c8c7db6386f27f8d08dba0db16daf1e8b8ea16",
+      "interval": {
+        "end": "2026-09-09",
+        "rebalance": "monthly",
+        "start": "2026-04-07"
+      },
+      "decision_policy_sha256": "4898b7c73f30c938d188cfb278c2c4aa82fe44995b10352d0f24a1e020d6f5d8",
+      "preregistration": null,
+      "holdout_access": null
+    },
+    {
+      "seq": 33,
+      "kind": "COMPLETED",
+      "run_id": "697469438aa94201b8b8a5637006ac93",
+      "recorded_at": "2026-09-24T20:41:49.841714Z",
+      "prev": "37da1e7bd98ed871b90fdffb50fcd22f80c2631b179febf020aaffc7f4004c4a",
+      "hash": "6f5990ec01fb30bdb8a240832c85d46e7a95323bbfa38454f58a3e09aa1249c9",
+      "result_digest": "b79336ba6082705e68b14348bad67dce2bc98d1678975fbc751ff757d54f7dd9"
+    },
+    {
+      "seq": 34,
+      "kind": "STARTED",
+      "run_id": "6f3db56d26f3445d9f09b211fc653aab",
+      "recorded_at": "2026-09-24T20:41:49.855005Z",
+      "prev": "6f5990ec01fb30bdb8a240832c85d46e7a95323bbfa38454f58a3e09aa1249c9",
+      "hash": "7fa3eba365be047c47bf3e0b5e38f5aa15727ebf91e15810e155bb53f31347eb",
+      "trial_number": 15,
+      "model": "index_buy_and_hold",
+      "family": "forecast-prompt3c",
+      "git": {
+        "commit": "ab66a4866c6ebb467f92d1a95ad58a702a0ff4f1",
+        "dirty": false
+      },
+      "dataset_hash": "d73291071be6b966660e4d4647c8c7db6386f27f8d08dba0db16daf1e8b8ea16",
+      "interval": {
+        "end": "2026-09-09",
+        "rebalance": "monthly",
+        "start": "2026-04-07"
+      },
+      "decision_policy_sha256": "4898b7c73f30c938d188cfb278c2c4aa82fe44995b10352d0f24a1e020d6f5d8",
+      "preregistration": null,
+      "holdout_access": null
+    },
+    {
+      "seq": 35,
+      "kind": "COMPLETED",
+      "run_id": "6f3db56d26f3445d9f09b211fc653aab",
+      "recorded_at": "2026-09-24T20:41:50.214315Z",
+      "prev": "7fa3eba365be047c47bf3e0b5e38f5aa15727ebf91e15810e155bb53f31347eb",
+      "hash": "4ac6d9f0da91005a89d3aa0921c2f661cf6d40e8bcdc2d9bb02ad03e20cb96fd",
+      "result_digest": "82ef27a1b6634cbdaedbe06d9f0f4a6f40723a08ecdaf520336d690df1d38a5c"
+    },
+    {
+      "seq": 36,
+      "kind": "STARTED",
+      "run_id": "d0a320c20d4248f6962d8cdc34f5af48",
+      "recorded_at": "2026-09-24T20:41:50.231407Z",
+      "prev": "4ac6d9f0da91005a89d3aa0921c2f661cf6d40e8bcdc2d9bb02ad03e20cb96fd",
+      "hash": "3b87d319ba71c160e0cf93d20b43f471095aebe24659a4aa29a737cc9986cd40",
+      "trial_number": 16,
+      "model": "rank:amazon/chronos-bolt-small@772f3d25d38a",
+      "family": "forecast-prompt3c",
+      "git": {
+        "commit": "ab66a4866c6ebb467f92d1a95ad58a702a0ff4f1",
+        "dirty": false
+      },
+      "dataset_hash": "d73291071be6b966660e4d4647c8c7db6386f27f8d08dba0db16daf1e8b8ea16",
+      "interval": {
+        "end": "2026-09-09",
+        "rebalance": "monthly",
+        "start": "2026-04-07"
+      },
+      "decision_policy_sha256": "4898b7c73f30c938d188cfb278c2c4aa82fe44995b10352d0f24a1e020d6f5d8",
+      "preregistration": null,
+      "holdout_access": null
+    },
+    {
+      "seq": 37,
+      "kind": "COMPLETED",
+      "run_id": "d0a320c20d4248f6962d8cdc34f5af48",
+      "recorded_at": "2026-09-24T20:41:50.670830Z",
+      "prev": "3b87d319ba71c160e0cf93d20b43f471095aebe24659a4aa29a737cc9986cd40",
+      "hash": "9f3baf392438fb2bee2ad73a73e826fb56e3a252fac2f91b9c851b749e6c28cd",
+      "result_digest": "07b14532a2a02b2afd05dbb5e69e536320151ea309543c251e974cc3ab0f557d"
+    },
+    {
+      "seq": 38,
+      "kind": "DECISION",
+      "run_id": "decision:41a5dc12ff38400b8d587dd0d55b7732",
+      "recorded_at": "2026-09-24T20:41:50.679393Z",
+      "prev": "9f3baf392438fb2bee2ad73a73e826fb56e3a252fac2f91b9c851b749e6c28cd",
+      "hash": "3db26b58b3830899720d7b0a210a3d6a7e6c3b7eba4d13510bd6aeda1fd00468",
+      "decision": "NO_DECISION",
+      "decision_if_approved": null,
+      "policy_sha256": "4898b7c73f30c938d188cfb278c2c4aa82fe44995b10352d0f24a1e020d6f5d8",
+      "evaluated_run_ids": [
+        "697469438aa94201b8b8a5637006ac93"
+      ]
+    },
+    {
+      "seq": 39,
+      "kind": "DECISION",
+      "run_id": "decision:322a22d84a1545e2ba14cf488051285c",
+      "recorded_at": "2026-09-24T20:41:50.687664Z",
+      "prev": "3db26b58b3830899720d7b0a210a3d6a7e6c3b7eba4d13510bd6aeda1fd00468",
+      "hash": "7ab7c776b26307174188f1b5ff871013b2a011de5d1eab2b65e4f41846026ccc",
+      "decision": "NO_DECISION",
+      "decision_if_approved": null,
+      "policy_sha256": "4898b7c73f30c938d188cfb278c2c4aa82fe44995b10352d0f24a1e020d6f5d8",
+      "evaluated_run_ids": [
+        "6f3db56d26f3445d9f09b211fc653aab"
+      ]
+    },
+    {
+      "seq": 40,
+      "kind": "DECISION",
+      "run_id": "decision:02c562cb88084e93a7188e09e1625d01",
+      "recorded_at": "2026-09-24T20:41:50.696249Z",
+      "prev": "7ab7c776b26307174188f1b5ff871013b2a011de5d1eab2b65e4f41846026ccc",
+      "hash": "6316036926745e24615b2b5b278a66faa7ff8fa5056f527753ec5693042b57e9",
+      "decision": "NO_DECISION",
+      "decision_if_approved": null,
+      "policy_sha256": "4898b7c73f30c938d188cfb278c2c4aa82fe44995b10352d0f24a1e020d6f5d8",
+      "evaluated_run_ids": [
+        "d0a320c20d4248f6962d8cdc34f5af48"
+      ]
+    },
+    {
+      "seq": 41,
+      "kind": "REASSESSMENT",
+      "run_id": "reassessment:H1",
+      "recorded_at": "2026-09-25T15:00:35.215591Z",
+      "prev": "6316036926745e24615b2b5b278a66faa7ff8fa5056f527753ec5693042b57e9",
+      "hash": "bbf7e68fea981ec0650de08b7915316bcfbc7b1aee3b0af7048cf3f475f11210",
+      "hypothesis": "H1",
+      "status_after": "NOT_SUPPORTED mantido — régua nova mais conservadora"
+    },
+    {
+      "seq": 42,
+      "kind": "REASSESSMENT",
+      "run_id": "reassessment:H2",
+      "recorded_at": "2026-09-25T15:00:35.220619Z",
+      "prev": "bbf7e68fea981ec0650de08b7915316bcfbc7b1aee3b0af7048cf3f475f11210",
+      "hash": "ebbccf248db0d4467ca4d08be7d6cb8dabd3d99e3aa79e15b303afbd01654e73",
+      "hypothesis": "H2",
+      "status_after": "NOT_SUPPORTED mantido — régua nova mais conservadora"
+    },
+    {
+      "seq": 43,
+      "kind": "REASSESSMENT",
+      "run_id": "reassessment:H4",
+      "recorded_at": "2026-09-25T15:00:35.225310Z",
+      "prev": "ebbccf248db0d4467ca4d08be7d6cb8dabd3d99e3aa79e15b303afbd01654e73",
+      "hash": "88a475fa2a57b0b797a0b9a3c5265c684c9250344507a4c8a2e833dfa10757ad",
+      "hypothesis": "H4",
+      "status_after": "NOT_SUPPORTED mantido — régua nova mais conservadora"
+    },
+    {
+      "seq": 44,
+      "kind": "REASSESSMENT",
+      "run_id": "reassessment:H5",
+      "recorded_at": "2026-09-25T15:00:35.229978Z",
+      "prev": "88a475fa2a57b0b797a0b9a3c5265c684c9250344507a4c8a2e833dfa10757ad",
+      "hash": "9f24505cf1e6cb27b98d3726374edbb25c7507a77a2a7a228914b5fe8610f593",
+      "hypothesis": "H5",
+      "status_after": "NOT_SUPPORTED mantido — régua nova mais conservadora"
+    },
+    {
+      "seq": 45,
+      "kind": "REASSESSMENT",
+      "run_id": "reassessment:H6",
+      "recorded_at": "2026-09-25T15:00:35.234883Z",
+      "prev": "9f24505cf1e6cb27b98d3726374edbb25c7507a77a2a7a228914b5fe8610f593",
+      "hash": "1e798a652062cd44866519ddcdf299c95e070678ebb33b9bb2cbb48aba9a06fb",
+      "hypothesis": "H6",
+      "status_after": "NOT_SUPPORTED mantido — régua nova mais conservadora"
+    },
+    {
+      "seq": 46,
+      "kind": "REASSESSMENT",
+      "run_id": "reassessment:H7",
+      "recorded_at": "2026-09-25T15:00:35.239913Z",
+      "prev": "1e798a652062cd44866519ddcdf299c95e070678ebb33b9bb2cbb48aba9a06fb",
+      "hash": "bda9e09c0fdecb19e5dae25028b8ac63921a47965923b026fdd2a3e1cadf74dd",
+      "hypothesis": "H7",
+      "status_after": "NOT_SUPPORTED mantido — régua nova mais conservadora"
+    },
+    {
+      "seq": 47,
+      "kind": "REASSESSMENT",
+      "run_id": "reassessment:H8",
+      "recorded_at": "2026-09-25T15:00:35.245019Z",
+      "prev": "bda9e09c0fdecb19e5dae25028b8ac63921a47965923b026fdd2a3e1cadf74dd",
+      "hash": "f6048e21120492b83e8e86f7cecbfd9216c8a6a99e656cbf47a6530e14a7bec2",
+      "hypothesis": "H8",
+      "status_after": "NOT_SUPPORTED mantido — régua nova mais conservadora"
+    },
+    {
+      "seq": 48,
+      "kind": "REASSESSMENT",
+      "run_id": "reassessment:H9",
+      "recorded_at": "2026-09-25T15:00:35.250449Z",
+      "prev": "f6048e21120492b83e8e86f7cecbfd9216c8a6a99e656cbf47a6530e14a7bec2",
+      "hash": "3e293b46174d3a53a9b59191694d36f8d34c82f6a1263f0c7e9550c56647edb6",
+      "hypothesis": "H9",
+      "status_after": "NOT_SUPPORTED mantido — régua nova mais conservadora"
+    },
+    {
+      "seq": 49,
+      "kind": "REASSESSMENT",
+      "run_id": "reassessment:H10",
+      "recorded_at": "2026-09-25T15:00:35.256204Z",
+      "prev": "3e293b46174d3a53a9b59191694d36f8d34c82f6a1263f0c7e9550c56647edb6",
+      "hash": "0cc4eb11f5ffadc2cd665b1177f7ec9ce5d83b8c5b3af467d399d623fdf7d86a",
+      "hypothesis": "H10",
+      "status_after": "NOT_SUPPORTED mantido — régua nova mais conservadora"
+    },
+    {
+      "seq": 50,
+      "kind": "REASSESSMENT",
+      "run_id": "reassessment:H11",
+      "recorded_at": "2026-09-25T15:00:35.261179Z",
+      "prev": "0cc4eb11f5ffadc2cd665b1177f7ec9ce5d83b8c5b3af467d399d623fdf7d86a",
+      "hash": "05e3f746a323973ef2a63d01f468420fb2f780eb7cc949c4542e79d3f34564eb",
+      "hypothesis": "H11",
+      "status_after": "NOT_SUPPORTED mantido — régua nova mais conservadora"
+    },
+    {
+      "seq": 51,
+      "kind": "REASSESSMENT",
+      "run_id": "reassessment:H12",
+      "recorded_at": "2026-09-25T15:00:35.266284Z",
+      "prev": "05e3f746a323973ef2a63d01f468420fb2f780eb7cc949c4542e79d3f34564eb",
+      "hash": "0ce17bd7b7432113d69056f150c3a6c69a5a4464ccc94b334f3fe5ef51a0944d",
+      "hypothesis": "H12",
+      "status_after": "NOT_SUPPORTED mantido — régua nova mais conservadora"
+    },
+    {
+      "seq": 52,
+      "kind": "REASSESSMENT",
+      "run_id": "reassessment:H13",
+      "recorded_at": "2026-09-25T15:00:35.271550Z",
+      "prev": "0ce17bd7b7432113d69056f150c3a6c69a5a4464ccc94b334f3fe5ef51a0944d",
+      "hash": "fcacfb82d48a78b06a4f1184657d1a57870b3d8bcbdb5a04e666d2719f527a53",
+      "hypothesis": "H13",
+      "status_after": "NOT_SUPPORTED mantido — régua nova mais conservadora"
+    },
+    {
+      "seq": 53,
+      "kind": "REASSESSMENT",
+      "run_id": "reassessment:H14",
+      "recorded_at": "2026-09-25T15:00:35.277007Z",
+      "prev": "fcacfb82d48a78b06a4f1184657d1a57870b3d8bcbdb5a04e666d2719f527a53",
+      "hash": "f4ee8eabad7fdf1135962566042a4a503b70b0da1b9601ed1655b62d8803dfbe",
+      "hypothesis": "H14",
+      "status_after": "NOT_SUPPORTED mantido — régua nova mais conservadora"
+    },
+    {
+      "seq": 54,
+      "kind": "REASSESSMENT",
+      "run_id": "reassessment:H15",
+      "recorded_at": "2026-09-25T15:00:35.282100Z",
+      "prev": "f4ee8eabad7fdf1135962566042a4a503b70b0da1b9601ed1655b62d8803dfbe",
+      "hash": "ba8636f1196b22fc183fc2683c3f2072ade442e5b8cddb0f97d090f01745e00b",
+      "hypothesis": "H15",
+      "status_after": "NOT_SUPPORTED mantido — régua nova mais conservadora"
+    },
+    {
+      "seq": 55,
+      "kind": "REASSESSMENT",
+      "run_id": "reassessment:H16",
+      "recorded_at": "2026-09-25T15:00:35.287501Z",
+      "prev": "ba8636f1196b22fc183fc2683c3f2072ade442e5b8cddb0f97d090f01745e00b",
+      "hash": "ed0021ccbe1f875a97ed724cb8ced189ab7b32dc417dc95d2e9f9e15adb623ee",
+      "hypothesis": "H16",
+      "status_after": "NOT_SUPPORTED mantido — régua nova mais conservadora"
+    },
+    {
+      "seq": 56,
+      "kind": "HOLDOUT_SEALED",
+      "run_id": "holdout:stocks-prospective-2026-09-10",
+      "recorded_at": "2026-09-25T15:00:35.366268Z",
+      "prev": "ed0021ccbe1f875a97ed724cb8ced189ab7b32dc417dc95d2e9f9e15adb623ee",
+      "hash": "f9dc936725bd5b4a4f769b0cf50aaa20dd3ed04ec3271d753d30d3c643d76d45",
+      "holdout_id": "stocks-prospective-2026-09-10",
+      "interval": [
+        "2026-09-10",
+        "2027-09-10"
+      ],
+      "seal_sha256": "d2fc50e799b514d13a9b7dc6ca560938cb077dd5a058a8e964124b8a6bda0bd7"
+    }
+  ]
+}

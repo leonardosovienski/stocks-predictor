@@ -20,3 +20,7 @@ coverage.json
 test-results.xml
 build-receipt.json
 dist/
+# segredos locais nunca entram no Git
+.env
+.env.*
+*.env

@@ -1,0 +1,428 @@
+{
+  "status": "PASS",
+  "python": "3.13.15 (main, Sep  1 2026, 14:18:08) [Clang 22.1.3 ]",
+  "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "package_code_sha256_lf": {
+    "execution.py": "fd867494a27f54e0c64e4fbe2a48f87e5c22669e3c1115a4830ce74770aa9348",
+    "ingest_cvm.py": "17d694353b5596caf396aed978b22ff688d9d06cd0375d33888cc569317af14e",
+    "h20_research.py": "23e3a7763a3121fcbe72f80fd9c2d48a8f8400513193197de2b7aa02e843ed28",
+    "continuous_cash.py": "cac6c98839728f4fe7d86d4898b9f806e957db6ac84723c77dfbd3fe95c65dd4",
+    "rj_judge.py": "888a70fed443776de60b0347eb3ead81197cf8beaa9d638e6265c5b267296a5f",
+    "economic_gate.py": "289c04fc6b021aa92c452ff2a823fa068704bb250cee7c25fcc27e2dc07c8da8",
+    "ecosystem_plugin.py": "a9cf4065362d346b018bdba1d6682b4640bb40b3d21efba0ce4aa29e569173f3",
+    "research_collect_worker.py": "f6607db819b1959e40324db33296e26707de37aa546462e9018611b7c3b71274",
+    "db.py": "32e7d22ce9fa2f49665ce4b55de924dc1fca1aef69188670b7ee3c8ce1b0e569",
+    "simulation.py": "a58cef56caf0e0ac2f555713094c4b6e265ce24164b4bbebbca37226a6d5bad7",
+    "universe.py": "59ea318afcba6f6548786648189c018dbff0e84ec057ccb751fc0a311370e548",
+    "rj_episodes.py": "be3d3f22dd10ea8f01728cc314a0c0c6f99471732a3a36288287a69f52d251ff",
+    "rj_outcomes.py": "3e153b9504c2e12388a8f0b9b0d289cc608ed099c9e6bfdedd8718bc5c7d147c",
+    "ingest_rj_universe.py": "209da4863c556c9dec2ad19180ca6e4fdf1ff3d2982527bef41d5d5d2009c1a5",
+    "entry_feasibility.py": "0a4aafcdea65541eca50ada7cdb30b1d1c592f8c9a7d86034530296053482651",
+    "operational_store.py": "5f8199af7215c75d3f4478cec4eb4dc7b703aaded37ac8b6bc7d0491ecb378e3",
+    "dataset_selection.py": "a8fad1ad66123c3726cab8badab33fbde362762b0c0806bddd5f8ba65847b355",
+    "buffered_rebalance.py": "66ff3940575b47a778651a53e90f2f46f560895c2ab512b8efc2c278bfe57a39",
+    "cash_source_audit.py": "6a7d99130c1c21f63413ccfa1846a7a7d4e4658830d66d5d3155e1b010b77b78",
+    "portfolio.py": "8e5639ffb1e17e463fcead1f0fd4d71d032647db8f8de518fc34edcfbb0efb37",
+    "source_history.py": "30adbd37d3d1a516b74e5538f215853e648f53d3daa232e3ba8a3c1c8aa1e1cd",
+    "research_runner.py": "64b44ab6ec4a0dfff723dbf117636242a147cae901a13b77499cfa7c26833d78",
+    "__main__.py": "d6cc0e4a986dbcbc2fedc55c9bdfb356e2fc53204c7d206315b5164ed04de328",
+    "cotahist.py": "32db7f1c39df16e74350f332c8949ac11e711f0f41a7566a27646d24a3b1589f",
+    "adjust.py": "910f3a40febeaa55afc0d6abe593dd07af788668d48cd5231bff02db2b84a1c7",
+    "operations.py": "4ff390c93587939682a4d0334a6b490414ea0d592704799b62cb726d4aca368e",
+    "report.py": "df758c42f9e66be6ea959808d652eefb96424be269f0acc0786d91b433d40c82",
+    "stock_events.py": "2879139f85ca0213649cfdd8899ac8ebeebae6248f3d0c7a167be4a1d6eb6879",
+    "factor.py": "3b5213855dd3b9169b72463df94f061ebe25333a306a2f77582728235856603d",
+    "research_execution.py": "5212024a7eb28becefbe70864d1aa3e3afd30ef559e56279347d8913979b465e",
+    "analyst.py": "73ecee7d88bf8f77033510239e51abf2be6bde6d7c10a7577e01d928fccc43b0",
+    "monthly_etf.py": "56b4d8c1246c5107f5f962b3c8df5b24fa4f279611a4ba80f7526f1b815f2c2a",
+    "config.py": "1cf9eb82c9f3be725f376ed0b2ed2ca71a69677ea7fe13bcfa989da474a38d23",
+    "rj_coda.py": "7ef5b31b9a986be78f1523523e903d2aaa947fb17cb2fd83df5af30851869630",
+    "h20_continuous.py": "569d57957e4ac4d0bdf2d6c7b38686c59d7f968e5d0f8e95c73122ad4810b095",
+    "prospective_big_winner.py": "081c6670fb81ef7826162847af52b52585719f82ca0d7a68b20d26dc9c1ce805",
+    "research_pit.py": "5bd37457d366f672d393ff8bee10fcba64b1d9f4a77c6b8e1ea3ef26257248b3",
+    "rj_judge_robust.py": "4a24eba1c18430030f4d20c81d5750b48a38225288ca090f8e9ddf1fa615b2b1",
+    "research_contract.py": "3e47ead36c0b77893ee69291e1c82f11c8725dac6c42a7e75ec32193086c0edf",
+    "research_io.py": "f28e8ed3547ffc3ad713b24d95f4787902626fe326af107816a4cc7218a9ea19",
+    "external_intelligence.py": "4860c9e139c9c3cdebf7468f965ed1afdb0fb93a8aaba9c897853ae5d7b9e51c",
+    "source_catalog.py": "94501e8822b26cf7479f73a6db4b6d9be26ce735509bb85873828eed82bf81f2",
+    "continuous_research.py": "16a22550a725a73a0f1a0f50cc26ff99e5fd52b4dac32762c3f918c7142efd83",
+    "paper.py": "2b1a2f527d43b7e6a5d0c8a50692fe07f0d5dfe83d05d7980546256050a10b96",
+    "value_profitability.py": "b78279121c5e06b713fe6a1a96d3e5769559ed871c15b21bebc4854f751477b2",
+    "document_panel.py": "a8590fe6d3f9efb6586e502ef88cf6311cbee09ce892f305c05deaeccf59dc03",
+    "research_recovery.py": "9ef7194df0bb89cc66ecda97e50e7678724fef22a29d66bca03a3836020a8d97",
+    "source_closure.py": "a3ab2e8aa6461f7ec0822117566643aa29a2ef5db281c27fa42ae59d999fac62",
+    "research_worker.py": "10871ec57a7052bbc6cd47fe29b052f47c3e13ad9c38d129ce44c911d390f290",
+    "trials_gate.py": "491ed0b1d8bdd2c560a45373835114eb9e5fc5365e257bb80b37c6a03e3b2667",
+    "economics.py": "fa1778ac2e9274f00b5e882a0b30f08e4412d97236550735164665ae103d0098",
+    "research_admission.py": "d29bd40ccdb376b993b5eb090b1c8f7a4f8035322e93517a31f77cfd8e270213",
+    "__init__.py": "782ec98063df39ce0d974377eca9246af3c9906281dc837d0de2333109b80595",
+    "cash_events.py": "a20d9680d84bf5fffe380ec812ed155d107b6452157f85791c081a69801e8de7",
+    "disclosed_accounting.py": "87a0efabf01a942954abe93e0033fbe5e0debae236bf31d004e3a3321f61d81d",
+    "discovery_value_repair.py": "6c44d04b6f8cfede0f8e5ba00401528e83139ed9d0e7350b4ba98384df316453",
+    "diagnostics.py": "a5fe606963b0b77a1465f326d0e59347453aabe7776d9b923adb6a83d32c4bd4",
+    "profit_validation.py": "47e04d5720c4dc67e987ffc80802ade82ab288c3c83abc312850b661cd210763",
+    "rj_pipeline.py": "2ad14495ce5af63cc1abc32a8b2193b9ffa7e59d1354b4bd23084fa0c0a82a3b",
+    "research_faults.py": "373eafcabe0384abe1aa9a6bb45631158070b9c02a2650964ba361b0476bb058",
+    "ingest_cotahist.py": "40316fceaf8a8b43725203f4497b2cf817d09543d44ab77ddbf85ca6d0a0ab33",
+    "discovery_reorganizations.py": "359b3301baf44bc61f89fb3148bf689dec0036da232ae8a02a14be95c10fd304",
+    "big_winner_shadow.py": "b8540d5a697aee2ee418b0f61e273d08cfcb4a2d83a602d06af6a8401b39f409",
+    "research_results.py": "4a3a42402b46e73488f58d11ad53f376fdb0f731f370f2b305e85a14d0c491d9",
+    "big_winner_v2.py": "190b90e5a0939b5460b98db4c4d4dea357b282014d211e4f27620683d18547aa",
+    "discovery_value.py": "ac9096efeff26f2d5672e0d08437f07aec779135da22017146baeb98b74e9347",
+    "discovery_h17.py": "0254b3542f014649e4512daf40cbf3c63cbe8ee12640808775df397f5f97d4cc",
+    "research_profile.py": "f8ef1353ac6701ef3eb24d92e3974bc95c745133e0597a9266308069d9ef1cfb",
+    "rj_families_next.py": "049f74a66376ee50bc9b1346a9285c48273fd35bd01fef1cca8498926b273cb0",
+    "validation.py": "7455faf2631085fe6762a7fa09e820e2cb5fe183292fc7fd33b8d802662c81e7",
+    "returns.py": "d243bc94f5b6d67f2b15150adfe4370224bfca45face9b791409fb90424c4eec",
+    "cvm_pit.py": "ad0fcd503f80894143366848b439eb8c23d6e27dfb79d884e7e7160b2a8c5f90",
+    "temporal_evidence.py": "8ec0cf50328b63e17b0fb2697d38de3d86054f8ea36b9d17f9a23d86c197a309",
+    "rj_families.py": "0b1eebfa636b5dca39c2203824c95281758925190a224116a4e6e889727a1c98",
+    "rj_power.py": "222e6064f8f2af24483d0f890d9a56f4a2b10542b7f546833787fd781d619cae",
+    "etf_hold.py": "c254225e605593efddb9dddeaf1e5a0287f57a19df742a3a414f0b7a4095e9b6",
+    "backtest.py": "e3a720e81722b06fcb7c7005d82142e62c38046f49ffa71730155da0254bf107",
+    "research_readiness.py": "c89e06f5811cced2789556e4849946ec9f0d826b0877d7ce4b6c9d2ee8e0217a",
+    "h20_checked.py": "fc806cfe39de17918662d8b189e4d235b098e94985e81ce0a656e750f0d2859d",
+    "retail_cash.py": "9450da3d4dbd5a88cf50ca5ed0984c2a19bc3a0e49e90b629e61b12a4d632833"
+  },
+  "installed_wheel": false,
+  "source_sha256": "da7ce5a110f819cfa2e71f38b8a1c1385345ea0a92a2669f44c099c5433834a1",
+  "archive_bytes": 771994,
+  "rows": 250000,
+  "inspection": {
+    "status": "PASS",
+    "schema_version": 1,
+    "sources": [
+      {
+        "source_id": "sha256:89a37fe216d9321db1afe88aa0ee533303f331c62ba089edb77503f27b496a11",
+        "publisher": "SYNTHETIC",
+        "dataset": "synthetic-capacity-fixture",
+        "version": "v1",
+        "policy": "cotahist-strict-v1/spot-02-010",
+        "sha256": "da7ce5a110f819cfa2e71f38b8a1c1385345ea0a92a2669f44c099c5433834a1",
+        "source_url": "https://example.invalid/synthetic.zip",
+        "original_name": "synthetic.zip",
+        "observed_at": "2026-09-10T10:00:00+00:00",
+        "rows": 250000,
+        "tickers": 1000,
+        "date_min": "2024-01-01",
+        "date_max": "2024-09-06",
+        "rows_sha256": "6b8e2c5f09e0c963f6ed1168cd10e8ef9d70e710321a81f8a2c817ae6126f2e9"
+      }
+    ],
+    "stored_rows": 250000,
+    "scope": "Physical source versions; never an automatically merged price series.",
+    "historical_publication_certified": false,
+    "capital_enabled": false
+  },
+  "measurements": [
+    {
+      "command": [
+        "init",
+        "--db",
+        "/home/superleo13/predictors/runtime/stocks/r8-review-20260925/capacity/research.sqlite"
+      ],
+      "exit_code": 0,
+      "result": {
+        "status": "PASS",
+        "schema_version": 1,
+        "sources": [],
+        "stored_rows": 0,
+        "scope": "Physical source versions; never an automatically merged price series.",
+        "historical_publication_certified": false,
+        "capital_enabled": false
+      },
+      "seconds": 0.05374771599599626,
+      "cpu_seconds": 0.005859900000000001,
+      "peak_process_rss_bytes": 27762688
+    },
+    {
+      "command": [
+        "ingest",
+        "--db",
+        "/home/superleo13/predictors/runtime/stocks/r8-review-20260925/capacity/research.sqlite",
+        "--archive",
+        "/home/superleo13/predictors/runtime/stocks/r8-review-20260925/capacity/synthetic.zip",
+        "--publisher",
+        "SYNTHETIC",
+        "--dataset",
+        "synthetic-capacity-fixture",
+        "--version",
+        "v1",
+        "--source-url",
+        "https://example.invalid/synthetic.zip",
+        "--observed-at",
+        "2026-09-10T10:00:00Z",
+        "--sha256",
+        "da7ce5a110f819cfa2e71f38b8a1c1385345ea0a92a2669f44c099c5433834a1",
+        "--scratch-dir",
+        "/home/superleo13/predictors/runtime/stocks/r8-review-20260925/capacity"
+      ],
+      "exit_code": 0,
+      "result": {
+        "status": "PASS",
+        "source_id": "sha256:89a37fe216d9321db1afe88aa0ee533303f331c62ba089edb77503f27b496a11",
+        "sha256": "da7ce5a110f819cfa2e71f38b8a1c1385345ea0a92a2669f44c099c5433834a1",
+        "inserted": 250000,
+        "policy": "cotahist-strict-v1/spot-02-010",
+        "historical_publication_certified": false,
+        "capital_enabled": false
+      },
+      "seconds": 2.1100765830051387,
+      "cpu_seconds": 1.9931983999999998,
+      "peak_process_rss_bytes": 31461376
+    },
+    {
+      "command": [
+        "ingest",
+        "--db",
+        "/home/superleo13/predictors/runtime/stocks/r8-review-20260925/capacity/research.sqlite",
+        "--archive",
+        "/home/superleo13/predictors/runtime/stocks/r8-review-20260925/capacity/synthetic.zip",
+        "--publisher",
+        "SYNTHETIC",
+        "--dataset",
+        "synthetic-capacity-fixture",
+        "--version",
+        "v1",
+        "--source-url",
+        "https://example.invalid/synthetic.zip",
+        "--observed-at",
+        "2026-09-10T10:00:00Z",
+        "--sha256",
+        "da7ce5a110f819cfa2e71f38b8a1c1385345ea0a92a2669f44c099c5433834a1",
+        "--scratch-dir",
+        "/home/superleo13/predictors/runtime/stocks/r8-review-20260925/capacity"
+      ],
+      "exit_code": 0,
+      "result": {
+        "status": "PASS",
+        "source_id": "sha256:89a37fe216d9321db1afe88aa0ee533303f331c62ba089edb77503f27b496a11",
+        "sha256": "da7ce5a110f819cfa2e71f38b8a1c1385345ea0a92a2669f44c099c5433834a1",
+        "inserted": 0,
+        "policy": "cotahist-strict-v1/spot-02-010",
+        "historical_publication_certified": false,
+        "capital_enabled": false
+      },
+      "seconds": 1.9434480909985723,
+      "cpu_seconds": 1.9434455,
+      "peak_process_rss_bytes": 31375360
+    },
+    {
+      "command": [
+        "inspect",
+        "--db",
+        "/home/superleo13/predictors/runtime/stocks/r8-review-20260925/capacity/research.sqlite"
+      ],
+      "exit_code": 0,
+      "result": {
+        "status": "PASS",
+        "schema_version": 1,
+        "sources": [
+          {
+            "source_id": "sha256:89a37fe216d9321db1afe88aa0ee533303f331c62ba089edb77503f27b496a11",
+            "publisher": "SYNTHETIC",
+            "dataset": "synthetic-capacity-fixture",
+            "version": "v1",
+            "policy": "cotahist-strict-v1/spot-02-010",
+            "sha256": "da7ce5a110f819cfa2e71f38b8a1c1385345ea0a92a2669f44c099c5433834a1",
+            "source_url": "https://example.invalid/synthetic.zip",
+            "original_name": "synthetic.zip",
+            "observed_at": "2026-09-10T10:00:00+00:00",
+            "rows": 250000,
+            "tickers": 1000,
+            "date_min": "2024-01-01",
+            "date_max": "2024-09-06",
+            "rows_sha256": "6b8e2c5f09e0c963f6ed1168cd10e8ef9d70e710321a81f8a2c817ae6126f2e9"
+          }
+        ],
+        "stored_rows": 250000,
+        "scope": "Physical source versions; never an automatically merged price series.",
+        "historical_publication_certified": false,
+        "capital_enabled": false
+      },
+      "seconds": 1.2692792980087688,
+      "cpu_seconds": 1.2692710999999999,
+      "peak_process_rss_bytes": 29614080
+    },
+    {
+      "command": [
+        "snapshot",
+        "--db",
+        "/home/superleo13/predictors/runtime/stocks/r8-review-20260925/capacity/research.sqlite",
+        "--destination",
+        "/home/superleo13/predictors/runtime/stocks/r8-review-20260925/capacity/backup"
+      ],
+      "exit_code": 0,
+      "result": {
+        "status": "PASS",
+        "format": "stocks-snapshot-v1",
+        "sha256": "4584768a566434b4f673edc21618514145c1998cdfe5db7679812964cd9d4c37",
+        "created_at": "2026-09-25T16:39:39.605962+00:00",
+        "inspection": {
+          "status": "PASS",
+          "schema_version": 1,
+          "sources": [
+            {
+              "source_id": "sha256:89a37fe216d9321db1afe88aa0ee533303f331c62ba089edb77503f27b496a11",
+              "publisher": "SYNTHETIC",
+              "dataset": "synthetic-capacity-fixture",
+              "version": "v1",
+              "policy": "cotahist-strict-v1/spot-02-010",
+              "sha256": "da7ce5a110f819cfa2e71f38b8a1c1385345ea0a92a2669f44c099c5433834a1",
+              "source_url": "https://example.invalid/synthetic.zip",
+              "original_name": "synthetic.zip",
+              "observed_at": "2026-09-10T10:00:00+00:00",
+              "rows": 250000,
+              "tickers": 1000,
+              "date_min": "2024-01-01",
+              "date_max": "2024-09-06",
+              "rows_sha256": "6b8e2c5f09e0c963f6ed1168cd10e8ef9d70e710321a81f8a2c817ae6126f2e9"
+            }
+          ],
+          "stored_rows": 250000,
+          "scope": "Physical source versions; never an automatically merged price series.",
+          "historical_publication_certified": false,
+          "capital_enabled": false
+        }
+      },
+      "seconds": 1.4667613199999323,
+      "cpu_seconds": 1.4044672,
+      "peak_process_rss_bytes": 32460800
+    },
+    {
+      "command": [
+        "restore",
+        "--snapshot",
+        "/home/superleo13/predictors/runtime/stocks/r8-review-20260925/capacity/backup",
+        "--destination",
+        "/home/superleo13/predictors/runtime/stocks/r8-review-20260925/capacity/restored"
+      ],
+      "exit_code": 0,
+      "result": {
+        "status": "PASS",
+        "source_snapshot_sha256": "4584768a566434b4f673edc21618514145c1998cdfe5db7679812964cd9d4c37",
+        "inspection": {
+          "status": "PASS",
+          "schema_version": 1,
+          "sources": [
+            {
+              "source_id": "sha256:89a37fe216d9321db1afe88aa0ee533303f331c62ba089edb77503f27b496a11",
+              "publisher": "SYNTHETIC",
+              "dataset": "synthetic-capacity-fixture",
+              "version": "v1",
+              "policy": "cotahist-strict-v1/spot-02-010",
+              "sha256": "da7ce5a110f819cfa2e71f38b8a1c1385345ea0a92a2669f44c099c5433834a1",
+              "source_url": "https://example.invalid/synthetic.zip",
+              "original_name": "synthetic.zip",
+              "observed_at": "2026-09-10T10:00:00+00:00",
+              "rows": 250000,
+              "tickers": 1000,
+              "date_min": "2024-01-01",
+              "date_max": "2024-09-06",
+              "rows_sha256": "6b8e2c5f09e0c963f6ed1168cd10e8ef9d70e710321a81f8a2c817ae6126f2e9"
+            }
+          ],
+          "stored_rows": 250000,
+          "scope": "Physical source versions; never an automatically merged price series.",
+          "historical_publication_certified": false,
+          "capital_enabled": false
+        }
+      },
+      "seconds": 1.5011383620003471,
+      "cpu_seconds": 1.4370138,
+      "peak_process_rss_bytes": 29446144
+    },
+    {
+      "command": [
+        "inspect",
+        "--db",
+        "/home/superleo13/predictors/runtime/stocks/r8-review-20260925/capacity/restored/research.sqlite"
+      ],
+      "exit_code": 0,
+      "result": {
+        "status": "PASS",
+        "schema_version": 1,
+        "sources": [
+          {
+            "source_id": "sha256:89a37fe216d9321db1afe88aa0ee533303f331c62ba089edb77503f27b496a11",
+            "publisher": "SYNTHETIC",
+            "dataset": "synthetic-capacity-fixture",
+            "version": "v1",
+            "policy": "cotahist-strict-v1/spot-02-010",
+            "sha256": "da7ce5a110f819cfa2e71f38b8a1c1385345ea0a92a2669f44c099c5433834a1",
+            "source_url": "https://example.invalid/synthetic.zip",
+            "original_name": "synthetic.zip",
+            "observed_at": "2026-09-10T10:00:00+00:00",
+            "rows": 250000,
+            "tickers": 1000,
+            "date_min": "2024-01-01",
+            "date_max": "2024-09-06",
+            "rows_sha256": "6b8e2c5f09e0c963f6ed1168cd10e8ef9d70e710321a81f8a2c817ae6126f2e9"
+          }
+        ],
+        "stored_rows": 250000,
+        "scope": "Physical source versions; never an automatically merged price series.",
+        "historical_publication_certified": false,
+        "capital_enabled": false
+      },
+      "seconds": 1.0664706949901301,
+      "cpu_seconds": 1.066439,
+      "peak_process_rss_bytes": 29757440
+    },
+    {
+      "command": [
+        "profile",
+        "--input",
+        "/home/superleo13/predictors/runtime/stocks/r8-review-20260925/capacity/profile.json"
+      ],
+      "exit_code": 0,
+      "result": {
+        "status": "INCOMPLETE_PERSONAL_SCENARIO",
+        "capital_brl": "5000",
+        "missing_inputs": [
+          "horizon_months",
+          "resident_pf_brazil",
+          "brokerage_per_order_brl",
+          "monthly_fixed_brl",
+          "advisor_annual_fraction",
+          "setup_cost_brl",
+          "monthly_maintenance_hours",
+          "hourly_opportunity_cost_brl"
+        ],
+        "planned_orders": 2,
+        "known_fixed_reserve_brl": null,
+        "fixed_reserve_fits_capital": null,
+        "project_and_time_cost_brl": null,
+        "cost_scope": "Brokerage/fixed reserve and project opportunity cost are separate; taxes and exchange fees still require applicable trade records.",
+        "advisor_cost_basis": "requires future valuation path; rate is not a fixed expense",
+        "risk_limit_confirmed": false,
+        "absolute_net_profit_demonstrated": false,
+        "capital_enabled": false
+      },
+      "seconds": 0.0021740990050602704,
+      "cpu_seconds": 0.0021718000000000015,
+      "peak_process_rss_bytes": 26484736
+    },
+    {
+      "command": [
+        "evidence",
+        "--input",
+        "/home/superleo13/predictors/runtime/stocks/r8-review-20260925/capacity/outcomes.json",
+        "--asof",
+        "2026-09-10T00:00:00Z"
+      ],
+      "exit_code": 0,
+      "result": {
+        "status": "INSUFFICIENT_EVIDENCE",
+        "estimate": null,
+        "capital_enabled": false,
+        "scope": "Supplied chronology only; independence, timestamp truth and profit unverified."
+      },
+      "seconds": 0.00218229899473954,
+      "cpu_seconds": 0.002180500000000002,
+      "peak_process_rss_bytes": 26484736
+    }
+  ],
+  "capital_enabled": false,
+  "scope": "Finite local batch capacity and CLI recovery. RSS is peak of each fresh CLI process; no live-trading or profit validation."
+}

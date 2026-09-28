@@ -1,0 +1,13 @@
+{
+  "horizon": 21,
+  "context_length": 64,
+  "levels": [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9],
+  "jump_threshold": 0.30,
+  "jump_threshold_source": "config.yaml jump_detector.threshold_abs (H1 congelado): |retorno diário| > 30% = evento não ajustado provável",
+  "baseline": "gaussian_random_walk",
+  "design": {"alpha": 0.05, "power": 0.8, "min_detectable_relative_improvement": 0.05},
+  "period_rule": "full_context_to_end",
+  "source_sha256": "34b774681cbd201ef197fb98af8d431e4d7302e801f58b66e54036d2935dc4f4",
+  "index_ticker": "BOVA11",
+  "rank_quantile": 0.2
+}

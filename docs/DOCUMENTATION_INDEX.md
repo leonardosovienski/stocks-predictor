@@ -8,7 +8,7 @@ Comece por [README](../README.md), [estado atual](../STOCKS_CURRENT_STATE.md),
 A [revisão dos arquivos](maintenance/2026-09-10-files/README.md) explica limpeza,
 preservação, dados externos e referências históricas sem destino direto.
 
-211 Markdown versionados. Classificação não certifica todas as afirmações históricas.
+221 Markdown versionados. Classificação não certifica todas as afirmações históricas.
 URLs externas e fragmentos/âncoras não são validados por este verificador.
 
 | Documento | Papel |
@@ -41,6 +41,7 @@ URLs externas e fragmentos/âncoras não são validados por este verificador.
 | [docs/audit/kimi_2026-08-24/plan.md](audit/kimi_2026-08-24/plan.md) | REGISTRO_DATADO |
 | [docs/auditoria_2026-09-04.md](auditoria_2026-09-04.md) | REGISTRO_DATADO |
 | [docs/continuation/2026-09-10-closure/README.md](continuation/2026-09-10-closure/README.md) | REGISTRO_DATADO |
+| [docs/continuation/2026-09-25-serie-stocks-revisada.md](continuation/2026-09-25-serie-stocks-revisada.md) | REGISTRO_DATADO |
 | [docs/continuation/COMPLETION_R7_20260910.md](continuation/COMPLETION_R7_20260910.md) | REGISTRO_DATADO |
 | [docs/continuation/INITIAL_REQUEST.md](continuation/INITIAL_REQUEST.md) | REGISTRO_DATADO |
 | [docs/continuation/MANDATO_20260909.md](continuation/MANDATO_20260909.md) | REGISTRO_DATADO |
@@ -55,6 +56,15 @@ URLs externas e fragmentos/âncoras não são validados por este verificador.
 | [docs/engineering/2026-09-10-r8/PLAN.md](engineering/2026-09-10-r8/PLAN.md) | REGISTRO_DATADO |
 | [docs/engineering/2026-09-10-r8/README.md](engineering/2026-09-10-r8/README.md) | REGISTRO_DATADO |
 | [docs/engineering/2026-09-10-r8/RUNBOOK.md](engineering/2026-09-10-r8/RUNBOOK.md) | REPRODUCAO_COM_ESCOPO_DATADO |
+| [docs/engineering/2026-09-24-protocol-v2/README.md](engineering/2026-09-24-protocol-v2/README.md) | REGISTRO_DATADO |
+| [docs/engineering/2026-09-26-cain-findings/README.md](engineering/2026-09-26-cain-findings/README.md) | REGISTRO_DATADO |
+| [docs/evidence/2026-09-24-prompt1-segredos.md](evidence/2026-09-24-prompt1-segredos.md) | REGISTRO_DATADO |
+| [docs/evidence/2026-09-24-prompt2-auditoria.md](evidence/2026-09-24-prompt2-auditoria.md) | REGISTRO_DATADO |
+| [docs/evidence/2026-09-24-prompt3a-dados-baselines.md](evidence/2026-09-24-prompt3a-dados-baselines.md) | REGISTRO_DATADO |
+| [docs/evidence/2026-09-24-prompt3b-validacao.md](evidence/2026-09-24-prompt3b-validacao.md) | REGISTRO_DATADO |
+| [docs/evidence/2026-09-24-prompt3c-execucao.md](evidence/2026-09-24-prompt3c-execucao.md) | REGISTRO_DATADO |
+| [docs/evidence/2026-09-25-prompt4-reavaliacao.md](evidence/2026-09-25-prompt4-reavaliacao.md) | REGISTRO_DATADO |
+| [docs/evidence/2026-09-25-revisao-completa.md](evidence/2026-09-25-revisao-completa.md) | REGISTRO_DATADO |
 | [docs/external_intelligence/README.md](external_intelligence/README.md) | REGISTRO_DATADO |
 | [docs/external_intelligence/REPORT.md](external_intelligence/REPORT.md) | REGISTRO_DATADO |
 | [docs/maintenance/2026-09-10-files/README.md](maintenance/2026-09-10-files/README.md) | REGISTRO_DATADO |

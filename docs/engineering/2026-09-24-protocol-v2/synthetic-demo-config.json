@@ -1,0 +1,27 @@
+{
+  "start": "2020-01-02",
+  "end": "2021-06-30",
+  "rebalance": "monthly",
+  "execution": {"lag_sessions": 1, "price": "open"},
+  "costs": {
+    "brokerage_bps": 0.0,
+    "brokerage_fixed": 0.0,
+    "exchange_fee_bps": 3.0,
+    "spread_bps": 7.5,
+    "slippage_bps": 7.5,
+    "impact_bps_at_full_adv": 0.0,
+    "impact_exponent": 0.5,
+    "borrow_bps_annual": 0.0,
+    "sessions_per_year": 252
+  },
+  "liquidity": {"min_adv": 1000000.0, "adv_lookback": 63, "max_participation": 0.05, "statistic": "mean"},
+  "initial_cash": 1000000.0,
+  "seed": 7,
+  "allow_short": false,
+  "baselines": {
+    "index_id": "IDX11",
+    "random_positions": 5,
+    "forecast_horizon": 21,
+    "momentum": {"lookback": 252, "skip": 21, "quantile": 0.2, "max_stale": 5}
+  }
+}
