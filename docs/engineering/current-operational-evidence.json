@@ -1,9 +1,9 @@
 {
   "schema_version": "current-operational-evidence/1",
   "status": "LOCAL_VALIDATED_CI_PENDING",
-  "generated_at": "2026-09-24T03:54:22.857464Z",
+  "generated_at": "2026-09-28T00:35:48.927041Z",
   "code_text_hash_policy": "UTF-8 file bytes with CRLF normalized to LF",
-  "code_population_sha256": "338b5218e66b249a0bbfa0702f3137a827f8ebb043c48f117e6fe9ffe40e1f55",
+  "code_population_sha256": "5a8cbfd8409ca59a9b67ca6b34aa3eddd37cd8a261a13fa45a9f9946be1786d8",
   "current_code_sha256_lf": [
     {
       "path": ".gitattributes",
@@ -27,7 +27,7 @@
     },
     {
       "path": "pyproject.toml",
-      "sha256": "6fa7e95a5019d8bef59810369581fb97be08761717faf5971f0180c545891eac"
+      "sha256": "740f5874c0b736dcb02dbc3fffc92469e0abc5b6f324de359bbb6540d3b10ff8"
     },
     {
       "path": "stocks_predictor/__init__.py",
@@ -40,6 +40,10 @@
     {
       "path": "stocks_predictor/adapters/__init__.py",
       "sha256": "5220a87c4bd0dc18596b556a6945500b591f0c4ee8768e5cb1511a73eea4c262"
+    },
+    {
+      "path": "stocks_predictor/adapters/research_v2.py",
+      "sha256": "26e9346bd3f2b166fa557b97aa8061ad8ab96f4a4a7ec8dc55982bb175b8169e"
     },
     {
       "path": "stocks_predictor/adjust.py",
@@ -356,6 +360,18 @@
     {
       "path": "tests/__init__.py",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/adapters/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/adapters/conftest.py",
+      "sha256": "2c54511c7ec6a56994e42fbbce8ff7b497cd9ea4addcf3462b5615451ecdf69b"
+    },
+    {
+      "path": "tests/adapters/test_research_v2.py",
+      "sha256": "456dfb8369856f227f3b4f716105dc3f89e161ffbc311df942cddbc2f429ef6d"
     },
     {
       "path": "tests/conformance/__init__.py",
@@ -907,11 +923,11 @@
     },
     {
       "path": "uv.lock",
-      "sha256": "cf4519d43880e531dea6f6ed982a1708dbfac8e3cd63e790b8270c37e0ecd4fd"
+      "sha256": "c9e6d46190d921892fb0ae4b503efbee4849770c1f20853c5c510724f5624080"
     }
   ],
-  "real_validation": "docs/engineering/2026-09-24-qualification-stage-a/evidence/operational-real.json",
-  "capacity_validation": "docs/engineering/2026-09-24-qualification-stage-a/evidence/operational-capacity.json",
+  "real_validation": "docs/engineering/2026-09-27-integration-stocks/evidence/operational-real.json",
+  "capacity_validation": "docs/engineering/2026-09-27-integration-stocks/evidence/operational-capacity.json",
   "capital_enabled": false,
   "profit_certified": false
 }
