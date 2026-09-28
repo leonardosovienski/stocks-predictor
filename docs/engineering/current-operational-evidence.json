@@ -1,9 +1,9 @@
 {
   "schema_version": "current-operational-evidence/1",
   "status": "LOCAL_VALIDATED_CI_PENDING",
-  "generated_at": "2026-09-26T04:33:52.903102Z",
+  "generated_at": "2026-09-28T02:52:40.833239Z",
   "code_text_hash_policy": "UTF-8 file bytes with CRLF normalized to LF",
-  "code_population_sha256": "049bdfe05c5693af5d2cacccb75c14a5b87ec16dc89454e0698723bbb7c5f84d",
+  "code_population_sha256": "12fc9a05949162f9368e664fd876dca69ceb24491668f5631b8f1ad48e22a4af",
   "current_code_sha256_lf": [
     {
       "path": ".gitattributes",
@@ -27,7 +27,7 @@
     },
     {
       "path": "pyproject.toml",
-      "sha256": "740f5874c0b736dcb02dbc3fffc92469e0abc5b6f324de359bbb6540d3b10ff8"
+      "sha256": "d078be05ff109f773177c4f93aa92ecb91e5bf51830338c5068b070becb202ee"
     },
     {
       "path": "stocks_predictor/__init__.py",
@@ -1055,11 +1055,11 @@
     },
     {
       "path": "uv.lock",
-      "sha256": "c9e6d46190d921892fb0ae4b503efbee4849770c1f20853c5c510724f5624080"
+      "sha256": "d815638c9c5246740225a18a4ad561b7ddf951f7d3289deab375ac3c674f433a"
     }
   ],
-  "real_validation": "docs/engineering/2026-09-24-protocol-v2/evidence/review-20260925-ciclo2/operational-real.json",
-  "capacity_validation": "docs/engineering/2026-09-24-protocol-v2/evidence/review-20260925-ciclo2/operational-capacity.json",
+  "real_validation": "docs/engineering/2026-09-28-integration-stocks/evidence/operational-real.json",
+  "capacity_validation": "docs/engineering/2026-09-28-integration-stocks/evidence/operational-capacity.json",
   "capital_enabled": false,
   "profit_certified": false
 }
