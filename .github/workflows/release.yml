@@ -37,7 +37,7 @@ jobs:
       GH_TOKEN: ${{ github.token }}
       PYTHONHASHSEED: "0"
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           ref: ${{ inputs.ref || inputs.tag || github.ref }}
           fetch-depth: 0
