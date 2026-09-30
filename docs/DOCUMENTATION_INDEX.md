@@ -8,7 +8,7 @@ Comece por [README](../README.md), [estado atual](../STOCKS_CURRENT_STATE.md),
 A [revisão dos arquivos](maintenance/2026-09-10-files/README.md) explica limpeza,
 preservação, dados externos e referências históricas sem destino direto.
 
-221 Markdown versionados. Classificação não certifica todas as afirmações históricas.
+223 Markdown versionados. Classificação não certifica todas as afirmações históricas.
 URLs externas e fragmentos/âncoras não são validados por este verificador.
 
 | Documento | Papel |
@@ -24,6 +24,7 @@ URLs externas e fragmentos/âncoras não são validados por este verificador.
 | [docs/AGENT_CHARTER.md](AGENT_CHARTER.md) | REGISTRO_DATADO |
 | [docs/DESIGN.md](DESIGN.md) | PROTOCOLO_PRESERVADO |
 | [docs/DOCUMENTATION_INDEX.md](DOCUMENTATION_INDEX.md) | ENTRADA_ATUAL |
+| [docs/ESTADO_2026-09-30.md](ESTADO_2026-09-30.md) | REGISTRO_DATADO |
 | [docs/INTEGRATION_AUDIT_20260912.md](INTEGRATION_AUDIT_20260912.md) | REGISTRO_DATADO |
 | [docs/RESEARCH_BUNDLE_V1.md](RESEARCH_BUNDLE_V1.md) | REGISTRO_DATADO |
 | [docs/RJ_DESIGN.md](RJ_DESIGN.md) | PROTOCOLO_PRESERVADO |
@@ -58,6 +59,7 @@ URLs externas e fragmentos/âncoras não são validados por este verificador.
 | [docs/engineering/2026-09-10-r8/RUNBOOK.md](engineering/2026-09-10-r8/RUNBOOK.md) | REPRODUCAO_COM_ESCOPO_DATADO |
 | [docs/engineering/2026-09-24-protocol-v2/README.md](engineering/2026-09-24-protocol-v2/README.md) | REGISTRO_DATADO |
 | [docs/engineering/2026-09-26-cain-findings/README.md](engineering/2026-09-26-cain-findings/README.md) | REGISTRO_DATADO |
+| [docs/engineering/2026-09-30-license-reseal/README.md](engineering/2026-09-30-license-reseal/README.md) | REGISTRO_DATADO |
 | [docs/evidence/2026-09-24-prompt1-segredos.md](evidence/2026-09-24-prompt1-segredos.md) | REGISTRO_DATADO |
 | [docs/evidence/2026-09-24-prompt2-auditoria.md](evidence/2026-09-24-prompt2-auditoria.md) | REGISTRO_DATADO |
 | [docs/evidence/2026-09-24-prompt3a-dados-baselines.md](evidence/2026-09-24-prompt3a-dados-baselines.md) | REGISTRO_DATADO |
