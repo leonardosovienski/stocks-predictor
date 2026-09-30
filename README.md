@@ -1,5 +1,13 @@
 # Stocks Predictor
 
+## Estado em 30/09/2026
+
+Resumo vigente em [docs/ESTADO_2026-09-30.md](docs/ESTADO_2026-09-30.md): wheel publicada 0.3.0rc3 (`6f857b2`),
+`main` em 0.3.0rc4 não publicada com a licença proprietária, CI do `main` vermelho só no lacre R8 (relacre pelo dono:
+[procedimento](docs/engineering/2026-09-30-license-reseal/README.md)), workflows `release.yml` e `delete-branches.yml`
+novos, só a branch `main` no remoto, qualificação Etapa A em rc2 e integração (Etapa B) `QUALIFIED` no ciclo 4 com
+ciclo 5 (D-27) em execução. Nenhuma mudança científica.
+
 ## Candidato EXTERNAL_INTELLIGENCE_V1 — 20/09/2026
 
 A camada aditiva de staging externo B3/CVM está documentada em
