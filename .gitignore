@@ -24,3 +24,6 @@ dist/
 .env
 .env.*
 *.env
+
+# Flat index of the published stack wheels (tools/stack_wheels.py fetch), never versioned
+.stack-wheels/
