@@ -77,10 +77,14 @@ jobs:
           if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
             echo "release $TAG já existe; nada é sobrescrito" >&2; exit 1
           fi
-      - name: Lock is current and installs
+      - name: Lock is current and installs (stack wheels from the registry first)
+        env:
+          STACK_READ_TOKEN: ${{ secrets.STACK_READ_TOKEN }}
         run: |
+          uv run --no-project --python 3.13 python tools/stack_wheels.py fetch
           uv lock --check
           uv sync --locked --all-extras --python 3.13
+          uv run --no-sync python tools/stack_wheels.py check
       - name: Install build tools from hashes (same as CI)
         run: |
           uv pip install --python .venv/bin/python --require-hashes --no-deps --only-binary :all: -r tools/build-requirements.txt
@@ -100,8 +104,9 @@ jobs:
         run: |
           set -euo pipefail
           uv export --locked --no-dev --no-emit-project --format requirements-txt --output-file "$RUNNER_TEMP/stocks-runtime.txt"
+          uv run --no-sync python tools/stack_wheels.py requirements --input "$RUNNER_TEMP/stocks-runtime.txt" --output "$RUNNER_TEMP/stocks-runtime.hashed.txt"
           uv venv "$RUNNER_TEMP/wheel-venv" --python 3.13
-          uv pip install --python "$RUNNER_TEMP/wheel-venv/bin/python" --require-hashes --no-deps -r "$RUNNER_TEMP/stocks-runtime.txt"
+          uv pip install --python "$RUNNER_TEMP/wheel-venv/bin/python" --require-hashes --no-deps -r "$RUNNER_TEMP/stocks-runtime.hashed.txt"
           uv pip install --python "$RUNNER_TEMP/wheel-venv/bin/python" --no-deps "$RUNNER_TEMP"/dist1/*.whl
           cd "$RUNNER_TEMP" && "$RUNNER_TEMP/wheel-venv/bin/python" -I -m stocks_predictor doctor --check
       - name: Create GitHub release with the built distributions
